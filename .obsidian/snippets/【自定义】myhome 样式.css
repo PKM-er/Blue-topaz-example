@@ -1,3 +1,44 @@
+.is-mobile .myhome  img[alt="inlL"]
+{
+	display:none;
+	
+}
+.is-mobile .myhome .cus_pic
+{
+	display:contents;
+	
+}
+
+body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-col2>.admonition-content-holder>.admonition-content {	columns: 200px 2;
+     -moz-columns: 200px 2;
+    -webkit-columns: 200px 2;
+}
+
+
+
+body.blockquote-style-quotation-mark.is-mobile .markdown-preview-view.myhome blockquote em{
+    text-indent:2em !important;
+}
+
+body.blockquote-style-quotation-mark.is-mobile .markdown-preview-view.myhome blockquote {
+    padding-left:5px;
+}
+
+body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul>li:not(.task-list-item) {
+    padding:5px !important;
+      
+} 
+
+.is-mobile .myhome .admonition-content button {
+	width:initial;
+    padding:0px;
+}
+.is-mobile .myhome audio{
+	
+
+    margin-left: 50%;
+    margin-top: 30px;
+}
 
 .myhome .obsidian-banner-wrapper > .obsidian-banner img.banner-image {
 

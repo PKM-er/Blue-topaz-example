@@ -1,10 +1,6 @@
 {
   "recentFiles": [
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
-    },
-    {
       "basename": "Readme",
       "path": "Readme.md"
     },
@@ -13,12 +9,40 @@
       "path": "从这开始.md"
     },
     {
-      "basename": "2021年12月规划",
-      "path": "20-Diary/2021年12月规划.md"
+      "basename": "obsidian_image",
+      "path": "99-Attachment/obsidian_image.png"
+    },
+    {
+      "basename": "Pasted image 20211231223826",
+      "path": "99-Attachment/Pasted image 20211231223826.png"
+    },
+    {
+      "basename": "Pasted image 20211227102855",
+      "path": "99-Attachment/Pasted image 20211227102855.png"
     },
     {
       "basename": "button",
       "path": "88-Template/button.md"
+    },
+    {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
+      "basename": "Calendar2021-2022",
+      "path": "88-Template/Calendar2021-2022.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "00-Tips/分栏效果示例.md"
+    },
+    {
+      "basename": "真Kanban",
+      "path": "00-Tips/真Kanban.md"
+    },
+    {
+      "basename": "2021年12月规划",
+      "path": "20-Diary/2021年12月规划.md"
     },
     {
       "basename": "常用工具",
@@ -31,10 +55,6 @@
     {
       "basename": "AD伪看板",
       "path": "00-Tips/AD伪看板.md"
-    },
-    {
-      "basename": "分栏效果示例",
-      "path": "00-Tips/分栏效果示例.md"
     },
     {
       "basename": "Tips",
@@ -71,14 +91,6 @@
     {
       "basename": "Pasted image 20211229171215",
       "path": "99-Attachment/Pasted image 20211229171215.png"
-    },
-    {
-      "basename": "obsidian_image",
-      "path": "99-Attachment/obsidian_image.png"
-    },
-    {
-      "basename": "真Kanban",
-      "path": "00-Tips/真Kanban.md"
     },
     {
       "basename": "从这开始",
@@ -187,18 +199,6 @@
     {
       "basename": "笔记模板 by Borber",
       "path": "帮助文档/第三方教程/01 2021新教程/笔记模板 by Borber.md"
-    },
-    {
-      "basename": "第三方教程",
-      "path": "帮助文档/第三方教程/第三方教程.md"
-    },
-    {
-      "basename": "MarkDown超级教程 Obsidian版",
-      "path": "9 帮助文档/MarkDown超级教程 Obsidian版.pdf"
-    },
-    {
-      "basename": "obsidian圆桌会议",
-      "path": "9 帮助文档/obsidian圆桌会议.md"
     }
   ],
   "omittedPaths": [

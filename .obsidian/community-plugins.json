@@ -10,7 +10,6 @@
   "obsidian-banners",
   "templater-obsidian",
   "obsidian-outliner",
-  "cm-editor-syntax-highlight-obsidian",
   "obsidian-collapse-all-plugin",
   "buttons",
   "obsidian-shellcommands",
@@ -24,5 +23,6 @@
   "recent-files-obsidian",
   "table-editor-obsidian",
   "Enhanced editing",
-  "cmenu-plugin"
+  "cmenu-plugin",
+  "obsidian-icon-folder"
 ]

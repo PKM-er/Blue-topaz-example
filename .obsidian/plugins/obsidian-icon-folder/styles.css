@@ -1,0 +1,50 @@
+.obsidian-icon-folder-icon {
+  border: 1px solid transparent;
+  padding: 2px 2px 2px 2px;
+  display: flex;
+  margin: auto 0;
+}
+
+.obsidian-icon-folder-setting .setting-item-control .dropdown {
+  margin-right: 12px;
+}
+
+.obsidian-icon-folder-modal.prompt-results {
+  margin: 0;
+  overflow-y: auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-auto-rows: 90px;
+}
+
+.obsidian-icon-folder-modal.prompt-results .suggestion-item {
+  cursor: pointer;
+  white-space: pre-wrap;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column-reverse;
+  text-align: center;
+  font-size: 13px;
+  color: gray;
+  padding: 16px 8px;
+  line-break: auto;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.obsidian-icon-folder-modal.prompt-results .suggestion-item.suggestion-item__center {
+  justify-content: center;
+}
+
+.obsidian-icon-folder-icon-preview img {
+  width: 16px;
+  height: 16px;
+}
+
+.obsidian-icon-folder-icon-preview svg {
+  width: 24px;
+  height: 24px;
+  color: currentColor;
+  margin-bottom: 4px;
+}

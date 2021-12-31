@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
+            "file": "Readme.md",
             "mode": "preview",
             "backlinks": true,
             "source": false
@@ -116,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "Readme.md"
               }
             }
           }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "Readme.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "Readme.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -181,20 +181,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 273,
-    "collapsed": true
+    "width": 273
   },
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
-    "88-Template/home.md",
     "Readme.md",
     "从这开始.md",
-    "20-Diary/2021年12月规划.md",
+    "99-Attachment/obsidian_image.png",
+    "99-Attachment/Pasted image 20211231223826.png",
+    "99-Attachment/Pasted image 20211227102855.png",
     "88-Template/button.md",
-    "88-Template/常用工具.md",
-    "88-Template/通用模板.md",
-    "00-Tips/AD伪看板.md",
+    "88-Template/home.md",
+    "88-Template/Calendar2021-2022.md",
     "00-Tips/分栏效果示例.md",
-    "00-Tips/Tips.md"
+    "00-Tips/真Kanban.md"
   ]
 }

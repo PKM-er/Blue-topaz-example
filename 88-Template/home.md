@@ -109,26 +109,31 @@ await get_BlueTopaz();
 
 ```dataviewjs
 //在Ob中获取hitokoto 一言
+let caller;
 async function getinfo() 
 {
+caller && clearTimeout(caller);
 let url='https://v1.hitokoto.cn/?encode=json&c=d&c=i';
    let finalURL = new URL(url);
    let result='';
    let str='';
 	result=await  fetch(finalURL, {
-		method: 'GET'
+		method: 'GET',mode:'cors',
+	headers: {
+			'Content-Type': 'application/json',
+			 'Access-Control-Allow-Origin':'*'
+		}
 	}).then(async (res) => await res.json());
 	let who =result['from_who'];
 		 if(!who) who =' ';
   const new_content = `${result['hitokoto']} <br> <em style="display: inline-block;text-indent: 6em;"> &mdash; 来自 ${who}  《${result['from']}》</em>`; 
   dv.el("blockquote", new_content);
 }
-setTimeout(
+caller=setTimeout(
 await getinfo()
 ,1000);
 dv.paragraph('<br>');
-```
-```dataviewjs
+
 //在Ob中获取网易音乐热歌榜
 //首发于Blue topaz Examples 
 //转发请注明出处谢谢！
@@ -142,11 +147,12 @@ function getUrlQueryParams(url){
 	return params;
 }
 
-let caller = true;
+
 let music_id='1819970423';
 let iframe='';
 async function getmusicinfo() 
 {
+caller && clearTimeout(caller);
 let url='https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json';
    let finalURL = new URL(url);
    let result='';
@@ -163,13 +169,12 @@ let url='https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&fo
 		return music_id;
 	}
 }
-if(caller) {
-caller = false
-setTimeout(
+
+caller = setTimeout(
 await getmusicinfo()
-,1000);
+,500);
  iframe='<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id='+music_id+'&auto=0&height=66"></iframe>' ;
-}
+
 dv.el("blockquote", iframe);
 ```
 
@@ -181,5 +186,3 @@ dv.el("blockquote", iframe);
 
 <br>
 
-
-   
