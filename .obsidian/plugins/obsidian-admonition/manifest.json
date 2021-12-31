@@ -1,0 +1,10 @@
+{
+    "id": "obsidian-admonition",
+    "name": "Admonition",
+    "version": "6.7.2",
+    "minAppVersion": "0.11.0",
+    "description": "Admonition block-styled content for Obsidian.md",
+    "author": "Jeremy Valentine",
+    "authorUrl": "",
+    "isDesktopOnly": false
+}

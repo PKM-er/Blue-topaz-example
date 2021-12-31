@@ -1,2 +1,1 @@
-# Blue-topaz-examples
-Blue topaz  themes example vault for Obsidian
+![[从这开始#从这里开始，了解Topaz]]

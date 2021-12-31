@@ -1,0 +1,44 @@
+/* no content */
+.checklist-plugin-main {
+  --todoList-checkboxSize: 20px;
+  --todoList-checkboxCheckedSize: 12px;
+  --todoList-checkboxBorder: 2px solid var(--text-muted);
+  --todoList-checkboxFill: var(--text-muted);
+  --todoList-listItemBorderRadius: 8px;
+  --todoList-listItemMargin: 0 0 12px;
+  --todoList-listItemBackground: var(--interactive-normal);
+  --todoList-listItemBackground--hover: var(--interactive-hover);
+  --todoList-listItemMargin--compact: 0 0 8px;
+  --todoList-headerMargin: 0 0 8px;
+  --todoList-headerGap: 4px;
+  --todoList-headerFontSize: 18px;
+  --todoList-headerFontWeight: 600;
+  --todoList-iconSize: 24px;
+  --todoList-iconFill: var(--text-normal);
+  --todoList-textColor: var(--text-muted);
+  --todoList-textChunkColor: var(--text-accent);
+  --todoList-textChunkColor--hover: var(--text-accent-hover);
+  --todoList-pageMargin: 0 0 4px;
+  --todoList-loaderSize: 16px;
+  --todoList-loaderBorderColor: var(--text-muted) var(--text-muted) var(--text-normal);
+  --todoList-buttonPadding: 0 5px;
+  --todoList-countPadding: 0 6px;
+  --todoList-countBackground: var(--interactive-normal);
+  --todoList-countFontSize: 13px;
+  --todoList-togglePadding: 8px 8px 8px 12px;
+  --todoList-contentPadding: 8px 12px 8px 0;
+  --todoList-contentPadding--compact: 4px 8px;
+  --todoList-togglePadding--compact: 4px 8px;
+  --todoList-countBorderRadius: 4px;
+  --todoList-tagBaseColor: var(--text-faint);
+  --todoList-tagSubColor: var(--text-muted);
+  --todoList-groupMargin: 8px;
+}
+
+.checklist-plugin-main button {
+  margin: initial;
+}
+
+.checklist-plugin-main p {
+  margin: initial;
+}

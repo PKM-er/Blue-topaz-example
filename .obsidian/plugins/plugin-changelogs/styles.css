@@ -1,0 +1,3 @@
+body.theme-dark .github-btn > svg {
+  filter: invert(1);
+}

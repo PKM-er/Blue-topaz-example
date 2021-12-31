@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-shellcommands",
+	"name": "Shell commands",
+	"version": "0.9.0",
+	"minAppVersion": "0.12.12",
+	"description": "You can predefine system commands that you want to run frequently, and assign hotkeys for them. For example open external applications.",
+	"author": "Jarkko Linnanvirta",
+	"authorUrl": "",
+	"isDesktopOnly": true
+}

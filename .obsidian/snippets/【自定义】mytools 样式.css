@@ -1,0 +1,58 @@
+/* 
+==========================
+======= mytools=======
+==========================
+*/
+/*预览模式减少文档左右上下的空白*/
+.markdown-preview-view.mytools
+{
+  padding: 0px 0px 0px 0px;
+}
+/*隐藏滚动条*/
+.markdown-preview-view.mytools::-webkit-scrollbar{
+display:none;
+}
+.workspace-split.mod-left-split>.workspace-leaf-resize-handle:not(:hover), 
+ .workspace-split.mod-right-split>.workspace-leaf-resize-handle:not(:hover), 
+ .workspace-split.mod-vertical>*>.workspace-leaf-resize-handle:not(:hover) {
+  background-color: #ebebeb00!important;
+}
+/*隐藏yaml区域*/
+.markdown-preview-view.mytools  div>.language-yaml
+{	
+  display: none;
+}
+/*减少ad标签的左右空白*/
+.markdown-preview-view.mytools .admonition {
+    margin: 0;
+}
+.markdown-preview-view.mytools .admonition .admonition-content {
+  margin: 0px 5px;
+}
+
+/*边栏工作区文档图标自定义*/
+.workspace-tab-header[aria-label^="常用工具"]
+.workspace-tab-header-inner-icon
+> svg{
+  display: none;
+}
+
+.workspace-tab-header.is-active[aria-label^="常用工具"]
+.workspace-tab-header-inner-icon:before{
+  content: "\ea3c";
+  font-family: Material Icons;
+  color: var(--theme-color) ; 
+}
+.workspace-tab-header[aria-label^="常用工具"]
+.workspace-tab-header-inner-icon::before{
+  line-height: normal;
+  font-size: larger;
+  content: "\ea3c";
+  font-family: Material Icons;
+  color: var(--text-normal);
+}
+}
+.markdown-preview-view.mytools .embedded-backlinks
+{
+  display: none;
+}

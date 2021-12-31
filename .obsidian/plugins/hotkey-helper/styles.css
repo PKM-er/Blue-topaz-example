@@ -1,0 +1,5 @@
+.clickable-icon.mod-error, .modal .community-plugin-info button.mod-error {
+    background-color: var(--background-modifier-error);
+}
+
+.community-plugin-info > p > button { margin-top: 6px; margin-bottom: 6px;}

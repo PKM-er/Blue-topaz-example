@@ -1,0 +1,11 @@
+{
+  "baseFontSize": 17,
+  "theme": "moonstone",
+  "cssTheme": "Blue Topaz",
+  "enabledCssSnippets": [
+    "【自定义】mytools 样式",
+    "【自定义】myhome 样式",
+    "【图标】预览网址加图标 - External Link Icons",
+    "【自定义】cmenu 样式"
+  ]
+}

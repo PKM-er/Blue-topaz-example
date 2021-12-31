@@ -1,0 +1,10 @@
+{
+  "height": 250,
+  "style": "gradient",
+  "showInEmbed": true,
+  "embedHeight": 150,
+  "showPreviewInLocalModal": true,
+  "localSuggestionsLimit": -2,
+  "bannersFolder": "",
+  "allowMobileDrag": false
+}

@@ -1,0 +1,139 @@
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+  }
+}
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+.spinner {
+  width: 70px;
+  text-align: center;
+}
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: var(--text-muted);
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+.obsidian-banner-wrapper {
+  margin-top: calc(var(--banner-height) + 10px);
+}
+.obsidian-banner-wrapper > .obsidian-banner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: var(--banner-height);
+  width: 100%;
+  overflow: hidden;
+}
+.obsidian-banner-wrapper > .obsidian-banner.gradient:not(.error) {
+  mask-image: linear-gradient(to bottom, black, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+}
+.obsidian-banner-wrapper > .obsidian-banner .banner-message {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  right: 16px;
+  bottom: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+  border: 2px solid var(--background-modifier-border);
+}
+.obsidian-banner-wrapper > .obsidian-banner .banner-message p {
+  margin: 6px 8px;
+  text-align: center;
+  color: var(--text-muted);
+}
+.obsidian-banner-wrapper > .obsidian-banner img.banner-image {
+  position: relative;
+  object-fit: cover;
+  max-width: none;
+  cursor: grab;
+  height: 100%;
+  width: 100%;
+}
+.obsidian-banner-wrapper > .obsidian-banner img.banner-image:active {
+  cursor: grabbing;
+}
+.obsidian-banner-wrapper.loaded .banner-message {
+  display: none;
+}
+.obsidian-banner-wrapper.error img {
+  display: none;
+}
+
+.markdown-embed-content .obsidian-banner-wrapper {
+  margin-top: var(--banner-embed-height);
+}
+.markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner {
+  height: var(--banner-embed-height);
+}
+.markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner img {
+  cursor: initial;
+}
+
+.banner-suggestion-item {
+  padding: 6px 10px;
+}
+.banner-suggestion-item .suggestion-text {
+  height: 0;
+  margin: 0;
+  padding-left: 10px;
+}
+.banner-suggestion-item .suggestion-image-wrapper {
+  position: relative;
+  height: 200px;
+  width: 100%;
+  margin: 6px 0;
+  overflow: hidden;
+}
+.banner-suggestion-item .suggestion-image-wrapper img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  object-fit: cover;
+}
+
+.banner-setting-header {
+  display: block;
+  padding: 6px 0;
+}
+.banner-setting-header p {
+  margin: 0;
+  font-size: 1.2em;
+}
+.banner-setting-header .banner-setting-header-description {
+  margin-top: 2px;
+  font-size: 0.7em;
+  color: var(--text-muted);
+  line-height: 18px;
+}

@@ -1,0 +1,15 @@
+{
+  "communityPluginSortOrder": "release",
+  "readableLineLength": false,
+  "foldHeading": true,
+  "foldIndent": true,
+  "alwaysUpdateLinks": true,
+  "legacyEditor": false,
+  "livePreview": true,
+  "showFrontmatter": true,
+  "spellcheck": false,
+  "spellcheckLanguages": [],
+  "attachmentFolderPath": "99-Attachment",
+  "showLineNumber": false,
+  "defaultViewMode": "source"
+}

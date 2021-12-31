@@ -1,0 +1,10 @@
+{
+	"id": "quickadd",
+	"name": "QuickAdd",
+	"version": "0.4.17",
+	"minAppVersion": "0.12.5",
+	"description": "Quickly add new pages or content to your vault.",
+	"author": "Christian B. B. Houmann",
+	"authorUrl": "https://bagerbach.com",
+	"isDesktopOnly": false
+}

@@ -1,0 +1,60 @@
+item.setTitle("Hide & Show");
+item.setTitle("切换显隐");
+text: "Bottom"
+text: "底部"
+.setTooltip("Add")
+.setTooltip("添加")
+.setTooltip("Delete")
+.setTooltip("删除")
+.setTooltip("Refresh")
+.setTooltip("刷新")
+this.setPlaceholder("Choose a command");
+this.setPlaceholder("选择一个命令");
+.setDesc("Choose where cMenu will append upon regeneration. To see the change, hit the refresh button below, or in the status bar menu.")
+.setDesc("选择cMenu将在更新时附加的位置。要查看更新，请点击下面或状态栏菜单中的刷新按钮。")
+.setName("cMenu append method")
+.setName("cMenu 追加方法")
+.setName("cMenu aesthetic")
+.setName("cMenu 样式")
+.setDesc("Choose between a glass morphism and default style for cMenu. To see the change, hit the refresh button below, or in the status bar menu.")
+.setDesc("在 cMenu 的玻璃和默认样式之间进行选择。要查看更新，请点击下面或在状态栏菜单中的刷新按钮。")
+.setName("cMenu columns")
+.setName("cMenu 列数")
+.setDesc("Choose the number of columns per row to display on cMenu. To see the change, hit the refresh button below, or in the status bar menu.")
+.setDesc("选择要在 cMenu 上显示的每行列数。要查看更新，请点击下面或状态栏菜单中的刷新按钮。")
+.setName("cMenu refresh")
+.setName("cMenu 刷新")
+.setDesc("cMenu will only refresh automatically after you have either added or deleted a command from it. To see UI changes to cMenu (above settings changes) use the refresh button. If you forget to refresh in settings, no worries. There is also a refresh button in the cMenu status bar menu.")
+.setDesc("只有在添加或删除命令后，cMenu 才会自动刷新。要查看 cMenu 的外观更改效果，请点击刷新按钮。当然，你也可以在 cMenu 状态栏菜单中进行刷新。")
+.setTooltip("Refresh")
+.setTooltip("刷新")
+.setName("cMenu commands")
+.setName("cMenu 命令")
+.setDesc("Add a command onto cMenu from Obsidian's commands library. To reorder the commands, drag and drop the command items. To delete them, use the delete buttom to the right of the command item. cMenu will not automaticaly refresh after reordering commands. Use the refresh button above.")
+.setDesc("从 Obsidian 的命令库中向 cMenu 添加一个命令。要重新排序命令，请拖放命令项。要删除它们，请使用命令项右侧的删除按钮。cMenu在重新排序后不会自动刷新，请使用上面的刷新按钮。")
+.setTooltip("Add")
+.setTooltip("添加")
+.setTooltip("Delete")
+.setTooltip("删除")
+name: "Add embed"
+name: "嵌入"
+name: "Insert markdown link"
+name: "插入链接"
+name: "Add tag"
+name: "添加标签"
+name: "Add internal link"
+name: "内部链接"
+name: "Toggle bold"
+name: "加粗"
+name: "Toggle italics"
+name: "斜体"
+name: "Toggle strikethrough"
+name: "删除线"
+name: "Toggle code"
+name: "行内代码"
+name: "Toggle blockquote"
+name: "引用"
+text: "Created by "
+text: "创作者： "
+text: "Plugin Settings"
+text: "插件设置"

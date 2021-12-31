@@ -1,0 +1,65 @@
+
+.myhome .obsidian-banner-wrapper > .obsidian-banner img.banner-image {
+
+    cursor: initial;
+	pointer-events: none;
+}
+
+
+.myhome .cus_pic {
+    margin-left: 5%;
+    margin-right: 3%;
+    float: right;
+    width: 22%;
+}
+.myhome audio {
+  margin-left: 10%;
+  margin-top: 20px;
+  filter: sepia(20%) saturate(80%) grayscale(1) contrast(99%) invert(12%);
+  -moz-opacity: 0.3;
+  opacity: 0.3;
+  width: 90px;
+  height: 30px;
+  position: absolute;
+}
+.myhome audio::-webkit-media-controls-mute-button {
+  display: none !important;
+  }	
+  .myhome audio::-webkit-media-controls-current-time-display
+  {
+    display: none !important;
+    }
+    .myhome audio::-webkit-media-controls-seek-back-button
+    {
+      display: none !important;
+      }
+    .myhome audio::-webkit-media-controls-seek-forward-button
+    {
+      display: none !important;
+      }
+      .myhome audio::-webkit-media-controls-rewind-button{
+
+        display: none !important;
+      }
+.myhome audio::-webkit-media-controls-time-remaining-display
+{
+  display: none !important;
+  }
+.myhome audio::-webkit-media-controls-timeline
+{
+  display: none !important;
+  }
+  .myhome audio::-webkit-media-controls-timeline-container
+  {
+    display: none !important;
+  }
+  .myhome audio::-webkit-media-controls-volume-slider {
+  display: none !important;
+  }
+  
+  .myhome audio::-webkit-media-controls-volume-control-container.closed {
+  display: none !important;
+  }
+  .myhome audio::-webkit-media-controls-volume-control-container{
+  display: none !important;
+  }

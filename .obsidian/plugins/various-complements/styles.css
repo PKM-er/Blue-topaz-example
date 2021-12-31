@@ -1,0 +1,16 @@
+/* Sets all the text color to red! */
+.various-complements__suggest__description {
+    font-size: 0.75em;
+    /*noinspection CssUnresolvedCustomProperty*/
+    color: var(--text-muted);
+}
+
+.various-complements__settings__custom-dictionary-paths {
+    height: 120px;
+    width: 500px;
+}
+
+.various-complements__settings__warning {
+    color: darkorange;
+    text-align: right;
+}

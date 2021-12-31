@@ -1,0 +1,10 @@
+{
+  "id": "buttons",
+  "name": "Buttons",
+  "description": "Create Buttons in your Obsidian notes to run commands, open links, and insert templates",
+  "version": "0.4.16",
+  "author": "shabegom",
+  "authorUrl": "https://shbgm.ca",
+  "isDesktopOnly": false,
+  "minAppVersion": "0.12.8"
+}

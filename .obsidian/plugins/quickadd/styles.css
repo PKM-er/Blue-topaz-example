@@ -1,0 +1,168 @@
+.configureMacroDiv {
+    display: grid;
+    grid-template-rows: 1fr;
+    min-width: 12rem;
+}
+
+.configureMacroDivItem {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.configureMacroDivItemButton {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.macroContainer {
+    display: grid;
+    grid-template-rows: repeat(auto-fill, 120px);
+    grid-gap: 40px;
+
+    overflow-y: auto;
+    max-height: 30em;
+    padding: 2em;
+}
+
+/* Mobile */
+@media screen and (max-width: 540px){
+    .macroContainer1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .macroContainer2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .macroContainer3 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+/* Tablet */
+@media screen and (max-width: 540px) and (max-width: 780px) {
+    .macroContainer1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .macroContainer2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .macroContainer3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Everything else */
+@media screen and (min-width: 781px){
+    .macroContainer1 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .macroContainer2 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .macroContainer3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.addMacroBarContainer {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.captureToActiveFileContainer {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.choiceNameHeader {
+    text-align: center;
+}
+
+.choiceNameHeader:hover {
+    cursor: pointer;
+}
+
+.folderInputContainer {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 4px;
+}
+
+.selectMacroDropdownContainer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.quickAddModal .modal {
+    min-width: 35%;
+    overflow-y: auto;
+    max-height: 70%;
+}
+
+.checkboxRowContainer {
+    display: grid;
+    grid-template-rows: auto;
+    align-content: center;
+}
+
+.checkboxRow {
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+}
+
+.checkboxRow .checkbox-container {
+    flex-shrink: 0;
+}
+
+.checkboxRow span {
+    font-size: 16px;
+    word-break: break-all;
+}
+
+.submitButtonContainer {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.chooseFolderWhenCreatingNoteContainer {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.clickable:hover {
+    cursor: pointer;
+}
+
+.quickAddCommandListItem {
+    display: flex;
+    flex: 1 1 auto;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.quickCommandContainer {
+    display: flex;
+    justify-content: flex-end;
+    align-content: center;
+    margin-bottom: 1em;
+}

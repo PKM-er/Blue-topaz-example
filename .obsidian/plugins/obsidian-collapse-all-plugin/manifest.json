@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-collapse-all-plugin",
+  "name": "Collapse All",
+  "version": "1.4.0",
+  "minAppVersion": "0.12.11",
+  "description": "This plugin adds a button to collapse or expand all folders in the file explorer.",
+  "author": "OfficerHalf",
+  "authorUrl": "https://nathan-smith.org/",
+  "isDesktopOnly": false
+}

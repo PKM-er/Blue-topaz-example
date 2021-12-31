@@ -1,0 +1,126 @@
+{
+  "choices": [
+    {
+      "id": "2f9f18b1-c339-4b24-bdbb-cc13b7c42261",
+      "name": "随笔记录",
+      "type": "Capture",
+      "command": true,
+      "appendLink": false,
+      "captureTo": "20-Diary/{{DATE:YYYY-MM-DD}}.md",
+      "captureToActiveFile": false,
+      "createFileIfItDoesntExist": {
+        "enabled": true,
+        "createWithTemplate": true,
+        "template": "88-Template/通用模板.md"
+      },
+      "format": {
+        "enabled": true,
+        "format": "-  {{DATE:HH:mm}} {{MVALUE}}"
+      },
+      "insertAfter": {
+        "enabled": true,
+        "after": "##",
+        "insertAtEnd": true,
+        "createIfNotFound": true,
+        "createIfNotFoundLocation": "bottom"
+      },
+      "prepend": false,
+      "task": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": false,
+      "openFileInMode": "default"
+    },
+    {
+      "id": "1331d6d4-4efe-4d24-b585-80a9de29b397",
+      "name": "添加任务",
+      "type": "Capture",
+      "command": true,
+      "appendLink": false,
+      "captureTo": "20-Diary/任务看板.md",
+      "captureToActiveFile": false,
+      "createFileIfItDoesntExist": {
+        "enabled": true,
+        "createWithTemplate": false,
+        "template": ""
+      },
+      "format": {
+        "enabled": true,
+        "format": "{{VALUE:请输入要添加的任务}}"
+      },
+      "insertAfter": {
+        "enabled": true,
+        "after": "## 收集箱",
+        "insertAtEnd": false,
+        "createIfNotFound": false,
+        "createIfNotFoundLocation": "top"
+      },
+      "prepend": false,
+      "task": true,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": false,
+      "openFileInMode": "default"
+    },
+    {
+      "id": "c2efaeca-133b-4362-804e-c4ad5565b8ae",
+      "name": "打开今天日记",
+      "type": "Macro",
+      "command": true,
+      "macroId": "9655dda4-4148-471e-8979-7539d4d6a59d"
+    },
+    {
+      "id": "aa6840fd-9b83-4d4a-87d6-2b6471c1009b",
+      "name": "打开任务看板",
+      "type": "Macro",
+      "command": true,
+      "macroId": "96067d39-1c22-4c96-9100-829814ac3251"
+    }
+  ],
+  "macros": [
+    {
+      "name": "打开今天笔记",
+      "id": "9655dda4-4148-471e-8979-7539d4d6a59d",
+      "commands": [
+        {
+          "name": "Workspaces Plus: Load: Diary",
+          "type": "Obsidian",
+          "id": "a09bb550-f273-4a52-b951-f3af9b6a9ef1",
+          "commandId": "workspaces-plus:Diary"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "06023af6-2ab6-46c1-ba8e-0b73f987e176",
+          "time": 300
+        },
+        {
+          "name": "日记: 打开/创建今天的日记",
+          "type": "Obsidian",
+          "id": "d3f464a7-7091-42f5-ae0e-db6fe458d878",
+          "commandId": "daily-notes"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "打开看板",
+      "id": "96067d39-1c22-4c96-9100-829814ac3251",
+      "commands": [
+        {
+          "name": "Workspaces Plus: Load: kanban",
+          "type": "Obsidian",
+          "id": "5a92a49f-f682-4771-86b6-64676154cf61",
+          "commandId": "workspaces-plus:kanban"
+        }
+      ],
+      "runOnStartup": false
+    }
+  ]
+}

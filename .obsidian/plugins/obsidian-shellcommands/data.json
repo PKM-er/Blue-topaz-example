@@ -1,0 +1,27 @@
+{
+  "settings_version": "0.8.0",
+  "debug": false,
+  "preview_variables_in_command_palette": true,
+  "show_autocomplete_menu": true,
+  "working_directory": "",
+  "default_shells": {},
+  "error_message_duration": 20,
+  "notification_message_duration": 10,
+  "output_channel_clipboard_also_outputs_to_notification": true,
+  "shell_commands": {
+    "0": {
+      "platform_specific_commands": {
+        "default": "code {{vault_path}}"
+      },
+      "shells": {},
+      "alias": "open vault",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "output_channels": {
+        "stdout": "ignore",
+        "stderr": "notification"
+      },
+      "output_channel_order": "stdout-first"
+    }
+  }
+}

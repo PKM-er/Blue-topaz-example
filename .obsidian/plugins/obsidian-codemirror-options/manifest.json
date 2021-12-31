@@ -1,0 +1,10 @@
+{
+    "id": "obsidian-codemirror-options",
+    "name": "CodeMirror Options",
+    "version": "0.9.5",
+    "minAppVersion": "0.13.8",
+    "description": "Enhance Obsidian's desktop edit mode with features such as WYSIWYG / Live Preview, Syntax Highlighting, and more.",
+    "author": "NothingIsLost",
+    "authorUrl": "https://github.com/nothingislost",
+    "isDesktopOnly": true
+}

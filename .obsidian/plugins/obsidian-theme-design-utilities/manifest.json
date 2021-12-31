@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-theme-design-utilities",
+	"name": "Theme Design Utilities",
+	"version": "0.13.0",
+	"minAppVersion": "0.12.0",
+	"description": "Some Utilities and Quality-of-Life Features for Designers of Obsidian Themes.",
+	"author": "pseudometa",
+	"authorUrl": "https://github.com/chrisgrieser/theme-design-utilities",
+	"isDesktopOnly": true
+}
