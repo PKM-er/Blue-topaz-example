@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "从这开始.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": true,
-            "source": true
+            "source": false
           }
         }
       }
@@ -116,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "从这开始.md"
+                "file": "88-Template/home.md"
               }
             }
           }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "从这开始.md",
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "从这开始.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -186,9 +186,9 @@
   },
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
+    "88-Template/home.md",
     "从这开始.md",
     "README.md",
-    "88-Template/home.md",
     "未命名.md",
     "00-Tips/魔方配色设置说明.md",
     "88-Template/便签.md",
