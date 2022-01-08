@@ -81,6 +81,20 @@
       "type": "Macro",
       "command": true,
       "macroId": "96067d39-1c22-4c96-9100-829814ac3251"
+    },
+    {
+      "id": "a6d84a1e-926f-417c-82ad-6b1f647a5339",
+      "name": "重载主页",
+      "type": "Macro",
+      "command": true,
+      "macroId": "ffb32b42-d2fe-42ed-9331-22a317f4a28a"
+    },
+    {
+      "id": "99739b95-977f-4a34-a32c-21393389e065",
+      "name": "生成便签",
+      "type": "Macro",
+      "command": true,
+      "macroId": "dfb35a63-6aa2-44db-8ca4-a7e7c56eb546"
     }
   ],
   "macros": [
@@ -118,6 +132,65 @@
           "type": "Obsidian",
           "id": "5a92a49f-f682-4771-86b6-64676154cf61",
           "commandId": "workspaces-plus:kanban"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "Home工作区",
+      "id": "8375d67f-9460-4b6f-90f8-5355af1c6668",
+      "commands": [
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "fc377b74-ed4a-4289-b365-298855ece976",
+          "time": 100
+        },
+        {
+          "name": "Workspaces Plus: Load: Home",
+          "type": "Obsidian",
+          "id": "cc6b384b-ec44-4292-835a-e19dafa409d5",
+          "commandId": "workspaces-plus:Home"
+        }
+      ],
+      "runOnStartup": true
+    },
+    {
+      "name": "重新获取主页数据",
+      "id": "ffb32b42-d2fe-42ed-9331-22a317f4a28a",
+      "commands": [
+        {
+          "name": "refreshhomepage",
+          "type": "UserScript",
+          "id": "3688b46a-c8d2-4179-aef5-33c9668298d1",
+          "path": "88-Template/refreshhomepage.js",
+          "settings": {}
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "9d4918a2-a690-4a89-9d20-a3adfd348655",
+          "time": 500
+        },
+        {
+          "name": "Workspaces Plus: Load: Home",
+          "type": "Obsidian",
+          "id": "d24a4d7f-0668-4af1-9c74-0e7f2722567a",
+          "commandId": "workspaces-plus:Home"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "生成便签",
+      "id": "dfb35a63-6aa2-44db-8ca4-a7e7c56eb546",
+      "commands": [
+        {
+          "name": "notice",
+          "type": "UserScript",
+          "id": "c5b201d2-a771-4fb6-80ab-fb422c1f7ccd",
+          "path": "88-Template/notice.js",
+          "settings": {}
         }
       ],
       "runOnStartup": false

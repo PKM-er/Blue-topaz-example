@@ -3,7 +3,10 @@
 ======= mytools=======
 ==========================
 */
+  
+
 /*预览模式减少文档左右上下的空白*/
+
 .markdown-preview-view.mytools
 {
   padding: 0px 0px 0px 0px;
@@ -50,7 +53,6 @@ display:none;
   content: "\ea3c";
   font-family: Material Icons;
   color: var(--text-normal);
-}
 }
 .markdown-preview-view.mytools .embedded-backlinks
 {

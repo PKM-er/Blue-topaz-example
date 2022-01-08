@@ -8,6 +8,7 @@ cmenu 插件建议使用自动光标跟随版。插件在Blue topaz examples 库
 background-color:#ffffff00 !important;
 font-family: remixicon;
 }	
+ 
 
 #cMenuModalBar .cMenuCommandItem[aria-label^='ZH增强编辑: H1标题']::before {
 	 content: "\EDE6";
@@ -72,7 +73,7 @@ display:none;
 }
 #cMenuModalBar .cMenuCommandItem[aria-label^='ZH增强编辑: 转换黄色文字']::before {
 	 content: "\ED8B";
-	 color:#ffff00;
+	 color:#e4e446;
 	 font-size:1.2em;
 	 margin-top:2px;
 	 margin-left:3px;

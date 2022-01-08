@@ -48,10 +48,9 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
 
 
 .myhome .cus_pic {
-    margin-left: 5%;
-    margin-right: 3%;
-    float: right;
-    width: 22%;
+  margin-top: -5px!important;
+  width: 75%;
+ 
 }
 .myhome audio {
   margin-left: 10%;
@@ -59,7 +58,7 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   filter: sepia(20%) saturate(80%) grayscale(1) contrast(99%) invert(12%);
   -moz-opacity: 0.3;
   opacity: 0.3;
-  width: 8%;
+  width: 100px;
   height: 30px;
   position: absolute;
 }
@@ -103,4 +102,10 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   }
   .myhome audio::-webkit-media-controls-volume-control-container{
   display: none !important;
+  }
+
+  
+  .myhome .embedded-backlinks
+  {
+    display:none;
   }

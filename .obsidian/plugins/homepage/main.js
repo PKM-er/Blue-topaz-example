@@ -1876,7 +1876,7 @@ var Homepage = class extends import_obsidian3.Plugin {
           state.source = this.settings.view != View.LivePreview;
           break;
         case View.Reading:
-          state.mode = "source";
+          state.mode = "preview";
           break;
       }
       yield leaf.setViewState({ type: "markdown", state });

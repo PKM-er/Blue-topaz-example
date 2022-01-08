@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.13.16。uid [20211225] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.13.16, uid [20211225] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.13.19。uid [20220108] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.13.19, uid [20220108] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 @LillianWho @成雙酱 @嘴上云 @Cuman @Klaas @Thinkbond @Rainbell129(AKA Lavi) @awyugan */
@@ -57,6 +57,9 @@ settings:
       - 
         label: Pink
         value: color-scheme-options-pink-topaz
+      - 
+        label: Topaz-Nord (Coming soon)
+        value: color-scheme-options-topaz-nord
       - 
         label: =↓👩😺 Created by Topaz Community 🐵🧑↓=
         value: 
@@ -197,9 +200,9 @@ settings:
         value: background-settings-workplace-theme-light-custom-option
   -
     id: background-settings-workplace-theme-light-custom
-    title: Theme light (url)
+    title: Custom Theme light (url)
     description: Customise the background image. Use the format in the Default below for an Online image. Use the following format to point to a local file - url("app://local/D:/Documents/Pictures/Unsplash/UnsplashTemp.jpg").
-    description.zh: 自定义背景。使用Default内格式设置网络图片。使用以下格式设置本地图片  url("app://local/D:/Documents/Pictures/Unsplash/UnsplashTemp.jpg")
+    description.zh: 需在上方选项种选择Custom，以自定义背景。使用Default内格式设置网络图片。使用以下格式设置本地图片  url("app://local/D:/Documents/Pictures/Unsplash/UnsplashTemp.jpg")
     type: variable-text
     default: url("https://") 
   -
@@ -235,9 +238,9 @@ settings:
         value: background-settings-workplace-theme-dark-custom-option
   -
     id: background-settings-workplace-theme-dark-custom
-    title: Theme Dark (url)
+    title: Custom Theme Dark (url)
     description: Customise the background image. Use the format in the Default below for an Online image. Use the following format to point to a local file - url("app://local/D:/Documents/Pictures/Unsplash/UnsplashTemp.jpg").
-    description.zh: 自定义背景。使用Default内格式设置网络图片。使用以下格式设置本地图片  url("app://local/D:/Documents/Pictures/Unsplash/UnsplashTemp.jpg")
+    description.zh: 需在上方选项种选择Custom，以自定义背景。使用Default内格式设置网络图片。使用以下格式设置本地图片  url("app://local/D:/Documents/Pictures/Unsplash/UnsplashTemp.jpg")
     type: variable-text
     default: url("https://")
   -
@@ -318,8 +321,8 @@ settings:
         value: background-image-settings-markdown-page-random-yellow-and-orange
   - 
     id: layout-settings
-    title: 1.3 Layout (coming soon)
-    title.zh: 1.3 界面布局样式 (未完成)
+    title: 1.3 Layout
+    title.zh: 1.3 界面布局样式
     type: heading
     level: 2
     collapsed: true
@@ -585,11 +588,57 @@ settings:
   - 
     id: text-color-code
     title: Inline Code Color
+    title.zh: 行内代码颜色
     type: variable-themed-color
     opacity: false
     format: hex
     default-light: '#e95d00'
     default-dark: '#d58000'
+  -
+    id: list-format-ul
+    title: Bullet Color of Unordered List
+    title.zh: 无序列表点颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#da8507'
+    default-dark: '#da8507'
+  -
+    id: list-ol-number-color
+    title: Number Color of Ordered List
+    title.zh: 有序列表数字颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#6196d6'
+    default-dark: '#2c7bd6'
+  -
+    id: accent-strong
+    title: Bold Type color
+    title.zh: 加粗颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#000000'
+    default-dark: '#f7f7f7'
+  -
+    id: accent-em
+    title: Italic Type color
+    title.zh: 斜体颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#099d4e'
+    default-dark: '#a4ca8e'
+  -
+    id: mjx-math-color
+    title: Color of Mathematical Expressions
+    title.zh: 数学表达式颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#0e0e0e'
+    default-dark: '#bdbdbd'
   -
     id: font-settings
     title: 2.2 Typography
@@ -1115,20 +1164,34 @@ settings:
     level: 3
     collapsed: true
   -
+    id: adjustable-embed-content-height
+    title: Fix Height of Embedded Content
+    title.zh: 固定嵌入页面高度
+    type: class-toggle
+    default: false
+  -
+    id: embed-content-height
+    title: Height of Embedded Content
+    title.zh: 嵌入页面高度
+    description: Switch on the above button to activate
+    type: variable-number
+    default: 600
+    format: px
+  -
     id: naked-embed
-    title: Naked Embed
+    title: Transparent Embedded background
     title.zh: 嵌入背景透明
     type: class-toggle
     default: false
   -
     id: embed-title
-    title: hide embed title
+    title: Hide Embedded Title
     title.zh: 隐藏嵌入文档标题
     type: class-toggle
     default: false
   - 
     id: embed-hd
-    title: hide embed  headings like H1 H2
+    title: hide embed headings like H1 H2
     title.zh: 隐藏嵌入文档中的H1 H2 H3标题
     type: class-toggle
     default: false
@@ -1280,7 +1343,6 @@ settings:
   -
     id: style-options-for-admonition-plugin-header
     title: 3.1 Admonition Style
-    title.zh: 3.1 Admonition插件样式
     type: heading
     level: 2
     collapsed: true
@@ -1303,7 +1365,6 @@ settings:
   -
     id: style-options-for-calendar-plugin-header
     title: 3.2 Calendar
-    title.zh: 3.2 Calendar插件样式
     type: heading
     level: 2
     collapsed: true
@@ -1326,7 +1387,6 @@ settings:
   -
     id: rainbow-checklist-folder
     title: 3.3 Checklist Plugin
-    title.zh: 3.3 Checklist插件样式
     type: heading
     level: 2
     collapsed: true
@@ -1339,7 +1399,6 @@ settings:
   -
     id: style-options-for-kanban-plugin-header
     title: 3.4 Kanban
-    title.zh: 3.4 Kanban
     type: heading
     level: 2
     collapsed: true
@@ -1389,8 +1448,7 @@ settings:
         value: style-options-for-kanban-plugin-dynamic-neon-three
   -
     id: style-options-for-buttons-plugin-heading
-    title: 3.1 Buttons Style
-    title.zh: 3.1 Buttons 插件样式
+    title: 3.5 Buttons
     type: heading
     level: 2
     collapsed: true
@@ -1421,7 +1479,7 @@ settings:
     description.zh:  ❗cssclass：kanban❗ 实现类似看板样式并排显示，只对无序列表生效。改自Spectrum theme by @Wiktoria Mielcarek
   -
     id: built-in-style-code-wrap
-    title:  Code  Wrap
+    title:  Code Wrap
     title.zh: 代码行自动换行 code-wrap
     type: heading
     level: 2
@@ -1463,7 +1521,6 @@ settings:
     level: 1
     collapsed: true
 */
-
 
 @font-face {
   font-family: 'Bookerly';
@@ -1637,6 +1694,39 @@ settings:
   --letter-space-code: 0;
 
   --line-width-readable: 45rem;
+
+  --embed-content-height: 600px;
+  
+  --nord0: #2E3440;
+  --nord1: #3B4252;
+  --nord1-1: #3B425251;
+  --nord2: #434C5E;
+  --nord3: #4C566A;
+  --nord3-1: #717a91;
+
+  --nord4: #d8dee9;
+  --nord4-1: #d8dee95c;
+  --nord5: #E5E9F0;
+  --nord5-1: #E5E9F053;
+  --nord6: #ECEFF4;
+  --nord6-1: #ECEFF46c;
+  --nord6-2: #ECEFF43c;
+
+  --nord7: #8fbcbb;
+  --nord7-transparent: #8fbcbb2f;
+  --nord8: #88C0D0;
+  --nord9: #81a1c1;
+  --nord9-1: #81a1c16c;
+  --nord9-2: #81a1c13c;
+  --nord10: #5e81ac;
+
+  --nord11: #BF616A;
+  --nord11-1: #BF616A4b;
+  --nord12: #D08770;
+  --nord13: #EBCB8B;
+  --nord13-1: #ebcb8b4b;
+  --nord14: #A3BE8C;
+  --nord15: #B48EAD;
 }
 
 body.font-family-change-to-default li,
@@ -1703,10 +1793,8 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --search-text: #e0e0e0;
   --folder-title: #ffffff;
 
-  --text-highlight-bg: #89853b8a;
-  /*edit*/
-  --mark-highlight: #89853b8a;
-  /*preview*/
+  --text-highlight-bg: #89853b8a;/*edit*/
+  --mark-highlight: #89853b8a;/*preview*/
   --mark-highlight-strong-em: #fff7603a;
   --strong-em-highlight-color: #a7b4ff;
   --text-search-highlight-bg: #bb4361;
@@ -1792,7 +1880,6 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --tag8: #3349cb;
   --tag9: #1c4cd1;
 
-  --color-tag-edit: #006feeb0;
   --tag-dailynote: #98c8ff;
   --tag-dailynote-bg: #0f60bd;
   --tag-weeklynote: #d1e6ff;
@@ -1810,16 +1897,6 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --h5-color: #a192f7;
   --h6-color: #c173ee;
 
-  /*old*/
-  /*
-  --h1-color: #4ea0e2;
-  --h2-color: #35d13dd3;
-  --h3-color: #dfd111e1;
-  --h4-color: #f1a634d0;
-  --h5-color: #f15959d0;
-  --h6-color: #d06af0d0;
-  */
-
   /*graph*/
   --graph-text-color: #B5B5B5;
   --graphtag: #88d842bb;
@@ -1836,7 +1913,7 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --mermaid-seq-dia-color: #1371be;
 
   /*table*/
-  --table-background-color: #8a8a8a32;
+  --table-background-color: #4c4c4c32;
   --table-background-color-odd: #0000001c;
   --table-border-color: #878787;
   --table-thead-background-color: #4e93e263;
@@ -1965,6 +2042,8 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --hr-color-2: var(--theme-color);
   --hr-color-3: var(--theme-color);
   --hr-color-4: var(--theme-color);
+
+  --mjx-math-color: var(--text-normal);
 }
 
 .theme-light {
@@ -2006,12 +2085,10 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --search-text: #000000;
   --folder-title: #000000;
 
-  --mark-highlight: #ffd298b4;
-  /*preview*/
+  --mark-highlight: #ffd298b4;/*preview*/
   --mark-highlight-strong-em: #ff880049;
   --strong-em-highlight-color: #237add;
-  --text-highlight-bg: #ffd298d8;
-  /*edit*/
+  --text-highlight-bg: #ffd298d8;/*edit*/
   --text-search-highlight-bg: #ffd1dd;
   --strong-em-color-1: #1048ff;
   --strong-em-color-2: #14c8ff;
@@ -2088,7 +2165,7 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --stag2-bg: #ee9002;
   --stag3: #50ce3a;
   --stag3-bg: #22ac09;
-  --tag1: #1f75ff;
+  --tag1: #2573f0;
   --tag2: #2193f0;
   --tag3: #17a5e7;
   --tag4: #14acc7;
@@ -2097,7 +2174,6 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --tag7: #0dc416;
   --tag8: #61c108;
   --tag9: #6ab607;
-  --color-tag-edit: #0077ff;
   --tag-dailynote: #0077ff;
   --tag-dailynote-bg: #277CDD;
   --tag-weeklynote: #4b9fff;
@@ -2142,7 +2218,7 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --mermaid-seq-dia-color: #76c8ff;
 
   /*table*/
-  --table-background-color: #ebebebbb;
+  --table-background-color: #f1f1f1bb;
   --table-background-color-odd: #ffffffaf;
   --table-border-color: #7d7d7d;
   --table-thead-background-color: #bcdffcc7;
@@ -2214,8 +2290,8 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --checklist-bg: #dfdfdf8e;
   --checklist-bg-hover: #ffffffcc;
 
-  --color-view-header-gradient-1: #a1d9ffef;
-  --color-view-header-gradient-2: #e6fffbef;
+  --color-view-header-gradient-1: #d7e8f7ef;
+  --color-view-header-gradient-2: #f5fffdef;
 
   /*checkbox*/
   --checkbox-color-0: #2f92e4;
@@ -2270,6 +2346,8 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --hr-color-2: var(--theme-color);
   --hr-color-3: var(--theme-color);
   --hr-color-4: var(--theme-color);
+
+  --mjx-math-color: var(--text-normal);
 }
 
 
@@ -2312,12 +2390,10 @@ body.color-scheme-options-avocado-topaz.theme-light {
   --search-text: #000000;
   --folder-title: #000000;
 
-  --mark-highlight: #ecf56eb4;
-  /*preview*/
+  --mark-highlight: #ecf56eb4;/*preview*/
   --mark-highlight-strong-em: #dbe72849;
   --strong-em-highlight-color: #08ae84;
-  --text-highlight-bg: #ecf56ed8;
-  /*edit*/
+  --text-highlight-bg: #ecf56ed8;/*edit*/
   --text-search-highlight-bg: #ffd1dd;
   --strong-em-color-1: #08ae84;
   --strong-em-color-2: #01531d;
@@ -2383,7 +2459,6 @@ body.color-scheme-options-avocado-topaz.theme-light {
   --tag7: #15bf1d;
   --tag8: #61c108;
   --tag9: #6ab607;
-  --color-tag-edit: #6ca580;
   --tag-dailynote: #0077ff;
   --tag-dailynote-bg: #277CDD;
   --tag-weeklynote: #4b9fff;
@@ -2489,8 +2564,8 @@ body.color-scheme-options-avocado-topaz.theme-light {
   --checklist-bg: #dfdfdf8e;
   --checklist-bg-hover: #ffffffcc;
 
-  --color-view-header-gradient-1: #ddffdcef;
-  --color-view-header-gradient-2: #e6ffeeef;
+  --color-view-header-gradient-1: #d9f7d9ef;
+  --color-view-header-gradient-2: #e9f3edef;
 
   /*checkbox*/
   --checkbox-color-0: #4cb385;
@@ -2567,10 +2642,8 @@ body.color-scheme-options-avocado-topaz.theme-dark {
   --search-text: #e0e0e0;
   --folder-title: #ffffff;
 
-  --text-highlight-bg: #47893b8a;
-  /*edit*/
-  --mark-highlight: #47893b8a;
-  /*preview*/
+  --text-highlight-bg: #47893b8a;/*edit*/
+  --mark-highlight: #47893b8a;/*preview*/
   --mark-highlight-strong-em: #47893b3a;
   --strong-em-highlight-color: #9c8ce6;
   --text-search-highlight-bg: #bb4361;
@@ -2638,7 +2711,6 @@ body.color-scheme-options-avocado-topaz.theme-dark {
   --tag7: #9a1e93;
   --tag8: #6e2ec1;
   --tag9: #2244d8;
-  --color-tag-edit: #008e18b0;
   --tag-dailynote: #98c8ff;
   --tag-dailynote-bg: #0f60bd;
   --tag-weeklynote: #d1e6ff;
@@ -2827,10 +2899,8 @@ body.color-scheme-options-monochrome-topaz.theme-dark {
   --search-text: #e0e0e0;
   --folder-title: #ffffff;
 
-  --text-highlight-bg: #89853b8a;
-  /*edit*/
-  --mark-highlight: #89853b8a;
-  /*preview*/
+  --text-highlight-bg: #89853b8a;/*edit*/
+  --mark-highlight: #89853b8a;/*preview*/
   --mark-highlight-strong-em: #fff7603a;
   --strong-em-highlight-color: #ffffff;
   --text-search-highlight-bg: #bb4361;
@@ -2897,7 +2967,6 @@ body.color-scheme-options-monochrome-topaz.theme-dark {
   --tag7: #cccccc;
   --tag8: #cccccc;
   --tag9: #cccccc;
-  --color-tag-edit: #006feeb0;
   --tag-dailynote: #98c8ff;
   --tag-dailynote-bg: #0f60bd;
   --tag-weeklynote: #d1e6ff;
@@ -3087,12 +3156,10 @@ body.color-scheme-options-monochrome-topaz.theme-light {
   --search-text: #000000;
   --folder-title: #000000;
 
-  --mark-highlight: #ecf56eb4;
-  /*preview*/
+  --mark-highlight: #ecf56eb4;/*preview*/
   --mark-highlight-strong-em: #ecf56eb4;
   --strong-em-highlight-color: #000000;
-  --text-highlight-bg: #ecf56ed8;
-  /*edit*/
+  --text-highlight-bg: #ecf56ed8;/*edit*/
   --text-search-highlight-bg: #ffd1dd;
   --strong-em-color-1: #08ae84;
   --strong-em-color-2: #01531d;
@@ -3159,7 +3226,6 @@ body.color-scheme-options-monochrome-topaz.theme-light {
   --tag7: #4f4f4f;
   --tag8: #4f4f4f;
   --tag9: #4f4f4f;
-  --color-tag-edit: #d0d0d0;
   --tag-dailynote: #0077ff;
   --tag-dailynote-bg: #277CDD;
   --tag-weeklynote: #4b9fff;
@@ -3477,12 +3543,10 @@ body.color-scheme-options-pink-topaz.theme-light {
   --search-text: #000000;
   --folder-title: #000000;
 
-  --mark-highlight: #ffd0e99b;
-  /*preview*/
+  --mark-highlight: #ffd0e99b;/*preview*/
   --mark-highlight-strong-em: #ffd0e99b;
   --strong-em-highlight-color: #000000;
-  --text-highlight-bg: #ffd0e99b;
-  /*edit*/
+  --text-highlight-bg: #ffd0e99b;/*edit*/
   --text-search-highlight-bg: #ffd1dd;
 
   --background-search-result: #f3f3f3;
@@ -3546,7 +3610,6 @@ body.color-scheme-options-pink-topaz.theme-light {
   --tag7: #4cb5d5;
   --tag8: #797fd1;
   --tag9: #c47cda;
-  --color-tag-edit: #df96a7;
   --tag-dailynote: #0077ff;
   --tag-dailynote-bg: #277CDD;
   --tag-weeklynote: #4b9fff;
@@ -3727,10 +3790,8 @@ body.color-scheme-options-pink-topaz.theme-dark {
   --search-text: #e0e0e0;
   --folder-title: #ffffff;
 
-  --text-highlight-bg: #de87a785;
-  /*edit*/
-  --mark-highlight: #de87a785;
-  /*preview*/
+  --text-highlight-bg: #de87a785;/*edit*/
+  --mark-highlight: #de87a785;/*preview*/
   --mark-highlight-strong-em: #dc799e85;
   --strong-em-highlight-color: #d9afb3d1;
   --text-search-highlight-bg: #bb4361;
@@ -3798,7 +3859,6 @@ body.color-scheme-options-pink-topaz.theme-dark {
   --tag7: #ba6d96;
   --tag8: #ba6d9c;
   --tag9: #ba6da6;
-  --color-tag-edit: #a5457dc2;
   --tag-dailynote: #98c8ff;
   --tag-dailynote-bg: #0f60bd;
   --tag-weeklynote: #d1e6ff;
@@ -3957,6 +4017,265 @@ body.color-scheme-options-pink-topaz.theme-light .cm-strong.cm-em {
   -webkit-background-clip: initial;
   -webkit-text-fill-color: initial;
   background-color: initial;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark {
+  --background-primary: var(--nord0);
+  --background-primary-alt: var(--nord0);
+  --background-secondary: var(--nord1);
+  --background-secondary-alt: var(--nord2);
+
+  --background-primary-bg-4-bt: var(--nord0);
+  --background-primary-alt-bg-4-bt: var(--nord0);
+  --background-secondary-bg-4-bt: var(--nord1);
+  --background-secondary-alt-bg-4-bt: var(--nord2);
+
+  --text-normal: var(--nord4);
+  --text-muted: var(--nord5);
+  --text-faint: var(--nord6);
+
+  --text-accent: var(--nord9);
+  --text-accent-hover: var(--nord9);
+
+  --text-folder-file: var(--nord4);
+  --accent-strong: #f7f7f7;
+  --accent-em: var(--nord14);
+
+  --text-highlight-bg: var(--nord13-1);
+  --mark-highlight: var(--nord13-1);
+  --mark-highlight-strong-em: var(--nord13-1);
+
+  --text-selection: var(--nord9-2);
+  --text-on-accent: #dcddde;
+
+  --interactive-accent: var(--nord9);
+  --interactive-accent-rgb: 129, 161, 193;
+  --interactive-accent-hover: var(--nord10);
+
+  --theme-color-translucent: var(--nord9-1);
+  --theme-color-translucent-1: var(--nord9-2);
+
+  --folder-title: var(--nord4);
+
+  --tag-text: var(--nord7);
+  --tag1: var(--nord7-transparent); 
+  --tag2: var(--nord7-transparent); 
+  --tag3: var(--nord7-transparent); 
+  --tag4: var(--nord7-transparent); 
+  --tag5: var(--nord7-transparent); 
+  --tag6: var(--nord7-transparent); 
+  --tag7: var(--nord7-transparent); 
+  --tag8: var(--nord7-transparent); 
+  --tag9: var(--nord7-transparent); 
+
+  --h1-color: var(--nord11);
+  --h2-color: var(--nord12);
+  --h3-color: var(--nord13);
+  --h4-color: var(--nord14);
+  --h5-color: var(--nord8);
+  --h6-color: var(--nord15);
+
+  --background-code: #3B42525c;
+  --background-blockquote: #3B42525c;
+
+  --text-color-code: var(--nord8);
+
+  --color-view-header-gradient-1: var(--nord0);
+  --color-view-header-gradient-2: var(--nord0);
+
+  --strong-em-color-1: var(--accent-strong);
+  --strong-em-color-2: var(--accent-strong);
+  --strong-em-highlight-color: var(--accent-strong);
+
+  --internal-link-color-in-highlight: var(--nord10);
+
+  --embed-color: var(--nord1-1);
+
+  --activeline-background: #4C566A1a;
+
+  --list-ul-block-color: var(--nord12);
+  --list-ul-disc-color: var(--nord12);
+  --green-1: var(--nord14);
+  --list-ul-hover: var(--nord13);
+  --list-ol-block-color: var(--nord9);
+  --list-ol-number-color: var(--nord9);
+  --list-ol-hover: var(--nord7);
+  --list-format-ul: var(--nord12);
+
+  --table-thead-background-color: var(--nord9-2);
+  --table-hover-raw-color: var(--nord9-2);
+  --table-hover-color: var(--nord9-2);
+  --table-hover-thead-color: var(--nord9-1);
+
+  --checkbox-color-0: var(--interactive-accent);
+
+  --graph-text-color: var(--nord4);
+  --graphtag: var(--nord7);
+  --graph-attach: var(--nord15);
+  --graph-circle: var(--nord9);
+  --graph-line: var(--nord6);
+  --graph-unresolved: var(--nord11);
+  --link-unresolved-highlight: var(--nord11);
+  --graph-arrow: var(--nord11);
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .titlebar-text {
+  color: var(--nord4);
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.unit {
+  color: var(--nord10) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .cm-s-obsidian .cm-hmd-frontmatter.cm-qualifier, 
+body.color-scheme-options-topaz-nord.theme-dark .cm-s-obsidian .cm-math.cm-qualifier, 
+body.color-scheme-options-topaz-nord.theme-dark .cm-s-obsidian .cm-qualifier,
+body.color-scheme-options-topaz-nord.theme-dark .token.class {
+  color: var(--nord7) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.number, 
+body.color-scheme-options-topaz-nord.theme-dark .cm-number {
+  color: var(--nord15) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.operator, 
+body.color-scheme-options-topaz-nord.theme-dark .token.entity, 
+body.color-scheme-options-topaz-nord.theme-dark .token.url, 
+body.color-scheme-options-topaz-nord.theme-dark .language-css .token.string, 
+body.color-scheme-options-topaz-nord.theme-dark .style .token.string, 
+body.color-scheme-options-topaz-nord.theme-dark .cm-string,
+body.color-scheme-options-topaz-nord.theme-dark .token.string, 
+body.color-scheme-options-topaz-nord.theme-dark .token.char, 
+body.color-scheme-options-topaz-nord.theme-dark .token.attr-value, 
+body.color-scheme-options-topaz-nord.theme-dark .token.builtin, 
+body.color-scheme-options-topaz-nord.theme-dark .token.inserted {
+  color: var(--nord14) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .cm-s-obsidian span.cm-variable-3,
+body.color-scheme-options-topaz-nord.theme-dark .token.selector, 
+body.color-scheme-options-topaz-nord.theme-dark .token.tag, 
+body.color-scheme-options-topaz-nord.theme-dark .cm-s-obsidian span.cm-variable-2 {
+  color: var(--nord10) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.regex, 
+body.color-scheme-options-topaz-nord.theme-dark .token.variable {
+  color: var(--nord12) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.macro.property, 
+body.color-scheme-options-topaz-nord.theme-dark .markdown-source-view.cm-s-obsidian .cm-hmd-codeblock.cm-property,
+body.color-scheme-options-topaz-nord.theme-dark .token.property, 
+body.color-scheme-options-topaz-nord.theme-dark .token.boolean, 
+body.color-scheme-options-topaz-nord.theme-dark .token.constant, 
+body.color-scheme-options-topaz-nord.theme-dark .token.symbol, 
+body.color-scheme-options-topaz-nord.theme-dark .token.attr-name, 
+body.color-scheme-options-topaz-nord.theme-dark .token.deleted {
+  color: var(--nord9) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.function, 
+body.color-scheme-options-topaz-nord.theme-dark .markdown-source-view.cm-s-obsidian .cm-variable {
+  color: var(--nord13) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.comment {
+  color: var(--nord3-1) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.atrule, 
+body.color-scheme-options-topaz-nord.theme-dark .token.keyword {
+  color: var(--nord13) !important;
+}
+
+body.color-scheme-options-topaz-nord.theme-dark .token.property, 
+body.color-scheme-options-topaz-nord.theme-dark .token.tag, 
+body.color-scheme-options-topaz-nord.theme-dark .token.constant, 
+body.color-scheme-options-topaz-nord.theme-dark .token.symbol, 
+body.color-scheme-options-topaz-nord.theme-dark .token.deleted, 
+body.color-scheme-options-topaz-nord.theme-dark .cm-tag {
+  color: var(--nord11) !important;
+}
+
+
+body.color-scheme-options-topaz-nord.theme-light {
+  --text-accent: var(--nord9);
+  --text-accent-hover: var(--nord9);
+
+  --accent-em: var(--nord14);
+
+  --text-selection: var(--nord9-2);
+  --text-on-accent: #dcddde;
+
+  --interactive-accent: var(--nord9);
+  --interactive-accent-rgb: 129, 161, 193;
+  --interactive-accent-hover: var(--nord10);
+
+  --theme-color-translucent: var(--nord9-1);
+  --theme-color-translucent-1: var(--nord9-2);
+
+  --tag-text: #3a79dd;
+  --tag1: #005aec21;
+  --tag2: #005aec21;
+  --tag3: #005aec21; 
+  --tag4: #005aec21; 
+  --tag5: #005aec21; 
+  --tag6: #005aec21;
+  --tag7: #005aec21;
+  --tag8: #005aec21;
+  --tag9: #005aec21;
+
+  --h1-color: var(--nord11);
+  --h2-color: var(--nord12);
+  --h3-color: var(--nord13);
+  --h4-color: var(--nord14);
+  --h5-color: var(--nord8);
+  --h6-color: var(--nord15);
+
+  --background-code: var(--nord6-2);
+  --background-blockquote: var(--nord6-2);
+
+  --text-color-code: var(--nord8);
+
+  --color-view-header-gradient-1: var(--background-primary-bg-4-bt);
+  --color-view-header-gradient-2: var(--background-primary-bg-4-bt);
+
+  --strong-em-color-1: var(--accent-strong);
+  --strong-em-color-2: var(--accent-strong);
+  --strong-em-highlight-color: var(--accent-strong);
+
+  --internal-link-color-in-highlight: var(--nord10);
+
+  --embed-color: var(--nord6-2);
+
+  --activeline-background: var(--nord5-1);
+
+  --list-ul-block-color: var(--nord12);
+  --list-ul-disc-color: var(--nord12);
+  --green-1: var(--nord14);
+  --list-ul-hover: var(--nord13);
+  --list-ol-block-color: var(--nord9);
+  --list-ol-number-color: var(--nord9);
+  --list-ol-hover: var(--nord7);
+  --list-format-ul: var(--nord12);
+
+  --table-thead-background-color: var(--nord9-2);
+  --table-hover-raw-color: var(--nord9-2);
+  --table-hover-color: var(--nord9-2);
+  --table-hover-thead-color: var(--nord9-1);
+
+  --checkbox-color-0: var(--interactive-accent);
+
+  --graph-text-color: var(--nord4);
+  --graphtag: var(--nord7);
+  --graph-attach: var(--nord15);
+  --graph-circle: var(--nord9);
+  --graph-line: var(--nord3-1);
+  --graph-unresolved: var(--nord11);
+  --link-unresolved-highlight: var(--nord11);
+  --graph-arrow: var(--nord11);
 }
 
 
@@ -4331,12 +4650,6 @@ body.color-scheme-options-flamingo.theme-light #calendar-container .day.has-note
   font-weight: 700;
 }
 
-/*
-#calendar-container .active.today {
-box-shadow: 0 0 1px 2px transparent;
-}
-*/
-
 /*点调整 dot*/
 body.color-scheme-options-flamingo.theme-light #calendar-container .dot-container {
   margin-top: -2px;
@@ -4401,13 +4714,9 @@ body.color-scheme-options-flamingo.theme-light .search-result-file-match {
 /*@Lavi & @嘴 的Flamingo主题色（原Pink Topaz）到此结束 */
 
 /*=================== Lillian 的配色 ========================*/
-
 /*蜂蜜牛奶配色 by Lillian */
 body.color-scheme-options-honey-milk-topaz.theme-light {
   /*色系设置*/
-
-  /*色系设置*/
-
   --color1: #ffde89;
   --color2: #ffd876;
   --color3: #ffd362;
@@ -4425,10 +4734,8 @@ body.color-scheme-options-honey-milk-topaz.theme-light {
   --high-color: var(--color8);
   --deep-color: var(--color11);
 
-
   --bg-color: #f8f8f5;
   --bg-color2: #f0ede0;
-
 
   --background-primary: var(--bg-color);
   --background-primary-alt: var(--bg-color2);
@@ -4473,12 +4780,10 @@ body.color-scheme-options-honey-milk-topaz.theme-light {
   --search-text: #000000;
   --folder-title: #000000;
 
-  --mark-highlight: #ffd298b4;
-  /*preview*/
+  --mark-highlight: #ffd298b4;/*preview*/
   --mark-highlight-strong-em: #ff880049;
   --strong-em-highlight-color: var(--color11);
-  --text-highlight-bg: #ffd298d8;
-  /*edit*/
+  --text-highlight-bg: #ffd298d8;/*edit*/
   --text-search-highlight-bg: var(--color2);
 
   --background-search-result: #f3f3f3;
@@ -4518,7 +4823,6 @@ body.color-scheme-options-honey-milk-topaz.theme-light {
   --light-purple: #b74ff3;
   --blue-green: #3bd4da;
   --white: #ffffff;
-
 
   --embed-color: #ece4b74f;
   --search-result-file-title-color: var(--main-color);
@@ -4561,7 +4865,6 @@ body.color-scheme-options-honey-milk-topaz.theme-light {
   --tag7: #0dc416;
   --tag8: #61c108;
   --tag9: #6ab607;
-  --color-tag-edit: #0077ff;
   --tag-dailynote: #0077ff;
   --tag-dailynote-bg: #277CDD;
   --tag-weeklynote: #4b9fff;
@@ -4726,47 +5029,31 @@ body.color-scheme-options-honey-milk-topaz.theme-dark {
   --background-secondary-alt: var(--bg-color2);
   --background-secondary-alt-bg-4-bt: var(--bg-color);
 
-
   --background-modifier-border: #565656;
-  /*一些线条颜色*/
 
   --text-accent: var(--low-color);
   --text-accent-hover: var(--main-color);
 
-  --text-selection: #47a5914d;
-  /*鼠标选择 文字背景颜色*/
+  --text-selection: #47a5914d;/*鼠标选择 文字背景颜色*/
 
-  --interactive-accent: var(--color10);
-  /*主题强调色*/
-  --interactive-accent-rgb: 215, 178, 88;
-  /*主题强调色 rgb , 需与主题色一致（把上面的值转成rgb放下面）*/
-  --interactive-accent-hover: var(--main-color);
-  /*主题强调色 鼠标悬浮时颜色*/
-  --panel-border-color: #18191e;
-  /*侧边栏、下部状态栏线条颜色，改了没有，线条被我取消了 :p*/
-  --search-text: var(--color1);
-  /*搜索结果文字颜色*/
-  --folder-title: #ffffff;
-  /*文件栏文件夹文字颜色*/
+  --interactive-accent: var(--color10);/*主题强调色*/
+  --interactive-accent-rgb: 215, 178, 88;/*主题强调色 rgb , 需与主题色一致（把上面的值转成rgb放下面）*/
+  --interactive-accent-hover: var(--main-color);/*主题强调色 鼠标悬浮时颜色*/
+  --panel-border-color: #18191e;/*侧边栏、下部状态栏线条颜色，改了没有，线条被我取消了 :p*/
+  --search-text: var(--color1);/*搜索结果文字颜色*/
+  --folder-title: #ffffff;/*文件栏文件夹文字颜色*/
 
-  --text-highlight-bg: #89853b8a;
-  /*==高亮== 编辑模式edit*/
-  --mark-highlight: #89853b8a;
-  /*==高亮== 预览preview*/
-  --mark-highlight-strong-em: #fff7603a;
-  /*==***高亮***== 背景颜色*/
+  --text-highlight-bg: #89853b8a;/*==高亮== 编辑模式edit*/
+  --mark-highlight: #89853b8a;/*==高亮== 预览preview*/
+  --mark-highlight-strong-em: #fff7603a;/*==***高亮***== 背景颜色*/
   --strong-em-highlight-color: var(--color11);
   --text-search-highlight-bg: #bb4361;
-  /* 我忘了=_=||| */
-  --strong-em-color-1: #43d3ff;
-  /*加粗斜体渐变色1*/
-  --strong-em-color-2: #baaaff;
-  /*加粗斜体渐变色2*/
 
-  --background-search-result: #313131;
-  /* 搜索结果背景颜色 */
-  --search-result-file-matched-bg: var(--color9);
-  /* 搜索结果文字高亮颜色 */
+  --strong-em-color-1: #43d3ff;/*加粗斜体渐变色1*/
+  --strong-em-color-2: #baaaff;/*加粗斜体渐变色2*/
+
+  --background-search-result: #313131;/* 搜索结果背景颜色 */
+  --search-result-file-matched-bg: var(--color9);/* 搜索结果文字高亮颜色 */
 
   --background-primary-bg-4-bt: var(--bg-color);
   --background-primary-alt-bg-4-bt: var(--bg-color);
@@ -4775,20 +5062,14 @@ body.color-scheme-options-honey-milk-topaz.theme-dark {
 
   --background-mobile-drawer-1: var(--bg-color);
   --background-mobile-drawer-2: var(--bg-color);
-  --background-modifier-border-hr: #7f7f7f;
-  /*分割线颜色*/
+  --background-modifier-border-hr: #7f7f7f;/*分割线颜色*/
 
   --background-transparent-black-or-white-1: #1b1b1b9a;
-  /*用在kanban里的，可以不调*/
   --background-transparent-black-or-white-2: #1e1e1ebd;
-  /*用在kanban里的，可以不调*/
   --background-transparent-black-or-white-3: #2f2f2f6c;
-  /*用在kanban里的，可以不调*/
   --background-transparent-blue: #003e759a;
-  /*用在kanban里的，可以不调*/
 
-  --scrollbar-thumb: #8282827e;
-  /*滚动条颜色*/
+  --scrollbar-thumb: #8282827e;/*滚动条颜色*/
 
   /*代码框使用的颜色，可以不调*/
   --gray-1: #5C6370;
@@ -4807,27 +5088,20 @@ body.color-scheme-options-honey-milk-topaz.theme-dark {
   --light-yellow: #dfda91;
   --white: #ffffff;
 
-  --embed-color: #46402134;
-  /*![[]] 背景颜色*/
+  --embed-color: #46402134;/*![[]] 背景颜色*/
   --search-result-file-title-color: var(--main-color);
   --theme-color: var(--interactive-accent);
   --theme-color-translucent: var(--deep-color);
   --theme-color-translucent-1: var(--deep-color);
   --color-specification: var(--high-color);
 
-  --allow-1: #d18828;
-  /*搜索框里黄色箭头颜色*/
-  --background-blockquote: #9191911c;
-  /*引用框背景颜色*/
-  --background-code: #1111118c;
-  /*代码框背景颜色*/
-  --background-code-2: #4c4c4cc5;
-  /*行内代码背景颜色*/
-  --text-color-code: #d58000;
-  /*代码框文字颜色*/
+  --allow-1: #d18828;/*搜索框里黄色箭头颜色*/
+  --background-blockquote: #9191911c;/*引用框背景颜色*/
+  --background-code: #1111118c;/*代码框背景颜色*/
+  --background-code-2: #4c4c4cc5;/*行内代码背景颜色*/
+  --text-color-code: #d58000;/*代码框文字颜色*/
 
-  --internal-link-color-in-highlight: var(--main-color);
-  /*==[[]]==双链文字颜色*/
+  --internal-link-color-in-highlight: var(--main-color);/*==[[]]==双链文字颜色*/
 
   /*list*/
   --list-ul-block-color: var(--deep-color);
@@ -4858,7 +5132,6 @@ body.color-scheme-options-honey-milk-topaz.theme-dark {
   --tag8: #6e2ec1;
   --tag9: #2244d8;
 
-  --color-tag-edit: #006feeb0;
   --tag-dailynote: #98c8ff;
   --tag-dailynote-bg: #0f60bd;
   --tag-weeklynote: #d1e6ff;
@@ -4877,24 +5150,15 @@ body.color-scheme-options-honey-milk-topaz.theme-dark {
   --h6-color: var(--color11);
 
   /*graph*/
-  --graph-text-color: #B5B5B5;
-  /*图谱文字颜色*/
-  --graphtag: #88d842bb;
-  /*图谱线颜色*/
-  --graph-attach: #b2cfe0bb;
-  /*图谱附件颜色*/
-  --graph-circle: var(--color8);
-  /*图谱普通点颜色*/
-  --graph-line: #8c8c8c;
-  /*图谱线颜色*/
-  --graph-unresolved: #f08080de;
-  /*图谱未创建点颜色，兼未创建双链颜色*/
-  --link-unresolved-highlight: #ffa6a6;
-  /*未创建双链颜色加高亮==[[]]==文字颜色*/
-  --graph-arrow: #c23917;
-  /*图谱箭头颜色*/
-  --graph-control-bg: #00000080;
-  /*图谱控制窗背景颜色*/
+  --graph-text-color: #B5B5B5;/*图谱文字颜色*/
+  --graphtag: #88d842bb;/*图谱线颜色*/
+  --graph-attach: #b2cfe0bb;/*图谱附件颜色*/
+  --graph-circle: var(--color8);/*图谱普通点颜色*/
+  --graph-line: #8c8c8c;/*图谱线颜色*/
+  --graph-unresolved: #f08080de;/*图谱未创建点颜色，兼未创建双链颜色*/
+  --link-unresolved-highlight: #ffa6a6;/*未创建双链颜色加高亮==[[]]==文字颜色*/
+  --graph-arrow: #c23917;/*图谱箭头颜色*/
+  --graph-control-bg: #00000080;/*图谱控制窗背景颜色*/
 
   /*mermaid*/
   --mermaid-active-task-color: var(--low-color);
@@ -5068,8 +5332,7 @@ body.color-scheme-options-chocolate-topaz.theme-light {
   --embed-color: #eccc854f;
   --search-result-file-title-color: var(--main-color);
   --theme-color: var(--interactive-accent);
-  --theme-color-translucent: var(--low-color);
-  /*鼠标经过时文件夹背景色*/
+  --theme-color-translucent: var(--low-color);/*鼠标经过时文件夹背景色*/
   --theme-color-translucent-1: var(--color1);
   --color-specification: var(--high-color);
   --allow-1: #ec9a3c;
@@ -5107,7 +5370,6 @@ body.color-scheme-options-chocolate-topaz.theme-light {
   --tag7: var(--color9);
   --tag8: var(--color10);
   --tag9: var(--color11);
-  --color-tag-edit: var(--low-color);
   --tag-dailynote: var(--low-color);
   --tag-dailynote-bg: var(--color3);
   --tag-weeklynote: var(--color6);
@@ -5218,90 +5480,45 @@ body.color-scheme-options-chocolate-topaz.theme-dark {
   --bg-color: #222222;
   --bg-color2: #444444;
 
-
-
   --background-primary: var(--bg-color);
   --background-primary-alt: var(--bg-color2);
   /* --background-secondary: var(--bg-color); */
   --background-secondary-alt: var(--bg-color2);
   --background-secondary-alt-bg-4-bt: var(--bg-color);
 
-
-  /*不用管
---background-accent: #000;
-
---background-modifier-form-field: rgba(0, 0, 0, 0.3);
---background-modifier-form-field-highlighted: rgba(0, 0, 0, 0.22);
---background-modifier-box-shadow: rgba(0, 0, 0, 0.3);
---background-modifier-success: #539126;
---background-modifier-error: #9b4343;
---background-modifier-error-rgb: 155,67,67;
---background-modifier-error-hover: #470000;
---background-modifier-cover: rgba(0, 0, 0, 0.6);
-*/
-  --background-modifier-border: #565656;
-  /*一些线条颜色*/
+  --background-modifier-border: #565656;/*一些线条颜色*/
 
   --text-accent: var(--low-color);
   --text-accent-hover: var(--main-color);
 
-  --text-normal: #bdbdbd;
-  /*一般文字颜色*/
-  --text-highlight: #f3f3f3;
-  /*==高亮== 文字颜色*/
-  --text-highlight-2: #e4e4e4;
-  /*引用框>==高亮== 文字颜色*/
-  --text-muted: #8a8a8a;
-  /*muted 文字颜色*/
-  --text-faint: #797979;
-  /*faint 文字颜色*/
-  --text-folder-file: #b3b3b3;
-  /*文件夹、文件 文字颜色*/
-  --accent-strong: #f7f7f7;
-  /*加粗 文字颜色*/
-  --accent-em: #a4ca8e;
-  /*斜体 文字颜色*/
-  /*不用管
---text-error: #e16d76;
---text-error-hover: #c9626a;
-*/
-  --text-selection: #47a5914d;
-  /*鼠标选择 文字背景颜色*/
-  /*不用管
---text-on-accent: #dcddde;
---interactive-normal: #20242b;
---interactive-hover: #353b47;
-  */
-  --interactive-accent: var(--main-color); /*主题强调色*/
-  --interactive-accent-rgb: 104, 56, 39;
-  /*主题强调色 rgb , 需与主题色一致（把上面的值转成rgb放下面）*/
-  --interactive-accent-hover: var(--main-color);
-  /*主题强调色 鼠标悬浮时颜色*/
-  --panel-border-color: #18191e;
-  /*侧边栏、下部状态栏线条颜色，改了没有，线条被我取消了 :p*/
-  --search-text: #e0e0e0;
-  /*搜索结果文字颜色*/
-  --folder-title: #ffffff;
-  /*文件栏文件夹文字颜色*/
+  --text-normal: #bdbdbd;/*一般文字颜色*/
+  --text-highlight: #f3f3f3;/*==高亮== 文字颜色*/
+  --text-highlight-2: #e4e4e4;/*引用框>==高亮== 文字颜色*/
+  --text-muted: #8a8a8a;/*muted 文字颜色*/
+  --text-faint: #797979;/*faint 文字颜色*/
+  --text-folder-file: #b3b3b3;/*文件夹、文件 文字颜色*/
+  --accent-strong: #f7f7f7;/*加粗 文字颜色*/
+  --accent-em: #a4ca8e;/*斜体 文字颜色*/
 
-  --text-highlight-bg: #89853b8a;
-  /*==高亮== 编辑模式edit*/
-  --mark-highlight: #89853b8a;
-  /*==高亮== 预览preview*/
-  --mark-highlight-strong-em: #fff7603a;
-  /*==***高亮***== 背景颜色*/
+  --text-selection: #47a5914d;/*鼠标选择 文字背景颜色*/
+
+  --interactive-accent: var(--main-color); /*主题强调色*/
+  --interactive-accent-rgb: 104, 56, 39;/*主题强调色 rgb , 需与主题色一致（把上面的值转成rgb放下面）*/
+  --interactive-accent-hover: var(--main-color);/*主题强调色 鼠标悬浮时颜色*/
+  --panel-border-color: #18191e;/*侧边栏、下部状态栏线条颜色，改了没有，线条被我取消了 :p*/
+  --search-text: #e0e0e0;/*搜索结果文字颜色*/
+  --folder-title: #ffffff;/*文件栏文件夹文字颜色*/
+
+  --text-highlight-bg: #89853b8a;/*==高亮== 编辑模式edit*/
+  --mark-highlight: #89853b8a;/*==高亮== 预览preview*/
+  --mark-highlight-strong-em: #fff7603a;/*==***高亮***== 背景颜色*/
   --strong-em-highlight-color: var(--color11);
   --text-search-highlight-bg: #bb4361;
-  /* 我忘了=_=||| */
-  --strong-em-color-1: #43d3ff;
-  /*加粗斜体渐变色1*/
-  --strong-em-color-2: #baaaff;
-  /*加粗斜体渐变色2*/
+  --strong-em-color-1: #43d3ff;/*加粗斜体渐变色1*/
+  --strong-em-color-2: #baaaff;/*加粗斜体渐变色2*/
 
-  --background-search-result: #313131;
-  /* 搜索结果背景颜色 */
-  --search-result-file-matched-bg: var(--color9);
-  /* 搜索结果文字高亮颜色 */
+  --background-search-result: #313131;/* 搜索结果背景颜色 */
+  --search-result-file-matched-bg: var(--color9);/* 搜索结果文字高亮颜色 */
 
   --background-primary-bg-4-bt: var(--bg-color);
   --background-primary-alt-bg-4-bt: var(--bg-color);
@@ -5310,20 +5527,13 @@ body.color-scheme-options-chocolate-topaz.theme-dark {
 
   --background-mobile-drawer-1: var(--bg-color);
   --background-mobile-drawer-2: var(--bg-color);
-  --background-modifier-border-hr: #7f7f7f;
-  /*分割线颜色*/
+  --background-modifier-border-hr: #7f7f7f;/*分割线颜色*/
 
-  --background-transparent-black-or-white-1: #1b1b1b9a;
-  /*用在kanban里的，可以不调*/
-  --background-transparent-black-or-white-2: #1e1e1ebd;
-  /*用在kanban里的，可以不调*/
-  --background-transparent-black-or-white-3: #2f2f2f6c;
-  /*用在kanban里的，可以不调*/
-  --background-transparent-blue: #003e759a;
-  /*用在kanban里的，可以不调*/
-
-  --scrollbar-thumb: #8282827e;
-  /*滚动条颜色*/
+  --background-transparent-black-or-white-1: #1b1b1b9a;/*用在kanban里的，可以不调*/
+  --background-transparent-black-or-white-2: #1e1e1ebd;/*用在kanban里的，可以不调*/
+  --background-transparent-black-or-white-3: #2f2f2f6c;/*用在kanban里的，可以不调*/
+  --background-transparent-blue: #003e759a;/*用在kanban里的，可以不调*/
+  --scrollbar-thumb: #8282827e;/*滚动条颜色*/
 
   --embed-color: #7e6f5a34;
   /*![[]] 背景颜色*/
@@ -5333,19 +5543,13 @@ body.color-scheme-options-chocolate-topaz.theme-dark {
   --theme-color-translucent-1: var(--deep-color);
   --color-specification: var(--high-color);
 
-  --allow-1: #d18828;
-  /*搜索框里黄色箭头颜色*/
-  --background-blockquote: #9191911c;
-  /*引用框背景颜色*/
-  --background-code: #1111118c;
-  /*代码框背景颜色*/
-  --background-code-2: #4c4c4cc5;
-  /*行内代码背景颜色*/
-  --text-color-code: #d58000;
-  /*代码框文字颜色*/
+  --allow-1: #d18828;/*搜索框里黄色箭头颜色*/
+  --background-blockquote: #9191911c;/*引用框背景颜色*/
+  --background-code: #1111118c;/*代码框背景颜色*/
+  --background-code-2: #4c4c4cc5;/*行内代码背景颜色*/
+  --text-color-code: #d58000;/*代码框文字颜色*/
 
-  --internal-link-color-in-highlight: var(--color3);
-  /*==[[]]==双链文字颜色*/
+  --internal-link-color-in-highlight: var(--color3);/*==[[]]==双链文字颜色*/
 
   --list-ul-block-color: var(--color6);
   --list-ul-disc-color: var(--main-color);
@@ -5375,7 +5579,6 @@ body.color-scheme-options-chocolate-topaz.theme-dark {
   --tag8: var(--color4);
   --tag9: var(--color3);
 
-  --color-tag-edit: var(--main-color);
   --tag-dailynote: var(--mian-color);
   --tag-dailynote-bg: var(--color5);
   --tag-weeklynote: var(--color3);
@@ -5395,25 +5598,15 @@ body.color-scheme-options-chocolate-topaz.theme-dark {
 
   /*graph*/
   --graph-text-color: #B5B5B5;
-  /*图谱文字颜色*/
   --graphtag: #88d842bb;
-  /*图谱线颜色*/
   --graph-attach: #b2cfe0bb;
-  /*图谱附件颜色*/
   --graph-circle: var(--color8);
-  /*图谱普通点颜色*/
   --graph-line: #8c8c8c;
-  /*图谱线颜色*/
   --graph-unresolved: #f08080de;
-  /*图谱未创建点颜色，兼未创建双链颜色*/
   --link-unresolved-highlight: #ffa6a6;
-  /*未创建双链颜色加高亮==[[]]==文字颜色*/
   --graph-arrow: #c23917;
-  /*图谱箭头颜色*/
   --graph-control-bg: #00000080;
-  /*图谱控制窗背景颜色*/
 
-  /*mermaid*/
   /*mermaid*/
   --mermaid-active-task-color: var(--low-color);
   --mermaid-seq-dia-color: var(--high-color);
@@ -5452,8 +5645,7 @@ body.color-scheme-options-chocolate-topaz.theme-dark {
 
   /*Sliding panes*/
   --sliding-panes-header-color: var(--color1);
-  --background-4-sliding-panel: #252525ed;
-  /* sliding panes 背景颜色 */
+  --background-4-sliding-panel: #252525ed;/* sliding panes 背景颜色 */
 
   --color-view-header-gradient-1: var(--bg-color2);
   --color-view-header-gradient-2: var(--bg-color);
@@ -5575,7 +5767,6 @@ body.color-scheme-options-autumn-topaz.theme-light {
   --tag7: var(--color9);
   --tag8: var(--color10);
   --tag9: var(--color11);
-  --color-tag-edit: var(--low-color);
   --tag-dailynote: var(--low-color);
   --tag-dailynote-bg: var(--color3);
   --tag-weeklynote: var(--color6);
@@ -5630,8 +5821,6 @@ body.color-scheme-options-autumn-topaz.theme-light {
   --event-item-color8: var(--color9);
   --event-item-color9: var(--color10);
   --event-item-color10:var(--color11);
-
-  /*colourful notes*/
   
   /*Sliding panes*/
   --sliding-panes-header-color: var(--deep-color);
@@ -5691,16 +5880,9 @@ body.color-scheme-options-autumn-topaz.theme-dark {
   --text-folder-file: #b3b3b3; /*文件夹、文件 文字颜色*/
   --accent-strong: #f7f7f7; /*加粗 文字颜色*/
   --accent-em: #a4ca8e; /*斜体 文字颜色*/
-  /*不用管
-  --text-error: #e16d76;
-  --text-error-hover: #c9626a;
-  */
+
   --text-selection: #47a5914d;  /*鼠标选择 文字背景颜色*/
-    /*不用管
-  --text-on-accent: #dcddde;
-  --interactive-normal: #20242b;
-  --interactive-hover: #353b47;
-    */
+
   --interactive-accent: var(--main-color); /*主题强调色*/
   --interactive-accent-rgb: 104, 56, 39;    /*主题强调色 rgb , 需与主题色一致（把上面的值转成rgb放下面）*/
   --interactive-accent-hover: var(--main-color);  /*主题强调色 鼠标悬浮时颜色*/
@@ -5717,7 +5899,6 @@ body.color-scheme-options-autumn-topaz.theme-dark {
   --background-mobile-drawer-1:  var(--bg-color);
   --background-mobile-drawer-2:  var(--bg-color);
   
-
   --embed-color: #2f4b2e34;   /*![[]] 背景颜色*/
   --search-result-file-title-color: var(--main-color);
   --theme-color: var(--interactive-accent);
@@ -5746,8 +5927,6 @@ body.color-scheme-options-autumn-topaz.theme-dark {
   --tag7: var(--color5);
   --tag8: var(--color4);
   --tag9: var(--color3);
-
-  --color-tag-edit: var(--main-color);
   --tag-dailynote: var(--mian-color);
   --tag-dailynote-bg: var(--color5);
   --tag-weeklynote: var(--color3);
@@ -5776,7 +5955,6 @@ body.color-scheme-options-autumn-topaz.theme-dark {
   --graph-arrow: #c23917; /*图谱箭头颜色*/
   --graph-control-bg: #00000080; /*图谱控制窗背景颜色*/
 
-  /*mermaid*/
   /*mermaid*/
   --mermaid-active-task-color: var(--low-color);
   --mermaid-seq-dia-color: var(--high-color);
@@ -5866,7 +6044,6 @@ body.color-scheme-options-lillimon-topaz.theme-light {
   --bg-color2: #e7e7e4;
 
   /*色系共 5 个值，3个主题色+2个背景色*/
-
   --color1: var(--magic-low-color);
   --color2: var(--magic-low-color);
   --color3: var(--magic-low-color);
@@ -5928,7 +6105,6 @@ body.color-scheme-options-lillimon-topaz.theme-light {
   --list-ol-hover: var(--magic-low-color);
 
   /*tags*/
-  --color-tag-edit: var(--magic-low-color);
   --tag-dailynote: var(--magic-low-color);
   --tag-dailynote-bg: var(--color10);
   --tag-weeklynote: var(--color6);
@@ -5997,7 +6173,6 @@ body.color-scheme-options-lillimon-topaz.theme-light {
   --checkbox-color-0: var(--magic-main-color);
 
   --activeline-background: var(--bg-color2);
-
 }
 
 body.color-scheme-options-lillimon-topaz.theme-dark {
@@ -6032,10 +6207,8 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
   --background-secondary-alt: var(--bg-color2);
   --background-secondary-alt-bg-4-bt: var(--bg-color);
 
-
   --text-accent: var(--magic-low-color);
   --text-accent-hover: var(--magic-main-color);
-
 
   --interactive-accent: var(--color10);
   /*主题强调色*/
@@ -6043,7 +6216,6 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
   /*主题强调色 rgb , 需与主题色一致（把上面的值转成rgb放下面）*/
   --interactive-accent-hover: var(--magic-main-color);
   /*主题强调色 鼠标悬浮时颜色*/
-
 
   --strong-em-highlight-color: var(--color11);
 
@@ -6058,7 +6230,6 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
   --background-mobile-drawer-1: var(--bg-color);
   --background-mobile-drawer-2: var(--bg-color);
 
-
   --embed-color: #1156a534;
   /*![[]] 背景颜色*/
   --search-result-file-title-color: var(--magic-main-color);
@@ -6066,7 +6237,6 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
   --theme-color-translucent: var(--magic-deep-color);
   --theme-color-translucent-1: var(--magic-deep-color);
   --color-specification: var(--high-color);
-
 
   --internal-link-color-in-highlight: var(--magic-main-color);
   /*==[[]]==双链文字颜色*/
@@ -6080,7 +6250,6 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
   --list-ol-number-color: var(--magic-main-color);
   --list-ol-hover: var(--magic-low-color);
 
-
   /*普通标签颜色*/
   --tag1: var(--color11);
   --tag2: var(--color10);
@@ -6092,7 +6261,6 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
   --tag8: var(--color4);
   --tag9: var(--color3);
 
-  --color-tag-edit: var(--magic-main-color);
   --tag-dailynote: var(--mian-color);
   --tag-dailynote-bg: var(--color5);
   --tag-weeklynote: var(--color3);
@@ -6112,7 +6280,6 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
 
   --graph-circle: var(--color8);
   /*图谱普通点颜色*/
-
 
   /*mermaid*/
   --mermaid-active-task-color: var(--magic-low-color);
@@ -6154,7 +6321,6 @@ body.color-scheme-options-lillimon-topaz.theme-dark {
   /*Sliding panes*/
   --sliding-panes-header-color: var(--color1);
 
-
   --color-view-header-gradient-1: var(--bg-color2);
   --color-view-header-gradient-2: var(--bg-color);
 
@@ -6193,9 +6359,7 @@ body.color-scheme-options-lillimon-topaz #calendar-container {
 
 
 /*========== awyugan 的 配色 =========*/
-
 body.color-scheme-options-lilac.theme-light {
-
   --background-primary: #d7c4f2;
   --background-primary-alt: #e8dffa;
   --background-secondary: #e1cefa;
@@ -6253,7 +6417,6 @@ body.color-scheme-options-lilac.theme-light {
   --background-primary-bg-4-bt: #ffffff; 
   --background-primary-alt-bg-4-bt: #ffffff;
   --background-secondary-bg-4-bt: #ffffff;
-
 
   --background-mobile-drawer-1: #ffffff;
   --background-mobile-drawer-2: #ffffff;
@@ -6333,7 +6496,6 @@ body.color-scheme-options-lilac.theme-light {
   --tag8: #8a54d1;
   --tag9: #7b6bda;
 
-  --color-tag-edit: #d070e74b;
   --tag-dailynote: #0077ff;
   --tag-dailynote-bg: #277CDD;
   --tag-weeklynote: #4b9fff;
@@ -6611,7 +6773,6 @@ body.color-scheme-options-lilac.theme-dark {
   --tag7: #b925b2;
   --tag8: #8a54d1;
   --tag9: #7b6bda;
-  --color-tag-edit: #b4554eb0;
   --tag-dailynote: #98c8ff;
   --tag-dailynote-bg: #0f60bd;
   --tag-weeklynote: #d1e6ff;
@@ -6775,14 +6936,17 @@ body.color-scheme-options-lilac.theme-dark {
 /*分割工作区的线透明*/
 body.color-scheme-options-lilac .workspace-split.mod-left-split>.workspace-leaf-resize-handle,
 body.color-scheme-options-lilac .workspace-split.mod-right-split>.workspace-leaf-resize-handle {
-height: 95.3%;
-width: 2px;
-background-color: transparent;
+  width: 2px;
+  background-color: transparent;
 }
 
 /* scrollbar 滚动条颜色*/
-body.color-scheme-options-lilac.theme-light ::-webkit-scrollbar-thumb { background-color: #cbb5e9; }
-body.color-scheme-options-lilac.theme-dark ::-webkit-scrollbar-thumb { background-color:#683083; }
+body.color-scheme-options-lilac.theme-light ::-webkit-scrollbar-thumb { 
+  background-color: #cbb5e9; 
+}
+body.color-scheme-options-lilac.theme-dark ::-webkit-scrollbar-thumb { 
+  background-color:#683083; 
+}
 
 /*stickies*/
 body.color-scheme-options-lilac .stickies {
@@ -6813,7 +6977,6 @@ body.color-scheme-options-lilac.theme-dark #calendar-container {
 }
 
 body.color-scheme-options-lilac.theme-light #calendar-container {
-
   --theme-color-translucent-3: #dccaffb0;
 }
 
@@ -6829,7 +6992,6 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
 
 .markdown-source-view.mod-cm6.is-line-wrap.is-readable-line-width .cm-line:not(.HyperMD-table-row),
 .markdown-source-view.mod-cm6.is-readable-line-width:not(.rtl) .cm-contentContainer {
-
   margin-right: auto;
 }
 
@@ -6846,7 +7008,6 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
 /*===============================*/
 /*=============YAML==============*/
 /*===============================*/
-
 /* cssclass: inline-list */
 /* can change list from block to inline; can be used with inline images */
 .inline-list ul,
@@ -6873,15 +7034,6 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
   word-wrap: break-word !important;
   word-break: break-word !important;
   white-space: break-spaces !important;
-}
-
-/* image-grid-1 */
-/* adapted from https://github.com/Lithou/Sandbox/blob/main/.obsidian/snippets/pub-Image%20Flags.css */
-/* to get a kind of image grid with self-adapted size by placing images in the same row */
-span[alt*="+grid"] {
-  display: table-cell;
-  vertical-align: middle;
-  padding: 5px;
 }
 
 /* cssclass: image-grid */
@@ -7378,7 +7530,6 @@ a.tag {
 }
 
 .cm-s-obsidian span.cm-hashtag-begin {
-  background-color:var(--color-tag-edit);
   color: var(--tag-text) !important;
   border-top-left-radius: var(--radius-l);
   border-bottom-left-radius: var(--radius-l);
@@ -7388,7 +7539,6 @@ a.tag {
 }
 
 .cm-s-obsidian span.cm-hashtag-end {
-  background-color: var(--color-tag-edit);
   color: var(--tag-text);
   border-radius: 0 var(--radius-l) var(--radius-l) 0;
   padding-right: 0.3em !important;
@@ -7398,7 +7548,6 @@ a.tag {
 
 .cm-s-obsidian span.cm-hashtag-begin+.cm-hashtag.cm-meta {
   padding-right: 0;
-  background-color: var(--color-tag-edit);
   color: var(--tag-text);
 }
 
@@ -7408,7 +7557,6 @@ a.tag {
   border-bottom-right-radius: var(--radius-l);
   border-top-left-radius: 0;
   border-bottom-left-radius: 0;
-  background-color: var(--color-tag-edit);
   color: var(--tag-text);
   padding-right: 0.3em;
 }
@@ -7424,6 +7572,7 @@ a.tag {
   font-family: var(--font-family-special-tag) !important;
   display: inline;
   font-size: 0.95em;
+  color: var(--white) !important;
 }
 
 .cm-s-obsidian span.cm-hashtag-begin:nth-child(9n+1),
@@ -7750,7 +7899,7 @@ div.CodeMirror-activeline>.HyperMD-quote {
 /* highlight */
 .markdown-preview-view mark {
   background-color: var(--mark-highlight);
-  padding: 0px 3px 2px;
+  padding: 1px 3px;
   color: var(--text-highlight);
   border-radius: var(--radius-xs);
 }
@@ -8445,8 +8594,6 @@ div:not(.CodeMirror-activeline) > .CodeMirror-line span.cm-formatting-task.cm-pr
 /*适配Live previe模式*/
 
 body.clutter-free-headings div:not(.cm-active).cm-line  span:not(.cm-formatting-header).cm-header::before {
-  display:block;
-  float:left;
   font-size: 0.7rem;
   width: auto;
   border-radius: var(--radius-xs);
@@ -8454,35 +8601,35 @@ body.clutter-free-headings div:not(.cm-active).cm-line  span:not(.cm-formatting-
   overflow: visible;
 }
 
-body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-1:nth-child(2)::before {
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-1:last-child::before {
   font-weight:normal;
 content: 'H1';
 margin-top: calc(var(--font-size-h1) - 0.1em);
 
 }
 
-body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-2:nth-child(2)::before {
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-2:last-child::before {
 font-weight:normal;
 content: 'H2';
 margin-top: calc(var(--font-size-h2) - 0.2em);
 
 }
-body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-3:nth-child(2)::before {
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-3:last-child::before {
   font-weight:normal;
 content: 'H3';
 margin-top: calc(var(--font-size-h3) - 0.2em);
 }
-body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-4:nth-child(2)::before {
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-4:last-child::before {
   font-weight:normal;
 content: 'H4';
 margin-top: calc(var(--font-size-h4) - 0.3em);
 }
-body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-5:nth-child(2)::before {
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-5:last-child:before {
   font-weight:normal;
 content: 'H5';
 margin-top: calc(var(--font-size-h5) - 0.4em);
 }
-body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-6:nth-child(2)::before {
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-6:last-child::before {
   font-weight:normal;
 content: 'H6';
 margin-top: calc(var(--font-size-h6) - 0.4em);
@@ -8509,7 +8656,7 @@ body.clutter-free-headings div:not(.CodeMirror-activeline)>.CodeMirror-line:not(
   margin-top: 10px;
   font-size: 0.7rem;
   width: auto;
-  margin-left: -8px;
+  margin-left: -2px;
   padding: 0px 2px;
   border-radius: var(--radius-xs);
   color: var(--text-muted);
@@ -8937,6 +9084,10 @@ mjx-container[jax='CHTML'] {
   font-size: var(--font-size-latex);
 }
 
+mjx-math {
+  color: var(--mjx-math-color);
+}
+
 .cm-s-obsidian pre.HyperMD-codeblock,
 .cm-s-obsidian span.cm-math:not(.cm-formatting-math-begin):not(.cm-formatting-math-end),
 .markdown-preview-view code {
@@ -9008,7 +9159,8 @@ mjx-container[jax='CHTML'] {
 /*bold code text except code language*/
 code:not([class*='language-']) {
   font-weight: 600;
-  padding: 2px 3px;
+  padding: 2px 4px 1px;
+  margin: 0 1px;
   font-family: var(--font-family-preview-edit-code) !important;
 }
 
@@ -9039,7 +9191,7 @@ code:not([class*='language-']) {
 /* inspired by Gabroel from Obsidian discord group */
 /* https://discord.com/channels/686053708261228577/702656734631821413/784922140465692712 */
 .cm-formatting.cm-formatting-list.cm-formatting-list-ol {
-  color: var(--text-accent);
+  color: var(--list-ol-number-color);
 }
 
 .cm-formatting.cm-formatting-list.cm-formatting-list-ul {
@@ -9050,14 +9202,8 @@ pre.HyperMD-list-line.HyperMD-list-line {
   text-align: start;
 }
 
-/*
-.cm-hmd-list-indent.cm-hmd-list-indent .cm-tab {
-  padding: 0 0.25em;
-}
-*/
-
 li {
-  line-height: 1.7em;
+  line-height: var(--line-height-main);
   font-family: var(--font-family-list);
 }
 
@@ -9094,33 +9240,6 @@ ul ul ol ul ul,
 ul ul ul ol ul {
   list-style: circle;
 }
-
-/*
-ul.contains-task-list ul,
-ol.contains-task-list ul,
-ul.contains-task-list ol,
-ol.contains-task-list ol {
-  position: relative;
-}
-
-ul.contains-task-list ul::before,
-ul.contains-task-list ol::before {
-  content: ' ';
-  border-left: 2px solid var(--background-modifier-border);
-  position: absolute;
-  margin-left: -1.6em;
-  height: 100%;
-}
-
-ol.contains-task-list ul::before,
-ol.contains-task-list ol::before {
-  content: ' ';
-  border-left: 2px solid var(--background-modifier-border);
-  position: absolute;
-  margin-left: -3.1em;
-  height: 100%;
-}
-*/
 
 ul {
   padding-inline-start: 32px;
@@ -9545,7 +9664,6 @@ body.list-vertical-line-three .markdown-preview-view ol li.is-collapsed div.list
 }
 /********彩虹大纲线片段********/
 
-
 /*编辑模式*/
 
 /* RAINBOW INDENT COLORS from https://gist.github.com/GitMurf/5122c0c8405ffa36a03049d9f4434bf4 */ 
@@ -9941,20 +10059,20 @@ strong>em>.internal-link,
   text-decoration: underline !important;
 }
 
-span.cm-formatting.cm-formatting-strong.cm-strong {
+.cm-s-obsidian.mod-cm5 span.cm-formatting.cm-formatting-strong.cm-strong {
   opacity: 0.2;
 }
 
-span.cm-formatting.cm-formatting-em.cm-em {
+.cm-s-obsidian.mod-cm5 span.cm-formatting.cm-formatting-em.cm-em {
   opacity: 0.2;
 }
 
-.theme-dark .cm-formatting.cm-formatting-strong.cm-em.cm-strong {
+.theme-dark .cm-s-obsidian.mod-cm5 .cm-formatting.cm-formatting-strong.cm-em.cm-strong {
   opacity: 0.2;
   -webkit-text-fill-color: var(--green);
 }
 
-.theme-light .cm-formatting.cm-formatting-strong.cm-em.cm-strong {
+.theme-light .cm-s-obsidian.mod-cm5 .cm-formatting.cm-formatting-strong.cm-em.cm-strong {
   opacity: 0.2;
   -webkit-text-fill-color: var(--orange);
 }
@@ -10312,6 +10430,11 @@ a:hover,
   opacity: 1 !important;
 }
 
+.cm-s-obsidian span.cm-link, 
+.cm-s-obsidian span.cm-hmd-internal-link {
+  color: var(--text-accent) !important;
+}
+
 /* internal link in highlight */
 .cm-highlight.cm-hmd-internal-link,
 .markdown-preview-view mark .internal-link:not(.is-unresolved) {
@@ -10335,7 +10458,7 @@ body.link-underline a.external-link {
 /*cm6 模式的下划线*/
 body.link-underline .markdown-source-view.mod-cm6 .cm-underline,
 a, .markdown-preview-view .internal-link {
-    text-decoration: none !important;
+  text-decoration: none !important;
 }
 
 .cm-url:hover {
@@ -10376,7 +10499,6 @@ code[class*="language-"] {
   padding: 1em 0.5em;
 }
 
-
 /*embedded*/
 body.naked-embed.theme-dark {
   --embed-color: transparent !important;
@@ -10412,13 +10534,11 @@ body.embed-hover.theme-light .markdown-preview-view .internal-embed .markdown-em
   transform: translate3d(0px, -3px, 0px);
 }
 body.embed-hover.theme-light .markdown-source-view .internal-embed .markdown-embed:hover {
-   
-    background: var(--background-primary-alt);
-    color: var(--text-normal);
-    
-    border-radius: 6px;
-    border-width: 1px;
-    box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
+  background: var(--background-primary-alt);
+  color: var(--text-normal);
+  border-radius: 6px;
+  border-width: 1px;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.1);
 }
 
 
@@ -10427,7 +10547,7 @@ body.embed-hover.theme-dark .internal-embed .markdown-embed:hover {
   transform: translate3d(0px, -3px, 0px);
 }
 
- .markdown-embed {
+.markdown-embed {
   background-color: var(--embed-color);
   border: 1px solid var(--embed-color);
   border-radius: var(--radius-xs);
@@ -10485,12 +10605,18 @@ body.embed-hover.theme-dark .internal-embed .markdown-embed:hover {
   margin-bottom: 0.4em;
 }
 
-.markdown-preview-view .markdown-embed-content {
+body:not(.adjustable-embed-content-height) .markdown-preview-view .markdown-embed-content {
   padding-right: 0;
-  display: inline;
   max-height: 100%;
   max-width: 100%;
-  overflow: hidden;
+  overflow: auto;
+}
+
+body.adjustable-embed-content-height .markdown-preview-view .markdown-embed-content {
+  padding-right: 0;
+  max-height: var(--embed-content-height);
+  max-width: 100%;
+  overflow: auto;
 }
 
 .file-embed-icon {
@@ -10840,7 +10966,6 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
 }
 
 /* Image zoom  */
-
 body:not(.image-zoom) .view-content img:not([class="emoji"]) {
   cursor: zoom-in;
 }
@@ -10850,7 +10975,7 @@ body:not(.image-zoom) .workspace-leaf-content[data-type="markdown"] .view-conten
   display: block;
 }
 
-body:not(.image-zoom) .view-content img:not([class="emoji"]):active {
+body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active {
   cursor: zoom-out !important;
   position: fixed;
   object-fit: contain;
@@ -10865,6 +10990,11 @@ body:not(.image-zoom) .view-content img:not([class="emoji"]):active {
   bottom: 0;
   z-index: 200;
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjJGNEY2Ii8+CiAgICA8ZyBmaWxsPSIjRkZGIj4KICAgICAgPHJlY3Qgd2lkdGg9IjIiIGhlaWdodD0iNzkiIHg9Ijc4Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjU5Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iMjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSIyMCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjIwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNDAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI0MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjQwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI2MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjYwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI3OSIgaGVpZ2h0PSIxIiB5PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iNzkiIGhlaWdodD0iMSIgeT0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9Ijc5IiBoZWlnaHQ9IjEiIHk9IjU5Ii8+CiAgICA8L2c+CiAgICA8cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iMiIgeT0iNzgiIGZpbGw9IiNGRkYiLz4KICA8L2c+Cjwvc3ZnPgo=");
+}
+
+.markdown-source-view.is-live-preview .internal-embed.image-embed.is-loaded img {
+  margin: 3px auto;
+  display: block;
 }
 
 /* file explorer :Wrap long nav text and some paddings */
@@ -10936,7 +11066,6 @@ body.muted-activeline-bg .HyperMD-codeblock-bg.CodeMirror-activeline-background.
 .cm-s-obsidian .CodeMirror-linenumber {
   font-family: var(--font-family-preview-edit-code);
 }
-
 
 /*----file explorer smaller fonts & line height----*/
 .nav-file-title,
@@ -11352,7 +11481,9 @@ ul.contains-task-list .list-collapse-indicator.collapse-indicator.collapse-icon:
 }
 
 /* ======= graph view ==============*/
-.workspace-leaf-content[data-type="graph"] canvas {}
+.workspace-leaf-content[data-type="graph"] canvas {
+
+}
 
 .workspace-leaf-content[data-type="graph"] .graph-controls {
   background-color: var(--graph-control-bg);
@@ -11431,7 +11562,6 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 /* from Notation by death_au  https://github.com/deathau/Notation-for-Obsidian */
 /* Original idea from: https://gist.github.com/mklepaczewski/54e451f09994b9d450de81c8baaf8aa4 */
 /* but also with simpler classes so you can use `<span class='colour'>` as well */
-
 .app-container .markdown-preview-view pre.language-note-gray-bg code,
 .app-container .markdown-preview-view pre.language-note-brown-bg code,
 .app-container .markdown-preview-view pre.language-note-orange-bg code,
@@ -11668,7 +11798,6 @@ pre.language-note-imp::before {
   background:unset !important;
 }
 
-
 /* cloze */
 .app-container .markdown-preview-view pre.language-note-cloze code.language-note-cloze,
 .popover .markdown-preview-view pre.language-note-cloze code.language-note-cloze {
@@ -11692,7 +11821,6 @@ code.language-note-cloze.is-loaded:hover {
 .app-container .markdown-preview-view pre.language-note-cloze code.language-note-cloze.is-loaded:active, .popover .markdown-preview-view pre.language-note-cloze code.language-note-cloze.is-loaded:active {
   background-color: transparent !important;
 }
-
 
 pre.language-note-cloze::before {
   content: "TO RECALL";
@@ -11990,7 +12118,6 @@ div.mermaidTooltip {
 }
 
 /* Grid and axis */
-
 .mermaid .grid .tick {
   stroke: var(--text-muted) !important;
   opacity: 1 !important;
@@ -12016,7 +12143,6 @@ div.mermaidTooltip {
 /* Task styling */
 
 /* Default task */
-
 .task {
   stroke-width: 0.5px !important;
 }
@@ -12044,7 +12170,6 @@ div.mermaidTooltip {
 }
 
 /* Special case clickable */
-
 .task.clickable {
   cursor: pointer !important;
 }
@@ -12476,21 +12601,6 @@ g.stateGroup line {
   stroke: var(--text-muted) !important;
 }
 
-/*rect.task {
-  fill: var(--text-accent-hover);
-  fill-opacity: 1;
-  stroke: var(--text-normal);
-}
-
-g rect{
-  fill: var(--text-highlight-bg);
-}
-
-g text{
-  fill:var(--text-muted) !important;
-}
-*/
-
 .mermaid div:not(text.tracker-month-label) #arrowhead,
 .mermaid div:not(text.tracker-month-label) #sequencenumber,
 .mermaid div:not(text.tracker-month-label) .cluster text,
@@ -12588,7 +12698,6 @@ body.plugin-sliding-panes-rotate-header .workspace>.mod-root>.workspace-leaf>.wo
   padding: 0px 0px 5px 3px !important;
 }
 
-
 /*==========================*/
 /* obsidian-calendar-plugin */
 /*==========================*/
@@ -12608,7 +12717,6 @@ body.plugin-sliding-panes-rotate-header .workspace>.mod-root>.workspace-leaf>.wo
   --color-text-day: var(--text-normal);
   --color-text-today: var(--text-accent);
 
-  /*===*/
   padding: 0 8px 0 8px;
   margin: -21px -8px 0px -8px;
   line-height: 0.6;
@@ -12771,7 +12879,6 @@ body.plugin-sliding-panes-rotate-header .workspace>.mod-root>.workspace-leaf>.wo
 #calendar-container .week-num:hover {
   background-color: var(--calendar-week-hover) !important;
 }
-
 
 /* calendar-1 translucent, v0.2, for Blue Topaz*/
 body.style-options-for-calendar-plugin-style-one.theme-dark {
@@ -12993,9 +13100,9 @@ pre.frontmatter.language-yaml::before {
 /* ================================== */
 /* ============= kanban ============= */
 /* ================================== */
-body:not(.style-options-for-kanban-plugin-static-default) .workspace-leaf .kanban-plugin__lane {
+/*body:not(.style-options-for-kanban-plugin-static-default)*/ .workspace-leaf .kanban-plugin__lane {
   border-radius: 8px;
-  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
 }
 
 .kanban-plugin__lane ::-webkit-scrollbar-thumb:vertical {
@@ -13113,6 +13220,10 @@ button.kanban-plugin__new-item-button:hover {
 
 .kanban-plugin__lane {
   background: transparent !important;
+}
+
+.theme-light .kanban-plugin__lane {
+  background: var(--background-transparent-black-or-white-3) !important;
 }
 
 .kanban-plugin__lane-wrapper {
@@ -13890,8 +14001,8 @@ filter: hue-rotate(690deg);
 aside {
   float: right;
   position: relative;
-  color: brown;
   left: 5px;
+  padding: 0 0 0 2px;
 }
 
 aside>h1,
@@ -13900,7 +14011,6 @@ aside>h2 {
   font-size: 16px !important;
   border: 1px solid;
   border-bottom: 1px solid !important;
-  border-radius: 3%;
   background-color: transparent;
   padding: 0px 5px 0px 5px;
   width: 130px;
@@ -13910,8 +14020,12 @@ aside>h2 {
   margin-left: 20%;
 }
 
+aside>h1:hover::before,
+aside>h2:hover::before {
+  display: none;
+}
+
 aside>h2 {
-  left: 130px;
   color: #dd9207 !important;
 }
 
@@ -14117,10 +14231,8 @@ aside>h2 {
     --search-text: #e0e0e0;
     --folder-title: #ffffff;
 
-    --text-highlight-bg: #89853b8a;
-    /*edit*/
-    --mark-highlight: #89853b8a;
-    /*preview*/
+    --text-highlight-bg: #89853b8a;/*edit*/
+    --mark-highlight: #89853b8a;/*preview*/
     --mark-highlight-strong-em: #fff7603a;
     --text-search-highlight-bg: #bb4361;
 
@@ -14201,7 +14313,6 @@ aside>h2 {
     --tag7: #9a1e93;
     --tag8: #6e2ec1;
     --tag9: #2244d8;
-    --color-tag-edit: #006feeb0;
     --tag-dailynote: #98c8ff;
     --tag-dailynote-bg: #0f60bd;
     --tag-weeklynote: #d1e6ff;
@@ -14598,7 +14709,7 @@ body.style-options-for-admonition-plugin .admonition-kanban .admonition-content 
   overflow: visible;
   margin: 0;
 }
-​
+
 body.style-options-for-admonition-plugin .admonition-kanban .is-mobile ul{ display: flex; }
 
 body.style-options-for-admonition-plugin .admonition-kanban ul {
@@ -14764,10 +14875,8 @@ body.style-options-for-admonition-plugin .admonition-kanban .task-list-item-chec
   border-color: var(--text-normal) !important;
 }
 
-
 /*blank ad分栏
-修改自 https://forum-zh.obsidian.md/t/topic/2081
-*/
+修改自 https://forum-zh.obsidian.md/t/topic/2081 */
 body.style-options-for-admonition-plugin .admonition-col2 {
   box-shadow: none!important;
 }
@@ -14957,6 +15066,26 @@ body.style-options-for-admonition-plugin .admonition-col4-parent .admonition-col
   margin-top: 0;
 }
 
+/*自适应分栏*/
+body.style-options-for-admonition-plugin .admonition-flex {
+  margin: auto;
+ box-shadow:none;
+   
+ }
+ body.style-options-for-admonition-plugin .admonition-flex >.admonition-content-holder {
+  margin-top:0!important;
+  margin-bottom:0!important;
+}
+ body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
+ width: 100%;
+ margin: 0px;
+ display: flex;
+ flex-wrap: wrap;
+}
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content div{
+ flex: 1;
+ margin: 0 0.625rem;
+}
 
 /*blank ad框全透明隐藏*/
 body.style-options-for-admonition-plugin .admonition-blank {
@@ -15131,6 +15260,23 @@ body.style-options-for-admonition-plugin .admonition-hibox .admonition-title {
   color: var(--background-code);
   color: transparent;
 }
+/* ======Notice================ */
+.notice-container  .notice:nth-child(4n+1){
+  background-color: var(--background-pink);
+  color: var(--text-color-code-normal);
+}
+.notice-container  .notice:nth-child(4n+2){
+  background-color: var(--background-yellow);
+  color: var(--text-color-code-normal);
+}
+.notice-container  .notice:nth-child(4n+3){
+  background-color: var(--background-green);
+  color: var(--text-color-code-normal);
+}
+.notice-container  .notice:nth-child(4n+4){
+  background-color: var(--background-red);
+  color: var(--text-color-code-normal);
+}
 
 /* ================================== */
 /* ============ checklist =========== */
@@ -15257,7 +15403,6 @@ body.rainbow-checklist .checklist-plugin-main.markdown-preview-view li:nth-of-ty
 .hider-ribbon .workspace-split.mod-left-split {
   margin: 0;
 }
-
 
 /* ================================== */
 /* ========== Breadcrumbs =========== */
@@ -15877,23 +16022,28 @@ body:not(.outliner-plugin-bls).markdown-source-view.mod-cm5 .cm-hmd-list-indent 
   background-size: 1.45ch 1px !important;
 }
 
-
-/* ============ */
 /* ============ */
 /*image position*/
-/* ============ */
 /* ============ */
 img[alt$="left"],
 img[alt$="Left"],
 img[alt$="LEFT"],
-img[alt$="L"] {
+img[alt$="L"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="left"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="Left"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="LEFT"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="L"]  {
   margin-left: 0;
 }
 
 img[alt$="right"],
 img[alt$="Right"],
 img[alt$="RIGHT"],
-img[alt$="R"] {
+img[alt$="R"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="right"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="Right"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="RIGHT"],
+.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="R"] {
   margin-right: 0;
 }
 
@@ -15902,7 +16052,7 @@ img[alt$="Inline"],
 img[alt$="INLINE"],
 img[alt$="inl"] {
   display: inline !important;
-  padding: 0.2em 0.5em !important;
+  padding: 0.05em 0.05em !important;
   vertical-align: bottom;
 }
 
@@ -15911,7 +16061,7 @@ img[alt$="InlineL"],
 img[alt$="INLINEL"],
 img[alt$="inlL"] {
   float: left;
-  padding: 0 1em 0.5em 0 !important;
+  padding: 0 0.05em 0.05em 0 !important;
 }
 
 img[alt$="inlineR"],
@@ -15919,14 +16069,15 @@ img[alt$="InlineR"],
 img[alt$="INLINER"],
 img[alt$="inlR"] {
   float: right;
-  padding: 0 0 0.5em 1em !important;
+  padding: 0 0 0.05em 0.05em !important;
 }
-
 
 /* img captions */
 /* modified from Discordian theme by @radekkozak */
 .markdown-preview-view .image-embed[src$="center"],
-.markdown-preview-view .image-embed[src$="centre"] {
+.markdown-preview-view .image-embed[src$="centre"],
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="center"],
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="centre"] {
   clear: both;
   margin: 0.5rem auto;
   width: fit-content;
@@ -15934,7 +16085,9 @@ img[alt$="inlR"] {
 }
 
 .markdown-preview-view .image-embed[src$="center"]::after,
-.markdown-preview-view .image-embed[src$="centre"]::after {
+.markdown-preview-view .image-embed[src$="centre"]::after,
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="center"]::after,
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="centre"]::after {
   content: attr(alt);
   /* padding: 0 1rem 0 1rem; */
   margin-top: 0.5rem;
@@ -15944,7 +16097,8 @@ img[alt$="inlR"] {
   font-size: 0.85rem;
 }
 
-.markdown-preview-view .image-embed[src$="left"] {
+.markdown-preview-view .image-embed[src$="left"],
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="left"] {
   position: relative;
   float: left;
   margin-top: 0.5rem;
@@ -15955,7 +16109,8 @@ img[alt$="inlR"] {
   width: fit-content;
 }
 
-.markdown-preview-view .image-embed[src$="left"]::after {
+.markdown-preview-view .image-embed[src$="left"]::after,
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="left"]::after {
   content: attr(alt);
   padding: 0 1rem 0 1rem;
   margin-top: 0.5rem;
@@ -15965,7 +16120,8 @@ img[alt$="inlR"] {
   font-size: 0.85rem;
 }
 
-.markdown-preview-view .image-embed[src$="right"] {
+.markdown-preview-view .image-embed[src$="right"],
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="right"] {
   position: relative;
   float: right;
   margin-top: 0.5rem;
@@ -15976,47 +16132,8 @@ img[alt$="inlR"] {
   width: fit-content;
 }
 
-.markdown-preview-view .image-embed[src$="right"]::after {
-  content: attr(alt);
-  padding: 0 1rem 0 1rem;
-  margin-top: 0.5rem;
-  display: table-caption;
-  caption-side: bottom;
-  text-align: center;
-  font-size: 0.85rem;
-}
-/* img captions for  cm6 live preview */
-.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="center"],
-.markdown-source-view.mod-cm6.is-live-preview  .image-embed[src$="centre"] {
-  clear: both;
-  margin: 0.5rem auto!important;
-  width: fit-content;
-  display: block;
-}
-
-.markdown-source-view.mod-cm6.is-live-preview  .image-embed[src$="center"]::after,
-.markdown-source-view.mod-cm6.is-live-preview  .image-embed[src$="centre"]::after {
-  content: attr(alt);
-  /* padding: 0 1rem 0 1rem; */
-  margin-top: 0.5rem;
-  display: block;
-  caption-side: bottom;
-  text-align: center;
-  font-size: 0.85rem;
-}
-
-.markdown-source-view.mod-cm6.is-live-preview  .image-embed[src$="left"] {
-  position: relative;
-  float: left;
-  margin-top: 0.5rem;
-  margin-right: 1rem;
-  margin-bottom: 0.5rem;
-  clear: both;
-  display: table;
-  width: fit-content;
-}
-
-.markdown-source-view.mod-cm6.is-live-preview  .image-embed[src$="left"]::after {
+.markdown-preview-view .image-embed[src$="right"]::after,
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="right"]::after {
   content: attr(alt);
   padding: 0 1rem 0 1rem;
   margin-top: 0.5rem;
@@ -16026,25 +16143,19 @@ img[alt$="inlR"] {
   font-size: 0.85rem;
 }
 
-.markdown-source-view.mod-cm6.is-live-preview  .image-embed[src$="right"] {
-  position: relative;
-  float: right;
-  margin-top: 0.5rem;
-  margin-left: 1rem;
-  margin-bottom: 0.5rem;
-  clear: both;
-  display: table;
-  width: fit-content;
+/* image-grid-1 */
+/* adapted from https://github.com/Lithou/Sandbox/blob/main/.obsidian/snippets/pub-Image%20Flags.css */
+/* to get a kind of image grid with self-adapted size by placing images in the same row */
+span[alt*="+grid"] {
+  display: table-cell;
+  vertical-align: middle;
+  padding: 5px;
 }
 
-.markdown-source-view.mod-cm6.is-live-preview  .image-embed[src$="right"]::after {
-  content: attr(alt);
-  padding: 0 1rem 0 1rem;
-  margin-top: 0.5rem;
-  display: table-caption;
-  caption-side: bottom;
-  text-align: center;
-  font-size: 0.85rem;
+.markdown-source-view.is-live-preview .internal-embed.image-embed.is-loaded[alt*="+grid"] {
+  display: inline-table;
+  vertical-align: middle;
+  max-width: 25%;
 }
 
 /*===================================================*/
@@ -16184,83 +16295,80 @@ body.style-options-for-buttons-plugin button.circle_btn {
   word-break: keep-all;
 	margin: 4px;
 	padding: 0px;
-    width: 50px;
-    height: 50px;
-    /* border-radius:50%; */
+  width: 50px;
+  height: 50px;
+  /* border-radius:50%; */
 	position: relative;
 	border: 0;
 	display: inline-block;
 	text-align: center;
 }
 /* blank 透明按钮*/
-body.style-options-for-buttons-plugin  button.blank{
-background: #fff0f000;
+body.style-options-for-buttons-plugin button.blank{
+  background: #fff0f000;
+  padding:  0px;
 }
 body.style-options-for-buttons-plugin button.blank:hover {
   animation: swing_image 0.8s linear 0s 1 normal;
-		box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
-	}
-  body.style-options-for-buttons-plugin  .admonition-content button.grad_button
-  {
-    margin-top: 0px;
-    margin-bottom: -10px;
-  }
-  body.style-options-for-buttons-plugin  button.grad_button{
-    margin:5PX;
-    line-height: inherit;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 90px;
-      padding: 0 28px;
-      height: 38px;
-      font-size: 16px;
-      color: #fff;
-      text-align: center;
-      box-sizing: border-box;
-      font-weight: 500;
-      cursor: pointer;
-      border-radius: 30px;
-      transition: box-shadow .5s ease, transform .2s ease; 
-      will-change: transform;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
-      transform:
-      translateY(var(--ty, 0))
-      rotateX(var(--rx, 0))
-      rotateY(var(--ry, 0))
-      translateZ(var(--tz, -12px));
-  
-  }
+	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
+}
+body.style-options-for-buttons-plugin .admonition-content button.grad_button{
+  margin-top: 0px;
+  margin-bottom: -10px;
+}
+body.style-options-for-buttons-plugin button.grad_button{
+  margin:5PX;
+  line-height: inherit;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 90px;
+  padding: 0 28px;
+  height: 38px;
+  font-size: 16px;
+  color: #fff;
+  text-align: center;
+  box-sizing: border-box;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 30px;
+  transition: box-shadow .5s ease, transform .2s ease; 
+  will-change: transform;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+  transform:
+    translateY(var(--ty, 0))
+    rotateX(var(--rx, 0))
+    rotateY(var(--ry, 0))
+    translateZ(var(--tz, -12px));
+}
   
   
-  body.style-options-for-buttons-plugin button.grad_button:hover {
-    animation: swing_image 0.8s linear 0s 1 normal;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
-  }
-  body.style-options-for-buttons-plugin button.g_purple {
-    background: linear-gradient(135deg, #6e8efb, #a777e3);
+body.style-options-for-buttons-plugin button.grad_button:hover {
+  animation: swing_image 0.8s linear 0s 1 normal;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, .3);
+}
+body.style-options-for-buttons-plugin button.g_purple {
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+}
   
-  }
+body.style-options-for-buttons-plugin  button.g_blue {
+  background: linear-gradient(135deg, #3370ff, #9fb9f6);  
+}
   
-  body.style-options-for-buttons-plugin  button.g_blue {
-      background: linear-gradient(135deg, #3370ff, #9fb9f6);  
-  }
+body.style-options-for-buttons-plugin button.g_green {
+  background: linear-gradient(135deg, #0eb347, #5be08a);
+}
   
-  body.style-options-for-buttons-plugin button.g_green {
-      background: linear-gradient(135deg, #0eb347, #5be08a);
-  }
+body.style-options-for-buttons-plugin button.g_lightgreen {
+  color: #17695e;
+  background: linear-gradient(135deg, #adfdad, #dafdda);
+}
   
-  body.style-options-for-buttons-plugin button.g_lightgreen {
-      color: #17695e;
-      background: linear-gradient(135deg, #adfdad, #dafdda);
-  }
+body.style-options-for-buttons-plugin  button.g_yellow {
+  color: #836f20;
+  background: linear-gradient(135deg, #fcd539, #ffeb9b);
+}
   
-  body.style-options-for-buttons-plugin  button.g_yellow {
-      color: #836f20;
-      background: linear-gradient(135deg, #fcd539, #ffeb9b);
-  }
-  
-
 /*buttons*/
 .is-mobile .workspace-leaf-content[data-type='file-explorer'] .nav-action-button {
   padding: 3px 4px;
@@ -16534,9 +16642,7 @@ and (min-width : 400px)
 }
 
 /*===================================================*/
-/*===================================================*/
 /*=================   Live Preview   ================*/
-/*===================================================*/
 /*===================================================*/
 .markdown-source-view.is-live-preview span.cm-quote::before {
   all: initial;
@@ -16546,30 +16652,10 @@ and (min-width : 400px)
   background-color: transparent !important;
 }
 
-/*
-.markdown-source-view.is-live-preview span:not([class*=cm-formatting]).cm-em.cm-highlight.cm-strong + span:not([class*=cm-formatting]).cm-em.cm-highlight.cm-strong,
-.markdown-source-view.is-live-preview span:not([class*=cm-formatting]).cm-highlight.cm-strong + span:not([class*=cm-formatting]).cm-highlight.cm-strong {
-  border-radius: var(--radius-xs);
-  padding: 0 3px 1px;
-}
-
-.markdown-source-view.is-live-preview span.cm-formatting.cm-formatting-highlight.cm-highlight + span:not([class*=cm-formatting-link-start]).cm-highlight + span:not([class*=cm-formatting-link-start]).cm-highlight {
-  border-radius: var(--radius-xs);
-  padding: 0 3px 1px;
-}
-*/
-
 .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote {
   border-color: var(--theme-color);
   background-color: var(--background-blockquote);
 }
-
-/*
-.markdown-source-view.is-live-preview .cm-formatting-link.cm-formatting-link-start.cm-highlight + .cm-highlight.cm-hmd-internal-link + .cm-highlight.cm-hmd-internal-link {
-  border-radius: var(--radius-xs);
-  padding: 0 3px 1px;
-}
-*/
 
 .markdown-source-view.is-live-preview *:not(font)>em>strong,
 .markdown-source-view.is-live-preview *:not(font)>strong>em,
@@ -16774,17 +16860,13 @@ body.circular-checkbox .markdown-source-view.is-live-preview .task-list-item-che
   border-bottom: none;
 }
 
-.markdown-source-view.cm-s-obsidian.mod-cm6 .cm-line {
-  padding-left: 0;
-}
-.markdown-source-view.cm-s-obsidian.mod-cm6 .HyperMD-codeblock-bg.cm-line {
-  padding-left: 1em;
+.markdown-source-view.cm-s-obsidian.mod-cm6 .HyperMD-codeblock {
+  font-size: var(--font-size-code);
 }
 
 /* ============ */
 /* just for fun */
 /* ============ */
-/*for backgroudn image snippets*/
 .workspace-ribbon.side-dock-ribbon.mod-left,
 .workspace-ribbon.side-dock-ribbon.mod-right {
   background-color: var(--background-secondary-alt-bg-4-bt);
@@ -16801,17 +16883,13 @@ body.circular-checkbox .markdown-source-view.is-live-preview .task-list-item-che
   padding-right: 2px;
 }
 
-.workspace-leaf-resize-handle {
-  background-color: var(--background-secondary-alt-bg-4-bt);
-}
-
 .workspace-split.mod-horizontal>*>.workspace-leaf-resize-handle {
   height: 2px;
 }
 
 .workspace-split.mod-left-split>.workspace-leaf-resize-handle,
 .workspace-split.mod-right-split>.workspace-leaf-resize-handle {
-  height: 95.3%;
+  height: 95%;
   width: 2px;
 }
 
@@ -18754,19 +18832,64 @@ body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-previ
   border-left-width: 0px;
 
 }
-body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
-.HyperMD-quote span.cm-quote.cm-quote-1:not(.cm-formatting){
+/* body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.HyperMD-quote span.cm-quote:not(.cm-formatting){
   display: inline;
   position: relative;
   padding-top: 5px;
-  /* padding-right: 12px; */
-  /* margin-left: 1.5em; */
+
   font-size: var(--font-size-preview-blockquote);
-} 
+}  */
 
 body.blockquote-style-quotation-mark 
 .markdown-source-view.mod-cm6.is-live-preview 
-.HyperMD-quote:not(.cm-active) span.cm-quote.cm-quote-1:not(.cm-formatting)::before {
+.HyperMD-quote:not(.cm-active) span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+  content: '“';
+  font-weight: 700;
+  font-size: 60px;
+  font-family: Arial, serif;
+  color: var(--text-accent);
+  position: absolute;
+  margin-top: -0.4em;
+  margin-left: -0.5em;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote-1 + .HyperMD-quote-1 span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+display: none;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote-2 + .HyperMD-quote-2 span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+display: none;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote-3 + .HyperMD-quote-3 span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+display: none;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote-3 + .HyperMD-quote-2 span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+display: none;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote-3 + .HyperMD-quote-1 span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+display: none;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote-2 + .HyperMD-quote-2 span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+display: none;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote-2 + .HyperMD-quote-1 span.cm-hmd-indent-in-quote:not(.cm-formatting)::before {
+display: none;
+}
+body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
+.cm-content div.HyperMD-quote .cm-blockquote-border {
+  border: none;
+}
+
+/* 
+body.blockquote-style-quotation-mark 
+.markdown-source-view.mod-cm6.is-live-preview 
+.HyperMD-quote:not(.cm-active) span.cm-quote.cm-quote:not(.cm-formatting)::before {
   content: '“';
   font-weight: 700;
   font-size: 60px;
@@ -18780,8 +18903,16 @@ body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-previ
 .cm-content div.HyperMD-quote  span.cm-quote.cm-quote-1+ span.cm-quote.cm-quote-1:not(.cm-formatting)::before {
 display: none;
 }
-
-
+body.blockquote-style-quotation-mark 
+.markdown-source-view.mod-cm6.is-live-preview 
+.HyperMD-quote:not(.cm-active) span.cm-quote.cm-quote-1:not(.cm-formatting):nth-child(n+5):before {
+  display: none;
+}
+body.blockquote-style-quotation-mark 
+.markdown-source-view.mod-cm6.is-live-preview 
+.HyperMD-quote:not(.cm-active) span.cm-quote.cm-quote-1.cm-hmd-internal-link:not(.cm-formatting)::before {
+  display: none;
+}
 body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
 .cm-content div.HyperMD-quote-1 + .HyperMD-quote-1 span.cm-quote.cm-quote-1:not(.cm-formatting)::before {
 display: none;
@@ -18789,7 +18920,7 @@ display: none;
 body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview 
 .cm-content div.HyperMD-quote-1 + .HyperMD-quote-1 span.cm-quote.cm-quote-1:not(.cm-formatting) {
 padding-top: 0px;
-}
+} */
 
 /*speech bubble-1*/
 body.blockquote-style-speech-bubble-one .markdown-preview-view blockquote {
@@ -19112,10 +19243,25 @@ body.background-settings-workplace-background-image.background-settings-workplac
   --theme-background: var(--hyacinth-macaw);
 }
 
-body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header-inner,
-body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-container-after.is-after-active .workspace-tab-header-inner,
-body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header.is-before-active .workspace-tab-header-inner {
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-container-before.is-before-active .workspace-tab-header-inner, 
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-container-after.is-after-active .workspace-tab-header-inner, body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header.is-before-active .workspace-tab-header-inner, 
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header.is-after-active .workspace-tab-header-inner {
   background-color: transparent;
+}
+
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-container-before.is-before-active, 
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-container-after.is-after-active,
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header.is-before-active, 
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header.is-after-active {
+  background-color: transparent;
+}
+
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header-container {
+  background-color: transparent;
+}
+
+body.layout-style-options-default.background-settings-workplace-background-image .workspace-tab-header {
+  color: var(--text-normal);
 }
 
 body.background-settings-workplace-background-image.background-settings-workplace-theme-light-custom-option.theme-light {
@@ -19125,7 +19271,6 @@ body.background-settings-workplace-background-image.background-settings-workplac
 body.background-settings-workplace-background-image.background-settings-workplace-theme-dark-custom-option.theme-dark {
   --theme-background: var(--background-settings-workplace-theme-dark-custom) ;
 }
-
 
 /*rectangle*/
 body.layout-style-options-rectangle .workspace-tab-container-before.is-before-active .workspace-tab-header-inner,
@@ -19215,6 +19360,9 @@ cssclass: matrix
   --matrix-2: var(--p-kanban-color-3);
   --matrix-4: var(--p-kanban-color-5);
   --matrix-5: var(--p-kanban-color-6);
+}
+.markdown-preview-view.matrix.is-readable-line-width .markdown-preview-sizer, .markdown-source-view.matrix.is-readable-line-width .CodeMirror, .matrix.is-readable-line-width .markdown-preview-section, .matrix.is-readable-line-width .markdown-preview-section > div, .markdown-preview-view.matrix.is-readable-line-width .markdown-preview-section {
+  width: 100%;
 }
 .markdown-preview-view.matrix table tr {
   display: flex;
@@ -19308,7 +19456,6 @@ body.plain-file-title.theme-dark {
   --color-view-header-gradient-2: var(--background-primary);
 }
 
-
 /* the gif animation was created by @Jake Fleming https://dribbble.com/shots/9948351-kitty-wiggle */
 body.loading-animation .progress-bar-message::before {
   content: "GIF author: Jake Fleming"; 
@@ -19350,7 +19497,6 @@ body.loading-animation .progress-bar-message {
 /* ======= custom cssclass ======= */
 /* ========fullwidth  noyaml noscroll================ */
 /*主页预览宽度*/
-
 .markdown-preview-view.fullwidth.is-readable-line-width .markdown-preview-sizer, .markdown-source-view.is-readable-line-width.fullwidth .CodeMirror, .is-readable-line-width.fullwidth .markdown-preview-section, .is-readable-line-width.fullwidth .markdown-preview-section > div, .markdown-preview-view.is-readable-line-width.fullwidth .markdown-preview-section {
   width:100% !important;
   max-width: 100%;
@@ -19358,15 +19504,13 @@ body.loading-animation .progress-bar-message {
 }
 
 /*隐藏yaml区域*/
-.markdown-preview-view.noyaml div>.language-yaml
-{
+.markdown-preview-view.noyaml div>.language-yaml {
   display: none;
 }
-.markdown-preview-view.noyaml div>.frontmatter-container
-{
+.markdown-preview-view.noyaml div>.frontmatter-container {
   display: none;
 }
 /*隐藏滚动条*/
-.markdown-preview-view.noscroll::-webkit-scrollbar{
+.markdown-preview-view.noscroll::-webkit-scrollbar {
   display:none;
-  }
+}

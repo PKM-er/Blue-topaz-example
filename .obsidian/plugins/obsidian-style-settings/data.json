@@ -28,7 +28,7 @@
   "blue-topaz-theme@@layout-style-options": "layout-style-options-rectangle",
   "blue-topaz-theme@@background-settings-workplace-background-image": true,
   "blue-topaz-theme@@style-options-for-calendar-plugin": "style-options-for-calendar-plugin-style-one",
-  "blue-topaz-theme@@rainbow-ordered-list": false,
+  "blue-topaz-theme@@rainbow-ordered-list": true,
   "blue-topaz-theme@@rainbow-checkbox": true,
   "blue-topaz-theme@@embed-title": true,
   "blue-topaz-theme@@accent-2": "#474449",

@@ -6,7 +6,6 @@
   "calendar",
   "dataview",
   "obsidian-checklist-plugin",
-  "homepage",
   "obsidian-banners",
   "templater-obsidian",
   "obsidian-outliner",
@@ -23,6 +22,7 @@
   "recent-files-obsidian",
   "table-editor-obsidian",
   "Enhanced editing",
-  "cmenu-plugin",
-  "obsidian-icon-folder"
+  "obsidian-icon-folder",
+  "obsidian-view-mode-by-frontmatter",
+  "cmenu-plugin"
 ]

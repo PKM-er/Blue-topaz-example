@@ -1,7 +1,6 @@
 # TIPS  
 ```ad-col2
 这是Blue Topaz的演示库，最新版本建议从社区商店更新。附带了Style Settings插件与Admonition插件。目前支持Live preview模式同时附带了其他一些插件，可供使用。
-
 需要特别说明的是Codemirror插件，这个插件因为样式比较复杂多变，使用此插件会可能会出现样式上的bug。这里会给出一些Blue Topaz的展示、以及一些特别的用法，希望对你有帮助。
 
 我不确定这个库会被传播到何处，所以给一个发布的QQ群号，也是Topaz社区所在的地方**908688452**。
@@ -188,6 +187,12 @@ text
 
 
 ## 图片
+网络图片的显示示例
+![|RIGHT|150](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+
+
+![|inlineR|150](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+
 插入的图片默认是居中显示，点击图片可以放大
 ![[obsidian_image.png]]
 
@@ -270,7 +275,7 @@ text
 
 
 #### 方法二
-图片加`|+grid`，放在同一行，会自动调整大小，也可以单独调整
+图片加`|+grid`，放在同一行，会自动调整大小，也可以独单调整
 `![[xxx.png|+grid]]`
 
 ![[obsidian_image.png|+grid]]![[obsidian_image.png|+grid]]![[obsidian_image.png|+grid]]![[obsidian_image.png|+grid]]

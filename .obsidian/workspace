@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Readme.md",
-            "mode": "preview",
+            "file": "从这开始.md",
+            "mode": "source",
             "backlinks": true,
-            "source": false
+            "source": true
           }
         }
       }
@@ -116,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Readme.md"
+                "file": "从这开始.md"
               }
             }
           }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Readme.md",
+                "file": "从这开始.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Readme.md",
+                "file": "从这开始.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -181,19 +181,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 273
+    "width": 273,
+    "collapsed": true
   },
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
-    "Readme.md",
     "从这开始.md",
-    "99-Attachment/obsidian_image.png",
-    "99-Attachment/Pasted image 20211231223826.png",
-    "99-Attachment/Pasted image 20211227102855.png",
-    "88-Template/button.md",
+    "README.md",
     "88-Template/home.md",
-    "88-Template/Calendar2021-2022.md",
+    "未命名.md",
+    "00-Tips/魔方配色设置说明.md",
+    "88-Template/便签.md",
     "00-Tips/分栏效果示例.md",
-    "00-Tips/真Kanban.md"
+    "00-Tips/Tips.md",
+    "88-Template/常用工具.md",
+    "00-Tips/inline-list.md"
   ]
 }
