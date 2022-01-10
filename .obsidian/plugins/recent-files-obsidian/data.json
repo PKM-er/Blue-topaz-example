@@ -1,8 +1,16 @@
 {
   "recentFiles": [
     {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
       "basename": "home",
       "path": "88-Template/home.md"
+    },
+    {
+      "basename": "从这开始",
+      "path": "从这开始.md"
     },
     {
       "basename": "2022-01-10",
@@ -39,14 +47,6 @@
     {
       "basename": "四象限表格",
       "path": "00-Tips/四象限表格.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
-    },
-    {
-      "basename": "从这开始",
-      "path": "从这开始.md"
     },
     {
       "basename": "button",

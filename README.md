@@ -1,5 +1,11 @@
 
 ## 引言
+
+This Vault  contains the basic functions of Obsidian and has built-in common Obsidian plugins.
+Notice：You need to open this vault with [Obsidian](https://obsidian.md/) 
+
+---
+
 本[Examples库](https://github.com/cumany/Blue-topaz-examples)由Cuman建立，Tips教程由BT主题作者3F撰写。
 本库是一个包含Obsidian基本功能的入门库，并内置了Obsidian的常用插件。
 需要用[Obsidian](https://obsidian.md/)软件打开本库即可。
