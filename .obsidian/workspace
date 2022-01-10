@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": true,
             "source": false
           }
@@ -116,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "88-Template/home.md"
               }
             }
           }
@@ -134,7 +134,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +151,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -186,8 +186,8 @@
   },
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
-    "README.md",
     "88-Template/home.md",
+    "README.md",
     "从这开始.md",
     "20-Diary/2022-01-10.md",
     "20-Diary/2022-01-09.md",
