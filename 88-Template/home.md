@@ -35,7 +35,7 @@ async function getinfo()
       console.log("beigin fetch hitokoto...");
 let url='https://v1.hitokoto.cn/?encode=json&c=d&c=i';
    let finalURL = new URL(url);
-let response = await request({method: 'GET', url: finalURL.toString()});
+let response = await request({method: 'GET', url: finalURL.toString()});![[]]
 let data = JSON.parse(response);
 	
 	let who =data['from_who'];

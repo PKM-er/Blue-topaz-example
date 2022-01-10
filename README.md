@@ -38,12 +38,15 @@
 | obsidian-banners                    | 主页显示头图                                                    |
 | obsidian-admonition                 | 文本框插件                                                      |
 | hotkey-helper                       | 热键提示插件                                                    |
-| homepage                            | 打开ob显示主页插件                                              |
+| homepage                            | 打开ob显示主页插件,非必须已禁用                                 |
 | dataview                            | 数据查询插件                                                    |
-| cMenu1.1.2 跟随悬浮效果             | 快捷工具栏                                                      |
+| cMenu 魔改版by cuman                | 快捷工具栏                                                      |
 | cm-editor-syntax-highlight-obsidian | 语法高亮插件，不兼容v0.13.14之后的ob版本直接关闭即可            |
 | calendar                            | 日历插件                                                        |
 | buttons                             | 按钮插件                                                        |
-| Obsidian Icon Folder                | 文件自定义图标插件                                                                |
+| Obsidian Icon Folder                | 文件自定义图标插件                                              |
+| obsidian-view-mode-by-frontmatter   | 通过yaml设置文档默认打开是预览还是编辑模式                                                                |
+
+
 
 

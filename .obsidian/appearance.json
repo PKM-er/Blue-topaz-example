@@ -5,7 +5,8 @@
   "enabledCssSnippets": [
     "【自定义】mytools 样式",
     "【自定义】myhome 样式",
-    "【图标】预览网址加图标 - External Link Icons"
+    "【图标】预览网址加图标 - External Link Icons",
+    "memos-dark"
   ],
   "translucency": false
 }

@@ -1,6 +1,6 @@
 {
   "communityPluginSortOrder": "download",
-  "readableLineLength": false,
+  "readableLineLength": true,
   "foldHeading": true,
   "foldIndent": false,
   "alwaysUpdateLinks": true,

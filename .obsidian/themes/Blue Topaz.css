@@ -1361,7 +1361,7 @@ settings:
     title.zh: 是否开启Admonition特别样式支持
     type: class-toggle
     default: false
-    description : 目前支持ad类型：blank 全透明框🔸def definition🔸thm theorem🔸lem lemma🔸cor corollary🔸pro proposition 🔸hibox  自动隐藏框🔸col2 col3 col4内容分多栏🔸kanban 伪看板❗使用方法❗下面以thm类型为例，在admonition插件的设置页面中，类型填 thm，标题填 定理，图标选择hand-point-right，颜色自己选比如浅绿色，添加成功后，在正文中使用代码块```ad-thm 即可激活。其他类型以此类推。  
+    description : 目前支持ad类型：blank 全透明框🔸def definition🔸thm theorem🔸lem lemma🔸cor corollary🔸pro proposition 🔸hibox  自动隐藏框🔸col2 col3 col4 flex内容分多栏🔸kanban 伪看板❗使用方法❗下面以thm类型为例，在admonition插件的设置页面中，类型填 thm，标题填 定理，图标选择hand-point-right，颜色自己选比如浅绿色，添加成功后，在正文中使用代码块```ad-thm 即可激活。其他类型以此类推。  
   -
     id: style-options-for-calendar-plugin-header
     title: 3.2 Calendar
@@ -4046,7 +4046,6 @@ body.color-scheme-options-topaz-nord.theme-dark {
   --mark-highlight-strong-em: var(--nord13-1);
 
   --text-selection: var(--nord9-2);
-  --text-on-accent: #dcddde;
 
   --interactive-accent: var(--nord9);
   --interactive-accent-rgb: 129, 161, 193;
@@ -4207,7 +4206,6 @@ body.color-scheme-options-topaz-nord.theme-light {
   --accent-em: var(--nord14);
 
   --text-selection: var(--nord9-2);
-  --text-on-accent: #dcddde;
 
   --interactive-accent: var(--nord9);
   --interactive-accent-rgb: 129, 161, 193;
@@ -9025,11 +9023,11 @@ body:not(.font-family-change-to-default) .markdown-source-view.mod-cm6 .cm-scrol
   letter-spacing: calc(var(--letter-space-main) * 0.03em);
 }
 
-.markdown-preview-view.is-readable-line-width .markdown-preview-sizer,
-.markdown-source-view.is-readable-line-width .CodeMirror,
-.is-readable-line-width .markdown-preview-section,
-.is-readable-line-width .markdown-preview-section > div,
-.markdown-preview-view.is-readable-line-width .markdown-preview-section {
+.markdown-preview-view.is-readable-line-width:not(.matrix) .markdown-preview-sizer,
+.markdown-source-view.is-readable-line-width:not(.matrix) .CodeMirror,
+.markdown-preview-view:not(.matrix) .is-readable-line-width .markdown-preview-section,
+.markdown-preview-view:not(.matrix) .is-readable-line-width .markdown-preview-section > div,
+.markdown-preview-view.is-readable-line-width:not(.matrix) .markdown-preview-section {
   width: var(--line-width-readable);
   max-width: 100%;
   margin: 0 auto;
@@ -10995,6 +10993,11 @@ body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active {
 .markdown-source-view.is-live-preview .internal-embed.image-embed.is-loaded img {
   margin: 3px auto;
   display: block;
+}
+
+.markdown-source-view.mod-cm6 img {
+  display: block;
+  margin: auto;
 }
 
 /* file explorer :Wrap long nav text and some paddings */
@@ -14013,11 +14016,9 @@ aside>h2 {
   border-bottom: 1px solid !important;
   background-color: transparent;
   padding: 0px 5px 0px 5px;
-  width: 130px;
+  max-width: 150px;
   color: #467cf0 !important;
   position: absolute;
-  left: -5px;
-  margin-left: 20%;
 }
 
 aside>h1:hover::before,
@@ -16029,10 +16030,10 @@ img[alt$="left"],
 img[alt$="Left"],
 img[alt$="LEFT"],
 img[alt$="L"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="left"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="Left"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="LEFT"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="L"]  {
+.markdown-source-view.mod-cm6 img[alt$="left"],
+.markdown-source-view.mod-cm6 img[alt$="Left"],
+.markdown-source-view.mod-cm6 img[alt$="LEFT"],
+.markdown-source-view.mod-cm6 img[alt$="L"]  {
   margin-left: 0;
 }
 
@@ -16040,10 +16041,10 @@ img[alt$="right"],
 img[alt$="Right"],
 img[alt$="RIGHT"],
 img[alt$="R"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="right"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="Right"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="RIGHT"],
-.cm-s-obsidian.mod-cm6 .internal-embed.image-embed.is-loaded img[alt$="R"] {
+.markdown-source-view.mod-cm6 img[alt$="right"],
+.markdown-source-view.mod-cm6 img[alt$="Right"],
+.markdown-source-view.mod-cm6 img[alt$="RIGHT"],
+.markdown-source-view.mod-cm6 img[alt$="R"] {
   margin-right: 0;
 }
 
@@ -19361,9 +19362,7 @@ cssclass: matrix
   --matrix-4: var(--p-kanban-color-5);
   --matrix-5: var(--p-kanban-color-6);
 }
-.markdown-preview-view.matrix.is-readable-line-width .markdown-preview-sizer, .markdown-source-view.matrix.is-readable-line-width .CodeMirror, .matrix.is-readable-line-width .markdown-preview-section, .matrix.is-readable-line-width .markdown-preview-section > div, .markdown-preview-view.matrix.is-readable-line-width .markdown-preview-section {
-  width: 100%;
-}
+
 .markdown-preview-view.matrix table tr {
   display: flex;
 }
