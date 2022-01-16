@@ -1155,13 +1155,15 @@ new TemplateTag(stripIndentTransformer, trimResultTransformer);
 var stripIndents = new TemplateTag(stripIndentTransformer('all'), trimResultTransformer);
 
 class Banner extends obsidian.MarkdownRenderChild {
-    constructor(plugin, el, wrapper, ctx, isEmbed) {
+    constructor(plugin, el, wrapper, ctx, bannerData, isEmbed) {
         super(el);
         this.wrapper = wrapper;
         this.plugin = plugin;
-        this.metaManager = plugin.metaManager;
+        this.metadataCache = plugin.app.metadataCache;
         this.vault = plugin.vault;
+        this.metaManager = plugin.metaManager;
         this.ctx = ctx;
+        this.bannerData = bannerData;
         this.isEmbed = isEmbed;
         this.isDragging = false;
         this.prevPos = null;
@@ -1169,7 +1171,8 @@ class Banner extends obsidian.MarkdownRenderChild {
     // Prepare and render banner
     onload() {
         const { allowMobileDrag, style } = this.plugin.settings;
-        const { containerEl: contentEl, frontmatter: { banner: src, banner_x = 0.5, banner_y = 0.5 } } = this.ctx;
+        const { containerEl: contentEl } = this.ctx;
+        const { banner: src, banner_x = 0.5, banner_y = 0.5 } = this.bannerData;
         this.wrapper.addClass('obsidian-banner-wrapper');
         this.containerEl.addClasses(['obsidian-banner', style]);
         const messageBox = document.createElement('div');
@@ -1189,7 +1192,7 @@ class Banner extends obsidian.MarkdownRenderChild {
             this.wrapper.addClass('loaded');
         };
         img.onerror = () => {
-            messageBox.innerHTML = '<p>Error loading banner image! Is the <code>banner</code> field valid?</p>';
+            messageBox.innerHTML = `<p>Error loading banner image! Is the <code>${this.plugin.getSettingValue('frontmatterField')}</code> field valid?</p>`;
             this.wrapper.addClass('error');
         };
         // Only enable banner drag adjustment in non-embed views
@@ -1255,8 +1258,16 @@ class Banner extends obsidian.MarkdownRenderChild {
     }
     // Helper to get the URL path to the image file
     parseSource(src) {
-        const file = this.vault.getAbstractFileByPath(src);
-        return (file instanceof obsidian.TFile) ? this.vault.adapter.getResourcePath(src) : src;
+        // Internal embed link format - "[[<link>]]"
+        if (/^\!\[\[.+\]\]$/.test(src)) {
+            const link = src.slice(3, -2);
+            const file = this.metadataCache.getFirstLinkpathDest(link, this.ctx.sourcePath);
+            return file ? this.vault.getResourcePath(file) : link;
+        }
+        // Absolute paths (legacy), relative paths (legacy), & URLs
+        const path = src.startsWith('/') ? src.slice(1) : src;
+        const file = this.vault.getAbstractFileByPath(path);
+        return (file instanceof obsidian.TFile) ? this.vault.getResourcePath(file) : src;
     }
     // Helper to get mouse position
     getMousePos(e, div) {
@@ -1265,166 +1276,3458 @@ class Banner extends obsidian.MarkdownRenderChild {
     }
 }
 
-const DEFAULT_SETTINGS = {
-    height: null,
-    style: 'solid',
-    showInEmbed: true,
-    embedHeight: null,
-    showPreviewInLocalModal: true,
-    localSuggestionsLimit: null,
-    bannersFolder: '',
-    allowMobileDrag: false
+/*! Copyright Twitter Inc. and other contributors. Licensed under MIT */
+var twemoji=function(){var twemoji={base:"https://twemoji.maxcdn.com/v/13.1.0/",ext:".png",size:"72x72",className:"emoji",convert:{fromCodePoint:fromCodePoint,toCodePoint:toCodePoint},onerror:function onerror(){if(this.parentNode){this.parentNode.replaceChild(createText(this.alt,false),this);}},parse:parse,replace:replace,test:test},escaper={"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"},re=/(?:\ud83d\udc68\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffc-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb\udffd-\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb\udffc\udffe\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb-\udffd\udfff]|\ud83e\uddd1\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83e\uddd1\ud83c[\udffb-\udffe]|\ud83d\udc68\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffc-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffd-\udfff]|\ud83d\udc68\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc68\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffd\udfff]|\ud83d\udc68\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc68\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffe]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffc-\udfff]|\ud83d\udc69\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffc-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffd-\udfff]|\ud83d\udc69\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb\udffd-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc69\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb\udffc\udffe\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffd\udfff]|\ud83d\udc69\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb-\udffd\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc68\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83d\udc69\ud83c[\udffb-\udfff]|\ud83d\udc69\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83d\udc68\ud83c[\udffb-\udffe]|\ud83d\udc69\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83d\udc69\ud83c[\udffb-\udffe]|\ud83e\uddd1\ud83c\udffb\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffc-\udfff]|\ud83e\uddd1\ud83c\udffb\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb\udffd-\udfff]|\ud83e\uddd1\ud83c\udffc\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb\udffc\udffe\udfff]|\ud83e\uddd1\ud83c\udffd\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb-\udffd\udfff]|\ud83e\uddd1\ud83c\udffe\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83e\uddd1\ud83c\udfff\u200d\u2764\ufe0f\u200d\ud83e\uddd1\ud83c[\udffb-\udffe]|\ud83e\uddd1\ud83c\udfff\u200d\ud83e\udd1d\u200d\ud83e\uddd1\ud83c[\udffb-\udfff]|\ud83d\udc68\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d\udc68|\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d\udc8b\u200d\ud83d[\udc68\udc69]|\ud83d\udc68\u200d\u2764\ufe0f\u200d\ud83d\udc68|\ud83d\udc69\u200d\u2764\ufe0f\u200d\ud83d[\udc68\udc69]|\ud83e\uddd1\u200d\ud83e\udd1d\u200d\ud83e\uddd1|\ud83d\udc6b\ud83c[\udffb-\udfff]|\ud83d\udc6c\ud83c[\udffb-\udfff]|\ud83d\udc6d\ud83c[\udffb-\udfff]|\ud83d\udc8f\ud83c[\udffb-\udfff]|\ud83d\udc91\ud83c[\udffb-\udfff]|\ud83d[\udc6b-\udc6d\udc8f\udc91])|(?:\ud83d[\udc68\udc69]|\ud83e\uddd1)(?:\ud83c[\udffb-\udfff])?\u200d(?:\u2695\ufe0f|\u2696\ufe0f|\u2708\ufe0f|\ud83c[\udf3e\udf73\udf7c\udf84\udf93\udfa4\udfa8\udfeb\udfed]|\ud83d[\udcbb\udcbc\udd27\udd2c\ude80\ude92]|\ud83e[\uddaf-\uddb3\uddbc\uddbd])|(?:\ud83c[\udfcb\udfcc]|\ud83d[\udd74\udd75]|\u26f9)((?:\ud83c[\udffb-\udfff]|\ufe0f)\u200d[\u2640\u2642]\ufe0f)|(?:\ud83c[\udfc3\udfc4\udfca]|\ud83d[\udc6e\udc70\udc71\udc73\udc77\udc81\udc82\udc86\udc87\ude45-\ude47\ude4b\ude4d\ude4e\udea3\udeb4-\udeb6]|\ud83e[\udd26\udd35\udd37-\udd39\udd3d\udd3e\uddb8\uddb9\uddcd-\uddcf\uddd4\uddd6-\udddd])(?:\ud83c[\udffb-\udfff])?\u200d[\u2640\u2642]\ufe0f|(?:\ud83d\udc68\u200d\ud83d\udc68\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc68\u200d\ud83d\udc68\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d\udc69\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc69\u200d\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc68\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc68\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc68\u200d\ud83d\udc68\u200d\ud83d[\udc66\udc67]|\ud83d\udc68\u200d\ud83d\udc69\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d\udc66\u200d\ud83d\udc66|\ud83d\udc69\u200d\ud83d\udc67\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d\udc69\u200d\ud83d[\udc66\udc67]|\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f|\ud83c\udff3\ufe0f\u200d\ud83c\udf08|\ud83d\ude36\u200d\ud83c\udf2b\ufe0f|\u2764\ufe0f\u200d\ud83d\udd25|\u2764\ufe0f\u200d\ud83e\ude79|\ud83c\udff4\u200d\u2620\ufe0f|\ud83d\udc15\u200d\ud83e\uddba|\ud83d\udc3b\u200d\u2744\ufe0f|\ud83d\udc41\u200d\ud83d\udde8|\ud83d\udc68\u200d\ud83d[\udc66\udc67]|\ud83d\udc69\u200d\ud83d[\udc66\udc67]|\ud83d\udc6f\u200d\u2640\ufe0f|\ud83d\udc6f\u200d\u2642\ufe0f|\ud83d\ude2e\u200d\ud83d\udca8|\ud83d\ude35\u200d\ud83d\udcab|\ud83e\udd3c\u200d\u2640\ufe0f|\ud83e\udd3c\u200d\u2642\ufe0f|\ud83e\uddde\u200d\u2640\ufe0f|\ud83e\uddde\u200d\u2642\ufe0f|\ud83e\udddf\u200d\u2640\ufe0f|\ud83e\udddf\u200d\u2642\ufe0f|\ud83d\udc08\u200d\u2b1b)|[#*0-9]\ufe0f?\u20e3|(?:[©®\u2122\u265f]\ufe0f)|(?:\ud83c[\udc04\udd70\udd71\udd7e\udd7f\ude02\ude1a\ude2f\ude37\udf21\udf24-\udf2c\udf36\udf7d\udf96\udf97\udf99-\udf9b\udf9e\udf9f\udfcd\udfce\udfd4-\udfdf\udff3\udff5\udff7]|\ud83d[\udc3f\udc41\udcfd\udd49\udd4a\udd6f\udd70\udd73\udd76-\udd79\udd87\udd8a-\udd8d\udda5\udda8\uddb1\uddb2\uddbc\uddc2-\uddc4\uddd1-\uddd3\udddc-\uddde\udde1\udde3\udde8\uddef\uddf3\uddfa\udecb\udecd-\udecf\udee0-\udee5\udee9\udef0\udef3]|[\u203c\u2049\u2139\u2194-\u2199\u21a9\u21aa\u231a\u231b\u2328\u23cf\u23ed-\u23ef\u23f1\u23f2\u23f8-\u23fa\u24c2\u25aa\u25ab\u25b6\u25c0\u25fb-\u25fe\u2600-\u2604\u260e\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262a\u262e\u262f\u2638-\u263a\u2640\u2642\u2648-\u2653\u2660\u2663\u2665\u2666\u2668\u267b\u267f\u2692-\u2697\u2699\u269b\u269c\u26a0\u26a1\u26a7\u26aa\u26ab\u26b0\u26b1\u26bd\u26be\u26c4\u26c5\u26c8\u26cf\u26d1\u26d3\u26d4\u26e9\u26ea\u26f0-\u26f5\u26f8\u26fa\u26fd\u2702\u2708\u2709\u270f\u2712\u2714\u2716\u271d\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u2764\u27a1\u2934\u2935\u2b05-\u2b07\u2b1b\u2b1c\u2b50\u2b55\u3030\u303d\u3297\u3299])(?:\ufe0f|(?!\ufe0e))|(?:(?:\ud83c[\udfcb\udfcc]|\ud83d[\udd74\udd75\udd90]|[\u261d\u26f7\u26f9\u270c\u270d])(?:\ufe0f|(?!\ufe0e))|(?:\ud83c[\udf85\udfc2-\udfc4\udfc7\udfca]|\ud83d[\udc42\udc43\udc46-\udc50\udc66-\udc69\udc6e\udc70-\udc78\udc7c\udc81-\udc83\udc85-\udc87\udcaa\udd7a\udd95\udd96\ude45-\ude47\ude4b-\ude4f\udea3\udeb4-\udeb6\udec0\udecc]|\ud83e[\udd0c\udd0f\udd18-\udd1c\udd1e\udd1f\udd26\udd30-\udd39\udd3d\udd3e\udd77\uddb5\uddb6\uddb8\uddb9\uddbb\uddcd-\uddcf\uddd1-\udddd]|[\u270a\u270b]))(?:\ud83c[\udffb-\udfff])?|(?:\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f|\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc73\udb40\udc63\udb40\udc74\udb40\udc7f|\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc77\udb40\udc6c\udb40\udc73\udb40\udc7f|\ud83c\udde6\ud83c[\udde8-\uddec\uddee\uddf1\uddf2\uddf4\uddf6-\uddfa\uddfc\uddfd\uddff]|\ud83c\udde7\ud83c[\udde6\udde7\udde9-\uddef\uddf1-\uddf4\uddf6-\uddf9\uddfb\uddfc\uddfe\uddff]|\ud83c\udde8\ud83c[\udde6\udde8\udde9\uddeb-\uddee\uddf0-\uddf5\uddf7\uddfa-\uddff]|\ud83c\udde9\ud83c[\uddea\uddec\uddef\uddf0\uddf2\uddf4\uddff]|\ud83c\uddea\ud83c[\udde6\udde8\uddea\uddec\udded\uddf7-\uddfa]|\ud83c\uddeb\ud83c[\uddee-\uddf0\uddf2\uddf4\uddf7]|\ud83c\uddec\ud83c[\udde6\udde7\udde9-\uddee\uddf1-\uddf3\uddf5-\uddfa\uddfc\uddfe]|\ud83c\udded\ud83c[\uddf0\uddf2\uddf3\uddf7\uddf9\uddfa]|\ud83c\uddee\ud83c[\udde8-\uddea\uddf1-\uddf4\uddf6-\uddf9]|\ud83c\uddef\ud83c[\uddea\uddf2\uddf4\uddf5]|\ud83c\uddf0\ud83c[\uddea\uddec-\uddee\uddf2\uddf3\uddf5\uddf7\uddfc\uddfe\uddff]|\ud83c\uddf1\ud83c[\udde6-\udde8\uddee\uddf0\uddf7-\uddfb\uddfe]|\ud83c\uddf2\ud83c[\udde6\udde8-\udded\uddf0-\uddff]|\ud83c\uddf3\ud83c[\udde6\udde8\uddea-\uddec\uddee\uddf1\uddf4\uddf5\uddf7\uddfa\uddff]|\ud83c\uddf4\ud83c\uddf2|\ud83c\uddf5\ud83c[\udde6\uddea-\udded\uddf0-\uddf3\uddf7-\uddf9\uddfc\uddfe]|\ud83c\uddf6\ud83c\udde6|\ud83c\uddf7\ud83c[\uddea\uddf4\uddf8\uddfa\uddfc]|\ud83c\uddf8\ud83c[\udde6-\uddea\uddec-\uddf4\uddf7-\uddf9\uddfb\uddfd-\uddff]|\ud83c\uddf9\ud83c[\udde6\udde8\udde9\uddeb-\udded\uddef-\uddf4\uddf7\uddf9\uddfb\uddfc\uddff]|\ud83c\uddfa\ud83c[\udde6\uddec\uddf2\uddf3\uddf8\uddfe\uddff]|\ud83c\uddfb\ud83c[\udde6\udde8\uddea\uddec\uddee\uddf3\uddfa]|\ud83c\uddfc\ud83c[\uddeb\uddf8]|\ud83c\uddfd\ud83c\uddf0|\ud83c\uddfe\ud83c[\uddea\uddf9]|\ud83c\uddff\ud83c[\udde6\uddf2\uddfc]|\ud83c[\udccf\udd8e\udd91-\udd9a\udde6-\uddff\ude01\ude32-\ude36\ude38-\ude3a\ude50\ude51\udf00-\udf20\udf2d-\udf35\udf37-\udf7c\udf7e-\udf84\udf86-\udf93\udfa0-\udfc1\udfc5\udfc6\udfc8\udfc9\udfcf-\udfd3\udfe0-\udff0\udff4\udff8-\udfff]|\ud83d[\udc00-\udc3e\udc40\udc44\udc45\udc51-\udc65\udc6a\udc6f\udc79-\udc7b\udc7d-\udc80\udc84\udc88-\udc8e\udc90\udc92-\udca9\udcab-\udcfc\udcff-\udd3d\udd4b-\udd4e\udd50-\udd67\udda4\uddfb-\ude44\ude48-\ude4a\ude80-\udea2\udea4-\udeb3\udeb7-\udebf\udec1-\udec5\uded0-\uded2\uded5-\uded7\udeeb\udeec\udef4-\udefc\udfe0-\udfeb]|\ud83e[\udd0d\udd0e\udd10-\udd17\udd1d\udd20-\udd25\udd27-\udd2f\udd3a\udd3c\udd3f-\udd45\udd47-\udd76\udd78\udd7a-\uddb4\uddb7\uddba\uddbc-\uddcb\uddd0\uddde-\uddff\ude70-\ude74\ude78-\ude7a\ude80-\ude86\ude90-\udea8\udeb0-\udeb6\udec0-\udec2\uded0-\uded6]|[\u23e9-\u23ec\u23f0\u23f3\u267e\u26ce\u2705\u2728\u274c\u274e\u2753-\u2755\u2795-\u2797\u27b0\u27bf\ue50a])|\ufe0f/g,UFE0Fg=/\uFE0F/g,U200D=String.fromCharCode(8205),rescaper=/[&<>'"]/g,shouldntBeParsed=/^(?:iframe|noframes|noscript|script|select|style|textarea)$/,fromCharCode=String.fromCharCode;return twemoji;function createText(text,clean){return document.createTextNode(clean?text.replace(UFE0Fg,""):text)}function escapeHTML(s){return s.replace(rescaper,replacer)}function defaultImageSrcGenerator(icon,options){return "".concat(options.base,options.size,"/",icon,options.ext)}function grabAllTextNodes(node,allText){var childNodes=node.childNodes,length=childNodes.length,subnode,nodeType;while(length--){subnode=childNodes[length];nodeType=subnode.nodeType;if(nodeType===3){allText.push(subnode);}else if(nodeType===1&&!("ownerSVGElement"in subnode)&&!shouldntBeParsed.test(subnode.nodeName.toLowerCase())){grabAllTextNodes(subnode,allText);}}return allText}function grabTheRightIcon(rawText){return toCodePoint(rawText.indexOf(U200D)<0?rawText.replace(UFE0Fg,""):rawText)}function parseNode(node,options){var allText=grabAllTextNodes(node,[]),length=allText.length,attrib,attrname,modified,fragment,subnode,text,match,i,index,img,rawText,iconId,src;while(length--){modified=false;fragment=document.createDocumentFragment();subnode=allText[length];text=subnode.nodeValue;i=0;while(match=re.exec(text)){index=match.index;if(index!==i){fragment.appendChild(createText(text.slice(i,index),true));}rawText=match[0];iconId=grabTheRightIcon(rawText);i=index+rawText.length;src=options.callback(iconId,options);if(iconId&&src){img=new Image;img.onerror=options.onerror;img.setAttribute("draggable","false");attrib=options.attributes(rawText,iconId);for(attrname in attrib){if(attrib.hasOwnProperty(attrname)&&attrname.indexOf("on")!==0&&!img.hasAttribute(attrname)){img.setAttribute(attrname,attrib[attrname]);}}img.className=options.className;img.alt=rawText;img.src=src;modified=true;fragment.appendChild(img);}if(!img)fragment.appendChild(createText(rawText,false));img=null;}if(modified){if(i<text.length){fragment.appendChild(createText(text.slice(i),true));}subnode.parentNode.replaceChild(fragment,subnode);}}return node}function parseString(str,options){return replace(str,function(rawText){var ret=rawText,iconId=grabTheRightIcon(rawText),src=options.callback(iconId,options),attrib,attrname;if(iconId&&src){ret="<img ".concat('class="',options.className,'" ','draggable="false" ','alt="',rawText,'"',' src="',src,'"');attrib=options.attributes(rawText,iconId);for(attrname in attrib){if(attrib.hasOwnProperty(attrname)&&attrname.indexOf("on")!==0&&ret.indexOf(" "+attrname+"=")===-1){ret=ret.concat(" ",attrname,'="',escapeHTML(attrib[attrname]),'"');}}ret=ret.concat("/>");}return ret})}function replacer(m){return escaper[m]}function returnNull(){return null}function toSizeSquaredAsset(value){return typeof value==="number"?value+"x"+value:value}function fromCodePoint(codepoint){var code=typeof codepoint==="string"?parseInt(codepoint,16):codepoint;if(code<65536){return fromCharCode(code)}code-=65536;return fromCharCode(55296+(code>>10),56320+(code&1023))}function parse(what,how){if(!how||typeof how==="function"){how={callback:how};}return (typeof what==="string"?parseString:parseNode)(what,{callback:how.callback||defaultImageSrcGenerator,attributes:typeof how.attributes==="function"?how.attributes:returnNull,base:typeof how.base==="string"?how.base:twemoji.base,ext:how.ext||twemoji.ext,size:how.folder||toSizeSquaredAsset(how.size||twemoji.size),className:how.className||twemoji.className,onerror:how.onerror||twemoji.onerror})}function replace(text,callback){return String(text).replace(re,callback)}function test(text){re.lastIndex=0;var result=re.test(text);re.lastIndex=0;return result}function toCodePoint(unicodeSurrogates,sep){var r=[],c=0,p=0,i=0;while(i<unicodeSurrogates.length){c=unicodeSurrogates.charCodeAt(i++);if(p){r.push((65536+(p-55296<<10)+(c-56320)).toString(16));p=0;}else if(55296<=c&&c<=56319){p=c;}else {r.push(c.toString(16));}}return r.join(sep||"-")}}();
+
+var umbrella_with_rain_drops = "☔";
+var coffee = "☕";
+var aries = "♈";
+var taurus = "♉";
+var sagittarius = "♐";
+var capricorn = "♑";
+var aquarius = "♒";
+var pisces = "♓";
+var anchor = "⚓";
+var white_check_mark = "✅";
+var sparkles = "✨";
+var question = "❓";
+var grey_question = "❔";
+var grey_exclamation = "❕";
+var exclamation = "❗";
+var heavy_exclamation_mark = "❗";
+var heavy_plus_sign = "➕";
+var heavy_minus_sign = "➖";
+var heavy_division_sign = "➗";
+var hash = "#️⃣";
+var keycap_star = "*️⃣";
+var zero = "0️⃣";
+var one = "1️⃣";
+var two = "2️⃣";
+var three = "3️⃣";
+var four = "4️⃣";
+var five = "5️⃣";
+var six = "6️⃣";
+var seven = "7️⃣";
+var eight = "8️⃣";
+var nine = "9️⃣";
+var copyright = "©️";
+var registered = "®️";
+var mahjong = "🀄";
+var black_joker = "🃏";
+var a = "🅰️";
+var b = "🅱️";
+var o2 = "🅾️";
+var parking = "🅿️";
+var ab = "🆎";
+var cl = "🆑";
+var cool = "🆒";
+var free = "🆓";
+var id = "🆔";
+var ng = "🆖";
+var ok = "🆗";
+var sos = "🆘";
+var up = "🆙";
+var vs = "🆚";
+var cn = "🇨🇳";
+var de = "🇩🇪";
+var es = "🇪🇸";
+var fr = "🇫🇷";
+var gb = "🇬🇧";
+var uk = "🇬🇧";
+var it = "🇮🇹";
+var jp = "🇯🇵";
+var kr = "🇰🇷";
+var ru = "🇷🇺";
+var us = "🇺🇸";
+var koko = "🈁";
+var sa = "🈂️";
+var u7121 = "🈚";
+var u6307 = "🈯";
+var u7981 = "🈲";
+var u7a7a = "🈳";
+var u5408 = "🈴";
+var u6e80 = "🈵";
+var u6709 = "🈶";
+var u6708 = "🈷️";
+var u7533 = "🈸";
+var u5272 = "🈹";
+var u55b6 = "🈺";
+var ideograph_advantage = "🉐";
+var accept = "🉑";
+var cyclone = "🌀";
+var foggy = "🌁";
+var closed_umbrella = "🌂";
+var night_with_stars = "🌃";
+var sunrise_over_mountains = "🌄";
+var sunrise = "🌅";
+var city_sunset = "🌆";
+var city_sunrise = "🌇";
+var rainbow = "🌈";
+var bridge_at_night = "🌉";
+var ocean = "🌊";
+var volcano = "🌋";
+var milky_way = "🌌";
+var earth_africa = "🌍";
+var earth_americas = "🌎";
+var earth_asia = "🌏";
+var globe_with_meridians = "🌐";
+var new_moon = "🌑";
+var waxing_crescent_moon = "🌒";
+var first_quarter_moon = "🌓";
+var moon = "🌔";
+var waxing_gibbous_moon = "🌔";
+var full_moon = "🌕";
+var waning_gibbous_moon = "🌖";
+var last_quarter_moon = "🌗";
+var waning_crescent_moon = "🌘";
+var crescent_moon = "🌙";
+var new_moon_with_face = "🌚";
+var first_quarter_moon_with_face = "🌛";
+var last_quarter_moon_with_face = "🌜";
+var full_moon_with_face = "🌝";
+var sun_with_face = "🌞";
+var star2 = "🌟";
+var stars = "🌠";
+var thermometer = "🌡️";
+var mostly_sunny = "🌤️";
+var sun_small_cloud = "🌤️";
+var barely_sunny = "🌥️";
+var sun_behind_cloud = "🌥️";
+var partly_sunny_rain = "🌦️";
+var sun_behind_rain_cloud = "🌦️";
+var rain_cloud = "🌧️";
+var snow_cloud = "🌨️";
+var lightning = "🌩️";
+var lightning_cloud = "🌩️";
+var tornado = "🌪️";
+var tornado_cloud = "🌪️";
+var fog = "🌫️";
+var wind_blowing_face = "🌬️";
+var hotdog = "🌭";
+var taco = "🌮";
+var burrito = "🌯";
+var chestnut = "🌰";
+var seedling = "🌱";
+var evergreen_tree = "🌲";
+var deciduous_tree = "🌳";
+var palm_tree = "🌴";
+var cactus = "🌵";
+var hot_pepper = "🌶️";
+var tulip = "🌷";
+var cherry_blossom = "🌸";
+var rose = "🌹";
+var hibiscus = "🌺";
+var sunflower = "🌻";
+var blossom = "🌼";
+var corn = "🌽";
+var ear_of_rice = "🌾";
+var herb = "🌿";
+var four_leaf_clover = "🍀";
+var maple_leaf = "🍁";
+var fallen_leaf = "🍂";
+var leaves = "🍃";
+var mushroom = "🍄";
+var tomato = "🍅";
+var eggplant = "🍆";
+var grapes = "🍇";
+var melon = "🍈";
+var watermelon = "🍉";
+var tangerine = "🍊";
+var lemon = "🍋";
+var banana = "🍌";
+var pineapple = "🍍";
+var apple = "🍎";
+var green_apple = "🍏";
+var pear = "🍐";
+var peach = "🍑";
+var cherries = "🍒";
+var strawberry = "🍓";
+var hamburger = "🍔";
+var pizza = "🍕";
+var meat_on_bone = "🍖";
+var poultry_leg = "🍗";
+var rice_cracker = "🍘";
+var rice_ball = "🍙";
+var rice = "🍚";
+var curry = "🍛";
+var ramen = "🍜";
+var spaghetti = "🍝";
+var bread = "🍞";
+var fries = "🍟";
+var sweet_potato = "🍠";
+var dango = "🍡";
+var oden = "🍢";
+var sushi = "🍣";
+var fried_shrimp = "🍤";
+var fish_cake = "🍥";
+var icecream = "🍦";
+var shaved_ice = "🍧";
+var ice_cream = "🍨";
+var doughnut = "🍩";
+var cookie = "🍪";
+var chocolate_bar = "🍫";
+var candy = "🍬";
+var lollipop = "🍭";
+var custard = "🍮";
+var honey_pot = "🍯";
+var cake = "🍰";
+var bento = "🍱";
+var stew = "🍲";
+var fried_egg = "🍳";
+var cooking = "🍳";
+var fork_and_knife = "🍴";
+var tea = "🍵";
+var sake = "🍶";
+var wine_glass = "🍷";
+var cocktail = "🍸";
+var tropical_drink = "🍹";
+var beer = "🍺";
+var beers = "🍻";
+var baby_bottle = "🍼";
+var knife_fork_plate = "🍽️";
+var champagne = "🍾";
+var popcorn = "🍿";
+var ribbon = "🎀";
+var gift = "🎁";
+var birthday = "🎂";
+var jack_o_lantern = "🎃";
+var christmas_tree = "🎄";
+var santa = "🎅";
+var fireworks = "🎆";
+var sparkler = "🎇";
+var balloon = "🎈";
+var tada = "🎉";
+var confetti_ball = "🎊";
+var tanabata_tree = "🎋";
+var crossed_flags = "🎌";
+var bamboo = "🎍";
+var dolls = "🎎";
+var flags = "🎏";
+var wind_chime = "🎐";
+var rice_scene = "🎑";
+var school_satchel = "🎒";
+var mortar_board = "🎓";
+var medal = "🎖️";
+var reminder_ribbon = "🎗️";
+var studio_microphone = "🎙️";
+var level_slider = "🎚️";
+var control_knobs = "🎛️";
+var film_frames = "🎞️";
+var admission_tickets = "🎟️";
+var carousel_horse = "🎠";
+var ferris_wheel = "🎡";
+var roller_coaster = "🎢";
+var fishing_pole_and_fish = "🎣";
+var microphone = "🎤";
+var movie_camera = "🎥";
+var cinema = "🎦";
+var headphones = "🎧";
+var art = "🎨";
+var tophat = "🎩";
+var circus_tent = "🎪";
+var ticket = "🎫";
+var clapper = "🎬";
+var performing_arts = "🎭";
+var video_game = "🎮";
+var dart = "🎯";
+var slot_machine = "🎰";
+var game_die = "🎲";
+var bowling = "🎳";
+var flower_playing_cards = "🎴";
+var musical_note = "🎵";
+var notes = "🎶";
+var saxophone = "🎷";
+var guitar = "🎸";
+var musical_keyboard = "🎹";
+var trumpet = "🎺";
+var violin = "🎻";
+var musical_score = "🎼";
+var running_shirt_with_sash = "🎽";
+var tennis = "🎾";
+var ski = "🎿";
+var basketball = "🏀";
+var checkered_flag = "🏁";
+var snowboarder = "🏂";
+var runner = "🏃‍♂️";
+var running = "🏃‍♂️";
+var surfer = "🏄‍♂️";
+var sports_medal = "🏅";
+var trophy = "🏆";
+var horse_racing = "🏇";
+var football = "🏈";
+var rugby_football = "🏉";
+var swimmer = "🏊‍♂️";
+var weight_lifter = "🏋️‍♂️";
+var golfer = "🏌️‍♂️";
+var racing_motorcycle = "🏍️";
+var racing_car = "🏎️";
+var cricket_bat_and_ball = "🏏";
+var volleyball = "🏐";
+var field_hockey_stick_and_ball = "🏑";
+var ice_hockey_stick_and_puck = "🏒";
+var table_tennis_paddle_and_ball = "🏓";
+var snow_capped_mountain = "🏔️";
+var camping = "🏕️";
+var beach_with_umbrella = "🏖️";
+var building_construction = "🏗️";
+var house_buildings = "🏘️";
+var cityscape = "🏙️";
+var derelict_house_building = "🏚️";
+var classical_building = "🏛️";
+var desert = "🏜️";
+var desert_island = "🏝️";
+var national_park = "🏞️";
+var stadium = "🏟️";
+var house = "🏠";
+var house_with_garden = "🏡";
+var office = "🏢";
+var post_office = "🏣";
+var european_post_office = "🏤";
+var hospital = "🏥";
+var bank = "🏦";
+var atm = "🏧";
+var hotel = "🏨";
+var love_hotel = "🏩";
+var convenience_store = "🏪";
+var school = "🏫";
+var department_store = "🏬";
+var factory = "🏭";
+var izakaya_lantern = "🏮";
+var lantern = "🏮";
+var japanese_castle = "🏯";
+var european_castle = "🏰";
+var transgender_flag = "🏳️‍⚧️";
+var waving_white_flag = "🏳️";
+var pirate_flag = "🏴‍☠️";
+var waving_black_flag = "🏴";
+var rosette = "🏵️";
+var label = "🏷️";
+var badminton_racquet_and_shuttlecock = "🏸";
+var bow_and_arrow = "🏹";
+var amphora = "🏺";
+var rat = "🐀";
+var mouse2 = "🐁";
+var ox = "🐂";
+var water_buffalo = "🐃";
+var cow2 = "🐄";
+var tiger2 = "🐅";
+var leopard = "🐆";
+var rabbit2 = "🐇";
+var black_cat = "🐈‍⬛";
+var cat2 = "🐈";
+var dragon = "🐉";
+var crocodile = "🐊";
+var whale2 = "🐋";
+var snail = "🐌";
+var snake = "🐍";
+var racehorse = "🐎";
+var ram = "🐏";
+var goat = "🐐";
+var sheep = "🐑";
+var monkey = "🐒";
+var rooster = "🐓";
+var chicken = "🐔";
+var service_dog = "🐕‍🦺";
+var dog2 = "🐕";
+var pig2 = "🐖";
+var boar = "🐗";
+var elephant = "🐘";
+var octopus = "🐙";
+var shell = "🐚";
+var bug = "🐛";
+var ant = "🐜";
+var bee = "🐝";
+var honeybee = "🐝";
+var ladybug = "🐞";
+var lady_beetle = "🐞";
+var fish = "🐟";
+var tropical_fish = "🐠";
+var blowfish = "🐡";
+var turtle = "🐢";
+var hatching_chick = "🐣";
+var baby_chick = "🐤";
+var hatched_chick = "🐥";
+var bird = "🐦";
+var penguin = "🐧";
+var koala = "🐨";
+var poodle = "🐩";
+var dromedary_camel = "🐪";
+var camel = "🐫";
+var dolphin = "🐬";
+var flipper = "🐬";
+var mouse = "🐭";
+var cow = "🐮";
+var tiger = "🐯";
+var rabbit = "🐰";
+var cat = "🐱";
+var dragon_face = "🐲";
+var whale = "🐳";
+var horse = "🐴";
+var monkey_face = "🐵";
+var dog = "🐶";
+var pig = "🐷";
+var frog = "🐸";
+var hamster = "🐹";
+var wolf = "🐺";
+var polar_bear = "🐻‍❄️";
+var bear = "🐻";
+var panda_face = "🐼";
+var pig_nose = "🐽";
+var feet = "🐾";
+var paw_prints = "🐾";
+var chipmunk = "🐿️";
+var eyes = "👀";
+var eye = "👁️";
+var ear = "👂";
+var nose = "👃";
+var lips = "👄";
+var tongue = "👅";
+var point_up_2 = "👆";
+var point_down = "👇";
+var point_left = "👈";
+var point_right = "👉";
+var facepunch = "👊";
+var punch = "👊";
+var wave = "👋";
+var ok_hand = "👌";
+var thumbsup = "👍";
+var thumbsdown = "👎";
+var clap = "👏";
+var open_hands = "👐";
+var crown = "👑";
+var womans_hat = "👒";
+var eyeglasses = "👓";
+var necktie = "👔";
+var shirt = "👕";
+var tshirt = "👕";
+var jeans = "👖";
+var dress = "👗";
+var kimono = "👘";
+var bikini = "👙";
+var womans_clothes = "👚";
+var purse = "👛";
+var handbag = "👜";
+var pouch = "👝";
+var mans_shoe = "👞";
+var shoe = "👞";
+var athletic_shoe = "👟";
+var high_heel = "👠";
+var sandal = "👡";
+var boot = "👢";
+var footprints = "👣";
+var bust_in_silhouette = "👤";
+var busts_in_silhouette = "👥";
+var boy = "👦";
+var girl = "👧";
+var man_feeding_baby = "👨‍🍼";
+var family = "👨‍👩‍👦";
+var man_with_probing_cane = "👨‍🦯";
+var red_haired_man = "👨‍🦰";
+var curly_haired_man = "👨‍🦱";
+var bald_man = "👨‍🦲";
+var white_haired_man = "👨‍🦳";
+var man_in_motorized_wheelchair = "👨‍🦼";
+var man_in_manual_wheelchair = "👨‍🦽";
+var man = "👨";
+var woman_feeding_baby = "👩‍🍼";
+var woman_with_probing_cane = "👩‍🦯";
+var red_haired_woman = "👩‍🦰";
+var curly_haired_woman = "👩‍🦱";
+var bald_woman = "👩‍🦲";
+var white_haired_woman = "👩‍🦳";
+var woman_in_motorized_wheelchair = "👩‍🦼";
+var woman_in_manual_wheelchair = "👩‍🦽";
+var woman = "👩";
+var man_and_woman_holding_hands = "👫";
+var woman_and_man_holding_hands = "👫";
+var couple = "👫";
+var two_men_holding_hands = "👬";
+var men_holding_hands = "👬";
+var two_women_holding_hands = "👭";
+var women_holding_hands = "👭";
+var cop = "👮‍♂️";
+var dancers = "👯‍♀️";
+var woman_with_veil = "👰‍♀️";
+var man_with_veil = "👰‍♂️";
+var bride_with_veil = "👰";
+var person_with_blond_hair = "👱‍♂️";
+var man_with_gua_pi_mao = "👲";
+var man_with_turban = "👳‍♂️";
+var older_man = "👴";
+var older_woman = "👵";
+var baby = "👶";
+var construction_worker = "👷‍♂️";
+var princess = "👸";
+var japanese_ogre = "👹";
+var japanese_goblin = "👺";
+var ghost = "👻";
+var angel = "👼";
+var alien = "👽";
+var space_invader = "👾";
+var imp = "👿";
+var skull = "💀";
+var information_desk_person = "💁‍♀️";
+var guardsman = "💂‍♂️";
+var dancer = "💃";
+var lipstick = "💄";
+var nail_care = "💅";
+var massage = "💆‍♀️";
+var haircut = "💇‍♀️";
+var barber = "💈";
+var syringe = "💉";
+var pill = "💊";
+var kiss = "💋";
+var love_letter = "💌";
+var ring = "💍";
+var gem = "💎";
+var couplekiss = "💏";
+var bouquet = "💐";
+var couple_with_heart = "💑";
+var wedding = "💒";
+var heartbeat = "💓";
+var broken_heart = "💔";
+var two_hearts = "💕";
+var sparkling_heart = "💖";
+var heartpulse = "💗";
+var cupid = "💘";
+var blue_heart = "💙";
+var green_heart = "💚";
+var yellow_heart = "💛";
+var purple_heart = "💜";
+var gift_heart = "💝";
+var revolving_hearts = "💞";
+var heart_decoration = "💟";
+var diamond_shape_with_a_dot_inside = "💠";
+var bulb = "💡";
+var anger = "💢";
+var bomb = "💣";
+var zzz = "💤";
+var boom = "💥";
+var collision = "💥";
+var sweat_drops = "💦";
+var droplet = "💧";
+var dash = "💨";
+var hankey = "💩";
+var poop = "💩";
+var shit = "💩";
+var muscle = "💪";
+var dizzy = "💫";
+var speech_balloon = "💬";
+var thought_balloon = "💭";
+var white_flower = "💮";
+var moneybag = "💰";
+var currency_exchange = "💱";
+var heavy_dollar_sign = "💲";
+var credit_card = "💳";
+var yen = "💴";
+var dollar = "💵";
+var euro = "💶";
+var pound = "💷";
+var money_with_wings = "💸";
+var chart = "💹";
+var seat = "💺";
+var computer = "💻";
+var briefcase = "💼";
+var minidisc = "💽";
+var floppy_disk = "💾";
+var cd = "💿";
+var dvd = "📀";
+var file_folder = "📁";
+var open_file_folder = "📂";
+var page_with_curl = "📃";
+var page_facing_up = "📄";
+var date = "📅";
+var calendar = "📆";
+var card_index = "📇";
+var chart_with_upwards_trend = "📈";
+var chart_with_downwards_trend = "📉";
+var bar_chart = "📊";
+var clipboard = "📋";
+var pushpin = "📌";
+var round_pushpin = "📍";
+var paperclip = "📎";
+var straight_ruler = "📏";
+var triangular_ruler = "📐";
+var bookmark_tabs = "📑";
+var ledger = "📒";
+var notebook = "📓";
+var notebook_with_decorative_cover = "📔";
+var closed_book = "📕";
+var book = "📖";
+var open_book = "📖";
+var green_book = "📗";
+var blue_book = "📘";
+var orange_book = "📙";
+var books = "📚";
+var name_badge = "📛";
+var scroll = "📜";
+var memo = "📝";
+var pencil = "📝";
+var telephone_receiver = "📞";
+var pager = "📟";
+var fax = "📠";
+var satellite_antenna = "📡";
+var loudspeaker = "📢";
+var mega = "📣";
+var outbox_tray = "📤";
+var inbox_tray = "📥";
+var incoming_envelope = "📨";
+var envelope_with_arrow = "📩";
+var mailbox_closed = "📪";
+var mailbox = "📫";
+var mailbox_with_mail = "📬";
+var mailbox_with_no_mail = "📭";
+var postbox = "📮";
+var postal_horn = "📯";
+var newspaper = "📰";
+var iphone = "📱";
+var calling = "📲";
+var vibration_mode = "📳";
+var mobile_phone_off = "📴";
+var no_mobile_phones = "📵";
+var signal_strength = "📶";
+var camera = "📷";
+var camera_with_flash = "📸";
+var video_camera = "📹";
+var tv = "📺";
+var radio = "📻";
+var vhs = "📼";
+var film_projector = "📽️";
+var prayer_beads = "📿";
+var twisted_rightwards_arrows = "🔀";
+var repeat = "🔁";
+var repeat_one = "🔂";
+var arrows_clockwise = "🔃";
+var arrows_counterclockwise = "🔄";
+var low_brightness = "🔅";
+var high_brightness = "🔆";
+var mute = "🔇";
+var speaker = "🔈";
+var sound = "🔉";
+var loud_sound = "🔊";
+var battery = "🔋";
+var electric_plug = "🔌";
+var mag = "🔍";
+var mag_right = "🔎";
+var lock_with_ink_pen = "🔏";
+var closed_lock_with_key = "🔐";
+var key = "🔑";
+var lock = "🔒";
+var unlock = "🔓";
+var bell = "🔔";
+var no_bell = "🔕";
+var bookmark = "🔖";
+var link = "🔗";
+var radio_button = "🔘";
+var back = "🔙";
+var end = "🔚";
+var on = "🔛";
+var soon = "🔜";
+var top = "🔝";
+var underage = "🔞";
+var keycap_ten = "🔟";
+var capital_abcd = "🔠";
+var abcd = "🔡";
+var symbols = "🔣";
+var abc = "🔤";
+var fire = "🔥";
+var flashlight = "🔦";
+var wrench = "🔧";
+var hammer = "🔨";
+var nut_and_bolt = "🔩";
+var hocho = "🔪";
+var knife = "🔪";
+var gun = "🔫";
+var microscope = "🔬";
+var telescope = "🔭";
+var crystal_ball = "🔮";
+var six_pointed_star = "🔯";
+var beginner = "🔰";
+var trident = "🔱";
+var black_square_button = "🔲";
+var white_square_button = "🔳";
+var red_circle = "🔴";
+var large_blue_circle = "🔵";
+var large_orange_diamond = "🔶";
+var large_blue_diamond = "🔷";
+var small_orange_diamond = "🔸";
+var small_blue_diamond = "🔹";
+var small_red_triangle = "🔺";
+var small_red_triangle_down = "🔻";
+var arrow_up_small = "🔼";
+var arrow_down_small = "🔽";
+var om_symbol = "🕉️";
+var dove_of_peace = "🕊️";
+var kaaba = "🕋";
+var mosque = "🕌";
+var synagogue = "🕍";
+var menorah_with_nine_branches = "🕎";
+var clock1 = "🕐";
+var clock2 = "🕑";
+var clock3 = "🕒";
+var clock4 = "🕓";
+var clock5 = "🕔";
+var clock6 = "🕕";
+var clock7 = "🕖";
+var clock8 = "🕗";
+var clock9 = "🕘";
+var clock10 = "🕙";
+var clock11 = "🕚";
+var clock12 = "🕛";
+var clock130 = "🕜";
+var clock230 = "🕝";
+var clock330 = "🕞";
+var clock430 = "🕟";
+var clock530 = "🕠";
+var clock630 = "🕡";
+var clock730 = "🕢";
+var clock830 = "🕣";
+var clock930 = "🕤";
+var clock1030 = "🕥";
+var clock1130 = "🕦";
+var clock1230 = "🕧";
+var candle = "🕯️";
+var mantelpiece_clock = "🕰️";
+var hole = "🕳️";
+var man_in_business_suit_levitating = "🕴️";
+var sleuth_or_spy = "🕵️‍♂️";
+var dark_sunglasses = "🕶️";
+var spider = "🕷️";
+var spider_web = "🕸️";
+var joystick = "🕹️";
+var man_dancing = "🕺";
+var linked_paperclips = "🖇️";
+var lower_left_ballpoint_pen = "🖊️";
+var lower_left_fountain_pen = "🖋️";
+var lower_left_paintbrush = "🖌️";
+var lower_left_crayon = "🖍️";
+var raised_hand_with_fingers_splayed = "🖐️";
+var middle_finger = "🖕";
+var reversed_hand_with_middle_finger_extended = "🖕";
+var black_heart = "🖤";
+var desktop_computer = "🖥️";
+var printer = "🖨️";
+var three_button_mouse = "🖱️";
+var trackball = "🖲️";
+var frame_with_picture = "🖼️";
+var card_index_dividers = "🗂️";
+var card_file_box = "🗃️";
+var file_cabinet = "🗄️";
+var wastebasket = "🗑️";
+var spiral_note_pad = "🗒️";
+var spiral_calendar_pad = "🗓️";
+var compression = "🗜️";
+var old_key = "🗝️";
+var rolled_up_newspaper = "🗞️";
+var dagger_knife = "🗡️";
+var speaking_head_in_silhouette = "🗣️";
+var left_speech_bubble = "🗨️";
+var right_anger_bubble = "🗯️";
+var ballot_box_with_ballot = "🗳️";
+var world_map = "🗺️";
+var mount_fuji = "🗻";
+var tokyo_tower = "🗼";
+var statue_of_liberty = "🗽";
+var japan = "🗾";
+var moyai = "🗿";
+var grinning = "😀";
+var grin = "😁";
+var joy = "😂";
+var smiley = "😃";
+var smile = "😄";
+var sweat_smile = "😅";
+var laughing = "😆";
+var satisfied = "😆";
+var innocent = "😇";
+var smiling_imp = "😈";
+var wink = "😉";
+var blush = "😊";
+var yum = "😋";
+var relieved = "😌";
+var heart_eyes = "😍";
+var sunglasses = "😎";
+var smirk = "😏";
+var neutral_face = "😐";
+var expressionless = "😑";
+var unamused = "😒";
+var sweat = "😓";
+var pensive = "😔";
+var confused = "😕";
+var confounded = "😖";
+var kissing = "😗";
+var kissing_heart = "😘";
+var kissing_smiling_eyes = "😙";
+var kissing_closed_eyes = "😚";
+var stuck_out_tongue = "😛";
+var stuck_out_tongue_winking_eye = "😜";
+var stuck_out_tongue_closed_eyes = "😝";
+var disappointed = "😞";
+var worried = "😟";
+var angry = "😠";
+var rage = "😡";
+var cry = "😢";
+var persevere = "😣";
+var triumph = "😤";
+var disappointed_relieved = "😥";
+var frowning = "😦";
+var anguished = "😧";
+var fearful = "😨";
+var weary = "😩";
+var sleepy = "😪";
+var tired_face = "😫";
+var grimacing = "😬";
+var sob = "😭";
+var face_exhaling = "😮‍💨";
+var open_mouth = "😮";
+var hushed = "😯";
+var cold_sweat = "😰";
+var scream = "😱";
+var astonished = "😲";
+var flushed = "😳";
+var sleeping = "😴";
+var face_with_spiral_eyes = "😵‍💫";
+var dizzy_face = "😵";
+var face_in_clouds = "😶‍🌫️";
+var no_mouth = "😶";
+var mask = "😷";
+var smile_cat = "😸";
+var joy_cat = "😹";
+var smiley_cat = "😺";
+var heart_eyes_cat = "😻";
+var smirk_cat = "😼";
+var kissing_cat = "😽";
+var pouting_cat = "😾";
+var crying_cat_face = "😿";
+var scream_cat = "🙀";
+var slightly_frowning_face = "🙁";
+var slightly_smiling_face = "🙂";
+var upside_down_face = "🙃";
+var face_with_rolling_eyes = "🙄";
+var no_good = "🙅‍♀️";
+var ok_woman = "🙆‍♀️";
+var bow = "🙇‍♂️";
+var see_no_evil = "🙈";
+var hear_no_evil = "🙉";
+var speak_no_evil = "🙊";
+var raising_hand = "🙋‍♀️";
+var raised_hands = "🙌";
+var person_frowning = "🙍‍♀️";
+var person_with_pouting_face = "🙎‍♀️";
+var pray = "🙏";
+var rocket = "🚀";
+var helicopter = "🚁";
+var steam_locomotive = "🚂";
+var railway_car = "🚃";
+var bullettrain_side = "🚄";
+var bullettrain_front = "🚅";
+var train2 = "🚆";
+var metro = "🚇";
+var light_rail = "🚈";
+var station = "🚉";
+var tram = "🚊";
+var train = "🚋";
+var bus = "🚌";
+var oncoming_bus = "🚍";
+var trolleybus = "🚎";
+var busstop = "🚏";
+var minibus = "🚐";
+var ambulance = "🚑";
+var fire_engine = "🚒";
+var police_car = "🚓";
+var oncoming_police_car = "🚔";
+var taxi = "🚕";
+var oncoming_taxi = "🚖";
+var car = "🚗";
+var red_car = "🚗";
+var oncoming_automobile = "🚘";
+var blue_car = "🚙";
+var truck = "🚚";
+var articulated_lorry = "🚛";
+var tractor = "🚜";
+var monorail = "🚝";
+var mountain_railway = "🚞";
+var suspension_railway = "🚟";
+var mountain_cableway = "🚠";
+var aerial_tramway = "🚡";
+var ship = "🚢";
+var rowboat = "🚣‍♂️";
+var speedboat = "🚤";
+var traffic_light = "🚥";
+var vertical_traffic_light = "🚦";
+var construction = "🚧";
+var rotating_light = "🚨";
+var triangular_flag_on_post = "🚩";
+var door = "🚪";
+var no_entry_sign = "🚫";
+var smoking = "🚬";
+var no_smoking = "🚭";
+var put_litter_in_its_place = "🚮";
+var do_not_litter = "🚯";
+var potable_water = "🚰";
+var bike = "🚲";
+var no_bicycles = "🚳";
+var bicyclist = "🚴‍♂️";
+var mountain_bicyclist = "🚵‍♂️";
+var walking = "🚶‍♂️";
+var no_pedestrians = "🚷";
+var children_crossing = "🚸";
+var mens = "🚹";
+var womens = "🚺";
+var restroom = "🚻";
+var baby_symbol = "🚼";
+var toilet = "🚽";
+var wc = "🚾";
+var shower = "🚿";
+var bath = "🛀";
+var bathtub = "🛁";
+var passport_control = "🛂";
+var customs = "🛃";
+var baggage_claim = "🛄";
+var left_luggage = "🛅";
+var couch_and_lamp = "🛋️";
+var sleeping_accommodation = "🛌";
+var shopping_bags = "🛍️";
+var bellhop_bell = "🛎️";
+var bed = "🛏️";
+var place_of_worship = "🛐";
+var octagonal_sign = "🛑";
+var shopping_trolley = "🛒";
+var hindu_temple = "🛕";
+var hut = "🛖";
+var elevator = "🛗";
+var hammer_and_wrench = "🛠️";
+var shield = "🛡️";
+var oil_drum = "🛢️";
+var motorway = "🛣️";
+var railway_track = "🛤️";
+var motor_boat = "🛥️";
+var small_airplane = "🛩️";
+var airplane_departure = "🛫";
+var airplane_arriving = "🛬";
+var satellite = "🛰️";
+var passenger_ship = "🛳️";
+var scooter = "🛴";
+var motor_scooter = "🛵";
+var canoe = "🛶";
+var sled = "🛷";
+var flying_saucer = "🛸";
+var skateboard = "🛹";
+var auto_rickshaw = "🛺";
+var pickup_truck = "🛻";
+var roller_skate = "🛼";
+var large_orange_circle = "🟠";
+var large_yellow_circle = "🟡";
+var large_green_circle = "🟢";
+var large_purple_circle = "🟣";
+var large_brown_circle = "🟤";
+var large_red_square = "🟥";
+var large_blue_square = "🟦";
+var large_orange_square = "🟧";
+var large_yellow_square = "🟨";
+var large_green_square = "🟩";
+var large_purple_square = "🟪";
+var large_brown_square = "🟫";
+var pinched_fingers = "🤌";
+var white_heart = "🤍";
+var brown_heart = "🤎";
+var pinching_hand = "🤏";
+var zipper_mouth_face = "🤐";
+var money_mouth_face = "🤑";
+var face_with_thermometer = "🤒";
+var nerd_face = "🤓";
+var thinking_face = "🤔";
+var face_with_head_bandage = "🤕";
+var robot_face = "🤖";
+var hugging_face = "🤗";
+var the_horns = "🤘";
+var sign_of_the_horns = "🤘";
+var call_me_hand = "🤙";
+var raised_back_of_hand = "🤚";
+var handshake = "🤝";
+var crossed_fingers = "🤞";
+var hand_with_index_and_middle_fingers_crossed = "🤞";
+var i_love_you_hand_sign = "🤟";
+var face_with_cowboy_hat = "🤠";
+var clown_face = "🤡";
+var nauseated_face = "🤢";
+var rolling_on_the_floor_laughing = "🤣";
+var drooling_face = "🤤";
+var lying_face = "🤥";
+var face_palm = "🤦";
+var sneezing_face = "🤧";
+var face_with_raised_eyebrow = "🤨";
+var face_with_one_eyebrow_raised = "🤨";
+var grinning_face_with_star_eyes = "🤩";
+var zany_face = "🤪";
+var grinning_face_with_one_large_and_one_small_eye = "🤪";
+var shushing_face = "🤫";
+var face_with_finger_covering_closed_lips = "🤫";
+var face_with_symbols_on_mouth = "🤬";
+var serious_face_with_symbols_covering_mouth = "🤬";
+var face_with_hand_over_mouth = "🤭";
+var smiling_face_with_smiling_eyes_and_hand_covering_mouth = "🤭";
+var face_vomiting = "🤮";
+var face_with_open_mouth_vomiting = "🤮";
+var exploding_head = "🤯";
+var shocked_face_with_exploding_head = "🤯";
+var pregnant_woman = "🤰";
+var palms_up_together = "🤲";
+var selfie = "🤳";
+var prince = "🤴";
+var woman_in_tuxedo = "🤵‍♀️";
+var man_in_tuxedo = "🤵‍♂️";
+var person_in_tuxedo = "🤵";
+var mrs_claus = "🤶";
+var mother_christmas = "🤶";
+var shrug = "🤷";
+var person_doing_cartwheel = "🤸";
+var juggling = "🤹";
+var fencer = "🤺";
+var wrestlers = "🤼";
+var water_polo = "🤽";
+var handball = "🤾";
+var diving_mask = "🤿";
+var wilted_flower = "🥀";
+var drum_with_drumsticks = "🥁";
+var clinking_glasses = "🥂";
+var tumbler_glass = "🥃";
+var spoon = "🥄";
+var goal_net = "🥅";
+var first_place_medal = "🥇";
+var second_place_medal = "🥈";
+var third_place_medal = "🥉";
+var boxing_glove = "🥊";
+var martial_arts_uniform = "🥋";
+var curling_stone = "🥌";
+var lacrosse = "🥍";
+var softball = "🥎";
+var flying_disc = "🥏";
+var croissant = "🥐";
+var avocado = "🥑";
+var cucumber = "🥒";
+var bacon = "🥓";
+var potato = "🥔";
+var carrot = "🥕";
+var baguette_bread = "🥖";
+var green_salad = "🥗";
+var shallow_pan_of_food = "🥘";
+var stuffed_flatbread = "🥙";
+var egg = "🥚";
+var glass_of_milk = "🥛";
+var peanuts = "🥜";
+var kiwifruit = "🥝";
+var pancakes = "🥞";
+var dumpling = "🥟";
+var fortune_cookie = "🥠";
+var takeout_box = "🥡";
+var chopsticks = "🥢";
+var bowl_with_spoon = "🥣";
+var cup_with_straw = "🥤";
+var coconut = "🥥";
+var broccoli = "🥦";
+var pie = "🥧";
+var pretzel = "🥨";
+var cut_of_meat = "🥩";
+var sandwich = "🥪";
+var canned_food = "🥫";
+var leafy_green = "🥬";
+var mango = "🥭";
+var moon_cake = "🥮";
+var bagel = "🥯";
+var smiling_face_with_3_hearts = "🥰";
+var yawning_face = "🥱";
+var smiling_face_with_tear = "🥲";
+var partying_face = "🥳";
+var woozy_face = "🥴";
+var hot_face = "🥵";
+var cold_face = "🥶";
+var ninja = "🥷";
+var disguised_face = "🥸";
+var pleading_face = "🥺";
+var sari = "🥻";
+var lab_coat = "🥼";
+var goggles = "🥽";
+var hiking_boot = "🥾";
+var womans_flat_shoe = "🥿";
+var crab = "🦀";
+var lion_face = "🦁";
+var scorpion = "🦂";
+var turkey = "🦃";
+var unicorn_face = "🦄";
+var eagle = "🦅";
+var duck = "🦆";
+var bat = "🦇";
+var shark = "🦈";
+var owl = "🦉";
+var fox_face = "🦊";
+var butterfly = "🦋";
+var deer = "🦌";
+var gorilla = "🦍";
+var lizard = "🦎";
+var rhinoceros = "🦏";
+var shrimp = "🦐";
+var squid = "🦑";
+var giraffe_face = "🦒";
+var zebra_face = "🦓";
+var hedgehog = "🦔";
+var sauropod = "🦕";
+var cricket = "🦗";
+var kangaroo = "🦘";
+var llama = "🦙";
+var peacock = "🦚";
+var hippopotamus = "🦛";
+var parrot = "🦜";
+var raccoon = "🦝";
+var lobster = "🦞";
+var mosquito = "🦟";
+var microbe = "🦠";
+var badger = "🦡";
+var swan = "🦢";
+var mammoth = "🦣";
+var dodo = "🦤";
+var sloth = "🦥";
+var otter = "🦦";
+var orangutan = "🦧";
+var skunk = "🦨";
+var flamingo = "🦩";
+var oyster = "🦪";
+var beaver = "🦫";
+var bison = "🦬";
+var seal = "🦭";
+var guide_dog = "🦮";
+var probing_cane = "🦯";
+var bone = "🦴";
+var leg = "🦵";
+var foot = "🦶";
+var tooth = "🦷";
+var female_superhero = "🦸‍♀️";
+var male_superhero = "🦸‍♂️";
+var superhero = "🦸";
+var female_supervillain = "🦹‍♀️";
+var male_supervillain = "🦹‍♂️";
+var supervillain = "🦹";
+var safety_vest = "🦺";
+var ear_with_hearing_aid = "🦻";
+var motorized_wheelchair = "🦼";
+var manual_wheelchair = "🦽";
+var mechanical_arm = "🦾";
+var mechanical_leg = "🦿";
+var cheese_wedge = "🧀";
+var cupcake = "🧁";
+var salt = "🧂";
+var beverage_box = "🧃";
+var garlic = "🧄";
+var onion = "🧅";
+var falafel = "🧆";
+var waffle = "🧇";
+var butter = "🧈";
+var mate_drink = "🧉";
+var ice_cube = "🧊";
+var bubble_tea = "🧋";
+var woman_standing = "🧍‍♀️";
+var man_standing = "🧍‍♂️";
+var standing_person = "🧍";
+var woman_kneeling = "🧎‍♀️";
+var man_kneeling = "🧎‍♂️";
+var kneeling_person = "🧎";
+var deaf_woman = "🧏‍♀️";
+var deaf_man = "🧏‍♂️";
+var deaf_person = "🧏";
+var face_with_monocle = "🧐";
+var farmer = "🧑‍🌾";
+var cook = "🧑‍🍳";
+var person_feeding_baby = "🧑‍🍼";
+var mx_claus = "🧑‍🎄";
+var student = "🧑‍🎓";
+var singer = "🧑‍🎤";
+var artist = "🧑‍🎨";
+var teacher = "🧑‍🏫";
+var factory_worker = "🧑‍🏭";
+var technologist = "🧑‍💻";
+var office_worker = "🧑‍💼";
+var mechanic = "🧑‍🔧";
+var scientist = "🧑‍🔬";
+var astronaut = "🧑‍🚀";
+var firefighter = "🧑‍🚒";
+var people_holding_hands = "🧑‍🤝‍🧑";
+var person_with_probing_cane = "🧑‍🦯";
+var red_haired_person = "🧑‍🦰";
+var curly_haired_person = "🧑‍🦱";
+var bald_person = "🧑‍🦲";
+var white_haired_person = "🧑‍🦳";
+var person_in_motorized_wheelchair = "🧑‍🦼";
+var person_in_manual_wheelchair = "🧑‍🦽";
+var health_worker = "🧑‍⚕️";
+var judge = "🧑‍⚖️";
+var pilot = "🧑‍✈️";
+var adult = "🧑";
+var child = "🧒";
+var older_adult = "🧓";
+var woman_with_beard = "🧔‍♀️";
+var man_with_beard = "🧔‍♂️";
+var bearded_person = "🧔";
+var person_with_headscarf = "🧕";
+var woman_in_steamy_room = "🧖‍♀️";
+var man_in_steamy_room = "🧖‍♂️";
+var person_in_steamy_room = "🧖‍♂️";
+var woman_climbing = "🧗‍♀️";
+var person_climbing = "🧗‍♀️";
+var man_climbing = "🧗‍♂️";
+var woman_in_lotus_position = "🧘‍♀️";
+var person_in_lotus_position = "🧘‍♀️";
+var man_in_lotus_position = "🧘‍♂️";
+var female_mage = "🧙‍♀️";
+var mage = "🧙‍♀️";
+var male_mage = "🧙‍♂️";
+var female_fairy = "🧚‍♀️";
+var fairy = "🧚‍♀️";
+var male_fairy = "🧚‍♂️";
+var female_vampire = "🧛‍♀️";
+var vampire = "🧛‍♀️";
+var male_vampire = "🧛‍♂️";
+var mermaid = "🧜‍♀️";
+var merman = "🧜‍♂️";
+var merperson = "🧜‍♂️";
+var female_elf = "🧝‍♀️";
+var male_elf = "🧝‍♂️";
+var elf = "🧝‍♂️";
+var female_genie = "🧞‍♀️";
+var male_genie = "🧞‍♂️";
+var genie = "🧞‍♂️";
+var female_zombie = "🧟‍♀️";
+var male_zombie = "🧟‍♂️";
+var zombie = "🧟‍♂️";
+var brain = "🧠";
+var orange_heart = "🧡";
+var billed_cap = "🧢";
+var scarf = "🧣";
+var gloves = "🧤";
+var coat = "🧥";
+var socks = "🧦";
+var red_envelope = "🧧";
+var firecracker = "🧨";
+var jigsaw = "🧩";
+var test_tube = "🧪";
+var petri_dish = "🧫";
+var dna = "🧬";
+var compass = "🧭";
+var abacus = "🧮";
+var fire_extinguisher = "🧯";
+var toolbox = "🧰";
+var bricks = "🧱";
+var magnet = "🧲";
+var luggage = "🧳";
+var lotion_bottle = "🧴";
+var thread = "🧵";
+var yarn = "🧶";
+var safety_pin = "🧷";
+var teddy_bear = "🧸";
+var broom = "🧹";
+var basket = "🧺";
+var roll_of_paper = "🧻";
+var soap = "🧼";
+var sponge = "🧽";
+var receipt = "🧾";
+var nazar_amulet = "🧿";
+var ballet_shoes = "🩰";
+var briefs = "🩲";
+var shorts = "🩳";
+var thong_sandal = "🩴";
+var drop_of_blood = "🩸";
+var adhesive_bandage = "🩹";
+var stethoscope = "🩺";
+var kite = "🪁";
+var parachute = "🪂";
+var boomerang = "🪃";
+var magic_wand = "🪄";
+var pinata = "🪅";
+var nesting_dolls = "🪆";
+var ringed_planet = "🪐";
+var chair = "🪑";
+var razor = "🪒";
+var axe = "🪓";
+var diya_lamp = "🪔";
+var banjo = "🪕";
+var military_helmet = "🪖";
+var accordion = "🪗";
+var long_drum = "🪘";
+var coin = "🪙";
+var carpentry_saw = "🪚";
+var screwdriver = "🪛";
+var ladder = "🪜";
+var hook = "🪝";
+var mirror = "🪞";
+var window$1 = "🪟";
+var plunger = "🪠";
+var sewing_needle = "🪡";
+var knot = "🪢";
+var bucket = "🪣";
+var mouse_trap = "🪤";
+var toothbrush = "🪥";
+var headstone = "🪦";
+var placard = "🪧";
+var rock = "🪨";
+var fly = "🪰";
+var worm = "🪱";
+var beetle = "🪲";
+var cockroach = "🪳";
+var potted_plant = "🪴";
+var wood = "🪵";
+var feather = "🪶";
+var anatomical_heart = "🫀";
+var lungs = "🫁";
+var people_hugging = "🫂";
+var blueberries = "🫐";
+var bell_pepper = "🫑";
+var olive = "🫒";
+var flatbread = "🫓";
+var tamale = "🫔";
+var fondue = "🫕";
+var teapot = "🫖";
+var bangbang = "‼️";
+var interrobang = "⁉️";
+var tm = "™️";
+var information_source = "ℹ️";
+var left_right_arrow = "↔️";
+var arrow_up_down = "↕️";
+var arrow_upper_left = "↖️";
+var arrow_upper_right = "↗️";
+var arrow_lower_right = "↘️";
+var arrow_lower_left = "↙️";
+var leftwards_arrow_with_hook = "↩️";
+var arrow_right_hook = "↪️";
+var watch = "⌚";
+var hourglass = "⌛";
+var keyboard = "⌨️";
+var eject = "⏏️";
+var fast_forward = "⏩";
+var rewind = "⏪";
+var arrow_double_up = "⏫";
+var arrow_double_down = "⏬";
+var black_right_pointing_double_triangle_with_vertical_bar = "⏭️";
+var black_left_pointing_double_triangle_with_vertical_bar = "⏮️";
+var black_right_pointing_triangle_with_double_vertical_bar = "⏯️";
+var alarm_clock = "⏰";
+var stopwatch = "⏱️";
+var timer_clock = "⏲️";
+var hourglass_flowing_sand = "⏳";
+var double_vertical_bar = "⏸️";
+var black_square_for_stop = "⏹️";
+var black_circle_for_record = "⏺️";
+var m = "Ⓜ️";
+var black_small_square = "▪️";
+var white_small_square = "▫️";
+var arrow_forward = "▶️";
+var arrow_backward = "◀️";
+var white_medium_square = "◻️";
+var black_medium_square = "◼️";
+var white_medium_small_square = "◽";
+var black_medium_small_square = "◾";
+var sunny = "☀️";
+var cloud = "☁️";
+var umbrella = "☂️";
+var snowman = "☃️";
+var comet = "☄️";
+var phone = "☎️";
+var telephone = "☎️";
+var ballot_box_with_check = "☑️";
+var shamrock = "☘️";
+var point_up = "☝️";
+var skull_and_crossbones = "☠️";
+var radioactive_sign = "☢️";
+var biohazard_sign = "☣️";
+var orthodox_cross = "☦️";
+var star_and_crescent = "☪️";
+var peace_symbol = "☮️";
+var yin_yang = "☯️";
+var wheel_of_dharma = "☸️";
+var white_frowning_face = "☹️";
+var relaxed = "☺️";
+var female_sign = "♀️";
+var male_sign = "♂️";
+var gemini = "♊";
+var cancer = "♋";
+var leo = "♌";
+var virgo = "♍";
+var libra = "♎";
+var scorpius = "♏";
+var chess_pawn = "♟️";
+var spades = "♠️";
+var clubs = "♣️";
+var hearts = "♥️";
+var diamonds = "♦️";
+var hotsprings = "♨️";
+var recycle = "♻️";
+var infinity = "♾️";
+var wheelchair = "♿";
+var hammer_and_pick = "⚒️";
+var crossed_swords = "⚔️";
+var medical_symbol = "⚕️";
+var staff_of_aesculapius = "⚕️";
+var scales = "⚖️";
+var alembic = "⚗️";
+var gear = "⚙️";
+var atom_symbol = "⚛️";
+var fleur_de_lis = "⚜️";
+var warning = "⚠️";
+var zap = "⚡";
+var transgender_symbol = "⚧️";
+var white_circle = "⚪";
+var black_circle = "⚫";
+var coffin = "⚰️";
+var funeral_urn = "⚱️";
+var soccer = "⚽";
+var baseball = "⚾";
+var snowman_without_snow = "⛄";
+var partly_sunny = "⛅";
+var thunder_cloud_and_rain = "⛈️";
+var ophiuchus = "⛎";
+var pick = "⛏️";
+var helmet_with_white_cross = "⛑️";
+var chains = "⛓️";
+var no_entry = "⛔";
+var shinto_shrine = "⛩️";
+var church = "⛪";
+var mountain = "⛰️";
+var umbrella_on_ground = "⛱️";
+var fountain = "⛲";
+var golf = "⛳";
+var ferry = "⛴️";
+var boat = "⛵";
+var sailboat = "⛵";
+var skier = "⛷️";
+var ice_skate = "⛸️";
+var person_with_ball = "⛹️‍♂️";
+var tent = "⛺";
+var fuelpump = "⛽";
+var scissors = "✂️";
+var airplane = "✈️";
+var email = "✉️";
+var envelope = "✉️";
+var fist = "✊";
+var hand = "✋";
+var raised_hand = "✋";
+var v = "✌️";
+var writing_hand = "✍️";
+var pencil2 = "✏️";
+var black_nib = "✒️";
+var heavy_check_mark = "✔️";
+var heavy_multiplication_x = "✖️";
+var latin_cross = "✝️";
+var star_of_david = "✡️";
+var eight_spoked_asterisk = "✳️";
+var eight_pointed_black_star = "✴️";
+var snowflake = "❄️";
+var sparkle = "❇️";
+var x = "❌";
+var negative_squared_cross_mark = "❎";
+var heavy_heart_exclamation_mark_ornament = "❣️";
+var heart_on_fire = "❤️‍🔥";
+var mending_heart = "❤️‍🩹";
+var heart = "❤️";
+var arrow_right = "➡️";
+var curly_loop = "➰";
+var loop = "➿";
+var arrow_heading_up = "⤴️";
+var arrow_heading_down = "⤵️";
+var arrow_left = "⬅️";
+var arrow_up = "⬆️";
+var arrow_down = "⬇️";
+var black_large_square = "⬛";
+var white_large_square = "⬜";
+var star = "⭐";
+var o = "⭕";
+var wavy_dash = "〰️";
+var part_alternation_mark = "〽️";
+var congratulations = "㊗️";
+var secret = "㊙️";
+var allEmojis = {
+	"100": "💯",
+	"1234": "🔢",
+	umbrella_with_rain_drops: umbrella_with_rain_drops,
+	coffee: coffee,
+	aries: aries,
+	taurus: taurus,
+	sagittarius: sagittarius,
+	capricorn: capricorn,
+	aquarius: aquarius,
+	pisces: pisces,
+	anchor: anchor,
+	white_check_mark: white_check_mark,
+	sparkles: sparkles,
+	question: question,
+	grey_question: grey_question,
+	grey_exclamation: grey_exclamation,
+	exclamation: exclamation,
+	heavy_exclamation_mark: heavy_exclamation_mark,
+	heavy_plus_sign: heavy_plus_sign,
+	heavy_minus_sign: heavy_minus_sign,
+	heavy_division_sign: heavy_division_sign,
+	hash: hash,
+	keycap_star: keycap_star,
+	zero: zero,
+	one: one,
+	two: two,
+	three: three,
+	four: four,
+	five: five,
+	six: six,
+	seven: seven,
+	eight: eight,
+	nine: nine,
+	copyright: copyright,
+	registered: registered,
+	mahjong: mahjong,
+	black_joker: black_joker,
+	a: a,
+	b: b,
+	o2: o2,
+	parking: parking,
+	ab: ab,
+	cl: cl,
+	cool: cool,
+	free: free,
+	id: id,
+	"new": "🆕",
+	ng: ng,
+	ok: ok,
+	sos: sos,
+	up: up,
+	vs: vs,
+	"flag-ac": "🇦🇨",
+	"flag-ad": "🇦🇩",
+	"flag-ae": "🇦🇪",
+	"flag-af": "🇦🇫",
+	"flag-ag": "🇦🇬",
+	"flag-ai": "🇦🇮",
+	"flag-al": "🇦🇱",
+	"flag-am": "🇦🇲",
+	"flag-ao": "🇦🇴",
+	"flag-aq": "🇦🇶",
+	"flag-ar": "🇦🇷",
+	"flag-as": "🇦🇸",
+	"flag-at": "🇦🇹",
+	"flag-au": "🇦🇺",
+	"flag-aw": "🇦🇼",
+	"flag-ax": "🇦🇽",
+	"flag-az": "🇦🇿",
+	"flag-ba": "🇧🇦",
+	"flag-bb": "🇧🇧",
+	"flag-bd": "🇧🇩",
+	"flag-be": "🇧🇪",
+	"flag-bf": "🇧🇫",
+	"flag-bg": "🇧🇬",
+	"flag-bh": "🇧🇭",
+	"flag-bi": "🇧🇮",
+	"flag-bj": "🇧🇯",
+	"flag-bl": "🇧🇱",
+	"flag-bm": "🇧🇲",
+	"flag-bn": "🇧🇳",
+	"flag-bo": "🇧🇴",
+	"flag-bq": "🇧🇶",
+	"flag-br": "🇧🇷",
+	"flag-bs": "🇧🇸",
+	"flag-bt": "🇧🇹",
+	"flag-bv": "🇧🇻",
+	"flag-bw": "🇧🇼",
+	"flag-by": "🇧🇾",
+	"flag-bz": "🇧🇿",
+	"flag-ca": "🇨🇦",
+	"flag-cc": "🇨🇨",
+	"flag-cd": "🇨🇩",
+	"flag-cf": "🇨🇫",
+	"flag-cg": "🇨🇬",
+	"flag-ch": "🇨🇭",
+	"flag-ci": "🇨🇮",
+	"flag-ck": "🇨🇰",
+	"flag-cl": "🇨🇱",
+	"flag-cm": "🇨🇲",
+	cn: cn,
+	"flag-cn": "🇨🇳",
+	"flag-co": "🇨🇴",
+	"flag-cp": "🇨🇵",
+	"flag-cr": "🇨🇷",
+	"flag-cu": "🇨🇺",
+	"flag-cv": "🇨🇻",
+	"flag-cw": "🇨🇼",
+	"flag-cx": "🇨🇽",
+	"flag-cy": "🇨🇾",
+	"flag-cz": "🇨🇿",
+	de: de,
+	"flag-de": "🇩🇪",
+	"flag-dg": "🇩🇬",
+	"flag-dj": "🇩🇯",
+	"flag-dk": "🇩🇰",
+	"flag-dm": "🇩🇲",
+	"flag-do": "🇩🇴",
+	"flag-dz": "🇩🇿",
+	"flag-ea": "🇪🇦",
+	"flag-ec": "🇪🇨",
+	"flag-ee": "🇪🇪",
+	"flag-eg": "🇪🇬",
+	"flag-eh": "🇪🇭",
+	"flag-er": "🇪🇷",
+	es: es,
+	"flag-es": "🇪🇸",
+	"flag-et": "🇪🇹",
+	"flag-eu": "🇪🇺",
+	"flag-fi": "🇫🇮",
+	"flag-fj": "🇫🇯",
+	"flag-fk": "🇫🇰",
+	"flag-fm": "🇫🇲",
+	"flag-fo": "🇫🇴",
+	fr: fr,
+	"flag-fr": "🇫🇷",
+	"flag-ga": "🇬🇦",
+	gb: gb,
+	uk: uk,
+	"flag-gb": "🇬🇧",
+	"flag-gd": "🇬🇩",
+	"flag-ge": "🇬🇪",
+	"flag-gf": "🇬🇫",
+	"flag-gg": "🇬🇬",
+	"flag-gh": "🇬🇭",
+	"flag-gi": "🇬🇮",
+	"flag-gl": "🇬🇱",
+	"flag-gm": "🇬🇲",
+	"flag-gn": "🇬🇳",
+	"flag-gp": "🇬🇵",
+	"flag-gq": "🇬🇶",
+	"flag-gr": "🇬🇷",
+	"flag-gs": "🇬🇸",
+	"flag-gt": "🇬🇹",
+	"flag-gu": "🇬🇺",
+	"flag-gw": "🇬🇼",
+	"flag-gy": "🇬🇾",
+	"flag-hk": "🇭🇰",
+	"flag-hm": "🇭🇲",
+	"flag-hn": "🇭🇳",
+	"flag-hr": "🇭🇷",
+	"flag-ht": "🇭🇹",
+	"flag-hu": "🇭🇺",
+	"flag-ic": "🇮🇨",
+	"flag-id": "🇮🇩",
+	"flag-ie": "🇮🇪",
+	"flag-il": "🇮🇱",
+	"flag-im": "🇮🇲",
+	"flag-in": "🇮🇳",
+	"flag-io": "🇮🇴",
+	"flag-iq": "🇮🇶",
+	"flag-ir": "🇮🇷",
+	"flag-is": "🇮🇸",
+	it: it,
+	"flag-it": "🇮🇹",
+	"flag-je": "🇯🇪",
+	"flag-jm": "🇯🇲",
+	"flag-jo": "🇯🇴",
+	jp: jp,
+	"flag-jp": "🇯🇵",
+	"flag-ke": "🇰🇪",
+	"flag-kg": "🇰🇬",
+	"flag-kh": "🇰🇭",
+	"flag-ki": "🇰🇮",
+	"flag-km": "🇰🇲",
+	"flag-kn": "🇰🇳",
+	"flag-kp": "🇰🇵",
+	kr: kr,
+	"flag-kr": "🇰🇷",
+	"flag-kw": "🇰🇼",
+	"flag-ky": "🇰🇾",
+	"flag-kz": "🇰🇿",
+	"flag-la": "🇱🇦",
+	"flag-lb": "🇱🇧",
+	"flag-lc": "🇱🇨",
+	"flag-li": "🇱🇮",
+	"flag-lk": "🇱🇰",
+	"flag-lr": "🇱🇷",
+	"flag-ls": "🇱🇸",
+	"flag-lt": "🇱🇹",
+	"flag-lu": "🇱🇺",
+	"flag-lv": "🇱🇻",
+	"flag-ly": "🇱🇾",
+	"flag-ma": "🇲🇦",
+	"flag-mc": "🇲🇨",
+	"flag-md": "🇲🇩",
+	"flag-me": "🇲🇪",
+	"flag-mf": "🇲🇫",
+	"flag-mg": "🇲🇬",
+	"flag-mh": "🇲🇭",
+	"flag-mk": "🇲🇰",
+	"flag-ml": "🇲🇱",
+	"flag-mm": "🇲🇲",
+	"flag-mn": "🇲🇳",
+	"flag-mo": "🇲🇴",
+	"flag-mp": "🇲🇵",
+	"flag-mq": "🇲🇶",
+	"flag-mr": "🇲🇷",
+	"flag-ms": "🇲🇸",
+	"flag-mt": "🇲🇹",
+	"flag-mu": "🇲🇺",
+	"flag-mv": "🇲🇻",
+	"flag-mw": "🇲🇼",
+	"flag-mx": "🇲🇽",
+	"flag-my": "🇲🇾",
+	"flag-mz": "🇲🇿",
+	"flag-na": "🇳🇦",
+	"flag-nc": "🇳🇨",
+	"flag-ne": "🇳🇪",
+	"flag-nf": "🇳🇫",
+	"flag-ng": "🇳🇬",
+	"flag-ni": "🇳🇮",
+	"flag-nl": "🇳🇱",
+	"flag-no": "🇳🇴",
+	"flag-np": "🇳🇵",
+	"flag-nr": "🇳🇷",
+	"flag-nu": "🇳🇺",
+	"flag-nz": "🇳🇿",
+	"flag-om": "🇴🇲",
+	"flag-pa": "🇵🇦",
+	"flag-pe": "🇵🇪",
+	"flag-pf": "🇵🇫",
+	"flag-pg": "🇵🇬",
+	"flag-ph": "🇵🇭",
+	"flag-pk": "🇵🇰",
+	"flag-pl": "🇵🇱",
+	"flag-pm": "🇵🇲",
+	"flag-pn": "🇵🇳",
+	"flag-pr": "🇵🇷",
+	"flag-ps": "🇵🇸",
+	"flag-pt": "🇵🇹",
+	"flag-pw": "🇵🇼",
+	"flag-py": "🇵🇾",
+	"flag-qa": "🇶🇦",
+	"flag-re": "🇷🇪",
+	"flag-ro": "🇷🇴",
+	"flag-rs": "🇷🇸",
+	ru: ru,
+	"flag-ru": "🇷🇺",
+	"flag-rw": "🇷🇼",
+	"flag-sa": "🇸🇦",
+	"flag-sb": "🇸🇧",
+	"flag-sc": "🇸🇨",
+	"flag-sd": "🇸🇩",
+	"flag-se": "🇸🇪",
+	"flag-sg": "🇸🇬",
+	"flag-sh": "🇸🇭",
+	"flag-si": "🇸🇮",
+	"flag-sj": "🇸🇯",
+	"flag-sk": "🇸🇰",
+	"flag-sl": "🇸🇱",
+	"flag-sm": "🇸🇲",
+	"flag-sn": "🇸🇳",
+	"flag-so": "🇸🇴",
+	"flag-sr": "🇸🇷",
+	"flag-ss": "🇸🇸",
+	"flag-st": "🇸🇹",
+	"flag-sv": "🇸🇻",
+	"flag-sx": "🇸🇽",
+	"flag-sy": "🇸🇾",
+	"flag-sz": "🇸🇿",
+	"flag-ta": "🇹🇦",
+	"flag-tc": "🇹🇨",
+	"flag-td": "🇹🇩",
+	"flag-tf": "🇹🇫",
+	"flag-tg": "🇹🇬",
+	"flag-th": "🇹🇭",
+	"flag-tj": "🇹🇯",
+	"flag-tk": "🇹🇰",
+	"flag-tl": "🇹🇱",
+	"flag-tm": "🇹🇲",
+	"flag-tn": "🇹🇳",
+	"flag-to": "🇹🇴",
+	"flag-tr": "🇹🇷",
+	"flag-tt": "🇹🇹",
+	"flag-tv": "🇹🇻",
+	"flag-tw": "🇹🇼",
+	"flag-tz": "🇹🇿",
+	"flag-ua": "🇺🇦",
+	"flag-ug": "🇺🇬",
+	"flag-um": "🇺🇲",
+	"flag-un": "🇺🇳",
+	us: us,
+	"flag-us": "🇺🇸",
+	"flag-uy": "🇺🇾",
+	"flag-uz": "🇺🇿",
+	"flag-va": "🇻🇦",
+	"flag-vc": "🇻🇨",
+	"flag-ve": "🇻🇪",
+	"flag-vg": "🇻🇬",
+	"flag-vi": "🇻🇮",
+	"flag-vn": "🇻🇳",
+	"flag-vu": "🇻🇺",
+	"flag-wf": "🇼🇫",
+	"flag-ws": "🇼🇸",
+	"flag-xk": "🇽🇰",
+	"flag-ye": "🇾🇪",
+	"flag-yt": "🇾🇹",
+	"flag-za": "🇿🇦",
+	"flag-zm": "🇿🇲",
+	"flag-zw": "🇿🇼",
+	koko: koko,
+	sa: sa,
+	u7121: u7121,
+	u6307: u6307,
+	u7981: u7981,
+	u7a7a: u7a7a,
+	u5408: u5408,
+	u6e80: u6e80,
+	u6709: u6709,
+	u6708: u6708,
+	u7533: u7533,
+	u5272: u5272,
+	u55b6: u55b6,
+	ideograph_advantage: ideograph_advantage,
+	accept: accept,
+	cyclone: cyclone,
+	foggy: foggy,
+	closed_umbrella: closed_umbrella,
+	night_with_stars: night_with_stars,
+	sunrise_over_mountains: sunrise_over_mountains,
+	sunrise: sunrise,
+	city_sunset: city_sunset,
+	city_sunrise: city_sunrise,
+	rainbow: rainbow,
+	bridge_at_night: bridge_at_night,
+	ocean: ocean,
+	volcano: volcano,
+	milky_way: milky_way,
+	earth_africa: earth_africa,
+	earth_americas: earth_americas,
+	earth_asia: earth_asia,
+	globe_with_meridians: globe_with_meridians,
+	new_moon: new_moon,
+	waxing_crescent_moon: waxing_crescent_moon,
+	first_quarter_moon: first_quarter_moon,
+	moon: moon,
+	waxing_gibbous_moon: waxing_gibbous_moon,
+	full_moon: full_moon,
+	waning_gibbous_moon: waning_gibbous_moon,
+	last_quarter_moon: last_quarter_moon,
+	waning_crescent_moon: waning_crescent_moon,
+	crescent_moon: crescent_moon,
+	new_moon_with_face: new_moon_with_face,
+	first_quarter_moon_with_face: first_quarter_moon_with_face,
+	last_quarter_moon_with_face: last_quarter_moon_with_face,
+	full_moon_with_face: full_moon_with_face,
+	sun_with_face: sun_with_face,
+	star2: star2,
+	stars: stars,
+	thermometer: thermometer,
+	mostly_sunny: mostly_sunny,
+	sun_small_cloud: sun_small_cloud,
+	barely_sunny: barely_sunny,
+	sun_behind_cloud: sun_behind_cloud,
+	partly_sunny_rain: partly_sunny_rain,
+	sun_behind_rain_cloud: sun_behind_rain_cloud,
+	rain_cloud: rain_cloud,
+	snow_cloud: snow_cloud,
+	lightning: lightning,
+	lightning_cloud: lightning_cloud,
+	tornado: tornado,
+	tornado_cloud: tornado_cloud,
+	fog: fog,
+	wind_blowing_face: wind_blowing_face,
+	hotdog: hotdog,
+	taco: taco,
+	burrito: burrito,
+	chestnut: chestnut,
+	seedling: seedling,
+	evergreen_tree: evergreen_tree,
+	deciduous_tree: deciduous_tree,
+	palm_tree: palm_tree,
+	cactus: cactus,
+	hot_pepper: hot_pepper,
+	tulip: tulip,
+	cherry_blossom: cherry_blossom,
+	rose: rose,
+	hibiscus: hibiscus,
+	sunflower: sunflower,
+	blossom: blossom,
+	corn: corn,
+	ear_of_rice: ear_of_rice,
+	herb: herb,
+	four_leaf_clover: four_leaf_clover,
+	maple_leaf: maple_leaf,
+	fallen_leaf: fallen_leaf,
+	leaves: leaves,
+	mushroom: mushroom,
+	tomato: tomato,
+	eggplant: eggplant,
+	grapes: grapes,
+	melon: melon,
+	watermelon: watermelon,
+	tangerine: tangerine,
+	lemon: lemon,
+	banana: banana,
+	pineapple: pineapple,
+	apple: apple,
+	green_apple: green_apple,
+	pear: pear,
+	peach: peach,
+	cherries: cherries,
+	strawberry: strawberry,
+	hamburger: hamburger,
+	pizza: pizza,
+	meat_on_bone: meat_on_bone,
+	poultry_leg: poultry_leg,
+	rice_cracker: rice_cracker,
+	rice_ball: rice_ball,
+	rice: rice,
+	curry: curry,
+	ramen: ramen,
+	spaghetti: spaghetti,
+	bread: bread,
+	fries: fries,
+	sweet_potato: sweet_potato,
+	dango: dango,
+	oden: oden,
+	sushi: sushi,
+	fried_shrimp: fried_shrimp,
+	fish_cake: fish_cake,
+	icecream: icecream,
+	shaved_ice: shaved_ice,
+	ice_cream: ice_cream,
+	doughnut: doughnut,
+	cookie: cookie,
+	chocolate_bar: chocolate_bar,
+	candy: candy,
+	lollipop: lollipop,
+	custard: custard,
+	honey_pot: honey_pot,
+	cake: cake,
+	bento: bento,
+	stew: stew,
+	fried_egg: fried_egg,
+	cooking: cooking,
+	fork_and_knife: fork_and_knife,
+	tea: tea,
+	sake: sake,
+	wine_glass: wine_glass,
+	cocktail: cocktail,
+	tropical_drink: tropical_drink,
+	beer: beer,
+	beers: beers,
+	baby_bottle: baby_bottle,
+	knife_fork_plate: knife_fork_plate,
+	champagne: champagne,
+	popcorn: popcorn,
+	ribbon: ribbon,
+	gift: gift,
+	birthday: birthday,
+	jack_o_lantern: jack_o_lantern,
+	christmas_tree: christmas_tree,
+	santa: santa,
+	fireworks: fireworks,
+	sparkler: sparkler,
+	balloon: balloon,
+	tada: tada,
+	confetti_ball: confetti_ball,
+	tanabata_tree: tanabata_tree,
+	crossed_flags: crossed_flags,
+	bamboo: bamboo,
+	dolls: dolls,
+	flags: flags,
+	wind_chime: wind_chime,
+	rice_scene: rice_scene,
+	school_satchel: school_satchel,
+	mortar_board: mortar_board,
+	medal: medal,
+	reminder_ribbon: reminder_ribbon,
+	studio_microphone: studio_microphone,
+	level_slider: level_slider,
+	control_knobs: control_knobs,
+	film_frames: film_frames,
+	admission_tickets: admission_tickets,
+	carousel_horse: carousel_horse,
+	ferris_wheel: ferris_wheel,
+	roller_coaster: roller_coaster,
+	fishing_pole_and_fish: fishing_pole_and_fish,
+	microphone: microphone,
+	movie_camera: movie_camera,
+	cinema: cinema,
+	headphones: headphones,
+	art: art,
+	tophat: tophat,
+	circus_tent: circus_tent,
+	ticket: ticket,
+	clapper: clapper,
+	performing_arts: performing_arts,
+	video_game: video_game,
+	dart: dart,
+	slot_machine: slot_machine,
+	"8ball": "🎱",
+	game_die: game_die,
+	bowling: bowling,
+	flower_playing_cards: flower_playing_cards,
+	musical_note: musical_note,
+	notes: notes,
+	saxophone: saxophone,
+	guitar: guitar,
+	musical_keyboard: musical_keyboard,
+	trumpet: trumpet,
+	violin: violin,
+	musical_score: musical_score,
+	running_shirt_with_sash: running_shirt_with_sash,
+	tennis: tennis,
+	ski: ski,
+	basketball: basketball,
+	checkered_flag: checkered_flag,
+	snowboarder: snowboarder,
+	"woman-running": "🏃‍♀️",
+	"man-running": "🏃‍♂️",
+	runner: runner,
+	running: running,
+	"woman-surfing": "🏄‍♀️",
+	"man-surfing": "🏄‍♂️",
+	surfer: surfer,
+	sports_medal: sports_medal,
+	trophy: trophy,
+	horse_racing: horse_racing,
+	football: football,
+	rugby_football: rugby_football,
+	"woman-swimming": "🏊‍♀️",
+	"man-swimming": "🏊‍♂️",
+	swimmer: swimmer,
+	"woman-lifting-weights": "🏋️‍♀️",
+	"man-lifting-weights": "🏋️‍♂️",
+	weight_lifter: weight_lifter,
+	"woman-golfing": "🏌️‍♀️",
+	"man-golfing": "🏌️‍♂️",
+	golfer: golfer,
+	racing_motorcycle: racing_motorcycle,
+	racing_car: racing_car,
+	cricket_bat_and_ball: cricket_bat_and_ball,
+	volleyball: volleyball,
+	field_hockey_stick_and_ball: field_hockey_stick_and_ball,
+	ice_hockey_stick_and_puck: ice_hockey_stick_and_puck,
+	table_tennis_paddle_and_ball: table_tennis_paddle_and_ball,
+	snow_capped_mountain: snow_capped_mountain,
+	camping: camping,
+	beach_with_umbrella: beach_with_umbrella,
+	building_construction: building_construction,
+	house_buildings: house_buildings,
+	cityscape: cityscape,
+	derelict_house_building: derelict_house_building,
+	classical_building: classical_building,
+	desert: desert,
+	desert_island: desert_island,
+	national_park: national_park,
+	stadium: stadium,
+	house: house,
+	house_with_garden: house_with_garden,
+	office: office,
+	post_office: post_office,
+	european_post_office: european_post_office,
+	hospital: hospital,
+	bank: bank,
+	atm: atm,
+	hotel: hotel,
+	love_hotel: love_hotel,
+	convenience_store: convenience_store,
+	school: school,
+	department_store: department_store,
+	factory: factory,
+	izakaya_lantern: izakaya_lantern,
+	lantern: lantern,
+	japanese_castle: japanese_castle,
+	european_castle: european_castle,
+	"rainbow-flag": "🏳️‍🌈",
+	transgender_flag: transgender_flag,
+	waving_white_flag: waving_white_flag,
+	pirate_flag: pirate_flag,
+	"flag-england": "🏴󠁧󠁢󠁥󠁮󠁧󠁿",
+	"flag-scotland": "🏴󠁧󠁢󠁳󠁣󠁴󠁿",
+	"flag-wales": "🏴󠁧󠁢󠁷󠁬󠁳󠁿",
+	waving_black_flag: waving_black_flag,
+	rosette: rosette,
+	label: label,
+	badminton_racquet_and_shuttlecock: badminton_racquet_and_shuttlecock,
+	bow_and_arrow: bow_and_arrow,
+	amphora: amphora,
+	"skin-tone-2": "🏻",
+	"skin-tone-3": "🏼",
+	"skin-tone-4": "🏽",
+	"skin-tone-5": "🏾",
+	"skin-tone-6": "🏿",
+	rat: rat,
+	mouse2: mouse2,
+	ox: ox,
+	water_buffalo: water_buffalo,
+	cow2: cow2,
+	tiger2: tiger2,
+	leopard: leopard,
+	rabbit2: rabbit2,
+	black_cat: black_cat,
+	cat2: cat2,
+	dragon: dragon,
+	crocodile: crocodile,
+	whale2: whale2,
+	snail: snail,
+	snake: snake,
+	racehorse: racehorse,
+	ram: ram,
+	goat: goat,
+	sheep: sheep,
+	monkey: monkey,
+	rooster: rooster,
+	chicken: chicken,
+	service_dog: service_dog,
+	dog2: dog2,
+	pig2: pig2,
+	boar: boar,
+	elephant: elephant,
+	octopus: octopus,
+	shell: shell,
+	bug: bug,
+	ant: ant,
+	bee: bee,
+	honeybee: honeybee,
+	ladybug: ladybug,
+	lady_beetle: lady_beetle,
+	fish: fish,
+	tropical_fish: tropical_fish,
+	blowfish: blowfish,
+	turtle: turtle,
+	hatching_chick: hatching_chick,
+	baby_chick: baby_chick,
+	hatched_chick: hatched_chick,
+	bird: bird,
+	penguin: penguin,
+	koala: koala,
+	poodle: poodle,
+	dromedary_camel: dromedary_camel,
+	camel: camel,
+	dolphin: dolphin,
+	flipper: flipper,
+	mouse: mouse,
+	cow: cow,
+	tiger: tiger,
+	rabbit: rabbit,
+	cat: cat,
+	dragon_face: dragon_face,
+	whale: whale,
+	horse: horse,
+	monkey_face: monkey_face,
+	dog: dog,
+	pig: pig,
+	frog: frog,
+	hamster: hamster,
+	wolf: wolf,
+	polar_bear: polar_bear,
+	bear: bear,
+	panda_face: panda_face,
+	pig_nose: pig_nose,
+	feet: feet,
+	paw_prints: paw_prints,
+	chipmunk: chipmunk,
+	eyes: eyes,
+	"eye-in-speech-bubble": "👁️‍🗨️",
+	eye: eye,
+	ear: ear,
+	nose: nose,
+	lips: lips,
+	tongue: tongue,
+	point_up_2: point_up_2,
+	point_down: point_down,
+	point_left: point_left,
+	point_right: point_right,
+	facepunch: facepunch,
+	punch: punch,
+	wave: wave,
+	ok_hand: ok_hand,
+	"+1": "👍",
+	thumbsup: thumbsup,
+	"-1": "👎",
+	thumbsdown: thumbsdown,
+	clap: clap,
+	open_hands: open_hands,
+	crown: crown,
+	womans_hat: womans_hat,
+	eyeglasses: eyeglasses,
+	necktie: necktie,
+	shirt: shirt,
+	tshirt: tshirt,
+	jeans: jeans,
+	dress: dress,
+	kimono: kimono,
+	bikini: bikini,
+	womans_clothes: womans_clothes,
+	purse: purse,
+	handbag: handbag,
+	pouch: pouch,
+	mans_shoe: mans_shoe,
+	shoe: shoe,
+	athletic_shoe: athletic_shoe,
+	high_heel: high_heel,
+	sandal: sandal,
+	boot: boot,
+	footprints: footprints,
+	bust_in_silhouette: bust_in_silhouette,
+	busts_in_silhouette: busts_in_silhouette,
+	boy: boy,
+	girl: girl,
+	"male-farmer": "👨‍🌾",
+	"male-cook": "👨‍🍳",
+	man_feeding_baby: man_feeding_baby,
+	"male-student": "👨‍🎓",
+	"male-singer": "👨‍🎤",
+	"male-artist": "👨‍🎨",
+	"male-teacher": "👨‍🏫",
+	"male-factory-worker": "👨‍🏭",
+	"man-boy-boy": "👨‍👦‍👦",
+	"man-boy": "👨‍👦",
+	"man-girl-boy": "👨‍👧‍👦",
+	"man-girl-girl": "👨‍👧‍👧",
+	"man-girl": "👨‍👧",
+	"man-man-boy": "👨‍👨‍👦",
+	"man-man-boy-boy": "👨‍👨‍👦‍👦",
+	"man-man-girl": "👨‍👨‍👧",
+	"man-man-girl-boy": "👨‍👨‍👧‍👦",
+	"man-man-girl-girl": "👨‍👨‍👧‍👧",
+	"man-woman-boy": "👨‍👩‍👦",
+	family: family,
+	"man-woman-boy-boy": "👨‍👩‍👦‍👦",
+	"man-woman-girl": "👨‍👩‍👧",
+	"man-woman-girl-boy": "👨‍👩‍👧‍👦",
+	"man-woman-girl-girl": "👨‍👩‍👧‍👧",
+	"male-technologist": "👨‍💻",
+	"male-office-worker": "👨‍💼",
+	"male-mechanic": "👨‍🔧",
+	"male-scientist": "👨‍🔬",
+	"male-astronaut": "👨‍🚀",
+	"male-firefighter": "👨‍🚒",
+	man_with_probing_cane: man_with_probing_cane,
+	red_haired_man: red_haired_man,
+	curly_haired_man: curly_haired_man,
+	bald_man: bald_man,
+	white_haired_man: white_haired_man,
+	man_in_motorized_wheelchair: man_in_motorized_wheelchair,
+	man_in_manual_wheelchair: man_in_manual_wheelchair,
+	"male-doctor": "👨‍⚕️",
+	"male-judge": "👨‍⚖️",
+	"male-pilot": "👨‍✈️",
+	"man-heart-man": "👨‍❤️‍👨",
+	"man-kiss-man": "👨‍❤️‍💋‍👨",
+	man: man,
+	"female-farmer": "👩‍🌾",
+	"female-cook": "👩‍🍳",
+	woman_feeding_baby: woman_feeding_baby,
+	"female-student": "👩‍🎓",
+	"female-singer": "👩‍🎤",
+	"female-artist": "👩‍🎨",
+	"female-teacher": "👩‍🏫",
+	"female-factory-worker": "👩‍🏭",
+	"woman-boy-boy": "👩‍👦‍👦",
+	"woman-boy": "👩‍👦",
+	"woman-girl-boy": "👩‍👧‍👦",
+	"woman-girl-girl": "👩‍👧‍👧",
+	"woman-girl": "👩‍👧",
+	"woman-woman-boy": "👩‍👩‍👦",
+	"woman-woman-boy-boy": "👩‍👩‍👦‍👦",
+	"woman-woman-girl": "👩‍👩‍👧",
+	"woman-woman-girl-boy": "👩‍👩‍👧‍👦",
+	"woman-woman-girl-girl": "👩‍👩‍👧‍👧",
+	"female-technologist": "👩‍💻",
+	"female-office-worker": "👩‍💼",
+	"female-mechanic": "👩‍🔧",
+	"female-scientist": "👩‍🔬",
+	"female-astronaut": "👩‍🚀",
+	"female-firefighter": "👩‍🚒",
+	woman_with_probing_cane: woman_with_probing_cane,
+	red_haired_woman: red_haired_woman,
+	curly_haired_woman: curly_haired_woman,
+	bald_woman: bald_woman,
+	white_haired_woman: white_haired_woman,
+	woman_in_motorized_wheelchair: woman_in_motorized_wheelchair,
+	woman_in_manual_wheelchair: woman_in_manual_wheelchair,
+	"female-doctor": "👩‍⚕️",
+	"female-judge": "👩‍⚖️",
+	"female-pilot": "👩‍✈️",
+	"woman-heart-man": "👩‍❤️‍👨",
+	"woman-heart-woman": "👩‍❤️‍👩",
+	"woman-kiss-man": "👩‍❤️‍💋‍👨",
+	"woman-kiss-woman": "👩‍❤️‍💋‍👩",
+	woman: woman,
+	man_and_woman_holding_hands: man_and_woman_holding_hands,
+	woman_and_man_holding_hands: woman_and_man_holding_hands,
+	couple: couple,
+	two_men_holding_hands: two_men_holding_hands,
+	men_holding_hands: men_holding_hands,
+	two_women_holding_hands: two_women_holding_hands,
+	women_holding_hands: women_holding_hands,
+	"female-police-officer": "👮‍♀️",
+	"male-police-officer": "👮‍♂️",
+	cop: cop,
+	"women-with-bunny-ears-partying": "👯‍♀️",
+	"woman-with-bunny-ears-partying": "👯‍♀️",
+	dancers: dancers,
+	"men-with-bunny-ears-partying": "👯‍♂️",
+	"man-with-bunny-ears-partying": "👯‍♂️",
+	woman_with_veil: woman_with_veil,
+	man_with_veil: man_with_veil,
+	bride_with_veil: bride_with_veil,
+	"blond-haired-woman": "👱‍♀️",
+	"blond-haired-man": "👱‍♂️",
+	person_with_blond_hair: person_with_blond_hair,
+	man_with_gua_pi_mao: man_with_gua_pi_mao,
+	"woman-wearing-turban": "👳‍♀️",
+	"man-wearing-turban": "👳‍♂️",
+	man_with_turban: man_with_turban,
+	older_man: older_man,
+	older_woman: older_woman,
+	baby: baby,
+	"female-construction-worker": "👷‍♀️",
+	"male-construction-worker": "👷‍♂️",
+	construction_worker: construction_worker,
+	princess: princess,
+	japanese_ogre: japanese_ogre,
+	japanese_goblin: japanese_goblin,
+	ghost: ghost,
+	angel: angel,
+	alien: alien,
+	space_invader: space_invader,
+	imp: imp,
+	skull: skull,
+	"woman-tipping-hand": "💁‍♀️",
+	information_desk_person: information_desk_person,
+	"man-tipping-hand": "💁‍♂️",
+	"female-guard": "💂‍♀️",
+	"male-guard": "💂‍♂️",
+	guardsman: guardsman,
+	dancer: dancer,
+	lipstick: lipstick,
+	nail_care: nail_care,
+	"woman-getting-massage": "💆‍♀️",
+	massage: massage,
+	"man-getting-massage": "💆‍♂️",
+	"woman-getting-haircut": "💇‍♀️",
+	haircut: haircut,
+	"man-getting-haircut": "💇‍♂️",
+	barber: barber,
+	syringe: syringe,
+	pill: pill,
+	kiss: kiss,
+	love_letter: love_letter,
+	ring: ring,
+	gem: gem,
+	couplekiss: couplekiss,
+	bouquet: bouquet,
+	couple_with_heart: couple_with_heart,
+	wedding: wedding,
+	heartbeat: heartbeat,
+	broken_heart: broken_heart,
+	two_hearts: two_hearts,
+	sparkling_heart: sparkling_heart,
+	heartpulse: heartpulse,
+	cupid: cupid,
+	blue_heart: blue_heart,
+	green_heart: green_heart,
+	yellow_heart: yellow_heart,
+	purple_heart: purple_heart,
+	gift_heart: gift_heart,
+	revolving_hearts: revolving_hearts,
+	heart_decoration: heart_decoration,
+	diamond_shape_with_a_dot_inside: diamond_shape_with_a_dot_inside,
+	bulb: bulb,
+	anger: anger,
+	bomb: bomb,
+	zzz: zzz,
+	boom: boom,
+	collision: collision,
+	sweat_drops: sweat_drops,
+	droplet: droplet,
+	dash: dash,
+	hankey: hankey,
+	poop: poop,
+	shit: shit,
+	muscle: muscle,
+	dizzy: dizzy,
+	speech_balloon: speech_balloon,
+	thought_balloon: thought_balloon,
+	white_flower: white_flower,
+	moneybag: moneybag,
+	currency_exchange: currency_exchange,
+	heavy_dollar_sign: heavy_dollar_sign,
+	credit_card: credit_card,
+	yen: yen,
+	dollar: dollar,
+	euro: euro,
+	pound: pound,
+	money_with_wings: money_with_wings,
+	chart: chart,
+	seat: seat,
+	computer: computer,
+	briefcase: briefcase,
+	minidisc: minidisc,
+	floppy_disk: floppy_disk,
+	cd: cd,
+	dvd: dvd,
+	file_folder: file_folder,
+	open_file_folder: open_file_folder,
+	page_with_curl: page_with_curl,
+	page_facing_up: page_facing_up,
+	date: date,
+	calendar: calendar,
+	card_index: card_index,
+	chart_with_upwards_trend: chart_with_upwards_trend,
+	chart_with_downwards_trend: chart_with_downwards_trend,
+	bar_chart: bar_chart,
+	clipboard: clipboard,
+	pushpin: pushpin,
+	round_pushpin: round_pushpin,
+	paperclip: paperclip,
+	straight_ruler: straight_ruler,
+	triangular_ruler: triangular_ruler,
+	bookmark_tabs: bookmark_tabs,
+	ledger: ledger,
+	notebook: notebook,
+	notebook_with_decorative_cover: notebook_with_decorative_cover,
+	closed_book: closed_book,
+	book: book,
+	open_book: open_book,
+	green_book: green_book,
+	blue_book: blue_book,
+	orange_book: orange_book,
+	books: books,
+	name_badge: name_badge,
+	scroll: scroll,
+	memo: memo,
+	pencil: pencil,
+	telephone_receiver: telephone_receiver,
+	pager: pager,
+	fax: fax,
+	satellite_antenna: satellite_antenna,
+	loudspeaker: loudspeaker,
+	mega: mega,
+	outbox_tray: outbox_tray,
+	inbox_tray: inbox_tray,
+	"package": "📦",
+	"e-mail": "📧",
+	incoming_envelope: incoming_envelope,
+	envelope_with_arrow: envelope_with_arrow,
+	mailbox_closed: mailbox_closed,
+	mailbox: mailbox,
+	mailbox_with_mail: mailbox_with_mail,
+	mailbox_with_no_mail: mailbox_with_no_mail,
+	postbox: postbox,
+	postal_horn: postal_horn,
+	newspaper: newspaper,
+	iphone: iphone,
+	calling: calling,
+	vibration_mode: vibration_mode,
+	mobile_phone_off: mobile_phone_off,
+	no_mobile_phones: no_mobile_phones,
+	signal_strength: signal_strength,
+	camera: camera,
+	camera_with_flash: camera_with_flash,
+	video_camera: video_camera,
+	tv: tv,
+	radio: radio,
+	vhs: vhs,
+	film_projector: film_projector,
+	prayer_beads: prayer_beads,
+	twisted_rightwards_arrows: twisted_rightwards_arrows,
+	repeat: repeat,
+	repeat_one: repeat_one,
+	arrows_clockwise: arrows_clockwise,
+	arrows_counterclockwise: arrows_counterclockwise,
+	low_brightness: low_brightness,
+	high_brightness: high_brightness,
+	mute: mute,
+	speaker: speaker,
+	sound: sound,
+	loud_sound: loud_sound,
+	battery: battery,
+	electric_plug: electric_plug,
+	mag: mag,
+	mag_right: mag_right,
+	lock_with_ink_pen: lock_with_ink_pen,
+	closed_lock_with_key: closed_lock_with_key,
+	key: key,
+	lock: lock,
+	unlock: unlock,
+	bell: bell,
+	no_bell: no_bell,
+	bookmark: bookmark,
+	link: link,
+	radio_button: radio_button,
+	back: back,
+	end: end,
+	on: on,
+	soon: soon,
+	top: top,
+	underage: underage,
+	keycap_ten: keycap_ten,
+	capital_abcd: capital_abcd,
+	abcd: abcd,
+	symbols: symbols,
+	abc: abc,
+	fire: fire,
+	flashlight: flashlight,
+	wrench: wrench,
+	hammer: hammer,
+	nut_and_bolt: nut_and_bolt,
+	hocho: hocho,
+	knife: knife,
+	gun: gun,
+	microscope: microscope,
+	telescope: telescope,
+	crystal_ball: crystal_ball,
+	six_pointed_star: six_pointed_star,
+	beginner: beginner,
+	trident: trident,
+	black_square_button: black_square_button,
+	white_square_button: white_square_button,
+	red_circle: red_circle,
+	large_blue_circle: large_blue_circle,
+	large_orange_diamond: large_orange_diamond,
+	large_blue_diamond: large_blue_diamond,
+	small_orange_diamond: small_orange_diamond,
+	small_blue_diamond: small_blue_diamond,
+	small_red_triangle: small_red_triangle,
+	small_red_triangle_down: small_red_triangle_down,
+	arrow_up_small: arrow_up_small,
+	arrow_down_small: arrow_down_small,
+	om_symbol: om_symbol,
+	dove_of_peace: dove_of_peace,
+	kaaba: kaaba,
+	mosque: mosque,
+	synagogue: synagogue,
+	menorah_with_nine_branches: menorah_with_nine_branches,
+	clock1: clock1,
+	clock2: clock2,
+	clock3: clock3,
+	clock4: clock4,
+	clock5: clock5,
+	clock6: clock6,
+	clock7: clock7,
+	clock8: clock8,
+	clock9: clock9,
+	clock10: clock10,
+	clock11: clock11,
+	clock12: clock12,
+	clock130: clock130,
+	clock230: clock230,
+	clock330: clock330,
+	clock430: clock430,
+	clock530: clock530,
+	clock630: clock630,
+	clock730: clock730,
+	clock830: clock830,
+	clock930: clock930,
+	clock1030: clock1030,
+	clock1130: clock1130,
+	clock1230: clock1230,
+	candle: candle,
+	mantelpiece_clock: mantelpiece_clock,
+	hole: hole,
+	man_in_business_suit_levitating: man_in_business_suit_levitating,
+	"female-detective": "🕵️‍♀️",
+	"male-detective": "🕵️‍♂️",
+	sleuth_or_spy: sleuth_or_spy,
+	dark_sunglasses: dark_sunglasses,
+	spider: spider,
+	spider_web: spider_web,
+	joystick: joystick,
+	man_dancing: man_dancing,
+	linked_paperclips: linked_paperclips,
+	lower_left_ballpoint_pen: lower_left_ballpoint_pen,
+	lower_left_fountain_pen: lower_left_fountain_pen,
+	lower_left_paintbrush: lower_left_paintbrush,
+	lower_left_crayon: lower_left_crayon,
+	raised_hand_with_fingers_splayed: raised_hand_with_fingers_splayed,
+	middle_finger: middle_finger,
+	reversed_hand_with_middle_finger_extended: reversed_hand_with_middle_finger_extended,
+	"spock-hand": "🖖",
+	black_heart: black_heart,
+	desktop_computer: desktop_computer,
+	printer: printer,
+	three_button_mouse: three_button_mouse,
+	trackball: trackball,
+	frame_with_picture: frame_with_picture,
+	card_index_dividers: card_index_dividers,
+	card_file_box: card_file_box,
+	file_cabinet: file_cabinet,
+	wastebasket: wastebasket,
+	spiral_note_pad: spiral_note_pad,
+	spiral_calendar_pad: spiral_calendar_pad,
+	compression: compression,
+	old_key: old_key,
+	rolled_up_newspaper: rolled_up_newspaper,
+	dagger_knife: dagger_knife,
+	speaking_head_in_silhouette: speaking_head_in_silhouette,
+	left_speech_bubble: left_speech_bubble,
+	right_anger_bubble: right_anger_bubble,
+	ballot_box_with_ballot: ballot_box_with_ballot,
+	world_map: world_map,
+	mount_fuji: mount_fuji,
+	tokyo_tower: tokyo_tower,
+	statue_of_liberty: statue_of_liberty,
+	japan: japan,
+	moyai: moyai,
+	grinning: grinning,
+	grin: grin,
+	joy: joy,
+	smiley: smiley,
+	smile: smile,
+	sweat_smile: sweat_smile,
+	laughing: laughing,
+	satisfied: satisfied,
+	innocent: innocent,
+	smiling_imp: smiling_imp,
+	wink: wink,
+	blush: blush,
+	yum: yum,
+	relieved: relieved,
+	heart_eyes: heart_eyes,
+	sunglasses: sunglasses,
+	smirk: smirk,
+	neutral_face: neutral_face,
+	expressionless: expressionless,
+	unamused: unamused,
+	sweat: sweat,
+	pensive: pensive,
+	confused: confused,
+	confounded: confounded,
+	kissing: kissing,
+	kissing_heart: kissing_heart,
+	kissing_smiling_eyes: kissing_smiling_eyes,
+	kissing_closed_eyes: kissing_closed_eyes,
+	stuck_out_tongue: stuck_out_tongue,
+	stuck_out_tongue_winking_eye: stuck_out_tongue_winking_eye,
+	stuck_out_tongue_closed_eyes: stuck_out_tongue_closed_eyes,
+	disappointed: disappointed,
+	worried: worried,
+	angry: angry,
+	rage: rage,
+	cry: cry,
+	persevere: persevere,
+	triumph: triumph,
+	disappointed_relieved: disappointed_relieved,
+	frowning: frowning,
+	anguished: anguished,
+	fearful: fearful,
+	weary: weary,
+	sleepy: sleepy,
+	tired_face: tired_face,
+	grimacing: grimacing,
+	sob: sob,
+	face_exhaling: face_exhaling,
+	open_mouth: open_mouth,
+	hushed: hushed,
+	cold_sweat: cold_sweat,
+	scream: scream,
+	astonished: astonished,
+	flushed: flushed,
+	sleeping: sleeping,
+	face_with_spiral_eyes: face_with_spiral_eyes,
+	dizzy_face: dizzy_face,
+	face_in_clouds: face_in_clouds,
+	no_mouth: no_mouth,
+	mask: mask,
+	smile_cat: smile_cat,
+	joy_cat: joy_cat,
+	smiley_cat: smiley_cat,
+	heart_eyes_cat: heart_eyes_cat,
+	smirk_cat: smirk_cat,
+	kissing_cat: kissing_cat,
+	pouting_cat: pouting_cat,
+	crying_cat_face: crying_cat_face,
+	scream_cat: scream_cat,
+	slightly_frowning_face: slightly_frowning_face,
+	slightly_smiling_face: slightly_smiling_face,
+	upside_down_face: upside_down_face,
+	face_with_rolling_eyes: face_with_rolling_eyes,
+	"woman-gesturing-no": "🙅‍♀️",
+	no_good: no_good,
+	"man-gesturing-no": "🙅‍♂️",
+	"woman-gesturing-ok": "🙆‍♀️",
+	ok_woman: ok_woman,
+	"man-gesturing-ok": "🙆‍♂️",
+	"woman-bowing": "🙇‍♀️",
+	"man-bowing": "🙇‍♂️",
+	bow: bow,
+	see_no_evil: see_no_evil,
+	hear_no_evil: hear_no_evil,
+	speak_no_evil: speak_no_evil,
+	"woman-raising-hand": "🙋‍♀️",
+	raising_hand: raising_hand,
+	"man-raising-hand": "🙋‍♂️",
+	raised_hands: raised_hands,
+	"woman-frowning": "🙍‍♀️",
+	person_frowning: person_frowning,
+	"man-frowning": "🙍‍♂️",
+	"woman-pouting": "🙎‍♀️",
+	person_with_pouting_face: person_with_pouting_face,
+	"man-pouting": "🙎‍♂️",
+	pray: pray,
+	rocket: rocket,
+	helicopter: helicopter,
+	steam_locomotive: steam_locomotive,
+	railway_car: railway_car,
+	bullettrain_side: bullettrain_side,
+	bullettrain_front: bullettrain_front,
+	train2: train2,
+	metro: metro,
+	light_rail: light_rail,
+	station: station,
+	tram: tram,
+	train: train,
+	bus: bus,
+	oncoming_bus: oncoming_bus,
+	trolleybus: trolleybus,
+	busstop: busstop,
+	minibus: minibus,
+	ambulance: ambulance,
+	fire_engine: fire_engine,
+	police_car: police_car,
+	oncoming_police_car: oncoming_police_car,
+	taxi: taxi,
+	oncoming_taxi: oncoming_taxi,
+	car: car,
+	red_car: red_car,
+	oncoming_automobile: oncoming_automobile,
+	blue_car: blue_car,
+	truck: truck,
+	articulated_lorry: articulated_lorry,
+	tractor: tractor,
+	monorail: monorail,
+	mountain_railway: mountain_railway,
+	suspension_railway: suspension_railway,
+	mountain_cableway: mountain_cableway,
+	aerial_tramway: aerial_tramway,
+	ship: ship,
+	"woman-rowing-boat": "🚣‍♀️",
+	"man-rowing-boat": "🚣‍♂️",
+	rowboat: rowboat,
+	speedboat: speedboat,
+	traffic_light: traffic_light,
+	vertical_traffic_light: vertical_traffic_light,
+	construction: construction,
+	rotating_light: rotating_light,
+	triangular_flag_on_post: triangular_flag_on_post,
+	door: door,
+	no_entry_sign: no_entry_sign,
+	smoking: smoking,
+	no_smoking: no_smoking,
+	put_litter_in_its_place: put_litter_in_its_place,
+	do_not_litter: do_not_litter,
+	potable_water: potable_water,
+	"non-potable_water": "🚱",
+	bike: bike,
+	no_bicycles: no_bicycles,
+	"woman-biking": "🚴‍♀️",
+	"man-biking": "🚴‍♂️",
+	bicyclist: bicyclist,
+	"woman-mountain-biking": "🚵‍♀️",
+	"man-mountain-biking": "🚵‍♂️",
+	mountain_bicyclist: mountain_bicyclist,
+	"woman-walking": "🚶‍♀️",
+	"man-walking": "🚶‍♂️",
+	walking: walking,
+	no_pedestrians: no_pedestrians,
+	children_crossing: children_crossing,
+	mens: mens,
+	womens: womens,
+	restroom: restroom,
+	baby_symbol: baby_symbol,
+	toilet: toilet,
+	wc: wc,
+	shower: shower,
+	bath: bath,
+	bathtub: bathtub,
+	passport_control: passport_control,
+	customs: customs,
+	baggage_claim: baggage_claim,
+	left_luggage: left_luggage,
+	couch_and_lamp: couch_and_lamp,
+	sleeping_accommodation: sleeping_accommodation,
+	shopping_bags: shopping_bags,
+	bellhop_bell: bellhop_bell,
+	bed: bed,
+	place_of_worship: place_of_worship,
+	octagonal_sign: octagonal_sign,
+	shopping_trolley: shopping_trolley,
+	hindu_temple: hindu_temple,
+	hut: hut,
+	elevator: elevator,
+	hammer_and_wrench: hammer_and_wrench,
+	shield: shield,
+	oil_drum: oil_drum,
+	motorway: motorway,
+	railway_track: railway_track,
+	motor_boat: motor_boat,
+	small_airplane: small_airplane,
+	airplane_departure: airplane_departure,
+	airplane_arriving: airplane_arriving,
+	satellite: satellite,
+	passenger_ship: passenger_ship,
+	scooter: scooter,
+	motor_scooter: motor_scooter,
+	canoe: canoe,
+	sled: sled,
+	flying_saucer: flying_saucer,
+	skateboard: skateboard,
+	auto_rickshaw: auto_rickshaw,
+	pickup_truck: pickup_truck,
+	roller_skate: roller_skate,
+	large_orange_circle: large_orange_circle,
+	large_yellow_circle: large_yellow_circle,
+	large_green_circle: large_green_circle,
+	large_purple_circle: large_purple_circle,
+	large_brown_circle: large_brown_circle,
+	large_red_square: large_red_square,
+	large_blue_square: large_blue_square,
+	large_orange_square: large_orange_square,
+	large_yellow_square: large_yellow_square,
+	large_green_square: large_green_square,
+	large_purple_square: large_purple_square,
+	large_brown_square: large_brown_square,
+	pinched_fingers: pinched_fingers,
+	white_heart: white_heart,
+	brown_heart: brown_heart,
+	pinching_hand: pinching_hand,
+	zipper_mouth_face: zipper_mouth_face,
+	money_mouth_face: money_mouth_face,
+	face_with_thermometer: face_with_thermometer,
+	nerd_face: nerd_face,
+	thinking_face: thinking_face,
+	face_with_head_bandage: face_with_head_bandage,
+	robot_face: robot_face,
+	hugging_face: hugging_face,
+	the_horns: the_horns,
+	sign_of_the_horns: sign_of_the_horns,
+	call_me_hand: call_me_hand,
+	raised_back_of_hand: raised_back_of_hand,
+	"left-facing_fist": "🤛",
+	"right-facing_fist": "🤜",
+	handshake: handshake,
+	crossed_fingers: crossed_fingers,
+	hand_with_index_and_middle_fingers_crossed: hand_with_index_and_middle_fingers_crossed,
+	i_love_you_hand_sign: i_love_you_hand_sign,
+	face_with_cowboy_hat: face_with_cowboy_hat,
+	clown_face: clown_face,
+	nauseated_face: nauseated_face,
+	rolling_on_the_floor_laughing: rolling_on_the_floor_laughing,
+	drooling_face: drooling_face,
+	lying_face: lying_face,
+	"woman-facepalming": "🤦‍♀️",
+	"man-facepalming": "🤦‍♂️",
+	face_palm: face_palm,
+	sneezing_face: sneezing_face,
+	face_with_raised_eyebrow: face_with_raised_eyebrow,
+	face_with_one_eyebrow_raised: face_with_one_eyebrow_raised,
+	"star-struck": "🤩",
+	grinning_face_with_star_eyes: grinning_face_with_star_eyes,
+	zany_face: zany_face,
+	grinning_face_with_one_large_and_one_small_eye: grinning_face_with_one_large_and_one_small_eye,
+	shushing_face: shushing_face,
+	face_with_finger_covering_closed_lips: face_with_finger_covering_closed_lips,
+	face_with_symbols_on_mouth: face_with_symbols_on_mouth,
+	serious_face_with_symbols_covering_mouth: serious_face_with_symbols_covering_mouth,
+	face_with_hand_over_mouth: face_with_hand_over_mouth,
+	smiling_face_with_smiling_eyes_and_hand_covering_mouth: smiling_face_with_smiling_eyes_and_hand_covering_mouth,
+	face_vomiting: face_vomiting,
+	face_with_open_mouth_vomiting: face_with_open_mouth_vomiting,
+	exploding_head: exploding_head,
+	shocked_face_with_exploding_head: shocked_face_with_exploding_head,
+	pregnant_woman: pregnant_woman,
+	"breast-feeding": "🤱",
+	palms_up_together: palms_up_together,
+	selfie: selfie,
+	prince: prince,
+	woman_in_tuxedo: woman_in_tuxedo,
+	man_in_tuxedo: man_in_tuxedo,
+	person_in_tuxedo: person_in_tuxedo,
+	mrs_claus: mrs_claus,
+	mother_christmas: mother_christmas,
+	"woman-shrugging": "🤷‍♀️",
+	"man-shrugging": "🤷‍♂️",
+	shrug: shrug,
+	"woman-cartwheeling": "🤸‍♀️",
+	"man-cartwheeling": "🤸‍♂️",
+	person_doing_cartwheel: person_doing_cartwheel,
+	"woman-juggling": "🤹‍♀️",
+	"man-juggling": "🤹‍♂️",
+	juggling: juggling,
+	fencer: fencer,
+	"woman-wrestling": "🤼‍♀️",
+	"man-wrestling": "🤼‍♂️",
+	wrestlers: wrestlers,
+	"woman-playing-water-polo": "🤽‍♀️",
+	"man-playing-water-polo": "🤽‍♂️",
+	water_polo: water_polo,
+	"woman-playing-handball": "🤾‍♀️",
+	"man-playing-handball": "🤾‍♂️",
+	handball: handball,
+	diving_mask: diving_mask,
+	wilted_flower: wilted_flower,
+	drum_with_drumsticks: drum_with_drumsticks,
+	clinking_glasses: clinking_glasses,
+	tumbler_glass: tumbler_glass,
+	spoon: spoon,
+	goal_net: goal_net,
+	first_place_medal: first_place_medal,
+	second_place_medal: second_place_medal,
+	third_place_medal: third_place_medal,
+	boxing_glove: boxing_glove,
+	martial_arts_uniform: martial_arts_uniform,
+	curling_stone: curling_stone,
+	lacrosse: lacrosse,
+	softball: softball,
+	flying_disc: flying_disc,
+	croissant: croissant,
+	avocado: avocado,
+	cucumber: cucumber,
+	bacon: bacon,
+	potato: potato,
+	carrot: carrot,
+	baguette_bread: baguette_bread,
+	green_salad: green_salad,
+	shallow_pan_of_food: shallow_pan_of_food,
+	stuffed_flatbread: stuffed_flatbread,
+	egg: egg,
+	glass_of_milk: glass_of_milk,
+	peanuts: peanuts,
+	kiwifruit: kiwifruit,
+	pancakes: pancakes,
+	dumpling: dumpling,
+	fortune_cookie: fortune_cookie,
+	takeout_box: takeout_box,
+	chopsticks: chopsticks,
+	bowl_with_spoon: bowl_with_spoon,
+	cup_with_straw: cup_with_straw,
+	coconut: coconut,
+	broccoli: broccoli,
+	pie: pie,
+	pretzel: pretzel,
+	cut_of_meat: cut_of_meat,
+	sandwich: sandwich,
+	canned_food: canned_food,
+	leafy_green: leafy_green,
+	mango: mango,
+	moon_cake: moon_cake,
+	bagel: bagel,
+	smiling_face_with_3_hearts: smiling_face_with_3_hearts,
+	yawning_face: yawning_face,
+	smiling_face_with_tear: smiling_face_with_tear,
+	partying_face: partying_face,
+	woozy_face: woozy_face,
+	hot_face: hot_face,
+	cold_face: cold_face,
+	ninja: ninja,
+	disguised_face: disguised_face,
+	pleading_face: pleading_face,
+	sari: sari,
+	lab_coat: lab_coat,
+	goggles: goggles,
+	hiking_boot: hiking_boot,
+	womans_flat_shoe: womans_flat_shoe,
+	crab: crab,
+	lion_face: lion_face,
+	scorpion: scorpion,
+	turkey: turkey,
+	unicorn_face: unicorn_face,
+	eagle: eagle,
+	duck: duck,
+	bat: bat,
+	shark: shark,
+	owl: owl,
+	fox_face: fox_face,
+	butterfly: butterfly,
+	deer: deer,
+	gorilla: gorilla,
+	lizard: lizard,
+	rhinoceros: rhinoceros,
+	shrimp: shrimp,
+	squid: squid,
+	giraffe_face: giraffe_face,
+	zebra_face: zebra_face,
+	hedgehog: hedgehog,
+	sauropod: sauropod,
+	"t-rex": "🦖",
+	cricket: cricket,
+	kangaroo: kangaroo,
+	llama: llama,
+	peacock: peacock,
+	hippopotamus: hippopotamus,
+	parrot: parrot,
+	raccoon: raccoon,
+	lobster: lobster,
+	mosquito: mosquito,
+	microbe: microbe,
+	badger: badger,
+	swan: swan,
+	mammoth: mammoth,
+	dodo: dodo,
+	sloth: sloth,
+	otter: otter,
+	orangutan: orangutan,
+	skunk: skunk,
+	flamingo: flamingo,
+	oyster: oyster,
+	beaver: beaver,
+	bison: bison,
+	seal: seal,
+	guide_dog: guide_dog,
+	probing_cane: probing_cane,
+	bone: bone,
+	leg: leg,
+	foot: foot,
+	tooth: tooth,
+	female_superhero: female_superhero,
+	male_superhero: male_superhero,
+	superhero: superhero,
+	female_supervillain: female_supervillain,
+	male_supervillain: male_supervillain,
+	supervillain: supervillain,
+	safety_vest: safety_vest,
+	ear_with_hearing_aid: ear_with_hearing_aid,
+	motorized_wheelchair: motorized_wheelchair,
+	manual_wheelchair: manual_wheelchair,
+	mechanical_arm: mechanical_arm,
+	mechanical_leg: mechanical_leg,
+	cheese_wedge: cheese_wedge,
+	cupcake: cupcake,
+	salt: salt,
+	beverage_box: beverage_box,
+	garlic: garlic,
+	onion: onion,
+	falafel: falafel,
+	waffle: waffle,
+	butter: butter,
+	mate_drink: mate_drink,
+	ice_cube: ice_cube,
+	bubble_tea: bubble_tea,
+	woman_standing: woman_standing,
+	man_standing: man_standing,
+	standing_person: standing_person,
+	woman_kneeling: woman_kneeling,
+	man_kneeling: man_kneeling,
+	kneeling_person: kneeling_person,
+	deaf_woman: deaf_woman,
+	deaf_man: deaf_man,
+	deaf_person: deaf_person,
+	face_with_monocle: face_with_monocle,
+	farmer: farmer,
+	cook: cook,
+	person_feeding_baby: person_feeding_baby,
+	mx_claus: mx_claus,
+	student: student,
+	singer: singer,
+	artist: artist,
+	teacher: teacher,
+	factory_worker: factory_worker,
+	technologist: technologist,
+	office_worker: office_worker,
+	mechanic: mechanic,
+	scientist: scientist,
+	astronaut: astronaut,
+	firefighter: firefighter,
+	people_holding_hands: people_holding_hands,
+	person_with_probing_cane: person_with_probing_cane,
+	red_haired_person: red_haired_person,
+	curly_haired_person: curly_haired_person,
+	bald_person: bald_person,
+	white_haired_person: white_haired_person,
+	person_in_motorized_wheelchair: person_in_motorized_wheelchair,
+	person_in_manual_wheelchair: person_in_manual_wheelchair,
+	health_worker: health_worker,
+	judge: judge,
+	pilot: pilot,
+	adult: adult,
+	child: child,
+	older_adult: older_adult,
+	woman_with_beard: woman_with_beard,
+	man_with_beard: man_with_beard,
+	bearded_person: bearded_person,
+	person_with_headscarf: person_with_headscarf,
+	woman_in_steamy_room: woman_in_steamy_room,
+	man_in_steamy_room: man_in_steamy_room,
+	person_in_steamy_room: person_in_steamy_room,
+	woman_climbing: woman_climbing,
+	person_climbing: person_climbing,
+	man_climbing: man_climbing,
+	woman_in_lotus_position: woman_in_lotus_position,
+	person_in_lotus_position: person_in_lotus_position,
+	man_in_lotus_position: man_in_lotus_position,
+	female_mage: female_mage,
+	mage: mage,
+	male_mage: male_mage,
+	female_fairy: female_fairy,
+	fairy: fairy,
+	male_fairy: male_fairy,
+	female_vampire: female_vampire,
+	vampire: vampire,
+	male_vampire: male_vampire,
+	mermaid: mermaid,
+	merman: merman,
+	merperson: merperson,
+	female_elf: female_elf,
+	male_elf: male_elf,
+	elf: elf,
+	female_genie: female_genie,
+	male_genie: male_genie,
+	genie: genie,
+	female_zombie: female_zombie,
+	male_zombie: male_zombie,
+	zombie: zombie,
+	brain: brain,
+	orange_heart: orange_heart,
+	billed_cap: billed_cap,
+	scarf: scarf,
+	gloves: gloves,
+	coat: coat,
+	socks: socks,
+	red_envelope: red_envelope,
+	firecracker: firecracker,
+	jigsaw: jigsaw,
+	test_tube: test_tube,
+	petri_dish: petri_dish,
+	dna: dna,
+	compass: compass,
+	abacus: abacus,
+	fire_extinguisher: fire_extinguisher,
+	toolbox: toolbox,
+	bricks: bricks,
+	magnet: magnet,
+	luggage: luggage,
+	lotion_bottle: lotion_bottle,
+	thread: thread,
+	yarn: yarn,
+	safety_pin: safety_pin,
+	teddy_bear: teddy_bear,
+	broom: broom,
+	basket: basket,
+	roll_of_paper: roll_of_paper,
+	soap: soap,
+	sponge: sponge,
+	receipt: receipt,
+	nazar_amulet: nazar_amulet,
+	ballet_shoes: ballet_shoes,
+	"one-piece_swimsuit": "🩱",
+	briefs: briefs,
+	shorts: shorts,
+	thong_sandal: thong_sandal,
+	drop_of_blood: drop_of_blood,
+	adhesive_bandage: adhesive_bandage,
+	stethoscope: stethoscope,
+	"yo-yo": "🪀",
+	kite: kite,
+	parachute: parachute,
+	boomerang: boomerang,
+	magic_wand: magic_wand,
+	pinata: pinata,
+	nesting_dolls: nesting_dolls,
+	ringed_planet: ringed_planet,
+	chair: chair,
+	razor: razor,
+	axe: axe,
+	diya_lamp: diya_lamp,
+	banjo: banjo,
+	military_helmet: military_helmet,
+	accordion: accordion,
+	long_drum: long_drum,
+	coin: coin,
+	carpentry_saw: carpentry_saw,
+	screwdriver: screwdriver,
+	ladder: ladder,
+	hook: hook,
+	mirror: mirror,
+	window: window$1,
+	plunger: plunger,
+	sewing_needle: sewing_needle,
+	knot: knot,
+	bucket: bucket,
+	mouse_trap: mouse_trap,
+	toothbrush: toothbrush,
+	headstone: headstone,
+	placard: placard,
+	rock: rock,
+	fly: fly,
+	worm: worm,
+	beetle: beetle,
+	cockroach: cockroach,
+	potted_plant: potted_plant,
+	wood: wood,
+	feather: feather,
+	anatomical_heart: anatomical_heart,
+	lungs: lungs,
+	people_hugging: people_hugging,
+	blueberries: blueberries,
+	bell_pepper: bell_pepper,
+	olive: olive,
+	flatbread: flatbread,
+	tamale: tamale,
+	fondue: fondue,
+	teapot: teapot,
+	bangbang: bangbang,
+	interrobang: interrobang,
+	tm: tm,
+	information_source: information_source,
+	left_right_arrow: left_right_arrow,
+	arrow_up_down: arrow_up_down,
+	arrow_upper_left: arrow_upper_left,
+	arrow_upper_right: arrow_upper_right,
+	arrow_lower_right: arrow_lower_right,
+	arrow_lower_left: arrow_lower_left,
+	leftwards_arrow_with_hook: leftwards_arrow_with_hook,
+	arrow_right_hook: arrow_right_hook,
+	watch: watch,
+	hourglass: hourglass,
+	keyboard: keyboard,
+	eject: eject,
+	fast_forward: fast_forward,
+	rewind: rewind,
+	arrow_double_up: arrow_double_up,
+	arrow_double_down: arrow_double_down,
+	black_right_pointing_double_triangle_with_vertical_bar: black_right_pointing_double_triangle_with_vertical_bar,
+	black_left_pointing_double_triangle_with_vertical_bar: black_left_pointing_double_triangle_with_vertical_bar,
+	black_right_pointing_triangle_with_double_vertical_bar: black_right_pointing_triangle_with_double_vertical_bar,
+	alarm_clock: alarm_clock,
+	stopwatch: stopwatch,
+	timer_clock: timer_clock,
+	hourglass_flowing_sand: hourglass_flowing_sand,
+	double_vertical_bar: double_vertical_bar,
+	black_square_for_stop: black_square_for_stop,
+	black_circle_for_record: black_circle_for_record,
+	m: m,
+	black_small_square: black_small_square,
+	white_small_square: white_small_square,
+	arrow_forward: arrow_forward,
+	arrow_backward: arrow_backward,
+	white_medium_square: white_medium_square,
+	black_medium_square: black_medium_square,
+	white_medium_small_square: white_medium_small_square,
+	black_medium_small_square: black_medium_small_square,
+	sunny: sunny,
+	cloud: cloud,
+	umbrella: umbrella,
+	snowman: snowman,
+	comet: comet,
+	phone: phone,
+	telephone: telephone,
+	ballot_box_with_check: ballot_box_with_check,
+	shamrock: shamrock,
+	point_up: point_up,
+	skull_and_crossbones: skull_and_crossbones,
+	radioactive_sign: radioactive_sign,
+	biohazard_sign: biohazard_sign,
+	orthodox_cross: orthodox_cross,
+	star_and_crescent: star_and_crescent,
+	peace_symbol: peace_symbol,
+	yin_yang: yin_yang,
+	wheel_of_dharma: wheel_of_dharma,
+	white_frowning_face: white_frowning_face,
+	relaxed: relaxed,
+	female_sign: female_sign,
+	male_sign: male_sign,
+	gemini: gemini,
+	cancer: cancer,
+	leo: leo,
+	virgo: virgo,
+	libra: libra,
+	scorpius: scorpius,
+	chess_pawn: chess_pawn,
+	spades: spades,
+	clubs: clubs,
+	hearts: hearts,
+	diamonds: diamonds,
+	hotsprings: hotsprings,
+	recycle: recycle,
+	infinity: infinity,
+	wheelchair: wheelchair,
+	hammer_and_pick: hammer_and_pick,
+	crossed_swords: crossed_swords,
+	medical_symbol: medical_symbol,
+	staff_of_aesculapius: staff_of_aesculapius,
+	scales: scales,
+	alembic: alembic,
+	gear: gear,
+	atom_symbol: atom_symbol,
+	fleur_de_lis: fleur_de_lis,
+	warning: warning,
+	zap: zap,
+	transgender_symbol: transgender_symbol,
+	white_circle: white_circle,
+	black_circle: black_circle,
+	coffin: coffin,
+	funeral_urn: funeral_urn,
+	soccer: soccer,
+	baseball: baseball,
+	snowman_without_snow: snowman_without_snow,
+	partly_sunny: partly_sunny,
+	thunder_cloud_and_rain: thunder_cloud_and_rain,
+	ophiuchus: ophiuchus,
+	pick: pick,
+	helmet_with_white_cross: helmet_with_white_cross,
+	chains: chains,
+	no_entry: no_entry,
+	shinto_shrine: shinto_shrine,
+	church: church,
+	mountain: mountain,
+	umbrella_on_ground: umbrella_on_ground,
+	fountain: fountain,
+	golf: golf,
+	ferry: ferry,
+	boat: boat,
+	sailboat: sailboat,
+	skier: skier,
+	ice_skate: ice_skate,
+	"woman-bouncing-ball": "⛹️‍♀️",
+	"man-bouncing-ball": "⛹️‍♂️",
+	person_with_ball: person_with_ball,
+	tent: tent,
+	fuelpump: fuelpump,
+	scissors: scissors,
+	airplane: airplane,
+	email: email,
+	envelope: envelope,
+	fist: fist,
+	hand: hand,
+	raised_hand: raised_hand,
+	v: v,
+	writing_hand: writing_hand,
+	pencil2: pencil2,
+	black_nib: black_nib,
+	heavy_check_mark: heavy_check_mark,
+	heavy_multiplication_x: heavy_multiplication_x,
+	latin_cross: latin_cross,
+	star_of_david: star_of_david,
+	eight_spoked_asterisk: eight_spoked_asterisk,
+	eight_pointed_black_star: eight_pointed_black_star,
+	snowflake: snowflake,
+	sparkle: sparkle,
+	x: x,
+	negative_squared_cross_mark: negative_squared_cross_mark,
+	heavy_heart_exclamation_mark_ornament: heavy_heart_exclamation_mark_ornament,
+	heart_on_fire: heart_on_fire,
+	mending_heart: mending_heart,
+	heart: heart,
+	arrow_right: arrow_right,
+	curly_loop: curly_loop,
+	loop: loop,
+	arrow_heading_up: arrow_heading_up,
+	arrow_heading_down: arrow_heading_down,
+	arrow_left: arrow_left,
+	arrow_up: arrow_up,
+	arrow_down: arrow_down,
+	black_large_square: black_large_square,
+	white_large_square: white_large_square,
+	star: star,
+	o: o,
+	wavy_dash: wavy_dash,
+	part_alternation_mark: part_alternation_mark,
+	congratulations: congratulations,
+	secret: secret
 };
-const INITIAL_SETTINGS = {
-    height: 250,
-    embedHeight: 120,
-    localSuggestionsLimit: 10,
-    bannersFolder: '/'
-};
-const STYLE_OPTIONS = {
-    solid: 'Solid',
-    gradient: 'Gradient'
-};
-class SettingsTab extends obsidian.PluginSettingTab {
-    constructor(plugin) {
-        super(plugin.app, plugin);
+
+class IconModal extends obsidian.FuzzySuggestModal {
+    constructor(plugin, file) {
+        super(plugin.app);
         this.plugin = plugin;
+        this.metaManager = plugin.metaManager;
+        this.containerEl.addClass('banner-icon-modal');
+        this.targetFile = file;
+        this.emojis = Object.entries(allEmojis).map(([code, emoji]) => ({ code, emoji }));
+        this.limit = 50;
+        this.setPlaceholder('Pick an emoji to use as an icon');
     }
-    saveSettings({ rerenderSettings = false, refreshViews = false } = {}) {
+    getItems() {
+        return this.inputEl.value.length ? this.emojis : [];
+    }
+    getItemText(item) {
+        return item.code;
+    }
+    renderSuggestion(match, el) {
+        super.renderSuggestion(match, el);
+        const { useTwemoji } = this.plugin.settings;
+        const { emoji } = match.item;
+        const html = useTwemoji ? twemoji.parse(emoji) : `<span class="regular-emoji">${emoji} </span>`;
+        el.insertAdjacentHTML('afterbegin', html);
+    }
+    onChooseItem(item) {
         return __awaiter(this, void 0, void 0, function* () {
-            yield this.plugin.saveData(this.plugin.settings);
-            this.plugin.loadStyles();
-            if (rerenderSettings) {
-                this.display();
-            }
-            if (refreshViews) {
-                this.plugin.refreshViews();
-            }
+            yield this.metaManager.upsertBannerData(this.targetFile, { banner_icon: item.emoji });
         });
     }
-    display() {
-        const { containerEl } = this;
-        const { height, style, showInEmbed, embedHeight, showPreviewInLocalModal, localSuggestionsLimit, bannersFolder, allowMobileDrag } = this.plugin.settings;
-        containerEl.empty();
-        this.createHeader("Banners", "A nice, lil' thing to add some presentation to your notes");
-        // Banner height
-        new obsidian.Setting(containerEl)
-            .setName('Banner height')
-            .setDesc('Set how big the banner should be in pixels')
-            .addText(text => {
-            text.inputEl.type = 'number';
-            text.setValue(`${height}`);
-            text.setPlaceholder(`${INITIAL_SETTINGS.height}`);
-            text.onChange((val) => __awaiter(this, void 0, void 0, function* () {
-                this.plugin.settings.height = val ? parseInt(val) : null;
-                yield this.saveSettings();
-            }));
-        });
-        // Banner style
-        new obsidian.Setting(containerEl)
-            .setName('Banner style')
-            .setDesc('Set a style for all of your banners')
-            .addDropdown(dropdown => dropdown
-            .addOptions(STYLE_OPTIONS)
-            .setValue(style)
-            .onChange((val) => __awaiter(this, void 0, void 0, function* () {
-            this.plugin.settings.style = val;
-            yield this.saveSettings({ refreshViews: true });
-        })));
-        // Show banner in embed
-        new obsidian.Setting(containerEl)
-            .setName('Show banner in preview embed')
-            .setDesc('Choose whether to display the banner in the page preview embed')
-            .addToggle(toggle => toggle
-            .setValue(showInEmbed)
-            .onChange((val) => __awaiter(this, void 0, void 0, function* () {
-            this.plugin.settings.showInEmbed = val;
-            yield this.saveSettings({ rerenderSettings: true, refreshViews: true });
-        })));
-        // Embed banner height
-        if (this.plugin.settings.showInEmbed) {
-            new obsidian.Setting(containerEl)
-                .setName('Embed banner height')
-                .setDesc('Set the banner size inside the file preview embed')
-                .addText(text => {
-                text.inputEl.type = 'number';
-                text.setValue(`${embedHeight}`);
-                text.setPlaceholder(`${INITIAL_SETTINGS.embedHeight}`);
-                text.onChange((val) => __awaiter(this, void 0, void 0, function* () {
-                    this.plugin.settings.embedHeight = val ? parseInt(val) : null;
-                    yield this.saveSettings();
-                }));
-            });
-        }
-        this.createHeader('Local Image Modal', 'For the modal that shows when you run the "Add/Change banner with local image" command');
-        // Show preview images in local image modal
-        new obsidian.Setting(containerEl)
-            .setName('Show preview images')
-            .setDesc('Enabling this will display a preview of the images suggested')
-            .addToggle(toggle => toggle
-            .setValue(showPreviewInLocalModal)
-            .onChange((val) => __awaiter(this, void 0, void 0, function* () {
-            this.plugin.settings.showPreviewInLocalModal = val;
-            yield this.saveSettings();
-        })));
-        // Limit of suggestions in local image modal
-        new obsidian.Setting(containerEl)
-            .setName('Suggestions limit')
-            .setDesc(createFragment(frag => {
-            frag.appendText('Show up to this many suggestions when searching through local images.');
-            frag.createEl('br');
-            frag.createEl('b', { text: 'NOTE: ' });
-            frag.appendText('Using a high number while ');
-            frag.createEl('span', { text: 'Show preview images ', attr: { style: 'color: var(--text-normal)' } });
-            frag.appendText('is on can lead to some slowdowns');
-        }))
-            .addText(text => {
-            text.inputEl.type = 'number';
-            text.setValue(`${localSuggestionsLimit}`);
-            text.setPlaceholder(`${INITIAL_SETTINGS.localSuggestionsLimit}`);
-            text.onChange((val) => __awaiter(this, void 0, void 0, function* () {
-                this.plugin.settings.localSuggestionsLimit = val ? parseInt(val) : null;
-                yield this.saveSettings();
-            }));
-        });
-        // Search in a specific folder for banners
-        new obsidian.Setting(containerEl)
-            .setName('Banners folder')
-            .setDesc(createFragment(frag => {
-            frag.appendText('Select a folder to exclusively search for banner files in.');
-            frag.createEl('br');
-            frag.appendText('If empty, it will search the entire vault for image files');
-        }))
-            .addText(text => text
-            .setValue(bannersFolder)
-            .setPlaceholder(INITIAL_SETTINGS.bannersFolder)
-            .onChange((val) => __awaiter(this, void 0, void 0, function* () {
-            this.plugin.settings.bannersFolder = val;
-            yield this.saveSettings();
-        })));
-        this.createHeader('Experimental Things', 'Not as well-tested and probably finicky');
-        // Drag banners in mobile
-        new obsidian.Setting(containerEl)
-            .setName('Allow mobile drag')
-            .setDesc(createFragment(frag => {
-            frag.appendText('Allow dragging the banner on mobile devices.');
-            frag.createEl('br');
-            frag.createEl('b', { text: 'NOTE: ' });
-            frag.appendText('App reload might be necessary');
-        }))
-            .addToggle(toggle => toggle
-            .setValue(allowMobileDrag)
-            .onChange((val) => __awaiter(this, void 0, void 0, function* () {
-            this.plugin.settings.allowMobileDrag = val;
-            yield this.saveSettings({ refreshViews: true });
-        })));
+}
+
+class Icon extends obsidian.MarkdownRenderChild {
+    constructor(plugin, el, wrapper, ctx, bannerData) {
+        super(el);
+        this.wrapper = wrapper;
+        this.plugin = plugin;
+        this.metadataCache = plugin.metadataCache;
+        this.ctx = ctx;
+        this.bannerData = bannerData;
     }
-    createHeader(text, desc = null) {
-        const header = this.containerEl.createDiv({ cls: 'setting-item setting-item-heading banner-setting-header' });
-        header.createEl('p', { text });
-        if (desc) {
-            header.createEl('p', { text: desc, cls: 'banner-setting-header-description' });
+    onload() {
+        const { useTwemoji } = this.plugin.settings;
+        this.wrapper.addClass('has-banner-icon');
+        this.containerEl.addClass('obsidian-banner-icon');
+        const iconBox = document.createElement('span');
+        iconBox.className = 'icon-box';
+        if (useTwemoji) {
+            iconBox.innerHTML = twemoji.parse(this.getIconText());
         }
+        else {
+            iconBox.textContent = this.getIconText();
+        }
+        iconBox.onclick = () => __awaiter(this, void 0, void 0, function* () {
+            const { sourcePath } = this.ctx;
+            new IconModal(this.plugin, this.metadataCache.getFirstLinkpathDest(sourcePath, '/')).open();
+        });
+        this.containerEl.append(iconBox);
+        this.wrapper.prepend(this.containerEl);
+    }
+    // Clever way to only get the first emoji or letter of a string
+    getIconText() {
+        const { banner_icon } = this.bannerData;
+        return Array.from(banner_icon.split(/[\ufe00-\ufe0f]/).join(''))[0];
+    }
+}
+
+const IMAGE_FORMATS = ['apng', 'avif', 'gif', 'jpg', 'jpeg', 'jpe', 'jif', 'jfif', 'png', 'webp'];
+class LocalImageModal extends obsidian.FuzzySuggestModal {
+    constructor(plugin, file) {
+        super(plugin.app);
+        this.plugin = plugin;
+        this.vault = plugin.app.vault;
+        this.metadataCache = plugin.app.metadataCache;
+        this.metaManager = plugin.metaManager;
+        this.containerEl.addClass('banner-local-image-modal');
+        this.targetFile = file;
+        this.limit = this.plugin.getSettingValue('localSuggestionsLimit');
+        this.setPlaceholder('Pick an image to use as a banner');
+    }
+    getItems() {
+        const folder = this.plugin.getSettingValue('bannersFolder');
+        return this.vault.getFiles().filter(f => (IMAGE_FORMATS.includes(f.extension) &&
+            (!folder || f.parent.path.contains(folder))));
+    }
+    getItemText(item) {
+        return item.path;
+    }
+    renderSuggestion(match, el) {
+        super.renderSuggestion(match, el);
+        const { showPreviewInLocalModal } = this.plugin.settings;
+        if (showPreviewInLocalModal) {
+            const content = el.innerHTML;
+            el.addClass('banner-suggestion-item');
+            el.innerHTML = html `
+        <p class="suggestion-text">${content}</p>
+        <div class="suggestion-image-wrapper">
+          <img src="${this.vault.getResourcePath(match.item)}" />
+        </div>
+      `;
+        }
+    }
+    onChooseItem(image) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const link = this.metadataCache.fileToLinktext(image, this.targetFile.path);
+            yield this.metaManager.upsertBannerData(this.targetFile, { banner: `"![[${link}]]"` });
+        });
     }
 }
 
@@ -1435,15 +4738,23 @@ class MetaManager {
         this.metadata = plugin.app.metadataCache;
         this.vault = plugin.app.vault;
     }
+    // Get banner metadata from frontmatter
+    getBannerData(frontmatter) {
+        if (!frontmatter) {
+            return;
+        }
+        const fieldName = this.plugin.getSettingValue('frontmatterField');
+        const { [fieldName]: banner, [`${fieldName}_x`]: banner_x, [`${fieldName}_y`]: banner_y, [`${fieldName}_icon`]: banner_icon } = frontmatter;
+        return { banner, banner_x, banner_y, banner_icon };
+    }
     // Get banner metadata from a file
-    getBannerData(fileOrPath) {
-        var _a, _b;
+    getBannerDataFromFile(fileOrPath) {
+        var _a;
         const file = (fileOrPath instanceof obsidian.TFile) ? fileOrPath : this.getFileByPath(fileOrPath);
         if (!file) {
             return;
         }
-        const { banner, banner_x, banner_y } = (_b = (_a = this.metadata.getFileCache(file)) === null || _a === void 0 ? void 0 : _a.frontmatter) !== null && _b !== void 0 ? _b : {};
-        return { banner, banner_x, banner_y };
+        return this.getBannerData((_a = this.metadata.getFileCache(file)) === null || _a === void 0 ? void 0 : _a.frontmatter);
     }
     // Upsert banner data into a file's frontmatter
     upsertBannerData(fileOrPath, data) {
@@ -1452,7 +4763,10 @@ class MetaManager {
             if (!file) {
                 return;
             }
-            const fields = Object.entries(data);
+            const { banner, banner_x, banner_y, banner_icon } = data;
+            const baseName = this.plugin.getSettingValue('frontmatterField');
+            const trueFields = Object.assign(Object.assign(Object.assign(Object.assign({}, (banner && { [baseName]: banner })), (banner_x && { [`${baseName}_x`]: banner_x })), (banner_y && { [`${baseName}_y`]: banner_y })), (banner_icon && { [`${baseName}_icon`]: banner_icon }));
+            const fieldsArr = Object.entries(trueFields);
             const content = yield this.vault.read(file);
             const hasYaml = HAS_YAML_REGEX.test(content);
             const lines = content.split('\n');
@@ -1460,26 +4774,25 @@ class MetaManager {
                 // Search through the frontmatter to update target fields if they exist
                 const start = lines.indexOf('---');
                 const end = lines.indexOf('---', start + 1);
-                for (let i = start + 1; i < end && fields.length; i++) {
+                for (let i = start + 1; i < end && fieldsArr.length; i++) {
                     const [key] = lines[i].split(': ');
-                    const targetIndex = fields.findIndex(([k]) => k === key);
+                    const targetIndex = fieldsArr.findIndex(([k]) => k === key);
                     if (targetIndex === -1) {
                         continue;
                     }
-                    const dataKey = key;
-                    lines[i] = `${key}: ${data[dataKey]}`;
-                    fields.splice(targetIndex, 1);
+                    lines[i] = `${key}: ${trueFields[key]}`;
+                    fieldsArr.splice(targetIndex, 1);
                 }
                 // Create new fields with their value if it didn't exist before
-                if (fields.length) {
-                    lines.splice(end, 0, this.formatYamlFields(fields));
+                if (fieldsArr.length) {
+                    lines.splice(end, 0, this.formatYamlFields(fieldsArr));
                 }
             }
             else {
                 // Create frontmatter structure if none is found
                 lines.unshift(stripIndents `
         ---
-        ${this.formatYamlFields(fields)}
+        ${this.formatYamlFields(fieldsArr)}
         ---
       `);
             }
@@ -1487,7 +4800,7 @@ class MetaManager {
             yield this.vault.modify(file, newContent);
         });
     }
-    removeBannerData(fileOrPath, fields = ['banner', 'banner_x', 'banner_y']) {
+    removeBannerData(fileOrPath, fields = this.getAllBannerFields()) {
         return __awaiter(this, void 0, void 0, function* () {
             const file = (fileOrPath instanceof obsidian.TFile) ? fileOrPath : this.getFileByPath(fileOrPath);
             if (!file) {
@@ -1495,7 +4808,6 @@ class MetaManager {
             }
             // If there's no (relevant) YAML to remove, stop here
             const { frontmatter } = this.metadata.getFileCache(file);
-            console.log(frontmatter);
             const frontmatterKeys = Object.keys(frontmatter !== null && frontmatter !== void 0 ? frontmatter : {});
             if (!frontmatter || !fields.some(f => frontmatterKeys.includes(f))) {
                 return;
@@ -1537,47 +4849,214 @@ class MetaManager {
             .map(([key, val]) => `${key}: ${val}`)
             .join('\n');
     }
+    // Helper to get all banner fields
+    getAllBannerFields() {
+        const base = this.plugin.getSettingValue('frontmatterField');
+        return ['', '_x', '_y', '_icon'].map(suffix => `${base}${suffix}`);
+    }
 }
 
-const IMAGE_FORMATS = ['apng', 'avif', 'gif', 'jpg', 'jpeg', 'jpe', 'jif', 'jfif', 'png', 'webp'];
-class LocalImageModal extends obsidian.FuzzySuggestModal {
-    constructor(plugin, file) {
-        super(plugin.app);
+const INITIAL_SETTINGS = {
+    height: null,
+    style: 'solid',
+    showInInternalEmbed: true,
+    internalEmbedHeight: null,
+    showInPreviewEmbed: true,
+    previewEmbedHeight: null,
+    frontmatterField: null,
+    useTwemoji: true,
+    showPreviewInLocalModal: true,
+    localSuggestionsLimit: null,
+    bannersFolder: null,
+    allowMobileDrag: false
+};
+const DEFAULT_VALUES = {
+    height: 250,
+    internalEmbedHeight: 200,
+    previewEmbedHeight: 120,
+    frontmatterField: 'banner',
+    localSuggestionsLimit: 10,
+    bannersFolder: '/'
+};
+const STYLE_OPTIONS = {
+    solid: 'Solid',
+    gradient: 'Gradient'
+};
+class SettingsTab extends obsidian.PluginSettingTab {
+    constructor(plugin) {
+        super(plugin.app, plugin);
         this.plugin = plugin;
-        this.vault = plugin.app.vault;
-        this.settings = plugin.settings;
-        this.metaManager = plugin.metaManager;
-        const { localSuggestionsLimit } = this.settings;
-        this.targetFile = file;
-        this.limit = localSuggestionsLimit !== null && localSuggestionsLimit !== void 0 ? localSuggestionsLimit : INITIAL_SETTINGS.localSuggestionsLimit;
-        this.setPlaceholder('Pick an image to use as a banner');
     }
-    getItems() {
-        const { bannersFolder } = this.settings;
-        return this.vault.getFiles().filter(f => (IMAGE_FORMATS.includes(f.extension) &&
-            (!bannersFolder || f.parent.path.contains(bannersFolder))));
-    }
-    getItemText(item) {
-        return item.path;
-    }
-    renderSuggestion(match, el) {
-        super.renderSuggestion(match, el);
-        const { showPreviewInLocalModal } = this.settings;
-        if (showPreviewInLocalModal) {
-            const content = el.innerHTML;
-            el.addClass('banner-suggestion-item');
-            el.innerHTML = html `
-        <p class="suggestion-text">${content}</p>
-        <div class="suggestion-image-wrapper">
-          <img src="${this.vault.getResourcePath(match.item)}" />
-        </div>
-      `;
-        }
-    }
-    onChooseItem(image) {
+    saveSettings(changed, { reloadSettings = false, refreshViews = false } = {}) {
         return __awaiter(this, void 0, void 0, function* () {
-            this.metaManager.upsertBannerData(this.targetFile, { banner: image.path });
+            this.plugin.settings = Object.assign(Object.assign({}, this.plugin.settings), changed);
+            yield this.plugin.saveData(this.plugin.settings);
+            this.plugin.loadStyles();
+            if (reloadSettings) {
+                this.display();
+            }
+            if (refreshViews) {
+                this.plugin.refreshViews();
+            }
         });
+    }
+    display() {
+        const { containerEl } = this;
+        const { height, style, showInInternalEmbed, internalEmbedHeight, showInPreviewEmbed, previewEmbedHeight, frontmatterField, useTwemoji, showPreviewInLocalModal, localSuggestionsLimit, bannersFolder, allowMobileDrag } = this.plugin.settings;
+        containerEl.empty();
+        this.createHeader("Banners", "A nice, lil' thing to add some flair to your notes");
+        // Banner height
+        new obsidian.Setting(containerEl)
+            .setName('Banner height')
+            .setDesc('Set how big the banner should be in pixels')
+            .addText(text => {
+            text.inputEl.type = 'number';
+            text.setValue(`${height}`);
+            text.setPlaceholder(`${DEFAULT_VALUES.height}`);
+            text.onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ height: val ? parseInt(val) : null }); }));
+        });
+        // Banner style
+        new obsidian.Setting(containerEl)
+            .setName('Banner style')
+            .setDesc('Set a style for all of your banners')
+            .addDropdown(dropdown => dropdown
+            .addOptions(STYLE_OPTIONS)
+            .setValue(style)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ style: val }, { refreshViews: true }); })));
+        // Show banner in internal embed
+        new obsidian.Setting(containerEl)
+            .setName('Show banner in internal embed')
+            .setDesc(createFragment(frag => {
+            frag.appendText('Choose whether to display the banner in the internal embed. This is the embed that appears when you write ');
+            frag.createEl('code', { text: '![[file]]' });
+            frag.appendText(' in a file');
+        }))
+            .addToggle(toggle => toggle
+            .setValue(showInInternalEmbed)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ showInInternalEmbed: val }, { reloadSettings: true, refreshViews: true }); })));
+        // Internal embed banner height
+        if (this.plugin.settings.showInInternalEmbed) {
+            new obsidian.Setting(containerEl)
+                .setName('Internal embed banner height')
+                .setDesc('Set the banner size inside the internal embed')
+                .addText(text => {
+                text.inputEl.type = 'number';
+                text.setValue(`${internalEmbedHeight}`);
+                text.setPlaceholder(`${DEFAULT_VALUES.internalEmbedHeight}`);
+                text.onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ internalEmbedHeight: val ? parseInt(val) : null }); }));
+            });
+        }
+        // Show banner in preview embed
+        new obsidian.Setting(containerEl)
+            .setName('Show banner in preview embed')
+            .setDesc(createFragment(frag => {
+            frag.appendText('Choose whether to display the banner in the page preview embed. This is the embed that appears from the ');
+            frag.createEl('span', { text: 'Page Preview ', attr: { style: 'color: --var(text-normal)' } });
+            frag.appendText('core plugin');
+        }))
+            .addToggle(toggle => toggle
+            .setValue(showInPreviewEmbed)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ showInPreviewEmbed: val }, { reloadSettings: true }); })));
+        // Preview embed banner height
+        if (this.plugin.settings.showInPreviewEmbed) {
+            new obsidian.Setting(containerEl)
+                .setName('Preview embed banner height')
+                .setDesc('Set the banner size inside the page preview embed')
+                .addText(text => {
+                text.inputEl.type = 'number';
+                text.setValue(`${previewEmbedHeight}`);
+                text.setPlaceholder(`${DEFAULT_VALUES.previewEmbedHeight}`);
+                text.onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ previewEmbedHeight: val ? parseInt(val) : null }); }));
+            });
+        }
+        // Customizable banner metadata fields
+        new obsidian.Setting(containerEl)
+            .setName('Frontmatter field name')
+            .setDesc(createFragment(frag => {
+            frag.appendText('Set a customizable frontmatter field to use for banner data');
+            frag.createEl('br');
+            frag.appendText('For example, the default value ');
+            frag.createEl('code', { text: DEFAULT_VALUES.frontmatterField });
+            frag.appendText(' will use the fields ');
+            frag.createEl('code', { text: DEFAULT_VALUES.frontmatterField });
+            frag.appendText(', ');
+            frag.createEl('code', { text: `${DEFAULT_VALUES.frontmatterField}_x` });
+            frag.appendText(', ');
+            frag.createEl('code', { text: `${DEFAULT_VALUES.frontmatterField}_y` });
+            frag.appendText(', and so on...');
+        }))
+            .addText(text => text
+            .setValue(frontmatterField)
+            .setPlaceholder(DEFAULT_VALUES.frontmatterField)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ frontmatterField: val || null }, { refreshViews: true }); })));
+        this.createHeader('Banner Icons', 'Give people a lil\' notion of what your note is about');
+        new obsidian.Setting(containerEl)
+            .setName('Use Twemoji')
+            .setDesc(createFragment(frag => {
+            frag.appendText('Twitter\'s emoji have better support here. ');
+            frag.createEl('b', { text: 'NOTE: ' });
+            frag.appendText('This is only applied in the Icon modal and the banner icon in the preview view');
+        }))
+            .addToggle(toggle => toggle
+            .setValue(useTwemoji)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ useTwemoji: val }, { refreshViews: true }); })));
+        this.createHeader('Local Image Modal', 'For the modal that shows when you run the "Add/Change banner with local image" command');
+        // Show preview images in local image modal
+        new obsidian.Setting(containerEl)
+            .setName('Show preview images')
+            .setDesc('Enabling this will display a preview of the images suggested')
+            .addToggle(toggle => toggle
+            .setValue(showPreviewInLocalModal)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ showPreviewInLocalModal: val }); })));
+        // Limit of suggestions in local image modal
+        new obsidian.Setting(containerEl)
+            .setName('Suggestions limit')
+            .setDesc(createFragment(frag => {
+            frag.appendText('Show up to this many suggestions when searching through local images.');
+            frag.createEl('br');
+            frag.createEl('b', { text: 'NOTE: ' });
+            frag.appendText('Using a high number while ');
+            frag.createEl('span', { text: 'Show preview images ', attr: { style: 'color: var(--text-normal)' } });
+            frag.appendText('is on can lead to some slowdowns');
+        }))
+            .addText(text => {
+            text.inputEl.type = 'number';
+            text.setValue(`${localSuggestionsLimit}`);
+            text.setPlaceholder(`${DEFAULT_VALUES.localSuggestionsLimit}`);
+            text.onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ localSuggestionsLimit: val ? parseInt(val) : null }); }));
+        });
+        // Search in a specific folder for banners
+        new obsidian.Setting(containerEl)
+            .setName('Banners folder')
+            .setDesc(createFragment(frag => {
+            frag.appendText('Select a folder to exclusively search for banner files in.');
+            frag.createEl('br');
+            frag.appendText('If empty, it will search the entire vault for image files');
+        }))
+            .addText(text => text
+            .setValue(bannersFolder)
+            .setPlaceholder(DEFAULT_VALUES.bannersFolder)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ bannersFolder: val || null }); })));
+        this.createHeader('Experimental Things', 'Not as well-tested and probably finicky');
+        // Drag banners in mobile
+        new obsidian.Setting(containerEl)
+            .setName('Allow mobile drag')
+            .setDesc(createFragment(frag => {
+            frag.appendText('Allow dragging the banner on mobile devices.');
+            frag.createEl('br');
+            frag.createEl('b', { text: 'NOTE: ' });
+            frag.appendText('App reload might be necessary');
+        }))
+            .addToggle(toggle => toggle
+            .setValue(allowMobileDrag)
+            .onChange((val) => __awaiter(this, void 0, void 0, function* () { return this.saveSettings({ allowMobileDrag: val }, { refreshViews: true }); })));
+    }
+    createHeader(text, desc = null) {
+        const header = this.containerEl.createDiv({ cls: 'setting-item setting-item-heading banner-setting-header' });
+        header.createEl('p', { text });
+        if (desc) {
+            header.createEl('p', { text: desc, cls: 'banner-setting-header-description' });
+        }
     }
 }
 
@@ -1585,7 +5064,7 @@ class BannersPlugin extends obsidian.Plugin {
     onload() {
         return __awaiter(this, void 0, void 0, function* () {
             console.log('Loading Banners...');
-            this.settings = Object.assign({}, DEFAULT_SETTINGS, yield this.loadData());
+            this.settings = Object.assign({}, INITIAL_SETTINGS, yield this.loadData());
             this.workspace = this.app.workspace;
             this.vault = this.app.vault;
             this.metadataCache = this.app.metadataCache;
@@ -1605,21 +5084,28 @@ class BannersPlugin extends obsidian.Plugin {
         });
     }
     loadProcessor() {
-        this.registerMarkdownPostProcessor((el, ctx) => __awaiter(this, void 0, void 0, function* () {
+        this.registerMarkdownPostProcessor((el, ctx) => {
             // Only process the frontmatter
             if (!el.querySelector('pre.frontmatter')) {
                 return;
             }
-            const { showInEmbed } = this.settings;
+            const { showInInternalEmbed, showInPreviewEmbed } = this.settings;
             const { containerEl, frontmatter } = ctx;
-            const isEmbed = containerEl.parentElement.parentElement.hasClass('markdown-embed-content');
-            // Stop here if no banner data is found or if a disallowed embed banner
-            if (!(frontmatter === null || frontmatter === void 0 ? void 0 : frontmatter.banner) || (isEmbed && !showInEmbed)) {
-                return;
+            const bannerData = this.metaManager.getBannerData(frontmatter);
+            const fourLevelsDown = containerEl.parentElement.parentElement.parentElement.parentElement;
+            const isInternalEmbed = fourLevelsDown.hasClass('internal-embed');
+            const isPreviewEmbed = fourLevelsDown.hasClass('popover');
+            // Add banner if allowed
+            if ((bannerData === null || bannerData === void 0 ? void 0 : bannerData.banner) && (!isInternalEmbed || showInInternalEmbed) && (!isPreviewEmbed || showInPreviewEmbed)) {
+                const banner = document.createElement('div');
+                ctx.addChild(new Banner(this, banner, el, ctx, bannerData, isInternalEmbed || isPreviewEmbed));
             }
-            const banner = document.createElement('div');
-            ctx.addChild(new Banner(this, banner, el, ctx, isEmbed));
-        }));
+            // Add icon
+            if (bannerData === null || bannerData === void 0 ? void 0 : bannerData.banner_icon) {
+                const icon = document.createElement('div');
+                ctx.addChild(new Icon(this, icon, el, ctx, bannerData));
+            }
+        });
     }
     loadCommands() {
         this.addCommand({
@@ -1645,34 +5131,47 @@ class BannersPlugin extends obsidian.Plugin {
             }
         });
         this.addCommand({
+            id: 'banners:addIcon',
+            name: 'Add/Change emoji icon',
+            checkCallback: (checking) => {
+                const file = this.workspace.getActiveFile();
+                if (checking) {
+                    return !!file;
+                }
+                new IconModal(this, file).open();
+            }
+        });
+        this.addCommand({
             id: 'banners:remove',
             name: 'Remove banner',
             checkCallback: (checking) => {
                 var _a;
                 const file = this.workspace.getActiveFile();
                 if (checking) {
-                    return !!file && !!((_a = this.metaManager.getBannerData(file)) === null || _a === void 0 ? void 0 : _a.banner);
+                    return !!file && !!((_a = this.metaManager.getBannerDataFromFile(file)) === null || _a === void 0 ? void 0 : _a.banner);
                 }
                 this.removeBanner(file);
             }
         });
     }
     loadStyles() {
-        const { embedHeight, height } = this.settings;
-        document.documentElement.style.setProperty('--banner-height', `${height !== null && height !== void 0 ? height : INITIAL_SETTINGS.height}px`);
-        document.documentElement.style.setProperty('--banner-embed-height', `${embedHeight !== null && embedHeight !== void 0 ? embedHeight : INITIAL_SETTINGS.embedHeight}px`);
+        document.documentElement.style.setProperty('--banner-height', `${this.getSettingValue('height')}px`);
+        document.documentElement.style.setProperty('--banner-internal-embed-height', `${this.getSettingValue('internalEmbedHeight')}px`);
+        document.documentElement.style.setProperty('--banner-preview-embed-height', `${this.getSettingValue('previewEmbedHeight')}px`);
     }
     unloadBanners() {
         this.workspace.containerEl
             .querySelectorAll('.obsidian-banner-wrapper')
             .forEach((wrapper) => {
             wrapper.querySelector('.obsidian-banner').remove();
-            wrapper.removeClasses(['obsidian-banner-wrapper', 'loaded', 'error']);
+            wrapper.querySelector('.obsidian-banner-icon').remove();
+            wrapper.removeClasses(['obsidian-banner-wrapper', 'loaded', 'error', 'has-banner-icon']);
         });
     }
     unloadStyles() {
         document.documentElement.style.removeProperty('--banner-height');
-        document.documentElement.style.removeProperty('--banner-embed-height');
+        document.documentElement.style.removeProperty('--banner-internal-embed-height');
+        document.documentElement.style.removeProperty('--banner-preview-embed-height');
     }
     // Helper to refresh markdown views
     refreshViews() {
@@ -1691,7 +5190,7 @@ class BannersPlugin extends obsidian.Plugin {
                 console.error({ clipboard });
             }
             else {
-                this.metaManager.upsertBannerData(file, { banner: clipboard });
+                yield this.metaManager.upsertBannerData(file, { banner: clipboard });
                 new obsidian.Notice('Pasted a new banner!');
             }
         });
@@ -1700,6 +5199,11 @@ class BannersPlugin extends obsidian.Plugin {
     removeBanner(file) {
         this.metaManager.removeBannerData(file);
         new obsidian.Notice(`Removed banner for ${file.name}!`);
+    }
+    // Helper to get setting value (or the default setting value if not set)
+    getSettingValue(key) {
+        var _a;
+        return (_a = this.settings[key]) !== null && _a !== void 0 ? _a : DEFAULT_VALUES[key];
     }
 }
 

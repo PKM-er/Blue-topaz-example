@@ -51,8 +51,8 @@
   overflow: hidden;
 }
 .obsidian-banner-wrapper > .obsidian-banner.gradient:not(.error) {
-  mask-image: linear-gradient(to bottom, black, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, black, transparent);
+  mask-image: linear-gradient(to bottom, black 50%, transparent);
+  -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent);
 }
 .obsidian-banner-wrapper > .obsidian-banner .banner-message {
   position: absolute;
@@ -89,38 +89,95 @@
   display: none;
 }
 
-.markdown-embed-content .obsidian-banner-wrapper {
-  margin-top: var(--banner-embed-height);
+.internal-embed .markdown-embed-content .obsidian-banner-wrapper {
+  margin-top: var(--banner-internal-embed-height);
 }
-.markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner {
-  height: var(--banner-embed-height);
+.internal-embed .markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner {
+  height: var(--banner-internal-embed-height);
 }
-.markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner img {
+.internal-embed .markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner img {
   cursor: initial;
 }
 
-.banner-suggestion-item {
+.popover .markdown-embed-content .obsidian-banner-wrapper {
+  margin-top: var(--banner-preview-embed-height);
+}
+.popover .markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner {
+  height: var(--banner-preview-embed-height);
+}
+.popover .markdown-embed-content .obsidian-banner-wrapper > .obsidian-banner img {
+  cursor: initial;
+}
+
+.has-banner-icon {
+  margin-top: 75px;
+}
+.has-banner-icon .obsidian-banner-icon {
+  font-size: 4em;
+  margin-top: -1.2em;
+  margin-bottom: -0.3em;
+}
+.has-banner-icon .icon-box {
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: ease 0.2s background;
+}
+.has-banner-icon .icon-box:hover {
+  background: #aaa3;
+  cursor: pointer;
+}
+.has-banner-icon img.emoji {
+  height: 1em;
+  width: 1em;
+  vertical-align: -0.1em;
+}
+.has-banner-icon.obsidian-banner-wrapper {
+  margin-top: calc(var(--banner-height) + 10px);
+}
+.has-banner-icon.obsidian-banner-wrapper .obsidian-banner-icon {
+  position: absolute;
+  z-index: 1;
+}
+.has-banner-icon.obsidian-banner-wrapper .frontmatter {
+  top: 16px;
+}
+.has-banner-icon.obsidian-banner-wrapper + div {
+  padding-top: 0.2em;
+}
+
+.banner-local-image-modal .banner-suggestion-item {
   padding: 6px 10px;
 }
-.banner-suggestion-item .suggestion-text {
+.banner-local-image-modal .suggestion-text {
   height: 0;
   margin: 0;
   padding-left: 10px;
 }
-.banner-suggestion-item .suggestion-image-wrapper {
+.banner-local-image-modal .suggestion-image-wrapper {
   position: relative;
   height: 200px;
   width: 100%;
   margin: 6px 0;
   overflow: hidden;
 }
-.banner-suggestion-item .suggestion-image-wrapper img {
+.banner-local-image-modal .suggestion-image-wrapper img {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
   object-fit: cover;
+}
+
+.banner-icon-modal span.regular-emoji {
+  font-size: 1.2em;
+  vertical-align: bottom;
+}
+.banner-icon-modal img.emoji {
+  margin-right: 0.5em;
+  height: 1.2em;
+  width: 1.2em;
+  vertical-align: middle;
 }
 
 .banner-setting-header {
@@ -136,4 +193,14 @@
   font-size: 0.7em;
   color: var(--text-muted);
   line-height: 18px;
+}
+
+@media print {
+  .obsidian-banner-wrapper {
+    margin-top: 0;
+  }
+  .obsidian-banner-wrapper > .obsidian-banner {
+    position: initial;
+    margin-bottom: 20px;
+  }
 }

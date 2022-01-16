@@ -109,6 +109,10 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   {
     display:none;
   }
+  .myhome .obsidian-banner-icon .icon-box img
+  {
+    content: url("https://api.wolai.com/v1/icon");
+  }
 
 /*   div[data-type='outline'] 
   {

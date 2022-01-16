@@ -1,0 +1,114 @@
+/* sfc-style:D:\obsidian plugin dev\obsidian-test-vault\.obsidian\plugins\obsidian-floating-toc-plugin\src\components\HeadingListItem.vue?type=style&index=0 */
+.heading-list-item[data-v-72a6a55b] {
+  z-index: 1;
+  font-size: 0.7rem;
+  min-height: 1.5rem;
+  padding: 0;
+  white-space: nowrap;
+  position: relative;
+}
+.heading-list-item .line-wrap[data-v-72a6a55b] {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1.5rem;
+  z-index: -1;
+  animation: lineAppear-72a6a55b 250ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+@keyframes lineAppear-72a6a55b {
+  0% {
+    transform: translateX(1rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
+.heading-list-item .line-wrap .line[data-v-72a6a55b] {
+  position: absolute;
+  top: 50%;
+  margin-top: calc(2px / -2);
+  height: 2px;
+  width: 1.5rem;
+  background: var(--text-accent);
+}
+.heading-list-item .text-wrap[data-v-72a6a55b] {
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  animation: textAppear-72a6a55b 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+@keyframes textAppear-72a6a55b {
+  0% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    transform: translateX(0rem);
+  }
+}
+.heading-list-item .text-wrap .text[data-v-72a6a55b] {
+  background: var(--background-primary);
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+}
+.heading-list-item .text-wrap .text[data-v-72a6a55b]::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.heading-list-item[data-reveal=true] .line-wrap .line[data-v-72a6a55b] {
+  opacity: 0;
+  pointer-events: none;
+}
+.heading-list-item[data-reveal=true] .text-wrap[data-v-72a6a55b] {
+  opacity: 1;
+  pointer-events: all;
+}
+.heading-list-item[data-level="1"][data-v-72a6a55b] {
+  padding-left: 0rem;
+}
+.heading-list-item[data-level="2"][data-v-72a6a55b] {
+  padding-left: 0.5rem;
+}
+.heading-list-item[data-level="3"][data-v-72a6a55b] {
+  padding-left: 1rem;
+}
+.heading-list-item[data-level="4"][data-v-72a6a55b] {
+  padding-left: 1.5rem;
+}
+.heading-list-item[data-level="5"][data-v-72a6a55b] {
+  padding-left: 2rem;
+}
+.heading-list-item[data-level="6"][data-v-72a6a55b] {
+  padding-left: 2.5rem;
+}
+
+/* sfc-style:D:\obsidian plugin dev\obsidian-test-vault\.obsidian\plugins\obsidian-floating-toc-plugin\src\components\FloatingTableOfContents.vue?type=style&index=0 */
+.floating-toc[data-v-3bdd42b2] {
+  list-style: none;
+  margin: 0;
+  padding: 0.1rem;
+  position: absolute;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  overflow: hidden;
+  bottom: 0;
+  width: 2rem;
+}
+.floating-toc[data-reveal=true][data-v-3bdd42b2] {
+  width: auto;
+  overflow: visible;
+}
+
+/* sfc-style:D:\obsidian plugin dev\obsidian-test-vault\.obsidian\plugins\obsidian-floating-toc-plugin\src\components\FloatingTableOfContents.vue?type=style&index=1 */
+.workspace-leaf-content .cm-editor {
+  padding-left: 2rem;
+}

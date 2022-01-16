@@ -117,15 +117,28 @@
       "injectColor": true,
       "noTitle": true,
       "copy": false
+    },
+    "col": {
+      "type": "col",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "ad",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": true
     }
   },
   "syntaxHighlight": true,
   "copyButton": false,
-  "version": "6.7.3",
+  "version": "6.9.5",
   "autoCollapse": false,
   "defaultCollapseType": "open",
   "syncLinks": false,
   "enableMarkdownProcessor": false,
   "injectColor": true,
-  "parseTitles": true
+  "parseTitles": true,
+  "allowMSSyntax": true,
+  "livePreviewMS": true
 }

@@ -1,0 +1,194 @@
+/* @settings
+
+name: Heatmap in Memo
+id: memo-heatmap
+settings:
+    - 
+        title: Heatmap in Light mode
+        description: Change the color of heatmap
+        id: heatmap-light
+        type: class-select
+        allowEmpty: false
+        default: grass-light
+        options:
+            - 
+                label: Default
+                value: grass-light
+            - 
+                label: olive
+                value: olive-light
+            - 
+                label: Frame
+                value: frame-light
+            - 
+                label: Ice
+                value: ice-light
+            - 
+                label: Magenta
+                value: magenta-light
+    - 
+        title: Heatmap in Dark mode
+        description: Change the color of heatmap
+        id: heatmap-dark
+        type: class-select
+        allowEmpty: false
+        default: grass-dark
+        options:
+            - 
+                label: Default
+                value: grass-dark
+            - 
+                label: Olive
+                value: olive-dark
+            - 
+                label: Frame
+                value: frame-dark
+            - 
+                label: Ice
+                value: ice-dark
+            - 
+                label: Magenta
+                value: magenta-dark
+
+*/
+
+.grass-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #9be9a8 !important;
+}
+.grass-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #40c463 !important;
+}
+.grass-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #30a14e !important;
+}
+.grass-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #216e39 !important;
+}
+
+.grass-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #9be9a8 !important;
+}
+.grass-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #40c463 !important;
+}
+.grass-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #30a14e !important;
+}
+.grass-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #216e39 !important;
+}
+
+/*Frame*/ 
+
+.frame-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #F75205 !important;
+}
+.frame-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #E03A07 !important;
+}
+.frame-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #BF2104 !important;
+}
+.frame-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #940B01 !important;
+}
+
+.frame-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #F75205 !important;
+}
+.frame-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #E03A07 !important;
+}
+.frame-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #BF2104 !important;
+}
+.frame-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #940B01 !important;
+}
+
+/*Olive*/
+
+.olive-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #9cc069 !important;
+}
+.olive-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #78a851 !important;
+}
+.olive-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #648b3f !important;
+}
+.olive-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #4f6e30 !important;
+} 
+
+.olive-dark.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #9cc069 !important;
+}
+.olive-dark.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #78a851 !important;
+}
+.olive-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #648b3f !important;
+}
+.olive-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #4f6e30 !important;
+} 
+
+
+/*Ice*/
+
+.ice-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #82bbf0 !important;
+}
+.ice-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #5da2eb !important;
+}
+.ice-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #3889e6 !important;
+}
+.ice-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #126fe0 !important;
+} 
+
+.ice-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #82bbf0 !important;
+}
+.ice-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #5da2eb !important;
+}
+.ice-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #3889e6 !important;
+}
+.ice-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #126fe0 !important;
+} 
+
+
+/* magenta */
+
+.magenta-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #fa9fb5 !important;
+}
+.magenta-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #ea4e9c !important;
+}
+.magenta-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #ae017e !important;
+}
+.magenta-light.theme-light div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #610070 !important;
+} 
+
+.magenta-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+  background-color: #fa9fb5 !important;
+}
+.magenta-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+  background-color: #ea4e9c !important;
+}
+.magenta-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+  background-color: #ae017e !important;
+}
+.magenta-dark.theme-dark div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+  background-color: #610070 !important;
+} 
+

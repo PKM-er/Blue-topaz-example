@@ -3,8 +3,8 @@
     "Quorafind/Obsidian-Memos"
   ],
   "themesList": [],
-  "updateAtStartup": false,
-  "updateThemesAtStartup": false,
+  "updateAtStartup": true,
+  "updateThemesAtStartup": true,
   "ribbonIconEnabled": false,
   "loggingEnabled": false,
   "loggingPath": "BRAT-log",

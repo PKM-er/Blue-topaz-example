@@ -2,7 +2,6 @@
   "obsidian-admonition",
   "obsidian-style-settings",
   "obsidian-kanban",
-  "obsidian-theme-design-utilities",
   "calendar",
   "dataview",
   "obsidian-checklist-plugin",
@@ -11,7 +10,6 @@
   "obsidian-outliner",
   "obsidian-collapse-all-plugin",
   "buttons",
-  "obsidian-shellcommands",
   "workspaces-plus",
   "quickadd",
   "hotkey-helper",
@@ -22,9 +20,12 @@
   "recent-files-obsidian",
   "table-editor-obsidian",
   "Enhanced editing",
-  "obsidian-icon-folder",
   "obsidian-view-mode-by-frontmatter",
   "cmenu-plugin",
   "obsidian42-brat",
-  "obsidian-memos"
+  "obsidian-memos",
+  "obsidian-tasks-plugin",
+  "obsidian-icon-folder",
+  "obsidian-shellcommands",
+  "obsidian-float-toc-plugin"
 ]

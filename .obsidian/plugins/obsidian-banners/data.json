@@ -1,10 +1,16 @@
 {
-  "height": 250,
+  "height": 300,
   "style": "gradient",
-  "showInEmbed": true,
-  "embedHeight": 150,
+  "showInInternalEmbed": false,
+  "internalEmbedHeight": null,
+  "showInPreviewEmbed": true,
+  "previewEmbedHeight": null,
+  "frontmatterField": "banner",
+  "useTwemoji": true,
   "showPreviewInLocalModal": true,
   "localSuggestionsLimit": -2,
   "bannersFolder": "",
-  "allowMobileDrag": false
+  "allowMobileDrag": false,
+  "showInEmbed": true,
+  "embedHeight": 150
 }

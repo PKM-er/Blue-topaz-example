@@ -25,7 +25,7 @@
   "CodeMirror Options@@cm-theme-selection": "cm-theme-solarized-light",
   "blue-topaz-theme@@background-image-settings-markdown-page-options": "background-image-settings-markdown-page-default",
   "blue-topaz-theme@@folder-style-change-options-colorful-subfolder": "folder-colorful-one",
-  "blue-topaz-theme@@layout-style-options": "layout-style-options-rectangle",
+  "blue-topaz-theme@@layout-style-options": "layout-style-options-default",
   "blue-topaz-theme@@background-settings-workplace-background-image": true,
   "blue-topaz-theme@@style-options-for-calendar-plugin": "style-options-for-calendar-plugin-style-one",
   "blue-topaz-theme@@rainbow-ordered-list": true,
@@ -61,5 +61,6 @@
   "blue-topaz-theme@@blur-depth": 5,
   "blue-topaz-theme@@saturate-4-bg": 1,
   "blue-topaz-theme@@disable-math-block": true,
-  "blue-topaz-theme@@style-options-for-buttons-plugin": true
+  "blue-topaz-theme@@style-options-for-buttons-plugin": true,
+  "memo-heatmap@@heatmap-dark": "ice-dark"
 }

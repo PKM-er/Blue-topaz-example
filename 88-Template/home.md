@@ -1,12 +1,13 @@
 ---
 cssclass: fullwidth,noyaml,noscroll,myhome
-banner: https://www.todaybing.com/api/hd
+banner: https://api.xygeng.cn/Bing/
 obsidianUIMode: preview
+banner_icon: 💘
 ---
 
 
 
- <div style=" margin-top: -110px;"> <div style="float:left"><%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %></div> <iframe style="float:right; margin-top:3px" width="300" scrolling="no" height="20" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?c=code&id=34&bdc=%23&icon=4&site=14"></iframe>
+ <div style=" margin: 5px;"> <div style="float:left"><%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %></div> <iframe style="float:right; margin-top:3px" width="300" scrolling="no" height="20" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?c=code&id=34&bdc=%23&icon=4&site=14"></iframe>
 </div>
 </div> 
 <br>
@@ -138,13 +139,14 @@ if (data.sid.length == 0) {
 
 ```
 
+
 ````ad-flex
  `button-refreshhomepage1`
  `button-loadhome`
 ```dataviewjs
 let ftMd = dv.pages("").file.sort(t => t.cday)[0]
 let total = parseInt([new Date() - ftMd.ctime] / (60*60*24*1000))
-let nofold = '!"模板" and !"Day Planners" and !"脚本" and !"附件"'
+let nofold = '!"88-Template" and !"00-Tips" and !"10-Help"'
 let allFile = dv.pages(nofold).file
 let totalMd = "📄 =="+
 	allFile.length+"== 篇不知所云的文档"
@@ -155,14 +157,12 @@ dv.header(5, totalMd)
 dv.header(5, "🔖 "+totalTag)
 dv.header(5, "🕗 " + totalTask)
 ```
-
 <div>
 
 ```dataviewjs
   let themeday= moment().diff(moment("2020-10-01"), 'days');
-    let result =  "\n#### 🥑Blue Topaz已更新 =="+themeday+"==天";
-    result = result + "\n##### [如果喜欢请Star⭐](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css)";
-dv.paragraph(result);
+	dv.header(4, "🥑Blue Topaz已更新 =="+themeday+"==天");
+   dv.header(5, "[如果喜欢请Star⭐](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css)");
 
 ```
 
@@ -170,7 +170,7 @@ dv.paragraph(result);
 let dates = moment().format('YYYY-MM-1');
 let days = moment().diff(dates, "days");
 let num = (days/30 * 10).toFixed(1);
-dv.header(4,"⚽光阴似箭，本月已走完"+num*10+'%<br>')
+dv.header(5,"⚽光阴似箭，本月已走完"+num*10+'%<br>')
 dv.span(percentageToEmotes(num))
 //dv.span(percentageToEmotes(num))
 function percentageToEmotes(num) {
@@ -207,11 +207,6 @@ switch( true ) {
 }
 }
 ```
-
-<p class="stickies" style=" float: left;">
-<strong>倒计时</strong></br>今年已过去<strong><%+* tR+= moment().diff(tp.date.now("YYYY-1-1"), "days") %></strong>天
-</br>距春节还有<strong><%+* let edate = moment("2022-02-01", "yyyy-MM-DD"); let from = moment().startOf('day'); edate.diff(from, "days") >= 0 ? tR += edate.diff(from, "days") : tR += edate.add(1, "year").diff(from, "days") %></strong>天
-</p>
 </div>
 
 
@@ -225,10 +220,34 @@ dv.paragraph(posters);
 }
 
 ```
-
 ````
 
+---
+````ad-flex
+<!--notice1-->
+<p class="stickies" style="max-width:180px" >
+<strong>倒计时</strong></br>今年已过去<strong><%+* tR+= moment().diff(tp.date.now("YYYY-1-1"), "days") %></strong>天
+</br>距春节还有<strong><%+* let edate = moment("2022-02-01", "yyyy-MM-DD"); let from = moment().startOf('day'); edate.diff(from, "days") >= 0 ? tR += edate.diff(from, "days") : tR += edate.add(1, "year").diff(from, "days") %></strong>天
+</p>
+<!--notice2-->
+<p class="stickies2" style="max-width:200px" >
+🌸<br>
+每天一个好心情！
+</p>
+<!--notice3-->
+<p class="stickies" style="max-width:200px" >
+💖<br>
+永远相信美好的事情就要发生
+</p>
+<!--notice4-->
+<p class="stickies2" style="max-width:200px" >
+💌<br>
+开启美好的一天！
+</p>
+<!---->
 
+````
+---
 
 ###  每日一句
 ````ad-flex
@@ -252,6 +271,7 @@ let music=history[today].music;
 dv.el("blockquote", music);
 }
 ```
+
 
 ````
 

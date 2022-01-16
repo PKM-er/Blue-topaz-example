@@ -269,3 +269,25 @@ input.is-invalid {
     border-color: var(--background-modifier-border-focus);
 }
 
+/** Live Preview */
+.is-live-preview .admonition-content > * {
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.is-live-preview .admonition-content > * br {
+    display: none;
+}
+
+.is-live-preview .admonition-content > *:first-child {
+    margin-top: 16px;
+}
+
+.is-live-preview .admonition-content > *:last-child {
+    margin-bottom: 16px;
+}
+
+.is-live-preview .admonition-content ul {
+    white-space: normal;
+}
+
