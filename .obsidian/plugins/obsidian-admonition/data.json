@@ -139,6 +139,6 @@
   "enableMarkdownProcessor": false,
   "injectColor": true,
   "parseTitles": true,
-  "allowMSSyntax": true,
+  "allowMSSyntax": false,
   "livePreviewMS": true
 }

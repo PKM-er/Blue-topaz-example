@@ -123,7 +123,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 37.622789783889985,
+        "dimension": 49.90176817288802,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -164,12 +164,13 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 62.37721021611002,
+        "dimension": 50.09823182711198,
         "children": [
           {
             "id": "041c78328387b373",
@@ -229,14 +230,14 @@
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
     "20-Diary/2022-01-21.md",
-    "88-Template/home.md",
-    "20-Diary/2022-01-10.md",
+    "20-Diary/2021-12-30.md",
     "20-Diary/任务看板.md",
-    "88-Template/常用工具.md",
-    "88-Template/button.md",
+    "20-Diary/delete.md",
+    "20-Diary/query.md",
+    "88-Template/home.md",
+    "20-Diary/2022-01-09.md",
     "README.md",
     "从这开始.md",
-    "88-Template/彩色时钟.md",
-    "88-Template/ReactJS/ColorfulClock.md"
+    "00-Tips/表格自定义样式.md"
   ]
 }

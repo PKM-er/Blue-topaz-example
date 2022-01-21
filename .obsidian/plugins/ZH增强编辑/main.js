@@ -7,7 +7,7 @@ var obsidian = require('obsidian');
 使用声明
 本插件基于多款社区插件改编而成，蚕子水平有限，代码或许存在缺陷，不能保证任何用户或任何操作均为正常，
 请您在使用本插件之前，先备份好Obsidian笔记库再进行操作测试，谢谢配合。
-开发：蚕子 QQ：312815311 更新时间：2022-1-2
+开发：蚕子 QQ：312815311 更新时间：2022-1-18
 *****************************************************************************
 */
 
@@ -92,11 +92,31 @@ var MyPlugin = /** @class */ (function (_super) {
     }
 
     MyPlugin.prototype.onload = function () {
-    	return __awaiter(this, void 0, void 0,
-        function() {
+        var _this = this;
+        /*
+        this.registerEvent(this.app.workspace.on('file-open', function (file) {
+            if (file && file.path) {
+                //_this.currentFile = file;
+                var view = _this.app.workspace.activeLeaf.view;
+                var lines = _this.获取笔记全文 (_this.获取编辑模式 ());
+                if(!lines) return;
+                
+                var links = lines.match(/\[\[[^\[\]]+\]\]/g);
+                var tempTxt = links.toString().replace(/,/g,"\n");
+                var _file = _this.app.vault.getAbstractFileByPath("000.md");
+                if(links.length>0){
+                    //new obsidian.Notice(tempTxt);
+                    _this.app.vault.modify(_file,"对外链接\n"+tempTxt);
+                }else{
+                    _this.app.vault.modify(_file,"对外链接\n......");
+                }
+            }
+        }));
+        */
+
+    	return __awaiter(this, void 0, void 0,function() {
             var _this = this;
-            return __generator(this,
-            function(_a) {
+            return __generator(this,function(_a) {
 		        console.log('加载插件');
 		        _this.addCommand({
 		            id: 'internal-link',
@@ -204,8 +224,7 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'add-daima',
 		            name: '```代码块```',
-		            callback: function () {	_this.转换代码块();},
-		            hotkeys: [{ modifiers: ["Mod","Shift"], key: "m" } ]
+		            callback: function () {	_this.转换代码块();}
 		        });
                 _this.addCommand({
 		            id: 'add-langxian',
@@ -228,6 +247,11 @@ var MyPlugin = /** @class */ (function (_super) {
 		            id: 'add-todo',
 		            name: '转换待办状态',
 		            callback: function () {	_this.转换待办列表();}
+		        });
+                _this.addCommand({
+		            id: 'add-tiankong',
+		            name: '转换挖空',
+		            callback: function () {	_this.转换挖空();}
 		        });
 
                 _this.addCommand({
@@ -257,13 +281,13 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'text-Color5',
 		            name: '转换青色文字',
-		            callback: function () {	_this.转换文字颜色("#00ffff");},
+		            callback: function () {	_this.转换文字颜色("#6495ED");},
 		            hotkeys: [{ modifiers: ["Mod","Shift"], key: "5" } ]
 		        });
                 _this.addCommand({
 		            id: 'text-Color6',
 		            name: '转换蓝色文字',
-		            callback: function () {	_this.转换文字颜色("#0000ff");},
+		            callback: function () {	_this.转换文字颜色("#7B68EE");},
 		            hotkeys: [{ modifiers: ["Mod","Shift"], key: "6" } ]
 		        });
                 _this.addCommand({
@@ -300,13 +324,13 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'text-background5',
 		            name: '转换青色背景',
-		            callback: function () {	_this.转换背景颜色("#00ffff");},
+		            callback: function () {	_this.转换背景颜色("#6495ED");},
 		            hotkeys: [{ modifiers: ["Mod","Alt"], key: "5" } ]
 		        });
                 _this.addCommand({
 		            id: 'text-background6',
 		            name: '转换蓝色背景',
-		            callback: function () {	_this.转换背景颜色("#0000ff");},
+		            callback: function () {	_this.转换背景颜色("#7B68EE");},
 		            hotkeys: [{ modifiers: ["Mod","Alt"], key: "6" } ]
 		        });
                 _this.addCommand({
@@ -351,26 +375,22 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'auto-texts',
 		            name: '自动设置标题',
-		            callback: function() { _this.自动设置标题(); },
-		            hotkeys: [{ modifiers: ["Mod","Shift","Alt"], key: "T" } ]    
+		            callback: function() { _this.自动设置标题(); }
 		        });
                 _this.addCommand({
 		            id: 'ying-zhong',
 		            name: '英转中文标点',
-		            callback: function() { _this.英转中文标点(); },
-		            hotkeys: [{ modifiers: ["Mod","Shift","Alt"], key: "Z" } ]
+		            callback: function() { _this.英转中文标点(); }
 		        });
                 _this.addCommand({
 		            id: 'zhong-ying',
 		            name: '中转英文标点',
-		            callback: function() { _this.中转英文标点(); },
-		            hotkeys: [{ modifiers: ["Mod","Shift","Alt"], key: "Y" } ]
+		            callback: function() { _this.中转英文标点(); }
 		        });
                 _this.addCommand({
 		            id: 'file-path',
 		            name: '转换路径',
-		            callback: function() { _this.转换路径(); },
-		            hotkeys: [{ modifiers: ["Shift","Alt"], key: "F" } ]
+		            callback: function() { _this.转换路径(); }
 		        });
                 _this.addCommand({
 		            id: 'jian-fan',
@@ -392,19 +412,27 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'edit-jiucuo',
 		            name: '修复错误语法',
-		            callback: function() { _this.修复错误语法(); },
-		            hotkeys: [{ modifiers: ["Mod","Shift"], key: "J" } ]    
+		            callback: function() { _this.修复错误语法(); }
 		        });
                 _this.addCommand({
 		            id: 'del-line2',
 		            name: '修复意外断行',
-		            callback: function() { _this.修复意外断行(); },
-		            hotkeys: [{ modifiers: ["Mod","Alt"], key: "D" } ]
+		            callback: function() { _this.修复意外断行(); }
 		        });
                 _this.addCommand({
 		            id: 'search-text',
 		            name: '搜索当前文本',
 		            callback: function() { _this.搜索当前文本(); }
+		        });
+                _this.addCommand({
+		            id: 'selection-text',
+		            name: '选择当前整段',
+		            callback: function() { _this.选择当前整段(); }
+		        });
+                _this.addCommand({
+		            id: 'selection-juzi',
+		            name: '选择当前整句',
+		            callback: function() { _this.选择当前整句(); }
 		        });
                 /*_this.addCommand({
 		            id: 'next-mdfile',
@@ -421,14 +449,24 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'tiqu-text',
 		            name: '获取标注文本',
-		            callback: function () {	_this.获取标注文本();},
-		            hotkeys: [{ modifiers: ["Mod","Shift"],key: "B"}]
+		            callback: function () {	_this.获取标注文本();}
 		        });
                 _this.addCommand({
 		            id: 'copy-filePath',
 		            name: '获取相对路径',
 		            callback: function() { _this.获取相对路径(); }  
 		        });
+                _this.addCommand({
+		            id: 'modify-fileName',
+		            name: '指定当前文件名',
+		            callback: function() { _this.指定当前文件名(); }  
+		        });
+                _this.addCommand({
+		            id: 'iframe-URL',
+		            name: '嵌入当前网址页面',
+		            callback: function() { _this.嵌入当前网址页面(); } 
+		        });
+
 		        _this.addCommand({
 		            id: 'add-lines',
 		            name: '批量插入空行',
@@ -438,14 +476,12 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'add-line1',
 		            name: '上方插入空行',
-		            callback: function() { _this.上方插入空行(); },
-		            hotkeys: [{ modifiers: ["Shift","Alt"], key: "o" } ]    
+		            callback: function() { _this.上方插入空行(); }, 
 		        });
                 _this.addCommand({
 		            id: 'add-line2',
 		            name: '下方插入空行',
-		            callback: function() { _this.下方插入空行(); },
-		            hotkeys: [{ modifiers: ["Shift","Alt"], key: "l" } ]    
+		            callback: function() { _this.下方插入空行(); }
 		        });
 		        _this.addCommand({
 		            id: 'del-lines',
@@ -456,14 +492,12 @@ var MyPlugin = /** @class */ (function (_super) {
                 _this.addCommand({
 		            id: 'add-space',
 		            name: '末尾追加空格',
-		            callback: function() { _this.末尾追加空格(); },
-		            hotkeys: [{ modifiers: ["Mod","Shift"], key: "K" } ]    
+		            callback: function() { _this.末尾追加空格(); }
 		        });
 		        _this.addCommand({
 		            id: 'del-space',
 		            name: '去除末尾空格',
-		            callback: function() { _this.去除末尾空格(); },
-		            hotkeys: [{ modifiers: ["Mod","Alt"], key: "K" } ]
+		            callback: function() { _this.去除末尾空格(); }
 		        });
                 _this.addCommand({
 		            id: 'add-allSpspace',
@@ -496,15 +530,6 @@ var MyPlugin = /** @class */ (function (_super) {
         _this.app.vault.adapter.read(_this.SETTINGS_PATH).
             then(function (content) { return _this.settings.fromJson(content); }).
             catch(function (error) { console.log("未找到设置文件。"); });
-    };
-
-    MyPlugin.prototype.获取相对路径 = function () {
-        var activeFile = this.app.workspace.getActiveFile();
-        var noteFilePath = activeFile.path;
-        navigator.clipboard.writeText(noteFilePath)
-        
-        var 相对目录 = noteFilePath.replace(/(?<=\/)[^\/]+$/m,"");
-        new obsidian.Notice("当前笔记位于："+相对目录);
     };
 
     MyPlugin.prototype.转换内部链接 = function() {
@@ -688,8 +713,9 @@ var MyPlugin = /** @class */ (function (_super) {
         lines = lines.replace(/↫/g,"\n");
         this.替换所选文本 (this.获取编辑模式 (), lines);
         var cmEditor = this.获取编辑模式 ();
-        cmEditor.exec("goUp");
-        cmEditor.exec("goEnd");
+        cmEditor.exec("goLeft");
+        cmEditor.exec("goLeft");
+        cmEditor.exec("goLeft");
     };
 
     MyPlugin.prototype.转换三浪线 = function() {
@@ -711,8 +737,7 @@ var MyPlugin = /** @class */ (function (_super) {
         lines = lines.replace(/↫/g,"\n");
         this.替换所选文本 (this.获取编辑模式 (), lines);
         var cmEditor = this.获取编辑模式 ();
-        cmEditor.exec("goUp");
-        cmEditor.exec("goEnd");
+        cmEditor.exec("goRight");
     };
 
     MyPlugin.prototype.转换上标 = function() {
@@ -746,6 +771,75 @@ var MyPlugin = /** @class */ (function (_super) {
             lines = lines.replace(/^\<sub\>\s*\<\/sub\>$/mg,"");
         }
         this.替换所选文本 (this.获取编辑模式 (), lines);
+    };
+
+    MyPlugin.prototype.转换挖空 = function() {
+        var lines = this.获取所选文本 (this.获取编辑模式 ());
+        var link = /\{\{c\d::[^\{\}]+\}\}/g;	//是否包含{{c*::}}
+        var link1 = /\{\{c[^\{\}]*$|^[^\{\}]*\}\}/g;	//是否只包含一侧的{{c*::}}
+
+        if (link1.test(lines)){
+            return;
+        }else if (link.test(lines)){
+            lines = lines.replace(/(\{\{c\d::|\}\})/g,"");
+        }else{
+            lines = lines.replace(/^(.+)$/mg,"\{\{c1::$1\}\}");
+        }
+        this.替换所选文本 (this.获取编辑模式 (), lines);
+    };
+
+    MyPlugin.prototype.选择当前整段 = function () {
+        var cmEditor = this.获取编辑模式 ();
+        var 全文 = cmEditor.getDoc();
+        var 当前光标 = cmEditor.getCursor();  //
+        var 当前行号 = 当前光标.line; //
+        var 当前行文本 = cmEditor.getLine(当前行号); 
+        //new obsidian.Notice("当前行：\n"+当前行文本);
+        cmEditor.setSelection({line:当前行号,ch:0}, {line:当前行号,ch:当前行文本.length});
+    };
+
+    MyPlugin.prototype.选择当前整句 = function () {
+        var cmEditor = this.获取编辑模式 ();
+        var 全文 = cmEditor.getDoc();
+        var 当前光标 = cmEditor.getCursor();  //
+        var 当前行号 = 当前光标.line; //
+        var 当前行文本 = cmEditor.getLine(当前行号); 
+        //new obsidian.Notice("当前行：\n"+当前行文本);
+
+        var 选至行首 = cmEditor.getRange({line:当前行号,ch:0}, 当前光标);
+        var 前句 = 选至行首.match(/(?<=(^|[。？！]))[^。？！]*$/);
+        if(前句.length>0){
+            var 句前 = 前句[0];
+        }
+        var 选至行尾 = cmEditor.getRange(当前光标,{line:当前行号,ch:当前行文本.length});
+        var 后句 = 选至行尾.match(/^[^。？！]*([。？！]|$)/);
+        if(后句.length>0){
+            var 句后 = 后句[0];
+        }
+        var _length1 = 选至行首.length-句前.length;
+        var _length2 = 选至行首.length+句后.length;
+        //new obsidian.Notice(句前+"\n光标\n"+句后);
+        cmEditor.setSelection({line:当前行号,ch:_length1}, {line:当前行号,ch:_length2});
+    };
+
+    MyPlugin.prototype.重复当前行 = function () {
+        var cmEditor = this.获取编辑模式 ();
+        var 全文 = cmEditor.getDoc();
+        var 当前光标 = cmEditor.getCursor();  //
+        var 当前行号 = 当前光标.line; //
+        var 当前行文本 = cmEditor.getLine(当前行号); 
+        //new obsidian.Notice("当前行：\n"+当前行文本);
+
+        var 选至行首 = cmEditor.getRange({line:当前行号,ch:0}, 当前光标);
+        var 选至行尾 = cmEditor.getRange(当前光标,{line:当前行号,ch:当前行文本.length});
+        //new obsidian.Notice("光标以前：\n"+选至行首+"\n\n光标以后：\n"+选至行尾);
+
+        var 标前两字 = cmEditor.getRange({line:当前行号,ch:选至行首.length-2}, 当前光标);
+        var 标后两字 = cmEditor.getRange(当前光标,{line:当前行号,ch:选至行首.length+2});
+        //new obsidian.Notice("标前两字\n"+标前两字+"\n\n标后两字：\n"+标后两字);
+
+        var 新行文本 = "\n" + 当前行文本;
+        全文.replaceRange(新行文本, {line:当前行号,ch:当前行文本.length}, {line:当前行号,ch:当前行文本.length});
     };
 
     MyPlugin.prototype.智能括号 = function () {
@@ -857,10 +951,10 @@ var MyPlugin = /** @class */ (function (_super) {
 
     MyPlugin.prototype.转换文字颜色 = function(_color) {
         var lines = this.获取所选文本 (this.获取编辑模式 ());
-        var _html0 = /\<span style=[\"'][^\<\>]*color:[0-9a-zA-Z#]+[\"'][^\<\>]*\>[^\<\>]+\<\/span\>/g;
-        var _html1 = /^\<span style=[\"'][^\<\>]*color:[0-9a-zA-Z#]+[\"'][^\<\>]*\>([^\<\>]+)\<\/span\>$/;
-        var _html2 = '\<span style=\"color:'+_color+'\"\>$1\<\/span\>';
-        var _html3 = /\<span style=[^\<]*$|^[^\>]*span\>/g;	//是否只包含一侧的<>
+        var _html0 = /\<font color=[0-9a-zA-Z#]+[^\<\>]*\>[^\<\>]+\<\/font\>/g;
+        var _html1 = /^\<font color=[0-9a-zA-Z#]+[^\<\>]*\>([^\<\>]+)\<\/font\>$/;
+        var _html2 = '\<font color='+_color+'\>$1\<\/font\>';
+        var _html3 = /\<font color=[^\<]*$|^[^\>]*font\>/g;	//是否只包含一侧的<>
         //new obsidian.Notice(lines);
 
         if (_html3.test(lines)){
@@ -870,7 +964,7 @@ var MyPlugin = /** @class */ (function (_super) {
                 //new obsidian.Notice("替换颜色！");
                 lines = lines.replace(_html1,_html2);
             }else{
-                lines = lines.replace(/\<span style=[\"'][^\<\>]*color:[0-9a-zA-Z#]+[\"'][^\<\>]*?\>|\<\/span\>/g,""); 
+                lines = lines.replace(/\<font color=[0-9a-zA-Z#]+[^\<\>]*?\>|\<\/font\>/g,""); 
             }
         }else{
             lines = lines.replace(/^(.+)$/mg,_html2);  //new obsidian.Notice("可以转换颜色！");
@@ -1031,6 +1125,29 @@ var MyPlugin = /** @class */ (function (_super) {
         this.替换笔记全文 (this.获取编辑模式 (), lines);
     };
 
+    MyPlugin.prototype.指定当前文件名 = function () {
+        var cmEditor = this.获取编辑模式 ();
+        var selection = this.获取所选文本 (cmEditor);
+        if (selection == undefined)
+            return false;
+        var activeFile = this.app.workspace.getActiveFile();
+        var noteFilePath = activeFile.path;
+        //this.app.workspace.activeLeaf.setEphemeralState({ rename: "all"});
+        navigator.clipboard.writeText(selection);
+        //this.app.workspace.activeLeaf.replaceSelection(selection);
+        this.app.vault.adapter.rename(noteFilePath, selection+".md"); //强行重命名，不能全局更新
+        //new obsidian.Notice(noteFilePath+"\n"+selection);
+    };
+
+    MyPlugin.prototype.获取相对路径 = function () {
+        var activeFile = this.app.workspace.getActiveFile();
+        var noteFilePath = activeFile.path;
+        navigator.clipboard.writeText(noteFilePath)
+        
+        var 相对目录 = noteFilePath.replace(/(?<=\/)[^\/]+$/m,"");
+        new obsidian.Notice("当前笔记位于："+相对目录);
+    };
+
     MyPlugin.prototype.粘贴表格 = function() {
     	let leaf = this.app.workspace.activeLeaf;
     	var xlsText = ""
@@ -1091,6 +1208,38 @@ var MyPlugin = /** @class */ (function (_super) {
             selection = selection.replace(/(\r\n|\n)+/mg,"\n");
             new obsidian.Notice("无语法文本 已成功获取，请粘贴！");
             navigator.clipboard.writeText(selection);
+        }
+    };
+
+    MyPlugin.prototype.嵌入当前网址页面 = function () {
+        var mdView = this.app.workspace.activeLeaf.view;
+        if (mdView.sourceMode == undefined)
+            return false;
+        var cmEditor = mdView.sourceMode.cmEditor;  //编辑模式
+        var selection = this.获取所选文本 (cmEditor);   //所选文本
+        var doc = cmEditor.getDoc();    //整个文档
+        var cursorline = cmEditor.getCursor().line; //行号
+        var line0 = cmEditor.getLine(cursorline);   //当前行文本
+        var vid,web;
+        var line1 = '\n<iframe src="■" width=100% height="500px" frameborder="0" scrolling="auto"></iframe>';
+        if(selection.match(/^https?:\/\/[^:]+/)){
+            if(selection.match(/^https?:\/\/v\.qq\.com/)){
+                vid = selection.replace(/^http.*\/([^\/=\?\.]+)(\.html.*)?$/,"$1");
+                web = "https://v.qq.com/txp/iframe/player.html?vid="+vid;
+            }else if(selection.match(/^https?:\/\/www\.bilibili\.com/)){
+                vid = selection.replace(/^http.*\/([^\/=\?\.]+)(\?spm.*)?$/,"$1");
+                web = "https://player.bilibili.com/player.html?bvid="+vid;
+            }else if(selection.match(/^https?:\/\/www\.youtube\.com/)){
+                vid = selection.replace(/^http.*?v=([^\/=\?\.]+)(\/.*)?$/,"$1");
+                web = "https://www.youtube.com/embed/"+vid;
+            }else{
+                web = selection;
+            }
+            line1 = line1.replace(/■/,web);
+            doc.replaceRange(line1, {line:cursorline,ch:line0.length},{line:cursorline,ch:line0.length});
+            cmEditor.exec("goRight");
+        }else{
+            new obsidian.Notice("所选文本不符合网址格式，无法嵌入！");
         }
     };
 
@@ -1360,7 +1509,7 @@ var SettingsTab = /** @class */ (function (_super) {
         var _this = this;
         var containerEl = this.containerEl;
         containerEl.empty();
-        containerEl.createEl('h2', { text: '增强编辑 0.3.5' });
+        containerEl.createEl('h2', { text: '增强编辑 0.3.7' });
         new obsidian.Setting(containerEl)
             .setName('转换内部链接「Alt+Z」 在选文两端添加或去除 [[ ]] 符号')
             .setDesc('支持批量转换用换行符分隔的多行文本或顿号分隔的多句文本。')
@@ -1403,13 +1552,15 @@ var SettingsTab = /** @class */ (function (_super) {
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('转换下划线「Alt+H」∶将选文转为或去除 <u>下划线</u> 效果');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('转换代码块「Alt+M」∶将选文转为或去除 ```代码块``` 效果');
+        donateText.appendText('转换代码块「未设置」∶将选文转为或去除 ```代码块``` 效果');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('转换上标语法「Alt+U」∶将选文转为或去除 <sup>上标</sup> 效果');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('转换下标语法「Alt+N」∶将选文转为或去除 <sub>下标</sub> 效果');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('转换待办状态「未设置」：转换选文行首的待办状态，顺序为 -[ x-!?><+] 效果');
+        donateText.appendChild(document.createElement('br'));
+        donateText.appendText('转换挖空「未设置」：将选文转为或去除 {{c1::选文}} 效果');
         donateText.appendChild(document.createElement('br'));
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('转换标题语法「Ctrl+1-6」∶指定或取消当前行文本为N级标题');
@@ -1433,13 +1584,11 @@ var SettingsTab = /** @class */ (function (_super) {
         donateText.appendText('《选文》「未设置」：在选文两端添加或去除 《》符号');
         donateText.appendChild(document.createElement('br'));
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('自动设置标题「Ctrl+Shift+Alt+T」∶将选文中的单行文本（末尾非标点或数字）转为标题');
+        donateText.appendText('英转中文标点「未设置」∶将笔记中的英文标点转换为中文标点，如,.?!"等');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('英转中文标点「Ctrl+Shift+Alt+Z」∶将笔记中的英文标点转换为中文标点，如,.?!"等');
+        donateText.appendText('中转英文标点「未设置」∶将笔记中的中文标点转换为英文标点，如，。？！“等');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('中转英文标点「Ctrl+Shift+Alt+Y」∶将笔记中的中文标点转换为英文标点，如，。？！“等');
-        donateText.appendChild(document.createElement('br'));
-        donateText.appendText('转换路径语法「Shift+Alt+F」∶将 c:\\windows 与 [](file:///c:\/windows) 路径语法相互转换');
+        donateText.appendText('转换路径语法「未设置」∶将 c:\\windows 与 [](file:///c:\/windows) 路径语法相互转换');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('简体转为繁体「未设置」：将笔记中的简体汉字转换为繁体汉字');
         donateText.appendChild(document.createElement('br'));
@@ -1448,30 +1597,40 @@ var SettingsTab = /** @class */ (function (_super) {
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('粘贴MD表格「Ctrl+Alt+V」∶将复制的Office表格直接粘贴为MarkDown语法表格');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('修复错误语法「Ctrl+Shift+J」∶修复错误的MD语法，如1。列表、【】（）链接、[[]]()回链等');
+        donateText.appendText('修复错误语法「未设置」∶修复错误的MD语法，如1。列表、【】（）链接、[[]]()回链等');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('修复意外断行「Ctrl+Alt+D」∶修复笔记中的意外断行（删除结尾不是句式标点的换行符）');
+        donateText.appendText('修复意外断行「未设置」∶修复笔记中的意外断行（删除结尾不是句式标点的换行符）');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('搜索当前文本「未设置」：通过搜索面板在当前文档中搜索划选内容。');
-        //donateText.appendChild(document.createElement('br'));
-        //donateText.appendText('获取时间信息「Ctrl+Shift+T」∶获取当前行中的时间信息，并控制链接笔记中的视频进行跳转播放');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('获取标注文本「Ctrl+Shift+B」∶获取标题、高亮、注释及前缀(#标注\批注\反思)等文本内容');
+        donateText.appendText('选择当前整段「未设置」：选择光标所在的当前整段文本。');
+        donateText.appendChild(document.createElement('br'));
+        donateText.appendText('选择当前整句「未设置」：选择光标所在的当前整句（中文）文本。');
+        donateText.appendChild(document.createElement('br'));
+        //donateText.appendChild(document.createElement('br'));
+        //donateText.appendText('获取时间信息「未设置」∶获取当前行中的时间信息，并控制链接笔记中的视频进行跳转播放');        
+        donateText.appendText('获取标注文本「未设置」∶获取标题、高亮、注释及前缀(#标注\批注\反思)等文本内容');
+        donateText.appendChild(document.createElement('br'));
+        donateText.appendText('自动设置标题「未设置」∶将选文中的单行文本（末尾非标点或数字）转为标题');
+        donateText.appendChild(document.createElement('br'));
+        donateText.appendText('指定当前文件名「未设置」：划选文字后指定为当前笔记的文件名。');
+        donateText.appendChild(document.createElement('br'));
+        donateText.appendText('嵌入当前网址页面「未设置」∶在行末插入iframe代码来嵌入所选网址页面');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('获取相对路径「未设置」：获取当前笔记在库目录内的相对路径。');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendChild(document.createElement('br'));
+        donateText.appendChild(document.createElement('br'));        
         donateText.appendText('批量插入空行「Ctrl+Shift+L」∶在划选的文本行或全文中间批量插入空白行');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('批量去除空行「Ctrl+Alt+L」∶批量去除划选文本或全文中的空白行');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('上方插入空行「Shift+Alt+O」∶在当前文本行的上行插入空白行');
+        donateText.appendText('上方插入空行「未设置」∶在当前文本行的上行插入空白行');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('下方插入空行「Shift+Alt+L」∶在当前文本行的下行插入空白行');
+        donateText.appendText('下方插入空行「未设置」∶在当前文本行的下行插入空白行');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('末尾追加空格「Ctrl+Shift+K」∶在每行文本的末尾追加两个空格');
+        donateText.appendText('末尾追加空格「未设置」∶在每行文本的末尾追加两个空格');
         donateText.appendChild(document.createElement('br'));
-        donateText.appendText('去除末尾空格「Ctrl+Alt+K」∶批量去除每个文本行末尾的空格字符');
+        donateText.appendText('去除末尾空格「未设置」∶批量去除每个文本行末尾的空格字符');
         donateText.appendChild(document.createElement('br'));
         donateText.appendText('添加中英间隔「未设置」：在正文的汉字与字母之间批量添加空格，如 china 中国。');
         donateText.appendChild(document.createElement('br'));

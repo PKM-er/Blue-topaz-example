@@ -168,8 +168,8 @@
         {
           "name": "colorclock",
           "type": "UserScript",
-          "id": "d4de4b6e-19f5-4191-863a-efbc41eca8e4",
-          "path": "88-Template/colorclock.js",
+          "id": "1b959483-d072-46b1-975a-c14a681ee3c9",
+          "path": "88-Template/脚本/colorclock.js",
           "settings": {}
         }
       ],
@@ -182,8 +182,8 @@
         {
           "name": "refreshhomepage",
           "type": "UserScript",
-          "id": "3688b46a-c8d2-4179-aef5-33c9668298d1",
-          "path": "88-Template/refreshhomepage.js",
+          "id": "6324cd4d-ecc7-4cf1-b677-b4f4eddaf247",
+          "path": "88-Template/脚本/refreshhomepage.js",
           "settings": {}
         },
         {
@@ -208,17 +208,11 @@
         {
           "name": "notice",
           "type": "UserScript",
-          "id": "c5b201d2-a771-4fb6-80ab-fb422c1f7ccd",
-          "path": "88-Template/notice.js",
+          "id": "52762e2f-5f62-4a00-83ae-5b2059b6956e",
+          "path": "88-Template/脚本/notice.js",
           "settings": {}
         }
       ],
-      "runOnStartup": false
-    },
-    {
-      "name": "colorfulclock",
-      "id": "99004531-a248-4675-a867-83d756428002",
-      "commands": [],
       "runOnStartup": false
     }
   ],

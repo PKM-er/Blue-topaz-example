@@ -11,5 +11,6 @@
   "spellcheckLanguages": [],
   "attachmentFolderPath": "99-Attachment",
   "showLineNumber": false,
-  "defaultViewMode": "source"
+  "defaultViewMode": "source",
+  "showUnsupportedFiles": false
 }

@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.13.21。uid [20220120] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.13.21, uid [20220120] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.13.21。uid [20220121] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.13.21, uid [20220121] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 @LillianWho @成雙酱 @嘴上云 @Cuman @Klaas @Thinkbond @Rainbell129(AKA Lavi) @awyugan */
@@ -595,8 +595,8 @@ settings:
     type: variable-themed-color
     opacity: false
     format: hex
-    default-light: '#da8507'
-    default-dark: '#da8507'
+    default-light: '#0e0e0e'
+    default-dark: '#bdbdbd'
   -
     id: list-ol-number-color
     title: Number Color of Ordered List
@@ -1897,7 +1897,7 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --list-ol-block-color: #2685bbb4;
   --list-ol-number-color: #95afc4;
   --list-ol-hover: #2c7bd6;
-  --list-format-ul: #da8507;
+  --list-format-ul: var(--text-normal);
 
   --tag-text: #e4e4e4;
   --stag1: #f08383;
@@ -2187,7 +2187,7 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --list-ol-block-color: #3573a5;
   --list-ol-number-color: #6196d6;
   --list-ol-hover: #5c95e0;
-  --list-format-ul: #da8507;
+  --list-format-ul: var(--text-normal);
 
   --tag-text: #f8f8f8;
   --stag1: #fa8787;
@@ -3635,7 +3635,6 @@ body.color-scheme-options-topaz-nord.theme-dark {
   --list-ol-block-color: var(--nord9);
   --list-ol-number-color: var(--nord9);
   --list-ol-hover: var(--nord7);
-  --list-format-ul: var(--nord12);
 
   --table-thead-background-color: var(--nord9-2);
   --table-hover-raw-color: var(--nord9-2);
@@ -3798,7 +3797,6 @@ body.color-scheme-options-topaz-nord.theme-light {
   --list-ol-block-color: var(--nord9);
   --list-ol-number-color: var(--nord9);
   --list-ol-hover: var(--nord7);
-  --list-format-ul: var(--nord12);
 
   --table-thead-background-color: var(--nord9-2);
   --table-hover-raw-color: var(--nord9-2);
@@ -8316,6 +8314,7 @@ body:not(.font-family-change-to-default) .markdown-source-view.mod-cm6 .cm-scrol
   line-height: var(--line-height-main);
   font-family: var(--font-family-major);
   letter-spacing: calc(var(--letter-space-main) * 0.03em);
+  text-align: var();
 }
 
 .markdown-preview-view.is-readable-line-width:not(.matrix) .markdown-preview-sizer,
@@ -8484,6 +8483,7 @@ mjx-math {
   color: var(--list-ol-number-color);
 }
 
+ul>li::marker,
 .cm-formatting.cm-formatting-list.cm-formatting-list-ul {
   color: var(--list-format-ul);
 }
@@ -8528,6 +8528,35 @@ ul ul ul ol ul {
   list-style: circle;
 }
 
+.markdown-source-view.mod-cm6 .list-bullet {
+  padding-right: 4px;
+}
+
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line .list-bullet:after {
+  content: '\25E6';
+  left: 1px;
+  font-family: 'Inter';
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line .list-bullet:after {
+  content: '\2022';
+  left: -2px;
+  font-family: 'Inter';
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line .list-bullet:after {
+  content: '\25E6';
+  left: -1px;
+  font-family: 'Inter';
+}
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line .list-bullet:after {
+  content: '\25AA';
+  left: 1px;
+  font-family: 'Inter';
+}
+
+.markdown-preview-view ul>li:not(.task-list-item)::marker {
+  font-size: 0.8em;
+}
+
 ul {
   padding-inline-start: 32px;
 }
@@ -8567,17 +8596,26 @@ ol ul ol ol {
   list-style: decimal;
 }
 
+::marker {
+  margin-right: -30px !important;
+}
+
 .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item) {
   padding-left: 0.25em;
   border-radius: var(--radius-s);
   transition: all 300ms ease-in-out;
 }
 
-body.list-bracket-left .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item),
-body.list-bracket-left .markdown-preview-view:not(.kanban) ul>li:not(.task-list-item),
-body.list-bracket-left-two .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item),
-body.list-bracket-left-two .markdown-preview-view:not(.kanban) ul>li:not(.task-list-item)  {
-  margin: 0.25em 0;
+body:not(.list-vertical-line-one):not(.list-vertical-line-two):not(.list-vertical-line-three):not(.list-no-border) .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item),
+body:not(.list-vertical-line-one):not(.list-vertical-line-two):not(.list-vertical-line-three):not(.list-no-border) .markdown-preview-view:not(.kanban) ul>li:not(.task-list-item) {
+  margin-top: 0.2em;
+  margin-bottom: 0.2em;
+}
+
+body:not(.list-bracket-left):not(.list-bracket-left-two):not(.list-no-border) .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item),
+body:not(.list-bracket-left):not(.list-bracket-left-two):not(.list-no-border) .markdown-preview-view:not(.kanban) ul>li:not(.task-list-item) {
+  padding-top: 0.1em;
+  padding-bottom: 0.1em;
 }
 
 .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item) {
@@ -8680,7 +8718,7 @@ body.list-vertical-line-one ol ol::before {
   content: '';
   border-left: 2px solid var(--background-modifier-border);
   position: absolute;
-  left: -1.2em;
+  left: -0.9em;
   height: 100%;
 }
 
@@ -8744,7 +8782,7 @@ body.list-vertical-line-two ol ol::before {
   content: '';
   border-left: 2px solid var(--background-modifier-border);
   position: absolute;
-  left: -1.2em;
+  left: -0.9em;
   height: 100%;
 }
 body.list-vertical-line-two.is-mobile ul ul::before,
@@ -8864,7 +8902,7 @@ body.list-vertical-line-three ol ol::before {
   content: '';
   border-left: 2px solid var(--background-modifier-border);
   position: absolute;
-  left: 0.3em;
+  left: 0.1em;
   top: 0px;
   bottom: 0px;
 }
@@ -8922,11 +8960,6 @@ body.list-vertical-line-three ol.contains-task-list ol::before {
   bottom: 0px;
 }
 
-body.list-vertical-line-three .markdown-preview-view ul:not(.contains-task-list) .list-collapse-indicator.collapse-indicator.collapse-icon {
-  padding-top: 14px;
-  padding-left: 10px;
-}
-
 body.list-vertical-line-three .markdown-preview-view ul:not(.contains-task-list) .list-collapse-indicator.collapse-indicator.collapse-icon::before,
 body.list-vertical-line-three .markdown-preview-view ol .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   content: "↓";
@@ -8940,8 +8973,53 @@ body.list-vertical-line-three .markdown-preview-view ol .list-collapse-indicator
 
 body.list-vertical-line-three .markdown-preview-view ul:not(.contains-task-list) li.is-collapsed div.list-collapse-indicator.collapse-indicator.collapse-icon,
 body.list-vertical-line-three .markdown-preview-view ol li.is-collapsed div.list-collapse-indicator.collapse-indicator.collapse-icon {
-  transform: translateX(-2px) translateY(16px) rotate(-90deg);
+  transform: translateX(5px) translateY(8px) rotate(-90deg);
   opacity: 0.5;
+}
+
+body:not(.list-no-border) .mod-cm6.is-live-preview .HyperMD-list-line.cm-line .cm-hmd-list-indent::before {
+  content: '';
+  font-family: var(--rb-indent-font-family) !important;
+  font-size: var(--rb-indent-font-size) !important;
+  display: block;
+  position: absolute;
+  width: 100%;
+  top: -0.5em;
+  bottom: -0.5em;
+  padding-bottom: 999em;
+  background-image: linear-gradient(
+        to right,
+        var(--background-modifier-border) 0 var(--rb-line-width),
+        transparent var(--rb-line-width) calc(1 * var(--rb-indent-width)),
+        var(--background-modifier-border) calc(1 * var(--rb-indent-width)) calc(1 * var(--rb-indent-width) + var(--rb-line-width)),
+        transparent calc(1 * var(--rb-indent-width) + var(--rb-line-width)) calc(2 * var(--rb-indent-width)),
+        var(--background-modifier-border) calc(2 * var(--rb-indent-width)) calc(2 * var(--rb-indent-width) + var(--rb-line-width)),
+        transparent calc(2 * var(--rb-indent-width) + var(--rb-line-width)) calc(3 * var(--rb-indent-width)),
+        var(--background-modifier-border) calc(3 * var(--rb-indent-width)) calc(3 * var(--rb-indent-width) + var(--rb-line-width)),
+        transparent calc(3 * var(--rb-indent-width) + var(--rb-line-width)) calc(4 * var(--rb-indent-width)),
+        var(--background-modifier-border) calc(4 * var(--rb-indent-width)) calc(4 * var(--rb-indent-width) + var(--rb-line-width)),
+        transparent calc(4 * var(--rb-indent-width) + var(--rb-line-width)) calc(5 * var(--rb-indent-width)),
+        var(--background-modifier-border) calc(5 * var(--rb-indent-width)) calc(5 * var(--rb-indent-width) + var(--rb-line-width)),
+        transparent calc(5 * var(--rb-indent-width) + var(--rb-line-width)) calc(6 * var(--rb-indent-width)),
+        var(--background-modifier-border) calc(6 * var(--rb-indent-width)) calc(6 * var(--rb-indent-width) + var(--rb-line-width)),
+        transparent calc(6 * var(--rb-indent-width) + var(--rb-line-width)) calc(7 * var(--rb-indent-width)),
+        var(--background-modifier-border) calc(7 * var(--rb-indent-width)) calc(7 * var(--rb-indent-width) + var(--rb-line-width)),
+        transparent calc(7 * var(--rb-indent-width) + var(--rb-line-width)) calc(8 * var(--rb-indent-width))
+    );
+  background-size: var(--rb-indent-bg-size);
+  left: var(--rb-left-offset);
+}
+
+body:not(.list-no-border) .mod-cm6.is-live-preview .cm-hmd-list-indent .cm-tab::before {
+  display: none;
+}
+body:not(.list-no-border) .mod-cm6.is-live-preview .HyperMD-list-line.cm-line {
+  overflow: hidden;
+}
+body:not(.list-no-border) .mod-cm6.is-live-preview .HyperMD-list-line.cm-line .cm-hmd-list-indent {
+  position: relative;
+  font-family: var(--rb-indent-font-family) !important;
+  font-size: var(--rb-indent-font-size) !important;
 }
 
 /********彩虹大纲线片段********/
@@ -8979,9 +9057,9 @@ body.list-vertical-line-three .markdown-preview-view ol li.is-collapsed div.list
       --rb-indent-font-family: var(--font-use-default);
       --rb-indent-font-size: var(--font-size-use-default);
       --rb-indent-width: var(--indent-use-default);
-      --rb-left-offset: 3.3px;
+      --rb-left-offset: 3px;
   /* ---------------------------------------------- */
-      --rb-line-width: 1.4px;
+      --rb-line-width: 2px;
       --rb-color-count: 8;
       --rb-indent-bg-size: calc(var(--rb-color-count) * var(--rb-indent-width)) 1px;
 }
@@ -8991,11 +9069,13 @@ body.rainbow-lines .mod-cm6.is-live-preview .cm-hmd-list-indent .cm-tab::before 
 body.rainbow-lines .mod-cm6.is-live-preview .HyperMD-list-line.cm-line {
   overflow: hidden;
 }
+
 body.rainbow-lines .mod-cm6.is-live-preview .HyperMD-list-line.cm-line .cm-hmd-list-indent {
   position: relative;
   font-family: var(--rb-indent-font-family) !important;
   font-size: var(--rb-indent-font-size) !important;
 }
+
 body.rainbow-lines .mod-cm6.is-live-preview .HyperMD-list-line.cm-line .cm-hmd-list-indent::before {
   content: '';
   font-family: var(--rb-indent-font-family) !important;
@@ -9003,7 +9083,8 @@ body.rainbow-lines .mod-cm6.is-live-preview .HyperMD-list-line.cm-line .cm-hmd-l
   display: block;
   position: absolute;
   width: 100%;
-  top: -1.6em;
+  top: -0.5em;
+  bottom: -0.5em;
   padding-bottom: 999em;
   background-image: linear-gradient(
         to right,
@@ -9161,7 +9242,6 @@ body.rainbow-lines .CodeMirror-foldgutter-open.CodeMirror-guttermarker-subtle::a
 	color: rgb(var(--accent-1-rgb)); 
 }
  
-
 /*预览模式*/ 
 /*无序列表*/
 body.rainbow-lines ul ul::before {
@@ -10205,18 +10285,15 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
   margin-right: auto;
 }
 
-/* Image zoom  */
 body:not(.image-zoom) .view-content img:not([class="emoji"]) {
   cursor: zoom-in;
-}
-
-body:not(.image-zoom) .workspace-leaf-content[data-type="markdown"] .view-content img:not([class="emoji"]) {
-  cursor: zoom-in;
   display: block;
-  margin: 0 auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
 }
 
-body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active {
+body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active,
+.workspace-leaf-content[data-type="image"] img:active {
   cursor: zoom-out !important;
   position: fixed;
   object-fit: contain;
@@ -13174,7 +13251,7 @@ aside>h2 {
     content: " (" attr(href) ") ";
   }
   */
-  /*
+
   .theme-dark {
     --background-primary: #ffffff;
     --background-primary-alt: #e9e9e9;
@@ -13185,8 +13262,7 @@ aside>h2 {
     --background-modifier-form-field: #fff;
     --background-modifier-form-field-highlighted: #fff;
     --background-modifier-box-shadow: rgba(0, 0, 0, 0.1);
-    --text-accent: #007de4;
-    --text-accent-hover: #4ba8ff;
+
     --text-normal: #0e0e0e;
     --text-muted: #7f7f7f;
     --text-highlight: #000000;
@@ -13199,17 +13275,11 @@ aside>h2 {
     --text-on-accent: #f2f2f2;
     --interactive-normal: #eaeaeb;
     --interactive-hover: #dbdbdc;
-    --interactive-accent-rgb: 70, 142, 235;
-    --interactive-accent: #2f92e4;
-    --interactive-accent-hover: #4ba8ff;
+
     --panel-border-color: #dbdbdc;
     --search-text: #000000;
     --folder-title: #000000;
     --background-code-2: #cccccc62;
-    --mark-highlight: #ffd298d8;
-
-    --background-search-result: #fdfdfd;
-    --search-result-file-matched-bg: #ffc3c3;
 
     --background-primary-bg-4-bt: #ffffff;
     --background-primary-alt-bg-4-bt: #e9e9e9;
@@ -13218,36 +13288,8 @@ aside>h2 {
     --background-4-sliding-pane: #ffffffef;
 
     --text-normal: #0e0e0e;
-    --internal-link-color-in-highlight: #007fd3;
     --background-code: #f7f7f7;
-    --theme-color-translucent: #3892dc7a;
-    --theme-color-translucent-1: #2f93e426;
     --background-blockquote: #b6b6b62c;
-
-    --tag-text: #f8f8f8;
-    --stag1: #fa8787;
-    --stag1-bg: #eb2727;
-    --stag2: #fdbd5c;
-    --stag2-bg: #ee9002;
-    --stag3: #50ce3a;
-    --stag3-bg: #22ac09;
-    --tag1: #2573f0;
-    --tag2: #2193f0;
-    --tag3: #17a5e7;
-    --tag4: #14acc7;
-    --tag5: #10bdbd;
-    --tag6: #12c690;
-    --tag7: #0dc416;
-    --tag8: #61c108;
-    --tag9: #6ab607;
-    --tag-dailynote: #0077ff;
-    --tag-dailynote-bg: #277CDD;
-    --tag-weeklynote: #4b9fff;
-    --tag-weeklynote-bg: #6aafff;
-    --tag-questions: #b68fff;
-    --tag-questions-bg: #b085ff;
-    --tag-ideas: #ceb900;
-    --tag-ideas-bg: #444444d8;
 
     --text-gray: #37352f99;
     --text-brown: #855a46;
@@ -13273,26 +13315,7 @@ aside>h2 {
 
     --table-background-color: #e4e4e4bb;
     --table-background-color-odd: #ffffffec;
-
-    --text-color-code: #e95d00;
-    --text-color-code-normal: #000000;
-    --gray-1: #383a42;
-    --gray-2: #383a42;
-    --red: #f13d64;
-    --red-1: #f16464f5;
-    --green: #63c951;
-    --darkgreen: #acb5b2;
-    --blue: #107fe7;
-    --darkblue: #3b84e4;
-    --purple: #c74df7;
-    --aqua: #00b0c1;
-    --yellow: #e48100;
-    --light-yellow: #ab9a02;
-    --orange: #db9600;
-    --light-purple: #b74ff3;
-    --blue-green: #3bd4da;
   }
-  */
 
   body.export-pdf-style-default-all-dark .markdown-preview-view {
     background-color: var(--background-primary) !important;
@@ -14833,6 +14856,10 @@ body.translucent-setting-panel .vertical-tab-nav-item {
   max-width: 330px;
 }
 
+.workspace-leaf-content .style-settings-container .setting-item:first-child {
+  margin-top: 20px;
+}
+
 /* ================================== */
 /* =========== RTL official ========= */
 /* ================================== */
@@ -15074,8 +15101,12 @@ img[alt$="L"],
 .internal-embed.image-embed.is-loaded[alt$="left"] img[alt$="left"],
 .internal-embed.image-embed.is-loaded[alt$="Left"] img[alt$="Left"],
 .internal-embed.image-embed.is-loaded[alt$="LEFT"] img[alt$="LEFT"],
-.internal-embed.image-embed.is-loaded[alt$="L"] img[alt$="L"] {
-  margin-left: 0;
+.internal-embed.image-embed.is-loaded[alt$="L"] img[alt$="L"],
+body:not(.image-zoom) .view-content img[alt$="left"]:not([class="emoji"]),
+body:not(.image-zoom) .view-content img[alt$="Left"]:not([class="emoji"]),
+body:not(.image-zoom) .view-content img[alt$="LEFT"]:not([class="emoji"]),
+body:not(.image-zoom) .view-content img[alt$="L"]:not([class="emoji"]) {
+  margin-left: 0 !important;
 }
 
 img[alt$="right"],
@@ -15089,8 +15120,12 @@ img[alt$="R"],
 .internal-embed.image-embed.is-loaded[alt$="right"] img[alt$="right"],
 .internal-embed.image-embed.is-loaded[alt$="Right"] img[alt$="Right"],
 .internal-embed.image-embed.is-loaded[alt$="RIGHT"] img[alt$="RIGHT"],
-.internal-embed.image-embed.is-loaded[alt$="R"] img[alt$="R"] {
-  margin-right: 0;
+.internal-embed.image-embed.is-loaded[alt$="R"] img[alt$="R"],
+body:not(.image-zoom) .view-content img[alt$="right"]:not([class="emoji"]),
+body:not(.image-zoom) .view-content img[alt$="Right"]:not([class="emoji"]),
+body:not(.image-zoom) .view-content img[alt$="RIGHT"]:not([class="emoji"]),
+body:not(.image-zoom) .view-content img[alt$="R"]:not([class="emoji"]) {
+  margin-right: 0 !important;
 }
 
 img[alt$="inline"],
@@ -17206,186 +17241,149 @@ You can change these to match your use case.
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="0"] {
   background-color: var(--Fold0);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="0"]+.nav-folder-children {
   background-color: var(--Fold0);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="1"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="1"]+.nav-folder-children {
   background-color: var(--Fold1);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="2"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="2"]+.nav-folder-children {
   background-color: var(--Fold2);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="3"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="3"]+.nav-folder-children {
   background-color: var(--Fold3);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="4"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="4"]+.nav-folder-children {
   background-color: var(--Fold4);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="5"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="5"]+.nav-folder-children {
   background-color: var(--Fold5);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="6"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="6"]+.nav-folder-children {
   background-color: var(--Fold6);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="7"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="7"]+.nav-folder-children {
   background-color: var(--Fold7);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="8"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="8"]+.nav-folder-children {
   background-color: var(--Fold8);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="9"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="9"]+.nav-folder-children {
   background-color: var(--Fold9);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="A"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="A"]+.nav-folder-children {
   background-color: var(--FoldA);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="B"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="B"]+.nav-folder-children {
   background-color: var(--FoldB);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="C"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="C"]+.nav-folder-children {
   background-color: var(--FoldC);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="D"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="D"]+.nav-folder-children {
   background-color: var(--FoldD);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="E"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="E"]+.nav-folder-children {
   background-color: var(--FoldE);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="F"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="F"]+.nav-folder-children {
   background-color: var(--FoldF);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="G"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="G"]+.nav-folder-children {
   background-color: var(--FoldG);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="H"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="H"]+.nav-folder-children {
   background-color: var(--FoldH);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="I"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="I"]+.nav-folder-children {
   background-color: var(--FoldI);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="J"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="J"]+.nav-folder-children {
   background-color: var(--FoldJ);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="K"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="K"]+.nav-folder-children {
   background-color: var(--FoldK);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="L"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="L"]+.nav-folder-children {
   background-color: var(--FoldL);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="M"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="M"]+.nav-folder-children {
   background-color: var(--FoldM);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="N"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="N"]+.nav-folder-children {
   background-color: var(--FoldN);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="O"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="O"]+.nav-folder-children {
   background-color: var(--FoldO);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="P"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="P"]+.nav-folder-children {
   background-color: var(--FoldP);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="Q"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="Q"]+.nav-folder-children {
   background-color: var(--FoldQ);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="R"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="R"]+.nav-folder-children {
   background-color: var(--FoldR);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="S"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="S"]+.nav-folder-children {
   background-color: var(--FoldS);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="T"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="T"]+.nav-folder-children {
   background-color: var(--FoldT);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="U"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="U"]+.nav-folder-children {
   background-color: var(--FoldU);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="V"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="V"]+.nav-folder-children {
   background-color: var(--FoldV);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="W"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="W"]+.nav-folder-children {
   background-color: var(--FoldW);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="X"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="X"]+.nav-folder-children {
   background-color: var(--FoldX);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="Y"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="Y"]+.nav-folder-children {
   background-color: var(--FoldY);
 }
-
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="Z"],
 body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-title[data-path^="Z"]+.nav-folder-children {
   background-color: var(--FoldZ);
 }
-
 /* Scrollbars eliminated 
 body.folder-style-change-options-colorful .workspace-leaf-content[data-type='file-explorer'] ::-webkit-scrollbar {
   width: 0px;
@@ -17406,7 +17404,6 @@ body.folder-style-change-options-colorful .nav-folder.mod-root>.nav-folder-title
   font-size: 1.3em;
 }
 
-/*==========*/
 /*style settings blockquote quotation marks*/
 body.blockquote-style-quotation-mark .markdown-preview-view blockquote {
   color: var(--text-normal);
@@ -17438,10 +17435,6 @@ body.blockquote-style-quotation-mark .markdown-preview-view blockquote p:first-o
   left: -1.2em;
 }
 
-body.blockquote-style-quotation-mark .markdown-preview-view li>blockquote p:first-of-type::before {
-  top: 5px;
-}
-
 /*style settings blockquote quotation marks for cm6 live preview*/
 body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote {
   padding-left: 2.3em !important;
@@ -17459,11 +17452,10 @@ body.blockquote-style-quotation-mark
 .markdown-source-view.mod-cm6.is-live-preview 
 .HyperMD-quote:not(.cm-active) > .cm-formatting.cm-formatting-quote.cm-quote::before {
   content: '\ee81';
-  font-size: 1.7em;
+  font-size: 1.5em;
   font-family: boxicons;
   color: var(--text-folder-file-icon);
   position: absolute;
-  margin-top: 0.1em;
   margin-left: -0.8em;
 }
 body.blockquote-style-quotation-mark .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote + .HyperMD-quote > .cm-formatting.cm-formatting-quote.cm-quote::before {
@@ -17523,7 +17515,6 @@ body.blockquote-style-speech-bubble-one .markdown-preview-view blockquote:before
 
 /*speech bubble-2*/
 /*adapted from https://codepen.io/mchernin34/pen/ojXvLq*/
-
 body.blockquote-style-speech-bubble-two .markdown-preview-view blockquote {
   position: relative;
   padding: 10px;
@@ -17552,7 +17543,6 @@ body.blockquote-style-speech-bubble-two.theme-dark .markdown-preview-view blockq
   background: var(--theme-color);
 }
 
-/* creates larger curve */
 body.blockquote-style-speech-bubble-two .markdown-preview-view blockquote:before {
   content: '';
   position: absolute;
@@ -17565,15 +17555,12 @@ body.blockquote-style-speech-bubble-two .markdown-preview-view blockquote:before
   border-width: 0 7px 4px 0;
   border-color: var(--theme-color);
   background: transparent;
-  /* css3 */
   -webkit-border-bottom-right-radius: 80px 50px;
   -moz-border-radius-bottomright: 80px 50px;
   border-bottom-right-radius: 80px 50px;
-  /* reduce the damage in FF3.0 */
   display: block;
 }
 
-/* creates smaller curve */
 body.blockquote-style-speech-bubble-two .markdown-preview-view blockquote:after {
   content: '';
   position: absolute;
@@ -17586,11 +17573,9 @@ body.blockquote-style-speech-bubble-two .markdown-preview-view blockquote:after 
   border-width: 0 7px 4px 0;
   border-color: var(--theme-color);
   background: transparent;
-  /* css3 */
   -webkit-border-bottom-right-radius: 40px 50px;
   -moz-border-radius-bottomright: 40px 50px;
   border-bottom-right-radius: 40px 50px;
-  /* reduce the damage in FF3.0 */
   display: block;
 }
 
@@ -17603,7 +17588,6 @@ body.blockquote-style-speech-bubble-two .markdown-preview-view blockquote> :firs
   width: 4px;
   height: 4px;
   background: var(--theme-color);
-  /* css3 */
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   border-radius: 10px;
