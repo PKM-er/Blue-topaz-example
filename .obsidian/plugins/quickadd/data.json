@@ -15,11 +15,11 @@
       },
       "format": {
         "enabled": true,
-        "format": "-  {{DATE:HH:mm}} {{MVALUE}}"
+        "format": "- {{DATE:HH:mm}} {{VALUE}}"
       },
       "insertAfter": {
         "enabled": true,
-        "after": "##",
+        "after": "## ✏随笔感悟",
         "insertAtEnd": true,
         "createIfNotFound": true,
         "createIfNotFoundLocation": "bottom"
@@ -95,6 +95,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "dfb35a63-6aa2-44db-8ca4-a7e7c56eb546"
+    },
+    {
+      "id": "b3db048c-5629-437d-bff9-83468e7f7318",
+      "name": "刷新主页",
+      "type": "Macro",
+      "command": true,
+      "macroId": "8375d67f-9460-4b6f-90f8-5355af1c6668"
     }
   ],
   "macros": [
@@ -151,6 +158,19 @@
           "type": "Obsidian",
           "id": "cc6b384b-ec44-4292-835a-e19dafa409d5",
           "commandId": "workspaces-plus:Home"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "2d6f7c7b-f5e3-4ad4-8857-18fb797af476",
+          "time": 1000
+        },
+        {
+          "name": "colorclock",
+          "type": "UserScript",
+          "id": "d4de4b6e-19f5-4191-863a-efbc41eca8e4",
+          "path": "88-Template/colorclock.js",
+          "settings": {}
         }
       ],
       "runOnStartup": true
@@ -194,6 +214,13 @@
         }
       ],
       "runOnStartup": false
+    },
+    {
+      "name": "colorfulclock",
+      "id": "99004531-a248-4675-a867-83d756428002",
+      "commands": [],
+      "runOnStartup": false
     }
-  ]
+  ],
+  "inputPrompt": "multi-line"
 }

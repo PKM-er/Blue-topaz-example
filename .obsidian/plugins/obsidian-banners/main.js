@@ -5085,6 +5085,7 @@ class BannersPlugin extends obsidian.Plugin {
     }
     loadProcessor() {
         this.registerMarkdownPostProcessor((el, ctx) => {
+            var _a, _b;
             // Only process the frontmatter
             if (!el.querySelector('pre.frontmatter')) {
                 return;
@@ -5092,18 +5093,19 @@ class BannersPlugin extends obsidian.Plugin {
             const { showInInternalEmbed, showInPreviewEmbed } = this.settings;
             const { containerEl, frontmatter } = ctx;
             const bannerData = this.metaManager.getBannerData(frontmatter);
-            const fourLevelsDown = containerEl.parentElement.parentElement.parentElement.parentElement;
-            const isInternalEmbed = fourLevelsDown.hasClass('internal-embed');
-            const isPreviewEmbed = fourLevelsDown.hasClass('popover');
-            // Add banner if allowed
-            if ((bannerData === null || bannerData === void 0 ? void 0 : bannerData.banner) && (!isInternalEmbed || showInInternalEmbed) && (!isPreviewEmbed || showInPreviewEmbed)) {
-                const banner = document.createElement('div');
-                ctx.addChild(new Banner(this, banner, el, ctx, bannerData, isInternalEmbed || isPreviewEmbed));
-            }
+            const isPDFExport = containerEl.parentElement.hasClass('print');
+            const fourLevelsDown = isPDFExport ? null : containerEl.parentElement.parentElement.parentElement.parentElement;
+            const isInternalEmbed = (_a = fourLevelsDown === null || fourLevelsDown === void 0 ? void 0 : fourLevelsDown.hasClass('internal-embed')) !== null && _a !== void 0 ? _a : false;
+            const isPreviewEmbed = (_b = fourLevelsDown === null || fourLevelsDown === void 0 ? void 0 : fourLevelsDown.hasClass('popover')) !== null && _b !== void 0 ? _b : false;
             // Add icon
             if (bannerData === null || bannerData === void 0 ? void 0 : bannerData.banner_icon) {
                 const icon = document.createElement('div');
                 ctx.addChild(new Icon(this, icon, el, ctx, bannerData));
+            }
+            // Add banner if allowed
+            if ((bannerData === null || bannerData === void 0 ? void 0 : bannerData.banner) && (!isInternalEmbed || showInInternalEmbed) && (!isPreviewEmbed || showInPreviewEmbed)) {
+                const banner = document.createElement('div');
+                ctx.addChild(new Banner(this, banner, el, ctx, bannerData, isInternalEmbed || isPreviewEmbed));
             }
         });
     }

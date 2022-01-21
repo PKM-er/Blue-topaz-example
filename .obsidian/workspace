@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
+            "file": "20-Diary/2022-01-21.md",
             "mode": "preview",
-            "backlinks": true,
-            "source": false
+            "backlinks": false,
+            "source": true
           }
         }
       }
@@ -26,7 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 61.89290161892902,
+        "dimension": 59.27770859277709,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -62,23 +62,59 @@
         ]
       },
       {
-        "id": "d877e8285f98a38a",
+        "id": "81a04b2aa5e12243",
         "type": "tabs",
-        "dimension": 38.10709838107098,
+        "dimension": 40.72229140722292,
         "children": [
           {
-            "id": "b37bc3d287f74512",
+            "id": "81d2c4c87a745c7a",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "20-Diary/2022-01-21.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              }
+            }
+          },
+          {
+            "id": "fcdb389a6722ebae",
             "type": "leaf",
             "state": {
               "type": "recent-files",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 232
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -87,7 +123,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 63.88542963885429,
+        "dimension": 37.622789783889985,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -116,17 +152,24 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "20-Diary/2022-01-21.md"
               }
             }
+          },
+          {
+            "id": "c8a604062090b912",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
+              "state": {}
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 36.1145703611457,
+        "dimension": 62.37721021611002,
         "children": [
           {
             "id": "041c78328387b373",
@@ -134,7 +177,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "20-Diary/2022-01-21.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,7 +194,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "20-Diary/2022-01-21.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -181,20 +224,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 273,
-    "collapsed": true
+    "width": 360
   },
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
+    "20-Diary/2022-01-21.md",
     "88-Template/home.md",
-    "README.md",
-    "未命名.md",
-    "20-Diary/2022-01-15.md",
-    "20-Diary/2022-01-16.md",
-    "88-Template/日记模板.md",
+    "20-Diary/2022-01-10.md",
+    "20-Diary/任务看板.md",
     "88-Template/常用工具.md",
-    "00-Tips/Tips.md",
-    "88-Template/通用模板.md",
-    "00-Tips/AD伪看板.md"
+    "88-Template/button.md",
+    "README.md",
+    "从这开始.md",
+    "88-Template/彩色时钟.md",
+    "88-Template/ReactJS/ColorfulClock.md"
   ]
 }

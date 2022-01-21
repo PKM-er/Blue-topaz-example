@@ -41,6 +41,12 @@
     .macroContainer3 {
         grid-template-columns: repeat(1, 1fr);
     }
+
+    .wideInputPromptInputEl {
+        width: 20rem;
+        max-width: 100%;
+        height: 3rem;
+    }
 }
 
 /* Tablet */
@@ -56,6 +62,12 @@
     .macroContainer3 {
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .wideInputPromptInputEl {
+        width: 30rem;
+        max-width: 100%;
+        height: 20rem;
+    }
 }
 
 /* Everything else */
@@ -70,6 +82,12 @@
 
     .macroContainer3 {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .wideInputPromptInputEl {
+        width: 40rem;
+        max-width: 100%;
+        height: 20rem;
     }
 }
 

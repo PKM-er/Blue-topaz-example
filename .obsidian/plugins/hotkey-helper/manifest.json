@@ -1,7 +1,7 @@
 {
 	"id": "hotkey-helper",
 	"name": "Hotkey Helper",
-	"version": "0.3.9",
+	"version": "0.3.11",
 	"minAppVersion": "0.13.19",
 	"description": "Easily see and access any plugin's settings or hotkey assignments (and conflicts) from the Community Plugins tab",
 	"author": "PJ Eby",

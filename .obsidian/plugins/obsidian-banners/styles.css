@@ -118,7 +118,12 @@
   margin-bottom: -0.3em;
 }
 .has-banner-icon .icon-box {
-  padding: 2px 4px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: calc(4rem + 8px);
+  width: calc(4rem + 8px);
+  padding: 4px;
   border-radius: 4px;
   transition: ease 0.2s background;
 }
@@ -202,5 +207,15 @@
   .obsidian-banner-wrapper > .obsidian-banner {
     position: initial;
     margin-bottom: 20px;
+  }
+
+  .has-banner-icon,
+.has-banner-icon .obsidian-banner-icon,
+.obsidian-banner-wrapper.has-banner-icon {
+    margin-top: 0;
+  }
+
+  .obsidian-banner-wrapper.has-banner-icon .obsidian-banner-icon {
+    position: initial;
   }
 }

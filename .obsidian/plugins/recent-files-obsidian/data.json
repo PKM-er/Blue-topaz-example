@@ -1,36 +1,124 @@
 {
   "recentFiles": [
     {
+      "basename": "2022-01-21",
+      "path": "20-Diary/2022-01-21.md"
+    },
+    {
       "basename": "home",
       "path": "88-Template/home.md"
     },
     {
-      "basename": "README",
-      "path": "README.md"
+      "basename": "2022-01-10",
+      "path": "20-Diary/2022-01-10.md"
     },
     {
-      "basename": "2022-01-15",
-      "path": "20-Diary/2022-01-15.md"
-    },
-    {
-      "basename": "2022-01-16",
-      "path": "20-Diary/2022-01-16.md"
-    },
-    {
-      "basename": "日记模板",
-      "path": "88-Template/日记模板.md"
+      "basename": "任务看板",
+      "path": "20-Diary/任务看板.md"
     },
     {
       "basename": "常用工具",
       "path": "88-Template/常用工具.md"
     },
     {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "从这开始",
+      "path": "从这开始.md"
+    },
+    {
+      "basename": "彩色时钟",
+      "path": "88-Template/彩色时钟.md"
+    },
+    {
+      "basename": "07 - Center Table",
+      "path": "00-Tips/TableExample/07 - Center Table.md"
+    },
+    {
+      "basename": "表格自定义样式",
+      "path": "00-Tips/表格自定义样式.md"
+    },
+    {
+      "basename": "05 - White red rounded",
+      "path": "00-Tips/TableExample/05 - White red rounded.md"
+    },
+    {
+      "basename": "05 - White red",
+      "path": "00-Tips/TableExample/05 - White red.md"
+    },
+    {
       "basename": "Tips",
       "path": "00-Tips/Tips.md"
     },
     {
+      "basename": "01 - Default Table",
+      "path": "00-Tips/TableExample/01 - Default Table.md"
+    },
+    {
+      "basename": "04 - Latex like",
+      "path": "00-Tips/TableExample/04 - Latex like.md"
+    },
+    {
+      "basename": "06 - Yellow cab",
+      "path": "00-Tips/TableExample/06 - Yellow cab.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "00-Tips/分栏效果示例.md"
+    },
+    {
+      "basename": "2021-12-30",
+      "path": "20-Diary/2021-12-30.md"
+    },
+    {
+      "basename": "2022-01-09",
+      "path": "20-Diary/2022-01-09.md"
+    },
+    {
+      "basename": "日记模板",
+      "path": "88-Template/日记模板.md"
+    },
+    {
+      "basename": "2022-01-19",
+      "path": "20-Diary/2022-01-19.md"
+    },
+    {
+      "basename": "2021年12月规划",
+      "path": "20-Diary/2021年12月规划.md"
+    },
+    {
+      "basename": "query",
+      "path": "20-Diary/query.md"
+    },
+    {
+      "basename": "delete",
+      "path": "20-Diary/delete.md"
+    },
+    {
       "basename": "通用模板",
       "path": "88-Template/通用模板.md"
+    },
+    {
+      "basename": "魔方配色设置说明",
+      "path": "00-Tips/魔方配色设置说明.md"
+    },
+    {
+      "basename": "真Kanban",
+      "path": "00-Tips/真Kanban.md"
+    },
+    {
+      "basename": "各级标题示例",
+      "path": "00-Tips/各级标题示例.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "00-Tips/各类列表和彩虹大纲线.md"
     },
     {
       "basename": "AD伪看板",
@@ -45,64 +133,12 @@
       "path": "88-Template/Calendar2021-2022.md"
     },
     {
-      "basename": "各级标题示例",
-      "path": "00-Tips/各级标题示例.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
-    },
-    {
       "basename": "便签",
       "path": "88-Template/便签.md"
     },
     {
-      "basename": "query",
-      "path": "20-Diary/query.md"
-    },
-    {
-      "basename": "delete",
-      "path": "20-Diary/delete.md"
-    },
-    {
-      "basename": "2022-01-13",
-      "path": "20-Diary/2022-01-13.md"
-    },
-    {
-      "basename": "分栏效果示例",
-      "path": "00-Tips/分栏效果示例.md"
-    },
-    {
-      "basename": "从这开始",
-      "path": "从这开始.md"
-    },
-    {
-      "basename": "2022-01-10",
-      "path": "20-Diary/2022-01-10.md"
-    },
-    {
-      "basename": "2022-01-09",
-      "path": "20-Diary/2022-01-09.md"
-    },
-    {
-      "basename": "2021年12月规划",
-      "path": "20-Diary/2021年12月规划.md"
-    },
-    {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "00-Tips/各类列表和彩虹大纲线.md"
-    },
-    {
       "basename": "四象限表格",
       "path": "00-Tips/四象限表格.md"
-    },
-    {
-      "basename": "任务看板",
-      "path": "20-Diary/任务看板.md"
-    },
-    {
-      "basename": "魔方配色设置说明",
-      "path": "00-Tips/魔方配色设置说明.md"
     },
     {
       "basename": "伪看板",

@@ -148,7 +148,7 @@ class  blank
 ```button
 name ⏳刷新主页
 type command
-action Workspaces Plus: Load: Home
+action QuickAdd: 刷新主页
 class blank
 ```
 ^button-loadhome
@@ -160,3 +160,29 @@ action QuickAdd: 生成便签
 class circle_btn blank
 ```
 ^button-notice
+
+## 工作区切换
+#
+```button
+name <svg t="1642771868028" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="17704" width="30" height="30"><path d="M911.28 938H112.72a95.33 95.33 0 0 1-95.22-95.22V157.72a95.33 95.33 0 0 1 95.22-95.22h798.56a95.33 95.33 0 0 1 95.22 95.22v685.06A95.33 95.33 0 0 1 911.28 938zM112.72 122.5a35.26 35.26 0 0 0-35.22 35.22v685.06A35.26 35.26 0 0 0 112.72 878h798.56a35.26 35.26 0 0 0 35.22-35.22V157.72a35.26 35.26 0 0 0-35.22-35.22z" p-id="17705" fill="#1296db"></path><path d="M883 786H141a30 30 0 0 1 0-60h742a30 30 0 0 1 0 60zM141 614a30 30 0 0 1-21.21-51.21l133-133a30 30 0 1 1 42.42 42.42l-133 133A29.88 29.88 0 0 1 141 614z" p-id="17706" fill="#1296db"></path><path d="M384 592a29.91 29.91 0 0 1-21.31-8.88l-110-111a30 30 0 1 1 42.62-42.24l110 111A30 30 0 0 1 384 592z" p-id="17707" fill="#1296db"></path><path d="M384 592a30 30 0 0 1-3.51-59.79l193-23a30 30 0 0 1 7.1 59.58l-193 23a31.13 31.13 0 0 1-3.59 0.21z" p-id="17708" fill="#1296db"></path><path d="M577 569a30 30 0 0 1-22.13-50.24l255-279a30 30 0 1 1 44.28 40.48l-255 279A29.92 29.92 0 0 1 577 569z" p-id="17709" fill="#1296db"></path></svg>看板
+type command
+action Workspaces Plus: Load: kanban
+class circle_btn blank
+```
+^button-kanbanwp
+
+```button
+name <svg t="1642771907871" class="icon" viewBox="0 0 1111 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18754" width="30" height="30"><path d="M0 555.885714L555.885714 0l555.885715 555.885714h-146.285715v468.114286H146.285714V555.885714z" fill="#7dc5eb" p-id="18755"></path><path d="M409.6 1024V614.4h292.571429v409.6z" fill="#333333" p-id="18756"></path></svg>主页
+type command
+action QuickAdd: 刷新主页
+class circle_btn blank
+```
+^button-homewp
+
+```button
+name <svg t="1642771976390" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="22304" width="30" height="30"><path d="M736 192a48 48 0 0 0 48-48V48a48 48 0 1 0-96 0v96a48 48 0 0 0 48 48z m-240 0a48 48 0 0 0 48-48V48a48 48 0 1 0-96 0v96a48 48 0 0 0 48 48z m464 640h-48v-48a48 48 0 1 0-96 0v48h-48a48 48 0 1 0 0 96h48v48a48 48 0 1 0 96 0v-48h48a48 48 0 1 0 0-96z m-288 48a96 96 0 0 1 96-96 96 96 0 1 1 192 0V144a48 48 0 0 0-48-48h-80v48a96 96 0 1 1-192 0V96h-48v48a96 96 0 1 1-192 0V96h-48v48a96 96 0 1 1-192 0V96H80a48 48 0 0 0-48 48v832a48 48 0 0 0 48 48h688v-48a96 96 0 0 1-96-96zM208 368h576a48 48 0 1 1 0 96H208a48 48 0 1 1 0-96z m296 496H200a40 40 0 1 1 0-80h304a40 40 0 1 1 0 80z m120-192H208a48 48 0 1 1 0-96h416a48 48 0 1 1 0 96zM256 192a48 48 0 0 0 48-48V48a48 48 0 1 0-96 0v96a48 48 0 0 0 48 48z" p-id="22305" fill="#1296db"></path></svg>记事
+type command
+action Workspaces Plus: Load: Diary
+class circle_btn blank
+```
+^button-dairywp

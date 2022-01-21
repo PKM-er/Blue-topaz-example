@@ -3,7 +3,7 @@
   "blue-topaz-theme@@color-scheme-options": "color-scheme-options-lillimon-topaz",
   "blue-topaz-theme@@translucent-setting-panel": false,
   "blue-topaz-theme@@list-style-change-options": "list-vertical-line-one",
-  "blue-topaz-theme@@image-zoom": true,
+  "blue-topaz-theme@@image-zoom": false,
   "blue-topaz-theme@@muted-activeline-bg": false,
   "blue-topaz-theme@@background-settings-workplace-theme-light": "background-settings-workplace-theme-light-blue-mountain",
   "blue-topaz-theme@@bt-status-off": true,
@@ -60,7 +60,9 @@
   "blue-topaz-theme@@brightness-4-bg": 0.9,
   "blue-topaz-theme@@blur-depth": 5,
   "blue-topaz-theme@@saturate-4-bg": 1,
-  "blue-topaz-theme@@disable-math-block": true,
+  "blue-topaz-theme@@disable-math-block": false,
   "blue-topaz-theme@@style-options-for-buttons-plugin": true,
-  "memo-heatmap@@heatmap-dark": "ice-dark"
+  "memo-heatmap@@heatmap-dark": "ice-dark",
+  "memo-heatmap@@heatmap-light": "grass-light",
+  "blue-topaz-theme@@adjustable-embed-content-height": true
 }

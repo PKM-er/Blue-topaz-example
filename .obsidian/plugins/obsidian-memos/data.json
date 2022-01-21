@@ -1,5 +1,10 @@
 {
   "StartDate": "Sunday",
-  "InsertAfter": "## ✍内容",
-  "UserName": "Memo 😉"
+  "InsertAfter": "## ✏随笔感悟",
+  "UserName": "Memo 😉",
+  "ProcessEntriesBelow": "## ✏随笔感悟",
+  "Language": "zh",
+  "SaveMemoButtonLabel": "",
+  "DefaultPrefix": "List",
+  "InsertDateFormat": "Tasks"
 }

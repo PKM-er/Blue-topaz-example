@@ -1,7 +1,7 @@
 {
   "id": "obsidian-outliner",
   "name": "Outliner",
-  "version": "2.0.5",
+  "version": "2.0.7",
   "minAppVersion": "0.13.14",
   "description": "Work with your lists like in Workflowy or RoamResearch.",
   "author": "Viacheslav Slinko",

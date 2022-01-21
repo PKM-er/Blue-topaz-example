@@ -1,0 +1,390 @@
+
+
+/* --------------------------------------------   */
+/* Custom fonts. Comment or change as required    */
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,500,300,700);
+/* --------------------------------------------   */
+
+
+/* Obsidian default theme uses centered headers? */
+/* I rather not */
+table thead tr th {
+	text-align: left;
+}
+
+/*
+=========================
+=======Customizers=======
+=========================
+These are custom "hacks" that can be applied to any
+table (with/without custom table visual css).
+If you're already using other classes in your note,
+remember you can stack these in the cssclass 
+parameter, like:
+
+cssclass: tableClass1, hackClass2, userClass3, etc
+
+
+
+/* --------------------------------------------   */
+/* Make tables width same as default note width   */
+/* --------------------------------------------   */
+.wideTable table {
+	min-width: 100%;
+}
+/* --------------------------------------------   */
+
+
+/* --------------------------------------------   */
+/* Left align mandatory                           */
+/* --------------------------------------------   */
+.leftAlign th,
+.leftAlign td {
+	text-align: left !important;  
+}
+/* --------------------------------------------   */
+
+/* --------------------------------------------   */
+.centerAlign th,
+.centerAlign td {
+text-align:center;
+vertical-align:middle;
+}
+/* --------------------------------------------   */
+
+/* --------------------------------------------   */
+/* 1st cell short text, 2nd th bigger text        */
+/* --------------------------------------------   */
+.fixedFc thead tr th:first-child,
+.fixedFc tbody tr td:first-child {
+	width: 8em;
+	min-width: 8em;
+	max-width: 8em;
+	word-break: break-all;
+}
+.fixedFc th:nth-child(2) {
+    padding: 9px 20px;
+    font-size: 21px;
+}
+.fixedFc td:nth-child(2),
+.fixedFc tr > td:last-of-type { 
+	white-space: nowrap;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	max-width: 17em;
+}
+/* --------------------------------------------   */
+
+
+/* --------------------------------------------   */
+/* 1st cell big text, 2nd small.                  */
+/* --------------------------------------------   */
+.wideFc td:nth-child(1),
+.wideFc tr > td:last-of-type { 
+	white-space: nowrap;
+	overflow: hidden;
+  	text-overflow: ellipsis;
+  	max-width: 36em;
+}
+/* --------------------------------------------   */
+
+/* --------------------------------------------   */
+/* If you wanna change table margin, do it here   */
+/* --------------------------------------------   */
+.customMargin table {
+	margin: 25px 0;
+}
+/* --------------------------------------------   */
+    
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+=========================
+======Table styles=======
+=========================
+Almost all table themes here are either 
+frankenstein monsters of their originals
+or related to it. These were found
+on the www inside codepens, stackoverflow 
+threads and forums. Any credit belongs to 
+the creators and this is a free/open tribute
+for these contributions. 
+
+Usage:
+Select any table style to use in your cssclass.
+
+Eg. cssclass: purpleRed
+
+Remember that you can stack hacks!
+
+Eg. cssclass: purpleRed, wideTable
+
+*/
+
+
+/* --------------------------------------------   */
+/* Big purple red table with rounded edges        */
+/* --------------------------------------------   */
+.purpleRed table {
+	background-color: #3d3b63;
+	border-collapse: collapse;
+	border-radius: 10px;
+	font-size: 1em;
+	color: white;
+	overflow: hidden;
+	width: auto;
+	/*max-width: 100%;*/
+}
+.purpleRed thead {
+	background-color: #f3646c;
+}
+.purpleRed th {
+	letter-spacing: 0.3px;
+	text-shadow: 0 1px 1px #2b2a466b;
+}
+.purpleRed table > thead > tr > th {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.purpleRed td {
+	background-color: #3d3b63;
+	color: white;
+}
+.purpleRed td strong {
+	color: white;
+}
+.purpleRed td,
+.purpleRed th {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+	padding: 11px;
+}
+.purpleRed thead th:hover,
+.purpleRed thead tr:hover,
+.purpleRed th:hover {
+    background-color: #f3646c;
+}
+.purpleRed tbody tr:hover td,
+.purpleRed tbody tr:hover td a {
+	background-color: #a32959;
+	color: white;
+}
+/* --------------------------------------------   */
+
+
+
+
+
+/* --------------------------------------------   */
+/* Flat blue boring corporate table               */
+/* --------------------------------------------   */
+.flatBlue table {
+    border-collapse: collapse;
+    font-size: 0.81em;
+    font-family: sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);    
+}
+.flatBlue thead {
+	background-color: #0278ae;
+	border: 2px solid #0278ae;
+	color: #f6f5f5;
+}
+.flatBlue thead tr th {
+	/*border-right: 1px solid #0278ae;*/
+	border-right: 1px solid #0a7fc2;
+	padding: 9px 20px 9px 10px;
+	font-weight: 400;
+	font-size: 1.1em;	
+	text-shadow: 0 1px 0 rgba(25.5, 25.5, 25.5, 0.4);
+}
+.flatBlue table > thead > tr > th {
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.flatBlue td {
+    padding: 2px 15px 1px 10px; 
+    border-color: #b3b3b3;    
+}
+.flatBlue tbody td:first-of-type {
+    border-left: 2px solid #b3b3b3bb;
+}
+.flatBlue tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+.flatBlue tbody tr:last-of-type {
+    border-bottom: 3px solid #51adcf;
+}
+.flatBlue tbody tr:first-of-type {
+    border-top: 3px solid #51adcf;
+}
+.flatBlue tbody tr:hover td {
+	background-color: #f8bd7f;
+}
+/* --------------------------------------------   */
+
+
+
+
+
+/* --------------------------------------------   */
+/* Latex table-layout:                            */
+/* --------------------------------------------   */
+.academia table {
+	border-collapse: collapse;
+	border-spacing: 0;
+	width: auto;
+	/*max-width: 100%;*/
+	border-top: 2.27px solid black;
+	border-bottom: 2.27px solid black;
+	overflow-x: auto;	
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.academia th,
+.academia td {
+	border: 0 none;
+	padding: 0.51rem;
+	line-height: 1.1;
+}
+.academia table > tbody > tr:first-child > td,
+.academia table > tbody > tr:first-child > th {
+	border-top: 1.36px solid black;
+}
+.academia table > tbody > tr:last-child > td,
+.academia table > tbody > tr:last-child > th {
+	border-bottom: 1.36px solid black;
+}
+.academia thead th {
+    background-color: white !important;
+    font-weight: 700;    
+    padding: 8px 9px 5px 9px;
+}
+.academia tr:nth-child(even) {
+      background-color: #ebecf1 ;
+}
+.academia tbody tr:hover td {
+	background-color: #f5f1da;
+}
+/* --------------------------------------------   */
+
+
+
+
+
+/* --------------------------------------------   */
+/* White red table.                               */
+/* --------------------------------------------   */
+.whiteRed table {
+	box-shadow:0 0 20px 0 rgba(0,0,0,.15);
+}
+.whiteRed th,
+.whiteRed td {
+	border: 0 none;
+}
+.whiteRed th {	
+	font-family:Lato-Bold;
+	font-size:15px;
+	color:#fa4251;
+	background-color: white !important;
+	border-bottom:1px solid #cccccc;
+	padding: 14px 15px;
+}
+.whiteRed td {	
+	font-family:Lato-Regular;
+	font-size:15px;
+	color:gray;
+	line-height:1.5;
+	padding: 5px 15px;
+}
+.whiteRed table > tbody > tr {
+	border-bottom: 1px solid #cccccc;
+}
+.whiteRed table > tbody > tr:last-child > td {
+	border-bottom: 2px solid #b3b3b3;
+}
+.whiteRed tbody tr:hover td {
+	background-color: #ffcccc;
+	color: #4d4d4d;
+}
+/* --------------------------------------------   */
+.whiteRed-rounded table {
+    border-collapse: separate;
+    border: solid #b3b3b3 1px;
+    border-radius: 6px;
+    border-spacing: 0px;
+}
+.whiteRed-rounded table > tbody > tr > td {
+	border-bottom: 1px solid #ccccccbb;
+}
+.whiteRed-rounded table > tbody > tr:last-child > td {
+	border-bottom: thin #ccccccbb;
+}
+.whiteRed-rounded table th:first-of-type{
+	border-top-left-radius: 6px;
+}
+.whiteRed-rounded table th:last-of-type{
+	border-top-right-radius: 6px;
+}
+.whiteRed-rounded table tr:last-child td:first-child {
+    border-bottom-left-radius: 5px;
+}
+.whiteRed-rounded table tr:last-child td:last-child {
+    border-bottom-right-radius: 5px;
+}
+/* --------------------------------------------   */
+
+
+
+
+
+
+/* --------------------------------------------   */
+/* Yellow cab table                               */
+/* --------------------------------------------   */
+.yellowCab table {
+	border-collapse: collapse;
+}
+.yellowCab table th {
+	font-family: 'Montserrat', sans-serif;
+	font-size: 15px;
+	font-weight: 700;
+}
+.yellowCab table thead th {
+	padding: 15px 20px;
+	background: #ffba00;
+}
+.yellowCab td,
+.yellowCab th {
+	border: 1px solid #ffffff;
+	padding: 10px 20px;
+}
+.yellowCab table td {  
+	background: #f1f1f1;
+	font-family: 'Lato', sans-serif;
+	font-size: 13px;
+	color: #666666;
+	word-wrap: break-word;
+}
+.yellowCab thead th:hover {
+    background-color: #ffba00 !important;
+}
+.yellowCab tbody tr:hover td,
+.yellowCab tbody tr:hover td strong,
+.yellowCab tbody tr:hover td a {
+	background-color: #c24f0a !important;
+	color: white;
+}
+/* --------------------------------------------   */
+
+
+
+
+
+
+

@@ -6,15 +6,15 @@
         "type": "split",
         "children": [
           {
-            "id": "528a5dbf77ea4243",
+            "id": "60aafc9d8d91f321",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "88-Template/home.md",
                 "mode": "preview",
-                "backlinks": true,
-                "source": false
+                "backlinks": false,
+                "source": true
               }
             }
           }
@@ -89,7 +89,7 @@
           {
             "id": "d4c25b22f0c7d5f0",
             "type": "tabs",
-            "dimension": 63.88542963885429,
+            "dimension": 30.648330058939095,
             "children": [
               {
                 "id": "ca4e910af4602420",
@@ -97,19 +97,6 @@
                 "state": {
                   "type": "calendar",
                   "state": {}
-                }
-              },
-              {
-                "id": "8851ccb0aa4e524a",
-                "type": "leaf",
-                "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "88-Template/常用工具.md",
-                    "mode": "preview",
-                    "backlinks": true,
-                    "source": false
-                  }
                 }
               },
               {
@@ -121,14 +108,27 @@
                     "file": "88-Template/home.md"
                   }
                 }
+              },
+              {
+                "id": "83061aceea29f566",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "88-Template/彩色时钟.md",
+                    "mode": "preview",
+                    "backlinks": false,
+                    "source": true
+                  }
+                }
               }
             ],
-            "currentTab": 1
+            "currentTab": 2
           },
           {
             "id": "0b3485207df574dd",
             "type": "tabs",
-            "dimension": 36.1145703611457,
+            "dimension": 69.3516699410609,
             "children": [
               {
                 "id": "041c78328387b373",
@@ -177,16 +177,28 @@
                     "useHierarchy": true
                   }
                 }
+              },
+              {
+                "id": "8851ccb0aa4e524a",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "88-Template/常用工具.md",
+                    "mode": "preview",
+                    "backlinks": true,
+                    "source": false
+                  }
+                }
               }
             ],
-            "currentTab": 3
+            "currentTab": 4
           }
         ],
         "direction": "horizontal",
-        "width": 273,
-        "collapsed": true
+        "width": 273
       },
-      "active": "528a5dbf77ea4243"
+      "active": "60aafc9d8d91f321"
     },
     "Diary": {
       "main": {
@@ -199,9 +211,9 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "20-Diary/2021-12-29.md",
+                "file": "20-Diary/2022-01-21.md",
                 "mode": "source",
-                "backlinks": true,
+                "backlinks": false,
                 "source": true
               }
             }
@@ -262,7 +274,7 @@
                 "state": {
                   "type": "localgraph",
                   "state": {
-                    "file": "20-Diary/2021-12-29.md",
+                    "file": "20-Diary/2022-01-21.md",
                     "options": {
                       "collapse-filter": true,
                       "search": "",
@@ -313,7 +325,7 @@
           {
             "id": "d4c25b22f0c7d5f0",
             "type": "tabs",
-            "dimension": 52.119700748129674,
+            "dimension": 33.77135348226019,
             "children": [
               {
                 "id": "ca4e910af4602420",
@@ -342,17 +354,25 @@
                 "state": {
                   "type": "outline",
                   "state": {
-                    "file": "20-Diary/2021-12-29.md"
+                    "file": "20-Diary/2022-01-21.md"
                   }
+                }
+              },
+              {
+                "id": "c8a604062090b912",
+                "type": "leaf",
+                "state": {
+                  "type": "memos_view",
+                  "state": {}
                 }
               }
             ],
-            "currentTab": 2
+            "currentTab": 3
           },
           {
             "id": "0b3485207df574dd",
             "type": "tabs",
-            "dimension": 47.880299251870326,
+            "dimension": 66.22864651773982,
             "children": [
               {
                 "id": "041c78328387b373",
@@ -360,7 +380,7 @@
                 "state": {
                   "type": "backlink",
                   "state": {
-                    "file": "20-Diary/2021-12-29.md",
+                    "file": "20-Diary/2022-01-21.md",
                     "collapseAll": false,
                     "extraContext": false,
                     "sortOrder": "alphabetical",
@@ -377,7 +397,7 @@
                 "state": {
                   "type": "outgoing-link",
                   "state": {
-                    "file": "20-Diary/2021-12-29.md",
+                    "file": "20-Diary/2022-01-21.md",
                     "linksCollapsed": false,
                     "unlinkedCollapsed": true
                   }
@@ -407,7 +427,7 @@
           }
         ],
         "direction": "horizontal",
-        "width": 237
+        "width": 360
       },
       "active": "528a5dbf77ea4243"
     },
@@ -591,11 +611,10 @@
           }
         ],
         "direction": "horizontal",
-        "width": 273,
-        "collapsed": true
+        "width": 273
       },
       "active": "528a5dbf77ea4243"
     }
   },
-  "active": "Home"
+  "active": "Diary"
 }

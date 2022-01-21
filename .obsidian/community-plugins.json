@@ -16,7 +16,6 @@
   "plugin-changelogs",
   "obsidian-frontmatter-tag-suggest",
   "remember-cursor-position",
-  "tag-wrangler",
   "recent-files-obsidian",
   "table-editor-obsidian",
   "Enhanced editing",
@@ -27,5 +26,6 @@
   "obsidian-tasks-plugin",
   "obsidian-icon-folder",
   "obsidian-shellcommands",
-  "obsidian-float-toc-plugin"
+  "obsidian-float-toc-plugin",
+  "obsidian-theme-design-utilities"
 ]
