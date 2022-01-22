@@ -18,6 +18,8 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
  -  [Examples库](https://github.com/cumany/Blue-topaz-examples) 
  -  [Blue topaz 主题用法示例 - 飞书文档 (feishu.cn)](https://kknwfe6755.feishu.cn/docs/doccn67RYLVN4IQZiJTwviIdnog)
 
+另外推荐鸟姐的Homepage 也是很棒的风格
+[Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
 
 ## 效果图
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202112312335857.jpg)

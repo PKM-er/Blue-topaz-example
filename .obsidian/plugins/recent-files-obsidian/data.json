@@ -5,12 +5,28 @@
       "path": "88-Template/home.md"
     },
     {
-      "basename": "README",
-      "path": "README.md"
+      "basename": "button",
+      "path": "88-Template/button.md"
     },
     {
       "basename": "从这开始",
       "path": "从这开始.md"
+    },
+    {
+      "basename": "日记模板",
+      "path": "88-Template/日记模板.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "通用模板",
+      "path": "88-Template/通用模板.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
     },
     {
       "basename": "表格自定义样式",
@@ -37,10 +53,6 @@
       "path": "88-Template/Calendar2021-2022.md"
     },
     {
-      "basename": "button",
-      "path": "88-Template/button.md"
-    },
-    {
       "basename": "便签",
       "path": "88-Template/便签.md"
     },
@@ -49,20 +61,8 @@
       "path": "88-Template/彩色时钟.md"
     },
     {
-      "basename": "日记模板",
-      "path": "88-Template/日记模板.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
-    },
-    {
       "basename": "各级标题示例",
       "path": "00-Tips/各级标题示例.md"
-    },
-    {
-      "basename": "通用模板",
-      "path": "88-Template/通用模板.md"
     },
     {
       "basename": "07 - Center Table",

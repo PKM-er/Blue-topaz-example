@@ -2,7 +2,7 @@
 	"id": "obsidian-banners",
 	"name": "Banners",
 	"description": "Add banner images to your notes!",
-	"version": "1.2.0",
+	"version": "1.2.2",
 	"minAppVersion": "0.12.12",
 	"author": "Danny Hernandez",
 	"authorUrl": "https://github.com/noatpad",

@@ -237,21 +237,22 @@ dv.paragraph(posters);
 </p>
 <!--notice2-->
 <p class="stickies2" style="width: max(220px, 30%)" >
-🌸<br>
-每天一个好心情！
+👩<br>便签二的内容
 </p>
+
 </div>
 <div>
 <!--notice3-->
 <p class="stickies">
-💖<br>
-永远相信美好的事情就要发生
+这里可以放一些重要内容
 </p>
+
+
 <!--notice4-->
-<p class="stickies2" style="width: max(220px, 30%);" >
-💌<br>
-开启美好的一天！
+<p class="stickies2" style="width: max(220px, 30%)" >
+🎈<br> 永远相信美好的事情就要发生！
 </p>
+
 <!---->
 </div>
 ````

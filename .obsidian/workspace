@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "20-Diary/2022-01-21.md",
+            "file": "20-Diary/2022-01-22.md",
             "mode": "preview",
             "backlinks": false,
             "source": true
@@ -72,7 +72,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "20-Diary/2022-01-21.md",
+                "file": "20-Diary/2022-01-22.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -123,7 +123,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 49.90176817288802,
+        "dimension": 38.09055118110236,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -152,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "20-Diary/2022-01-21.md"
+                "file": "20-Diary/2022-01-22.md"
               }
             }
           },
@@ -165,12 +165,12 @@
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       },
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 50.09823182711198,
+        "dimension": 61.90944881889764,
         "children": [
           {
             "id": "041c78328387b373",
@@ -178,7 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "20-Diary/2022-01-21.md",
+                "file": "20-Diary/2022-01-22.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -195,7 +195,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "20-Diary/2022-01-21.md",
+                "file": "20-Diary/2022-01-22.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -229,15 +229,15 @@
   },
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
+    "20-Diary/2022-01-22.md",
     "20-Diary/2022-01-21.md",
-    "20-Diary/2021-12-30.md",
-    "20-Diary/任务看板.md",
-    "20-Diary/delete.md",
-    "20-Diary/query.md",
+    "20-Diary/日记统计.md",
     "88-Template/home.md",
-    "20-Diary/2022-01-09.md",
-    "README.md",
+    "88-Template/button.md",
     "从这开始.md",
-    "00-Tips/表格自定义样式.md"
+    "20-Diary/2022-01-09.md",
+    "20-Diary/2022-01-23.md",
+    "未命名.md",
+    "88-Template/日记模板.md"
   ]
 }

@@ -102,6 +102,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "8375d67f-9460-4b6f-90f8-5355af1c6668"
+    },
+    {
+      "id": "54554a65-e278-435a-88cc-b16661c6da14",
+      "name": "添加主页便签",
+      "type": "Macro",
+      "command": true,
+      "macroId": "d6904063-5a10-497f-aff6-43ec1cb8f1af"
     }
   ],
   "macros": [
@@ -119,13 +126,25 @@
           "name": "Wait",
           "type": "Wait",
           "id": "06023af6-2ab6-46c1-ba8e-0b73f987e176",
-          "time": 300
+          "time": 800
         },
         {
           "name": "日记: 打开/创建今天的日记",
           "type": "Obsidian",
           "id": "d3f464a7-7091-42f5-ae0e-db6fe458d878",
           "commandId": "daily-notes"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "6e4f9839-c78a-45b4-ab2d-7bc881b590e4",
+          "time": 300
+        },
+        {
+          "name": "Obsidian Memos: Focus On Memos Editor",
+          "type": "Obsidian",
+          "id": "37fc4999-bade-4afe-bd6c-86f296423fa2",
+          "commandId": "obsidian-memos:focus-on-memos-editor"
         }
       ],
       "runOnStartup": false
@@ -210,6 +229,20 @@
           "type": "UserScript",
           "id": "52762e2f-5f62-4a00-83ae-5b2059b6956e",
           "path": "88-Template/脚本/notice.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "添加首页便签",
+      "id": "d6904063-5a10-497f-aff6-43ec1cb8f1af",
+      "commands": [
+        {
+          "name": "changeSticky",
+          "type": "UserScript",
+          "id": "ba6e718c-5b47-4967-9f2b-0a78b1f96350",
+          "path": "88-Template/脚本/changeSticky.js",
           "settings": {}
         }
       ],
