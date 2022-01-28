@@ -22,8 +22,14 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
 
 ## 效果图
+主页视图
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202112312335857.jpg)
+笔记模板
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202201262104928.png)
+卡片视图
+![](https://gitee.com/cuman/imgbed/raw/master/images/202201282110608.png)
+读书笔记
+![](https://gitee.com/cuman/imgbed/raw/master/images/202201282111244.png)
 ## 内置的插件
 斜体插件为可选插件，基本是辅助类，不影响功能性使用。
 除去辅助类插件，剩余基本十几个插件就满足Ob个性化使用的同时还能体验不同的功能。

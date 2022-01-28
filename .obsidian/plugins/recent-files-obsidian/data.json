@@ -5,6 +5,22 @@
       "path": "README.md"
     },
     {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
+      "basename": "《如何阅读尼采》",
+      "path": "30-Reading/《如何阅读尼采》.md"
+    },
+    {
+      "basename": "《切尔诺贝利的午夜-很长的图书名称测试》",
+      "path": "30-Reading/《切尔诺贝利的午夜-很长的图书名称测试》.md"
+    },
+    {
+      "basename": "《故事便利店 》",
+      "path": "30-Reading/《故事便利店 》.md"
+    },
+    {
       "basename": "tp-日记模板",
       "path": "88-Template/tp-日记模板.md"
     },
@@ -15,10 +31,6 @@
     {
       "basename": "如何把主页移植到你现有的库中？",
       "path": "00-Tips/如何把主页移植到你现有的库中？.md"
-    },
-    {
-      "basename": "home",
-      "path": "88-Template/home.md"
     },
     {
       "basename": "预览隐藏frontmatter",
@@ -37,10 +49,6 @@
       "path": "30-Reading/hot pursuit.md"
     },
     {
-      "basename": "《切尔诺贝利的午夜-很长的图书名称测试》",
-      "path": "30-Reading/《切尔诺贝利的午夜-很长的图书名称测试》.md"
-    },
-    {
       "basename": "图书阅读清单",
       "path": "77-Example/图书阅读清单.md"
     },
@@ -55,14 +63,6 @@
     {
       "basename": "全宽显示",
       "path": "77-Example/全宽显示.md"
-    },
-    {
-      "basename": "《如何阅读尼采》",
-      "path": "30-Reading/《如何阅读尼采》.md"
-    },
-    {
-      "basename": "《故事便利店 》",
-      "path": "30-Reading/《故事便利店 》.md"
     },
     {
       "basename": "《微习惯》",
