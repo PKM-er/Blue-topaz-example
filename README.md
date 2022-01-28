@@ -23,7 +23,13 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 
 ## 效果图
 主页视图
+![](https://gitee.com/cuman/imgbed/raw/master/images/202201282120536.png)
+![](https://gitee.com/cuman/imgbed/raw/master/images/202201282120159.png)
+![](https://gitee.com/cuman/imgbed/raw/master/images/202201282121672.png)
+
+总览图
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202112312335857.jpg)
+
 笔记模板
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202201262104928.png)
 卡片视图

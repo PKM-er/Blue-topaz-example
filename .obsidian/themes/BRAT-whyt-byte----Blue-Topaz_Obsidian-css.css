@@ -8933,7 +8933,7 @@ body.list-vertical-line-three:not(.default-icons) .markdown-preview-view ol li.i
   opacity: 0.5;
 }
 
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
+body:not(.list-no-border):not(.rainbow-lines) .mod-cm6.is-live-preview .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   content: '';
   font-family: var(--rb-indent-font-family) !important;
   font-size: var(--rb-indent-font-size) !important;
@@ -8942,7 +8942,7 @@ body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .HyperMD-list-line.cm-lin
   width: 100%;
   top: -0.5em;
   bottom: -0.5em;
-  padding-bottom: 999em;
+   padding-bottom: 999em; 
   background-image: linear-gradient(
         to right,
         var(--background-modifier-border) 0 var(--rb-line-width),
@@ -9029,7 +9029,10 @@ body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line .cm-hmd-list-indent {
   font-size: var(--rb-indent-font-size) !important;
 }
 
-body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
+body.rainbow-lines .mod-cm6.is-live-preview  .HyperMD-list-line.HyperMD-list-line-1.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
+content: none;
+}
+body.rainbow-lines .mod-cm6.is-live-preview .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   content: '';
   font-family: var(--rb-indent-font-family) !important;
   font-size: var(--rb-indent-font-size) !important;
@@ -9038,7 +9041,7 @@ body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line:not([class*="quote"]):not
   width: 100%;
   top: -0.5em;
   bottom: -0.5em;
-  padding-bottom: 999em;
+  padding-bottom: 999em; 
   background-image: linear-gradient(
         to right,
         rgb(var(--accent-1-rgb)) 0 var(--rb-line-width),
@@ -14748,6 +14751,235 @@ body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ol::befor
   background-color:  transparent;
  
 }
+
+/* ================================== */
+/* ============ Dataview Cards ============ */
+/* ================================== */
+
+
+
+/*********covercards***********/
+
+
+:root{
+  --cards-width:138px;
+}
+
+@media (max-width:450px) {
+  :root{
+      --cards-width:112.64px;
+      }
+}
+
+@media (max-width:375px) {
+  :root{
+      --cards-width:102.4px;
+      }
+}
+
+@media (max-width:350px) {
+  :root{
+      --cards-width: 87.04px;
+      }
+}
+.cards table.dataview tbody {
+
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(var(--cards-width),1fr));
+  grid-column-gap:1.2rem;
+  grid-row-gap:0.75rem;    
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-left: -36px;
+}
+
+
+@media (max-width:1120px) {
+  .cards table.dataview tbody {
+      margin-left: -40px;
+      padding: 0 40px
+  }
+}
+
+@media (max-width:960px) {
+  .cards table.dataview tbody {
+      margin-left: -30px;
+      padding: 0 30px
+  }
+}
+
+@media (max-width:460px) {
+  .cards table.dataview tbody {
+      padding: 0px;
+      margin-left: -20px;
+  }
+}
+
+
+
+.cards table.dataview>tbody>tr {
+  display: block;
+  width:var(--cards-width);
+  height: auto;
+  margin-left: 36px;
+  margin-bottom: 44px;
+  background-color:transparent;
+}
+
+
+@media (max-width:1120px) {
+  .cards table.dataview>tbody>tr {
+      margin-left: 40px
+  }
+}
+
+@media (max-width:960px) {
+  .cards table.dataview>tbody>tr {
+      margin-left: 30px
+  }
+}
+
+@media (max-width:460px) {
+  .cards table.dataview>tbody>tr {
+      margin-left: 20px;
+      margin-bottom: 20px
+  }
+}
+
+.cards table.dataview tbody>tr>td:first-child, .markdown-source-view.mod-cm6.cards .dataview.table-view-table>tbody>tr>td:first-child { 
+  width: 100%;
+  height: calc(var(--cards-width) / 0.7 );
+  display: block;
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .2);
+  background:var(--background-secondary);
+  position: relative;
+padding: 0;
+}
+
+.cards table.dataview tbody>tr>td img {
+  vertical-align: top;
+  width: 100%;
+  height: 100%;
+  background-color:var(--background-secondary);
+  -o-object-fit: cover;
+  object-fit: cover;
+}
+.cards table.dataview tbody>tr>td:first-child:after{
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: linear-gradient(90deg, hsla(0, 0%, 63.1%, .25), rgba(21, 21, 20, .1) 1%, hsla(0, 0%, 100%, .15) 4%, hsla(0, 0%, 58%, .1) 8%, hsla(0, 0%, 89%, 0) 57%, rgba(223, 218, 218, .03) 91%, rgba(223, 218, 218, .05) 98%, hsla(0, 0%, 100%, .1));
+  box-shadow: inset 0 0 0 0 rgba(0, 0, 0, .1);
+}
+.cards table.dataview tbody>tr>td:not(:first-child), .markdown-source-view.mod-cm6.cards .dataview.table-view-table>tbody>tr>td:not(:first-child) {
+
+  padding: 0;
+  margin-top: 4px;
+  font-size: 15px;
+  color: var(--text-muted);
+  line-height: 18px;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -moz-box;
+  -webkit-line-clamp: 2;
+  -moz-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-text-size-adjust: none;
+  box-orient: vertical;
+  height: auto;
+  max-height: 36px;
+  font-size: 14px;
+  line-height: 1.1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cards table.dataview tbody>tr>td:nth-child(2) {
+  margin-top: 10px;
+   
+}
+.cards table.dataview tbody>tr>td:nth-child(3) {
+  -webkit-text-stroke: 0.25px ;
+   
+}
+/*------------*/
+
+
+.cards table.dataview thead{
+  user-select:none;
+  width:160px;
+  display:block;
+  float:right;
+  position:relative;
+  text-align:right;
+  padding-bottom:4px
+}
+.cards table.dataview thead:before{
+  content:'';
+  background-repeat:no-repeat;
+  cursor:var(--cursor);
+  text-align:right;
+  padding:4px 10px;
+  margin-bottom:2px;
+  border-radius:5px;
+  font-weight:500;
+  font-size:var(--font-adaptive-small)
+}
+.cards table.dataview thead:before{
+  opacity:.25;
+  background-position:center center;
+  background-size:18px;
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="white" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>');
+}
+.theme-light .cards table.dataview thead:before{
+  background-image:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="black" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>');
+}
+.cards table.dataview thead:hover:before{
+  opacity:.5
+}
+.cards table.dataview thead>tr{
+  position:absolute;
+  display:none;
+  z-index:9;
+  border:1px solid var(--background-modifier-border);
+  background-color:var(--background-secondary);
+  box-shadow:0 2px 8px var(--background-modifier-box-shadow);
+  padding:6px;
+  border-radius:6px;
+  flex-direction:column;
+  margin:0;
+  width:100%
+}
+.cards table.dataview thead:hover>tr{
+  display:flex
+}
+.cards table.dataview thead>tr>th{
+  display:block;
+  background-color:var(--background-primary);
+  padding:3px 30px 3px 6px!important;
+  border-radius:5px;
+  width:100%;
+  font-weight:400;
+  color:var(--text-muted);
+  border:none;
+  font-size:var(--font-adaptive-small)
+}
+.cards table.dataview thead>tr>th[sortable-style=sortable-asc],.cards table.dataview thead>tr>th[sortable-style=sortable-desc]{
+  color:var(--text-normal)
+}
+.cards table.dataview thead>tr>th:hover{
+  color:var(--text-normal);
+  background-color:var(--background-secondary)
+}
+
+
+
+
+
 /* ================================== */
 /* ======= CodeMirror Options ======= */
 /* ================================== */
