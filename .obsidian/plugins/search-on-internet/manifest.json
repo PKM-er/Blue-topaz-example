@@ -1,0 +1,10 @@
+{
+	"id": "search-on-internet",
+	"name": "Search on Internet",
+	"version": "0.5.0",
+	"minAppVersion": "0.12.6",
+	"description": "Add context menu items to search the internet within Obsidian.",
+	"author": "Emile",
+	"authorUrl": "https://twitter.com/emilevankrieken",
+	"isDesktopOnly": true
+}

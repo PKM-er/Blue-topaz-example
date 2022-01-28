@@ -1,0 +1,17 @@
+{
+  "searches": [
+    {
+      "tags": [],
+      "query": "https://search.douban.com/book/subject_search?search_text={{query}}",
+      "name": "豆瓣读书",
+      "encode": true
+    },
+    {
+      "tags": [],
+      "query": "https://cn.bing.com/search?q={{query}}",
+      "name": "bing",
+      "encode": true
+    }
+  ],
+  "useIframe": true
+}

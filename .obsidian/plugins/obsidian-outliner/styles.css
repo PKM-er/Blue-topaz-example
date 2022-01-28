@@ -25,7 +25,7 @@
   position: relative;
 }
 
-.outliner-plugin-vertical-lines .cm-line .cm-hmd-list-indent::before {
+.outliner-plugin-vertical-lines .cm-line:not(.HyperMD-codeblock) .cm-hmd-list-indent::before {
   content: "";
   display: block;
   position: absolute;

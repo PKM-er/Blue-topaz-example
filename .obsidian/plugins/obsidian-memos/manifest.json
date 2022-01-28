@@ -1,1 +1,10 @@
-{"id":"obsidian-memos","name":"Obsidian Memos","description":"A plugin for capturing ideas in Obsidian","version":"1.6.1","author":"Bonianll","authorUrl":"https://github.com/Quorafind/","isDesktopOnly":false,"minAppVersion":"0.13.14"}
+{
+  "id": "obsidian-memos",
+  "name": "Obsidian Memos",
+  "description": "A plugin for capturing ideas in Obsidian",
+  "version": "1.7.14",
+  "author": "Boninall",
+  "authorUrl": "https://github.com/Quorafind/",
+  "isDesktopOnly": false,
+  "minAppVersion": "0.13.14"
+}

@@ -11,7 +11,7 @@ class circle_btn blank
 ```button
 name <svg t="1636170726137" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="31935" width="30" height="30"><path d="M918.016 384l0 128-128 0 0 297.984-128 0 0-297.984-128 0 0-128 384 0zM105.984 169.984l555.989333 0 0 128-214.016 0 0 512-128 0 0-512-214.016 0 0-128z" p-id="31936" fill="#1296db"></path></svg>文本处理
 type link
-action https://mytexttools.com/
+action https://textce.com/
 class circle_btn blank
 ```
 ^button-textools

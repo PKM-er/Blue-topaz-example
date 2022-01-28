@@ -2,15 +2,20 @@
   "communityPluginSortOrder": "release",
   "readableLineLength": true,
   "foldHeading": true,
-  "foldIndent": false,
+  "foldIndent": true,
   "alwaysUpdateLinks": true,
   "legacyEditor": false,
   "livePreview": false,
-  "showFrontmatter": true,
+  "showFrontmatter": false,
   "spellcheck": false,
   "spellcheckLanguages": [],
   "attachmentFolderPath": "99-Attachment",
   "showLineNumber": false,
   "defaultViewMode": "source",
-  "showUnsupportedFiles": false
+  "showUnsupportedFiles": true,
+  "strictLineBreaks": false,
+  "tabSize": 4,
+  "fileSortOrder": "alphabetical",
+  "useTab": true,
+  "smartIndentList": true
 }

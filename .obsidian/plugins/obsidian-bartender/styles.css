@@ -1,0 +1,54 @@
+.side-dock-actions .sortable-ghost,
+.status-bar .sortable-ghost {
+  visibility: hidden;
+}
+
+.side-dock-ribbon div.separator {
+  cursor: grab;
+  padding: 0px 4px;
+  display: flex;
+  place-items: center;
+  justify-content: center;
+  height: 1em;
+}
+
+.side-dock-ribbon div.separator .line {
+  margin-top: -4px;
+  display: flex;
+}
+
+.side-dock-ribbon div.separator:hover {
+  background: none;
+}
+
+.side-dock-ribbon div.separator.is-collapsed {
+  transform: rotateX(180deg);
+}
+
+.status-bar div.separator.is-collapsed {
+  transform: rotateY(180deg);
+}
+
+.status-bar .is-hidden,
+.side-dock-ribbon .is-hidden {
+  /* if you're mad about this !important 
+    set the --is-hidden-display variable to override it */
+  --is-hidden-display: none;
+  display: var(--is-hidden-display) !important;
+}
+
+.status-bar div.separator {
+  --cursor: grab; /* to deal with minimal theme */
+  cursor: grab;
+  padding: 0px 4px;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.side-dock-ribbon div.side-dock-ribbon-action.sortable-chosen,
+.side-dock-ribbon div.separator.sortable-chosen,
+.status-bar div.separator.sortable-chosen {
+  --cursor: grabbing;
+  cursor: grabbing;
+}

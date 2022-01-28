@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-react-components",
+	"name": "React Components",
+	"version": "0.1.6",
+	"minAppVersion": "0.13.19",
+	"description": "This is a plugin for Obsidian. It allows you to write and use React components with Jsx inside your Obsidian notes.",
+	"author": "Elias Sundqvist",
+	"authorUrl": "https://github.com/elias-sundqvist",
+	"isDesktopOnly": false
+}

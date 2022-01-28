@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 17,
+  "baseFontSize": 20,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -9,7 +9,8 @@
     "B - Heatmap",
     "【Memos】Heatmap",
     "【自定义】表格样式ableStyles",
-    "【自定义】彩色时钟样式"
+    "【自定义】彩色时钟样式",
+    "【自定义】表格样式TableStyles"
   ],
   "translucency": false
 }

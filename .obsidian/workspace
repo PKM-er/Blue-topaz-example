@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "20-Diary/2022-01-22.md",
+            "file": "README.md",
             "mode": "preview",
             "backlinks": false,
             "source": true
@@ -72,7 +72,7 @@
             "state": {
               "type": "localgraph",
               "state": {
-                "file": "20-Diary/2022-01-22.md",
+                "file": "README.md",
                 "options": {
                   "collapse-filter": true,
                   "search": "",
@@ -123,7 +123,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 38.09055118110236,
+        "dimension": 33.77135348226019,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -152,7 +152,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "20-Diary/2022-01-22.md"
+                "file": "README.md"
               }
             }
           },
@@ -170,7 +170,7 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 61.90944881889764,
+        "dimension": 66.22864651773982,
         "children": [
           {
             "id": "041c78328387b373",
@@ -178,7 +178,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "20-Diary/2022-01-22.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -195,7 +195,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "20-Diary/2022-01-22.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -225,19 +225,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 360
+    "width": 360,
+    "collapsed": true
   },
   "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
-    "20-Diary/2022-01-22.md",
+    "README.md",
+    "88-Template/tp-日记模板.md",
+    "20-Diary/2022-01-28.md",
     "20-Diary/2022-01-21.md",
-    "20-Diary/日记统计.md",
-    "88-Template/home.md",
-    "88-Template/button.md",
     "从这开始.md",
-    "20-Diary/2022-01-09.md",
-    "20-Diary/2022-01-23.md",
-    "未命名.md",
-    "88-Template/日记模板.md"
+    "00-Tips/如何把主页移植到你现有的库中？.md",
+    "88-Template/home.md",
+    "77-Example/预览隐藏frontmatter.md",
+    "77-Example/各级标题示例.md",
+    "77-Example/电影观看清单.md"
   ]
 }

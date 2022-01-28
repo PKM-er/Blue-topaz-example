@@ -1,8 +1,8 @@
 {
   "id": "tag-wrangler",
   "name": "Tag Wrangler",
-  "version": "0.4.7",
-  "minAppVersion": "0.12.5",
+  "version": "0.5.0",
+  "minAppVersion": "0.13.19",
   "description": "Rename, merge, toggle, and search tags from the tag pane",
   "isDesktopOnly": true
 }

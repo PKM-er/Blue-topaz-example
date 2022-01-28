@@ -2,7 +2,7 @@
   "blue-topaz-theme@@style-options-for-admonition-plugin": true,
   "blue-topaz-theme@@color-scheme-options": "color-scheme-options-lillimon-topaz",
   "blue-topaz-theme@@translucent-setting-panel": false,
-  "blue-topaz-theme@@list-style-change-options": "list-vertical-line-one",
+  "blue-topaz-theme@@list-style-change-options": "rainbow-lines",
   "blue-topaz-theme@@image-zoom": true,
   "blue-topaz-theme@@muted-activeline-bg": false,
   "blue-topaz-theme@@background-settings-workplace-theme-light": "background-settings-workplace-theme-light-blue-mountain",
@@ -10,7 +10,6 @@
   "blue-topaz-theme@@circular-checkbox": false,
   "blue-topaz-theme@@fancy-hr": "fancy-hr-icon",
   "blue-topaz-theme@@fancy-hr-icon": "'⚡'",
-  "blue-topaz-theme@@rainbow-lines": true,
   "blue-topaz-theme@@remove-file-icons": false,
   "blue-topaz-theme@@unmuted-collapsed-folder": false,
   "blue-topaz-theme@@light-background-color-files": false,
@@ -25,7 +24,7 @@
   "CodeMirror Options@@cm-theme-selection": "cm-theme-solarized-light",
   "blue-topaz-theme@@background-image-settings-markdown-page-options": "background-image-settings-markdown-page-default",
   "blue-topaz-theme@@folder-style-change-options-colorful-subfolder": "folder-colorful-one",
-  "blue-topaz-theme@@layout-style-options": "layout-style-options-default",
+  "blue-topaz-theme@@layout-style-options": "layout-style-options-rectangle",
   "blue-topaz-theme@@background-settings-workplace-background-image": true,
   "blue-topaz-theme@@style-options-for-calendar-plugin": "style-options-for-calendar-plugin-style-one",
   "blue-topaz-theme@@rainbow-ordered-list": true,
@@ -64,5 +63,9 @@
   "blue-topaz-theme@@style-options-for-buttons-plugin": true,
   "memo-heatmap@@heatmap-dark": "ice-dark",
   "memo-heatmap@@heatmap-light": "grass-light",
-  "blue-topaz-theme@@adjustable-embed-content-height": true
+  "blue-topaz-theme@@adjustable-embed-content-height": true,
+  "blue-topaz-theme@@no-wrapped-table": false,
+  "blue-topaz-theme@@no-wrapped-dvtable": true,
+  "blue-topaz-theme@@embed-content-height": 400,
+  "blue-topaz-theme@@overflow-x-dvtable": true
 }

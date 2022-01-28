@@ -11,7 +11,7 @@
       "createFileIfItDoesntExist": {
         "enabled": true,
         "createWithTemplate": true,
-        "template": "88-Template/通用模板.md"
+        "template": "88-Template/tp-日记模板.md"
       },
       "format": {
         "enabled": true,
@@ -109,6 +109,20 @@
       "type": "Macro",
       "command": true,
       "macroId": "d6904063-5a10-497f-aff6-43ec1cb8f1af"
+    },
+    {
+      "id": "eedf2ca2-9f3a-4735-9eb6-e8127ca889a6",
+      "name": "添加电影-IMDB",
+      "type": "Macro",
+      "command": true,
+      "macroId": "0095cb47-bd58-4e1e-b546-4b47dc664f94"
+    },
+    {
+      "id": "19402f67-f691-4b0f-9975-f8203e74be96",
+      "name": "添加豆瓣读书图书-douban",
+      "type": "Macro",
+      "command": true,
+      "macroId": "aefa1c1c-3436-4462-bfea-3411d8308d2c"
     }
   ],
   "macros": [
@@ -173,6 +187,19 @@
           "time": 100
         },
         {
+          "name": "fetchhomepage",
+          "type": "UserScript",
+          "id": "e0945b1a-0def-4561-ae45-fdefc1ade009",
+          "path": "88-Template/script/fetchhomepage.js",
+          "settings": {}
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "60813cc2-37ac-41a0-822e-c88caace110e",
+          "time": 100
+        },
+        {
           "name": "Workspaces Plus: Load: Home",
           "type": "Obsidian",
           "id": "cc6b384b-ec44-4292-835a-e19dafa409d5",
@@ -183,13 +210,6 @@
           "type": "Wait",
           "id": "2d6f7c7b-f5e3-4ad4-8857-18fb797af476",
           "time": 1000
-        },
-        {
-          "name": "colorclock",
-          "type": "UserScript",
-          "id": "1b959483-d072-46b1-975a-c14a681ee3c9",
-          "path": "88-Template/脚本/colorclock.js",
-          "settings": {}
         }
       ],
       "runOnStartup": true
@@ -201,14 +221,27 @@
         {
           "name": "refreshhomepage",
           "type": "UserScript",
-          "id": "6324cd4d-ecc7-4cf1-b677-b4f4eddaf247",
-          "path": "88-Template/脚本/refreshhomepage.js",
+          "id": "512c2c0b-7d72-401b-b620-431f7aae96e3",
+          "path": "88-Template/script/refreshhomepage.js",
           "settings": {}
         },
         {
           "name": "Wait",
           "type": "Wait",
           "id": "9d4918a2-a690-4a89-9d20-a3adfd348655",
+          "time": 500
+        },
+        {
+          "name": "fetchhomepage",
+          "type": "UserScript",
+          "id": "2ca88f5a-c2be-4d75-92f9-a8c94fa97238",
+          "path": "88-Template/script/fetchhomepage.js",
+          "settings": {}
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "3385f735-b0ee-4fba-a0d8-dc331a55063f",
           "time": 500
         },
         {
@@ -221,14 +254,14 @@
       "runOnStartup": false
     },
     {
-      "name": "生成便签",
+      "name": "生成notice",
       "id": "dfb35a63-6aa2-44db-8ca4-a7e7c56eb546",
       "commands": [
         {
           "name": "notice",
           "type": "UserScript",
-          "id": "52762e2f-5f62-4a00-83ae-5b2059b6956e",
-          "path": "88-Template/脚本/notice.js",
+          "id": "904ecc88-08ea-4905-8c8e-431c262d2e4c",
+          "path": "88-Template/script/notice.js",
           "settings": {}
         }
       ],
@@ -241,9 +274,105 @@
         {
           "name": "changeSticky",
           "type": "UserScript",
-          "id": "ba6e718c-5b47-4967-9f2b-0a78b1f96350",
-          "path": "88-Template/脚本/changeSticky.js",
+          "id": "8182fca2-8a9d-4cd2-8273-50148dc868da",
+          "path": "88-Template/script/changeSticky.js",
           "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "电影卡片",
+      "id": "0095cb47-bd58-4e1e-b546-4b47dc664f94",
+      "commands": [
+        {
+          "name": "movies",
+          "type": "UserScript",
+          "id": "c14a8077-f272-4949-ba06-902baa1be88d",
+          "path": "88-Template/script/movies.js",
+          "settings": {
+            "OMDb API Key": "6a1b43dc"
+          }
+        },
+        {
+          "name": "movie日记",
+          "type": "NestedChoice",
+          "id": "459410d9-7d8e-49b4-85eb-50c58414634f",
+          "choice": {
+            "id": "b0fa1144-ccbc-4f60-a529-5b51d4202308",
+            "name": "movie日记",
+            "type": "Template",
+            "command": false,
+            "templatePath": "88-Template/tp-movie.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{VALUE:fileName}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "30-Reading"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false
+            },
+            "appendLink": false,
+            "incrementFileName": true,
+            "openFileInNewTab": {
+              "enabled": false,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": false,
+            "openFileInMode": "default"
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "豆瓣读书",
+      "id": "aefa1c1c-3436-4462-bfea-3411d8308d2c",
+      "commands": [
+        {
+          "name": "bookfromdouban",
+          "type": "UserScript",
+          "id": "92608671-6537-4cbf-9c7e-6f2289e65d9d",
+          "path": "88-Template/script/bookfromdouban.js",
+          "settings": {}
+        },
+        {
+          "name": "豆瓣读书笔记",
+          "type": "NestedChoice",
+          "id": "39abc935-9da6-41f0-ad32-674f067b94bf",
+          "choice": {
+            "id": "d4ece824-3493-4a75-8303-d0312f2a1904",
+            "name": "豆瓣读书笔记",
+            "type": "Template",
+            "command": false,
+            "templatePath": "88-Template/tp-book.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "《{{VALUE:bookname}}》"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "30-Reading"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false
+            },
+            "appendLink": false,
+            "incrementFileName": true,
+            "openFileInNewTab": {
+              "enabled": false,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": false,
+            "openFileInMode": "default"
+          }
         }
       ],
       "runOnStartup": false

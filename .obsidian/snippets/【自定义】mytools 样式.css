@@ -12,6 +12,13 @@
   padding: 0px 0px 0px 0px;
   
 }
+
+.markdown-preview-view.mytools .markdown-preview-section
+{
+  padding: 0!important;
+}
+
+
 /*隐藏滚动条*/
 .markdown-preview-view.mytools::-webkit-scrollbar{
 display:none;
@@ -34,14 +41,18 @@ display:none;
   margin: 0px 5px;
 }
 
+.markdown-preview-view.mytools .admonition-title-markdown {
+  font-size: initial;
+}
+
 /*边栏工作区文档图标自定义*/
-.workspace-tab-header[aria-label^="常用工具"]
+.workspace-tab-header[aria-label="常用工具"]
 .workspace-tab-header-inner-icon
 > svg{
   display: none;
 }
 
-.workspace-tab-header.is-active[aria-label^="常用工具"]
+.workspace-tab-header.is-active[aria-label="常用工具"]
 .workspace-tab-header-inner-icon:before{
   content: " ";
   display: inline-block;
@@ -50,7 +61,7 @@ display:none;
   background-color: var(--text-folder-file-icon);
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg t="1641997260368" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4276" ><path d="M940.3 755.9L735.4 551.2C695 510.9 634.6 503 585.9 526.9L399.4 340.6V232l-224-167.8-112 111.9 168 223.8h108.7l186.5 186.3c-23.8 48.6-16.1 108.9 24.3 149.3l204.9 204.7c25.5 25.5 66.8 25.5 92.2 0l92.2-92.1c25.5-25.6 25.5-66.8 0.1-92.2zM643.9 457.5c49.5 0 96.1 19.2 131.1 54.2l33.9 33.9c27.6-12.1 53.9-28.8 76.6-51.6 64.9-64.9 87-156.1 66.3-239-3.8-15.7-23.6-21.2-35.2-9.6L786.5 375.6l-118.8-19.8-19.8-118.7L778.1 107c11.5-11.5 5.9-31.3-10-35.3-82.9-20.5-174.3 1.6-239 66.3-49.9 49.8-73.3 115.5-72.1 181.1l143.7 143.5c14.1-3.3 28.8-5.1 43.2-5.1zM462 600.9l-99.2-99.1L96.1 768.4c-43.7 43.7-43.7 114.5 0 158.2s114.6 43.7 158.4 0l216.3-216.1c-13.3-34.8-17.3-72.7-8.8-109.6zM175.4 889.3c-23.1 0-42-18.9-42-42 0-23.2 18.7-42 42-42s42 18.7 42 42c0 23.1-18.7 42-42 42z" p-id="4277"></path></svg>');   
 }
-.workspace-tab-header[aria-label^="常用工具"]
+.workspace-tab-header[aria-label="常用工具"]
 .workspace-tab-header-inner-icon::before{
   content: " ";
   display: inline-block;
@@ -60,13 +71,13 @@ display:none;
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg t="1641997260368" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="4276" ><path d="M940.3 755.9L735.4 551.2C695 510.9 634.6 503 585.9 526.9L399.4 340.6V232l-224-167.8-112 111.9 168 223.8h108.7l186.5 186.3c-23.8 48.6-16.1 108.9 24.3 149.3l204.9 204.7c25.5 25.5 66.8 25.5 92.2 0l92.2-92.1c25.5-25.6 25.5-66.8 0.1-92.2zM643.9 457.5c49.5 0 96.1 19.2 131.1 54.2l33.9 33.9c27.6-12.1 53.9-28.8 76.6-51.6 64.9-64.9 87-156.1 66.3-239-3.8-15.7-23.6-21.2-35.2-9.6L786.5 375.6l-118.8-19.8-19.8-118.7L778.1 107c11.5-11.5 5.9-31.3-10-35.3-82.9-20.5-174.3 1.6-239 66.3-49.9 49.8-73.3 115.5-72.1 181.1l143.7 143.5c14.1-3.3 28.8-5.1 43.2-5.1zM462 600.9l-99.2-99.1L96.1 768.4c-43.7 43.7-43.7 114.5 0 158.2s114.6 43.7 158.4 0l216.3-216.1c-13.3-34.8-17.3-72.7-8.8-109.6zM175.4 889.3c-23.1 0-42-18.9-42-42 0-23.2 18.7-42 42-42s42 18.7 42 42c0 23.1-18.7 42-42 42z" p-id="4277"></path></svg>');   
 }
 
-.workspace-tab-header[aria-label^="彩色时钟"]
+.workspace-tab-header[aria-label="彩色时钟"]
 .workspace-tab-header-inner-icon
 > svg{
   display: none;
 }
 
-.workspace-tab-header.is-active[aria-label^="彩色时钟"]
+.workspace-tab-header.is-active[aria-label="彩色时钟"]
 .workspace-tab-header-inner-icon:before{
   content: " ";
   display: inline-block;
@@ -75,7 +86,7 @@ display:none;
   background-color: var(--text-folder-file-icon);
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg t="1642770162211" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="16157" ><path d="M512 62C263.5 62 62 263.5 62 512s201.5 450 450 450 450-201.5 450-450S760.5 62 512 62z m307.6 492.3c-3.2 3.3-7.5 5.1-12 5.1h-301c-4.7 0-9.1-1.8-12.4-5.1-3.3-3.4-5.2-7.8-5.2-12.4V278.7c0-4.9 1.7-9 5.1-12.4 3.3-3.2 7.7-5.1 12.4-5.1 4.9 0 9.1 1.7 12.4 5.1 3.2 3.3 5.1 7.7 5.1 12.4v245.6h283.2c4.6 0 9 1.9 12.4 5.2 3.3 3.4 5.2 7.8 5.2 12.4-0.1 4.7-1.9 9.1-5.2 12.4z" p-id="16158"></path></svg>');   
 }
-.workspace-tab-header[aria-label^="彩色时钟"]
+.workspace-tab-header[aria-label="彩色时钟"]
 .workspace-tab-header-inner-icon::before{
   content: " ";
   display: inline-block;

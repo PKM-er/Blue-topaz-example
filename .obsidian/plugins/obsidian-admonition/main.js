@@ -14964,8 +14964,13 @@ var ObsidianAdmonition = class extends import_obsidian6.Plugin {
       const firstLine = text[section.lineStart];
       if (!/^> \[!.+\]/.test(firstLine))
         return;
-      const [, type, title, col] = firstLine.match(/^> \[!(\w+)(?:: (.+))?\](x|\+|\-)?/) ?? [];
-      if (!type || !this.admonitions[type])
+      let [, type, title, col] = firstLine.match(/^> \[!(\w+)(?::[ ]?(.+))?\](x|\+|\-)?/) ?? [];
+      if (!type || !this.admonitions[type] && !Object.keys(this.admonitions).map((k) => k.toLowerCase()).includes(type.toLowerCase()))
+        return;
+      if (!(type in this.admonitions)) {
+        type = Object.keys(this.admonitions).find((k) => k.toLowerCase() == type.toLowerCase());
+      }
+      if (!type)
         return;
       let collapse;
       switch (col) {

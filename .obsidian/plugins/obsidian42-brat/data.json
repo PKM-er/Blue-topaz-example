@@ -1,8 +1,14 @@
 {
   "pluginList": [
-    "Quorafind/Obsidian-Memos"
+    "nothingislost/obsidian-bartender",
+    "alexandru-dinu/obsidian-sortable/"
   ],
-  "themesList": [],
+  "themesList": [
+    {
+      "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
+      "lastUpdate": "2022-01-28T04:03:41Z"
+    }
+  ],
   "updateAtStartup": true,
   "updateThemesAtStartup": true,
   "ribbonIconEnabled": false,

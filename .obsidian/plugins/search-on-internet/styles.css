@@ -1,0 +1,23 @@
+.soi_div {
+    border-bottom:  1px solid var(--background-modifier-border);
+}
+
+.soi_div > .setting-item {
+    border-top: none !important;
+    align-self: center;
+    padding: 3px;
+}
+
+/*.soi_div > .setting-item > .setting-item-control {*/
+/*    justify-content: space-around;*/
+/*    padding: 0;*/
+/*    width: 100%;*/
+/*}*/
+
+.soi_div > .setting-item > .setting-item-control > .setting-editor-extra-setting-button {
+    align-self: center;
+}
+
+.soi-file-menu {
+    z-index: 50;
+}

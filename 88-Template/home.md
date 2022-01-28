@@ -5,153 +5,31 @@ obsidianUIMode: preview
 banner_icon: 💘
 ---
 
-
+%%问候和天气数据%%
 ```ad-flex
 
 <div style="float:left"><%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %>
 </div> 
 <div>
 <iframe style="float:right; margin-top:3px" width="300" scrolling="no" height="20" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?c=code&id=34&bdc=%23&icon=4&site=14"></iframe>
+<!------- 黑暗模式使用下面代码
+<iframe style="float:right; margin-top:3px" width="300" scrolling="no" height="20" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?color=%23%FFFFFE&c=code&id=34&bdc=%23&icon=4&site=14"></iframe>
+------->
+<!-----指定城市后面添加城市拼音比例如 重庆天气预报：https://i.tianqi.com/?c=code&id=34&bdc=%23&icon=4&site=14&py=chongqing------>
 </div>
 ```
  
 
 
-
-
- 
-```dataviewjs
-
-//查看文件是否存在
- app.vault.adapter.exists(".diary-stats").then(async (exists) => {
-            if (!exists) {
-                app.vault.adapter.write(".diary-stats", "{}");
-            }
-
-});
-let history = Object.assign(JSON.parse(await app.vault.adapter.read(".diary-stats")));
-//查看当天信息
-let today = moment().format("YYYY-MM-DD");
-await updateToday();
-
-
-//获取每日一言信息
-async function getinfo() 
-{
-      console.log("beigin fetch hitokoto...");
-let url='https://v1.hitokoto.cn/?encode=json&c=d&c=i';
-   let finalURL = new URL(url);
-let response = await request({method: 'GET', url: finalURL.toString()});![[]]
-let data = JSON.parse(response);
-	
-	let who =data['from_who'];
-		 if(!who) who =' ';
-  const new_content = `${data['hitokoto']} <br> <em style="display: inline-block;text-indent: 4em;"> &mdash; 来自 ${who}  《${data['from']}》</em>`; 
-  return new_content;
-}
-
-//在Ob中获取网易音乐热歌榜
-//首发于Blue topaz Examples 
-//转发请注明出处谢谢！
-function getUrlQueryParams(url){
-	const params = {};
-	const keys = url.match(/([^?&]+)(?==)/g);
-	const values = url.match(/(?<==)([^&]*)/g);
-	for(const index in keys){
-		params[keys[index]] =  values[index];
-	}
-	return params;
-}
-
-
-
-async function getmusicinfo() 
-{
-     console.log("beigin fetch getmusicinfo...");
-let music_id='1819970423';
-let iframe='';
-let url='https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&format=json';
-   let finalURL = new URL(url);
-   let result='';
-	result=await  fetch(finalURL, {
-		method: 'GET'
-	}).then(async (res) => await res.json());
-	let data =result['data'];
-	let code =result['code'];
-	if(code==1)
-	{
-	   let music_url=getUrlQueryParams(data.url);
-		music_id= music_url.id;
-		console.log(music_id);
-		iframe='<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id='+music_id+'&auto=0&height=66"></iframe>' ;
-		return iframe;
-	}
-}
-
-async function get_BlueTopaz() {
-    console.log("beigin fetch get_BlueTopaz...");
-    let themeday= moment().diff(moment("2020-10-01"), 'days');
-    let result =  "\n#### 🥑Blue Topaz已更新 =="+themeday+"==天";
-    result = result + "\n##### [如果喜欢请Star⭐](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css)";
-    return result;
-}
-
-//写入信息
-
-async function updateToday() {
-
-        if (!history.hasOwnProperty(moment().format("YYYY-MM-DD"))) {
-		const newDay = {
-            quotes: await getinfo(),
-            posters: await get_ciba(),
-            music: await getmusicinfo(),
-            themes: await get_BlueTopaz(),
-            state: 0,       
-        };
-            history[moment().format("YYYY-MM-DD")] = newDay;
-			 await update();
-        }
-        today = moment().format("YYYY-MM-DD");
-       
-    }
-async function update() 
-{
- app.vault.adapter.write(".diary-stats", JSON.stringify(history));
-}
-
-//在Ob中获取每日词霸
-//首发于Blue topaz Examples 
-//转发请注明出处谢谢
-
-async function get_ciba() {
-    console.log("beigin fetch get_ciba...");
-let pic='';
-let tts='';
-let posters='';
-let ciba_url = new URL("http://open.iciba.com/dsapi/");		
-let response = await request({method: 'GET', url: ciba_url.toString()});
-let data = JSON.parse(response);
-if (data.sid.length == 0) {
-    await new Notice("No data found !");
-} else {
-	pic= data.fenxiang_img;
-	tts=data.tts;
-	posters='<div class="cus_pic"><audio id="music"  controls  width="50" src=" '+ tts +'"> </audio><img src="'+ pic +'" referrerpolicy="no-referrer" width="null" height="null" alt="null" style="box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);border-radius: 10px;"></div>'
-	return posters;
-}
-}
-
-
-```
-
-
 ````ad-flex
+%%调用88-template\button.md%%
  `button-refreshhomepage1`
  `button-loadhome`
 ```dataviewjs
+//统计笔记 nofold 里面放入需要排除的文件夹
+let nofold = '!"88-Template" and !"00-Tips" and !"10-Help"'
 let ftMd = dv.pages("").file.sort(t => t.cday)[0]
 let total = parseInt([new Date() - ftMd.ctime] / (60*60*24*1000))
-let nofold = '!"88-Template" and !"00-Tips" and !"10-Help"'
 let allFile = dv.pages(nofold).file
 let totalMd = "📄 =="+
 	allFile.length+"== 篇不知所云的文档"
@@ -165,6 +43,7 @@ dv.header(5, "🕗 " + totalTask)
 <div>
 
 ```dataviewjs
+//简单的倒计时统计算法
   let themeday= moment().diff(moment("2020-10-01"), 'days');
 	dv.header(4, "🥑Blue Topaz已更新 =="+themeday+"==天");
    dv.header(5, "[如果喜欢请Star⭐](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css)");
@@ -172,6 +51,7 @@ dv.header(5, "🕗 " + totalTask)
 ```
 
 ```dataviewjs
+//个性化进度条算法
 let dates = moment().format('YYYY-MM-1');
 let days = moment().diff(dates, "days");
 let num = (days/30 * 10).toFixed(1);
@@ -214,9 +94,10 @@ switch( true ) {
 ```
 </div>
 
-
+%%调用词霸的每日海报%%
+%%数据位于.obsidian/.diary-stats%%
 ```dataviewjs
-let history = Object.assign(JSON.parse(await app.vault.adapter.read(".diary-stats")));
+let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
 let today = moment().format("YYYY-MM-DD");
 if (history.hasOwnProperty(today))
 {
@@ -228,6 +109,8 @@ dv.paragraph(posters);
 ````
 
 ---
+%%便签板块%%
+%%可通过侧边栏主页便签按钮快捷更改便签内容%%
 ````ad-flex
 <div>
 <!--notice1-->
@@ -237,8 +120,9 @@ dv.paragraph(posters);
 </p>
 <!--notice2-->
 <p class="stickies2" style="width: max(220px, 30%)" >
-👩<br>便签二的内容
+🧨<br>便签二
 </p>
+
 
 </div>
 <div>
@@ -260,8 +144,10 @@ dv.paragraph(posters);
 
 ###  每日一句
 ````ad-flex
+%%调用每日一句%%
+%%数据位于.obsidian/.diary-stats%%
 ```dataviewjs
-let history = Object.assign(JSON.parse(await app.vault.adapter.read(".diary-stats")));
+let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
 let today = moment().format("YYYY-MM-DD");
 if (history.hasOwnProperty(today))
 {
@@ -270,9 +156,10 @@ dv.el("blockquote", quotes);
 }
 
 ```
-
+%%调用网易热门歌曲榜%%
+%%数据位于.obsidian/.diary-stats%%
 ```dataviewjs
-let history = Object.assign(JSON.parse(await app.vault.adapter.read(".diary-stats")));
+let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
 let today = moment().format("YYYY-MM-DD");
 if (history.hasOwnProperty(today))
 {

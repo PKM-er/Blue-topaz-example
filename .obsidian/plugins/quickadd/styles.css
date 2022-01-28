@@ -184,3 +184,14 @@
     align-content: center;
     margin-bottom: 1em;
 }
+
+.yesNoPromptButtonContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin-top: 2rem;
+}
+
+.yesNoPromptParagraph {
+    text-align: center;
+}
