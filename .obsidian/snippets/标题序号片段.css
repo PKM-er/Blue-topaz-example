@@ -38,7 +38,7 @@ display: block;
     /*content: counter(h1-count, cjk-ideographic) "\00A0";*/
 	content: counter(h1-count,decimal) "\00A0";
 }
-.markdown-preview-view h2::before
+.markdown-preview-view h2::before 
 {
 display: block;
     float: left;
@@ -80,7 +80,10 @@ display: block;
     content: counter(h1-count) "."counter(h2-count) "."counter(h3-count) "."counter(h4-count) "."counter(h5-count) "."counter(h6-count) "\00A0";
 }
 /*编辑模式*/
-.cm-line span:not(.cm-formatting-header).cm-header-1:nth-child(2)::after {
+
+div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-1::after, 
+div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-1::after, 
+div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-1:nth-last-of-type(2)::after {
 margin-left: -17px;
 display: block;
     float: left;
@@ -89,7 +92,10 @@ display: block;
 	content: counter(h1-count,decimal) "\00A0";
 }
 
-.cm-line span:not(.cm-formatting-header).cm-header-2:nth-child(2)::after {
+
+div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-2::after, 
+div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-2::after, 
+div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-2:nth-last-of-type(2)::after {
   counter-increment: h2-count;
 display: block;
     float: left;
@@ -102,7 +108,10 @@ display: block;
     content: counter(h1-count) "."counter(h2-count) "\00A0";
 }
 
-.cm-line span:not(.cm-formatting-header).cm-header-3:nth-child(2)::after {
+
+div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-3::after, 
+div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-3::after, 
+div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-3:nth-last-of-type(2)::after {
     display: block;
     float: left;
     font-size: 50%;
@@ -111,7 +120,10 @@ display: block;
     content: counter(h1-count) "."counter(h2-count) "."counter(h3-count) "\00A0";
 }
 
-.cm-line span:not(.cm-formatting-header).cm-header-4:nth-child(2)::after {
+
+div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-4::after, 
+div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-4::after, 
+div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-4:nth-last-of-type(2)::after {
     display: block;
     float: left;
     font-size: 50%;
@@ -120,7 +132,9 @@ display: block;
     content: counter(h1-count) "."counter(h2-count) "."counter(h3-count) "."counter(h4-count) "\00A0";
 }
 
-.cm-line span:not(.cm-formatting-header).cm-header-5:nth-child(2)::after {
+div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-5::after, 
+div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-5::after, 
+div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-5:nth-last-of-type(2)::after {
     display: block;
     float: left;
     font-size: 50%;
@@ -129,7 +143,10 @@ display: block;
     content: counter(h1-count) "."counter(h2-count) "."counter(h3-count) "."counter(h4-count) "."counter(h5-count) "\00A0";
 }
 
-.cm-line span:not(.cm-formatting-header).cm-header-6:nth-child(2)::after {
+
+div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-6::after, 
+div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-6::after, 
+div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-6:nth-last-of-type(2)::after {
     display: block;
     float: left;
     font-size: 50%;

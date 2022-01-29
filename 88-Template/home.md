@@ -108,37 +108,33 @@ dv.paragraph(posters);
 ```
 ````
 
----
 %%便签板块%%
 %%可通过侧边栏主页便签按钮快捷更改便签内容%%
+
+---
 ````ad-flex
-<div>
 <!--notice1-->
-<p class="stickies">
+<p class="stickies" style="max-width:180px" >
 <strong>倒计时</strong></br>今年已过去<strong><%+* tR+= moment().diff(tp.date.now("YYYY-1-1"), "days") %></strong>天
 </br>距春节还有<strong><%+* let edate = moment("2022-02-01", "yyyy-MM-DD"); let from = moment().startOf('day'); edate.diff(from, "days") >= 0 ? tR += edate.diff(from, "days") : tR += edate.add(1, "year").diff(from, "days") %></strong>天
 </p>
 <!--notice2-->
-<p class="stickies2" style="width: max(220px, 30%)" >
-🧨<br>便签二
+<p class="stickies2" style="max-width:200px" >
+🌸<br> 每天一个好心情！！
 </p>
 
-
-</div>
-<div>
 <!--notice3-->
-<p class="stickies">
-这里可以放一些重要内容
+<p class="stickies" style="max-width:200px">
+💖<br> 永远相信美好的事情就要发生！
 </p>
-
 
 <!--notice4-->
-<p class="stickies2" style="width: max(220px, 30%)" >
-🎈<br> 永远相信美好的事情就要发生！
+<p class="stickies2" style="max-width:200px" >
+💌<br> 开启美好的一天
 </p>
 
 <!---->
-</div>
+
 ````
 ---
 

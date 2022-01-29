@@ -243,7 +243,8 @@ input.is-invalid {
 .is-live-preview .admonition-content > *:last-child {
   margin-bottom: 16px;
 }
-.is-live-preview .admonition-content ul {
+.is-live-preview .admonition-content ul,
+.is-live-preview .admonition-content ol {
   white-space: normal;
 }
 

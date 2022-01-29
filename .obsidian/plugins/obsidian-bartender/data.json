@@ -1,9 +1,9 @@
 {
   "statusBarOrder": [
     "4ms",
-    "3s0",
     "5cf",
-    "4av",
+    "3s0",
+    "3p9",
     "6da",
     "51p"
   ],
@@ -19,6 +19,7 @@
     "3tku",
     "27v7"
   ],
+  "actionBarOrder": {},
   "autoHide": true,
   "autoHideDelay": 500
 }

@@ -1,12 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "README",
-      "path": "README.md"
+      "basename": "Pasted image 20220128114026",
+      "path": "99-Attachment/Pasted image 20220128114026.png"
     },
     {
       "basename": "home",
       "path": "88-Template/home.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+      "basename": "ColorfulClock",
+      "path": "88-Template/ReactJS/ColorfulClock.md"
+    },
+    {
+      "basename": "彩色时钟",
+      "path": "88-Template/彩色时钟.md"
+    },
+    {
+      "basename": "从这开始",
+      "path": "从这开始.md"
+    },
+    {
+      "basename": "fastgithub 可为你加速访问Ob社区",
+      "path": "00-Tips/fastgithub 可为你加速访问Ob社区.md"
+    },
+    {
+      "basename": "Cmenu插件魔改版 Obsidian上的工具栏",
+      "path": "00-Tips/Cmenu插件魔改版 Obsidian上的工具栏.md"
+    },
+    {
+      "basename": "booknote插件-更好的pdf office文档阅读和标注神器",
+      "path": "00-Tips/booknote插件-更好的pdf office文档阅读和标注神器.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
     },
     {
       "basename": "《如何阅读尼采》",
@@ -23,10 +59,6 @@
     {
       "basename": "tp-日记模板",
       "path": "88-Template/tp-日记模板.md"
-    },
-    {
-      "basename": "从这开始",
-      "path": "从这开始.md"
     },
     {
       "basename": "如何把主页移植到你现有的库中？",
@@ -75,50 +107,6 @@
     {
       "basename": "如何在Obsidian中添加电影卡片",
       "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
-    },
-    {
-      "basename": "The Matrix Resurrections",
-      "path": "30-Reading/The Matrix Resurrections.md"
-    },
-    {
-      "basename": "tp-movie",
-      "path": "88-Template/tp-movie.md"
-    },
-    {
-      "basename": "dune",
-      "path": "30-Reading/dune.md"
-    },
-    {
-      "basename": "《苏联解体亲历记》",
-      "path": "30-Reading/《苏联解体亲历记》.md"
-    },
-    {
-      "basename": "source code",
-      "path": "30-Reading/source code.md"
-    },
-    {
-      "basename": "shake",
-      "path": "30-Reading/shake.md"
-    },
-    {
-      "basename": "Good will Hunting",
-      "path": "30-Reading/Good will Hunting.md"
-    },
-    {
-      "basename": "shark night",
-      "path": "30-Reading/shark night.md"
-    },
-    {
-      "basename": "Apple Tree Yard",
-      "path": "30-Reading/Apple Tree Yard.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
     }
   ],
   "omittedPaths": [

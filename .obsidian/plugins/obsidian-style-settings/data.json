@@ -31,7 +31,6 @@
   "blue-topaz-theme@@rainbow-checkbox": true,
   "blue-topaz-theme@@embed-title": true,
   "blue-topaz-theme@@accent-2": "#474449",
-  "blue-topaz-theme@@non-border-bottom-header": false,
   "blue-topaz-theme@@rainbow-checklist": true,
   "blue-topaz-theme@@admonition-bg-color@@light": "#FFFFFF00",
   "blue-topaz-theme@@admonition-bg-color@@dark": "#11111100",
@@ -67,5 +66,7 @@
   "blue-topaz-theme@@no-wrapped-table": false,
   "blue-topaz-theme@@no-wrapped-dvtable": true,
   "blue-topaz-theme@@embed-content-height": 400,
-  "blue-topaz-theme@@overflow-x-dvtable": true
+  "blue-topaz-theme@@overflow-x-dvtable": true,
+  "blue-topaz-theme@@text-indentation-two-em": false,
+  "blue-topaz-theme@@default-icons": false
 }

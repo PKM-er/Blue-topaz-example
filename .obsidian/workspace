@@ -7,12 +7,9 @@
         "id": "60aafc9d8d91f321",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "image",
           "state": {
-            "file": "README.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": true
+            "file": "99-Attachment/Pasted image 20220128114026.png"
           }
         }
       }
@@ -103,7 +100,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "99-Attachment/Pasted image 20220128114026.png"
               }
             }
           },
@@ -134,7 +131,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "99-Attachment/Pasted image 20220128114026.png",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -151,18 +148,10 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "99-Attachment/Pasted image 20220128114026.png",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
-            }
-          },
-          {
-            "id": "9b181782551fdb19",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {}
             }
           },
           {
@@ -190,7 +179,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -198,15 +187,15 @@
   },
   "active": "60aafc9d8d91f321",
   "lastOpenFiles": [
-    "README.md",
+    "99-Attachment/Pasted image 20220128114026.png",
+    "99-Attachment/Pasted image 20220129153435.png",
     "88-Template/home.md",
-    "30-Reading/《如何阅读尼采》.md",
-    "30-Reading/《切尔诺贝利的午夜-很长的图书名称测试》.md",
-    "30-Reading/《故事便利店 》.md",
-    "88-Template/tp-日记模板.md",
-    "20-Diary/2022-01-28.md",
-    "20-Diary/2022-01-21.md",
-    "从这开始.md",
-    "00-Tips/如何把主页移植到你现有的库中？.md"
+    "77-Example/讲稿.md",
+    "88-Template/ReactJS/未命名.md",
+    "未命名.md",
+    "关于学位论文格式的统一要求.md",
+    "77-Example/分栏效果示例.md",
+    "88-Template/ReactJS/ColorfulClock.md",
+    "88-Template/彩色时钟.md"
   ]
 }
