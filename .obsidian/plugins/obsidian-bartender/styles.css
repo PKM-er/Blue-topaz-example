@@ -91,7 +91,7 @@ div.separator svg {
 }
 
 .status-bar div.separator .glyph {
- display: flex;
+  display: flex;
 }
 
 .status-bar div.separator svg,
@@ -121,4 +121,20 @@ body.is-dragging .tooltip {
 }
 .workspace-tab-header-container.is-dragging .workspace-tab-header-inner-icon:hover {
   background: none;
+}
+
+.workspace-leaf-content[data-type="file-explorer"] .nav-header .search-input-container {
+  display: none;
+}
+
+.workspace-leaf-content[data-type="file-explorer"] .nav-header .search-input-container.is-active {
+  display: block;
+}
+
+div.nav-action-button[data-sort-method] + div.nav-action-button.drag-to-rearrange {
+  display: none;
+}
+
+div.nav-action-button[data-sort-method="custom"] + div.nav-action-button.drag-to-rearrange {
+  display: block;
 }

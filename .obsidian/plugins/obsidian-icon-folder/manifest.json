@@ -1,7 +1,7 @@
 {
   "id": "obsidian-icon-folder",
   "name": "Icon Folder",
-  "version": "1.0.55",
+  "version": "1.0.61",
   "minAppVersion": "0.9.12",
   "description": "This plugin allows to add an emoji in front of a folder or icon.",
   "author": "Florian Woelki",

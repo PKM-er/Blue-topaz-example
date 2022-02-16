@@ -5,7 +5,7 @@ module.exports = async function colorclock (params) {
     [1,2,3,4]
   );
 
-  let stickyContent = await params.quickAddApi.inputPrompt("请输入便签内容")
+  let stickyContent = await params.quickAddApi.wideInputPrompt("请输入便签内容")
   const stickyPatter1 = /(?<=1--\>\W)\<p\Wclass="stickies".*\>([\w\W]*?)\<\/p\>/
   const stickyPatter2 = /(?<=2--\>\W)\<p\Wclass="stickies2".*\>([\w\W]*?)\<\/p\>/
   const stickyPatter3 = /(?<=3--\>\W)\<p\Wclass="stickies".*\>([\w\W]*?)\<\/p\>/

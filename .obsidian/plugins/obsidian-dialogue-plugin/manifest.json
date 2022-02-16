@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-dialogue-plugin",
+	"name": "Dialogue",
+	"version": "1.0.1",
+	"minAppVersion": "0.12.0",
+	"description": "Create dialogues in Markdown.",
+	"author": "Jakub Holub",
+	"authorUrl": "https://github.com/holubj",
+	"isDesktopOnly": false
+}

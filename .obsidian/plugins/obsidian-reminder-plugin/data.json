@@ -1,0 +1,46 @@
+{
+  "scanned": true,
+  "reminders": {
+    "20-Diary/2022-02-11.md": [
+      {
+        "title": "14:39  这是一个任务笔记@",
+        "time": "2022-02-13",
+        "rowNumber": 15
+      },
+      {
+        "title": "",
+        "time": "2022-02-17",
+        "rowNumber": 16
+      },
+      {
+        "title": "15:38 这是一个提醒测试@",
+        "time": "2022-02-11",
+        "rowNumber": 18
+      },
+      {
+        "title": "提醒测试",
+        "time": "2022-02-11",
+        "rowNumber": 19
+      }
+    ]
+  },
+  "debug": false,
+  "settings": {
+    "reminderTime": "09:00",
+    "laters": "In 30 minutes\nIn 1 hour\nIn 3 hours\nTomorrow\nNext week",
+    "useSystemNotification": true,
+    "autoCompleteTrigger": "(@",
+    "primaryReminderFormat": "TasksPluginReminderFormat",
+    "enableReminderPluginReminderFormat": false,
+    "dateFormat": "YYYY-MM-DD",
+    "dateTimeFormat": "YYYY-MM-DD HH:mm",
+    "strictDateFormat": false,
+    "linkDatesToDailyNotes": false,
+    "enableTasksPluginReminderFormat": true,
+    "useCustomEmojiForTasksPlugin": false,
+    "removeTagsForTasksPlugin": false,
+    "enableKanbanPluginReminderFormat": true,
+    "editDetectionSec": 10,
+    "reminderCheckIntervalSec": 5
+  }
+}

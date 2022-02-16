@@ -6,7 +6,7 @@
         "type": "split",
         "children": [
           {
-            "id": "60aafc9d8d91f321",
+            "id": "fc371ae36bc5eac7",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -14,7 +14,7 @@
                 "file": "88-Template/home.md",
                 "mode": "preview",
                 "backlinks": false,
-                "source": true
+                "source": false
               }
             }
           }
@@ -28,7 +28,7 @@
           {
             "id": "4bc1edcafd063cfb",
             "type": "tabs",
-            "dimension": 61.89290161892902,
+            "dimension": 54.46650124069479,
             "children": [
               {
                 "id": "37c8f55a8ef7a09c",
@@ -66,13 +66,21 @@
           {
             "id": "d877e8285f98a38a",
             "type": "tabs",
-            "dimension": 38.10709838107098,
+            "dimension": 45.53349875930521,
             "children": [
               {
                 "id": "b37bc3d287f74512",
                 "type": "leaf",
                 "state": {
                   "type": "recent-files",
+                  "state": {}
+                }
+              },
+              {
+                "id": "80430a4f104c0c57",
+                "type": "leaf",
+                "state": {
+                  "type": "graph",
                   "state": {}
                 }
               }
@@ -198,7 +206,7 @@
         "direction": "horizontal",
         "width": 273
       },
-      "active": "60aafc9d8d91f321"
+      "active": "fc371ae36bc5eac7"
     },
     "Diary": {
       "main": {

@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.13.23。uid [20220129] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.13.23, uid [20220129] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.13.23。uid [20220202] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.13.23, uid [20220202] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 @LillianWho @成雙酱 @嘴上云 @Cuman @Klaas @Thinkbond @Rainbell129(AKA Lavi) @awyugan */
@@ -321,11 +321,9 @@ settings:
     level: 2
     collapsed: true
   - 
-    id: hide-right-ribbon
-    title: Hide Right Ribbon
-    title.zh: 隐藏右侧边栏
-    description: Sliding out when hovering
-    description.zh: 鼠标悬浮时滑出
+    id: fix-right-ribbon
+    title: Fix Right Ribbon
+    title.zh: 固定右侧边栏
     type: class-toggle
     default: false
   -
@@ -343,6 +341,24 @@ settings:
         label: Rectangle
         value: layout-style-options-rectangle
   -
+    id: hide-titlebar-text
+    title: Hide text in Title Bar
+    title.zh: 隐藏Obsidian标题栏中的文字
+    type: class-toggle
+    default: false
+  -
+    id: hide-vault-name
+    title: Hide vault name
+    title.zh: 隐藏侧边栏中的库名称
+    type: class-toggle
+    default: false
+  -
+    id: bt-status-off
+    title: Reduced Status Bar
+    title.zh: 使用半宽状态栏
+    type: class-toggle
+    default: false
+	-
     id: background-settings
     title: 2. Detail Settings
     title.zh: 2. 细节设置
@@ -1064,12 +1080,6 @@ settings:
     level: 2
     collapsed: true
   -
-    id: bt-status-off
-    title: Reduced Status Bar
-    title.zh: 使用半宽状态栏
-    type: class-toggle
-    default: false
-  -
     id: circular-checkbox
     title: Circular Checkbox
     title.zh: 圆形勾选框
@@ -1369,6 +1379,12 @@ settings:
     type: class-toggle
     default: false
   - 
+    id: folder-icons
+    title: Activate Folder Icons
+    title.zh: 激活文件夹图标
+    type: class-toggle
+    default: false
+  - 
     id: text-folder-file-icon
     title: Color of File Icons
     title.zh: 文件前图标颜色
@@ -1524,12 +1540,6 @@ settings:
     type: heading
     level: 3
     collapsed: true
-  -
-    id: disable-math-block
-    title: disable math block on quickadd modal
-    title.zh: 禁用Quickadd弹窗界面的公式预览
-    type: class-toggle
-    default: false
   -
     id: modal-title-icon
     title: modal title icon
@@ -1735,6 +1745,31 @@ settings:
     type: class-toggle
     default: false
     description.zh: 如果开启表格内容过长用...省略
+  -
+    id: style-options-for-dialogue-plugin-heading
+    title: 3.7 Dialogue
+    type: heading
+    level: 2
+    collapsed: true
+  -
+    id: dialogue-style
+    title: dialogue Style
+    title.zh: 聊天框样式
+    type: class-select
+    allowEmpty: false
+    default: dialogue-style-default
+    description.zh: Wechat样式适合titleMode：all ，chat样式适合 titleMode：first
+    description: Wechat options is for ’titleMode：all‘ ，chat options is for  ‘titleMode：first’
+    options:
+      -
+        label: Default
+        value: dialogue-style-default
+      -
+        label: Wechat
+        value: dialogue-style-wechat
+      - 
+        label: Chat
+        value: dialogue-style-chat
   -
     id: build-in-style-folder
     title: 4. Built-in Style Intro
@@ -7454,6 +7489,10 @@ span.cm-highlight.cm-inline-code {
   position: relative;
 }
 
+body.hide-titlebar-text .titlebar-text {
+  display: none
+}
+
 .titlebar {
   background-color: var(--background-secondary-alt);
 }
@@ -10715,6 +10754,11 @@ body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active,
   margin: auto;
 }
 
+body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
+  display: none;
+}
+
+
 /* file explorer :Wrap long nav text and some paddings */
 .nav-file-title,
 .nav-folder-title {
@@ -11563,11 +11607,11 @@ pre.language-note-cloze::before {
   border: none;
 }
 
-body.hide-right-ribbon .workspace-ribbon.side-dock-ribbon.mod-right {
+body:not(.fix-right-ribbon) .workspace-ribbon.side-dock-ribbon.mod-right {
   transition: all 280ms ease-in-out;
 }
 
-body.hide-right-ribbon .workspace-ribbon.side-dock-ribbon.mod-right:not(:hover) {
+body:not(.fix-right-ribbon) .workspace-ribbon.side-dock-ribbon.mod-right:not(:hover) {
   margin-right: -20px;
 }
 
@@ -15379,9 +15423,7 @@ span.cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight.hmd-hidd
 .modal-container .modal-content textarea {
   height: 18rem !important;
 }
-body.disable-math-block .modal .modal-content .math.math-block{
-  display:none;
-}
+
 
 /* ================================== */
 /* ============ QuickAdd ============ */
@@ -16026,7 +16068,7 @@ body:not(.default-icons).is-mobile .tree-item-self.is-clickable.is-collapsed spa
 }
 
 .is-mobile .view-actions {
-  padding: 6px 10px 6px 5px;
+  padding: 7px 10px 7px 5px;
 }
 .is-mobile .view-action {
   margin: 0 5px;
@@ -16401,13 +16443,13 @@ and (min-width : 400px)
   }
   /*文章标题跟正文对齐*/
   .is-mobile .workspace-leaf-content:not([data-type="graph"]) .view-header-title-container {
-    padding-left: 25px;
+    padding-left: 15px;
   }
    /*文章标题缩小*/
   .is-mobile .view-header-title {
     font-size: var(--font-size-file-header-title);
     letter-spacing: -0.015em;
-    line-height: 35px;
+    line-height: 44px;
   }
   /*伪看板优化显示*/
   .kanban ul>li:not(.task-list-item) {
@@ -16422,6 +16464,165 @@ and (min-width : 400px)
     background: transparent;
   }
 }
+
+/*=======================
+===  dialogue by cuman====
+========================*/
+
+
+body.dialogue-style-wechat .dialogue-plugin-block-wrapper {
+  margin-bottom: 15px;
+  position: relative;
+  display: flex;
+}
+body.dialogue-style-wechat .dialogue-plugin-message
+{
+  background-color:unset;
+}
+
+body.dialogue-style-wechat .dialogue-plugin-comment-wrapper::before {
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  height: 1px;
+  background-color: #bfe2fb;
+  flex: 1;
+  margin: 20px 0;
+  text-align: center;
+}
+body.dialogue-style-wechat .dialogue-plugin-comment-wrapper::after {
+  content: "";
+  box-sizing: border-box;
+  width: 100%;
+  height: 1px;
+  background-color: #bfe2fb;
+  flex: 1;
+  margin: 20px 0;
+  text-align: center;
+}
+body.dialogue-style-wechat .dialogue-plugin-comment-wrapper .dialogue-plugin-comment
+{
+  margin: 7px;
+}
+
+body.dialogue-style-wechat .dialogue-plugin-message .dialogue-plugin-message-title {
+  font-size: 24px;
+  height: 50px;
+  background: #f1f1f1;
+  border-radius: 8px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: absolute;
+  background-position: center;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color:unset;
+}
+
+body.dialogue-style-wechat .dialogue-plugin-message-wrapper-right .dialogue-plugin-message-title
+{
+  right: 0;
+
+}
+body.dialogue-style-wechat .dialogue-plugin-message-wrapper-left .dialogue-plugin-message .dialogue-plugin-message-content{
+  margin-right: 0px;
+}
+body.dialogue-style-wechat .dialogue-plugin-message-wrapper-right .dialogue-plugin-message .dialogue-plugin-message-content{
+  color: black;
+    background: #98e970;
+    margin-left: 0px;
+}
+body.dialogue-style-wechat .dialogue-plugin-message-wrapper-right .dialogue-plugin-message .dialogue-plugin-message-content:after {
+  background: #98e970;
+  left: auto;
+  right: -5px;
+  border-top-right-radius: 2px;
+  border-bottom-left-radius: 0;
+}
+body.dialogue-style-wechat .dialogue-plugin-message .dialogue-plugin-message-content {
+  background: #fff;
+  padding: 12px 18px;
+  font-size: large;
+  border-radius: 8px;
+  margin-right: 55px;
+  word-break: break-all;
+  margin-left: 55px;
+  display: inline-block;
+  position: relative;
+  line-height: normal;
+  min-height: 50px;
+}
+.dialogue-style-wechat.theme-dark .dialogue-plugin-message .dialogue-plugin-message-content {
+  background:#343434;
+}
+
+
+body.dialogue-style-wechat .dialogue-plugin-message .dialogue-plugin-message-content:after {
+  content: '';
+  background: #fff;
+  width: 12px;
+  height: 12px;
+  border-bottom-left-radius: 2px;
+  top: 20px;
+  left: -6px;
+  position: absolute;
+  transform: rotate(45deg);
+}
+
+
+.dialogue-style-wechat.theme-dark .dialogue-plugin-message .dialogue-plugin-message-content:after {
+  background: #343434;
+}
+
+/*dialogue-style-chat*/
+
+.dialogue-style-chat.theme-dark .dialogue-plugin-message-wrapper-left .dialogue-plugin-message{
+  color: #cccccc;
+  background: #343434;
+  box-shadow: 0px 2px 1px 0px #191818,0px 2px 1px 0px #343434;
+}
+.dialogue-style-chat.theme-dark .dialogue-plugin-message-wrapper-right .dialogue-plugin-message{
+  color: #333333;
+  background-image: -webkit-linear-gradient(left, #cccccc,#cccccc);
+}
+body.dialogue-style-chat .dialogue-plugin-message-wrapper-left .dialogue-plugin-message{
+  font-size: 15px;
+  background: #f5f8ff;
+  letter-spacing: 1.5px;
+    color: #333;
+    border-radius:12px;
+    border-bottom-left-radius: 0px;
+    margin-left: 6px;
+    box-shadow: 0px 2px 1px 0px #f3f3f3,0px 2px 1px 0px #f3f3f3;
+    margin-right: 3em;
+    align-self: flex-end;
+ }
+
+ body.dialogue-style-chat .dialogue-plugin-message-wrapper-right .dialogue-plugin-message{
+  font-size: 15px;
+  letter-spacing: 1.5px;
+  color: #333;
+  border-radius: 12px;
+  border-bottom-right-radius: 0px;
+  background-image: -webkit-linear-gradient(left, #cee4ff,#d7eaff);
+  margin-right: 6px;
+  align-self: flex-end;
+  margin-left: 3em;
+  
+} 
+
+body.dialogue-style-chat .dialogue-plugin-message-title {
+    font-size: 16px;
+    letter-spacing: 2px;
+    text-align: center;
+    color: rgb(236, 236, 236);
+    font-weight: bold;
+}
+
+
+
 
 /*===================================================*/
 /*=================   Live Preview   ================*/
@@ -16555,7 +16756,7 @@ body.color-scheme-options-lillimon-topaz .view-header {
   border-bottom: 1px solid transparent;
 }
 
-.workspace > .workspace-split {
+body:not(.plugin-sliding-panes) .workspace > .workspace-split {
   height: 100.5%;
 }
 
@@ -16575,6 +16776,38 @@ body {
 body.plugin-sliding-panes .workspace-split.mod-root .workspace-leaf:not(:first-of-type) .workspace-leaf-content {
   background-color: var(--background-4-sliding-pane);
 }
+
+body.folder-icons .nav-folder-children .nav-folder-title-content::before {
+  position: relative;
+  content: " ";
+  display: inline-block;
+  opacity: 0.9;
+  top: 1px;
+  width: 1em;
+  height: 1em;
+  margin-right: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: var(--text-folder-file-icon);
+  filter: hue-rotate(160deg);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M2.165 19.551c.186.28.499.449.835.449h15c.4 0 .762-.238.919-.606l3-7A.998.998 0 0 0 21 11h-1V8c0-1.103-.897-2-2-2h-6.655L8.789 4H4c-1.103 0-2 .897-2 2v13h.007a1 1 0 0 0 .158.551zM18 8v3H6c-.4 0-.762.238-.919.606L4 14.129V8h14z"></path></svg>');
+}
+body.folder-icons .nav-folder-children .nav-folder.is-collapsed .nav-folder-title-content::before {
+  position: relative;
+  content: " ";
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-right: 5px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-color: var(--text-folder-file-icon);
+  filter: hue-rotate(160deg);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
+}
+
 
 body:not(.remove-file-icons) .nav-folder-children .nav-file-title-content:first-child::before {
   position: relative;
@@ -18770,10 +19003,10 @@ body.loading-animation .progress-bar-message {
 
 /* ================================== */
 .community-theme {
-  max-width: 270px;
+  max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220129";
+  content: "uid:20220202";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;

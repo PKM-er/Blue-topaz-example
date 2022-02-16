@@ -3404,11 +3404,21 @@ function getCSSVariables(settings, config) {
                 continue;
             case "variable-text":
             case "variable-select":
+                const format_text = setting;
+                let text = value !== undefined
+                    ? value.toString()
+                    : format_text.default.toString();
+                if (format_text.quotes) {
+                    if (text !== `""`) {
+                        text = `'${text}'`;
+                    }
+                    else {
+                        text = ``;
+                    }
+                }
                 vars.push({
                     key: setting.id,
-                    value: value !== undefined
-                        ? value.toString()
-                        : setting.default.toString(),
+                    value: text
                 });
                 continue;
             case "variable-color": {
@@ -3772,7 +3782,14 @@ const ja = {};
 
 const ko = {};
 
-const nl = {};
+const nl = {
+    "Default:": "Standaard:",
+    "Error:": "Error:",
+    "missing default light value, or value is not in a valid color format": "Geen standaard waarde voor het lichte thema, of de waarde is niet in het goede formaat",
+    "missing default dark value, or value is not in a valid color format": "Geen standaard waarde voor het donkere thema, of de waarde is niet in het goede formaat",
+    "missing default value, or value is not in a valid color format": "Geen standaard waarde, of de waarde is niet in het goede formaat",
+    "missing default value": "Geen standaard waarde",
+};
 
 const no = {};
 
@@ -4031,10 +4048,13 @@ function createVariableText(opts) {
         .setName(getTitle(config))
         .setDesc(createDescription(getDescription(config), config.default))
         .addText((text) => {
-        const value = settingsManager.getSetting(sectionId, config.id);
+        let value = settingsManager.getSetting(sectionId, config.id);
         const onChange = obsidian.debounce((value) => {
             settingsManager.setSetting(sectionId, config.id, sanitizeText(value));
         }, 250, true);
+        if (config.quotes && value === `""`) {
+            value = ``;
+        }
         text
             .setValue(value ? value.toString() : config.default)
             .onChange(onChange);
@@ -4187,6 +4207,7 @@ function getPickrSettings(opts) {
             interaction: {
                 hex: true,
                 rgba: true,
+                hsla: true,
                 input: true,
                 cancel: true,
                 save: true,
@@ -4198,7 +4219,7 @@ function onPickrCancel(instance) {
     instance.hide();
 }
 function isValidDefaultColor(color) {
-    return /^(#|rgb)/.test(color);
+    return /^(#|rgb|hsl)/.test(color);
 }
 function createVariableColor(opts) {
     const { isView, sectionId, config, containerEl, settingsManager } = opts;
@@ -8597,6 +8618,8 @@ class CSSSettingsPlugin extends obsidian.Plugin {
                             const settings = jsYaml.load(str.replace(/\t/g, indent.type === "space" ? indent.indent : "    "), {
                                 filename: name,
                             });
+                            if (!settings.settings)
+                                continue;
                             settings.settings = settings.settings.filter((setting) => setting);
                             if (typeof settings === "object" &&
                                 settings.name &&

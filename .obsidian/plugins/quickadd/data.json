@@ -119,10 +119,17 @@
     },
     {
       "id": "19402f67-f691-4b0f-9975-f8203e74be96",
-      "name": "添加豆瓣读书图书-douban",
+      "name": "添加豆瓣图书资源-douban",
       "type": "Macro",
       "command": true,
       "macroId": "aefa1c1c-3436-4462-bfea-3411d8308d2c"
+    },
+    {
+      "id": "aabcb6ad-5faa-45fb-a713-deddc27bc384",
+      "name": "添加豆瓣电影-douban",
+      "type": "Macro",
+      "command": true,
+      "macroId": "37d4988e-4b8b-4878-8959-65416ac262e3"
     }
   ],
   "macros": [
@@ -365,6 +372,59 @@
             },
             "appendLink": false,
             "incrementFileName": true,
+            "openFileInNewTab": {
+              "enabled": false,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": false,
+            "openFileInMode": "default"
+          }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "豆瓣电影",
+      "id": "37d4988e-4b8b-4878-8959-65416ac262e3",
+      "commands": [
+        {
+          "name": "moviefromdouban",
+          "type": "UserScript",
+          "id": "7aba3c8d-2fda-40fe-8b08-e2a93f64f44a",
+          "path": "88-Template/script/moviefromdouban.js",
+          "settings": {}
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "02da16ca-586c-4217-86fc-45a609e4da31",
+          "time": 100
+        },
+        {
+          "name": "豆瓣电影",
+          "type": "NestedChoice",
+          "id": "41127692-e1eb-4c94-b5ae-5e5179681db5",
+          "choice": {
+            "id": "9a91280f-76aa-4f2f-8252-c2c653241671",
+            "name": "豆瓣电影",
+            "type": "Template",
+            "command": false,
+            "templatePath": "88-Template/tp-movie-douban.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "{{VALUE:fileName}}"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "30-Reading"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false
+            },
+            "appendLink": false,
+            "incrementFileName": false,
             "openFileInNewTab": {
               "enabled": false,
               "direction": "vertical",

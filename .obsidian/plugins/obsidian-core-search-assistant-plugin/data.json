@@ -1,0 +1,9 @@
+{
+  "keepSelectedItemsCentered": false,
+  "outlineWidth": 5,
+  "autoPreviewMode": "cardView",
+  "cardViewLayout": "3x3",
+  "splitDirection": "horizontal",
+  "autoToggleSidebar": false,
+  "hideIframe": false
+}

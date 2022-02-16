@@ -1,0 +1,344 @@
+{
+  "selectionHighlighter": {
+    "highlightWordAroundCursor": true,
+    "highlightSelectedText": true,
+    "maxMatches": 100,
+    "minSelectionLength": 3,
+    "highlightDelay": 0,
+    "ignoredWords": "myself, our, ours, ourselves, you, your, yours, yourself, yourselves, him, his, himself, she, her, hers, herself, its, itself, they, them, their, theirs, themselves, what, which, who, whom, this, that, these, those, are, was, were, been, being, have, has, had, having, does, did, doing, the, and, but, because, until, while, for, with, about, against, between, into, through, during, before, after, above, below, from, down, out, off, over, under, again, further, then, once, here, there, when, where, why, how, all, any, both, each, few, more, most, other, some, such, nor, not, only, own, same, than, too, very, can, will, just, don, should,now"
+  },
+  "staticHighlighter": {
+    "queries": {
+      "light-time-8-5": {
+        "class": "light-time-8-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(08|20):[3-5][0-9]",
+        "mark": [
+          "match"
+        ],
+        "css": ""
+      },
+      "light-time-8": {
+        "class": "light-time-8",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(08|20):[0-2][0-9]"
+      },
+      "light-time-7-5": {
+        "class": "light-time-7-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(07|19):[3-5][0-9]"
+      },
+      "light-time-7": {
+        "class": "light-time-7",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(07|19):[0-2][0-9]"
+      },
+      "light-time-6-5": {
+        "class": "light-time-6-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(06|18):[3-5][0-9]"
+      },
+      "light-time-6": {
+        "class": "light-time-6",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(06|18):[0-2][0-9]"
+      },
+      "light-time-5-5": {
+        "class": "light-time-5-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(05|17):[3-5][0-9]"
+      },
+      "light-time-5": {
+        "class": "light-time-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(05|17):[0-2][0-9]"
+      },
+      "light-time-4-5": {
+        "class": "light-time-4-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(04|16):[3-5][0-9]"
+      },
+      "light-time-4": {
+        "class": "light-time-4",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(04|16):[0-2][0-9]"
+      },
+      "light-time-3-5": {
+        "class": "light-time-3-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(03|15):[3-5][0-9]"
+      },
+      "light-time-3": {
+        "class": "light-time-3",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(03|15):[0-2][0-9]"
+      },
+      "light-time-2-5": {
+        "class": "light-time-2-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(02|14):[3-5][0-9]"
+      },
+      "light-time-2": {
+        "class": "light-time-2",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(02|14):[0-2][0-9]"
+      },
+      "light-time-1-5": {
+        "class": "light-time-1-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(01|13):[3-5][0-9]"
+      },
+      "light-time-1": {
+        "class": "light-time-1",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(01|13):[0-2][0-9]"
+      },
+      "light-time-9": {
+        "class": "light-time-9",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(09|21):[0-2][0-9]"
+      },
+      "light-time-9-5": {
+        "class": "light-time-9-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(09|21):[3-5][0-9]"
+      },
+      "light-time-10": {
+        "class": "light-time-10",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(10|22):[0-2][0-9]"
+      },
+      "light-time-10-5": {
+        "class": "light-time-10-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(10|22):[3-5][0-9]"
+      },
+      "light-time-11": {
+        "class": "light-time-11",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(11|23):[0-2][0-9]"
+      },
+      "light-time-11-5": {
+        "class": "light-time-11-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(11|23):[3-5][0-9]"
+      },
+      "light-time-12": {
+        "class": "light-time-12",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(00|12):[0-2][0-9]"
+      },
+      "light-time-12-5": {
+        "class": "light-time-12-5",
+        "color": "#E45858",
+        "regex": true,
+        "query": "(00|12):[3-5][0-9]",
+        "mark": [
+          "match"
+        ],
+        "css": ""
+      }
+    },
+    "queryOrder": [
+      "light-time-8-5",
+      "light-time-8",
+      "light-time-7-5",
+      "light-time-7",
+      "light-time-6-5",
+      "light-time-6",
+      "light-time-5-5",
+      "light-time-5",
+      "light-time-4-5",
+      "light-time-4",
+      "light-time-3-5",
+      "light-time-3",
+      "light-time-2-5",
+      "light-time-2",
+      "light-time-1-5",
+      "light-time-1",
+      "light-time-9",
+      "light-time-9-5",
+      "light-time-10",
+      "light-time-10-5",
+      "light-time-11",
+      "light-time-11-5",
+      "light-time-12",
+      "light-time-12-5"
+    ]
+  },
+  "light-time-8-5": {
+    "class": "light-time-8-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(08|20):[3-5][0-9]",
+    "mark": [
+      "match"
+    ],
+    "css": ""
+  },
+  "light-time-8": {
+    "class": "light-time-8",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(08|20):[0-2][0-9]"
+  },
+  "light-time-7-5": {
+    "class": "light-time-7-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(07|19):[3-5][0-9]"
+  },
+  "light-time-7": {
+    "class": "light-time-7",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(07|19):[0-2][0-9]"
+  },
+  "light-time-6-5": {
+    "class": "light-time-6-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(06|18):[3-5][0-9]"
+  },
+  "light-time-6": {
+    "class": "light-time-6",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(06|18):[0-2][0-9]"
+  },
+  "light-time-5-5": {
+    "class": "light-time-5-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(05|17):[3-5][0-9]"
+  },
+  "light-time-5": {
+    "class": "light-time-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(05|17):[0-2][0-9]"
+  },
+  "light-time-4-5": {
+    "class": "light-time-4-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(04|16):[3-5][0-9]"
+  },
+  "light-time-4": {
+    "class": "light-time-4",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(04|16):[0-2][0-9]"
+  },
+  "light-time-3-5": {
+    "class": "light-time-3-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(03|15):[3-5][0-9]"
+  },
+  "light-time-3": {
+    "class": "light-time-3",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(03|15):[0-2][0-9]"
+  },
+  "light-time-2-5": {
+    "class": "light-time-2-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(02|14):[3-5][0-9]"
+  },
+  "light-time-2": {
+    "class": "light-time-2",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(02|14):[0-2][0-9]"
+  },
+  "light-time-1-5": {
+    "class": "light-time-1-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(01|13):[3-5][0-9]"
+  },
+  "light-time-1": {
+    "class": "light-time-1",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(01|13):[0-2][0-9]"
+  },
+  "light-time-9": {
+    "class": "light-time-9",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(09|21):[0-2][0-9]"
+  },
+  "light-time-9-5": {
+    "class": "light-time-9-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(09|21):[3-5][0-9]"
+  },
+  "light-time-10": {
+    "class": "light-time-10",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(10|22):[0-2][0-9]"
+  },
+  "light-time-10-5": {
+    "class": "light-time-10-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(10|22):[3-5][0-9]"
+  },
+  "light-time-11": {
+    "class": "light-time-11",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(11|23):[0-2][0-9]"
+  },
+  "light-time-11-5": {
+    "class": "light-time-11-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(11|23):[3-5][0-9]"
+  },
+  "light-time-12": {
+    "class": "light-time-12",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(00|12):[0-2][0-9]"
+  },
+  "light-time-12-5": {
+    "class": "light-time-12-5",
+    "color": "#E45858",
+    "regex": true,
+    "query": "(00|12):[3-5][0-9]",
+    "mark": [
+      "match"
+    ],
+    "css": ""
+  }
+}

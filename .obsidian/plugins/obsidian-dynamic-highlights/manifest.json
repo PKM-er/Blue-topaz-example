@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-dynamic-highlights",
+  "name": "Dynamic Highlights",
+  "version": "0.2.2",
+  "minAppVersion": "0.13.5",
+  "description": "Dynamically highlight text based on cursor selection or search query with full regex, mobile, and live preview support",
+  "author": "NothingIsLost",
+  "authorUrl": "https://github.com/nothingislost",
+  "isDesktopOnly": false
+}

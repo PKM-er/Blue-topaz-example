@@ -5,6 +5,8 @@
   "betterEnter": true,
   "betterTab": true,
   "selectAll": true,
+  "listLines": false,
+  "listLineAction": "toggle-folding",
   "hideWarning": false,
   "disableZoomNotification": false
 }

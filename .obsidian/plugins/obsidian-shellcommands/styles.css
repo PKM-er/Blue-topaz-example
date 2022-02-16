@@ -10,6 +10,13 @@
     overflow-y: auto;
 }
 
+.SC-no-margin {
+    margin: 0;
+}
+
+.SC-no-top-border {
+    border-top: none;
+}
 
 /*
  * SHELL COMMAND SETTING CONTAINERS
@@ -150,4 +157,15 @@ span.shell-commands-main-icon-container {
     background-color: var(--background-modifier-border);
     padding-left: 5px;
     font-size: 75%;
+}
+
+/*
+ * OUTPUT CHANNEL: MODAL
+ */
+
+div.SC-output-channel-modal-textarea-container textarea {
+    width: 100%;
+    min-width: 100%;
+    min-height: 15em;
+    resize: both;
 }

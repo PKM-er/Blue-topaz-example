@@ -61,7 +61,7 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
         id: "freeze-obsidian",
         name: "Freeze Obsidian (with " + freezeDelaySecs.toString() + "s delay)",
         callback: () => {
-          new import_obsidian.Notice("Will freeze Obsidian in " + freezeDelaySecs.toString() + "s (if the console is open.)", 3e3);
+          new import_obsidian.Notice("Will freeze Obsidian in " + freezeDelaySecs.toString() + "s (if the console is open.)", (freezeDelaySecs - 1) * 1e3);
           setTimeout(() => {
             debugger;
           }, freezeDelaySecs * 1e3);
@@ -85,18 +85,20 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
       this.addCommand({
         id: "toggle-dark-light-mode",
         name: "Toggle between Dark and Light Mode",
-        callback: () => {
-          const isDarkMode = this.app.vault.getConfig("theme") === "obsidian";
-          if (isDarkMode)
-            this.useLightMode();
-          else
-            this.useDarkMode();
-        }
+        callback: () => this.toggleTheme()
       });
       this.addCommand({
         id: "cycle-views",
         name: "Cycle between Source Mode, Live Preview, and Reading Mode",
         callback: () => this.cycleViews()
+      });
+      this.addCommand({
+        id: "Chrome Version",
+        name: "CSS Feature Compatibility (Chrome Version)",
+        callback: () => {
+          const cversion = process.versions.chrome.split(".")[0];
+          new import_obsidian.Notice("Obsidian supports CSS features compatible with:\nChrome Version " + cversion);
+        }
       });
     });
   }
@@ -105,18 +107,20 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
       console.log("Theme Design Utilities Plugin unloaded.");
     });
   }
-  useDarkMode() {
-    this.app.setTheme("obsidian");
-    this.app.vault.setConfig("theme", "obsidian");
-    this.app.workspace.trigger("css-change");
-  }
-  useLightMode() {
-    this.app.setTheme("moonstone");
-    this.app.vault.setConfig("theme", "moonstone");
-    this.app.workspace.trigger("css-change");
+  toggleTheme() {
+    const isDarkMode = this.app.vault.getConfig("theme") === "obsidian";
+    if (isDarkMode) {
+      this.app.setTheme("moonstone");
+      this.app.vault.setConfig("theme", "moonstone");
+      this.app.workspace.trigger("css-change");
+    } else {
+      this.app.setTheme("obsidian");
+      this.app.vault.setConfig("theme", "obsidian");
+      this.app.workspace.trigger("css-change");
+    }
   }
   cycleViews() {
-    const noticeDuration = 1500;
+    const noticeDuration = 2e3;
     const activePane = this.app.workspace.activeLeaf;
     const currentView = activePane.getViewState();
     if (currentView.type === "empty") {

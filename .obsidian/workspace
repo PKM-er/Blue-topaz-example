@@ -4,12 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "60aafc9d8d91f321",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "image",
+          "type": "markdown",
           "state": {
-            "file": "99-Attachment/Pasted image 20220128114026.png"
+            "file": "README.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
           }
         }
       }
@@ -23,7 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 61.89290161892902,
+        "dimension": 54.46650124069479,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -61,13 +64,21 @@
       {
         "id": "d877e8285f98a38a",
         "type": "tabs",
-        "dimension": 38.10709838107098,
+        "dimension": 45.53349875930521,
         "children": [
           {
             "id": "b37bc3d287f74512",
             "type": "leaf",
             "state": {
               "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "80430a4f104c0c57",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
               "state": {}
             }
           }
@@ -100,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "99-Attachment/Pasted image 20220128114026.png"
+                "file": "README.md"
               }
             }
           },
@@ -131,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "99-Attachment/Pasted image 20220128114026.png",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -148,10 +159,18 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "99-Attachment/Pasted image 20220128114026.png",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
+            }
+          },
+          {
+            "id": "9b181782551fdb19",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
             }
           },
           {
@@ -179,23 +198,23 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       }
     ],
     "direction": "horizontal",
     "width": 273
   },
-  "active": "60aafc9d8d91f321",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "99-Attachment/Pasted image 20220128114026.png",
-    "99-Attachment/Pasted image 20220129153435.png",
+    "README.md",
+    "从这开始.md",
+    "88-Template/tp-日记模板.md",
     "88-Template/home.md",
-    "77-Example/讲稿.md",
-    "88-Template/ReactJS/未命名.md",
-    "未命名.md",
-    "关于学位论文格式的统一要求.md",
-    "77-Example/分栏效果示例.md",
+    "50-Inbox/carbon 代码高亮分享.md",
+    "50-Inbox/vika.md",
+    "77-Example/以橱窗的方式浏览文件夹下的图片.md",
+    "88-Template/ReactJS/slidegallery.md",
     "88-Template/ReactJS/ColorfulClock.md",
-    "88-Template/彩色时钟.md"
+    "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
   ]
 }

@@ -1,0 +1,40 @@
+{
+  "ProgressProperties": {
+    "enabled": false,
+    "properties": []
+  },
+  "IgnoredProperties": {
+    "enabled": false,
+    "properties": []
+  },
+  "AutoProperties": {
+    "enabled": true,
+    "properties": [
+      {
+        "name": "当前属性",
+        "choices": [
+          "⭐⭐⭐⭐⭐",
+          "⭐⭐⭐⭐",
+          "⭐⭐⭐",
+          "⭐⭐",
+          "⭐",
+          "想看",
+          "正在进行",
+          "已完成",
+          " "
+        ]
+      }
+    ]
+  },
+  "EditMode": {
+    "mode": "All Single",
+    "properties": []
+  },
+  "KanbanHelper": {
+    "enabled": false,
+    "boards": []
+  },
+  "UIElements": {
+    "enabled": false
+  }
+}

@@ -11,8 +11,9 @@ let QuickAdd;
 async function bookfromdouban(params) {
   QuickAdd = params;
   const http_reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
+  const http_reg_book = /(http:\/\/book|https:\/\/book)((\w|=|\?|\.|\/|&|-)+)/g;
   const query = await QuickAdd.quickAddApi.inputPrompt(
-    "请输入豆瓣图书的网址:"
+    "请输入豆瓣图书网址:"
   );
   if (!query) {
     notice("No url entered.");
@@ -25,14 +26,19 @@ if (!http_reg.exec(query)) {
 
  const url = query.match(http_reg)[0];
     console.log(url);
-   
- let bookdata = await getbookByurl(url);
-if(bookdata)
-	new Notice('图书获取成功！', 3000);
+ if (http_reg_book.exec(url)) {
+	let bookdata = await getbookByurl(url);
+	if(bookdata)
+	new Notice('图书数据获取成功！', 3000);
   QuickAdd.variables = {
     ...bookdata
   };
+}else{
+ new Notice('只能解析book.douban.com相关网址', 3000);
+ throw new Error("No results found.");
 }
+
+ }	 
 
 async function getbookByurl(url) {
 

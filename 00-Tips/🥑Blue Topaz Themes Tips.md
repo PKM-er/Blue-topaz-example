@@ -372,6 +372,37 @@ journey
       Go downstairs: 5: Me
       Sit down: 5: Me
 ```
+```mermaid
+flowchart LR
+classDef inputUnit fill:orange,stroke:#333,stroke-width:2px;
+classDef hiddenUnit fill:#916DF3,stroke:#333,stroke-width:2px;
+classDef outputUnit fill:#FFC0CB,stroke:#333,stroke-width:4px;
+
+i1((1.4))
+i2((2.7))
+i3((1.9))
+h1(( ))
+h2(( ))
+h3(( ))
+o1((0.8))
+i1 --> h1
+i1 --> h2
+i1 --> h3
+i2 --> h1
+i2 --> h2
+i2 --> h3
+i3 --> h1
+i3 --> h2
+i3 --> h3
+h1 --> o1
+h2 --> o1
+h3 --> o1
+
+class i1,i2,i3 inputUnit;
+class h1,h2,h3 hiddenUnit;
+class o1 outputUnit;
+```
+
 
 ## YAML cssclass
 

@@ -13,8 +13,15 @@
   margin: 0;
   overflow-y: auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  grid-auto-rows: 90px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+}
+
+.prompt .obsidian-icon-folder-subheadline {
+  margin-top: 12px;
+  font-size: 12px;
+  color: gray;
+  grid-column-start: 1;
+  grid-column-end: 6;
 }
 
 .obsidian-icon-folder-modal.prompt-results .suggestion-item {

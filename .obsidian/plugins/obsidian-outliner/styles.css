@@ -1,13 +1,16 @@
 /* lists */
 .outliner-plugin-better-lists .cm-s-obsidian .HyperMD-list-line {
-  padding-top: 0.4em;
+  padding-top: 8px;
 }
 
 /* bullets */
 .outliner-plugin-better-bullets
   .cm-s-obsidian:not(.is-live-preview)
   .cm-formatting-list-ul:before,
-.outliner-plugin-better-bullets .cm-s-obsidian.is-live-preview .list-bullet:before {
+.outliner-plugin-better-bullets
+  .cm-s-obsidian.is-live-preview
+  .list-bullet:before {
+  visibility: visible;
   content: "•";
   font-size: 150%;
   position: absolute;
@@ -16,29 +19,60 @@
   color: var(--text-muted);
 }
 
+.outliner-plugin-better-bullets
+  .cm-s-obsidian.is-live-preview
+  .list-bullet::after {
+  content: none;
+}
+
 /* lines */
-.outliner-plugin-vertical-lines .cm-s-obsidian .HyperMD-list-line {
+.outliner-plugin-list-lines-scroller {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 10px 17px;
+  pointer-events: none;
   overflow: hidden;
 }
 
-.outliner-plugin-vertical-lines .cm-hmd-list-indent {
+.outliner-plugin-list-lines-content-container {
   position: relative;
 }
 
-.outliner-plugin-vertical-lines .cm-line:not(.HyperMD-codeblock) .cm-hmd-list-indent::before {
-  content: "";
-  display: block;
+.markdown-source-view.mod-cm6.is-folding
+  .outliner-plugin-list-lines-content-container {
+  padding-left: 10px;
+}
+
+.markdown-source-view.mod-cm6.is-line-wrap.is-readable-line-width
+  .outliner-plugin-list-lines-content-container {
+  max-width: 700px;
+  margin: auto;
+}
+
+.outliner-plugin-list-line {
+  pointer-events: auto;
   position: absolute;
+  width: 5px;
+  margin-left: 0.5ch;
+  margin-top: calc(2em + 6px);
+  z-index: 1;
+  cursor: pointer;
+  background: transparent;
   background-image: linear-gradient(
     to right,
     var(--text-faint) 1px,
     transparent 1px
   );
-  /* https://developer.mozilla.org/en-US/docs/Web/CSS/length#units */
-  background-size: 1.8ch 1px;
-  background-position-x: 3px;
-  width: 100%;
-  left: 0;
-  top: -1.6em;
-  padding-bottom: 999em;
+  background-position-x: 2px;
+  background-repeat: no-repeat;
+}
+
+.markdown-source-view.mod-cm6.is-folding .outliner-plugin-list-line {
+  padding-left: 10px;
+  margin-left: calc(0.5ch + 10px);
+}
+
+.outliner-plugin-list-line:hover {
+  background: var(--text-faint);
 }

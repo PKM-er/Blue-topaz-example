@@ -20,6 +20,12 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 
 另外推荐鸟姐的Homepage 也是很棒的风格
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
+## 更新  2022-02-16
+增加从豆瓣获取电影卡片
+增加对dataview卡片直接编辑元数据 
+增加插件Hoteys for specific files 直接在ob里打开嵌入网页
+优化日记模板,更具有通用性。
+
 
 ## 效果图
 主页视图
@@ -76,7 +82,8 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 | *bartender*                             | (可选)隐藏边栏图标和状态栏图标                                  |
 | *sortable*                              | (可选)表格列排序插件                                            |
 | *markdown Pretiffier*                   | (可选)md格式辅助插件可以自动生成更新日期                        |
-| *Search on Internet*                    | (可选)ob中快捷进行网络搜索                                      | 
+| *Search on Internet*                    | (可选)ob中快捷进行网络搜索                                      |
+| booknote                                | pdf查看和标注插件                                                                |
 
 
 ## 主题内置的cssclass样式表
@@ -156,4 +163,6 @@ ad样式使用方法参考
 	开启核心插件日记，并指定日记文件夹位置。
 7. 主页加载部分数据没有显示全？
 	如果时钟不动或者主页没有显示全。手动点一下刷新主页即可。
+8. 带按钮的常用工具侧边栏如何实现？
+	其实就是`88-template/常用工具`笔记文档，打开后拖动文档标题前的图标到侧边栏即可。
 

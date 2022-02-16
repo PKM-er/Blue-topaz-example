@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-hotkeys-for-specific-files",
+  "name": "Hotkeys for specific files",
+  "version": "1.2.0",
+  "description": "Set hotkeys for specific files and open them just with your keyboard.",
+  "author": "Vinzent",
+  "authorUrl": "https://github.com/Vinzent03",
+  "isDesktopOnly": false
+}

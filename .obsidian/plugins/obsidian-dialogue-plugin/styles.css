@@ -1,0 +1,58 @@
+.dialogue-plugin-wrapper {
+	margin-bottom: 20px;
+}
+
+.dialogue-plugin-block-wrapper {
+	display: flex;
+	margin: 10px 0;
+}
+
+.dialogue-plugin-message-wrapper-left {
+	justify-content: start;
+}
+
+.dialogue-plugin-message-wrapper-right {
+	justify-content: flex-end;
+}
+
+.dialogue-plugin-message {
+	overflow: hidden;
+	max-width: 60%;
+	background-color: var(--background-secondary);
+}
+
+.dialogue-plugin-message-title {
+	padding: 5px 10px;
+	font-weight: bold;
+	background-color: rgba(0, 0, 0, 0.3);
+}
+
+.dialogue-plugin-message-content {
+	padding: 5px 10px;
+}
+
+.dialogue-plugin-delimiter-wrapper {
+	justify-content: center;
+}
+
+.dialogue-plugin-delimiter {
+	margin: 20px 0;
+}
+
+.dialogue-plugin-delimiter-dot {
+	width: 10px;
+	height: 10px;
+	margin: 0 3px;
+	display: inline-block;
+	border-radius: 50%;
+	background-color: var(--background-secondary);
+}
+
+.dialogue-plugin-comment-wrapper {
+	justify-content: center;
+}
+
+.dialogue-plugin-comment {
+	margin: 20px 0;
+	text-align: center;
+}

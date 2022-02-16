@@ -8,9 +8,7 @@ position: relative;
 text-align: center;
 height: 15em;
 }
-.mod-right-split .progress-clock {
-margin-top:-8px;
-}
+
 .progress-clock button{
 padding: 0;
 }
