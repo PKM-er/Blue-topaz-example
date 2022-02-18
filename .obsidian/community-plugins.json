@@ -23,14 +23,17 @@
   "obsidian-dialogue-plugin",
   "obsidian-hotkeys-for-specific-files",
   "remember-cursor-position",
-  "various-complements",
   "obsidian-view-mode-by-frontmatter",
-  "obsidian-react-components",
   "obsidian-icon-folder",
   "table-editor-obsidian",
   "obsidian-memos",
   "obsidian-dynamic-highlights",
+  "obsidian-react-components",
+  "obsidian-embedded-query-control",
+  "media-extended",
   "metaedit",
-  "Enhanced-editing",
-  "cmenu-plugin"
+  "various-complements",
+  "Enhanced editing",
+  "cmenu-plugin",
+  "obsidian-regex-replace"
 ]

@@ -66,7 +66,7 @@ var __async = (__this, __arguments, generator) => {
 
 // src/main.ts
 __export(exports, {
-  default: () => CoreSearchAssistantPlugin
+  default: () => CoreSearchAssistantPlugin2
 });
 
 // src/Events.ts
@@ -83,7 +83,7 @@ var CoreSearchAssistantEvents = class extends import_obsidian.Events {
 };
 
 // src/Controller.ts
-var import_obsidian9 = __toModule(require("obsidian"));
+var obsidian = __toModule(require("obsidian"));
 
 // src/components/OptionModal.ts
 var import_obsidian2 = __toModule(require("obsidian"));
@@ -284,7 +284,998 @@ var OptionModal = class extends import_obsidian2.Modal {
 };
 
 // src/Setting.ts
+var import_obsidian7 = __toModule(require("obsidian"));
+
+// src/ui/HotkeySetter.ts
+var import_obsidian6 = __toModule(require("obsidian"));
+
+// node_modules/svelte/internal/index.mjs
+function noop() {
+}
+function run(fn) {
+  return fn();
+}
+function blank_object() {
+  return Object.create(null);
+}
+function run_all(fns) {
+  fns.forEach(run);
+}
+function is_function(thing) {
+  return typeof thing === "function";
+}
+function safe_not_equal(a, b) {
+  return a != a ? b == b : a !== b || (a && typeof a === "object" || typeof a === "function");
+}
+function is_empty(obj) {
+  return Object.keys(obj).length === 0;
+}
+var tasks = new Set();
+var is_hydrating = false;
+function start_hydrating() {
+  is_hydrating = true;
+}
+function end_hydrating() {
+  is_hydrating = false;
+}
+function append(target, node) {
+  target.appendChild(node);
+}
+function append_styles(target, style_sheet_id, styles) {
+  const append_styles_to = get_root_for_style(target);
+  if (!append_styles_to.getElementById(style_sheet_id)) {
+    const style = element("style");
+    style.id = style_sheet_id;
+    style.textContent = styles;
+    append_stylesheet(append_styles_to, style);
+  }
+}
+function get_root_for_style(node) {
+  if (!node)
+    return document;
+  const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+  if (root && root.host) {
+    return root;
+  }
+  return node.ownerDocument;
+}
+function append_stylesheet(node, style) {
+  append(node.head || node, style);
+}
+function insert(target, node, anchor) {
+  target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+  node.parentNode.removeChild(node);
+}
+function destroy_each(iterations, detaching) {
+  for (let i = 0; i < iterations.length; i += 1) {
+    if (iterations[i])
+      iterations[i].d(detaching);
+  }
+}
+function element(name) {
+  return document.createElement(name);
+}
+function text(data) {
+  return document.createTextNode(data);
+}
+function space() {
+  return text(" ");
+}
+function listen(node, event, handler, options) {
+  node.addEventListener(event, handler, options);
+  return () => node.removeEventListener(event, handler, options);
+}
+function attr(node, attribute, value) {
+  if (value == null)
+    node.removeAttribute(attribute);
+  else if (node.getAttribute(attribute) !== value)
+    node.setAttribute(attribute, value);
+}
+function children(element2) {
+  return Array.from(element2.childNodes);
+}
+function set_data(text2, data) {
+  data = "" + data;
+  if (text2.wholeText !== data)
+    text2.data = data;
+}
+function custom_event(type, detail, bubbles = false) {
+  const e = document.createEvent("CustomEvent");
+  e.initCustomEvent(type, bubbles, false, detail);
+  return e;
+}
+var managed_styles = new Map();
+var current_component;
+function set_current_component(component) {
+  current_component = component;
+}
+function get_current_component() {
+  if (!current_component)
+    throw new Error("Function called outside component initialization");
+  return current_component;
+}
+function onMount(fn) {
+  get_current_component().$$.on_mount.push(fn);
+}
+function createEventDispatcher() {
+  const component = get_current_component();
+  return (type, detail) => {
+    const callbacks = component.$$.callbacks[type];
+    if (callbacks) {
+      const event = custom_event(type, detail);
+      callbacks.slice().forEach((fn) => {
+        fn.call(component, event);
+      });
+    }
+  };
+}
+var dirty_components = [];
+var binding_callbacks = [];
+var render_callbacks = [];
+var flush_callbacks = [];
+var resolved_promise = Promise.resolve();
+var update_scheduled = false;
+function schedule_update() {
+  if (!update_scheduled) {
+    update_scheduled = true;
+    resolved_promise.then(flush);
+  }
+}
+function add_render_callback(fn) {
+  render_callbacks.push(fn);
+}
+var seen_callbacks = new Set();
+var flushidx = 0;
+function flush() {
+  const saved_component = current_component;
+  do {
+    while (flushidx < dirty_components.length) {
+      const component = dirty_components[flushidx];
+      flushidx++;
+      set_current_component(component);
+      update(component.$$);
+    }
+    set_current_component(null);
+    dirty_components.length = 0;
+    flushidx = 0;
+    while (binding_callbacks.length)
+      binding_callbacks.pop()();
+    for (let i = 0; i < render_callbacks.length; i += 1) {
+      const callback = render_callbacks[i];
+      if (!seen_callbacks.has(callback)) {
+        seen_callbacks.add(callback);
+        callback();
+      }
+    }
+    render_callbacks.length = 0;
+  } while (dirty_components.length);
+  while (flush_callbacks.length) {
+    flush_callbacks.pop()();
+  }
+  update_scheduled = false;
+  seen_callbacks.clear();
+  set_current_component(saved_component);
+}
+function update($$) {
+  if ($$.fragment !== null) {
+    $$.update();
+    run_all($$.before_update);
+    const dirty = $$.dirty;
+    $$.dirty = [-1];
+    $$.fragment && $$.fragment.p($$.ctx, dirty);
+    $$.after_update.forEach(add_render_callback);
+  }
+}
+var outroing = new Set();
+var outros;
+function group_outros() {
+  outros = {
+    r: 0,
+    c: [],
+    p: outros
+  };
+}
+function check_outros() {
+  if (!outros.r) {
+    run_all(outros.c);
+  }
+  outros = outros.p;
+}
+function transition_in(block, local) {
+  if (block && block.i) {
+    outroing.delete(block);
+    block.i(local);
+  }
+}
+function transition_out(block, local, detach2, callback) {
+  if (block && block.o) {
+    if (outroing.has(block))
+      return;
+    outroing.add(block);
+    outros.c.push(() => {
+      outroing.delete(block);
+      if (callback) {
+        if (detach2)
+          block.d(1);
+        callback();
+      }
+    });
+    block.o(local);
+  }
+}
+var globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
+var boolean_attributes = new Set([
+  "allowfullscreen",
+  "allowpaymentrequest",
+  "async",
+  "autofocus",
+  "autoplay",
+  "checked",
+  "controls",
+  "default",
+  "defer",
+  "disabled",
+  "formnovalidate",
+  "hidden",
+  "ismap",
+  "loop",
+  "multiple",
+  "muted",
+  "nomodule",
+  "novalidate",
+  "open",
+  "playsinline",
+  "readonly",
+  "required",
+  "reversed",
+  "selected"
+]);
+function create_component(block) {
+  block && block.c();
+}
+function mount_component(component, target, anchor, customElement) {
+  const { fragment, on_mount, on_destroy, after_update } = component.$$;
+  fragment && fragment.m(target, anchor);
+  if (!customElement) {
+    add_render_callback(() => {
+      const new_on_destroy = on_mount.map(run).filter(is_function);
+      if (on_destroy) {
+        on_destroy.push(...new_on_destroy);
+      } else {
+        run_all(new_on_destroy);
+      }
+      component.$$.on_mount = [];
+    });
+  }
+  after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+  const $$ = component.$$;
+  if ($$.fragment !== null) {
+    run_all($$.on_destroy);
+    $$.fragment && $$.fragment.d(detaching);
+    $$.on_destroy = $$.fragment = null;
+    $$.ctx = [];
+  }
+}
+function make_dirty(component, i) {
+  if (component.$$.dirty[0] === -1) {
+    dirty_components.push(component);
+    schedule_update();
+    component.$$.dirty.fill(0);
+  }
+  component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
+}
+function init(component, options, instance3, create_fragment3, not_equal, props, append_styles2, dirty = [-1]) {
+  const parent_component = current_component;
+  set_current_component(component);
+  const $$ = component.$$ = {
+    fragment: null,
+    ctx: null,
+    props,
+    update: noop,
+    not_equal,
+    bound: blank_object(),
+    on_mount: [],
+    on_destroy: [],
+    on_disconnect: [],
+    before_update: [],
+    after_update: [],
+    context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+    callbacks: blank_object(),
+    dirty,
+    skip_bound: false,
+    root: options.target || parent_component.$$.root
+  };
+  append_styles2 && append_styles2($$.root);
+  let ready = false;
+  $$.ctx = instance3 ? instance3(component, options.props || {}, (i, ret, ...rest) => {
+    const value = rest.length ? rest[0] : ret;
+    if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
+      if (!$$.skip_bound && $$.bound[i])
+        $$.bound[i](value);
+      if (ready)
+        make_dirty(component, i);
+    }
+    return ret;
+  }) : [];
+  $$.update();
+  ready = true;
+  run_all($$.before_update);
+  $$.fragment = create_fragment3 ? create_fragment3($$.ctx) : false;
+  if (options.target) {
+    if (options.hydrate) {
+      start_hydrating();
+      const nodes = children(options.target);
+      $$.fragment && $$.fragment.l(nodes);
+      nodes.forEach(detach);
+    } else {
+      $$.fragment && $$.fragment.c();
+    }
+    if (options.intro)
+      transition_in(component.$$.fragment);
+    mount_component(component, options.target, options.anchor, options.customElement);
+    end_hydrating();
+    flush();
+  }
+  set_current_component(parent_component);
+}
+var SvelteElement;
+if (typeof HTMLElement === "function") {
+  SvelteElement = class extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: "open" });
+    }
+    connectedCallback() {
+      const { on_mount } = this.$$;
+      this.$$.on_disconnect = on_mount.map(run).filter(is_function);
+      for (const key in this.$$.slotted) {
+        this.appendChild(this.$$.slotted[key]);
+      }
+    }
+    attributeChangedCallback(attr2, _oldValue, newValue) {
+      this[attr2] = newValue;
+    }
+    disconnectedCallback() {
+      run_all(this.$$.on_disconnect);
+    }
+    $destroy() {
+      destroy_component(this, 1);
+      this.$destroy = noop;
+    }
+    $on(type, callback) {
+      const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
+      callbacks.push(callback);
+      return () => {
+        const index = callbacks.indexOf(callback);
+        if (index !== -1)
+          callbacks.splice(index, 1);
+      };
+    }
+    $set($$props) {
+      if (this.$$set && !is_empty($$props)) {
+        this.$$.skip_bound = true;
+        this.$$set($$props);
+        this.$$.skip_bound = false;
+      }
+    }
+  };
+}
+var SvelteComponent = class {
+  $destroy() {
+    destroy_component(this, 1);
+    this.$destroy = noop;
+  }
+  $on(type, callback) {
+    const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
+    callbacks.push(callback);
+    return () => {
+      const index = callbacks.indexOf(callback);
+      if (index !== -1)
+        callbacks.splice(index, 1);
+    };
+  }
+  $set($$props) {
+    if (this.$$set && !is_empty($$props)) {
+      this.$$.skip_bound = true;
+      this.$$set($$props);
+      this.$$.skip_bound = false;
+    }
+  }
+};
+
+// src/ui/HotkeyEntry.svelte
+var import_obsidian5 = __toModule(require("obsidian"));
+
+// src/ui/HotkeySetting.svelte
+var import_obsidian4 = __toModule(require("obsidian"));
+
+// src/utils/Keymap.ts
 var import_obsidian3 = __toModule(require("obsidian"));
+var CODE_KEY_MAP = {
+  Semicolon: ";",
+  Quote: "'",
+  Comma: ",",
+  Period: ".",
+  Slash: "/",
+  BracketLeft: "[",
+  BracketRight: "]",
+  BackSlash: "\\",
+  Backquote: "`",
+  Space: " ",
+  Minus: "-",
+  Equal: "="
+};
+for (let i = 0; i < 10; i++) {
+  CODE_KEY_MAP[`Digit${i}`] = i.toString();
+}
+for (let i = 65; i < 91; i++) {
+  const char = String.fromCharCode(i);
+  const upChar = char.toUpperCase();
+  CODE_KEY_MAP[`Key${upChar}`] = char;
+}
+function convertCodeToKey(code) {
+  var _a;
+  return (_a = CODE_KEY_MAP[code]) != null ? _a : code;
+}
+function convertKeyToText(key) {
+  switch (key) {
+    case "ArrowLeft":
+      return "\u2190";
+    case "ArrowRight":
+      return "\u2192";
+    case "ArrowUp":
+      return "\u2191";
+    case "ArrowDown":
+      return "\u2193";
+    case "Mod":
+      return import_obsidian3.Platform.isMacOS ? "\u2318" : "Ctrl";
+    case "Ctrl":
+      return import_obsidian3.Platform.isMacOS ? "\u2303" : "Ctrl";
+    case "Meta":
+      return import_obsidian3.Platform.isMacOS ? "\u2318" : "Win";
+    case "Alt":
+      return import_obsidian3.Platform.isMacOS ? "\u2325" : "Alt";
+    case "Shift":
+      return import_obsidian3.Platform.isMacOS ? "\u21E7" : "Shift";
+    case " ":
+      return "Space";
+    case "Enter":
+      return "\u21B5";
+    default:
+      return key.charAt(0).toUpperCase() + key.slice(1);
+  }
+}
+function convertHotkeyToText(hotkey) {
+  const parts = [];
+  hotkey.modifiers.forEach((mod) => {
+    parts.push(convertKeyToText(mod));
+  });
+  const modifierPart = parts.join(" ");
+  const keyPart = convertKeyToText(hotkey.key);
+  return ` ${modifierPart} ${keyPart} `;
+}
+function compileModifiers(modifiers) {
+  return modifiers.map((modifier) => {
+    return modifier === "Mod" ? import_obsidian3.Platform.isMacOS ? "Meta" : "Ctrl" : modifier;
+  }).sort().join(",");
+}
+function decompileModifiers(modifiersId) {
+  const modifiers = [];
+  const parts = modifiersId.split(",");
+  parts.forEach((s) => {
+    if (import_obsidian3.Platform.isMacOS && s === "Meta" || !import_obsidian3.Platform.isMacOS && s === "Ctrl") {
+      modifiers.push("Mod");
+      return;
+    }
+    if (s === "Alt" || s === "Shift" || s === "Meta" || s === "Ctrl") {
+      modifiers.push(s);
+      return;
+    }
+  });
+  return modifiers;
+}
+function getModifiers(evt) {
+  const modifiers = [];
+  evt.ctrlKey && modifiers.push("Ctrl");
+  evt.metaKey && modifiers.push("Meta");
+  evt.altKey && modifiers.push("Alt");
+  evt.shiftKey && modifiers.push("Shift");
+  return compileModifiers(modifiers);
+}
+function getHotkey(evt) {
+  const modifiers = decompileModifiers(getModifiers(evt));
+  const key = convertCodeToKey(evt.code);
+  return {
+    modifiers,
+    key
+  };
+}
+function contain(hotkeys, hotkey) {
+  const hotkeyId = convertHotkeyToText(hotkey);
+  return hotkeys.some((key) => {
+    return hotkeyId === convertHotkeyToText(key);
+  });
+}
+
+// src/ui/HotkeySetting.svelte
+function add_css(target) {
+  append_styles(target, "svelte-2wacg2", ".icon-container.svelte-2wacg2{display:inline-block;cursor:pointer;width:16px;height:16px;border-radius:10px;line-height:16px;text-align:center}.icon-container.svelte-2wacg2:hover{background-color:var(--background-modifier-error);color:var(--text-on-accent)}.setting-hotkey.svelte-2wacg2{font-size:12px;background-color:var(--background-secondary-alt);border-radius:4px;padding:0 10px;min-height:24px;align-self:flex-end;position:relative}");
+}
+function create_fragment(ctx) {
+  let span1;
+  let t0_value = convertHotkeyToText(ctx[0]) + "";
+  let t0;
+  let t1;
+  let span0;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      span1 = element("span");
+      t0 = text(t0_value);
+      t1 = space();
+      span0 = element("span");
+      attr(span0, "class", "icon-container svelte-2wacg2");
+      attr(span1, "class", "setting-hotkey svelte-2wacg2");
+    },
+    m(target, anchor) {
+      insert(target, span1, anchor);
+      append(span1, t0);
+      append(span1, t1);
+      append(span1, span0);
+      ctx[3](span0);
+      if (!mounted) {
+        dispose = listen(span0, "click", ctx[2]);
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 1 && t0_value !== (t0_value = convertHotkeyToText(ctx2[0]) + ""))
+        set_data(t0, t0_value);
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(span1);
+      ctx[3](null);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function instance($$self, $$props, $$invalidate) {
+  let { hotkey } = $$props;
+  let iconContainerEl;
+  const dispatcher = createEventDispatcher();
+  onMount(() => {
+    if (iconContainerEl instanceof HTMLSpanElement) {
+      (0, import_obsidian4.setIcon)(iconContainerEl, "cross", 8);
+    }
+  });
+  function onIconClicked() {
+    dispatcher("removed");
+  }
+  function span0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      iconContainerEl = $$value;
+      $$invalidate(1, iconContainerEl);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("hotkey" in $$props2)
+      $$invalidate(0, hotkey = $$props2.hotkey);
+  };
+  return [hotkey, iconContainerEl, onIconClicked, span0_binding];
+}
+var HotkeySetting = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance, create_fragment, safe_not_equal, { hotkey: 0 }, add_css);
+  }
+};
+var HotkeySetting_default = HotkeySetting;
+
+// src/ui/HotkeyEntry.svelte
+function add_css2(target) {
+  append_styles(target, "svelte-1my40ui", ".item-container.svelte-1my40ui{display:flex;align-items:center;padding:18px 0 18px 0;border-top:1px solid var(--background-modifier-border)}.info-container.svelte-1my40ui{flex:1 1 auto;flex-grow:1;margin-right:20px}.control-container.svelte-1my40ui{flex:1 1 auto;text-align:right;display:flex;justify-content:flex-end;align-items:center}.hotkeys-container.svelte-1my40ui{display:flex;flex-direction:column;margin-right:6px}.setting-hotkey.svelte-1my40ui{font-size:12px;background-color:var(--interactive-accent);border-radius:4px;padding:0 10px;min-height:24px;align-self:flex-end;position:relative;color:var(--text-on-accent)}.icon-container.svelte-1my40ui{padding:4px 6px;border-radius:4px;color:var(--text-faint);cursor:pointer;height:26px}.icon-container.svelte-1my40ui:hover{background-color:var(--background-secondary-alt);color:var(--text-normal)}.icon-container.svelte-1my40ui .clickable-icon{color:unset;cursor:unset;margin:unset}.icon-container.svelte-1my40ui .setting-editor-extra-setting-button{line-height:0}.icon-container.svelte-1my40ui .clickable-icon svg{position:relative;bottom:2px}");
+}
+function get_each_context(ctx, list, i) {
+  const child_ctx = ctx.slice();
+  child_ctx[13] = list[i];
+  return child_ctx;
+}
+function create_each_block(ctx) {
+  let hotkeysetting;
+  let current;
+  function removed_handler() {
+    return ctx[8](ctx[13]);
+  }
+  hotkeysetting = new HotkeySetting_default({ props: { hotkey: ctx[13] } });
+  hotkeysetting.$on("removed", removed_handler);
+  return {
+    c() {
+      create_component(hotkeysetting.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(hotkeysetting, target, anchor);
+      current = true;
+    },
+    p(new_ctx, dirty) {
+      ctx = new_ctx;
+      const hotkeysetting_changes = {};
+      if (dirty & 16)
+        hotkeysetting_changes.hotkey = ctx[13];
+      hotkeysetting.$set(hotkeysetting_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(hotkeysetting.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(hotkeysetting.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(hotkeysetting, detaching);
+    }
+  };
+}
+function create_if_block(ctx) {
+  let div;
+  return {
+    c() {
+      div = element("div");
+      div.textContent = "Press hotkey...";
+      attr(div, "class", "setting-hotkey svelte-1my40ui");
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+    }
+  };
+}
+function create_fragment2(ctx) {
+  var _a;
+  let div3;
+  let div0;
+  let t0;
+  let t1;
+  let div2;
+  let div1;
+  let t2;
+  let t3;
+  let span0;
+  let t4;
+  let span1;
+  let current;
+  let mounted;
+  let dispose;
+  let each_value = (_a = ctx[4]) != null ? _a : [];
+  let each_blocks = [];
+  for (let i = 0; i < each_value.length; i += 1) {
+    each_blocks[i] = create_each_block(get_each_context(ctx, each_value, i));
+  }
+  const out = (i) => transition_out(each_blocks[i], 1, 1, () => {
+    each_blocks[i] = null;
+  });
+  let if_block = ctx[3] && create_if_block(ctx);
+  return {
+    c() {
+      div3 = element("div");
+      div0 = element("div");
+      t0 = text(ctx[0]);
+      t1 = space();
+      div2 = element("div");
+      div1 = element("div");
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].c();
+      }
+      t2 = space();
+      if (if_block)
+        if_block.c();
+      t3 = space();
+      span0 = element("span");
+      t4 = space();
+      span1 = element("span");
+      attr(div0, "class", "info-container svelte-1my40ui");
+      attr(div1, "class", "hotkeys-container svelte-1my40ui");
+      attr(span0, "class", "icon-container svelte-1my40ui");
+      attr(span1, "class", "icon-container svelte-1my40ui");
+      attr(div2, "class", "control-container svelte-1my40ui");
+      attr(div3, "class", "item-container svelte-1my40ui");
+    },
+    m(target, anchor) {
+      insert(target, div3, anchor);
+      append(div3, div0);
+      append(div0, t0);
+      append(div3, t1);
+      append(div3, div2);
+      append(div2, div1);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        each_blocks[i].m(div1, null);
+      }
+      append(div1, t2);
+      if (if_block)
+        if_block.m(div1, null);
+      append(div2, t3);
+      append(div2, span0);
+      ctx[9](span0);
+      append(div2, t4);
+      append(div2, span1);
+      ctx[11](span1);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          listen(span0, "click", ctx[10]),
+          listen(span1, "click", ctx[12])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      var _a2;
+      if (!current || dirty & 1)
+        set_data(t0, ctx2[0]);
+      if (dirty & 48) {
+        each_value = (_a2 = ctx2[4]) != null ? _a2 : [];
+        let i;
+        for (i = 0; i < each_value.length; i += 1) {
+          const child_ctx = get_each_context(ctx2, each_value, i);
+          if (each_blocks[i]) {
+            each_blocks[i].p(child_ctx, dirty);
+            transition_in(each_blocks[i], 1);
+          } else {
+            each_blocks[i] = create_each_block(child_ctx);
+            each_blocks[i].c();
+            transition_in(each_blocks[i], 1);
+            each_blocks[i].m(div1, t2);
+          }
+        }
+        group_outros();
+        for (i = each_value.length; i < each_blocks.length; i += 1) {
+          out(i);
+        }
+        check_outros();
+      }
+      if (ctx2[3]) {
+        if (if_block) {
+        } else {
+          if_block = create_if_block(ctx2);
+          if_block.c();
+          if_block.m(div1, null);
+        }
+      } else if (if_block) {
+        if_block.d(1);
+        if_block = null;
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      for (let i = 0; i < each_value.length; i += 1) {
+        transition_in(each_blocks[i]);
+      }
+      current = true;
+    },
+    o(local) {
+      each_blocks = each_blocks.filter(Boolean);
+      for (let i = 0; i < each_blocks.length; i += 1) {
+        transition_out(each_blocks[i]);
+      }
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div3);
+      destroy_each(each_blocks, detaching);
+      if (if_block)
+        if_block.d();
+      ctx[9](null);
+      ctx[11](null);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+var ICON_SIZE = 22;
+function instance2($$self, $$props, $$invalidate) {
+  let _hotkeys;
+  let _listening;
+  let { actionName } = $$props;
+  let { hotkeys } = $$props;
+  let { listening = false } = $$props;
+  let restoreButtonEl;
+  let addHotkeyButtonEl;
+  const dispatcher = createEventDispatcher();
+  onMount(() => {
+    if (restoreButtonEl) {
+      const component = new import_obsidian5.ExtraButtonComponent(restoreButtonEl).setTooltip("Restore default");
+      (0, import_obsidian5.setIcon)(component.extraSettingsEl, "reset", ICON_SIZE);
+    }
+    if (addHotkeyButtonEl) {
+      const component = new import_obsidian5.ExtraButtonComponent(addHotkeyButtonEl).setTooltip("Customize this action");
+      (0, import_obsidian5.setIcon)(component.extraSettingsEl, "any-key", ICON_SIZE);
+    }
+  });
+  const removed_handler = (hotkey) => {
+    dispatcher("removed", { removed: hotkey });
+  };
+  function span0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      restoreButtonEl = $$value;
+      $$invalidate(1, restoreButtonEl);
+    });
+  }
+  const click_handler = () => {
+    dispatcher("restored");
+  };
+  function span1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      addHotkeyButtonEl = $$value;
+      $$invalidate(2, addHotkeyButtonEl);
+    });
+  }
+  const click_handler_1 = () => {
+    dispatcher("start-listening-keys");
+  };
+  $$self.$$set = ($$props2) => {
+    if ("actionName" in $$props2)
+      $$invalidate(0, actionName = $$props2.actionName);
+    if ("hotkeys" in $$props2)
+      $$invalidate(6, hotkeys = $$props2.hotkeys);
+    if ("listening" in $$props2)
+      $$invalidate(7, listening = $$props2.listening);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 64) {
+      $:
+        $$invalidate(4, _hotkeys = [...hotkeys !== null && hotkeys !== void 0 ? hotkeys : []]);
+    }
+    if ($$self.$$.dirty & 128) {
+      $:
+        $$invalidate(3, _listening = listening);
+    }
+  };
+  return [
+    actionName,
+    restoreButtonEl,
+    addHotkeyButtonEl,
+    _listening,
+    _hotkeys,
+    dispatcher,
+    hotkeys,
+    listening,
+    removed_handler,
+    span0_binding,
+    click_handler,
+    span1_binding,
+    click_handler_1
+  ];
+}
+var HotkeyEntry = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance2, create_fragment2, safe_not_equal, { actionName: 0, hotkeys: 6, listening: 7 }, add_css2);
+  }
+};
+var HotkeyEntry_default = HotkeyEntry;
+
+// src/ui/HotkeySetter.ts
+var HotkeySetter = class {
+  constructor(app, containerEl, text2, currentHotkeys, defaultHotkeys) {
+    this.shouldReflect = (_) => true;
+    this.onRestored = () => {
+      const { component } = this;
+      if (!component)
+        return;
+      const renewed = [...this.defaultHotkeys];
+      if (this.shouldReflect(renewed)) {
+        this.currentHotkeys = renewed;
+        component.$set({
+          hotkeys: renewed
+        });
+      }
+    };
+    this.onRemoved = (evt) => {
+      const { component } = this;
+      if (!component)
+        return;
+      if (!(evt instanceof CustomEvent))
+        return;
+      const removed = evt.detail.removed;
+      const renewed = [...this.currentHotkeys];
+      renewed.remove(removed);
+      if (this.shouldReflect(renewed)) {
+        this.currentHotkeys = renewed;
+        component.$set({
+          hotkeys: renewed
+        });
+      }
+    };
+    this.onStartListening = () => {
+      const { component } = this;
+      if (!component)
+        return;
+      component.$set({
+        listening: true
+      });
+      this.scope = new import_obsidian6.Scope();
+      this.app.keymap.pushScope(this.scope);
+      this.scope.register(null, null, (evt) => {
+        evt.preventDefault();
+        if (evt.key === "Escape") {
+          component.$set({
+            listening: false
+          });
+          if (this.scope)
+            this.app.keymap.popScope(this.scope);
+        }
+        const hotkey = getHotkey(evt);
+        const collision = contain(this.currentHotkeys, hotkey);
+        if (collision)
+          return;
+        const renewed = [...this.currentHotkeys];
+        renewed.push(hotkey);
+        if (!this.shouldReflect(renewed, hotkey))
+          return;
+        this.currentHotkeys = renewed;
+        component.$set({
+          hotkeys: renewed
+        });
+        component.$set({
+          listening: false
+        });
+        if (this.scope)
+          this.app.keymap.popScope(this.scope);
+      });
+    };
+    this.app = app;
+    this.containerEl = containerEl;
+    this.text = text2;
+    this.currentHotkeys = [...currentHotkeys];
+    this.defaultHotkeys = [...defaultHotkeys];
+    this.component = this.attachComponent();
+  }
+  unload() {
+    this.onunload();
+  }
+  onChanged(cb) {
+    this.shouldReflect = cb;
+    return this;
+  }
+  attachComponent() {
+    const component = new HotkeyEntry_default({
+      target: this.containerEl,
+      props: {
+        actionName: this.text,
+        hotkeys: this.currentHotkeys
+      }
+    });
+    component.$on("removed", this.onRemoved);
+    component.$on("restored", this.onRestored);
+    component.$on("start-listening-keys", this.onStartListening);
+    return component;
+  }
+  onunload() {
+    var _a;
+    (_a = this.component) == null ? void 0 : _a.$destroy();
+    if (this.scope) {
+      this.app.keymap.popScope(this.scope);
+    }
+  }
+};
+
+// src/Setting.ts
 var AVAILABLE_OUTLINE_WIDTHS = [0, 3, 5, 7, 10];
 var AUTO_PREVIEW_MODE_IDS = ["none", "singleView", "cardView"];
 var autoPreviewModeInfos = {
@@ -301,17 +1292,55 @@ var DEFAULT_SETTINGS = {
   splitDirection: "horizontal",
   autoToggleSidebar: false,
   renderCardsManually: false,
-  hideIframe: false
+  hideIframe: false,
+  searchModeHotkeys: {
+    selectNext: [
+      { modifiers: ["Ctrl"], key: "n" },
+      { modifiers: [], key: "ArrowDown" }
+    ],
+    selectPrevious: [
+      { modifiers: ["Ctrl"], key: "p" },
+      { modifiers: [], key: "ArrowUp" }
+    ],
+    previewModal: [{ modifiers: ["Ctrl"], key: " " }],
+    open: [{ modifiers: ["Ctrl"], key: "Enter" }],
+    openInNewPane: [{ modifiers: ["Ctrl", "Shift"], key: "Enter" }],
+    showOptions: [{ modifiers: ["Shift"], key: " " }],
+    nextPage: [{ modifiers: ["Ctrl"], key: "]" }],
+    previousPage: [{ modifiers: ["Ctrl"], key: "[" }],
+    copyLink: [{ modifiers: ["Ctrl"], key: "i" }]
+  },
+  previewModalHotkeys: {
+    scrollDown: [
+      { modifiers: ["Ctrl"], key: "n" },
+      { modifiers: [], key: "ArrowDown" }
+    ],
+    scrollUp: [
+      { modifiers: ["Ctrl"], key: "p" },
+      { modifiers: [], key: "ArrowUp" }
+    ],
+    bigScrollDown: [{ modifiers: [], key: " " }],
+    bigScrollUp: [{ modifiers: ["Shift"], key: " " }],
+    open: [{ modifiers: ["Ctrl"], key: "Enter" }],
+    openInNewPage: [{ modifiers: ["Ctrl", "Shift"], key: "Enter" }],
+    closeModal: [{ modifiers: ["Ctrl"], key: " " }],
+    focusNext: [{ modifiers: [], key: "Tab" }],
+    focusPrevious: [{ modifiers: ["Shift"], key: "Tab" }],
+    togglePreviewMode: [{ modifiers: ["Ctrl"], key: "e" }],
+    copyLink: [{ modifiers: ["Ctrl"], key: "i" }]
+  }
 };
-var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSettingTab {
+var CoreSearchAssistantSettingTab = class extends import_obsidian7.PluginSettingTab {
   constructor(app, plugin) {
     super(app, plugin);
     this.plugin = plugin;
+    this.hotkeySetters = [];
   }
   display() {
+    this.hide();
     const { containerEl } = this;
     containerEl.empty();
-    new import_obsidian3.Setting(containerEl).setName("Keep selected item centered").addToggle((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Keep selected item centered").addToggle((component) => {
       var _a, _b;
       component.setValue((_b = (_a = this.plugin.settings) == null ? void 0 : _a.keepSelectedItemsCentered) != null ? _b : DEFAULT_SETTINGS.keepSelectedItemsCentered).onChange((value) => {
         if (!this.plugin.settings) {
@@ -321,11 +1350,11 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian3.Setting(containerEl).setName("Outline width (px)").setDesc("An outline appears when you enter search mode.").addDropdown((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Outline width (px)").setDesc("An outline appears when you enter search mode.").addDropdown((component) => {
       var _a;
       AVAILABLE_OUTLINE_WIDTHS.forEach((width) => {
-        const text = width.toString();
-        component.addOption(text, text);
+        const text2 = width.toString();
+        component.addOption(text2, text2);
       });
       component.setValue(validOutlineWidth((_a = this.plugin.settings) == null ? void 0 : _a.outlineWidth).toString()).onChange((value) => {
         const width = Number.parseInt(value);
@@ -339,7 +1368,7 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian3.Setting(containerEl).setName("Auto preview mode").addDropdown((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Auto preview mode").addDropdown((component) => {
       var _a, _b;
       component.addOptions(autoPreviewModeInfos).setValue((_b = (_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) != null ? _b : "cardView").onChange((id) => {
         if (!this.plugin.settings) {
@@ -352,7 +1381,7 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian3.Setting(containerEl).setName("Default layout of card view").addDropdown((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Default layout of card view").addDropdown((component) => {
       var _a, _b;
       AVAILABLE_CARD_LAYOUT.forEach((layout) => {
         component.addOption(layout, layout);
@@ -368,7 +1397,7 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian3.Setting(containerEl).setName("Default split direction").setDesc("This applies when you open a file in a new pane").addDropdown((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Default split direction").setDesc("This applies when you open a file in a new pane").addDropdown((component) => {
       if (!this.plugin.settings) {
         return;
       }
@@ -385,7 +1414,7 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         }
       }));
     });
-    new import_obsidian3.Setting(containerEl).setName("Toggle sidebars automatically").setDesc("Automatically collapse the other sidebar when entering the search mode and the search panel when exiting the search mode").addToggle((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Toggle sidebars automatically").setDesc("Automatically collapse the other sidebar when entering the search mode and the search panel when exiting the search mode").addToggle((component) => {
       if (!this.plugin.settings) {
         return;
       }
@@ -397,7 +1426,7 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian3.Setting(containerEl).setName("Render cards manually").setDesc("If enabled, you must hit the enter key to render cards.").addToggle((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Render cards manually").setDesc("If enabled, you must hit the enter key to render cards.").addToggle((component) => {
       if (!this.plugin.settings)
         return;
       component.setValue(this.plugin.settings.renderCardsManually).onChange((value) => {
@@ -407,7 +1436,7 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian3.Setting(containerEl).setName("Hide iframe from auto preview").setDesc("Some iframe elements prevent the keyboard operation.").addToggle((component) => {
+    new import_obsidian7.Setting(containerEl).setName("Hide iframe from auto preview").setDesc("Some iframe elements prevent the keyboard operation.").addToggle((component) => {
       if (!this.plugin.settings) {
         return;
       }
@@ -419,6 +1448,60 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian3.PluginSetting
         this.plugin.saveSettings();
       });
     });
+    containerEl.createEl("h2", { text: "Hotkeys" });
+    const { settings } = this.plugin;
+    containerEl.createEl("h3", { text: "Search mode" });
+    if (!settings)
+      return;
+    SEARCH_MODE_HOTKEY_ACTION_IDS.forEach((actionId) => {
+      const hotkeys = settings.searchModeHotkeys[actionId];
+      const defaultHotkeys = DEFAULT_SETTINGS.searchModeHotkeys[actionId];
+      const description = SEARCH_MODE_HOTKEY_ACTION_INFO[actionId];
+      const hotkeySetter = new HotkeySetter(this.app, containerEl, description, hotkeys, defaultHotkeys).onChanged((renewed, added) => {
+        if (added) {
+          if (added.modifiers.length === 0)
+            return false;
+          const collision = Object.values(settings.searchModeHotkeys).some((hotkeys2) => {
+            return contain(hotkeys2, added);
+          });
+          if (collision) {
+            new import_obsidian7.Notice("Hotkeys are conflicting!");
+            return false;
+          }
+        }
+        settings.searchModeHotkeys[actionId] = renewed;
+        this.plugin.saveSettings();
+        return true;
+      });
+      this.hotkeySetters.push(hotkeySetter);
+    });
+    containerEl.createEl("h3", { text: "Preview Modal" });
+    PREVIEW_MODAL_HOTKEY_ACTION_IDS.forEach((actionId) => {
+      const hotkeys = settings.previewModalHotkeys[actionId];
+      const defaultHotkeys = DEFAULT_SETTINGS.previewModalHotkeys[actionId];
+      const description = PREVIEW_MODAL_HOTKEY_ACTION_INFO[actionId];
+      DEFAULT_SETTINGS.previewModalHotkeys[actionId];
+      const hotkeySetter = new HotkeySetter(this.app, containerEl, description, hotkeys, defaultHotkeys).onChanged((renewed, added) => {
+        if (added) {
+          const collision = Object.values(settings.previewModalHotkeys).some((hotkeys2) => {
+            return contain(hotkeys2, added);
+          });
+          if (collision) {
+            new import_obsidian7.Notice("Hotkeys are conflicting!");
+            return false;
+          }
+        }
+        settings.previewModalHotkeys[actionId] = renewed;
+        this.plugin.saveSettings();
+        return true;
+      });
+      this.hotkeySetters.push(hotkeySetter);
+    });
+  }
+  hide() {
+    super.hide();
+    this.hotkeySetters.forEach((s) => s.unload());
+    this.hotkeySetters = [];
   }
 };
 function validOutlineWidth(width) {
@@ -437,12 +1520,60 @@ function parseCardLayout(layout) {
   const [row, column] = layout.split("x");
   return [Number.parseInt(row != null ? row : "0"), Number.parseInt(column != null ? column : "0")];
 }
+var SEARCH_MODE_HOTKEY_ACTION_IDS = [
+  "selectNext",
+  "selectPrevious",
+  "previewModal",
+  "open",
+  "openInNewPane",
+  "showOptions",
+  "nextPage",
+  "previousPage",
+  "copyLink"
+];
+var SEARCH_MODE_HOTKEY_ACTION_INFO = {
+  selectNext: "Select the next item",
+  selectPrevious: "Select the previous item",
+  previewModal: "Preview the selected item",
+  open: "Open the selected item",
+  openInNewPane: "Open the selected item in a new pane",
+  showOptions: "Set search options",
+  nextPage: "Move to the next set of cards",
+  previousPage: "Move to the previous set of cards",
+  copyLink: "Copy wiki link of the selected item"
+};
+var PREVIEW_MODAL_HOTKEY_ACTION_IDS = [
+  "scrollDown",
+  "scrollUp",
+  "bigScrollDown",
+  "bigScrollUp",
+  "open",
+  "openInNewPage",
+  "closeModal",
+  "focusNext",
+  "focusPrevious",
+  "togglePreviewMode",
+  "copyLink"
+];
+var PREVIEW_MODAL_HOTKEY_ACTION_INFO = {
+  scrollDown: "Scroll down a bit",
+  scrollUp: "Scroll up a bit",
+  bigScrollDown: "Scroll down a lot",
+  bigScrollUp: "Scroll up a lot",
+  open: "Open the selected item",
+  openInNewPage: "Open the selected item in a new pane",
+  closeModal: "Close the modal",
+  focusNext: "Focus on the next match",
+  focusPrevious: "Focus on the previous match",
+  togglePreviewMode: "Toggle preview mode",
+  copyLink: "Copy wiki link of the selected item"
+};
 
 // src/components/PreviewModal.ts
-var import_obsidian6 = __toModule(require("obsidian"));
+var import_obsidian14 = __toModule(require("obsidian"));
 
 // src/interfaces/ViewGenerator.ts
-var import_obsidian4 = __toModule(require("obsidian"));
+var import_obsidian8 = __toModule(require("obsidian"));
 
 // src/utils/Util.ts
 function delay(millisecond) {
@@ -474,13 +1605,70 @@ function retry(cb, interval, trials, check = (got) => got !== void 0) {
     return void 0;
   });
 }
+function shallowClone(obj) {
+  return Object.assign({}, obj);
+}
+function deepClone(obj) {
+  if (obj === null)
+    return obj;
+  if (typeof obj !== "object")
+    return obj;
+  if (obj instanceof Array) {
+    const clone2 = new Array(obj.length);
+    obj.forEach((value, id) => {
+      clone2[id] = deepClone(value);
+    });
+    return clone2;
+  }
+  const clone = shallowClone(obj);
+  for (const key in clone) {
+    const value = clone[key];
+    clone[key] = deepClone(value);
+  }
+  return clone;
+}
+function deepMerge(a, b) {
+  if (b === void 0) {
+    return deepClone(a);
+  } else if (a === void 0) {
+    return deepClone(b);
+  }
+  if (typeof a !== typeof b) {
+    throw new Error(`failed to deepMerge ${a} and ${b}`);
+  }
+  if (typeof b !== "object")
+    return deepClone(b);
+  if (b === null) {
+    return deepClone(a);
+  } else if (a === null) {
+    return deepClone(b);
+  }
+  if (b instanceof Array) {
+    if (a instanceof Array) {
+      return deepClone(b);
+    } else {
+      throw new Error(`failed to deepMerge ${a} and ${b}`);
+    }
+  } else if (a instanceof Array) {
+    throw new Error(`failed to deepMerge ${a} and ${b}`);
+  }
+  const clone = shallowClone(a);
+  for (const key in a) {
+    clone[key] = deepMerge(a[key], b[key]);
+  }
+  for (const key in b) {
+    clone[key] = deepMerge(a[key], b[key]);
+  }
+  return clone;
+}
 
 // src/interfaces/ViewGenerator.ts
 var ViewGenerator = class {
   constructor(app, containerEl, file) {
+    this.extensions = [];
     this.app = app;
     this.containerEl = containerEl;
-    this.leaf = new import_obsidian4.WorkspaceLeaf(this.app);
+    this.leaf = new import_obsidian8.WorkspaceLeaf(this.app);
     this.file = file;
     this.containerEl.appendChild(this.leaf.containerEl);
   }
@@ -495,54 +1683,40 @@ var ViewGenerator = class {
       this.onunload();
     });
   }
-  togglePreview() {
-    return __async(this, null, function* () {
-      yield this.setViewMode("preview");
-    });
-  }
-  toggleSource() {
-    return __async(this, null, function* () {
-      yield this.setViewMode("source");
-    });
-  }
   toggleViewMode() {
     return __async(this, null, function* () {
-      const view = this.leaf.view;
-      if (!(view instanceof import_obsidian4.MarkdownView)) {
-        throw "[ERROR in Core Search Assistant] failed to toggle view mode: view is not an instance of MarkdownView";
-      }
-      if (view.getMode() === "preview") {
-        yield this.toggleSource();
-      } else {
-        yield this.togglePreview();
+      for (const ext of this.extensions) {
+        if (!(yield ext.isMine(this.leaf)))
+          continue;
+        yield ext.toggleViewMode(this.leaf);
+        return;
       }
     });
   }
   onload(mode) {
     return __async(this, null, function* () {
-      yield this.openFile(mode != null ? mode : "preview");
+      yield this.openFile();
+      for (const ext of this.extensions) {
+        if (!(yield ext.isMine(this.leaf)))
+          continue;
+        yield ext.setViewMode(this.leaf, mode != null ? mode : "preview");
+        return;
+      }
     });
   }
   onunload() {
     this.leaf.detach();
   }
-  openFile(mode) {
+  openFile() {
     return __async(this, null, function* () {
       const { leaf, file } = this;
-      yield leaf.openFile(file, { state: { mode } });
-    });
-  }
-  setViewMode(mode) {
-    return __async(this, null, function* () {
-      yield this.leaf.view.setState(__spreadProps(__spreadValues({}, this.leaf.view.getState()), {
-        mode
-      }), {});
+      yield leaf.openFile(file);
     });
   }
   highlightMatches(matches) {
     const view = this.leaf.view;
-    if (!(view instanceof import_obsidian4.MarkdownView)) {
-      throw "[ERROR in Core Search Assistant] failed to highlight matches: view is not an instance of MarkdownView";
+    if (!(view instanceof import_obsidian8.MarkdownView)) {
+      return;
     }
     const editor = view.editor;
     const ranges = [];
@@ -558,8 +1732,8 @@ var ViewGenerator = class {
   scrollIntoView(match, center) {
     return __async(this, null, function* () {
       const view = this.leaf.view;
-      if (!(view instanceof import_obsidian4.MarkdownView)) {
-        throw "[ERROR in Core Search Assistant] failed to scroll into view: view is not an instance of MarkdownView";
+      if (!(view instanceof import_obsidian8.MarkdownView)) {
+        return;
       }
       if (view.getMode() !== "source") {
         return;
@@ -582,8 +1756,8 @@ var ViewGenerator = class {
   focusOn(match, center) {
     return __async(this, null, function* () {
       const view = this.leaf.view;
-      if (!(view instanceof import_obsidian4.MarkdownView)) {
-        throw "[ERROR in Core Search Assistant] failed to focusOn: view is not an instance of MarkdownView";
+      if (!(view instanceof import_obsidian8.MarkdownView)) {
+        return;
       }
       if (view.getMode() !== "source") {
         return;
@@ -598,15 +1772,16 @@ var ViewGenerator = class {
       editor.addHighlights([range], "focus-search-match");
     });
   }
-  oppositeMode(mode) {
-    return mode === "preview" ? "source" : "preview";
+  registerExtension(ext) {
+    this.extensions.push(ext);
+    return this;
   }
 };
 
 // src/components/WorkspacePreview.ts
-var import_obsidian5 = __toModule(require("obsidian"));
+var import_obsidian9 = __toModule(require("obsidian"));
 var INTERVAL_MILLISECOND_TO_BE_DETACHED = 1e3;
-var WorkspacePreview = class extends import_obsidian5.Component {
+var WorkspacePreview = class extends import_obsidian9.Component {
   constructor(app, plugin) {
     super();
     this.app = app;
@@ -657,10 +1832,207 @@ var WorkspacePreview = class extends import_obsidian5.Component {
   }
 };
 
+// src/interfaces/viewGeneratorExtensions/Kanban.ts
+var import_obsidian10 = __toModule(require("obsidian"));
+var kanbanPluginId = "obsidian-kanban";
+var frontMatterKey = "kanban-plugin";
+var kanbanViewType = "kanban";
+var KanbanViewGeneratorExtension = class {
+  constructor(app) {
+    this.app = app;
+    const kanban = this.app.plugins.plugins[kanbanPluginId];
+    if (IsKanbanPlugin(kanban)) {
+      this.kanban = kanban;
+    }
+    if (kanban === void 0) {
+      console.log("[ERROR in Core Search Assistant] failed to fetch kanban plugin");
+      this.kanban = void 0;
+    }
+  }
+  isMine(leaf) {
+    const { view } = leaf;
+    if (view.getViewType() == kanbanViewType)
+      return true;
+    if (!(view instanceof import_obsidian10.TextFileView))
+      return false;
+    const fileCache = this.app.metadataCache.getFileCache(view.file);
+    const fileIsKanban = !!(fileCache == null ? void 0 : fileCache.frontmatter) && !!fileCache.frontmatter[frontMatterKey];
+    return fileIsKanban;
+  }
+  setViewMode(leaf, mode) {
+    return __async(this, null, function* () {
+      const { kanban } = this;
+      if (!kanban)
+        return;
+      if (mode === "source") {
+        kanban.kanbanFileModes[leaf.id] = "markdown";
+        yield kanban.setMarkdownView(leaf);
+        yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
+          mode: "source"
+        }), {});
+      } else {
+        kanban.kanbanFileModes[leaf.id] = kanbanViewType;
+        yield kanban.setKanbanView(leaf);
+      }
+    });
+  }
+  toggleViewMode(leaf) {
+    return __async(this, null, function* () {
+      const { kanban } = this;
+      if (!kanban)
+        return;
+      const mode = kanban.kanbanFileModes[leaf.id];
+      yield this.setViewMode(leaf, mode === "markdown" ? "preview" : "source");
+    });
+  }
+};
+function IsKanbanPlugin(plugin) {
+  if (!(plugin instanceof import_obsidian10.Plugin))
+    return false;
+  const { kanbanFileModes, setKanbanView, setMarkdownView } = plugin;
+  if (typeof kanbanFileModes !== "object")
+    return false;
+  if (typeof setMarkdownView !== "function")
+    return false;
+  if (typeof setKanbanView !== "function")
+    return false;
+  return true;
+}
+
+// src/interfaces/viewGeneratorExtensions/Markdown.ts
+var import_obsidian11 = __toModule(require("obsidian"));
+var MarkdownViewGeneratorExtension = class {
+  isMine(leaf) {
+    return leaf.view instanceof import_obsidian11.MarkdownView;
+  }
+  setViewMode(leaf, mode) {
+    return __async(this, null, function* () {
+      yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
+        mode
+      }), {});
+    });
+  }
+  toggleViewMode(leaf) {
+    return __async(this, null, function* () {
+      if (!(leaf.view instanceof import_obsidian11.MarkdownView))
+        return;
+      yield this.setViewMode(leaf, leaf.view.getMode() === "preview" ? "source" : "preview");
+    });
+  }
+};
+
+// src/interfaces/viewGeneratorExtensions/NonMarkdown.ts
+var import_obsidian12 = __toModule(require("obsidian"));
+var NON_MARKDOWN_FILE_TYPES = ["image", "audio", "pdf", "video"];
+var NonMarkdownViewGeneratorExtension = class {
+  isMine(leaf) {
+    if (!(leaf.view instanceof import_obsidian12.FileView))
+      return false;
+    return NON_MARKDOWN_FILE_TYPES.includes(leaf.view.getViewType());
+  }
+  setViewMode(_leaf, _mode) {
+    return;
+  }
+  toggleViewMode(_) {
+    return;
+  }
+};
+
+// src/interfaces/viewGeneratorExtensions/Excalidraw.ts
+var import_obsidian13 = __toModule(require("obsidian"));
+var excalidrawPluginId = "obsidian-excalidraw-plugin";
+var excalidrawViewType = "excalidraw";
+var ExcalidrawViewGeneratorExtension = class {
+  constructor(app) {
+    this.app = app;
+    const excalidraw = this.app.plugins.plugins[excalidrawPluginId];
+    if (!isExcalidrawPlugin(excalidraw)) {
+      this.excalidraw = void 0;
+    } else {
+      this.excalidraw = excalidraw;
+    }
+  }
+  isMine(leaf) {
+    return leaf.view.getViewType() === excalidrawViewType;
+  }
+  setViewMode(leaf, mode) {
+    return __async(this, null, function* () {
+      const { excalidraw } = this;
+      if (!excalidraw)
+        return;
+      excalidraw.excalidrawFileModes[leaf.id] = "markdown";
+      yield excalidraw.setMarkdownView(leaf);
+      if (!(leaf.view instanceof import_obsidian13.MarkdownView))
+        return;
+      yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
+        mode
+      }), {});
+    });
+  }
+  toggleViewMode(leaf) {
+    return __async(this, null, function* () {
+      const { excalidraw } = this;
+      if (!excalidraw)
+        return;
+      excalidraw.excalidrawFileModes[leaf.id] = "markdown";
+      yield excalidraw.setMarkdownView(leaf);
+      if (!(leaf.view instanceof import_obsidian13.MarkdownView))
+        return;
+      const mode = leaf.view.getMode();
+      yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
+        mode: mode === "preview" ? "source" : "preview"
+      }), {});
+    });
+  }
+};
+function isExcalidrawPlugin(plugin) {
+  if (!(plugin instanceof import_obsidian13.Plugin))
+    return false;
+  const { excalidrawFileModes, setMarkdownView } = plugin;
+  if (typeof excalidrawFileModes !== "object")
+    return false;
+  if (typeof setMarkdownView !== "function")
+    return false;
+  return true;
+}
+
+// src/utils/Link.ts
+function generateInternalLinkFrom(metadataCache, file) {
+  const link = metadataCache.fileToLinktext(file, "", true);
+  const text2 = getDisplayText(metadataCache, file);
+  return text2 !== void 0 ? `[[${link} | ${text2}]]` : `[[${link}]]`;
+}
+function getDisplayText(metadataCache, file) {
+  const cache = metadataCache.getFileCache(file);
+  if (!cache)
+    return void 0;
+  const title = getTitle(cache.frontmatter);
+  if (title !== void 0) {
+    return title;
+  }
+  const h1 = getFirstH1(cache.headings);
+  if (h1 !== void 0) {
+    return h1;
+  }
+  return void 0;
+}
+function getTitle(frontmatter) {
+  return frontmatter == null ? void 0 : frontmatter["title"];
+}
+function getFirstH1(headings) {
+  if (!headings)
+    return void 0;
+  for (const heading of headings) {
+    if (heading.level !== 1)
+      continue;
+    return heading.heading;
+  }
+  return void 0;
+}
+
 // src/components/PreviewModal.ts
 var SCROLL_AMOUNT = 70;
-var TOGGLE_PREVIEW_COMMAND_ID = "markdown:toggle-preview";
-var PreviewModal = class extends import_obsidian6.Modal {
+var PreviewModal = class extends import_obsidian14.Modal {
   constructor(app, plugin, modeScope, item) {
     super(app);
     this.plugin = plugin;
@@ -670,69 +2042,94 @@ var PreviewModal = class extends import_obsidian6.Modal {
   }
   onOpen() {
     return __async(this, null, function* () {
-      var _a, _b;
+      var _a;
       yield this.renderView();
-      (_b = this.renderer) == null ? void 0 : _b.highlightMatches((_a = this.item.result.content) != null ? _a : []);
+      this.highlightMatches();
       this.modeScope.push();
-      this.scope.register(["Ctrl"], " ", () => {
-        this.shouldRestoreSelection = true;
-        this.close();
+      const hotkeyMap = (_a = this.plugin.settings) == null ? void 0 : _a.previewModalHotkeys;
+      if (!hotkeyMap)
+        return;
+      hotkeyMap.closeModal.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          this.shouldRestoreSelection = true;
+          this.close();
+        });
       });
-      this.scope.register(["Ctrl"], "Enter", () => {
-        var _a2;
-        this.openAndFocus(this.currentFocus);
-        (_a2 = this.plugin.controller) == null ? void 0 : _a2.exit();
-        this.shouldRestoreSelection = false;
-        this.close();
+      hotkeyMap.open.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          var _a2;
+          this.openAndFocus(this.currentFocus);
+          (_a2 = this.plugin.controller) == null ? void 0 : _a2.exit();
+          this.shouldRestoreSelection = false;
+          this.close();
+        });
       });
-      this.scope.register(["Ctrl", "Shift"], "Enter", () => {
-        var _a2, _b2;
-        this.openAndFocus(this.currentFocus, (_a2 = this.plugin.settings) == null ? void 0 : _a2.splitDirection);
-        (_b2 = this.plugin.controller) == null ? void 0 : _b2.exit();
-        this.shouldRestoreSelection = false;
-        this.close();
+      hotkeyMap.openInNewPage.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          var _a2, _b;
+          this.openAndFocus(this.currentFocus, (_a2 = this.plugin.settings) == null ? void 0 : _a2.splitDirection);
+          (_b = this.plugin.controller) == null ? void 0 : _b.exit();
+          this.shouldRestoreSelection = false;
+          this.close();
+        });
       });
-      this.scope.register([], " ", () => {
-        this.scroll("down");
+      hotkeyMap.bigScrollDown.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          this.scroll("down");
+        });
       });
-      this.scope.register(["Shift"], " ", () => {
-        this.scroll("up");
+      hotkeyMap.bigScrollUp.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          this.scroll("up");
+        });
       });
-      this.scope.register([], "ArrowDown", () => {
-        this.scroll("down", SCROLL_AMOUNT);
+      hotkeyMap.scrollDown.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          this.scroll("down", SCROLL_AMOUNT);
+        });
       });
-      this.scope.register(["Ctrl"], "n", () => {
-        this.scroll("down", SCROLL_AMOUNT);
+      hotkeyMap.scrollUp.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          this.scroll("up", SCROLL_AMOUNT);
+        });
       });
-      this.scope.register([], "ArrowUp", () => {
-        this.scroll("up", SCROLL_AMOUNT);
-      });
-      this.scope.register(["Ctrl"], "p", () => {
-        this.scroll("up", SCROLL_AMOUNT);
-      });
-      this.scope.register([], "Tab", (evt) => {
-        evt.preventDefault();
-        const numMatches = this.countMatches();
-        if (numMatches === void 0 || numMatches === 0) {
-          return;
-        }
-        this.currentFocus = cyclicId(++this.currentFocus, numMatches);
-        this.focusOn(this.currentFocus, true);
-      });
-      this.scope.register(["Shift"], "Tab", (evt) => {
-        evt.preventDefault();
-        const numMatches = this.countMatches();
-        if (numMatches === void 0 || numMatches === 0) {
-          return;
-        }
-        this.currentFocus = cyclicId(--this.currentFocus, numMatches);
-        this.focusOn(this.currentFocus, true);
-      });
-      const togglePreviewHotkeys = this.getHotkeys(TOGGLE_PREVIEW_COMMAND_ID);
-      togglePreviewHotkeys.forEach((hotkey) => {
+      hotkeyMap.focusNext.forEach((hotkey) => {
         this.scope.register(hotkey.modifiers, hotkey.key, (evt) => {
           evt.preventDefault();
-          this.toggleViewMode();
+          const numMatches = this.countMatches();
+          if (numMatches === void 0 || numMatches === 0) {
+            return;
+          }
+          this.currentFocus = cyclicId(++this.currentFocus, numMatches);
+          this.focusOn(this.currentFocus, true);
+        });
+      });
+      hotkeyMap.focusPrevious.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+          evt.preventDefault();
+          const numMatches = this.countMatches();
+          if (numMatches === void 0 || numMatches === 0) {
+            return;
+          }
+          this.currentFocus = cyclicId(--this.currentFocus, numMatches);
+          this.focusOn(this.currentFocus, true);
+        });
+      });
+      hotkeyMap.togglePreviewMode.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+          (() => __async(this, null, function* () {
+            evt.preventDefault();
+            yield this.toggleViewMode();
+            this.highlightMatches();
+          }))();
+        });
+      });
+      hotkeyMap.copyLink.forEach((hotkey) => {
+        this.scope.register(hotkey.modifiers, hotkey.key, () => {
+          const { file } = this.item;
+          const internalLink = generateInternalLinkFrom(this.app.metadataCache, file);
+          navigator.clipboard.writeText(internalLink);
+          new import_obsidian14.Notice("Copy wiki link!");
         });
       });
     });
@@ -764,7 +2161,7 @@ var PreviewModal = class extends import_obsidian6.Modal {
       } else {
         containerEl.addClass("core-search-assistant_preview-modal-container");
       }
-      this.renderer = yield new ViewGenerator(this.app, contentEl, item.file).load("source");
+      this.renderer = yield new ViewGenerator(this.app, contentEl, item.file).registerExtension(new KanbanViewGeneratorExtension(this.app)).registerExtension(new ExcalidrawViewGeneratorExtension(this.app)).registerExtension(new MarkdownViewGeneratorExtension()).registerExtension(new NonMarkdownViewGeneratorExtension()).load("source");
       contentEl.show();
     });
   }
@@ -773,8 +2170,14 @@ var PreviewModal = class extends import_obsidian6.Modal {
     return (_a = this.item.result.content) == null ? void 0 : _a.length;
   }
   toggleViewMode() {
-    var _a;
-    (_a = this.renderer) == null ? void 0 : _a.toggleViewMode();
+    return __async(this, null, function* () {
+      var _a;
+      yield (_a = this.renderer) == null ? void 0 : _a.toggleViewMode();
+    });
+  }
+  highlightMatches() {
+    var _a, _b;
+    (_b = this.renderer) == null ? void 0 : _b.highlightMatches((_a = this.item.result.content) != null ? _a : []);
   }
   scroll(direction, px) {
     const { containerEl, contentEl } = this;
@@ -809,10 +2212,10 @@ var PreviewModal = class extends import_obsidian6.Modal {
         return;
       }
       const { view } = leaf;
-      if (!(view instanceof import_obsidian6.MarkdownView)) {
+      if (!(view instanceof import_obsidian14.MarkdownView)) {
         throw "[ERROR in Core Search Assistant] failed to openAndFocus: view is not an instance of MarkdownView";
       }
-      const editor = view.modes.source.editor;
+      const editor = view.editor;
       const range = {
         from: editor.offsetToPos(match[0]),
         to: editor.offsetToPos(match[1])
@@ -828,26 +2231,14 @@ var PreviewModal = class extends import_obsidian6.Modal {
       editor.setCursor(range.from);
     });
   }
-  getHotkeys(commandId) {
-    const { hotkeyManager } = this.app;
-    const customKeys = hotkeyManager.customKeys[commandId];
-    if (customKeys !== void 0 && customKeys.length !== 0) {
-      return customKeys;
-    }
-    const defaultKeys = hotkeyManager.defaultKeys[commandId];
-    if (defaultKeys !== void 0 && defaultKeys.length !== 0) {
-      return defaultKeys;
-    }
-    throw `getHotkey failed: command id ${commandId} is invalid`;
-  }
 };
 function cyclicId(id, total) {
   return (id % total + total) % total;
 }
 
 // src/components/Outline.ts
-var import_obsidian7 = __toModule(require("obsidian"));
-var Outline = class extends import_obsidian7.Component {
+var import_obsidian15 = __toModule(require("obsidian"));
+var Outline = class extends import_obsidian15.Component {
   constructor(lineWidth) {
     super();
     this.outlineEl = document.body.createEl("div", {
@@ -869,8 +2260,8 @@ var Outline = class extends import_obsidian7.Component {
 };
 
 // src/components/CardView.ts
-var import_obsidian8 = __toModule(require("obsidian"));
-var CardView = class extends import_obsidian8.Component {
+var import_obsidian16 = __toModule(require("obsidian"));
+var CardView = class extends import_obsidian16.Component {
   constructor(app, plugin) {
     super();
     this.app = app;
@@ -1013,8 +2404,7 @@ var CardView = class extends import_obsidian8.Component {
       const previewContainerEl = this.createPreviewContainerEl(item, id);
       previewContainerEl.empty();
       if (supportedFileTypes.includes(item.file.extension)) {
-        const renderer = yield new ViewGenerator(this.app, previewContainerEl, item.file).load("preview");
-        renderer.togglePreview();
+        const renderer = yield new ViewGenerator(this.app, previewContainerEl, item.file).registerExtension(new KanbanViewGeneratorExtension(this.app)).registerExtension(new ExcalidrawViewGeneratorExtension(this.app)).registerExtension(new MarkdownViewGeneratorExtension()).registerExtension(new NonMarkdownViewGeneratorExtension()).load("preview");
         this.renderers.push(renderer);
       } else {
         previewContainerEl.createDiv({
@@ -1139,11 +2529,12 @@ var ModeScope = class {
 };
 
 // src/Controller.ts
+var import_obsidian17 = __toModule(require("obsidian"));
 var DELAY_TO_RELOAD_IN_MILLISECOND = 1e3;
 var RETRY_INTERVAL = 1;
 var RETRY_TRIALS = 1e3;
 var DELAY_TO_RENDER_CARD_VIEW_ON_ENTRY_IN_MILLISECOND = 100;
-var Controller = class extends import_obsidian9.Component {
+var Controller = class extends obsidian.Component {
   constructor(app, plugin, events, searchInterface) {
     super();
     this.app = app;
@@ -1374,9 +2765,7 @@ var Controller = class extends import_obsidian9.Component {
     if (!item) {
       return;
     }
-    if (item.file.extension === "md") {
-      new PreviewModal(this.app, this.plugin, this.modeScope, item).open();
-    }
+    new PreviewModal(this.app, this.plugin, this.modeScope, item).open();
   }
   shouldTransitNextPageInCardView() {
     if (!this.plugin.settings) {
@@ -1537,66 +2926,89 @@ var Controller = class extends import_obsidian9.Component {
     }));
   }
   setHotkeys() {
-    const scope = new import_obsidian9.Scope();
+    var _a;
+    const hotkeyMap = (_a = this.plugin.settings) == null ? void 0 : _a.searchModeHotkeys;
+    if (!hotkeyMap)
+      return;
+    const scope = new obsidian.Scope();
     this.app.keymap.pushScope(scope);
-    scope.register(["Ctrl"], "N", (evt) => {
-      evt.preventDefault();
-      this.navigateForward();
-      this.showWorkspacePreview();
+    hotkeyMap.selectNext.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+        evt.preventDefault();
+        this.navigateForward();
+        this.showWorkspacePreview();
+      });
     });
-    scope.register([], "ArrowDown", (evt) => {
-      evt.preventDefault();
-      this.navigateForward();
-      this.showWorkspacePreview();
+    hotkeyMap.selectPrevious.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+        evt.preventDefault();
+        this.navigateBack();
+        this.showWorkspacePreview();
+      });
     });
-    scope.register(["Ctrl"], "P", (evt) => {
-      evt.preventDefault();
-      this.navigateBack();
-      this.showWorkspacePreview();
+    hotkeyMap.open.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+        evt.preventDefault();
+        this.open();
+        this.exit();
+      });
     });
-    scope.register([], "ArrowUp", (evt) => {
-      evt.preventDefault();
-      this.navigateBack();
-      this.showWorkspacePreview();
+    hotkeyMap.openInNewPane.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+        var _a2;
+        evt.preventDefault();
+        this.open((_a2 = this.plugin.settings) == null ? void 0 : _a2.splitDirection);
+        this.exit();
+      });
     });
-    scope.register(["Ctrl"], "Enter", (evt) => {
-      evt.preventDefault();
-      this.open();
-      this.exit();
+    hotkeyMap.previewModal.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, () => {
+        if (this.app.vault.config.legacyEditor) {
+          return;
+        }
+        this.openPreviewModal();
+      });
     });
-    scope.register(["Ctrl", "Shift"], "Enter", (evt) => {
-      var _a;
-      evt.preventDefault();
-      this.open((_a = this.plugin.settings) == null ? void 0 : _a.splitDirection);
-      this.exit();
+    hotkeyMap.showOptions.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, () => {
+        new OptionModal(this.app, this.plugin, this.modeScope).open();
+      });
     });
-    scope.register(["Ctrl"], " ", () => {
-      if (this.app.vault.config.legacyEditor) {
-        return;
-      }
-      this.openPreviewModal();
+    hotkeyMap.nextPage.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, () => {
+        var _a2;
+        if (((_a2 = this.plugin.settings) == null ? void 0 : _a2.autoPreviewMode) === "cardView") {
+          this.moveToNextPage();
+        }
+      });
     });
-    scope.register(["Shift"], " ", () => {
-      new OptionModal(this.app, this.plugin, this.modeScope).open();
+    hotkeyMap.previousPage.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, () => {
+        var _a2;
+        if (((_a2 = this.plugin.settings) == null ? void 0 : _a2.autoPreviewMode) === "cardView") {
+          this.moveToPreviousPage();
+        }
+      });
     });
-    scope.register(["Ctrl"], "]", () => {
-      var _a;
-      if (((_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) === "cardView") {
-        this.moveToNextPage();
-      }
-    });
-    scope.register(["Ctrl"], "[", () => {
-      var _a;
-      if (((_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) === "cardView") {
-        this.moveToPreviousPage();
-      }
+    hotkeyMap.copyLink.forEach((hotkey) => {
+      scope.register(hotkey.modifiers, hotkey.key, () => {
+        var _a2;
+        const item = this.searchInterface.getResultItemAt((_a2 = this.currentFocusId) != null ? _a2 : 0);
+        if (!item)
+          return;
+        const { file } = item;
+        const internalLink = generateInternalLinkFrom(this.app.metadataCache, file);
+        navigator.clipboard.writeText(internalLink);
+        new import_obsidian17.Notice("Copy wiki link!");
+      });
     });
     scope.register([], "Escape", () => {
       this.exit();
     });
     scope.register([], "Enter", (evt) => {
-      var _a;
-      const shouldRenderCardsManually = ((_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) === "cardView" && this.plugin.settings.renderCardsManually;
+      var _a2;
+      setTimeout(this.focusOnInput, 100);
+      const shouldRenderCardsManually = ((_a2 = this.plugin.settings) == null ? void 0 : _a2.autoPreviewMode) === "cardView" && this.plugin.settings.renderCardsManually;
       if (shouldRenderCardsManually) {
         evt.preventDefault();
         this.reset();
@@ -1640,6 +3052,18 @@ var Controller = class extends import_obsidian9.Component {
       this.countSearchItemDetected++;
     };
   }
+  get focusOnInput() {
+    return () => __async(this, null, function* () {
+      const inputEl = yield retry(() => {
+        var _a;
+        return (_a = this.plugin.searchInterface) == null ? void 0 : _a.searchInputEl;
+      }, RETRY_INTERVAL, RETRY_TRIALS);
+      if (inputEl === void 0) {
+        throw "[ERROR in Core Search Assistant] failed to find the search input form.";
+      }
+      inputEl.focus();
+    });
+  }
   get onSortOrderChanged() {
     return () => {
       var _a;
@@ -1669,10 +3093,10 @@ var Controller = class extends import_obsidian9.Component {
 };
 
 // src/interfaces/SearchComponentInterface.ts
-var import_obsidian11 = __toModule(require("obsidian"));
+var import_obsidian19 = __toModule(require("obsidian"));
 
 // src/types/Guards.ts
-var import_obsidian10 = __toModule(require("obsidian"));
+var import_obsidian18 = __toModule(require("obsidian"));
 var SORT_ORDER_IN_SEARCH = [
   "alphabeticalReverse",
   "alphabetical",
@@ -1746,7 +3170,7 @@ function isSearchDom(obj) {
   if (obj === null) {
     return false;
   }
-  const { extraContext, collapseAll, sortOrder, children, childrenEl } = obj;
+  const { extraContext, collapseAll, sortOrder, children: children2, childrenEl } = obj;
   if (typeof extraContext !== "boolean") {
     return false;
   }
@@ -1759,13 +3183,13 @@ function isSearchDom(obj) {
   if (!SORT_ORDER_IN_SEARCH.includes(sortOrder)) {
     return false;
   }
-  if (typeof children !== "object") {
+  if (typeof children2 !== "object") {
     return false;
   }
-  if (!(children instanceof Array)) {
+  if (!(children2 instanceof Array)) {
     return false;
   }
-  for (const child of children) {
+  for (const child of children2) {
     if (!isSearchResultItem(child)) {
       return false;
     }
@@ -1783,7 +3207,7 @@ function isSearchResultItem(obj) {
     return false;
   }
   const { file, containerEl } = obj;
-  if (!(file instanceof import_obsidian10.TFile)) {
+  if (!(file instanceof import_obsidian18.TFile)) {
     return false;
   }
   if (!(containerEl instanceof HTMLElement)) {
@@ -1871,7 +3295,7 @@ var LinkedList = class {
 };
 
 // src/interfaces/SearchComponentInterface.ts
-var SearchComponentInterface = class extends import_obsidian11.Component {
+var SearchComponentInterface = class extends import_obsidian19.Component {
   constructor(app, plugin, events) {
     super();
     this.observationConfig = {
@@ -2047,7 +3471,7 @@ var SearchComponentInterface = class extends import_obsidian11.Component {
       return void 0;
     }
     const parent = leaf.getRoot();
-    if (parent instanceof import_obsidian11.WorkspaceSidedock) {
+    if (parent instanceof import_obsidian19.WorkspaceSidedock) {
       return parent;
     } else {
       return void 0;
@@ -2061,10 +3485,10 @@ var SearchComponentInterface = class extends import_obsidian11.Component {
     const parent = leaf.getRoot();
     if (parent === this.app.workspace.leftSplit) {
       const opposite = this.app.workspace.rightSplit;
-      return opposite instanceof import_obsidian11.WorkspaceSidedock ? opposite : void 0;
+      return opposite instanceof import_obsidian19.WorkspaceSidedock ? opposite : void 0;
     } else if (parent === this.app.workspace.rightSplit) {
       const opposite = this.app.workspace.leftSplit;
-      return opposite instanceof import_obsidian11.WorkspaceSidedock ? opposite : void 0;
+      return opposite instanceof import_obsidian19.WorkspaceSidedock ? opposite : void 0;
     } else {
       return void 0;
     }
@@ -2122,8 +3546,8 @@ var SearchComponentInterface = class extends import_obsidian11.Component {
 };
 
 // src/main.ts
-var import_obsidian12 = __toModule(require("obsidian"));
-var CoreSearchAssistantPlugin = class extends import_obsidian12.Plugin {
+var import_obsidian20 = __toModule(require("obsidian"));
+var CoreSearchAssistantPlugin2 = class extends import_obsidian20.Plugin {
   onload() {
     return __async(this, null, function* () {
       yield this.loadSettings();
@@ -2136,7 +3560,7 @@ var CoreSearchAssistantPlugin = class extends import_obsidian12.Plugin {
   }
   loadSettings() {
     return __async(this, null, function* () {
-      this.settings = Object.assign({}, DEFAULT_SETTINGS, yield this.loadData());
+      this.settings = deepMerge(DEFAULT_SETTINGS, yield this.loadData());
     });
   }
   saveSettings() {

@@ -1,6 +1,10 @@
 {
   "recentFiles": [
     {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
       "basename": "README",
       "path": "README.md"
     },
@@ -9,116 +13,112 @@
       "path": "从这开始.md"
     },
     {
-      "basename": "tp-日记模板",
-      "path": "88-Template/tp-日记模板.md"
-    },
-    {
-      "basename": "home",
-      "path": "88-Template/home.md"
-    },
-    {
-      "basename": "carbon 代码高亮分享",
-      "path": "50-Inbox/carbon 代码高亮分享.md"
-    },
-    {
-      "basename": "vika",
-      "path": "50-Inbox/vika.md"
-    },
-    {
-      "basename": "以橱窗的方式浏览文件夹下的图片",
-      "path": "77-Example/以橱窗的方式浏览文件夹下的图片.md"
-    },
-    {
-      "basename": "slidegallery",
-      "path": "88-Template/ReactJS/slidegallery.md"
-    },
-    {
-      "basename": "ColorfulClock",
-      "path": "88-Template/ReactJS/ColorfulClock.md"
-    },
-    {
-      "basename": "返回当前活动笔记的所有反向链接",
-      "path": "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
-    },
-    {
-      "basename": "moc",
-      "path": "88-Template/ReactJS/moc.md"
-    },
-    {
-      "basename": "表格自定义样式",
-      "path": "77-Example/表格自定义样式.md"
-    },
-    {
-      "basename": "code-wrap【代码块自动换行】",
-      "path": "77-Example/code-wrap【代码块自动换行】.md"
-    },
-    {
-      "basename": "电影观看清单-状态控制",
-      "path": "77-Example/电影观看清单-状态控制.md"
-    },
-    {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "77-Example/各类列表和彩虹大纲线.md"
-    },
-    {
-      "basename": "全宽显示",
-      "path": "77-Example/全宽显示.md"
-    },
-    {
-      "basename": "预览隐藏frontmatter",
-      "path": "77-Example/预览隐藏frontmatter.md"
-    },
-    {
       "basename": "图书阅读清单",
       "path": "77-Example/图书阅读清单.md"
     },
     {
-      "basename": "shark night",
-      "path": "30-Reading/shark night.md"
+      "basename": "tp-movie",
+      "path": "88-Template/tp-movie.md"
     },
     {
-      "basename": "长津湖",
-      "path": "30-Reading/长津湖.md"
+      "basename": "tp-movie-douban",
+      "path": "88-Template/tp-movie-douban.md"
     },
     {
-      "basename": "shake",
-      "path": "30-Reading/shake.md"
-    },
-    {
-      "basename": "对话形式笔记",
-      "path": "77-Example/对话形式笔记.md"
-    },
-    {
-      "basename": "电影观看清单",
-      "path": "77-Example/电影观看清单.md"
+      "basename": "tp-book",
+      "path": "88-Template/tp-book.md"
     },
     {
       "basename": "图书阅读清单-状态控制",
       "path": "77-Example/图书阅读清单-状态控制.md"
     },
     {
-      "basename": "《置身事内》",
-      "path": "30-Reading/《置身事内》.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+      "basename": "《知识生产与传播》",
+      "path": "30-Reading/《知识生产与传播》.md"
     },
     {
       "basename": "《微习惯》",
       "path": "30-Reading/《微习惯》.md"
     },
     {
-      "basename": "分栏效果示例",
-      "path": "77-Example/分栏效果示例.md"
+      "basename": "《镰刀与城市》",
+      "path": "30-Reading/《镰刀与城市》.md"
     },
     {
-      "basename": "The Matrix Resurrections",
-      "path": "30-Reading/The Matrix Resurrections.md"
+      "basename": "彩色时钟",
+      "path": "88-Template/彩色时钟.md"
+    },
+    {
+      "basename": "《茶叶与鸦片》",
+      "path": "30-Reading/《茶叶与鸦片》.md"
+    },
+    {
+      "basename": "爱情神话",
+      "path": "30-Reading/爱情神话.md"
+    },
+    {
+      "basename": "长津湖之水门桥",
+      "path": "30-Reading/长津湖之水门桥.md"
+    },
+    {
+      "basename": "《置身事内》",
+      "path": "30-Reading/《置身事内》.md"
+    },
+    {
+      "basename": "《苏联解体亲历记》",
+      "path": "30-Reading/《苏联解体亲历记》.md"
+    },
+    {
+      "basename": "《如何阅读尼采》",
+      "path": "30-Reading/《如何阅读尼采》.md"
+    },
+    {
+      "basename": "tp-日记模板",
+      "path": "88-Template/tp-日记模板.md"
+    },
+    {
+      "basename": "AD伪看板",
+      "path": "77-Example/AD伪看板.md"
+    },
+    {
+      "basename": "伪看板",
+      "path": "77-Example/伪看板.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "Obsidian 快捷键一览表",
+      "path": "10-Help/Obsidian 快捷键一览表.md"
+    },
+    {
+      "basename": "Cubox",
+      "path": "50-Inbox/Cubox.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加图书卡片",
+      "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
+    },
+    {
+      "basename": "电影观看清单-状态控制",
+      "path": "77-Example/电影观看清单-状态控制.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+    },
+    {
+      "basename": "Good will Hunting",
+      "path": "30-Reading/Good will Hunting.md"
+    },
+    {
+      "basename": "表格转换-tableconvert",
+      "path": "50-Inbox/表格转换-tableconvert.md"
+    },
+    {
+      "basename": "vika",
+      "path": "50-Inbox/vika.md"
     }
   ],
   "omittedPaths": [

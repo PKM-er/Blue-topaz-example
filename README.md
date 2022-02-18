@@ -25,6 +25,7 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 增加对dataview卡片直接编辑元数据 
 增加插件Hoteys for specific files 直接在ob里打开嵌入网页
 优化日记模板,更具有通用性。
+修复了cmenu插件对zh编辑增强0.4.x的支持
 
 
 ## 效果图

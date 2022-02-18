@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": false,
             "source": false
           }
@@ -111,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -142,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +159,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -206,15 +206,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
+    "88-Template/home.md",
     "README.md",
     "从这开始.md",
-    "88-Template/tp-日记模板.md",
-    "88-Template/home.md",
-    "50-Inbox/carbon 代码高亮分享.md",
-    "50-Inbox/vika.md",
-    "77-Example/以橱窗的方式浏览文件夹下的图片.md",
-    "88-Template/ReactJS/slidegallery.md",
-    "88-Template/ReactJS/ColorfulClock.md",
-    "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
+    "未命名.md",
+    "77-Example/图书阅读清单.md",
+    "88-Template/tp-movie.md",
+    "88-Template/tp-movie-douban.md",
+    "88-Template/tp-book.md",
+    "77-Example/图书阅读清单-状态控制.md",
+    "30-Reading/《知识生产与传播》.md"
   ]
 }

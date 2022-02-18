@@ -10002,8 +10002,12 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting-link.cm-strong.cm-
   margin-top: 20px;
   resize: both !important;
 }
-
-
+/*修复Itinerary插件显示问题*/
+.markdown-preview-view .markdown-preview-section .block-language-itinerary.fc table
+{
+	overflow:unset;
+	
+}
 
 /*modified from https://codepen.io/brettdewoody/pen/oBjbbB */
 body.no-wrapped-table table {
@@ -10725,8 +10729,7 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
 }
 
 /* images : reduce displayed size of embedded files, zoom on hover */
-.markdown-preview-view img:not([class="emoji"]),
-.markdown-preview-view video {
+.markdown-preview-view img:not([class="emoji"]){
   max-width: min(100%, 800px);
   margin-left: auto;
   margin-right: auto;
@@ -15078,6 +15081,42 @@ body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ol::befor
       --cards-width: 87.04px;
       }
 }
+
+img[alt^="bookcover"]{
+  border-radius: 8px; 
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.theme-light progress::-webkit-progress-bar { 
+background: #cccccc; 
+}
+.theme-dark progress::-webkit-progress-bar { 
+background: #1a1919; 
+}
+
+.cards progress{
+position:absolute;
+margin-top: -10px;
+ overflow: hidden;
+ height: 3px;
+ background:#f0ec05; 
+}
+.cards progress.yellow::-moz-progress-bar { background: #e78f0c; }
+.cards progress.yellow::-webkit-progress-value  {
+border-radius: 1em;
+background: #e78f0c; 
+
+}
+
+.cards progress.hot::-moz-progress-bar { background: #fa7131dc; }
+
+.cards progress.hot::-webkit-progress-value  {
+border-radius: 1em;
+background: #fa7131dc; 
+
+}
+
+
 .cards table.dataview tbody {
 
   display:grid;

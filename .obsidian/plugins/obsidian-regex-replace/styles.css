@@ -1,0 +1,51 @@
+.find-replace-modal .modal-content .row {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	margin-top: 8px;
+}
+
+
+.find-replace-modal .modal-content .row .input-label {
+    display: flex;
+	justify-content: flex-end;
+	height: 100%;
+}
+
+
+.find-replace-modal .modal-content .row .postfix-label {
+    display: flex;
+	height: 100%;
+	margin-left: 8px;
+	justify-content: flex-end;
+	color: gray;
+}
+
+
+.find-replace-modal .modal-content .row .check-label {
+    display: flex;
+	justify-content: flex-end;
+	width: 100%;
+	height: 100%;
+	margin-right: 8px;
+}
+
+
+.find-replace-modal .modal-content .row .input-wrapper {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	width: 100%;
+	margin: 0;
+}
+
+
+.find-replace-modal .modal-content .row .input-wrapper input {
+	width: 100%;
+}
+
+
+.find-replace-modal .modal-content .button-wrapper {
+	justify-content: center;
+	margin-top: 16px;
+}

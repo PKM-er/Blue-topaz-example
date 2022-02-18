@@ -1,12 +1,13 @@
 {
   "pluginList": [
+    "nothingislost/obsidian-embedded-query-control",
     "nothingislost/obsidian-bartender",
     "alexandru-dinu/obsidian-sortable/"
   ],
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-02-11T01:56:49Z"
+      "lastUpdate": "2022-02-18T00:51:37Z"
     }
   ],
   "updateAtStartup": true,
@@ -15,5 +16,6 @@
   "loggingEnabled": false,
   "loggingPath": "BRAT-log",
   "loggingVerboseEnabled": false,
-  "debuggingMode": true
+  "debuggingMode": true,
+  "notificationsEnabled": true
 }

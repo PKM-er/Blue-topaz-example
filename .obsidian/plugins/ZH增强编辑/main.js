@@ -6,7 +6,7 @@ var obsidian = require('obsidian');
 使用声明
 本插件基于多款社区插件改编而成，蚕子水平有限，代码或许存在缺陷，不能保证任何用户或任何操作均为正常，
 请您在使用本插件之前，先备份好Obsidian笔记库再进行操作测试，谢谢配合。
-开发：蚕子 QQ：312815311 更新时间：2022-2-13
+开发：蚕子 QQ：312815311 更新时间：2022-2-18
 *****************************************************************************
 */
 
@@ -65,7 +65,7 @@ var Settings = /** @class */ (function () {
     function Settings() {
         this.defaultChar = '';
         this.twoEnter = true;
-        this.toggleMD = true;
+        this.toggleMD;
         this.toggleHtml = true;
         this.toggleZH = true;
         this.toggleTS = true;
@@ -112,7 +112,7 @@ var MyPlugin = /** @class */ (function (_super) {
     function MyPlugin() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.settings = new Settings();
-        _this.SETTINGS_PATH = '.obsidian/plugins/ZH增强编辑/data.json';        
+        _this.SETTINGS_PATH = '.obsidian/plugins/ZH增强编辑/data.json';
         return _this;
     }    
 
@@ -152,59 +152,64 @@ var MyPlugin = /** @class */ (function (_super) {
 
         document.addEventListener('keydown', (e) => {
             if (e.key === "Enter"){
-                //new obsidian.Notice("按下了回车键");
-                var 上行文本 = 编辑模式.getLine(当前行号-1);
-                //new obsidian.Notice("上行文本\n"+上行文本);
-                var 末行行号 = 编辑模式.lastLine();
-                var 末行文本 = 编辑模式.getLine(末行行号);
-                var 选至文首 = 编辑模式.getRange({line:0,ch:0},{line:当前行号,ch:0});
-                var 选至文末 = 编辑模式.getRange({line:当前行号,ch:0},{line:末行行号,ch:末行文本.length});
-                var 缩进字符 = 上行文本.match(/^[\t\s]*/m)[0];
-                var 代码块次数1 = 选至文首.match(/^```/mg).length;
-                var 代码块次数2 = 选至文末.match(/^```/mg).length;
-                if(editorChanged){
-                    var reg = /^[\t\s]*(\-|\d+\.)\s/im
-                    var reg1 = /^[\t\s]+$/m
-                    var reg2 = /^[\t\s]*\/\//m
-                    if(代码块次数1%2==1 && 代码块次数2%2==1){
-                        //在代码块中换行，视上行代码末尾符号的特点进行恰当缩进。
-                        var 缩进文本 = "";
-                        var 缩进次数,i=0;
-                        //new obsidian.Notice("|"+缩进字符+"|");
-                        if(上行文本.match(reg1)!=null){
-                            缩进文本=oldIndent;
-                        }else if(上行文本.match(/[;\}]$/m)!=null || 上行文本.match(reg2)!=null){
-                            缩进文本 = 缩进字符+"";
-                        }else if(上行文本.match(/[\{\)]$/m)!=null){
-                            //new obsidian.Notice("|"+缩进字符+"||||");
-                            缩进文本 = 缩进字符+"	";
-                        }else if(上行文本==""){
-                            缩进文本="";
-                        }
-                        缩进次数=缩进文本.replace(/[\t\s]/g,"|").length;
-                        笔记全文.replaceRange(缩进文本, 当前光标, 当前光标);
-                        while (i<缩进次数){
+                编辑模式 = _this.获取编辑模式();
+                if(编辑模式==null){
+                }else{
+                    //new obsidian.Notice("按下了回车键");
+                    var 上行文本 = 编辑模式.getLine(当前行号-1);
+                    //new obsidian.Notice("上行文本\n"+上行文本);
+                    var 末行行号 = 编辑模式.lastLine();
+                    var 末行文本 = 编辑模式.getLine(末行行号);
+                    var 选至文首 = 编辑模式.getRange({line:0,ch:0},{line:当前行号,ch:0});
+                    var 选至文末 = 编辑模式.getRange({line:当前行号,ch:0},{line:末行行号,ch:末行文本.length});
+                    var 缩进字符 = 上行文本.match(/^[\t\s]*/m)[0];
+                    var 代码块次数1 = 选至文首.match(/^```/mg).length;
+                    var 代码块次数2 = 选至文末.match(/^```/mg).length;
+                    if(editorChanged){
+                        var reg = /^[\t\s]*(\-|\d+\.)\s/im
+                        var reg1 = /^[\t\s]+$/m
+                        var reg2 = /^[\t\s]*\/\//m
+                        if(代码块次数1%2==1 && 代码块次数2%2==1){
+                            //在代码块中换行，视上行代码末尾符号的特点进行恰当缩进。
+                            var 缩进文本 = "";
+                            var 缩进次数,i=0;
+                            //new obsidian.Notice("|"+缩进字符+"|");
+                            if(上行文本.match(reg1)!=null){
+                                缩进文本=oldIndent;
+                            }else if(上行文本.match(/[;\}]$/m)!=null || 上行文本.match(reg2)!=null){
+                                缩进文本 = 缩进字符+"";
+                            }else if(上行文本.match(/[\{\)]$/m)!=null){
+                                //new obsidian.Notice("|"+缩进字符+"||||");
+                                缩进文本 = 缩进字符+"	";
+                            }else if(上行文本==""){
+                                缩进文本="";
+                            }
+                            缩进次数=缩进文本.replace(/[\t\s]/g,"|").length;
+                            笔记全文.replaceRange(缩进文本, 当前光标, 当前光标);
+                            while (i<缩进次数){
+                                编辑模式.exec("goRight");
+                                i++;
+                            }
+                            oldIndent = 缩进文本;
+                        }else if(this.settings.twoEnter && 当前行文本.match(reg)==null){
+                            //启用补行功能，且没在列表中，每按下回车即补一次换行
+                            笔记全文.replaceRange("\n", 当前光标, 当前光标);
                             编辑模式.exec("goRight");
-                            i++;
-                        }
-                        oldIndent = 缩进文本;
-                    }else if(this.settings.twoEnter && 当前行文本.match(reg)==null){
-                        //启用补行功能，且没在列表中，每按下回车即补一次换行
-                        笔记全文.replaceRange("\n", 当前光标, 当前光标);
-                        编辑模式.exec("goRight");
+                        };
+                        //new obsidian.Notice("编辑区内回车测试");
+                        editorChanged = false;
                     };
-                    //new obsidian.Notice("编辑区内回车测试");
-                    editorChanged = false;
                 };
                 //new obsidian.Notice("其它位置回车测试");
             };
         });
 
+        
+
     	return __awaiter(this, void 0, void 0,function() {
             var _this = this;
             return __generator(this,function(_a) {
 		        console.log('加载插件');
-                _this.loadSettings();
 		        _this.addCommand({
 		            id: 'internal-link',
 		            name: '[[链接]]语法',
@@ -266,7 +271,8 @@ var MyPlugin = /** @class */ (function (_super) {
                     hotkeys: [{ modifiers: ["Alt"], key: "O" } ]
                 });
                 
-                if(_this.settings.toggleMD){}
+                //new obsidian.Notice("开关 "+_this.settings.toggleMD);
+                //if(_this.settings.toggleMD){}
                     _this.addCommand({
                         id: 'biaoti0-text',
                         name: '取消标题',
@@ -536,8 +542,8 @@ var MyPlugin = /** @class */ (function (_super) {
                 if(this.settings.toggleTS){}
                     _this.addCommand({
                         id: 'paste-form',
-                        name: '粘贴表格',
-                        callback: function() { _this.粘贴表格(); },
+                        name: '智能粘贴',
+                        callback: function() { _this.智能粘贴(); },
                         hotkeys: [{ modifiers: ["Mod","Alt"], key: "V" } ]
                     });
                     _this.addCommand({
@@ -641,7 +647,7 @@ var MyPlugin = /** @class */ (function (_super) {
                         callback: function() { _this.去除所有空格(); }
                     });
                 //};
-
+                _this.loadSettings();
                 _this.addSettingTab(new SettingsTab(_this.app, _this));
                 return [2];
              });
@@ -653,13 +659,14 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.saveSettings = function () {
         var _this = this;
         var settings = _this.settings.toJson();
+        //new obsidian.Notice("正在保存");
         _this.app.vault.adapter.write(_this.SETTINGS_PATH, settings); 
     };
     MyPlugin.prototype.loadSettings = function () {
     	console.log("加载插件");
         var _this = this;
         _this.app.vault.adapter.read(_this.SETTINGS_PATH).
-            then(function (content) { return _this.settings.fromJson(content); }).
+            then(function (content) {return _this.settings.fromJson(content);}).
             catch(function (error) { console.log("未找到设置文件。"); });
     };
     /*
@@ -669,6 +676,10 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.获取编辑器信息 = function() {
         //初始信息获取，最基本函数
         编辑模式 = this.获取编辑模式 ();
+        if(编辑模式 == null){
+            new obsidian.Notice("当前为阅读视图！\n无法完成相关操作...");
+            return;
+        };
         笔记全文 = 编辑模式.getDoc();
         笔记正文 = this.获取笔记正文 ();
         所选文本 = this.获取所选文本 ();
@@ -1162,14 +1173,23 @@ var MyPlugin = /** @class */ (function (_super) {
             笔记全文.replaceRange("```JavaScript\n\n```\n", {line:当前行号,ch:0}, 当前光标);
             编辑模式.exec("goLeft");
             编辑模式.exec("goUp");
+        }else if(选至行首.match(/^```js$/i)){
+            笔记全文.replaceRange("```JavaScript", {line:当前行号,ch:0}, 当前光标);
+            编辑模式.exec("goDown");
         }else if(选至行首.match(/^(Java|ja)$/i)){
             笔记全文.replaceRange("```Java\n\n```\n", {line:当前行号,ch:0}, 当前光标);
             编辑模式.exec("goLeft");
             编辑模式.exec("goUp");
+        }else if(选至行首.match(/^```ja$/i)){
+            笔记全文.replaceRange("```Java", {line:当前行号,ch:0}, 当前光标);
+            编辑模式.exec("goDown");
         }else if(选至行首.match(/^(Python|py)$/i)){
             笔记全文.replaceRange("```Python\n\n```\n", {line:当前行号,ch:0}, 当前光标);
             编辑模式.exec("goLeft");
             编辑模式.exec("goUp");
+        }else if(选至行首.match(/^```py$/i)){
+            笔记全文.replaceRange("```Python", {line:当前行号,ch:0}, 当前光标);
+            编辑模式.exec("goDown");
         }else if(选至行首.match(/^(CSS)$/i)){
             笔记全文.replaceRange("```CSS\n\n```\n", {line:当前行号,ch:0}, 当前光标);
             编辑模式.exec("goLeft");
@@ -1421,28 +1441,42 @@ var MyPlugin = /** @class */ (function (_super) {
         new obsidian.Notice("当前笔记位于："+相对目录);
     };
 
-    MyPlugin.prototype.粘贴表格 = function() {
+    MyPlugin.prototype.智能粘贴 = function() {
     	this.获取编辑器信息 ();
     	var 分隔行 = "";        //获取 当前窗口  //其中const是【常数】
         navigator.clipboard.readText()
-		.then(xlsText => {
-			xlsText = xlsText.replace(/\n/g,"■");
-			xlsText = xlsText.replace(/\"([^■\|\"]+)■([^\|\n\"]+)\"/g,"$1<br>$2");
-			分隔行 = xlsText.replace(/■.*/g,"");
-			//new obsidian.Notice("分隔行　"+ 分隔行);
-			分隔行 = 分隔行.replace(/\t/g,"|");
-			分隔行 = 分隔行.replace(/([^\|]*)/g,"--");
-			xlsText = xlsText.replace(/\t/g,"\|");
-			xlsText = xlsText.replace(/^([^■]+)/,"$1■"+分隔行);
-			xlsText = xlsText.replace(/■/g,"\n");
-            xlsText = xlsText.replace(/^\|/mg,"　\|");
-            xlsText = xlsText.replace(/\|$/mg,"\|　");
-            xlsText = xlsText.replace(/^(?=[^\r\n])|(?<=[^\r\n])$/mg,"\|");
-            xlsText = xlsText.replace(/(?<=\|)(?=\|)/g,"　");
-			//navigator.clipboard.writeText(xlsText)
-			编辑模式.replaceSelection(xlsText);
-			//将当前光标位置替换为处理后的md语法表格数据
-			//mdView.setMode(mdView.previewMode)
+		.then(clipText => {
+            var bgReg = /([^\t]+[\t]){3,}[^\t]+/;
+            var urlReg = /^(https?:\/\/[^:]+)$/
+            var pathReg = /^([c-z]:\\[^\/:\*\?\<\>\|]+)$/i
+            var tmpText = clipText.replace(/[\n ]/g,"");
+            new obsidian.Notice("数据\n"+ tmpText);
+            if(urlReg.test(tmpText)){
+                clipText = clipText.replace(urlReg,"[链接]($1)");
+                new obsidian.Notice("剪贴板数据已转为网址超链接！");
+            }else if(pathReg.test(tmpText)){
+                clipText = clipText.replace(pathReg,"[本地]($1)");
+                new obsidian.Notice("剪贴板数据已转为本地文件超链接！");
+            }else if(bgReg.test(tmpText)){
+                clipText = clipText.replace(/\n/g,"■");
+                clipText = clipText.replace(/\"([^■\|\"]+)■([^\|\n\"]+)\"/g,"$1<br>$2");
+                分隔行 = clipText.replace(/■.*/g,"");
+                分隔行 = 分隔行.replace(/\t/g,"|");
+                分隔行 = 分隔行.replace(/([^\|]*)/g,"--");
+                clipText = clipText.replace(/\t/g,"\|");
+                clipText = clipText.replace(/^([^■]+)/,"$1■"+分隔行);
+                clipText = clipText.replace(/■/g,"\n");
+                clipText = clipText.replace(/^\|/mg,"　\|");
+                clipText = clipText.replace(/\|$/mg,"\|　");
+                clipText = clipText.replace(/^(?=[^\r\n])|(?<=[^\r\n])$/mg,"\|");
+                clipText = clipText.replace(/(?<=\|)(?=\|)/g,"　");
+                new obsidian.Notice("剪贴板数据已转为MD表格！");
+            }else/* if(codeReg.test(tmpText))*/{
+                clipText = "```\n"+clipText+"\n```\n"
+                new obsidian.Notice("剪贴板数据已转为代码块格式！");
+            }
+			编辑模式.replaceSelection(clipText);
+            //在当前光标位置写入处理后的数据
 		})
 		.catch(err => {
 			console.error('未能读取到剪贴板上的内容: ', err);
@@ -1775,7 +1809,7 @@ var SettingsTab = /** @class */ (function (_super) {
         var _this = this;
         var containerEl = this.containerEl;
         containerEl.empty();
-        containerEl.createEl('h2', { text: '增强编辑 0.4.1' });
+        containerEl.createEl('h2', { text: '增强编辑 0.4.2' });
         new obsidian.Setting(containerEl)
             .setName('📣 转换内部链接「Alt+Z」 在选文两端添加或去除 [[ ]] 符号')
             .setDesc('支持批量转换用换行符分隔的多行文本或顿号分隔的多句文本。')
@@ -1828,7 +1862,8 @@ var SettingsTab = /** @class */ (function (_super) {
                 .onChange(function (value) {
                 _this.settings.toggleMD = value;
                 _this.plugin.saveSettings();
-                new obsidian.Notice("重启Obsidian后方可让设置生效！");
+                new obsidian.Notice("启用了吗？ "+_this.settings.toggleMD);
+                //new obsidian.Notice("重启Obsidian后方可让设置生效！");
             }); });*/
         var div1 = containerEl.createEl('p', {
             cls: 'recent-files-donation',
@@ -1912,7 +1947,7 @@ var SettingsTab = /** @class */ (function (_super) {
         div3.appendChild(charText);
 
         new obsidian.Setting(containerEl)
-            .setName('📣 设置粘贴表格、修复语法、选择段句等功能。')
+            .setName('📣 设置智能粘贴、修复语法、选择段句等功能。')
             /*.addToggle(function (toggle) { return toggle.setValue(_this.settings.toggleTS)
                 .onChange(function (value) {
                 _this.settings.toggleTS = value;
@@ -1923,7 +1958,7 @@ var SettingsTab = /** @class */ (function (_super) {
             cls: 'recent-files-donation',
         });
         var toolText = document.createDocumentFragment();
-        toolText.appendText('粘贴MD表格「Ctrl+Alt+V」∶将复制的Office表格直接粘贴为MarkDown语法表格');
+        toolText.appendText('智能粘贴「Ctrl+Alt+V」∶将复制的表格、网址、本地路径或代码直接粘贴为MD表格、超链接或代码块格式');
         toolText.appendChild(document.createElement('br'));
         toolText.appendText('修复错误语法「未设置」∶修复错误的MD语法，如1。列表、【】（）链接、[[]]()回链等');
         toolText.appendChild(document.createElement('br'));

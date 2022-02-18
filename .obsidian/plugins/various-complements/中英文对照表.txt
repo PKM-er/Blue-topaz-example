@@ -1,0 +1,168 @@
+case "default":
+case "默认":
+case "arabic":
+case "阿拉伯语":
+case "japanese":
+case "日本语":
+new TokenizeStrategy("default", 3);
+new TokenizeStrategy("默认", 3);
+new TokenizeStrategy("japanese", 2);
+new TokenizeStrategy("日本语", 2);
+new TokenizeStrategy("arabic", 3);
+new TokenizeStrategy("阿拉伯语", 3);
+matchStrategy: "prefix",
+matchStrategy: "前缀",
+case "prefix":
+case "前缀":
+this.plugin.settings.matchStrategy = "prefix";
+this.plugin.settings.matchStrategy = "前缀";
+case "partial":
+case "部分":
+this.plugin.settings.matchStrategy = "partial";
+this.plugin.settings.matchStrategy = "部分";
+new MatchStrategy("prefix", suggestWords);
+new MatchStrategy("前缀", suggestWords);
+new MatchStrategy("partial", suggestWordsByPartialMatch);
+new MatchStrategy("部分", suggestWordsByPartialMatch);
+new ColumnDelimiter("Comma", ",");
+new ColumnDelimiter("逗号", ",");
+new ColumnDelimiter("Pipe", "|");
+new ColumnDelimiter("竖线", "|");
+containerEl.createEl("h2", { text: "Various Complements - Settings" });
+containerEl.createEl("h2", { text: "自动补全-设置" });
+containerEl.createEl("h3", { text: "Main" });
+containerEl.createEl("h3", { text: "主要" });
+new obsidian.Setting(containerEl).setName("Strategy").addDropdown((tc) => tc
+new obsidian.Setting(containerEl).setName("策略").addDropdown((tc) => tc
+new obsidian.Setting(containerEl).setName("Match strategy").addDropdown((tc) => tc
+new obsidian.Setting(containerEl).setName("匹配策略").addDropdown((tc) => tc
+.setName("Max number of suggestions")
+.setName("最大建议数")
+.setName("Max number of words as a phrase")
+.setName("单条短语的最大字数")
+.setName("Min number of characters for trigger")
+.setName("触发的最少字符数")
+.setDesc("It uses a default value of Strategy if set 0.")
+.setDesc("如果设置为0，则使用「策略」的默认值。")
+.setName("Min number of words for trigger")
+.setName("触发的最少单词数")
+.setName("Complement automatically")
+.setName("自动补全")
+.setName("Delay milli-seconds for trigger")
+.setName("延迟N毫秒后触发")
+.setName("Disable suggestions during IME on")
+.setName("启用「输入法期间禁用建议」")
+.setName("Insert space after completion")
+.setName("完成后插入空格")
+containerEl.createEl("h3", { text: "Appearance" });
+containerEl.createEl("h3", { text: "外观" });
+.setName("Show Indexing status")
+.setName("显示索引状态")
+.setDesc("Show indexing status at the status bar. Changing this option requires a restart to take effect.")
+.setDesc("在状态栏上显示索引状态。更改此选项需要重新启动才能生效。")
+.setName("Description on a suggestion")
+.setName("对建议词条的描述")
+containerEl.createEl("h3", { text: "Key customization" });
+containerEl.createEl("h3", { text: "定制按键" });
+.setName("Select a suggestion key")
+.setName("选择一个建议键")
+.setName("Additional cycle through suggestions keys")
+.setName("通过建议键进行的附加循环")
+new obsidian.Setting(containerEl).setName("Open source file key").addDropdown((tc) => tc
+new obsidian.Setting(containerEl).setName("打开文件密钥").addDropdown((tc) => tc
+.setName("Propagate ESC")
+.setName("使用 ESC 键")
+.setDesc("It is handy if you use Vim mode because you can switch to Normal mode by one ESC, whether it shows suggestions or not.")
+.setDesc("如果您使用Vim模式，无论是否显示建议，都可以通过按下 ESC 键切换到正常模式。")
+text: "Current file complement",
+text: "补全当前文件内容",
+.setName("Enable Current file complement")
+.setName("启用「补全当前文件建议」")
+.setName("Only complement English on current file complement")
+.setName("在当前文件时只显示英文建议")
+text: "Current vault complement",
+text: "补全当前库内容",
+.setName("Enable Current vault complement")
+.setName("启用「补全当前库内容建议」")
+.setName("Include prefix path patterns")
+.setName("包括前缀路径模式")
+.setDesc("Prefix match path patterns to include files.")
+.setDesc("前缀匹配路径模式以包括文件。")
+.setPlaceholder("Private/")
+.setPlaceholder("私人/")
+.setName("Exclude prefix path patterns")
+.setName("排除前缀路径模式")
+.setDesc("Prefix match path patterns to exclude files.")
+.setDesc("前缀匹配路径模式以排除文件。")
+.setName("Include only files under current directory")
+.setName("只包括当前目录下的文件")
+text: "Custom dictionary complement",
+text: "启用「自定义补全建议字典」",
+.setName("Enable Custom dictionary complement")
+.setName("启用「自定义补全建议字典」")
+.setName("Custom dictionary paths")
+.setName("自定义字典路径")
+.setDesc("Specify either a relative path from Vault root or URL for each line.")
+.setDesc("每行可指定一个库目录的相对路径或URL。")
+new obsidian.Setting(containerEl).setName("Column delimiter").addDropdown((tc) => tc
+new obsidian.Setting(containerEl).setName("列分隔符").addDropdown((tc) => tc
+.setName("Word regex pattern")
+.setName("单词正则表达式模式")
+.setDesc("Only load words that match the regular expression pattern.")
+.setDesc("只加载与正则表达式模式匹配的单词。")
+.setName("Delimiter to hide a suggestion")
+.setName("隐藏建议的分隔符")
+.setDesc("If set ';;;', 'abcd;;;efg' is shown as 'abcd' on suggestions, but complements to 'abcdefg'.")
+.setDesc("如果设置为 ;;; 符号，则 abcd;;;efg 会显示建议 abcd，而把 abcdefg 做为补全内容。")
+.setName("Caret location symbol after complement")
+.setName("指定「补全后插入光标符的语法」")
+.setDesc("If set '<CARET>' and there is '<li><CARET></li>' in custom dictionary, it complements '<li></li>' and move a caret where between '<li>' and `</li>`.")
+.setDesc("如果设置了 <CARET>，并且自定义词典中有 <li><CARET></li> 字样，则它将补全显示 <li></li>，并在<li>和</li>之间插入光标符。")
+text: "Internal link complement",
+text: "补全内部链接",
+.setName("Enable Internal link complement")
+.setName("启用「补全内部链接」")
+.setName("Suggest with an alias")
+.setName("建议使用别名")
+containerEl.createEl("h3", { text: "Debug" });
+containerEl.createEl("h3", { text: "调试" });
+.setName("Show log about performance in a console")
+.setName("在控制台中显示性能日志")
+this.titleEl.setText("Add a word to a custom dictionary");
+this.titleEl.setText("将单词添加到自定义词典");
+contentEl.createEl("h4", { text: "Dictionary" });
+contentEl.createEl("h4", { text: "词典" });
+.setTooltip("Open the file")
+.setTooltip("打开文件")
+contentEl.createEl("h4", { text: "Word" });
+contentEl.createEl("h4", { text: "单词" });
+contentEl.createEl("h4", { text: "Description" });
+contentEl.createEl("h4", { text: "描述" });
+contentEl.createEl("h4", { text: "Aliases (for each line)" });
+contentEl.createEl("h4", { text: "别名(每一行)" });
+.setButtonText("Add to dictionary")
+.setButtonText("添加到词典")
+.setTitle("Add to custom dictionary")
+.setTitle("添加到自定义词典")
+name: "Reload custom dictionaries",
+name: "重新加载自定义词典",
+name: "Reload current vault",
+name: "重新加载当前库",
+name: "Toggle Match strategy",
+name: "切换匹配策略",
+name: "Toggle Complement automatically",
+name: "切换自动补全",
+name: "Show suggestions",
+name: "显示建议",
+name: "Add a word to a custom dictionary",
+name: "将单词添加到自定义词典",
+name: "Predictable complement",
+name: "可预测补全",
+name: "Copy plugin settings",
+name: "复制插件设置",
+new obsidian.Notice("Copy settings of Various Complements");
+new obsidian.Notice("复制「自动补全」设置");
+text: "⚠ `partial` is more than 10 times slower than `prefix`",
+text: "⚠ `部分` 比 `前缀` 策略的性能会降低十倍以上。",
+.setDesc(`[⚠Warning] It makes slower more than N times (N is set value)`)
+.setDesc(`[⚠警告] 使速度减慢N倍以上(N为设定值)`)

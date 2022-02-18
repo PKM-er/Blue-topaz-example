@@ -1,0 +1,12 @@
+.workspace-leaf-content[data-type="markdown"] .internal-query .nav-header {
+  margin-top: 0; /* works around issues with minimal theme */
+}
+
+.workspace-leaf-content[data-type="markdown"] .internal-query .nav-header .nav-buttons-container {
+  position: unset; /* works around issues with minimal theme */
+  justify-content: center; /* works around issues with minimal theme */
+}
+
+.workspace-leaf-content[data-type="markdown"] .internal-query .is-hidden {
+  display: none;
+}
