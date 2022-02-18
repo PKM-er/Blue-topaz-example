@@ -8,6 +8,11 @@ isbn: {{VALUE:isbn}}
 rating: {{VALUE:rating}}
 banner:  {{VALUE:cover}}
 banner_icon: 📚
+publish: {{VALUE:publish}}
+progress:
+status: 
+pagecount: {{VALUE:pagecount}}
+pageprogress: 
 ---
 ## 内容简介
 《{{VALUE:bookname}}》

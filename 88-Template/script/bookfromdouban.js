@@ -58,16 +58,23 @@ async function getbookByurl(url) {
     let intro_class = $("#link-report .intro");
     let intro = '';
     if (intro_class) {
-        intro = $("#link-report .intro").innerHTML;
+        intro = $("#link-report .intro").innerText;
         let regx = /<[^>]*>|<\/[^>]*>/gm;
         if (intro) {
 			intro = intro.replace('(展开全部)', "");
             intro = intro.replace(regx, "").trim();
             intro = intro.replace(/\s\s\s\s/gm, "\n");
+			intro = intro.replace(/=*/gm, "");
 			
         }
 	}
+	
 	let bookinfo = {};
+	let regpagecount = /页数:.(\d*)/g;
+	let regpublish = /出版社:.(.*)/g;
+	let str =$("#info")?.innerText;
+	bookinfo.pagecount=regpagecount.exec(str)[1].trim()??'100';
+	bookinfo.publish=regpublish.exec(str)[1].trim();
 	bookinfo.bookname =bookname;
 	bookinfo.cover = $("meta[property='og:image']")?.content;
 	bookinfo.type = 'book';
@@ -100,5 +107,3 @@ async function urlGet(url) {
 
 
 }
-
-
