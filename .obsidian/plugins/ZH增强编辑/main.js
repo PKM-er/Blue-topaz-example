@@ -6,7 +6,7 @@ var obsidian = require('obsidian');
 使用声明
 本插件基于多款社区插件改编而成，蚕子水平有限，代码或许存在缺陷，不能保证任何用户或任何操作均为正常，
 请您在使用本插件之前，先备份好Obsidian笔记库再进行操作测试，谢谢配合。
-开发：蚕子 QQ：312815311 更新时间：2022-2-18
+开发：蚕子 QQ：312815311 更新时间：2022-2-22
 *****************************************************************************
 */
 
@@ -64,12 +64,12 @@ function __generator(thisArg, body) {
 var Settings = /** @class */ (function () {
     function Settings() {
         this.defaultChar = '';
-        this.twoEnter = true;
-        this.toggleMD;
-        this.toggleHtml = true;
-        this.toggleZH = true;
-        this.toggleTS = true;
-        this.toggleLS = true;
+        this.twoEnter = false;
+        // this.toggleMD = true;
+        // this.toggleHtml = true;
+        // this.toggleZH = true;
+        // this.toggleTS = true;
+        // this.toggleLS = true;
     }
     Settings.prototype.toJson = function () {
         return JSON.stringify(this);
@@ -78,17 +78,19 @@ var Settings = /** @class */ (function () {
         var obj = JSON.parse(content);
         this.defaultChar = obj['defaultChar'];
         this.twoEnter = obj['twoEnter'];
-        this.toggleMD = obj['toggleMD'];
-        this.toggleHtml = obj['toggleHtml'];
-        this.toggleZH = obj['toggleZH'];
-        this.toggleTS = obj['toggleTS'];
-        this.toggleLS = obj['toggleLS'];
+        // this.toggleMD = obj['toggleMD'];
+        // this.toggleHtml = obj['toggleHtml'];
+        // this.toggleZH = obj['toggleZH'];
+        // this.toggleTS = obj['toggleTS'];
+        // this.toggleLS = obj['toggleLS'];
     };
     return Settings;
 }());
 
 var MyPlugin = /** @class */ (function (_super) {
     __extends(MyPlugin, _super);
+    var 简体字表 = "皑蔼碍爱肮翱袄奥坝罢摆败颁办绊帮绑镑谤剥饱宝报鲍辈贝钡狈备惫绷笔毕毙币闭边编贬变辩辫标鳖别瘪濒滨宾摈饼并拨钵铂驳卜补财参蚕残惭惨灿苍舱仓沧厕侧册测层诧搀掺蝉馋谗缠铲产阐颤场尝长偿肠厂畅钞车彻尘沉陈衬撑称惩诚骋痴迟驰耻齿炽冲虫宠畴踌筹绸丑橱厨锄雏础储触处传疮闯创锤纯绰辞词赐聪葱囱从丛凑蹿窜错达带贷担单郸掸胆惮诞弹当挡党荡档捣岛祷导盗灯邓敌涤递缔颠点垫电淀凋钓调迭谍叠钉顶锭订丢东动栋冻斗犊独读赌镀锻断缎兑队对吨顿钝夺堕鹅额讹恶饿儿尔饵贰发罚阀珐矾钒烦范贩饭访纺飞诽废费纷坟奋愤粪丰枫锋风疯冯缝讽凤肤辐抚辅赋复负讣妇缚该钙盖干杆赶秆赣冈刚钢纲岗皋镐搁鸽阁铬个给龚宫巩贡钩沟苟构购够蛊顾剐挂关观馆惯贯广规硅归龟闺轨诡柜贵刽辊滚锅国过骇韩汉号阂鹤贺横轰鸿红后壶护沪户哗华画划话怀坏欢环还缓换唤痪焕涣黄谎挥辉毁贿秽会烩汇讳诲绘荤浑伙获货祸击机积饥迹讥鸡绩缉极辑级挤几蓟剂济计记际继纪夹荚颊贾钾价驾歼监坚笺间艰缄茧检碱硷拣捡简俭减荐槛鉴践贱见键舰剑饯渐溅涧将浆蒋桨奖讲酱胶浇骄娇搅铰矫侥脚饺缴绞轿较秸阶节茎鲸惊经颈静镜径痉竞净纠厩旧驹举据锯惧剧鹃绢杰洁结诫届紧锦仅谨进晋烬尽劲荆觉决诀绝钧军骏开凯颗壳课垦恳抠库裤夸块侩宽矿旷况亏岿窥馈溃扩阔蜡腊莱来赖蓝栏拦篮阑兰澜谰揽览懒缆烂滥琅捞劳涝乐镭垒类泪篱狸离里鲤礼丽厉励砾历沥隶俩联莲连镰怜涟帘敛脸链恋炼练粮凉两辆谅疗辽镣猎临邻鳞凛赁龄铃凌灵岭领馏刘龙聋咙笼垄拢陇楼娄搂篓芦卢颅庐炉掳卤虏鲁赂禄录陆驴吕铝侣屡缕虑滤绿峦挛孪滦乱抡轮伦仑沦纶论萝罗逻锣箩骡骆络妈玛码蚂马骂吗买麦卖迈脉瞒馒蛮满谩猫锚铆贸么霉没镁门闷们锰梦眯谜弥觅幂绵缅庙灭悯闽鸣铭谬谋亩呐钠纳难挠脑恼闹馁内拟你腻撵捻酿鸟聂啮镊镍柠狞宁拧泞钮纽脓浓农疟诺欧鸥殴呕沤盘庞抛赔喷鹏骗飘频贫苹凭评泼颇扑铺朴谱栖凄脐齐骑岂启气弃讫牵扦钎铅迁签谦钱钳潜浅谴堑枪呛墙蔷强抢锹桥乔侨翘窍窃钦亲寝轻氢倾顷请庆琼穷趋区躯驱龋颧权劝却鹊确让饶扰绕热韧认纫荣绒软锐闰润洒萨鳃赛叁伞丧骚扫涩杀刹纱筛晒删闪陕赡缮墒伤赏烧绍赊摄慑设绅审婶肾渗声绳胜圣师狮湿诗尸时蚀实识驶势适释饰视试寿兽枢输书赎属术树竖数帅双谁税顺说硕烁丝饲耸怂颂讼诵擞苏诉肃虽随绥岁孙损笋缩琐锁獭挞抬台态摊贪瘫滩坛谭谈叹汤烫涛绦讨腾誊锑题体屉条贴铁厅听烃铜统头秃图涂团颓蜕脱鸵驮驼椭洼袜弯湾顽万网韦违围为潍维苇伟伪纬喂谓卫温闻纹稳问瓮挝蜗涡窝卧呜钨乌污诬无芜吴坞雾务误锡牺袭习铣戏细虾辖峡侠狭厦吓锨鲜纤咸贤衔闲显险现献县馅羡宪线厢镶乡详响项萧嚣销晓啸蝎协挟携胁谐写泻谢锌衅兴凶汹锈绣虚嘘须许叙绪续轩悬选癣绚学勋询寻驯训讯逊压鸦鸭哑亚讶阉烟盐严岩颜阎艳厌砚彦谚验鸯杨扬疡阳痒养样瑶摇尧遥窑谣药爷页业叶一医铱颐遗仪彝蚁艺亿忆义诣议谊译异绎荫阴银饮隐樱婴鹰应缨莹萤营荧蝇赢颖哟拥佣痈踊咏涌优忧邮铀犹游诱于舆鱼渔娱与屿语吁御狱誉预驭鸳渊辕园员圆缘远愿约跃钥岳粤悦阅云郧匀陨运蕴酝晕韵杂灾载攒暂赞赃脏凿枣灶责择则泽贼赠扎札轧铡闸栅诈斋债毡盏斩辗崭栈战绽张涨帐账胀赵蛰辙锗这贞针侦诊镇阵挣睁狰争帧症郑证织职执纸志挚掷帜质滞钟终种肿众诌轴皱昼骤猪诸诛烛瞩嘱贮铸筑注驻专砖转赚桩庄装妆壮状锥赘坠缀谆准着浊兹资渍踪综总纵邹诅组钻锕嗳嫒瑷暧霭谙铵鹌媪骜鳌钯呗钣鸨龅鹎贲锛荜哔滗铋筚跸苄缏笾骠飑飙镖镳鳔傧缤槟殡膑镔髌鬓禀饽钹鹁钸骖黪恻锸侪钗冁谄谶蒇忏婵骣觇禅镡伥苌怅阊鲳砗伧谌榇碜龀枨柽铖铛饬鸱铳俦帱雠刍绌蹰钏怆缍鹑辍龊鹚苁骢枞辏撺锉鹾哒鞑骀绐殚赕瘅箪谠砀裆焘镫籴诋谛绨觌镝巅钿癫铫鲷鲽铤铥岽鸫窦渎椟牍笃黩簖怼镦炖趸铎谔垩阏轭锇锷鹗颚颛鳄诶迩铒鸸鲕钫鲂绯镄鲱偾沣凫驸绂绋赙麸鲋鳆钆赅尴擀绀戆睾诰缟锆纥镉颍亘赓绠鲠诟缑觏诂毂钴锢鸪鹄鹘鸹掴诖掼鹳鳏犷匦刿妫桧鲑鳜衮绲鲧埚呙帼椁蝈铪阚绗颉灏颢诃阖蛎黉讧荭闳鲎浒鹕骅桦铧奂缳锾鲩鳇诙荟哕浍缋珲晖诨馄阍钬镬讦诘荠叽哜骥玑觊齑矶羁虿跻霁鲚鲫郏浃铗镓蛲谏缣戋戬睑鹣笕鲣鞯绛缰挢峤鹪鲛疖颌鲒卺荩馑缙赆觐刭泾迳弪胫靓阄鸠鹫讵屦榉飓钜锔窭龃锩镌隽谲珏皲剀垲忾恺铠锴龛闶钪铐骒缂轲钶锞颔龈铿喾郐哙脍狯髋诓诳邝圹纩贶匮蒉愦聩篑阃锟鲲蛴崃徕涞濑赉睐铼癞籁岚榄斓镧褴阆锒唠崂铑铹痨鳓诔缧俪郦坜苈莅蓠呖逦骊缡枥栎轹砺锂鹂疠粝跞雳鲡鳢蔹奁潋琏殓裢裣鲢魉缭钌鹩蔺廪檩辚躏绫棂蛏鲮浏骝绺镏鹨茏泷珑栊胧砻偻蒌喽嵝镂瘘耧蝼髅垆撸噜闾泸渌栌橹轳辂辘氇胪鸬鹭舻鲈脔娈栾鸾銮囵荦猡泺椤脶镙榈褛锊呒唛嬷杩劢缦镘颡鳗麽扪焖懑钔芈谧猕祢渑腼黾缈缪闵缗谟蓦馍殁镆钼铙讷铌鲵辇鲶茑袅陧蘖嗫颟蹑苎咛聍侬哝驽钕傩讴怄瓯蹒疱辔纰罴铍谝骈缥嫔钋镤镨蕲骐绮桤碛颀颃鳍佥荨悭骞缱椠钤嫱樯戗炝锖锵镪羟跄诮谯荞缲硗跷惬锲箧锓揿鲭茕蛱巯赇虮鳅诎岖阒觑鸲诠绻辁铨阕阙悫荛娆桡饪轫嵘蝾缛铷颦蚬飒毵糁缫啬铯穑铩鲨酾讪姗骟钐鳝垧殇觞厍滠畲诜谂渖谥埘莳弑轼贳铈鲥绶摅纾闩铄厮驷缌锶鸶薮馊飕锼谡稣谇荪狲唢睃闼铊鳎钛鲐昙钽锬顸傥饧铴镗韬铽缇鹈阗粜龆鲦恸钭钍抟饨箨鼍娲腽纨绾辋诿帏闱沩涠玮韪炜鲔阌莴龌邬庑怃妩骛鹉鹜饩阋玺觋硖苋莶藓岘猃娴鹇痫蚝籼跹芗饷骧缃飨哓潇骁绡枭箫亵撷绁缬陉荥馐鸺诩顼谖铉镟谑泶鳕埙浔鲟垭娅桠氩厣赝俨兖谳恹闫酽魇餍鼹炀轺鹞鳐靥谒邺晔烨诒呓峄饴怿驿缢轶贻钇镒镱瘗舣铟瘾茔莺萦蓥撄嘤滢潆璎鹦瘿颏罂镛莸铕鱿伛俣谀谕蓣嵛饫阈妪纡觎欤钰鹆鹬龉橼鸢鼋钺郓芸恽愠纭韫殒氲瓒趱錾驵赜啧帻箦谮缯谵诏钊谪辄鹧浈缜桢轸赈祯鸩诤峥钲铮筝骘栉栀轵轾贽鸷蛳絷踬踯觯锺纣绉伫槠铢啭馔颞骓缒诼镯谘缁辎赀眦锱龇鲻偬诹驺鲰镞缵躜鳟讠谫郄勐凼坂垅垴埯埝苘荬荮莜莼菰藁揸吒吣咔咝咴噘噼嚯幞岙嵴彷徼犸狍馀馇馓馕愣憷懔丬溆滟溷漤潴澹甯纟绔绱珉枧桊桉槔橥轱轷赍肷胨飚煳煅熘愍淼砜磙眍钚钷铘铞锃锍锎锏锘锝锪锫锿镅镎镢镥镩镲稆鹋鹛鹱疬疴痖癯裥襁耢颥螨麴鲅鲆鲇鲞鲴鲺鲼鳊鳋鳘鳙鞒鞴齄";
+    var 繁体字表 = "皚藹礙愛骯翺襖奧壩罷擺敗頒辦絆幫綁鎊謗剝飽寶報鮑輩貝鋇狽備憊繃筆畢斃幣閉邊編貶變辯辮標鱉別癟瀕濱賓擯餅並撥缽鉑駁蔔補財參蠶殘慚慘燦蒼艙倉滄廁側冊測層詫攙摻蟬饞讒纏鏟產闡顫場嘗長償腸廠暢鈔車徹塵沈陳襯撐稱懲誠騁癡遲馳恥齒熾沖蟲寵疇躊籌綢醜櫥廚鋤雛礎儲觸處傳瘡闖創錘純綽辭詞賜聰蔥囪從叢湊躥竄錯達帶貸擔單鄲撣膽憚誕彈當擋黨蕩檔搗島禱導盜燈鄧敵滌遞締顛點墊電澱雕釣調叠諜疊釘頂錠訂丟東動棟凍鬥犢獨讀賭鍍鍛斷緞兌隊對噸頓鈍奪墮鵝額訛惡餓兒爾餌貳發罰閥琺礬釩煩範販飯訪紡飛誹廢費紛墳奮憤糞豐楓鋒風瘋馮縫諷鳳膚輻撫輔賦復負訃婦縛該鈣蓋幹桿趕稈贛岡剛鋼綱崗臯鎬擱鴿閣鉻個給龔宮鞏貢鉤溝茍構購夠蠱顧剮掛關觀館慣貫廣規矽歸龜閨軌詭櫃貴劊輥滾鍋國過駭韓漢號閡鶴賀橫轟鴻紅後壺護滬戶嘩華畫劃話懷壞歡環還緩換喚瘓煥渙黃謊揮輝毀賄穢會燴匯諱誨繪葷渾夥獲貨禍擊機積饑跡譏雞績緝極輯級擠幾薊劑濟計記際繼紀夾莢頰賈鉀價駕殲監堅箋間艱緘繭檢堿鹼揀撿簡儉減薦檻鑒踐賤見鍵艦劍餞漸濺澗將漿蔣槳獎講醬膠澆驕嬌攪鉸矯僥腳餃繳絞轎較稭階節莖鯨驚經頸靜鏡徑痙競凈糾廄舊駒舉據鋸懼劇鵑絹傑潔結誡屆緊錦僅謹進晉燼盡勁荊覺決訣絕鈞軍駿開凱顆殼課墾懇摳庫褲誇塊儈寬礦曠況虧巋窺饋潰擴闊蠟臘萊來賴藍欄攔籃闌蘭瀾讕攬覽懶纜爛濫瑯撈勞澇樂鐳壘類淚籬貍離裏鯉禮麗厲勵礫歷瀝隸倆聯蓮連鐮憐漣簾斂臉鏈戀煉練糧涼兩輛諒療遼鐐獵臨鄰鱗凜賃齡鈴淩靈嶺領餾劉龍聾嚨籠壟攏隴樓婁摟簍蘆盧顱廬爐擄鹵虜魯賂祿錄陸驢呂鋁侶屢縷慮濾綠巒攣孿灤亂掄輪倫侖淪綸論蘿羅邏鑼籮騾駱絡媽瑪碼螞馬罵嗎買麥賣邁脈瞞饅蠻滿謾貓錨鉚貿麽黴沒鎂門悶們錳夢瞇謎彌覓冪綿緬廟滅憫閩鳴銘謬謀畝吶鈉納難撓腦惱鬧餒內擬妳膩攆撚釀鳥聶嚙鑷鎳檸獰寧擰濘鈕紐膿濃農瘧諾歐鷗毆嘔漚盤龐拋賠噴鵬騙飄頻貧蘋憑評潑頗撲鋪樸譜棲淒臍齊騎豈啟氣棄訖牽扡釬鉛遷簽謙錢鉗潛淺譴塹槍嗆墻薔強搶鍬橋喬僑翹竅竊欽親寢輕氫傾頃請慶瓊窮趨區軀驅齲顴權勸卻鵲確讓饒擾繞熱韌認紉榮絨軟銳閏潤灑薩鰓賽三傘喪騷掃澀殺剎紗篩曬刪閃陜贍繕墑傷賞燒紹賒攝懾設紳審嬸腎滲聲繩勝聖師獅濕詩屍時蝕實識駛勢適釋飾視試壽獸樞輸書贖屬術樹豎數帥雙誰稅順說碩爍絲飼聳慫頌訟誦擻蘇訴肅雖隨綏歲孫損筍縮瑣鎖獺撻擡臺態攤貪癱灘壇譚談嘆湯燙濤絳討騰謄銻題體屜條貼鐵廳聽烴銅統頭禿圖塗團頹蛻脫鴕馱駝橢窪襪彎灣頑萬網韋違圍為濰維葦偉偽緯餵謂衛溫聞紋穩問甕撾蝸渦窩臥嗚鎢烏汙誣無蕪吳塢霧務誤錫犧襲習銑戲細蝦轄峽俠狹廈嚇鍁鮮纖鹹賢銜閑顯險現獻縣餡羨憲線廂鑲鄉詳響項蕭囂銷曉嘯蠍協挾攜脅諧寫瀉謝鋅釁興兇洶銹繡虛噓須許敘緒續軒懸選癬絢學勛詢尋馴訓訊遜壓鴉鴨啞亞訝閹煙鹽嚴巖顏閻艷厭硯彥諺驗鴦楊揚瘍陽癢養樣瑤搖堯遙窯謠藥爺頁業葉壹醫銥頤遺儀彜蟻藝億憶義詣議誼譯異繹蔭陰銀飲隱櫻嬰鷹應纓瑩螢營熒蠅贏穎喲擁傭癰踴詠湧優憂郵鈾猶遊誘於輿魚漁娛與嶼語籲禦獄譽預馭鴛淵轅園員圓緣遠願約躍鑰嶽粵悅閱雲鄖勻隕運蘊醞暈韻雜災載攢暫贊贓臟鑿棗竈責擇則澤賊贈紮劄軋鍘閘柵詐齋債氈盞斬輾嶄棧戰綻張漲帳賬脹趙蟄轍鍺這貞針偵診鎮陣掙睜猙爭幀癥鄭證織職執紙誌摯擲幟質滯鐘終種腫眾謅軸皺晝驟豬諸誅燭矚囑貯鑄築註駐專磚轉賺樁莊裝妝壯狀錐贅墜綴諄準著濁茲資漬蹤綜總縱鄒詛組鉆錒噯嬡璦曖靄諳銨鵪媼驁鰲鈀唄鈑鴇齙鵯賁錛蓽嗶潷鉍篳蹕芐緶籩驃颮飆鏢鑣鰾儐繽檳殯臏鑌髕鬢稟餑鈸鵓鈽驂黲惻鍤儕釵囅諂讖蕆懺嬋驏覘禪鐔倀萇悵閶鯧硨傖諶櫬磣齔棖檉鋮鐺飭鴟銃儔幬讎芻絀躕釧愴綞鶉輟齪鶿蓯驄樅輳攛銼鹺噠韃駘紿殫賧癉簞讜碭襠燾鐙糴詆諦綈覿鏑巔鈿癲銚鯛鰈鋌銩崠鶇竇瀆櫝牘篤黷籪懟鐓燉躉鐸諤堊閼軛鋨鍔鶚顎顓鱷誒邇鉺鴯鮞鈁魴緋鐨鯡僨灃鳧駙紱紼賻麩鮒鰒釓賅尷搟紺戇睪誥縞鋯紇鎘潁亙賡綆鯁詬緱覯詁轂鈷錮鴣鵠鶻鴰摑詿摜鸛鰥獷匭劌媯檜鮭鱖袞緄鯀堝咼幗槨蟈鉿闞絎頡灝顥訶闔蠣黌訌葒閎鱟滸鶘驊樺鏵奐繯鍰鯇鰉詼薈噦澮繢琿暉諢餛閽鈥鑊訐詰薺嘰嚌驥璣覬齏磯羈蠆躋霽鱭鯽郟浹鋏鎵蟯諫縑戔戩瞼鶼筧鰹韉絳韁撟嶠鷦鮫癤頜鮚巹藎饉縉贐覲剄涇逕弳脛靚鬮鳩鷲詎屨櫸颶鉅鋦窶齟錈鐫雋譎玨皸剴塏愾愷鎧鍇龕閌鈧銬騍緙軻鈳錁頷齦鏗嚳鄶噲膾獪髖誆誑鄺壙纊貺匱蕢憒聵簣閫錕鯤蠐崍徠淶瀨賚睞錸癩籟嵐欖斕鑭襤閬鋃嘮嶗銠鐒癆鰳誄縲儷酈壢藶蒞蘺嚦邐驪縭櫪櫟轢礪鋰鸝癘糲躒靂鱺鱧蘞奩瀲璉殮褳襝鰱魎繚釕鷯藺廩檁轔躪綾欞蟶鯪瀏騮綹鎦鷚蘢瀧瓏櫳朧礱僂蔞嘍嶁鏤瘺耬螻髏壚擼嚕閭瀘淥櫨櫓轤輅轆氌臚鸕鷺艫鱸臠孌欒鸞鑾圇犖玀濼欏腡鏍櫚褸鋝嘸嘜嬤榪勱縵鏝顙鰻麼捫燜懣鍆羋謐獼禰澠靦黽緲繆閔緡謨驀饃歿鏌鉬鐃訥鈮鯢輦鯰蔦裊隉蘗囁顢躡苧嚀聹儂噥駑釹儺謳慪甌蹣皰轡紕羆鈹諞駢縹嬪釙鏷鐠蘄騏綺榿磧頎頏鰭僉蕁慳騫繾槧鈐嬙檣戧熗錆鏘鏹羥蹌誚譙蕎繰磽蹺愜鍥篋鋟撳鯖煢蛺巰賕蟣鰍詘嶇闃覷鴝詮綣輇銓闋闕愨蕘嬈橈飪軔嶸蠑縟銣顰蜆颯毿糝繅嗇銫穡鎩鯊釃訕姍騸釤鱔坰殤觴厙灄畬詵諗瀋謚塒蒔弒軾貰鈰鰣綬攄紓閂鑠廝駟緦鍶鷥藪餿颼鎪謖穌誶蓀猻嗩脧闥鉈鰨鈦鮐曇鉭錟頇儻餳鐋鏜韜鋱緹鵜闐糶齠鰷慟鈄釷摶飩籜鼉媧膃紈綰輞諉幃闈溈潿瑋韙煒鮪閿萵齷鄔廡憮嫵騖鵡鶩餼鬩璽覡硤莧薟蘚峴獫嫻鷴癇蠔秈躚薌餉驤緗饗嘵瀟驍綃梟簫褻擷紲纈陘滎饈鵂詡頊諼鉉鏇謔澩鱈塤潯鱘埡婭椏氬厴贗儼兗讞懨閆釅魘饜鼴煬軺鷂鰩靨謁鄴曄燁詒囈嶧飴懌驛縊軼貽釔鎰鐿瘞艤銦癮塋鶯縈鎣攖嚶瀅瀠瓔鸚癭頦罌鏞蕕銪魷傴俁諛諭蕷崳飫閾嫗紆覦歟鈺鵒鷸齬櫞鳶黿鉞鄆蕓惲慍紜韞殞氳瓚趲鏨駔賾嘖幘簀譖繒譫詔釗謫輒鷓湞縝楨軫賑禎鴆諍崢鉦錚箏騭櫛梔軹輊贄鷙螄縶躓躑觶鍾紂縐佇櫧銖囀饌顳騅縋諑鐲諮緇輜貲眥錙齜鯔傯諏騶鯫鏃纘躦鱒訁譾郤猛氹阪壟堖垵墊檾蕒葤蓧蒓菇槁摣咤唚哢噝噅撅劈謔襆嶴脊仿僥獁麅餘餷饊饢楞怵懍爿漵灩混濫瀦淡寧糸絝緔瑉梘棬案橰櫫軲軤賫膁腖飈糊煆溜湣渺碸滾瞘鈈鉕鋣銱鋥鋶鐦鐧鍩鍀鍃錇鎄鎇鎿鐝鑥鑹鑔穭鶓鶥鸌癧屙瘂臒襇繈耮顬蟎麯鮁鮃鮎鯗鯝鯴鱝鯿鰠鰵鱅鞽韝齇";
     var 当前文件;
     var 当前文件路径;
     var 编辑模式;
@@ -100,7 +102,14 @@ var MyPlugin = /** @class */ (function (_super) {
     var 当前行号 = 0;
     var 选至行首 = "";
     var 选至行尾 = "";
+    var 末行行号 = 0;
+    var 末行文本 = "";
+    var 选至文首 = "";
+    var 选至文末 = "";
     var isIndent = true;
+    var oldIndent="";
+    var editorChanged = false;
+    var 代码块内 = false;
     var isGLS = false;
     var isCTS = false;
     var isXTS = false;
@@ -118,14 +127,18 @@ var MyPlugin = /** @class */ (function (_super) {
 
     MyPlugin.prototype.onload = function () {
         var _this = this;
-        var editorChanged = false;
-        var oldIndent="";
         var 次数 = 0;
 
         this.registerEvent(this.app.workspace.on('editor-change', function (file) {
             if (file) {
                 editorChanged = true;
+                代码块内 = false;
                 _this.获取编辑器信息();
+                var dn1 = 选至文首.match(/^```/mg).length;
+                var dn2 = 选至文末.match(/^```/mg).length;
+                if(dn1%2==1 && dn2%2==1){
+                    代码块内 = true;
+                };
             };
         }));
 
@@ -155,22 +168,17 @@ var MyPlugin = /** @class */ (function (_super) {
                 编辑模式 = _this.获取编辑模式();
                 if(编辑模式==null){
                 }else{
-                    //new obsidian.Notice("按下了回车键");
                     var 上行文本 = 编辑模式.getLine(当前行号-1);
+                    var 缩进字符 = 上行文本.match(/^[\t\s]*/)[0];
                     //new obsidian.Notice("上行文本\n"+上行文本);
-                    var 末行行号 = 编辑模式.lastLine();
-                    var 末行文本 = 编辑模式.getLine(末行行号);
-                    var 选至文首 = 编辑模式.getRange({line:0,ch:0},{line:当前行号,ch:0});
-                    var 选至文末 = 编辑模式.getRange({line:当前行号,ch:0},{line:末行行号,ch:末行文本.length});
-                    var 缩进字符 = 上行文本.match(/^[\t\s]*/m)[0];
-                    var 代码块次数1 = 选至文首.match(/^```/mg).length;
-                    var 代码块次数2 = 选至文末.match(/^```/mg).length;
                     if(editorChanged){
-                        var reg = /^[\t\s]*(\-|\d+\.)\s/im
-                        var reg1 = /^[\t\s]+$/m
-                        var reg2 = /^[\t\s]*\/\//m
-                        if(代码块次数1%2==1 && 代码块次数2%2==1){
-                            //在代码块中换行，视上行代码末尾符号的特点进行恰当缩进。
+                        var 在列表行 = 当前行文本.search(/^[\t ]*(\-|\d+\.) /);
+                        //new obsidian.Notice(this.settings.twoEnter+" 缓存"+在列表行);
+                        var reg1 = /^[\t ]+$/m;
+                        var reg2 = /^[\t ]*\/\//m;
+                        if(代码块内){
+                            //在代码块内换行，视上行代码末尾符号的特点进行恰当缩进。
+                            //new obsidian.Notice("按下了回车键789");
                             var 缩进文本 = "";
                             var 缩进次数,i=0;
                             //new obsidian.Notice("|"+缩进字符+"|");
@@ -191,8 +199,9 @@ var MyPlugin = /** @class */ (function (_super) {
                                 i++;
                             }
                             oldIndent = 缩进文本;
-                        }else if(this.settings.twoEnter && 当前行文本.match(reg)==null){
+                        }else if(this.settings.twoEnter && 在列表行<0){
                             //启用补行功能，且没在列表中，每按下回车即补一次换行
+                            //new obsidian.Notice("没在列表中");
                             笔记全文.replaceRange("\n", 当前光标, 当前光标);
                             编辑模式.exec("goRight");
                         };
@@ -233,41 +242,52 @@ var MyPlugin = /** @class */ (function (_super) {
 		            name: '获取笔记标题列表',
 		            callback: function () {	_this.获取笔记标题列表();}
 		        }); */
-
+                _this.addCommand({
+                    id: 'open-up',
+                    name: '查看同级上方文件',
+                    callback: function () {	_this.切换文件列表(-1);},
+                    hotkeys: [{ modifiers: ["Alt","Shift"], key: "I" } ]
+                });
+                _this.addCommand({
+                    id: 'open-down',
+                    name: '查看同级下方文件',
+                    callback: function () {	_this.切换文件列表(1);},
+                    hotkeys: [{ modifiers: ["Alt","Shift"], key: "K" } ]
+                });
                 _this.addCommand({
                         id: 'mouse-up',
                         name: '游标上移',
-                        callback: function () {	_this.游标上移("");},
+                        callback: function () {	_this.游标上移();},
                         hotkeys: [{ modifiers: ["Alt"], key: "I" } ]
                 });
                 _this.addCommand({
                         id: 'mouse-down',
                         name: '游标下移',
-                        callback: function () {	_this.游标下移("");},
+                        callback: function () {	_this.游标下移();},
                         hotkeys: [{ modifiers: ["Alt"], key: "K" } ]
                 });
                 _this.addCommand({
                     id: 'mouse-left',
                     name: '游标左移',
-                    callback: function () {	_this.游标左移("");},
+                    callback: function () {	_this.游标左移();},
                     hotkeys: [{ modifiers: ["Alt"], key: "J" } ]
                 });
                 _this.addCommand({
                     id: 'mouse-right',
                     name: '游标右移',
-                    callback: function () {	_this.游标右移("");},
+                    callback: function () {	_this.游标右移();},
                     hotkeys: [{ modifiers: ["Alt"], key: "L" } ]
                 });
                 _this.addCommand({
                     id: 'mouse-start',
                     name: '游标置首',
-                    callback: function () {	_this.游标置首("");},
+                    callback: function () {	_this.游标置首();},
                     hotkeys: [{ modifiers: ["Alt"], key: "U" } ]
                 });
                 _this.addCommand({
                     id: 'mouse-end',
                     name: '游标置尾',
-                    callback: function () {	_this.游标置尾("");},
+                    callback: function () {	_this.游标置尾();},
                     hotkeys: [{ modifiers: ["Alt"], key: "O" } ]
                 });
                 
@@ -503,11 +523,16 @@ var MyPlugin = /** @class */ (function (_super) {
                         callback: function() { _this.中转英文标点(); }
                     });
                     _this.addCommand({
+                        id: 'list-mermaid',
+                        name: '列表转为图示',
+                        callback: function() { _this.列表转为图示(); } 
+                    });
+                    _this.addCommand({
                         id: 'file-path',
                         name: '转换路径',
                         callback: function() { _this.转换路径(); }
                     });
-                    /* _this.addCommand({
+                    _this.addCommand({
                         id: 'jian-fan',
                         name: '简体转繁',
                         callback: function() { _this.简体转繁(); }
@@ -516,7 +541,7 @@ var MyPlugin = /** @class */ (function (_super) {
                         id: 'fan-jian',
                         name: '繁体转简',
                         callback: function() { _this.繁体转简(); }
-                    }); */
+                    }); 
                     _this.addCommand({
                         id: 'add-kh1',
                         name: '【选文】',
@@ -600,6 +625,12 @@ var MyPlugin = /** @class */ (function (_super) {
                 
                 if(this.settings.toggleLS){}
                     _this.addCommand({
+                        id: 'zhe-lines',
+                        name: '折叠当前同级标题',
+                        callback: function() { _this.折叠当前同级标题(); },
+                        hotkeys: [{ modifiers: ["Mod","Shift","Alt"], key: "D" } ]
+                    });
+                    _this.addCommand({
                         id: 'add-lines',
                         name: '批量插入空行',
                         callback: function() { _this.批量插入空行(); },
@@ -659,14 +690,13 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.saveSettings = function () {
         var _this = this;
         var settings = _this.settings.toJson();
-        //new obsidian.Notice("正在保存");
         _this.app.vault.adapter.write(_this.SETTINGS_PATH, settings); 
     };
     MyPlugin.prototype.loadSettings = function () {
     	console.log("加载插件");
         var _this = this;
         _this.app.vault.adapter.read(_this.SETTINGS_PATH).
-            then(function (content) {return _this.settings.fromJson(content);}).
+            then(function (content) { return _this.settings.fromJson(content); }).
             catch(function (error) { console.log("未找到设置文件。"); });
     };
     /*
@@ -676,10 +706,8 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.获取编辑器信息 = function() {
         //初始信息获取，最基本函数
         编辑模式 = this.获取编辑模式 ();
-        if(编辑模式 == null){
-            new obsidian.Notice("当前为阅读视图！\n无法完成相关操作...");
-            return;
-        };
+        if(编辑模式 == null){return;};
+        
         笔记全文 = 编辑模式.getDoc();
         笔记正文 = this.获取笔记正文 ();
         所选文本 = this.获取所选文本 ();
@@ -688,6 +716,11 @@ var MyPlugin = /** @class */ (function (_super) {
         当前行文本 = 编辑模式.getLine(当前行号);
         选至行首 = 编辑模式.getRange({line:当前行号,ch:0}, 当前光标);
         选至行尾 = 编辑模式.getRange(当前光标,{line:当前行号,ch:当前行文本.length});
+        
+        末行行号 = 编辑模式.lastLine();
+        末行文本 = 编辑模式.getLine(末行行号);
+        选至文首 = 编辑模式.getRange({line:0,ch:0},{line:当前行号,ch:0});
+        选至文末 = 编辑模式.getRange({line:当前行号,ch:0},{line:末行行号,ch:末行文本.length});
     };
 
     MyPlugin.prototype.关闭格式刷 = function() {
@@ -723,6 +756,33 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.游标置尾 = function() {
         this.获取编辑器信息 ();
         编辑模式.exec("goEnd");
+    };
+
+    MyPlugin.prototype.切换文件列表 = function(_num) {
+        this.获取编辑器信息 ();
+        当前文件 = this.app.workspace.getActiveFile();
+        当前文件路径 = 当前文件.path;
+        var 父级文件夹 = 当前文件路径.replace(/[^\\\/]+$/,"");
+        
+        var 同级文件列表=[];
+        this.app.vault.getMarkdownFiles().map((file) => {
+            if(file.path==父级文件夹+file.basename+".md"){
+                同级文件列表.push(file);
+            }
+        });
+        同级文件列表 = 同级文件列表.sort(function (str1, str2) {
+            return str1.path.localeCompare(str2.path, 'zh');
+            });
+        //new obsidian.Notice(同级文件列表.join("\n"));
+        var thisID = 同级文件列表.indexOf(当前文件)+_num;
+        if(thisID>同级文件列表.length-1){
+            thisID=0;
+        }else if(thisID<0){
+            thisID=同级文件列表.length-1;
+        }
+        var xinFile = 同级文件列表[thisID];
+        //new obsidian.Notice(父级文件夹+" "+thisID+" "+xinFile);
+        this.app.workspace.activeLeaf.openFile(xinFile);
     };
 
     MyPlugin.prototype.转换内部链接 = function() {
@@ -810,7 +870,7 @@ var MyPlugin = /** @class */ (function (_super) {
             }else if (link.test(所选文本)){
                 所选文本 = 所选文本.replace(/\*\*/g,"");    //new obsidian.Notice("成对出现**符号");
             }else{
-                所选文本 = 所选文本.replace(/^(.*)$/mg,"**$1**");
+                所选文本 = 所选文本.replace(/^([\t\s]*)([^\t\s])/mg,"$1**$2").replace(/([^\t\s])([\t\s]*)$/mg,"$1**$2");
                 所选文本 = 所选文本.replace(/^\*\*\*\*$/mg,"");
             }
             this.替换所选文本 (所选文本);
@@ -837,7 +897,7 @@ var MyPlugin = /** @class */ (function (_super) {
             }else if (link.test(所选文本)){
                 所选文本 = 所选文本.replace(/==/g,"");    //new obsidian.Notice("成对出现==符号");
             }else{
-                所选文本 = 所选文本.replace(/^(.*)$/mg,"==$1==");
+                所选文本 = 所选文本.replace(/^([\t\s]*)([^\t\s])/mg,"$1==$2").replace(/([^\t\s])([\t\s]*)$/mg,"$1==$2");
                 所选文本 = 所选文本.replace(/^====$/mg,"");
             }
             this.替换所选文本 (所选文本);
@@ -1201,6 +1261,7 @@ var MyPlugin = /** @class */ (function (_super) {
         var link = eval("/^"+_str+" ([^#]+)/");	//是否包含几个#符号
        this.获取编辑器信息 ();
         var 新文本 = "";
+        var 新定位 = 选至行首.replace(/^#+\s/,"");
         if(_str==""){
             新文本 = 当前行文本.replace(/^\s*#+\s/,"");
         }else if (link.test(当前行文本)){
@@ -1208,16 +1269,10 @@ var MyPlugin = /** @class */ (function (_super) {
         }else{
             新文本 = 当前行文本.replace(/^#+[ ]+/,"");
             新文本 = 新文本.replace(/^\s*/,_str+" ");
+            新定位 = _str+" "+新定位;
         }
-        //new obsidian.Notice(新文本);
         笔记全文.replaceRange(新文本, {line:当前行号,ch:0}, {line:当前行号,ch:当前行文本.length});
-        if(当前行文本==""){  //如果当前行为空，指定标题后 光标放置末尾
-            var i=0;
-             while (i<_str.length+1){
-                编辑模式.exec("goRight");
-                i++;
-            }
-        };
+        编辑模式.setCursor({line:当前行号,ch:新定位.length});
     };
 
     MyPlugin.prototype.转换文字颜色 = function(_color) {
@@ -1266,14 +1321,14 @@ var MyPlugin = /** @class */ (function (_super) {
     
     MyPlugin.prototype.转换无语法文本 = function() {
         this.获取编辑器信息 ();
-        var mdText = /(^#+\s|(?<=^|\s*)#|^>|^\- \[( |x)\]|^\+ |<[^<>]+>|^1\. |^\s*\- |^\-+$|^\*+$)/mg;
+        var mdText = /(^#+\s|(?<=^|\s*)#|^\>|^\- \[( |x)\]|^\+ |\<[^\<\>]+?\>|^1\. |^\s*\- |^\-+$|^\*+$)/mg;
         if(所选文本 == ""){
             if(isCTS || isGLS || isSB || isSCS || isXB || isXHS || isXTS){
                 this.关闭格式刷();
                 new obsidian.Notice("已关闭格式刷！");
             }else{
                 //new obsidian.Notice("请先划选部分文本，再执行命令！");
-                var reg1 = /(~~|%%|==|\*\*?|\<[^\<\>]*\>|!?\[\[*|`|_|!?\[)([^!#=\[\]\<\>\`_\*~\(\)]*)$/;
+                var reg1 = /(~~|%%|==|\*\*?|\<[^\<\>]*?\>|!?\[\[*|`|_|!?\[)([^!#=\[\]\<\>\`_\*~\(\)]*)$/;
                 var reg2 = /^([^!=\[\]\<\>\`_\*~\(\)]*)(~~|%%|==|\*\*?|\<[^\<\>]*\>|\]\]|`|_|\]\([^\(\)\[\]]*\))/;
                 if(选至行首.match(reg1)!=null && 选至行尾.match(reg2)!=null){
                     选至行首 = 选至行首.replace(reg1,"$2");
@@ -1364,14 +1419,12 @@ var MyPlugin = /** @class */ (function (_super) {
         var reg = /^[\t\s]*\d+(?=\.\s[^\s])/mg;
         if(当前行文本.match(reg)==null){
             //new obsidian.Notice("当前不是列表");
-            var 选至行首 = 编辑模式.getRange({line:当前行号,ch:0}, 当前光标);
-            var 选至行尾 = 编辑模式.getRange(当前光标,{line:当前行号,ch:当前行文本.length});
             var reg1 =/^(.*\[\[)[^\[]+$/;
-            var reg2 = /^[^\]]+(\]\].*)$/
+            var reg2 = /^[^\]]+(\]\].*)$/;
 
             //当前光标在[[]]中间，只删除链接文字
             if(reg1.test(选至行首) && reg2.test(选至行尾)){
-                new obsidian.Notice("优先删除链接内容，供修改！");
+                new obsidian.Notice("优先删除内部链接，可以切换标题！");
                 选至行首 = 选至行首.replace(reg1,"$1");
                 选至行尾 = 选至行尾.replace(reg2,"$1");
                 笔记全文.replaceRange(选至行首+选至行尾, {line:当前行号,ch:0},{line:当前行号,ch:当前行文本.length});
@@ -1382,10 +1435,8 @@ var MyPlugin = /** @class */ (function (_super) {
             }
         }else{
             //当前所在行为有序列表的一项，则调小后表部分的序号
-            var 末行行号 = 编辑模式.lastLine();
-            var 末行文本 = 编辑模式.getLine(末行行号);
-            var 选至文末 = 编辑模式.getRange({line:当前行号,ch:0},{line:末行行号,ch:末行文本.length}).replace(/\n/g,"↫");
-            var 后表部分 = 选至文末.match(/^([\t\s]*\d\.\s[^↫]*↫)+/)[0].replace(/↫/g,"\n"); //替换为单行文本，再截取后表部分
+            选至文末 = 选至文末.replace(/\n/g,"↫");
+            var 后表部分 = 选至文末.match(/^([\t\s]*\d+\.\s[^↫]*↫)+/)[0].replace(/↫/g,"\n"); //替换为单行文本，再截取后表部分
             var 后表行数 = 后表部分.match(/\n/g).length;    //计算换行次数
             var 缩进字符 = 当前行文本.match(/^[\t\s]*(?=\d)/)[0];
             var reg3 = eval("/(?<=^"+缩进字符+")\\d+(?=\\.*\\s)/mg");    //按当前行的缩进格式进行查找替换
@@ -1398,16 +1449,16 @@ var MyPlugin = /** @class */ (function (_super) {
     
     MyPlugin.prototype.转换待办列表 = function() {
         this.获取编辑器信息 ();
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[) (?=\]\s[^\s])/mg,"x☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)x(?=\]\s[^\s])/mg,"-☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\-(?=\]\s[^\s])/mg,"!☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\!(?=\]\s[^\s])/mg,"?☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\?(?=\]\s[^\s])/mg,">☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\>(?=\]\s[^\s])/mg,"<☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\<(?=\]\s[^\s])/mg,"+☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\+(?=\]\s[^\s])/mg," ☀");
-        所选文本 = 所选文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[[\sx\-\+\?\!\<\>])☀(?=\]\s[^\s])/mg,"");
-        this.替换所选文本 (所选文本);
+        var 当前新文本 = 当前行文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[) (?=\]\s[^\s])/mg,"x☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)x(?=\]\s[^\s])/mg,"-☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\-(?=\]\s[^\s])/mg,"!☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\!(?=\]\s[^\s])/mg,"?☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\?(?=\]\s[^\s])/mg,">☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\>(?=\]\s[^\s])/mg,"<☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\<(?=\]\s[^\s])/mg,"+☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[)\+(?=\]\s[^\s])/mg," ☀");
+        当前新文本 = 当前新文本.replace(/(?<=^\s*([\-\+]|[0-9]+\.)\s\[[\sx\-\+\?\!\<\>])☀(?=\]\s[^\s])/mg,"");
+        笔记全文.replaceRange(当前新文本, {line:当前行号,ch:0},{line:当前行号,ch:当前行文本.length});
     };
 
     MyPlugin.prototype.自动设置标题 = function() {
@@ -1450,7 +1501,7 @@ var MyPlugin = /** @class */ (function (_super) {
             var urlReg = /^(https?:\/\/[^:]+)$/
             var pathReg = /^([c-z]:\\[^\/:\*\?\<\>\|]+)$/i
             var tmpText = clipText.replace(/[\n ]/g,"");
-            new obsidian.Notice("数据\n"+ tmpText);
+            //new obsidian.Notice("数据\n"+ tmpText);
             if(urlReg.test(tmpText)){
                 clipText = clipText.replace(urlReg,"[链接]($1)");
                 new obsidian.Notice("剪贴板数据已转为网址超链接！");
@@ -1470,7 +1521,7 @@ var MyPlugin = /** @class */ (function (_super) {
                 clipText = clipText.replace(/\|$/mg,"\|　");
                 clipText = clipText.replace(/^(?=[^\r\n])|(?<=[^\r\n])$/mg,"\|");
                 clipText = clipText.replace(/(?<=\|)(?=\|)/g,"　");
-                new obsidian.Notice("剪贴板数据已转为MD表格！");
+                new obsidian.Notice("剪贴板数据已转为MD语法表格！");
             }else/* if(codeReg.test(tmpText))*/{
                 clipText = "```\n"+clipText+"\n```\n"
                 new obsidian.Notice("剪贴板数据已转为代码块格式！");
@@ -1488,7 +1539,7 @@ var MyPlugin = /** @class */ (function (_super) {
         if (!笔记正文) return;
         var tmp = 笔记正文.replace(/^(?!#+ |#注释|#标注|#批注|#反思|#备注|.*==|.*%%).*$|^[^#\n%=]*(==|%%)|(==|%%)[^\n%=]*$|(==|%%)[^\n%=]*(==|%%)/mg,"\n");
         tmp = tmp.replace(/[\r\n|\n]+/g,"\n")        
-        new obsidian.Notice("已成功获取，请粘贴！");
+        new obsidian.Notice("已成功获取标注类文本，可以粘贴！");
         navigator.clipboard.writeText(tmp);
     };
 
@@ -1502,7 +1553,7 @@ var MyPlugin = /** @class */ (function (_super) {
             所选文本 = 所选文本.replace(mdText,"");
             所选文本 = 所选文本.replace(/^[ ]+|[ ]+$/mg,"");
             所选文本 = 所选文本.replace(/(\r\n|\n)+/mg,"\n");
-            new obsidian.Notice("无语法文本 已成功获取，请粘贴！");
+            new obsidian.Notice("已成功获取无语法文本，可以粘贴！");
             navigator.clipboard.writeText(所选文本);
         }
     };
@@ -1529,6 +1580,78 @@ var MyPlugin = /** @class */ (function (_super) {
             编辑模式.exec("goRight");
         }else{
             new obsidian.Notice("所选文本不符合网址格式，无法嵌入！");
+        }
+    };
+
+    MyPlugin.prototype.列表转为图示 = function () {
+        var 大纲文本 = 所选文本.replace(/(    |\t)/mg,"■");
+        大纲文本 = 大纲文本.replace(/(\-\s|\d+\.\s)/mg,"");   //对所有文本行的行首进行替换整理,去除-
+        大纲文本 = 大纲文本.replace(/\s+$/mg,"");   //对所有文本行的行尾进行替换去除
+        大纲文本 = 大纲文本.replace(/\n/g,"↵");
+        大纲文本 = 大纲文本.replace(/↵+$/,"");   //去除末尾多余换行符
+        var tagAry = 大纲文本.split("↵");
+        //new obsidian.Notice(tagAry[0]);
+        var fName = "";
+        var 主要语法 = "";
+        for(var i =0;i<tagAry.length;i++){
+            var thisLine = tagAry[i];   //此行文本
+            var n = thisLine.lastIndexOf("■");
+            if(i>0){
+                var upLine = tagAry[i-1];   //上行文本
+                var m = upLine.lastIndexOf("■");
+            }
+            
+            if(n<0){//无■，即为根级大纲,可创建@导航页面
+                fName = thisLine;
+            }else{
+                //new obsidian.Notice(upLine+"  "+m+"\n"+thisLine+"  "+n);
+                //比较下行与当前行的■数，三种情况，下行多，两行同，下行少
+                thisLine = thisLine.replace(/^■+/,"");  //去除标识符号
+                if(n>m){
+                    //本行多，追加-当前行，前缀@
+                    fName = fName+"-->"+thisLine;
+                }else if(n==m){
+                    //替换末尾-旧名称 为 -当前行
+                    fName = fName.replace(/(?<=(^|\-\-\>))[^\-\>]+$/,thisLine);
+                }else{
+                    var cha=Number(m-n)+1;  //计算上行、本行的■数
+                    fName = fName.replace(eval("/(\-\-\>[^\-\>]+){"+cha+"}$/"),"-->"+thisLine);
+                }
+                var 行语法 = fName.replace(/^.*\-\-\>(?=[^\-\>]+\-\-\>[^\-\>]+$)/mg,"");
+                主要语法 = 主要语法 + "↵"+ 行语法;
+            }
+        }
+        var 输出语法 = "%%此图示由列表文本转换而成！%%↵"+主要语法
+        编辑模式.setCursor({line:0,ch:0});
+        笔记正文 = this.获取笔记正文();
+        var 新正文 = 笔记正文.replace(/\n/g,"↵");
+        if(新正文.includes("%%此图示由列表文本转换而成！%%")){
+            新正文 = 新正文.replace(/%%此图示由列表文本转换而成！%%↵.+?(?=↵```)/g, 输出语法);
+            新正文 = 新正文.replace(/↵/g,"\n");
+            this.替换笔记正文 (新正文);
+        }else{
+            new obsidian.Notice("列表文本已转为MerMaid语法。\n可以粘贴！");
+            输出语法 = 输出语法.replace(/↵/g,"\n");
+            navigator.clipboard.writeText("```mermaid\ngraph TD\n"+输出语法+"\n```\n");
+        };
+    }
+
+    MyPlugin.prototype.折叠当前同级标题 = function() {
+		this.获取编辑器信息 ();
+        if (!笔记全文) return;
+        if(/^#+\s/.test(当前行文本)){
+            this.app.commands.executeCommandById('editor:unfold-all');
+            var _str = 当前行文本.replace(/^(#+)\s.*$/,"$1");   //获取前面的多个#号
+            //new obsidian.Notice("当前为标题行 "+_str);
+            var 末行行号 = 编辑模式.lastLine();
+            for(var i= 末行行号;i>=0;i--){
+                编辑模式.setCursor({line:i,ch:0});
+                //new obsidian.Notice(本行文本);
+                var 本行文本 = 编辑模式.getLine(i);
+                if(eval("/^"+_str+"(?=[^#])/").test(本行文本)){
+                    this.app.commands.executeCommandById('editor:toggle-fold');
+                }
+            }
         }
     };
 
@@ -1603,37 +1726,20 @@ var MyPlugin = /** @class */ (function (_super) {
         this.替换笔记正文 (笔记正文);
     };
 
-    MyPlugin.prototype.同目录下一笔记 = function() {
-        var 当前文件 = this.app.workspace.getActiveFile();
-        var 当前文件路径 = 当前文件.path;
-        //当前文件路径 = 当前文件路径.replace(/\.md/,"")
-        //new obsidian.Notice(当前文件路径);
-
-        var 库文件路径列表 = this.app.vault.getMarkdownFiles().map((file) => {
-            return file.path;
-        });
-
-        var _string = 库文件路径列表.toString();
-        _string = _string.replace(/(^|,)([^\/,]+)(?=\/)/img,"$1■$2");
-        new obsidian.Notice(_string);
-        var newList = _string.split(",");
-        newList.sort();
-
-        navigator.clipboard.writeText(newList.toString().replace(/,/g,"\n"));
-        new obsidian.Notice("文件列表已写入剪贴板！");
-        
-        var _mdID = 库文件路径列表.findIndex(checkAdult);
-        new obsidian.Notice(_mdID + " " + 当前文件路径 + "\n" + Number(_mdID-1) + " " + 库文件路径列表[_mdID-1]);
-
-        function checkAdult(age) {
-            return age.includes(当前文件路径)
-        }
-    }
+    /* 此功能暂未启用。*/
+     MyPlugin.prototype.续选当前文本 = function() { 
+        this.获取编辑器信息 ();
+        var lang = 选至行尾.indexOf(所选文本);
+        var 起始 = 选至行首.length+lang;
+        var 结束 = 起始 + 所选文本.length;
+        if(lang<0){ return};
+        编辑模式.setSelection({line:当前行号,ch:起始}, {line:当前行号,ch:结束});
+    };
 
     MyPlugin.prototype.搜索当前文本 = function() {
         var 当前文件 = this.app.workspace.getActiveFile();
         var 当前文件路径 = 当前文件.name;
-        new obsidian.Notice(当前文件路径);
+        //new obsidian.Notice(当前文件路径);
         当前文件路径 = 当前文件路径.replace(/\.md$/,"")
         var view = this.app.workspace.getActiveViewOfType(obsidian.MarkdownView);
         var _txt = view.getSelection();
@@ -1660,6 +1766,8 @@ var MyPlugin = /** @class */ (function (_super) {
         //处理 bookXnote 回链语法，将 [[链接]]() 转换为 []()
         笔记正文 = 笔记正文.replace(/(?<=^|\s)    /mg,"\t");
         //把 四个空格转换为 制表符
+        笔记正文 = 笔记正文.replace(/(?<=\]\([^\(\)]+\))$/g,"  ");
+        //在超链接末尾处补加两空格
         笔记正文 = 笔记正文.replace(/\*\s+\>\s+/g,"- ");
         //处理 bookXnote 回链语法中的列表
         笔记正文 = 笔记正文.replace(/(?<=\s)[0-9]+。 /g,"1. ");
@@ -1705,19 +1813,19 @@ var MyPlugin = /** @class */ (function (_super) {
         var link1 = /^[a-zA-Z]:\\/;	//符合普通路径格式
         var link2 = /^(\[[^\[\]]*\]\()*file:\/\/\/[^\(\)]*\)*/;	//符合[](file路径)格式
         var link3 = /^\[[^\[\]]*\]\(([a-zA-Z]:\\[^\(\)]*)\)*/;	//意外路径格式
-        if (link1.test(笔记正文)){
-            笔记正文 = 笔记正文.replace(/\s/mg,"%20");
-            笔记正文 = 笔记正文.replace(/^(.*)$/m,"\[file\]\(file:///$1\)");
-            笔记正文 = 笔记正文.replace(/\\/img,"\/");
-            this.替换笔记正文 (笔记正文);
-        }else if(link2.test(笔记正文)){
-            笔记正文 = 笔记正文.replace(/%20/mg," ");
-            笔记正文 = 笔记正文.replace(/^(\[[^\[\]]*\]\()*file:\/\/\/([^\(\)]*)\)*/m,"$2");
-            笔记正文 = 笔记正文.replace(/\//mg,"\\");
-            this.替换笔记正文 (笔记正文);
-        }else if(link3.test(笔记正文)){
-            笔记正文 = 笔记正文.replace(/^\[[^\[\]]*\]\(([a-zA-Z]:\\[^\(\)]*)\)*/m,"$1");
-            this.替换笔记正文 (笔记正文);
+        if (link1.test(所选文本)){
+            所选文本 = 所选文本.replace(/\s/mg,"%20");
+            所选文本 = 所选文本.replace(/^(.*)$/m,"\[file\]\(file:///$1\)");
+            所选文本 = 所选文本.replace(/\\/img,"\/");
+            this.替换所选文本 (所选文本);
+        }else if(link2.test(所选文本)){
+            所选文本 = 所选文本.replace(/%20/mg," ");
+            所选文本 = 所选文本.replace(/^(\[[^\[\]]*\]\()*file:\/\/\/([^\(\)]*)\)*/m,"$2");
+            所选文本 = 所选文本.replace(/\//mg,"\\");
+            this.替换所选文本 (所选文本);
+        }else if(link3.test(所选文本)){
+            所选文本 = 所选文本.replace(/^\[[^\[\]]*\]\(([a-zA-Z]:\\[^\(\)]*)\)*/m,"$1");
+            this.替换所选文本 (所选文本);
         }else{
             new obsidian.Notice("您划选的路径格式不正确！");
             return
@@ -1727,11 +1835,8 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.简体转繁 = function(){
         this.获取编辑器信息 ();
         if (!笔记正文) return;
-        var _list1 = this.settings.jtList;
-        var _list2 = this.settings.ftList;
-        
-        for (var i=0;i<_list1.length;i++){ 
-            笔记正文 = 笔记正文.replace(eval("/"+_list1[i]+"/g"),_list2[i]);
+        for (var i=0;i<简体字表.length;i++){ 
+            笔记正文 = 笔记正文.replace(eval("/"+简体字表[i]+"/g"),繁体字表[i]);
         }
         this.替换笔记正文 (笔记正文);
     }
@@ -1739,10 +1844,8 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.繁体转简 = function(){
         this.获取编辑器信息 ();
         if (!笔记正文) return;
-        var _list1 = this.settings.jtList;
-        var _list2 = this.settings.ftList;        
-        for (var i=0;i<_list1.length;i++){ 
-            笔记正文 = 笔记正文.replace(eval("/"+_list2[i]+"/g"),_list1[i]);
+        for (var i=0;i<繁体字表.length;i++){ 
+            笔记正文 = 笔记正文.replace(eval("/"+繁体字表[i]+"/g"),简体字表[i]);
         }
         this.替换笔记正文 (笔记正文);
     }
@@ -1760,11 +1863,12 @@ var MyPlugin = /** @class */ (function (_super) {
     MyPlugin.prototype.获取笔记正文 = function() {
         var cmEditor = this.获取编辑模式 ();
     	if (!cmEditor) return;
-         if (cmEditor.getSelection() != "") {
+        return cmEditor.getValue();  
+        /*if (cmEditor.getSelection() != "") {
        		return cmEditor.getSelection();
         } else {
-            return cmEditor.getValue();         
-        }
+            return cmEditor.getValue();
+        }*/
     };
 
     MyPlugin.prototype.替换所选文本 = function(Selection) {
@@ -1782,9 +1886,9 @@ var MyPlugin = /** @class */ (function (_super) {
     };
 
     MyPlugin.prototype.获取编辑模式 = function () {
-        var _view = this.app.workspace.activeLeaf.view;
-        if (_view.getMode() == 'source') {
-            var cmEditor = _view.sourceMode.cmEditor;
+        const view = app.workspace.getActiveViewOfType(obsidian.MarkdownView);
+        if (view && view.getMode() === 'source') {
+            var cmEditor = view.sourceMode.cmEditor;
             return cmEditor;
         }else{
             //new obsidian.Notice("阅读视图！");
@@ -1848,13 +1952,21 @@ var SettingsTab = /** @class */ (function (_super) {
                 _this.plugin.saveSettings();
             }); });
         new obsidian.Setting(containerEl)
-            .setName('📣 键控游标「Alt+IJKL」 利用主键盘区控制编辑区的游标位置')
+            .setName('📣 键控游标「Alt+I +J +K +L」 使用主键盘控制编辑区内的游标位置')
             .setDesc('按下Alt+ I上 J左 K下 L右 U首 O尾 快捷键，控制游标移动位置。')
 
         new obsidian.Setting(containerEl)
+            .setName('📣 键控切换文件列表「Alt+Shift+I +K」 使用键盘控制切换文件列表中的文件显示')
+            .setDesc('按下Alt+Shift+ I上 K下 快捷键，控制打开同文件夹内其它文件。')
+        
+        new obsidian.Setting(containerEl)
             .setName('📣 智能语法「Alt+;」 自动转换、匹配或跳过各种类型的括号或代码块语法')
             .setDesc('可将[( (< ([ "[ \'[等组合转为〖〈〔『「，或将dv、qy、mm、CSS、js、ja、ty等字符串转为代码块语法。')
-        
+
+        new obsidian.Setting(containerEl)
+            .setName('📣 智能粘贴「Ctrl+Alt+V」∶将复制的内容粘贴为Md语法样式')
+            .setDesc('依据复制内容的类型，将表格、网址、本地路径或代码直接粘贴为MD表格、超链接或代码块格式。')
+
         new obsidian.Setting(containerEl)
             .setName('📣 设置标题及粗、斜、删、亮等效果（MarkDown语法）功能。')
             .setDesc('启用后，当未选文本时按下Alt+C +G +S +U +N 等快捷键，即会开启或关闭 相应的MD语法「格式刷」功能。')
@@ -1912,7 +2024,7 @@ var SettingsTab = /** @class */ (function (_super) {
         div2.appendChild(htmlText);
 
         new obsidian.Setting(containerEl)
-            .setName('📣 设置标点、符号、状态等转换功能。')
+            .setName('📣 设置字符、标点、状态等转换功能。')
             /*.addToggle(function (toggle) { return toggle.setValue(_this.settings.toggleZH)
                 .onChange(function (value) {
                 _this.settings.toggleZH = value;
@@ -1929,10 +2041,12 @@ var SettingsTab = /** @class */ (function (_super) {
         charText.appendChild(document.createElement('br'));
         charText.appendText('转换路径语法「未设置」∶将 c:\\windows 与 [](file:///c:\/windows) 路径语法相互转换');
         charText.appendChild(document.createElement('br'));
-        // charText.appendText('简体转为繁体「未设置」：将笔记中的简体汉字转换为繁体汉字');
-        // charText.appendChild(document.createElement('br'));
-        // charText.appendText('繁体转为简体「未设置」：将笔记中的繁体汉字转换为简体汉字');
-        // charText.appendChild(document.createElement('br'));
+        charText.appendText('简体转为繁体「未设置」：将笔记中的简体汉字转换为繁体汉字');
+        charText.appendChild(document.createElement('br'));
+        charText.appendText('繁体转为简体「未设置」：将笔记中的繁体汉字转换为简体汉字');
+        charText.appendChild(document.createElement('br'));
+        charText.appendText('列表转为图示「未设置」：选中列表文本，转换为相应层级的MerMaid语法图示，支持修改列表后更新图示。');
+        charText.appendChild(document.createElement('br'));
         charText.appendText('转换待办状态「未设置」：转换选文行首的待办状态，顺序为 -[ x-!?><+] 效果');
         charText.appendChild(document.createElement('br'));
         charText.appendText('转换挖空「未设置」：将选文转为或去除 {{c1::选文}} 效果');
@@ -1947,7 +2061,7 @@ var SettingsTab = /** @class */ (function (_super) {
         div3.appendChild(charText);
 
         new obsidian.Setting(containerEl)
-            .setName('📣 设置智能粘贴、修复语法、选择段句等功能。')
+            .setName('📣 设置修复语法、选择段句、嵌入网页等功能。')
             /*.addToggle(function (toggle) { return toggle.setValue(_this.settings.toggleTS)
                 .onChange(function (value) {
                 _this.settings.toggleTS = value;
@@ -1957,9 +2071,7 @@ var SettingsTab = /** @class */ (function (_super) {
         var div4 = containerEl.createEl('p', {
             cls: 'recent-files-donation',
         });
-        var toolText = document.createDocumentFragment();
-        toolText.appendText('智能粘贴「Ctrl+Alt+V」∶将复制的表格、网址、本地路径或代码直接粘贴为MD表格、超链接或代码块格式');
-        toolText.appendChild(document.createElement('br'));
+        var toolText = document.createDocumentFragment();        
         toolText.appendText('修复错误语法「未设置」∶修复错误的MD语法，如1。列表、【】（）链接、[[]]()回链等');
         toolText.appendChild(document.createElement('br'));
         toolText.appendText('修复意外断行「未设置」∶修复笔记中的意外断行（删除结尾不是句式标点的换行符）');
@@ -1984,7 +2096,7 @@ var SettingsTab = /** @class */ (function (_super) {
 
 
         new obsidian.Setting(containerEl)
-            .setName('📣 设置增减空行或空格等功能。')
+            .setName('📣 设置折叠标题、增减空行或空格等功能。')
             /*.addToggle(function (toggle) { return toggle.setValue(_this.settings.toggleLS)
                 .onChange(function (value) {
                 _this.settings.toggleLS = value;
@@ -1995,6 +2107,8 @@ var SettingsTab = /** @class */ (function (_super) {
             cls: 'recent-files-donation',
         });
         var lineText = document.createDocumentFragment();
+        lineText.appendText('折叠当前同级标题「Ctrl+Shift+Alt+D」∶判断当前行的标题层级，将正文中同级标题一次性折叠起来。');
+        lineText.appendChild(document.createElement('br'));
         lineText.appendText('删除当前段落「Ctrl+D」∶去除当前段落文本;若在[[]]内会先删除链接内容;当遇有序列表项时会正常调小后面序号。');
         lineText.appendChild(document.createElement('br'));
         lineText.appendText('批量插入空行「Ctrl+Shift+L」∶在划选的文本行或全文中间批量插入空白行');

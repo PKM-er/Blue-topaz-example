@@ -27,6 +27,9 @@ var __spreadValues = (a, b) => {
 };
 var __spreadProps = (a, b) => __defProps(a, __getOwnPropDescs(b));
 var __markAsModule = (target) => __defProp(target, "__esModule", { value: true });
+var __commonJS = (cb, mod) => function __require() {
+  return mod || (0, cb[Object.keys(cb)[0]])((mod = { exports: {} }).exports, mod), mod.exports;
+};
 var __export = (target, all) => {
   __markAsModule(target);
   for (var name in all)
@@ -64,9 +67,438 @@ var __async = (__this, __arguments, generator) => {
   });
 };
 
+// node_modules/tslib/tslib.js
+var require_tslib = __commonJS({
+  "node_modules/tslib/tslib.js"(exports, module2) {
+    var __extends2;
+    var __assign2;
+    var __rest2;
+    var __decorate2;
+    var __param2;
+    var __metadata2;
+    var __awaiter2;
+    var __generator2;
+    var __exportStar2;
+    var __values2;
+    var __read2;
+    var __spread2;
+    var __spreadArrays2;
+    var __spreadArray2;
+    var __await2;
+    var __asyncGenerator2;
+    var __asyncDelegator2;
+    var __asyncValues2;
+    var __makeTemplateObject2;
+    var __importStar2;
+    var __importDefault2;
+    var __classPrivateFieldGet2;
+    var __classPrivateFieldSet2;
+    var __createBinding2;
+    (function(factory) {
+      var root = typeof global === "object" ? global : typeof self === "object" ? self : typeof this === "object" ? this : {};
+      if (typeof define === "function" && define.amd) {
+        define("tslib", ["exports"], function(exports2) {
+          factory(createExporter(root, createExporter(exports2)));
+        });
+      } else if (typeof module2 === "object" && typeof module2.exports === "object") {
+        factory(createExporter(root, createExporter(module2.exports)));
+      } else {
+        factory(createExporter(root));
+      }
+      function createExporter(exports2, previous) {
+        if (exports2 !== root) {
+          if (typeof Object.create === "function") {
+            Object.defineProperty(exports2, "__esModule", { value: true });
+          } else {
+            exports2.__esModule = true;
+          }
+        }
+        return function(id, v) {
+          return exports2[id] = previous ? previous(id, v) : v;
+        };
+      }
+    })(function(exporter) {
+      var extendStatics = Object.setPrototypeOf || { __proto__: [] } instanceof Array && function(d, b) {
+        d.__proto__ = b;
+      } || function(d, b) {
+        for (var p in b)
+          if (Object.prototype.hasOwnProperty.call(b, p))
+            d[p] = b[p];
+      };
+      __extends2 = function(d, b) {
+        if (typeof b !== "function" && b !== null)
+          throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() {
+          this.constructor = d;
+        }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+      };
+      __assign2 = Object.assign || function(t) {
+        for (var s, i = 1, n = arguments.length; i < n; i++) {
+          s = arguments[i];
+          for (var p in s)
+            if (Object.prototype.hasOwnProperty.call(s, p))
+              t[p] = s[p];
+        }
+        return t;
+      };
+      __rest2 = function(s, e) {
+        var t = {};
+        for (var p in s)
+          if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+            t[p] = s[p];
+        if (s != null && typeof Object.getOwnPropertySymbols === "function")
+          for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+              t[p[i]] = s[p[i]];
+          }
+        return t;
+      };
+      __decorate2 = function(decorators, target, key, desc) {
+        var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+        if (typeof Reflect === "object" && typeof Reflect.decorate === "function")
+          r = Reflect.decorate(decorators, target, key, desc);
+        else
+          for (var i = decorators.length - 1; i >= 0; i--)
+            if (d = decorators[i])
+              r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+        return c > 3 && r && Object.defineProperty(target, key, r), r;
+      };
+      __param2 = function(paramIndex, decorator) {
+        return function(target, key) {
+          decorator(target, key, paramIndex);
+        };
+      };
+      __metadata2 = function(metadataKey, metadataValue) {
+        if (typeof Reflect === "object" && typeof Reflect.metadata === "function")
+          return Reflect.metadata(metadataKey, metadataValue);
+      };
+      __awaiter2 = function(thisArg, _arguments, P, generator) {
+        function adopt(value) {
+          return value instanceof P ? value : new P(function(resolve) {
+            resolve(value);
+          });
+        }
+        return new (P || (P = Promise))(function(resolve, reject) {
+          function fulfilled(value) {
+            try {
+              step(generator.next(value));
+            } catch (e) {
+              reject(e);
+            }
+          }
+          function rejected(value) {
+            try {
+              step(generator["throw"](value));
+            } catch (e) {
+              reject(e);
+            }
+          }
+          function step(result) {
+            result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+          }
+          step((generator = generator.apply(thisArg, _arguments || [])).next());
+        });
+      };
+      __generator2 = function(thisArg, body) {
+        var _ = { label: 0, sent: function() {
+          if (t[0] & 1)
+            throw t[1];
+          return t[1];
+        }, trys: [], ops: [] }, f, y, t, g;
+        return g = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g[Symbol.iterator] = function() {
+          return this;
+        }), g;
+        function verb(n) {
+          return function(v) {
+            return step([n, v]);
+          };
+        }
+        function step(op) {
+          if (f)
+            throw new TypeError("Generator is already executing.");
+          while (_)
+            try {
+              if (f = 1, y && (t = op[0] & 2 ? y["return"] : op[0] ? y["throw"] || ((t = y["return"]) && t.call(y), 0) : y.next) && !(t = t.call(y, op[1])).done)
+                return t;
+              if (y = 0, t)
+                op = [op[0] & 2, t.value];
+              switch (op[0]) {
+                case 0:
+                case 1:
+                  t = op;
+                  break;
+                case 4:
+                  _.label++;
+                  return { value: op[1], done: false };
+                case 5:
+                  _.label++;
+                  y = op[1];
+                  op = [0];
+                  continue;
+                case 7:
+                  op = _.ops.pop();
+                  _.trys.pop();
+                  continue;
+                default:
+                  if (!(t = _.trys, t = t.length > 0 && t[t.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+                    _ = 0;
+                    continue;
+                  }
+                  if (op[0] === 3 && (!t || op[1] > t[0] && op[1] < t[3])) {
+                    _.label = op[1];
+                    break;
+                  }
+                  if (op[0] === 6 && _.label < t[1]) {
+                    _.label = t[1];
+                    t = op;
+                    break;
+                  }
+                  if (t && _.label < t[2]) {
+                    _.label = t[2];
+                    _.ops.push(op);
+                    break;
+                  }
+                  if (t[2])
+                    _.ops.pop();
+                  _.trys.pop();
+                  continue;
+              }
+              op = body.call(thisArg, _);
+            } catch (e) {
+              op = [6, e];
+              y = 0;
+            } finally {
+              f = t = 0;
+            }
+          if (op[0] & 5)
+            throw op[1];
+          return { value: op[0] ? op[1] : void 0, done: true };
+        }
+      };
+      __exportStar2 = function(m, o) {
+        for (var p in m)
+          if (p !== "default" && !Object.prototype.hasOwnProperty.call(o, p))
+            __createBinding2(o, m, p);
+      };
+      __createBinding2 = Object.create ? function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        Object.defineProperty(o, k2, { enumerable: true, get: function() {
+          return m[k];
+        } });
+      } : function(o, m, k, k2) {
+        if (k2 === void 0)
+          k2 = k;
+        o[k2] = m[k];
+      };
+      __values2 = function(o) {
+        var s = typeof Symbol === "function" && Symbol.iterator, m = s && o[s], i = 0;
+        if (m)
+          return m.call(o);
+        if (o && typeof o.length === "number")
+          return {
+            next: function() {
+              if (o && i >= o.length)
+                o = void 0;
+              return { value: o && o[i++], done: !o };
+            }
+          };
+        throw new TypeError(s ? "Object is not iterable." : "Symbol.iterator is not defined.");
+      };
+      __read2 = function(o, n) {
+        var m = typeof Symbol === "function" && o[Symbol.iterator];
+        if (!m)
+          return o;
+        var i = m.call(o), r, ar = [], e;
+        try {
+          while ((n === void 0 || n-- > 0) && !(r = i.next()).done)
+            ar.push(r.value);
+        } catch (error) {
+          e = { error };
+        } finally {
+          try {
+            if (r && !r.done && (m = i["return"]))
+              m.call(i);
+          } finally {
+            if (e)
+              throw e.error;
+          }
+        }
+        return ar;
+      };
+      __spread2 = function() {
+        for (var ar = [], i = 0; i < arguments.length; i++)
+          ar = ar.concat(__read2(arguments[i]));
+        return ar;
+      };
+      __spreadArrays2 = function() {
+        for (var s = 0, i = 0, il = arguments.length; i < il; i++)
+          s += arguments[i].length;
+        for (var r = Array(s), k = 0, i = 0; i < il; i++)
+          for (var a = arguments[i], j = 0, jl = a.length; j < jl; j++, k++)
+            r[k] = a[j];
+        return r;
+      };
+      __spreadArray2 = function(to, from, pack) {
+        if (pack || arguments.length === 2)
+          for (var i = 0, l = from.length, ar; i < l; i++) {
+            if (ar || !(i in from)) {
+              if (!ar)
+                ar = Array.prototype.slice.call(from, 0, i);
+              ar[i] = from[i];
+            }
+          }
+        return to.concat(ar || Array.prototype.slice.call(from));
+      };
+      __await2 = function(v) {
+        return this instanceof __await2 ? (this.v = v, this) : new __await2(v);
+      };
+      __asyncGenerator2 = function(thisArg, _arguments, generator) {
+        if (!Symbol.asyncIterator)
+          throw new TypeError("Symbol.asyncIterator is not defined.");
+        var g = generator.apply(thisArg, _arguments || []), i, q = [];
+        return i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+          return this;
+        }, i;
+        function verb(n) {
+          if (g[n])
+            i[n] = function(v) {
+              return new Promise(function(a, b) {
+                q.push([n, v, a, b]) > 1 || resume(n, v);
+              });
+            };
+        }
+        function resume(n, v) {
+          try {
+            step(g[n](v));
+          } catch (e) {
+            settle(q[0][3], e);
+          }
+        }
+        function step(r) {
+          r.value instanceof __await2 ? Promise.resolve(r.value.v).then(fulfill, reject) : settle(q[0][2], r);
+        }
+        function fulfill(value) {
+          resume("next", value);
+        }
+        function reject(value) {
+          resume("throw", value);
+        }
+        function settle(f, v) {
+          if (f(v), q.shift(), q.length)
+            resume(q[0][0], q[0][1]);
+        }
+      };
+      __asyncDelegator2 = function(o) {
+        var i, p;
+        return i = {}, verb("next"), verb("throw", function(e) {
+          throw e;
+        }), verb("return"), i[Symbol.iterator] = function() {
+          return this;
+        }, i;
+        function verb(n, f) {
+          i[n] = o[n] ? function(v) {
+            return (p = !p) ? { value: __await2(o[n](v)), done: n === "return" } : f ? f(v) : v;
+          } : f;
+        }
+      };
+      __asyncValues2 = function(o) {
+        if (!Symbol.asyncIterator)
+          throw new TypeError("Symbol.asyncIterator is not defined.");
+        var m = o[Symbol.asyncIterator], i;
+        return m ? m.call(o) : (o = typeof __values2 === "function" ? __values2(o) : o[Symbol.iterator](), i = {}, verb("next"), verb("throw"), verb("return"), i[Symbol.asyncIterator] = function() {
+          return this;
+        }, i);
+        function verb(n) {
+          i[n] = o[n] && function(v) {
+            return new Promise(function(resolve, reject) {
+              v = o[n](v), settle(resolve, reject, v.done, v.value);
+            });
+          };
+        }
+        function settle(resolve, reject, d, v) {
+          Promise.resolve(v).then(function(v2) {
+            resolve({ value: v2, done: d });
+          }, reject);
+        }
+      };
+      __makeTemplateObject2 = function(cooked, raw) {
+        if (Object.defineProperty) {
+          Object.defineProperty(cooked, "raw", { value: raw });
+        } else {
+          cooked.raw = raw;
+        }
+        return cooked;
+      };
+      var __setModuleDefault = Object.create ? function(o, v) {
+        Object.defineProperty(o, "default", { enumerable: true, value: v });
+      } : function(o, v) {
+        o["default"] = v;
+      };
+      __importStar2 = function(mod) {
+        if (mod && mod.__esModule)
+          return mod;
+        var result = {};
+        if (mod != null) {
+          for (var k in mod)
+            if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k))
+              __createBinding2(result, mod, k);
+        }
+        __setModuleDefault(result, mod);
+        return result;
+      };
+      __importDefault2 = function(mod) {
+        return mod && mod.__esModule ? mod : { "default": mod };
+      };
+      __classPrivateFieldGet2 = function(receiver, state, kind, f) {
+        if (kind === "a" && !f)
+          throw new TypeError("Private accessor was defined without a getter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+          throw new TypeError("Cannot read private member from an object whose class did not declare it");
+        return kind === "m" ? f : kind === "a" ? f.call(receiver) : f ? f.value : state.get(receiver);
+      };
+      __classPrivateFieldSet2 = function(receiver, state, value, kind, f) {
+        if (kind === "m")
+          throw new TypeError("Private method is not writable");
+        if (kind === "a" && !f)
+          throw new TypeError("Private accessor was defined without a setter");
+        if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver))
+          throw new TypeError("Cannot write private member to an object whose class did not declare it");
+        return kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value), value;
+      };
+      exporter("__extends", __extends2);
+      exporter("__assign", __assign2);
+      exporter("__rest", __rest2);
+      exporter("__decorate", __decorate2);
+      exporter("__param", __param2);
+      exporter("__metadata", __metadata2);
+      exporter("__awaiter", __awaiter2);
+      exporter("__generator", __generator2);
+      exporter("__exportStar", __exportStar2);
+      exporter("__createBinding", __createBinding2);
+      exporter("__values", __values2);
+      exporter("__read", __read2);
+      exporter("__spread", __spread2);
+      exporter("__spreadArrays", __spreadArrays2);
+      exporter("__spreadArray", __spreadArray2);
+      exporter("__await", __await2);
+      exporter("__asyncGenerator", __asyncGenerator2);
+      exporter("__asyncDelegator", __asyncDelegator2);
+      exporter("__asyncValues", __asyncValues2);
+      exporter("__makeTemplateObject", __makeTemplateObject2);
+      exporter("__importStar", __importStar2);
+      exporter("__importDefault", __importDefault2);
+      exporter("__classPrivateFieldGet", __classPrivateFieldGet2);
+      exporter("__classPrivateFieldSet", __classPrivateFieldSet2);
+    });
+  }
+});
+
 // src/main.ts
 __export(exports, {
-  default: () => CoreSearchAssistantPlugin2
+  default: () => CoreSearchAssistantPlugin
 });
 
 // src/Events.ts
@@ -134,9 +566,9 @@ var searchOptions = {
 
 // src/components/OptionModal.ts
 var OptionModal = class extends import_obsidian2.Modal {
-  constructor(app, plugin, modeScope) {
-    super(app);
-    this.plugin = plugin;
+  constructor(app2, plugin2, modeScope) {
+    super(app2);
+    this.plugin = plugin2;
     this.modeScope = modeScope;
     this.items = [
       {
@@ -310,6 +742,16 @@ function safe_not_equal(a, b) {
 function is_empty(obj) {
   return Object.keys(obj).length === 0;
 }
+function subscribe(store2, ...callbacks) {
+  if (store2 == null) {
+    return noop;
+  }
+  const unsub = store2.subscribe(...callbacks);
+  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+}
+function component_subscribe(component, store2, callback) {
+  component.$$.on_destroy.push(subscribe(store2, callback));
+}
 var tasks = new Set();
 var is_hydrating = false;
 function start_hydrating() {
@@ -381,6 +823,9 @@ function set_data(text2, data) {
   if (text2.wholeText !== data)
     text2.data = data;
 }
+function toggle_class(element2, name, toggle) {
+  element2.classList[toggle ? "add" : "remove"](name);
+}
 function custom_event(type, detail, bubbles = false) {
   const e = document.createEvent("CustomEvent");
   e.initCustomEvent(type, bubbles, false, detail);
@@ -398,6 +843,9 @@ function get_current_component() {
 }
 function onMount(fn) {
   get_current_component().$$.on_mount.push(fn);
+}
+function onDestroy(fn) {
+  get_current_component().$$.on_destroy.push(fn);
 }
 function createEventDispatcher() {
   const component = get_current_component();
@@ -568,7 +1016,7 @@ function make_dirty(component, i) {
   }
   component.$$.dirty[i / 31 | 0] |= 1 << i % 31;
 }
-function init(component, options, instance3, create_fragment3, not_equal, props, append_styles2, dirty = [-1]) {
+function init(component, options, instance8, create_fragment8, not_equal, props, append_styles2, dirty = [-1]) {
   const parent_component = current_component;
   set_current_component(component);
   const $$ = component.$$ = {
@@ -591,7 +1039,7 @@ function init(component, options, instance3, create_fragment3, not_equal, props,
   };
   append_styles2 && append_styles2($$.root);
   let ready = false;
-  $$.ctx = instance3 ? instance3(component, options.props || {}, (i, ret, ...rest) => {
+  $$.ctx = instance8 ? instance8(component, options.props || {}, (i, ret, ...rest) => {
     const value = rest.length ? rest[0] : ret;
     if ($$.ctx && not_equal($$.ctx[i], $$.ctx[i] = value)) {
       if (!$$.skip_bound && $$.bound[i])
@@ -604,7 +1052,7 @@ function init(component, options, instance3, create_fragment3, not_equal, props,
   $$.update();
   ready = true;
   run_all($$.before_update);
-  $$.fragment = create_fragment3 ? create_fragment3($$.ctx) : false;
+  $$.fragment = create_fragment8 ? create_fragment8($$.ctx) : false;
   if (options.target) {
     if (options.hydrate) {
       start_hydrating();
@@ -1172,7 +1620,7 @@ var HotkeyEntry_default = HotkeyEntry;
 
 // src/ui/HotkeySetter.ts
 var HotkeySetter = class {
-  constructor(app, containerEl, text2, currentHotkeys, defaultHotkeys) {
+  constructor(app2, containerEl, text2, currentHotkeys, defaultHotkeys) {
     this.shouldReflect = (_) => true;
     this.onRestored = () => {
       const { component } = this;
@@ -1219,6 +1667,7 @@ var HotkeySetter = class {
           });
           if (this.scope)
             this.app.keymap.popScope(this.scope);
+          return;
         }
         const hotkey = getHotkey(evt);
         const collision = contain(this.currentHotkeys, hotkey);
@@ -1239,7 +1688,7 @@ var HotkeySetter = class {
           this.app.keymap.popScope(this.scope);
       });
     };
-    this.app = app;
+    this.app = app2;
     this.containerEl = containerEl;
     this.text = text2;
     this.currentHotkeys = [...currentHotkeys];
@@ -1292,7 +1741,6 @@ var DEFAULT_SETTINGS = {
   splitDirection: "horizontal",
   autoToggleSidebar: false,
   renderCardsManually: false,
-  hideIframe: false,
   searchModeHotkeys: {
     selectNext: [
       { modifiers: ["Ctrl"], key: "n" },
@@ -1331,9 +1779,9 @@ var DEFAULT_SETTINGS = {
   }
 };
 var CoreSearchAssistantSettingTab = class extends import_obsidian7.PluginSettingTab {
-  constructor(app, plugin) {
-    super(app, plugin);
-    this.plugin = plugin;
+  constructor(app2, plugin2) {
+    super(app2, plugin2);
+    this.plugin = plugin2;
     this.hotkeySetters = [];
   }
   display() {
@@ -1436,18 +1884,6 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian7.PluginSetting
         this.plugin.saveSettings();
       });
     });
-    new import_obsidian7.Setting(containerEl).setName("Hide iframe from auto preview").setDesc("Some iframe elements prevent the keyboard operation.").addToggle((component) => {
-      if (!this.plugin.settings) {
-        return;
-      }
-      component.setValue(this.plugin.settings.hideIframe).onChange((value) => {
-        if (!this.plugin.settings) {
-          return;
-        }
-        this.plugin.settings.hideIframe = value;
-        this.plugin.saveSettings();
-      });
-    });
     containerEl.createEl("h2", { text: "Hotkeys" });
     const { settings } = this.plugin;
     containerEl.createEl("h3", { text: "Search mode" });
@@ -1461,7 +1897,8 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian7.PluginSetting
         if (added) {
           if (added.modifiers.length === 0)
             return false;
-          const collision = Object.values(settings.searchModeHotkeys).some((hotkeys2) => {
+          const collision = SEARCH_MODE_HOTKEY_ACTION_IDS.some((actionId2) => {
+            const hotkeys2 = settings.searchModeHotkeys[actionId2];
             return contain(hotkeys2, added);
           });
           if (collision) {
@@ -1483,7 +1920,8 @@ var CoreSearchAssistantSettingTab = class extends import_obsidian7.PluginSetting
       DEFAULT_SETTINGS.previewModalHotkeys[actionId];
       const hotkeySetter = new HotkeySetter(this.app, containerEl, description, hotkeys, defaultHotkeys).onChanged((renewed, added) => {
         if (added) {
-          const collision = Object.values(settings.previewModalHotkeys).some((hotkeys2) => {
+          const collision = PREVIEW_MODAL_HOTKEY_ACTION_IDS.some((actionId2) => {
+            const hotkeys2 = settings.previewModalHotkeys[actionId2];
             return contain(hotkeys2, added);
           });
           if (collision) {
@@ -1570,10 +2008,7 @@ var PREVIEW_MODAL_HOTKEY_ACTION_INFO = {
 };
 
 // src/components/PreviewModal.ts
-var import_obsidian14 = __toModule(require("obsidian"));
-
-// src/interfaces/ViewGenerator.ts
-var import_obsidian8 = __toModule(require("obsidian"));
+var import_obsidian13 = __toModule(require("obsidian"));
 
 // src/utils/Util.ts
 function delay(millisecond) {
@@ -1662,15 +2097,78 @@ function deepMerge(a, b) {
   return clone;
 }
 
+// src/utils/Link.ts
+function generateInternalLinkFrom(metadataCache, file) {
+  const link = metadataCache.fileToLinktext(file, "", true);
+  const text2 = getDisplayText(metadataCache, file);
+  return text2 !== void 0 ? `[[${link} | ${text2}]]` : `[[${link}]]`;
+}
+function getDisplayText(metadataCache, file) {
+  const cache = metadataCache.getFileCache(file);
+  if (!cache)
+    return void 0;
+  const title = getTitle(cache.frontmatter);
+  if (title !== void 0) {
+    return title;
+  }
+  const h1 = getFirstH1(cache.headings);
+  if (h1 !== void 0) {
+    return h1;
+  }
+  return void 0;
+}
+function getTitle(frontmatter) {
+  return frontmatter == null ? void 0 : frontmatter["title"];
+}
+function getFirstH1(headings) {
+  if (!headings)
+    return void 0;
+  for (const heading of headings) {
+    if (heading.level !== 1)
+      continue;
+    return heading.heading;
+  }
+  return void 0;
+}
+
+// node_modules/tslib/modules/index.js
+var import_tslib = __toModule(require_tslib());
+var {
+  __extends,
+  __assign,
+  __rest,
+  __decorate,
+  __param,
+  __metadata,
+  __awaiter,
+  __generator,
+  __exportStar,
+  __createBinding,
+  __values,
+  __read,
+  __spread,
+  __spreadArrays,
+  __spreadArray,
+  __await,
+  __asyncGenerator,
+  __asyncDelegator,
+  __asyncValues,
+  __makeTemplateObject,
+  __importStar,
+  __importDefault,
+  __classPrivateFieldGet,
+  __classPrivateFieldSet
+} = import_tslib.default;
+
 // src/interfaces/ViewGenerator.ts
+var import_obsidian8 = __toModule(require("obsidian"));
 var ViewGenerator = class {
-  constructor(app, containerEl, file) {
+  constructor(app2, containerEl, file) {
     this.extensions = [];
-    this.app = app;
+    this.app = app2;
     this.containerEl = containerEl;
     this.leaf = new import_obsidian8.WorkspaceLeaf(this.app);
     this.file = file;
-    this.containerEl.appendChild(this.leaf.containerEl);
   }
   load(mode) {
     return __async(this, null, function* () {
@@ -1695,6 +2193,10 @@ var ViewGenerator = class {
   }
   onload(mode) {
     return __async(this, null, function* () {
+      const fileType = fileTypeMap[this.file.extension];
+      if (!fileType)
+        return;
+      this.containerEl.appendChild(this.leaf.containerEl);
       yield this.openFile();
       for (const ext of this.extensions) {
         if (!(yield ext.isMine(this.leaf)))
@@ -1713,7 +2215,7 @@ var ViewGenerator = class {
       yield leaf.openFile(file);
     });
   }
-  highlightMatches(matches) {
+  highlightMatches(matches, cls) {
     const view = this.leaf.view;
     if (!(view instanceof import_obsidian8.MarkdownView)) {
       return;
@@ -1727,7 +2229,7 @@ var ViewGenerator = class {
       };
       ranges.push(range);
     });
-    editor.addHighlights(ranges, "highlight-search-match");
+    editor.addHighlights(ranges, cls);
   }
   scrollIntoView(match, center) {
     return __async(this, null, function* () {
@@ -1753,7 +2255,7 @@ var ViewGenerator = class {
       }
     });
   }
-  focusOn(match, center) {
+  focusOn(match, cls, center) {
     return __async(this, null, function* () {
       const view = this.leaf.view;
       if (!(view instanceof import_obsidian8.MarkdownView)) {
@@ -1764,12 +2266,12 @@ var ViewGenerator = class {
       }
       yield this.scrollIntoView(match, center);
       const { editor } = view;
-      editor.removeHighlights("focus-search-match");
+      editor.removeHighlights(cls);
       const range = {
         from: editor.offsetToPos(match[0]),
         to: editor.offsetToPos(match[1])
       };
-      editor.addHighlights([range], "focus-search-match");
+      editor.addHighlights([range], cls);
     });
   }
   registerExtension(ext) {
@@ -1777,60 +2279,85 @@ var ViewGenerator = class {
     return this;
   }
 };
+var fileTypeMap = {
+  md: "md",
+  png: "image",
+  jpg: "image",
+  jpeg: "image",
+  gif: "image",
+  bmp: "image",
+  svg: "image",
+  mp3: "audio",
+  webm: "audio",
+  wav: "audio",
+  m4a: "audio",
+  ogg: "audio",
+  "3gp": "audio",
+  flac: "audio",
+  mp4: "movie",
+  ogv: "movie",
+  pdf: "pdf"
+};
 
-// src/components/WorkspacePreview.ts
+// src/interfaces/viewGeneratorExtensions/Excalidraw.ts
 var import_obsidian9 = __toModule(require("obsidian"));
-var INTERVAL_MILLISECOND_TO_BE_DETACHED = 1e3;
-var WorkspacePreview = class extends import_obsidian9.Component {
-  constructor(app, plugin) {
-    super();
-    this.app = app;
-    this.plugin = plugin;
-    this.containerEl = this.createContainerEl();
+var excalidrawPluginId = "obsidian-excalidraw-plugin";
+var excalidrawViewType = "excalidraw";
+var ExcalidrawViewGeneratorExtension = class {
+  constructor(app2) {
+    this.app = app2;
+    const excalidraw = this.app.plugins.plugins[excalidrawPluginId];
+    if (!isExcalidrawPlugin(excalidraw)) {
+      this.excalidraw = void 0;
+    } else {
+      this.excalidraw = excalidraw;
+    }
   }
-  onload() {
-    this.hide();
-    this.app.workspace.onLayoutReady(() => {
-      this.app.workspace.rootSplit.containerEl.appendChild(this.containerEl);
-    });
+  isMine(leaf) {
+    return leaf.view.getViewType() === excalidrawViewType;
   }
-  onunload() {
-    var _a;
-    (_a = this.renderer) == null ? void 0 : _a.unload();
-    this.containerEl.empty();
-    this.containerEl.remove();
-  }
-  renew(item) {
-    this.requestUnloadRenderer(INTERVAL_MILLISECOND_TO_BE_DETACHED);
-    this.show(item);
-  }
-  hide() {
-    this.containerEl.hide();
-    this.requestUnloadRenderer(INTERVAL_MILLISECOND_TO_BE_DETACHED);
-  }
-  createContainerEl() {
-    return createEl("div", {
-      attr: {
-        id: "core-search-assistant_workspace-preview"
-      }
-    });
-  }
-  requestUnloadRenderer(millisecond) {
-    const { renderer } = this;
-    this.renderer = void 0;
-    setTimeout(() => {
-      renderer == null ? void 0 : renderer.unload();
-    }, millisecond);
-  }
-  show(item) {
+  setViewMode(leaf, mode) {
     return __async(this, null, function* () {
-      const { containerEl } = this;
-      containerEl.empty();
-      this.renderer = yield new ViewGenerator(this.app, containerEl, item.file).load("preview");
-      containerEl.show();
+      const { excalidraw } = this;
+      if (!excalidraw)
+        return;
+      excalidraw.excalidrawFileModes[leaf.id] = "markdown";
+      yield excalidraw.setMarkdownView(leaf);
+      if (!(leaf.view instanceof import_obsidian9.MarkdownView))
+        return;
+      yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
+        mode
+      }), {});
+      leaf.view.editor.blur();
+    });
+  }
+  toggleViewMode(leaf) {
+    return __async(this, null, function* () {
+      const { excalidraw } = this;
+      if (!excalidraw)
+        return;
+      excalidraw.excalidrawFileModes[leaf.id] = "markdown";
+      yield excalidraw.setMarkdownView(leaf);
+      if (!(leaf.view instanceof import_obsidian9.MarkdownView))
+        return;
+      const mode = leaf.view.getMode();
+      yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
+        mode: mode === "preview" ? "source" : "preview"
+      }), {});
+      leaf.view.editor.blur();
     });
   }
 };
+function isExcalidrawPlugin(plugin2) {
+  if (!(plugin2 instanceof import_obsidian9.Plugin))
+    return false;
+  const { excalidrawFileModes, setMarkdownView } = plugin2;
+  if (typeof excalidrawFileModes !== "object")
+    return false;
+  if (typeof setMarkdownView !== "function")
+    return false;
+  return true;
+}
 
 // src/interfaces/viewGeneratorExtensions/Kanban.ts
 var import_obsidian10 = __toModule(require("obsidian"));
@@ -1838,14 +2365,13 @@ var kanbanPluginId = "obsidian-kanban";
 var frontMatterKey = "kanban-plugin";
 var kanbanViewType = "kanban";
 var KanbanViewGeneratorExtension = class {
-  constructor(app) {
-    this.app = app;
+  constructor(app2) {
+    this.app = app2;
     const kanban = this.app.plugins.plugins[kanbanPluginId];
     if (IsKanbanPlugin(kanban)) {
       this.kanban = kanban;
     }
     if (kanban === void 0) {
-      console.log("[ERROR in Core Search Assistant] failed to fetch kanban plugin");
       this.kanban = void 0;
     }
   }
@@ -1870,6 +2396,9 @@ var KanbanViewGeneratorExtension = class {
         yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
           mode: "source"
         }), {});
+        if (leaf.view instanceof import_obsidian10.MarkdownView) {
+          leaf.view.editor.blur();
+        }
       } else {
         kanban.kanbanFileModes[leaf.id] = kanbanViewType;
         yield kanban.setKanbanView(leaf);
@@ -1886,10 +2415,10 @@ var KanbanViewGeneratorExtension = class {
     });
   }
 };
-function IsKanbanPlugin(plugin) {
-  if (!(plugin instanceof import_obsidian10.Plugin))
+function IsKanbanPlugin(plugin2) {
+  if (!(plugin2 instanceof import_obsidian10.Plugin))
     return false;
-  const { kanbanFileModes, setKanbanView, setMarkdownView } = plugin;
+  const { kanbanFileModes, setKanbanView, setMarkdownView } = plugin2;
   if (typeof kanbanFileModes !== "object")
     return false;
   if (typeof setMarkdownView !== "function")
@@ -1938,104 +2467,159 @@ var NonMarkdownViewGeneratorExtension = class {
   }
 };
 
-// src/interfaces/viewGeneratorExtensions/Excalidraw.ts
-var import_obsidian13 = __toModule(require("obsidian"));
-var excalidrawPluginId = "obsidian-excalidraw-plugin";
-var excalidrawViewType = "excalidraw";
-var ExcalidrawViewGeneratorExtension = class {
-  constructor(app) {
-    this.app = app;
-    const excalidraw = this.app.plugins.plugins[excalidrawPluginId];
-    if (!isExcalidrawPlugin(excalidraw)) {
-      this.excalidraw = void 0;
-    } else {
-      this.excalidraw = excalidraw;
+// node_modules/svelte/store/index.mjs
+var subscriber_queue = [];
+function writable(value, start = noop) {
+  let stop;
+  const subscribers = new Set();
+  function set(new_value) {
+    if (safe_not_equal(value, new_value)) {
+      value = new_value;
+      if (stop) {
+        const run_queue = !subscriber_queue.length;
+        for (const subscriber of subscribers) {
+          subscriber[1]();
+          subscriber_queue.push(subscriber, value);
+        }
+        if (run_queue) {
+          for (let i = 0; i < subscriber_queue.length; i += 2) {
+            subscriber_queue[i][0](subscriber_queue[i + 1]);
+          }
+          subscriber_queue.length = 0;
+        }
+      }
     }
   }
-  isMine(leaf) {
-    return leaf.view.getViewType() === excalidrawViewType;
+  function update2(fn) {
+    set(fn(value));
   }
-  setViewMode(leaf, mode) {
-    return __async(this, null, function* () {
-      const { excalidraw } = this;
-      if (!excalidraw)
-        return;
-      excalidraw.excalidrawFileModes[leaf.id] = "markdown";
-      yield excalidraw.setMarkdownView(leaf);
-      if (!(leaf.view instanceof import_obsidian13.MarkdownView))
-        return;
-      yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
-        mode
-      }), {});
-    });
+  function subscribe2(run2, invalidate = noop) {
+    const subscriber = [run2, invalidate];
+    subscribers.add(subscriber);
+    if (subscribers.size === 1) {
+      stop = start(set) || noop;
+    }
+    run2(value);
+    return () => {
+      subscribers.delete(subscriber);
+      if (subscribers.size === 0) {
+        stop();
+        stop = null;
+      }
+    };
   }
-  toggleViewMode(leaf) {
-    return __async(this, null, function* () {
-      const { excalidraw } = this;
-      if (!excalidraw)
-        return;
-      excalidraw.excalidrawFileModes[leaf.id] = "markdown";
-      yield excalidraw.setMarkdownView(leaf);
-      if (!(leaf.view instanceof import_obsidian13.MarkdownView))
-        return;
-      const mode = leaf.view.getMode();
-      yield leaf.view.setState(__spreadProps(__spreadValues({}, leaf.view.getState()), {
-        mode: mode === "preview" ? "source" : "preview"
-      }), {});
-    });
-  }
-};
-function isExcalidrawPlugin(plugin) {
-  if (!(plugin instanceof import_obsidian13.Plugin))
-    return false;
-  const { excalidrawFileModes, setMarkdownView } = plugin;
-  if (typeof excalidrawFileModes !== "object")
-    return false;
-  if (typeof setMarkdownView !== "function")
-    return false;
-  return true;
+  return { set, update: update2, subscribe: subscribe2 };
 }
 
-// src/utils/Link.ts
-function generateInternalLinkFrom(metadataCache, file) {
-  const link = metadataCache.fileToLinktext(file, "", true);
-  const text2 = getDisplayText(metadataCache, file);
-  return text2 !== void 0 ? `[[${link} | ${text2}]]` : `[[${link}]]`;
+// src/ui/store.ts
+var app = writable();
+var plugin = writable();
+
+// src/ui/PreviewModalContent.svelte
+function add_css3(target) {
+  append_styles(target, "svelte-21egii", ".core-search-assistant_preview-modal_view-container.svelte-21egii{min-width:700px}.core-search-assistant_preview-modal_view-container.svelte-21egii .highlight-search-match{color:var(--highlight-search-match);background-color:var(--highlight-search-match-bg)}.core-search-assistant_preview-modal_view-container.svelte-21egii .focus-search-match{background-color:var(--focus-search-match-bg)}.core-search-assistant_preview-modal_view-container.svelte-21egii .workspace-leaf{contain:initial !important}.core-search-assistant_preview-modal_view-container.svelte-21egii .view-content{overflow:unset}.core-search-assistant_preview-modal_view-container.svelte-21egii .markdown-preview-view{overflow:unset}.core-search-assistant_preview-modal_view-container.svelte-21egii .workspace-leaf-content{overflow:unset}.core-search-assistant_preview-modal_view-container.svelte-21egii .workspace-leaf-resize-handle{display:none}.core-search-assistant_preview-modal_view-container.svelte-21egii .view-header{display:none}.core-search-assistant_preview-modal_view-container.svelte-21egii .markdown-preview-view{padding:0}.core-search-assistant_preview-modal_view-container.svelte-21egii .markdown-source-view{pointer-events:none}.core-search-assistant_preview-modal_view-container.svelte-21egii .markdown-source-view.mod-cm6 .cm-editor{flex:initial;display:initial}.core-search-assistant_preview-modal_view-container.svelte-21egii .markdown-source-view.mod-cm6{display:initial}.core-search-assistant_preview-modal_view-container.svelte-21egii .markdown-source-view.mod-cm6 .cm-scroller{padding:0}");
 }
-function getDisplayText(metadataCache, file) {
-  const cache = metadataCache.getFileCache(file);
-  if (!cache)
-    return void 0;
-  const title = getTitle(cache.frontmatter);
-  if (title !== void 0) {
-    return title;
+function create_fragment3(ctx) {
+  let div;
+  return {
+    c() {
+      div = element("div");
+      attr(div, "class", "core-search-assistant_preview-modal_view-container svelte-21egii");
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      ctx[5](div);
+    },
+    p: noop,
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      ctx[5](null);
+    }
+  };
+}
+function instance3($$self, $$props, $$invalidate) {
+  let $app;
+  component_subscribe($$self, app, ($$value) => $$invalidate(7, $app = $$value));
+  let { file } = $$props;
+  let { matches } = $$props;
+  let contentContainerEl;
+  let renderer;
+  onMount(() => __awaiter(void 0, void 0, void 0, function* () {
+    if (!file) {
+      return;
+    }
+    if (!contentContainerEl) {
+      return;
+    }
+    const fileType = fileTypeMap[file.extension];
+    if (fileType !== void 0) {
+      contentContainerEl.empty();
+      renderer = yield new ViewGenerator($app, contentContainerEl, file).registerExtension(new ExcalidrawViewGeneratorExtension($app)).registerExtension(new KanbanViewGeneratorExtension($app)).registerExtension(new MarkdownViewGeneratorExtension()).registerExtension(new NonMarkdownViewGeneratorExtension()).load("source");
+      highlightMatches();
+    }
+  }));
+  onDestroy(() => {
+    setTimeout(() => renderer === null || renderer === void 0 ? void 0 : renderer.unload(), 1e3);
+  });
+  function toggleViewMode() {
+    return __awaiter(this, void 0, void 0, function* () {
+      yield renderer === null || renderer === void 0 ? void 0 : renderer.toggleViewMode();
+    });
   }
-  const h1 = getFirstH1(cache.headings);
-  if (h1 !== void 0) {
-    return h1;
+  function focusOn(matchId, center) {
+    if (!matches)
+      return;
+    const match = matches[matchId];
+    if (match === void 0) {
+      return;
+    }
+    renderer === null || renderer === void 0 ? void 0 : renderer.focusOn(match, "focus-search-match", center);
   }
-  return void 0;
-}
-function getTitle(frontmatter) {
-  return frontmatter == null ? void 0 : frontmatter["title"];
-}
-function getFirstH1(headings) {
-  if (!headings)
-    return void 0;
-  for (const heading of headings) {
-    if (heading.level !== 1)
-      continue;
-    return heading.heading;
+  function highlightMatches() {
+    renderer === null || renderer === void 0 ? void 0 : renderer.highlightMatches(matches !== null && matches !== void 0 ? matches : [], "highlight-search-match");
   }
-  return void 0;
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      contentContainerEl = $$value;
+      $$invalidate(0, contentContainerEl);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("file" in $$props2)
+      $$invalidate(1, file = $$props2.file);
+    if ("matches" in $$props2)
+      $$invalidate(2, matches = $$props2.matches);
+  };
+  return [contentContainerEl, file, matches, toggleViewMode, focusOn, div_binding];
 }
+var PreviewModalContent = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance3, create_fragment3, safe_not_equal, {
+      file: 1,
+      matches: 2,
+      toggleViewMode: 3,
+      focusOn: 4
+    }, add_css3);
+  }
+  get toggleViewMode() {
+    return this.$$.ctx[3];
+  }
+  get focusOn() {
+    return this.$$.ctx[4];
+  }
+};
+var PreviewModalContent_default = PreviewModalContent;
 
 // src/components/PreviewModal.ts
 var SCROLL_AMOUNT = 70;
-var PreviewModal = class extends import_obsidian14.Modal {
-  constructor(app, plugin, modeScope, item) {
-    super(app);
-    this.plugin = plugin;
+var PreviewModal = class extends import_obsidian13.Modal {
+  constructor(app2, plugin2, modeScope, item) {
+    super(app2);
+    this.plugin = plugin2;
     this.modeScope = modeScope;
     this.item = item;
     this.currentFocus = -1;
@@ -2044,7 +2628,6 @@ var PreviewModal = class extends import_obsidian14.Modal {
     return __async(this, null, function* () {
       var _a;
       yield this.renderView();
-      this.highlightMatches();
       this.modeScope.push();
       const hotkeyMap = (_a = this.plugin.settings) == null ? void 0 : _a.previewModalHotkeys;
       if (!hotkeyMap)
@@ -2095,32 +2678,34 @@ var PreviewModal = class extends import_obsidian14.Modal {
       });
       hotkeyMap.focusNext.forEach((hotkey) => {
         this.scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+          var _a2;
           evt.preventDefault();
           const numMatches = this.countMatches();
           if (numMatches === void 0 || numMatches === 0) {
             return;
           }
           this.currentFocus = cyclicId(++this.currentFocus, numMatches);
-          this.focusOn(this.currentFocus, true);
+          (_a2 = this.previewContent) == null ? void 0 : _a2.focusOn(this.currentFocus, true);
         });
       });
       hotkeyMap.focusPrevious.forEach((hotkey) => {
         this.scope.register(hotkey.modifiers, hotkey.key, (evt) => {
+          var _a2;
           evt.preventDefault();
           const numMatches = this.countMatches();
           if (numMatches === void 0 || numMatches === 0) {
             return;
           }
           this.currentFocus = cyclicId(--this.currentFocus, numMatches);
-          this.focusOn(this.currentFocus, true);
+          (_a2 = this.previewContent) == null ? void 0 : _a2.focusOn(this.currentFocus, true);
         });
       });
       hotkeyMap.togglePreviewMode.forEach((hotkey) => {
         this.scope.register(hotkey.modifiers, hotkey.key, (evt) => {
           (() => __async(this, null, function* () {
+            var _a2;
             evt.preventDefault();
-            yield this.toggleViewMode();
-            this.highlightMatches();
+            yield (_a2 = this.previewContent) == null ? void 0 : _a2.toggleViewMode();
           }))();
         });
       });
@@ -2129,55 +2714,38 @@ var PreviewModal = class extends import_obsidian14.Modal {
           const { file } = this.item;
           const internalLink = generateInternalLinkFrom(this.app.metadataCache, file);
           navigator.clipboard.writeText(internalLink);
-          new import_obsidian14.Notice("Copy wiki link!");
+          new import_obsidian13.Notice("Copy wiki link!");
         });
       });
     });
   }
   onClose() {
-    const { contentEl } = this;
-    contentEl.empty();
-    this.requestUnloadRenderer(INTERVAL_MILLISECOND_TO_BE_DETACHED);
+    var _a;
+    (_a = this.previewContent) == null ? void 0 : _a.$destroy();
     setTimeout(() => {
       if (this.modeScope.depth > 1) {
         this.modeScope.pop();
       }
     }, 100);
   }
-  requestUnloadRenderer(millisecond) {
-    const renderer = this.renderer;
-    this.renderer = void 0;
-    setTimeout(() => {
-      renderer == null ? void 0 : renderer.unload();
-    }, millisecond);
-  }
   renderView() {
     return __async(this, null, function* () {
-      const { contentEl, containerEl, item } = this;
+      const { contentEl } = this;
       contentEl.empty();
       contentEl.hide();
-      if (this.app.vault.config.legacyEditor) {
-        containerEl.addClass("core-search-assistant_preview-modal-container_legacy");
-      } else {
-        containerEl.addClass("core-search-assistant_preview-modal-container");
-      }
-      this.renderer = yield new ViewGenerator(this.app, contentEl, item.file).registerExtension(new KanbanViewGeneratorExtension(this.app)).registerExtension(new ExcalidrawViewGeneratorExtension(this.app)).registerExtension(new MarkdownViewGeneratorExtension()).registerExtension(new NonMarkdownViewGeneratorExtension()).load("source");
+      this.previewContent = new PreviewModalContent_default({
+        target: contentEl,
+        props: {
+          file: this.item.file,
+          matches: this.item.result.content
+        }
+      });
       contentEl.show();
     });
   }
   countMatches() {
     var _a;
     return (_a = this.item.result.content) == null ? void 0 : _a.length;
-  }
-  toggleViewMode() {
-    return __async(this, null, function* () {
-      var _a;
-      yield (_a = this.renderer) == null ? void 0 : _a.toggleViewMode();
-    });
-  }
-  highlightMatches() {
-    var _a, _b;
-    (_b = this.renderer) == null ? void 0 : _b.highlightMatches((_a = this.item.result.content) != null ? _a : []);
   }
   scroll(direction, px) {
     const { containerEl, contentEl } = this;
@@ -2187,33 +2755,20 @@ var PreviewModal = class extends import_obsidian14.Modal {
       behavior: "smooth"
     });
   }
-  focusOn(matchId, center) {
-    var _a;
-    const { renderer, item } = this;
-    const match = (_a = item.result.content) == null ? void 0 : _a[matchId];
-    if (match === void 0) {
-      return;
-    }
-    renderer == null ? void 0 : renderer.focusOn(match, center);
-  }
   openAndFocus(matchId, direction) {
     return __async(this, null, function* () {
       var _a, _b;
       const { item } = this;
       const leaf = direction === void 0 ? this.app.workspace.getMostRecentLeaf() : this.app.workspace.splitActiveLeaf(direction);
-      yield leaf.openFile(item.file, {
-        state: {
-          mode: "source"
-        }
-      });
+      yield leaf.openFile(item.file);
       this.app.workspace.setActiveLeaf(leaf, true, true);
       const match = (_b = (_a = item == null ? void 0 : item.result) == null ? void 0 : _a.content) == null ? void 0 : _b[matchId];
       if (!match) {
         return;
       }
       const { view } = leaf;
-      if (!(view instanceof import_obsidian14.MarkdownView)) {
-        throw "[ERROR in Core Search Assistant] failed to openAndFocus: view is not an instance of MarkdownView";
+      if (!(view instanceof import_obsidian13.MarkdownView)) {
+        return;
       }
       const editor = view.editor;
       const range = {
@@ -2235,273 +2790,6 @@ var PreviewModal = class extends import_obsidian14.Modal {
 function cyclicId(id, total) {
   return (id % total + total) % total;
 }
-
-// src/components/Outline.ts
-var import_obsidian15 = __toModule(require("obsidian"));
-var Outline = class extends import_obsidian15.Component {
-  constructor(lineWidth) {
-    super();
-    this.outlineEl = document.body.createEl("div", {
-      cls: "core-search-assistant_search-mode-outline"
-    });
-    this.lineWidth = lineWidth;
-  }
-  onload() {
-    this.setWidth(this.lineWidth);
-  }
-  onunload() {
-    this.outlineEl.remove();
-  }
-  setWidth(lineWidth) {
-    this.outlineEl.style.outline = `${lineWidth}px solid var(--interactive-accent)`;
-    this.outlineEl.style.outlineOffset = `-${lineWidth}px`;
-    this.outlineEl.show();
-  }
-};
-
-// src/components/CardView.ts
-var import_obsidian16 = __toModule(require("obsidian"));
-var CardView = class extends import_obsidian16.Component {
-  constructor(app, plugin) {
-    super();
-    this.app = app;
-    this.plugin = plugin;
-    this.containerEl = this.createContainerEl();
-    this.contentEl = this.createContentEl();
-    this.renderers = [];
-  }
-  onload() {
-    this.registerDomEvent(this.contentEl, "click", this.onCardItemClicked);
-    this.attachContainerEl();
-  }
-  onunload() {
-    this.requestUnloadRenderers();
-    this.containerEl.empty();
-    this.containerEl.remove();
-  }
-  renderItem(item, id) {
-    this.renderItemByViewGenerator(item, id);
-  }
-  focusOn(pos) {
-    const { contentEl } = this;
-    const cardEls = contentEl.childNodes;
-    [-1, 0, 1].forEach((i) => {
-      const el = cardEls.item(pos + i);
-      if (!(el instanceof HTMLElement)) {
-        return;
-      }
-      if (i === 0) {
-        el.addClass("is-selected");
-      } else {
-        el.removeClass("is-selected");
-      }
-    });
-  }
-  unfocus() {
-    const { contentEl } = this;
-    const cardEls = contentEl.childNodes;
-    cardEls.forEach((el) => {
-      if (!(el instanceof HTMLElement)) {
-        return;
-      }
-      el.removeClass("is-selected");
-    });
-  }
-  clear() {
-    this.requestUnloadRenderers();
-    this.containerEl.hide();
-    this.contentEl.empty();
-  }
-  renderPage(itemId) {
-    var _a;
-    const cardsPerPage = this.cardsPerPage();
-    if (cardsPerPage === void 0) {
-      return;
-    }
-    const pageId = Math.floor(itemId / cardsPerPage);
-    const items = (_a = this.plugin.searchInterface) == null ? void 0 : _a.resultItems;
-    if (!items) {
-      return;
-    }
-    for (let i = pageId * cardsPerPage; i < (pageId + 1) * cardsPerPage; i++) {
-      const item = items[i];
-      if (!item) {
-        continue;
-      }
-      this.renderItem(item, i);
-    }
-    this.setLayout();
-  }
-  reveal() {
-    this.containerEl.show();
-  }
-  setLayout() {
-    if (!this.plugin.settings) {
-      return;
-    }
-    const [row, column] = parseCardLayout(this.plugin.settings.cardViewLayout);
-    this.contentEl.style.gridTemplateColumns = `repeat(${column}, minmax(0, 1fr))`;
-    this.contentEl.style.gridTemplateRows = `repeat(${row}, 1fr)`;
-  }
-  get itemsRenderedCorrectly() {
-    var _a;
-    const wantedItems = (_a = this.plugin.searchInterface) == null ? void 0 : _a.resultItems;
-    if (wantedItems === void 0) {
-      return false;
-    }
-    const cardsPerPage = this.cardsPerPage();
-    if (cardsPerPage === void 0) {
-      return false;
-    }
-    const length = Math.min(wantedItems.length, cardsPerPage);
-    const gotItemEls = this.contentEl.children;
-    for (let i = 0; i < length; i++) {
-      const want = wantedItems[i];
-      const got = gotItemEls.item(i);
-      if (want === void 0) {
-        if (got === null) {
-          continue;
-        } else {
-          return false;
-        }
-      }
-      if (!(got instanceof HTMLElement)) {
-        return false;
-      }
-      if (got.dataset["path"] !== want.file.path) {
-        return false;
-      }
-    }
-    return true;
-  }
-  createContainerEl() {
-    const containerEl = createEl("div", {
-      attr: { id: `core-search-assistant_card-view` }
-    });
-    return containerEl;
-  }
-  attachContainerEl() {
-    this.app.workspace.onLayoutReady(() => {
-      this.app.workspace.rootSplit.containerEl.appendChild(this.containerEl);
-      this.containerEl.hide();
-    });
-  }
-  createContentEl() {
-    let row = 0;
-    let column = 0;
-    if (this.plugin.settings) {
-      [row, column] = parseCardLayout(this.plugin.settings.cardViewLayout);
-    }
-    const contentEl = this.containerEl.createEl("div", {
-      cls: "content"
-    });
-    contentEl.style.gridTemplateColumns = `repeat(${column}, minmax(0, 1fr))`;
-    contentEl.style.gridTemplateRows = `repeat(${row}, 1fr)`;
-    return contentEl;
-  }
-  renderItemByViewGenerator(item, id) {
-    return __async(this, null, function* () {
-      const previewContainerEl = this.createPreviewContainerEl(item, id);
-      previewContainerEl.empty();
-      if (supportedFileTypes.includes(item.file.extension)) {
-        const renderer = yield new ViewGenerator(this.app, previewContainerEl, item.file).registerExtension(new KanbanViewGeneratorExtension(this.app)).registerExtension(new ExcalidrawViewGeneratorExtension(this.app)).registerExtension(new MarkdownViewGeneratorExtension()).registerExtension(new NonMarkdownViewGeneratorExtension()).load("preview");
-        this.renderers.push(renderer);
-      } else {
-        previewContainerEl.createDiv({
-          text: `${item.file.extension} file`,
-          cls: "unsupported-file-content"
-        });
-      }
-    });
-  }
-  requestUnloadRenderers() {
-    const renderersToUnload = this.renderers;
-    this.renderers = [];
-    setTimeout(() => {
-      renderersToUnload.forEach((renderer) => {
-        renderer.unload();
-      });
-    }, INTERVAL_MILLISECOND_TO_BE_DETACHED);
-  }
-  createPreviewContainerEl(item, id) {
-    var _a;
-    const { contentEl } = this;
-    const itemContainerEl = contentEl.createEl("div", {
-      cls: "item-container",
-      attr: {
-        "data-id": id,
-        "data-path": item.file.path
-      }
-    });
-    itemContainerEl.createEl("div", {
-      cls: "file-name-container",
-      text: item.file.extension === "md" ? item.file.basename : item.file.name
-    });
-    const previewMarginEl = itemContainerEl.createEl("div", {
-      cls: "preview-container-wrapper"
-    });
-    const previewContainerEl = previewMarginEl.createEl("div", {
-      cls: "preview-container"
-    });
-    if ((_a = this.plugin.settings) == null ? void 0 : _a.hideIframe) {
-      previewContainerEl.addClass("hide-iframe");
-    }
-    return previewContainerEl;
-  }
-  getSelectedCardEl(el) {
-    const parentEl = el.parentElement;
-    if (el.tagName === "DIV" && parentEl === this.contentEl) {
-      return el;
-    }
-    if (parentEl === null) {
-      return void 0;
-    }
-    return this.getSelectedCardEl(parentEl);
-  }
-  cardsPerPage() {
-    if (!this.plugin.settings) {
-      return void 0;
-    }
-    const [row, column] = parseCardLayout(this.plugin.settings.cardViewLayout);
-    return row * column;
-  }
-  get onCardItemClicked() {
-    return (evt) => {
-      var _a;
-      if (!(evt.target instanceof HTMLElement)) {
-        return;
-      }
-      const cardEl = this.getSelectedCardEl(evt.target);
-      if (!cardEl) {
-        return;
-      }
-      const id = cardEl.dataset["id"];
-      if (id === void 0) {
-        return;
-      }
-      (_a = this.plugin.searchInterface) == null ? void 0 : _a.open(Number.parseInt(id));
-    };
-  }
-};
-var supportedFileTypes = [
-  "md",
-  "png",
-  "jpg",
-  "jpeg",
-  "gif",
-  "bmp",
-  "svg",
-  "mp3",
-  "webm",
-  "wav",
-  "m4a",
-  "ogg",
-  "3gp",
-  "flac",
-  "mp4",
-  "ogv",
-  "pdf"
-];
 
 // src/ModeScope.ts
 var ModeScope = class {
@@ -2529,19 +2817,527 @@ var ModeScope = class {
 };
 
 // src/Controller.ts
-var import_obsidian17 = __toModule(require("obsidian"));
+var import_obsidian14 = __toModule(require("obsidian"));
+
+// src/ui/CardContainer.svelte
+function add_css4(target) {
+  append_styles(target, "svelte-1940k1q", ".core-search-assistant_card-container.svelte-1940k1q.svelte-1940k1q{overflow:hidden;display:flex;flex-direction:column;height:100%;position:relative;box-shadow:0 2px 5px rgba(0, 0, 0, 0.2);border-radius:10px;cursor:pointer;background-color:var(--background-primary);box-sizing:content-box}.core-search-assistant_card-container.svelte-1940k1q.svelte-1940k1q:hover{border:5px solid var(--interactive-accent);margin:-5px}.core-search-assistant_card-container.is-selected.svelte-1940k1q.svelte-1940k1q{border:5px solid var(--interactive-accent);margin:-5px}.card-container-header.svelte-1940k1q.svelte-1940k1q{padding:5px 10px;background-color:var(--background-secondary);display:flex;color:var(--text-muted)}.file-name-container.svelte-1940k1q.svelte-1940k1q{font-size:1rem;line-height:1.2rem;overflow-wrap:break-word;min-width:0;flex:1}.file-name-container.svelte-1940k1q span.matched-in-path{color:var(--text-normal);font-weight:bold}.content-container-wrapper.svelte-1940k1q.svelte-1940k1q{padding:5px;flex:1;height:100%;min-height:0}.content-container.svelte-1940k1q.svelte-1940k1q{overflow:hidden;height:100%;font-size:0.8rem;line-height:1.2}.content-container.svelte-1940k1q div.content-not-supported-file-format.svelte-1940k1q{font-size:1rem;color:var(--text-muted)}.content-container.svelte-1940k1q p{font-size:0.8rem;line-height:1.2}.content-container.svelte-1940k1q code{font-size:0.8rem;line-height:1.2}.content-container.svelte-1940k1q div{font-size:0.8rem}.content-container.svelte-1940k1q li{font-size:0.8rem;line-height:1.2}.content-container.svelte-1940k1q h1{font-size:1rem;line-height:1.2;margin:5px}.content-container.svelte-1940k1q h2{font-size:1rem;line-height:1.2;margin:5px}.content-container.svelte-1940k1q h3{font-size:1rem;line-height:1.2;margin:5px}.content-container.svelte-1940k1q h4{font-size:1rem;line-height:1.2;margin:5px}.content-container.svelte-1940k1q h5{font-size:1rem;line-height:1.2;margin:5px}.content-container.svelte-1940k1q h6{font-size:1rem;line-height:1.2;margin:5px}.content-container.svelte-1940k1q a{pointer-events:none}.content-container.svelte-1940k1q .workspace-leaf{contain:initial !important}.content-container.svelte-1940k1q .workspace-leaf-resize-handle{display:none}.content-container.svelte-1940k1q .view-header{display:none}.content-container.svelte-1940k1q .markdown-preview-view{padding:0}.content-container.svelte-1940k1q .modal-content{margin:0}");
+}
+function create_fragment4(ctx) {
+  let div5;
+  let div1;
+  let div0;
+  let t0;
+  let div4;
+  let div3;
+  let div2;
+  let t1_value = `${ctx[1].extension.toUpperCase()} file`;
+  let t1;
+  let div5_data_path_value;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      div5 = element("div");
+      div1 = element("div");
+      div0 = element("div");
+      t0 = space();
+      div4 = element("div");
+      div3 = element("div");
+      div2 = element("div");
+      t1 = text(t1_value);
+      attr(div0, "class", "file-name-container svelte-1940k1q");
+      attr(div1, "class", "card-container-header svelte-1940k1q");
+      attr(div2, "class", "content-not-supported-file-format svelte-1940k1q");
+      attr(div3, "class", "content-container svelte-1940k1q");
+      attr(div4, "class", "content-container-wrapper svelte-1940k1q");
+      attr(div5, "class", "core-search-assistant_card-container svelte-1940k1q");
+      attr(div5, "data-id", ctx[0]);
+      attr(div5, "data-path", div5_data_path_value = ctx[1].path);
+      toggle_class(div5, "is-selected", ctx[2]);
+    },
+    m(target, anchor) {
+      insert(target, div5, anchor);
+      append(div5, div1);
+      append(div1, div0);
+      ctx[8](div0);
+      append(div5, t0);
+      append(div5, div4);
+      append(div4, div3);
+      append(div3, div2);
+      append(div2, t1);
+      ctx[9](div3);
+      if (!mounted) {
+        dispose = listen(div5, "click", ctx[5]);
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 2 && t1_value !== (t1_value = `${ctx2[1].extension.toUpperCase()} file`))
+        set_data(t1, t1_value);
+      if (dirty & 1) {
+        attr(div5, "data-id", ctx2[0]);
+      }
+      if (dirty & 2 && div5_data_path_value !== (div5_data_path_value = ctx2[1].path)) {
+        attr(div5, "data-path", div5_data_path_value);
+      }
+      if (dirty & 4) {
+        toggle_class(div5, "is-selected", ctx2[2]);
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div5);
+      ctx[8](null);
+      ctx[9](null);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function renderFileName(fileName, containerEl) {
+  containerEl.appendText(fileName);
+}
+function instance4($$self, $$props, $$invalidate) {
+  let $app;
+  component_subscribe($$self, app, ($$value) => $$invalidate(11, $app = $$value));
+  let { id } = $$props;
+  let { file } = $$props;
+  let { selected } = $$props;
+  let { focusEl } = $$props;
+  let contentContainerEl;
+  let fileNameContainerEl;
+  let renderer;
+  const dispatch = createEventDispatcher();
+  function path() {
+    return file.path;
+  }
+  onMount(() => __awaiter(void 0, void 0, void 0, function* () {
+    if (!fileNameContainerEl) {
+      return;
+    }
+    renderFileName(file.name, fileNameContainerEl);
+    if (!contentContainerEl) {
+      return;
+    }
+    const fileType = fileTypeMap[file.extension];
+    if (fileType !== void 0) {
+      contentContainerEl.empty();
+      renderer = yield new ViewGenerator($app, contentContainerEl, file).registerExtension(new ExcalidrawViewGeneratorExtension($app)).registerExtension(new KanbanViewGeneratorExtension($app)).registerExtension(new MarkdownViewGeneratorExtension()).registerExtension(new NonMarkdownViewGeneratorExtension()).load("preview");
+    }
+    focusEl === null || focusEl === void 0 ? void 0 : focusEl.focus();
+  }));
+  onDestroy(() => {
+    setTimeout(() => renderer === null || renderer === void 0 ? void 0 : renderer.unload(), 1e3);
+  });
+  function onClicked() {
+    return __awaiter(this, void 0, void 0, function* () {
+      yield openFile();
+      dispatch("click");
+    });
+  }
+  function openFile() {
+    return __awaiter(this, void 0, void 0, function* () {
+      const leaf = $app.workspace.getMostRecentLeaf();
+      yield leaf.openFile(file);
+      $app.workspace.setActiveLeaf(leaf, true, true);
+    });
+  }
+  function div0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      fileNameContainerEl = $$value;
+      $$invalidate(4, fileNameContainerEl);
+    });
+  }
+  function div3_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      contentContainerEl = $$value;
+      $$invalidate(3, contentContainerEl);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("id" in $$props2)
+      $$invalidate(0, id = $$props2.id);
+    if ("file" in $$props2)
+      $$invalidate(1, file = $$props2.file);
+    if ("selected" in $$props2)
+      $$invalidate(2, selected = $$props2.selected);
+    if ("focusEl" in $$props2)
+      $$invalidate(6, focusEl = $$props2.focusEl);
+  };
+  return [
+    id,
+    file,
+    selected,
+    contentContainerEl,
+    fileNameContainerEl,
+    onClicked,
+    focusEl,
+    path,
+    div0_binding,
+    div3_binding
+  ];
+}
+var CardContainer = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance4, create_fragment4, safe_not_equal, {
+      id: 0,
+      file: 1,
+      selected: 2,
+      focusEl: 6,
+      path: 7
+    }, add_css4);
+  }
+  get path() {
+    return this.$$.ctx[7];
+  }
+};
+var CardContainer_default = CardContainer;
+
+// src/ui/CardViewComponent.svelte
+function add_css5(target) {
+  append_styles(target, "svelte-pwex1j", ".card-view-container.svelte-pwex1j{position:absolute;top:0;left:0;width:100%;height:100%;z-index:var(--layer-modal);padding:20px 30px;display:flex;justify-content:center}.card-view-background.svelte-pwex1j{position:absolute;top:0;left:0;width:100%;height:100%;background-color:var(--background-modifier-cover)}.cards-container.svelte-pwex1j{display:grid;grid-gap:20px;height:100%;width:100%;min-height:0}");
+}
+function create_fragment5(ctx) {
+  let div2;
+  let div0;
+  let t;
+  let div1;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      div2 = element("div");
+      div0 = element("div");
+      t = space();
+      div1 = element("div");
+      attr(div0, "class", "card-view-background svelte-pwex1j");
+      attr(div1, "class", "cards-container svelte-pwex1j");
+      attr(div2, "class", "card-view-container svelte-pwex1j");
+    },
+    m(target, anchor) {
+      insert(target, div2, anchor);
+      append(div2, div0);
+      append(div2, t);
+      append(div2, div1);
+      ctx[10](div1);
+      if (!mounted) {
+        dispose = listen(div0, "click", ctx[9]);
+        mounted = true;
+      }
+    },
+    p: noop,
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div2);
+      ctx[10](null);
+      mounted = false;
+      dispose();
+    }
+  };
+}
+function cardsPerPage(layout) {
+  if (!checkLayout(layout))
+    return 0;
+  return layout[0] * layout[1];
+}
+function setLayout(contentEl, layout) {
+  if (!contentEl)
+    return;
+  if (!checkLayout(layout))
+    return;
+  contentEl.style.gridTemplateColumns = `repeat(${layout[1]}, minmax(0, 1fr))`;
+  contentEl.style.gridTemplateRows = `repeat(${layout[0]}, 1fr)`;
+}
+function checkLayout(layout) {
+  const check = (x) => Number.isInteger(x) && x > 0;
+  return check(layout[0]) && check(layout[1]);
+}
+function instance5($$self, $$props, $$invalidate) {
+  let { layout } = $$props;
+  let { focusEl } = $$props;
+  let contentEl;
+  let cards = [];
+  const dispatcher = createEventDispatcher();
+  function addCard(file) {
+    if (!contentEl)
+      return;
+    if (!focusEl)
+      return;
+    if (cards.length >= cardsPerPage(layout))
+      return;
+    const card = new CardContainer_default({
+      target: contentEl,
+      props: {
+        file,
+        id: cards.length,
+        selected: false,
+        focusEl
+      }
+    });
+    cards.push(card);
+  }
+  function renderPage(files) {
+    files.forEach((file) => {
+      addCard(file);
+    });
+  }
+  function focusOn(id) {
+    const pos = id % cardsPerPage(layout);
+    [-1, 0, 1].forEach((i) => {
+      const card = cards[pos + i];
+      if (!card)
+        return;
+      if (i == 0) {
+        card.$set({ selected: true });
+      } else {
+        card.$set({ selected: false });
+      }
+    });
+  }
+  function detachCards() {
+    cards.forEach((card) => {
+      card.$destroy();
+    });
+    cards = [];
+  }
+  function checkCardsRenderedCorrectly(files) {
+    if (!checkLayout(layout))
+      return false;
+    for (let i = 0; i < cardsPerPage(layout); i++) {
+      const file = files[i];
+      const card = cards[i];
+      if ((file === null || file === void 0 ? void 0 : file.path) !== (card === null || card === void 0 ? void 0 : card.path())) {
+        return false;
+      }
+    }
+    return true;
+  }
+  onMount(() => {
+    setLayout(contentEl, layout);
+  });
+  onDestroy(() => {
+    detachCards();
+  });
+  const click_handler = () => {
+    dispatcher("should-destroy");
+  };
+  function div1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      contentEl = $$value;
+      $$invalidate(0, contentEl);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("layout" in $$props2)
+      $$invalidate(2, layout = $$props2.layout);
+    if ("focusEl" in $$props2)
+      $$invalidate(3, focusEl = $$props2.focusEl);
+  };
+  return [
+    contentEl,
+    dispatcher,
+    layout,
+    focusEl,
+    addCard,
+    renderPage,
+    focusOn,
+    detachCards,
+    checkCardsRenderedCorrectly,
+    click_handler,
+    div1_binding
+  ];
+}
+var CardViewComponent = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance5, create_fragment5, safe_not_equal, {
+      layout: 2,
+      focusEl: 3,
+      addCard: 4,
+      renderPage: 5,
+      focusOn: 6,
+      detachCards: 7,
+      checkCardsRenderedCorrectly: 8
+    }, add_css5);
+  }
+  get addCard() {
+    return this.$$.ctx[4];
+  }
+  get renderPage() {
+    return this.$$.ctx[5];
+  }
+  get focusOn() {
+    return this.$$.ctx[6];
+  }
+  get detachCards() {
+    return this.$$.ctx[7];
+  }
+  get checkCardsRenderedCorrectly() {
+    return this.$$.ctx[8];
+  }
+};
+var CardViewComponent_default = CardViewComponent;
+
+// src/ui/WorkspacePreview.svelte
+function add_css6(target) {
+  append_styles(target, "svelte-1qks5pm", ".core-search-assistant_workspace-preview_container.svelte-1qks5pm{position:absolute;top:0;left:0;width:100%;height:100%;z-index:var(--layer-modal);background-color:var(--background-primary);padding:20px 30px;overflow:auto}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .highlight-search-match{color:var(--highlight-search-match);background-color:var(--highlight-search-match-bg)}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .focus-search-match{background-color:var(--focus-search-match-bg)}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .workspace-leaf{contain:initial !important}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .workspace-leaf-resize-handle{display:none}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .view-header{display:none}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .markdown-preview-view{padding:0}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .modal-content{margin:0}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .markdown-source-view.mod-cm6 .cm-editor{flex:initial;display:initial}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .markdown-source-view.mod-cm6{display:initial}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .markdown-source-view{pointer-events:none}.core-search-assistant_workspace-preview_container.svelte-1qks5pm .markdown-source-view.mod-cm6 .cm-scroller{padding:0}");
+}
+function create_fragment6(ctx) {
+  let div1;
+  let div0;
+  let t_value = `${ctx[0].extension.toUpperCase()} file`;
+  let t;
+  return {
+    c() {
+      div1 = element("div");
+      div0 = element("div");
+      t = text(t_value);
+      attr(div0, "class", "content-not-supported-file-format");
+      attr(div1, "class", "core-search-assistant_workspace-preview_container svelte-1qks5pm");
+    },
+    m(target, anchor) {
+      insert(target, div1, anchor);
+      append(div1, div0);
+      append(div0, t);
+      ctx[4](div1);
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 1 && t_value !== (t_value = `${ctx2[0].extension.toUpperCase()} file`))
+        set_data(t, t_value);
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div1);
+      ctx[4](null);
+    }
+  };
+}
+function instance6($$self, $$props, $$invalidate) {
+  let $app;
+  component_subscribe($$self, app, ($$value) => $$invalidate(6, $app = $$value));
+  let { file } = $$props;
+  let { matches } = $$props;
+  let { focusEl } = $$props;
+  let containerEl;
+  let renderer;
+  onMount(() => __awaiter(void 0, void 0, void 0, function* () {
+    if (!containerEl)
+      return;
+    const fileType = fileTypeMap[file.extension];
+    if (fileType !== void 0) {
+      containerEl.empty();
+      renderer = yield new ViewGenerator($app, containerEl, file).registerExtension(new ExcalidrawViewGeneratorExtension($app)).registerExtension(new KanbanViewGeneratorExtension($app)).registerExtension(new MarkdownViewGeneratorExtension()).registerExtension(new NonMarkdownViewGeneratorExtension()).load("source");
+      highlightMatches();
+    }
+    focusEl === null || focusEl === void 0 ? void 0 : focusEl.focus();
+  }));
+  onDestroy(() => {
+    setTimeout(() => renderer === null || renderer === void 0 ? void 0 : renderer.unload(), 1e3);
+  });
+  function highlightMatches() {
+    renderer === null || renderer === void 0 ? void 0 : renderer.highlightMatches(matches !== null && matches !== void 0 ? matches : [], "highlight-search-match");
+  }
+  function div1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      containerEl = $$value;
+      $$invalidate(1, containerEl);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("file" in $$props2)
+      $$invalidate(0, file = $$props2.file);
+    if ("matches" in $$props2)
+      $$invalidate(2, matches = $$props2.matches);
+    if ("focusEl" in $$props2)
+      $$invalidate(3, focusEl = $$props2.focusEl);
+  };
+  return [file, containerEl, matches, focusEl, div1_binding];
+}
+var WorkspacePreview = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance6, create_fragment6, safe_not_equal, { file: 0, matches: 2, focusEl: 3 }, add_css6);
+  }
+};
+var WorkspacePreview_default = WorkspacePreview;
+
+// src/ui/Outline.svelte
+function add_css7(target) {
+  append_styles(target, "svelte-f5i2qg", ".outline-container.svelte-f5i2qg{position:absolute;top:0;left:0;width:100%;height:100%;z-index:var(--layer-modal);pointer-events:none}");
+}
+function create_fragment7(ctx) {
+  let div;
+  return {
+    c() {
+      div = element("div");
+      attr(div, "class", "outline-container svelte-f5i2qg");
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      ctx[2](div);
+    },
+    p: noop,
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      ctx[2](null);
+    }
+  };
+}
+var STYLE_VAR_COLOR_SEARCH_MODE_OUTLINE = "--search-mode-outline";
+function instance7($$self, $$props, $$invalidate) {
+  let { lineWidth } = $$props;
+  let el;
+  onMount(() => {
+    if (!el)
+      return;
+    $$invalidate(0, el.style.outline = `${lineWidth}px solid var(${STYLE_VAR_COLOR_SEARCH_MODE_OUTLINE})`, el);
+    $$invalidate(0, el.style.outlineOffset = `-${lineWidth}px`, el);
+  });
+  function div_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      el = $$value;
+      $$invalidate(0, el);
+    });
+  }
+  $$self.$$set = ($$props2) => {
+    if ("lineWidth" in $$props2)
+      $$invalidate(1, lineWidth = $$props2.lineWidth);
+  };
+  return [el, lineWidth, div_binding];
+}
+var Outline = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance7, create_fragment7, safe_not_equal, { lineWidth: 1 }, add_css7);
+  }
+};
+var Outline_default = Outline;
+
+// src/Controller.ts
 var DELAY_TO_RELOAD_IN_MILLISECOND = 1e3;
 var RETRY_INTERVAL = 1;
 var RETRY_TRIALS = 1e3;
 var DELAY_TO_RENDER_CARD_VIEW_ON_ENTRY_IN_MILLISECOND = 100;
 var Controller = class extends obsidian.Component {
-  constructor(app, plugin, events, searchInterface) {
+  constructor(app2, plugin2, events, searchInterface) {
     super();
-    this.app = app;
-    this.plugin = plugin;
+    this.app = app2;
+    this.plugin = plugin2;
     this.events = events;
     this.searchInterface = searchInterface;
     this.modeScope = new ModeScope();
+    this.cardViewCheckDebouncer = (0, import_obsidian14.debounce)(this.onCheckCardView, DELAY_TO_RELOAD_IN_MILLISECOND, true);
     this.countSearchItemDetected = 0;
   }
   onunload() {
@@ -2567,6 +3363,7 @@ var Controller = class extends obsidian.Component {
         this.searchInterface.startWatching(this.events);
         yield delay(DELAY_TO_RENDER_CARD_VIEW_ON_ENTRY_IN_MILLISECOND);
         this.renewCardViewPage();
+        this.cardViewCheckDebouncer();
       }
       this.modeScope.push();
     });
@@ -2578,7 +3375,7 @@ var Controller = class extends obsidian.Component {
     }
     this.forget();
     this.unfocus();
-    (_a = this.cardView) == null ? void 0 : _a.clear();
+    (_a = this.cardViewComponent) == null ? void 0 : _a.detachCards();
     this.countSearchItemDetected = 0;
   }
   exit(reason) {
@@ -2606,11 +3403,7 @@ var Controller = class extends obsidian.Component {
       return;
     }
     this.searchInterface.focusOn(this.currentFocusId);
-    const pos = this.positionInCardView(this.currentFocusId);
-    if (pos === void 0) {
-      return;
-    }
-    (_a = this.cardView) == null ? void 0 : _a.focusOn(pos);
+    (_a = this.cardViewComponent) == null ? void 0 : _a.focusOn(this.currentFocusId);
   }
   open(direction) {
     if (this.currentFocusId === void 0) {
@@ -2619,13 +3412,28 @@ var Controller = class extends obsidian.Component {
     this.searchInterface.open(this.currentFocusId, direction);
   }
   renewCardViewPage() {
-    var _a, _b, _c, _d, _e;
-    if (((_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) !== "cardView") {
-      return;
+    return __async(this, null, function* () {
+      var _a, _b, _c, _d, _e;
+      if (((_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) !== "cardView")
+        return;
+      (_b = this.cardViewComponent) == null ? void 0 : _b.detachCards();
+      (_c = this.cardViewComponent) == null ? void 0 : _c.renderPage(this.filesToBeRendered());
+      if (this.currentFocusId !== void 0) {
+        (_e = this.cardViewComponent) == null ? void 0 : _e.focusOn((_d = this.currentFocusId) != null ? _d : 0);
+      }
+    });
+  }
+  filesToBeRendered() {
+    var _a, _b;
+    const cardsPerPage2 = this.cardsPerPage();
+    if (cardsPerPage2 === void 0) {
+      return [];
     }
-    (_b = this.cardView) == null ? void 0 : _b.clear();
-    (_d = this.cardView) == null ? void 0 : _d.renderPage((_c = this.currentFocusId) != null ? _c : 0);
-    (_e = this.cardView) == null ? void 0 : _e.reveal();
+    const pageId = Math.floor(((_a = this.currentFocusId) != null ? _a : 0) / cardsPerPage2);
+    const items = (_b = this.plugin.searchInterface) == null ? void 0 : _b.resultItems;
+    if (!items)
+      return [];
+    return items.slice(pageId * cardsPerPage2).map((item) => item.file);
   }
   collapseSidedock() {
     var _a;
@@ -2651,60 +3459,55 @@ var Controller = class extends obsidian.Component {
   }
   addChildren() {
     this.removeChildren();
-    if (this.plugin.settings === void 0) {
+    const { settings } = this.plugin;
+    if (settings === void 0) {
       throw "[ERROR in Core Search Assistant] failed to addChildren: failed to read setting";
     }
-    this.outline = this.addChild(new Outline(this.plugin.settings.outlineWidth));
-    this.cardView = this.addChild(new CardView(this.app, this.plugin));
-    this.workspacePreview = this.addChild(new WorkspacePreview(this.app, this.plugin));
+    this.outline = new Outline_default({
+      target: document.body,
+      props: {
+        lineWidth: settings.outlineWidth
+      }
+    });
+    if (settings.autoPreviewMode === "cardView") {
+      this.renewCardViewComponent();
+    }
   }
   removeChildren() {
-    if (this.outline) {
-      this.removeChild(this.outline);
-    }
-    if (this.cardView) {
-      this.removeChild(this.cardView);
-    }
-    if (this.workspacePreview) {
-      this.removeChild(this.workspacePreview);
-    }
+    var _a, _b, _c;
+    (_a = this.outline) == null ? void 0 : _a.$destroy();
+    this.outline = void 0;
+    (_b = this.cardViewComponent) == null ? void 0 : _b.$destroy();
+    this.cardViewComponent = void 0;
+    (_c = this.workspacePreviewComponent) == null ? void 0 : _c.$destroy();
+    this.workspacePreviewComponent = void 0;
   }
   forget() {
     this.currentFocusId = void 0;
     this.countSearchItemDetected = 0;
   }
-  showCardViewItem(id) {
-    var _a, _b, _c;
-    const item = this.searchInterface.getResultItemAt(id);
-    if (!item) {
-      return;
-    }
-    (_a = this.cardView) == null ? void 0 : _a.renderItem(item, id);
-    (_b = this.cardView) == null ? void 0 : _b.setLayout();
-    (_c = this.cardView) == null ? void 0 : _c.reveal();
-  }
-  showWorkspacePreview() {
-    var _a, _b, _c;
-    if (((_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) !== "singleView") {
-      return;
-    }
-    const item = this.searchInterface.getResultItemAt((_b = this.currentFocusId) != null ? _b : 0);
-    if (!item) {
-      return;
-    }
-    (_c = this.workspacePreview) == null ? void 0 : _c.renew(item);
-  }
   navigateForward() {
     var _a;
+    let updated = true;
+    const numResults = (_a = this.searchInterface.count()) != null ? _a : 0;
     if (this.currentFocusId === void 0) {
       this.currentFocusId = 0;
     } else {
-      const numResults = (_a = this.searchInterface.count()) != null ? _a : 0;
       this.currentFocusId++;
-      this.currentFocusId = this.currentFocusId < numResults ? this.currentFocusId : numResults - 1;
-      if (this.shouldTransitNextPageInCardView()) {
-        this.renewCardViewPage();
+      if (this.currentFocusId >= numResults) {
+        this.currentFocusId = numResults - 1;
+        updated = false;
       }
+    }
+    if (!updated)
+      return;
+    const { settings } = this.plugin;
+    if (!settings)
+      return;
+    if (settings.autoPreviewMode === "cardView" && this.shouldTransitNextPageInCardView()) {
+      this.renewCardViewPage();
+    } else if (settings.autoPreviewMode === "singleView") {
+      this.renewWorkspacePreviewComponent();
     }
     this.focus();
   }
@@ -2712,10 +3515,21 @@ var Controller = class extends obsidian.Component {
     if (this.currentFocusId === void 0) {
       return;
     }
+    let updated = true;
     this.currentFocusId--;
-    this.currentFocusId = this.currentFocusId >= 0 ? this.currentFocusId : 0;
-    if (this.shouldTransitPreviousPageInCardView()) {
+    if (this.currentFocusId < 0) {
+      this.currentFocusId = 0;
+      updated = false;
+    }
+    if (!updated)
+      return;
+    const { settings } = this.plugin;
+    if (!settings)
+      return;
+    if (settings.autoPreviewMode === "cardView" && this.shouldTransitPreviousPageInCardView()) {
       this.renewCardViewPage();
+    } else if (settings.autoPreviewMode === "singleView") {
+      this.renewWorkspacePreviewComponent();
     }
     this.focus();
   }
@@ -2728,10 +3542,10 @@ var Controller = class extends obsidian.Component {
       return;
     if (pageId >= pageCount - 1)
       return;
-    const cardsPerPage = this.cardsPerPage();
-    if (cardsPerPage === void 0)
+    const cardsPerPage2 = this.cardsPerPage();
+    if (cardsPerPage2 === void 0)
       return;
-    this.currentFocusId = cardsPerPage * (pageId + 1);
+    this.currentFocusId = cardsPerPage2 * (pageId + 1);
     this.renewCardViewPage();
     this.focus();
   }
@@ -2744,17 +3558,15 @@ var Controller = class extends obsidian.Component {
       return;
     if (pageId <= 0)
       return;
-    const cardsPerPage = this.cardsPerPage();
-    if (cardsPerPage === void 0)
+    const cardsPerPage2 = this.cardsPerPage();
+    if (cardsPerPage2 === void 0)
       return;
-    this.currentFocusId = cardsPerPage * (pageId - 1);
+    this.currentFocusId = cardsPerPage2 * (pageId - 1);
     this.renewCardViewPage();
     this.focus();
   }
   unfocus() {
-    var _a;
     this.searchInterface.unfocus();
-    (_a = this.cardView) == null ? void 0 : _a.unfocus();
   }
   openPreviewModal() {
     const { currentFocusId } = this;
@@ -2768,53 +3580,43 @@ var Controller = class extends obsidian.Component {
     new PreviewModal(this.app, this.plugin, this.modeScope, item).open();
   }
   shouldTransitNextPageInCardView() {
+    if (this.currentFocusId === void 0 || this.currentFocusId === 0) {
+      return false;
+    }
     if (!this.plugin.settings) {
       return false;
     }
     const [row, column] = parseCardLayout(this.plugin.settings.cardViewLayout);
-    const cardsPerPage = row * column;
-    if (this.currentFocusId === void 0) {
-      return false;
-    }
-    return this.currentFocusId % cardsPerPage === 0;
+    const cardsPerPage2 = row * column;
+    return this.currentFocusId % cardsPerPage2 === 0;
   }
   shouldTransitPreviousPageInCardView() {
     if (!this.plugin.settings) {
       return false;
     }
     const [row, column] = parseCardLayout(this.plugin.settings.cardViewLayout);
-    const cardsPerPage = row * column;
+    const cardsPerPage2 = row * column;
     if (this.currentFocusId === void 0) {
       return false;
     }
-    return (this.currentFocusId + 1) % cardsPerPage === 0;
-  }
-  positionInCardView(id) {
-    if (id === void 0) {
-      return void 0;
-    }
-    const cardsPerPage = this.cardsPerPage();
-    if (!cardsPerPage) {
-      return void 0;
-    }
-    return id % cardsPerPage;
+    return (this.currentFocusId + 1) % cardsPerPage2 === 0;
   }
   get pageId() {
     if (this.currentFocusId === void 0)
       return void 0;
-    const cardsPerPage = this.cardsPerPage();
-    if (cardsPerPage === void 0)
+    const cardsPerPage2 = this.cardsPerPage();
+    if (cardsPerPage2 === void 0)
       return void 0;
-    const pageId = Math.floor(this.currentFocusId / cardsPerPage);
+    const pageId = Math.floor(this.currentFocusId / cardsPerPage2);
     return pageId;
   }
   get pageCount() {
     var _a;
     const numResults = (_a = this.plugin.searchInterface) == null ? void 0 : _a.count();
-    const cardsPerPage = this.cardsPerPage();
-    if (cardsPerPage === void 0)
+    const cardsPerPage2 = this.cardsPerPage();
+    if (cardsPerPage2 === void 0)
       return void 0;
-    const pageCount = Math.ceil((numResults != null ? numResults : 0) / cardsPerPage);
+    const pageCount = Math.ceil((numResults != null ? numResults : 0) / cardsPerPage2);
     return pageCount;
   }
   cardsPerPage() {
@@ -2823,15 +3625,6 @@ var Controller = class extends obsidian.Component {
     }
     const [row, column] = parseCardLayout(this.plugin.settings.cardViewLayout);
     return row * column;
-  }
-  retryCardView(delayMillisecond) {
-    setTimeout(() => {
-      var _a;
-      if (!((_a = this.cardView) == null ? void 0 : _a.itemsRenderedCorrectly)) {
-        this.reset();
-        this.renewCardViewPage();
-      }
-    }, delayMillisecond);
   }
   saveLayout() {
     this.app.workspace.onLayoutReady(() => __async(this, null, function* () {
@@ -2844,11 +3637,11 @@ var Controller = class extends obsidian.Component {
   layoutChanged() {
     return __async(this, null, function* () {
       var _a;
-      const required = yield (_a = this._layoutChanged) == null ? void 0 : _a.call(this);
-      if (required === void 0) {
+      const shouldRenewController = yield (_a = this._layoutChanged) == null ? void 0 : _a.call(this);
+      if (shouldRenewController === void 0) {
         throw "[ERROR in Core Search Assistant] failed to renewRequired: saveLayout was not called.";
       }
-      return required;
+      return shouldRenewController;
     });
   }
   setSearchModeTriggers() {
@@ -2936,14 +3729,12 @@ var Controller = class extends obsidian.Component {
       scope.register(hotkey.modifiers, hotkey.key, (evt) => {
         evt.preventDefault();
         this.navigateForward();
-        this.showWorkspacePreview();
       });
     });
     hotkeyMap.selectPrevious.forEach((hotkey) => {
       scope.register(hotkey.modifiers, hotkey.key, (evt) => {
         evt.preventDefault();
         this.navigateBack();
-        this.showWorkspacePreview();
       });
     });
     hotkeyMap.open.forEach((hotkey) => {
@@ -2999,7 +3790,7 @@ var Controller = class extends obsidian.Component {
         const { file } = item;
         const internalLink = generateInternalLinkFrom(this.app.metadataCache, file);
         navigator.clipboard.writeText(internalLink);
-        new import_obsidian17.Notice("Copy wiki link!");
+        new import_obsidian14.Notice("Copy wiki link!");
       });
     });
     scope.register([], "Escape", () => {
@@ -3028,29 +3819,70 @@ var Controller = class extends obsidian.Component {
   }
   get onSearchResultItemDetected() {
     return () => {
-      var _a, _b;
+      var _a, _b, _c;
       if (((_a = this.plugin.settings) == null ? void 0 : _a.autoPreviewMode) !== "cardView") {
         return;
       }
       if (this.currentFocusId !== void 0) {
         return;
       }
-      const cardsPerPage = this.cardsPerPage();
-      if (cardsPerPage === void 0) {
-        return;
-      }
-      if (this.countSearchItemDetected >= cardsPerPage) {
-        return;
-      }
       if (this.countSearchItemDetected === 0) {
-        (_b = this.cardView) == null ? void 0 : _b.clear();
+        (_b = this.cardViewComponent) == null ? void 0 : _b.detachCards();
       }
-      this.showCardViewItem(this.countSearchItemDetected);
-      if (this.countSearchItemDetected === 0) {
-        this.retryCardView(DELAY_TO_RELOAD_IN_MILLISECOND);
-      }
+      const item = this.searchInterface.getResultItemAt(this.countSearchItemDetected);
+      if (!item)
+        return;
+      (_c = this.cardViewComponent) == null ? void 0 : _c.addCard(item.file);
+      this.cardViewCheckDebouncer();
       this.countSearchItemDetected++;
     };
+  }
+  renewCardViewComponent() {
+    var _a;
+    (_a = this.cardViewComponent) == null ? void 0 : _a.$destroy();
+    const { settings } = this.plugin;
+    if (!settings)
+      return;
+    const focusEl = this.searchInterface.searchInputEl;
+    if (!focusEl)
+      return;
+    const layout = parseCardLayout(settings.cardViewLayout);
+    this.app.workspace.onLayoutReady(() => {
+      const containerEl = this.app.workspace.rootSplit.containerEl;
+      const cardViewComponent = new CardViewComponent_default({
+        target: containerEl,
+        props: {
+          layout,
+          focusEl
+        }
+      });
+      this.cardViewComponent = cardViewComponent;
+    });
+  }
+  renewWorkspacePreviewComponent() {
+    var _a;
+    (_a = this.workspacePreviewComponent) == null ? void 0 : _a.$destroy();
+    if (this.currentFocusId === void 0)
+      return;
+    const focusEl = this.searchInterface.searchInputEl;
+    if (!focusEl)
+      return;
+    const item = this.searchInterface.getResultItemAt(this.currentFocusId);
+    if (!item)
+      return;
+    this.app.workspace.onLayoutReady(() => {
+      var _a2;
+      const containerEl = this.app.workspace.rootSplit.containerEl;
+      const workspacePreviewComponent = new WorkspacePreview_default({
+        target: containerEl,
+        props: {
+          file: item.file,
+          matches: (_a2 = item.result.content) != null ? _a2 : [],
+          focusEl
+        }
+      });
+      this.workspacePreviewComponent = workspacePreviewComponent;
+    });
   }
   get focusOnInput() {
     return () => __async(this, null, function* () {
@@ -3090,13 +3922,25 @@ var Controller = class extends obsidian.Component {
     }
     return !((_b = this.searchInterface.sideDock) == null ? void 0 : _b.containerEl.contains(targetEl));
   }
+  get onCheckCardView() {
+    return () => {
+      const { cardViewComponent } = this;
+      if (!cardViewComponent)
+        return;
+      const ok = cardViewComponent.checkCardsRenderedCorrectly(this.filesToBeRendered());
+      if (!ok) {
+        this.reset();
+        this.renewCardViewPage();
+      }
+    };
+  }
 };
 
 // src/interfaces/SearchComponentInterface.ts
-var import_obsidian19 = __toModule(require("obsidian"));
+var import_obsidian16 = __toModule(require("obsidian"));
 
 // src/types/Guards.ts
-var import_obsidian18 = __toModule(require("obsidian"));
+var import_obsidian15 = __toModule(require("obsidian"));
 var SORT_ORDER_IN_SEARCH = [
   "alphabeticalReverse",
   "alphabetical",
@@ -3207,7 +4051,7 @@ function isSearchResultItem(obj) {
     return false;
   }
   const { file, containerEl } = obj;
-  if (!(file instanceof import_obsidian18.TFile)) {
+  if (!(file instanceof import_obsidian15.TFile)) {
     return false;
   }
   if (!(containerEl instanceof HTMLElement)) {
@@ -3295,8 +4139,8 @@ var LinkedList = class {
 };
 
 // src/interfaces/SearchComponentInterface.ts
-var SearchComponentInterface = class extends import_obsidian19.Component {
-  constructor(app, plugin, events) {
+var SearchComponentInterface = class extends import_obsidian16.Component {
+  constructor(app2, plugin2, events) {
     super();
     this.observationConfig = {
       childList: true
@@ -3325,8 +4169,8 @@ var SearchComponentInterface = class extends import_obsidian19.Component {
         }
       }
     });
-    this.app = app;
-    this.plugin = plugin;
+    this.app = app2;
+    this.plugin = plugin2;
     this.events = events;
     this.observer = new MutationObserver(this.onObservedCallback.bind(this));
   }
@@ -3471,7 +4315,7 @@ var SearchComponentInterface = class extends import_obsidian19.Component {
       return void 0;
     }
     const parent = leaf.getRoot();
-    if (parent instanceof import_obsidian19.WorkspaceSidedock) {
+    if (parent instanceof import_obsidian16.WorkspaceSidedock) {
       return parent;
     } else {
       return void 0;
@@ -3485,10 +4329,10 @@ var SearchComponentInterface = class extends import_obsidian19.Component {
     const parent = leaf.getRoot();
     if (parent === this.app.workspace.leftSplit) {
       const opposite = this.app.workspace.rightSplit;
-      return opposite instanceof import_obsidian19.WorkspaceSidedock ? opposite : void 0;
+      return opposite instanceof import_obsidian16.WorkspaceSidedock ? opposite : void 0;
     } else if (parent === this.app.workspace.rightSplit) {
       const opposite = this.app.workspace.leftSplit;
-      return opposite instanceof import_obsidian19.WorkspaceSidedock ? opposite : void 0;
+      return opposite instanceof import_obsidian16.WorkspaceSidedock ? opposite : void 0;
     } else {
       return void 0;
     }
@@ -3546,8 +4390,8 @@ var SearchComponentInterface = class extends import_obsidian19.Component {
 };
 
 // src/main.ts
-var import_obsidian20 = __toModule(require("obsidian"));
-var CoreSearchAssistantPlugin2 = class extends import_obsidian20.Plugin {
+var import_obsidian17 = __toModule(require("obsidian"));
+var CoreSearchAssistantPlugin = class extends import_obsidian17.Plugin {
   onload() {
     return __async(this, null, function* () {
       yield this.loadSettings();
@@ -3555,6 +4399,7 @@ var CoreSearchAssistantPlugin2 = class extends import_obsidian20.Plugin {
       this.searchInterface = this.addChild(new SearchComponentInterface(this.app, this, this.events));
       this.controller = this.addChild(new Controller(this.app, this, this.events, this.searchInterface));
       this.watchLayoutChange();
+      this.setSvelteStoreValues();
       this.addSettingTab(new CoreSearchAssistantSettingTab(this.app, this));
     });
   }
@@ -3590,4 +4435,22 @@ var CoreSearchAssistantPlugin2 = class extends import_obsidian20.Plugin {
       }));
     });
   }
+  setSvelteStoreValues() {
+    plugin.set(this);
+    app.set(this.app);
+  }
 };
+/*! *****************************************************************************
+Copyright (c) Microsoft Corporation.
+
+Permission to use, copy, modify, and/or distribute this software for any
+purpose with or without fee is hereby granted.
+
+THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
+REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
+AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
+INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
+LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
+OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
+PERFORMANCE OF THIS SOFTWARE.
+***************************************************************************** */

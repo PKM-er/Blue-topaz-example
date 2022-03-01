@@ -1,8 +1,52 @@
 {
   "recentFiles": [
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
+      "basename": "电影观看清单",
+      "path": "77-Example/电影观看清单.md"
+    },
+    {
+      "basename": "表格自定义样式",
+      "path": "77-Example/表格自定义样式.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "魔方配色设置说明",
+      "path": "00-Tips/魔方配色设置说明.md"
+    },
+    {
+      "basename": "Lillian Who Obsidian新手入门教程",
+      "path": "00-Tips/Lillian Who Obsidian新手入门教程.md"
+    },
+    {
+      "basename": "Johnny学OB 资料汇总",
+      "path": "00-Tips/Johnny学OB 资料汇总.md"
+    },
+    {
+      "basename": "fastgithub 可为你加速访问Ob社区",
+      "path": "00-Tips/fastgithub 可为你加速访问Ob社区.md"
+    },
+    {
+      "basename": "Cmenu插件魔改版 Obsidian上的工具栏",
+      "path": "00-Tips/Cmenu插件魔改版 Obsidian上的工具栏.md"
+    },
+    {
+      "basename": "booknote插件-更好的pdf office文档阅读和标注神器",
+      "path": "00-Tips/booknote插件-更好的pdf office文档阅读和标注神器.md"
+    },
+    {
+      "basename": "FastStart-Plugins-ShortDelay",
+      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
+    },
+    {
+      "basename": "01 - Default Table",
+      "path": "77-Example/TableExample/01 - Default Table.md"
     },
     {
       "basename": "README",
@@ -13,112 +57,68 @@
       "path": "从这开始.md"
     },
     {
-      "basename": "图书阅读清单",
-      "path": "77-Example/图书阅读清单.md"
+      "basename": "如何提高Obsidian的启动速度？",
+      "path": "00-Tips/如何提高Obsidian的启动速度？.md"
     },
     {
-      "basename": "tp-movie",
-      "path": "88-Template/tp-movie.md"
+      "basename": "获取命令ID",
+      "path": "10-Help/获取命令ID.md"
     },
     {
-      "basename": "tp-movie-douban",
-      "path": "88-Template/tp-movie-douban.md"
+      "basename": "FastStart-Plugins-LongDelay",
+      "path": "88-Template/FastStart-Plugins-LongDelay.md"
     },
     {
-      "basename": "tp-book",
-      "path": "88-Template/tp-book.md"
+      "basename": "FastStart-StartupScript",
+      "path": "88-Template/FastStart-StartupScript.md"
     },
     {
-      "basename": "图书阅读清单-状态控制",
-      "path": "77-Example/图书阅读清单-状态控制.md"
-    },
-    {
-      "basename": "《知识生产与传播》",
-      "path": "30-Reading/《知识生产与传播》.md"
-    },
-    {
-      "basename": "《微习惯》",
-      "path": "30-Reading/《微习惯》.md"
-    },
-    {
-      "basename": "《镰刀与城市》",
-      "path": "30-Reading/《镰刀与城市》.md"
-    },
-    {
-      "basename": "彩色时钟",
-      "path": "88-Template/彩色时钟.md"
-    },
-    {
-      "basename": "《茶叶与鸦片》",
-      "path": "30-Reading/《茶叶与鸦片》.md"
-    },
-    {
-      "basename": "爱情神话",
-      "path": "30-Reading/爱情神话.md"
-    },
-    {
-      "basename": "长津湖之水门桥",
-      "path": "30-Reading/长津湖之水门桥.md"
-    },
-    {
-      "basename": "《置身事内》",
-      "path": "30-Reading/《置身事内》.md"
-    },
-    {
-      "basename": "《苏联解体亲历记》",
-      "path": "30-Reading/《苏联解体亲历记》.md"
-    },
-    {
-      "basename": "《如何阅读尼采》",
-      "path": "30-Reading/《如何阅读尼采》.md"
-    },
-    {
-      "basename": "tp-日记模板",
-      "path": "88-Template/tp-日记模板.md"
+      "basename": "FastStart-GenerateListOfInstalledPlugins",
+      "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
     },
     {
       "basename": "AD伪看板",
       "path": "77-Example/AD伪看板.md"
     },
     {
+      "basename": "对话形式笔记",
+      "path": "77-Example/对话形式笔记.md"
+    },
+    {
+      "basename": "全宽显示",
+      "path": "77-Example/全宽显示.md"
+    },
+    {
+      "basename": "预览隐藏frontmatter",
+      "path": "77-Example/预览隐藏frontmatter.md"
+    },
+    {
+      "basename": "Image-grid【图片自适应】",
+      "path": "77-Example/Image-grid【图片自适应】.md"
+    },
+    {
       "basename": "伪看板",
       "path": "77-Example/伪看板.md"
     },
     {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+      "basename": "home",
+      "path": "88-Template/home.md"
     },
     {
-      "basename": "Obsidian 快捷键一览表",
-      "path": "10-Help/Obsidian 快捷键一览表.md"
+      "basename": "天气js",
+      "path": "88-Template/天气js.md"
     },
     {
-      "basename": "Cubox",
-      "path": "50-Inbox/Cubox.md"
+      "basename": "《如何阅读尼采》",
+      "path": "30-Reading/《如何阅读尼采》.md"
     },
     {
-      "basename": "如何在Obsidian中添加图书卡片",
-      "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
+      "basename": "返回当前活动笔记的所有反向链接",
+      "path": "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
     },
     {
-      "basename": "电影观看清单-状态控制",
-      "path": "77-Example/电影观看清单-状态控制.md"
-    },
-    {
-      "basename": "如何在Obsidian中添加电影卡片",
-      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
-    },
-    {
-      "basename": "Good will Hunting",
-      "path": "30-Reading/Good will Hunting.md"
-    },
-    {
-      "basename": "表格转换-tableconvert",
-      "path": "50-Inbox/表格转换-tableconvert.md"
-    },
-    {
-      "basename": "vika",
-      "path": "50-Inbox/vika.md"
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
     }
   ],
   "omittedPaths": [

@@ -132,16 +132,28 @@
   },
   "syntaxHighlight": true,
   "copyButton": false,
-  "version": "6.11.1",
-  "warnedAboutNC": true,
+  "version": "7.0.3",
   "autoCollapse": false,
   "defaultCollapseType": "open",
   "syncLinks": false,
-  "enableMarkdownProcessor": false,
   "injectColor": true,
   "parseTitles": true,
   "allowMSSyntax": true,
+  "msSyntaxIndented": true,
   "livePreviewMS": true,
   "dropShadow": true,
-  "hideEmpty": false
+  "hideEmpty": false,
+  "open": {
+    "admonitions": true,
+    "icons": true,
+    "other": true,
+    "advanced": true
+  },
+  "icons": [
+    "octicons"
+  ],
+  "useFontAwesome": true,
+  "rpgDownloadedOnce": false,
+  "warnedAboutNC": true,
+  "enableMarkdownProcessor": false
 }

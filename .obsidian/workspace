@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
+            "file": "77-Example/电影观看清单.md",
             "mode": "preview",
             "backlinks": false,
             "source": false
@@ -42,7 +42,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "表格",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -59,7 +59,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "d877e8285f98a38a",
@@ -111,7 +112,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "77-Example/电影观看清单.md"
               }
             }
           },
@@ -126,6 +127,14 @@
                 "backlinks": false,
                 "source": true
               }
+            }
+          },
+          {
+            "id": "b08f6b06e081b616",
+            "type": "leaf",
+            "state": {
+              "type": "reminder-list",
+              "state": {}
             }
           }
         ],
@@ -142,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "77-Example/电影观看清单.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "77-Example/电影观看清单.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -206,15 +215,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "88-Template/home.md",
-    "README.md",
-    "从这开始.md",
-    "未命名.md",
-    "77-Example/图书阅读清单.md",
-    "88-Template/tp-movie.md",
-    "88-Template/tp-movie-douban.md",
-    "88-Template/tp-book.md",
-    "77-Example/图书阅读清单-状态控制.md",
-    "30-Reading/《知识生产与传播》.md"
+    "77-Example/电影观看清单.md",
+    "77-Example/表格自定义样式.md",
+    "77-Example/分栏效果示例.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "00-Tips/魔方配色设置说明.md",
+    "00-Tips/Lillian Who Obsidian新手入门教程.md",
+    "00-Tips/Johnny学OB 资料汇总.md",
+    "00-Tips/fastgithub 可为你加速访问Ob社区.md",
+    "00-Tips/Cmenu插件魔改版 Obsidian上的工具栏.md",
+    "00-Tips/booknote插件-更好的pdf office文档阅读和标注神器.md"
   ]
 }

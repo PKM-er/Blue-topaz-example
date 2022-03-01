@@ -1,0 +1,62 @@
+/* Sets all the text color to red! */
+.mte > button {
+    background-color: lightgray;
+}
+
+.button-container.mte {
+    margin: 10pt 0;
+}
+
+.button-container.mte > input {
+    max-width: 100pt;
+    margin: 5pt 10pt;
+}
+
+.grid.mte {
+    display: grid;
+    width: fit-content;
+    margin-top: 5px;
+    border-right: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.grid.mte > .cell-container.mte > .cell.mte {
+    padding: 8px 4px;
+}
+
+.grid.mte > .cell-container.mte {
+    display: flex;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+.grid.mte > .cell-container.mte.header {
+    background-color: lightgray;
+}
+
+.grid.mte > .cell-container.mte > .cell.mte {
+    min-width: 100pt;
+    max-width: 250pt;
+    padding-left: 10pt;
+    padding-right: 20pt;
+    width: 100%;
+}
+
+.relative.mte {
+    position: relative;
+}
+
+.mte > .absolute {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 25%;
+}
+
+.mte > .display-block {
+    display: block;
+}
+
+.mte > .display-none {
+    display: none;
+}

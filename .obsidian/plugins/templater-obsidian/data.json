@@ -24,6 +24,6 @@
     ""
   ],
   "startup_templates": [
-    ""
+    "88-Template/FastStart-StartupScript.md"
   ]
 }

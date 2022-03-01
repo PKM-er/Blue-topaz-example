@@ -1,7 +1,7 @@
 {
-  "strategy": "日本语",
-  "matchStrategy": "前缀",
-  "maxNumberOfSuggestions": 1,
+  "strategy": "japanese",
+  "matchStrategy": "prefix",
+  "maxNumberOfSuggestions": 5,
   "maxNumberOfWordsAsPhrase": 3,
   "minNumberOfCharactersTriggered": 0,
   "minNumberOfWordsTriggeredPhrase": 1,
@@ -9,6 +9,7 @@
   "delayMilliSeconds": 0,
   "disableSuggestionsDuringImeOn": false,
   "insertAfterCompletion": true,
+  "showMatchStrategy": true,
   "showIndexingStatus": true,
   "descriptionOnSuggestion": "Short",
   "selectSuggestionKeys": "Tab",
@@ -28,6 +29,8 @@
   "delimiterToHideSuggestion": "",
   "caretLocationSymbolAfterComplement": "",
   "enableInternalLinkComplement": true,
-  "suggestInternalLinkWithAlias": false,
+  "suggestInternalLinkWithAlias": true,
+  "enableFrontMatterComplement": true,
+  "insertCommaAfterFrontMatterCompletion": false,
   "showLogAboutPerformanceInConsole": false
 }

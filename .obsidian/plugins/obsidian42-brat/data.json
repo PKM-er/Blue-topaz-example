@@ -1,5 +1,7 @@
 {
   "pluginList": [
+    "/ganesshkumar/obsidian-table-editor",
+    "KjellConnelly/obsidian-dev-tools",
     "nothingislost/obsidian-embedded-query-control",
     "nothingislost/obsidian-bartender",
     "alexandru-dinu/obsidian-sortable/"
@@ -7,7 +9,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-02-18T00:51:37Z"
+      "lastUpdate": "2022-02-27T16:01:31Z"
     }
   ],
   "updateAtStartup": true,

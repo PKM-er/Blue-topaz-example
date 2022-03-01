@@ -20,6 +20,12 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 
 另外推荐鸟姐的Homepage 也是很棒的风格
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
+## 更新  2022-03-01
+- 使用 faststart脚本 大幅提高ob [[如何提高Obsidian的启动速度？|启动速度]]
+- 修复float-toc 插件目录太长无法滚动的问题
+- 
+
+
 ## 更新  2022-02-16
 增加从豆瓣获取电影卡片
 增加对dataview卡片直接编辑元数据 
@@ -96,18 +102,35 @@ where  usage != null
 
 ```
 
-|code-wrap【代码块自动换行】|code-wrap|代码块自动换行|
+| cssclass    | role                                                               |
+| ----------- | ------------------------------------------------------------------ |
+| code-wrap   | code-block-auto-wrap                                               |
+| img-grid    | image adaptive distribution                                        |
+| inline-list | images and lists mixed                                             |
+| kanban      | pseudo-kanban style, unordered list of four columns                |
+| fullwidth   | reduce column width on, control the full width of the page display |
+| noscroll    | hide the current page scrollbar                                    |
+| matrix      | four-quadrant table style                                          |
+| cards       | rendering-dataview-tables-to-cards-view                            |
+| cards       | rendering-dataview-tables-to-cards-view                            |
+| noyaml      | preview state does not show the frontmatter area                   |
+
+
+
+|文件名|cssclass|作用|
 |----|----|----|
+|code-wrap【代码块自动换行】|code-wrap|代码块自动换行|
 |Image-grid【图片自适应】|img-grid|图片自适应分布|
 |inline-list【行内列表】|inline-list|图片和列表混排|
 |伪看板|kanban|伪看板的样式，无序列表四分栏|
 |全宽显示|fullwidth|缩减栏宽开启下，控制页面全宽显示|
 |各类列表和彩虹大纲线|noscroll|隐藏当前页面滚动条|
-|图书阅读清单|cards|对dataview表格渲染成卡片视图|
 |四象限表格|matrix|四象限表格样式|
+|图书阅读清单-状态控制|cards|对dataview表格渲染成卡片视图|
+|图书阅读清单|cards|对dataview表格渲染成卡片视图|
+|电影观看清单-状态控制|cards|对dataview表格渲染成卡片视图|
 |电影观看清单|cards|对dataview表格渲染成卡片视图|
 |预览隐藏frontmatter|noyaml|预览状态不显示frontmatter区域|
-
 
 ## 主题内置的ad样式表
 ad样式使用方法参考

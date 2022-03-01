@@ -1,7 +1,7 @@
 {
     "id": "obsidian-admonition",
     "name": "Admonition",
-    "version": "6.11.1",
+    "version": "7.0.3",
     "minAppVersion": "0.13.14",
     "description": "Admonition block-styled content for Obsidian.md",
     "author": "Jeremy Valentine",

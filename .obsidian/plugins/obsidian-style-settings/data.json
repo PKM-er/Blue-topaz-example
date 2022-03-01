@@ -96,5 +96,7 @@
   "mk-absolve@@mk-caret-animation": "ease-in-out",
   "mk-absolve@@mk-aside-styling": true,
   "mk-absolve@@mk-minimal-checkbox": false,
-  "blue-topaz-theme@@font-family-change-to-default": false
+  "blue-topaz-theme@@font-family-change-to-default": false,
+  "blue-topaz-theme@@table-style-options": "table-style-two",
+  "blue-topaz-theme@@show-border-table": false
 }

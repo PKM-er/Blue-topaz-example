@@ -16,6 +16,6 @@
   "inlineJsQueryPrefix": "$=",
   "enableDataviewJs": true,
   "enableInlineDataviewJs": true,
-  "prettyRenderInlineFields": true,
+  "prettyRenderInlineFields": false,
   "schemaVersion": 1
 }

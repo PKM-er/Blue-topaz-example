@@ -62,19 +62,36 @@ var FrontmatterTagSuggestPlugin = class extends import_obsidian.Plugin {
 var TagSuggest = class extends import_obsidian.EditorSuggest {
   constructor(plugin) {
     super(plugin.app);
+    this.inline = false;
     this.plugin = plugin;
   }
   getTags() {
     const tags = this.plugin.app.metadataCache.getTags();
     return [...Object.keys(tags)].map((p) => p.split("#").pop());
   }
+  inRange(range) {
+    var _a;
+    if (!range || !range.length)
+      return false;
+    if (((_a = range.match(/^---\n/gm)) == null ? void 0 : _a.length) != 1)
+      return false;
+    if (!/^tags?:/gm.test(range))
+      return false;
+    const split = range.split(/(^\w+:?\s*\n?)/gm);
+    for (let i = split.length - 1; i >= 0; i--) {
+      if (/(^\w+:?\s*\n?)/gm.test(split[i]))
+        return split[i].startsWith("tags:");
+    }
+    return false;
+  }
   onTrigger(cursor, editor, _) {
     var _a;
     const lineContents = editor.getLine(cursor.line).toLowerCase();
-    const onFrontmatterTagLine = lineContents.startsWith("tags:") || lineContents.startsWith("tag:");
+    const onFrontmatterTagLine = lineContents.startsWith("tags:") || lineContents.startsWith("tag:") || this.inRange(editor.getRange({ line: 0, ch: 0 }, cursor));
     if (onFrontmatterTagLine) {
+      this.inline = lineContents.startsWith("tags:") || lineContents.startsWith("tag:");
       const sub = editor.getLine(cursor.line).substring(0, cursor.ch);
-      const match = (_a = sub.match(/(?<= )\S+$/)) == null ? void 0 : _a.first();
+      const match = (_a = sub.match(/(\S+)$/)) == null ? void 0 : _a.first();
       if (match) {
         this.tags = this.getTags();
         const matchData = {
@@ -100,6 +117,12 @@ var TagSuggest = class extends import_obsidian.EditorSuggest {
   }
   selectSuggestion(suggestion) {
     if (this.context) {
+      if (this.inline) {
+        suggestion = `${suggestion},`;
+      } else {
+        suggestion = `${suggestion}
+ -`;
+      }
       this.context.editor.replaceRange(`${suggestion} `, this.context.start, this.context.end);
     }
   }
