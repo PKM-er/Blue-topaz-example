@@ -1,6 +1,6 @@
 ---
 cssclass: fullwidth,noyaml,noscroll,myhome
-banner: https://api.xygeng.cn/Bing/
+banner: "https://api.xygeng.cn/Bing/"
 obsidianUIMode: preview
 banner_icon: 💘
 ---

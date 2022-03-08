@@ -1,0 +1,59 @@
+
+a.link-card-container {
+    border: 1px solid gray;
+    width: 100%;
+    padding: 14px;
+    border-radius: 6px;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}
+
+a.link-card-container:hover {
+    border-radius: 6px;
+    border-color: var(--interactive-accent-hover);
+}
+
+div.link-card-icon-container {
+    width: 24pX;
+    height: 24px;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 6px;
+}
+
+
+div.link-card-title {
+    font-weight: bold;
+    font-size: larger;
+    display: inline-block;
+    vertical-align: middle;
+    color: var(--text-normal);
+    width: 75%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+div.link-card-href {
+    align-content: center;
+    font-size: medium;
+    color: gray;
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;  
+
+}
+
+div.link-card-frame-wrapper {
+    text-align: center;
+}
+div.link-card-frame-wrapper.netease iframe{
+    max-width: 600px;
+}
+
+div.link-card-frame-wrapper.bilibili {
+    aspect-ratio: 16 / 9;
+}

@@ -1,0 +1,39 @@
+.workspace-leaf-content[data-type="markdown"] .internal-query .nav-header {
+  margin-top: 0; /* works around issues with minimal theme */
+}
+
+.workspace-leaf-content[data-type="markdown"] .internal-query .nav-header .nav-buttons-container {
+  position: unset; /* works around issues with minimal theme */
+  justify-content: center; /* works around issues with minimal theme */
+}
+
+.workspace-leaf-content[data-type="markdown"] .internal-query .is-hidden {
+  display: none;
+}
+
+.search-results-children.is-rendered .search-result-file-match {
+  white-space: normal;
+}
+
+.search-results-children.is-rendered {
+  padding: 0;
+}
+
+.search-results-children.is-rendered .search-result-file-matches .markdown-preview-view {
+  padding: 0;
+}
+
+.search-results-children.is-rendered .search-result-file-matches .markdown-preview-section {
+  max-width: 100%;
+  
+}
+
+.search-results-children.is-rendered .task-list-item-checkbox {
+  vertical-align: unset;
+}
+
+.search-results-children.is-rendered ul {
+  padding-inline-start: 40px;
+  margin-block-end: 0;
+  margin-block-start: 0;
+}

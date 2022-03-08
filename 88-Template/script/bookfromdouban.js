@@ -54,7 +54,7 @@ async function getbookByurl(url) {
     let author = '';
     let bookname = '';
     bookname = $("meta[property='og:title']")?.content
-    author = $("meta[property='book:author']")?.content
+    //author = $("meta[property='book:author']")?.content
     let intro_class = $("#link-report .intro");
     let intro = '';
     if (intro_class) {
@@ -70,11 +70,13 @@ async function getbookByurl(url) {
 	}
 	
 	let bookinfo = {};
+	let regauthor= /作者:(\W*?)(?=出版社)/g;
 	let regpagecount = /页数:.(\d*)/g;
-	let regpublish = /出版社:.(.*)/g;
+	let regpublish = /出版社:\W(.*)/g;
 	let str =$("#info")?.innerText;
+	author= regauthor.exec(str)[1].trim().replace(/\n|\r/g,"").replace(/\ +/g,"")??'未知';
 	bookinfo.pagecount=regpagecount.exec(str)[1].trim()??'100';
-	bookinfo.publish=regpublish.exec(str)[1].trim();
+	bookinfo.publish=regpublish.exec(str)[1].trim()??'未知';
 	bookinfo.bookname =bookname;
 	bookinfo.cover = $("meta[property='og:image']")?.content;
 	bookinfo.type = 'book';

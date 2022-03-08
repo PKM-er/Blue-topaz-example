@@ -1,8 +1,7 @@
-/*蓝色托帕石，适合Obsidian v0.13.26。uid [20220227] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.13.26, uid [20220227] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.13.28。uid [20220308] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.13.28, uid [20220308] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
-
 Many thanks to @Cuman
 @LillianWho @成雙酱 @嘴上云  @Klaas @Thinkbond @Rainbell129(AKA Lavi) @awyugan */
 
@@ -657,9 +656,18 @@ settings:
     default-light: '#099d4e'
     default-dark: '#a4ca8e'
   -
+    id: mjx-inline-math-color
+    title: Color of Mathematical Expressions (inline $x=0$)
+    title.zh: 数学表达式颜色(行内 $x=0$)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#0e0e0e'
+    default-dark: '#bdbdbd'
+  -
     id: mjx-math-color
-    title: Color of Mathematical Expressions
-    title.zh: 数学表达式颜色
+    title: Color of Mathematical Expressions ($$x=0$$)
+    title.zh: 数学表达式颜色($$x=0$$)
     type: variable-themed-color
     opacity: true
     format: hex
@@ -812,37 +820,37 @@ settings:
     type: variable-text
     default: 1em
   -
-    id: font-size-h1
+    id: h1
     title: Header 1
     title.zh: 标题 1
     type: variable-text
     default: 1.5625em
   -
-    id: font-size-h2
+    id: h2
     title: Header 2
     title.zh: 标题 2
     type: variable-text
     default: 1.4375em
   -
-    id: font-size-h3
+    id: h3
     title: Header 3
     title.zh: 标题 3
     type: variable-text
     default: 1.3125em
   -
-    id: font-size-h4
+    id: h4
     title: Header 4
     title.zh: 标题 4
     type: variable-text
     default: 1.1875em
   -
-    id: font-size-h5
+    id: h5
     title: Header 5
     title.zh: 标题 5
     type: variable-text
     default: 1.0625em
   -
-    id: font-size-h6
+    id: h6
     title: Header 6
     title.zh: 标题 6
     type: variable-text
@@ -1994,12 +2002,12 @@ settings:
   --font-size-folder-and-file: 0.85em;/*左侧边栏文件字体大小*/
   --font-size-edit-normal: 1em;/*编辑正文字体大小*/
   --font-size-preview-normal: 1em;/*预览正文字体大小*/
-  --font-size-h1: 1.5625em;
-  --font-size-h2: 1.4375em;
-  --font-size-h3: 1.3125em;
-  --font-size-h4: 1.1875em;
-  --font-size-h5: 1.0625em;
-  --font-size-h6: 0.9375em;
+  --h1: 1.5625rem;
+  --h2: 1.4375rem;
+  --h3: 1.3125rem;
+  --h4: 1.1875rem;
+  --h5: 1.0625rem;
+  --h6: 0.9375rem;
   --font-size-tag: 1em;
   --font-size-emoji-after-tag: 1.5625em;
   --font-size-list: 1em;
@@ -2031,7 +2039,7 @@ settings:
   /*--font-monospace:                    Consolas, Monaco, "Microsoft Yahei Mono", monospace;*/
   --mermaid-font-family: Segoe UI, "Microsoft YaHei", "Segoe UI Emoji", "trebuchet ms", verdana, Arial, cursive;
   --font-family-better-footnote: Arlrdbd, "Source Han Sans", "Segoe UI Emoji";
-  --font-family-strong: Bookerly, "LXGW WenKai Screen R", "LXGW WenKai UI", "Segoe UI Emoji", var(--default-font);
+  --font-family-strong: Bookerly, "LXGW WenKai Screen", "LXGW WenKai Screen R", "Segoe UI Emoji", var(--default-font);
   --font-family-em: ;
 
   /*radius*/
@@ -2411,6 +2419,7 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --hr-color-3: var(--theme-color);
   --hr-color-4: var(--theme-color);
 
+  --mjx-inline-math-color: var(--text-normal);
   --mjx-math-color: var(--text-normal);
   --background-leaf-resize-handle: var(--background-primary-alt-bg-4-bt);
   --text-folder-file-icon: var(--theme-color);
@@ -2705,6 +2714,7 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --hr-color-3: var(--theme-color);
   --hr-color-4: var(--theme-color);
 
+  --mjx-inline-math-color: var(--text-normal);
   --mjx-math-color: var(--text-normal);
   --background-leaf-resize-handle: var(--background-primary-alt-bg-4-bt);
   --text-folder-file-icon: var(--theme-color);
@@ -8143,72 +8153,66 @@ body.circular-checkbox .markdown-source-view.is-live-preview .task-list-item-che
 
 /* headers */
 /*编辑状态是否显示H1 H2标记*/
-/*适配Live previe模式*/
-
-body.clutter-free-headings div:not(.cm-active).cm-line  span:not(.cm-formatting-header).cm-header::before {
-  font-size: 0.7rem;
+/*适配Live preview模式*/
+body.clutter-free-headings div:not(.cm-active).cm-line  span:not(.cm-formatting-header):not(.cm-hashtag):not(.cm-inline-code):not(.cm-highlight).cm-header::before {
+  font-size: 0.6rem;
   width: auto;
+  margin-right: 1px;
   border-radius: var(--radius-xs);
   color: var(--text-muted);
   overflow: visible;
+  font-family: var(--default-font);
+  font-weight: normal !important;
 }
 
-/*匹配折叠编辑显示*/
-body.clutter-free-headings div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-1::before,
-/*匹配正常显示*/
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-1::before,
-/*匹配标题折叠状态，选中显示*/
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-1:nth-last-of-type(2)::before {
-  font-weight:normal;
+/* body.clutter-free-headings div:not(.cm-active).cm-line .cm-hashtag.cm-header ~ span.cm-header::before,
+body.clutter-free-headings div:not(.cm-active).cm-line .cm-header.cm-inline-code ~ span.cm-header::before,
+body.clutter-free-headings div:not(.cm-active).cm-line .cm-header.cm-highlight ~ span.cm-header::before {
+  display: none;
+} */
+body.clutter-free-headings div.mod-cm6.is-live-preview div:not(.cm-active).cm-line .cm-header ~  span.cm-header::before
+{
+  display: none;
+}
+
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-1::before {
   content: 'H1';
-  margin-top: calc(var(--font-size-h1) - 0.1em);
+  margin-top: calc(var(--h1) - 0.1em);
 }
 
-body.clutter-free-headings div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-2::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-2::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-2:nth-last-of-type(2)::before {
-  font-weight:normal;
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-2::before {
   content: 'H2';
-  margin-top: calc(var(--font-size-h2) - 0.2em);
+  margin-top: calc(var(--h2) - 0.2em);
 }
 
-body.clutter-free-headings div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-3::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-3::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-3:nth-last-of-type(2)::before {
-  font-weight:normal;
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-3::before {
   content: 'H3';
-  margin-top: calc(var(--font-size-h3) - 0.2em);
+  margin-top: calc(var(--h3) - 0.2em);
 }
-
-body.clutter-free-headings div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-4::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-4::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-4:nth-last-of-type(2)::before {
-  font-weight:normal;
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-4::before {
   content: 'H4';
-  margin-top: calc(var(--font-size-h4) - 0.3em);
+  margin-top: calc(var(--h4) - 0.3em);
 }
 
-body.clutter-free-headings div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-5::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-5::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-5:nth-last-of-type(2)::before  {
-  font-weight:normal;
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-5::before {
   content: 'H5';
-  margin-top: calc(var(--font-size-h5) - 0.4em);
+  margin-top: calc(var(--h5) - 0.4em);
 }
 
-body.clutter-free-headings div:not(.cm-active).cm-line span[contenteditable]:not(.cm-formatting-header)+ span.cm-header-6::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-formatting-header+ span.cm-header-6::before,
-body.clutter-free-headings div:not(.cm-active).cm-line span.cm-selection ~ span:not(.cm-formatting-header).cm-header-6:nth-last-of-type(2)::before {
-  font-weight:normal;
+body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header-6::before {
   content: 'H6';
-  margin-top: calc(var(--font-size-h6) - 0.4em);
+  margin-top: calc(var(--h6) - 0.4em);
 }
 
 /*适配source mode 模式*/
-body.clutter-free-headings  .mod-cm6 div:not(.cm-active).cm-line span.cm-formatting-header {
+
+body.clutter-free-headings div.mod-cm6:not(.is-live-preview) div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header ~  span.cm-header::before
+{
+  display: none;
+}
+ body.clutter-free-headings div.mod-cm6:not(.is-live-preview) div:not(.cm-active).cm-line span.cm-formatting-header {
   display:none;
 }
-
 /*适配传统模式*/
 body.clutter-free-headings div:not(.CodeMirror-activeline)>.CodeMirror-line.hmd-inactive-line  span.cm-formatting-header::before {
   position: absolute;
@@ -8219,18 +8223,21 @@ body.clutter-free-headings div:not(.CodeMirror-activeline)>.CodeMirror-line.hmd-
   padding: 0px 2px;
   border-radius: var(--radius-xs);
   color: var(--text-muted);
-  overflow:visible;
+  overflow: visible;
+  font-family: var(--default-font);
+  font-weight: normal !important;
 }
-body.clutter-free-headings div:not(.CodeMirror-activeline)>.CodeMirror-line:not(.hmd-inactive-line)  span.cm-formatting-header::before {
+body.clutter-free-headings div:not(.CodeMirror-activeline)>.CodeMirror-line:not(.hmd-inactive-line) span.cm-formatting-header::before {
   position: absolute;
   margin-top: 10px;
   font-size: 0.7rem;
   width: auto;
-  margin-left: -2px;
-  padding: 0px 2px;
+  margin-left: -6px;
   border-radius: var(--radius-xs);
   color: var(--text-muted);
   overflow: visible;
+  font-family: var(--default-font);
+  font-weight: normal !important;
 }
 
 body.clutter-free-headings div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-formatting-header {
@@ -8258,7 +8265,7 @@ content: 'H6';
 }
 
 .markdown-preview-view h1 {
-  font-size: var(--font-size-h1);
+  font-size: var(--h1);
   font-weight: bold;
   line-height: 1.2;
   padding-bottom: 1px;
@@ -8267,7 +8274,7 @@ content: 'H6';
 }
 
 .markdown-preview-view h2 {
-  font-size: var(--font-size-h2);
+  font-size: var(--h2);
   font-weight: bold;
   line-height: 1.2;
   padding-bottom: 1px;
@@ -8301,62 +8308,62 @@ body.h6-toggle-underline .markdown-source-view.is-live-preview .HyperMD-header.H
 }
 
 .markdown-preview-view h3 {
-  font-size: var(--font-size-h3);
+  font-size: var(--h3);
   font-weight: bold;
   font-family: var(--font-family-h3);
   color: var(--h3-color);
 }
 .markdown-preview-view h4 {
-  font-size: var(--font-size-h4);
+  font-size: var(--h4);
   font-weight: bold;
   font-family: var(--font-family-h4);
   color: var(--h4-color);
 }
 .markdown-preview-view h5 {
-  font-size: var(--font-size-h5);
+  font-size: var(--h5);
   font-weight: bold;
   font-family: var(--font-family-h5);
   color: var(--h5-color);
 }
 .markdown-preview-view h6 {
-  font-size: var(--font-size-h6);
+  font-size: var(--h6);
   font-weight: bold;
   font-family: var(--font-family-h6);
   color: var(--h6-color);
 }
 
 .cm-header-1 {
-  font-size: var(--font-size-h1);
+  font-size: var(--h1) !important;
   position: relative;
   font-family: var(--font-family-h1);
   color: var(--h1-color);
 }
 .cm-header-2 {
-  font-size: var(--font-size-h2);
+  font-size: var(--h2) !important;
   position: relative;
   font-family: var(--font-family-h2);
   color: var(--h2-color);
 }
 .cm-header-3 {
-  font-size: var(--font-size-h3);
+  font-size: var(--h3) !important;
   position: relative;
   font-family: var(--font-family-h3);
   color: var(--h3-color);
 }
 .cm-header-4 {
-  font-size: var(--font-size-h4);
+  font-size: var(--h4) !important;
   position: relative;
   font-family: var(--font-family-h4);
   color: var(--h4-color);
 }
 .cm-header-5 {
-  font-size: var(--font-size-h5);
+  font-size: var(--h5) !important;
   position: relative;
   font-family: var(--font-family-h5);
   color: var(--h5-color);
 }
 .cm-header-6 {
-  font-size: var(--font-size-h6);
+  font-size: var(--h6) !important;
   position: relative;
   font-family: var(--font-family-h6);
   color: var(--h6-color);
@@ -8445,7 +8452,7 @@ body.h6-text-align-end .markdown-preview-view h6 {
   border: 1px solid;
   padding: 0px 2px;
   border-radius: var(--radius-xs);
-  top: 19px;
+  top: 22px;
 }
 .markdown-preview-view h4:hover::before {
   content: 'H4';
@@ -8456,7 +8463,7 @@ body.h6-text-align-end .markdown-preview-view h6 {
   border: 1px solid;
   padding: 0px 2px;
   border-radius: var(--radius-xs);
-  top: 20px;
+  top: 22px;
 }
 .markdown-preview-view h5:hover::before {
   content: 'H5';
@@ -8467,7 +8474,7 @@ body.h6-text-align-end .markdown-preview-view h6 {
   border: 1px solid;
   padding: 0px 2px;
   border-radius: var(--radius-xs);
-  top: 20px;
+  top: 22px;
 }
 .markdown-preview-view h6:hover::before {
   content: 'H6';
@@ -8478,7 +8485,7 @@ body.h6-text-align-end .markdown-preview-view h6 {
   border: 1px solid;
   padding: 0px 2px;
   border-radius: var(--radius-xs);
-  top: 20px;
+  top: 22px;
 }
 
 /*---*/
@@ -8673,6 +8680,9 @@ mjx-container[jax='CHTML'] {
   font-size: var(--font-size-latex);
 }
 mjx-math {
+  color: var(--mjx-inline-math-color);
+}
+div.math.math-block mjx-math {
   color: var(--mjx-math-color);
 }
 
@@ -8830,8 +8840,8 @@ ul ul ul ol ul {
 .markdown-source-view.mod-cm6 .list-bullet:after {
   content: none;
   }
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line div.cm-fold-indicator + span.cm-formatting .list-bullet::after,
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line span.cm-hmd-list-indent + span.cm-formatting .list-bullet::after
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line div.cm-fold-indicator ~ span.cm-formatting .list-bullet::after,
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line span.cm-hmd-list-indent ~ span.cm-formatting .list-bullet::after
 {
   content: '\25E6';
   left: -1px;
@@ -10817,7 +10827,8 @@ pre[class~='language-js']::before {
 pre[class~='language-php']::before {
   content: "PHP";
 }
-pre[class~='language-shell']::before {
+pre[class~='language-shell']::before,
+pre[class~='language-bash']::before {
   content: "SHELL";
 }
 pre[class~='language-flow']::before {
@@ -10867,12 +10878,12 @@ pre[class~='language-r']::before {
 
 /*-- reduce left padding --*/
 div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-formatting.cm-formatting-header {
-  font-size: 0.6em;
+  font-size: 0.6rem !important;
   opacity: 0.5;
 }
 
 div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-header {
-  font-size: 0.6em;
+  font-size: 0.6rem !important;
   opacity: 1;
 }
 
@@ -10908,7 +10919,7 @@ body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active,
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjJGNEY2Ii8+CiAgICA8ZyBmaWxsPSIjRkZGIj4KICAgICAgPHJlY3Qgd2lkdGg9IjIiIGhlaWdodD0iNzkiIHg9Ijc4Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjU5Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iMjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSIyMCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjIwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNDAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI0MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjQwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI2MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjYwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI3OSIgaGVpZ2h0PSIxIiB5PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iNzkiIGhlaWdodD0iMSIgeT0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9Ijc5IiBoZWlnaHQ9IjEiIHk9IjU5Ii8+CiAgICA8L2c+CiAgICA8cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iMiIgeT0iNzgiIGZpbGw9IiNGRkYiLz4KICA8L2c+Cjwvc3ZnPgo=");
 }
 
-.markdown-source-view.is-live-preview .internal-embed.image-embed.is-loaded img:not([class="emoji"]) {
+ .internal-embed.image-embed.is-loaded img:not([class="emoji"]) {
   margin: 3px auto;
   display: block;
 }
@@ -11154,7 +11165,7 @@ body:not(.default-icons) h1 div.heading-collapse-indicator.collapse-indicator,
 body:not(.default-icons) h2 div.heading-collapse-indicator.collapse-indicator {
   position: absolute;
   padding-left: 10px;
-  margin-top: 13px;
+  margin-top: 11px;
   transition: transform 20ms linear 0s;
 }
 
@@ -14915,7 +14926,8 @@ background: #1a1919;
   grid-row-gap:0.75rem;    
   justify-content: space-between;
   margin-top: 40px;
-  margin-left: -36px;
+  margin-left: -25px;
+  width: 99%;
 }
 
 
@@ -15578,6 +15590,9 @@ body:not(.outliner-plugin-bls).markdown-source-view.mod-cm5 .cm-hmd-list-indent 
 /* ================================== */
 /* ============== Memos ============= */
 /* ================================== */
+div[data-type="memos_view"] .memo-editor-wrapper > .memo-editor textarea {
+ max-height: calc(65vh);
+}
 div[data-type="memos_view"] .memo-editor-wrapper > .memo-editor {
   background-color: transparent !important;
 }
@@ -15639,17 +15654,15 @@ div[data-type='memos_view'] .tags-wrapper > .title-text,
   opacity: 0.7 !important;
 }
 
-
 .mod-right-split div[data-type="memos_view"] #page-wrapper {
- 
   padding-left: 8px;
   padding-right: 8px;
   transform: translateX(0);
- 
 }
 
 .mod-right-split div[data-type="memos_view"] #page-wrapper  textarea{
 padding: 0;
+max-height: calc(28vh);
 }
 
 .mod-right-split  div[data-type="memos_view"] #page-wrapper > .content-wrapper-padding-fix {
@@ -15657,8 +15670,7 @@ width: 100%;
   padding: 0;
 }
 
-.mod-right-split  div[data-type="memos_view"]  .view-content
-{
+.mod-right-split  div[data-type="memos_view"]  .view-content {
   padding:0;
 }
 
@@ -15837,7 +15849,7 @@ span[alt*="+grid"] {
 /*==================   MOBILE   =====================*/
 /*===================================================*/
 .is-mobile .markdown-preview-view {
-  padding: 0 16px;
+  padding: 0 18px 0 21px;
 }
 
 .is-mobile .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item) {
@@ -15861,19 +15873,19 @@ body:not(.default-icons).is-mobile .tree-item-self.is-clickable.is-collapsed spa
   transform: translateX(-1px) translateY(-1px) rotate(-90deg);
 }
 
-.is-mobile h1 div.heading-collapse-indicator.collapse-indicator,
-.is-mobile h2 div.heading-collapse-indicator.collapse-indicator,
-.is-mobile div.heading-collapse-indicator.collapse-indicator {
-  padding-left: 5px;
+body:not(.default-icons).is-mobile h1 div.heading-collapse-indicator.collapse-indicator,
+body:not(.default-icons).is-mobile h2 div.heading-collapse-indicator.collapse-indicator,
+body:not(.default-icons).is-mobile div.heading-collapse-indicator.collapse-indicator {
+  padding-left: 2px;
 }
 
-.is-mobile div.is-collapsed h1 div.heading-collapse-indicator.collapse-indicator,
-.is-mobile div.is-collapsed h2 div.heading-collapse-indicator.collapse-indicator {
-  transform: translateX(-2px) translateY(9px) rotate(-90deg);
+body:not(.default-icons).is-mobile div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
+  transform: translateX(-11px) translateY(16px) rotate(-90deg);
 }
 
-.is-mobile div.is-collapsed div.heading-collapse-indicator.collapse-indicator {
-  transform: translateX(-10px) translateY(16px) rotate(-90deg);
+body:not(.default-icons).is-mobile div.is-collapsed h1 div.heading-collapse-indicator.collapse-indicator,
+body:not(.default-icons).is-mobile div.is-collapsed h2 div.heading-collapse-indicator.collapse-indicator {
+  transform: translateX(-2px) translateY(6px) rotate(-90deg);
 }
 
 /*main body*/
@@ -18687,8 +18699,7 @@ cssclass: matrix
   background-color: transparent;
 }
 
-.markdown-preview-view.matrix .internal-embed:not(.image-embed)
-{
+.markdown-preview-view.matrix .internal-embed:not(.image-embed) {
   border: 1px solid;
   border-radius: 10px;
 }
@@ -18705,8 +18716,7 @@ cssclass: matrix
   justify-content: center;
   align-items: center;
 }
-.markdown-preview-view.matrix .markdown-embed 
-{
+.markdown-preview-view.matrix .markdown-embed {
   background-color: transparent;
 }
 .markdown-preview-view.matrix table tr th > *,
@@ -18804,7 +18814,9 @@ body.loading-animation .progress-bar-message {
 .obsidian-banner-wrapper {
   margin-top: calc(var(--banner-height) + 10px)!important;
 }
-
+.markdown-preview-view img.banner-image.full-width{
+  max-width: none;
+}
 /* ================================== */
 /* ======= custom cssclass ======= */
 /* ========fullwidth  noyaml noscroll================ */
@@ -18835,8 +18847,7 @@ body.loading-animation .progress-bar-message {
   .markdown-preview-view :not(font)>strong {
     -webkit-print-color-adjust: exact;
     color: var(--print-strong-color);
-    font-family: var(--font-family-strong) !important;
-    font-weight: 900 !important;
+    font-family: var(--font-family-strong);
   }
 
   .markdown-preview-view :not(font):not(strong)>em,
@@ -19051,7 +19062,7 @@ body.loading-animation .progress-bar-message {
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220227";
+  content: "uid:20220308";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;

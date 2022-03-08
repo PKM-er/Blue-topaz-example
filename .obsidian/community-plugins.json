@@ -4,7 +4,14 @@
   "workspaces-plus",
   "calendar",
   "obsidian-style-settings",
-  "buttons",
   "obsidian-view-mode-by-frontmatter",
-  "Enhanced editing"
+  "Enhanced editing",
+  "obsidian-linkcard-plugin",
+  "obsidian-theme-design-utilities",
+  "obsidian-query-control",
+  "buttons",
+  "cm-chs-patch",
+  "cmenu-plugin",
+  "update-time-on-edit",
+  "obsidian-outliner"
 ]

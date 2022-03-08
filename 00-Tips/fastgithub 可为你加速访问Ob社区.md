@@ -6,4 +6,5 @@
 > 通过fastgithub 可以解决Obsidian在国内无法访问社区，无法更新插件，无法更新主题的问题。
 
 内附文件下载
+
 [fastgithub 可为你加速访问 GitHub - 飞书文档 (feishu.cn)](https://kknwfe6755.feishu.cn/docs/doccnlz0w9txyJT96MYhASQkVIh)

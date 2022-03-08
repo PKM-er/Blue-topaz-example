@@ -1,5 +1,7 @@
 {
   "pluginList": [
+    "aidenlx/cm-chs-patch",
+    "ebullient/obsidian-snippetor",
     "/ganesshkumar/obsidian-table-editor",
     "KjellConnelly/obsidian-dev-tools",
     "nothingislost/obsidian-embedded-query-control",
@@ -9,7 +11,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-02-27T16:01:31Z"
+      "lastUpdate": "2022-03-08T05:13:04Z"
     }
   ],
   "updateAtStartup": true,

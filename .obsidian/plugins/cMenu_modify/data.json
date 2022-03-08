@@ -220,7 +220,7 @@
     },
     {
       "id": "Enhanced editing:paste-form",
-      "name": "ZH增强编辑: 粘贴表格",
+      "name": "ZH增强编辑: 智能粘贴",
       "hotkeys": [
         {
           "modifiers": [
@@ -230,7 +230,7 @@
           "key": "V"
         }
       ],
-      "icon": "remix-DatabaseLine"
+      "icon": "paste"
     },
     {
       "id": "table-editor-obsidian:table-control-bar",
@@ -263,8 +263,8 @@
   ],
   "appendMethod": "workspace",
   "shouldShowMenuOnSelect": false,
-  "cMenuVisibility": true,
-  "cMenuBottomValue": 5,
+  "cMenuVisibility": false,
+  "cMenuBottomValue": 6.5,
   "cMenuNumRows": 13,
   "cMenuXBottomValue": 17.25
 }

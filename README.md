@@ -1,5 +1,6 @@
 ---
 obsidianUIMode: preview
+updated: 2022-03-08 17:09
 ---
 ## 引言
 
@@ -20,11 +21,16 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 
 另外推荐鸟姐的Homepage 也是很棒的风格
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
+## 更新  2022-03-08
+- 更新了豆瓣图书脚本，解决有的图书无法获取的问题
+- 修复首页下拉到底部出现大块空白的问题
+- 增加linkcard插件，嵌入网址自动显示， 并美化样式
+- cmenu插件匹配最新的zh增强编辑功能
+- 修复教程中的个别无效链接。
 ## 更新  2022-03-01
 - 使用 faststart脚本 大幅提高ob [[如何提高Obsidian的启动速度？|启动速度]]
 - 修复float-toc 插件目录太长无法滚动的问题
-- 
-
+- 添加Dynamic Highlights插件 实现时间和dataview字段突出显示
 
 ## 更新  2022-02-16
 增加从豆瓣获取电影卡片
@@ -90,7 +96,10 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 | *sortable*                              | (可选)表格列排序插件                                            |
 | *markdown Pretiffier*                   | (可选)md格式辅助插件可以自动生成更新日期                        |
 | *Search on Internet*                    | (可选)ob中快捷进行网络搜索                                      |
-| booknote                                | pdf查看和标注插件                                                                |
+| booknote                                | pdf查看和标注插件                                               |
+| *cm-chs-patch*                          | （可选）中文分词插件                                            |
+| *obsidian-core-search-assistant-plugin* | （可选）增强搜索插件，搜索结果卡片显示                          |
+| *various-complements*                    | （可选）自动补全插件                                                                |
 
 
 ## 主题内置的cssclass样式表

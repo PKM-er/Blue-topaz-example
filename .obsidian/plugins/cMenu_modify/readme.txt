@@ -13,6 +13,4 @@ cmenu 原版地址 https://github.com/chetachiezikeuzor/cMenu-Plugin
 插件已内置 remixicon 字体文件。图标代码可以参考 https://remixicon.com/
 
 后续更新请关注
-https://github.com/cumany/cMenu-PluginW
-
 https://kknwfe6755.feishu.cn/docs/doccnQpRTqGYqMT3GAKka5IRnMf?from=from_copylink

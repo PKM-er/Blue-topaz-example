@@ -1,0 +1,17 @@
+{
+  "dateFormat": "yyyy-MM-dd HH:mm",
+  "readDateFormat": "yyyy-MM-dd'T'HH:mm:ssxxx",
+  "useDifferentReadFormat": false,
+  "enableCreateTime": false,
+  "headerUpdated": "updated",
+  "headerCreated": "created",
+  "minMinutesBetweenSaves": 5,
+  "ignoreGlobalFolder": [
+    "88-Template",
+    "50-Inbox",
+    "99-Attachment"
+  ],
+  "ignoreCreatedFolder": [
+    "20-Diary"
+  ]
+}

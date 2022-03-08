@@ -1,4 +1,5 @@
 cm-editor-syntax-highlight-obsidian
+cm-chs-patch
 cmenu-plugin
 Enhanced editing
 hotkey-helper

@@ -1,0 +1,101 @@
+.internal-query .search-result-container {
+    max-height: unset;
+ padding-left: 10px;
+ }
+ 
+ .markdown-source-view.mod-cm6 .cm-preview-code-block .search-results-children{
+     column-width: 250px;
+     column-gap: 5px;
+ }
+ 
+ .is-mobile .keep .search-results-children{
+         column-width: 130px;
+         column-gap: 3px;
+ }
+ 
+ .markdown-source-view.mod-cm6 .cm-preview-code-block .internal-query  .search-result-file-matches{
+     font-size: 16px;
+     color: var(--text-normal);
+     padding: 5px;
+     border-bottom: 1px solid var(--background-modifier-border) !important;
+     column-break-inside: avoid;
+ 
+     border: 1px solid var(--background-modifier-border) !important;
+     border-radius: 10px;
+ }
+ 
+ .markdown-source-view.mod-cm6 .cm-preview-code-block .internal-query  .tree-item{
+     display: inline-block !important;
+     width: 100%;
+ }
+ .markdown-source-view.mod-cm6 .cm-preview-code-block .internal-query .search-result:not(.is-collapsed) .search-result-file-title{
+     display: none;
+ }
+ 
+ .internal-query .search-results-children.is-rendered .search-result-file-match ul {
+ padding-inline-start: 0px;
+ 
+ }
+ 
+ .internal-query .search-results-children.is-rendered  .markdown-preview-sizer {
+ padding-left: 0px;
+ }
+ 
+ .internal-query .search-results-children.is-rendered  .markdown-preview-view {
+ min-height: 250px;
+ max-height: 250px;
+ overflow-y: auto;
+ }
+ 
+ .internal-query  .search-result-file-matches {
+ border: unset;
+ margin-bottom: 0px;
+     margin-top: 0px;
+     padding-top: 0px;
+ }
+ 
+ .internal-query  .search-result-file-matches {
+ border: unset !important;
+ padding: 0px !important;
+ margin: unset !important;
+ }
+ 
+ .internal-query .search-results-children.is-rendered  .search-result-file-match {
+ max-height: 200px;
+     overflow-y: auto;
+ box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%), 0 6px 20px 0 rgb(0 0 0 / 19%);
+ background: 
+     -moz-repeating-linear-gradient(
+         top,
+         #fcf59b,
+         #fcf59b 29px,
+         #81cbbc 30px
+     );
+     
+ background: 
+     -webkit-gradient(
+         linear,
+         left top, left bottom,
+         from(#81cbbc),
+         color-stop(2%, #fcf59b)
+     );
+         
+ background: 
+     repeating-linear-gradient(
+         top,
+         #fcf59b,
+         #fcf59b 29px,
+         #81cbbc 30px
+     );		
+         
+ -webkit-background-size: 100% 30px;
+ 
+ border-bottom-left-radius: 20px 500px;
+ border-bottom-right-radius: 500px 30px;
+ border-top-right-radius: 5px 100px;
+ }
+ 
+ .internal-query .search-results-children.is-rendered  .markdown-preview-view {
+  min-height: 200px;
+ max-height: 250px;
+ }

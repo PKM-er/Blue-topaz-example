@@ -1,0 +1,15 @@
+.theme-dark a.link-card-container {
+    box-shadow: 0px 0px 12px #0e0d0db5;
+}
+
+
+div a.link-card-container {
+    box-shadow: 0px 0px 12px #d3d3d3;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    width: 100%;
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+}

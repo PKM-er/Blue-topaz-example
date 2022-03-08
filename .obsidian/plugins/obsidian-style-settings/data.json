@@ -60,7 +60,7 @@
   "memo-heatmap@@heatmap-dark": "ice-dark",
   "memo-heatmap@@heatmap-light": "grass-light",
   "blue-topaz-theme@@adjustable-embed-content-height": true,
-  "blue-topaz-theme@@no-wrapped-table": false,
+  "blue-topaz-theme@@no-wrapped-table": true,
   "blue-topaz-theme@@no-wrapped-dvtable": true,
   "blue-topaz-theme@@embed-content-height": 400,
   "blue-topaz-theme@@overflow-x-dvtable": true,
@@ -76,7 +76,7 @@
   "blue-topaz-theme@@folder-icons": false,
   "blue-topaz-theme@@text-folder-file-icon@@light": "#6FAACD",
   "blue-topaz-theme@@hide-titlebar-text": false,
-  "blue-topaz-theme@@hide-vault-name": true,
+  "blue-topaz-theme@@hide-vault-name": false,
   "time@@time-color@@light": "#1FAC8B",
   "time@@time-color@@dark": "#11765E",
   "mk-absolve@@mk-design-scheme": "mk-viridian",
@@ -98,5 +98,7 @@
   "mk-absolve@@mk-minimal-checkbox": false,
   "blue-topaz-theme@@font-family-change-to-default": false,
   "blue-topaz-theme@@table-style-options": "table-style-two",
-  "blue-topaz-theme@@show-border-table": false
+  "blue-topaz-theme@@show-border-table": false,
+  "blue-topaz-theme@@hide-left-ribbon": false,
+  "blue-topaz-theme@@whole-code-wrap": false
 }

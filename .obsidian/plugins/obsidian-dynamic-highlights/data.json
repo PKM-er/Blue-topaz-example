@@ -160,6 +160,26 @@
           "match"
         ],
         "css": ""
+      },
+      "inline-property-name": {
+        "class": "inline-property-name",
+        "color": "#00000000",
+        "regex": true,
+        "query": "^[\\u4e00-\\u9fa5_a-zA-Z0-9]+::",
+        "mark": [
+          "match"
+        ],
+        "css": ".inline-property-name {\n  color: var(--text-faint);\n  font-size: 0.8em;\n}"
+      },
+      "basic-date": {
+        "class": "basic-date",
+        "color": "#00000000",
+        "regex": true,
+        "query": "@(\\d{4})(-)(\\d{2})(-)(\\d{2})",
+        "mark": [
+          "match"
+        ],
+        "css": ".basic-date {\n  display: inline-block;\n  background-color: rgb(219 208 208 / 6%) !important;\n  color: var(--text-muted);\n  font-size: .875rem;\n  font-weight: 400;\n  line-height: 1em;\n  padding: 2px 4px 2px 4px;\n  text-align: center;\n  text-decoration: none;\n  margin: 0px 0px;\n  border: 1px solid transparent;\n  border-radius: 0.4em;\n  transition: 150ms cubic-bezier(0.2, 0, 1, 0.9);\n  filter: saturate(1);\n}\n\n.basic-date:hover {\n  background-color:rgb(219 208 208 / 22%) !important;\n  color: var(--text-faint);\n}"
       }
     },
     "queryOrder": [
@@ -186,7 +206,9 @@
       "light-time-11",
       "light-time-11-5",
       "light-time-12",
-      "light-time-12-5"
+      "light-time-12-5",
+      "inline-property-name",
+      "basic-date"
     ]
   },
   "light-time-8-5": {

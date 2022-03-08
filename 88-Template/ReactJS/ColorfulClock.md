@@ -73,5 +73,5 @@ return (
 
 ## 调用方式
 ```jsx:
-**<ColorfulClock>**</ColorfulClock>
+<ColorfulClock></ColorfulClock>
 ```

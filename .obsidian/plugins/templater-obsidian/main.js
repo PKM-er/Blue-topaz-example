@@ -3730,6 +3730,10 @@ var Templater = class {
         return;
       }
       yield this.app.vault.modify(created_note, output_content);
+      this.app.workspace.trigger("templater:new-note-from-template", {
+        file: created_note,
+        content: output_content
+      });
       if (open_new_note) {
         const active_leaf = this.app.workspace.activeLeaf;
         if (!active_leaf) {
@@ -3737,10 +3741,12 @@ var Templater = class {
           return;
         }
         yield active_leaf.openFile(created_note, {
-          state: { mode: "source" },
-          eState: { rename: "all" }
+          state: { mode: "source" }
         });
         yield this.plugin.editor_handler.jump_to_next_cursor_location(created_note, true);
+        active_leaf.setEphemeralState({
+          rename: "all"
+        });
       }
       return created_note;
     });
@@ -3761,7 +3767,14 @@ var Templater = class {
       }
       const editor = active_view.editor;
       const doc = editor.getDoc();
+      const oldSelections = doc.listSelections();
       doc.replaceSelection(output_content);
+      this.app.workspace.trigger("templater:template-appended", {
+        view: active_view,
+        content: output_content,
+        oldSelections,
+        newSelections: doc.listSelections()
+      });
       yield this.plugin.editor_handler.jump_to_next_cursor_location(active_view.file, true);
     });
   }
@@ -4115,7 +4128,6 @@ var CursorJumper = class {
       return;
     }
     const editor = active_view.editor;
-    editor.focus();
     const selections = [];
     for (const pos of positions) {
       selections.push({ from: pos });
@@ -5544,7 +5556,7 @@ var Editor2 = class {
       if (file && this.app.workspace.getActiveFile() !== file) {
         return;
       }
-      this.cursor_jumper.jump_to_next_cursor_location();
+      yield this.cursor_jumper.jump_to_next_cursor_location();
     });
   }
   registerCodeMirrorMode() {

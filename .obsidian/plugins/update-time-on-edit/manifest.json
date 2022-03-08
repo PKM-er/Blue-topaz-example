@@ -1,0 +1,10 @@
+{
+  "id": "update-time-on-edit",
+  "name": "Update time on edit",
+  "version": "1.1.1",
+  "minAppVersion": "0.10.11",
+  "description": "Keep front matter in sync with the last edit time",
+  "author": "@beaussan",
+  "authorUrl": "https://github.com/beaussan",
+  "isDesktopOnly": false
+}

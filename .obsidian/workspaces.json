@@ -219,8 +219,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "20-Diary/2022-01-21.md",
-                "mode": "source",
+                "file": "20-Diary/2022-03-02.md",
+                "mode": "preview",
                 "backlinks": false,
                 "source": true
               }
@@ -282,7 +282,7 @@
                 "state": {
                   "type": "localgraph",
                   "state": {
-                    "file": "20-Diary/2022-01-21.md",
+                    "file": "20-Diary/2022-03-02.md",
                     "options": {
                       "collapse-filter": true,
                       "search": "",
@@ -333,7 +333,7 @@
           {
             "id": "d4c25b22f0c7d5f0",
             "type": "tabs",
-            "dimension": 33.77135348226019,
+            "dimension": 44.868035190615835,
             "children": [
               {
                 "id": "ca4e910af4602420",
@@ -362,7 +362,7 @@
                 "state": {
                   "type": "outline",
                   "state": {
-                    "file": "20-Diary/2022-01-21.md"
+                    "file": "20-Diary/2022-03-02.md"
                   }
                 }
               },
@@ -380,7 +380,7 @@
           {
             "id": "0b3485207df574dd",
             "type": "tabs",
-            "dimension": 66.22864651773982,
+            "dimension": 55.13196480938416,
             "children": [
               {
                 "id": "041c78328387b373",
@@ -388,7 +388,7 @@
                 "state": {
                   "type": "backlink",
                   "state": {
-                    "file": "20-Diary/2022-01-21.md",
+                    "file": "20-Diary/2022-03-02.md",
                     "collapseAll": false,
                     "extraContext": false,
                     "sortOrder": "alphabetical",
@@ -405,7 +405,7 @@
                 "state": {
                   "type": "outgoing-link",
                   "state": {
-                    "file": "20-Diary/2022-01-21.md",
+                    "file": "20-Diary/2022-03-02.md",
                     "linksCollapsed": false,
                     "unlinkedCollapsed": true
                   }

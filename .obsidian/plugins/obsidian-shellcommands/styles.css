@@ -18,6 +18,10 @@
     border-top: none;
 }
 
+.SC-wrappable {
+    white-space: normal;
+}
+
 /*
  * SHELL COMMAND SETTING CONTAINERS
  */
@@ -160,7 +164,7 @@ span.SC-main-icon-container {
 }
 
 /*
- * OUTPUT CHANNEL: MODAL
+ * OUTPUT CHANNEL: ASK AFTER EXECUTION (OutputModal TypeScript class)
  */
 
 div.SC-output-channel-modal-textarea-container textarea {
@@ -168,4 +172,16 @@ div.SC-output-channel-modal-textarea-container textarea {
     min-width: 100%;
     min-height: 15em;
     resize: both;
+}
+
+div.SC-output-channel-modal-redirection-buttons-container div.setting-item-control {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+div.SC-output-channel-modal-redirection-buttons-container div.setting-item-control button {
+    margin: 0;
+    flex-grow: 1;
 }
