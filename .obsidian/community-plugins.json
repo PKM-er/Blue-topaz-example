@@ -7,11 +7,17 @@
   "obsidian-view-mode-by-frontmatter",
   "Enhanced editing",
   "obsidian-linkcard-plugin",
-  "obsidian-theme-design-utilities",
   "obsidian-query-control",
-  "buttons",
   "cm-chs-patch",
   "cmenu-plugin",
   "update-time-on-edit",
-  "obsidian-outliner"
+  "obsidian-outliner",
+  "obsidian-hotkeys-for-specific-files",
+  "markdown-table-editor",
+  "obsidian-dynamic-highlights",
+  "search-on-internet",
+  "obsidian-hover-editor",
+  "obsidian-reminder-plugin",
+  "obsidian-theme-design-utilities",
+  "buttons"
 ]

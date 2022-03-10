@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.13.28。uid [20220308] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.13.28, uid [20220308] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.13.32。uid [20220310] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.13.32, uid [20220310] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -1373,6 +1373,12 @@ settings:
     level: 3
     collapsed: true
   -
+    id: file-name-animation
+    title: File name animation
+    title.zh: 文件名自动滚动效果
+    type: class-toggle
+    default: false
+  -
     id: light-background-color-files
     title: Light File Background
     title.zh: 当前文件背景变浅
@@ -1681,7 +1687,7 @@ settings:
     title.zh: 是否开启Admonition特别样式支持
     type: class-toggle
     default: false
-    description : 目前支持ad类型：blank 全透明框🔸def definition🔸thm theorem🔸lem lemma🔸cor corollary🔸pro proposition 🔸hibox  自动隐藏框🔸col2 col3 col4内容分多栏🔸kanban 伪看板❗使用方法❗下面以thm类型为例，在admonition插件的设置页面中，类型填 thm，标题填 定理，图标选择hand-point-right，颜色自己选比如浅绿色，添加成功后，在正文中使用代码块```ad-thm 即可激活。其他类型以此类推。  
+    description : 目前支持ad类型：blank 全透明框🔸def definition🔸thm theorem🔸lem lemma🔸cor corollary🔸pro proposition 🔸hibox  自动隐藏框🔸col2 col3 col4内容分多栏🔸kanban 伪看板🔸table 表格单行全部显示❗使用方法❗下面以thm类型为例，在admonition插件的设置页面中，类型填 thm，标题填 定理，图标选择hand-point-right，颜色自己选比如浅绿色，添加成功后，在正文中使用代码块```ad-thm 即可激活。其他类型以此类推。  
   -
     id: style-options-for-calendar-plugin-header
     title: 3.2 Calendar
@@ -1814,16 +1820,15 @@ settings:
   - 
     id: no-wrapped-dvtable
     title: Nowrap in DataviewTables
-    title.zh: Dataview表格紧凑显示
+    title.zh: Dataview表格单行显示
     type: class-toggle
     default: false
   -
-    id: overflow-x-dvtable
-    title:  Hides the X-axis scroll bar in DataviewTables
-    title.zh: 是否隐藏dv表格中的横向滚动条
+    id: auto-serial-number-dvtable
+    title: Automatically add serial numbers to tables
+    title.zh: Dataview表格自动添加序号
     type: class-toggle
     default: false
-    description.zh: 如果开启表格内容过长用...省略
   -
     id: style-options-for-dialogue-plugin-heading
     title: 3.7 Dialogue
@@ -4139,7 +4144,7 @@ body.color-scheme-options-topaz-nord.theme-light {
 
   --checkbox-color-0: var(--interactive-accent);
 
-  --graph-text-color: var(--nord4);
+  --graph-text-color: var(--nord1);
   --graphtag: var(--nord7);
   --graph-attach: var(--nord15);
   --graph-circle: var(--nord9);
@@ -8153,7 +8158,7 @@ body.circular-checkbox .markdown-source-view.is-live-preview .task-list-item-che
 
 /* headers */
 /*编辑状态是否显示H1 H2标记*/
-/*适配Live previe模式*/
+/*适配Live preview模式*/
 body.clutter-free-headings div:not(.cm-active).cm-line  span:not(.cm-formatting-header):not(.cm-hashtag):not(.cm-inline-code):not(.cm-highlight).cm-header::before {
   font-size: 0.6rem;
   width: auto;
@@ -8165,9 +8170,13 @@ body.clutter-free-headings div:not(.cm-active).cm-line  span:not(.cm-formatting-
   font-weight: normal !important;
 }
 
-body.clutter-free-headings div:not(.cm-active).cm-line .cm-hashtag.cm-header ~ span.cm-header::before,
+/* body.clutter-free-headings div:not(.cm-active).cm-line .cm-hashtag.cm-header ~ span.cm-header::before,
 body.clutter-free-headings div:not(.cm-active).cm-line .cm-header.cm-inline-code ~ span.cm-header::before,
 body.clutter-free-headings div:not(.cm-active).cm-line .cm-header.cm-highlight ~ span.cm-header::before {
+  display: none;
+} */
+body.clutter-free-headings div.mod-cm6.is-live-preview div:not(.cm-active).cm-line .cm-header ~  span.cm-header::before
+{
   display: none;
 }
 
@@ -8201,10 +8210,14 @@ body.clutter-free-headings div:not(.cm-active).cm-line span:not(.cm-formatting-h
 }
 
 /*适配source mode 模式*/
-body.clutter-free-headings .mod-cm6 div:not(.cm-active).cm-line span.cm-formatting-header {
+
+body.clutter-free-headings div.mod-cm6:not(.is-live-preview) div:not(.cm-active).cm-line span:not(.cm-formatting-header).cm-header ~  span.cm-header::before
+{
+  display: none;
+}
+ body.clutter-free-headings div.mod-cm6:not(.is-live-preview) div:not(.cm-active).cm-line span.cm-formatting-header {
   display:none;
 }
-
 /*适配传统模式*/
 body.clutter-free-headings div:not(.CodeMirror-activeline)>.CodeMirror-line.hmd-inactive-line  span.cm-formatting-header::before {
   position: absolute;
@@ -8832,8 +8845,8 @@ ul ul ul ol ul {
 .markdown-source-view.mod-cm6 .list-bullet:after {
   content: none;
   }
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line div.cm-fold-indicator + span.cm-formatting .list-bullet::after,
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line span.cm-hmd-list-indent + span.cm-formatting .list-bullet::after
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line div.cm-fold-indicator ~ span.cm-formatting .list-bullet::after,
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line span.cm-hmd-list-indent ~ span.cm-formatting .list-bullet::after
 {
   content: '\25E6';
   left: -1px;
@@ -10100,46 +10113,80 @@ body.no-wrapped-table td:hover {
   text-overflow: clip;
 }
 /*modified from https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
+
+
+/****dataview table***/
+
+
+table.table-view-table > thead > tr > th 
+{
+  font-size: 0.9em;
+}
+table.table-view-table > tbody > tr > td 
+{
+  font-size: 0.85em;
+}
+
+body:not(.no-wrapped-dvtable) .markdown-preview-view .table-view-table>thead>tr,
+body:not(.no-wrapped-dvtable) .markdown-preview-view .table-view-table>tbody>tr
+{
+  white-space: pre-wrap; 
+  word-break: break-word; 
+   overflow-wrap: anywhere; 
+}
+
+body.no-wrapped-dvtable .block-language-dataview
+{
+  width: 100%;
+  margin: 0;
+  overflow-x: auto; 
+  white-space: nowrap;
+}
 body.no-wrapped-dvtable table.dataview th {
   padding: 0px 20px;
   font-size: 1em;
 }
-body.no-wrapped-dvtable table.dataview thead tr th:first-child,
-body.no-wrapped-dvtable table.dataview tbody tr td:first-child {
-  white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
-	max-width: 14em;
-	word-break: break-all;
-}
+
 body.no-wrapped-dvtable table.dataview tbody tr td:first-child {
   font-size: 0.9em;
 }
-body.no-wrapped-dvtable table.dataview th {
-  padding: 0px 20px;
-  font-size: 1em;
-  overflow-x: auto;
-}
+
 body.no-wrapped-dvtable table.dataview td:not(:first-child),
 body.no-wrapped-dvtable table.dataview tr > td:last-of-type { 
   font-size: 0.9em;
-	white-space: nowrap;
-	overflow-x: auto;
-  max-width: 17em;
-}
-body.overflow-x-dvtable table.dataview td,
-body.overflow-x-dvtable table.dataview th { 
-  text-overflow: ellipsis !important;
-  overflow: hidden  !important;
-  overflow-x: hidden  !important;
+  max-width: unset;
 }
 
-table.dataview ul.dataview-ul li {
-  white-space: nowrap;
+
+
+body.auto-serial-number-dvtable .markdown-source-view:not(.cards) .dataview.table-view-table 
+{
+  counter-reset: sec;
+}
+body.auto-serial-number-dvtable .markdown-source-view:not(.cards) .dataview.table-view-table> tbody > tr> td:first-child::before
+{
+  counter-increment: sec;
+  content:counter(sec) ". ";
+
 }
 
-.markdown-preview-view .table-view-table>tbody>tr>td, 
-.markdown-source-view.mod-cm6 .table-view-table>tbody>tr>td {
+body.auto-serial-number-dvtable .markdown-preview-view:not(.cards) .dataview.table-view-table 
+{
+  counter-reset: section;
+}
+body.auto-serial-number-dvtable .markdown-preview-view:not(.cards) .dataview.table-view-table> tbody > tr> td:first-child::before
+{
+  counter-increment: section;
+  content:counter(section) ". ";
+
+}
+
+
+
+
+
+body:not(.no-wrapped-dvtable) .markdown-preview-view .table-view-table>tbody>tr>td, 
+body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tbody>tr>td {
   max-width: 18em;
 }
 
@@ -10339,6 +10386,61 @@ body.bt-status-off #scroll-controls {
   --background-secondary-alt: var(--interactive-accent);
   color: var(--white);
 }
+
+/** file name**/
+
+body.file-name-animation .nav-file-title-content:not(.is-being-renamed):hover
+{
+  animation: filemove 1.5s 1 normal linear;
+}
+
+body.file-name-animation .nav-file-title-content:not(.is-being-renamed)
+{
+  min-width: 200px;
+  white-space: nowrap;
+}
+body.file-name-animation .nav-file
+{
+  display: inline-block;
+}
+/** file folder name**/
+body.file-name-animation .obsidian-icon-folder-icon
+{
+  vertical-align: middle;
+  display: inline;
+}
+
+body.file-name-animation .nav-folder-title
+{
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.nav-folder-title-content.is-being-renamed
+{
+  white-space: break-spaces;
+}
+
+body.file-name-animation .nav-folder-title-content:not(.is-being-renamed)
+{
+  min-width: 200px;
+  white-space: nowrap;
+}
+body.file-name-animation .nav-folder-title-content:not(.is-being-renamed):hover
+{
+  animation: filemove 1.5s 1 normal linear;
+}
+
+@keyframes filemove {
+  0% {
+    transform: translate(0, 0);
+}
+100% {
+    transform: translate(calc(-100% + 200px), 0);
+}
+}
+
+
 
 body.light-background-color-files .nav-file-title.is-active {
   color: var(--accent-strong);
@@ -10927,6 +11029,7 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 
 
 /* file explorer :Wrap long nav text and some paddings */
+
 .nav-file-title,
 .nav-folder-title {
   white-space: normal;
@@ -14401,6 +14504,21 @@ body.style-options-for-admonition-plugin .admonition-flex .admonition-content di
  margin: 0 0.625rem;
 }
 
+/*ad-table*/
+body.style-options-for-admonition-plugin .admonition-table {
+  overflow: visible;
+  margin: auto;
+  box-shadow:none;
+}
+body.style-options-for-admonition-plugin .admonition-table .admonition-content {
+  width: calc(100% - 5px);
+  margin: 0;
+  overflow-x: auto; 
+  white-space: nowrap;
+}
+
+
+
 /*blank ad框全透明隐藏*/
 body.style-options-for-admonition-plugin .admonition-blank {
   overflow: visible;
@@ -14746,6 +14864,7 @@ h5.breadcrumbs-matrix-header {
 /* ================================== */
 /* ============ Dataview ============ */
 /* ================================== */
+
 ul.dataview.list-view-ul>li:not(.task-list-item) {
   border-left: none !important;
   margin-left: -1em;
@@ -14760,6 +14879,8 @@ ul.dataview.list-view-ul>li:not(.task-list-item)::before {
   font-size: 0.8em;
   padding: 0 5px 0 0;
 }
+
+  
 
 body.dataview-list-style-pacman ul.dataview.list-view-ul>li:not(.task-list-item):first-of-type::before {
   content: '\edcf';
@@ -14785,7 +14906,7 @@ body.dataview-list-style-pacman ul.dataview.list-view-ul {
 ul.dataview.dataview-ul.dataview-result-list-root-ul>li.dataview-result-list-li {
   border-left: none !important;
   margin: 0;
-  padding-left: 1em;
+  padding-left: 0em;
 }
 /*
 ul.dataview.dataview-ul.dataview-result-list-root-ul>li.dataview-result-list-li::before {
@@ -14843,7 +14964,6 @@ body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ol::befor
 }
 
 .markdown-preview-view .dataview.inline-field-standalone-value {
-  font-family: var(--font-family-major); 
   background-color:  transparent;
 }
 
@@ -14918,7 +15038,8 @@ background: #1a1919;
   grid-row-gap:0.75rem;    
   justify-content: space-between;
   margin-top: 40px;
-  margin-left: -36px;
+  margin-left: -25px;
+  width: 99%;
 }
 
 
@@ -14974,10 +15095,8 @@ background: #1a1919;
 .cards table.dataview tbody>tr>td:first-child, 
 .markdown-source-view.mod-cm6.cards .dataview.table-view-table>tbody>tr>td:first-child { 
   width: 100%;
-  height: calc(var(--cards-width) / 0.7 );
   display: block;
   box-shadow: 0 2px 16px rgba(0, 0, 0, .2);
-  background:var(--background-secondary);
   position: relative;
   padding: 0;
 }
@@ -14985,7 +15104,7 @@ background: #1a1919;
 .cards table.dataview tbody>tr>td img {
   vertical-align: top;
   width: 100%;
-  height: 100%;
+  height: calc(var(--cards-width) / 0.7 );
   background-color:var(--background-secondary);
   -o-object-fit: cover;
   object-fit: cover;
@@ -19053,7 +19172,7 @@ body.loading-animation .progress-bar-message {
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220308";
+  content: "uid:20220310";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;

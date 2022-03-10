@@ -1,0 +1,15 @@
+{
+  "blue-topaz-theme@@color-scheme-options": "color-scheme-options-monochrome-topaz",
+  "blue-topaz-theme@@background-settings-workplace-background-image": true,
+  "blue-topaz-theme@@background-settings-workplace-theme-dark": "background-settings-workplace-theme-dark-blue-wave",
+  "blue-topaz-theme@@default-icons": true,
+  "blue-topaz-theme@@remove-custom-svg-icons": false,
+  "blue-topaz-theme@@modal-title-icon": "' Memos '",
+  "blue-topaz-theme@@image-zoom": true,
+  "blue-topaz-theme@@hide-left-ribbon": true,
+  "blue-topaz-theme@@fix-right-ribbon": false,
+  "blue-topaz-theme@@layout-style-options": "layout-style-options-rectangle",
+  "blue-topaz-theme@@hide-titlebar-text": true,
+  "blue-topaz-theme@@bt-status-off": true,
+  "blue-topaz-theme@@background-settings-workplace-theme-light": "background-settings-workplace-theme-light-leaf"
+}

@@ -23,6 +23,7 @@ banner_icon: 💘
 
 ````ad-flex
 %%调用88-template\button.md%%
+ 
  `button-refreshhomepage1`
  `button-loadhome`
 ```dataviewjs
@@ -120,13 +121,16 @@ dv.paragraph(posters);
 </p>
 <!--notice2-->
 <p class="stickies2" style="max-width:200px" >
-🌸<br> 每天一个好心情！！
+这是主页便签输入功能测试！
 </p>
+
+
 
 <!--notice3-->
 <p class="stickies" style="max-width:200px">
-💖<br> 永远相信美好的事情就要发生！
+通过侧边栏的 主页便签按钮即可快速添加 便签到主页
 </p>
+
 
 <!--notice4-->
 <p class="stickies2" style="max-width:200px" >

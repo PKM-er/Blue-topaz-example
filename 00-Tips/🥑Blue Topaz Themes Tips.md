@@ -1,3 +1,6 @@
+---
+updated: 2022-03-09 09:20
+---
 # TIPS  
 ```ad-col2
 这是Blue Topaz的演示库，最新版本建议从社区商店更新。附带了Style Settings插件与Admonition插件。目前支持Live preview模式同时附带了其他一些插件，可供使用。
@@ -472,7 +475,6 @@ cssclass: kanban
 [[四象限表格]]
 
 ### 嵌入文件样式
-
 > 在Style settings 插件2.3.6嵌入样式开启固定嵌入页面高度即可生效。
 
  ![[分栏效果示例]]

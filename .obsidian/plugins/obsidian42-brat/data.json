@@ -1,9 +1,7 @@
 {
   "pluginList": [
+    "nothingislost/obsidian-hover-editor",
     "aidenlx/cm-chs-patch",
-    "ebullient/obsidian-snippetor",
-    "/ganesshkumar/obsidian-table-editor",
-    "KjellConnelly/obsidian-dev-tools",
     "nothingislost/obsidian-embedded-query-control",
     "nothingislost/obsidian-bartender",
     "alexandru-dinu/obsidian-sortable/"
@@ -11,7 +9,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-03-08T05:13:04Z"
+      "lastUpdate": "2022-03-10T04:51:17Z"
     }
   ],
   "updateAtStartup": true,
@@ -20,6 +18,6 @@
   "loggingEnabled": false,
   "loggingPath": "BRAT-log",
   "loggingVerboseEnabled": false,
-  "debuggingMode": true,
-  "notificationsEnabled": true
+  "debuggingMode": false,
+  "notificationsEnabled": false
 }

@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-global-hotkeys",
+	"name": "Global Hotkeys",
+	"version": "0.1.1",
+	"minAppVersion": "0.11.13",
+	"description": "Add support for global hotkeys",
+	"author": "Marc Jessome",
+	"authorUrl": "https://github.com/mjessome/obsidian-global-hotkeys/",
+	"isDesktopOnly": true
+}

@@ -17,12 +17,6 @@
       "query": "https://search.douban.com/movie/subject_search?search_text={{query}}&cat=1002&start=0",
       "name": "豆瓣电影",
       "encode": true
-    },
-    {
-      "name": "MAGI知识检索",
-      "query": "https://magi.com/search?q={{query}}",
-      "tags": [],
-      "encode": true
     }
   ],
   "useIframe": true

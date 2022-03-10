@@ -1,0 +1,9 @@
+{
+  "baseFontSize": 16,
+  "cssTheme": "Blue Topaz",
+  "enabledCssSnippets": [
+    "memos"
+  ],
+  "theme": "moonstone",
+  "translucency": false
+}

@@ -77,7 +77,7 @@ async function getbookByurl(url) {
 	author= regauthor.exec(str)[1].trim().replace(/\n|\r/g,"").replace(/\ +/g,"")??'未知';
 	bookinfo.pagecount=regpagecount.exec(str)[1].trim()??'100';
 	bookinfo.publish=regpublish.exec(str)[1].trim()??'未知';
-	bookinfo.bookname =bookname;
+	bookinfo.bookname =bookname.replace(/(^\s*)|\^|\.|\*|\?|\!|\/|\\|\$|\#|\&|\||,|\[|\]|\{|\}|\(|\)|\-|\+|\=|(\s*$)/g, "");
 	bookinfo.cover = $("meta[property='og:image']")?.content;
 	bookinfo.type = 'book';
 	bookinfo.description = $("meta[property='og:description']")?.content;

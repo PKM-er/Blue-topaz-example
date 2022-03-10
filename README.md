@@ -1,6 +1,7 @@
 ---
 obsidianUIMode: preview
-updated: 2022-03-08 17:09
+progress: 正在进行
+updated: 2022-03-10 17:08
 ---
 ## 引言
 
@@ -21,6 +22,11 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 
 另外推荐鸟姐的Homepage 也是很棒的风格
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
+## 更新  2022-03-10
+- 增加嵌套库玩法 具体教程参考[[Obsidian 库中库玩法]]
+- 修复侧边栏buttons 无法在kanban  memos 或者空白文件中点击的问题
+- 优化侧边栏memos样式
+
 ## 更新  2022-03-08
 - 更新了豆瓣图书脚本，解决有的图书无法获取的问题
 - 修复首页下拉到底部出现大块空白的问题

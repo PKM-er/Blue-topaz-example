@@ -31,8 +31,13 @@
     "properties": []
   },
   "KanbanHelper": {
-    "enabled": false,
-    "boards": []
+    "enabled": true,
+    "boards": [
+      {
+        "property": "progress",
+        "boardName": "任务看板"
+      }
+    ]
   },
   "UIElements": {
     "enabled": false

@@ -1,7 +1,8 @@
-/* Sets all the text color to red! */
-.mte > button {
+
+/* Disabling the color as it makes the text non-readable in dark theme */
+/* .mte > button {
     background-color: lightgray;
-}
+} */
 
 .button-container.mte {
     margin: 10pt 0;
@@ -16,8 +17,8 @@
     display: grid;
     width: fit-content;
     margin-top: 5px;
-    border-right: 1px solid black;
-    border-top: 1px solid black;
+    border-right: 1px solid;
+    border-top: 1px solid;
 }
 
 .grid.mte > .cell-container.mte > .cell.mte {
@@ -26,13 +27,15 @@
 
 .grid.mte > .cell-container.mte {
     display: flex;
-    border-left: 1px solid black;
-    border-bottom: 1px solid black;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
 }
 
+/* Disabling the color as it makes the text non-readable in dark theme */
+/*
 .grid.mte > .cell-container.mte.header {
     background-color: lightgray;
-}
+} */
 
 .grid.mte > .cell-container.mte > .cell.mte {
     min-width: 100pt;

@@ -128,13 +128,25 @@
       "command": false,
       "injectColor": true,
       "noTitle": true
+    },
+    "table": {
+      "type": "table",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "table",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": true,
+      "copy": false
     }
   },
   "syntaxHighlight": true,
   "copyButton": false,
   "version": "7.0.4",
   "autoCollapse": false,
-  "defaultCollapseType": "open",
+  "defaultCollapseType": "closed",
   "syncLinks": false,
   "injectColor": true,
   "parseTitles": true,

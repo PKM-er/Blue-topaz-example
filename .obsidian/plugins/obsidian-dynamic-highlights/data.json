@@ -13,7 +13,7 @@
         "class": "light-time-8-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(08|20):[3-5][0-9]",
+        "query": "(?<= )(08|20):[3-5][0-9](:[0-5][0-9])?",
         "mark": [
           "match"
         ],
@@ -23,139 +23,227 @@
         "class": "light-time-8",
         "color": "#E45858",
         "regex": true,
-        "query": "(08|20):[0-2][0-9]"
+        "query": "(?<= )(08|20):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-7-5": {
         "class": "light-time-7-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(07|19):[3-5][0-9]"
+        "query": "(?<= )(07|19):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-7": {
         "class": "light-time-7",
         "color": "#E45858",
         "regex": true,
-        "query": "(07|19):[0-2][0-9]"
+        "query": "(?<= )(07|19):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-6-5": {
         "class": "light-time-6-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(06|18):[3-5][0-9]"
+        "query": "(?<= )(06|18):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-6": {
         "class": "light-time-6",
         "color": "#E45858",
         "regex": true,
-        "query": "(06|18):[0-2][0-9]"
+        "query": "(?<= )(06|18):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-5-5": {
         "class": "light-time-5-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(05|17):[3-5][0-9]"
+        "query": "(?<= )(05|17):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-5": {
         "class": "light-time-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(05|17):[0-2][0-9]"
+        "query": "(?<= )(05|17):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-4-5": {
         "class": "light-time-4-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(04|16):[3-5][0-9]"
+        "query": "(?<= )(04|16):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-4": {
         "class": "light-time-4",
         "color": "#E45858",
         "regex": true,
-        "query": "(04|16):[0-2][0-9]"
+        "query": "(?<= )(04|16):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-3-5": {
         "class": "light-time-3-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(03|15):[3-5][0-9]"
+        "query": "(?<= )(03|15):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-3": {
         "class": "light-time-3",
         "color": "#E45858",
         "regex": true,
-        "query": "(03|15):[0-2][0-9]"
+        "query": "(?<= )(03|15):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-2-5": {
         "class": "light-time-2-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(02|14):[3-5][0-9]"
+        "query": "(?<= )(02|14):[3-5][0-9]",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-2": {
         "class": "light-time-2",
         "color": "#E45858",
         "regex": true,
-        "query": "(02|14):[0-2][0-9]"
+        "query": "(?<= )(02|14):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-1-5": {
         "class": "light-time-1-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(01|13):[3-5][0-9]"
+        "query": "(?<= )(01|13):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-1": {
         "class": "light-time-1",
         "color": "#E45858",
         "regex": true,
-        "query": "(01|13):[0-2][0-9]"
+        "query": "(?<= )(01|13):[0-2][0-9]",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-9": {
         "class": "light-time-9",
         "color": "#E45858",
         "regex": true,
-        "query": "(09|21):[0-2][0-9]"
+        "query": "(?<= )(09|21):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-9-5": {
         "class": "light-time-9-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(09|21):[3-5][0-9]"
+        "query": "(09|21):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-10": {
         "class": "light-time-10",
         "color": "#E45858",
         "regex": true,
-        "query": "(10|22):[0-2][0-9]"
+        "query": "(?<= )(10|22):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-10-5": {
         "class": "light-time-10-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(10|22):[3-5][0-9]"
+        "query": "(10|22):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-11": {
         "class": "light-time-11",
         "color": "#E45858",
         "regex": true,
-        "query": "(11|23):[0-2][0-9]"
+        "query": "(?<= )(11|23):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-11-5": {
         "class": "light-time-11-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(11|23):[3-5][0-9]"
+        "query": "(?<= )(11|23):[3-5][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-12": {
         "class": "light-time-12",
         "color": "#E45858",
         "regex": true,
-        "query": "(00|12):[0-2][0-9]"
+        "query": "(?<= )(00|12):[0-2][0-9](:[0-5][0-9])?",
+        "mark": [
+          "match"
+        ],
+        "css": ""
       },
       "light-time-12-5": {
         "class": "light-time-12-5",
         "color": "#E45858",
         "regex": true,
-        "query": "(00|12):[3-5][0-9]",
+        "query": "(?<= )(00|12):[3-5][0-9](:[0-5][0-9])?",
         "mark": [
           "match"
         ],

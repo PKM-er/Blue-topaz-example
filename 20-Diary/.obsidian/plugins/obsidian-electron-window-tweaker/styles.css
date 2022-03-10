@@ -1,0 +1,39 @@
+.ewt-statusbar-menu {
+  width: 200px;
+}
+
+.ewt-statusbar-menu .menu-item-icon {
+  display: none;
+}
+
+.ewt-statusbar-menu .menu-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.ewt-statusbar-menu .menu-item:hover {
+  background-color: transparent;
+}
+
+.ewt-statusbar-menu .menu-item-title {
+  margin-right: 20px;
+}
+
+.ewt-statusbar-menu .slider {
+  width: 100%;
+}
+
+.ewt-statusbar-button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  line-height: 1;
+}
+
+.ewt-statusbar-button svg {
+  display: flex;
+  width: 1em;
+  height: 1em;
+}

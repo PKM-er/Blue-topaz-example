@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": false,
             "source": false
           }
@@ -81,12 +81,20 @@
               "type": "graph",
               "state": {}
             }
+          },
+          {
+            "id": "5ee52b332527fc75",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
+              "state": {}
+            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 255
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -111,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -129,7 +137,7 @@
             }
           },
           {
-            "id": "c40e828f67130ecc",
+            "id": "371fdaf6dd02d6d0",
             "type": "leaf",
             "state": {
               "type": "reminder-list",
@@ -150,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,18 +175,10 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
-            }
-          },
-          {
-            "id": "9b181782551fdb19",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {}
             }
           },
           {
@@ -206,7 +206,7 @@
             }
           }
         ],
-        "currentTab": 4
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
@@ -214,15 +214,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "README.md",
     "88-Template/home.md",
-    "未命名 1.md",
+    "README.md",
     "未命名.md",
-    "77-Example/图书阅读清单.md",
-    "88-Template/天气js.md",
-    "30-Reading/《熊会滑雪吗？》.md",
-    "30-Reading/《艺术史中的汉晋与唐宋之变》.md",
-    "77-Example/各类列表和彩虹大纲线.md",
-    "77-Example/各级标题示例.md"
+    "从这开始.md",
+    "88-Template/常用工具.md",
+    "20-Diary/任务看板.md",
+    "88-Template/常用工具react.md",
+    "88-Template/button.md",
+    "50-Inbox/vika.md",
+    "88-Template/ReactJS/react-buttons.md"
   ]
 }

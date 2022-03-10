@@ -1,88 +1,44 @@
 {
   "recentFiles": [
     {
-      "basename": "README",
-      "path": "README.md"
-    },
-    {
-      "basename": "图书阅读清单",
-      "path": "77-Example/图书阅读清单.md"
-    },
-    {
       "basename": "home",
       "path": "88-Template/home.md"
     },
     {
-      "basename": "天气js",
-      "path": "88-Template/天气js.md"
-    },
-    {
-      "basename": "《熊会滑雪吗？》",
-      "path": "30-Reading/《熊会滑雪吗？》.md"
-    },
-    {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "77-Example/各类列表和彩虹大纲线.md"
-    },
-    {
-      "basename": "各级标题示例",
-      "path": "77-Example/各级标题示例.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "分栏效果示例",
-      "path": "77-Example/分栏效果示例.md"
-    },
-    {
-      "basename": "如何在Obsidian中添加图书卡片",
-      "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
-    },
-    {
-      "basename": "电影观看清单",
-      "path": "77-Example/电影观看清单.md"
-    },
-    {
-      "basename": "booknote插件-更好的pdf office文档阅读和标注神器",
-      "path": "00-Tips/booknote插件-更好的pdf office文档阅读和标注神器.md"
-    },
-    {
-      "basename": "如何在Obsidian中添加电影卡片",
-      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
-    },
-    {
-      "basename": "如何提高Obsidian的启动速度？",
-      "path": "00-Tips/如何提高Obsidian的启动速度？.md"
-    },
-    {
-      "basename": "如何把主页日记模板移植到你现有的库中？",
-      "path": "00-Tips/如何把主页日记模板移植到你现有的库中？.md"
-    },
-    {
-      "basename": "Lillian Who Obsidian新手入门教程",
-      "path": "00-Tips/Lillian Who Obsidian新手入门教程.md"
+      "basename": "README",
+      "path": "README.md"
     },
     {
       "basename": "从这开始",
       "path": "从这开始.md"
     },
     {
-      "basename": "以橱窗的方式浏览文件夹下的图片",
-      "path": "77-Example/以橱窗的方式浏览文件夹下的图片.md"
-    },
-    {
-      "basename": "FastStart-GenerateListOfInstalledPlugins",
-      "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
-    },
-    {
       "basename": "常用工具",
       "path": "88-Template/常用工具.md"
     },
     {
-      "basename": "Cmenu插件魔改版 Obsidian上的工具栏",
-      "path": "00-Tips/Cmenu插件魔改版 Obsidian上的工具栏.md"
+      "basename": "常用工具react",
+      "path": "88-Template/常用工具react.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "vika",
+      "path": "50-Inbox/vika.md"
+    },
+    {
+      "basename": "react-buttons",
+      "path": "88-Template/ReactJS/react-buttons.md"
+    },
+    {
+      "basename": "获取命令ID",
+      "path": "10-Help/获取命令ID.md"
+    },
+    {
+      "basename": "真Kanban",
+      "path": "77-Example/真Kanban.md"
     },
     {
       "basename": "FastStart-Plugins-LongDelay",
@@ -93,24 +49,72 @@
       "path": "88-Template/FastStart-Plugins-ShortDelay.md"
     },
     {
-      "basename": "全宽显示",
-      "path": "77-Example/全宽显示.md"
+      "basename": "文本处理-textce",
+      "path": "50-Inbox/文本处理-textce.md"
     },
     {
-      "basename": "表格自定义样式",
-      "path": "77-Example/表格自定义样式.md"
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "carbon 代码高亮分享",
+      "path": "50-Inbox/carbon 代码高亮分享.md"
     },
     {
       "basename": "魔方配色设置说明",
       "path": "00-Tips/魔方配色设置说明.md"
     },
     {
-      "basename": "button",
-      "path": "88-Template/button.md"
+      "basename": "Obsidian 库中库玩法",
+      "path": "00-Tips/Obsidian 库中库玩法.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
+      "basename": "全宽显示-表格测试",
+      "path": "77-Example/全宽显示-表格测试.md"
+    },
+    {
+      "basename": "Johnny学OB 资料汇总",
+      "path": "00-Tips/Johnny学OB 资料汇总.md"
+    },
+    {
+      "basename": "moc",
+      "path": "88-Template/ReactJS/moc.md"
+    },
+    {
+      "basename": "返回当前活动笔记的所有反向链接",
+      "path": "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
+    },
+    {
+      "basename": "ColorfulClock",
+      "path": "88-Template/ReactJS/ColorfulClock.md"
     },
     {
       "basename": "slidegallery",
       "path": "88-Template/ReactJS/slidegallery.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+    },
+    {
+      "basename": "如何提高Obsidian的启动速度？",
+      "path": "00-Tips/如何提高Obsidian的启动速度？.md"
+    },
+    {
+      "basename": "code-wrap【代码块自动换行】",
+      "path": "77-Example/code-wrap【代码块自动换行】.md"
+    },
+    {
+      "basename": "Cmenu插件魔改版 Obsidian上的工具栏",
+      "path": "00-Tips/Cmenu插件魔改版 Obsidian上的工具栏.md"
+    },
+    {
+      "basename": "各级标题示例",
+      "path": "77-Example/各级标题示例.md"
     }
   ],
   "omittedPaths": [

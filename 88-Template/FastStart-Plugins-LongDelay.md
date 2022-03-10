@@ -7,7 +7,6 @@ markdown-table-editor
 media-extended
 metaedit
 obsidian-bartender
-obsidian-checklist-plugin
 obsidian-collapse-all-plugin
 obsidian-command-alias-plugin
 obsidian-core-search-assistant-plugin
@@ -16,12 +15,10 @@ obsidian-dynamic-highlights
 obsidian-embedded-query-control
 obsidian-float-toc-plugin
 obsidian-frontmatter-tag-suggest
-obsidian-hotkeys-for-specific-files
 obsidian-kanban
 obsidian-outliner
 obsidian-react-components
 obsidian-regex-replace
-obsidian-reminder-plugin
 obsidian-sortable
 obsidian-tasks-plugin
 obsidian42-brat

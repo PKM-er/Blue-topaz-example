@@ -491,7 +491,7 @@ var require_react_development = __commonJS({
             }
           }
         }
-        var ReactElement = function(type, key, ref, self, source, owner, props) {
+        var ReactElement = function(type, key, ref, self2, source, owner, props) {
           var element = {
             $$typeof: REACT_ELEMENT_TYPE,
             type,
@@ -512,7 +512,7 @@ var require_react_development = __commonJS({
               configurable: false,
               enumerable: false,
               writable: false,
-              value: self
+              value: self2
             });
             Object.defineProperty(element, "_source", {
               configurable: false,
@@ -532,7 +532,7 @@ var require_react_development = __commonJS({
           var props = {};
           var key = null;
           var ref = null;
-          var self = null;
+          var self2 = null;
           var source = null;
           if (config != null) {
             if (hasValidRef(config)) {
@@ -544,7 +544,7 @@ var require_react_development = __commonJS({
             if (hasValidKey(config)) {
               key = "" + config.key;
             }
-            self = config.__self === void 0 ? null : config.__self;
+            self2 = config.__self === void 0 ? null : config.__self;
             source = config.__source === void 0 ? null : config.__source;
             for (propName in config) {
               if (hasOwnProperty.call(config, propName) && !RESERVED_PROPS.hasOwnProperty(propName)) {
@@ -586,7 +586,7 @@ var require_react_development = __commonJS({
               }
             }
           }
-          return ReactElement(type, key, ref, self, source, ReactCurrentOwner.current, props);
+          return ReactElement(type, key, ref, self2, source, ReactCurrentOwner.current, props);
         }
         function cloneAndReplaceKey(oldElement, newKey) {
           var newElement = ReactElement(oldElement.type, newKey, oldElement.ref, oldElement._self, oldElement._source, oldElement._owner, oldElement.props);
@@ -602,7 +602,7 @@ var require_react_development = __commonJS({
           var props = _assign({}, element.props);
           var key = element.key;
           var ref = element.ref;
-          var self = element._self;
+          var self2 = element._self;
           var source = element._source;
           var owner = element._owner;
           if (config != null) {
@@ -637,7 +637,7 @@ var require_react_development = __commonJS({
             }
             props.children = childArray;
           }
-          return ReactElement(element.type, key, ref, self, source, owner, props);
+          return ReactElement(element.type, key, ref, self2, source, owner, props);
         }
         function isValidElement(object) {
           return typeof object === "object" && object !== null && object.$$typeof === REACT_ELEMENT_TYPE;
@@ -1085,7 +1085,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useRef(initialValue);
         }
-        function useEffect2(create, deps) {
+        function useEffect3(create, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useEffect(create, deps);
         }
@@ -1093,7 +1093,7 @@ var require_react_development = __commonJS({
           var dispatcher = resolveDispatcher();
           return dispatcher.useLayoutEffect(create, deps);
         }
-        function useCallback(callback, deps) {
+        function useCallback2(callback, deps) {
           var dispatcher = resolveDispatcher();
           return dispatcher.useCallback(callback, deps);
         }
@@ -1652,10 +1652,10 @@ var require_react_development = __commonJS({
         exports.isValidElement = isValidElement;
         exports.lazy = lazy;
         exports.memo = memo;
-        exports.useCallback = useCallback;
+        exports.useCallback = useCallback2;
         exports.useContext = useContext2;
         exports.useDebugValue = useDebugValue;
-        exports.useEffect = useEffect2;
+        exports.useEffect = useEffect3;
         exports.useImperativeHandle = useImperativeHandle;
         exports.useLayoutEffect = useLayoutEffect;
         exports.useMemo = useMemo;
@@ -20448,6 +20448,547 @@ var require_react_dom = __commonJS({
   }
 });
 
+// node_modules/papaparse/papaparse.min.js
+var require_papaparse_min = __commonJS({
+  "node_modules/papaparse/papaparse.min.js"(exports, module2) {
+    !function(e, t) {
+      typeof define == "function" && define.amd ? define([], t) : typeof module2 == "object" && typeof exports != "undefined" ? module2.exports = t() : e.Papa = t();
+    }(exports, function s() {
+      "use strict";
+      var f = typeof self != "undefined" ? self : typeof window != "undefined" ? window : f !== void 0 ? f : {};
+      var n = !f.document && !!f.postMessage, o = n && /blob:/i.test((f.location || {}).protocol), a = {}, h = 0, b = { parse: function(e, t) {
+        var i2 = (t = t || {}).dynamicTyping || false;
+        M(i2) && (t.dynamicTypingFunction = i2, i2 = {});
+        if (t.dynamicTyping = i2, t.transform = !!M(t.transform) && t.transform, t.worker && b.WORKERS_SUPPORTED) {
+          var r = function() {
+            if (!b.WORKERS_SUPPORTED)
+              return false;
+            var e2 = (i3 = f.URL || f.webkitURL || null, r2 = s.toString(), b.BLOB_URL || (b.BLOB_URL = i3.createObjectURL(new Blob(["(", r2, ")();"], { type: "text/javascript" })))), t2 = new f.Worker(e2);
+            var i3, r2;
+            return t2.onmessage = _, t2.id = h++, a[t2.id] = t2;
+          }();
+          return r.userStep = t.step, r.userChunk = t.chunk, r.userComplete = t.complete, r.userError = t.error, t.step = M(t.step), t.chunk = M(t.chunk), t.complete = M(t.complete), t.error = M(t.error), delete t.worker, void r.postMessage({ input: e, config: t, workerId: r.id });
+        }
+        var n2 = null;
+        b.NODE_STREAM_INPUT, typeof e == "string" ? n2 = t.download ? new l(t) : new p(t) : e.readable === true && M(e.read) && M(e.on) ? n2 = new g(t) : (f.File && e instanceof File || e instanceof Object) && (n2 = new c(t));
+        return n2.stream(e);
+      }, unparse: function(e, t) {
+        var n2 = false, _2 = true, m2 = ",", y2 = "\r\n", s2 = '"', a2 = s2 + s2, i2 = false, r = null, o2 = false;
+        !function() {
+          if (typeof t != "object")
+            return;
+          typeof t.delimiter != "string" || b.BAD_DELIMITERS.filter(function(e2) {
+            return t.delimiter.indexOf(e2) !== -1;
+          }).length || (m2 = t.delimiter);
+          (typeof t.quotes == "boolean" || typeof t.quotes == "function" || Array.isArray(t.quotes)) && (n2 = t.quotes);
+          typeof t.skipEmptyLines != "boolean" && typeof t.skipEmptyLines != "string" || (i2 = t.skipEmptyLines);
+          typeof t.newline == "string" && (y2 = t.newline);
+          typeof t.quoteChar == "string" && (s2 = t.quoteChar);
+          typeof t.header == "boolean" && (_2 = t.header);
+          if (Array.isArray(t.columns)) {
+            if (t.columns.length === 0)
+              throw new Error("Option columns is empty");
+            r = t.columns;
+          }
+          t.escapeChar !== void 0 && (a2 = t.escapeChar + s2);
+          typeof t.escapeFormulae == "boolean" && (o2 = t.escapeFormulae);
+        }();
+        var h2 = new RegExp(j(s2), "g");
+        typeof e == "string" && (e = JSON.parse(e));
+        if (Array.isArray(e)) {
+          if (!e.length || Array.isArray(e[0]))
+            return u2(null, e, i2);
+          if (typeof e[0] == "object")
+            return u2(r || Object.keys(e[0]), e, i2);
+        } else if (typeof e == "object")
+          return typeof e.data == "string" && (e.data = JSON.parse(e.data)), Array.isArray(e.data) && (e.fields || (e.fields = e.meta && e.meta.fields), e.fields || (e.fields = Array.isArray(e.data[0]) ? e.fields : typeof e.data[0] == "object" ? Object.keys(e.data[0]) : []), Array.isArray(e.data[0]) || typeof e.data[0] == "object" || (e.data = [e.data])), u2(e.fields || [], e.data || [], i2);
+        throw new Error("Unable to serialize unrecognized input");
+        function u2(e2, t2, i3) {
+          var r2 = "";
+          typeof e2 == "string" && (e2 = JSON.parse(e2)), typeof t2 == "string" && (t2 = JSON.parse(t2));
+          var n3 = Array.isArray(e2) && 0 < e2.length, s3 = !Array.isArray(t2[0]);
+          if (n3 && _2) {
+            for (var a3 = 0; a3 < e2.length; a3++)
+              0 < a3 && (r2 += m2), r2 += v2(e2[a3], a3);
+            0 < t2.length && (r2 += y2);
+          }
+          for (var o3 = 0; o3 < t2.length; o3++) {
+            var h3 = n3 ? e2.length : t2[o3].length, u3 = false, f2 = n3 ? Object.keys(t2[o3]).length === 0 : t2[o3].length === 0;
+            if (i3 && !n3 && (u3 = i3 === "greedy" ? t2[o3].join("").trim() === "" : t2[o3].length === 1 && t2[o3][0].length === 0), i3 === "greedy" && n3) {
+              for (var d2 = [], l2 = 0; l2 < h3; l2++) {
+                var c2 = s3 ? e2[l2] : l2;
+                d2.push(t2[o3][c2]);
+              }
+              u3 = d2.join("").trim() === "";
+            }
+            if (!u3) {
+              for (var p2 = 0; p2 < h3; p2++) {
+                0 < p2 && !f2 && (r2 += m2);
+                var g2 = n3 && s3 ? e2[p2] : p2;
+                r2 += v2(t2[o3][g2], p2);
+              }
+              o3 < t2.length - 1 && (!i3 || 0 < h3 && !f2) && (r2 += y2);
+            }
+          }
+          return r2;
+        }
+        function v2(e2, t2) {
+          if (e2 == null)
+            return "";
+          if (e2.constructor === Date)
+            return JSON.stringify(e2).slice(1, 25);
+          o2 === true && typeof e2 == "string" && e2.match(/^[=+\-@].*$/) !== null && (e2 = "'" + e2);
+          var i3 = e2.toString().replace(h2, a2), r2 = typeof n2 == "boolean" && n2 || typeof n2 == "function" && n2(e2, t2) || Array.isArray(n2) && n2[t2] || function(e3, t3) {
+            for (var i4 = 0; i4 < t3.length; i4++)
+              if (-1 < e3.indexOf(t3[i4]))
+                return true;
+            return false;
+          }(i3, b.BAD_DELIMITERS) || -1 < i3.indexOf(m2) || i3.charAt(0) === " " || i3.charAt(i3.length - 1) === " ";
+          return r2 ? s2 + i3 + s2 : i3;
+        }
+      } };
+      if (b.RECORD_SEP = String.fromCharCode(30), b.UNIT_SEP = String.fromCharCode(31), b.BYTE_ORDER_MARK = "\uFEFF", b.BAD_DELIMITERS = ["\r", "\n", '"', b.BYTE_ORDER_MARK], b.WORKERS_SUPPORTED = !n && !!f.Worker, b.NODE_STREAM_INPUT = 1, b.LocalChunkSize = 10485760, b.RemoteChunkSize = 5242880, b.DefaultDelimiter = ",", b.Parser = E, b.ParserHandle = i, b.NetworkStreamer = l, b.FileStreamer = c, b.StringStreamer = p, b.ReadableStreamStreamer = g, f.jQuery) {
+        var d = f.jQuery;
+        d.fn.parse = function(o2) {
+          var i2 = o2.config || {}, h2 = [];
+          return this.each(function(e2) {
+            if (!(d(this).prop("tagName").toUpperCase() === "INPUT" && d(this).attr("type").toLowerCase() === "file" && f.FileReader) || !this.files || this.files.length === 0)
+              return true;
+            for (var t = 0; t < this.files.length; t++)
+              h2.push({ file: this.files[t], inputElem: this, instanceConfig: d.extend({}, i2) });
+          }), e(), this;
+          function e() {
+            if (h2.length !== 0) {
+              var e2, t, i3, r, n2 = h2[0];
+              if (M(o2.before)) {
+                var s2 = o2.before(n2.file, n2.inputElem);
+                if (typeof s2 == "object") {
+                  if (s2.action === "abort")
+                    return e2 = "AbortError", t = n2.file, i3 = n2.inputElem, r = s2.reason, void (M(o2.error) && o2.error({ name: e2 }, t, i3, r));
+                  if (s2.action === "skip")
+                    return void u2();
+                  typeof s2.config == "object" && (n2.instanceConfig = d.extend(n2.instanceConfig, s2.config));
+                } else if (s2 === "skip")
+                  return void u2();
+              }
+              var a2 = n2.instanceConfig.complete;
+              n2.instanceConfig.complete = function(e3) {
+                M(a2) && a2(e3, n2.file, n2.inputElem), u2();
+              }, b.parse(n2.file, n2.instanceConfig);
+            } else
+              M(o2.complete) && o2.complete();
+          }
+          function u2() {
+            h2.splice(0, 1), e();
+          }
+        };
+      }
+      function u(e) {
+        this._handle = null, this._finished = false, this._completed = false, this._halted = false, this._input = null, this._baseIndex = 0, this._partialLine = "", this._rowCount = 0, this._start = 0, this._nextChunk = null, this.isFirstChunk = true, this._completeResults = { data: [], errors: [], meta: {} }, function(e2) {
+          var t = w(e2);
+          t.chunkSize = parseInt(t.chunkSize), e2.step || e2.chunk || (t.chunkSize = null);
+          this._handle = new i(t), (this._handle.streamer = this)._config = t;
+        }.call(this, e), this.parseChunk = function(e2, t) {
+          if (this.isFirstChunk && M(this._config.beforeFirstChunk)) {
+            var i2 = this._config.beforeFirstChunk(e2);
+            i2 !== void 0 && (e2 = i2);
+          }
+          this.isFirstChunk = false, this._halted = false;
+          var r = this._partialLine + e2;
+          this._partialLine = "";
+          var n2 = this._handle.parse(r, this._baseIndex, !this._finished);
+          if (!this._handle.paused() && !this._handle.aborted()) {
+            var s2 = n2.meta.cursor;
+            this._finished || (this._partialLine = r.substring(s2 - this._baseIndex), this._baseIndex = s2), n2 && n2.data && (this._rowCount += n2.data.length);
+            var a2 = this._finished || this._config.preview && this._rowCount >= this._config.preview;
+            if (o)
+              f.postMessage({ results: n2, workerId: b.WORKER_ID, finished: a2 });
+            else if (M(this._config.chunk) && !t) {
+              if (this._config.chunk(n2, this._handle), this._handle.paused() || this._handle.aborted())
+                return void (this._halted = true);
+              n2 = void 0, this._completeResults = void 0;
+            }
+            return this._config.step || this._config.chunk || (this._completeResults.data = this._completeResults.data.concat(n2.data), this._completeResults.errors = this._completeResults.errors.concat(n2.errors), this._completeResults.meta = n2.meta), this._completed || !a2 || !M(this._config.complete) || n2 && n2.meta.aborted || (this._config.complete(this._completeResults, this._input), this._completed = true), a2 || n2 && n2.meta.paused || this._nextChunk(), n2;
+          }
+          this._halted = true;
+        }, this._sendError = function(e2) {
+          M(this._config.error) ? this._config.error(e2) : o && this._config.error && f.postMessage({ workerId: b.WORKER_ID, error: e2, finished: false });
+        };
+      }
+      function l(e) {
+        var r;
+        (e = e || {}).chunkSize || (e.chunkSize = b.RemoteChunkSize), u.call(this, e), this._nextChunk = n ? function() {
+          this._readChunk(), this._chunkLoaded();
+        } : function() {
+          this._readChunk();
+        }, this.stream = function(e2) {
+          this._input = e2, this._nextChunk();
+        }, this._readChunk = function() {
+          if (this._finished)
+            this._chunkLoaded();
+          else {
+            if (r = new XMLHttpRequest(), this._config.withCredentials && (r.withCredentials = this._config.withCredentials), n || (r.onload = v(this._chunkLoaded, this), r.onerror = v(this._chunkError, this)), r.open(this._config.downloadRequestBody ? "POST" : "GET", this._input, !n), this._config.downloadRequestHeaders) {
+              var e2 = this._config.downloadRequestHeaders;
+              for (var t in e2)
+                r.setRequestHeader(t, e2[t]);
+            }
+            if (this._config.chunkSize) {
+              var i2 = this._start + this._config.chunkSize - 1;
+              r.setRequestHeader("Range", "bytes=" + this._start + "-" + i2);
+            }
+            try {
+              r.send(this._config.downloadRequestBody);
+            } catch (e3) {
+              this._chunkError(e3.message);
+            }
+            n && r.status === 0 && this._chunkError();
+          }
+        }, this._chunkLoaded = function() {
+          r.readyState === 4 && (r.status < 200 || 400 <= r.status ? this._chunkError() : (this._start += this._config.chunkSize ? this._config.chunkSize : r.responseText.length, this._finished = !this._config.chunkSize || this._start >= function(e2) {
+            var t = e2.getResponseHeader("Content-Range");
+            if (t === null)
+              return -1;
+            return parseInt(t.substring(t.lastIndexOf("/") + 1));
+          }(r), this.parseChunk(r.responseText)));
+        }, this._chunkError = function(e2) {
+          var t = r.statusText || e2;
+          this._sendError(new Error(t));
+        };
+      }
+      function c(e) {
+        var r, n2;
+        (e = e || {}).chunkSize || (e.chunkSize = b.LocalChunkSize), u.call(this, e);
+        var s2 = typeof FileReader != "undefined";
+        this.stream = function(e2) {
+          this._input = e2, n2 = e2.slice || e2.webkitSlice || e2.mozSlice, s2 ? ((r = new FileReader()).onload = v(this._chunkLoaded, this), r.onerror = v(this._chunkError, this)) : r = new FileReaderSync(), this._nextChunk();
+        }, this._nextChunk = function() {
+          this._finished || this._config.preview && !(this._rowCount < this._config.preview) || this._readChunk();
+        }, this._readChunk = function() {
+          var e2 = this._input;
+          if (this._config.chunkSize) {
+            var t = Math.min(this._start + this._config.chunkSize, this._input.size);
+            e2 = n2.call(e2, this._start, t);
+          }
+          var i2 = r.readAsText(e2, this._config.encoding);
+          s2 || this._chunkLoaded({ target: { result: i2 } });
+        }, this._chunkLoaded = function(e2) {
+          this._start += this._config.chunkSize, this._finished = !this._config.chunkSize || this._start >= this._input.size, this.parseChunk(e2.target.result);
+        }, this._chunkError = function() {
+          this._sendError(r.error);
+        };
+      }
+      function p(e) {
+        var i2;
+        u.call(this, e = e || {}), this.stream = function(e2) {
+          return i2 = e2, this._nextChunk();
+        }, this._nextChunk = function() {
+          if (!this._finished) {
+            var e2, t = this._config.chunkSize;
+            return t ? (e2 = i2.substring(0, t), i2 = i2.substring(t)) : (e2 = i2, i2 = ""), this._finished = !i2, this.parseChunk(e2);
+          }
+        };
+      }
+      function g(e) {
+        u.call(this, e = e || {});
+        var t = [], i2 = true, r = false;
+        this.pause = function() {
+          u.prototype.pause.apply(this, arguments), this._input.pause();
+        }, this.resume = function() {
+          u.prototype.resume.apply(this, arguments), this._input.resume();
+        }, this.stream = function(e2) {
+          this._input = e2, this._input.on("data", this._streamData), this._input.on("end", this._streamEnd), this._input.on("error", this._streamError);
+        }, this._checkIsFinished = function() {
+          r && t.length === 1 && (this._finished = true);
+        }, this._nextChunk = function() {
+          this._checkIsFinished(), t.length ? this.parseChunk(t.shift()) : i2 = true;
+        }, this._streamData = v(function(e2) {
+          try {
+            t.push(typeof e2 == "string" ? e2 : e2.toString(this._config.encoding)), i2 && (i2 = false, this._checkIsFinished(), this.parseChunk(t.shift()));
+          } catch (e3) {
+            this._streamError(e3);
+          }
+        }, this), this._streamError = v(function(e2) {
+          this._streamCleanUp(), this._sendError(e2);
+        }, this), this._streamEnd = v(function() {
+          this._streamCleanUp(), r = true, this._streamData("");
+        }, this), this._streamCleanUp = v(function() {
+          this._input.removeListener("data", this._streamData), this._input.removeListener("end", this._streamEnd), this._input.removeListener("error", this._streamError);
+        }, this);
+      }
+      function i(m2) {
+        var a2, o2, h2, r = Math.pow(2, 53), n2 = -r, s2 = /^\s*-?(\d+\.?|\.\d+|\d+\.\d+)([eE][-+]?\d+)?\s*$/, u2 = /^(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d\.\d+([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))|(\d{4}-[01]\d-[0-3]\dT[0-2]\d:[0-5]\d([+-][0-2]\d:[0-5]\d|Z))$/, t = this, i2 = 0, f2 = 0, d2 = false, e = false, l2 = [], c2 = { data: [], errors: [], meta: {} };
+        if (M(m2.step)) {
+          var p2 = m2.step;
+          m2.step = function(e2) {
+            if (c2 = e2, _2())
+              g2();
+            else {
+              if (g2(), c2.data.length === 0)
+                return;
+              i2 += e2.data.length, m2.preview && i2 > m2.preview ? o2.abort() : (c2.data = c2.data[0], p2(c2, t));
+            }
+          };
+        }
+        function y2(e2) {
+          return m2.skipEmptyLines === "greedy" ? e2.join("").trim() === "" : e2.length === 1 && e2[0].length === 0;
+        }
+        function g2() {
+          if (c2 && h2 && (k("Delimiter", "UndetectableDelimiter", "Unable to auto-detect delimiting character; defaulted to '" + b.DefaultDelimiter + "'"), h2 = false), m2.skipEmptyLines)
+            for (var e2 = 0; e2 < c2.data.length; e2++)
+              y2(c2.data[e2]) && c2.data.splice(e2--, 1);
+          return _2() && function() {
+            if (!c2)
+              return;
+            function e3(e4, t3) {
+              M(m2.transformHeader) && (e4 = m2.transformHeader(e4, t3)), l2.push(e4);
+            }
+            if (Array.isArray(c2.data[0])) {
+              for (var t2 = 0; _2() && t2 < c2.data.length; t2++)
+                c2.data[t2].forEach(e3);
+              c2.data.splice(0, 1);
+            } else
+              c2.data.forEach(e3);
+          }(), function() {
+            if (!c2 || !m2.header && !m2.dynamicTyping && !m2.transform)
+              return c2;
+            function e3(e4, t3) {
+              var i3, r2 = m2.header ? {} : [];
+              for (i3 = 0; i3 < e4.length; i3++) {
+                var n3 = i3, s3 = e4[i3];
+                m2.header && (n3 = i3 >= l2.length ? "__parsed_extra" : l2[i3]), m2.transform && (s3 = m2.transform(s3, n3)), s3 = v2(n3, s3), n3 === "__parsed_extra" ? (r2[n3] = r2[n3] || [], r2[n3].push(s3)) : r2[n3] = s3;
+              }
+              return m2.header && (i3 > l2.length ? k("FieldMismatch", "TooManyFields", "Too many fields: expected " + l2.length + " fields but parsed " + i3, f2 + t3) : i3 < l2.length && k("FieldMismatch", "TooFewFields", "Too few fields: expected " + l2.length + " fields but parsed " + i3, f2 + t3)), r2;
+            }
+            var t2 = 1;
+            !c2.data.length || Array.isArray(c2.data[0]) ? (c2.data = c2.data.map(e3), t2 = c2.data.length) : c2.data = e3(c2.data, 0);
+            m2.header && c2.meta && (c2.meta.fields = l2);
+            return f2 += t2, c2;
+          }();
+        }
+        function _2() {
+          return m2.header && l2.length === 0;
+        }
+        function v2(e2, t2) {
+          return i3 = e2, m2.dynamicTypingFunction && m2.dynamicTyping[i3] === void 0 && (m2.dynamicTyping[i3] = m2.dynamicTypingFunction(i3)), (m2.dynamicTyping[i3] || m2.dynamicTyping) === true ? t2 === "true" || t2 === "TRUE" || t2 !== "false" && t2 !== "FALSE" && (function(e3) {
+            if (s2.test(e3)) {
+              var t3 = parseFloat(e3);
+              if (n2 < t3 && t3 < r)
+                return true;
+            }
+            return false;
+          }(t2) ? parseFloat(t2) : u2.test(t2) ? new Date(t2) : t2 === "" ? null : t2) : t2;
+          var i3;
+        }
+        function k(e2, t2, i3, r2) {
+          var n3 = { type: e2, code: t2, message: i3 };
+          r2 !== void 0 && (n3.row = r2), c2.errors.push(n3);
+        }
+        this.parse = function(e2, t2, i3) {
+          var r2 = m2.quoteChar || '"';
+          if (m2.newline || (m2.newline = function(e3, t3) {
+            e3 = e3.substring(0, 1048576);
+            var i4 = new RegExp(j(t3) + "([^]*?)" + j(t3), "gm"), r3 = (e3 = e3.replace(i4, "")).split("\r"), n4 = e3.split("\n"), s4 = 1 < n4.length && n4[0].length < r3[0].length;
+            if (r3.length === 1 || s4)
+              return "\n";
+            for (var a3 = 0, o3 = 0; o3 < r3.length; o3++)
+              r3[o3][0] === "\n" && a3++;
+            return a3 >= r3.length / 2 ? "\r\n" : "\r";
+          }(e2, r2)), h2 = false, m2.delimiter)
+            M(m2.delimiter) && (m2.delimiter = m2.delimiter(e2), c2.meta.delimiter = m2.delimiter);
+          else {
+            var n3 = function(e3, t3, i4, r3, n4) {
+              var s4, a3, o3, h3;
+              n4 = n4 || [",", "	", "|", ";", b.RECORD_SEP, b.UNIT_SEP];
+              for (var u3 = 0; u3 < n4.length; u3++) {
+                var f3 = n4[u3], d3 = 0, l3 = 0, c3 = 0;
+                o3 = void 0;
+                for (var p3 = new E({ comments: r3, delimiter: f3, newline: t3, preview: 10 }).parse(e3), g3 = 0; g3 < p3.data.length; g3++)
+                  if (i4 && y2(p3.data[g3]))
+                    c3++;
+                  else {
+                    var _3 = p3.data[g3].length;
+                    l3 += _3, o3 !== void 0 ? 0 < _3 && (d3 += Math.abs(_3 - o3), o3 = _3) : o3 = _3;
+                  }
+                0 < p3.data.length && (l3 /= p3.data.length - c3), (a3 === void 0 || d3 <= a3) && (h3 === void 0 || h3 < l3) && 1.99 < l3 && (a3 = d3, s4 = f3, h3 = l3);
+              }
+              return { successful: !!(m2.delimiter = s4), bestDelimiter: s4 };
+            }(e2, m2.newline, m2.skipEmptyLines, m2.comments, m2.delimitersToGuess);
+            n3.successful ? m2.delimiter = n3.bestDelimiter : (h2 = true, m2.delimiter = b.DefaultDelimiter), c2.meta.delimiter = m2.delimiter;
+          }
+          var s3 = w(m2);
+          return m2.preview && m2.header && s3.preview++, a2 = e2, o2 = new E(s3), c2 = o2.parse(a2, t2, i3), g2(), d2 ? { meta: { paused: true } } : c2 || { meta: { paused: false } };
+        }, this.paused = function() {
+          return d2;
+        }, this.pause = function() {
+          d2 = true, o2.abort(), a2 = M(m2.chunk) ? "" : a2.substring(o2.getCharIndex());
+        }, this.resume = function() {
+          t.streamer._halted ? (d2 = false, t.streamer.parseChunk(a2, true)) : setTimeout(t.resume, 3);
+        }, this.aborted = function() {
+          return e;
+        }, this.abort = function() {
+          e = true, o2.abort(), c2.meta.aborted = true, M(m2.complete) && m2.complete(c2), a2 = "";
+        };
+      }
+      function j(e) {
+        return e.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      }
+      function E(e) {
+        var S, O = (e = e || {}).delimiter, x = e.newline, I = e.comments, T = e.step, D = e.preview, A = e.fastMode, L = S = e.quoteChar === void 0 ? '"' : e.quoteChar;
+        if (e.escapeChar !== void 0 && (L = e.escapeChar), (typeof O != "string" || -1 < b.BAD_DELIMITERS.indexOf(O)) && (O = ","), I === O)
+          throw new Error("Comment character same as delimiter");
+        I === true ? I = "#" : (typeof I != "string" || -1 < b.BAD_DELIMITERS.indexOf(I)) && (I = false), x !== "\n" && x !== "\r" && x !== "\r\n" && (x = "\n");
+        var F = 0, z = false;
+        this.parse = function(r, t, i2) {
+          if (typeof r != "string")
+            throw new Error("Input must be a string");
+          var n2 = r.length, e2 = O.length, s2 = x.length, a2 = I.length, o2 = M(T), h2 = [], u2 = [], f2 = [], d2 = F = 0;
+          if (!r)
+            return C();
+          if (A || A !== false && r.indexOf(S) === -1) {
+            for (var l2 = r.split(x), c2 = 0; c2 < l2.length; c2++) {
+              if (f2 = l2[c2], F += f2.length, c2 !== l2.length - 1)
+                F += x.length;
+              else if (i2)
+                return C();
+              if (!I || f2.substring(0, a2) !== I) {
+                if (o2) {
+                  if (h2 = [], k(f2.split(O)), R(), z)
+                    return C();
+                } else
+                  k(f2.split(O));
+                if (D && D <= c2)
+                  return h2 = h2.slice(0, D), C(true);
+              }
+            }
+            return C();
+          }
+          for (var p2 = r.indexOf(O, F), g2 = r.indexOf(x, F), _2 = new RegExp(j(L) + j(S), "g"), m2 = r.indexOf(S, F); ; )
+            if (r[F] !== S)
+              if (I && f2.length === 0 && r.substring(F, F + a2) === I) {
+                if (g2 === -1)
+                  return C();
+                F = g2 + s2, g2 = r.indexOf(x, F), p2 = r.indexOf(O, F);
+              } else if (p2 !== -1 && (p2 < g2 || g2 === -1))
+                f2.push(r.substring(F, p2)), F = p2 + e2, p2 = r.indexOf(O, F);
+              else {
+                if (g2 === -1)
+                  break;
+                if (f2.push(r.substring(F, g2)), w2(g2 + s2), o2 && (R(), z))
+                  return C();
+                if (D && h2.length >= D)
+                  return C(true);
+              }
+            else
+              for (m2 = F, F++; ; ) {
+                if ((m2 = r.indexOf(S, m2 + 1)) === -1)
+                  return i2 || u2.push({ type: "Quotes", code: "MissingQuotes", message: "Quoted field unterminated", row: h2.length, index: F }), E2();
+                if (m2 === n2 - 1)
+                  return E2(r.substring(F, m2).replace(_2, S));
+                if (S !== L || r[m2 + 1] !== L) {
+                  if (S === L || m2 === 0 || r[m2 - 1] !== L) {
+                    p2 !== -1 && p2 < m2 + 1 && (p2 = r.indexOf(O, m2 + 1)), g2 !== -1 && g2 < m2 + 1 && (g2 = r.indexOf(x, m2 + 1));
+                    var y2 = b2(g2 === -1 ? p2 : Math.min(p2, g2));
+                    if (r[m2 + 1 + y2] === O) {
+                      f2.push(r.substring(F, m2).replace(_2, S)), r[F = m2 + 1 + y2 + e2] !== S && (m2 = r.indexOf(S, F)), p2 = r.indexOf(O, F), g2 = r.indexOf(x, F);
+                      break;
+                    }
+                    var v2 = b2(g2);
+                    if (r.substring(m2 + 1 + v2, m2 + 1 + v2 + s2) === x) {
+                      if (f2.push(r.substring(F, m2).replace(_2, S)), w2(m2 + 1 + v2 + s2), p2 = r.indexOf(O, F), m2 = r.indexOf(S, F), o2 && (R(), z))
+                        return C();
+                      if (D && h2.length >= D)
+                        return C(true);
+                      break;
+                    }
+                    u2.push({ type: "Quotes", code: "InvalidQuotes", message: "Trailing quote on quoted field is malformed", row: h2.length, index: F }), m2++;
+                  }
+                } else
+                  m2++;
+              }
+          return E2();
+          function k(e3) {
+            h2.push(e3), d2 = F;
+          }
+          function b2(e3) {
+            var t2 = 0;
+            if (e3 !== -1) {
+              var i3 = r.substring(m2 + 1, e3);
+              i3 && i3.trim() === "" && (t2 = i3.length);
+            }
+            return t2;
+          }
+          function E2(e3) {
+            return i2 || (e3 === void 0 && (e3 = r.substring(F)), f2.push(e3), F = n2, k(f2), o2 && R()), C();
+          }
+          function w2(e3) {
+            F = e3, k(f2), f2 = [], g2 = r.indexOf(x, F);
+          }
+          function C(e3) {
+            return { data: h2, errors: u2, meta: { delimiter: O, linebreak: x, aborted: z, truncated: !!e3, cursor: d2 + (t || 0) } };
+          }
+          function R() {
+            T(C()), h2 = [], u2 = [];
+          }
+        }, this.abort = function() {
+          z = true;
+        }, this.getCharIndex = function() {
+          return F;
+        };
+      }
+      function _(e) {
+        var t = e.data, i2 = a[t.workerId], r = false;
+        if (t.error)
+          i2.userError(t.error, t.file);
+        else if (t.results && t.results.data) {
+          var n2 = { abort: function() {
+            r = true, m(t.workerId, { data: [], errors: [], meta: { aborted: true } });
+          }, pause: y, resume: y };
+          if (M(i2.userStep)) {
+            for (var s2 = 0; s2 < t.results.data.length && (i2.userStep({ data: t.results.data[s2], errors: t.results.errors, meta: t.results.meta }, n2), !r); s2++)
+              ;
+            delete t.results;
+          } else
+            M(i2.userChunk) && (i2.userChunk(t.results, n2, t.file), delete t.results);
+        }
+        t.finished && !r && m(t.workerId, t.results);
+      }
+      function m(e, t) {
+        var i2 = a[e];
+        M(i2.userComplete) && i2.userComplete(t), i2.terminate(), delete a[e];
+      }
+      function y() {
+        throw new Error("Not implemented.");
+      }
+      function w(e) {
+        if (typeof e != "object" || e === null)
+          return e;
+        var t = Array.isArray(e) ? [] : {};
+        for (var i2 in e)
+          t[i2] = w(e[i2]);
+        return t;
+      }
+      function v(e, t) {
+        return function() {
+          e.apply(t, arguments);
+        };
+      }
+      function M(e) {
+        return typeof e == "function";
+      }
+      return o && (f.onmessage = function(e) {
+        var t = e.data;
+        b.WORKER_ID === void 0 && t && (b.WORKER_ID = t.workerId);
+        if (typeof t.input == "string")
+          f.postMessage({ workerId: b.WORKER_ID, results: b.parse(t.input, t.config), finished: true });
+        else if (f.File && t.input instanceof File || t.input instanceof Object) {
+          var i2 = b.parse(t.input, t.config);
+          i2 && f.postMessage({ workerId: b.WORKER_ID, results: i2, finished: true });
+        }
+      }), (l.prototype = Object.create(u.prototype)).constructor = l, (c.prototype = Object.create(u.prototype)).constructor = c, (p.prototype = Object.create(p.prototype)).constructor = p, (g.prototype = Object.create(u.prototype)).constructor = g, b;
+    });
+  }
+});
+
 // node_modules/fast-deep-equal/index.js
 var require_fast_deep_equal = __commonJS({
   "node_modules/fast-deep-equal/index.js"(exports, module2) {
@@ -21355,62 +21896,57 @@ var require_react_contenteditable = __commonJS({
 
 // src/main.ts
 __export(exports, {
-  default: () => MyPlugin
+  default: () => MarkdownTableEditorPlugin
 });
-var import_obsidian3 = __toModule(require("obsidian"));
+var import_obsidian5 = __toModule(require("obsidian"));
 
 // src/view.tsx
-var import_obsidian2 = __toModule(require("obsidian"));
+var import_obsidian3 = __toModule(require("obsidian"));
 var React5 = __toModule(require_react());
 var ReactDOM = __toModule(require_react_dom());
 
 // src/views/TableEditor.tsx
+var import_obsidian2 = __toModule(require("obsidian"));
 var React4 = __toModule(require_react());
 
 // src/utils/markdown.ts
-function parseMarkdownTable(data) {
-  if (data) {
-    data = data.trim();
-    const lines = data.split("\n");
-    if (lines.length < 2) {
-      return;
-    }
-    let headers = lines[0].split("|");
-    headers = headers.splice(1, headers.length - 2);
-    if (headers.length <= 1) {
-      return;
-    }
-    let rows = void 0;
-    if (lines.length > 2) {
-      rows = lines.splice(2).map((line) => line.split("|"));
-    }
-    for (let idx = 0; idx < rows.length; idx++) {
-      rows[idx] = rows[idx].splice(1, rows[idx].length - 2);
-    }
-    const result = [];
-    for (let idx = 0; idx < rows.length + 1; idx++) {
-      const data2 = idx === 0 ? headers : rows[idx - 1];
-      const rowResult = [];
-      for (let colIdx = 0; colIdx < data2.length; colIdx++) {
-        rowResult.push(data2[colIdx].trim());
-      }
-      result.push(rowResult);
-    }
-    return result;
-  }
-  return void 0;
-}
-function parseCsvData(data) {
+var Papa = __toModule(require_papaparse_min());
+function parseInputData(input) {
   var _a;
-  const csvData = data.split("\n").map((line) => line.split(",").map((value) => value.trim()));
-  if (csvData && ((_a = csvData[0]) == null ? void 0 : _a.length) && csvData[0].length > 1) {
-    return csvData;
+  let { data, meta } = Papa.parse((input || "").trim());
+  if (data && ((_a = data[0]) == null ? void 0 : _a.length) && data[0].length > 1) {
+    if (meta.delimiter === "|") {
+      if (data.length > 1) {
+        data.splice(1, 1);
+      }
+      data = data.map((row) => {
+        row.splice(row.length - 1, 1);
+        row.splice(0, 1);
+        return row;
+      });
+      data = data.map((row) => {
+        let writeIndex = 0;
+        const result = [];
+        for (let index = 0; index < row.length; index++) {
+          if (index === row.length - 1) {
+            result.push(row[index]);
+            continue;
+          }
+          if (row[index].includes("[[") && row[index].endsWith("\\") && row[index + 1].includes("]]")) {
+            result[writeIndex] = `${row[index]}|${row[index + 1]}`;
+            writeIndex++;
+            index++;
+          } else {
+            result[writeIndex] = row[index];
+            writeIndex++;
+          }
+        }
+        return result;
+      });
+    }
+    return data;
   }
   return void 0;
-}
-function parseExcelData(data) {
-  const excelData = data.replaceAll("	", ",");
-  return parseCsvData(excelData);
 }
 function sanitize(data) {
   const maxCol = data.map((r) => r.length).reduce((a, v) => a > v ? a : v, -1);
@@ -21475,14 +22011,29 @@ var useApp = () => {
 var import_obsidian = __toModule(require("obsidian"));
 var React3 = __toModule(require_react());
 var import_react_contenteditable = __toModule(require_react_contenteditable());
-var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify, setColJustify }) => {
+var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify, setColJustify, autoFocus = false }) => {
   const contentEditable = React3.useRef();
+  const contextMenu = React3.useRef();
   const handleChange = (evt) => {
     onContentChanged(row, col, evt.target.value);
+  };
+  const handleKeyDown = (evt) => {
+    if (evt.altKey && evt.code === "KeyO") {
+      showContextMenu({
+        x: contextMenu.current.getBoundingClientRect().left,
+        y: contextMenu.current.getBoundingClientRect().top
+      });
+    }
   };
   const app = useApp();
   const [isHovering, setIsHovering] = React3.useState(false);
   const [isFocused, setIsFocused] = React3.useState(false);
+  React3.useEffect(() => {
+    if (autoFocus) {
+      contentEditable.current.setText("");
+      contentEditable.current.focus();
+    }
+  }, [autoFocus]);
   const showContextMenu = (event) => {
     const menu = new import_obsidian.Menu(app);
     const validateAndSetValues = (values2) => {
@@ -21493,37 +22044,37 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       }
     };
     if (row === 0) {
-      menu.addItem((item) => item.setTitle("Left align").setIcon("left-arrow").onClick(() => {
+      menu.addItem((item) => item.setTitle("Left align").setIcon("alignLeft").onClick(() => {
         const newColJustify = [...colJustify];
         newColJustify[col] = "LEFT";
         setColJustify(newColJustify);
       }));
-      menu.addItem((item) => item.setTitle("Center align").setIcon("lines-of-text").onClick(() => {
+      menu.addItem((item) => item.setTitle("Center align").setIcon("alignCenter").onClick(() => {
         const newColJustify = [...colJustify];
         newColJustify[col] = "CENTER";
         setColJustify(newColJustify);
       }));
-      menu.addItem((item) => item.setTitle("Right align").setIcon("right-arrow").onClick(() => {
+      menu.addItem((item) => item.setTitle("Right align").setIcon("alignRight").onClick(() => {
         const newColJustify = [...colJustify];
         newColJustify[col] = "RIGHT";
         setColJustify(newColJustify);
       }));
       menu.addSeparator();
-      menu.addItem((item) => item.setTitle("Sort text ascending").setIcon("double-up-arrow-glyph").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort text ascending").setIcon("sortAsc").onClick(() => {
         let newValues = [...values];
         const firstRow = newValues.shift();
         newValues.sort((a, b) => a[col].localeCompare(b[col]));
         newValues = [firstRow].concat(newValues);
         validateAndSetValues(newValues);
       }));
-      menu.addItem((item) => item.setTitle("Sort text descending").setIcon("double-down-arrow-glyph").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort text descending").setIcon("sortDesc").onClick(() => {
         let newValues = [...values];
         const firstRow = newValues.shift();
         newValues.sort((a, b) => b[col].localeCompare(a[col]));
         newValues = [firstRow].concat(newValues);
         validateAndSetValues(newValues);
       }));
-      menu.addItem((item) => item.setTitle("Sort numeric ascending").setIcon("double-up-arrow-glyph").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort numeric ascending").setIcon("sortAscNumeric").onClick(() => {
         let newValues = [...values];
         const isAllNumeric = newValues.map((row2, idx) => idx === 0 || Number.isFinite(Number.parseFloat(row2[col]))).every((r) => r === true);
         if (!isAllNumeric) {
@@ -21534,7 +22085,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
         newValues = [firstRow].concat(newValues);
         validateAndSetValues(newValues);
       }));
-      menu.addItem((item) => item.setTitle("Sort numeric descending").setIcon("double-down-arrow-glyph").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort numeric descending").setIcon("sortDescNumeric").onClick(() => {
         let newValues = [...values];
         const isAllNumeric = newValues.map((row2, idx) => idx === 0 || Number.isFinite(Number.parseFloat(row2[col]))).every((r) => r === true);
         if (!isAllNumeric) {
@@ -21547,25 +22098,25 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       }));
       menu.addSeparator();
     }
-    menu.addItem((item) => item.setTitle("Add row above").setIcon("up-chevron-glyph").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add row above").setIcon("insertRow").onClick(() => {
       const colLen = values[0].length;
       const newValues = [...values];
       newValues.splice(row, 0, Array(colLen).fill(""));
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("Add row below").setIcon("down-chevron-glyph").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add row below").setIcon("insertRow").onClick(() => {
       const colLen = values[0].length;
       const newValues = [...values];
       newValues.splice(row + 1, 0, Array(colLen).fill(""));
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("Remove row").setIcon("cross").onClick(() => {
+    menu.addItem((item) => item.setTitle("Remove row").setIcon("deleteRow").onClick(() => {
       const newValues = [...values];
       newValues.splice(row, 1);
       validateAndSetValues(newValues);
     }));
     menu.addSeparator();
-    menu.addItem((item) => item.setTitle("Add column left").setIcon("left-chevron-glyph").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add column left").setIcon("insertColumn").onClick(() => {
       const newValues = [...values];
       newValues.forEach((row2) => row2.splice(col, 0, ""));
       const newColJustify = [...colJustify];
@@ -21573,7 +22124,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       validateAndSetValues(newValues);
       setColJustify(newColJustify);
     }));
-    menu.addItem((item) => item.setTitle("Add column right").setIcon("right-chevron-glyph").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add column right").setIcon("insertColumn").onClick(() => {
       const newValues = [...values];
       newValues.forEach((row2) => row2.splice(col + 1, 0, ""));
       const newColJustify = [...colJustify];
@@ -21581,7 +22132,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       validateAndSetValues(newValues);
       setColJustify(newColJustify);
     }));
-    menu.addItem((item) => item.setTitle("Remove column").setIcon("cross").onClick(() => {
+    menu.addItem((item) => item.setTitle("Remove column").setIcon("deleteColumn").onClick(() => {
       const newValues = [...values];
       newValues.forEach((row2) => row2.splice(col, 1));
       const newColJustify = [...colJustify];
@@ -21590,7 +22141,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       setColJustify(newColJustify);
     }));
     menu.addSeparator();
-    menu.addItem((item) => item.setTitle("Move row up").setIcon("up-arrow-with-tail").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move row up").setIcon("moveRowUp").onClick(() => {
       if (row === 0) {
         new import_obsidian.Notice("Can not move this row up!");
         return;
@@ -21599,7 +22150,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       [newValues[row - 1], newValues[row]] = [newValues[row], newValues[row - 1]];
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("Move row down").setIcon("down-arrow-with-tail").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move row down").setIcon("moveRowDown").onClick(() => {
       if (row === values.length - 1) {
         new import_obsidian.Notice("Can not move this row down!");
         return;
@@ -21608,7 +22159,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       [newValues[row + 1], newValues[row]] = [newValues[row], newValues[row + 1]];
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("Move column right").setIcon("right-arrow-with-tail").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move column right").setIcon("moveColumnRight").onClick(() => {
       if (col === values[0].length - 1) {
         new import_obsidian.Notice("Can not move this column right!");
         return;
@@ -21617,7 +22168,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       newValues.forEach((_, rowIdx) => [newValues[rowIdx][col + 1], newValues[rowIdx][col]] = [newValues[rowIdx][col], newValues[rowIdx][col + 1]]);
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("Move column left").setIcon("left-arrow-with-tail").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move column left").setIcon("moveColumnLeft").onClick(() => {
       if (col === 0) {
         new import_obsidian.Notice("Can not move this column left!");
         return;
@@ -21626,7 +22177,11 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       newValues.forEach((_, rowIdx) => [newValues[rowIdx][col - 1], newValues[rowIdx][col]] = [newValues[rowIdx][col], newValues[rowIdx][col - 1]]);
       validateAndSetValues(newValues);
     }));
-    menu.showAtMouseEvent(event);
+    if ((event == null ? void 0 : event.constructor.name) === "SyntheticBaseEvent") {
+      menu.showAtMouseEvent(event);
+    } else {
+      menu.showAtPosition(event);
+    }
   };
   return /* @__PURE__ */ React3.createElement("div", {
     className: `mte cell-container relative ${row === 0 ? "header" : "data"}`,
@@ -21641,9 +22196,11 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
     onFocus: (_) => setIsFocused(true),
     onBlur: (_) => setIsFocused(false),
     onChange: handleChange,
+    onKeyDown: handleKeyDown,
     tagName: "span"
   }), /* @__PURE__ */ React3.createElement("span", {
     onClick: (e) => showContextMenu(e),
+    ref: contextMenu,
     className: `absolute ${isHovering || isFocused ? "display-block" : "display-none"}`
   }, /* @__PURE__ */ React3.createElement("svg", {
     viewBox: "0 0 100 100",
@@ -21659,29 +22216,44 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
 var Cell_default = Cell;
 
 // src/views/TableEditor.tsx
-var TableEditor = (props) => {
+var TableEditor = ({ inputData, updateViewData, supressNotices = false }) => {
   var _a;
   const [newRows, setNewRows] = React4.useState(3);
   const [newCols, setNewCols] = React4.useState(3);
   const [values, setValues] = React4.useState(Array(2).fill([""]));
   const [colJustify, setColJustify] = React4.useState([]);
   const [copyText, setCopyText] = React4.useState("Copy as Markdown");
+  const [autoFocusRow, setAutoFocusRow] = React4.useState(0);
   const onContentChanged = (rowIndex, colIndex, value) => {
     const newValues = [...values];
     newValues[rowIndex][colIndex] = value;
     setValues(newValues);
   };
+  const computeAutoFocusRow = React4.useCallback((values2) => {
+    if (!values2 || !values2.length || values2.length === 0 || !values2[0] || !values2[0].length || values2[0].length === 0 || !values2[0][0]) {
+      setAutoFocusRow(0);
+    } else {
+      setAutoFocusRow(1);
+    }
+  }, [inputData]);
   React4.useEffect(() => {
-    let data = parseMarkdownTable(props.data) || parseCsvData(props.data) || parseExcelData(props.data) || Array(2).fill([""]);
+    let data = parseInputData(inputData);
+    if (!data) {
+      if (!supressNotices) {
+        new import_obsidian2.Notice("Selection is not a valid Markdown table or CSV or Excel data. Creating a new table!");
+      }
+      data = Array(2).fill([""]);
+    }
     data = sanitize(data);
     setValues(data);
     setColJustify(Array(data[0].length).fill("LEFT"));
-  }, [props.data]);
+    computeAutoFocusRow(data);
+  }, [inputData]);
   React4.useEffect(() => {
     if (copyText !== "Copy as Markdown") {
       setCopyText("Copy as Markdown");
     }
-    props.updateViewData(toMarkdown(values, colJustify));
+    updateViewData(toMarkdown(values, colJustify));
   }, [values, colJustify]);
   const copyClicked = () => {
     var _a2;
@@ -21696,6 +22268,14 @@ var TableEditor = (props) => {
   const clearClicked = () => {
     setValues(Array(2).fill([""]));
     setColJustify(Array(1).fill("LEFT"));
+  };
+  const shouldAutoFocus = (rowIndex, colIndex) => {
+    if (colIndex === 0) {
+      if (rowIndex === autoFocusRow) {
+        return true;
+      }
+    }
+    return false;
   };
   return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement("div", {
     className: "mte button-container"
@@ -21729,7 +22309,8 @@ var TableEditor = (props) => {
     setValues,
     colJustify,
     setColJustify,
-    onContentChanged
+    onContentChanged,
+    autoFocus: shouldAutoFocus(rowIdx, colIdx)
   }))).flat()), /* @__PURE__ */ React4.createElement("div", {
     className: "mte button-container"
   }, /* @__PURE__ */ React4.createElement("button", {
@@ -21739,7 +22320,7 @@ var TableEditor = (props) => {
 
 // src/view.tsx
 var MARKDOWN_TABLE_EDITOR_VIEW = "markdown-table-editor-view";
-var TableView = class extends import_obsidian2.ItemView {
+var TableView = class extends import_obsidian3.ItemView {
   constructor(leaf) {
     super(leaf);
   }
@@ -21756,8 +22337,9 @@ var TableView = class extends import_obsidian2.ItemView {
         ReactDOM.render(/* @__PURE__ */ React5.createElement(AppContext.Provider, {
           value: this.app
         }, /* @__PURE__ */ React5.createElement(TableEditor, {
-          data: state.data,
-          updateViewData: (data) => this.state.data = data
+          inputData: state.data,
+          updateViewData: (data) => this.state.data = data,
+          supressNotices: false
         })), this.containerEl.children[1]);
       }
       return;
@@ -21773,8 +22355,9 @@ var TableView = class extends import_obsidian2.ItemView {
       ReactDOM.render(/* @__PURE__ */ React5.createElement(AppContext.Provider, {
         value: this.app
       }, /* @__PURE__ */ React5.createElement(TableEditor, {
-        data: "",
-        updateViewData: (data) => this.state.data = data
+        inputData: "",
+        updateViewData: (data) => this.state.data = data,
+        supressNotices: true
       })), this.containerEl.children[1]);
     });
   }
@@ -21785,19 +22368,201 @@ var TableView = class extends import_obsidian2.ItemView {
   }
 };
 
+// src/utils/icons.ts
+var import_obsidian4 = __toModule(require("obsidian"));
+var icons = {
+  spreadsheet: `
+<svg version="1.1" viewBox="0 0 482.81 482.81" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m457.58 25.464-432.83 0.42151c-13.658 0.013314-24.758 11.115-24.757 24.757l0.031024 347.45c7.4833e-4 8.3808 4.211 15.772 10.608 20.259 3.4533 2.4499 5.0716 3.2901 8.879 3.9022 1.7033 0.37333 3.4561 0.59471 5.2692 0.59294l432.84-0.42151c1.809-1e-3 3.5618-0.21823 5.2568-0.59294h1.2174v-0.37196c10.505-2.8727 18.279-12.397 18.278-23.788l-0.031-347.43c1e-3 -13.649-11.107-24.763-24.768-24.763zm3.5453 24.763v71.344h-163.31v-74.886h159.76c1.9641 0.0014 3.5467 1.5922 3.5467 3.5425zm-1.6737 350.37h-161.6v-67.207h163.31v64.268c1e-3 1.2572-0.70549 2.321-1.7033 2.9386zm-438.21-2.5171v-64.268h76.646v67.207h-74.942c-0.99784-0.61765-1.7033-1.6814-1.7033-2.9386zm255.28-155.18v69.688h-157.42v-69.688zm0 90.913v67.207h-157.42v-67.207zm-0.031-211.83h-157.42v-74.886h157.42zm0 21.226v77.826h-157.42v-77.826zm-178.64 77.826h-76.646v-77.826h76.646zm0.03102 21.862v69.688h-76.646v-69.688zm199.95 69.268v-69.697h163.31v69.697zm-0.031-91.552v-77.826h163.31v77.826z" stroke-width="1.3725"/>
+</svg>`,
+  alignLeft: `
+<svg class="widget-icon" enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(-1 0 0 1 512 0)">
+    <path fill="currentColor" d="m501.33 170.67h-320c-5.896 0-10.667 4.771-10.667 10.667v21.333c0 5.896 4.771 10.667 10.667 10.667h320c5.896 0 10.667-4.771 10.667-10.667v-21.333c0-5.896-4.771-10.667-10.667-10.667z"/>
+    <path fill="currentColor" d="m501.33 298.67h-490.67c-5.896 0-10.667 4.771-10.667 10.666v21.333c0 5.896 4.771 10.667 10.667 10.667h490.67c5.896 0 10.667-4.771 10.667-10.667v-21.333c-1e-3 -5.895-4.772-10.666-10.668-10.666z"/>
+    <path fill="currentColor" d="m501.33 426.67h-320c-5.896 0-10.667 4.771-10.667 10.667v21.333c0 5.896 4.771 10.667 10.667 10.667h320c5.896 0 10.667-4.771 10.667-10.667v-21.333c0-5.896-4.771-10.667-10.667-10.667z"/>
+    <path fill="currentColor" d="m501.33 42.667h-490.67c-5.896 0-10.667 4.771-10.667 10.666v21.333c0 5.896 4.771 10.667 10.667 10.667h490.67c5.896 0 10.667-4.771 10.667-10.667v-21.333c-1e-3 -5.895-4.772-10.666-10.668-10.666z"/>
+  </g>
+</svg>`,
+  alignCenter: `
+<svg class="widget-icon" enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(-1 0 0 1 512 0)">
+    <path fill="currentColor" d="m416 170.67h-320c-5.896 0-10.667 4.771-10.667 10.667v21.333c0 5.896 4.771 10.667 10.667 10.667h320c5.896 0 10.667-4.771 10.667-10.667v-21.333c0-5.896-4.771-10.667-10.667-10.667z"/>
+    <path fill="currentColor" d="m501.33 298.67h-490.67c-5.896 0-10.667 4.771-10.667 10.666v21.333c0 5.896 4.771 10.667 10.667 10.667h490.67c5.896 0 10.667-4.771 10.667-10.667v-21.333c-1e-3 -5.895-4.772-10.666-10.668-10.666z"/>
+    <path fill="currentColor" d="m416 426.67h-320c-5.896 0-10.667 4.771-10.667 10.667v21.333c0 5.896 4.771 10.667 10.667 10.667h320c5.896 0 10.667-4.771 10.667-10.667v-21.333c0-5.896-4.771-10.667-10.667-10.667z"/>
+    <path fill="currentColor" d="m501.33 42.667h-490.67c-5.896 0-10.667 4.771-10.667 10.666v21.333c0 5.896 4.771 10.667 10.667 10.667h490.67c5.896 0 10.667-4.771 10.667-10.667v-21.333c-1e-3 -5.895-4.772-10.666-10.668-10.666z"/>
+  </g>
+</svg>`,
+  alignRight: `
+<svg class="widget-icon" enable-background="new 0 0 512 512" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m501.33 170.67h-320c-5.896 0-10.667 4.771-10.667 10.667v21.333c0 5.896 4.771 10.667 10.667 10.667h320c5.896 0 10.667-4.771 10.667-10.667v-21.333c0-5.896-4.771-10.667-10.667-10.667z"/>
+  <path fill="currentColor" d="m501.33 298.67h-490.67c-5.896 0-10.667 4.771-10.667 10.666v21.333c0 5.896 4.771 10.667 10.667 10.667h490.67c5.896 0 10.667-4.771 10.667-10.667v-21.333c-1e-3 -5.895-4.772-10.666-10.668-10.666z"/>
+  <path fill="currentColor" d="m501.33 426.67h-320c-5.896 0-10.667 4.771-10.667 10.667v21.333c0 5.896 4.771 10.667 10.667 10.667h320c5.896 0 10.667-4.771 10.667-10.667v-21.333c0-5.896-4.771-10.667-10.667-10.667z"/>
+  <path fill="currentColor" d="m501.33 42.667h-490.67c-5.896 0-10.667 4.771-10.667 10.666v21.333c0 5.896 4.771 10.667 10.667 10.667h490.67c5.896 0 10.667-4.771 10.667-10.667v-21.333c-1e-3 -5.895-4.772-10.666-10.668-10.666z"/>
+</svg>`,
+  deleteColumn: `
+<svg class="widget-icon" enable-background="new 0 0 26 26" version="1.1" viewBox="0 0 26 26" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m13.594 20.85v3.15h-10v-22h10v3.15c0.633-0.323 1.304-0.565 2-0.727v-3.423c0-0.551-0.448-1-1-1h-12c-0.55 0-1 0.449-1 1v24c0 0.551 0.449 1 1 1h12c0.552 0 1-0.449 1-1v-3.424c-0.696-0.161-1.367-0.403-2-0.726z"/>
+  <path fill="currentColor" d="m17.594 6.188c-3.762 0-6.813 3.051-6.812 6.813-1e-3 3.761 3.05 6.812 6.812 6.812s6.813-3.051 6.813-6.813-3.052-6.812-6.813-6.812zm3.632 7.802-7.267 1e-3v-1.982h7.268l-1e-3 1.981z"/>
+</svg>`,
+  deleteRow: `
+<svg class="widget-icon" enable-background="new 0 0 15.381 15.381" version="1.1" viewBox="0 0 15.381 15.381" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="M0,1.732v7.732h6.053c0-0.035-0.004-0.07-0.004-0.104c0-0.434,0.061-0.854,0.165-1.255H1.36V3.092    h12.662v2.192c0.546,0.396,1.01,0.897,1.359,1.477V1.732H0z"/>
+  <path fill="currentColor" d="m11.196 5.28c-2.307 0-4.183 1.877-4.183 4.184 0 2.308 1.876 4.185 4.183 4.185 2.309 0 4.185-1.877 4.185-4.185 0-2.307-1.876-4.184-4.185-4.184zm0 7.233c-1.679 0-3.047-1.367-3.047-3.049 0-1.68 1.368-3.049 3.047-3.049 1.684 0 3.05 1.369 3.05 3.049 0 1.682-1.366 3.049-3.05 3.049z"/>
+  <rect x="9.312" y="8.759" width="3.844" height="1.104"/>
+</svg>`,
+  insertColumn: `
+<svg class="widget-icon" version="1.1" viewBox="-21 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m288 106.67c-3.9258 0-7.8516-1.4297-10.922-4.3125l-80-74.664c-4.8008-4.4805-6.3789-11.457-3.9688-17.559 2.4102-6.1016 8.3203-10.133 14.891-10.133h160c6.5703 0 12.48 4.0117 14.891 10.133 2.4102 6.125 0.83203 13.078-3.9688 17.559l-80 74.664c-3.0703 2.8828-6.9961 4.3125-10.922 4.3125zm-39.402-74.668 39.402 36.777 39.402-36.777z"/>
+  <path fill="currentColor" d="m432 512h-53.332c-20.59 0-37.336-16.746-37.336-37.332v-330.67c0-20.586 16.746-37.332 37.336-37.332h53.332c20.586 0 37.332 16.746 37.332 37.332v330.67c0 20.586-16.746 37.332-37.332 37.332zm-53.332-373.33c-2.9453 0-5.3359 2.3867-5.3359 5.332v330.67c0 2.9414 2.3906 5.332 5.3359 5.332h53.332c2.9453 0 5.332-2.3906 5.332-5.332v-330.67c0-2.9453-2.3867-5.332-5.332-5.332z"/>
+  <path fill="currentColor" d="m197.33 512h-160c-20.586 0-37.332-16.746-37.332-37.332v-330.67c0-20.586 16.746-37.332 37.332-37.332h160c20.59 0 37.336 16.746 37.336 37.332v330.67c0 20.586-16.746 37.332-37.336 37.332zm-160-373.33c-2.9414 0-5.332 2.3867-5.332 5.332v330.67c0 2.9414 2.3906 5.332 5.332 5.332h160c2.9453 0 5.3359-2.3906 5.3359-5.332v-330.67c0-2.9453-2.3906-5.332-5.3359-5.332z"/>
+  <path fill="currentColor" d="m453.33 325.33h-96c-8.832 0-16-7.168-16-16s7.168-16 16-16h96c8.832 0 16 7.168 16 16s-7.168 16-16 16z"/>
+  <path fill="currentColor" d="m218.67 325.33h-202.67c-8.832 0-16-7.168-16-16s7.168-16 16-16h202.67c8.832 0 16 7.168 16 16s-7.168 16-16 16z"/>
+  <path fill="currentColor" d="m117.33 512c-8.832 0-16-7.168-16-16v-373.33c0-8.832 7.168-16 16-16s16 7.168 16 16v373.33c0 8.832-7.168 16-16 16z"/>
+</svg>`,
+  insertRow: `
+<svg class="widget-icon" version="1.1" viewBox="0 -21 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m16 277.33c-1.9844 0-3.9688-0.36328-5.8672-1.1094-6.1211-2.4102-10.133-8.3203-10.133-14.891v-160c0-6.5703 4.0117-12.48 10.133-14.891 6.1445-2.4102 13.078-0.85156 17.559 3.9688l74.664 80c5.7617 6.1445 5.7617 15.68 0 21.824l-74.664 80c-3.0938 3.3281-7.3398 5.0977-11.691 5.0977zm16-135.4v78.805l36.777-39.402z"/>
+  <path fill="currentColor" d="m474.67 128h-330.67c-20.586 0-37.332-16.746-37.332-37.332v-53.336c0-20.586 16.746-37.332 37.332-37.332h330.67c20.586 0 37.332 16.746 37.332 37.332v53.336c0 20.586-16.746 37.332-37.332 37.332zm-330.67-96c-2.9453 0-5.332 2.3906-5.332 5.332v53.336c0 2.9414 2.3867 5.332 5.332 5.332h330.67c2.9414 0 5.332-2.3906 5.332-5.332v-53.336c0-2.9414-2.3906-5.332-5.332-5.332z"/>
+  <path fill="currentColor" d="m474.67 469.33h-330.67c-20.586 0-37.332-16.746-37.332-37.332v-160c0-20.586 16.746-37.332 37.332-37.332h330.67c20.586 0 37.332 16.746 37.332 37.332v160c0 20.586-16.746 37.332-37.332 37.332zm-330.67-202.66c-2.9453 0-5.332 2.3867-5.332 5.332v160c0 2.9453 2.3867 5.332 5.332 5.332h330.67c2.9414 0 5.332-2.3867 5.332-5.332v-160c0-2.9453-2.3906-5.332-5.332-5.332z"/>
+  <path fill="currentColor" d="m309.33 128c-8.832 0-16-7.168-16-16v-96c0-8.832 7.168-16 16-16s16 7.168 16 16v96c0 8.832-7.168 16-16 16z"/>
+  <path fill="currentColor" d="m309.33 469.33c-8.832 0-16-7.168-16-16v-202.66c0-8.832 7.168-16 16-16s16 7.168 16 16v202.66c0 8.832-7.168 16-16 16z"/>
+  <path fill="currentColor" d="m496 368h-373.33c-8.832 0-16-7.168-16-16s7.168-16 16-16h373.33c8.832 0 16 7.168 16 16s-7.168 16-16 16z"/>
+</svg>`,
+  moveColumnLeft: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512.02 512" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m357.35 512.01h96c32.363 0 58.668-26.305 58.668-58.668v-394.66c0-32.363-26.305-58.668-58.668-58.668h-96c-32.363 0-58.664 26.305-58.664 58.668v394.66c0 32.363 26.301 58.668 58.664 58.668zm96-480c14.699 0 26.668 11.969 26.668 26.668v394.66c0 14.699-11.969 26.668-26.668 26.668h-96c-14.699 0-26.664-11.969-26.664-26.668v-394.66c0-14.699 11.965-26.668 26.664-26.668z"/>
+  <path fill="currentColor" d="m16.016 272.01h224c8.832 0 16-7.168 16-16s-7.168-16-16-16h-224c-8.832 0-16 7.168-16 16s7.168 16 16 16z"/>
+  <path fill="currentColor" d="m101.35 357.34c4.0976 0 8.1914-1.5547 11.309-4.6914 6.25-6.25 6.25-16.383 0-22.637l-74.027-74.023 74.027-74.027c6.25-6.25 6.25-16.387 0-22.637s-16.383-6.25-22.637 0l-85.332 85.336c-6.25 6.25-6.25 16.383 0 22.633l85.332 85.332c3.1367 3.1602 7.2344 4.7148 11.328 4.7148z"/>
+</svg>`,
+  moveColumnRight: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512.02 512" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m154.67 512.01h-96c-32.363 0-58.668-26.305-58.668-58.668v-394.66c0-32.363 26.305-58.668 58.668-58.668h96c32.363 0 58.664 26.305 58.664 58.668v394.66c0 32.363-26.301 58.668-58.664 58.668zm-96-480c-14.699 0-26.668 11.969-26.668 26.668v394.66c0 14.699 11.969 26.668 26.668 26.668h96c14.699 0 26.664-11.969 26.664-26.668v-394.66c0-14.699-11.965-26.668-26.664-26.668z"/>
+  <path fill="currentColor" d="m496 272.01h-224c-8.832 0-16-7.168-16-16 0-8.832 7.168-16 16-16h224c8.832 0 16 7.168 16 16 0 8.832-7.168 16-16 16z"/>
+  <path fill="currentColor" d="m410.67 357.34c-4.0977 0-8.1914-1.5547-11.309-4.6914-6.25-6.25-6.25-16.383 0-22.637l74.027-74.023-74.027-74.027c-6.25-6.25-6.25-16.387 0-22.637s16.383-6.25 22.637 0l85.332 85.336c6.25 6.25 6.25 16.383 0 22.633l-85.332 85.332c-3.1367 3.1602-7.2344 4.7148-11.328 4.7148z"/>
+</svg>`,
+  moveRowDown: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m453.33 213.33h-394.66c-32.363 0-58.668-26.301-58.668-58.664v-96c0-32.363 26.305-58.668 58.668-58.668h394.66c32.363 0 58.668 26.305 58.668 58.668v96c0 32.363-26.305 58.664-58.668 58.664zm-394.66-181.33c-14.699 0-26.668 11.969-26.668 26.668v96c0 14.699 11.969 26.664 26.668 26.664h394.66c14.699 0 26.668-11.965 26.668-26.664v-96c0-14.699-11.969-26.668-26.668-26.668z"/>
+  <path fill="currentColor" d="m256 512c-8.832 0-16-7.168-16-16v-224c0-8.832 7.168-16 16-16s16 7.168 16 16v224c0 8.832-7.168 16-16 16z"/>
+  <path fill="currentColor" d="m256 512c-4.0977 0-8.1914-1.5586-11.309-4.6914l-85.332-85.336c-6.25-6.25-6.25-16.383 0-22.633s16.383-6.25 22.637 0l74.023 74.027 74.027-74.027c6.25-6.25 16.387-6.25 22.637 0s6.25 16.383 0 22.633l-85.336 85.336c-3.1562 3.1328-7.25 4.6914-11.348 4.6914z"/>
+</svg>`,
+  moveRowUp: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m453.33 298.67h-394.66c-32.363 0-58.668 26.301-58.668 58.664v96c0 32.363 26.305 58.668 58.668 58.668h394.66c32.363 0 58.668-26.305 58.668-58.668v-96c0-32.363-26.305-58.664-58.668-58.664zm-394.66 181.33c-14.699 0-26.668-11.969-26.668-26.668v-96c0-14.699 11.969-26.664 26.668-26.664h394.66c14.699 0 26.668 11.965 26.668 26.664v96c0 14.699-11.969 26.668-26.668 26.668z"/>
+  <path fill="currentColor" d="m256 0c-8.832 0-16 7.168-16 16v224c0 8.832 7.168 16 16 16s16-7.168 16-16v-224c0-8.832-7.168-16-16-16z"/>
+  <path fill="currentColor" d="m256 0c-4.0977 0-8.1914 1.5586-11.309 4.6914l-85.332 85.336c-6.25 6.25-6.25 16.383 0 22.633s16.383 6.25 22.637 0l74.023-74.027 74.027 74.027c6.25 6.25 16.387 6.25 22.637 0s6.25-16.383 0-22.633l-85.336-85.336c-3.1562-3.1328-7.25-4.6914-11.348-4.6914z"/>
+</svg>`,
+  sortAsc: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1 0 0 -1 0 501.15)" stroke-width="1.3333">
+    <path fill="currentColor" d="m353.6 74.486c-11.776 0-21.333 9.5573-21.333 21.333v298.67c0 11.776 9.5573 21.333 21.333 21.333s21.333-9.5573 21.333-21.333v-298.67c0-11.776-9.5573-21.333-21.333-21.333z"/>
+    <path fill="currentColor" d="m353.6 74.486c-5.4636 0-10.922 2.0781-15.079 6.2552l-113.78 113.78c-8.3333 8.3333-8.3333 21.844 0 30.177 8.3333 8.3333 21.844 8.3333 30.183 0l98.697-98.703 98.703 98.703c8.3333 8.3333 21.849 8.3333 30.183 0 8.3333-8.3333 8.3333-21.844 0-30.177l-113.78-113.78c-4.2083-4.1771-9.6667-6.2552-15.131-6.2552z"/>
+  </g>
+  <path fill="currentColor" d="m166.04 210.11q-5.0971-13.492-9.5945-26.385-4.4974-13.192-9.2947-26.685h-94.146l-18.889 53.07h-30.283q11.993-32.981 22.487-60.865 10.494-28.184 20.388-53.369 10.194-25.186 20.089-47.973 9.8943-23.087 20.688-45.574h26.685q10.794 22.487 20.688 45.574 9.8943 22.787 19.789 47.973 10.194 25.186 20.688 53.369 10.494 27.884 22.487 60.865zm-27.284-77.056q-9.5945-26.085-19.189-50.371-9.2947-24.586-19.489-47.073-10.494 22.487-20.089 47.073-9.2947 24.286-18.589 50.371z"/>
+  <path fill="currentColor" d="m173.24 325.25q-6.896 7.7955-16.191 18.889-8.9948 10.794-19.189 24.286-10.194 13.192-20.988 28.184-10.794 14.692-21.288 29.983-10.194 14.991-19.489 29.983-9.2947 14.991-16.79 28.484h116.93v24.886h-150.81v-19.489q6.2964-11.993 14.692-26.385 8.695-14.392 18.29-29.383 9.8943-14.991 20.388-30.283t20.688-29.383q10.494-14.092 20.088-26.385 9.8943-12.293 17.99-21.588h-106.74v-24.886h142.42z"/>
+</svg>`,
+  sortAscNumeric: `
+  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1, 0, 0, -1, 0, 501.149994)" stroke-width="1.3333">
+    <path fill="currentColor" d="m353.6 74.486c-11.776 0-21.333 9.5573-21.333 21.333v298.67c0 11.776 9.5573 21.333 21.333 21.333s21.333-9.5573 21.333-21.333v-298.67c0-11.776-9.5573-21.333-21.333-21.333z"/>
+    <path fill="currentColor" d="m353.6 74.486c-5.4636 0-10.922 2.0781-15.079 6.2552l-113.78 113.78c-8.3333 8.3333-8.3333 21.844 0 30.177 8.3333 8.3333 21.844 8.3333 30.183 0l98.697-98.703 98.703 98.703c8.3333 8.3333 21.849 8.3333 30.183 0 8.3333-8.3333 8.3333-21.844 0-30.177l-113.78-113.78c-4.2083-4.1771-9.6667-6.2552-15.131-6.2552z"/>
+  </g>
+  <path fill="currentColor" d="M 53.564 467.19 C 64.964 479.16 77.694 485.145 91.754 485.145 C 97.644 485.145 103.249 483.672 108.569 480.727 C 113.889 477.782 118.544 473.27 122.534 467.19 C 126.524 461.11 129.706 453.272 132.081 443.677 C 134.456 434.082 135.644 422.635 135.644 409.335 C 129.754 414.845 123.246 419.357 116.121 422.872 C 108.996 426.387 101.159 428.145 92.609 428.145 C 85.009 428.145 77.694 426.862 70.664 424.297 C 63.634 421.732 57.364 417.885 51.854 412.755 C 46.344 407.625 41.926 401.26 38.601 393.66 C 35.276 386.06 33.614 377.225 33.614 367.155 C 33.614 358.225 35.181 349.817 38.316 341.932 C 41.451 334.047 45.821 327.16 51.426 321.27 C 57.031 315.38 63.776 310.725 71.661 307.305 C 79.546 303.885 88.334 302.175 98.024 302.175 C 107.904 302.175 116.359 303.695 123.389 306.735 C 130.419 309.775 136.309 313.765 141.059 318.705 C 144.479 322.315 147.471 326.305 150.036 330.675 C 152.601 335.045 154.786 340.365 156.591 346.635 C 158.396 352.905 159.726 360.41 160.581 369.15 C 161.436 377.89 161.864 388.435 161.864 400.785 C 161.864 419.785 160.059 436.077 156.449 449.662 C 152.839 463.247 147.804 474.41 141.344 483.15 C 134.884 491.89 127.331 498.302 118.686 502.387 C 110.041 506.472 100.589 508.515 90.329 508.515 C 79.309 508.515 69.429 506.567 60.689 502.672 C 51.949 498.777 43.969 493.315 36.749 486.285 L 53.564 467.19 Z M 96.884 407.055 C 104.104 407.055 111.086 405.25 117.831 401.64 C 124.576 398.03 130.514 393.66 135.644 388.53 L 135.644 379.98 C 135.644 361.93 132.176 348.25 125.241 338.94 C 118.306 329.63 108.949 324.975 97.169 324.975 C 91.659 324.975 86.576 325.972 81.921 327.967 C 77.266 329.962 73.181 332.717 69.666 336.232 C 66.151 339.747 63.396 344.022 61.401 349.057 C 59.406 354.092 58.409 359.745 58.409 366.015 C 58.409 372.475 59.454 378.222 61.544 383.257 C 63.634 388.292 66.436 392.567 69.951 396.082 C 73.466 399.597 77.551 402.305 82.206 404.205 C 86.861 406.105 91.754 407.055 96.884 407.055 Z"/>
+  <path fill="currentColor" d="M 106.861 6.476 L 106.861 180.2 L 140.205 180.2 L 140.205 202.616 L 41.575 202.616 L 41.575 180.2 L 81.643 180.2 L 81.643 38.699 L 44.096 66.999 L 30.367 48.226 L 88.368 6.476 L 106.861 6.476 Z" />
+</svg>`,
+  sortDesc: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1 0 0 -1 0 501.15)" stroke-width="1.3333">
+    <path fill="currentColor" d="m353.6 74.486c-11.776 0-21.333 9.5573-21.333 21.333v298.67c0 11.776 9.5573 21.333 21.333 21.333s21.333-9.5573 21.333-21.333v-298.67c0-11.776-9.5573-21.333-21.333-21.333z"/>
+    <path fill="currentColor" d="m353.6 74.486c-5.4636 0-10.922 2.0781-15.079 6.2552l-113.78 113.78c-8.3333 8.3333-8.3333 21.844 0 30.177 8.3333 8.3333 21.844 8.3333 30.183 0l98.697-98.703 98.703 98.703c8.3333 8.3333 21.849 8.3333 30.183 0 8.3333-8.3333 8.3333-21.844 0-30.177l-113.78-113.78c-4.2083-4.1771-9.6667-6.2552-15.131-6.2552z"/>
+  </g>
+  <path fill="currentColor" d="m169.11 507.72q-5.0971-13.492-9.5945-26.385-4.4974-13.192-9.2947-26.685h-94.146l-18.889 53.07h-30.283q11.993-32.981 22.487-60.865 10.494-28.184 20.388-53.369 10.194-25.186 20.088-47.973 9.8943-23.087 20.688-45.574h26.685q10.794 22.487 20.688 45.574 9.8943 22.787 19.789 47.973 10.194 25.186 20.688 53.369 10.494 27.884 22.487 60.865zm-27.284-77.056q-9.5945-26.085-19.189-50.371-9.2947-24.586-19.489-47.073-10.494 22.487-20.089 47.073-9.2947 24.286-18.589 50.371z"/>
+  <path fill="currentColor" d="m176.31 27.639q-6.896 7.7955-16.191 18.889-8.9948 10.794-19.189 24.286-10.194 13.192-20.988 28.184-10.794 14.692-21.288 29.983-10.194 14.991-19.489 29.983-9.2947 14.991-16.79 28.484h116.93v24.886h-150.81v-19.489q6.2964-11.993 14.692-26.385 8.695-14.392 18.29-29.383 9.8943-14.991 20.388-30.283 10.494-15.291 20.688-29.383 10.494-14.092 20.088-26.385 9.8943-12.293 17.99-21.588h-106.74v-24.886h142.42z"/>
+</svg>`,
+  sortDescNumeric: `
+  <svg viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <g transform="matrix(1, 0, 0, -1, 0, 501.149994)" stroke-width="1.3333">
+    <path fill="currentColor" d="m353.6 74.486c-11.776 0-21.333 9.5573-21.333 21.333v298.67c0 11.776 9.5573 21.333 21.333 21.333s21.333-9.5573 21.333-21.333v-298.67c0-11.776-9.5573-21.333-21.333-21.333z"/>
+    <path fill="currentColor" d="m353.6 74.486c-5.4636 0-10.922 2.0781-15.079 6.2552l-113.78 113.78c-8.3333 8.3333-8.3333 21.844 0 30.177 8.3333 8.3333 21.844 8.3333 30.183 0l98.697-98.703 98.703 98.703c8.3333 8.3333 21.849 8.3333 30.183 0 8.3333-8.3333 8.3333-21.844 0-30.177l-113.78-113.78c-4.2083-4.1771-9.6667-6.2552-15.131-6.2552z"/>
+  </g>
+  <path fill="currentColor" d="M 53.55 171.209 C 64.95 183.179 77.68 189.164 91.74 189.164 C 97.63 189.164 103.235 187.691 108.555 184.746 C 113.875 181.801 118.53 177.289 122.52 171.209 C 126.51 165.129 129.692 157.291 132.067 147.696 C 134.442 138.101 135.63 126.654 135.63 113.354 C 129.74 118.864 123.232 123.376 116.107 126.891 C 108.982 130.406 101.145 132.164 92.595 132.164 C 84.995 132.164 77.68 130.881 70.65 128.316 C 63.62 125.751 57.35 121.904 51.84 116.774 C 46.33 111.644 41.912 105.279 38.587 97.679 C 35.262 90.079 33.6 81.244 33.6 71.174 C 33.6 62.244 35.167 53.836 38.302 45.951 C 41.437 38.066 45.807 31.179 51.412 25.289 C 57.017 19.399 63.762 14.744 71.647 11.324 C 79.532 7.904 88.32 6.194 98.01 6.194 C 107.89 6.194 116.345 7.714 123.375 10.754 C 130.405 13.794 136.295 17.784 141.045 22.724 C 144.465 26.334 147.457 30.324 150.022 34.694 C 152.587 39.064 154.772 44.384 156.577 50.654 C 158.382 56.924 159.712 64.429 160.567 73.169 C 161.422 81.909 161.85 92.454 161.85 104.804 C 161.85 123.804 160.045 140.096 156.435 153.681 C 152.825 167.266 147.79 178.429 141.33 187.169 C 134.87 195.909 127.317 202.321 118.672 206.406 C 110.027 210.491 100.575 212.534 90.315 212.534 C 79.295 212.534 69.415 210.586 60.675 206.691 C 51.935 202.796 43.955 197.334 36.735 190.304 L 53.55 171.209 Z M 96.87 111.074 C 104.09 111.074 111.072 109.269 117.817 105.659 C 124.562 102.049 130.5 97.679 135.63 92.549 L 135.63 83.999 C 135.63 65.949 132.162 52.269 125.227 42.959 C 118.292 33.649 108.935 28.994 97.155 28.994 C 91.645 28.994 86.562 29.991 81.907 31.986 C 77.252 33.981 73.167 36.736 69.652 40.251 C 66.137 43.766 63.382 48.041 61.387 53.076 C 59.392 58.111 58.395 63.764 58.395 70.034 C 58.395 76.494 59.44 82.241 61.53 87.276 C 63.62 92.311 66.422 96.586 69.937 100.101 C 73.452 103.616 77.537 106.324 82.192 108.224 C 86.847 110.124 91.74 111.074 96.87 111.074 Z" />
+  <path fill="currentColor" d="M 115.232 309.753 L 115.232 483.477 L 148.576 483.477 L 148.576 505.893 L 49.946 505.893 L 49.946 483.477 L 90.014 483.477 L 90.014 341.976 L 52.467 370.276 L 38.738 351.503 L 96.739 309.753 L 115.232 309.753 Z" />
+</svg>`,
+  formula: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="m263.51 62.967c1.672-11.134 9.326-22.967 20.222-22.967 11.028 0 20 8.972 20 20h40c0-33.084-26.916-60-60-60-33.629 0-55.527 28.691-59.784 57.073l-12.862 86.927h-61.354v40h55.436l-39.22 265.07-0.116 0.937c-1.063 10.62-9.393 21.99-20.1 21.99-11.028 0-20-8.972-20-20h-40c0 33.084 26.916 60 60 60 33.661 0 56.771-29.141 59.848-57.496l40.023-270.5h60.129v-40h-54.211l11.989-81.033z"/>
+  <polygon points="426.27 248 378.24 248 352.25 287.08 334.92 248 291.17 248 326 326.57 270.52 410 318.56 410 345.21 369.92 362.98 410 406.73 410 371.46 330.43"/>
+</svg>`,
+  help: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+  <path d="m248.16 343.22c-14.639 0-26.491 12.2-26.491 26.84 0 14.291 11.503 26.84 26.491 26.84s26.84-12.548 26.84-26.84c0-14.64-12.199-26.84-26.84-26.84z"/>
+  <path d="m252.69 140c-47.057 0-68.668 27.885-68.668 46.708 0 13.595 11.502 19.869 20.914 19.869 18.822 0 11.154-26.84 46.708-26.84 17.429 0 31.372 7.669 31.372 23.703 0 18.824-19.52 29.629-31.023 39.389-10.108 8.714-23.354 23.006-23.354 52.983 0 18.125 4.879 23.354 19.171 23.354 17.08 0 20.565-7.668 20.565-14.291 0-18.126 0.35-28.583 19.521-43.571 9.411-7.32 39.04-31.023 39.04-63.789s-29.629-57.515-74.246-57.515z"/>
+  <path d="m256 0c-141.48 0-256 114.5-256 256v236c0 11.046 8.954 20 20 20h236c141.48 0 256-114.5 256-256 0-141.48-114.5-256-256-256zm0 472h-216v-216c0-119.38 96.607-216 216-216 119.38 0 216 96.607 216 216 0 119.38-96.607 216-216 216z"/>
+</svg>`,
+  csv: `
+<svg class="widget-icon" version="1.1" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+ <path d="m4.9979 9v-8h14.502l3.5 3.5 2e-7 18.5h-19m14-22v5h5m-16 7h-2c-1 0-2 0.5-2 1.5v1.5s1e-8 0.5 0 1.5 1 1.5 2 1.5h2m6.25-6h-2.5c-1.5 0-2 0.5-2 1.5s0.5 1.5 2 1.5 2 0.5 2 1.5-0.5 1.5-2 1.5h-2.5m12.25-7v0.5c0 0.5-2.5 6.5-2.5 6.5h-0.5s-2.5-6-2.5-6.5v-0.5" fill="none" stroke="var(--text-muted)" stroke-width="1.5"/>
+</svg>`,
+  arrowenter: `
+<svg viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m4.64119 12.5 2.87283 2.7038c.30163.2839.31602.7586.03213 1.0602-.28389.3017-.75854.316-1.06017.0321l-4.25-4c-.15059-.1417-.23598-.3393-.23598-.5461s.08539-.4044.23598-.5462l4.25-3.99995c.30163-.28389.77628-.2695 1.06017.03213s.2695.77628-.03213 1.06017l-2.87284 2.70385h10.10882c.9665 0 1.75-.7835 1.75-1.75v-4.5c0-.41421.3358-.75.75-.75s.75.33579.75.75v4.5c0 1.7949-1.4551 3.25-3.25 3.25z"/>
+</svg>`,
+  arrowtab: `
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+  <path fill="currentColor" d="m18.2071068 11.2928932-6.5-6.49999998c-.3905243-.39052429-1.0236893-.39052429-1.4142136 0-.36048394.36048396-.38821348.92771502-.0831886 1.32000622l.0831886.09420734 4.7931068 4.79289322h-11.086c-.51283584 0-.93550716.3860402-.99327227.8833789l-.00672773.1166211c0 .5128358.38604019.9355072.88337887.9932723l.11662113.0067277h11.086l-4.7931068 4.7928932c-.36048394.360484-.38821348.927715-.0831886 1.3200062l.0831886.0942074c.360484.3604839.927715.3882135 1.3200062.0831886l.0942074-.0831886 6.5-6.5c.3604839-.360484.3882135-.927715.0831886-1.3200062l-.0831886-.0942074-6.5-6.49999998zm2.7928932 7.2071068v-13c0-.55228475-.4477153-1-1-1s-1 .44771525-1 1v13c0 .5522847.4477153 1 1 1s1-.4477153 1-1z" fill="#212121"/>
+</svg>`
+};
+var addIcons = () => {
+  Object.keys(icons).forEach((key) => {
+    if (key !== "help") {
+      (0, import_obsidian4.addIcon)(key, icons[key]);
+    }
+  });
+};
+
 // src/main.ts
-var MyPlugin = class extends import_obsidian3.Plugin {
+var VERTICAL_EDITOR_TEXT = "Open Editor (Next to the Active View)";
+var HORIZONTAL_EDITOR_TEXT = "Open Editor (Below the Active View)";
+var MarkdownTableEditorPlugin = class extends import_obsidian5.Plugin {
   onload() {
     return __async(this, null, function* () {
+      addIcons();
       this.registerView(MARKDOWN_TABLE_EDITOR_VIEW, (leaf) => new TableView(leaf));
-      this.addRibbonIcon("pane-layout", "Open Markdown Table Editor", () => {
-        this.activateView();
+      this.addRibbonIcon("spreadsheet", "Open Markdown Table Editor", (event) => {
+        if (event.type == "click") {
+          this.activateView("vertical");
+          event.preventDefault();
+          return;
+        }
+        const menu = new import_obsidian5.Menu(this.app);
+        menu.addItem((item) => item.setTitle(VERTICAL_EDITOR_TEXT).setIcon("vertical-split").onClick(() => {
+          this.activateView("vertical");
+        }));
+        menu.addItem((item) => item.setTitle(HORIZONTAL_EDITOR_TEXT).setIcon("horizontal-split").onClick(() => {
+          this.activateView("horizontal");
+        }));
+        menu.showAtMouseEvent(event);
       });
       this.addCommand({
-        id: "markdown-table-editor-open",
-        name: "Open Editor",
-        editorCallback: (editor, view) => __async(this, null, function* () {
-          this.activateView();
+        id: "markdown-table-editor-open-vertical",
+        name: VERTICAL_EDITOR_TEXT,
+        editorCallback: (_, __) => __async(this, null, function* () {
+          this.activateView("vertical");
+        })
+      });
+      this.addCommand({
+        id: "markdown-table-editor-open-horizontal",
+        name: HORIZONTAL_EDITOR_TEXT,
+        editorCallback: (_, __) => __async(this, null, function* () {
+          this.activateView("horizontal");
+        })
+      });
+      this.addCommand({
+        id: "markdown-table-editor-select-table-content",
+        name: "Select surrounding Table Content",
+        editorCallback: (_, view) => __async(this, null, function* () {
+          this.selectTableContent(view);
         })
       });
     });
@@ -21805,15 +22570,17 @@ var MyPlugin = class extends import_obsidian3.Plugin {
   onunload() {
     this.app.workspace.detachLeavesOfType(MARKDOWN_TABLE_EDITOR_VIEW);
   }
-  activateView() {
+  activateView(direction = "vertical") {
     return __async(this, null, function* () {
+      var _a;
       this.app.workspace.detachLeavesOfType(MARKDOWN_TABLE_EDITOR_VIEW);
-      const view = this.app.workspace.getActiveViewOfType(import_obsidian3.MarkdownView);
+      const view = this.app.workspace.getActiveViewOfType(import_obsidian5.MarkdownView);
       if (!view) {
         return;
       }
-      var data = view.editor.getSelection();
-      yield this.app.workspace.getLeaf(true).setViewState({
+      let data = (_a = this.getData(view)) == null ? void 0 : _a.data;
+      const activeLeaf = this.app.workspace.activeLeaf;
+      yield this.app.workspace.createLeafBySplit(activeLeaf, direction).setViewState({
         type: MARKDOWN_TABLE_EDITOR_VIEW,
         active: true,
         state: { data }
@@ -21821,11 +22588,61 @@ var MyPlugin = class extends import_obsidian3.Plugin {
       this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(MARKDOWN_TABLE_EDITOR_VIEW)[0]);
     });
   }
+  getData(view) {
+    console.log("getData");
+    let data = void 0;
+    let startCursor = void 0;
+    let endCursor = void 0;
+    if (view.editor.somethingSelected()) {
+      data = view.editor.getSelection();
+    } else {
+      let { line } = view.editor.getCursor();
+      console.log("line", line);
+      if (!!view.editor.getLine(line).trim()) {
+        let lineAbove = Math.max(line - 1, 0);
+        if (!!view.editor.getLine(lineAbove).trim()) {
+          while (lineAbove > 0 && !!view.editor.getLine(lineAbove - 1).trim()) {
+            lineAbove--;
+          }
+        } else {
+          lineAbove = line;
+        }
+        let lineBelow = Math.min(line + 1, view.editor.lineCount() - 1);
+        if (!!view.editor.getLine(lineBelow).trim()) {
+          while (lineBelow + 1 < view.editor.lineCount() && !!view.editor.getLine(lineBelow + 1).trim()) {
+            lineBelow++;
+          }
+        } else {
+          lineBelow = line;
+        }
+        startCursor = { line: lineAbove, ch: 0 };
+        endCursor = { line: lineBelow, ch: view.editor.getLine(lineBelow).length };
+        console.log(startCursor, endCursor);
+        data = view.editor.getRange(startCursor, endCursor);
+      }
+    }
+    console.log(data, startCursor, endCursor);
+    return { data, startCursor, endCursor };
+  }
+  selectTableContent(view) {
+    console.log("selectTableContent");
+    const { data, startCursor, endCursor } = this.getData(view);
+    const parsedData = parseInputData(data);
+    if (parseInputData) {
+      view.editor.setSelection(startCursor, endCursor);
+    }
+  }
 };
 /*
 object-assign
 (c) Sindre Sorhus
 @license MIT
+*/
+/* @license
+Papa Parse
+v5.3.1
+https://github.com/mholt/PapaParse
+License: MIT
 */
 /**
  * Checks if an event is supported in the current execution environment.

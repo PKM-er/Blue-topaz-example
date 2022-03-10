@@ -1,0 +1,3 @@
+input[type='text'].invalid-accelerator {
+  background-color: #e24f4f;
+}

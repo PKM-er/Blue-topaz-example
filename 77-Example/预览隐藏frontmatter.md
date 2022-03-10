@@ -6,6 +6,7 @@ usage: 预览状态不显示frontmatter区域
 status: 2
 rating: 0
 tags: [dvtest,good,test,dataview]
+updated: 2022-03-08 21:05
 ---
 
 - 测试dataview表格内容不分行紧凑显示。
@@ -16,4 +17,4 @@ tags: [dvtest,good,test,dataview]
 字段1:: AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBB我是很长很长的内容
 字段2:: 我也不是省油的灯。。。。。。。。。。。
 
-表格效果参考：[[全宽显示|测试dataview 长表格2]]
+表格效果参考：[[全宽显示-表格测试|测试dataview 长表格2]]

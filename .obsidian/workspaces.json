@@ -83,12 +83,20 @@
                   "type": "graph",
                   "state": {}
                 }
+              },
+              {
+                "id": "5ee52b332527fc75",
+                "type": "leaf",
+                "state": {
+                  "type": "memos_view",
+                  "state": {}
+                }
               }
             ]
           }
         ],
         "direction": "horizontal",
-        "width": 300
+        "width": 255
       },
       "right": {
         "id": "4e390742ffc29613",
@@ -129,6 +137,14 @@
                     "source": true
                   }
                 }
+              },
+              {
+                "id": "371fdaf6dd02d6d0",
+                "type": "leaf",
+                "state": {
+                  "type": "reminder-list",
+                  "state": {}
+                }
               }
             ],
             "currentTab": 2
@@ -168,14 +184,6 @@
                 }
               },
               {
-                "id": "9b181782551fdb19",
-                "type": "leaf",
-                "state": {
-                  "type": "todo",
-                  "state": {}
-                }
-              },
-              {
                 "id": "b2ae90cb6049dbe9",
                 "type": "leaf",
                 "state": {
@@ -200,7 +208,7 @@
                 }
               }
             ],
-            "currentTab": 4
+            "currentTab": 3
           }
         ],
         "direction": "horizontal",
@@ -464,7 +472,7 @@
           {
             "id": "4bc1edcafd063cfb",
             "type": "tabs",
-            "dimension": 71.10834371108344,
+            "dimension": 61.33828996282528,
             "children": [
               {
                 "id": "37c8f55a8ef7a09c",
@@ -502,7 +510,7 @@
           {
             "id": "e1b59eaac11b55b3",
             "type": "tabs",
-            "dimension": 28.89165628891656,
+            "dimension": 38.66171003717472,
             "children": [
               {
                 "id": "796ade3906f5d64a",
@@ -556,6 +564,14 @@
                   "state": {
                     "file": "20-Diary/任务看板.md"
                   }
+                }
+              },
+              {
+                "id": "86f7939b217614a2",
+                "type": "leaf",
+                "state": {
+                  "type": "memos_view",
+                  "state": {}
                 }
               }
             ],
@@ -622,6 +638,251 @@
         "width": 273
       },
       "active": "528a5dbf77ea4243"
+    },
+    "temp": {
+      "main": {
+        "id": "e8b4ea94b39a8520",
+        "type": "split",
+        "children": [
+          {
+            "id": "fc371ae36bc5eac7",
+            "type": "leaf",
+            "dimension": 50.86294416243655,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-Help/获取命令ID.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "9a85429bf63db7fd",
+            "type": "leaf",
+            "dimension": 20.304568527918782,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/button.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "d0b271de70820ce5",
+            "type": "leaf",
+            "dimension": 28.832487309644673,
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/ReactJS/react-buttons.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "687357708cbc920f",
+        "type": "split",
+        "children": [
+          {
+            "id": "4bc1edcafd063cfb",
+            "type": "tabs",
+            "dimension": 54.46650124069479,
+            "children": [
+              {
+                "id": "37c8f55a8ef7a09c",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {}
+                }
+              },
+              {
+                "id": "b3290ae399933a0b",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "3d21402f76dc34c3",
+                "type": "leaf",
+                "state": {
+                  "type": "starred",
+                  "state": {}
+                }
+              }
+            ]
+          },
+          {
+            "id": "d877e8285f98a38a",
+            "type": "tabs",
+            "dimension": 45.53349875930521,
+            "children": [
+              {
+                "id": "b37bc3d287f74512",
+                "type": "leaf",
+                "state": {
+                  "type": "recent-files",
+                  "state": {}
+                }
+              },
+              {
+                "id": "80430a4f104c0c57",
+                "type": "leaf",
+                "state": {
+                  "type": "graph",
+                  "state": {}
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 255
+      },
+      "right": {
+        "id": "4e390742ffc29613",
+        "type": "split",
+        "children": [
+          {
+            "id": "d4c25b22f0c7d5f0",
+            "type": "tabs",
+            "dimension": 32.35004916420846,
+            "children": [
+              {
+                "id": "ca4e910af4602420",
+                "type": "leaf",
+                "state": {
+                  "type": "calendar",
+                  "state": {}
+                }
+              },
+              {
+                "id": "340969ccd24905e8",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "10-Help/获取命令ID.md"
+                  }
+                }
+              },
+              {
+                "id": "83061aceea29f566",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "88-Template/彩色时钟.md",
+                    "mode": "preview",
+                    "backlinks": false,
+                    "source": true
+                  }
+                }
+              },
+              {
+                "id": "13cd6508d27ddbae",
+                "type": "leaf",
+                "state": {
+                  "type": "todo",
+                  "state": {}
+                }
+              },
+              {
+                "id": "371fdaf6dd02d6d0",
+                "type": "leaf",
+                "state": {
+                  "type": "reminder-list",
+                  "state": {}
+                }
+              }
+            ],
+            "currentTab": 2
+          },
+          {
+            "id": "0b3485207df574dd",
+            "type": "tabs",
+            "dimension": 67.64995083579154,
+            "children": [
+              {
+                "id": "041c78328387b373",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "10-Help/获取命令ID.md",
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "dc4a81bfd6624166",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "10-Help/获取命令ID.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "b2ae90cb6049dbe9",
+                "type": "leaf",
+                "state": {
+                  "type": "tag",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "useHierarchy": true
+                  }
+                }
+              },
+              {
+                "id": "8851ccb0aa4e524a",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "88-Template/常用工具.md",
+                    "mode": "preview",
+                    "backlinks": true,
+                    "source": false
+                  }
+                }
+              }
+            ],
+            "currentTab": 3
+          }
+        ],
+        "direction": "horizontal",
+        "width": 258
+      },
+      "active": "fc371ae36bc5eac7"
     }
   },
   "active": "Home"
