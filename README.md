@@ -24,7 +24,7 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
 ## 更新  2022-03-10
 - 增加嵌套库玩法 具体教程参考[[Obsidian 库中库玩法]]
-- 修复侧边栏buttons 无法在kanban  memos 或者空白文件中点击的问题
+- 修复侧边栏按钮如果不打开md文件就无法点击的问题
 - 优化侧边栏memos样式
 
 ## 更新  2022-03-08

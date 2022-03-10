@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
-            "mode": "preview",
+            "file": "README.md",
+            "mode": "source",
             "backlinks": false,
             "source": false
           }
@@ -119,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "README.md"
               }
             }
           },
@@ -158,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,7 +175,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -214,8 +214,8 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "88-Template/home.md",
     "README.md",
+    "88-Template/home.md",
     "未命名.md",
     "从这开始.md",
     "88-Template/常用工具.md",
