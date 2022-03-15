@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
+            "file": "88-Template/常用工具.md",
             "mode": "preview",
             "backlinks": false,
             "source": false
@@ -81,6 +81,14 @@
               "type": "graph",
               "state": {}
             }
+          },
+          {
+            "id": "5ee52b332527fc75",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
+              "state": {}
+            }
           }
         ]
       }
@@ -111,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "88-Template/常用工具.md"
               }
             }
           },
@@ -142,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "88-Template/常用工具.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "88-Template/常用工具.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -196,8 +204,10 @@
     "direction": "horizontal",
     "width": 273
   },
-  "active": "4577c639120f5618",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
+    "88-Template/常用工具.md",
+    "88-Template/button.md",
     "88-Template/home.md",
     "未命名 2.md",
     "未命名.md",
@@ -205,8 +215,6 @@
     "77-Example/各类列表和彩虹大纲线.md",
     "88-Template/FastStart-Plugins-LongDelay.md",
     "88-Template/FastStart-Plugins-ShortDelay.md",
-    "88-Template/FastStart-Plugins-simple.md",
-    "88-Template/FastStart-GenerateListOfInstalledPlugins.md",
-    "88-Template/常用工具.md"
+    "88-Template/FastStart-Plugins-simple.md"
   ]
 }

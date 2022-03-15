@@ -247,9 +247,9 @@ class circle_btn blank
 ^button-dairywp
 
 ```button
-name ⛳悬浮memos
-type command
-action QuickAdd: popover-memos
-class grad_button g_lightgreen
+name 🏆 memos
+type link
+action obsidian://open?vault=20-Diary
+class grad_button g_purple
 ```
-^button-hover
+^button-vault

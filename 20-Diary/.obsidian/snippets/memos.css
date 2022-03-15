@@ -42,3 +42,7 @@
     {
         display: none;
     }
+	
+div[data-type='memos_view'] .search-bar-container > .quickly-action-wrapper {
+  width:100%!important;
+}

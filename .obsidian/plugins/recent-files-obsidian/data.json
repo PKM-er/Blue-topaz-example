@@ -1,6 +1,14 @@
 {
   "recentFiles": [
     {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
       "basename": "home",
       "path": "88-Template/home.md"
     },
@@ -23,10 +31,6 @@
     {
       "basename": "FastStart-GenerateListOfInstalledPlugins",
       "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
     },
     {
       "basename": "README",
@@ -63,10 +67,6 @@
     {
       "basename": "获取命令ID",
       "path": "10-Help/获取命令ID.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
     },
     {
       "basename": "fastgithub 可为你加速访问Ob社区",

@@ -27,6 +27,7 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 ### 更新 2022-03-15
 - 增加侧边栏一键启动悬浮memos
 - 增加运行示例库最低配置说明[[README#常见问题]]
+- 增加一键启动全局memos（库中库）
 ### 更新  2022-03-10
 - 增加嵌套库玩法 具体教程参考[[Obsidian 库中库玩法]]
 - 修复侧边栏按钮如果不打开md文件就无法点击的问题
@@ -183,7 +184,7 @@ ad样式使用方法参考
 | notice.js          | 生成自定义边栏提示                       | quickadd-宏-生成notice          |
 | refreshhomepage.js | 重载主页数据，重新获取联网数据           | quickadd-宏-重新获取主页数据    |
 | getrandomImage.js  | 随机获取99-Attachment\banner文件夹的图片 | tp-日记模板获取banner     |
-| getweather.js      | 获取天气数据                             | tp-日记模板获取天气       | 
+| getweather.js      | 获取天气数据                             | tp-日记模板获取天气       |
 
 
 ## 常见问题
