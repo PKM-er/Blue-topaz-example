@@ -81,14 +81,6 @@
               "type": "graph",
               "state": {}
             }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
-              "state": {}
-            }
           }
         ]
       }
@@ -103,7 +95,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 32.35004916420846,
+        "dimension": 26.52259332023575,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -135,14 +127,6 @@
                 "source": true
               }
             }
-          },
-          {
-            "id": "371fdaf6dd02d6d0",
-            "type": "leaf",
-            "state": {
-              "type": "reminder-list",
-              "state": {}
-            }
           }
         ],
         "currentTab": 2
@@ -150,7 +134,7 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 67.64995083579154,
+        "dimension": 73.47740667976424,
         "children": [
           {
             "id": "041c78328387b373",
@@ -212,17 +196,17 @@
     "direction": "horizontal",
     "width": 273
   },
-  "active": "fc371ae36bc5eac7",
+  "active": "4577c639120f5618",
   "lastOpenFiles": [
     "88-Template/home.md",
+    "未命名 2.md",
+    "未命名.md",
+    "未命名 1.md",
+    "77-Example/各类列表和彩虹大纲线.md",
+    "88-Template/FastStart-Plugins-LongDelay.md",
+    "88-Template/FastStart-Plugins-ShortDelay.md",
     "88-Template/FastStart-Plugins-simple.md",
-    "README.md",
-    "88-Template/FastStart-StartupScript.md",
-    "从这开始.md",
-    "Chrome Clippings.md",
-    "随时随地打开memos记录灵感.md",
-    "如何memos悬浮 快速记录笔记.md",
-    "各类列表和彩虹大纲线.md",
-    "88-Template/FastStart-Plugins-ShortDelay.md"
+    "88-Template/FastStart-GenerateListOfInstalledPlugins.md",
+    "88-Template/常用工具.md"
   ]
 }

@@ -468,6 +468,37 @@
         }
       ],
       "runOnStartup": false
+    },
+    {
+      "name": "日记看板布局",
+      "id": "8f14b0bc-7d48-4767-950b-dc55b3109675",
+      "commands": [
+        {
+          "name": "Workspaces Plus: Load: temp",
+          "type": "Obsidian",
+          "id": "a25b262d-5489-4316-847e-5145eed2fb79",
+          "commandId": "workspaces-plus:temp"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "90c8583c-383a-4535-a555-d00aadda0df7",
+          "time": 500
+        },
+        {
+          "name": "将焦点切换到上方面板",
+          "type": "Obsidian",
+          "id": "0d41bab3-6046-4cfc-9fae-38d84e370999",
+          "commandId": "editor:focus-top"
+        },
+        {
+          "name": "日记: 打开/创建今天的日记",
+          "type": "Obsidian",
+          "id": "c31417fe-1853-479e-afda-5318b624ab66",
+          "commandId": "daily-notes"
+        }
+      ],
+      "runOnStartup": false
     }
   ],
   "inputPrompt": "multi-line"

@@ -1,6 +1,6 @@
 {
   "aestheticStyle": "tiny",
-  "positionStyle": "following",
+  "positionStyle": "fixed",
   "menuCommands": [
     {
       "id": "cmenu-plugin:editor:toggle-bold",
@@ -263,7 +263,7 @@
   ],
   "appendMethod": "workspace",
   "shouldShowMenuOnSelect": false,
-  "cMenuVisibility": false,
+  "cMenuVisibility": true,
   "cMenuBottomValue": 6.5,
   "cMenuNumRows": 13,
   "cMenuXBottomValue": 17.25

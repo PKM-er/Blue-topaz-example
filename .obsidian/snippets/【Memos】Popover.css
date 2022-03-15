@@ -110,7 +110,7 @@
       height: 100%;
       padding: 0;
       background-color: var(--background-secondary);
-      transition: all 0.4s ease;
+      transition: all 1.2s ease-in-out;
       transform: translateX(-320px);
     }
     div.hover-popover  .memos-sidebar-wrapper > * {

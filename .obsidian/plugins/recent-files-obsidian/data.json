@@ -5,12 +5,44 @@
       "path": "88-Template/home.md"
     },
     {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
+      "basename": "FastStart-Plugins-LongDelay",
+      "path": "88-Template/FastStart-Plugins-LongDelay.md"
+    },
+    {
+      "basename": "FastStart-Plugins-ShortDelay",
+      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
+    },
+    {
       "basename": "FastStart-Plugins-simple",
       "path": "88-Template/FastStart-Plugins-simple.md"
     },
     {
+      "basename": "FastStart-GenerateListOfInstalledPlugins",
+      "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
       "basename": "README",
       "path": "README.md"
+    },
+    {
+      "basename": "真Kanban",
+      "path": "77-Example/真Kanban.md"
+    },
+    {
+      "basename": "tp-日记模板-带进度",
+      "path": "88-Template/tp-日记模板-带进度.md"
+    },
+    {
+      "basename": "tp-日记模板",
+      "path": "88-Template/tp-日记模板.md"
     },
     {
       "basename": "FastStart-StartupScript",
@@ -21,16 +53,8 @@
       "path": "从这开始.md"
     },
     {
-      "basename": "FastStart-Plugins-ShortDelay",
-      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
-    },
-    {
       "basename": "表格转换-tableconvert",
       "path": "50-Inbox/表格转换-tableconvert.md"
-    },
-    {
-      "basename": "FastStart-Plugins-LongDelay",
-      "path": "88-Template/FastStart-Plugins-LongDelay.md"
     },
     {
       "basename": "🥑Blue Topaz Themes Tips",
@@ -43,10 +67,6 @@
     {
       "basename": "button",
       "path": "88-Template/button.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
     },
     {
       "basename": "fastgithub 可为你加速访问Ob社区",
@@ -81,10 +101,6 @@
       "path": "30-Reading/《如何阅读尼采》.md"
     },
     {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "77-Example/各类列表和彩虹大纲线.md"
-    },
-    {
       "basename": "伪看板",
       "path": "77-Example/伪看板.md"
     },
@@ -95,22 +111,6 @@
     {
       "basename": "便签",
       "path": "88-Template/便签.md"
-    },
-    {
-      "basename": "Johnny学OB 资料汇总",
-      "path": "00-Tips/Johnny学OB 资料汇总.md"
-    },
-    {
-      "basename": "Lillian Who Obsidian新手入门教程",
-      "path": "00-Tips/Lillian Who Obsidian新手入门教程.md"
-    },
-    {
-      "basename": "如何在Obsidian中添加图书卡片",
-      "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
-    },
-    {
-      "basename": "全宽显示-表格测试",
-      "path": "77-Example/全宽显示-表格测试.md"
     }
   ],
   "omittedPaths": [
