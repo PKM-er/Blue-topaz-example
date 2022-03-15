@@ -11,7 +11,7 @@ https://yoksel.github.io/url-encoder/
 
 /*Link Styling*/
 .external-link::before {
-    display: inline-block;
+    /* display: inline-block; */
     padding-right: 3px;
     vertical-align: text-top;
     height: 16px;

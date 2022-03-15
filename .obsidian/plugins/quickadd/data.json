@@ -130,6 +130,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "37d4988e-4b8b-4878-8959-65416ac262e3"
+    },
+    {
+      "id": "021fa656-15d1-4082-b2d0-2228b7c61f68",
+      "name": "memos-popover",
+      "type": "Macro",
+      "command": true,
+      "macroId": "d0d4ced8-94d2-4f26-9e8b-defd8d087193"
     }
   ],
   "macros": [
@@ -433,6 +440,31 @@
             "openFile": false,
             "openFileInMode": "default"
           }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "悬浮memos",
+      "id": "d0d4ced8-94d2-4f26-9e8b-defd8d087193",
+      "commands": [
+        {
+          "name": "Hover Editor: Open new popover",
+          "type": "Obsidian",
+          "id": "fe7f4f15-86b2-412e-8d9b-060d011564d5",
+          "commandId": "obsidian-hover-editor:open-new-popover"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "834de2c3-7d88-4726-8956-18e3b6ff379d",
+          "time": 500
+        },
+        {
+          "name": "Obsidian Memos: Open Memos",
+          "type": "Obsidian",
+          "id": "1626d032-c1df-42c8-b8c1-382fee73891c",
+          "commandId": "obsidian-memos:open-memos"
         }
       ],
       "runOnStartup": false

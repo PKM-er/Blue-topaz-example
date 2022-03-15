@@ -1,0 +1,49 @@
+.titlebar-button-container.mod-left {
+  opacity: 1; }
+
+#quick-explorer {
+  display: inline-block;
+  padding-left: 10px;
+  padding-right: 10px;
+  z-index: var(--layer-cover);
+  background-color: var(--background-translucent) !important; }
+  #quick-explorer .explorable {
+    font-size: 12px;
+    opacity: 0.75;
+    cursor: pointer;
+    padding: 0;
+    display: unset; }
+    #quick-explorer .explorable.selected, #quick-explorer .explorable:hover {
+      background-color: var(--interactive-accent-hover);
+      color: var(--text-on-accent);
+      opacity: 1; }
+  #quick-explorer .explorable-separator::before {
+    content: "\00a0/\00a0"; }
+
+.menu.qe-popup-menu ~ .popover.hover-popover {
+  z-index: var(--layer-menu); }
+
+.qe-popup-menu .menu-item:not(.is-disabled):not(.is-label) {
+  display: flex;
+  align-items: center; }
+  .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label).selected {
+    background-color: var(--interactive-accent-hover); }
+  .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label):hover:not(.selected) {
+    background-color: var(--background-primary);
+    color: var(--text-normal); }
+    .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label):hover:not(.selected) .menu-item-icon {
+      color: var(--text-muted); }
+  .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label) .menu-item-title {
+    flex-grow: 1; }
+  .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label) .nav-file-tag {
+    margin-left: 1.5em;
+    opacity: 0.5;
+    background-color: transparent; }
+    .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label) .nav-file-tag.qe-file-count {
+      font-size: 75%; }
+  .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label):hover, .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label).selected {
+    color: var(--text-on-accent); }
+    .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label):hover .menu-item-icon, .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label).selected .menu-item-icon {
+      color: var(--text-on-accent); }
+    .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label):hover .nav-file-tag, .qe-popup-menu .menu-item:not(.is-disabled):not(.is-label).selected .nav-file-tag {
+      opacity: 1; }

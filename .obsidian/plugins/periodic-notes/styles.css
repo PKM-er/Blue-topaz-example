@@ -1,0 +1,30 @@
+.periodic-modal {
+  min-width: 40vw;
+}
+
+.settings-banner {
+  background-color: var(--background-primary-alt);
+  border-radius: 8px;
+  border: 1px solid var(--background-modifier-border);
+  margin-bottom: 1em;
+  margin-top: 1em;
+  padding: 1.5em;
+  text-align: left;
+}
+
+.settings-banner h3 {
+  margin-top: 0;
+}
+
+.settings-banner h4 {
+  margin-bottom: 0.25em;
+}
+
+.has-error {
+  color: var(--text-error);
+}
+
+input.has-error {
+  color: var(--text-error);
+  border-color: var(--text-error);
+}

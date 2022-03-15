@@ -9,7 +9,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-03-10T04:51:17Z"
+      "lastUpdate": "2022-03-14T13:54:06Z"
     }
   ],
   "updateAtStartup": true,
@@ -19,5 +19,5 @@
   "loggingPath": "BRAT-log",
   "loggingVerboseEnabled": false,
   "debuggingMode": false,
-  "notificationsEnabled": false
+  "notificationsEnabled": true
 }

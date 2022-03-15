@@ -1,7 +1,7 @@
 ---
 obsidianUIMode: preview
 progress: 正在进行
-updated: 2022-03-10 17:08
+updated: 2022-03-15 14:57
 ---
 ## 引言
 
@@ -22,23 +22,28 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 
 另外推荐鸟姐的Homepage 也是很棒的风格
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
-## 更新  2022-03-10
+
+## 更新日志
+### 更新 2022-03-15
+- 增加侧边栏一键启动悬浮memos
+- 增加运行示例库最低配置说明[[README#常见问题]]
+### 更新  2022-03-10
 - 增加嵌套库玩法 具体教程参考[[Obsidian 库中库玩法]]
 - 修复侧边栏按钮如果不打开md文件就无法点击的问题
 - 优化侧边栏memos样式
 
-## 更新  2022-03-08
+### 更新  2022-03-08
 - 更新了豆瓣图书脚本，解决有的图书无法获取的问题
 - 修复首页下拉到底部出现大块空白的问题
 - 增加linkcard插件，嵌入网址自动显示， 并美化样式
 - cmenu插件匹配最新的zh增强编辑功能
 - 修复教程中的个别无效链接。
-## 更新  2022-03-01
+### 更新  2022-03-01
 - 使用 faststart脚本 大幅提高ob [[如何提高Obsidian的启动速度？|启动速度]]
 - 修复float-toc 插件目录太长无法滚动的问题
 - 添加Dynamic Highlights插件 实现时间和dataview字段突出显示
 
-## 更新  2022-02-16
+### 更新  2022-02-16
 增加从豆瓣获取电影卡片
 增加对dataview卡片直接编辑元数据 
 增加插件Hoteys for specific files 直接在ob里打开嵌入网页
@@ -204,4 +209,10 @@ ad样式使用方法参考
 	如果时钟不动或者主页没有显示全。手动点一下刷新主页即可。
 8. 带按钮的常用工具侧边栏如何实现？
 	其实就是`88-template/常用工具`笔记文档，打开后拖动文档标题前的图标到侧边栏即可。
+9. 示例库目前有五十多个插件，实在太多了，想保持示例库主要功能的话需要几个插件？
+	示例库真正需要的核心插件并不多，大部分都是为了Ob使用更方便的辅助类插件，可以根据自己需要开启。
+	如果想体验最精简版本的示例库很简单。
+	按图修改[[FastStart-StartupScript]] ![[Pasted image 20220315145116.png|500]]  即可启动最低示例库运行插件配置。 
+	启动后启动ob只需要100ms 
+	![[Pasted image 20220315144725.png|300]]
 

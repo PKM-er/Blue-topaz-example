@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 15,
+  "baseFontSize": 14,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -16,7 +16,8 @@
     "simple-task-prickly-tomato",
     "【link-card】",
     "【Linkcard】",
-    "test"
+    "test",
+    "【Memos】Popover"
   ],
   "translucency": false
 }

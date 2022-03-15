@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": false,
             "source": false
           }
@@ -119,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -158,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -175,7 +175,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -214,15 +214,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "README.md",
     "88-Template/home.md",
-    "未命名.md",
+    "88-Template/FastStart-Plugins-simple.md",
+    "README.md",
+    "88-Template/FastStart-StartupScript.md",
     "从这开始.md",
-    "88-Template/常用工具.md",
-    "20-Diary/任务看板.md",
-    "88-Template/常用工具react.md",
-    "88-Template/button.md",
-    "50-Inbox/vika.md",
-    "88-Template/ReactJS/react-buttons.md"
+    "Chrome Clippings.md",
+    "随时随地打开memos记录灵感.md",
+    "如何memos悬浮 快速记录笔记.md",
+    "各类列表和彩虹大纲线.md",
+    "88-Template/FastStart-Plugins-ShortDelay.md"
   ]
 }

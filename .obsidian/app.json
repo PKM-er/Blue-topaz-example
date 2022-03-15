@@ -17,5 +17,13 @@
   "tabSize": 4,
   "fileSortOrder": "alphabetical",
   "useTab": true,
-  "smartIndentList": true
+  "smartIndentList": true,
+  "pdfExportSettings": {
+    "pageSize": "A4",
+    "landscape": false,
+    "margin": "0",
+    "downscalePercent": 100
+  },
+  "lineWrap": true,
+  "autoPairMarkdown": false
 }

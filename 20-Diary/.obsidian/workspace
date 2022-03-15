@@ -1,10 +1,10 @@
 {
   "main": {
-    "id": "e0452765d3710843",
+    "id": "43182c5d5e85cced",
     "type": "split",
     "children": [
       {
-        "id": "5394509f838885d4",
+        "id": "58cef72d655ebd97",
         "type": "leaf",
         "state": {
           "type": "memos_view",
@@ -15,15 +15,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "404a18b71ac51831",
+    "id": "5e4b47c6dcd2f5b9",
     "type": "split",
     "children": [
       {
-        "id": "880d056918e1c4b5",
+        "id": "f63d675219e0c7df",
         "type": "tabs",
         "children": [
           {
-            "id": "054241de45ea06df",
+            "id": "ec42f438962b76bb",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -31,7 +31,7 @@
             }
           },
           {
-            "id": "2c62fbfb581944b2",
+            "id": "6ca526de0e81e109",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -53,15 +53,15 @@
     "collapsed": true
   },
   "right": {
-    "id": "50e30af1d8b86a4f",
+    "id": "25ceb227fe7738dd",
     "type": "split",
     "children": [
       {
-        "id": "5403948ecb093950",
+        "id": "be62ecfb4a83b9c5",
         "type": "tabs",
         "children": [
           {
-            "id": "81d404fb3e771314",
+            "id": "99acac058399b815",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -75,31 +75,16 @@
                 "unlinkedCollapsed": true
               }
             }
-          },
-          {
-            "id": "104bdf2e83810b2b",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true
-              }
-            }
           }
         ]
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 153,
     "collapsed": true
   },
-  "active": "5394509f838885d4",
+  "active": "58cef72d655ebd97",
   "lastOpenFiles": [
-    "2022-03-09.md",
-    "2022-02-18.md",
-    "query.md",
-    "memos模板.md",
-    "2022-01-21.md"
+    "2021-12-30.md"
   ]
 }

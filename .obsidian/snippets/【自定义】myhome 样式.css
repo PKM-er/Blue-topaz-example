@@ -124,3 +124,32 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   {
     padding-bottom: 0px !important;
   }
+
+  
+  /* .popover div.hover-popover  {
+    border: 0px;
+    box-shadow: none;
+   
+} */
+
+/* .popover.hover-popover.is-minimized
+{
+          width:auto !important;
+        
+} */
+/* .popover.hover-popover.is-minimized
+{
+          width:50px !important;
+          min-height: 50px!important;
+            border-radius: 50%;
+            background: var(--background-secondary);
+            overflow: hidden;
+  border-radius: 50%;
+} 
+.popover.hover-popover.is-minimized::before
+{
+  content:'\00A0💡';
+  font-size: 28px;
+  line-height: 1.8em;
+
+}*/

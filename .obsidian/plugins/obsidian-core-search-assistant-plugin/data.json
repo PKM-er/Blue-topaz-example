@@ -5,5 +5,184 @@
   "cardViewLayout": "3x3",
   "splitDirection": "horizontal",
   "autoToggleSidebar": false,
+  "renderCardsManually": false,
+  "searchModeHotkeys": {
+    "selectNext": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "n"
+      },
+      {
+        "modifiers": [],
+        "key": "ArrowDown"
+      }
+    ],
+    "selectPrevious": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "p"
+      },
+      {
+        "modifiers": [],
+        "key": "ArrowUp"
+      }
+    ],
+    "previewModal": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": " "
+      }
+    ],
+    "open": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "Enter"
+      }
+    ],
+    "openInNewPane": [
+      {
+        "modifiers": [
+          "Ctrl",
+          "Shift"
+        ],
+        "key": "Enter"
+      }
+    ],
+    "showOptions": [
+      {
+        "modifiers": [
+          "Shift"
+        ],
+        "key": " "
+      }
+    ],
+    "nextPage": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "]"
+      }
+    ],
+    "previousPage": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "["
+      }
+    ],
+    "copyLink": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "i"
+      }
+    ]
+  },
+  "previewModalHotkeys": {
+    "scrollDown": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "n"
+      },
+      {
+        "modifiers": [],
+        "key": "ArrowDown"
+      }
+    ],
+    "scrollUp": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "p"
+      },
+      {
+        "modifiers": [],
+        "key": "ArrowUp"
+      }
+    ],
+    "bigScrollDown": [
+      {
+        "modifiers": [],
+        "key": " "
+      }
+    ],
+    "bigScrollUp": [
+      {
+        "modifiers": [
+          "Shift"
+        ],
+        "key": " "
+      }
+    ],
+    "open": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "Enter"
+      }
+    ],
+    "openInNewPage": [
+      {
+        "modifiers": [
+          "Ctrl",
+          "Shift"
+        ],
+        "key": "Enter"
+      }
+    ],
+    "closeModal": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": " "
+      }
+    ],
+    "focusNext": [
+      {
+        "modifiers": [],
+        "key": "Tab"
+      }
+    ],
+    "focusPrevious": [
+      {
+        "modifiers": [
+          "Shift"
+        ],
+        "key": "Tab"
+      }
+    ],
+    "togglePreviewMode": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "e"
+      }
+    ],
+    "copyLink": [
+      {
+        "modifiers": [
+          "Ctrl"
+        ],
+        "key": "i"
+      }
+    ]
+  },
   "hideIframe": false
 }

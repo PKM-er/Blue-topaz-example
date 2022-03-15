@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-better-command-palette",
+	"name": "Better Command Palette",
+	"version": "0.13.0",
+	"minAppVersion": "0.12.0",
+	"description": "A command palette that does all of the things you want it to do.",
+	"author": "Alex Bieg",
+	"authorUrl": "www.github.com/AlexBieg",
+	"isDesktopOnly": false
+}

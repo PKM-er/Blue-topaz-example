@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.13.28。uid [20220308] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.13.28, uid [20220308] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.13.33。uid [20220313] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.13.33, uid [20220313] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -1243,8 +1243,17 @@ settings:
     type: variable-number
     default: 1.4
   -
+    id: margin-list
+    title: List Margin
+    title.zh: 列表项间距
+    type: variable-number-slider
+    default: 1
+    min: 0
+    max: 2
+    step: 0.1
+  -
     id: list-style-change-options
-    title: List
+    title: List Style
     title.zh: 列表样式
     type: class-select
     allowEmpty: false
@@ -1270,7 +1279,24 @@ settings:
         value: list-no-border
       - 
         label: Rainbow Outline
+        value: rainbow-lines-reading
+  -
+    id: list-style-change-options-edit
+    title: List Style in Edit Mode
+    title.zh: 编辑模式列表样式
+    type: class-select
+    allowEmpty: false
+    default: list-gray-line
+    options:
+      - 
+        label: Gray Line
+        value: list-gray-line
+      - 
+        label: Rainbow Line
         value: rainbow-lines
+      - 
+        label: Nothing
+        value: list-no-line-in-edit
   -
     id: rainbow-lines-head
     title:  2.3.2.1 Rainbow Outline Style Settings
@@ -1372,6 +1398,12 @@ settings:
     type: heading
     level: 3
     collapsed: true
+  -
+    id: file-name-animation
+    title: File name animation
+    title.zh: 文件名自动滚动效果
+    type: class-toggle
+    default: false
   -
     id: light-background-color-files
     title: Light File Background
@@ -2001,12 +2033,12 @@ settings:
   --font-size-folder-and-file: 0.85em;/*左侧边栏文件字体大小*/
   --font-size-edit-normal: 1em;/*编辑正文字体大小*/
   --font-size-preview-normal: 1em;/*预览正文字体大小*/
-  --h1: 1.5625rem;
-  --h2: 1.4375rem;
-  --h3: 1.3125rem;
-  --h4: 1.1875rem;
-  --h5: 1.0625rem;
-  --h6: 0.9375rem;
+  --h1: 1.5625em;
+  --h2: 1.4375em;
+  --h3: 1.3125em;
+  --h4: 1.1875em;
+  --h5: 1.0625em;
+  --h6: 0.9375em;
   --font-size-tag: 1em;
   --font-size-emoji-after-tag: 1.5625em;
   --font-size-list: 1em;
@@ -2061,6 +2093,7 @@ settings:
   --line-height-list: 1.4;
   --letter-space-main: 1;
   --letter-space-code: 0;
+  --margin-list: 1;
 
   --line-width-readable: 45rem;
 
@@ -4138,7 +4171,7 @@ body.color-scheme-options-topaz-nord.theme-light {
 
   --checkbox-color-0: var(--interactive-accent);
 
-  --graph-text-color: var(--nord4);
+  --graph-text-color: var(--nord1);
   --graphtag: var(--nord7);
   --graph-attach: var(--nord15);
   --graph-circle: var(--nord9);
@@ -6676,7 +6709,7 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
 /* cssclass: kanban */
 /* adapted from spectrum theme, thanks to @Braweria. https://github.com/Braweria/Spectrum */
 /* a kind of css-based pseudo-kanban feature */
-.kanban ul {
+.kanban ul:not(.floating-toc) {
   display: flex;
   flex-direction: row;
   border: 0px solid var(--p-kanban-border-color);
@@ -6685,7 +6718,7 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
   flex-wrap: wrap;
 }
 
-.kanban ul>li:not(.task-list-item) {
+.kanban ul:not(.floating-toc)>li:not(.task-list-item) {
   flex: 1 1 20%;
   padding: 0.1em 1em 0.1em 0.8em;
   margin: 0 0.1em 0.3em 0  !important;
@@ -6697,50 +6730,50 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
   word-break: break-word;
 }
 
-.kanban ul .list-collapse-indicator.collapse-indicator.collapse-icon {
+.kanban ul:not(.floating-toc) .list-collapse-indicator.collapse-indicator.collapse-icon {
   margin-left: -1.2em;
   position: absolute;
 }
 
-.kanban ul .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+.kanban ul:not(.floating-toc) .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: var(--text-accent);
   transition: transform 10ms linear 0s
 }
 
-.kanban ul>li:nth-of-type(8n+1) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n+1) {
   background-color: var(--p-kanban-color-1);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+2) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n+2) {
   background-color: var(--p-kanban-color-2);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+3) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n+3) {
   background-color: var(--p-kanban-color-3);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+4) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n+4) {
   background-color: var(--p-kanban-color-4);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+5) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n+5) {
   background-color: var(--p-kanban-color-5);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+6) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n+6) {
   background-color: var(--p-kanban-color-6);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+7) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n+7) {
   background-color: var(--p-kanban-color-7);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n) {
+.kanban ul:not(.floating-toc)>li:nth-of-type(8n) {
   background-color: var(--p-kanban-color-8);
   padding-left: 1em;
 }
 
-.kanban ul ul {
+.kanban ul:not(.floating-toc) ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -6751,40 +6784,40 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
   background: none;
 }
 
-.kanban ul ul li:not(.task-list-item) {
+.kanban ul:not(.floating-toc) ul li:not(.task-list-item) {
   width: 100%;
   display: block;
   background-color: var(--p-kanban-card-color-1) !important;
 }
 
-.kanban ul ul li:nth-child(even) {
+.kanban ul:not(.floating-toc) ul li:nth-child(even) {
   background-color: var(--p-kanban-card-color-2) !important;
 }
 
-.kanban ul>li:hover {
+.kanban ul:not(.floating-toc)>li:hover {
   border-color: var(--p-kanban-border-color) !important;
 }
 
-.kanban ul ul li:hover {
+.kanban ul:not(.floating-toc) ul li:hover {
   background: transparent !important;
   border-color: var(--p-kanban-border-color) !important;
   border-left: 1px solid var(--p-kanban-border-color) !important;
 }
 
-.theme-dark .kanban ul ul li:hover {
+.theme-dark .kanban ul:not(.floating-toc) ul li:hover {
   border-color: #696969e1 !important;
   border-left: 1px solid #696969e1 !important;
 }
 
-.kanban ul ul li .task-list-item-checkbox {
+.kanban ul:not(.floating-toc) ul li .task-list-item-checkbox {
   margin-left: 1.5rem;
 }
 
-.kanban ul ul ul {
+.kanban ul:not(.floating-toc) ul ul {
   margin-right: 0;
 }
 
-.kanban ul ul::before {
+.kanban ul:not(.floating-toc) ul::before {
   border-left: 0;
 }
 
@@ -6792,21 +6825,21 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
   max-width: 100%;
 }
 
-.kanban ul.contains-task-list ul,
+.kanban ul:not(.floating-toc).contains-task-list ul,
 .kanban ol.contains-task-list ul,
-.kanban ul.contains-task-list ol,
+.kanban ul:not(.floating-toc).contains-task-list ol,
 .kanban ol.contains-task-list ol {
   position: initial;
 }
 
-.kanban ul.contains-task-list ul::before,
+.kanban ul:not(.floating-toc).contains-task-list ul::before,
 .kanban ol.contains-task-list ul::before,
-.kanban ul.contains-task-list ol::before,
+.kanban ul:not(.floating-toc).contains-task-list ol::before,
 .kanban ol.contains-task-list ol::before {
   all: initial
 }
 
-.kanban ul > li.task-list-item {
+.kanban ul:not(.floating-toc) > li.task-list-item {
   flex: 1 1 20%;
   padding: 0.1em 1em;
   margin: 0 0.1em 0.3em 0;
@@ -6819,7 +6852,7 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
   text-indent: 0;
 }
 
-.kanban ul ul li.task-list-item {
+.kanban ul:not(.floating-toc) ul li.task-list-item {
   width: 100%;
   display: block;
   padding-left: 2em;
@@ -7459,7 +7492,7 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-formatting-quote {
   /*border-radius: var(--radius-s-border);*/
 }
 
-.cm-quote:not([class*="link"]):not([class*="string"]):not([class*="em"]) {
+.cm-quote:not([class*="link"]):not([class*="string"]):not([class*="em"]):not([class*="strong"]) {
   color: var(--text-normal);
 }
 
@@ -8169,8 +8202,8 @@ body.clutter-free-headings div:not(.cm-active).cm-line .cm-header.cm-inline-code
 body.clutter-free-headings div:not(.cm-active).cm-line .cm-header.cm-highlight ~ span.cm-header::before {
   display: none;
 } */
-body.clutter-free-headings div.mod-cm6.is-live-preview div:not(.cm-active).cm-line .cm-header ~  span.cm-header::before
-{
+body.clutter-free-headings div.mod-cm6.is-live-preview div:not(.cm-active).cm-line .cm-header ~ span.cm-header::before,
+body.clutter-free-headings div.mod-cm6.is-live-preview div:not(.cm-active).cm-line .cm-header.cm-hmd-internal-link::before {
   display: none;
 }
 
@@ -8332,40 +8365,58 @@ body.h6-toggle-underline .markdown-source-view.is-live-preview .HyperMD-header.H
 }
 
 .cm-header-1 {
-  font-size: var(--h1) !important;
+  font-size: var(--h1);
   position: relative;
   font-family: var(--font-family-h1);
   color: var(--h1-color);
 }
 .cm-header-2 {
-  font-size: var(--h2) !important;
+  font-size: var(--h2);
   position: relative;
   font-family: var(--font-family-h2);
   color: var(--h2-color);
 }
 .cm-header-3 {
-  font-size: var(--h3) !important;
+  font-size: var(--h3);
   position: relative;
   font-family: var(--font-family-h3);
   color: var(--h3-color);
 }
 .cm-header-4 {
-  font-size: var(--h4) !important;
+  font-size: var(--h4);
   position: relative;
   font-family: var(--font-family-h4);
   color: var(--h4-color);
 }
 .cm-header-5 {
-  font-size: var(--h5) !important;
+  font-size: var(--h5);
   position: relative;
   font-family: var(--font-family-h5);
   color: var(--h5-color);
 }
 .cm-header-6 {
-  font-size: var(--h6) !important;
+  font-size: var(--h6);
   position: relative;
   font-family: var(--font-family-h6);
   color: var(--h6-color);
+}
+.markdown-source-view.mod-cm5 .HyperMD-header-1 {
+  font-size: var(--h1) !important;
+}
+.markdown-source-view.mod-cm5 .HyperMD-header-2 {
+  font-size: var(--h2) !important;
+}
+.markdown-source-view.mod-cm5 .HyperMD-header-3 {
+  font-size: var(--h3) !important;
+}
+.markdown-source-view.mod-cm5 .HyperMD-header-4 {
+  font-size: var(--h4) !important;
+}
+.markdown-source-view.mod-cm5 .HyperMD-header-5 {
+  font-size: var(--h5) !important;
+}
+.markdown-source-view.mod-cm5 .HyperMD-header-6 {
+  font-size: var(--h6) !important;
 }
 
 body.h1-text-align-center .HyperMD-header.HyperMD-header-1.cm-line,
@@ -8756,7 +8807,7 @@ div.math.math-block mjx-math {
 :not(pre)>code:not([class*='language-']) {
   font-weight: 600;
   padding: 2px 3px 1px;
-  font-family: var(--font-family-preview-edit-code) !important;
+  font-family: var(--font-family-inline-code) !important;
 }
 
 .cm-s-obsidian span.cm-inline-code {
@@ -8803,8 +8854,17 @@ li {
 }
 
 li>p:not(.task-list-item) {
-  margin-top: 0.3125em;
-  margin-bottom: 0.3125em;
+  margin-top: 0.75em;
+  margin-bottom: 0.75em;
+}
+
+li.task-list-item>p {
+  margin-bottom: 0.25em;
+}
+
+ul > li.task-list-item > *,
+ul > li.task-list-item {
+  text-indent: -1.1em;
 }
 
 ul,
@@ -8833,42 +8893,39 @@ ul ul ul ol ul {
   list-style: circle;
 }
 
-.markdown-source-view.mod-cm6 .list-bullet {
-  padding-right: 4px;
+.markdown-source-view.mod-cm6 span.list-bullet {
+  padding-right: 0;
 }
-.markdown-source-view.mod-cm6 .list-bullet:after {
+.markdown-source-view.mod-cm6 span.list-bullet:after {
   content: none;
-  }
+}
 .markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line div.cm-fold-indicator ~ span.cm-formatting .list-bullet::after,
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line span.cm-hmd-list-indent ~ span.cm-formatting .list-bullet::after
-{
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line.cm-line span.cm-hmd-list-indent ~ span.cm-formatting .list-bullet::after {
   content: '\25E6';
   left: -1px;
   font-family: 'Inter';
 }
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line div.cm-fold-indicator + span.cm-formatting .list-bullet::after,
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line>span.cm-formatting:first-of-type .list-bullet::after
-{
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line div.cm-fold-indicator ~ span.cm-formatting .list-bullet::after,
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line>span.cm-formatting:first-of-type .list-bullet::after {
   content: '\2022';
   left: -2px;
   font-family: 'Inter';
 }
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line div.cm-fold-indicator + span.cm-formatting .list-bullet::after,
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line span.cm-hmd-list-indent + span.cm-formatting .list-bullet::after
-{
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line div.cm-fold-indicator ~ span.cm-formatting .list-bullet::after,
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-2.cm-line span.cm-hmd-list-indent ~ span.cm-formatting .list-bullet::after {
   content: '\25E6';
   left: -1px;
   font-family: 'Inter';
 }
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line div.cm-fold-indicator + span.cm-formatting .list-bullet::after,
-.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line span.cm-hmd-list-indent + span.cm-formatting .list-bullet::after {
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line div.cm-fold-indicator ~ span.cm-formatting .list-bullet::after,
+.markdown-source-view.mod-cm6 .HyperMD-list-line.HyperMD-list-line-3.cm-line span.cm-hmd-list-indent ~ span.cm-formatting .list-bullet::after {
   content: '\25AA';
-  left: 0;
+  left: 0px;
   font-family: 'Inter';
 }
 
 .markdown-preview-view ul>li:not(.task-list-item)::marker {
-  font-size: 0.8em;
+  font-size: 0.9em;
 }
 
 ul {
@@ -8920,15 +8977,18 @@ ol ul ol ol {
   transition: all 300ms ease-in-out;
 }
 
-body:not(.list-vertical-line-one):not(.list-vertical-line-two):not(.list-vertical-line-three):not(.list-no-border):not(.rainbow-lines) .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item),
-body:not(.list-vertical-line-one):not(.list-vertical-line-two):not(.list-vertical-line-three):not(.list-no-border):not(.rainbow-lines) .markdown-preview-view:not(.kanban) ul>li:not(.task-list-item) {
-  margin-top: 0.2em;
+.markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item),
+.markdown-preview-view:not(.kanban) ul>li:not(.task-list-item) {
+  margin-top: calc(var(--margin-list) * 0.25em);
+  margin-bottom: calc(var(--margin-list) * 0.25em);
 }
 
+/*
 .markdown-preview-view ol>li,
 .markdown-preview-view:not(.kanban) ul>li {
   padding-top: 0.2em;
 }
+*/
 
 .markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item) {
   border-left: 0.125em solid var(--list-ol-block-color);
@@ -8980,7 +9040,9 @@ body.list-bracket-left-two ol>li::before {
   display: inline-block;
   white-space: pre;
 }
-
+body.list-bracket-left-two ul>li:not(.task-list-item)>p {
+  display:inline
+}
 body.list-bracket-left-two ul>li:not(.task-list-item) {
   list-style-position: inside;
 }
@@ -9046,14 +9108,9 @@ body.list-vertical-line-one ol.contains-task-list ol::before {
   content: ' ';
   border-left: 2px solid var(--background-modifier-border);
   position: absolute;
-  left: -0.9em;
+  left: -1rem;
   top: 1px;
   height: 100%;
-}
-
-body.list-vertical-line-one li>p:not(.task-list-item) {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 body.list-vertical-line-one ul>li:not(.task-list-item) {
@@ -9117,7 +9174,7 @@ body.list-vertical-line-two ol.contains-task-list ol::before {
   content: ' ';
   border-left: 2px solid var(--background-modifier-border);
   position: absolute;
-  left: -1.2em;
+  left: -1.1em;
   top: 0px;
   height: 100%;
 }
@@ -9126,11 +9183,6 @@ body.list-vertical-line-two.is-mobile ol.contains-task-list ul::before,
 body.list-vertical-line-two.is-mobile ul.contains-task-list ol::before,
 body.list-vertical-line-two.is-mobile ol.contains-task-list ol::before {
   left: -1em;
-}
-
-body.list-vertical-line-two li>p:not(.task-list-item) {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 body.list-vertical-line-two ul>li:not(.task-list-item) {
@@ -9156,11 +9208,6 @@ body.list-no-border ol ol::before {
   all: initial;
 }
 
-body.list-no-border li>p:not(.task-list-item) {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
 body.list-no-border ul>li:not(.task-list-item) {
   border-left: none !important;
 }
@@ -9169,11 +9216,15 @@ body.list-no-border ol>li {
   border-left: none !important;
 }
 
-body.list-no-border .cm-hmd-list-indent .cm-tab::before {
+body.list-no-line-in-edit .cm-hmd-list-indent .cm-tab::before {
   all: initial;
 }
 
 /*list-vertical-line-three*/
+body.list-vertical-line-three ol {
+  padding-inline-start: 13px;
+}
+
 body.list-vertical-line-three ol,
 body.list-vertical-line-three ol ol,
 body.list-vertical-line-three ol ol ol,
@@ -9208,7 +9259,14 @@ body.list-vertical-line-three ol ol {
 }
 
 body.list-vertical-line-three ul ul::before,
-body.list-vertical-line-three ol ul::before,
+body.list-vertical-line-three ol ul::before {
+  content: '';
+  border-left: 2px solid var(--background-modifier-border);
+  position: absolute;
+  left: -1.1em;
+  top: 0px;
+  bottom: 0px;
+}
 body.list-vertical-line-three ul ol::before,
 body.list-vertical-line-three ol ol::before {
   content: '';
@@ -9230,9 +9288,7 @@ body.list-vertical-line-three .kanban ol.contains-task-list ol::before {
 }
 
 body.list-vertical-line-three ul.contains-task-list ul::before,
-body.list-vertical-line-three ol.contains-task-list ul::before,
-body.list-vertical-line-three ul.contains-task-list ol::before,
-body.list-vertical-line-three ol.contains-task-list ol::before {
+body.list-vertical-line-three ul.contains-task-list ol::before {
   content: ' ';
   border-left: 2px solid var(--background-modifier-border);
   position: absolute;
@@ -9240,17 +9296,18 @@ body.list-vertical-line-three ol.contains-task-list ol::before {
   top: 1px;
   height: 100%;
 }
+body.list-vertical-line-three ol.contains-task-list ul::before,
+body.list-vertical-line-three ol.contains-task-list ol::before {
+  left: 0em;
+  top: 0px;
+  bottom: 0px;
+}
 
 body.list-vertical-line-three.is-mobile ul.contains-task-list ul::before,
 body.list-vertical-line-three.is-mobile ol.contains-task-list ul::before,
 body.list-vertical-line-three.is-mobile ul.contains-task-list ol::before,
 body.list-vertical-line-three.is-mobile ol.contains-task-list ol::before {
   left: -1em;
-}
-
-body.list-vertical-line-three li>p:not(.task-list-item) {
-  margin-top: 0;
-  margin-bottom: 0;
 }
 
 body.list-vertical-line-three ul>li:not(.task-list-item) {
@@ -9261,22 +9318,11 @@ body.list-vertical-line-three ol>li {
   border-left: none !important;
 }
 
-body.list-vertical-line-three ul>li:not(.task-list-item) {
-  list-style-position: inside;
-}
-
-body.list-vertical-line-three ol.contains-task-list ul::before,
-body.list-vertical-line-three ol.contains-task-list ol::before {
-  left: 0.5em;
-  top: 0px;
-  bottom: 0px;
-}
-
 body.list-vertical-line-three:not(.default-icons) .markdown-preview-view ul:not(.contains-task-list) .list-collapse-indicator.collapse-indicator.collapse-icon::before,
 body.list-vertical-line-three:not(.default-icons) .markdown-preview-view ol .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   content: "↓";
   font-size: 14px;
-  margin-left: 16px;
+  margin-left: 2px;
   font-weight: bold;
   font-family: 'Inter';
   color: var(--text-accent);
@@ -9285,14 +9331,14 @@ body.list-vertical-line-three:not(.default-icons) .markdown-preview-view ol .lis
 
 body.list-vertical-line-three:not(.default-icons) .markdown-preview-view ul:not(.contains-task-list) li.is-collapsed div.list-collapse-indicator.collapse-indicator.collapse-icon,
 body.list-vertical-line-three:not(.default-icons) .markdown-preview-view ol li.is-collapsed div.list-collapse-indicator.collapse-indicator.collapse-icon {
-  transform: translateX(5px) translateY(8px) rotate(-90deg);
+  transform: translateX(-2px) translateY(1px) rotate(-90deg);
   opacity: 0.5;
 }
 
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6  .HyperMD-list-line.HyperMD-list-line-1.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6  .HyperMD-list-line.HyperMD-list-line-1.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   content: none;
-  }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
+}
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   content: '';
   font-family: var(--rb-indent-font-family) !important;
   font-size: var(--rb-indent-font-size) !important;
@@ -9325,13 +9371,13 @@ body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .HyperMD-list-line.cm-lin
   left: var(--rb-left-offset);
 }
 
-body:not(.list-no-border) .mod-cm6.cm-hmd-list-indent .cm-tab::before {
+body:not(.list-no-line-in-edit) .mod-cm6.cm-hmd-list-indent .cm-tab::before {
   display: none;
 }
-body:not(.list-no-border) .mod-cm6 .HyperMD-list-line.cm-line:not(.HyperMD-list-line-1) {
+body:not(.list-no-line-in-edit) .mod-cm6 .HyperMD-list-line.cm-line:not(.HyperMD-list-line-1) {
   overflow: hidden;
 }
-body:not(.list-no-border) .mod-cm6 .HyperMD-list-line.cm-line .cm-hmd-list-indent {
+body:not(.list-no-line-in-edit) .mod-cm6 .HyperMD-list-line.cm-line .cm-hmd-list-indent {
   position: relative;
   font-family: var(--rb-indent-font-family) !important;
   font-size: var(--rb-indent-font-size) !important;
@@ -9388,8 +9434,8 @@ body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line .cm-hmd-list-indent {
   font-size: var(--rb-indent-font-size) !important;
 }
 
-body.rainbow-lines .mod-cm6  .HyperMD-list-line.HyperMD-list-line-1.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
-content: none;
+body.rainbow-lines .mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
+  content: none;
 }
 body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   content: '';
@@ -9423,44 +9469,44 @@ body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line:not([class*="quote"]):not
   background-size: var(--rb-indent-bg-size);
   left: var(--rb-left-offset);
 }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 2"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 2"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
 body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 2"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   --indent-use-default: 0.92ch;
   --indent-use-wide: 6ch;
   --rb-indent-width: var(--indent-use-default);
 }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 3"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 3"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
 body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 3"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   --indent-use-default: 1.38ch;
   --indent-use-wide: 3ch;
   --rb-indent-width: var(--indent-use-default);
 }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 4"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent,
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 4"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent,
 body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 4"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   --indent-use-default: 1.84ch;
   --indent-use-wide: 4.00ch;
   --rb-indent-width: var(--indent-use-default);
 }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 5"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 5"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
 body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 5"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   --indent-use-default: 2.3ch;
   --indent-use-wide: 3ch;
   --rb-indent-width: var(--indent-use-default);
 }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 6"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 6"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
 body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 6"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   --indent-use-default: 2.74ch;
   --indent-use-wide: 5ch;
   --rb-indent-width: var(--indent-use-default);
 }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 7"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 7"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
 body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 7"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   --indent-use-default: 3.18ch;
   --indent-use-wide: 6ch;
   --rb-indent-width: var(--indent-use-default);
   --rb-indent-bg-size: calc(var(--rb-color-count) * var(--rb-indent-width)) 4px;
 }
-body:not(.list-no-border):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 8"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
+body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 8"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before,
 body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 8"] .HyperMD-list-line.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before {
   --indent-use-default: 3.65ch;
   --indent-use-wide: 6ch;
@@ -9469,17 +9515,17 @@ body.rainbow-lines .mod-cm6 .cm-contentContainer .cm-content[style*="tab-size: 8
 }
 
 /*rainbow-lines*/
-body.rainbow-lines ul ul,
-body.rainbow-lines ol ul,
-body.rainbow-lines ul ol,
-body.rainbow-lines ol ol {
+body.rainbow-lines-reading ul ul,
+body.rainbow-lines-reading ol ul,
+body.rainbow-lines-reading ul ol,
+body.rainbow-lines-reading ol ol {
   position: relative;
 }
 
-body.rainbow-lines ul ul::before,
-body.rainbow-lines ol ul::before,
-body.rainbow-lines ul ol::before,
-body.rainbow-lines ol ol::before {
+body.rainbow-lines-reading ul ul::before,
+body.rainbow-lines-reading ol ul::before,
+body.rainbow-lines-reading ul ol::before,
+body.rainbow-lines-reading ol ol::before {
   content: '';
   border-left: 1.5px solid var(--background-modifier-border);
   position: absolute;
@@ -9487,47 +9533,30 @@ body.rainbow-lines ol ol::before {
   height: 100%;
 }
 
-body.rainbow-lines .kanban ul ul::before,
-body.rainbow-lines .kanban ol ul::before {
+body.rainbow-lines-reading .kanban ul ul::before,
+body.rainbow-lines-reading .kanban ol ul::before {
   display: none;
 }
 
-body.rainbow-lines ul.contains-task-list ul::before,
-body.rainbow-lines ol.contains-task-list ul::before,
-body.rainbow-lines ul.contains-task-list ol::before,
-body.rainbow-lines ol.contains-task-list ol::before {
-  content: ' ';
-  border-left: 1.5px solid var(--background-modifier-border);
-  position: absolute;
-  left: -0.9em;
-  top: 1px;
-  height: 100%;
-}
-
-body.rainbow-lines li>p:not(.task-list-item) {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-body.rainbow-lines ul>li:not(.task-list-item) {
+body.rainbow-lines-reading ul>li:not(.task-list-item) {
   border-left: none !important;
 }
 
-body.rainbow-lines ol>li {
+body.rainbow-lines-reading ol>li {
   border-left: none !important;
 }
 
-body.rainbow-lines ol,
-body.rainbow-lines ol ol,
-body.rainbow-lines ol ol ol,
-body.rainbow-lines ol ul ol,
-body.rainbow-lines ol ol ol ol,
-body.rainbow-lines ol ol ul ol,
-body.rainbow-lines ol ul ol ol {
+body.rainbow-lines-reading ol,
+body.rainbow-lines-reading ol ol,
+body.rainbow-lines-reading ol ol ol,
+body.rainbow-lines-reading ol ul ol,
+body.rainbow-lines-reading ol ol ol ol,
+body.rainbow-lines-reading ol ol ul ol,
+body.rainbow-lines-reading ol ul ol ol {
   list-style: decimal;
 }
 
-body.rainbow-lines ol>li::marker {
+body.rainbow-lines-reading ol>li::marker {
   font-weight: normal;
   color: var(--text-normal);
 }
@@ -9693,60 +9722,60 @@ body.rainbow-lines .CodeMirror-foldgutter-open.CodeMirror-guttermarker-subtle::a
  
 /*预览模式*/ 
 /*无序列表*/
-body.rainbow-lines ul ul::before {
+body.rainbow-lines-reading ul ul::before {
  border-color: rgba(var(--accent-1-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul::before {
+body.rainbow-lines-reading li ul ul::before {
   border-color: rgba(var(--accent-2-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul ul::before {
+body.rainbow-lines-reading li ul ul ul::before {
   border-color: rgba(var(--accent-3-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul ul ul::before {
+body.rainbow-lines-reading li ul ul ul ul::before {
   border-color: rgba(var(--accent-4-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul ul ul ul::before {
+body.rainbow-lines-reading li ul ul ul ul ul::before {
   border-color: rgba(var(--accent-5-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul ul ul ul ul::before {
+body.rainbow-lines-reading li ul ul ul ul ul ul::before {
   border-color: rgba(var(--accent-6-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul ul ul ul ul ul::before {
+body.rainbow-lines-reading li ul ul ul ul ul ul ul::before {
   border-color: rgba(var(--accent-7-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul ul ul ul ul ul ul::before {
+body.rainbow-lines-reading li ul ul ul ul ul ul ul ul::before {
   border-color: rgba(var(--accent-8-rgb),0.7) !important;
 }
-body.rainbow-lines li ul ul ul ul ul ul ul ul ul::before {
+body.rainbow-lines-reading li ul ul ul ul ul ul ul ul ul::before {
   border-color: rgba(var(--accent-1-rgb),0.7) !important;
 }
 
 /*任务列表*/
-body.rainbow-lines ol ol::before {
+body.rainbow-lines-reading ol ol::before {
   border-color: rgba(var(--accent-1-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol::before {
+body.rainbow-lines-reading li ol ol::before {
   border-color: rgba(var(--accent-2-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol ol::before {
+body.rainbow-lines-reading li ol ol ol::before {
   border-color: rgba(var(--accent-3-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol ol ol::before {
+body.rainbow-lines-reading li ol ol ol ol::before {
   border-color: rgba(var(--accent-4-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol ol ol ol::before {
+body.rainbow-lines-reading li ol ol ol ol ol::before {
   border-color: rgba(var(--accent-5-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol ol ol ol ol::before {
+body.rainbow-lines-reading li ol ol ol ol ol ol::before {
   border-color: rgba(var(--accent-6-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol ol ol ol ol ol::before {
+body.rainbow-lines-reading li ol ol ol ol ol ol ol::before {
   border-color: rgba(var(--accent-7-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol ol ol ol ol ol ol::before {
+body.rainbow-lines-reading li ol ol ol ol ol ol ol ol::before {
   border-color: rgba(var(--accent-8-rgb),0.7) !important;
 }
-body.rainbow-lines li ol ol ol ol ol ol ol ol::before {
+body.rainbow-lines-reading li ol ol ol ol ol ol ol ol::before {
   border-color: rgba(var(--accent-1-rgb),0.7) !important;
 }
 
@@ -9775,28 +9804,28 @@ body.rainbow-checkbox .markdown-preview-view li li li li li li li li li .task-li
   background-color: rgb(var(--accent-8-rgb),0.7);
 }
 
-body.rainbow-lines .markdown-preview-view li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-1-rgb));
 }
-body.rainbow-lines .markdown-preview-view li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-2-rgb));
 }
-body.rainbow-lines .markdown-preview-view li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-3-rgb));	
 }
-body.rainbow-lines .markdown-preview-view li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-4-rgb));	
 }
-body.rainbow-lines .markdown-preview-view li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-5-rgb));
 }
-body.rainbow-lines .markdown-preview-view li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-6-rgb));	
 }
-body.rainbow-lines .markdown-preview-view li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-7-rgb));	
 }
-body.rainbow-lines .markdown-preview-view li li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+body.rainbow-lines-reading .markdown-preview-view li li li li li li li li .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: rgb(var(--accent-8-rgb));	
 }
 
@@ -9851,7 +9880,7 @@ b,
 span.cm-strong,
 :not(font)>strong,
 .cm-s-obsidian .cm-highlight.cm-strong {
-  color: var(--accent-strong);
+  color: var(--accent-strong) !important;
   font-family: var(--font-family-strong) !important;
 }
 
@@ -10110,27 +10139,21 @@ body.no-wrapped-table td:hover {
 
 
 /****dataview table***/
-
-
-table.table-view-table > thead > tr > th 
-{
+table.table-view-table > thead > tr > th {
   font-size: 0.9em;
 }
-table.table-view-table > tbody > tr > td 
-{
+table.table-view-table > tbody > tr > td {
   font-size: 0.85em;
 }
 
 body:not(.no-wrapped-dvtable) .markdown-preview-view .table-view-table>thead>tr,
-body:not(.no-wrapped-dvtable) .markdown-preview-view .table-view-table>tbody>tr
-{
+body:not(.no-wrapped-dvtable) .markdown-preview-view .table-view-table>tbody>tr {
   white-space: pre-wrap; 
   word-break: break-word; 
-   overflow-wrap: anywhere; 
+  overflow-wrap: anywhere; 
 }
 
-body.no-wrapped-dvtable .block-language-dataview
-{
+body.no-wrapped-dvtable .block-language-dataview {
   width: 100%;
   margin: 0;
   overflow-x: auto; 
@@ -10151,36 +10174,22 @@ body.no-wrapped-dvtable table.dataview tr > td:last-of-type {
   max-width: unset;
 }
 
-
-
-body.auto-serial-number-dvtable .markdown-source-view:not(.cards) .dataview.table-view-table 
-{
+body.auto-serial-number-dvtable .markdown-source-view:not(.cards) .dataview.table-view-table {
   counter-reset: sec;
 }
-body.auto-serial-number-dvtable .markdown-source-view:not(.cards) .dataview.table-view-table> tbody > tr> td:first-child::before
-{
+body.auto-serial-number-dvtable .markdown-source-view:not(.cards) .dataview.table-view-table> tbody > tr> td:first-child::before {
   counter-increment: sec;
   content:counter(sec) ". ";
-
 }
 
-body.auto-serial-number-dvtable .markdown-preview-view:not(.cards) .dataview.table-view-table 
-{
+body.auto-serial-number-dvtable .markdown-preview-view:not(.cards) .dataview.table-view-table {
   counter-reset: section;
 }
-body.auto-serial-number-dvtable .markdown-preview-view:not(.cards) .dataview.table-view-table> tbody > tr> td:first-child::before
-{
+body.auto-serial-number-dvtable .markdown-preview-view:not(.cards) .dataview.table-view-table> tbody > tr> td:first-child::before {
   counter-increment: section;
   content:counter(section) ". ";
 
 }
-table.dataview ul.dataview-ul li {
-  white-space: nowrap;
-}
-
-
-
-
 
 body:not(.no-wrapped-dvtable) .markdown-preview-view .table-view-table>tbody>tr>td, 
 body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tbody>tr>td {
@@ -10384,6 +10393,60 @@ body.bt-status-off #scroll-controls {
   color: var(--white);
 }
 
+/** file name**/
+
+body.file-name-animation .nav-file-title-content:not(.is-being-renamed):hover
+{
+  animation: filemove 1.5s 1 normal linear;
+}
+
+body.file-name-animation .nav-file-title-content:not(.is-being-renamed)
+{
+  min-width: 200px;
+  white-space: nowrap;
+}
+body.file-name-animation .nav-file
+{
+  display: inline-block;
+}
+/** file folder name**/
+body.file-name-animation .obsidian-icon-folder-icon
+{
+  vertical-align: middle;
+  display: inline;
+}
+
+body.file-name-animation .nav-folder-title
+{
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.nav-folder-title-content.is-being-renamed
+{
+  white-space: break-spaces;
+}
+
+body.file-name-animation .nav-folder-title-content:not(.is-being-renamed)
+{
+  min-width: 200px;
+  white-space: nowrap;
+}
+body.file-name-animation .nav-folder-title-content:not(.is-being-renamed):hover
+{
+  animation: filemove 1.5s 1 normal linear;
+}
+
+@keyframes filemove {
+  0% {
+    transform: translate(0, 0);
+}
+100% {
+    transform: translate(calc(-100% + 200px), 0);
+}
+}
+
+
 body.light-background-color-files .nav-file-title.is-active {
   color: var(--accent-strong);
   background-color: var(--theme-color-translucent-1);
@@ -10465,7 +10528,8 @@ body.link-underline a.external-link {
 }
 /*cm6 模式的下划线*/
 body.link-underline .markdown-source-view.mod-cm6 .cm-underline,
-a, .markdown-preview-view .internal-link {
+body.link-underline a, 
+body.link-underline .markdown-preview-view .internal-link {
   text-decoration: none !important;
 }
 
@@ -10971,6 +11035,7 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 
 
 /* file explorer :Wrap long nav text and some paddings */
+
 .nav-file-title,
 .nav-folder-title {
   white-space: normal;
@@ -11094,7 +11159,7 @@ body:not(.default-icons) .nav-folder-collapse-indicator::after {
   position: absolute;
   content: "↓";
   left: -3px;
-  top: 1px;
+  top: 3px;
   font-size: 15px;
   font-family: 'Inter';
   font-weight: bold;
@@ -11114,7 +11179,7 @@ body:not(.unmuted-collapsed-folder) .nav-folder.is-collapsed {
 }
 
 body:not(.default-icons) .nav-folder.is-collapsed .nav-folder-collapse-indicator {
-  transform: translateX(-11px) translateY(6px) rotate(-90deg);
+  transform: translateX(-13px) translateY(7px) rotate(-90deg);
   opacity: 0.7;
 }
 
@@ -13001,7 +13066,11 @@ pre.frontmatter.language-yaml::before {
 /* ================================== */
 /* ============= kanban ============= */
 /* ================================== */
-/*body:not(.style-options-for-kanban-plugin-static-default)*/ .workspace-leaf .kanban-plugin__lane {
+.kanban-plugin__markdown-preview-view {
+  font-family: var(--font-family-major) !important;
+}
+/*body:not(.style-options-for-kanban-plugin-static-default)*/ 
+.workspace-leaf .kanban-plugin__lane {
   border-radius: 8px;
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
 }
@@ -13101,9 +13170,8 @@ button.kanban-plugin__new-item-button:hover {
 .kanban-plugin__markdown-preview-view ol.contains-task-list .contains-task-list, .kanban-plugin__markdown-preview-view ul.contains-task-list .contains-task-list, .kanban-plugin__markdown-preview-view ul, .kanban-plugin__markdown-preview-view ol {
   /* padding-inline-start: 19px; */
 }
-.kanban-plugin__markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item) ,
-.kanban-plugin__markdown-preview-view:not(.kanban) ul>li:not(.task-list-item)
-{
+.kanban-plugin__markdown-preview-view ol:not(.contains-task-list)>li:not(.task-list-item),
+.kanban-plugin__markdown-preview-view:not(.kanban) ul>li:not(.task-list-item) {
   margin-left: unset;
   padding-left: unset;
   margin-bottom: unset; 
@@ -13373,19 +13441,19 @@ body.style-options-for-kanban-plugin-static-little-color  .kanban-plugin__lane-w
 body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+1) .kanban-plugin__lane-header-wrapper {
   background-color: var(--kanban-color-1) !important;
 }
-body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+2) .kanban-plugin__lane-header-wrapper  {
+body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+2) .kanban-plugin__lane-header-wrapper {
   background-color: var(--kanban-color-2) !important;
 }
-body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+3) .kanban-plugin__lane-header-wrapper  {
+body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+3) .kanban-plugin__lane-header-wrapper {
   background-color: var(--kanban-color-3) !important;
 }
 body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+4) .kanban-plugin__lane-header-wrapper {
   background-color: var(--kanban-color-4) !important;
 }
-body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+5) .kanban-plugin__lane-header-wrapper  {
+body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+5) .kanban-plugin__lane-header-wrapper {
   background-color: var(--kanban-color-5) !important;
 }
-body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+6) .kanban-plugin__lane-header-wrapper  {
+body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n+6) .kanban-plugin__lane-header-wrapper {
   background-color: var(--kanban-color-6) !important;
 }
 body.style-options-for-kanban-plugin-static-little-color .kanban-plugin__lane-wrapper:nth-child(7n) .kanban-plugin__lane-header-wrapper  {
@@ -14427,22 +14495,21 @@ body.style-options-for-admonition-plugin .admonition-col4-parent .admonition-col
 /*自适应分栏*/
 body.style-options-for-admonition-plugin .admonition-flex {
   margin: auto;
- box-shadow:none;
-   
- }
- body.style-options-for-admonition-plugin .admonition-flex >.admonition-content-holder {
-  margin-top:0!important;
-  margin-bottom:0!important;
+  box-shadow:none;
 }
- body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
- width: 100%;
- margin: 0px;
- display: flex;
- flex-wrap: wrap;
+body.style-options-for-admonition-plugin .admonition-flex >.admonition-content-holder {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
+  width: 100%;
+  margin: 0px;
+  display: flex;
+  flex-wrap: wrap;
 }
 body.style-options-for-admonition-plugin .admonition-flex .admonition-content div{
- flex: 1;
- margin: 0 0.625rem;
+  flex: 1;
+  margin: 0 0.625rem;
 }
 
 /*ad-table*/
@@ -14457,8 +14524,6 @@ body.style-options-for-admonition-plugin .admonition-table .admonition-content {
   overflow-x: auto; 
   white-space: nowrap;
 }
-
-
 
 /*blank ad框全透明隐藏*/
 body.style-options-for-admonition-plugin .admonition-blank {
@@ -14821,8 +14886,6 @@ ul.dataview.list-view-ul>li:not(.task-list-item)::before {
   padding: 0 5px 0 0;
 }
 
-  
-
 body.dataview-list-style-pacman ul.dataview.list-view-ul>li:not(.task-list-item):first-of-type::before {
   content: '\edcf';
   color: var(--list-ol-number-color);
@@ -14847,7 +14910,7 @@ body.dataview-list-style-pacman ul.dataview.list-view-ul {
 ul.dataview.dataview-ul.dataview-result-list-root-ul>li.dataview-result-list-li {
   border-left: none !important;
   margin: 0;
-  padding-left: 1em;
+  padding-left: 0em;
 }
 /*
 ul.dataview.dataview-ul.dataview-result-list-root-ul>li.dataview-result-list-li::before {
@@ -14867,10 +14930,10 @@ ul.dataview.dataview-ul.dataview-result-list-root-ul {
   border-radius: var(--radius-xs);
   border: 1px solid var(--embed-color);
 }
-body.rainbow-lines table.dataview.table-view-table ul ul::before,
-body.rainbow-lines table.dataview.table-view-table ol ul::before,
-body.rainbow-lines table.dataview.table-view-table ul ol::before,
-body.rainbow-lines table.dataview.table-view-table ol ol::before,
+body.rainbow-lines-reading table.dataview.table-view-table ul ul::before,
+body.rainbow-lines-reading table.dataview.table-view-table ol ul::before,
+body.rainbow-lines-reading table.dataview.table-view-table ul ol::before,
+body.rainbow-lines-reading table.dataview.table-view-table ol ol::before,
 body.list-vertical-line-one table.dataview.table-view-table ul ul::before,
 body.list-vertical-line-one table.dataview.table-view-table ol ul::before,
 body.list-vertical-line-one table.dataview.table-view-table ul ol::before,
@@ -14885,10 +14948,10 @@ body.list-vertical-line-three table.dataview.table-view-table ul ol::before,
 body.list-vertical-line-three table.dataview.table-view-table ol ol::before {
   border-left: none;
 }
-body.rainbow-lines .kanban-plugin__markdown-preview-view ul ul::before,
-body.rainbow-lines .kanban-plugin__markdown-preview-view ol ul::before,
-body.rainbow-lines .kanban-plugin__markdown-preview-view ul ol::before,
-body.rainbow-lines .kanban-plugin__markdown-preview-view ol ol::before,
+body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ul ul::before,
+body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ol ul::before,
+body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ul ol::before,
+body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ol ol::before,
 body.list-vertical-line-one .kanban-plugin__markdown-preview-view ul ul::before,
 body.list-vertical-line-one .kanban-plugin__markdown-preview-view ol ul::before,
 body.list-vertical-line-one .kanban-plugin__markdown-preview-view ul ol::before,
@@ -14905,7 +14968,6 @@ body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ol::befor
 }
 
 .markdown-preview-view .dataview.inline-field-standalone-value {
-  font-family: var(--font-family-major); 
   background-color:  transparent;
 }
 
@@ -14914,7 +14976,6 @@ body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ol::befor
 /* ================================== */
 
 /*********covercards***********/
-
 :root{
   --cards-width:138px;
 }
@@ -15625,7 +15686,7 @@ body:not(.outliner-plugin-bls).markdown-source-view.mod-cm5 .cm-hmd-list-indent 
 .outliner-plugin-bls .cm-hmd-list-indent .cm-tab::before {
   display: none;
 }
-.outliner-plugin-bls .cm-s-obsidian:not(.is-live-preview) .cm-formatting-list-ul:before, 
+
 .outliner-plugin-bls .cm-s-obsidian.is-live-preview .list-bullet:before {
   display: none;
 }
@@ -15705,27 +15766,43 @@ div[data-type='memos_view'] .tags-wrapper > .title-text,
   color: var(--text-normal) !important;
   opacity: 0.7 !important;
 }
-
+.mod-left-split div[data-type="memos_view"] #page-wrapper,
 .mod-right-split div[data-type="memos_view"] #page-wrapper {
   padding-left: 8px;
   padding-right: 8px;
   transform: translateX(0);
 }
-
+.mod-left-split div[data-type="memos_view"] #page-wrapper  textarea,
 .mod-right-split div[data-type="memos_view"] #page-wrapper  textarea{
-padding: 0;
-max-height: calc(28vh);
+  padding: 0;
+  max-height: calc(28vh);
 }
-
+.mod-left-split  div[data-type="memos_view"] #page-wrapper > .content-wrapper-padding-fix,
 .mod-right-split  div[data-type="memos_view"] #page-wrapper > .content-wrapper-padding-fix {
-width: 100%;
+  width: 100%;
   padding: 0;
 }
-
+.mod-left-split  div[data-type="memos_view"]  .view-content,
 .mod-right-split  div[data-type="memos_view"]  .view-content {
   padding:0;
 }
-
+.mod-left-split  div[data-type="memos_view"]  .view-content .title-text span,
+.mod-right-split  div[data-type="memos_view"]  .view-content  .title-text span {
+  font-size: var(--editor-font-size);
+}
+.mod-left-split  div[data-type="memos_view"] .memo-editor-wrapper, div[data-type="memos_view"] .search-bar-container > .search-bar-inputer,
+.mod-right-split  div[data-type="memos_view"] .memo-editor-wrapper, div[data-type="memos_view"] .search-bar-container > .search-bar-inputer {
+  border: 0 !important;
+}
+.mod-left-split div[data-type="memos_view"] .memo-editor-wrapper, div[data-type="memos_view"] .search-bar-container > .search-bar-inputer input,
+.mod-right-split div[data-type="memos_view"] .memo-editor-wrapper, div[data-type="memos_view"] .search-bar-container > .search-bar-inputer input { 
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+div.mod-right-split  div[data-type='memos_view'] .search-bar-container > .quickly-action-wrapper,
+div.mod-left-split  div[data-type='memos_view'] .search-bar-container > .quickly-action-wrapper {
+  width:100%;
+}
 
 /* ============ */
 /*image position*/
@@ -15914,7 +15991,7 @@ span[alt*="+grid"] {
 
 /*collapse allows*/
 body:not(.default-icons).is-mobile .nav-folder.is-collapsed .nav-folder-collapse-indicator {
-  transform: translateX(-15px) translateY(9px) rotate(-90deg);
+  transform: translateX(-16px) translateY(10px) rotate(-90deg);
 }
 
 body:not(.default-icons).is-mobile .workspace-leaf .search-result-container.mod-global-search .tree-item.search-result.is-collapsed .collapse-icon {
@@ -16042,7 +16119,9 @@ body.style-options-for-buttons-plugin button.blank:hover {
 }
 body.style-options-for-buttons-plugin .admonition-content button.grad_button{
   margin-top: 0px;
-  margin-bottom: -10px;
+}
+body.style-options-for-buttons-plugin .admonition-content span>button.grad_button{
+  margin:3px;
 }
 body.style-options-for-buttons-plugin button.grad_button{
   margin:5PX;
@@ -16051,7 +16130,7 @@ body.style-options-for-buttons-plugin button.grad_button{
   justify-content: center;
   align-items: center;
   min-width: 90px;
-  padding: 0 28px;
+  padding: 0 18px;
   height: 38px;
   font-size: 16px;
   color: #fff;
@@ -16646,16 +16725,13 @@ body.color-scheme-options-lillimon-topaz .view-header {
   border-bottom: 1px solid transparent;
 }
 
-body:not(.plugin-sliding-panes) .workspace > .workspace-split {
-  height: 100.5%;
-}
-
 body {
   background-color: var(--background-primary-bg-4-bt);
 }
 
 .workspace-split.mod-root .view-content {
   background-color: var(--background-primary-bg-4-bt);
+  height: 100.5%;
 }
 
 .markdown-preview-view,
@@ -19114,7 +19190,7 @@ body.loading-animation .progress-bar-message {
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220308";
+  content: "uid:20220313";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;
@@ -19140,7 +19216,7 @@ body.loading-animation .progress-bar-message {
 @keyframes move {
   100% {
     transform: translateX(350%);
-    }
+  }
 }
 .community-theme-container .theme-list .community-theme.is-selected .clickable-icon:not([class*="u-muted"])::after {
   content: "Get Demo Vault";

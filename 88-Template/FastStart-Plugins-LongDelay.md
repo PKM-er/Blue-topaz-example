@@ -8,7 +8,6 @@ media-extended
 metaedit
 obsidian-bartender
 obsidian-collapse-all-plugin
-obsidian-command-alias-plugin
 obsidian-core-search-assistant-plugin
 obsidian-dialogue-plugin
 obsidian-dynamic-highlights
@@ -26,3 +25,7 @@ remember-cursor-position
 search-on-internet
 table-editor-obsidian
 various-complements
+obsidian-better-command-palette
+obsidian-hover-editor
+update-time-on-edit
+quick-explorer
