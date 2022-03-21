@@ -44,5 +44,11 @@
     }
 	
 div[data-type='memos_view'] .search-bar-container > .quickly-action-wrapper {
-  width:100%!important;
+  width:80%!important;
+}
+div[data-type='memos_view'] .search-bar-container > .quickly-action-wrapper {
+    display: none;
+    position: absolute;
+    top: 25px!important;
+    right: -5px!important;
 }

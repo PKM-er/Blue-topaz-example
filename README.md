@@ -24,6 +24,10 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
 
 ## 更新日志
+### 更新 2022-03-21
+- 豆瓣脚本优化，支持输入isbn添加
+- 增加悬浮表格编辑插件
+- 主页伪看板字体大小统一
 ### 更新 2022-03-15
 - 增加侧边栏一键启动悬浮memos
 - 增加运行示例库最低配置说明[[README#常见问题]]

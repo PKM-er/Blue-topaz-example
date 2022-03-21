@@ -1,6 +1,6 @@
 {
   "blue-topaz-theme@@style-options-for-admonition-plugin": true,
-  "blue-topaz-theme@@color-scheme-options": "color-scheme-options-lillimon-topaz",
+  "blue-topaz-theme@@color-scheme-options": "color-scheme-options-avocado-topaz",
   "blue-topaz-theme@@translucent-setting-panel": false,
   "blue-topaz-theme@@image-zoom": true,
   "blue-topaz-theme@@muted-activeline-bg": false,
@@ -40,13 +40,10 @@
   "blue-topaz-theme@@hr-color-4@@light": "#6EB4EE",
   "blue-topaz-theme@@line-height-main": 1.5,
   "blue-topaz-theme@@loading-animation": true,
-  "blue-topaz-theme@@text-normal@@light": "#34495E",
   "blue-topaz-theme@@text-color-code@@light": "#554BE0",
   "blue-topaz-theme@@magic-main-color@@light": "#34495E",
   "blue-topaz-theme@@magic-low-color@@light": "#B3E2B3",
   "blue-topaz-theme@@magic-deep-color@@light": "#3EAF7C",
-  "blue-topaz-theme@@interactive-accent@@light": "#3EAF7C",
-  "blue-topaz-theme@@text-accent@@light": "#3EAF7C",
   "CodeMirror Options@@cm5-minimal-embeds": false,
   "blue-topaz-theme@@blockquote-style-change-options": "blockquote-style-quotation-mark",
   "blue-topaz-theme@@link-underline": true,
@@ -107,5 +104,12 @@
   "blue-topaz-theme@@show-url-after-link": true,
   "blue-topaz-theme@@font-family-h5": "Bookerly, Merriweather, 'LXGW WenKai Mono', var(--default-font)",
   "blue-topaz-theme@@font-family-h6": "Bookerly, Merriweather, 'LXGW WenKai Mono', var(--default-font)",
-  "blue-topaz-theme@@list-style-change-options-edit": "rainbow-lines"
+  "blue-topaz-theme@@list-style-change-options-edit": "rainbow-lines",
+  "blue-topaz-theme@@text-normal@@light": "#34495E",
+  "blue-topaz-theme@@h1-color@@light": "#34495E",
+  "blue-topaz-theme@@h2-color@@light": "#34495E",
+  "blue-topaz-theme@@h3-color@@light": "#34495E",
+  "blue-topaz-theme@@h4-color@@light": "#34495E",
+  "blue-topaz-theme@@h5-color@@light": "#34495E",
+  "blue-topaz-theme@@h6-color@@light": "#34495E"
 }

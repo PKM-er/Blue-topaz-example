@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "fc371ae36bc5eac7",
+        "id": "528a5dbf77ea4243",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/常用工具.md",
-            "mode": "preview",
+            "file": "README.md",
+            "mode": "source",
             "backlinks": false,
             "source": false
           }
@@ -26,7 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 54.46650124069479,
+        "dimension": 61.33828996282527,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -62,31 +62,15 @@
         ]
       },
       {
-        "id": "d877e8285f98a38a",
+        "id": "e1b59eaac11b55b3",
         "type": "tabs",
-        "dimension": 45.53349875930521,
+        "dimension": 38.66171003717472,
         "children": [
           {
-            "id": "b37bc3d287f74512",
+            "id": "796ade3906f5d64a",
             "type": "leaf",
             "state": {
               "type": "recent-files",
-              "state": {}
-            }
-          },
-          {
-            "id": "80430a4f104c0c57",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
               "state": {}
             }
           }
@@ -94,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 255
+    "width": 300
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -103,7 +87,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 26.52259332023575,
+        "dimension": 63.88542963885429,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -114,35 +98,43 @@
             }
           },
           {
+            "id": "8851ccb0aa4e524a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/常用工具.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
             "id": "340969ccd24905e8",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/常用工具.md"
+                "file": "README.md"
               }
             }
           },
           {
-            "id": "83061aceea29f566",
+            "id": "86f7939b217614a2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/彩色时钟.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": true
-              }
+              "type": "memos_view",
+              "state": {}
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 1
       },
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 73.47740667976424,
+        "dimension": 36.1145703611457,
         "children": [
           {
             "id": "041c78328387b373",
@@ -150,7 +142,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/常用工具.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,10 +159,18 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/常用工具.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
+            }
+          },
+          {
+            "id": "9b181782551fdb19",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
             }
           },
           {
@@ -183,19 +183,6 @@
                 "useHierarchy": true
               }
             }
-          },
-          {
-            "id": "8851ccb0aa4e524a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/常用工具.md",
-                "mode": "preview",
-                "backlinks": true,
-                "source": false
-              }
-            }
           }
         ],
         "currentTab": 3
@@ -204,17 +191,17 @@
     "direction": "horizontal",
     "width": 273
   },
-  "active": "fc371ae36bc5eac7",
+  "active": "528a5dbf77ea4243",
   "lastOpenFiles": [
-    "88-Template/常用工具.md",
-    "88-Template/button.md",
+    "README.md",
+    "30-Reading/《茶叶与鸦片》.md",
+    "77-Example/AD伪看板.md",
+    "20-Diary/任务看板.md",
+    "77-Example/真Kanban.md",
+    "从这开始.md",
     "88-Template/home.md",
-    "未命名 2.md",
     "未命名.md",
-    "未命名 1.md",
-    "77-Example/各类列表和彩虹大纲线.md",
-    "88-Template/FastStart-Plugins-LongDelay.md",
-    "88-Template/FastStart-Plugins-ShortDelay.md",
-    "88-Template/FastStart-Plugins-simple.md"
+    "MD表格悬浮编辑测试.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md"
   ]
 }

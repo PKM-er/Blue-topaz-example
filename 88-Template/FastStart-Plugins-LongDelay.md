@@ -27,5 +27,4 @@ table-editor-obsidian
 various-complements
 obsidian-better-command-palette
 obsidian-hover-editor
-update-time-on-edit
 quick-explorer

@@ -2098,10 +2098,9 @@ function deepMerge(a, b) {
 }
 
 // src/utils/Link.ts
-function generateInternalLinkFrom(metadataCache, file) {
-  const link = metadataCache.fileToLinktext(file, "", true);
-  const text2 = getDisplayText(metadataCache, file);
-  return text2 !== void 0 ? `[[${link} | ${text2}]]` : `[[${link}]]`;
+function generateInternalLinkFrom(app2, file) {
+  const text2 = getDisplayText(app2.metadataCache, file);
+  return app2.fileManager.generateMarkdownLink(file, "", void 0, text2);
 }
 function getDisplayText(metadataCache, file) {
   const cache = metadataCache.getFileCache(file);
@@ -2713,7 +2712,7 @@ var PreviewModal = class extends import_obsidian13.Modal {
       hotkeyMap.copyLink.forEach((hotkey) => {
         this.scope.register(hotkey.modifiers, hotkey.key, () => {
           const { file } = this.item;
-          const internalLink = generateInternalLinkFrom(this.app.metadataCache, file);
+          const internalLink = generateInternalLinkFrom(this.app, file);
           navigator.clipboard.writeText(internalLink);
           new import_obsidian13.Notice("Copy wiki link!");
         });
@@ -3789,7 +3788,7 @@ var Controller = class extends obsidian.Component {
         if (!item)
           return;
         const { file } = item;
-        const internalLink = generateInternalLinkFrom(this.app.metadataCache, file);
+        const internalLink = generateInternalLinkFrom(this.app, file);
         navigator.clipboard.writeText(internalLink);
         new import_obsidian14.Notice("Copy wiki link!");
       });

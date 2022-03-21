@@ -10,24 +10,34 @@ let QuickAdd;
 
 async function bookfromdouban(params) {
   QuickAdd = params;
+  const isbn_reg = /^(?=(?:\D*\d){10}(?:(?:\D*\d){3})?$)[\d-]+$/g;
   const http_reg = /(http:\/\/|https:\/\/)((\w|=|\?|\.|\/|&|-)+)/g;
-  const http_reg_book = /(http:\/\/book|https:\/\/book)((\w|=|\?|\.|\/|&|-)+)/g;
+  const http_reg_book = /(http:\/\/book|https:\/\/book|m)((\w|=|\?|\.|\/|&|-)+)/g;
+  let detailurl;	
   const query = await QuickAdd.quickAddApi.inputPrompt(
-    "请输入豆瓣图书网址:"
+    "请输入豆瓣图书网址或者ISBN:"
   );
-  if (!query) {
+
+	if (!query) {
     notice("No url entered.");
     throw new Error("No url entered.");
   }
-if (!http_reg.exec(query)) {
- new Notice('复制的内容需要包含网址', 3000);
- throw new Error("No results found.");
-}
-
- const url = query.match(http_reg)[0];
-    console.log(url);
- if (http_reg_book.exec(url)) {
-	let bookdata = await getbookByurl(url);
+	if (isbn_reg.exec(query)) {
+		isbn = query.replace(/-/g, "");
+		detailurl= await getBookByisbn(isbn);
+	}else
+	{	
+		 if (!http_reg.exec(query)) {
+		 new Notice('复制的内容需要包含网址或者ISBN码', 3000);
+		 throw new Error("No results found.");
+	}else
+		{
+		detailurl = query.match(http_reg)[0];
+		}
+	}
+console.log('detailUrl:'+detailurl);
+ if (http_reg_book.exec(detailurl)) {
+	let bookdata = await getbookByurl(detailurl);
 	if(bookdata)
 	new Notice('图书数据获取成功！', 3000);
   QuickAdd.variables = {
@@ -70,7 +80,7 @@ async function getbookByurl(url) {
 	}
 	
 	let bookinfo = {};
-	let regauthor= /作者:(\W*?)(?=出版社)/g;
+	let regauthor= /作者:([\s\S]*)(?=出版社:)/g;
 	let regpagecount = /页数:.(\d*)/g;
 	let regpublish = /出版社:\W(.*)/g;
 	let str =$("#info")?.innerText;
@@ -90,18 +100,37 @@ async function getbookByurl(url) {
 
   return bookinfo;
 }
-//https://book.douban.com/subject/35680662/?icn=index-latestbook-subject
+
+
+async function getBookByisbn(isbn){
+    let isbnurl = "https://m.douban.com/search/?query="+isbn;
+	let page = await urlGet(isbnurl);
+
+    if (!page) {
+    notice("No results found.");
+    throw new Error("No results found.");
+  }
+    let p = new DOMParser();
+    let doc = p.parseFromString(page, "text/html");
+	let $ = s => doc.querySelector(s);
+    let title = $("div.subject-info span").textContent;
+    let detailUrl = String($("ul li a").href).replace("app://obsidian.md","https://m.douban.com");
+    if (!detailUrl){
+        return null;
+    }
+    return detailUrl;
+}
+ 
 async function urlGet(url) {
+console.log(url);
   let finalURL = new URL(url);
-  let headers = {
-'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.100.4758.11 Safari/537.36'
-};
   const res = await request({
     url: finalURL.href,
     method: "GET",
     cache: "no-cache",
     headers: {
       "Content-Type": "text/html; charset=utf-8",
+	  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.100.4758.11 Safari/537.36'
     },
   });
   

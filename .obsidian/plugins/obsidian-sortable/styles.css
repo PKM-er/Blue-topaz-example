@@ -10,7 +10,9 @@
     --arrows-up-down: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='UTF-8'%3F%3E%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='9' viewBox='0 0 21 9'%3E%3Cpath fill='grey' d='M14.5 5l-4 4-4-4zm0-1l-4-4-4 4z'/%3E%3C/svg%3E");
 }
 
-.markdown-preview-view th {
+.markdown-preview-view th,
+.table-view-table > thead > tr > th,
+.markdown-source-view.mod-cm6 .dataview.table-view-table thead.table-view-thead tr th {
     background-image: var(--arrows-up-down);
     background-repeat: no-repeat;
     background-position: center right;
@@ -19,9 +21,9 @@
 }
 
 th[sortable-style="sortable-asc"] {
-    background-image: var(--arrows-up);
+    background-image: var(--arrows-up) !important;
 }
 
 th[sortable-style="sortable-desc"] {
-    background-image: var(--arrows-down);
+    background-image: var(--arrows-down) !important;
 }

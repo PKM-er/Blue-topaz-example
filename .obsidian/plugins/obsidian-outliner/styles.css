@@ -28,9 +28,12 @@
 /* lines */
 .outliner-plugin-list-lines-scroller {
   position: absolute;
-  left: 0;
+  top: 0;
+  right: 0;
   bottom: 0;
-  padding: 10px 17px;
+  left: 0;
+  padding: 20px;
+  padding-left: 0;
   pointer-events: none;
   overflow: hidden;
 }
@@ -39,23 +42,12 @@
   position: relative;
 }
 
-.markdown-source-view.mod-cm6.is-folding
-  .outliner-plugin-list-lines-content-container {
-  padding-left: 10px;
-}
-
-.markdown-source-view.mod-cm6.is-line-wrap.is-readable-line-width
-  .outliner-plugin-list-lines-content-container {
-  max-width: 700px;
-  margin: auto;
-}
-
 .outliner-plugin-list-line {
   pointer-events: auto;
   position: absolute;
   width: 5px;
   margin-left: 0.5ch;
-  margin-top: calc(2em + 6px);
+  margin-top: 1.8em;
   z-index: 1;
   cursor: pointer;
   background: transparent;
@@ -68,11 +60,32 @@
   background-repeat: no-repeat;
 }
 
+.outliner-plugin-better-bullets .outliner-plugin-list-line {
+  margin-top: 2em;
+}
+
+.markdown-source-view.mod-cm6.is-readable-line-width
+  .outliner-plugin-list-lines-content-container {
+  max-width: 700px;
+  margin: auto;
+}
+
 .markdown-source-view.mod-cm6.is-folding .outliner-plugin-list-line {
-  padding-left: 10px;
-  margin-left: calc(0.5ch + 10px);
+  margin-left: 14px;
+}
+
+.outliner-plugin-better-bullets
+  .markdown-source-view.mod-cm6.is-folding
+  .outliner-plugin-list-line {
+  margin-left: 15px;
 }
 
 .outliner-plugin-list-line:hover {
   background: var(--text-faint);
+}
+
+.outliner-plugin-vertical-lines
+  .markdown-source-view.mod-cm6
+  .cm-indent::before {
+  content: none;
 }

@@ -9,7 +9,8 @@
   "ignoreGlobalFolder": [
     "88-Template",
     "50-Inbox",
-    "99-Attachment"
+    "99-Attachment",
+    "、"
   ],
   "ignoreCreatedFolder": [
     "20-Diary"

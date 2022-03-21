@@ -87,10 +87,6 @@
     padding: 14px 17px;
 }
 
-button {
-    font-family: Ubuntu, Arial, sans-serif;
-}
-
 .smalltalk button, .smalltalk .smalltalk {
     min-height: 2em;
     min-width: 4em;

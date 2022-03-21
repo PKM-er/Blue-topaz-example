@@ -77,7 +77,7 @@
 }
 
 
-.suggestion-item::before {
+.various-complements__suggestion-item::before {
     position: absolute;
     width: 16px;
     margin-top: 4px;

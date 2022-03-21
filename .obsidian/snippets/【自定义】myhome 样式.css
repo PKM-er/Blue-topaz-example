@@ -125,7 +125,11 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
     padding-bottom: 0px !important;
   }
 
-  
+  .admonition-kanban li 
+  {
+    font-size: 13.33px;
+  }
+
   /* .popover div.hover-popover  {
     border: 0px;
     box-shadow: none;
@@ -153,3 +157,4 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   line-height: 1.8em;
 
 }*/
+

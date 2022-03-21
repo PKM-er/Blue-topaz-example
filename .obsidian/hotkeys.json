@@ -16,14 +16,6 @@
       "key": "T"
     }
   ],
-  "markdown-table-editor:markdown-table-editor-open-horizontal": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "T"
-    }
-  ],
   "obsidian-better-command-palette:open-better-commmand-palette": [
     {
       "modifiers": [
@@ -39,6 +31,14 @@
         "Mod"
       ],
       "key": "L"
+    }
+  ],
+  "markdown-table-editor:markdown-table-editor-open-in-popover": [
+    {
+      "modifiers": [
+        "Mod"
+      ],
+      "key": "T"
     }
   ]
 }

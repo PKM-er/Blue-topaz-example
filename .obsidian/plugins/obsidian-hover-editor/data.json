@@ -2,6 +2,10 @@
   "defaultMode": "match",
   "autoPin": "onMove",
   "triggerDelay": 200,
+  "closeDelay": 600,
   "autoFocus": true,
-  "rollDown": true
+  "rollDown": true,
+  "snapToEdges": true,
+  "initialHeight": "42%",
+  "initialWidth": "35%"
 }
