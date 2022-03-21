@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "528a5dbf77ea4243",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
           "type": "markdown",
@@ -12,7 +12,7 @@
             "file": "README.md",
             "mode": "source",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         }
       }
@@ -26,7 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 61.33828996282527,
+        "dimension": 54.46650124069479,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -62,15 +62,31 @@
         ]
       },
       {
-        "id": "e1b59eaac11b55b3",
+        "id": "d877e8285f98a38a",
         "type": "tabs",
-        "dimension": 38.66171003717472,
+        "dimension": 45.53349875930521,
         "children": [
           {
-            "id": "796ade3906f5d64a",
+            "id": "b37bc3d287f74512",
             "type": "leaf",
             "state": {
               "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "80430a4f104c0c57",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "5ee52b332527fc75",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
               "state": {}
             }
           }
@@ -78,7 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 255
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -87,7 +103,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 63.88542963885429,
+        "dimension": 32.25404732254047,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -95,19 +111,6 @@
             "state": {
               "type": "calendar",
               "state": {}
-            }
-          },
-          {
-            "id": "8851ccb0aa4e524a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/常用工具.md",
-                "mode": "preview",
-                "backlinks": true,
-                "source": false
-              }
             }
           },
           {
@@ -121,20 +124,25 @@
             }
           },
           {
-            "id": "86f7939b217614a2",
+            "id": "83061aceea29f566",
             "type": "leaf",
             "state": {
-              "type": "memos_view",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/彩色时钟.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 2
       },
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 36.1145703611457,
+        "dimension": 67.74595267745953,
         "children": [
           {
             "id": "041c78328387b373",
@@ -166,14 +174,6 @@
             }
           },
           {
-            "id": "9b181782551fdb19",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {}
-            }
-          },
-          {
             "id": "b2ae90cb6049dbe9",
             "type": "leaf",
             "state": {
@@ -181,6 +181,19 @@
               "state": {
                 "sortOrder": "frequency",
                 "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "8851ccb0aa4e524a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/常用工具.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
               }
             }
           }
@@ -191,15 +204,15 @@
     "direction": "horizontal",
     "width": 273
   },
-  "active": "528a5dbf77ea4243",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
     "README.md",
+    "88-Template/home.md",
     "30-Reading/《茶叶与鸦片》.md",
     "77-Example/AD伪看板.md",
     "20-Diary/任务看板.md",
     "77-Example/真Kanban.md",
     "从这开始.md",
-    "88-Template/home.md",
     "未命名.md",
     "MD表格悬浮编辑测试.md",
     "00-Tips/🥑Blue Topaz Themes Tips.md"
