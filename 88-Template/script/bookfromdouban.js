@@ -79,14 +79,20 @@ async function getbookByurl(url) {
         }
 	}
 	
+	/*******************************************/
+	
 	let bookinfo = {};
 	let regauthor= /作者:([\s\S]*)(?=出版社:)/g;
 	let regpagecount = /页数:.(\d*)/g;
 	let regpublish = /出版社:\W(.*)/g;
 	let str =$("#info")?.innerText;
-	author= regauthor.exec(str)[1].trim().replace(/\n|\r/g,"").replace(/\ +/g,"")??'未知';
-	bookinfo.pagecount=regpagecount.exec(str)[1].trim()??'100';
-	bookinfo.publish=regpublish.exec(str)[1].trim()??'未知';
+	author= regauthor.exec(str)
+	author=(author==null)?'未知':author[1].trim().replace(/\n|\r/g,"").replace(/\ +/g,"");
+	let pages=regpagecount.exec(str);
+	bookinfo.pagecount=(pages==null)?'0':pages[1].trim();
+	let publish=regpublish.exec(str);
+	bookinfo.publish=(publish==null)?'未知':publish[1].trim();
+	//bookinfo.publish=regpublish.exec(str)[1]?.trim()??'未知';
 	bookinfo.bookname =bookname.replace(/(^\s*)|\^|\.|\*|\?|\!|\/|\\|\$|\#|\&|\||,|\[|\]|\{|\}|\(|\)|\-|\+|\=|(\s*$)/g, "");
 	bookinfo.cover = $("meta[property='og:image']")?.content;
 	bookinfo.type = 'book';
@@ -96,8 +102,11 @@ async function getbookByurl(url) {
 	bookinfo.isbn =  $("meta[property='book:isbn']")?.content;
 	bookinfo.rating = $("#interest_sectl > div > div.rating_self > strong")?.textContent??'-';
 	bookinfo.intro = intro;
-
-
+   for(var i in bookinfo){
+        if(bookinfo[i]=="" || bookinfo[i]== null){
+            bookinfo[i]="未知";
+        }
+    }
   return bookinfo;
 }
 
