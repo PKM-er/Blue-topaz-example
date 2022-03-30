@@ -16,6 +16,9 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 特别感谢@Johnny @Lillianwho  @lavi @成雙酱 @锋华 提供的教程和创作思路。
 如果有问题或者建议 请加入Topaz社区[Topaz QQ群](https://jq.qq.com/?_wv=1027&k=TWGhXs40)  [Obsidian频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=zHpby&from=246610&biz=ka)
 
+相关视频教程 
+https://space.bilibili.com/1970226/channel/series
+
 本文档后续更新 请关注
  -  [Examples库](https://github.com/cumany/Blue-topaz-examples) 
  -  [Blue topaz 主题用法示例 - 飞书文档 (feishu.cn)](https://kknwfe6755.feishu.cn/docs/doccn67RYLVN4IQZiJTwviIdnog)
