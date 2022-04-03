@@ -55,3 +55,18 @@
   color: currentColor;
   margin-bottom: 4px;
 }
+
+.obsidian-icon-folder-dragover {
+  position: relative;
+}
+
+.obsidian-icon-folder-dragover-el {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  color: var(--text-normal);
+  background-color: var(--background-secondary-alt);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

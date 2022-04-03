@@ -12,7 +12,7 @@
             "file": "README.md",
             "mode": "source",
             "backlinks": false,
-            "source": true
+            "source": false
           }
         }
       }
@@ -103,7 +103,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 32.25404732254047,
+        "dimension": 43,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -142,7 +142,7 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 67.74595267745953,
+        "dimension": 56.99999999999999,
         "children": [
           {
             "id": "041c78328387b373",
@@ -202,19 +202,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 273
+    "width": 265
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
     "README.md",
-    "88-Template/home.md",
-    "30-Reading/《茶叶与鸦片》.md",
-    "77-Example/AD伪看板.md",
-    "20-Diary/任务看板.md",
-    "77-Example/真Kanban.md",
-    "从这开始.md",
+    "30-Reading/《从零开始的女性主义》3.md",
     "未命名.md",
-    "MD表格悬浮编辑测试.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md"
+    "88-Template/home.md",
+    "00-Tips/Johnny学OB 资料汇总.md",
+    "00-Tips/Obsidian 一键开启悬浮.md",
+    "从这开始.md",
+    "00-Tips/如何在OB里添加多彩时钟和音乐播放器.md",
+    "未命名 10.md",
+    "未命名 9.md"
   ]
 }

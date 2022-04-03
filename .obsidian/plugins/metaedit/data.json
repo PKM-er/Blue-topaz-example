@@ -1,7 +1,20 @@
 {
   "ProgressProperties": {
-    "enabled": false,
-    "properties": []
+    "enabled": true,
+    "properties": [
+      {
+        "name": "Total",
+        "type": "Total Tasks"
+      },
+      {
+        "name": "Completed",
+        "type": "Completed Tasks"
+      },
+      {
+        "name": "Incomplete",
+        "type": "Incomplete Tasks"
+      }
+    ]
   },
   "IgnoredProperties": {
     "enabled": false,

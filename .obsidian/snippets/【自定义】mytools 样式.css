@@ -40,7 +40,9 @@ display:none;
 .markdown-preview-view.mytools .admonition .admonition-content {
   margin: 0px 5px;
 }
-
+.markdown-preview-view.mytools .admonition .callout-content.admonition-content {
+  margin: -5px;
+}
 .markdown-preview-view.mytools .admonition-title-markdown {
   font-size: initial;
 }
@@ -100,3 +102,21 @@ display:none;
 {
   display: none;
 }
+
+.markdown-preview-view.mytools .admonition-content
+{
+  overflow-x:hidden;
+}
+
+.workspace-tab-header[aria-label="music_toolbar"] > .workspace-tab-header-inner > .workspace-tab-header-inner-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: var(--text-folder-file-icon);
+  -webkit-mask-image: url('data:image/svg+xml;utf8,<svg t="1648001957900" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2255" ><path d="M895.456 770.56C895.552 769.696 896 768.896 896 768L896 160c0-1.056-0.512-1.984-0.608-3.008-0.032-1.664 0.448-3.232 0.16-4.928-2.88-17.408-19.328-29.184-36.8-26.304l-480 80c-17.408 2.912-29.216 19.392-26.304 36.832 0.256 1.472 1.024 2.656 1.44 4.032C352.96 249.664 352 252.672 352 256l0 429.6c-20.128-9.376-43.648-14.784-69.408-14.784-21.312 0-42.816 3.456-63.968 10.336-39.616 12.8-73.536 36.224-95.584 65.984-24.064 32.512-31.68 70.24-20.864 103.648 15.648 48.288 66.656 79.456 129.92 79.456 21.248 0 42.72-3.456 63.904-10.304 58.656-19.04 100.288-59.2 115.04-103.808C413.888 811.328 416 806.016 416 800l0-5.312c1.056-8.48 1.056-16.96 0-25.472L416 264.448l416-69.344 0 490.88c-20.32-9.632-44.096-15.2-70.176-15.2-21.28 0-42.816 3.456-63.968 10.336-39.584 12.8-73.568 36.224-95.584 65.984-24.096 32.512-31.68 70.24-20.864 103.648 15.648 48.288 66.656 79.456 129.92 79.456 21.248 0 42.752-3.456 63.904-10.304C853.472 894.56 902.176 831.68 895.456 770.56z" p-id="2256" ></path></svg>');   
+
+}
+.workspace-tab-header[aria-label="music_toolbar"] > .workspace-tab-header-inner > .workspace-tab-header-inner-icon > svg {
+  display: none;
+}
+ 

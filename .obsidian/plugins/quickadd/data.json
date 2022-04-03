@@ -137,6 +137,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "d0d4ced8-94d2-4f26-9e8b-defd8d087193"
+    },
+    {
+      "id": "cb1a4a92-df5b-490c-bd78-7eee7893bfe1",
+      "name": "temp",
+      "type": "Macro",
+      "command": true,
+      "macroId": "45f1eba0-3659-4669-9714-452964a2c8e7"
     }
   ],
   "macros": [
@@ -364,7 +371,7 @@
             "name": "豆瓣读书笔记",
             "type": "Template",
             "command": false,
-            "templatePath": "88-Template/tp-book.md",
+            "templatePath": "88-Template/tp-book-callout.md",
             "fileNameFormat": {
               "enabled": true,
               "format": "《{{VALUE:bookname}}》"

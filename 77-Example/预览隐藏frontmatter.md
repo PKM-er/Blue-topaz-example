@@ -2,11 +2,11 @@
 alias: 测试dataview 长表格
 cssclass: noyaml
 usage: 预览状态不显示frontmatter区域
-时间: 2022-01-25 19:51 
+时间: 
 status: 2
 rating: 0
 tags: [dvtest,good,test,dataview]
-updated: 2022-03-08 21:05
+updated: ''
 ---
 
 - 测试dataview表格内容不分行紧凑显示。
@@ -18,3 +18,4 @@ updated: 2022-03-08 21:05
 字段2:: 我也不是省油的灯。。。。。。。。。。。
 
 表格效果参考：[[全宽显示-表格测试|测试dataview 长表格2]]
+

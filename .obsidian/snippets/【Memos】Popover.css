@@ -379,3 +379,64 @@
   }
 
  
+/* ============ */
+/*hover editor*/
+/* ============ */
+
+
+.popover.hover-popover[data-active-view-type="memos_view"]:not(.is-minimized)
+{
+         
+  height: 45% !important;
+} 
+
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized 
+{
+        width: 50px!important;
+        max-height: 50px!important;
+          background: #ffffff00;
+          overflow: hidden;
+} 
+
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized  .popover-actions
+{
+display:none;
+}
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized  .mod-pin-popover
+{
+display:none;
+}
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized.is-pinned.is-pinned  .popover-titlebar
+{
+height:100%;
+background-color: #ffffff00;
+ 
+}
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized  .popover-content
+{
+border-radius: 50%;
+}
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized .popover-title
+{
+font-size:0px;
+}
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized .popover-title::before
+{
+content:'\00A0💡';
+font-size: 28px;
+line-height: 1.8em;
+margin-left: 3px;
+}
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized .popover-title::after
+{
+background: none;
+}
+.popover.hover-popover[data-active-view-type="memos_view"].is-minimized.is-active  .popover-title::after
+{
+background: none;
+}
+
+body .popover.hover-popover.is-minimized:not(.is-loaded)
+{
+  box-shadow:  none;
+}

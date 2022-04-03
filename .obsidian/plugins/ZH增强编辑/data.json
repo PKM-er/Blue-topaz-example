@@ -1,1 +1,9 @@
-{"twoEnter":false}
+{
+  "isTab": true,
+  "version": "0.4.7",
+  "hColor1": "#FF0212",
+  "hColor2": "#ED7002",
+  "hColor3": "#e0e016",
+  "hColor4": "#00ff00ca",
+  "hColor5": "#30CB29"
+}

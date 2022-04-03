@@ -65,7 +65,7 @@ let url='https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&fo
 	   let music_url=getUrlQueryParams(data.url);
 		music_id= music_url.id;
 		console.log(music_id);
-		iframe='<iframe frameborder="no" border="0" marginwidth="0" marginheight="0" width=330 height=86 src="https://music.163.com/outchain/player?type=2&id='+music_id+'&auto=0&height=66"></iframe>' ;
+		iframe='<iframe id="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="https://music.163.com/outchain/player?type=2&id='+music_id+'&auto=0&height=66"></iframe>' ;
 		return iframe;
 	}
 }

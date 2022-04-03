@@ -1,6 +1,6 @@
 {
   "aestheticStyle": "tiny",
-  "positionStyle": "fixed",
+  "positionStyle": "following",
   "menuCommands": [
     {
       "id": "cmenu-plugin:editor:toggle-bold",
@@ -48,7 +48,7 @@
       "icon": "quote-glyph"
     },
     {
-      "id": "Enhanced editing:biaoti1-text",
+      "id": "Enhanced-editing:biaoti1-text",
       "name": "ZH增强编辑: H1标题",
       "hotkeys": [
         {
@@ -61,7 +61,7 @@
       "icon": "add-note-glyph"
     },
     {
-      "id": "Enhanced editing:biaoti2-text",
+      "id": "Enhanced-editing:biaoti2-text",
       "name": "ZH增强编辑: H2标题",
       "hotkeys": [
         {
@@ -74,7 +74,7 @@
       "icon": "add-note-glyph"
     },
     {
-      "id": "Enhanced editing:biaoti3-text",
+      "id": "Enhanced-editing:biaoti3-text",
       "name": "ZH增强编辑: H3标题",
       "hotkeys": [
         {
@@ -87,7 +87,7 @@
       "icon": "add-note-glyph"
     },
     {
-      "id": "Enhanced editing:biaoti4-text",
+      "id": "Enhanced-editing:biaoti4-text",
       "name": "ZH增强编辑: H4标题",
       "hotkeys": [
         {
@@ -105,12 +105,12 @@
       "icon": "checkbox-glyph"
     },
     {
-      "id": "Enhanced editing:search-text",
+      "id": "Enhanced-editing:search-text",
       "name": "ZH增强编辑: 搜索当前文本",
       "icon": "audio-file"
     },
     {
-      "id": "Enhanced editing:text-Color1",
+      "id": "Enhanced-editing:text-Color1",
       "name": "ZH增强编辑: 转换红色文字",
       "hotkeys": [
         {
@@ -124,7 +124,7 @@
       "icon": "dice-glyph"
     },
     {
-      "id": "Enhanced editing:text-Color2",
+      "id": "Enhanced-editing:text-Color2",
       "name": "ZH增强编辑: 转换橙色文字",
       "hotkeys": [
         {
@@ -138,7 +138,7 @@
       "icon": "broken-link"
     },
     {
-      "id": "Enhanced editing:text-Color3",
+      "id": "Enhanced-editing:text-Color3",
       "name": "ZH增强编辑: 转换黄色文字",
       "hotkeys": [
         {
@@ -152,7 +152,7 @@
       "icon": "bold-glyph"
     },
     {
-      "id": "Enhanced editing:text-background3",
+      "id": "Enhanced-editing:text-background3",
       "name": "ZH增强编辑: 转换黄色背景",
       "hotkeys": [
         {
@@ -166,7 +166,7 @@
       "icon": "any-key"
     },
     {
-      "id": "Enhanced editing:text-background4",
+      "id": "Enhanced-editing:text-background4",
       "name": "ZH增强编辑: 转换绿色背景",
       "hotkeys": [
         {
@@ -180,7 +180,7 @@
       "icon": "add-note-glyph"
     },
     {
-      "id": "Enhanced editing:gaoliang-text",
+      "id": "Enhanced-editing:gaoliang-text",
       "name": "ZH增强编辑: ==高亮==",
       "hotkeys": [
         {
@@ -193,7 +193,7 @@
       "icon": "bullet-list-glyph"
     },
     {
-      "id": "Enhanced editing:biaoti0-text",
+      "id": "Enhanced-editing:biaoti0-text",
       "name": "ZH增强编辑: 取消标题",
       "hotkeys": [
         {
@@ -206,7 +206,7 @@
       "icon": "heading-glyph"
     },
     {
-      "id": "Enhanced editing:internal-link",
+      "id": "Enhanced-editing:internal-link",
       "name": "ZH增强编辑: [[链接]]语法",
       "hotkeys": [
         {
@@ -219,7 +219,7 @@
       "icon": "bracket-glyph"
     },
     {
-      "id": "Enhanced editing:paste-form",
+      "id": "Enhanced-editing:paste-form",
       "name": "ZH增强编辑: 智能粘贴",
       "hotkeys": [
         {
@@ -247,7 +247,7 @@
       "icon": "remix-TableAltLine"
     },
     {
-      "id": "Enhanced editing:common-text",
+      "id": "Enhanced-editing:common-text",
       "name": "ZH增强编辑: 转换无语法文本",
       "hotkeys": [
         {

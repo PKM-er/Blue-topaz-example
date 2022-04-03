@@ -135,7 +135,7 @@ class blank
 ^button-renwu2
 
 ```button
-name 💡 memos
+name 💡 记事
 type command
 action QuickAdd: memos-popover
 class grad_button g_lightgreen
@@ -254,7 +254,7 @@ class circle_btn blank
 ^button-dairywp
 
 ```button
-name 🏆 memos
+name 🏆 悬浮
 type link
 action obsidian://open?vault=20-Diary
 class grad_button g_purple

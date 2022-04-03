@@ -7,7 +7,7 @@ status:
 ---
 category:: [[Movies]]
 director:: [[Mark Romanek]]
-genre:: [[Short]], [[Comedy]], [[Music]], [[Musical]]
+genre:: [[Short]], [[Comedy]], [[react-music]], [[Musical]]
 imdbId:: tt4433450
 ratingImdb:: 7.2
 rating:: 7.2

@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 15,
+  "baseFontSize": 17,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -17,7 +17,8 @@
     "【link-card】",
     "【Linkcard】",
     "test",
-    "【Memos】Popover"
+    "【Memos】Popover",
+    "custom-admonitions.c9c6cb"
   ],
   "translucency": false
 }

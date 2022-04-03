@@ -9,6 +9,7 @@ rating: {{VALUE:rating}}
 banner:  {{VALUE:cover}}
 banner_icon: 📚
 publish: {{VALUE:publish}}
+publishyear: {{VALUE:publishyear}}
 progress:
 status: 
 pagecount: {{VALUE:pagecount}}
@@ -19,4 +20,7 @@ pageprogress:
 ![bookcover|inlR|260]({{VALUE:cover}})
 {{VALUE:intro}}
 
-## 心得体会
+{{VALUE:authorintro}}
+
+{{VALUE:quote1}}
+ {{VALUE:quote2}}

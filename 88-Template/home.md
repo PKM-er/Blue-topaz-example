@@ -121,8 +121,9 @@ dv.paragraph(posters);
 </p>
 <!--notice2-->
 <p class="stickies2" style="max-width:200px" >
-这是主页便签输入功能测试！
+美好的事情就要发生！
 </p>
+
 
 
 

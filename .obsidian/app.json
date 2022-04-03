@@ -1,5 +1,5 @@
 {
-  "communityPluginSortOrder": "download",
+  "communityPluginSortOrder": "release",
   "readableLineLength": true,
   "foldHeading": true,
   "foldIndent": true,
@@ -25,5 +25,6 @@
     "downscalePercent": 100
   },
   "lineWrap": true,
-  "autoPairMarkdown": false
+  "autoPairMarkdown": false,
+  "showIndentGuide": true
 }

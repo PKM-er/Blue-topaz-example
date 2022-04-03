@@ -140,19 +140,26 @@
       "injectColor": true,
       "noTitle": true,
       "copy": false
+    },
+    "music": {
+      "type": "music",
+      "color": "58, 223, 212",
+      "icon": {
+        "name": "music",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": true
     }
   },
   "syntaxHighlight": true,
   "copyButton": false,
-  "version": "7.0.4",
-  "autoCollapse": false,
-  "defaultCollapseType": "closed",
-  "syncLinks": false,
+  "version": "9.0.0",
+  "autoCollapse": true,
+  "defaultCollapseType": "open",
   "injectColor": true,
   "parseTitles": true,
-  "allowMSSyntax": true,
-  "msSyntaxIndented": true,
-  "livePreviewMS": true,
   "dropShadow": true,
   "hideEmpty": false,
   "open": {
@@ -166,6 +173,13 @@
   ],
   "useFontAwesome": true,
   "rpgDownloadedOnce": false,
+  "msDocConverted": false,
+  "useSnippet": true,
+  "snippetPath": "custom-admonitions.c9c6cb",
+  "syncLinks": false,
+  "allowMSSyntax": true,
+  "msSyntaxIndented": true,
+  "livePreviewMS": true,
   "warnedAboutNC": true,
   "enableMarkdownProcessor": false
 }

@@ -1,9 +1,10 @@
 {
-  "id": "Enhanced editing",
+  "id": "Enhanced-editing",
   "name": "ZH增强编辑",
-  "version": "0.4.4",
-  "description": "增强编辑模式下的多项功能，如转换链接语法、智能括号、智能换行、转换标题、粗体、高亮、删除线、下划线、上下标、代码块等语法、设置文字及背景颜色、粘贴excel表格、获取多种信息（笔记相对路径、标注或无语法文本等）、修复错误语法、添加或去除空行、追加或去除空格、去除断行、替换标点、转换中英标点、转换文件路径等。",
-  "author": "蚕子",
-  "authorUrl": "https://www.mubucm.com/doc/1BMHfhwEQ2G",
+  "version": "0.4.7",
+  "minAppVersion": "0.12.0",
+  "description": "增强大量文本编辑功能，如转换内链、智能括号、转换Markdown语法、设置文字及背景颜色、粘贴excel表格、增减空行或空格、修复错误语法或标点等。",
+  "author": "obsidian-canzi",
+  "authorUrl": "https://github.com/obsidian-canzi/Enhanced-editing",
   "isDesktopOnly": false
 }

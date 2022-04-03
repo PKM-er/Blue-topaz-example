@@ -130,31 +130,18 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
     font-size: 13.33px;
   }
 
-  /* .popover div.hover-popover  {
-    border: 0px;
-    box-shadow: none;
-   
-} */
+.tasks progress{
+  background:#f0ec05; 
+}
+.tasks progress.yellow::-moz-progress-bar { 
+  background: #e78f0c; 
+}
+.tasks progress.green::-webkit-progress-value  {
+  background: #46da48; 
+  border-radius: 4px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
 
-/* .popover.hover-popover.is-minimized
-{
-          width:auto !important;
-        
-} */
-/* .popover.hover-popover.is-minimized
-{
-          width:50px !important;
-          min-height: 50px!important;
-            border-radius: 50%;
-            background: var(--background-secondary);
-            overflow: hidden;
-  border-radius: 50%;
-} 
-.popover.hover-popover.is-minimized::before
-{
-  content:'\00A0💡';
-  font-size: 28px;
-  line-height: 1.8em;
 
-}*/
+
 

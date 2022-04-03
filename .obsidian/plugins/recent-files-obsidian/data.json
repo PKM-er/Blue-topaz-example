@@ -5,120 +5,116 @@
       "path": "README.md"
     },
     {
-      "basename": "《茶叶与鸦片》",
-      "path": "30-Reading/《茶叶与鸦片》.md"
+      "basename": "《从零开始的女性主义》3",
+      "path": "30-Reading/《从零开始的女性主义》3.md"
     },
     {
-      "basename": "AD伪看板",
-      "path": "77-Example/AD伪看板.md"
+      "basename": "Johnny学OB 资料汇总",
+      "path": "00-Tips/Johnny学OB 资料汇总.md"
     },
     {
-      "basename": "真Kanban",
-      "path": "77-Example/真Kanban.md"
+      "basename": "Obsidian 一键开启悬浮",
+      "path": "00-Tips/Obsidian 一键开启悬浮.md"
     },
     {
       "basename": "从这开始",
       "path": "从这开始.md"
     },
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
+      "basename": "如何在OB里添加多彩时钟和音乐播放器",
+      "path": "00-Tips/如何在OB里添加多彩时钟和音乐播放器.md"
     },
     {
-      "basename": "MD表格悬浮编辑测试",
-      "path": "MD表格悬浮编辑测试.md"
+      "basename": "ob提示框(Callout)样式展示",
+      "path": "77-Example/ob提示框(Callout)样式展示.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
     },
     {
       "basename": "🥑Blue Topaz Themes Tips",
       "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
     },
     {
-      "basename": "电影观看清单",
-      "path": "77-Example/电影观看清单.md"
-    },
-    {
-      "basename": "表格转换-tableconvert",
-      "path": "50-Inbox/表格转换-tableconvert.md"
-    },
-    {
-      "basename": "彩色时钟",
-      "path": "88-Template/彩色时钟.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
-    },
-    {
-      "basename": "Lillian Who Obsidian新手入门教程",
-      "path": "00-Tips/Lillian Who Obsidian新手入门教程.md"
-    },
-    {
-      "basename": "《斜屋犯罪》",
-      "path": "30-Reading/《斜屋犯罪》.md"
-    },
-    {
-      "basename": "tp-book",
-      "path": "88-Template/tp-book.md"
+      "basename": "Callout环绕布局、缩进效果示例",
+      "path": "77-Example/Callout环绕布局、缩进效果示例.md"
     },
     {
       "basename": "图书阅读清单",
       "path": "77-Example/图书阅读清单.md"
     },
     {
-      "basename": "图书阅读清单-状态控制",
-      "path": "77-Example/图书阅读清单-状态控制.md"
+      "basename": "对话形式笔记",
+      "path": "77-Example/对话形式笔记.md"
+    },
+    {
+      "basename": "带进度条的任务列表",
+      "path": "77-Example/带进度条的任务列表.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
+      "basename": "《笔醒山河》",
+      "path": "30-Reading/《笔醒山河》.md"
+    },
+    {
+      "basename": "《茶叶与鸦片》",
+      "path": "30-Reading/《茶叶与鸦片》.md"
+    },
+    {
+      "basename": "《理解海德格尔》",
+      "path": "30-Reading/《理解海德格尔》.md"
+    },
+    {
+      "basename": "《从零开始的女性主义》",
+      "path": "30-Reading/《从零开始的女性主义》.md"
+    },
+    {
+      "basename": "tp-book-callout",
+      "path": "88-Template/tp-book-callout.md"
+    },
+    {
+      "basename": "tp-book",
+      "path": "88-Template/tp-book.md"
+    },
+    {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
+      "basename": "Cubox",
+      "path": "50-Inbox/Cubox.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
     },
     {
       "basename": "《熊会滑雪吗？》",
       "path": "30-Reading/《熊会滑雪吗？》.md"
     },
     {
-      "basename": "《Fundamentals of Computer Graphics 5th Edition》",
-      "path": "30-Reading/《Fundamentals of Computer Graphics 5th Edition》.md"
+      "basename": "四象限表格",
+      "path": "77-Example/四象限表格.md"
     },
     {
-      "basename": "便签",
-      "path": "88-Template/便签.md"
-    },
-    {
-      "basename": "ColorfulClock",
-      "path": "88-Template/ReactJS/ColorfulClock.md"
-    },
-    {
-      "basename": "slidegallery",
-      "path": "88-Template/ReactJS/slidegallery.md"
-    },
-    {
-      "basename": "moc",
-      "path": "88-Template/ReactJS/moc.md"
-    },
-    {
-      "basename": "react-buttons",
-      "path": "88-Template/ReactJS/react-buttons.md"
-    },
-    {
-      "basename": "返回当前活动笔记的所有反向链接",
-      "path": "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
-    },
-    {
-      "basename": "长津湖之水门桥",
-      "path": "30-Reading/长津湖之水门桥.md"
-    },
-    {
-      "basename": "《微习惯》",
-      "path": "30-Reading/《微习惯》.md"
-    },
-    {
-      "basename": "爱情神话",
-      "path": "30-Reading/爱情神话.md"
-    },
-    {
-      "basename": "《知识生产与传播》",
-      "path": "30-Reading/《知识生产与传播》.md"
+      "basename": "AD伪看板",
+      "path": "77-Example/AD伪看板.md"
     }
   ],
   "omittedPaths": [

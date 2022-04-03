@@ -14,22 +14,30 @@
       "left": 2
     },
     "recentlyUsedIcons": [
-      "RiInboxLine",
-      "RiBookOpenLine"
+      "RiUserSmileLine",
+      "FabEllo",
+      "FabBitcoin",
+      "RiHome3Fill",
+      "RiListUnordered"
     ],
-    "recentlyUsedIconsSize": 5
+    "recentlyUsedIconsSize": 5,
+    "migrated": true,
+    "iconPacksPath": "plugins/obsidian-icon-folder/icons"
   },
   "00-Tips": "RiAwardLine",
   "10-Help": "RiBrush3Line",
   "20-Diary": "RiCalendarCheckLine",
   "88-Template": "RiArticleLine",
   "99-Attachment": "RiArchiveDrawerLine",
-  "88-Template/home.md": "RiAncientPavilionLine",
   "Readme.md": "RiAccountCircleLine",
-  "从这开始.md": "RiArrowRightLine",
-  "30-Reading": "FaAddressCardLine",
+  "30-Reading": "FarAddressCard",
   "77-Example": "RiAlarmWarningLine",
-  "00-Tips/🥑Blue Topaz Themes Tips.md": "RiEmotionHappyLine",
   "40-Booknote": "RiBookOpenLine",
-  "50-Inbox": "RiInboxLine"
+  "50-Inbox": "RiInboxLine",
+  "从这开始.md": "RiArrowRightCircleFill",
+  "00-Tips/00-Tips.md": "RiListUnordered",
+  "88-Template/home.md": "RiHome3Fill",
+  "20-Diary/20-Diary.md": "RiListUnordered",
+  "30-Reading/30-Reading.md": "RiListUnordered",
+  "00-Tips/🥑Blue Topaz Themes Tips.md": "RiUserSmileLine"
 }
