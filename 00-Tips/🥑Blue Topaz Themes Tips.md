@@ -161,7 +161,7 @@ text
 ```
 
 
-#### 另一种，鼠标悬浮
+#### 第二种，鼠标悬浮
 ```hibox
 打群主，分bug
 ```
@@ -174,6 +174,12 @@ admonition里也设置了这种样式，需要在Style Settings插件里启用
 ```ad-hibox
 - [ ] 打群主，分bug
 ```
+
+### 第三种，涂黑挖空
+Lorem ipsum dolor sit amet, consectetur ==~~adipiscing~~== elit, sed do ==~~eiusmod~~== tempor incididunt ut labore et dolore magna aliqua. （`==~~xx~~==`鼠标悬浮触发）
+
+Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==* elit, sed do *==~~eiusmod~~==* tempor incididunt ut labore et dolore magna aliqua. （`*==~~xx~~==*`点击触发）
+
 
 ### 重要文本框
 也没什么特别的
