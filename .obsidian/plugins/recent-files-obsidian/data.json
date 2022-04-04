@@ -1,6 +1,38 @@
 {
   "recentFiles": [
     {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "Callout环绕布局、缩进效果示例",
+      "path": "77-Example/Callout环绕布局、缩进效果示例.md"
+    },
+    {
+      "basename": "带进度条的任务列表",
+      "path": "77-Example/带进度条的任务列表.md"
+    },
+    {
+      "basename": "《领悟方法》1",
+      "path": "30-Reading/《领悟方法》1.md"
+    },
+    {
+      "basename": "《领悟方法》",
+      "path": "30-Reading/《领悟方法》.md"
+    },
+    {
       "basename": "README",
       "path": "README.md"
     },
@@ -29,28 +61,12 @@
       "path": "77-Example/ob提示框(Callout)样式展示.md"
     },
     {
-      "basename": "分栏效果示例",
-      "path": "77-Example/分栏效果示例.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "Callout环绕布局、缩进效果示例",
-      "path": "77-Example/Callout环绕布局、缩进效果示例.md"
-    },
-    {
       "basename": "图书阅读清单",
       "path": "77-Example/图书阅读清单.md"
     },
     {
       "basename": "对话形式笔记",
       "path": "77-Example/对话形式笔记.md"
-    },
-    {
-      "basename": "带进度条的任务列表",
-      "path": "77-Example/带进度条的任务列表.md"
     },
     {
       "basename": "如何在Obsidian中添加电影卡片",
@@ -87,34 +103,6 @@
     {
       "basename": "home",
       "path": "88-Template/home.md"
-    },
-    {
-      "basename": "Cubox",
-      "path": "50-Inbox/Cubox.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
-    },
-    {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
-    },
-    {
-      "basename": "《熊会滑雪吗？》",
-      "path": "30-Reading/《熊会滑雪吗？》.md"
-    },
-    {
-      "basename": "四象限表格",
-      "path": "77-Example/四象限表格.md"
-    },
-    {
-      "basename": "AD伪看板",
-      "path": "77-Example/AD伪看板.md"
     }
   ],
   "omittedPaths": [
