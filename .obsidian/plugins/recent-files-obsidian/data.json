@@ -1,112 +1,162 @@
 {
   "recentFiles": [
     {
-      "basename": "分栏效果示例",
-      "path": "77-Example/分栏效果示例.md"
+      "basename": "从这开始",
+      "path": "从这开始.md"
     },
     {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/通过下拉框检索文件示例.md"
     },
     {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
+      "basename": "ob提示框(callout)样式展示",
+      "path": "77-Example/ob提示框(callout)样式展示.md"
     },
     {
       "basename": "Callout环绕布局、缩进效果示例",
       "path": "77-Example/Callout环绕布局、缩进效果示例.md"
     },
     {
-      "basename": "带进度条的任务列表",
-      "path": "77-Example/带进度条的任务列表.md"
-    },
-    {
-      "basename": "《领悟方法》1",
-      "path": "30-Reading/《领悟方法》1.md"
-    },
-    {
-      "basename": "《领悟方法》",
-      "path": "30-Reading/《领悟方法》.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
+      "basename": "tiimeline callout效果",
+      "path": "77-Example/tiimeline callout效果.md"
     },
     {
       "basename": "《从零开始的女性主义》3",
       "path": "30-Reading/《从零开始的女性主义》3.md"
     },
     {
-      "basename": "Johnny学OB 资料汇总",
-      "path": "00-Tips/Johnny学OB 资料汇总.md"
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
     },
     {
-      "basename": "Obsidian 一键开启悬浮",
-      "path": "00-Tips/Obsidian 一键开启悬浮.md"
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
     },
     {
-      "basename": "从这开始",
-      "path": "从这开始.md"
+      "basename": "home",
+      "path": "88-Template/home.md"
     },
     {
-      "basename": "如何在OB里添加多彩时钟和音乐播放器",
-      "path": "00-Tips/如何在OB里添加多彩时钟和音乐播放器.md"
+      "basename": "20-Diary",
+      "path": "20-Diary/20-Diary.md"
     },
     {
-      "basename": "ob提示框(Callout)样式展示",
-      "path": "77-Example/ob提示框(Callout)样式展示.md"
-    },
-    {
-      "basename": "图书阅读清单",
-      "path": "77-Example/图书阅读清单.md"
-    },
-    {
-      "basename": "对话形式笔记",
-      "path": "77-Example/对话形式笔记.md"
-    },
-    {
-      "basename": "如何在Obsidian中添加电影卡片",
-      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+      "basename": "日记统计",
+      "path": "20-Diary/日记统计.md"
     },
     {
       "basename": "各类列表和彩虹大纲线",
       "path": "77-Example/各类列表和彩虹大纲线.md"
     },
     {
+      "basename": "77-Example",
+      "path": "77-Example/77-Example.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+    },
+    {
+      "basename": "Cmenu插件魔改版 Obsidian上的工具栏",
+      "path": "00-Tips/Cmenu插件魔改版 Obsidian上的工具栏.md"
+    },
+    {
+      "basename": "图书阅读清单-状态控制",
+      "path": "77-Example/图书阅读清单-状态控制.md"
+    },
+    {
       "basename": "《笔醒山河》",
       "path": "30-Reading/《笔醒山河》.md"
     },
     {
-      "basename": "《茶叶与鸦片》",
-      "path": "30-Reading/《茶叶与鸦片》.md"
+      "basename": "图书阅读清单",
+      "path": "77-Example/图书阅读清单.md"
     },
     {
-      "basename": "《理解海德格尔》",
-      "path": "30-Reading/《理解海德格尔》.md"
+      "basename": "电影观看清单",
+      "path": "77-Example/电影观看清单.md"
     },
     {
       "basename": "《从零开始的女性主义》",
       "path": "30-Reading/《从零开始的女性主义》.md"
     },
     {
-      "basename": "tp-book-callout",
-      "path": "88-Template/tp-book-callout.md"
+      "basename": "以橱窗的方式浏览文件夹下的图片",
+      "path": "77-Example/以橱窗的方式浏览文件夹下的图片.md"
     },
     {
-      "basename": "tp-book",
-      "path": "88-Template/tp-book.md"
+      "basename": "slidegallery",
+      "path": "88-Template/ReactJS/slidegallery.md"
     },
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
+      "basename": "如何快速生成文件夹的文件目录列表？",
+      "path": "00-Tips/如何快速生成文件夹的文件目录列表？.md"
+    },
+    {
+      "basename": "Obsidian 快捷键一览表",
+      "path": "10-Help/Obsidian 快捷键一览表.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+      "basename": "10-Help",
+      "path": "10-Help/10-Help.md"
+    },
+    {
+      "basename": "获取命令ID",
+      "path": "10-Help/获取命令ID.md"
+    },
+    {
+      "basename": "MarkDown超级教程 Obsidian版 12.17",
+      "path": "10-Help/MarkDown超级教程 Obsidian版 12.17.pdf"
+    },
+    {
+      "basename": "Obsidian 库中库玩法",
+      "path": "00-Tips/Obsidian 库中库玩法.md"
+    },
+    {
+      "basename": "表格自定义样式",
+      "path": "77-Example/表格自定义样式.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "tp_foldermoc",
+      "path": "88-Template/tp_foldermoc.md"
+    },
+    {
+      "basename": "MarkDown超级教程",
+      "path": "10-Help/MarkDown超级教程.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "AD伪看板",
+      "path": "77-Example/AD伪看板.md"
+    },
+    {
+      "basename": "booknote插件-更好的pdf office文档阅读和标注神器",
+      "path": "00-Tips/booknote插件-更好的pdf office文档阅读和标注神器.md"
+    },
+    {
+      "basename": "带进度条的任务列表",
+      "path": "77-Example/带进度条的任务列表.md"
+    },
+    {
+      "basename": "Image-grid【图片自适应】",
+      "path": "77-Example/Image-grid【图片自适应】.md"
     }
   ],
-  "omittedPaths": [
-    "^20-Diary/"
-  ],
-  "maxLength": 30
+  "omittedPaths": [],
+  "maxLength": null
 }

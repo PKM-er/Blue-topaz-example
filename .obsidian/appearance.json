@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 17,
+  "baseFontSize": 15,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -9,7 +9,6 @@
     "【Memos】Heatmap",
     "【自定义】表格样式ableStyles",
     "【自定义】彩色时钟样式",
-    "【自定义】表格样式TableStyles",
     "【日记】Time",
     "【自定义】myhome 样式",
     "absolve",
@@ -18,7 +17,8 @@
     "【Linkcard】",
     "test",
     "【Memos】Popover",
-    "custom-admonitions.c9c6cb"
+    "custom-admonitions.c9c6cb",
+    "【自定义】表格样式TableStyles"
   ],
   "translucency": false
 }

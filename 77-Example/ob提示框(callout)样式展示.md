@@ -1,8 +1,13 @@
+---
+updated: 2022-04-07 11:34
+---
 
 > Obaidian 0.14.2 版本后增加了Callout功能，这个功能就是之前 admonition(简称ad插件) 插件收编的，目前语法跟Microsoft Docs 一致。之前用ad插件设置的提示框可以一键转换成最新的语法样式。
 
 ## 调用办法
 `ctrl+p`  输入 callout 即可自动输入模板
+## 视频教程
+[告别单调的Obsidian，Ob的版面也可以丰富起来！ (bilibili.com)](https://www.bilibili.com/video/BV1G5411U7m8/)
 
 ## 目前支持的样式列表
 ## 官方示例
@@ -72,16 +77,17 @@
 通过添加callout类型，实现各类样式控制。下面以Blue Topaz主题内置的callout样式举例说明，目前支持的callout样式有：
 
 >
-| Callout类型         | 解释                          | 使用                                 |
-| ------------------- | ----------------------------- | ------------------------------------ |
-| doze                | 字体模糊效果                  | >[!cloze]                            |
-| kanban              | 伪看板 无序列表并列           | >[!kanban]                           |
-| hibox               | 自动隐藏框                    | >[!hibox]                            |
-| bookinfo            | 图书卡片(图片表格左右分布)    | >[!bookinfo]                         |
-| xx%                 | callout宽度xx代表10-100的数值 | >[!30%]                              |
-| right\|left\|center | callout布局位置               | >[!right] <br>>[!left]<br>>[!center] |
-| indent              | 全文自动缩进2字符             | >[!indent]                           |
-| blank               | callout 全透明块              | >[!blank]                            |
+| Callout类型           | 解释                            | 使用                                    |
+| --------------------- | ------------------------------- | --------------------------------------- |
+| cloze                  | 字体模糊效果                    | >[!cloze]                               |
+| kanban                | 伪看板 无序列表并列             | >[!kanban]                              |
+| hibox                 | 自动隐藏框                      | >[!hibox]                               |
+| bookinfo              | 图书卡片(图片表格左右分布)      | >[!bookinfo]                            |
+| xx%                   | callout宽度xx代表10-100的数值   | >[!30%]                                 |
+| right\|left\|center   | callout布局位置                 | >[!right] <br>>[!left]<br>>[!center]    |
+| indent                | 全文自动缩进2字符               | >[!indent]                              |
+| blank                 | callout 全透明块                | >[!blank]                               |
+| timeline                      |            时间线样式                     |    [[tiimeline callout效果]]                                     |
 **注意 以上类型都可以互相组合使用，具体看下面例子**
 
 ### 模糊字体

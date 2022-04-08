@@ -1,3 +1,6 @@
+---
+updated: 2022-04-06 21:13
+---
 
 
 - 只需要用代码块声明ad-kanban类型即可生效
@@ -5,7 +8,8 @@
 
 
 ```ad-kanban
-
+collapse:true
+title: 看板
 - [ ] 紫色鸡蛋
 	- [ ] Obsidian其实是紫色鸡蛋
 	- [ ] 不断灌输这个，他们就当真了

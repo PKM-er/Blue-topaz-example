@@ -66,6 +66,9 @@
       "key": "D"
     }
   ],
+  "editor:toggle-numbered-list": [],
+  "editor:toggle-checklist-status": [],
+  "obsidian-regex-replace:obsidian-regex-replace": [],
   "editor:toggle-blockquote": [
     {
       "modifiers": [
@@ -74,7 +77,13 @@
       "key": "Y"
     }
   ],
-  "editor:toggle-numbered-list": [],
-  "editor:toggle-checklist-status": [],
-  "obsidian-regex-replace:obsidian-regex-replace": []
+  "editor:toggle-code": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "D"
+    }
+  ]
 }

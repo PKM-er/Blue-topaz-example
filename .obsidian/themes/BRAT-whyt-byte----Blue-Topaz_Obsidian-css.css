@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.14.5。uid [20220403] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.5, uid [20220403] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.5。uid [20220407] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.5, uid [20220407] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -123,7 +123,7 @@ settings:
     collapsed: true
   - 
     id: background-settings-workplace
-    title: 1.2.1 Workplace background image
+    title: 1.2.1 Workplace Background Image
     title.zh: 1.2.1 工作页面背景
     type: heading
     level: 3
@@ -136,7 +136,7 @@ settings:
     default: false
   - 
     id: blur-depth
-    title: blur depth
+    title: Blur Depth
     title.zh: 模糊程度
     description: To adjust the degree of blur
     description.zh: 调整背景壁纸模糊程度
@@ -238,6 +238,12 @@ settings:
     description.zh: 需在上方选项种选择Custom，以自定义背景。使用Default内格式设置网络图片。使用以下格式设置本地图片  url("app://local/D:/Documents/Pictures/Unsplash/UnsplashTemp.jpg")
     type: variable-text
     default: url("https://")
+  - 
+    id: transparent-panes
+    title: Transparent Panes for Sliding Panes Plugin
+    title.zh: 使用Sliding Panes插件时，透明化部分页面
+    type: class-toggle
+    default: false
   -
     id: background-settings-markdown-page
     title: 1.2.2 Note Page Background Image
@@ -604,90 +610,11 @@ settings:
     default-light: '#6ab607'
     default-dark: '#2244d8'
   -
-    id: other-color-settings
-    title: 2.1.5 Other Colors
-    title.zh: 2.1.5 其他颜色
+    id: highlight-bg-color-folder
+    title: 2.1.5 Highlight Background Color
+    title.zh: 2.1.5 高亮背景颜色
     type: heading
     level: 3
-    collapsed: true
-  - 
-    id: text-color-code
-    title: Inline Code Color
-    title.zh: 行内代码颜色
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#e95d00'
-    default-dark: '#d58000'
-  -
-    id: list-format-ul
-    title: Bullet Color of Unordered List
-    title.zh: 无序列表点颜色
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#0e0e0e'
-    default-dark: '#bdbdbd'
-  -
-    id: list-ol-number-color
-    title: Number Color of Ordered List
-    title.zh: 有序列表数字颜色
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#6196d6'
-    default-dark: '#2c7bd6'
-  -
-    id: accent-strong
-    title: Bold Type Color
-    title.zh: 加粗颜色
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#000000'
-    default-dark: '#f7f7f7'
-  -
-    id: accent-em
-    title: Italic Type Color
-    title.zh: 斜体颜色
-    type: variable-themed-color
-    opacity: false
-    format: hex
-    default-light: '#099d4e'
-    default-dark: '#a4ca8e'
-  -
-    id: mjx-inline-math-color
-    title: Color of Mathematical Expressions (inline $x=0$)
-    title.zh: 数学表达式颜色(行内 $x=0$)
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#0e0e0e'
-    default-dark: '#bdbdbd'
-  -
-    id: mjx-math-color
-    title: Color of Mathematical Expressions ($$x=0$$)
-    title.zh: 数学表达式颜色($$x=0$$)
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#0e0e0e'
-    default-dark: '#bdbdbd'
-  -
-    id: background-leaf-resize-handle
-    title: Color of Leaf Resize Handle
-    title.zh: 页面大小调整条颜色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#e9e9e9'
-    default-dark: '#000000'
-  -
-    id: highlight-bg-color-folder
-    title: 2.1.5.1 Highlight Background Color
-    title.zh: 2.1.5.1 高亮背景颜色
-    type: heading
-    level: 4
     collapsed: false
   - 
     id: text-highlight-bg-light-switch
@@ -785,6 +712,171 @@ settings:
     min: 0
     max: 1
     step: 0.05
+  -
+    id: colorful-highlight-bg
+    title: Toggle Colorful Highlight Background Color
+    title.zh: 切换多彩高亮颜色
+    description: To give *==xxx==*, **==xxx==** and ***==xxx==*** different background colors
+    description.zh: 赋予*==xxx==*, **==xxx==** and ***==xxx==*** 不同高亮背景色
+    type: class-toggle
+    default: false
+  -
+    id: bg-color-highlight-1
+    title: Highlight Background Color Plus 1 (*==xx==*)
+    title.zh: 高亮颜色 Plus 1 (*==xx==*)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#ff000034'
+    default-dark: '#c865656f'
+  -
+    id: color-highlight-1
+    title: Highlight Text Color Plus 1 (*==xx==*)
+    title.zh: 高亮颜色 Plus 1 (*==xx==*)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: font-weight-highlight-1
+    title: Font Weight of Highlight Text Plus 1 (*==xx==*)
+    title.zh: 字重 Plus 1 (*==xx==*)
+    description: Can type normal, bold, lighter or bolder to change the font weight
+    description.zh: 可以输入 normal, bold, lighter 或者 bolder 去改变字重
+    type: variable-text
+    default: normal
+  -
+    id: bg-color-highlight-2
+    title: Highlight Background Color Plus 2 (**==xx==**)
+    title.zh: 高亮颜色 Plus 2 (**==xx==**)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#0fc41835'
+    default-dark: '#54b9476f'
+  -
+    id: color-highlight-2
+    title: Highlight Text Color Plus 2 (**==xx==**)
+    title.zh: 高亮颜色 Plus 2 (**==xx==**)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: bg-color-highlight-3
+    title: Highlight Background Color Plus 3 (***==xx==***)
+    title.zh: 高亮颜色 Plus 3 (***==xx==***)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#4ca6ff51'
+    default-dark: '#1e83d086'
+  -
+    id: font-weight-highlight-2
+    title: Font Weight of Highlight Text Plus 2 (**==xx==**)
+    title.zh: 字重 Plus 2 (**==xx==**)
+    description: Can type normal, bold, lighter or bolder to change the font weight
+    description.zh: 可以输入 normal, bold, lighter 或者 bolder 去改变字重
+    type: variable-text
+    default: normal
+  -
+    id: color-highlight-3
+    title: Highlight Text Color Plus 3 (***==xx==***)
+    title.zh: 高亮颜色 Plus 3 (***==xx==***)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: font-weight-highlight-3
+    title: Font Weight of Highlight Text Plus 3 (***==xx==***)
+    title.zh: 字重 Plus 3 (***==xx==***)
+    description: Can type normal, bold, lighter or bolder to change the font weight
+    description.zh: 可以输入 normal, bold, lighter 或者 bolder 去改变字重
+    type: variable-text
+    default: normal
+  -
+    id: other-color-settings
+    title: 2.1.6 Other Colors
+    title.zh: 2.1.6 其他颜色
+    type: heading
+    level: 3
+    collapsed: true
+  - 
+    id: text-color-code
+    title: Inline Code Color
+    title.zh: 行内代码颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#e95d00'
+    default-dark: '#d58000'
+  -
+    id: list-format-ul
+    title: Bullet Color of Unordered List
+    title.zh: 无序列表点颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#0e0e0e'
+    default-dark: '#bdbdbd'
+  -
+    id: list-ol-number-color
+    title: Number Color of Ordered List
+    title.zh: 有序列表数字颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#6196d6'
+    default-dark: '#2c7bd6'
+  -
+    id: accent-strong
+    title: Bold Type Color
+    title.zh: 加粗颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#000000'
+    default-dark: '#f7f7f7'
+  -
+    id: accent-em
+    title: Italic Type Color
+    title.zh: 斜体颜色
+    type: variable-themed-color
+    opacity: false
+    format: hex
+    default-light: '#099d4e'
+    default-dark: '#a4ca8e'
+  -
+    id: mjx-inline-math-color
+    title: Color of Mathematical Expressions (inline $x=0$)
+    title.zh: 数学表达式颜色(行内 $x=0$)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#0e0e0e'
+    default-dark: '#bdbdbd'
+  -
+    id: mjx-math-color
+    title: Color of Mathematical Expressions ($$x=0$$)
+    title.zh: 数学表达式颜色($$x=0$$)
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#0e0e0e'
+    default-dark: '#bdbdbd'
+  -
+    id: background-leaf-resize-handle
+    title: Color of Leaf Resize Handle
+    title.zh: 页面大小调整条颜色
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#e9e9e9'
+    default-dark: '#000000'
   -
     id: font-settings
     title: 2.2 Typography
@@ -958,6 +1050,12 @@ settings:
     title.zh: 标题 6
     type: variable-text
     default: 0.9375em
+  -
+    id: font-size-latex
+    title: Math Equation
+    title.zh: 数学公式字体大小
+    type: variable-text
+    default: 1.25em
   -
     id: headering-settings
     title: 2.2.3 Headering
@@ -1191,6 +1289,18 @@ settings:
     title.zh: 段落首行缩进（预览模式）
     type: class-toggle
     default: false
+  -
+    id: reduce-bottom-padding
+    title: Reduce Padding Bottom of Pages
+    title.zh: 缩减笔记下方预留空白大小
+    type: class-toggle
+    default: false
+  -
+    id: bottom-padding-value
+    title: Adjust Padding Bottom of Pages
+    title.zh: 调整笔记下方预留空白大小
+    type: variable-text
+    default: 0em
   -
     id: style-change-options
     title: 2.3 Element Styles
@@ -2222,8 +2332,14 @@ settings:
   --line-width-readable: 45rem;
   --embed-content-height: 600px;
 
+  --bottom-padding-value: 0em;
+
   --print-strong-color: var(--accent-strong);
   --print-em-color: var(--accent-em);
+
+  --font-weight-highlight-1: normal;
+  --font-weight-highlight-2: normal;
+  --font-weight-highlight-3: normal;
 
   --nord0: #2E3440;
   --nord1: #3B4252;
@@ -2581,6 +2697,13 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --mjx-math-color: var(--text-normal);
   --background-leaf-resize-handle: var(--background-primary-alt-bg-4-bt);
   --text-folder-file-icon: var(--theme-color);
+
+  --color-highlight-1: var(--text-highlight);
+  --color-highlight-2: var(--text-highlight);
+  --color-highlight-3: var(--text-highlight);
+  --bg-color-highlight-1: #c865656f;
+  --bg-color-highlight-2: #54b9476f;
+  --bg-color-highlight-3: #1e83d086;
 }
 
 .theme-light {
@@ -2879,6 +3002,13 @@ body.font-family-change-to-default .cm-strong.cm-em {
   --mjx-math-color: var(--text-normal);
   --background-leaf-resize-handle: var(--background-primary-alt-bg-4-bt);
   --text-folder-file-icon: var(--theme-color);
+
+  --color-highlight-1: var(--text-highlight);
+  --color-highlight-2: var(--text-highlight);
+  --color-highlight-3: var(--text-highlight);
+  --bg-color-highlight-1: #ff000034;
+  --bg-color-highlight-2: #0fc41835;
+  --bg-color-highlight-3: #4ca6ff51;
 }
 
 body.color-scheme-options-avocado-topaz.theme-light {
@@ -6769,6 +6899,11 @@ body.color-scheme-options-lilac.theme-light #calendar-container {
   margin: 0 auto;
 }
 
+body.reduce-bottom-padding .markdown-preview-view .markdown-preview-sizer,
+body.reduce-bottom-padding .cm-s-obsidian .cm-content {
+  padding-bottom: var(--bottom-padding-value) !important;
+}
+
 .markdown-source-view.mod-cm6.is-line-wrap.is-readable-line-width .cm-line:not(.HyperMD-table-row),
 .markdown-source-view.mod-cm6.is-readable-line-width:not(.rtl) .cm-contentContainer {
   margin-right: auto;
@@ -7020,7 +7155,7 @@ div.markdown-source-view ul.floating-toc{
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-important:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--stag1-bg) !important;
+  background-color: var(--stag1-bg);
   color: var(--white) !important;
   border: none;
   font-size: 0.95em;
@@ -7045,7 +7180,7 @@ div.markdown-source-view ul.floating-toc{
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-complete:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--stag3-bg) !important;
+  background-color: var(--stag3-bg);
   color: var(--white) !important;
   border: none;
   font-size: 0.95em;
@@ -7070,7 +7205,7 @@ div.markdown-source-view ul.floating-toc{
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-inprogress:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--stag2-bg) !important;
+  background-color: var(--stag2-bg);
   color: var(--white) !important;
   border: none;
   font-size: 0.95em;
@@ -7104,7 +7239,7 @@ div.markdown-source-view ul.floating-toc{
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-dailynote:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--tag-dailynote-bg) !important;
+  background-color: var(--tag-dailynote-bg);
   color: var(--white) !important;
   border: none;
   font-size: 0.95em;
@@ -7130,7 +7265,7 @@ div.markdown-source-view ul.floating-toc{
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-weeklynote:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--tag-weeklynote-bg) !important;
+  background-color: var(--tag-weeklynote-bg);
   color: var(--white) !important;
   border: none;
   font-size: 0.95em;
@@ -7156,7 +7291,7 @@ div.markdown-source-view ul.floating-toc{
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-questions:not(.cm-formatting-hashtag) {
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
-  background-color: var(--tag-questions-bg) !important;
+  background-color: var(--tag-questions-bg);
   color: var(--white) !important;
   border: none;
   font-size: 0.95em;
@@ -7180,7 +7315,7 @@ div.markdown-source-view ul.floating-toc{
 }
 
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) span.cm-hashtag.cm-meta.cm-hashtag-end.cm-tag-ideas:not(.cm-formatting-hashtag) {
-  background-color: var(--tag-ideas-bg) !important;
+  background-color: var(--tag-ideas-bg);
   font-family: var(--font-family-special-tag) !important;
   font-weight: 600;
   color: var(--white) !important;
@@ -7189,29 +7324,29 @@ div.markdown-source-view ul.floating-toc{
 }
 
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-important {
-  background-color: var(--stag1-bg) !important;
+  background-color: var(--stag1-bg);
 }
 
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-weeklynote {
-  background-color: var(--tag-weeklynote-bg) !important;
+  background-color: var(--tag-weeklynote-bg);
 }
 
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-dailynote {
-  background-color: var(--tag-dailynote-bg) !important;
+  background-color: var(--tag-dailynote-bg);
 }
 
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-ideas {
-  background-color: var(--tag-ideas-bg) !important;
+  background-color: var(--tag-ideas-bg);
 }
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-inprogress {
-  background-color: var(--stag2-bg) !important;
+  background-color: var(--stag2-bg);
 }
 
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-questions {
-  background-color: var(--tag-questions-bg) !important;
+  background-color: var(--tag-questions-bg);
 }
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-complete {
-  background-color: var(--stag3-bg) !important;
+  background-color: var(--stag3-bg);
 }
 
 /*colorful tags*/
@@ -9438,7 +9573,7 @@ body.list-vertical-line-three ol ol {
   position: relative;
 }
 
-body.list-vertical-line-three  ul ul::before,
+body.list-vertical-line-three ul ul::before,
 body.list-vertical-line-three ol ul::before {
   content: '';
   border-left: 2px solid var(--background-modifier-border);
@@ -9448,8 +9583,8 @@ body.list-vertical-line-three ol ul::before {
   top: 0px;
   bottom: 0px;
 }
-body.list-vertical-line-three  ul ol::before,
-body.list-vertical-line-three   ol ol::before {
+body.list-vertical-line-three ul ol::before,
+body.list-vertical-line-three ol ol::before {
   content: '';
   border-left: 2px solid var(--background-modifier-border);
   border-right:none!important;
@@ -9458,8 +9593,6 @@ body.list-vertical-line-three   ol ol::before {
   top: 0px!important;
   bottom: 0px!important;
 }
-
-
 
 body.list-vertical-line-three .kanban ul ul::before,
 body.list-vertical-line-three .kanban ol ul::before {
@@ -9533,7 +9666,7 @@ body:not(.list-no-line-in-edit):not(.rainbow-lines) .mod-cm6 .HyperMD-list-line.
   width: 100%;
   top: -0.5em;
   bottom: -0.5em;
-   padding-bottom: 999em; 
+  padding-bottom: 999em; 
   background-image: linear-gradient(
         to right,
         var(--background-modifier-border) 0 var(--rb-line-width),
@@ -9766,7 +9899,7 @@ body.rainbow-checkbox .mod-cm6 .HyperMD-list-line-1 .task-list-item-checkbox:che
   background-color: rgba(var(--accent-1-rgb),0.7);
 }
 body.rainbow-checkbox .mod-cm6 .HyperMD-list-line-1 .task-list-item-checkbox {
-  border-color: rgba(var(--accent-1-rgb),0.7) ;
+  border-color: rgba(var(--accent-1-rgb),0.7);
 }
 body.rainbow-lines .cm-hmd-list-indent > span.cm-tab:nth-child(8n+1)::before {
   border-color: rgba(var(--accent-1-rgb),0.7);
@@ -10577,6 +10710,47 @@ body.text-highlight-bg-dark-switch.theme-dark .markdown-preview-view :not(font)>
   background-color: hsla(var(--text-highlight-bg-h-dark), calc(var(--text-highlight-bg-s-dark)*1.5), calc(var(--text-highlight-bg-l-dark)*1.1), calc(var(--text-highlight-bg-a-dark)*0.55));
 }
 
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight,
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight + .cm-em.cm-highlight:not([class*="strong"]),
+body.colorful-highlight-bg .markdown-preview-view :not(font):not(strong)>em>mark {
+  background-color: var(--bg-color-highlight-1);
+  color: var(--color-highlight-1);
+  font-style: normal;
+  padding: 1px 3px;
+  font-weight: var(--font-weight-highlight-1);
+}
+body.colorful-highlight-bg .markdown-preview-view :not(font):not(strong)>em>mark {
+  border-radius: var(--radius-xs);
+}
+
+body.colorful-highlight-bg .cm-formatting.cm-formatting-highlight.cm-highlight.cm-strong,
+body.colorful-highlight-bg .cm-formatting.cm-formatting-highlight.cm-highlight.cm-strong + .cm-highlight.cm-strong:not([class*="em"]),
+body.colorful-highlight-bg .markdown-preview-view :not(font):not(em)>strong>mark {
+  background-color: var(--bg-color-highlight-2);
+  color: var(--color-highlight-2);
+  font-weight: var(--font-weight-highlight-2);
+}
+
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight.cm-strong,
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight.cm-strong + .cm-em.cm-highlight.cm-strong,
+body.colorful-highlight-bg .markdown-preview-view :not(font)>strong>em>mark {
+  background-color: var(--bg-color-highlight-3);
+  color: var(--color-highlight-3) !important;
+  font-style: normal;
+  font-weight: var(--font-weight-highlight-3);
+  background-image: initial;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight.cm-strong,
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight.cm-strong + .cm-em.cm-highlight.cm-strong,
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight,
+body.colorful-highlight-bg .cm-em.cm-formatting.cm-formatting-highlight.cm-highlight + .cm-em.cm-highlight:not([class*="strong"]) {
+  padding: 1px 0px;
+}
+
+
 .workspace-leaf.mod-active .view-header {
   background-color: var(--background-primary);
   border-bottom: 3px solid var(--theme-color);
@@ -11036,7 +11210,7 @@ body.whole-code-wrap pre[class*='language-'] {
 .token.url,
 .language-css .token.string,
 .style .token.string,
-.markdown-source-view.cm-s-obsidian .cm-string {
+.markdown-source-view.cm-s-obsidian .cm-string:not([class*="url"]) {
   color: var(--aqua) !important;
 }
 .token.atrule,
@@ -12891,7 +13065,7 @@ body.plugin-sliding-panes .mod-root .workspace-leaf.mod-active .view-header {
 body.plugin-sliding-panes .view-header-title {
   font-size: var(--font-size-file-header-title-andy-plugin);
   letter-spacing: 0.7px;
-  line-height: 1.8;
+  line-height: 1.9;
   color: var(--text-muted);
 }
 
@@ -12902,7 +13076,6 @@ body.plugin-sliding-panes .view-header-icon {
 body.plugin-sliding-panes .mod-root .workspace-leaf.mod-active .view-header-title {
   color: var(--sliding-panes-header-color);
   font-family: var(--font-family-title);
-  padding-top: 4px;
 }
 
 body.plugin-sliding-panes .view-actions {
@@ -12920,6 +13093,33 @@ body.plugin-sliding-panes-rotate-header .workspace>.mod-root>.workspace-leaf>.wo
 
 body.plugin-sliding-panes-rotate-header .workspace>.mod-root>.workspace-leaf>.workspace-leaf-content>.view-header .view-actions {
   padding: 0px 0px 5px 3px !important;
+}
+
+body.plugin-sliding-panes:not(.transparent-panes) .workspace-split.mod-root .workspace-leaf:not(:first-of-type) .workspace-leaf-content {
+  background-color: var(--background-4-sliding-pane);
+}
+
+body.plugin-sliding-panes.transparent-panes .workspace-leaf.mod-am-left-of-active .workspace-leaf-content .view-content,
+body.plugin-sliding-panes.transparent-panes .workspace-leaf.mod-am-left-of-active .workspace-leaf-content .view-content *,
+body.plugin-sliding-panes.transparent-panes .workspace-leaf.mod-am-left-of-active .workspace-leaf-content .view-content *::before,
+body.plugin-sliding-panes.transparent-panes .workspace-leaf.mod-am-left-of-active .workspace-leaf-content .view-content *::-webkit-scrollbar-thumb,
+body.plugin-sliding-panes.transparent-panes .workspace-leaf.mod-am-left-of-active .workspace-leaf-content .view-content *::-webkit-scrollbar {
+  color: transparent !important;
+  background: none !important;
+  background-color: transparent !important;
+  border: none !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+body.plugin-sliding-panes.transparent-panes .workspace-split.mod-vertical > * > .workspace-leaf-resize-handle {
+  width: 0;
+}
+
+body.plugin-sliding-panes.plugin-sliding-panes.transparent-panes.theme-light .workspace-split.mod-vertical>.workspace-leaf {
+  box-shadow: -5px 0px 6px 0px rgba(0, 0, 0, 0.1) !important;
+}
+body.plugin-sliding-panes.theme-dark .workspace-split.mod-vertical>.workspace-leaf {
+  box-shadow: -5px 0px 8px 0px rgba(0, 0, 0, 0.3) !important;
 }
 
 /*==========================*/
@@ -14352,11 +14552,11 @@ aside>h2 {
 
 /* ======== tooltip ========= */
 .tooltip, 
-.tooltip.mod-right{
+.tooltip.mod-right {
   color:var(--white);
   background-color:var(--interactive-accent);
 }
-.tooltip .tooltip-arrow{
+.tooltip .tooltip-arrow {
   border-bottom: 5px solid var(--interactive-accent);
 }
 .tooltip.mod-right .tooltip-arrow {
@@ -14384,8 +14584,27 @@ section.footnotes ol>li:not(.task-list-item) {
 /* ================================== */
 /* =========== admonition =========== */
 /* ================================== */
+
+body.style-options-for-admonition-plugin .admonition  {	
+  break-inside: avoid;
+}
+
+
 .admonition {
   background-color: var(--admonition-bg-color) !important;
+}
+
+.callout-title.admonition-title 
+{
+  background-color: rgba(var(--admonition-color),0.15) ;
+}
+.callout.admonition
+{
+  border-color: rgba(var(--admonition-color),0.15) ;
+}
+ .callout.admonition.admonition-plugin.is-collapsed
+{
+  overflow: hidden;
 }
 /* ad伪看板效果*/
 body.style-options-for-admonition-plugin .admonition-kanban {
@@ -14431,7 +14650,7 @@ body.style-options-for-admonition-plugin .admonition-kanban ul .list-collapse-in
 
 body.style-options-for-admonition-plugin .admonition-kanban ul .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: var(--text-accent);
-  transition: transform 10ms linear 0s
+  transition: transform 10ms linear 0s;
 }
 
 body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+1) {
@@ -14554,13 +14773,62 @@ body.style-options-for-admonition-plugin .admonition-kanban ul ul li.task-list-i
   background-color: var(--p-kanban-card-color-1) !important;
 }
 
-
-
 /*blank ad分栏
 修改自 https://forum-zh.obsidian.md/t/topic/2081 */
-body.style-options-for-admonition-plugin .admonition  {	
-  break-inside: avoid;
+
+body.style-options-for-admonition-plugin .callout-content.admonition-content>* 
+{
+  /* margin: 0px; */
 }
+body.style-options-for-admonition-plugin .is-live-preview .callout-content.admonition-content>p:not(:first-child):not(:last-child)
+{
+  margin-top: -1.5em;
+}
+body.style-options-for-admonition-plugin .admonition-kanban .admonition-title-icon, 
+body.style-options-for-admonition-plugin .admonition-flex .admonition-title-icon, 
+body.style-options-for-admonition-plugin .admonition-col2 .admonition-title-icon, 
+body.style-options-for-admonition-plugin .admonition-col3 .admonition-title-icon,
+body.style-options-for-admonition-plugin .admonition-col4 .admonition-title-icon {
+  display: none;
+}
+
+
+body.style-options-for-admonition-plugin .admonition-col2 .admonition-content  blockquote,
+body.style-options-for-admonition-plugin .admonition-col3  .admonition-content  blockquote,
+body.style-options-for-admonition-plugin .admonition-col4 .admonition-content  blockquote,
+body.style-options-for-admonition-plugin .admonition-flex  .admonition-content  blockquote {
+  flex: 100%;
+  border-left: none;
+  padding-left: 0;
+  margin-block-start:0;
+  margin:0;
+  box-shadow:none;
+  background-color: transparent;
+  color: var(--text-muted);
+}
+body.style-options-for-admonition-plugin .admonition-col2 .admonition-content  blockquote p::before,
+body.style-options-for-admonition-plugin .admonition-col3 .admonition-content  blockquote p::before,
+body.style-options-for-admonition-plugin .admonition-col4 .admonition-content  blockquote p::before,
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content  blockquote p::before {
+  display: none;
+}
+body.style-options-for-admonition-plugin .admonition-col2 .admonition-content  blockquote p,
+body.style-options-for-admonition-plugin .admonition-col3 .admonition-content  blockquote p,
+body.style-options-for-admonition-plugin .admonition-col4 .admonition-content  blockquote p,
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content  blockquote p {
+  margin:0;
+}
+
+
+body.style-options-for-admonition-plugin .admonition-col2 .admonition-content  ul,
+body.style-options-for-admonition-plugin .admonition-col3 .admonition-content  ul,
+body.style-options-for-admonition-plugin .admonition-col4 .admonition-content  ul,
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content  ul {
+  padding-inline-start: 20px !important;
+  margin-left: -20px;
+}
+
+
 body.style-options-for-admonition-plugin .admonition-col2 {
   box-shadow: none!important;
 }
@@ -14570,7 +14838,17 @@ body.style-options-for-admonition-plugin .admonition-col2 .admonition	{
   margin:0;
 }
 
-body.style-options-for-admonition-plugin .admonition-col2>.admonition-content {	
+body.style-options-for-admonition-plugin .admonition-col2>.admonition-content-holder> .admonition-content {	
+  columns:150px 2;
+  -moz-columns:150px 2;
+  -webkit-columns:150px 2;
+  column-gap: 2vw;
+  overflow: visible ;
+  margin:0;
+  /*分栏的分割线
+  column-rule: 1px solid #d4d2d2; */
+}
+body.style-options-for-admonition-plugin .callout.admonition-col2> .admonition-content {	
   columns:150px 2;
   -moz-columns:150px 2;
   -webkit-columns:150px 2;
@@ -14583,18 +14861,18 @@ body.style-options-for-admonition-plugin .admonition-col2>.admonition-content {
 body.style-options-for-admonition-plugin .admonition-col2 .admonition-content ol,
 body.style-options-for-admonition-plugin .admonition-col2 .admonition-content ul {	
   margin-top: -0.25em;
+  
 }
-body.style-options-for-admonition-plugin  .admonition-col2 .admonition-content h3,
-body.style-options-for-admonition-plugin  .admonition-col2 .admonition-content h4 {	
-  margin-top: -0.001em;
+body.style-options-for-admonition-plugin .markdown-preview-view .admonition-col2 .admonition-content :is(h3,h4) {	
+  margin-top: -0.001em!important;
 }
 body.style-options-for-admonition-plugin .admonition-kanban .admonition-col2 .admonition-content ol{	
-  margin:0;
+  margin: 0;
   break-inside: avoid;
 }
 
 body.style-options-for-admonition-plugin .admonition-kanban .admonition-col2 .admonition-content ul {	
-  margin:0;
+  margin: 0;
   break-inside: avoid;
 }
 
@@ -14606,18 +14884,19 @@ body.style-options-for-admonition-plugin .admonition-col2 .admonition-content {
   overflow: visible ;
 }
 
-body.style-options-for-admonition-plugin .admonition-col2 >.admonition-content-holder {
-  margin-top:0!important;
-  margin-bottom:0!important;
+body.style-options-for-admonition-plugin .admonition-col2 > .admonition-content-holder {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
 }
-body.style-options-for-admonition-plugin .admonition-col2 p{
+body.style-options-for-admonition-plugin .admonition-col2 p {
   text-align: justify;
-  margin-top:0;
+  margin-top: 0;
   padding: 2px;
+
  /*  height:100%;
   overflow: auto; */
 }
-body.style-options-for-admonition-plugin .admonition-col2 p>img{
+body.style-options-for-admonition-plugin .admonition-col2 p > img{
   display: block;
   width: 100%;
   height: auto;
@@ -14634,10 +14913,20 @@ body.style-options-for-admonition-plugin .admonition-col3 {
   
 body.style-options-for-admonition-plugin .admonition-col3 .admonition	{
   overflow: visible ;
-  margin:0;
+  margin: 0;
 }
 
-body.style-options-for-admonition-plugin .admonition-col3>.admonition-content {	
+body.style-options-for-admonition-plugin .callout.admonition-col3>.admonition-content {	
+  columns: 100px 3;
+  -moz-columns: 100px 3;
+  -webkit-columns:100px 3;
+  column-gap: 1vw;
+  overflow: visible;
+  margin: 0;
+  break-inside: avoid;
+  column-rule: 1px solid #d4d2d2; 
+}
+body.style-options-for-admonition-plugin .admonition-col3>.admonition-content-holder>.admonition-content {	
   columns:100px 3;
   -moz-columns:100px 3;
   -webkit-columns:100px 3;
@@ -14660,7 +14949,7 @@ body.style-options-for-admonition-plugin .admonition-kanban .admonition-col3 .ad
   break-inside: avoid;
 }
 body.style-options-for-admonition-plugin .admonition-col3 .admonition-content {	
-  overflow: visible ;
+  overflow: visible;
 }
 
 body.style-options-for-admonition-plugin .admonition-col3 >.admonition-content-holder {
@@ -14683,25 +14972,33 @@ body.style-options-for-admonition-plugin .admonition-col3 p>img{
 body.style-options-for-admonition-plugin .admonition-col3-parent .admonition-col3 .admonition > .admonition-title.no-title + .admonition-content-holder {
   margin-top: 0;
 }
+
 /****col4 四栏*****/
+
 
 body.style-options-for-admonition-plugin .admonition-col4 {
   box-shadow: none!important;
 }
   
 body.style-options-for-admonition-plugin .admonition-col4 .admonition	{
-  overflow: visible ;
+  overflow: visible;
   margin:0;
 }
 
-body.style-options-for-admonition-plugin .admonition-col4>.admonition-content {	
+body.style-options-for-admonition-plugin .callout.admonition-col4 > .admonition-content {	
   column-count: 4;
   column-gap: 1vw;
-  overflow: visible ;
+  overflow: visible;
   margin:0;
   break-inside: avoid;
 }
-
+body.style-options-for-admonition-plugin .admonition-col4 > .admonition-content-holder>.admonition-content {	
+  column-count: 4;
+  column-gap: 1vw;
+  overflow: visible;
+  margin:0;
+  break-inside: avoid;
+}
 body.style-options-for-admonition-plugin .admonition-col4 .admonition-content {	
   margin:0;
   break-inside: avoid;
@@ -14719,15 +15016,15 @@ body.style-options-for-admonition-plugin .admonition-kanban .admonition-col4 .ad
   margin:0;
   break-inside: avoid;
 }
-body.style-options-for-admonition-plugin .admonition-col4>.admonition-content {	
-  overflow: visible ;
+body.style-options-for-admonition-plugin .admonition-col4 > .admonition-content {	
+  overflow: visible;
 }
 
-body.style-options-for-admonition-plugin .admonition-col4 >.admonition-content-holder {
+body.style-options-for-admonition-plugin .admonition-col4 > .admonition-content-holder {
   margin-top:0!important;
   margin-bottom:0!important;
 }
-body.style-options-for-admonition-plugin .admonition-col4 p{
+body.style-options-for-admonition-plugin .admonition-col4 p {
   text-align: justify;
   margin-top:0;
   padding: 2px;
@@ -14758,6 +15055,10 @@ body.style-options-for-admonition-plugin .admonition-flex {
   margin: auto;
   box-shadow:none;
 }
+
+  .callout-content.admonition-content >p {
+    margin-top: 0 !important;
+    }
 body.style-options-for-admonition-plugin .admonition-flex >.admonition-content-holder {
   margin-top: 0 !important;
   margin-bottom: 0 !important;
@@ -14769,14 +15070,12 @@ body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
   flex-wrap: wrap;
   border:none;
 }
-body.style-options-for-admonition-plugin .admonition-flex .admonition-content div{
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content>div{
   flex: 1;
   margin: 0 0.625rem;
 }
 
-body.style-options-for-admonition-plugin .callout.admonition-flex .admonition-content div{
-  margin: 0;
-}
+
 
 /*ad-table*/
 body.style-options-for-admonition-plugin .admonition-table {
@@ -15079,7 +15378,7 @@ body.rainbow-checklist .checklist-plugin-main.markdown-preview-view li:nth-of-ty
   position: fixed;
   border-right: 0px;
   margin: 0;
-  height: 40px;
+  height: 27px;
   overflow: visible;
   flex-basis: 0;
   bottom: 0;
@@ -15110,7 +15409,7 @@ body.rainbow-checklist .checklist-plugin-main.markdown-preview-view li:nth-of-ty
 
 .hider-ribbon .workspace-ribbon.mod-left .side-dock-ribbon-action {
   display: inline-block;
-  padding: 10px 5px 0 12px;
+  padding: 5px 5px 0 12px;
 }
 
 .hider-ribbon .workspace-ribbon.mod-left:hover {
@@ -16230,6 +16529,29 @@ img[alt$="inlR"] {
   font-size: 0.85rem;
 }
 
+.markdown-preview-view .image-embed[src$="inl"],
+.markdown-preview-view .image-embed[src$="inl"],
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="inl"],
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="inl"] {
+  clear: both;
+  margin: 0.5em auto !important;
+  width: fit-content;
+  display: inline-table;
+}
+
+.markdown-preview-view .image-embed[src$="inl"]::after,
+.markdown-preview-view .image-embed[src$="inl"]::after,
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="inl"]::after,
+.markdown-source-view.mod-cm6.is-live-preview .image-embed[src$="inl"]::after {
+  content: attr(alt);
+  padding: 0 0.7em; 
+  margin-top: 0.5em;
+  display: block;
+  caption-side: bottom;
+  text-align: center;
+  font-size: 0.85rem;
+}
+
 /* image-grid-1 */
 /* adapted from https://github.com/Lithou/Sandbox/blob/main/.obsidian/snippets/pub-Image%20Flags.css */
 span[alt*="+grid"] {
@@ -16408,9 +16730,7 @@ body.style-options-for-buttons-plugin button.blank:hover {
   animation: swing_image 0.8s linear 0s 1 normal;
 	box-shadow: 0 2px 6px rgba(0, 0, 0, .3);
 }
-body.style-options-for-buttons-plugin .admonition-content button.grad_button {
-  margin-top: 0px;
-}
+
 body.style-options-for-buttons-plugin .admonition-content span>button.grad_button{
   margin:3px;
 }
@@ -16672,8 +16992,7 @@ body:not(.font-family-change-to-default).is-mobile .markdown-source-view.mod-cm6
 }
 /*小屏幕特别优化*/
 @media (max-width: 800pt) 
-and (min-width : 400px)
-{
+and (min-width : 400px) {
   body.style-options-for-admonition-plugin .admonition-flex .admonition-content
   {
    gap:24px;
@@ -16695,10 +17014,9 @@ and (min-width : 400px)
     flex: 1 1 40%;
   }
 }
-@media (max-width: 400pt)
-{
+@media (max-width: 400pt) {
   body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
-   gap:15px;
+    gap:15px;
   }
   body.style-options-for-admonition-plugin .admonition-flex .admonition-content div {
     flex: 1 1 60%;
@@ -16722,7 +17040,7 @@ and (min-width : 400px)
   .is-mobile .view-header-title {
     font-size: var(--font-size-file-header-title);
     letter-spacing: -0.015em;
-    line-height: 43px;
+    line-height: 40px;
   }
   /*伪看板优化显示*/
   .kanban ul>li:not(.task-list-item) {
@@ -16735,6 +17053,10 @@ and (min-width : 400px)
   .is-mobile .nav-folder.mod-root > .nav-folder-title .nav-folder-collapse-indicator.collapse-icon {
     display: none;
     background: transparent;
+  }
+
+  body:not(.default-icons).is-mobile .nav-folder-collapse-indicator::after {
+    top: 1px;
   }
 }
 
@@ -17031,10 +17353,6 @@ body {
   background-color: transparent;
 }
 
-body.plugin-sliding-panes .workspace-split.mod-root .workspace-leaf:not(:first-of-type) .workspace-leaf-content {
-  background-color: var(--background-4-sliding-pane);
-}
-
 body.folder-icons .nav-folder-children .nav-folder-title-content::before {
   position: relative;
   content: " ";
@@ -17090,8 +17408,7 @@ body.light-background-color-files:not(.remove-file-icons) .nav-file-title.is-act
   filter: hue-rotate(180deg);
 }
 
-body:not(.remove-file-icons) .nav-file-title.is-active .obsidian-icon-folder-icon + .nav-file-title-content::before
-{
+body:not(.remove-file-icons) .nav-file-title.is-active .obsidian-icon-folder-icon + .nav-file-title-content::before {
  display: none;
 }
 
@@ -19291,7 +19608,7 @@ body.theme-dark .popover.hover-popover:not(.is-loaded) {
 }
 /*隐藏滚动条*/
 .markdown-preview-view.noscroll::-webkit-scrollbar {
-  display:none;
+  display: none;
 }
 
 @media print {
@@ -19517,7 +19834,7 @@ body.theme-dark .popover.hover-popover:not(.is-loaded) {
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220403";
+  content: "uid:20220407";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;
@@ -19577,52 +19894,84 @@ body.theme-dark .popover.hover-popover:not(.is-loaded) {
 .callout ul > li.task-list-item .task-list-item-checkbox {
   margin-left: auto;
 }
-.callout .callout-content p img{
+.callout .callout-content p img {
   display: block;
-  }
-  .callout-content {
-    padding-left: 10px;
-  }
+}
+.callout-content {
+  padding-left: 10px;
+}
+.callout img[alt*=circle] {
+  border-radius: 35px;
+  width:70px;
+  height:70px;
+}
 /* ===编辑代码块按钮调整============ */
-  .markdown-source-view.mod-cm6 .cm-embed-block {
-    border: 0;
-    padding-top:9px;
-  }
-  .markdown-source-view.mod-cm6 .edit-block-button
-  {
-    padding: 0px;
-    top: -1.5px;
-    border-radius:20px;
-    right: 10px;
-  }
-  .markdown-source-view.mod-cm6 .edit-block-button::before{
-    width: 25px;
-    font-size: 11px;
-    text-align: center;
-    content: '</>';
-  }
-  .markdown-source-view.mod-cm6 .edit-block-button>svg{
+.markdown-source-view.mod-cm6 .cm-embed-block {
+  border: 0;
+  padding-top:9px;
+}
+.markdown-source-view.mod-cm6 .edit-block-button {
+  padding: 0px;
+  top: -1.5px;
+  border-radius:20px;
+  right: 10px;
+}
+.markdown-source-view.mod-cm6 .edit-block-button::before{
+  width: 25px;
+  font-size: 11px;
+  text-align: center;
+  content: '</>';
+}
+.markdown-source-view.mod-cm6 .edit-block-button>svg{
   display: none;
-  }
+}
   
+
+/*全透明callout*/
+.callout.callout[data-callout*=blank] {
+  box-shadow:none;
+  max-width: 100%;
+  background: transparent;
+  border: 0;
+  background-color: transparent !important;
+  box-shadow: none !important;
+  margin: 0;
+}
+
+.callout.callout[data-callout*=blank].is-collapsed .callout-fold {
+  border: 0;
+  padding: 5px 10px;
+}
+.callout.callout[data-callout*=blank] .callout-title, .callout.callout[data-callout*=blank] .callout-title :is(.callout-icon, .callout-title-inner) {
+  display: none;
+}
+.callout.callout[data-callout*=blank]  .callout-content {
+  overflow: visible;
+  margin: 0;
+  padding:0px;
+  border: 0;
+}
+
 /* ===段落自动缩进============ */
   /*支持两种写法
     > [!note|indent]
     > [!note indent]
    */
 
-.callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent]) .callout-content p br{
-    content: '';
-    white-space: pre;
-  }
-  .callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent])  .callout-content>p{
-    text-indent: 2em;
-  }
-  .callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent])  .callout-content blockquote>p{
-    text-indent: 2em;
-  }
+.callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent]) .callout-content p br {
+  content: '';
+  white-space: pre;
+}
+.callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent]) .callout-content>p {
+  text-indent: 2em;
+}
+.callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent]) .callout-content blockquote>p {
+  text-indent: 2em;
+}
   
-  .callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent]) .callout-content p br::after {content: '\A         ';}
+.callout.callout:is([data-callout-metadata*="indent"], [data-callout*=indent]) .callout-content p br::after {
+  content: '\A         ';
+}
   
   
 
@@ -19632,85 +19981,103 @@ body.theme-dark .popover.hover-popover:not(.is-loaded) {
     > [!note right]
    */
 .callout.callout:is([data-callout-metadata*="left"], [data-callout*=left]) {
-  float: left;
+  float: left !important;
   margin: unset;
 }
 .callout.callout:is([data-callout-metadata*="right"], [data-callout*=right]) {
-  float: right;
+  float: right !important;
   margin: unset;
 }
 
 .callout.callout:is([data-callout-metadata*="center"], [data-callout*=center]) {
   display: block;
   margin: auto;
-  float: unset;
+  float: unset  !important ;
 }
    /* ===百分比宽度============ */
    /*支持两种写法
     > [!note|30%]
     > [!note 30%]
    */
-.callout.callout:is([data-callout-metadata*='100%'],[data-callout*='100%']) {
+.callout.callout:is([data-callout-metadata*='100%'],
+[data-callout*='100%']) {
   width: 100%;
 }
-.callout.callout:is([data-callout-metadata*='95%'],[data-callout*='95%']) {
+.callout.callout:is([data-callout-metadata*='95%'],
+[data-callout*='95%']) {
   width: 95%;
 }
-.callout.callout:is([data-callout-metadata*='90%'],[data-callout*='90%']) {
+.callout.callout:is([data-callout-metadata*='90%'],
+[data-callout*='90%']) {
   width: 90%;
 }
-.callout.callout:is([data-callout-metadata*='85%'],[data-callout*='85%']) {
+.callout.callout:is([data-callout-metadata*='85%'],
+[data-callout*='85%']) {
   width: 85%;
 }
-.callout.callout:is([data-callout-metadata*='80%'],[data-callout*='80%']) {
+.callout.callout:is([data-callout-metadata*='80%'],
+[data-callout*='80%']) {
   width: 80%;
 }
-.callout.callout:is([data-callout-metadata*='75%'],[data-callout*='75%']) {
+.callout.callout:is([data-callout-metadata*='75%'],
+[data-callout*='75%']) {
   width: 75%;
 }
-.callout.callout:is([data-callout-metadata*='70%'],[data-callout*='70%']) {
+.callout.callout:is([data-callout-metadata*='70%'],
+[data-callout*='70%']) {
   width: 70%;
 }
-.callout.callout:is([data-callout-metadata*='65%'],[data-callout*='65%']) {
+.callout.callout:is([data-callout-metadata*='65%'],
+[data-callout*='65%']) {
   width: 65%;
 }
-.callout.callout:is([data-callout-metadata*='60%'],[data-callout*='60%']) {
+.callout.callout:is([data-callout-metadata*='60%'],
+[data-callout*='60%']) {
   width: 60%;
 }
-.callout.callout:is([data-callout-metadata*='55%'],[data-callout*='55%']) {
+.callout.callout:is([data-callout-metadata*='55%'],
+[data-callout*='55%']) {
   width: 55%;
 }
-callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
+.callout.callout:is([data-callout-metadata*='50%'],
+[data-callout*='50%']) {
   width: 50%;
 }
-.callout.callout:is([data-callout-metadata*='45%'],[data-callout*='45%']) {
+.callout.callout:is([data-callout-metadata*='45%'],
+[data-callout*='45%']) {
   width: 45%;
 }
-.callout.callout:is([data-callout-metadata*='40%'],[data-callout*='40%']) {
+.callout.callout:is([data-callout-metadata*='40%'],
+[data-callout*='40%']) {
   width: 40%;
 }
-.callout.callout:is([data-callout-metadata*='35%'],[data-callout*='35%']) {
+.callout.callout:is([data-callout-metadata*='35%'],
+[data-callout*='35%']) {
   width: 35%;
 }
-.callout.callout:is([data-callout-metadata*='30%'],[data-callout*='30%']) {
+.callout.callout:is([data-callout-metadata*='30%'],
+[data-callout*='30%']) {
   width: 30%;
 }
-.callout.callout:is([data-callout-metadata*='25%'],[data-callout*='25%']) {
+.callout.callout:is([data-callout-metadata*='25%'],
+[data-callout*='25%']) {
   width: 25%;
 }
-.callout.callout:is([data-callout-metadata*='20%'],[data-callout*='20%']) {
+.callout.callout:is([data-callout-metadata*='20%'],
+[data-callout*='20%']) {
   width: 20%;
 }
-.callout.callout:is([data-callout-metadata*='15%'],[data-callout*='15%']) {
+.callout.callout:is([data-callout-metadata*='15%'],
+[data-callout*='15%']) {
   width: 15%;
 }
-.callout.callout:is([data-callout-metadata*='10%'],[data-callout*='10%']) {
+.callout.callout:is([data-callout-metadata*='10%'],
+[data-callout*='10%']) {
   width: 10%;
 }
 
 
 /* callout模糊文字效果*/
-
 .callout.callout[data-callout=cloze] {
   border-left-width: 0;
   filter: blur(4px);
@@ -19740,21 +20107,21 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   padding: 0;
 }
 
-.callout.callout[data-callout*="kanban"]  {
+.callout.callout[data-callout*="kanban"] {
   overflow: visible;
   background-color: rgba(255, 255, 255, 0)!important;
   border-left:0px!important;
   margin: auto;
   box-shadow:none!important;
 }
-.callout.callout[data-callout*="kanban"]  .admonition-content {
+.callout.callout[data-callout*="kanban"] .admonition-content {
   overflow: visible;
   margin: 0;
 }
 
-.callout.callout[data-callout*="kanban"]  .is-mobile ul{ display: flex; }
+.callout.callout[data-callout*="kanban"] .is-mobile ul{ display: flex; }
 
-.callout.callout[data-callout*="kanban"]  ul {
+.callout.callout[data-callout*="kanban"] ul {
   display: flex;
   margin: 0;
   flex-direction: row;
@@ -19764,7 +20131,7 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   flex-wrap: wrap;
 }
 
-.callout.callout[data-callout*="kanban"]  ul>li:not(.task-list-item) {
+.callout.callout[data-callout*="kanban"] ul>li:not(.task-list-item) {
   flex: 1 1 20%;
   padding: 0.1em 1em 0.1em 0.8em  !important;
   margin: 0 0.1em 0.3em 0  !important;
@@ -19776,50 +20143,50 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   word-break: break-word;
 }
 
-.callout.callout[data-callout*="kanban"]  ul .list-collapse-indicator.collapse-indicator.collapse-icon {
+.callout.callout[data-callout*="kanban"] ul .list-collapse-indicator.collapse-indicator.collapse-icon {
   margin-left: -1.2em;
   position: absolute;
 }
 
-.callout.callout[data-callout*="kanban"]  ul .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+.callout.callout[data-callout*="kanban"] ul .list-collapse-indicator.collapse-indicator.collapse-icon::before {
   color: var(--text-accent);
   transition: transform 10ms linear 0s
 }
 
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n+1) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+1) {
   background-color: var(--p-kanban-color-1);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n+2) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+2) {
   background-color: var(--p-kanban-color-2);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n+3) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+3) {
   background-color: var(--p-kanban-color-3);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n+4) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+4) {
   background-color: var(--p-kanban-color-4);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n+5) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+5) {
   background-color: var(--p-kanban-color-5);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n+6) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+6) {
   background-color: var(--p-kanban-color-6);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n+7) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+7) {
   background-color: var(--p-kanban-color-7);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"]  ul>li:nth-of-type(8n) {
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n) {
   background-color: var(--p-kanban-color-8);
   padding-left: 1em;
 }
 
-.callout.callout[data-callout*="kanban"]  ul ul {
+.callout.callout[data-callout*="kanban"] ul ul {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -19830,21 +20197,21 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   background: none;
 }
 
-.callout.callout[data-callout*="kanban"]  ul ul li:not(.task-list-item) {
+.callout.callout[data-callout*="kanban"] ul ul li:not(.task-list-item) {
   width: 100%;
   display: block;
   background-color: var(--p-kanban-card-color-1) !important;
 }
 
-.callout.callout[data-callout*="kanban"]  ul ul li:nth-child(even) {
+.callout.callout[data-callout*="kanban"] ul ul li:nth-child(even) {
   background-color: var(--p-kanban-card-color-2) !important;
 }
 
-.callout.callout[data-callout*="kanban"]  ul>li:hover {
+.callout.callout[data-callout*="kanban"] ul>li:hover {
   border-color: var(--p-kanban-border-color) !important;
 }
 
-.callout.callout[data-callout*="kanban"]  ul ul li:hover {
+.callout.callout[data-callout*="kanban"] ul ul li:hover {
   background: transparent !important;
   border-color: var(--p-kanban-border-color) !important;
   border-left: 1px solid var(--p-kanban-border-color) !important;
@@ -19855,11 +20222,11 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   border-left: 1px solid #696969e1 !important;
 }
 
-.callout.callout[data-callout*="kanban"]  ul ul li .task-list-item-checkbox {
+.callout.callout[data-callout*="kanban"] ul ul li .task-list-item-checkbox {
   margin-left: 1.5rem;
 }
 
-.callout.callout[data-callout*="kanban"]  ul ul ul {
+.callout.callout[data-callout*="kanban"] ul ul ul {
   margin-right: 0;
 }
 
@@ -19909,7 +20276,6 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
 
 /*callout hibox*/
 
-
 .callout.callout[data-callout*="hibox"]  {
   background-color: transparent !important;
   box-shadow: none !important;
@@ -19924,24 +20290,23 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   box-shadow:none !important;
 }
  
-
 .callout.callout[data-callout*="hibox"] .callout-content {
   position: relative;
   height: auto;
   overflow: hidden;
   border-radius: var(--radius-s) !important;
-  background: radial-gradient(circle at 0px 0px, var(--background-modifier-box-shadow),  0, var(--background-modifier-box-shadow), var(--hibox), transparent var(--hibox), transparent 0);
+  background: radial-gradient(circle at 0px 0px, var(--background-modifier-box-shadow), 0, var(--background-modifier-box-shadow), var(--hibox), transparent var(--hibox), transparent 0);
   transition: --hibox 0.6s linear;
 }
 
-.callout.callout[data-callout*="hibox"]  .callout-content:hover {
+.callout.callout[data-callout*="hibox"] .callout-content:hover {
   --hibox: 1500px;
   box-shadow: 0 0.2rem 0.5rem var(--background-modifier-box-shadow) !important;
 }
 
-.callout.callout[data-callout*="hibox"]  .callout-content:hover *,
-.callout.callout[data-callout*="hibox"]  .callout-content:hover *::marker,
-.callout.callout[data-callout*="hibox"]  .callout-content:hover *::before {
+.callout.callout[data-callout*="hibox"] .callout-content:hover *,
+.callout.callout[data-callout*="hibox"] .callout-content:hover *::marker,
+.callout.callout[data-callout*="hibox"] .callout-content:hover *::before {
   color: var(--text-normal) !important;
   border-color: inherit !important;
   background-color: initial !important;
@@ -19963,8 +20328,6 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   border-color: var(--list-ul-block-color) !important;
 }
 
-
-
 .callout.callout[data-callout*="hibox"] .callout-content:hover blockquote {
   border-color: var(--theme-color) !important;
   background-color: var(--background-blockquote) !important;
@@ -19984,7 +20347,6 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
 }
 
 .callout.callout[data-callout*=infobox] {
- 
   --callout-color: var(--interactive-accent-rgb);
   background: transparent;
   border: 0;
@@ -19994,6 +20356,7 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   float: right;
 }
 .callout.callout[data-callout*=infobox] .callout-title {
+  background-color: transparent;
   padding: 0;
   justify-content: center;
 }
@@ -20001,12 +20364,11 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   border: 1px solid var(--hr, var(--background-modifier-border));
   padding: 5px 10px;
 }
-.callout.callout[data-callout*=infobox]:not(:hover):not(.is-collapsed) .callout-title, .callout.callout[data-callout*=infobox] .callout-title :is(.callout-icon, .callout-title-inner) {
+.callout.callout[data-callout*=infobox]:not(:hover):not(.is-collapsible) .callout-title, .callout.callout[data-callout*=infobox]:not(.is-collapsible) .callout-title :is(.callout-icon, .callout-fold,.callout-title-inner) {
   display: none;
 }
 .callout.callout[data-callout*=infobox] .callout-content {
   padding: 1px;
-  border: 1px solid var(--table, var(--background-modifier-border));
   margin: 0;
   border-radius: var(--radius, var(--co-radius));
 }
@@ -20019,12 +20381,10 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   margin: 0;
 }
 .callout.callout[data-callout*=infobox] :is(h1, h2, h3, h4, h5, h6) {
-  font-size: 20px;
   text-align: center;
   margin: 0;
   padding: 2px;
   color: var(--text-normal);
-  background: var(--outer-bar, var(--background-secondary));
 }
 .callout.callout[data-callout*=infobox] p, 
 .callout.callout[data-callout*=infobox] .internal-embed,
@@ -20033,16 +20393,11 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
   padding: auto;
   text-align: center;
 }
-.callout.callout[data-callout*=infobox] img[alt*=circle] {
-    border-radius: 35px;
-    width:70px;
-    height:70px;
-  }
 
 /******callout bookinfo*****/
 
 .callout.callout[data-callout*="bookinfo"] {
-   --callout-color: 64,201, 75;
+  --callout-color: 64, 201, 75;
   --callout-icon:'<svg t="1648743111717" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2202" ><path d="M559.936 144.064l0 745.344 42.112-51.84c6.4-7.872 18.112-9.216 26.176-3.008 1.152 0.896 2.112 1.856 3.008 3.008l0.064-0.128 38.016 46.656L669.312 115.392 559.936 144.064 559.936 144.064zM160.512 558.976C153.536 561.664 145.664 558.208 142.976 551.232 140.288 544.256 143.68 536.384 150.72 533.632c42.496-16.832 88.384-24.768 135.168-24.768 48.512 0 98.24 8.512 146.624 24.512 7.104 2.368 11.008 10.048 8.64 17.216C438.784 557.696 431.104 561.6 424 559.168 378.368 544.128 331.52 536.064 285.888 536.064 242.24 536.064 199.872 543.424 160.512 558.976L160.512 558.976zM160.512 472.064C153.536 474.752 145.664 471.36 142.976 464.32 140.288 457.344 143.68 449.408 150.72 446.72c42.496-16.896 88.384-24.832 135.168-24.832 48.512 0 98.24 8.512 146.624 24.512 7.104 2.368 11.008 10.048 8.64 17.216C438.784 470.784 431.104 474.688 424 472.32 378.368 457.216 331.52 449.152 285.888 449.152 242.24 449.152 199.872 456.448 160.512 472.064L160.512 472.064zM160.512 393.152C153.536 395.904 145.664 392.384 142.976 385.408 140.288 378.432 143.68 370.56 150.72 367.808c42.496-16.896 88.384-24.832 135.168-24.832 48.512 0 98.24 8.576 146.624 24.576 7.104 2.304 11.008 10.048 8.64 17.216C438.784 391.872 431.104 395.776 424 393.344 378.368 378.304 331.52 370.176 285.888 370.176 242.24 370.176 199.872 377.536 160.512 393.152L160.512 393.152zM160.512 310.08c-6.976 2.752-14.848-0.704-17.536-7.68C140.288 295.36 143.68 287.488 150.72 284.736c42.496-16.832 88.384-24.768 135.168-24.768 48.512 0 98.24 8.512 146.624 24.512 7.104 2.368 11.008 10.048 8.64 17.216C438.784 308.864 431.104 312.704 424 310.336 378.368 295.296 331.52 287.232 285.888 287.232 242.24 287.232 199.872 294.528 160.512 310.08L160.512 310.08zM160.512 234.816c-6.976 2.688-14.848-0.704-17.536-7.68C140.288 220.16 143.68 212.224 150.72 209.472 193.216 192.64 239.104 184.704 285.888 184.704c48.512 0 98.24 8.512 146.624 24.512 7.104 2.368 11.008 10.048 8.64 17.216C438.784 233.536 431.104 237.44 424 235.072 378.368 220.032 331.52 211.968 285.888 211.968 242.24 211.968 199.872 219.328 160.512 234.816L160.512 234.816zM983.36 202.56C1005.888 203.776 1024 222.08 1024 244.288l0 570.048c0 22.976-19.392 41.792-43.008 41.792l-274.24 0 0 80.128-0.064 0c0 5.248-2.432 10.624-7.04 14.144-8.128 6.336-19.84 4.992-26.24-2.88l-56.768-69.376-59.776 73.472C553.536 956.608 547.712 960 541.248 960c-10.368 0-18.752-8.256-18.752-18.24l0-85.632L43.008 856.128C19.392 856.128 0 837.312 0 814.336L0 244.288C0 223.36 16.064 205.824 36.8 202.944L36.8 147.008c0-11.904 7.232-22.208 17.728-26.752C135.552 80.448 214.976 62.848 293.12 64c73.984 1.152 146.112 19.072 216.704 50.88C586.944 78.848 662.656 62.912 737.28 64c78.336 1.216 154.624 21.248 229.12 56.64 10.752 5.12 17.024 15.552 17.024 26.368l0 0L983.424 202.56 983.36 202.56zM706.752 676.288c10.112-0.512 20.352-0.704 30.528-0.576 63.232 1.088 125.12 15.36 185.792 40.96l0-551.04c-61.504-27.008-123.776-42.176-186.816-43.2-9.792-0.128-19.648 0.064-29.504 0.64L706.752 676.288 706.752 676.288zM292.16 122.496C228.736 121.536 163.776 134.976 97.088 165.312l0 550.656c66.304-28.544 131.584-41.344 196.032-40.256 63.296 1.088 125.248 15.36 185.92 40.96l0-551.04C417.408 138.624 355.2 123.456 292.16 122.496z" p-id="2203" ></path></svg>';
   background: transparent;
   border: 0;
@@ -20051,14 +20406,13 @@ callout.callout:is([data-callout-metadata*='50%'],[data-callout*='50%']) {
 }
 
 .callout.callout[data-callout*=bookinfo]  .callout-title {
-  text-align:center;
+  text-align: center;
   margin-top: -10px;
   display: flex;
   justify-content: space-between;
 }
 
 .callout.callout[data-callout*=bookinfo]  .callout-content {
-  
   margin-top: -10px;
   display: flex;
   justify-content: space-between;

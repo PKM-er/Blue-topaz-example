@@ -1,5 +1,6 @@
 ---
-updated: 2022-03-15 14:55
+updated: 2022-04-07 15:08
+created: 2022-04-07 15:08
 ---
 # TIPS  
 ```ad-col2
@@ -150,6 +151,10 @@ text
 text
 ```
 
+### 多彩高亮
+`*==xxx==*`, `**==xxx==**` , `***==xxx==***` 三种语法对应三种高亮颜色
+测试文字文字测试 *==hello word==* ，你好世界。**==测试文字==** 文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字 ***==测试hello==***  word，你好世界。
+
 
 ---
 ### 回顾、隐藏文本
@@ -176,9 +181,9 @@ admonition里也设置了这种样式，需要在Style Settings插件里启用
 ```
 
 ### 第三种，涂黑挖空
-Lorem ipsum dolor sit amet, consectetur ==~~adipiscing~~== elit, sed do ==~~eiusmod~~== tempor incididunt ut labore et dolore magna aliqua. （`==~~xx~~==`鼠标悬浮触发）
+Lorem ipsum dolor sit amet, consectetur ==~~adipiscing~~== elit, sed do ==~~eiusmod~~== tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮组合：==~~xx~~==`鼠标悬浮触发）
 
-Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==* elit, sed do *==~~eiusmod~~==* tempor incididunt ut labore et dolore magna aliqua. （`*==~~xx~~==*`点击触发）
+Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==* elit, sed do *==~~eiusmod~~==* tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮+斜体组合：*==~~xx~~==*`点击触发）
 
 
 ### 重要文本框

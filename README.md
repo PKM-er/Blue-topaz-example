@@ -1,7 +1,7 @@
 ---
 obsidianUIMode: preview
 progress: 正在进行
-updated: 2022-04-04 00:57
+updated: 2022-04-07 14:24
 ---
 ## 引言
 
@@ -10,13 +10,13 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 
 ---
 
-本[Examples库](https://github.com/cumany/Blue-topaz-examples)由Cuman建立，Tips教程由BT主题作者3F撰写。
+本[Examples库](https://github.com/cumany/Blue-topaz-examples)由Cuman建立，Tips教程由[BT主题](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css)作者3F撰写。
 本库是一个包含Obsidian基本功能的入门库，并内置了Obsidian的常用插件。
 需要用[Obsidian](https://obsidian.md/)软件打开本库即可。
 特别感谢@Johnny @Lillianwho  @lavi @成雙酱 @锋华 提供的教程和创作思路。
 如果有问题或者建议 请加入Topaz社区[Topaz QQ群](https://jq.qq.com/?_wv=1027&k=TWGhXs40)  [Obsidian频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=zHpby&from=246610&biz=ka)
 
-相关视频教程 
+相关视频教程
 https://space.bilibili.com/1970226/channel/series
 
 本文档后续更新 请关注
@@ -27,7 +27,18 @@ https://space.bilibili.com/1970226/channel/series
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
 
 ## 更新日志
+### 更新 2022-04-09
+
+1. 重构分栏示例说明，增加更多的分栏效果
+
+2. 增加timeline callout示例
+
+3. 精简示例库体积
+
+   
+
 ### 更新 2022-04-04
+
 1. 更新cmenu插件 适应最新版增强编辑4.7以上版本
 2. 增加callout使用说明和示例[[ob提示框(Callout)样式展示]]
 3. 豆瓣图书模板更新，使用callout模板[[tp-book-callout]]
@@ -94,47 +105,55 @@ https://space.bilibili.com/1970226/channel/series
 斜体插件为可选插件，基本是辅助类，不影响功能性使用。
 除去辅助类插件，剩余基本十几个插件就满足Ob个性化使用的同时还能体验不同的功能。
 
-| 插件名称                                | 解释                                                            |
-| --------------------------------------- | --------------------------------------------------------------- |
-| *ZH增强编辑*                            | (可选)提供大量格式排版相关快捷操作                              |
-| workspaces-plus                         | 工作区切换                                                      |
-| templater-obsidian                      | Ob模板插件                                                      |
-| *tag-wrangler*                          | (可选)标签修改                                                  |
-| *Advanced Tables*                       | (可选)表格辅助                                                  |
-| *remember-cursor-position*              | (可选)记住光标位置                                              |
-| recent-files-obsidian                   | (可选)最近文件列表                                              |
-| quickadd                                | 快速添加命令和动作                                              |
-| *plugin-changelogs*                     | (可选)插件历史记录                                              |
-| *obsidian-theme-design-utilities*       | (可选)主题调试插件                                              |
-| obsidian-style-settings                 | 主题设置插件，必备                                              |
-| *obsidian-shellcommands*                | (可选)系统命令执行插件                                          |
-| obsidian-outliner                       | 类似幕布大纲操作插件                                            |
-| obsidian-kanban                         | 看板                                                            |
-| *obsidian-frontmatter-tag-suggest*      | (可选)yaml输入标签弹出提示                                      |
-| *obsidian-collapse-all-plugin*          | (可选)一键折叠文件夹                                            |
-| ~~obsidian-codemirror-options~~         | v0.13.14之前的所见即所得插件， v0.13.14之后的ob版本直接关闭即可 |
-| obsidian-checklist-plugin               | 任务列表插件                                                    |
-| obsidian-banners                        | 主页显示头图                                                    |
-| obsidian-admonition                     | 文本框插件                                                      |
-| *hotkey-helper*                         | (可选)热键提示插件                                              |
-| ~~homepage~~                            | 打开ob显示主页插件,非必须已禁用                                 |
-| dataview                                | 数据查询插件                                                    |
-| *cMenu 魔改版by cuman*                  | (可选)快捷工具栏，需要依赖zh增强编辑插件                        |
-| ~~cm-editor-syntax-highlight-obsidian~~ | 语法高亮插件，不兼容v0.13.14之后的ob版本直接关闭即可            |
-| calendar                                | 日历插件                                                        |
-| buttons                                 | 按钮插件                                                        |
-| *Obsidian Icon Folder*                  | (可选)文件自定义图标插件                                        |
-| obsidian-view-mode-by-frontmatter       | 通过yaml设置文档默认打开是预览还是编辑模式                      |
-| *obsidian-floating-toc-plugin*          | (可选)编辑模式浮动大纲                                          |
-| obsidian-memos by bon                   | 流水账的方式记录日记，依赖日记插件。                            |
-| *bartender*                             | (可选)隐藏边栏图标和状态栏图标                                  |
-| *sortable*                              | (可选)表格列排序插件                                            |
-| *markdown Pretiffier*                   | (可选)md格式辅助插件可以自动生成更新日期                        |
-| *Search on Internet*                    | (可选)ob中快捷进行网络搜索                                      |
-| booknote                                | pdf查看和标注插件                                               |
-| *cm-chs-patch*                          | （可选）中文分词插件                                            |
-| *obsidian-core-search-assistant-plugin* | （可选）增强搜索插件，搜索结果卡片显示                          |
-| *various-complements*                    | （可选）自动补全插件                                                                |
+|   插件名称                                       |   解释                                                                             |
+|:---------------------------------------------|:---------------------------------------------------------------------------------|
+|   *ZH增强编辑*                                   |   提供大量格式排版相关快捷操作                                                             |
+|   workspaces-plus                            |   工作区切换                                                                          |
+|   templater-obsidian                         |   Ob模板插件                                                                         |
+|   *tag-wrangler*                             |   (可选)标签修改                                                                       |
+|   *Advanced Tables*                          |   (可选)表格辅助                                                                       |
+|   *remember-cursor-position*                 |   (可选)记住光标位置                                                                     |
+|   recent-files-obsidian                      |   (可选)最近文件列表                                                                     |
+|   quickadd                                   |   快速添加命令和动作                                                                      |
+|   *plugin-changelogs*                        |   (可选)插件历史记录                                                                     |
+|   *obsidian-theme-design-utilities*          |   (可选)主题调试插件                                                                     |
+|   obsidian-style-settings                    |   主题设置插件，必备                                                                      |
+|   *obsidian-shellcommands*                   |   (可选)系统命令执行插件                                                                   |
+|   obsidian-outliner                          |   类似幕布大纲操作插件                                                                     |
+|   obsidian-kanban                            |   看板                                                                             |
+|   *obsidian-frontmatter-tag-suggest*         |   (可选)yaml输入标签弹出提示                                                               |
+|   *obsidian-collapse-all-plugin*             |   (可选)一键折叠文件夹                                                                    |
+|   ~~obsidian-codemirror-options~~            |   v0.13.14之前的所见即所得插件， v0.13.14之后的ob版本直接关闭即可                                      |
+|   obsidian-checklist-plugin                  |   任务列表插件                                                                         |
+|   obsidian-banners                           |   主页显示头图                                                                         |
+|   obsidian-admonition                        |   文本框插件                                                                          |
+|   *hotkey-helper*                            |   (可选)热键提示插件                                                                     |
+|   ~~homepage~~                               |   打开ob显示主页插件,非必须已禁用                                                              |
+|   dataview                                   |   数据查询插件                                                                         |
+|   *cMenu 魔改版by cuman*                        |   (可选)快捷工具栏，需要依赖zh增强编辑插件                                                         |
+|   ~~cm-editor-syntax-highlight-obsidian~~    |   语法高亮插件，不兼容v0.13.14之后的ob版本直接关闭即可                                                |
+|   calendar                                   |   日历插件                                                                           |
+|   buttons                                    |   按钮插件                                                                           |
+|   *Obsidian Icon Folder*                     |   (可选)文件自定义图标插件                                                                  |
+|   obsidian-view-mode-by-frontmatter          |   通过yaml设置文档默认打开是预览还是编辑模式                                                        |
+|   *obsidian-floating-toc-plugin*             |   (可选)编辑模式浮动大纲                                                                   |
+|   obsidian-memos by bon                      |   流水账的方式记录日记，依赖日记插件。                                                             |
+|   *bartender*                                |   (可选)隐藏边栏图标和状态栏图标                                                               |
+|   *sortable*                                 |   (可选)表格列排序插件                                                                    |
+|   *markdown Pretiffier*                      |   (可选)md格式辅助插件可以自动生成更新日期                                                         |
+|   *Search on Internet*                       |   (可选)ob中快捷进行网络搜索                                                                |
+|   booknote                                   | （可选）pdf查看和标注插件                                                                   |
+|   *cm-chs-patch*                             |   （可选）中文分词插件                                                                     |
+|   *obsidian-core-search-assistant-plugin*    |   （可选）增强搜索插件，搜索结果卡片显示                                                            |
+|   *various-complements*                      |   （可选）自动补全插件                                                                     |
+|  obsidian-linter                             |  （可选）自动更新yaml日期插件                                                                |
+|  table-editor-obsidian                       |  （可选）表格悬浮编辑插件                                                                    |
+|  obsidian-regex-replace                      |  （可选）支持正则表达式的查找替换插件                                                              |
+|  obsidian-version-history-diff               | （可选）文档修改历史恢复插件(ctrl+r)                                                           |
+|  waypoint                                    | （可选）文件夹moc生成插件                                                                   |
+| obsidian-dynamic-highlights                  | （可选）实时预览模式下，按高亮指定文档比如日记中的时间                                                      |
+| obsidian-hover-editor                        | 悬浮插件，让窗口直接悬浮                                                                     |
+| Obsidian-Agtable                             | （可选）普通表格转为可视化编辑表格                                                                |
 
 
 ## 主题内置的cssclass样式表
@@ -210,7 +229,7 @@ ad样式使用方法参考
 | getweather.js      | 获取天气数据                             | tp-日记模板获取天气       |
 
 
-## 常见问题
+## ❓ 常见问题
 1. 如何获取指定地区的天气？
 	主页天气代码默认根据ip地址自动获取，如果手动指定`https://i.tianqi.com/?c=code&id=34&bdc=%23&icon=4&site=14&py=chongqing` chongqing改为你想要的城市拼音即可。
 2. 如何更换字体？
@@ -223,7 +242,7 @@ ad样式使用方法参考
 	url(app://local/D:/Documents/XXXX.jpg")
 	mac系统图片路径设置 url("app://local/Users/XXXX .jpg")
 4. 工作区页面背景跟笔记背景的区别?
-	工作区页面背景是指整个OB界面背景，笔记背景仅仅是当前md文档的背景。两者不冲突可以同时设置，当然背景也就叠加一起了。
+	工作区页面背景是指整个OB界面背景，笔记背景仅仅是当前md文档的背景。两者不冲突可以同时设置，当然这样背景也就叠加一起了。如果只需要整个OB是一个背景图，笔记背景关闭即可。
 5. 主页的歌曲和每日一言如何更新？
 	点击主页的topaz图片 或者侧边栏的重载主页 都可以重新获取最新的歌曲和一言。重新获取后如何没有显示出来，点击刷新主页即可。
 	![[Pasted image 20220119152758.png]]
@@ -233,12 +252,11 @@ ad样式使用方法参考
 	如果时钟不动或者主页没有显示全。手动点一下刷新主页即可。
 8. 带按钮的常用工具侧边栏如何实现？
 	其实就是`88-template/常用工具`笔记文档，打开后拖动文档标题前的图标到侧边栏即可。
-9. 示例库目前有五十多个插件，实在太多了，想保持示例库主要功能的话需要几个插件？
+9. 示例库目前有五十多个插件，实在太多了，想保持示例库主要功能的话需要几个插件
 	示例库真正需要的核心插件并不多，大部分都是为了Ob使用更方便的辅助类插件，可以根据自己需要开启。
 	如果想体验最精简版本的示例库很简单。
 	按图修改[[FastStart-StartupScript]] ![[Pasted image 20220315145116.png|500]]  即可启动最低示例库运行插件配置。 
 	启动后启动ob只需要100ms 
 	![[Pasted image 20220315144725.png|300]]
-
 10. 侧边栏悬浮memos 无法打开有错误提示？
-    需要先`ctrl+p` ==>`打开其他库`，然后选择示例库“20-diary”文件夹，打开一次之后，这个悬浮按钮就自动生效。
+    需要先`ctrl+p` ==>`打开其他库`，然后选择示例库“20-diary”文件夹，打开一次之后，这个悬浮按钮就自动生效。详情看[[Obsidian 库中库玩法#实现]]

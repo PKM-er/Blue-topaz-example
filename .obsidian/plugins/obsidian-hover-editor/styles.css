@@ -462,5 +462,80 @@ body {
 body .popover.hover-editor .view-content {
   /* theme devs: if you want to change the header height, you must do so by setting the --he-view-header-height variable */
   /* if you don't use the variable, you will break internal measurement logic */
-  height: calc(100% - var(--he-view-header-height))
+  height: calc(100% - var(--he-view-header-height));
 }
+
+/* start: zoomable images feature */
+
+.popover.hover-editor.image-zoom .view-content .image-embed:active {
+  aspect-ratio: unset;
+  cursor: zoom-out;
+  display: block;
+  z-index: 200;
+  position: fixed;
+  max-height: calc(100% + 1px);
+  max-width: 100%;
+  height: calc(100% + 1px);
+  width: 100%;
+  object-fit: contain;
+  margin: -0.5px auto 0;
+  text-align: center;
+  padding: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  max-width: unset;
+}
+
+/* extra specificity to override some community theme styles that cause issues */
+.popover.hover-editor.image-zoom .view-content .image-embed img:active {
+  top: 50%;
+  z-index: 99;
+  transform: translateY(-50%);
+  padding: 0;
+  margin: 0 auto;
+  width: calc(100% - 20px);
+  height: unset;
+  max-height: 95vh;
+  object-fit: contain;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  opacity: 1;
+  max-width: unset;
+  max-height: 100%;
+}
+
+.popover.hover-editor.image-zoom .view-content .image-embed:active:after {
+  background-color: var(--background-primary);
+  opacity: 0.9;
+  content: " ";
+  height: calc(100% + 1px);
+  width: 100%;
+  position: fixed;
+  left: 0;
+  right: 1px;
+  z-index: 0;
+}
+
+.popover.hover-editor.image-zoom .view-content img {
+  cursor: zoom-in;
+}
+
+/* extra specificity to override some community theme styles that cause issues */
+.popover.hover-editor.image-zoom .workspace-leaf-content[data-type="image"] img {
+  cursor: zoom-in;
+  top: 50%;
+  transform: translateY(-50%);
+  object-fit: contain;
+  height: unset;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: absolute;
+  opacity: 1;
+  max-height: 100%;
+}
+
+/* end: zoomable images feature */

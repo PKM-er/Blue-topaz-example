@@ -1,8 +1,10 @@
 ---
-date: 2021-06-26
 author: Matthias C. Hormann a.k.a. Moonbase59
 tags: [obsidian, commands, hotkeys]
 source: https://forum.obsidian.md/t/dataviewjs-snippet-showcase/17847/37
+updated:: 2022-04-07 16:27:54
+created:: 2021-12-31 17:18:24
+title: Obsidian 快捷键一览表
 ---
 
 

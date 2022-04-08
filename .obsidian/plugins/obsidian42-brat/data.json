@@ -2,14 +2,13 @@
   "pluginList": [
     "windily-cloud/obsidian-AGtable",
     "nothingislost/obsidian-hover-editor",
-    "aidenlx/cm-chs-patch",
     "nothingislost/obsidian-embedded-query-control",
     "nothingislost/obsidian-bartender"
   ],
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-04-03T05:08:04Z"
+      "lastUpdate": "2022-04-07T15:11:58Z"
     }
   ],
   "updateAtStartup": true,

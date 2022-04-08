@@ -36,7 +36,6 @@
   "blue-topaz-theme@@hr-color-2@@light": "#268EE4",
   "blue-topaz-theme@@hr-color-3@@light": "#BD30FF",
   "blue-topaz-theme@@hr-color-4@@light": "#6EB4EE",
-  "blue-topaz-theme@@line-height-main": 1.5,
   "blue-topaz-theme@@loading-animation": true,
   "blue-topaz-theme@@magic-main-color@@light": "#34495E",
   "blue-topaz-theme@@magic-low-color@@light": "#B3E2B3",
@@ -140,9 +139,17 @@
   "hover-editor@@he-title-bar-active-fg@@light": "#F1EFE9",
   "obsidian-indentation-guides@@indentation-guide-adjust": 3,
   "obsidian-indentation-guides@@indentation-guide-color@@light": "#D13030AB",
-  "blue-topaz-theme@@margin-list": 1,
   "blue-topaz-theme@@indentation-guide-active@@light": "#F9197382",
   "blue-topaz-theme@@indentation-guide@@light": "#00000040",
   "blue-topaz-theme@@admonition-bg-color@@light": "#FFFFFF00",
-  "hover-editor@@he-title-bar-active-pinned-bg@@dark": "#D7AE46"
+  "hover-editor@@he-title-bar-active-pinned-bg@@dark": "#D7AE46",
+  "blue-topaz-theme@@text-highlight-bg-dark-switch": false,
+  "blue-topaz-theme@@text-highlight-bg-h-light": 200,
+  "blue-topaz-theme@@text-highlight-bg-s-light": 100,
+  "blue-topaz-theme@@text-highlight-bg-l-light": 85,
+  "blue-topaz-theme@@text-highlight-bg-a-light": 0.45,
+  "blue-topaz-theme@@margin-list": 1,
+  "blue-topaz-theme@@font-family-strong": "Bookerly, Merriweather, 'LXGW WenKai', 'Segoe UI Emoji', var(--default-font)",
+  "blue-topaz-theme@@text-highlight-bg-light-switch": false,
+  "blue-topaz-theme@@colorful-highlight-bg": true
 }

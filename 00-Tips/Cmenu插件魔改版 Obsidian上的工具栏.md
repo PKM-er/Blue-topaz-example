@@ -10,6 +10,8 @@
 
 本示例库已经集成。
 文件下载链接:
+[Release cmenu 1.1.30 魔改版 · cumany/cMenu-Plugin (github.com)](https://github.com/cumany/cMenu-Plugin/releases/tag/1.1.30)
 
+介绍文章：
 [Cmenu插件魔改版1.1.23 Obsidian上的工具栏 - 飞书文档 (feishu.cn)](https://kknwfe6755.feishu.cn/docs/doccnQpRTqGYqMT3GAKka5IRnMf)
 

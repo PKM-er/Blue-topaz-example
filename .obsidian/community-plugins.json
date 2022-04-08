@@ -11,15 +11,16 @@
   "obsidian-theme-design-utilities",
   "obsidian-float-toc-plugin",
   "obsidian-version-history-diff",
-  "table-editor-obsidian",
   "waypoint",
   "obsidian-hover-editor",
-  "obsidian-sortable",
-  "markdown-table-editor",
-  "Obsidian-Agtable",
   "markdown-attributes",
   "obsidian-linkcard-plugin",
   "enhanced-editing",
+  "metaedit",
   "cmenu-plugin",
-  "Enhanced-editing"
+  "Enhanced-editing",
+  "table-editor-obsidian",
+  "obsidian-linter",
+  "markdown-table-editor",
+  "obsidian-sortable"
 ]
