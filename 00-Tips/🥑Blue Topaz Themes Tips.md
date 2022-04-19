@@ -155,6 +155,16 @@ text
 `*==xxx==*`, `**==xxx==**` , `***==xxx==***` 三种语法对应三种高亮颜色
 测试文字文字测试 *==hello word==* ，你好世界。**==测试文字==** 文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字 ***==测试hello==***  word，你好世界。
 
+阅读模式的多彩高亮需要在style settings 2.1.5 中开启。
+![image](https://user-images.githubusercontent.com/72023275/164036501-59f3c87d-0974-4671-a998-498b03b3f042.png)
+
+实时预览模式（Live Preview）开启多彩高亮，需要在yaml种键入cssclass: colorful-highlight
+![image](https://user-images.githubusercontent.com/72023275/164037230-4dde7655-9141-4a07-b51a-59cb77abe524.png)
+
+多彩高亮的背景颜色、字体颜色等都可以在style settings 2.1.5 中调整
+
+注意，实时预览不能识别语法符号顺序。`*==xxx==*`和`==*xxx*==`将会是同样的效果，但是阅读模式识别符号顺序，所以只有`*==xxx==*`会是多彩高亮的颜色。
+
 
 ---
 ### 回顾、隐藏文本
@@ -184,6 +194,12 @@ admonition里也设置了这种样式，需要在Style Settings插件里启用
 Lorem ipsum dolor sit amet, consectetur ==~~adipiscing~~== elit, sed do ==~~eiusmod~~== tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮组合：==~~xx~~==`鼠标悬浮触发）
 
 Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==* elit, sed do *==~~eiusmod~~==* tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮+斜体组合：*==~~xx~~==*`点击触发）
+
+以上效果无需另外开启，只在阅读模式生效。如果想在实时预览（Live Preview）中也能获得相应效果，需要在YAML中输入`cssclass: cloze`
+![image](https://user-images.githubusercontent.com/72023275/164038180-c6e2dff4-9aee-4f42-8051-854a748979ec.png)
+
+对于样式的更改，可以在style settings 2.3.9 中找到
+![image](https://user-images.githubusercontent.com/72023275/164038350-9424af22-7eac-42f3-b10b-e233a51202a8.png)
 
 
 ### 重要文本框
