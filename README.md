@@ -29,7 +29,7 @@ https://space.bilibili.com/1970226/channel/series
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
 
 ## 🚩更新日志
-[Changlog.md (github.com)](https://github.com/cumany/Blue-topaz-examples/blob/mainChanglog.md)
+[Changlog.md (github.com)](https://github.com/cumany/Blue-topaz-examples/blob/main/Changlog.md)
 
 ## 效果图
 主页视图
