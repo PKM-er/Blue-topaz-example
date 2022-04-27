@@ -1,0 +1,28 @@
+.omnisearch-modal {
+}
+
+.omnisearch-result {
+}
+
+.omnisearch-result__title {
+}
+
+.omnisearch-result__counter {
+  font-size: 0.7rem;
+}
+
+.omnisearch-result__body {
+  white-space: normal;
+  font-size: small;
+  word-wrap: normal;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  color: var(--text-muted);
+}
+
+.omnisearch-highlight {
+}

@@ -71,7 +71,7 @@
       "There should be a single space after list markers and checkboxes.": false
     },
     "Compact YAML": {
-      "Removes leading and trailing blank lines in the YAML front matter.": false
+      "Removes leading and trailing blank lines in the YAML front matter.": true
     },
     "Consecutive blank lines": {
       "There should be at most one consecutive blank line.": false

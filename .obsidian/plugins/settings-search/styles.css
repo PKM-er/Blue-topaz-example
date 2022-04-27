@@ -1,0 +1,21 @@
+/* src/assets/main.css */
+.settings-search-container.vertical-tab-header-group {
+  padding-bottom: 0;
+}
+.settings-search-input {
+  padding-left: 6px;
+}
+.vertical-tab-nav-item.settings-search-input {
+  background-color: inherit !important;
+}
+.settings-search-input .setting-item-control {
+  display: block;
+}
+.settings-search-input .search-input-container {
+  margin: 0;
+}
+.settings-search-results .setting-item.active {
+  background-color: var(--background-secondary);
+}
+
+/* src/styles.css */

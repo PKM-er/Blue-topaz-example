@@ -151,9 +151,31 @@
       "command": false,
       "injectColor": true,
       "noTitle": true
+    },
+    "icon": {
+      "type": "icon",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "ad",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": true
+    },
+    "infobox": {
+      "type": "infobox",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "ad",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": false
     }
   },
-  "syntaxHighlight": true,
+  "syntaxHighlight": false,
   "copyButton": false,
   "version": "9.0.1",
   "autoCollapse": false,

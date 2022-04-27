@@ -1,9 +1,11 @@
 ---
 obsidianUIMode: preview
 progress: 正在进行
-updated: 2022-04-07 14:24
+updated:: 2022-04-13 10:05:51
+created:: 2021-12-31 17:15:10
+title: README
 ---
-## 引言
+## 💡引言
 
 This Vault  contains the basic functions of Obsidian and has built-in common Obsidian plugins.
 Notice：You need to open this vault with [Obsidian](https://obsidian.md/) 
@@ -16,75 +18,18 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 特别感谢@Johnny @Lillianwho  @lavi @成雙酱 @锋华 提供的教程和创作思路。
 如果有问题或者建议 请加入Topaz社区[Topaz QQ群](https://jq.qq.com/?_wv=1027&k=TWGhXs40)  [Obsidian频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=zHpby&from=246610&biz=ka)
 
-相关视频教程
+## 🎞视频教程
 https://space.bilibili.com/1970226/channel/series
 
-本文档后续更新 请关注
+## 👉后续更新 请关注
  -  [Examples库](https://github.com/cumany/Blue-topaz-examples) 
  -  [Blue topaz 主题用法示例 - 飞书文档 (feishu.cn)](https://kknwfe6755.feishu.cn/docs/doccn67RYLVN4IQZiJTwviIdnog)
 
 另外推荐鸟姐的Homepage 也是很棒的风格
 [Rainbell129/Obsidian-Homepage: A dashboard for your obsidian vault. (github.com)](https://github.com/Rainbell129/Obsidian-Homepage)
 
-## 更新日志
-### 更新 2022-04-09
-
-1. 重构分栏示例说明，增加更多的分栏效果
-
-2. 增加timeline callout示例
-
-3. 精简示例库体积
-
-   
-
-### 更新 2022-04-04
-
-1. 更新cmenu插件 适应最新版增强编辑4.7以上版本
-2. 增加callout使用说明和示例[[ob提示框(Callout)样式展示]]
-3. 豆瓣图书模板更新，使用callout模板[[tp-book-callout]]
-4. 豆瓣脚本支持更多属性比如出版年月，作者简介，原文摘要等[[《从零开始的女性主义》3|豆瓣图书笔记示例]]
-5. 侧边栏增加音乐播放器[[如何在OB里添加多彩时钟和音乐播放器]]
-6. 魔方配色增加 黑金配色设置[[魔方配色设置说明#2 黑金风格配色方案（适合暗色主题）]]
-7. 主题tips 增加`![]()`格式的图片位置设置示例[[🥑Blue Topaz Themes Tips#格式的图片]]
-8. 增加文件夹[[moc]]
-### 更新 2022-03-21
-- 豆瓣脚本优化，支持输入isbn添加
-- 增加悬浮表格编辑插件
-- 主页伪看板字体大小统一
-  本次更新影响文件 
-|  文件名                     |  操作      |
-|:-------------------------|:---------|
-|  【自定义】myhome 样式.css      |  新增内容    |
-| bookfromdouban.js        | 新增内容     |
-| MD表格悬浮编辑测试.md            | 新添文件     |
-
-### 更新 2022-03-15
-- 增加侧边栏一键启动悬浮memos
-- 增加运行示例库最低配置说明[[README#常见问题]]
-- 增加一键启动全局memos（库中库）
-### 更新  2022-03-10
-- 增加嵌套库玩法 具体教程参考[[Obsidian 库中库玩法]]
-- 修复侧边栏按钮如果不打开md文件就无法点击的问题
-- 优化侧边栏memos样式
-
-### 更新  2022-03-08
-- 更新了豆瓣图书脚本，解决有的图书无法获取的问题
-- 修复首页下拉到底部出现大块空白的问题
-- 增加linkcard插件，嵌入网址自动显示， 并美化样式
-- cmenu插件匹配最新的zh增强编辑功能
-- 修复教程中的个别无效链接。
-### 更新  2022-03-01
-- 使用 faststart脚本 大幅提高ob [[如何提高Obsidian的启动速度？|启动速度]]
-- 修复float-toc 插件目录太长无法滚动的问题
-- 添加Dynamic Highlights插件 实现时间和dataview字段突出显示
-
-### 更新  2022-02-16
-增加从豆瓣获取电影卡片
-增加对dataview卡片直接编辑元数据 
-增加插件Hoteys for specific files 直接在ob里打开嵌入网页
-优化日记模板,更具有通用性。
-修复了cmenu插件对zh编辑增强0.4.x的支持
-
+## 🚩更新日志
+[Changlog.md (github.com)](https://github.com/cumany/Blue-topaz-examples/blob/mainChanglog.md)
 
 ## 效果图
 主页视图
@@ -180,17 +125,20 @@ where  usage != null
 
 
 
-|文件名|cssclass|作用|
-|----|----|----|
+|文件名 |cssclass|作用|
+|:---:---|:---:---|:---:---|
+|Callout环绕布局、缩进效果示例|fullwidth|callout实现文章环绕，全文缩进效果|
 |code-wrap【代码块自动换行】|code-wrap|代码块自动换行|
 |Image-grid【图片自适应】|img-grid|图片自适应分布|
 |inline-list【行内列表】|inline-list|图片和列表混排|
 |伪看板|kanban|伪看板的样式，无序列表四分栏|
-|全宽显示|fullwidth|缩减栏宽开启下，控制页面全宽显示|
+|全宽显示-表格测试|fullwidth|缩减栏宽开启下，控制页面全宽显示|
 |各类列表和彩虹大纲线|noscroll|隐藏当前页面滚动条|
 |四象限表格|matrix|四象限表格样式|
 |图书阅读清单-状态控制|cards|对dataview表格渲染成卡片视图|
 |图书阅读清单|cards|对dataview表格渲染成卡片视图|
+|多彩高亮（三种语法）|colorful-highlight|实时预览模式下正确显示多彩高亮|
+|涂黑和挖空效果（三种语法）|cloze|实时预览模式下正确显示涂黑和挖空效果|
 |电影观看清单-状态控制|cards|对dataview表格渲染成卡片视图|
 |电影观看清单|cards|对dataview表格渲染成卡片视图|
 |预览隐藏frontmatter|noyaml|预览状态不显示frontmatter区域|

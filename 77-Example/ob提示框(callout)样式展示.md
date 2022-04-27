@@ -5,7 +5,8 @@ updated: 2022-04-07 11:34
 > Obaidian 0.14.2 版本后增加了Callout功能，这个功能就是之前 admonition(简称ad插件) 插件收编的，目前语法跟Microsoft Docs 一致。之前用ad插件设置的提示框可以一键转换成最新的语法样式。
 
 ## 调用办法
-`ctrl+p`  输入 callout 即可自动输入模板
+- `ctrl+p`  输入 callout 即可自动输入模板
+- 如果先有内容 后加callout 就先选择内容 然后 `ctrl+p`  callout  就搞定了
 ## 视频教程
 [告别单调的Obsidian，Ob的版面也可以丰富起来！ (bilibili.com)](https://www.bilibili.com/video/BV1G5411U7m8/)
 
@@ -89,6 +90,17 @@ updated: 2022-04-07 11:34
 | blank                 | callout 全透明块                | >[!blank]                               |
 | timeline                      |            时间线样式                     |    [[tiimeline callout效果]]                                     |
 **注意 以上类型都可以互相组合使用，具体看下面例子**
+Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
+比如`> [!note|right]` 把一些属性信息用竖线分割，这样就不会影响callout类型。管道后的参数就是metadata。
+目前支持metadata的属性
+
+| 属性名称            | 解释                          |
+| ------------------- | ----------------------------- |
+| xx%                 | callout宽度xx代表10-100的数值 |
+| right\|left\|center | callout布局位置               |
+| indent              | 全文自动缩进2字符             |
+| nowrap              | 元素不换行                    | 
+
 
 ### 模糊字体
 >[!cloze]
@@ -121,7 +133,7 @@ updated: 2022-04-07 11:34
 
 ### 信息卡 infobox
 
-> [!Infobox right 45%] ## 关羽
+> [!Infobox|notitle|right 45%]+ ## 关羽
 >![[Pasted image 20220331161219.png|circle]]
 > 
 | 本名     | 关羽                          |
@@ -135,7 +147,7 @@ updated: 2022-04-07 11:34
 | 活跃年代 | 东汉末年                       |
 | 相关人士 | 大哥：刘备<div>三弟：张飞<br></div><div>子女：关平、关银屏<br></div> |
 
-> [!tip indent] 三国人物--关羽
+> [!tip|indent] 三国人物--关羽
 > 关羽早年因杀人逃离家乡，奔向涿郡，在此处结识刘备与张飞，三人相谈甚欢，恩若兄弟。
 > 建安五年（200年）刘备投奔袁绍，关羽被曹操捉拿后担任偏将军，在万军之中斩杀颜良，立下了大功。不过之后关羽离开曹操阵营投奔刘备，曹操并未挽留，而是认为“彼各为其主”，放他离开了。
 > 之后关羽跟随刘备投奔刘表，刘表去世后刘备在南逃过程中派遣关羽带领数百艘船前往江陵，并在被曹操追杀后成功与之汇合，一同前往夏口。在刘备平定益州后关羽总督荆州诸事，并在之后进行了刮骨疗毒的壮举。
@@ -183,13 +195,25 @@ With the development of Chinese economy, the world is watching us. More and more
  > [!note indent]
 ```
 
-> [!NOTE indent] Title
+> [!NOTE|indent] Title
 > In China, millions of high school students will take part in the very important exam on June, it is the turning point of their lives, because the exam will decide what kind of university they will enter. Most people believe that it even decides their fates. While it is just the beginning of their new lives.
 在中国,数以百万计的高中学生会在6月参加重要的考试,这是他们生活的转折点,因为考试将决定他们将进入什么样的大学。大多数人认为,这甚至决定他们的命运。然而这只是他们的新生活的开端。
 When high school students finish their study, it is time to think about what kind of major they need to choose. This is a very important question, choosing a major needs to consider many factors. The first is about interest. Studying with passion can make a student happy and love what the major. The second is about foreground. The major always decide the future job, so students need to think about the prospect.
 当高中学生完成他们的学业,是时候考虑需要选择什么样的专业。这是一个非常重要的问题,选择专业需要考虑很多因素。第一个是关于兴趣。有激情的学习可以让学生感受到快乐和爱。第二个是关于前景。专业总会决定未来的工作,所以学生需要思考前景。
 
 
+> [!Example|nowrap] 表格 图片等元素单行显示
+> 
+![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]
+> 
+| 表头1                                                    | 表头2表头2                                                 | 表头3                                                                      |
+|:-------------------------------------------------------|:-------------------------------------------------------|:-------------------------------------------------------------------------|
+| 这是很长的表格内容看 会不会自动换行                                     | 这是很长的表格内容看 会不会自动换行                                     | 这是很长的表格内容看 会不会自动换行                                                       |
+| 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 |
+>
+
+### 内容居中
+![[涂黑和挖空效果（三种语法）#例子2]]
 
 
 

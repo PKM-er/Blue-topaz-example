@@ -1,7 +1,48 @@
 {
+  "installedVersion": "1.0.0-beta1",
+  "activeCalendarSet": "Default",
   "showGettingStartedBanner": true,
   "hasMigratedDailyNoteSettings": true,
   "hasMigratedWeeklyNoteSettings": false,
+  "calendarSets": [
+    {
+      "day": {
+        "enabled": true,
+        "format": "YYYY-MM-DD",
+        "folder": "20-Diary",
+        "openAtStartup": false,
+        "templatePath": "88-Template/tp-日记模板-带进度"
+      },
+      "week": {
+        "enabled": true,
+        "format": "",
+        "folder": "20-Diary",
+        "openAtStartup": false,
+        "templatePath": ""
+      },
+      "month": {
+        "format": "",
+        "folder": "",
+        "openAtStartup": false,
+        "templatePath": ""
+      },
+      "quarter": {
+        "format": "",
+        "folder": "",
+        "openAtStartup": false,
+        "templatePath": ""
+      },
+      "year": {
+        "format": "",
+        "folder": "",
+        "openAtStartup": false,
+        "templatePath": ""
+      },
+      "id": "Default",
+      "ctime": "2022-04-20T21:08:47+08:00"
+    }
+  ],
+  "enableTimelineComplication": true,
   "daily": {
     "format": "YYYY-MM-DD",
     "folder": "20-Diary",

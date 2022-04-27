@@ -1,4 +1,5 @@
-
+/* This snippet was generated  on Blue Topaz example */
+/* https://github.com/cumany/Blue-topaz-examples */
 /* 引用文件时，文件名前面会出现 “文档” icon */
 .markdown-preview-view a.internal-link::before {
   /* content: "\e6fa";

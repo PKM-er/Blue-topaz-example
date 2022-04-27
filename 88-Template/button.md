@@ -260,3 +260,19 @@ action obsidian://open?vault=20-Diary
 class grad_button g_purple
 ```
 ^button-vault
+
+```button
+name 📫大纲
+type command
+action QuickAdd: 悬浮大纲
+class grad_button g_blue
+```
+^button-dagang
+
+```button
+name 🔍搜索
+type command
+action Omnisearch: Vault search
+class grad_button g_blue
+```
+^button-search

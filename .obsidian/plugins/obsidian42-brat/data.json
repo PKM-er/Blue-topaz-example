@@ -1,14 +1,16 @@
 {
   "pluginList": [
+    "scambier/obsidian-omnisearch",
+    "obsidian-canzi/Enhanced-editing/",
     "windily-cloud/obsidian-AGtable",
     "nothingislost/obsidian-hover-editor",
-    "nothingislost/obsidian-embedded-query-control",
     "nothingislost/obsidian-bartender"
   ],
+  "pluginSubListFrozenVersion": [],
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-04-07T15:11:58Z"
+      "lastUpdate": "2022-04-27T00:42:59Z"
     }
   ],
   "updateAtStartup": true,

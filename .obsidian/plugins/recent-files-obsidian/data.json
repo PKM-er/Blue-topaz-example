@@ -1,160 +1,204 @@
 {
   "recentFiles": [
     {
-      "basename": "从这开始",
-      "path": "从这开始.md"
-    },
-    {
-      "basename": "通过下拉框检索文件示例",
-      "path": "77-Example/通过下拉框检索文件示例.md"
-    },
-    {
-      "basename": "ob提示框(callout)样式展示",
-      "path": "77-Example/ob提示框(callout)样式展示.md"
-    },
-    {
-      "basename": "Callout环绕布局、缩进效果示例",
-      "path": "77-Example/Callout环绕布局、缩进效果示例.md"
-    },
-    {
-      "basename": "tiimeline callout效果",
-      "path": "77-Example/tiimeline callout效果.md"
-    },
-    {
-      "basename": "《从零开始的女性主义》3",
-      "path": "30-Reading/《从零开始的女性主义》3.md"
-    },
-    {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "home",
-      "path": "88-Template/home.md"
+      "basename": "任务看板",
+      "path": "20-Diary/任务看板.md"
     },
     {
       "basename": "20-Diary",
       "path": "20-Diary/20-Diary.md"
     },
     {
-      "basename": "日记统计",
-      "path": "20-Diary/日记统计.md"
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
     },
     {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "77-Example/各类列表和彩虹大纲线.md"
-    },
-    {
-      "basename": "77-Example",
-      "path": "77-Example/77-Example.md"
-    },
-    {
-      "basename": "如何在Obsidian中添加电影卡片",
-      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
-    },
-    {
-      "basename": "Cmenu插件魔改版 Obsidian上的工具栏",
-      "path": "00-Tips/Cmenu插件魔改版 Obsidian上的工具栏.md"
-    },
-    {
-      "basename": "图书阅读清单-状态控制",
-      "path": "77-Example/图书阅读清单-状态控制.md"
-    },
-    {
-      "basename": "《笔醒山河》",
-      "path": "30-Reading/《笔醒山河》.md"
-    },
-    {
-      "basename": "图书阅读清单",
-      "path": "77-Example/图书阅读清单.md"
-    },
-    {
-      "basename": "电影观看清单",
-      "path": "77-Example/电影观看清单.md"
-    },
-    {
-      "basename": "《从零开始的女性主义》",
-      "path": "30-Reading/《从零开始的女性主义》.md"
-    },
-    {
-      "basename": "以橱窗的方式浏览文件夹下的图片",
-      "path": "77-Example/以橱窗的方式浏览文件夹下的图片.md"
-    },
-    {
-      "basename": "slidegallery",
-      "path": "88-Template/ReactJS/slidegallery.md"
-    },
-    {
-      "basename": "如何快速生成文件夹的文件目录列表？",
-      "path": "00-Tips/如何快速生成文件夹的文件目录列表？.md"
-    },
-    {
-      "basename": "Obsidian 快捷键一览表",
-      "path": "10-Help/Obsidian 快捷键一览表.md"
+      "basename": "home",
+      "path": "88-Template/home.md"
     },
     {
       "basename": "分栏效果示例",
       "path": "77-Example/分栏效果示例.md"
     },
     {
-      "basename": "10-Help",
-      "path": "10-Help/10-Help.md"
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
     },
     {
-      "basename": "获取命令ID",
-      "path": "10-Help/获取命令ID.md"
+      "basename": "Changlog",
+      "path": "Changlog.md"
     },
     {
-      "basename": "MarkDown超级教程 Obsidian版 12.17",
-      "path": "10-Help/MarkDown超级教程 Obsidian版 12.17.pdf"
+      "basename": "《从零开始的女性主义》",
+      "path": "30-Reading/《从零开始的女性主义》.md"
     },
     {
-      "basename": "Obsidian 库中库玩法",
-      "path": "00-Tips/Obsidian 库中库玩法.md"
+      "basename": "天气模板dv查询",
+      "path": "77-Example/天气模板dv查询.md"
     },
     {
-      "basename": "表格自定义样式",
-      "path": "77-Example/表格自定义样式.md"
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
     },
     {
-      "basename": "README",
-      "path": "README.md"
+      "basename": "电影观看清单（dv）",
+      "path": "77-Example/电影观看清单（dv）.md"
     },
     {
-      "basename": "tp_foldermoc",
-      "path": "88-Template/tp_foldermoc.md"
+      "basename": "电影看板",
+      "path": "77-Example/电影看板.md"
     },
     {
-      "basename": "MarkDown超级教程",
-      "path": "10-Help/MarkDown超级教程.md"
+      "basename": "2022-03-15",
+      "path": "20-Diary/2022-03-15.md"
+    },
+    {
+      "basename": "图书阅读清单-状态控制(dvjs)",
+      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
+    },
+    {
+      "basename": "77-Example",
+      "path": "77-Example/77-Example.md"
+    },
+    {
+      "basename": "Calendar2021-2022",
+      "path": "88-Template/Calendar2021-2022.md"
+    },
+    {
+      "basename": "FastStart-Plugins-simple",
+      "path": "88-Template/FastStart-Plugins-simple.md"
+    },
+    {
+      "basename": "FastStart-Plugins-ShortDelay",
+      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
+    },
+    {
+      "basename": "FastStart-Plugins-LongDelay",
+      "path": "88-Template/FastStart-Plugins-LongDelay.md"
+    },
+    {
+      "basename": "tp-日记模板-带进度",
+      "path": "88-Template/tp-日记模板-带进度.md"
+    },
+    {
+      "basename": "tp-日记模板",
+      "path": "88-Template/tp-日记模板.md"
+    },
+    {
+      "basename": "YX2S5G0%`W6B~NOTIV_0X~D",
+      "path": "99-Attachment/YX2S5G0%`W6B~NOTIV_0X~D.png"
+    },
+    {
+      "basename": "如何把主页日记模板移植到你现有的库中？",
+      "path": "00-Tips/▪示例库移植说明/如何把主页日记模板移植到你现有的库中？.md"
+    },
+    {
+      "basename": "Blue topaz--style setting 插件设置内容 简介",
+      "path": "10-Help/Blue topaz--style setting 插件设置内容 简介.md"
+    },
+    {
+      "basename": "FastStart-StartupScript",
+      "path": "88-Template/FastStart-StartupScript.md"
+    },
+    {
+      "basename": "react-music",
+      "path": "88-Template/ReactJS/react-music.md"
+    },
+    {
+      "basename": "如何在OB里添加多彩时钟和音乐播放器",
+      "path": "00-Tips/▪示例库移植说明/如何在OB里添加多彩时钟和音乐播放器.md"
+    },
+    {
+      "basename": "FastStart-GenerateListOfInstalledPlugins",
+      "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
     },
     {
       "basename": "button",
       "path": "88-Template/button.md"
     },
     {
+      "basename": "从这开始",
+      "path": "从这开始.md"
+    },
+    {
+      "basename": "如何移植主页的各个元素？",
+      "path": "00-Tips/▪示例库移植说明/如何移植主页的各个元素？.md"
+    },
+    {
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
+    },
+    {
+      "basename": "2022-04-25",
+      "path": "20-Diary/2022-04-25.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "电影观看清单-状态控制（dvjs）",
+      "path": "77-Example/电影观看清单-状态控制（dvjs）.md"
+    },
+    {
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/通过下拉框检索文件示例.md"
+    },
+    {
+      "basename": "伪看板-yaml声明",
+      "path": "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md"
+    },
+    {
+      "basename": "涂黑和挖空效果（三种语法）",
+      "path": "77-Example/涂黑和挖空效果（三种语法）.md"
+    },
+    {
+      "basename": "单独定制笔记背景",
+      "path": "77-Example/单独定制笔记背景.md"
+    },
+    {
       "basename": "常用工具",
       "path": "88-Template/常用工具.md"
     },
     {
-      "basename": "AD伪看板",
-      "path": "77-Example/AD伪看板.md"
+      "basename": "50-Inbox",
+      "path": "50-Inbox/50-Inbox.md"
     },
     {
-      "basename": "booknote插件-更好的pdf office文档阅读和标注神器",
-      "path": "00-Tips/booknote插件-更好的pdf office文档阅读和标注神器.md"
+      "basename": "表格自定义样式",
+      "path": "77-Example/表格自定义样式.md"
     },
     {
-      "basename": "带进度条的任务列表",
-      "path": "77-Example/带进度条的任务列表.md"
+      "basename": "可以编辑的dv表格",
+      "path": "77-Example/可以编辑的dv表格.md"
     },
     {
-      "basename": "Image-grid【图片自适应】",
-      "path": "77-Example/Image-grid【图片自适应】.md"
+      "basename": "任务卡片",
+      "path": "77-Example/任务卡片.md"
+    },
+    {
+      "basename": "多彩高亮（三种语法）",
+      "path": "77-Example/多彩高亮（三种语法）.md"
+    },
+    {
+      "basename": "对话形式笔记",
+      "path": "77-Example/对话形式笔记.md"
+    },
+    {
+      "basename": "悬崖之上",
+      "path": "30-Reading/悬崖之上.md"
+    },
+    {
+      "basename": "案例进展情况",
+      "path": "20-Diary/案例进展情况.md"
+    },
+    {
+      "basename": "让子弹飞（本地封面图片测试）",
+      "path": "30-Reading/让子弹飞（本地封面图片测试）.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
     }
   ],
   "omittedPaths": [],

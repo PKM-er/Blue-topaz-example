@@ -1,3 +1,5 @@
+/* This snippet was generated  on Blue Topaz example */
+/* https://github.com/cumany/Blue-topaz-examples */
 /* 
 ==========================
 ======= mytools=======
@@ -9,7 +11,7 @@
 
 .markdown-preview-view.mytools
 {
-  padding: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px!important;
   
 }
 
@@ -33,6 +35,28 @@ display:none;
 {	
   display: none;
 }
+
+/*隐藏行号*/
+.workspace-split:not(.mod-root) .markdown-source-view.mytools  div.cm-gutters
+{	
+  display: none;
+}
+
+.workspace-split:not(.mod-root) .markdown-preview-view.mytools p
+{
+  font-size: smaller;
+  margin-left: 0.5em;
+}
+/*编辑模式缩小行距*/
+.workspace-split:not(.mod-root) .markdown-source-view.mytools .markdown-preview-section  .cm-content,
+.workspace-split:not(.mod-root) .markdown-source-view.mytools  .cm-editor,
+.workspace-split:not(.mod-root) .markdown-source-view.mytools  .cm-scroller
+{	
+  font-size: 12px;
+  margin: 0;
+  padding: 0!important;
+}
+
 /*减少ad标签的左右空白*/
 .markdown-preview-view.mytools .admonition {
     margin: 0;
@@ -41,7 +65,8 @@ display:none;
   margin: 0px 5px;
 }
 .markdown-preview-view.mytools .admonition .callout-content.admonition-content {
-  margin: -5px;
+  margin-left: -5px;
+  margin-right: -5px;
 }
 .markdown-preview-view.mytools .admonition-title-markdown {
   font-size: initial;

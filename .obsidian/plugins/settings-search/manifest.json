@@ -1,0 +1,10 @@
+{
+    "id": "settings-search",
+    "name": "Settings Search",
+    "version": "1.2.0",
+    "minAppVersion": "0.12.17",
+    "author": "Jeremy Valentine",
+    "description": "Globally search settings in Obsidian.md",
+    "authorUrl": "https://github.com/valentine195",
+    "isDesktopOnly": false
+}

@@ -1,8 +1,8 @@
 ---
-updated: 2022-04-07 15:08
+updated: 2022-04-23 00:36
 created: 2022-04-07 15:08
 ---
-# TIPS  
+# TIPS
 ```ad-col2
 这是Blue Topaz的演示库，最新版本建议从社区商店更新。附带了Style Settings插件与Admonition插件。目前支持Live preview模式同时附带了其他一些插件，可供使用。
 需要特别说明的是Codemirror插件，这个插件因为样式比较复杂多变，使用此插件会可能会出现样式上的bug。这里会给出一些Blue Topaz的展示、以及一些特别的用法，希望对你有帮助。
@@ -11,7 +11,6 @@ created: 2022-04-07 15:08
 开始部分的最后，感谢Topaz社区的各位，没有社区的各位，不会有现在的主题。这个主题献给他们。
 ```
 ## 强调
-
 在笔记中，不可避免的会用到一些强调方式，比如加粗、高亮等等，这里做一个展示：
 *斜体*
 **加粗**
@@ -44,31 +43,29 @@ span.cm-strong.cm-highlight, .markdown-preview-view strong > mark {
 ```
 ````
 
-
 ---
 
 ```ad-tip
 这些强调的使用方式当然是由你决定的，但我建议不要使用过多的强调方式，选择两三种强调方式，赋予它们某种特别含义，保持笔记中用法的一致性。
 ```
-
 ## 标签
 主题中普通标签颜色有九种，颜色按标签位置确定，即使是连续使用相同标签，还是会有各种颜色，如果不喜欢，可以在Style Settings插件里面手动更改颜色。
-#tag #tag #tag #tag #tag #tag 
+#tag #tag #tag #tag #tag #tag
 
 同时，主题里面提供了一些特别标签，它们有着与一般标签不同的外观，如果你需要更多的特别标签，你可以打开css文件，按照这些标签的写法，替换关键词，自己制作属于自己的特别标签。
 
 #dailynote #weeklynote
 #ideas #questions
-#重要 #完成 #进行中 
-#important #complete #inprogress 
+#重要 #完成 #进行中
+#important #complete #inprogress
 
 ---
 
 ```ad-tip
 至于标签的用法，使用双链和标签的区别。这些不在这个演示库的讨论范围，[具体看帮助](obsidian://open?vault=Obsidian%20Help&file=%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%2F%E6%A0%87%E7%AD%BE%E7%9A%84%E4%BD%BF%E7%94%A8)我相信每个人的用法可能不会完全一样，如果不清楚，可以在开始的时候同时使用双链和标签，一段时间以后，形成了自己的使用偏好，再做调整就好，没下笔之前就想着“完美”的笔记格式不是个好办法。
 ```
----
 
+---
 ## 自定义的文本框
 ### 多彩背景
 *移植自Notation主题 @deathau*
@@ -110,10 +107,10 @@ text
 ```note-brown-bg
 text
 ```
------------------------------------------------------
 
+---
 ### 多彩文字
-用法: `note-color` 
+用法: `note-color`
 
 ```note-orange
 text
@@ -150,21 +147,23 @@ text
 ```note-brown
 text
 ```
-
 ### 多彩高亮
 `*==xxx==*`, `**==xxx==**` , `***==xxx==***` 三种语法对应三种高亮颜色
-测试文字文字测试 *==hello word==* ，你好世界。**==测试文字==** 文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字测试hello word，你好世界。测试文字文字 ***==测试hello==***  word，你好世界。
-
-阅读模式的多彩高亮需要在style settings 2.1.5 中开启。
+测试文字文字测试 *==hello word==* ，你好世界。**==测试文字==** 文字测试hello word，你好世界。测试文字文字 ***==测试hello==***  word，你好世界。
+多彩高亮颜色可以在style settings 2.1.4 中自定义
+不需要多彩高亮可以在style settings 2.1.4 中关闭。
 ![image](https://user-images.githubusercontent.com/72023275/164036501-59f3c87d-0974-4671-a998-498b03b3f042.png)
 
-实时预览模式（Live Preview）开启多彩高亮，需要在yaml种键入cssclass: colorful-highlight
+即使取消了多彩高亮，也可以在文档yaml种键入
+`cssclass: colorful-highlight`  对改文档启动
 ![image](https://user-images.githubusercontent.com/72023275/164037230-4dde7655-9141-4a07-b51a-59cb77abe524.png)
 
-多彩高亮的背景颜色、字体颜色等都可以在style settings 2.1.5 中调整
+多彩高亮的背景颜色、字体颜色等都可以在style settings 2.1.4 中调整
 
+```
 注意，实时预览不能识别语法符号顺序。`*==xxx==*`和`==*xxx*==`将会是同样的效果，但是阅读模式识别符号顺序，所以只有`*==xxx==*`会是多彩高亮的颜色。
 
+```
 
 ---
 ### 回顾、隐藏文本
@@ -174,8 +173,6 @@ text
 ```note-cloze
 text
 ```
-
-
 #### 第二种，鼠标悬浮
 ```hibox
 打群主，分bug
@@ -189,19 +186,18 @@ admonition里也设置了这种样式，需要在Style Settings插件里启用
 ```ad-hibox
 - [ ] 打群主，分bug
 ```
-
 ### 第三种，涂黑挖空
 Lorem ipsum dolor sit amet, consectetur ==~~adipiscing~~== elit, sed do ==~~eiusmod~~== tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮组合：==~~xx~~==`鼠标悬浮触发）
 
-Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==* elit, sed do *==~~eiusmod~~==* tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮+斜体组合：*==~~xx~~==*`点击触发）
+Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==*  elit, sed doe *==~~eiusmod~~==*  tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮+斜体组合：*==~~xx~~==*`点击触发）
 
-以上效果无需另外开启，只在阅读模式生效。如果想在实时预览（Live Preview）中也能获得相应效果，需要在YAML中输入`cssclass: cloze`
+Lorem ipsum dolor sit amet, consectetur *~~adipiscing~~* elit, sed do *~~eiusmod~~* tempor incididunt ut labore et dolore magna aliqua. （`删除+斜体组合：*~~xx~~*`点击触发  无背景颜色）
+
+以上效果无需另外开启，主题默认支持，如果想取消在2.3.10中关闭，即使关闭了也可以在YAML中声明`cssclass: cloze` 对该笔记启用。
 ![image](https://user-images.githubusercontent.com/72023275/164038180-c6e2dff4-9aee-4f42-8051-854a748979ec.png)
 
-对于样式的更改，可以在style settings 2.3.9 中找到
+对于样式的更改，可以在style settings 2.3.10 中找到
 ![image](https://user-images.githubusercontent.com/72023275/164038350-9424af22-7eac-42f3-b10b-e233a51202a8.png)
-
-
 ### 重要文本框
 也没什么特别的
 
@@ -214,11 +210,7 @@ text
 ```ad-tips
 这些用法算是给强调文字做一个补充，但是更多的可能是娱乐性质。
 ```
-
-
 ## 图片
-
-
 插入的图片默认是居中显示，点击图片可以放大
 ![[obsidian_image.png]]
 
@@ -234,48 +226,50 @@ text
 ![[obsidian_image.png|L|100]]
 ![[obsidian_image.png|Left|100]]
 
-
 `right`/`Right`/`RIGHT`/`R`
 ![[obsidian_image.png|RIGHT|100]]
 ![[obsidian_image.png|right|100]]
 
 ---
-
 ###  `![]()`格式的图片
-
 形如`![]()`格式的图片也可以使用这种方式进行控制。限于软件原因，如果不能即时显示，对页面进行左右拆分即可。
 #### 缩放
 这是`![]()`格式图片的缩放效果演示
 ![|300](obsidian_image.png)
 #### 左右对齐
-这是`![]()`格式图片的右对齐效果演示 
+这是`![]()`格式图片的右对齐效果演示
 `right`/`Right`/`RIGHT`/`R` 这类写法都是支持的
 ![|R|150](obsidian_image.png)
 `left`/`Left`/`LEFT`/`L` 这类写法都是支持的
 ![Left|150](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
 十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
 #### 行内左右对齐
-
- `inlineR`/`InlineR`/`INLINER`/`inlR` 这类写法都是支持的
-![|inlineR|150](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+`inlineR`/`InlineR`/`INLINER`/`inlR` 这类写法都是支持的
+十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
+![|inlineR|80](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+![|inlL|100](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
+#### 图片并排
+![|inl|50](obsidian_image.png) 十十十十十十十十![|inl|50](obsidian_image.png) ![|inl|50](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png) ![|inl|50](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
+十十十十十十十十十十十十十十十十十十十十十十十十
 十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
 `inlineL`/`InlineL`/`INLINEL`/`inlL` 这类写法都是支持的
-![|inlL|150](obsidian_image.png) 这是`![]()`格式图片的行内图片效果演示十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
+
+这是`![]()`格式图片的行内图片效果演示十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十 ![|inl|50](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
 
 ---
-
 ### 行内图片
-在图片后加上`|inlR`、`|inlL`或`|inl`，可以使图片变为行内显示，也可以跟控制大小同时使用。![[obsidian_image.png|inl|100]]
+在图片后加上`|inlR`、`|inlL`或`|inl`，可以使图片变为行内显示，也可以跟控制大小同时使用。![obsidian_image.png|inl|100]]
 
 可用变体 `inlineL`/`InlineL`/`INLINEL`/`inlL`
 字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字 ![[obsidian_image.png|inlL|100]]字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字
 
 可用变体 `inlineR`/`InlineR`/`INLINER`/`inlR`
-字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字 ![[obsidian_image.png|inlR|100]]字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字
+
+字字字 ![[obsidian_image.png|inlR|100]]字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字
 
 可用变体 `inline`/`Inline`/`INLINE`/`inl`
-![[obsidian_image.png|inl|100]] ![[obsidian_image.png|inline|100]] ![[obsidian_image.png|INLINE|100]]字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字
-
+字字字字字![[obsidian_image.png|inl|100]] ![[obsidian_image.png|inline|100]] ![[obsidian_image.png|INLINE|100]]字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字
 
 ```ad-tip
 注意使用inlR/inlL和inl的位置，对于inlR和inlL，它们所在行的文字，处在图片的上边界处。而对于inl，所在行的文字在图片的下边界处。
@@ -296,8 +290,6 @@ text
 十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
 字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字 ![[obsidian_image.png|inline|100]]
 十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
-
-
 ### 图片标题
 *改编自 Discordian 和 Orange主题 by @radekkozak and @echoxu*
 
@@ -306,29 +298,20 @@ text
 
 ![[obsidian_image.png#center|Figure 1. 这是鸡蛋|100]]
 
-
 ![[obsidian_image.png#right|Figure 2. 这不是鸡蛋|150]]字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字
 
-
 ![[obsidian_image.png#left|Figure 3. 这难道不是鸡蛋|150]]字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字字
-
-
 #### 行内（或连续的）带标题的图片
 使用`#inl`
 ![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|200]]![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|100]]![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|150]]![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|100]]
 
-
 ```ad-tips
 同样需要注意使用图片的位置。
 ```
-
-
 ### 图片横排
 #### 方法一
 图片加`|inline`，放在同一行。可以单独调整大小
-![[obsidian_image.png|inl|100]]![[obsidian_image.png|inline|100]] ![[obsidian_image.png|INLINE|100]]![[obsidian_image.png|inl|100]] ![[obsidian_image.png|inline|100]] 
-
-
+![[obsidian_image.png|inl|100]]![[obsidian_image.png|inline|100]] ![[obsidian_image.png|INLINE|100]]![[obsidian_image.png|inl|100]] ![[obsidian_image.png|inline|100]]
 #### 方法二
 图片加`|+grid`，放在同一行，会自动调整大小，也可以独单调整
 `![[xxx.png|+grid]]`
@@ -340,7 +323,6 @@ text
 ![[obsidian_image.png|+grid|100]]![[obsidian_image.png|+grid|100]]![[obsidian_image.png|+grid|100]]![[obsidian_image.png|+grid|100]]
 
 ![[obsidian_image.png|+grid|50]]![[obsidian_image.png|+grid|50]]
-
 #### 方法三
 在笔记开头处输入：
 
@@ -351,32 +333,30 @@ cssclass: img-grid
 ```
 
 点击这里查看样式 [[Image-grid【图片自适应】]]
-
 ## HTML标签
 ### stickies
-*thanks to death_au, Gabroel and Lithou from Obsidian Members Group on Discord* 
+*thanks to death_au, Gabroel and Lithou from Obsidian Members Group on Discord*
 
 用法
 `<p class="stickies"> xxx  </p>`
 `<p class="stickies2"> xxx </p>`
 `<p class="to-recall"> xxx </p>`
 
-
 <p class="stickies"> 你想说的话 </p>
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 
 也可以同时使用加粗标签
+
 <p class="stickies2"> Your <b>words</b> </p>
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 
 回顾/隐藏框
+
 <p class="to-recall"> 群内可以用bug换定制 </p>
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-
-
 ### aside
-*thanks to dcoales from obsidian member group on discord  
-https://discord.com/channels/686053708261228577/702656734631821413/794236352857374764*
+_thanks to dcoales from obsidian member group on discord\
+<https://discord.com/channels/686053708261228577/702656734631821413/794236352857374764>_
 
 用法
 `<aside><h1> Your words </h1></aside>`
@@ -384,19 +364,17 @@ https://discord.com/channels/686053708261228577/702656734631821413/7942363528573
 
 可能没那么有用
 
-blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah
+
 <aside><h1> Your words </h1></aside>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 <aside><h2> Your words </h2></aside>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
-
 ## 勾选框
-
-
 - [<] 自定义
 	- [+] add
 - [>] 自定义
 - [!] ideas
-- [?] questions   
+- [?] questions
 - [x] checked
 - [ ] hollow
 - [-] rrrrr
@@ -405,14 +383,12 @@ blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 ---
 
 1. [ ] aaa
-	1. [x] as
-		1. [!] aa	
+		1. [x] as
+		1. [!] aa
 		2. [+] aaa
 2. [>] aa
-	1. [<] aaa
+		1. [<] aaa
 3. [?] aaa
-
-
 ## mermaid
 mermaid做了宽度适配
 
@@ -427,6 +403,7 @@ journey
       Go downstairs: 5: Me
       Sit down: 5: Me
 ```
+
 ```mermaid
 flowchart LR
 classDef inputUnit fill:orange,stroke:#333,stroke-width:2px;
@@ -457,15 +434,10 @@ class i1,i2,i3 inputUnit;
 class h1,h2,h3 hiddenUnit;
 class o1 outputUnit;
 ```
-
-
 ## YAML cssclass
-
 ### 图片img-grid
 ![[🥑Blue Topaz Themes Tips#方法三]]
-
 ### 代码框换行
-
 ```yaml
 ---
 cssclass: code-wrap
@@ -474,9 +446,9 @@ cssclass: code-wrap
 
 例子：
 [[code-wrap【代码块自动换行】]]
-
 ### inline-list
 行内列表，可以和行内图片一起使用
+
 ```yaml
 ---
 cssclass: inline-list
@@ -485,56 +457,51 @@ cssclass: inline-list
 
 例子：
 [[inline-list【行内列表】]]
-
-
 ### 伪kanban
 让无序列表（包括checkbox）以看板样式显示
+
 - 两种方式一种是笔记前面声明cssclass样式如：
+
 ```yaml
 ---
 cssclass: kanban
 ---
 ```
+
 例子：
-[[伪看板]]
+[[伪看板-yaml声明]]
+
 - 另一个方式就是通过ad插件 ad-kanban实现。
+
 例子：
-[[AD伪看板]]
+[[伪看板-ad,callout声明]]
 
 [[真Kanban|真看板]]
-
 ## 更多样式调整
 如前所述，这个演示库里已经安装了Style  Settings插件，可以在设置面板种调整
 这里给出一些可能会用到的东西。
-
 ### 引用框
 > Obsidian实体是紫色鸡蛋Obsidian实体是紫色鸡蛋Obsidian实体是紫色鸡Obsidian实体是紫色鸡蛋Obsidian实体是紫色鸡蛋Obsidian,实体是紫色鸡蛋Obsidian实体是紫色鸡蛋5555
 > ssss
 > 5555
 
 > 真的，不骗人。
-
 ### 列表
 [[77-Example/各类列表和彩虹大纲线]]
 ### AD分栏样式
 [[分栏效果示例]]
 ### 四象限示例
 [[四象限表格]]
-
 ### 嵌入文件样式
 > 在Style settings 插件2.3.6嵌入样式开启固定嵌入页面高度即可生效。
 
- ![[分栏效果示例]]
+![[分栏效果示例]]
 ### 表格自定义样式
 - 表格自定义样式并没有内置在主题中，需要启用`【自定义】表格样式TableStyles.css`
+
 css片段才生效。参考：[[表格自定义样式]]
+
 - Style settings插件 2.3.8表格 设置表格不换行，可以让所有表格内容不再换行显示。
 - Style settings插件 3.6 针对Dataview表格进行了优化，可以开启选项使得dataview表格紧凑显示，即尽量都显示一行，并且第一列宽度固定。
-
 ### Callout 样式
 [[ob提示框(Callout)样式展示]]
-
-
-
-
-

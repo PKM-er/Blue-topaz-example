@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 15,
+  "baseFontSize": 16,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -17,8 +17,15 @@
     "【Linkcard】",
     "test",
     "【Memos】Popover",
+    "【自定义】表格样式TableStyles",
+    "【日记】timeline",
     "custom-admonitions.c9c6cb",
-    "【自定义】表格样式TableStyles"
+    "【图标】iconfont",
+    "【日记】periodic日历",
+    "【天气】weather"
   ],
-  "translucency": false
+  "translucency": false,
+  "textFontFamily": "",
+  "monospaceFontFamily": "JetBrains Mono",
+  "interfaceFontFamily": ""
 }

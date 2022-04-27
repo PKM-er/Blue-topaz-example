@@ -1,0 +1,229 @@
+/* hide the folder note file node  */
+div.is-folder-note {
+    display: none;
+}
+
+/* indicate the folder has note  */
+div.has-folder-note {
+    color: var(--text-nav-selected);
+}
+
+/*---------------------------------------------
+            Cute card view
+-----------------------------------------------*/
+
+.cute-card-band {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 20px;
+}
+
+@media (min-width: 30em) {
+    .cute-card-band {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (min-width: 60em) {
+    .cute-card-band {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.cute-card-view {
+    background: var(--background-accent);
+    text-decoration: none !important;
+    color: var(--text-normal);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    position: relative;
+    top: 0;
+    transition: all 0.1s ease-in;
+    border-radius: 10px;
+}
+
+.cute-card-view:hover {
+    top: -2px;
+    box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+}
+
+.cute-card-view article {
+    padding: 15px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.cute-card-view h1 {
+    font-size: 1.2rem;
+    margin: 0;
+    color: var(--text-accent);
+}
+
+.cute-card-view a {
+    text-decoration: none !important;
+}
+
+.cute-card-view p {
+    flex: 1;
+    line-height: 1.0;
+}
+
+.cute-card-view span {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+}
+
+.cute-card-view .thumb {
+    padding-bottom: 60%;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10px 10px 0px 0px;
+}
+
+.cute-card-view .thumb-color {
+    padding-bottom: 10%;
+    background-size: cover;
+    background-position: center center;
+    border-radius: 10px 10px 0px 0px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+.cute-card-view .thumb-color-folder {
+    background-color: slateblue;
+}
+
+.cute-card-view .thumb-color-note {
+    background-color: salmon;
+}
+
+
+
+/*---------------------------------------------
+            strip card view
+-----------------------------------------------*/
+
+.strip-card-band {
+    width: 100%;
+}
+
+.strip-card-view {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 1.0rem;
+    margin-bottom: 1.0rem;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-box-align: stretch;
+    -webkit-align-items: stretch;
+    -ms-flex-align: stretch;
+    align-items: stretch;
+    min-height: 8rem;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    overflow: hidden;
+    -webkit-transition: all .3s ease;
+    -o-transition: all .3s ease;
+    transition: all .3s ease;
+    -webkit-box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
+    box-shadow: 0 1px 1px 0 rgba(31, 35, 46, 0.15);
+    /* add by xpgo */
+    background: var(--background-accent);
+    text-decoration: none !important;
+    color: var(--text-normal);
+}
+
+.strip-card-view:hover {
+    -webkit-transform: translate(0px, -2px);
+    -ms-transform: translate(0px, -2px);
+    transform: translate(0px, -2px);
+    -webkit-box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+    box-shadow: 0 15px 45px -10px rgba(10, 16, 34, 0.2);
+}
+
+.strip-card-view .thumb {
+    width: 20%;
+    max-width: 100%;
+    min-height: 9rem;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.strip-card-view .thumb-color {
+    width: 20%;
+    max-width: 100%;
+    min-height: 9rem;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: center center;
+    /* add by xpgo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
+    color: #FFFFFF;
+}
+
+.strip-card-view .thumb-color-folder {
+    background-color: slateblue;
+}
+
+.strip-card-view .thumb-color-note {
+    background-color: salmon;
+}
+
+.strip-card-view article {
+    padding: 1rem;
+    width: 80%;
+}
+
+.strip-card-view h1 {
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+    color: var(--text-accent);
+}
+
+.strip-card-view a {
+    text-decoration: none !important;
+}
+
+.strip-card-view p {
+    margin-top: 0;
+    flex: 1;
+    line-height: 1.0;
+}
+
+.strip-card-view span {
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: var(--text-faint);
+    letter-spacing: 0.05em;
+}

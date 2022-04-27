@@ -2,9 +2,9 @@
 cssclass: 
 updated: 2022-04-07 14:20
 ---
-## 需求
+## ✍需求
 很多人有多开Obsidian的需求，比如两个ob 同时打开，可以实现窗口分离的效果。
-## 实现
+## 👉  如何使用？
 1. Obsidian本身是支持多开的，只需要指定不同的库即可，这个库可以嵌套在其他库里。
 以本示例库为例子，我们把`20-Diary` 文件夹作为嵌套库使用。
 2. 如图所示，打开库文件夹 选择`20-Diary`打开即可
@@ -21,7 +21,7 @@ Ob最小化后，按·`Ctrl+shift+H`  即可全局呼出OB非常方便。
    ![[memos.url]]
 
 
-视频操作说明
+## 📀视频操作说明
 
 [Obsidian 双开配合memos实现摘录操作_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1JS4y1S79x/)
 

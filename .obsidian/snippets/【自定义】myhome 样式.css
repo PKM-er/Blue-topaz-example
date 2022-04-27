@@ -1,3 +1,6 @@
+/* This snippet was generated  on Blue Topaz example */
+/* https://github.com/cumany/Blue-topaz-examples */
+
 .is-mobile .myhome  img[alt="inlL"]
 {
 	display:none;
@@ -9,7 +12,7 @@
 	
 }
 
-body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-col2>.admonition-content-holder>.admonition-content {	columns: 200px 2;
+body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-grid>.admonition-content-holder>.admonition-content {	columns: 200px 2;
      -moz-columns: 200px 2;
     -webkit-columns: 200px 2;
 }

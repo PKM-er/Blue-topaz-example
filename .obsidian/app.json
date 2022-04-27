@@ -26,5 +26,8 @@
   },
   "lineWrap": true,
   "autoPairMarkdown": false,
-  "showIndentGuide": true
+  "showIndentGuide": true,
+  "userIgnoreFilters": [
+    "88-Template/"
+  ]
 }

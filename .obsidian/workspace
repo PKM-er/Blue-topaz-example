@@ -4,15 +4,25 @@
     "type": "split",
     "children": [
       {
-        "id": "3f2ebe5ea47da4bd",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "从这开始.md",
+            "file": "20-Diary/20-Diary.md",
             "mode": "preview",
             "backlinks": false,
-            "source": true
+            "source": false
+          }
+        }
+      },
+      {
+        "id": "dafcce9cf1678a0e",
+        "type": "leaf",
+        "state": {
+          "type": "kanban",
+          "state": {
+            "file": "20-Diary/任务看板.md"
           }
         }
       }
@@ -42,7 +52,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "看板",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,7 +113,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 40.17681728880157,
+        "dimension": 43,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -119,7 +129,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "从这开始.md"
+                "file": "20-Diary/任务看板.md"
               }
             }
           },
@@ -142,7 +152,7 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 59.82318271119843,
+        "dimension": 56.99999999999999,
         "children": [
           {
             "id": "041c78328387b373",
@@ -150,7 +160,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "从这开始.md",
+                "file": "20-Diary/任务看板.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +177,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "从这开始.md",
+                "file": "20-Diary/任务看板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -196,6 +206,14 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "4f457051e10f1a14",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
           }
         ],
         "currentTab": 3
@@ -204,17 +222,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "3f2ebe5ea47da4bd",
+  "active": "dafcce9cf1678a0e",
   "lastOpenFiles": [
-    "从这开始.md",
-    "77-Example/通过下拉框检索文件示例.md",
-    "未命名 4.md",
-    "未命名 1.md",
-    "未命名 8.md",
-    "未命名 7.md",
-    "未命名 6.md",
-    "未命名 5.md",
-    "未命名 3.md",
-    "未命名 2.md"
+    "20-Diary/任务看板.md",
+    "20-Diary/20-Diary.md",
+    "88-Template/88-Template.md",
+    "88-Template/home.md",
+    "77-Example/分栏效果示例.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "Changlog.md",
+    "30-Reading/《从零开始的女性主义》.md",
+    "77-Example/天气模板dv查询.md",
+    "00-Tips/如何在Obsidian中添加电影卡片.md"
   ]
 }

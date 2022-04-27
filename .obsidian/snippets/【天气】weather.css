@@ -1,0 +1,630 @@
+.myhome .svg-contain {
+  position: absolute;
+  max-width: 120px;
+  width: 100%;
+  left: 0%; 
+  top: -100%;
+}
+
+.svg-contain {
+  max-width: 150px;
+  width: 100%;
+}
+.weather-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 70vh;
+}
+
+.big-path,
+.lightening,
+.line,
+.little-path {
+  stroke-miterlimit: 10;
+  stroke-width: 2;
+  stroke-linecap: round;
+  fill: none;
+}
+
+.cloud {
+  fill: #DAD9D9;
+}
+
+.little-path {
+  stroke-width: 1;
+}
+
+.hurricane-svg .line {
+  stroke: #BAE2E0;
+  opacity: 1;
+  -webkit-animation: fadeIn 0.8s ease-in alternate-reverse infinite;
+          animation: fadeIn 0.8s ease-in alternate-reverse infinite;
+}
+.hurricane-svg .line:nth-child(1) {
+  -webkit-animation-delay: 0.1s;
+          animation-delay: 0.1s;
+}
+.hurricane-svg .line:nth-child(2) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.hurricane-svg .line:nth-child(3) {
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.hurricane-svg .line:nth-child(4) {
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+.hurricane-svg .line:nth-child(5) {
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+.hurricane-svg .line:nth-child(6) {
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.hurricane-svg .line:nth-child(7) {
+  -webkit-animation-delay: 0.7s;
+          animation-delay: 0.7s;
+}
+.hurricane-svg .line:nth-child(8) {
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.hurricane-svg .line:nth-child(9) {
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+.hurricane-svg .line:nth-child(10) {
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.hurricane-svg .line:nth-child(11) {
+  -webkit-animation-delay: 1.1s;
+          animation-delay: 1.1s;
+}
+.hurricane-svg .line:nth-child(12) {
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.hurricane-svg .lightening {
+  -webkit-animation: flash 1s infinite;
+          animation: flash 1s infinite;
+  stroke: #E5D8BA;
+}
+.hurricane-svg .big-path,
+.hurricane-svg .little-path {
+  stroke: #BAE2E0;
+}
+.hurricane-svg .big-path {
+  stroke-width: 1;
+}
+.hurricane-svg .little-path {
+  stroke-width: 0.5;
+}
+.hurricane-svg .cloud {
+  -webkit-animation: colorChange 1s infinite;
+          animation: colorChange 1s infinite;
+}
+
+.windy-svg .little-path,
+.windy-svg .big-path {
+  -webkit-animation: dash 1s ease-in alternate-reverse infinite, fadeIn 1s alternate-reverse infinite;
+          animation: dash 1s ease-in alternate-reverse infinite, fadeIn 1s alternate-reverse infinite;
+}
+.windy-svg path {
+  stroke: #BAE2E0;
+}
+.windy-svg .path-1 {
+  stroke-dasharray: 7;
+  stroke-dashoffset: 7;
+}
+.windy-svg .path-2 {
+  stroke-dasharray: 25;
+  stroke-dashoffset: -25;
+}
+.windy-svg .path-3 {
+  stroke-dasharray: 30;
+  stroke-dashoffset: 30;
+}
+.windy-svg .path-4 {
+  stroke-dasharray: 8;
+  stroke-dashoffset: 8;
+}
+.windy-svg .path-5 {
+  stroke-dasharray: 22;
+  stroke-dashoffset: -22;
+}
+.windy-svg .big-path-1 {
+  stroke-dasharray: 57;
+  stroke-dashoffset: 57;
+}
+.windy-svg .big-path-2 {
+  stroke-dasharray: 76;
+  stroke-dashoffset: 76;
+}
+
+.clear-sky-svg {
+  -webkit-animation: expand 0.8s alternate-reverse infinite;
+          animation: expand 0.8s alternate-reverse infinite;
+}
+.clear-sky-svg .sun {
+  fill: #E5D8BA;
+}
+.clear-sky-svg .line {
+  stroke: #E5D8BA;
+  stroke-dasharray: 7;
+  -webkit-animation: dash 0.8s alternate-reverse infinite, fadeIn 1s forwards;
+          animation: dash 0.8s alternate-reverse infinite, fadeIn 1s forwards;
+}
+.clear-sky-svg .line-1,
+.clear-sky-svg .line-3,
+.clear-sky-svg .line-5,
+.clear-sky-svg .line-7,
+.clear-sky-svg .line-4 {
+  stroke-dashoffset: 5;
+  -webkit-animation-delay: 0.3s;
+          animation-delay: 0.3s;
+}
+.clear-sky-svg .line-2,
+.clear-sky-svg .line-6,
+.clear-sky-svg .line-8 {
+  stroke-dashoffset: -5;
+}
+
+.overcast-clouds .cloud-still {
+  fill: #DAD9D9;
+  -webkit-animation: bounce 4s ease-in-out alternate-reverse infinite;
+          animation: bounce 4s ease-in-out alternate-reverse infinite;
+}
+.overcast-clouds .cloud-still:nth-child(1) {
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+
+.snow-svg .snowflake {
+  -webkit-transform-origin: 50% 50%;
+          transform-origin: 50% 50%;
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
+  opacity: 0;
+}
+.snow-svg .snowflake:nth-child(1) {
+  -webkit-animation: fall-counterclockwise 3311ms ease-in forwards infinite;
+          animation: fall-counterclockwise 3311ms ease-in forwards infinite;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.snow-svg .snowflake:nth-child(2) {
+  -webkit-animation: fall-clockwise 3967ms ease-in forwards infinite;
+          animation: fall-clockwise 3967ms ease-in forwards infinite;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+.snow-svg .snowflake:nth-child(3) {
+  -webkit-animation: fall-counterclockwise 3552ms ease-in forwards infinite;
+          animation: fall-counterclockwise 3552ms ease-in forwards infinite;
+  -webkit-animation-delay: 0.9s;
+          animation-delay: 0.9s;
+}
+.snow-svg .snowflake:nth-child(4) {
+  -webkit-animation: fall-clockwise 2358ms ease-in forwards infinite;
+          animation: fall-clockwise 2358ms ease-in forwards infinite;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+.snow-svg .snowflake:nth-child(5) {
+  -webkit-animation: fall-counterclockwise 2894ms ease-in forwards infinite;
+          animation: fall-counterclockwise 2894ms ease-in forwards infinite;
+  -webkit-animation-delay: 0.5s;
+          animation-delay: 0.5s;
+}
+.snow-svg .snowflake:nth-child(6) {
+  -webkit-animation: fall-clockwise 2314ms ease-in forwards infinite;
+          animation: fall-clockwise 2314ms ease-in forwards infinite;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.snow-svg .snowflake:nth-child(7) {
+  -webkit-animation: fall-counterclockwise 2022ms ease-in forwards infinite;
+          animation: fall-counterclockwise 2022ms ease-in forwards infinite;
+  -webkit-animation-delay: 2.1s;
+          animation-delay: 2.1s;
+}
+.snow-svg .snowflake:nth-child(8) {
+  -webkit-animation: fall-clockwise 3149ms ease-in forwards infinite;
+          animation: fall-clockwise 3149ms ease-in forwards infinite;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.snow-svg .snowflake:nth-child(9) {
+  -webkit-animation: fall-counterclockwise 3043ms ease-in forwards infinite;
+          animation: fall-counterclockwise 3043ms ease-in forwards infinite;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+.snow-svg .snowflake:nth-child(10) {
+  -webkit-animation: fall-clockwise 2167ms ease-in forwards infinite;
+          animation: fall-clockwise 2167ms ease-in forwards infinite;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.snow-svg .snowflake-path {
+  stroke: #BAE2E0;
+  stroke-width: 1;
+}
+
+.fog-svg .fog-line:nth-child(1) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
+}
+.fog-svg .fog-line:nth-child(2) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 0.4s;
+          animation-delay: 0.4s;
+}
+.fog-svg .fog-line:nth-child(3) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 0.6s;
+          animation-delay: 0.6s;
+}
+.fog-svg .fog-line:nth-child(4) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 0.8s;
+          animation-delay: 0.8s;
+}
+.fog-svg .fog-line:nth-child(5) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 1s;
+          animation-delay: 1s;
+}
+.fog-svg .fog-line:nth-child(6) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 1.2s;
+          animation-delay: 1.2s;
+}
+.fog-svg .fog-line:nth-child(7) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 1.4s;
+          animation-delay: 1.4s;
+}
+.fog-svg .fog-line:nth-child(8) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 1.6s;
+          animation-delay: 1.6s;
+}
+.fog-svg .fog-line:nth-child(9) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 1.8s;
+          animation-delay: 1.8s;
+}
+.fog-svg .fog-line:nth-child(10) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 2s;
+          animation-delay: 2s;
+}
+.fog-svg .fog-line:nth-child(11) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 2.2s;
+          animation-delay: 2.2s;
+}
+.fog-svg .fog-line:nth-child(12) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 2.4s;
+          animation-delay: 2.4s;
+}
+.fog-svg .fog-line:nth-child(13) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 2.6s;
+          animation-delay: 2.6s;
+}
+.fog-svg .fog-line:nth-child(14) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 2.8s;
+          animation-delay: 2.8s;
+}
+.fog-svg .fog-line:nth-child(15) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 3s;
+          animation-delay: 3s;
+}
+.fog-svg .fog-line:nth-child(16) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 3.2s;
+          animation-delay: 3.2s;
+}
+.fog-svg .fog-line:nth-child(17) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 3.4s;
+          animation-delay: 3.4s;
+}
+.fog-svg .fog-line:nth-child(18) {
+  stroke: #BAE2E0;
+  -webkit-animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+          animation: pan 10s ease-in-out forwards infinite, fadeIn 4s alternate-reverse infinite;
+  -webkit-animation-delay: 3.6s;
+          animation-delay: 3.6s;
+}
+
+@-webkit-keyframes colorChange {
+  0%,
+  90% {
+    fill: #646478;
+  }
+  60%,
+  100% {
+    fill: rgba(200, 200, 200, 0.8);
+  }
+}
+
+@keyframes colorChange {
+  0%,
+  90% {
+    fill: #646478;
+  }
+  60%,
+  100% {
+    fill: rgba(200, 200, 200, 0.8);
+  }
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes flash {
+  0%,
+  90% {
+    opacity: 0;
+    -webkit-transform: translateX(-1px) translateY(-2px) rotate(0.01deg);
+            transform: translateX(-1px) translateY(-2px) rotate(0.01deg);
+  }
+  90% {
+    -webkit-transform: translateX(1px) translateY(-1px);
+            transform: translateX(1px) translateY(-1px);
+  }
+  60%,
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px) translateY(0px);
+            transform: translateX(0px) translateY(0px);
+  }
+}
+@keyframes flash {
+  0%,
+  90% {
+    opacity: 0;
+    -webkit-transform: translateX(-1px) translateY(-2px) rotate(0.01deg);
+            transform: translateX(-1px) translateY(-2px) rotate(0.01deg);
+  }
+  90% {
+    -webkit-transform: translateX(1px) translateY(-1px);
+            transform: translateX(1px) translateY(-1px);
+  }
+  60%,
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0px) translateY(0px);
+            transform: translateX(0px) translateY(0px);
+  }
+}
+@-webkit-keyframes expand {
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@keyframes expand {
+  to {
+    -webkit-transform: scale(1.1);
+            transform: scale(1.1);
+  }
+}
+@-webkit-keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@-webkit-keyframes bounce {
+  0%,
+  50%,
+  100% {
+    -webkit-transform: translateY(0px) translateX(0px) rotate(0.1deg);
+            transform: translateY(0px) translateX(0px) rotate(0.1deg);
+  }
+  30%,
+  80% {
+    -webkit-transform: translateY(3px) translateX(3px) rotate(0.1deg);
+            transform: translateY(3px) translateX(3px) rotate(0.1deg);
+  }
+}
+@keyframes bounce {
+  0%,
+  50%,
+  100% {
+    -webkit-transform: translateY(0px) translateX(0px) rotate(0.1deg);
+            transform: translateY(0px) translateX(0px) rotate(0.1deg);
+  }
+  30%,
+  80% {
+    -webkit-transform: translateY(3px) translateX(3px) rotate(0.1deg);
+            transform: translateY(3px) translateX(3px) rotate(0.1deg);
+  }
+}
+@-webkit-keyframes fall-clockwise {
+  0% {
+    -webkit-transform: translateY(-7px) rotate(0) scale(0.5);
+            transform: translateY(-7px) rotate(0) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: translateY(-4px) translateX(4px) rotate(-30deg) scale(0.7);
+            transform: translateY(-4px) translateX(4px) rotate(-30deg) scale(0.7);
+    opacity: 1;
+  }
+  45% {
+    -webkit-transform: translateY(5px) translateX(0px) rotate(30deg) scale(0.6);
+            transform: translateY(5px) translateX(0px) rotate(30deg) scale(0.6);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(10px) translateX(3px) scale(0.5);
+            transform: translateY(10px) translateX(3px) scale(0.5);
+  }
+}
+@keyframes fall-clockwise {
+  0% {
+    -webkit-transform: translateY(-7px) rotate(0) scale(0.5);
+            transform: translateY(-7px) rotate(0) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: translateY(-4px) translateX(4px) rotate(-30deg) scale(0.7);
+            transform: translateY(-4px) translateX(4px) rotate(-30deg) scale(0.7);
+    opacity: 1;
+  }
+  45% {
+    -webkit-transform: translateY(5px) translateX(0px) rotate(30deg) scale(0.6);
+            transform: translateY(5px) translateX(0px) rotate(30deg) scale(0.6);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(10px) translateX(3px) scale(0.5);
+            transform: translateY(10px) translateX(3px) scale(0.5);
+  }
+}
+@-webkit-keyframes fall-counterclockwise {
+  0% {
+    -webkit-transform: translateY(-9px) rotate(0) scale(0.6);
+            transform: translateY(-9px) rotate(0) scale(0.6);
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: translateY(-4px) translateX(-4px) rotate(30deg) scale(0.7);
+            transform: translateY(-4px) translateX(-4px) rotate(30deg) scale(0.7);
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateY(8px) translateX(4px) rotate(-30deg) scale(0.8);
+            transform: translateY(8px) translateX(4px) rotate(-30deg) scale(0.8);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(14px) translateX(-3px) scale(0.7);
+            transform: translateY(14px) translateX(-3px) scale(0.7);
+  }
+}
+@keyframes fall-counterclockwise {
+  0% {
+    -webkit-transform: translateY(-9px) rotate(0) scale(0.6);
+            transform: translateY(-9px) rotate(0) scale(0.6);
+    opacity: 0;
+  }
+  10% {
+    -webkit-transform: translateY(-4px) translateX(-4px) rotate(30deg) scale(0.7);
+            transform: translateY(-4px) translateX(-4px) rotate(30deg) scale(0.7);
+    opacity: 1;
+  }
+  40% {
+    -webkit-transform: translateY(8px) translateX(4px) rotate(-30deg) scale(0.8);
+            transform: translateY(8px) translateX(4px) rotate(-30deg) scale(0.8);
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translateY(14px) translateX(-3px) scale(0.7);
+            transform: translateY(14px) translateX(-3px) scale(0.7);
+  }
+}
+@-webkit-keyframes pan {
+  0%,
+  100% {
+    -webkit-transform: translateX(-2px) rotate(0.01deg);
+            transform: translateX(-2px) rotate(0.01deg);
+  }
+  50% {
+    -webkit-transform: translateX(2px) rotate(0.01deg);
+            transform: translateX(2px) rotate(0.01deg);
+  }
+}
+@keyframes pan {
+  0%,
+  100% {
+    -webkit-transform: translateX(-2px) rotate(0.01deg);
+            transform: translateX(-2px) rotate(0.01deg);
+  }
+  50% {
+    -webkit-transform: translateX(2px) rotate(0.01deg);
+            transform: translateX(2px) rotate(0.01deg);
+  }
+}

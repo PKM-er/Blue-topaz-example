@@ -18,20 +18,52 @@ await updateToday();
 
 
 //获取每日一言信息
+//语句接口 (https://developer.hitokoto.cn/sentence/#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)
 async function getinfo() 
 {
       console.log("beigin fetch hitokoto...");
 let url='https://v1.hitokoto.cn/?encode=json&c=d&c=i';
    let finalURL = new URL(url);
-let response = await request({method: 'GET', url: finalURL.toString()});![[]]
+let response = await request({method: 'GET', url: finalURL.toString()});
 let data = JSON.parse(response);
-	
+	if(data.length===0)
+	{
+		return null;
+	}else{
 	let who =data['from_who'];
 		 if(!who) who =' ';
-  const new_content = `${data['hitokoto']} <br> <em style="display: inline-block;text-indent: 4em;"> &mdash; 来自 ${who}  《${data['from']}》</em>`; 
+  const new_content = `${data['hitokoto']} <br> <em style="line-height: 2.8;float: right;"> &mdash; 来自 ${who}  《${data['from']}》</em>`; 
   return new_content;
+	}
 }
-
+//每日一句接口2
+async function getinfo2() 
+{
+      console.log("beigin fetch getinfo2...");
+	let url='https://api.xygeng.cn/one';
+	  let finalURL = new URL(url);
+	  let result='';
+	  let str='';
+    result=await  fetch(finalURL, {
+        method: 'GET',mode:'cors', cache: 'no-cache',
+			 headers: {
+            'Content-Type': 'application/json',
+        }
+    }).then(async (res) => await res.json());
+	
+	if(result.length===0)
+	{
+		return null;
+	}else
+	{
+		
+	 const origin =result['data']['origin'];
+	 let content =result['data']['content'];
+	 //content = content.replace(/[\r\n]/g,"");
+	  str=` ${content}<br>  <em style="line-height: 3;float: right;">&mdash; 来自 ${origin} </em>`;
+	 return str;
+	}
+}
 //在Ob中获取网易音乐热歌榜
 //首发于Blue topaz Examples 
 //转发请注明出处谢谢！
@@ -83,8 +115,19 @@ async function get_BlueTopaz() {
 async function updateToday() {
 
         if (!history.hasOwnProperty(moment().format("YYYY-MM-DD"))) {
+			const quote1 = await getinfo();
+			const quote2 = await getinfo2();
+			let quote='';
+		if(quote1!=null && quote2!=null)
+			{
+				let quotearr = [quote1,quote2];
+				quote = quotearr[Math.floor(Math.random()*quotearr.length)];
+			}else
+			{
+				quote=quote1?quote1:quote2;
+			}
 		const newDay = {
-            quotes: await getinfo(),
+            quotes: quote,
             posters: await get_ciba(),
             music: await getmusicinfo(),
             themes: await get_BlueTopaz(),

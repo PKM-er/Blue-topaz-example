@@ -1,0 +1,10 @@
+{
+	"id": "folder-note-plugin",
+	"name": "Folder Note",
+	"version": "0.7.3",
+	"minAppVersion": "0.9.12",
+	"description": "Click a folder node to show a note describing the folder.",
+	"author": "xpgo",
+	"authorUrl": "https://github.com/xpgo/obsidian-folder-note",
+	"isDesktopOnly": false
+}

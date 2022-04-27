@@ -6,12 +6,13 @@ douban_url: {{VALUE:douban_url}}
 author: {{VALUE:author}}
 isbn: {{VALUE:isbn}}
 rating: {{VALUE:rating}}
-banner: "99-Attachment/banner/true.jpg"
+banner: "![[true.jpg]]"
 banner_icon: 📖
 publish: {{VALUE:publish}}
 publishyear: {{VALUE:publishyear}}
-progress:
+grade:
 status: 
+readtime:
 pagecount: {{VALUE:pagecount}}
 pageprogress: 
 ---

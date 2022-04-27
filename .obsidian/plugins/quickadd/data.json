@@ -144,6 +144,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "45f1eba0-3659-4669-9714-452964a2c8e7"
+    },
+    {
+      "id": "ec8144ef-93b6-4b8e-8bf7-49fe8abe140d",
+      "name": "悬浮大纲",
+      "type": "Macro",
+      "command": true,
+      "macroId": "6ebf2888-7abc-4cca-a4b6-9ab633b211ca"
     }
   ],
   "macros": [
@@ -472,6 +479,31 @@
           "type": "Obsidian",
           "id": "1626d032-c1df-42c8-b8c1-382fee73891c",
           "commandId": "obsidian-memos:open-memos"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "悬浮大纲",
+      "id": "6ebf2888-7abc-4cca-a4b6-9ab633b211ca",
+      "commands": [
+        {
+          "name": "大纲: 打开当前文件的大纲",
+          "type": "Obsidian",
+          "id": "d4223a90-a41c-4310-9711-b6941182deb9",
+          "commandId": "outline:open-for-current"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "80a30e7c-0603-4ad5-b6cb-1562967ea1aa",
+          "time": 200
+        },
+        {
+          "name": "Hover Editor: Convert active pane to Hover Editor",
+          "type": "Obsidian",
+          "id": "d9f552b7-da28-4a19-a449-d95f59ab90c4",
+          "commandId": "obsidian-hover-editor:convert-active-pane-to-popover"
         }
       ],
       "runOnStartup": false

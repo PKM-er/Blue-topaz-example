@@ -67,7 +67,29 @@ async function getmovieByurl(url) {
 			
         }
 	let movieinfo = {};
-	movieinfo.fileName =moviename;
+	let reglead= /主演:([\s\S]*)(?=类型:)/g;
+	let regfilmlength = /片长:.(\d*)/g;
+	let regIMDb = /IMDb:.\w(.*)/g;
+	let regalias = /又名:([\s\S]*)(?=IMDb:)/g;
+	let reglanguage =/语言:([\s\S]*)(?=上映日期:)/g;
+	let regcountry = /制片国家\/地区:([\s\S]*)(?=语言:)/g;
+	let str =$("#info")?.innerText;
+	let lead= reglead.exec(str)
+	lead=(lead==null)?'未知':lead[1].trim().replace(/\n|\r/g,"").replace(/\ +/g,"");
+	movieinfo.lead = "'"+ lead +"'";  
+	let filmlength=regfilmlength.exec(str);
+	movieinfo.filmlength=(filmlength==null)?'0':filmlength[1].trim();
+	let IMDb=regIMDb.exec(str);
+	movieinfo.IMDb=(IMDb==null)?'未知':IMDb[1].trim();
+	let alias=regalias.exec(str);
+	movieinfo.alias=(alias==null)?'未知':alias[1].trim();
+	movieinfo.alias = '"'+ movieinfo.alias +'"';  
+	let language=reglanguage.exec(str);
+	movieinfo.language=(language==null)?'未知':language[1].trim();
+	let country=regcountry.exec(str);
+	movieinfo.country=(country==null)?'未知':country[1].trim();
+	
+	movieinfo.fileName =moviename.replace(/[\/\\\:\*\?\"\<\>\|│]/gm, "_");
 	movieinfo.Poster = $("meta[property='og:image']")?.content;
 	movieinfo.type = 'movie';
 	movieinfo.description = $("meta[property='og:description']")?.content;
@@ -79,7 +101,11 @@ async function getmovieByurl(url) {
 	movieinfo.runtime =  $("span[property='v:runtime']")?.textContent??'-';
 	movieinfo.year = $("span[property='v:initialReleaseDate']")?.textContent??'-';
 	movieinfo.banner= movieinfo.Poster.replace('s_ratio_poster', "1");
-	
+	 for(var i in movieinfo){
+        if(movieinfo[i]=="" || movieinfo[i]== null){
+            movieinfo[i]="未知";
+        }
+    }
   return movieinfo;
 }
 

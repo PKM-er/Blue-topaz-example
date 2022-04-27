@@ -195,3 +195,16 @@
 .yesNoPromptParagraph {
     text-align: center;
 }
+
+.qaFileSuggestionItem {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.qaFileSuggestionItem .suggestion-main-text {
+    font-weight: bold;
+}
+.qaFileSuggestionItem .suggestion-sub-text {
+    font-style: italic;
+}

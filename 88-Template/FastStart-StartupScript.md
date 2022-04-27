@@ -8,7 +8,7 @@ fastStart = async (filename, delayInSecond) => {
         }, delayInSecond * 1000)
     }
 }
-//启动示例库最低插件运行配置启动下面，然后把后面l两项的注释掉
+//启动示例库最低插件运行配置启动下面，然后把后面两项的注释掉
 //await fastStart("FastStart-Plugins-simple", 2)
 //正常演示需要启动的插件
 await fastStart("FastStart-Plugins-ShortDelay", 2)

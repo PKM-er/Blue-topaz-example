@@ -1,14 +1,12 @@
 {
   "renderNullAs": "\\-",
-  "taskLinkLocation": "end",
-  "taskLinkText": "🔗",
-  "taskCompletionTracking": false,
+  "taskCompletionTracking": true,
   "taskCompletionText": "completion",
   "warnOnEmptyResult": true,
   "refreshEnabled": true,
   "refreshInterval": 250,
   "defaultDateFormat": "yyyy年MM月dd日, ",
-  "defaultDateTimeFormat": "h:mm a - MMMM dd, yyyy",
+  "defaultDateTimeFormat": "yyyy-MM-dd hh:mm",
   "maxRecursiveRenderDepth": 6,
   "tableIdColumnName": "文件名",
   "tableGroupColumnName": "Group",
@@ -17,5 +15,7 @@
   "enableDataviewJs": true,
   "enableInlineDataviewJs": true,
   "prettyRenderInlineFields": true,
-  "schemaVersion": 1
+  "schemaVersion": 1,
+  "taskLinkLocation": "end",
+  "taskLinkText": "🔗"
 }

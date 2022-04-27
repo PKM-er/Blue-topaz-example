@@ -113,6 +113,7 @@
 
 
 /* sfc-style:D:\obsidian plugin dev\obsidian-test-vault\.obsidian\plugins\obsidian-floating-toc-plugin\src\components\FloatingTableOfContents.vue?type=style&index=1 */
-.workspace-leaf-content .markdown-source-view:not(.cards) .cm-editor {
-  padding-left: 2rem;
+
+.workspace-leaf-content .markdown-source-view .cm-editor .cm-scroller {
+  padding-left: 3rem;
 }

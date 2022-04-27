@@ -1,0 +1,55 @@
+.Enhanced-editing-menu .menu-item input[type="color"] {
+    width:15px;
+    height:20px;
+    border: 0;
+    padding: 0; 
+}
+
+.Enhanced-editing-menu .menu-item input[type="color"]::-webkit-color-swatch { 
+    height:15px; 
+    position:relative; 
+    border: 0;
+}
+
+.Enhanced-editing-menu .menu-item.inputitem {
+    line-height:0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+
+.Enhanced-editing-menu .menu-item.fontcoloritem {
+    color: #7d7d7d75;
+    border-top: 1px solid;
+    line-height:0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+}
+.Enhanced-editing-menu .menu-item.buttonitem {
+    line-height:0;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    align-items: center;
+    justify-items: center;
+    margin-left: -2px;
+}
+
+.Enhanced-editing-menu button.highlight_btn {
+    margin: 0;
+    margin-top: 2px;
+    padding: 4px 4px;
+    background-color:transparent;
+}
+
+.Enhanced-editing-menu button>svg{
+    width: 17px;
+    height: 17px;
+}
+
+body .recent-files-donation{
+    text-align:left;	
+}
+  

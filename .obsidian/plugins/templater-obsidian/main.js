@@ -2785,6 +2785,59 @@ var PromptModal = class extends import_obsidian9.Modal {
     });
   }
 };
+var PromptModal2 = class extends import_obsidian9.Modal {
+  constructor(app, prompt_text, default_value) {
+    super(app);
+    this.prompt_text = prompt_text;
+    this.default_value = default_value;
+    this.submitted = false;
+	this.values ='';
+  }
+  onOpen() {
+    this.titleEl.setText(this.prompt_text);
+    this.createForm();
+  }
+  onClose() {
+	 this.resolve(this.values);
+    this.contentEl.empty();
+    if (!this.submitted) {
+      this.reject(new TemplaterError("Cancelled prompt"));
+    }
+  }
+  createForm() {
+    var _a;
+    const div = this.contentEl.createDiv();
+    div.addClass("templater-prompt-div");
+    const form = div.createEl("form");
+    form.addClass("templater-prompt-form");
+    form.type = "submit";
+    form.onsubmit = (e) => {
+      this.submitted = true;
+      e.preventDefault();
+      this.resolve(this.values);
+      this.close();
+    };
+	div.addEventListener("change",  async (evt) =>{
+		evt.preventDefault();
+         this.values=this.promptEl.value;
+        })
+	this.values = this.default_value;
+    this.promptEl = form.createEl("input");
+    this.promptEl.type = "date";
+    this.promptEl.placeholder = "Choose date here...";
+    this.promptEl.value = (_a = this.default_value) != null ? _a : "";
+    this.promptEl.addClass("templater-prompt-input");
+    this.promptEl.select();
+	
+  }
+  openAndGetValue(resolve2, reject) {
+    return __async(this, null, function* () {
+      this.resolve = resolve2;
+      this.reject = reject;
+      this.open();
+    });
+  }
+};
 
 // src/core/functions/internal_functions/system/SuggesterModal.ts
 var import_obsidian10 = __toModule(require("obsidian"));
@@ -2838,6 +2891,7 @@ var InternalModuleSystem = class extends InternalModule {
     return __async(this, null, function* () {
       this.static_functions.set("clipboard", this.generate_clipboard());
       this.static_functions.set("prompt", this.generate_prompt());
+	  this.static_functions.set("prompt_date", this.generate_prompt_date());
       this.static_functions.set("suggester", this.generate_suggester());
     });
   }
@@ -2856,6 +2910,20 @@ var InternalModuleSystem = class extends InternalModule {
   generate_prompt() {
     return (prompt_text, default_value, throw_on_cancel = false) => __async(this, null, function* () {
       const prompt = new PromptModal(this.app, prompt_text, default_value);
+      const promise = new Promise((resolve2, reject) => prompt.openAndGetValue(resolve2, reject));
+      try {
+        return yield promise;
+      } catch (error) {
+        if (throw_on_cancel) {
+          throw error;
+        }
+        return null;
+      }
+    });
+  }
+    generate_prompt_date() {
+    return (prompt_text, default_value, throw_on_cancel = false) => __async(this, null, function* () {
+      const prompt = new PromptModal2(this.app, prompt_text, default_value);
       const promise = new Promise((resolve2, reject) => prompt.openAndGetValue(resolve2, reject));
       try {
         return yield promise;

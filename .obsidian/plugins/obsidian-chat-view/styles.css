@@ -1,0 +1,165 @@
+:root {
+    --opacity: 0.6;
+    --line-height: 1.8;
+}
+
+h2.chat-view-header,
+h3.chat-view-header,
+h4.chat-view-header,
+h5.chat-view-header,
+h6.chat-view-header {
+    margin: 0;
+    margin-bottom: 8px;
+}
+
+.chat-view-message {
+    margin: 0;
+    margin-bottom: 2px;
+    line-height: var(--line-height);
+}
+
+.chat-view-comment {
+    width: fit-content;
+    max-width: 90%;
+    margin: 24px auto;
+    line-height: var(--line-height);
+    text-align: center;
+    opacity: var(--opacity);
+}
+
+.chat-view-subtext {
+    opacity: var(--opacity);
+}
+
+div.chat-view-bubble {
+    width: fit-content;
+    min-width: 30%;
+    padding: 12px;
+    background-color: rgba(0, 0, 0, 0.075);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+}
+
+.chat-view-mobile-width {
+    max-width: 85%;
+}
+
+.chat-view-desktop-width {
+    max-width: 75%;
+}
+
+.chat-view-max-width-50 {
+    max-width: 50%;
+}
+
+.chat-view-max-width-55 {
+    max-width: 55%;
+}
+
+.chat-view-max-width-60 {
+    max-width: 60%;
+}
+
+.chat-view-max-width-65 {
+    max-width: 65%;
+}
+
+.chat-view-max-width-70 {
+    max-width: 70%;
+}
+
+.chat-view-max-width-75 {
+    max-width: 75%;
+}
+
+.chat-view-max-width-80 {
+    max-width: 80%;
+}
+
+.chat-view-max-width-85 {
+    max-width: 85%;
+}
+
+.chat-view-max-width-90 {
+    max-width: 90%;
+}
+
+div.chat-view-default-vertical-margin {
+    margin-top: 18px;
+}
+
+div.chat-view-small-vertical-margin {
+    margin-top: 12px;
+}
+
+div.chat-view-align-left {
+    border-top-left-radius: 0;
+    margin-left: 0;
+    margin-right: auto;
+}
+
+div.chat-view-align-right {
+    border-top-right-radius: 0;
+    margin-left: auto;
+    margin-right: 0;
+}
+
+div.chat-view-align-center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+div.delimiter {
+    width: fit-content;
+    margin: 24px auto;
+}
+
+div.delimiter div.dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin: 0px 4px;
+    border-radius: 60%;
+    background-color: currentColor;
+    opacity: var(--opacity);
+}
+
+div.chat-view-blue .chat-view-header {
+    color: #08E;
+}
+
+div.chat-view-green .chat-view-header {
+    color: #2B5;
+}
+
+div.chat-view-yellow .chat-view-header {
+    color: #ED0;
+}
+
+div.chat-view-orange .chat-view-header {
+    color: #F80;
+}
+
+div.chat-view-red .chat-view-header {
+    color: #F33;
+}
+
+div.chat-view-purple .chat-view-header {
+    color: #B2C;
+}
+
+div.chat-view-grey .chat-view-header {
+    color: #999;
+}
+
+div.chat-view-brown .chat-view-header {
+    color: #A71;
+}
+
+div.chat-view-indigo .chat-view-header {
+    color: #75F;
+}
+
+div.chat-view-teal .chat-view-header {
+    color: #099;
+}

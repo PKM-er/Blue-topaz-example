@@ -1,0 +1,40 @@
+/* This snippet was generated  on Blue Topaz example */
+/* https://github.com/cumany/Blue-topaz-examples */
+
+.timeline-container
+{
+  gap: 0 !important;
+}
+ .timeline-container .leaf-periodic-button {
+  margin:.25em 10px 10px 0;
+  padding:12px !important;
+  padding-top:22px !important;
+  color:#404b53!important;
+  min-width:80px;
+  font-size: 0.8em!important;
+  line-height: 20px;
+  height: 70px;
+  text-align: center;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f5eaeade), to(#efefeff6))!important;
+  border-radius:0 0 6px 6px!important; 
+  border: 0!important;
+      position:relative;
+  box-shadow:inset 0 1.0625em #cf5658ca!important;
+}
+
+.theme-dark .timeline-container .leaf-periodic-button {
+
+  color:var(--text-accent)!important;
+    background: var(--background-secondary)!important;
+  }
+
+  .leaf-periodic-button:before, .leaf-periodic-button:after{
+    content:'';
+    position:absolute;
+    top:-7px;
+    width:4px;
+    height:14px;
+    background:-webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(rgb(177, 172, 172)));
+    } 
+     .leaf-periodic-button:before{left:13px;}
+    .leaf-periodic-button:after{right:13px;}
