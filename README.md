@@ -32,10 +32,6 @@ https://space.bilibili.com/1970226/channel/series
 [Changlog.md (github.com)](https://github.com/cumany/Blue-topaz-examples/blob/main/Changlog.md)
 
 ## 效果图
-主页视图
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201282120536.png)
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201282120159.png)
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201282121672.png)
 
 总览图
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202112312335857.jpg)
