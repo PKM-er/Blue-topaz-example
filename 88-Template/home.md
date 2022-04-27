@@ -1,7 +1,6 @@
 ---
 banner: "https://api.xygeng.cn/Bing/"
 cssclass: fullwidth,noyaml,noscroll,myhome
-banner: "https://api.xygeng.cn/Bing/"
 obsidianUIMode: preview
 
 ---
@@ -26,7 +25,7 @@ obsidianUIMode: preview
 ```
 
 %%问候和天气数据 
-传统版本
+传统版本 可以自动根据ip获取天气
 ```ad-flex
 
 <div style="float:left"><%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %>
