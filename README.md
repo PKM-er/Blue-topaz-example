@@ -34,11 +34,15 @@ https://space.bilibili.com/1970226/channel/series
 ## 效果图
 
 总览图
+![image](https://user-images.githubusercontent.com/42957010/165482190-91dc0585-9e75-406c-a7a3-1121c1fc88f7.png)
+
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202112312335857.jpg)
 
 笔记模板
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202201262104928.png)
 卡片视图
+![image](https://user-images.githubusercontent.com/42957010/165482534-f0ef2dd2-cf3a-4347-b141-e8bbae63566d.png)
+
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202201282110608.png)
 读书笔记
 ![](https://gitee.com/cuman/imgbed/raw/master/images/202201282111244.png)
