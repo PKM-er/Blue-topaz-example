@@ -10,7 +10,7 @@ let addDesc = input.addDesc;
 let onlyToday = input.onlyToday;
 let headerLevel = input.headerLevel;
 let anotherCity = input.anotherCity;
-
+let locationId='';
 // 当onlyToday为true时执行
 const now = window.moment();
 if(onlyToday){
@@ -24,8 +24,19 @@ if(onlyToday){
 
 // 创建视图的主函数
 async function weatherView(){
-	let weather = await getWeather(city,days);
-	let air = await getair(city);
+	if(city)
+	{
+		let location = await searchCity(city);
+		locationId =  location.id;
+	}else
+	{
+		let location = await getpos();
+		locationId =  location.id;
+		city = location.name
+	}
+	
+	let weather = await getWeather(locationId,days);
+	let air = await getair(locationId);
 	console.log('weather:'+weather);
 	//添加Header
 	if(headerLevel!=0){
@@ -33,7 +44,7 @@ async function weatherView(){
 	}
 	if(icon)
 	//天气动画
-	weathericon(weather[0].iconDay)
+	weathericon(weather[0].iconDay,Math.max(weather[0].windSpeedDay,weather[0].windSpeedNight))
 	//生成表格视图
 	if(days!=1){
 		dv.paragraph(`${city} 最近 ${days} 天的天气如下，参考天气制定你的计划吧！`);
@@ -47,47 +58,76 @@ async function weatherView(){
 	if (addDesc){
 		let today = weather[0];
 		today.date = now.format("gggg年MM月DD日");
-		let desc = `今天是${today.date}，${today.textDay}，${today.tempMin}~${today.tempMax}℃  ==${air.category}== 云朵充盈了${today.cloud}%的天空\n顺便，如果有机会看见月亮的话，那么它应该是这样的${today.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
-		dv.el("span",desc);
+		let desc = `今天是**${today.date}**，${city} ${today.textDay}， ${today.tempMin}~${today.tempMax}℃  ==${air.category}== 云朵充盈了${today.cloud}%的天空\n顺便，如果有机会看见月亮的话，那么它应该是这样的${today.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
+		dv.paragraph(desc);
+		//dv.el("span",desc);
 	}
 	//添加另一个城市
 	if(anotherCity!=""){
-		let anotherWeather = await getWeather(anotherCity,1);
-		let cares = `(对了，你关心的那个城市今天的天气是${anotherWeather[0].textDay.replace(/[\u4e00-\u9fa5]/g,"")}，${anotherWeather[0].tempMin}~${anotherWeather[0].tempMax}℃)`;
+		let location = await searchCity(anotherCity);
+		let  anotherlocationId =  location.id;
+		let anotherWeather = await getWeather(anotherlocationId,1);
+		let cares = `(对了，还有你关心的${anotherCity},今天的天气是${anotherWeather[0].textDay.replace(/[\u4e00-\u9fa5]/g,"")}，${anotherWeather[0].tempMin}~${anotherWeather[0].tempMax}℃)`;
 		dv.el("blockquote",cares);
 	}
 }
 //生成动画
-function weathericon(iconDay){
+function weathericon(iconDay,windyspeed){
 	let weathernum=Number(iconDay);
-	let sun_arr=[100,102,103,150,152,153];
-		let rain_arr=[300,301,302,303,304,305,306,307,308,309,310,311,312,313,314,315,316,317,318,350,351,399];
-		let windy_arr=[507,508];
+	console.log("windyspeed:"+windyspeed);
+	let sunny_wind_arr=[];
+	let windy_arr =[];
+	if(windyspeed>39)//6级大风
+	{
+		sunny_wind_arr=[100,102,150,152];
+		windy_arr=[103,104,151,153,154,507,508];
+	}
+		let sun_arr=[100];
+		let cloudy_sun_arr=[103];
+		let cloudy_lightning_arr=[302,304,350,351];
+		let cloud_arr=[101,102,104,154];
+		let rain_arr=[300,305,306,307,308,309,310,311,312,313,314,315,316,317,318,399];
+		let cloudy_rain_lightning_arr=[301,303];
 		let fog_arr=[500,501,502,503,504,509,510,511,512,513,514,515];
-		let cloud_arr=[101,104,151,152,154];
 		let snow_arr=[400,401,402,403,404,405,406,407,408,409,410,456,457,499];
+		let moon_arr=[150,];
+		let cloudy_moon_arr=[151,152,153];
 		//weather[0].windScale 风力
 		
 		console.log(cloud_arr.includes(weathernum)) 
 		if (sun_arr.includes(weathernum))
 			dv.span(sun)
-		if (rain_arr.includes(weathernum))
-			dv.span(rain)	
-		if (windy_arr.includes(weathernum))
-			dv.span(windy)
-		if (fog_arr.includes(weathernum))
-			dv.span(fog)
+		if (cloudy_sun_arr.includes(weathernum))
+			dv.span(cloudy_sun)
 		if (cloud_arr.includes(weathernum))
 			dv.span(cloud)
+		if (rain_arr.includes(weathernum))
+			dv.span(rain)
+		if (cloudy_rain_lightning_arr.includes(weathernum))
+			dv.span(cloudy_rain_lightning)
+		if (windy_arr.includes(weathernum))
+			dv.span(windy)	
+		if (fog_arr.includes(weathernum))
+			dv.span(fog)
 		if (snow_arr.includes(weathernum))
 			dv.span(snow)
+		if (moon_arr.includes(weathernum))
+			dv.span(moon)
+		if (cloudy_moon_arr.includes(weathernum))
+			dv.span(cloudy_moon)
+		if (sunny_wind_arr.includes(weathernum))
+			dv.span(sunny_wind)
 		
 }
+
+
 // 获取天气信息
-async function getWeather(city,days){
-	let locationId = await searchCity(city);
+async function getWeather(locationId,days){
+	
+
+	
 	console.log('locationId:'+locationId);
-	let weatherUrl = `https://devapi.qweather.com/v7/weather/3d?location=${locationId}&key=${key}`;
+	let weatherUrl = `https://devapi.qweather.com/v7/weather/7d?location=${locationId}&key=${key}`;
 	let wUrl = new URL(weatherUrl);
  	const res = await request({
 		url: wUrl.href,
@@ -156,9 +196,8 @@ async function getWeather(city,days){
 	return weather;
 }
 // 获取空气质量信息
-async function getair(city){
-	let locationId = await searchCity(city);
-	console.log('locationId:'+locationId);
+async function getair(locationId){
+
 	let weatherUrl = `https://devapi.qweather.com/v7/air/now?location=${locationId}&key=${key}`;
 	let wUrl = new URL(weatherUrl);
  	const res = await request({
@@ -174,6 +213,30 @@ async function getair(city){
 	return air;
 	
 }
+
+//查询位置
+async function urlGet(url) {
+console.log(url);
+  let finalURL = new URL(url);
+  const res = await request({
+    url: finalURL.href,
+    method: "GET",
+    cache: "no-cache",
+    headers: {
+      'Content-Type': 'application/json;charset=gb2312',
+	  'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.100.4758.11 Safari/537.36'
+    },
+  });
+  
+  return res;
+
+}
+async function getpos() {
+let result = await urlGet('http://whois.pconline.com.cn/ipJson.jsp?json=true')
+ result = JSON.parse(result);
+	let city=result.cityCode;
+return await searchCity(city);
+}
 //查询城市ID
 async function searchCity(city){
 	let searchUrl = `https://geoapi.qweather.com/v2/city/lookup?location=${city}&key=${key}&number=1`;
@@ -184,89 +247,211 @@ async function searchCity(city){
  	});
 	let data = JSON.parse(res);
 	if(data.code=="200"){
-	return data.location[0].id;
+	return data.location[0];
  }
  	return -1;
 }
-
+let sun = `<div class="svg-contain"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 44.9 44.9" style="enable-background:new 0 0 44.9 44.9;" xml:space="preserve" height="40px" width="40px">
+            <g id="Sun">
+    	        <circle id="XMLID_61_" class="yellow" cx="22.4" cy="22.6" r="11"/>
+              <g>
+              	<path id="XMLID_60_" class="yellow" d="M22.6,8.1h-0.3c-0.3,0-0.6-0.3-0.6-0.6v-7c0-0.3,0.3-0.6,0.6-0.6l0.3,0c0.3,0,0.6,0.3,0.6,0.6 v7C23.2,7.8,22.9,8.1,22.6,8.1z"/>
+              	<path id="XMLID_59_" class="yellow" d="M22.6,36.8h-0.3c-0.3,0-0.6,0.3-0.6,0.6v7c0,0.3,0.3,0.6,0.6,0.6h0.3c0.3,0,0.6-0.3,0.6-0.6v-7 C23.2,37,22.9,36.8,22.6,36.8z"/>
+              	<path id="XMLID_58_" class="yellow" d="M8.1,22.3v0.3c0,0.3-0.3,0.6-0.6,0.6h-7c-0.3,0-0.6-0.3-0.6-0.6l0-0.3c0-0.3,0.3-0.6,0.6-0.6h7 C7.8,21.7,8.1,21.9,8.1,22.3z"/>
+              	<path id="XMLID_57_" class="yellow" d="M36.8,22.3v0.3c0,0.3,0.3,0.6,0.6,0.6h7c0.3,0,0.6-0.3,0.6-0.6v-0.3c0-0.3-0.3-0.6-0.6-0.6h-7 C37,21.7,36.8,21.9,36.8,22.3z"/>
+              	<path id="XMLID_56_" class="yellow" d="M11.4,31.6l0.2,0.3c0.2,0.2,0.2,0.6-0.1,0.8l-5.3,4.5c-0.2,0.2-0.6,0.2-0.8-0.1l-0.2-0.3 c-0.2-0.2-0.2-0.6,0.1-0.8l5.3-4.5C10.9,31.4,11.2,31.4,11.4,31.6z"/>
+              	<path id="XMLID_55_" class="yellow" d="M33.2,13l0.2,0.3c0.2,0.2,0.6,0.3,0.8,0.1l5.3-4.5c0.2-0.2,0.3-0.6,0.1-0.8l-0.2-0.3 c-0.2-0.2-0.6-0.3-0.8-0.1l-5.3,4.5C33,12.4,33,12.7,33.2,13z"/>
+              	<path id="XMLID_54_" class="yellow" d="M11.4,13.2l0.2-0.3c0.2-0.2,0.2-0.6-0.1-0.8L6.3,7.6C6.1,7.4,5.7,7.5,5.5,7.7L5.3,7.9 C5.1,8.2,5.1,8.5,5.4,8.7l5.3,4.5C10.9,13.5,11.2,13.5,11.4,13.2z"/>
+              	<path id="XMLID_53_" class="yellow" d="M33.2,31.9l0.2-0.3c0.2-0.2,0.6-0.3,0.8-0.1l5.3,4.5c0.2,0.2,0.3,0.6,0.1,0.8l-0.2,0.3 c-0.2,0.2-0.6,0.3-0.8,0.1l-5.3-4.5C33,32.5,33,32.1,33.2,31.9z"/>
+                <animate attributeType="CSS"
+                  attributeName="opacity"
+                  attributeType="XML"
+                  dur="0.5s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  values="1;0.6;1"
+                  calcMode="linear"/>
+              </g>
+            </g>
+          </svg></div>`;
+let moon =`<div class="svg-contain"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 30.8 42.5" style="enable-background:new 0 0 30.8 42.5;" xml:space="preserve" height="40px" width="40px">
+            <path id="Moon" class="yellow" d="M15.3,21.4C15,12.1,21.1,4.2,29.7,1.7c-2.8-1.2-5.8-1.8-9.1-1.7C8.9,0.4-0.3,10.1,0,21.9 c0.3,11.7,10.1,20.9,21.9,20.6c3.2-0.1,6.3-0.9,8.9-2.3C22.2,38.3,15.6,30.7,15.3,21.4z"/>
+          </svg></div>`;
+		  
 let rain = `
   <div class="svg-contain">
-    <svg class="hurricane-svg" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-437 254.4 85 52.6" style="enable-background:new -437 254.4 85 52.6;" xml:space="preserve">
-<path class="cloud" d="M-361.9,280.5c1.4,0,2.6,0.7,3.4,1.7h1.1c0.4-8.2-5.9-10.8-5.9-10.8c-2.2-1.5-5.4-1-5.4-1
-    c-0.1-4.1-2.9-7.4-2.9-7.4c-4.7-5.5-10.3-4.9-10.3-4.9c-7.4-0.2-11,5.9-11,5.9c-5.6-4-14.3-2.6-18.2,3.1c-0.7,1.1-1.3,2.2-1.8,3.4
-    c0,0.1-0.3,1.2-0.4,1.2c3.5-0.6,6.6,1.6,6.6,1.6s1.1-1.1,1.2-1.3c2.4-2.4,5.6-3.6,9-3.2c4.4,0.5,8.5,3,9.9,7.4
-    c0.1,0.2,0.8,2.4,0.6,2.4c5.3,0.1,7.3,3.6,7.3,3.6h13.4C-364.5,281.2-363.3,280.5-361.9,280.5z"/>
-<path class="cloud" d="M-386,279.6c-0.2,0-0.4,0-0.6,0.1c-0.1-0.8-0.2-1.7-0.4-2.4c-0.3-1-0.8-2-1.4-2.9c-2-2.9-5.3-4.8-9-4.8
-    c-2.3,0-4.4,0.7-6.1,1.9c-0.6,0.4-1.1,0.8-1.6,1.3c-0.2,0.2-0.5,0.5-0.7,0.8c-0.2,0.3-0.4,0.5-0.6,0.8c-1.8-1.2-3.9-1.9-6.2-1.9
-    c-5.5,0-10,4-10.8,9.3c-3.5,1-6.1,3.9-6.6,7.6h26.3h12.7h2.3l4.7-6.2c0.6-0.8,1.7-0.9,2.5-0.3s0.9,1.7,0.3,2.5l-3.1,4h0.5h5.6h0.7
-    c0.1,0,0.2-0.4,0.2-1.1C-377.4,283.5-381.3,279.6-386,279.6z"/>
-<polyline class="lightening" points="-382.8,284.2 -387.9,290.9 -380.6,291.2 -387.9,302 "/>
-<path class="line" d="M-426.9,294.4l-5.1,7.3"/>
-<path class="line" d="M-420.8,294.4l-5.1,7.3"/>
-<path class="line" d="M-415.4,294.4l-5.1,7.3"/>
-<path class="line" d="M-409.9,294.4l-5.1,7.3"/>
-<path class="line" d="M-404.5,294.4l-5.1,7.3"/>
-<path class="line" d="M-399.1,294.4l-5.1,7.3"/>
-<path class="line" d="M-393.7,294.4l-5.1,7.3"/>
-<path class="line" d="M-388.2,294.4l-5.1,7.3"/>
-<g>
-    <path class="little-path path-1" d="M-374.8,287.2h10.6"/>
-    <path class="little-path path-2" d="M-373.8,289.3h10.9"/>
-    <path class="big-path" d="M-376,288.3c0,0,14,0,14,0c1.7,0,3.1-1.4,3.3-3.1c0-0.5,0-1-0.3-1.4c-0.9-2.3-4.1-2.7-5.6-0.7
-        c-0.4,0.6-0.7,1.3-0.7,1.9"/>
-    <path class="little-path path-3" d="M-364.1,285c0-1.2,1-2.2,2.2-2.2s2.2,1,2.2,2.2c0,1.2-1,2.2-2.2,2.2"/>
-</g>
-</svg>
-  </div>`;
-let sun = `  <div class="svg-contain">
-    <svg version="1.1" class="clear-sky-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 72.3 52.6" style="enable-background:new 0 0 72.3 52.6;" xml:space="preserve">
-	<g>
-		<path class="sun" d="M50.8,25.7c0,7.9-6.4,14.4-14.4,14.4s-14.4-6.4-14.4-14.4s6.4-14.4,14.4-14.4S50.8,17.8,50.8,25.7z"/>
-	<path  class="line big-path line-1" d="M54.5,25.8h6"/>
-	<path class="line big-path line-2" d="M12.4,25.8h6"/>
-	<path class="line big-path line-3" d="M36.5,44.3v6"/>
-	<path class="line big-path line-4" d="M36.5,8.2v-6"/>
-	<path class="line big-path line-5" d="M23,38.8l-4.8,4.8"/>
-	<path class="line big-path line-6" d="M54.9,8.9L50,13.8"/>
-	<path class="line big-path line-7" d="M50,38.8l4.4,4.4"/>
-	<path class="line big-path line-8" d="M18.8,9.6l4.2,4.2"/>
-	</g>
-</svg>
-  </div>`;
- let windy =` <div class="svg-contain">
-    <svg version="1.1" class="windy-svg" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-447 254.4 64 52.6" style="enable-background:new -447 254.4 64 52.6;" xml:space="preserve">
-<g id="Layer_1_1_">
-    <g>
-        <path class="st0 little-path path-1" d="M-429.2,276.8h6.3"/>
-        <path class="big-path big-path-1" d="M-438.1,279.3c0,0,20.5,0,20.6,0c4.1,0,7.4-3.4,7.7-7.4c0.1-1.1-0.1-2.3-0.6-3.3c-2.2-5.4-9.8-6.3-13.3-1.7
-            c-1,1.3-1.6,3-1.7,4.6"/>
-        <path class="little-path path-2" d="M-422.6,271.7c0-2.8,2.3-5.1,5.1-5.1s5.1,2.3,5.1,5.1c0,2.8-2.3,5.1-5.1,5.1"/>
-    </g>
-    <g>
-        <path class="little-path path-3" d="M-434.1,284.9h30.4"/>
-        <path class="little-path path-4" d="M-410.6,280h8.7"/>
-        <path class="big-path big-path-2" d="M-442.9,282.7h44c3.6,0,6.6,3,6.8,6.5c0.1,1-0.1,2-0.5,3c-2,4.8-8.7,5.5-11.8,1.5c-0.9-1.2-1.4-2.6-1.5-4.1"
-            />
-        <path class="little-path path-5" d="M-403.4,289.4c0,2.5,2,4.5,4.5,4.5s4.5-2,4.5-4.5s-2-4.5-4.5-4.5"/>
-    </g>
-</g>
-</svg>
+    <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.1 60" style="enable-background:new 0 0 55.1 49.5;" xml:space="preserve">
+            <g id="Cloud_2">
+        	    <g id="Rain_2">
+                <path id="rain_2_left" class="white" d="M20.7,46.4c0,1.7-1.4,3.1-3.1,3.1s-3.1-1.4-3.1-3.1c0-1.7,3.1-7.8,3.1-7.8 S20.7,44.7,20.7,46.4z"></path>
+        		    <path id="rain_2_mid" class="white" d="M31.4,46.4c0,1.7-1.4,3.1-3.1,3.1c-1.7,0-3.1-1.4-3.1-3.1c0-1.7,3.1-7.8,3.1-7.8 S31.4,44.7,31.4,46.4z"></path>
+                <path id="rain_2_right" class="white" d="M41.3,46.4c0,1.7-1.4,3.1-3.1,3.1c-1.7,0-3.1-1.4-3.1-3.1c0-1.7,3.1-7.8,3.1-7.8 S41.3,44.7,41.3,46.4z"></path>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="1s"
+                  keyTimes="0;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0 0;0 10"
+                  calcMode="linear">
+                </animateTransform>
+                <animate attributeType="CSS"
+                attributeName="opacity"
+                attributeType="XML"
+                dur="1s"
+                keyTimes="0;1"
+                repeatCount="indefinite"
+                values="1;0"
+                calcMode="linear"/>
+        	    </g>
+        	    <g id="White_cloud_2">
+        		    <path id="XMLID_14_" class="white" d="M47.2,34.5H7.9c-4.3,0-7.9-3.5-7.9-7.9l0,0c0-4.3,3.5-7.9,7.9-7.9h39.4c4.3,0,7.9,3.5,7.9,7.9 v0C55.1,30.9,51.6,34.5,47.2,34.5z"/>
+        		    <circle id="XMLID_13_" class="white" cx="17.4" cy="17.3" r="9.3"/>
+        		    <circle id="XMLID_10_" class="white" cx="34.5" cy="15.6" r="15.6"/>
+        	    </g>
+            </g>
+          </svg>
   </div>`;
   
   let cloud=`<div class="svg-contain">
-    <svg class="overcast-clouds" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 82.6 52.3" style="enable-background:new 0 0 82.6 52.3;" xml:space="preserve">
-<g id="Layer_1">
-	<path class="cloud-still" d="M21.8,24.2c0.1,0,0.3-1.1,0.4-1.2c0.5-1.2,1.1-2.4,1.8-3.4c3.9-5.7,12.6-7.1,18.2-3.1c0,0,3.7-6,11-5.9
-		c0,0,5.6-0.6,10.3,4.9c0,0,2.8,3.3,2.9,7.4c0,0,3.2-0.5,5.4,1c0,0,6.2,2.6,5.9,10.8H56.3c0,0-2-3.5-7.3-3.6c0.2,0-0.5-2.2-0.6-2.4
-		c-1.4-4.4-5.5-6.9-9.9-7.4c-3.4-0.4-6.6,0.8-9,3.2c-0.1,0.1-1.2,1.3-1.2,1.3S25.3,23.6,21.8,24.2z"/>
-	<path class="cloud-still" d="M57.6,40.7c0-4.8-3.9-8.6-8.6-8.6c-0.2,0-0.4,0-0.6,0.1c-0.1-0.8-0.2-1.7-0.4-2.4c-0.3-1-0.8-2-1.4-2.9
-		c-2-2.9-5.3-4.8-9-4.8c-2.3,0-4.4,0.7-6.1,1.9c-0.6,0.4-1.1,0.8-1.6,1.3c-0.2,0.2-0.5,0.5-0.7,0.8c-0.2,0.3-0.4,0.5-0.6,0.8
-		c-1.8-1.2-3.9-1.9-6.2-1.9c-5.5,0-10,4-10.8,9.3c-3.5,1-6.1,3.9-6.6,7.6h26.3h12.7h12.9h0.7C57.6,41.8,57.6,41.4,57.6,40.7z"/>
-</g>
-<g id="Layer_2">
-</g>
-</svg></div>`;
-  
+   <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60.7 40" style="enable-background:new 0 0 60.7 40;" xml:space="preserve">
+            <g id="Cloud_1">
+  	          <g id="White_cloud_1">
+  		          <path id="XMLID_2_" class="white" d="M47.2,40H7.9C3.5,40,0,36.5,0,32.1l0,0c0-4.3,3.5-7.9,7.9-7.9h39.4c4.3,0,7.9,3.5,7.9,7.9v0 C55.1,36.5,51.6,40,47.2,40z"/>
+  		          <circle id="XMLID_3_" class="white" cx="17.4" cy="22.8" r="9.3"/>
+  		          <circle id="XMLID_4_" class="white" cx="34.5" cy="21.1" r="15.6"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;5;0"
+                  calcMode="linear">
+                </animateTransform>
+  	          </g>
+  	          <g id="Gray_cloud_1">
+  		          <path id="XMLID_6_" class="gray" d="M54.7,22.3H33.4c-3.3,0-6-2.7-6-6v0c0-3.3,2.7-6,6-6h21.3c3.3,0,6,2.7,6,6v0 C60.7,19.6,58,22.3,54.7,22.3z"/>
+  		          <circle id="XMLID_7_" class="gray" cx="45.7" cy="10.7" r="10.7"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;-3;0"
+                  calcMode="linear">
+                </animateTransform>
+  	          </g>
+            </g>
+          </svg></div>`;
+  let cloudy_sun=`<div class="svg-contain"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 61.7 42.8" style="enable-background:new 0 0 61.7 42.8;" xml:space="preserve">
+            <g id="Cloud_3">
+      	      <g id="White_cloud_3">
+      		      <path id="XMLID_24_" class="white" d="M47.2,42.8H7.9c-4.3,0-7.9-3.5-7.9-7.9l0,0C0,30.5,3.5,27,7.9,27h39.4c4.3,0,7.9,3.5,7.9,7.9 v0C55.1,39.2,51.6,42.8,47.2,42.8z"/>
+      		      <circle id="XMLID_23_" class="white" cx="17.4" cy="25.5" r="9.3"/>
+      		      <circle id="XMLID_22_" class="white" cx="34.5" cy="23.9" r="15.6"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;5;0"
+                  calcMode="linear">
+                </animateTransform>
+      	      </g>
+      	      <g id="Sun_3">
+      		      <circle id="XMLID_30_" class="yellow" cx="31.4" cy="18.5" r="9"/>
+                <g>
+      		        <path id="XMLID_31_" class="yellow" d="M31.4,6.6L31.4,6.6c-0.4,0-0.6-0.3-0.6-0.6V0.6C30.8,0.3,31,0,31.3,0l0.1,0 C31.7,0,32,0.3,32,0.6v5.5C32,6.4,31.7,6.6,31.4,6.6z"/>
+      		        <path id="XMLID_34_" class="yellow" d="M31.4,30.1L31.4,30.1c-0.4,0-0.6,0.3-0.6,0.6v5.5c0,0.3,0.3,0.6,0.6,0.6h0.1 c0.3,0,0.6-0.3,0.6-0.6v-5.5C32,30.4,31.7,30.1,31.4,30.1z"/>
+      		        <path id="XMLID_35_" class="yellow" d="M19.6,18.3L19.6,18.3c0,0.4-0.3,0.6-0.6,0.6h-5.5c-0.3,0-0.6-0.3-0.6-0.6v-0.1 c0-0.3,0.3-0.6,0.6-0.6H19C19.3,17.8,19.6,18,19.6,18.3z"/>
+      		        <path id="XMLID_33_" class="yellow" d="M43.1,18.3L43.1,18.3c0,0.4,0.3,0.6,0.6,0.6h5.5c0.3,0,0.6-0.3,0.6-0.6v-0.1 c0-0.3-0.3-0.6-0.6-0.6h-5.5C43.4,17.8,43.1,18,43.1,18.3z"/>
+      		        <path id="XMLID_37_" class="yellow" d="M22.4,26L22.4,26c0.3,0.3,0.2,0.7,0,0.9l-4.2,3.6c-0.2,0.2-0.6,0.2-0.8-0.1l-0.1-0.1 c-0.2-0.2-0.2-0.6,0.1-0.8l4.2-3.6C21.9,25.8,22.2,25.8,22.4,26z"/>
+      		        <path id="XMLID_36_" class="yellow" d="M40.3,10.7L40.3,10.7c0.3,0.3,0.6,0.3,0.8,0.1l4.2-3.6c0.2-0.2,0.3-0.6,0.1-0.8l-0.1-0.1 c-0.2-0.2-0.6-0.3-0.8-0.1l-4.2,3.6C40.1,10.1,40,10.5,40.3,10.7z"/>
+      		        <path id="XMLID_39_" class="yellow" d="M22.4,10.8L22.4,10.8c0.3-0.3,0.2-0.7,0-0.9l-4.2-3.6c-0.2-0.2-0.6-0.2-0.8,0.1l-0.1,0.1 c-0.2,0.2-0.2,0.6,0.1,0.8l4.2,3.6C21.9,11,22.2,11,22.4,10.8z"/>
+      		        <path id="XMLID_38_" class="yellow" d="M40.3,26.1L40.3,26.1c0.3-0.3,0.6-0.3,0.8-0.1l4.2,3.6c0.2,0.2,0.3,0.6,0.1,0.8l-0.1,0.1 c-0.2,0.2-0.6,0.3-0.8,0.1l-4.2-3.6C40.1,26.7,40,26.3,40.3,26.1z"/>
+                  <animate attributeType="CSS"
+                    attributeName="opacity"
+                    attributeType="XML"
+                    dur="0.5s"
+                    keyTimes="0;0.5;1"
+                    repeatCount="indefinite"
+                    values="1;0.6;1"
+                    calcMode="linear"/>
+      	        </g>
+              </g>
+              <animateTransform attributeName="transform"
+                attributeType="XML"
+                dur="2s"
+                keyTimes="0;1"
+                repeatCount="indefinite"
+                type="scale"
+                values="1;1"
+                calcMode="linear">
+              </animateTransform>
+      	     </g>
+      	     <g id="Gray_cloud_3">
+      		    <path id="XMLID_20_" class="gray" d="M55.7,25.1H34.4c-3.3,0-6-2.7-6-6v0c0-3.3,2.7-6,6-6h21.3c3.3,0,6,2.7,6,6v0 C61.7,22.4,59,25.1,55.7,25.1z"/>
+      		    <circle id="XMLID_19_" class="gray" cx="46.7" cy="13.4" r="10.7"/>
+              <animateTransform attributeName="transform"
+                attributeType="XML"
+                dur="6s"
+                keyTimes="0;0.5;1"
+                repeatCount="indefinite"
+                type="translate"
+                values="0;-3;0"
+                calcMode="linear">
+              </animateTransform>
+      	     </g>
+           </g>
+          </svg></div>`;
+	let cloudy_lightning=`<div class="svg-contain"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60.7 48.7" style="enable-background:new 0 0 60.7 48.7;" xml:space="preserve">
+            <g id="Cloud_4">
+      	      <g id="White_cloud_4">
+      		      <path id="XMLID_69_" class="white" d="M47.2,40H7.9C3.5,40,0,36.5,0,32.1l0,0c0-4.3,3.5-7.9,7.9-7.9h39.4c4.3,0,7.9,3.5,7.9,7.9v0 C55.1,36.5,51.6,40,47.2,40z"/>
+      		      <circle id="XMLID_68_" class="white" cx="17.4" cy="22.8" r="9.3"/>
+      		      <circle id="XMLID_67_" class="white" cx="34.5" cy="21.1" r="15.6"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;5;0"
+                  calcMode="linear">
+                </animateTransform>
+      	      </g>
+      	      <g id="Gray_cloud_4">
+      		      <path id="XMLID_65_" class="gray" d="M54.7,22.3H33.4c-3.3,0-6-2.7-6-6v0c0-3.3,2.7-6,6-6h21.3c3.3,0,6,2.7,6,6v0 C60.7,19.6,58,22.3,54.7,22.3z"/>
+      		      <circle id="XMLID_64_" class="gray" cx="45.7" cy="10.7" r="10.7"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;-3;0"
+                  calcMode="linear">
+                </animateTransform>
+      	      </g>
+      	      <g id="Lightning_4">
+      		      <path id="XMLID_79_" class="yellow" d="M43.6,22.7c-0.2,0.6-0.4,1.3-0.6,1.9c-0.2,0.6-0.4,1.2-0.7,1.8c-0.4,1.2-0.9,2.4-1.5,3.5
+      			c-1,2.3-2.2,4.6-3.4,6.8l-1.7-2.9c3.2-0.1,6.3-0.1,9.5,0l3,0.1l-1.3,2.5c-1.1,2.1-2.2,4.2-3.5,6.2c-0.6,1-1.3,2-2,3
+      			c-0.7,1-1.4,2-2.2,2.9c0.2-1.2,0.5-2.4,0.8-3.5c0.3-1.2,0.6-2.3,1-3.4c0.7-2.3,1.5-4.5,2.4-6.7l1.7,2.7c-3.2,0.1-6.3,0.2-9.5,0
+      			l-3.4-0.1l1.8-2.8c1.4-2.1,2.8-4.2,4.3-6.2c0.8-1,1.6-2,2.4-3c0.4-0.5,0.8-1,1.3-1.5C42.7,23.7,43.1,23.2,43.6,22.7z"/>
+                <animate attributeType="CSS"
+                  attributeName="opacity"
+                  attributeType="XML"
+                  dur="1.5s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  values="1;0;1"
+                  calcMode="linear"/>
+      	      </g>
+            </g>
+          </svg></div>`;	  
   let snow =`<div class="svg-contain">
     <svg version="1.1" class="snow-svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 70.3 52.6" style="enable-background:new 0 0 70.3 52.6;" xml:space="preserve">
 <g id="Layer_1">
@@ -357,6 +542,167 @@ let sun = `  <div class="svg-contain">
 </svg>
   </div>`;
   
+  let cloudy_moon =`<div class="svg-contain"><svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60.7 44.4" style="enable-background:new 0 0 60.7 44.4;" xml:space="preserve">
+            <g id="Cloud_5">
+    	        <g id="White_cloud_5">
+    		        <path id="XMLID_49_" class="white" d="M47.2,44.4H7.9c-4.3,0-7.9-3.5-7.9-7.9l0,0c0-4.3,3.5-7.9,7.9-7.9h39.4c4.3,0,7.9,3.5,7.9,7.9 v0C55.1,40.9,51.6,44.4,47.2,44.4z"/>
+    		        <circle id="XMLID_48_" class="white" cx="17.4" cy="27.2" r="9.3"/>
+    		        <circle id="XMLID_47_" class="white" cx="34.5" cy="25.5" r="15.6"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;5;0"
+                  calcMode="linear">
+                </animateTransform>
+    	        </g>
+    	        <path id="Moon_5" class="yellow" d="M33.6,17.9c-0.2-7.7,4.9-14.4,12-16.4c-2.3-1-4.9-1.5-7.6-1.5c-9.8,0.3-17.5,8.5-17.2,18.3 c0.3,9.8,8.5,17.5,18.3,17.2c2.7-0.1,5.2-0.8,7.5-1.9C39.3,32,33.8,25.6,33.6,17.9z"/>
+    	        <g id="Gray_cloud_5">
+    		        <path id="XMLID_45_" class="gray" d="M54.7,26.8H33.4c-3.3,0-6-2.7-6-6v0c0-3.3,2.7-6,6-6h21.3c3.3,0,6,2.7,6,6v0 C60.7,24.1,58,26.8,54.7,26.8z"/>
+    		        <circle id="XMLID_43_" class="gray" cx="45.7" cy="15.1" r="10.7"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;-3;0"
+                  calcMode="linear">
+                </animateTransform>
+    	        </g>
+            </g>
+          </svg></div>`;
+		  
+  let cloudy_rain_lightning =`<div class="svg-contain"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 60.7 80" style="enable-background:new 0 0 60.7 55;" xml:space="preserve">
+            <g id="Cloud_6">
+    	        <g id="White_cloud_6">
+    		        <path id="XMLID_81_" class="white" d="M47.2,40H7.9C3.5,40,0,36.5,0,32.1l0,0c0-4.3,3.5-7.9,7.9-7.9h39.4c4.3,0,7.9,3.5,7.9,7.9v0 C55.1,36.5,51.6,40,47.2,40z"/>
+    		        <circle id="XMLID_80_" class="white" cx="17.4" cy="22.8" r="9.3"/>
+    		        <circle id="XMLID_77_" class="white" cx="34.5" cy="21.1" r="15.6"/>
+    	        </g>
+    	        <g id="Gray_cloud_6">
+    		        <path id="XMLID_75_" class="gray" d="M54.7,22.3H33.4c-3.3,0-6-2.7-6-6v0c0-3.3,2.7-6,6-6h21.3c3.3,0,6,2.7,6,6v0 C60.7,19.6,58,22.3,54.7,22.3z"/>
+    		        <circle id="XMLID_74_" class="gray" cx="45.7" cy="10.7" r="10.7"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="6s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;-3;0"
+                  calcMode="linear">
+                </animateTransform>
+              </g>
+    	        <g id="Lightning_6">
+    		        <path id="XMLID_94_" class="yellow" d="M43.6,22.7c-0.2,0.6-0.4,1.3-0.6,1.9c-0.2,0.6-0.4,1.2-0.7,1.8c-0.4,1.2-0.9,2.4-1.5,3.5
+    			c-1,2.3-2.2,4.6-3.4,6.8l-1.7-2.9c3.2-0.1,6.3-0.1,9.5,0l3,0.1l-1.3,2.5c-1.1,2.1-2.2,4.2-3.5,6.2c-0.6,1-1.3,2-2,3
+    			c-0.7,1-1.4,2-2.2,2.9c0.2-1.2,0.5-2.4,0.8-3.5c0.3-1.2,0.6-2.3,1-3.4c0.7-2.3,1.5-4.5,2.4-6.7l1.7,2.7c-3.2,0.1-6.3,0.2-9.5,0
+    			l-3.4-0.1l1.8-2.8c1.4-2.1,2.8-4.2,4.3-6.2c0.8-1,1.6-2,2.4-3c0.4-0.5,0.8-1,1.3-1.5C42.7,23.7,43.1,23.2,43.6,22.7z"/>
+                <animate attributeType="CSS"
+                  attributeName="opacity"
+                  attributeType="XML"
+                  dur="1.5s"
+                  keyTimes="0;0.5;1"
+                  repeatCount="indefinite"
+                  values="1;0;1"
+                  calcMode="linear"/>
+    	        </g>
+    	        <g id="Rain_6">
+            		<path id="Rain_6_right" class="white" d="M36.3,51.9c0,1.7-1.4,3.1-3.1,3.1c-1.7,0-3.1-1.4-3.1-3.1c0-1.7,3.1-7.8,3.1-7.8 S36.3,50.2,36.3,51.9z"/>
+            		<path id="Rain_6_mid" class="white" d="M26.4,51.9c0,1.7-1.4,3.1-3.1,3.1c-1.7,0-3.1-1.4-3.1-3.1c0-1.7,3.1-7.8,3.1-7.8 S26.4,50.2,26.4,51.9z"/>
+            		<path id="Rain_6_left" class="white" d="M15.7,51.9c0,1.7-1.4,3.1-3.1,3.1s-3.1-1.4-3.1-3.1c0-1.7,3.1-7.8,3.1-7.8 S15.7,50.2,15.7,51.9z"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="1s"
+                  keyTimes="0;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0 0;0 10"
+                  calcMode="linear">
+                </animateTransform>
+                <animate attributeType="CSS"
+                  attributeName="opacity"
+                  attributeType="XML"
+                  dur="1s"
+                  keyTimes="0;1"
+                  repeatCount="indefinite"
+                  values="1;0"
+                  calcMode="linear"/>
+    	        </g>
+            </g>
+          </svg></div>`;
+		  
+  let windy =`<div class="svg-contain"><svg version="1.1" class="windy-svg" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="-447 254.4 64 52.6" style="enable-background:new -447 254.4 64 52.6;" xml:space="preserve">
+<g id="Layer_1_1_">
+    <g>
+        <path class="st0 little-path path-1" d="M-429.2,276.8h6.3"></path>
+        <path class="big-path big-path-1" d="M-438.1,279.3c0,0,20.5,0,20.6,0c4.1,0,7.4-3.4,7.7-7.4c0.1-1.1-0.1-2.3-0.6-3.3c-2.2-5.4-9.8-6.3-13.3-1.7
+            c-1,1.3-1.6,3-1.7,4.6"></path>
+        <path class="little-path path-2" d="M-422.6,271.7c0-2.8,2.3-5.1,5.1-5.1s5.1,2.3,5.1,5.1c0,2.8-2.3,5.1-5.1,5.1"></path>
+    </g>
+    <g>
+        <path class="little-path path-3" d="M-434.1,284.9h30.4"></path>
+        <path class="little-path path-4" d="M-410.6,280h8.7"></path>
+        <path class="big-path big-path-2" d="M-442.9,282.7h44c3.6,0,6.6,3,6.8,6.5c0.1,1-0.1,2-0.5,3c-2,4.8-8.7,5.5-11.8,1.5c-0.9-1.2-1.4-2.6-1.5-4.1"></path>
+        <path class="little-path path-5" d="M-403.4,289.4c0,2.5,2,4.5,4.5,4.5s4.5-2,4.5-4.5s-2-4.5-4.5-4.5"></path>
+    </g>
+</g>
+</svg></div>`;
+  let sunny_wind =`<div class="svg-contain"> <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 45.1 47.6" style="enable-background:new 0 0 45.1 47.6;" xml:space="preserve" height="45px" width="45px">
+            <style type="text/css">
+    	        .st1{fill:none;stroke:#FFFFFF;stroke-width:2;stroke-miterlimit:10;}
+            </style>
+            <g id="Wind_Sun">
+    	        <g id="Sun_1_">
+            		<circle id="XMLID_25_" class="yellow" cx="27.1" cy="18.1" r="8.9"/>
+                <g>
+            		    <path id="XMLID_21_" class="yellow" d="M27.2,6.5L27.2,6.5c-0.4,0-0.6-0.3-0.6-0.6V0.6c0-0.3,0.3-0.6,0.6-0.6l0.1,0 c0.3,0,0.6,0.3,0.6,0.6v5.4C27.7,6.2,27.5,6.5,27.2,6.5z"/>
+            		    <path id="XMLID_18_" class="yellow" d="M27.2,29.5L27.2,29.5c-0.4,0-0.6,0.3-0.6,0.6v5.4c0,0.3,0.3,0.6,0.6,0.6h0.1 c0.3,0,0.6-0.3,0.6-0.6v-5.4C27.7,29.8,27.5,29.5,27.2,29.5z"/>
+            		    <path id="XMLID_17_" class="yellow" d="M15.6,18L15.6,18c0,0.4-0.3,0.6-0.6,0.6H9.7c-0.3,0-0.6-0.3-0.6-0.6V18c0-0.3,0.3-0.6,0.6-0.6 h5.4C15.4,17.4,15.6,17.7,15.6,18z"/>
+            		    <path id="XMLID_16_" class="yellow" d="M38.7,18L38.7,18c0,0.4,0.3,0.6,0.6,0.6h5.4c0.3,0,0.6-0.3,0.6-0.6V18c0-0.3-0.3-0.6-0.6-0.6 h-5.4C38.9,17.4,38.7,17.7,38.7,18z"/>
+            		    <path id="XMLID_15_" class="yellow" d="M18.4,25.5L18.4,25.5c0.2,0.3,0.2,0.6,0,0.8l-4.1,3.5c-0.2,0.2-0.6,0.2-0.8-0.1l0,0 c-0.2-0.2-0.2-0.6,0.1-0.8l4.1-3.5C17.8,25.2,18.2,25.2,18.4,25.5z"/>
+            		    <path id="XMLID_12_" class="yellow" d="M35.9,10.5L35.9,10.5c0.2,0.3,0.6,0.3,0.8,0.1l4.1-3.5C41,6.9,41,6.5,40.8,6.3l0,0 C40.6,6,40.2,6,40,6.2l-4.1,3.5C35.7,9.9,35.7,10.2,35.9,10.5z"/>
+            		    <path id="XMLID_11_" class="yellow" d="M18.4,10.5L18.4,10.5c0.2-0.3,0.2-0.6,0-0.8l-4.1-3.5C14.1,6,13.7,6,13.5,6.3l0,0 c-0.2,0.2-0.2,0.6,0.1,0.8l4.1,3.5C17.8,10.8,18.2,10.8,18.4,10.5z"/>
+            		    <path id="XMLID_9_" class="yellow" d="M35.9,25.5L35.9,25.5c0.2-0.3,0.6-0.3,0.8-0.1l4.1,3.5c0.2,0.2,0.3,0.6,0.1,0.8l0,0 C40.6,30,40.2,30,40,29.8l-4.1-3.5C35.7,26.1,35.7,25.8,35.9,25.5z"/>
+                  <animate attributeType="CSS"
+                    attributeName="opacity"
+                    attributeType="XML"
+                    dur="0.5s"
+                    keyTimes="0;0.5;1"
+                    repeatCount="indefinite"
+                    values="1;0.6;1"
+                    calcMode="linear"/>
+                </g>
+    	        </g>
+    	        <g id="Wind">
+            		<path id="XMLID_27_" class="st1" d="M1.3,33.1h19.3c2.1,0,3.8-1.3,3.8-3v0v0c0-1.7-1.7-3-3.8-3h-2.1"/>
+            		<path id="XMLID_40_" class="st1" d="M2.4,42.4h18.2c2,0,3.6,0.9,3.6,2.1l0,0v0c0,1.2-1.6,2.1-3.6,2.1h-2"/>
+            		<line id="XMLID_28_" class="st1" x1="5.3" y1="36.3" x2="25.5" y2="36.3"/>
+            		<line id="XMLID_29_" class="st1" x1="0" y1="39.3" x2="27" y2="39.3"/>
+                <animateTransform attributeName="transform"
+                  attributeType="XML"
+                  dur="1.5s"
+                  keyTimes="0;1"
+                  repeatCount="indefinite"
+                  type="translate"
+                  values="0;3"
+                  calcMode="linear">
+                </animateTransform>
+                <animate attributeType="CSS"
+                  attributeName="opacity"
+                  attributeType="XML"
+                  dur="1.5s"
+                  keyTimes="0;1"
+                  repeatCount="indefinite"
+                  values="0.3;0.9"
+                  calcMode="linear"/>
+            	</g>
+            </g>
+          </svg></div>`;
+		  
+
   let fog=`<div class="svg-contain">
     <svg class="fog-svg" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 68 52.6" style="enable-background:new 0 0 68 52.6;" xml:space="preserve">
 <g id="Layer_1">
@@ -384,7 +730,6 @@ let sun = `  <div class="svg-contain">
     <path class="fog-line big-path" d="M6.2,40.2h8"/>
 	</g>
 </g>
-
 </svg>
   </div>`;
   

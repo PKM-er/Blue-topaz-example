@@ -32,7 +32,7 @@ let data = JSON.parse(response);
 	}else{
 	let who =data['from_who'];
 		 if(!who) who =' ';
-  const new_content = `${data['hitokoto']} <br> <em style="line-height: 2.8;float: right;"> &mdash; 来自 ${who}  《${data['from']}》</em>`; 
+  const new_content = `${data['hitokoto'].trim()} <br> <em style="line-height: 2.8;float: right;"> &mdash; 来自 ${who}  《${data['from']}》</em>`; 
   return new_content;
 	}
 }
@@ -59,7 +59,7 @@ async function getinfo2()
 		
 	 const origin =result['data']['origin'];
 	 let content =result['data']['content'];
-	 //content = content.replace(/[\r\n]/g,"");
+	  content = content.trim();
 	  str=` ${content}<br>  <em style="line-height: 3;float: right;">&mdash; 来自 ${origin} </em>`;
 	 return str;
 	}

@@ -133,7 +133,7 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 
 ### 信息卡 infobox
 
-> [!Infobox|notitle|right 45%]+ ## 关羽
+> [!Infobox|notitle right 45%]+ ## 关羽
 >![[Pasted image 20220331161219.png|circle]]
 > 
 | 本名     | 关羽                          |

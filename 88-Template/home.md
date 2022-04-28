@@ -40,12 +40,12 @@ obsidianUIMode: preview
 ```
  %%
 %% 动画版本%%
->[!note|noborder|noborder|banner]  ![inlR|160](https://newcdn.96weixin.com/mmbiz.qlogo.cn/mmbiz_gif/xlnvrKyPG60nyRRt76t6icGhRgnxHM7UTDR2DoHNjjUOg8m0OTiaJiaTiavO0cNgbHbg3zvcjNRcODrYiaJaGZkXw0g/0?wx_fmt=gif)
+>[!note|noborder|banner]  ![[cat.gif|inlR|160]]
 >```dataviewjs
 let setting = {};
 //在和风天气中创建的 Api key
 setting.key = "dc0f31ac6f37484f88e3e7d45b84e403";
-setting.city = "郑州";//城市名
+setting.city = "";//城市名，为空自动定位
 setting.days =1 ;//天气预报天数1-3
 setting.icon =true ;//是否显示动态图标
 setting.headerLevel = 0;//添加标题的等级

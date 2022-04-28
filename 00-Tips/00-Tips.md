@@ -10,7 +10,7 @@ obsidianUIMode: preview
 		- [[booknote插件-更好的pdf office文档阅读和标注神器]]
 		- [[Cmenu插件魔改版 Obsidian上的工具栏]]
 	- **▪示例库移植说明**
-		- [[如何把主页日记模板移植到你现有的库中？]]
+		- [[如何把示例库移植到你现有的库中？]]
 		- [[如何移植主页的各个元素？]]
 		- [[如何在OB里添加多彩时钟和音乐播放器]]
 	- [[🥑Blue Topaz Themes Tips]]

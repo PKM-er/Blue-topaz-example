@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.14.6。uid [20220426] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.6, uid [20220426] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.7。uid [20220428] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.7, uid [20220428] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -1820,12 +1820,6 @@ settings:
     type: class-toggle
     default: false
   - 
-    id: folder-icons
-    title: Activate Folder Icons
-    title.zh: 激活文件夹图标
-    type: class-toggle
-    default: false
-  - 
     id: text-folder-file-icon
     title: Color of File Icons
     title.zh: 文件前图标颜色
@@ -1834,6 +1828,18 @@ settings:
     format: hex
     default-light: '#272727'
     default-dark: '#b3b3b3'
+  - 
+    id: folder-icons
+    title: Activate Folder Icons
+    title.zh: 激活文件夹图标
+    type: class-toggle
+    default: false
+  - 
+    id: remove-arrow
+    title: Folder icons w/o arrows(collapse indicator)
+    title.zh: 文件夹图标开启后，移除箭头图标（折叠图标）
+    type: class-toggle
+    default: false
   -
     id: folder-style-change-options-colorful-folder
     title: 2.3.3.1 Colorful Folder
@@ -2443,6 +2449,90 @@ settings:
     description:  ❗cssclass：kanban❗ A kind of kanban-liked style for unordered lists. (Adapted from Spectrum theme by @Wiktoria Mielcarek)
     description.zh:  ❗cssclass：kanban❗ 实现类似看板样式并排显示，只对无序列表生效。改自Spectrum theme by @Wiktoria Mielcarek
   -
+    id: simple-p-kanban
+    title: Simple pseudo-kanban
+    title.zh: 单色伪看板
+    description: Remove colors of pseudo-kanban
+    description.zh: 移除伪看板颜色
+    type: class-toggle
+    default: false
+  -
+    id: remove-shadow-p-kanban
+    title: Remove shadow of pseudo-kanban
+    title.zh: 移除伪看板阴影
+    type: class-toggle
+    default: false
+  -
+    id: colorful-p-kanban
+    title: Colorful pseudo-kanban
+    title.zh: 多彩伪看板
+    type: class-toggle
+    default: false
+  - 
+    id: p-kanban-color-1
+    title: pseudo-kanban color 1
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#52aaf365'
+    default-dark: '#3496e652'
+  -
+    id: p-kanban-color-2
+    title: pseudo-kanban color 2
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#84ecec65'
+    default-dark: '#2ec4c452'
+  -
+    id: p-kanban-color-3
+    title: pseudo-kanban color 3
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#94ec8c65'
+    default-dark: '#38ce2a52'
+  -
+    id: p-kanban-color-4
+    title: pseudo-kanban color 4
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#dce28765'
+    default-dark: '#d2dd3852'
+  -
+    id: p-kanban-color-5
+    title: pseudo-kanban color 5
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#eeb36f65'
+    default-dark: '#eb973752'
+  -
+    id: p-kanban-color-6
+    title: pseudo-kanban color 6
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#f18e8e65'
+    default-dark: '#f3424252'
+  -
+    id: p-kanban-color-7
+    title: pseudo-kanban color 7
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#e677e065'
+    default-dark: '#e45bdd52'
+  -
+    id: p-kanban-color-8
+    title: pseudo-kanban color 8
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#ba8be165'
+    default-dark: '#b962ff52'
+  -
     id: built-in-style-code-wrap
     title:  Code Wrap
     title.zh: 代码行自动换行 code-wrap
@@ -2574,7 +2664,7 @@ body {
   --font-size-file-header-title-andy-plugin: 1em;/*文件抬头标题for Andy mode plugin*/
   --font-size-embed-title-size: 1.3em;
   --font-size-embed-file: 1.25em;
-  --font-size-folder-and-file: 0.85em;/*左侧边栏文件字体大小*/
+  --font-size-folder-and-file: 0.88em;/*左侧边栏文件字体大小*/
   --font-size-edit-normal: 1em;/*编辑正文字体大小*/
   --font-size-preview-normal: 1em;/*预览正文字体大小*/
   --h1: 1.5625em;
@@ -3012,7 +3102,7 @@ body.all-dark .print.theme-light,
   --p-kanban-bg-color: #6c6c6c42;
   --p-kanban-border-color: transparent;
   --p-kanban-card-color-1: #0000003f;
-  --p-kanban-card-color-2: #0000003f;
+  --p-kanban-card-color-2: #41414136;
   --p-kanban-color-6: #f3424252;
   --p-kanban-color-5: #eb973752;
   --p-kanban-color-4: #d2dd3852;
@@ -3021,6 +3111,8 @@ body.all-dark .print.theme-light,
   --p-kanban-color-1: #3496e652;
   --p-kanban-color-8: #b962ff52;
   --p-kanban-color-7: #e45bdd52;
+  --p-kanban-color-simple: #8e8e8e41;
+  --p-kanban-color-shadow: #0000004d;
 
   /*style settings*/
   --background-secondary-translucent: #2c2c2c26;
@@ -3106,7 +3198,7 @@ body.all-dark .print.theme-light,
 
   --background-mobile-drawer-1: #ffffff;
   --background-mobile-drawer-2: #ffffff;
-  --background-modifier-border-hr: #585858;
+  --background-modifier-border-hr: #b9b9b9;
   --background-secondary-alt-bg-4-bt-publish: #f6f6f6;
 
   --background-transparent-black-or-white-1: #ffffffb0;
@@ -3299,24 +3391,18 @@ body.all-dark .print.theme-light,
   /*pseudo-kanban*/
   --p-kanban-bg-color: #d3d3d32d;
   --p-kanban-border-color: #a0a0a060;
-  --p-kanban-card-color-1: #ffffffc4;
-  --p-kanban-card-color-2: #ffffffc4;
+  --p-kanban-card-color-1: #f9f9f99b;
+  --p-kanban-card-color-2: #ffffff;
   --p-kanban-color-6: #f18e8e65;
   --p-kanban-color-5: #eeb36f65;
-  --p-kanban-color-4: #dce28765;
-  --p-kanban-color-3: #94ec8c65;
-  --p-kanban-color-2: #84ecec65;
+  --p-kanban-color-4: #d1d77f65;
+  --p-kanban-color-3: #8ce38465;
+  --p-kanban-color-2: #7cdddd65;
   --p-kanban-color-1: #52aaf365;
   --p-kanban-color-8: #ba8be165;
   --p-kanban-color-7: #e677e065;
-
-  --p-kanban-checkbox-color-1: #f18e8e3d;
-  --p-kanban-checkbox-color-2: #eeb36f3d;
-  --p-kanban-checkbox-color-3: #dce2873d;
-  --p-kanban-checkbox-color-4: #94ec8c3b;
-  --p-kanban-checkbox-color-5: #84ecec42;
-  --p-kanban-checkbox-color-6: #52aaf332;
-  --p-kanban-checkbox-color-7: #ba8be134;
+  --p-kanban-color-simple: #cdcdcd2c;
+  --p-kanban-color-shadow: #cfcfcf4d;
 
   /*style settings*/
   --background-secondary-translucent: #ffffff3d;
@@ -3567,20 +3653,6 @@ body.color-scheme-options-avocado-topaz.theme-light {
   --text-checked-checkbox: #9b9b9b;
 
   --activeline-background: #d1f0e521;
-
-  /*pseudo-kanban*/
-  --p-kanban-bg-color: #d3d3d32d;
-  --p-kanban-border-color: #a0a0a060;
-  --p-kanban-card-color-1: #ffffffc4;
-  --p-kanban-card-color-2: #ffffffc4;
-  --p-kanban-color-6: #f18e8e65;
-  --p-kanban-color-5: #eeb36f65;
-  --p-kanban-color-4: #dce28765;
-  --p-kanban-color-3: #94ec8c65;
-  --p-kanban-color-2: #84ecec65;
-  --p-kanban-color-1: #52aaf365;
-  --p-kanban-color-8: #ba8be165;
-  --p-kanban-color-7: #e677e065;
 
   /*style settings*/
   --background-secondary-translucent: #ffffff3d;
@@ -7340,10 +7412,10 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
   flex-wrap: wrap;
 }
 
-.kanban ul>li:not(.task-list-item) {
+.kanban ul>li {
   flex: 1 1 20%;
   padding: 0.1em 1em 0.1em 0.8em;
-  margin: 0 0.1em 0.3em 0  !important;
+  margin: 0 0.3em 0.3em 0 !important;
   list-style: none;
   border: 1px solid var(--p-kanban-border-color);
   border-left: 1px solid var(--p-kanban-border-color) !important;
@@ -7365,37 +7437,66 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
   transition: transform 10ms linear 0s
 }
 
-.kanban ul>li:nth-of-type(8n+1) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+1) {
   background-color: var(--p-kanban-color-1);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+2) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+2) {
   background-color: var(--p-kanban-color-2);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+3) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+3) {
   background-color: var(--p-kanban-color-3);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+4) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+4) {
   background-color: var(--p-kanban-color-4);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+5) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+5) {
   background-color: var(--p-kanban-color-5);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+6) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+6) {
   background-color: var(--p-kanban-color-6);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+7) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+7) {
   background-color: var(--p-kanban-color-7);
+}
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n) {
+  background-color: var(--p-kanban-color-8);
+}
+
+.kanban ul>li:nth-of-type(n) {
+  background-color: var(--p-kanban-color-simple);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n) {
-  background-color: var(--p-kanban-color-8);
-  padding-left: 1em;
+.kanban ul:first-child>li:nth-of-type(8n+1) {
+  border-top: 6px solid var(--p-kanban-color-1) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+2) {
+  border-top: 6px solid var(--p-kanban-color-2) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+3) {
+  border-top: 6px solid var(--p-kanban-color-3) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+4) {
+  border-top: 6px solid var(--p-kanban-color-4) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+5) {
+  border-top: 6px solid var(--p-kanban-color-5) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+6) {
+  border-top: 6px solid var(--p-kanban-color-6) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+7) {
+  border-top: 6px solid var(--p-kanban-color-7) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n) {
+  border-top: 6px solid var(--p-kanban-color-8) !important;
+}
+body.simple-p-kanban .kanban ul:first-child>li:nth-of-type(n) {
+  border-top: none !important;
+}
+
+body:not(.remove-shadow-p-kanban) .kanban ul>li:hover {
+  transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1);
+  box-shadow: 0 3px 5px 0 var(--p-kanban-color-shadow), 0 3px 1px -3px var(--p-kanban-color-shadow), 2px 3px 3px 0 var(--p-kanban-color-shadow);
 }
 
 .kanban ul ul {
@@ -7415,21 +7516,13 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
   background-color: var(--p-kanban-card-color-1) !important;
 }
 
-.kanban ul ul li:nth-child(even) {
-  background-color: var(--p-kanban-card-color-2) !important;
-}
-
-.kanban ul>li:hover {
-  border-color: var(--p-kanban-border-color) !important;
-}
-
-.kanban ul ul li:hover {
-  background: transparent !important;
+body.remove-shadow-p-kanban .kanban ul ul li:hover {
+  background: var(--p-kanban-card-color-2) !important;
   border-color: var(--p-kanban-border-color) !important;
   border-left: 1px solid var(--p-kanban-border-color) !important;
 }
 
-.theme-dark .kanban ul ul li:hover {
+body.remove-shadow-p-kanban.theme-dark .kanban ul ul li:hover {
   border-color: #696969e1 !important;
   border-left: 1px solid #696969e1 !important;
 }
@@ -7467,7 +7560,6 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
 .kanban ul > li.task-list-item {
   flex: 1 1 20%;
   padding: 0.1em 1em;
-  margin: 0 4px 0.3em 0;
   list-style: none;
   border: 1px solid var(--p-kanban-border-color);
   border-left: 1px solid var(--p-kanban-border-color) !important;
@@ -7497,7 +7589,7 @@ body:not(.default-icons) .kanban li.task-list-item .task-list-item.is-collapsed 
   transform: translateX(-0.9em) translateY(-1em) rotate(-90deg);
 }
 
-.kanban .task-list-item-checkbox {
+body.colorful-p-kanban .kanban .task-list-item-checkbox {
   border-color: var(--text-normal) !important;
 }
 
@@ -9848,7 +9940,7 @@ ol {
   border-left: 0.125em solid var(--list-ul-block-color);
 }
 
-:is(.markdown-preview-view,.markdown-rendered) ul>li:not(.task-list-item):hover {
+:is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item):hover {
   border-color: var(--list-ul-hover);
 }
 
@@ -10017,10 +10109,7 @@ body.list-vertical-line-one :is(ol,ul).contains-task-list :is(ol,ul)::before {
   height: 100%;
 }
 
-body.list-vertical-line-one ul>li:not(.task-list-item) {
-  border-left: none !important;
-}
-
+body.list-vertical-line-one :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item),
 body.list-vertical-line-one ol>li {
   border-left: none !important;
 }
@@ -10074,10 +10163,7 @@ body.list-vertical-line-two.is-mobile :is(ul,ol).contains-task-list :is(ol,ul)::
   left: -1em;
 }
 
-body.list-vertical-line-two ul>li:not(.task-list-item) {
-  border-left: none !important;
-}
-
+body.list-vertical-line-two body.list-vertical-line-one :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item),
 body.list-vertical-line-two ol>li {
   border-left: none !important;
 }
@@ -10096,7 +10182,7 @@ body.list-no-line-in-edit .cm-hmd-list-indent .cm-tab::before {
 }
 
 /*list-vertical-line-three*/
-body.list-vertical-line-three :is(ol,ul){
+body.list-vertical-line-three :is(ol,ul) {
   padding-inline-start: 1.3em;
 }
 
@@ -10182,10 +10268,7 @@ body.list-vertical-line-three.is-mobile :is(ol,ul).contains-task-list :is(ol,ul)
   left: -1em;
 }
 
-body.list-vertical-line-three ul>li:not(.task-list-item) {
-  border-left: none !important;
-}
-
+body.list-vertical-line-three body.list-vertical-line-one :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item),
 body.list-vertical-line-three ol>li {
   border-left: none !important;
 }
@@ -10255,10 +10338,6 @@ body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line .cm-hmd-list-indent {
   position: relative;
   font-family: var(--rb-indent-font-family) !important;
   font-size: var(--rb-indent-font-size) !important;
-}
-
-body.rainbow-lines .HyperMD-list-line.HyperMD-list-line-3.cm-active.cm-line {
-
 }
 
 body.rainbow-lines .mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before { 
@@ -11215,7 +11294,6 @@ body:not(.remove-colorful-highlight-bg) :is(.markdown-preview-view,.markdown-ren
   background-color: var(--bg-color-highlight-1);
   color: var(--color-highlight-1);
   font-style: normal;
-  padding: 1px 3px;
   font-weight: var(--font-weight-highlight-1);
 }
 body:not(.remove-colorful-highlight-bg) :is(.markdown-preview-view,.markdown-rendered) :not(font):not(strong)>em>mark {
@@ -11540,13 +11618,18 @@ body.embed-hover.theme-dark .internal-embed .markdown-embed:hover {
   transform: translate3d(0px, -3px, 0px);
 }
 
-.markdown-embed {
+.markdown-embed,
+.popover.hover-popover .markdown-embed .markdown-embed {
   background-color: var(--embed-color);
   border: 1px solid var(--embed-color);
   border-radius: var(--radius-xs);
   padding: 0 0.2em;
   margin-bottom: 0;
   margin-top: 0;
+}
+.popover.hover-popover,
+.popover.hover-popover .markdown-embed {
+  background-color: var(--background-primary-bg-4-bt);
 }
 
 .markdown-source-view .markdown-embed,
@@ -11943,13 +12026,12 @@ body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active,
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjJGNEY2Ii8+CiAgICA8ZyBmaWxsPSIjRkZGIj4KICAgICAgPHJlY3Qgd2lkdGg9IjIiIGhlaWdodD0iNzkiIHg9Ijc4Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjU5Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iMjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSIyMCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjIwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNDAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI0MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjQwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI2MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjYwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI3OSIgaGVpZ2h0PSIxIiB5PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iNzkiIGhlaWdodD0iMSIgeT0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9Ijc5IiBoZWlnaHQ9IjEiIHk9IjU5Ii8+CiAgICA8L2c+CiAgICA8cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iMiIgeT0iNzgiIGZpbGw9IiNGRkYiLz4KICA8L2c+Cjwvc3ZnPgo=");
 }
 
- .internal-embed.image-embed.is-loaded img:not([class="emoji"]) {
+.internal-embed.image-embed.is-loaded img:not([class="emoji"]) {
   margin: 3px auto;
   display: block;
 }
 
-.internal-embed[alt$="inline"], .internal-embed[alt$="Inline"], .internal-embed[alt$="INLINE"], .internal-embed[alt$="inl"]
-{
+.internal-embed[alt$="inline"], .internal-embed[alt$="Inline"], .internal-embed[alt$="INLINE"], .internal-embed[alt$="inl"] {
   display: inline ;
 }
 
@@ -11964,7 +12046,6 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 
 
 /* file explorer :Wrap long nav text and some paddings */
-
 .nav-file-title,
 .nav-folder-title {
   white-space: normal;
@@ -11994,7 +12075,7 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 
 /*an active line highlight in vim normal mode */
 .cm-fat-cursor .CodeMirror-activeline .CodeMirror-linebackground {
-  background-color: #468eeb33 !important;
+  background-color: var(--activeline-background)  !important;
 }
 
 .CodeMirror-activeline-background.CodeMirror-linebackground,
@@ -14158,27 +14239,7 @@ button.kanban-plugin__new-item-button:hover {
   height: 15px;
   filter: hue-rotate(var(--theme-color)) !important;
 }
-/* 屏蔽看板的默认样式
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+1) {
-  background-image: url("https://images.unsplash.com/photo-1487621167305-5d248087c724?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80");
-}
 
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+2) {
-  background-image: url("https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80");
-}
-
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+3) {
-  background-image: url("https://images.unsplash.com/photo-1488330890490-c291ecf62571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
-}
-
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+4) {
-  background-image: url("https://images.unsplash.com/photo-1528779794993-d2f7f51a53a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
-}
-
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+0) {
-  background-image: url("https://images.unsplash.com/photo-1553307236-8783cc0a3b9e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80");
-}
- */
 .theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+1) {
   background: linear-gradient(to bottom, var(--kanban-color-1) 60%, transparent);
 }
@@ -15204,10 +15265,6 @@ body.style-options-for-admonition-plugin .admonition-kanban ul ul li:not(.task-l
   background-color: var(--p-kanban-card-color-1) !important;
 }
 
-body.style-options-for-admonition-plugin .admonition-kanban ul ul li:nth-child(even) {
-  background-color: var(--p-kanban-card-color-2) !important;
-}
-
 body.style-options-for-admonition-plugin .admonition-kanban ul>li:hover {
   border-color: var(--p-kanban-border-color) !important;
 }
@@ -15329,7 +15386,10 @@ body.style-options-for-admonition-plugin .admonition-flex .admonition-content  b
   overflow-wrap: anywhere;
 }
 
-
+body.style-options-for-admonition-plugin :is(.callout.admonition-col2,.callout.admonition-col3,.callout.admonition-col4,.callout.admonition-flex)>.admonition-content>ul
+{
+  margin-left: auto;
+}
 body.style-options-for-admonition-plugin .admonition-col2 .admonition-content  ul,
 body.style-options-for-admonition-plugin .admonition-col3 .admonition-content  ul,
 body.style-options-for-admonition-plugin .admonition-col4 .admonition-content  ul,
@@ -16027,40 +16087,9 @@ ul.dataview.dataview-ul.dataview-result-list-root-ul {
   border-radius: var(--radius-xs);
   border: 1px solid var(--embed-color);
 }
-body.rainbow-lines-reading table.dataview.table-view-table ul ul::before,
-body.rainbow-lines-reading table.dataview.table-view-table ol ul::before,
-body.rainbow-lines-reading table.dataview.table-view-table ul ol::before,
-body.rainbow-lines-reading table.dataview.table-view-table ol ol::before,
-body.list-vertical-line-one table.dataview.table-view-table ul ul::before,
-body.list-vertical-line-one table.dataview.table-view-table ol ul::before,
-body.list-vertical-line-one table.dataview.table-view-table ul ol::before,
-body.list-vertical-line-one table.dataview.table-view-table ol ol::before,
-body.list-vertical-line-two table.dataview.table-view-table ul ul::before,
-body.list-vertical-line-two table.dataview.table-view-table ol ul::before,
-body.list-vertical-line-two table.dataview.table-view-table ul ol::before,
-body.list-vertical-line-two table.dataview.table-view-table ol ol::before,
-body.list-vertical-line-three table.dataview.table-view-table ul ul::before,
-body.list-vertical-line-three table.dataview.table-view-table ol ul::before,
-body.list-vertical-line-three table.dataview.table-view-table ul ol::before,
-body.list-vertical-line-three table.dataview.table-view-table ol ol::before {
-  border-left: none;
-}
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ul ul::before,
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ol ul::before,
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ul ol::before,
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ol ol::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ul ul::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ol ul::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ul ol::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ol ol::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ul ul::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ol ul::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ul ol::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ol ol::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ul ul::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ul::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ul ol::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ol::before {
+
+body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) table.dataview.table-view-table :is(ol,ul) :is(ol,ul)::before,
+body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) .kanban-plugin__markdown-preview-view :is(ol,ul) :is(ol,ul)::before {
   border-left: none;
 }
 
@@ -16101,17 +16130,18 @@ img[alt^="bookcover"] {
 }
 
 .theme-light progress::-webkit-progress-bar { 
-background: #cccccc; 
+  background: #cccccc; 
 }
 .theme-dark progress::-webkit-progress-bar { 
-background: #1a1919; 
+  background: #1a1919; 
 }
 
 .cards progress{
+  margin-left:-6px;
   position: absolute;
   margin-top: -10px;
   overflow: hidden;
-  height: 3px;
+  height: 4px;
   background: #f0ec05; 
 }
 .cards progress.yellow::-moz-progress-bar { 
@@ -16198,12 +16228,15 @@ background: #1a1919;
 .markdown-source-view.mod-cm6.cards .dataview.table-view-table>tbody>tr>td:first-child { 
   width: 100%;
   display: block;
-  box-shadow: 0 2px 16px rgba(0, 0, 0, .2);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, .1);
   position: relative;
   padding: 0;
 }
-
+.cards table.dataview tbody>tr>td span {
+  margin-left:6px;
+}
 .cards table.dataview tbody>tr>td img {
+  margin-left:-6px;
   vertical-align: top;
   width: 100%;
   height: calc(var(--cards-width) / 0.7 );
@@ -17992,12 +18025,12 @@ body {
 
 body.folder-icons .nav-folder-children .nav-folder-title-content::before {
   position: relative;
-  content: " ";
+  content: "";
   display: inline-block;
   opacity: 0.9;
-  top: 1px;
-  width: 1em;
-  height: 1em;
+  top: 2px;
+  width: 1rem;
+  height: 1rem;
   margin-right: 5px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -18008,11 +18041,10 @@ body.folder-icons .nav-folder-children .nav-folder-title-content::before {
 }
 body.folder-icons .nav-folder-children .nav-folder.is-collapsed .nav-folder-title-content::before {
   position: relative;
-  content: " ";
+  content: "";
   display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 5px;
+  width: 1rem;
+  height: 1rem;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -18021,15 +18053,24 @@ body.folder-icons .nav-folder-children .nav-folder.is-collapsed .nav-folder-titl
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
 }
 
+body.folder-icons.remove-arrow:not(.default-icons) .nav-folder-collapse-indicator::after {
+  display: none;
+}
+body.folder-icons.remove-arrow:not(.default-icons) :is(.nav-folder-title,.nav-file-title) {
+  padding-left: 0;
+}
+body.folder-icons.remove-arrow:not(.default-icons) .nav-files-container {
+  padding-left: 7px;
+}
 
 body:not(.remove-file-icons) .nav-folder-children .nav-file-title-content:first-child::before {
   position: relative;
   content: " ";
   display: inline-block;
-  width: 1em;
+  width: 0.9rem;
   opacity: 0.9;
   top: 2px;
-  height: 1em;
+  height: 0.9rem;
   margin-right: 5px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -20352,8 +20393,9 @@ body.theme-light .popover.hover-popover:not(.is-loaded) {
     0px 20px 40px rgba(0, 0, 0, 0.11);
 }
 
-body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown-rendered) {
-  padding: 5px 5px 0; 
+body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown-rendered),
+.popover.hover-popover:not(.is-loaded) .markdown-source-view .cm-scroller {
+  padding: 5px 10px 0; 
 }
 
 body.theme-dark .popover.hover-popover:not(.is-loaded) {
@@ -20366,6 +20408,12 @@ body.theme-dark .popover.hover-popover:not(.is-loaded) {
 .popover.hover-popover {
   width: 400px;
   max-height: 40vh; 
+}
+
+.popover.hover-popover:not(.is-loaded) .markdown-source-view .cm-scroller,
+.popover.hover-popover:not(.is-loaded) .markdown-source-view .cm-gutters,
+body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown-rendered) {
+  font-size: 0.95em;
 }
 
 /* ================================== */
@@ -20476,7 +20524,7 @@ margin: 0px!important;
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220426";
+  content: "uid:20220428";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;
@@ -20876,6 +20924,13 @@ padding: 0px;
       background-color: transparent;
       box-shadow: none;
      }
+     .callout.callout:is([data-callout-metadata*="noborder"], 
+     [data-callout*=noborder]) .callout-content {
+      border-left: 0;
+      background-color: transparent;
+      box-shadow: none;
+      border:none;
+     }
 
         /* ===banner============ */
        .is-live-preview .admonition-flex   .callout.callout[data-callout-metadata*="banner"]:nth-child(2) {
@@ -20886,7 +20941,10 @@ padding: 0px;
         .callout.callout[data-callout-metadata*="banner"] {
           border-left: 0;
           background-color: transparent;
-          box-shadow: none;
+          box-shadow: none!important;
+         }
+         .callout.callout[data-callout-metadata*="banner"] .callout-content{
+          overflow:visible;
          }
         .callout.callout[data-callout-metadata*="banner"] .callout-title {
          background-color: transparent ;
@@ -21192,6 +21250,7 @@ padding: 0px;
 
 .callout.callout[data-callout*="kanban"] ul ul::before {
   border-left: 0;
+  border-color: transparent!important;
 }
 
 :is(.markdown-preview-view,.markdown-rendered).is-readable-line-width.callout.callout[data-callout*="kanban"] .markdown-preview-sizer>div>ul {
@@ -21472,35 +21531,37 @@ padding: 0px;
 }
 
 
-
-  /******callout icon*****/
+/******callout icon*****/
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) {
+  flex:unset !important;
   border-left: 0;
   background-color: transparent;
   box-shadow: none;
+  float: left;
+  margin-top:-1em;
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) .callout-title {
-display: none; 
+  display: none; 
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) .callout {
-overflow: visible;
-margin: 0;
+  overflow: visible;
+  margin: 0;
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) > .callout-content {
-display: inline-flex;
-align-items: center;
+  display: inline-flex;
+  align-items: center;
+  padding:0 10px 0 10px;
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) > .callout-content>svg {
-
-height: calc(1em + 12px);
-padding: 6px;
-border-radius: 4px;
-pointer-events: initial;
-transition: ease .2s background;
-font-size: 4em;
+  height: calc(1em + 12px);
+  padding: 6px;
+  border-radius: 4px;
+  pointer-events: initial;
+  transition: ease .2s background;
+  font-size: 4em;
 }

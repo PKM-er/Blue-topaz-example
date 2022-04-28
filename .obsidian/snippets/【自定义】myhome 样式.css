@@ -144,3 +144,10 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   border-radius: 4px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
 }
+
+
+.callout-content .block-language-dataviewjs p::first-letter{
+  color: var(--text-accent);
+  font-size: 2em;
+  margin: 0 .2em 0 0;
+}
