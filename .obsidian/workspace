@@ -9,20 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "20-Diary/20-Diary.md",
-            "mode": "preview",
+            "file": "Changlog.md",
+            "mode": "source",
             "backlinks": false,
             "source": false
-          }
-        }
-      },
-      {
-        "id": "dafcce9cf1678a0e",
-        "type": "leaf",
-        "state": {
-          "type": "kanban",
-          "state": {
-            "file": "20-Diary/任务看板.md"
           }
         }
       }
@@ -52,7 +42,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "看板",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -129,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "20-Diary/任务看板.md"
+                "file": "Changlog.md"
               }
             }
           },
@@ -160,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "20-Diary/任务看板.md",
+                "file": "Changlog.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -177,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "20-Diary/任务看板.md",
+                "file": "Changlog.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -222,17 +212,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "dafcce9cf1678a0e",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "20-Diary/任务看板.md",
-    "20-Diary/20-Diary.md",
-    "88-Template/88-Template.md",
-    "88-Template/home.md",
-    "77-Example/分栏效果示例.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
     "Changlog.md",
-    "30-Reading/《从零开始的女性主义》.md",
-    "77-Example/天气模板dv查询.md",
-    "00-Tips/如何在Obsidian中添加电影卡片.md"
+    "88-Template/home.md",
+    "从这开始.md",
+    "未命名 3.md",
+    "未命名 2.md",
+    "未命名 1.md",
+    "未命名.md",
+    "00-Tips/▪示例库移植说明/如何把示例库移植到你现有的库中？.md",
+    "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md",
+    "00-Tips/00-Tips.md"
   ]
 }
