@@ -151,6 +151,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "6ebf2888-7abc-4cca-a4b6-9ab633b211ca"
+    },
+    {
+      "id": "03fe5f51-8fd2-46c6-bdc8-6d4d50f894e7",
+      "name": "获取插件列表",
+      "type": "Macro",
+      "command": true,
+      "macroId": "0f3e8714-a92b-4fc8-9e4e-ddb3c68a2fd8"
     }
   ],
   "macros": [
@@ -504,6 +511,46 @@
           "type": "Obsidian",
           "id": "d9f552b7-da28-4a19-a449-d95f59ab90c4",
           "commandId": "obsidian-hover-editor:convert-active-pane-to-popover"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "获取插件列表",
+      "id": "0f3e8714-a92b-4fc8-9e4e-ddb3c68a2fd8",
+      "commands": [
+        {
+          "name": "生成插件列表",
+          "type": "NestedChoice",
+          "id": "18bce855-2e06-4d4b-be43-8ff915b60d8a",
+          "choice": {
+            "id": "ba20fbf9-0d76-4c99-a7ac-e0d7dd22dfd0",
+            "name": "生成插件列表",
+            "type": "Template",
+            "command": false,
+            "templatePath": "88-Template/FastStart-GenerateListOfInstalledPlugins.md",
+            "fileNameFormat": {
+              "enabled": true,
+              "format": "示例库内置的插件列表"
+            },
+            "folder": {
+              "enabled": true,
+              "folders": [
+                "88-Template"
+              ],
+              "chooseWhenCreatingNote": false,
+              "createInSameFolderAsActiveFile": false
+            },
+            "appendLink": false,
+            "incrementFileName": false,
+            "openFileInNewTab": {
+              "enabled": false,
+              "direction": "vertical",
+              "focus": true
+            },
+            "openFile": false,
+            "openFileInMode": "preview"
+          }
         }
       ],
       "runOnStartup": false

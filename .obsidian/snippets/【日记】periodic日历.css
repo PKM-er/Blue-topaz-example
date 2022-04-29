@@ -15,7 +15,7 @@
   line-height: 20px;
   height: 70px;
   text-align: center;
-  background: -webkit-gradient(linear, left top, left bottom, from(#f5eaeade), to(#efefeff6))!important;
+  background: -webkit-gradient(linear, left top, left bottom, from(#f5eaeac5), to(#efefefad))!important;
   border-radius:0 0 6px 6px!important; 
   border: 0!important;
       position:relative;
@@ -25,7 +25,8 @@
 .theme-dark .timeline-container .leaf-periodic-button {
 
   color:var(--text-accent)!important;
-    background: var(--background-secondary)!important;
+    background: #2e666e9f!important;
+  
   }
 
   .leaf-periodic-button:before, .leaf-periodic-button:after{
@@ -35,6 +36,7 @@
     width:4px;
     height:14px;
     background:-webkit-gradient(linear, left top, left bottom, from(#f1f1f1), to(rgb(177, 172, 172)));
+    
     } 
      .leaf-periodic-button:before{left:13px;}
     .leaf-periodic-button:after{right:13px;}

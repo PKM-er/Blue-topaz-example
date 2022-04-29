@@ -3,7 +3,6 @@
   "csv-obsidian",
   "enhanced-editing",
   "metaedit",
-  "buttons",
   "templater-obsidian",
   "workspaces-plus",
   "quickadd",
@@ -14,5 +13,7 @@
   "obsidian-reveal-active-file",
   "obsidian-hotkeys-for-specific-files",
   "dataview",
-  "obsidian-memos"
+  "obsidian-memos",
+  "buttons",
+  "obsidian-quiet-outline"
 ]

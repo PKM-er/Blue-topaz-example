@@ -15,8 +15,8 @@
   "enable_folder_templates": true,
   "folder_templates": [
     {
-      "folder": "",
-      "template": ""
+      "folder": "20-Diary",
+      "template": "88-Template/tp-日记模板-带进度.md"
     }
   ],
   "syntax_highlighting": true,

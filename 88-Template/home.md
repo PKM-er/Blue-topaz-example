@@ -43,8 +43,8 @@ obsidianUIMode: preview
 >[!note|noborder|banner]  ![[cat.gif|inlR|160]]
 >```dataviewjs
 let setting = {};
-//在和风天气中创建的 Api key
-setting.key = "dc0f31ac6f37484f88e3e7d45b84e403";
+//在和风天气中创建的 Api key https://console.qweather.com
+setting.key = "dc0f31ac6f37484f88e3e7d45b84e403";//如果无法显示天气请换成自己的key
 setting.city = "";//城市名，为空自动定位
 setting.days =1 ;//天气预报天数1-3
 setting.icon =true ;//是否显示动态图标

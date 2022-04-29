@@ -32,5 +32,4 @@ markdown-prettifier
 obsidian-quiet-outline
 periodic-notes
 obsidian-chat-view
-markdown-table-editor
 obsidian-enhancing-mindmap

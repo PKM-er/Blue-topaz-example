@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.14.6。uid [20220426] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.6, uid [20220426] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.7。uid [20220428] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.7, uid [20220428] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -96,7 +96,7 @@ settings:
     default-dark: '#95a503'
   -
     id: magic-low-color
-    title: low color
+    title: Low contrast color
     title.zh: 浅色
     description.zh: 浅色主要作用于各类触发背景底色，建议用不影响阅读的背景色系。
     type: variable-themed-color
@@ -178,7 +178,7 @@ settings:
     step: 0.1
   -
     id: background-settings-workplace-theme-light
-    title: Theme light
+    title: Light mode
     type: class-select
     allowEmpty: false
     default: background-settings-workplace-theme-light-in-the-sky
@@ -213,7 +213,7 @@ settings:
     default: url("https://") 
   -
     id: background-settings-workplace-theme-dark
-    title: Theme dark
+    title: Dark mode
     type: class-select
     allowEmpty: false
     default: background-settings-workplace-theme-dark-in-the-sky
@@ -254,7 +254,7 @@ settings:
     default: url("https://")
   - 
     id: background-settings-workplace-random
-    title: Random Background Images
+    title: Random background
     title.zh: 随机背景
     description: Images will be refreshed when Obsidian launches; Internet required
     description.zh: 图片在Obsidian打开时刷新；需要联网 
@@ -275,7 +275,7 @@ settings:
     default: false
   - 
     id: background-image-settings-markdown-page-options
-    title: Choose Images 
+    title: Choose image set
     title.zh: 选择背景
     type: class-select
     allowEmpty: false
@@ -301,7 +301,7 @@ settings:
         value: background-image-settings-markdown-page-kawaii 
   -
     id: background-image-settings-markdown-page-random
-    title: Random Background Images
+    title: Random background
     title.zh: 随机背景
     description: Images will be refreshed when Obsidian launches; nInternet connection required
     description.zh: 图片在Obsidian打开时刷新；需要联网 
@@ -477,7 +477,7 @@ settings:
   -
     id: bt-status-off
     title: Reduced Status Bar
-    title.zh: 使用半宽状态栏
+    title.zh: 缩减状态栏宽度
     type: class-toggle
     default: false
   -
@@ -714,7 +714,7 @@ settings:
     id: text-highlight-bg-a-light
     title: Opacity (Light mode)
     description: To adjust Alpha
-    description.zh: 调整透明度（Alpha） 明亮模式
+    description.zh: 调整透明度（Alpha）明亮模式
     type: variable-number-slider
     default: 0.80
     min: 0
@@ -756,7 +756,7 @@ settings:
     id: text-highlight-bg-a-dark
     title: Opacity (Dark mode)
     description: To adjust Alpha
-    description.zh: 调整透明度（Alpha） 黑暗模式
+    description.zh: 调整透明度（Alpha）黑暗模式
     type: variable-number-slider
     default: 0.55
     min: 0
@@ -764,7 +764,7 @@ settings:
     step: 0.05
   -
     id: remove-colorful-highlight-bg
-    title: Cancel Colorful Highlight Background Color
+    title: Deactivate Colorful-Highlight
     title.zh: 取消多彩高亮颜色
     description: In this theme, *==xxx==*, **==xxx==** and ***==xxx==*** possese different background colors by default, active this option to cancel it. Even with this option actived, you can still type "cssclass：colorful-highlight" into yaml to make the colorful-highlight style available to individual documents
     description.zh: 当前主题下，*==xxx==*, **==xxx==** and ***==xxx==*** 默认情况下具有不同高亮背景色，激活该选项以取消。即使取消了该功能，你依旧可以在yaml中键入"cssclass：colorful-highlight"，使单个文档激活多彩高亮功能
@@ -1129,7 +1129,7 @@ settings:
     default: 0.9375em
   -
     id: font-size-latex
-    title: Math Equation
+    title: Mathematical expressions
     title.zh: 数学公式字体大小
     type: variable-text
     default: 1.25em
@@ -1355,7 +1355,7 @@ settings:
     default-dark: '#c173ee'
   -
     id: h6-toggle-underline
-    title: toggle H6 underline
+    title: Toggle H6 Underline
     title.zh: 切换H6下划线
     type: class-toggle
     default: false
@@ -1385,7 +1385,7 @@ settings:
     collapsed: true
   -
     id: line-width-readable
-    title: Line width (in the mode of 'Readable line length')
+    title: Line Width (in the mode of 'Readable line length')
     title.zh: 行宽（缩减栏宽模式下）
     description: The maximum line width in rem units (1rem = Body font size)
     type: variable-number
@@ -1417,32 +1417,32 @@ settings:
     step: 0.1
   -
     id: text-indentation-two-em
-    title: Text-indent of the first line in preview mode
+    title: Slight Indentation of the First Line in Preview Mode
     title.zh: 段落首行缩进（预览模式）
     type: class-toggle
     default: false
   -
     id: reduce-bottom-padding
-    title: Reduce Padding Bottom of Pages
+    title: To Reduce Padding Bottom of Pages
     title.zh: 缩减笔记下方预留空白大小
     type: class-toggle
     default: false
   -
     id: bottom-padding-value
-    title: Adjust Padding Bottom of Pages
+    title: To Adjust Padding Bottom of Pages
     title.zh: 调整笔记下方预留空白大小
     type: variable-text
     default: 0em
   -
     id: other-typography-settings
-    title: 2.2.5 .md file in split panel
+    title: 2.2.5 *.md File in Split Pane
     title.zh: 2.2.5 侧面拆分面板中的md文件
     type: heading
     level: 3
     collapsed: true
   -
     id: font-size-split
-    title: Font size
+    title: Font Size
     title.zh: 字体大小
     type: variable-text
     default: 0.85em
@@ -1454,7 +1454,7 @@ settings:
     default: 1.3
   -
     id: default-split-style
-    title: Toggle default style
+    title: Toggle Default Style
     title.zh: 切换默认样式
     type: class-toggle
     default: false
@@ -1485,7 +1485,7 @@ settings:
     default: false
   -
     id: plain-file-title
-    title: Remove colorful background of active file title
+    title: Remove Colorful Background of Active File Title
     title.zh: 取消激活文件标题的彩色背景
     description: Make it austere
     type: class-toggle
@@ -1510,14 +1510,14 @@ settings:
     default: false
   - 
     id: fancy-hr-folder
-    title: 2.3.1 Horizontal Ruler (hr, ---)
+    title: 2.3.1 Dividing Line (Horizontal Ruler, hr, ---)
     title.zh: 2.3.1 分割线（hr，---）
     type: heading
     level: 3
     collapsed: true  
   -
     id: fancy-hr
-    title: Fancy Horizontal Ruler (hr)
+    title: Fancy Dividing Line (Horizontal Ruler, hr, ---)
     title.zh: 装饰性分割线（hr，---）
     type: class-select
     allowEmpty: false
@@ -1557,7 +1557,7 @@ settings:
     default: "'😀'"
   -
     id: fancy-hr-rotate
-    title: Degree of icon rotation 
+    title: Degree of Icon Rotation 
     title.zh: 图标旋转角度
     type: variable-number
     default: 0
@@ -1761,16 +1761,16 @@ settings:
             format: rgb-values
     default: '#cccecc'
   -
-    id: indentation-guides -lines-settings
-    title: 2.3.2.3 indentation guides Color setting
+    id: indentation-guides-lines-settings
+    title: 2.3.2.3 Color Settings of Default Relationship Lines
     title.zh: 2.3.2.3 默认大纲线颜色设置
-    description: Settings for "Indentation guides" option
+    description: Settings for default "Indentation guides" Option
     type: heading
     level: 4
     collapsed: true
   - 
         id: indentation-guide
-        title: Inactive indentation guide color
+        title: Inactive Line Color
         type: variable-themed-color
         format: rgb
         opacity: true
@@ -1778,7 +1778,7 @@ settings:
         default-dark: 'rgba(255, 255, 255, 0.08)'
   - 
         id: indentation-guide-active
-        title: Active indentation guide color
+        title: Active Line Color
         type: variable-themed-color
         format: rgb
         opacity: true
@@ -1793,7 +1793,7 @@ settings:
     collapsed: true
   -
     id: file-name-animation
-    title: File name animation
+    title: File Name Scrolling When Hovering
     title.zh: 文件名自动滚动效果
     type: class-toggle
     default: false
@@ -1820,12 +1820,6 @@ settings:
     type: class-toggle
     default: false
   - 
-    id: folder-icons
-    title: Activate Folder Icons
-    title.zh: 激活文件夹图标
-    type: class-toggle
-    default: false
-  - 
     id: text-folder-file-icon
     title: Color of File Icons
     title.zh: 文件前图标颜色
@@ -1834,6 +1828,18 @@ settings:
     format: hex
     default-light: '#272727'
     default-dark: '#b3b3b3'
+  - 
+    id: folder-icons
+    title: Activate Folder Icons
+    title.zh: 激活文件夹图标
+    type: class-toggle
+    default: false
+  - 
+    id: remove-arrow
+    title: Folder Icons w/o arrows (Collapse Indicator)
+    title.zh: 文件夹图标开启后，移除箭头图标（折叠图标）
+    type: class-toggle
+    default: false
   -
     id: folder-style-change-options-colorful-folder
     title: 2.3.3.1 Colorful Folder
@@ -1984,26 +1990,26 @@ settings:
     default: false
   - 
     id: embed-hd
-    title: hide embed headings like H1 H2
+    title: Hide Embedded Headers
     title.zh: 隐藏嵌入文档中的H1 H2 H3标题
     type: class-toggle
     default: false
   - 
     id: embed-hover
-    title:  embed note floating effect
+    title: Floating Effect of Embedded Note When Hovering
     title.zh: 嵌入笔记浮动效果
     type: class-toggle
     default: false
   -
     id: custom-modal-windows
-    title: 2.3.7 Custom modal windows
+    title: 2.3.7 Custom Modal Windows
     title.zh: 2.3.7 个性化弹窗
     type: heading
     level: 3
     collapsed: true
   -
     id: modal-title-icon
-    title: modal title icon
+    title: Modal Title Icon
     title.zh: 弹窗标题自定义
     description: Do not remove the quotes
     description.zh: 保留引号
@@ -2018,13 +2024,13 @@ settings:
     collapsed: true
   -
     id: no-wrapped-table
-    title: Nowrap in Tables
+    title: Non-wrap in Tables
     title.zh: 表格不换行
     type: class-toggle
     default: false
   -
     id: show-border-table
-    title: Show borders
+    title: Show Borders
     title.zh: 显示表格框线
     type: class-toggle
     default: false
@@ -2189,7 +2195,7 @@ settings:
     default: false
   -
     id: fancy-cursor-color-1
-    title: Fancy cursor color 1
+    title: Fancy Cursor Color 1
     title.zh: 装饰性光标颜色 1
     type: variable-themed-color
     opacity: true
@@ -2198,7 +2204,7 @@ settings:
     default-dark: '#'
   -
     id: fancy-cursor-color-2
-    title: Fancy cursor color 2
+    title: Fancy Cursor Color 2
     title.zh: 装饰性光标颜色 2
     type: variable-themed-color
     opacity: true
@@ -2207,13 +2213,13 @@ settings:
     default-dark: '#'
   -
     id: fancy-cursor-width
-    title: Cursor width
+    title: Cursor Width
     title.zh: 装饰性光标宽度
     type: variable-text
     default: 2px
   -
     id: fancy-cursor-radius
-    title: Cursor radius
+    title: Cursor Radius
     title.zh: 装饰性光标圆角
     type: variable-text
     default: 3px
@@ -2443,6 +2449,108 @@ settings:
     description:  ❗cssclass：kanban❗ A kind of kanban-liked style for unordered lists. (Adapted from Spectrum theme by @Wiktoria Mielcarek)
     description.zh:  ❗cssclass：kanban❗ 实现类似看板样式并排显示，只对无序列表生效。改自Spectrum theme by @Wiktoria Mielcarek
   -
+    id: simple-p-kanban
+    title: Simple pseudo-kanban
+    title.zh: 单色伪看板
+    description: Remove colors of pseudo-kanban
+    description.zh: 移除伪看板头部颜色
+    type: class-toggle
+    default: false
+  -
+    id: remove-shadow-p-kanban
+    title: Remove shadow of pseudo-kanban
+    title.zh: 移除伪看板触发阴影
+    type: class-toggle
+    default: false
+  -
+    id: colorful-p-kanban
+    title: Colorful pseudo-kanban
+    title.zh: 多彩伪看板
+    type: class-toggle
+    default: false
+  - 
+    id: p-kanban-color-1
+    title: pseudo-kanban color 1
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#52aaf365'
+    default-dark: '#3496e652'
+  -
+    id: p-kanban-color-2
+    title: pseudo-kanban color 2
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#84ecec65'
+    default-dark: '#2ec4c452'
+  -
+    id: p-kanban-color-3
+    title: pseudo-kanban color 3
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#94ec8c65'
+    default-dark: '#38ce2a52'
+  -
+    id: p-kanban-color-4
+    title: pseudo-kanban color 4
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#dce28765'
+    default-dark: '#d2dd3852'
+  -
+    id: p-kanban-color-5
+    title: pseudo-kanban color 5
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#eeb36f65'
+    default-dark: '#eb973752'
+  -
+    id: p-kanban-color-6
+    title: pseudo-kanban color 6
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#f18e8e65'
+    default-dark: '#f3424252'
+  -
+    id: p-kanban-color-7
+    title: pseudo-kanban color 7
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#e677e065'
+    default-dark: '#e45bdd52'
+  -
+    id: p-kanban-color-8
+    title: pseudo-kanban color 8
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#ba8be165'
+    default-dark: '#b962ff52'
+  -
+    id: p-kanban-card-color-1
+    title: pseudo-kanban-card subitem color
+    title.zh: 伪看板子项背景色
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#f9f9f99b'
+    default-dark: '#0000003f'
+  -
+    id: p-kanban-border-color
+    title: pseudo-kanban-border color
+    title.zh: 伪看板边框颜色
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#a0a0a060'
+    default-dark: '#00000000'
+  -
     id: built-in-style-code-wrap
     title:  Code Wrap
     title.zh: 代码行自动换行 code-wrap
@@ -2574,7 +2682,7 @@ body {
   --font-size-file-header-title-andy-plugin: 1em;/*文件抬头标题for Andy mode plugin*/
   --font-size-embed-title-size: 1.3em;
   --font-size-embed-file: 1.25em;
-  --font-size-folder-and-file: 0.85em;/*左侧边栏文件字体大小*/
+  --font-size-folder-and-file: 0.88em;/*左侧边栏文件字体大小*/
   --font-size-edit-normal: 1em;/*编辑正文字体大小*/
   --font-size-preview-normal: 1em;/*预览正文字体大小*/
   --h1: 1.5625em;
@@ -3012,7 +3120,7 @@ body.all-dark .print.theme-light,
   --p-kanban-bg-color: #6c6c6c42;
   --p-kanban-border-color: transparent;
   --p-kanban-card-color-1: #0000003f;
-  --p-kanban-card-color-2: #0000003f;
+  --p-kanban-card-color-2: #41414136;
   --p-kanban-color-6: #f3424252;
   --p-kanban-color-5: #eb973752;
   --p-kanban-color-4: #d2dd3852;
@@ -3021,6 +3129,8 @@ body.all-dark .print.theme-light,
   --p-kanban-color-1: #3496e652;
   --p-kanban-color-8: #b962ff52;
   --p-kanban-color-7: #e45bdd52;
+  --p-kanban-color-simple: #8e8e8e41;
+  --p-kanban-color-shadow: #0000004d;
 
   /*style settings*/
   --background-secondary-translucent: #2c2c2c26;
@@ -3106,7 +3216,7 @@ body.all-dark .print.theme-light,
 
   --background-mobile-drawer-1: #ffffff;
   --background-mobile-drawer-2: #ffffff;
-  --background-modifier-border-hr: #585858;
+  --background-modifier-border-hr: #b9b9b9;
   --background-secondary-alt-bg-4-bt-publish: #f6f6f6;
 
   --background-transparent-black-or-white-1: #ffffffb0;
@@ -3299,24 +3409,18 @@ body.all-dark .print.theme-light,
   /*pseudo-kanban*/
   --p-kanban-bg-color: #d3d3d32d;
   --p-kanban-border-color: #a0a0a060;
-  --p-kanban-card-color-1: #ffffffc4;
-  --p-kanban-card-color-2: #ffffffc4;
+  --p-kanban-card-color-1: #f9f9f99b;
+  --p-kanban-card-color-2: #ffffff;
   --p-kanban-color-6: #f18e8e65;
   --p-kanban-color-5: #eeb36f65;
-  --p-kanban-color-4: #dce28765;
-  --p-kanban-color-3: #94ec8c65;
-  --p-kanban-color-2: #84ecec65;
+  --p-kanban-color-4: #d1d77f65;
+  --p-kanban-color-3: #8ce38465;
+  --p-kanban-color-2: #7cdddd65;
   --p-kanban-color-1: #52aaf365;
   --p-kanban-color-8: #ba8be165;
   --p-kanban-color-7: #e677e065;
-
-  --p-kanban-checkbox-color-1: #f18e8e3d;
-  --p-kanban-checkbox-color-2: #eeb36f3d;
-  --p-kanban-checkbox-color-3: #dce2873d;
-  --p-kanban-checkbox-color-4: #94ec8c3b;
-  --p-kanban-checkbox-color-5: #84ecec42;
-  --p-kanban-checkbox-color-6: #52aaf332;
-  --p-kanban-checkbox-color-7: #ba8be134;
+  --p-kanban-color-simple: #cdcdcd2c;
+  --p-kanban-color-shadow: #cfcfcf4d;
 
   /*style settings*/
   --background-secondary-translucent: #ffffff3d;
@@ -3567,20 +3671,6 @@ body.color-scheme-options-avocado-topaz.theme-light {
   --text-checked-checkbox: #9b9b9b;
 
   --activeline-background: #d1f0e521;
-
-  /*pseudo-kanban*/
-  --p-kanban-bg-color: #d3d3d32d;
-  --p-kanban-border-color: #a0a0a060;
-  --p-kanban-card-color-1: #ffffffc4;
-  --p-kanban-card-color-2: #ffffffc4;
-  --p-kanban-color-6: #f18e8e65;
-  --p-kanban-color-5: #eeb36f65;
-  --p-kanban-color-4: #dce28765;
-  --p-kanban-color-3: #94ec8c65;
-  --p-kanban-color-2: #84ecec65;
-  --p-kanban-color-1: #52aaf365;
-  --p-kanban-color-8: #ba8be165;
-  --p-kanban-color-7: #e677e065;
 
   /*style settings*/
   --background-secondary-translucent: #ffffff3d;
@@ -7340,10 +7430,10 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
   flex-wrap: wrap;
 }
 
-.kanban ul>li:not(.task-list-item) {
+.kanban ul>li {
   flex: 1 1 20%;
   padding: 0.1em 1em 0.1em 0.8em;
-  margin: 0 0.1em 0.3em 0  !important;
+  margin: 0 0.3em 0.3em 0 !important;
   list-style: none;
   border: 1px solid var(--p-kanban-border-color);
   border-left: 1px solid var(--p-kanban-border-color) !important;
@@ -7365,37 +7455,66 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
   transition: transform 10ms linear 0s
 }
 
-.kanban ul>li:nth-of-type(8n+1) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+1) {
   background-color: var(--p-kanban-color-1);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+2) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+2) {
   background-color: var(--p-kanban-color-2);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+3) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+3) {
   background-color: var(--p-kanban-color-3);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+4) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+4) {
   background-color: var(--p-kanban-color-4);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+5) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+5) {
   background-color: var(--p-kanban-color-5);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+6) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+6) {
   background-color: var(--p-kanban-color-6);
-  padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n+7) {
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n+7) {
   background-color: var(--p-kanban-color-7);
+}
+body.colorful-p-kanban .kanban ul>li:nth-of-type(8n) {
+  background-color: var(--p-kanban-color-8);
+}
+
+.kanban ul>li:nth-of-type(n) {
+  background-color: var(--p-kanban-color-simple);
   padding-left: 1em;
 }
-.kanban ul>li:nth-of-type(8n) {
-  background-color: var(--p-kanban-color-8);
-  padding-left: 1em;
+.kanban ul:first-child>li:nth-of-type(8n+1) {
+  border-top: 6px solid var(--p-kanban-color-1) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+2) {
+  border-top: 6px solid var(--p-kanban-color-2) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+3) {
+  border-top: 6px solid var(--p-kanban-color-3) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+4) {
+  border-top: 6px solid var(--p-kanban-color-4) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+5) {
+  border-top: 6px solid var(--p-kanban-color-5) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+6) {
+  border-top: 6px solid var(--p-kanban-color-6) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n+7) {
+  border-top: 6px solid var(--p-kanban-color-7) !important;
+}
+.kanban ul:first-child>li:nth-of-type(8n) {
+  border-top: 6px solid var(--p-kanban-color-8) !important;
+}
+body.simple-p-kanban .kanban ul:first-child>li:nth-of-type(n) {
+  border-top: none !important;
+}
+
+body:not(.remove-shadow-p-kanban) .kanban ul>li:hover {
+  transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1);
+  box-shadow: 0 3px 5px 0 var(--p-kanban-color-shadow), 0 3px 1px -3px var(--p-kanban-color-shadow), 2px 3px 3px 0 var(--p-kanban-color-shadow);
 }
 
 .kanban ul ul {
@@ -7415,21 +7534,13 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
   background-color: var(--p-kanban-card-color-1) !important;
 }
 
-.kanban ul ul li:nth-child(even) {
-  background-color: var(--p-kanban-card-color-2) !important;
-}
-
-.kanban ul>li:hover {
-  border-color: var(--p-kanban-border-color) !important;
-}
-
-.kanban ul ul li:hover {
-  background: transparent !important;
+body.remove-shadow-p-kanban .kanban ul ul li:hover {
+  background: var(--p-kanban-card-color-2) !important;
   border-color: var(--p-kanban-border-color) !important;
   border-left: 1px solid var(--p-kanban-border-color) !important;
 }
 
-.theme-dark .kanban ul ul li:hover {
+body.remove-shadow-p-kanban.theme-dark .kanban ul ul li:hover {
   border-color: #696969e1 !important;
   border-left: 1px solid #696969e1 !important;
 }
@@ -7467,7 +7578,6 @@ body.reduce-bottom-padding .cm-s-obsidian .cm-content {
 .kanban ul > li.task-list-item {
   flex: 1 1 20%;
   padding: 0.1em 1em;
-  margin: 0 4px 0.3em 0;
   list-style: none;
   border: 1px solid var(--p-kanban-border-color);
   border-left: 1px solid var(--p-kanban-border-color) !important;
@@ -7497,7 +7607,7 @@ body:not(.default-icons) .kanban li.task-list-item .task-list-item.is-collapsed 
   transform: translateX(-0.9em) translateY(-1em) rotate(-90deg);
 }
 
-.kanban .task-list-item-checkbox {
+body.colorful-p-kanban .kanban .task-list-item-checkbox {
   border-color: var(--text-normal) !important;
 }
 
@@ -9837,7 +9947,6 @@ ol {
 }
 
 .markdown-preview-view:not(.kanban) ul>li:not(.task-list-item) {
-  padding-left: 0.25em;
   border-radius: var(--radius-s);
   word-wrap: break-word;
   word-break: break-word;
@@ -9848,7 +9957,7 @@ ol {
   border-left: 0.125em solid var(--list-ul-block-color);
 }
 
-:is(.markdown-preview-view,.markdown-rendered) ul>li:not(.task-list-item):hover {
+:is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item):hover {
   border-color: var(--list-ul-hover);
 }
 
@@ -9958,6 +10067,7 @@ body.list-bracket-left-two ul>li:not(.task-list-item)>p {
 }
 body.list-bracket-left-two ul>li:not(.task-list-item) {
   list-style-position: inside;
+  padding-left: 0.25em;
 }
 
 body.list-bracket-left-two ol.contains-task-list>li.task-list-item {
@@ -10012,15 +10122,12 @@ body.list-vertical-line-one :is(ol,ul).contains-task-list :is(ol,ul)::before {
   border-left: 2px solid var(--background-modifier-border);
   border-right: none;
   position: absolute;
-  left: -1rem;
+  left: -0.9rem;
   top: 1px;
   height: 100%;
 }
 
-body.list-vertical-line-one ul>li:not(.task-list-item) {
-  border-left: none !important;
-}
-
+body.list-vertical-line-one :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item),
 body.list-vertical-line-one ol>li {
   border-left: none !important;
 }
@@ -10066,7 +10173,7 @@ body.list-vertical-line-two :is(ol,ul).contains-task-list :is(ol,ul)::before {
   content: ' ';
   border-left: 2px solid var(--background-modifier-border);
   position: absolute;
-  left: -1.1em;
+  left: -0.85em;
   top: 0;
   height: 100%;
 }
@@ -10074,10 +10181,7 @@ body.list-vertical-line-two.is-mobile :is(ul,ol).contains-task-list :is(ol,ul)::
   left: -1em;
 }
 
-body.list-vertical-line-two ul>li:not(.task-list-item) {
-  border-left: none !important;
-}
-
+body.list-vertical-line-two :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item),
 body.list-vertical-line-two ol>li {
   border-left: none !important;
 }
@@ -10096,7 +10200,7 @@ body.list-no-line-in-edit .cm-hmd-list-indent .cm-tab::before {
 }
 
 /*list-vertical-line-three*/
-body.list-vertical-line-three :is(ol,ul){
+body.list-vertical-line-three :is(ol,ul) {
   padding-inline-start: 1.3em;
 }
 
@@ -10182,10 +10286,7 @@ body.list-vertical-line-three.is-mobile :is(ol,ul).contains-task-list :is(ol,ul)
   left: -1em;
 }
 
-body.list-vertical-line-three ul>li:not(.task-list-item) {
-  border-left: none !important;
-}
-
+body.list-vertical-line-three :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item),
 body.list-vertical-line-three ol>li {
   border-left: none !important;
 }
@@ -10198,6 +10299,10 @@ body.list-vertical-line-three:not(.default-icons) :is(.markdown-preview-view,.ma
   font-family: 'Inter';
   color: var(--text-accent);
   transition: transform 10ms linear 0s;
+}
+
+.markdown-rendered.show-indentation-guide li.task-list-item > ul::before, .markdown-rendered.show-indentation-guide li.task-list-item > ol::before {
+  left: 0.4rem;
 }
 
 
@@ -10255,10 +10360,6 @@ body.rainbow-lines .mod-cm6 .HyperMD-list-line.cm-line .cm-hmd-list-indent {
   position: relative;
   font-family: var(--rb-indent-font-family) !important;
   font-size: var(--rb-indent-font-size) !important;
-}
-
-body.rainbow-lines .HyperMD-list-line.HyperMD-list-line-3.cm-active.cm-line {
-
 }
 
 body.rainbow-lines .mod-cm6 .HyperMD-list-line.HyperMD-list-line-1.cm-line:not([class*="quote"]):not([class*="nobullet"]) .cm-hmd-list-indent::before { 
@@ -11215,7 +11316,6 @@ body:not(.remove-colorful-highlight-bg) :is(.markdown-preview-view,.markdown-ren
   background-color: var(--bg-color-highlight-1);
   color: var(--color-highlight-1);
   font-style: normal;
-  padding: 1px 3px;
   font-weight: var(--font-weight-highlight-1);
 }
 body:not(.remove-colorful-highlight-bg) :is(.markdown-preview-view,.markdown-rendered) :not(font):not(strong)>em>mark {
@@ -11540,13 +11640,18 @@ body.embed-hover.theme-dark .internal-embed .markdown-embed:hover {
   transform: translate3d(0px, -3px, 0px);
 }
 
-.markdown-embed {
+.markdown-embed,
+.popover.hover-popover .markdown-embed .markdown-embed {
   background-color: var(--embed-color);
   border: 1px solid var(--embed-color);
   border-radius: var(--radius-xs);
   padding: 0 0.2em;
   margin-bottom: 0;
   margin-top: 0;
+}
+.popover.hover-popover,
+.popover.hover-popover .markdown-embed {
+  background-color: var(--background-primary-bg-4-bt);
 }
 
 .markdown-source-view .markdown-embed,
@@ -11943,13 +12048,12 @@ body:not(.image-zoom) .markdown-reading-view img:not([class="emoji"]):active,
   background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4MCIgaGVpZ2h0PSI4MCIgdmlld0JveD0iMCAwIDgwIDgwIj4KICA8ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPgogICAgPHJlY3Qgd2lkdGg9IjgwIiBoZWlnaHQ9IjgwIiBmaWxsPSIjRjJGNEY2Ii8+CiAgICA8ZyBmaWxsPSIjRkZGIj4KICAgICAgPHJlY3Qgd2lkdGg9IjIiIGhlaWdodD0iNzkiIHg9Ijc4Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjU5Ii8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iMjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSIyMCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjIwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNDAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI0MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjQwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSIxIiBoZWlnaHQ9IjE5IiB4PSIxOSIgeT0iNjAiLz4KICAgICAgPHJlY3Qgd2lkdGg9IjEiIGhlaWdodD0iMTkiIHg9IjM5IiB5PSI2MCIvPgogICAgICA8cmVjdCB3aWR0aD0iMSIgaGVpZ2h0PSIxOSIgeD0iNTkiIHk9IjYwIi8+CiAgICAgIDxyZWN0IHdpZHRoPSI3OSIgaGVpZ2h0PSIxIiB5PSIxOSIvPgogICAgICA8cmVjdCB3aWR0aD0iNzkiIGhlaWdodD0iMSIgeT0iMzkiLz4KICAgICAgPHJlY3Qgd2lkdGg9Ijc5IiBoZWlnaHQ9IjEiIHk9IjU5Ii8+CiAgICA8L2c+CiAgICA8cmVjdCB3aWR0aD0iODAiIGhlaWdodD0iMiIgeT0iNzgiIGZpbGw9IiNGRkYiLz4KICA8L2c+Cjwvc3ZnPgo=");
 }
 
- .internal-embed.image-embed.is-loaded img:not([class="emoji"]) {
+.internal-embed.image-embed.is-loaded img:not([class="emoji"]) {
   margin: 3px auto;
   display: block;
 }
 
-.internal-embed[alt$="inline"], .internal-embed[alt$="Inline"], .internal-embed[alt$="INLINE"], .internal-embed[alt$="inl"]
-{
+.internal-embed[alt$="inline"], .internal-embed[alt$="Inline"], .internal-embed[alt$="INLINE"], .internal-embed[alt$="inl"] {
   display: inline ;
 }
 
@@ -11964,7 +12068,6 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 
 
 /* file explorer :Wrap long nav text and some paddings */
-
 .nav-file-title,
 .nav-folder-title {
   white-space: normal;
@@ -11994,7 +12097,7 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 
 /*an active line highlight in vim normal mode */
 .cm-fat-cursor .CodeMirror-activeline .CodeMirror-linebackground {
-  background-color: #468eeb33 !important;
+  background-color: var(--activeline-background)  !important;
 }
 
 .CodeMirror-activeline-background.CodeMirror-linebackground,
@@ -14158,27 +14261,7 @@ button.kanban-plugin__new-item-button:hover {
   height: 15px;
   filter: hue-rotate(var(--theme-color)) !important;
 }
-/* 屏蔽看板的默认样式
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+1) {
-  background-image: url("https://images.unsplash.com/photo-1487621167305-5d248087c724?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=889&q=80");
-}
 
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+2) {
-  background-image: url("https://images.unsplash.com/photo-1508193638397-1c4234db14d8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80");
-}
-
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+3) {
-  background-image: url("https://images.unsplash.com/photo-1488330890490-c291ecf62571?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
-}
-
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+4) {
-  background-image: url("https://images.unsplash.com/photo-1528779794993-d2f7f51a53a4?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80");
-}
-
-.theme-light .kanban-plugin__lane-wrapper:nth-child(5n+0) {
-  background-image: url("https://images.unsplash.com/photo-1553307236-8783cc0a3b9e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80");
-}
- */
 .theme-dark .kanban-plugin__lane-wrapper:nth-child(7n+1) {
   background: linear-gradient(to bottom, var(--kanban-color-1) 60%, transparent);
 }
@@ -15154,35 +15237,35 @@ body.style-options-for-admonition-plugin .admonition-kanban ul .list-collapse-in
   transition: transform 10ms linear 0s;
 }
 
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+1) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n+1) {
   background-color: var(--p-kanban-color-1);
   padding-left: 1em;
 }
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+2) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n+2) {
   background-color: var(--p-kanban-color-2);
   padding-left: 1em;
 }
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+3) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n+3) {
   background-color: var(--p-kanban-color-3);
   padding-left: 1em;
 }
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+4) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n+4) {
   background-color: var(--p-kanban-color-4);
   padding-left: 1em;
 }
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+5) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n+5) {
   background-color: var(--p-kanban-color-5);
   padding-left: 1em;
 }
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+6) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n+6) {
   background-color: var(--p-kanban-color-6);
   padding-left: 1em;
 }
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n+7) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n+7) {
   background-color: var(--p-kanban-color-7);
   padding-left: 1em;
 }
-body.style-options-for-admonition-plugin .admonition-kanban ul>li:nth-of-type(8n) {
+body.style-options-for-admonition-plugin.colorful-p-kanban .admonition-kanban ul>li:nth-of-type(8n) {
   background-color: var(--p-kanban-color-8);
   padding-left: 1em;
 }
@@ -15202,10 +15285,6 @@ body.style-options-for-admonition-plugin .admonition-kanban ul ul li:not(.task-l
   width: 100%;
   display: block;
   background-color: var(--p-kanban-card-color-1) !important;
-}
-
-body.style-options-for-admonition-plugin .admonition-kanban ul ul li:nth-child(even) {
-  background-color: var(--p-kanban-card-color-2) !important;
 }
 
 body.style-options-for-admonition-plugin .admonition-kanban ul>li:hover {
@@ -15333,9 +15412,8 @@ body.style-options-for-admonition-plugin :is(.callout.admonition-col2,.callout.a
 {
   margin-left: auto;
 }
-
 body.style-options-for-admonition-plugin .admonition-col2 .admonition-content  ul,
-body.style-options-for-admonition-plugin .admonition-col3 .admonition-content ul,
+body.style-options-for-admonition-plugin .admonition-col3 .admonition-content  ul,
 body.style-options-for-admonition-plugin .admonition-col4 .admonition-content  ul,
 body.style-options-for-admonition-plugin .admonition-flex .admonition-content  ul {
   padding-inline-start: 20px !important;
@@ -15957,17 +16035,17 @@ color: transparent;
 
 span.dataview.small-text {
   position: relative;
-font-size: 70%;
-line-height: 0;
-vertical-align: baseline;
+  font-size: 70%;
+  line-height: 0;
+  vertical-align: baseline;
   top: -.5em;
-    color: var(--text-accent);
-    border-radius: 3px;
-    text-align: center;
-    padding: 0 0.2em;
-    margin: 0 1px;
-    font-variant-numeric: ordinal;
-    opacity: 0.6;
+  color: var(--text-accent);
+  border-radius: 3px;
+  text-align: center;
+  padding: 0 0.2em;
+  margin: 0 1px;
+  font-variant-numeric: ordinal;
+  opacity: 0.6;
 }
 
 .dataview-container .internal-link {
@@ -16033,40 +16111,9 @@ ul.dataview.dataview-ul.dataview-result-list-root-ul {
   border-radius: var(--radius-xs);
   border: 1px solid var(--embed-color);
 }
-body.rainbow-lines-reading table.dataview.table-view-table ul ul::before,
-body.rainbow-lines-reading table.dataview.table-view-table ol ul::before,
-body.rainbow-lines-reading table.dataview.table-view-table ul ol::before,
-body.rainbow-lines-reading table.dataview.table-view-table ol ol::before,
-body.list-vertical-line-one table.dataview.table-view-table ul ul::before,
-body.list-vertical-line-one table.dataview.table-view-table ol ul::before,
-body.list-vertical-line-one table.dataview.table-view-table ul ol::before,
-body.list-vertical-line-one table.dataview.table-view-table ol ol::before,
-body.list-vertical-line-two table.dataview.table-view-table ul ul::before,
-body.list-vertical-line-two table.dataview.table-view-table ol ul::before,
-body.list-vertical-line-two table.dataview.table-view-table ul ol::before,
-body.list-vertical-line-two table.dataview.table-view-table ol ol::before,
-body.list-vertical-line-three table.dataview.table-view-table ul ul::before,
-body.list-vertical-line-three table.dataview.table-view-table ol ul::before,
-body.list-vertical-line-three table.dataview.table-view-table ul ol::before,
-body.list-vertical-line-three table.dataview.table-view-table ol ol::before {
-  border-left: none;
-}
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ul ul::before,
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ol ul::before,
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ul ol::before,
-body.rainbow-lines-reading .kanban-plugin__markdown-preview-view ol ol::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ul ul::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ol ul::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ul ol::before,
-body.list-vertical-line-one .kanban-plugin__markdown-preview-view ol ol::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ul ul::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ol ul::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ul ol::before,
-body.list-vertical-line-two .kanban-plugin__markdown-preview-view ol ol::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ul ul::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ul::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ul ol::before,
-body.list-vertical-line-three .kanban-plugin__markdown-preview-view ol ol::before {
+
+body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) table.dataview.table-view-table :is(ol,ul) :is(ol,ul)::before,
+body:is(.rainbow-lines-reading,.list-vertical-line-one,.list-vertical-line-two,.list-vertical-line-three) .kanban-plugin__markdown-preview-view :is(ol,ul) :is(ol,ul)::before {
   border-left: none;
 }
 
@@ -16107,10 +16154,10 @@ img[alt^="bookcover"] {
 }
 
 .theme-light progress::-webkit-progress-bar { 
-background: #cccccc; 
+  background: #cccccc; 
 }
 .theme-dark progress::-webkit-progress-bar { 
-background: #1a1919; 
+  background: #1a1919; 
 }
 
 .cards progress{
@@ -16221,7 +16268,6 @@ background: #1a1919;
   -o-object-fit: cover;
   object-fit: cover;
 }
-
 .cards table.dataview tbody>tr>td:first-child:after{
   content: "";
   position: absolute;
@@ -16229,7 +16275,6 @@ background: #1a1919;
   right: 0;
   bottom: 0;
   left: 0;
-  
   background-image: linear-gradient(90deg, hsla(0, 0%, 63.1%, .25), rgba(21, 21, 20, .1) 1%, hsla(0, 0%, 100%, .15) 4%, hsla(0, 0%, 58%, .1) 8%, hsla(0, 0%, 89%, 0) 57%, rgba(223, 218, 218, .03) 91%, rgba(223, 218, 218, .05) 98%, hsla(0, 0%, 100%, .1));
   box-shadow: inset 0 0 0 0 rgba(0, 0, 0, .1);
 }
@@ -18004,12 +18049,12 @@ body {
 
 body.folder-icons .nav-folder-children .nav-folder-title-content::before {
   position: relative;
-  content: " ";
+  content: "";
   display: inline-block;
   opacity: 0.9;
-  top: 1px;
-  width: 1em;
-  height: 1em;
+  top: 2px;
+  width: 1rem;
+  height: 1rem;
   margin-right: 5px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -18020,11 +18065,10 @@ body.folder-icons .nav-folder-children .nav-folder-title-content::before {
 }
 body.folder-icons .nav-folder-children .nav-folder.is-collapsed .nav-folder-title-content::before {
   position: relative;
-  content: " ";
+  content: "";
   display: inline-block;
-  width: 1em;
-  height: 1em;
-  margin-right: 5px;
+  width: 1rem;
+  height: 1rem;
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center center;
@@ -18033,15 +18077,24 @@ body.folder-icons .nav-folder-children .nav-folder.is-collapsed .nav-folder-titl
   -webkit-mask-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 5h-8.586L9.707 3.293A.997.997 0 0 0 9 3H4c-1.103 0-2 .897-2 2v14c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 19V7h16l.002 12H4z"></path></svg>');
 }
 
+body.folder-icons.remove-arrow:not(.default-icons) .nav-folder-collapse-indicator::after {
+  display: none;
+}
+body.folder-icons.remove-arrow:not(.default-icons) :is(.nav-folder-title,.nav-file-title) {
+  padding-left: 0;
+}
+body.folder-icons.remove-arrow:not(.default-icons) .nav-files-container {
+  padding-left: 7px;
+}
 
 body:not(.remove-file-icons) .nav-folder-children .nav-file-title-content:first-child::before {
   position: relative;
   content: " ";
   display: inline-block;
-  width: 1em;
+  width: 0.9rem;
   opacity: 0.9;
   top: 2px;
-  height: 1em;
+  height: 0.9rem;
   margin-right: 5px;
   background-size: contain;
   background-repeat: no-repeat;
@@ -20280,6 +20333,7 @@ body.loading-animation .progress-bar-message {
  background-size:cover;
  z-index:-1;
  opacity: 0.8;
+ background-attachment:fixed;
 }
 
  .markdown-preview-view.background .obsidian-banner
@@ -20307,7 +20361,7 @@ position:absolute!important;
 }
 .is-live-preview.background .has-banner .obsidian-banner.cm6-banner
 {
-opacity: 0.25;
+opacity: 0.5;
 height:100%;
 
 }
@@ -20364,8 +20418,9 @@ body.theme-light .popover.hover-popover:not(.is-loaded) {
     0px 20px 40px rgba(0, 0, 0, 0.11);
 }
 
-body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown-rendered) {
-  padding: 5px 5px 0; 
+body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown-rendered),
+.popover.hover-popover:not(.is-loaded) .markdown-source-view .cm-scroller {
+  padding: 5px 10px 0; 
 }
 
 body.theme-dark .popover.hover-popover:not(.is-loaded) {
@@ -20378,6 +20433,12 @@ body.theme-dark .popover.hover-popover:not(.is-loaded) {
 .popover.hover-popover {
   width: 400px;
   max-height: 40vh; 
+}
+
+.popover.hover-popover:not(.is-loaded) .markdown-source-view .cm-scroller,
+.popover.hover-popover:not(.is-loaded) .markdown-source-view .cm-gutters,
+body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown-rendered) {
+  font-size: 0.95em;
 }
 
 /* ================================== */
@@ -20488,7 +20549,7 @@ margin: 0px!important;
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220426";
+  content: "uid:20220428";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;
@@ -20875,72 +20936,69 @@ padding: 0px;
 [data-callout*=indent]) .callout-content p br::after {
   content: '\A         ';
 }
-    /* ===隐藏图标============ */
-    .callout.callout:is([data-callout-metadata^="noicon"], 
-    [data-callout*=noicon]) .callout-icon {
+/* ===隐藏图标============ */
+.callout.callout:is([data-callout-metadata^="noicon"], 
+[data-callout*=noicon]) .callout-icon {
   display:none;
-    }
+}
 
-     /* ===隐藏边框============ */
-     .callout.callout:is([data-callout-metadata*="noborder"], 
-     [data-callout*=noborder])  {
-      border-left: 0;
-      background-color: transparent;
-      box-shadow: none;
-     }
-     .callout.callout:is([data-callout-metadata*="noborder"], 
-     [data-callout*=noborder]) .callout-content {
-      border-left: 0;
-      background-color: transparent;
-      box-shadow: none;
-      border:none;
-     }
+/* ===隐藏边框============ */
+.callout.callout:is([data-callout-metadata*="noborder"], 
+[data-callout*=noborder]) {
+  border-left: 0;
+  background-color: transparent;
+  box-shadow: none;
+}
+.callout.callout:is([data-callout-metadata*="noborder"], 
+  [data-callout*=noborder]) .callout-content {
+  border-left: 0;
+  background-color: transparent;
+  box-shadow: none;
+  border:none;
+}
 
-        /* ===banner============ */
-       .is-live-preview .admonition-flex   .callout.callout[data-callout-metadata*="banner"]:nth-child(2) {
+/* ===banner============ */
+.is-live-preview .admonition-flex .callout.callout[data-callout-metadata*="banner"]:nth-child(2) {
+  margin-top: -1.5em;
+}
 
-                  margin-top: -1.5em;
-        }
-
-        .callout.callout[data-callout-metadata*="banner"] {
-          border-left: 0;
-          background-color: transparent;
-          box-shadow: none!important;
-         }
-         .callout.callout[data-callout-metadata*="banner"] .callout-content{
-          overflow:visible;
-         }
-        .callout.callout[data-callout-metadata*="banner"] .callout-title {
-         background-color: transparent ;
-         display: inline ;
-        }
-        /*** nested callout note for culumns | image used as tittle + centered ***/
-        .callout.callout[data-callout-metadata*="banner"] .callout-title  img {
-        border-radius: 1em ;
-        margin: auto;
-        display: block;
-        }
-        .callout.callout[data-callout-metadata*="banner"] .callout-fold
-        {
-         display:none;
-        }
-        .callout.callout[data-callout-metadata*="banner"] .callout-icon
-        {
-         display:none;
-        }
-        .callout.callout[data-callout-metadata*="banner"] .callout-title h3 {
-          text-align: center;	
-          line-height: 2;
-          }
-          .callout.callout[data-callout-metadata*="banner"] .callout-title h3::before {
-         display: none;
-            }
-       /* ===隐藏标题============ */
-       .callout.callout:is([data-callout-metadata*="notitle"], 
-       [data-callout*=notitle]) .callout-title {
-     display:none;
-       }
-  /* ===支持 right left  center 语法============ */
+.callout.callout[data-callout-metadata*="banner"] {
+  border-left: 0;
+  background-color: transparent;
+  box-shadow: none!important;
+}
+.callout.callout[data-callout-metadata*="banner"] .callout-content{
+  overflow:visible;
+}
+.callout.callout[data-callout-metadata*="banner"] .callout-title {
+  background-color: transparent ;
+  display: inline ;
+}
+/* nested callout note for culumns | image used as tittle + centered */
+.callout.callout[data-callout-metadata*="banner"] .callout-title img {
+  border-radius: 1em ;
+  margin: auto;
+  display: block;
+}
+.callout.callout[data-callout-metadata*="banner"] .callout-fold {
+  display:none;
+}
+.callout.callout[data-callout-metadata*="banner"] .callout-icon {
+  display:none;
+}
+.callout.callout[data-callout-metadata*="banner"] .callout-title h3 {
+  text-align: center;	
+  line-height: 2;
+}
+.callout.callout[data-callout-metadata*="banner"] .callout-title h3::before {
+  display: none;
+}
+/* ===隐藏标题============ */
+.callout.callout:is([data-callout-metadata*="notitle"], 
+[data-callout*=notitle]) .callout-title {
+  display:none;
+}
+/* ===支持 right left  center 语法============ */
      /*支持两种写法
     > [!note|right]
     > [!note right]
@@ -21079,33 +21137,9 @@ padding: 0px;
 }
 
 /* callout伪看板效果*/
-.callout.callout[data-callout*="kanban"] {
-  --callout-color: var(--text-normal);
-  --callout-icon: layout-dashboard;
-  background: transparent;
-  box-shadow: none;
-  border: 0;
-  width: auto;
-  padding: 0;
-}
-
-.callout.callout[data-callout*="kanban"] {
-  overflow: visible;
-  background-color: rgba(255, 255, 255, 0)!important;
-  border-left: 0 !important;
-  margin: auto;
-  box-shadow: none!important;
-}
-.callout.callout[data-callout*="kanban"] .admonition-content {
-  overflow: visible;
-  margin: 0;
-}
-
-.callout.callout[data-callout*="kanban"] .is-mobile ul{ display: flex; }
 
 .callout.callout[data-callout*="kanban"] ul {
   display: flex;
-  margin: 0;
   flex-direction: row;
   border: 0px solid var(--p-kanban-border-color);
   padding: 0rem;
@@ -21113,10 +21147,10 @@ padding: 0px;
   flex-wrap: wrap;
 }
 
-.callout.callout[data-callout*="kanban"] ul>li:not(.task-list-item) {
+.callout.callout[data-callout*="kanban"] ul>li {
   flex: 1 1 20%;
-  padding: 0.1em 1em 0.1em 0.8em !important;
-  margin: 0 0.1em 0.3em 0 !important;
+  padding: 0.1em 1em 0.1em 0.8em;
+  margin: 0 0.3em 0.3em 0 !important;
   list-style: none;
   border: 1px solid var(--p-kanban-border-color);
   border-left: 1px solid var(--p-kanban-border-color) !important;
@@ -21125,9 +21159,12 @@ padding: 0px;
   word-break: break-word;
 }
 
+.callout.callout[data-callout*="kanban"] ul li.task-list-item .task-list-item-checkbox {
+  margin-left: auto;
+}
+
 .callout.callout[data-callout*="kanban"] ul .list-collapse-indicator.collapse-indicator.collapse-icon {
   margin-left: -1.2em;
-  position: absolute;
 }
 
 .callout.callout[data-callout*="kanban"] ul .list-collapse-indicator.collapse-indicator.collapse-icon::before {
@@ -21135,37 +21172,66 @@ padding: 0px;
   transition: transform 10ms linear 0s
 }
 
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+1) {
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+1) {
   background-color: var(--p-kanban-color-1);
-  padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+2) {
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+2) {
   background-color: var(--p-kanban-color-2);
-  padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+3) {
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+3) {
   background-color: var(--p-kanban-color-3);
-  padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+4) {
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+4) {
   background-color: var(--p-kanban-color-4);
-  padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+5) {
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+5) {
   background-color: var(--p-kanban-color-5);
-  padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+6) {
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+6) {
   background-color: var(--p-kanban-color-6);
-  padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+7) {
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n+7) {
   background-color: var(--p-kanban-color-7);
+}
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n) {
+  background-color: var(--p-kanban-color-8);
+}
+
+.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(n) {
+  background-color: var(--p-kanban-color-simple);
   padding-left: 1em;
 }
-.callout.callout[data-callout*="kanban"] ul>li:nth-of-type(8n) {
-  background-color: var(--p-kanban-color-8);
-  padding-left: 1em;
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n+1) {
+  border-top: 6px solid var(--p-kanban-color-1) !important;
+}
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n+2) {
+  border-top: 6px solid var(--p-kanban-color-2) !important;
+}
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n+3) {
+  border-top: 6px solid var(--p-kanban-color-3) !important;
+}
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n+4) {
+  border-top: 6px solid var(--p-kanban-color-4) !important;
+}
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n+5) {
+  border-top: 6px solid var(--p-kanban-color-5) !important;
+}
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n+6) {
+  border-top: 6px solid var(--p-kanban-color-6) !important;
+}
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n+7) {
+  border-top: 6px solid var(--p-kanban-color-7) !important;
+}
+.callout.callout[data-callout*="kanban"] .callout-content>ul:first-child>li:nth-of-type(8n) {
+  border-top: 6px solid var(--p-kanban-color-8) !important;
+}
+body.simple-p-kanban .callout.callout[data-callout*="kanban"] ul:first-child>li:nth-of-type(n) {
+  border-top: none !important;
+}
+
+body:not(.remove-shadow-p-kanban) .callout.callout[data-callout*="kanban"] ul>li:hover {
+  transition: box-shadow .2s cubic-bezier(.4, 0, 1, 1);
+  box-shadow: 0 3px 5px 0 var(--p-kanban-color-shadow), 0 3px 1px -3px var(--p-kanban-color-shadow), 2px 3px 3px 0 var(--p-kanban-color-shadow);
 }
 
 .callout.callout[data-callout*="kanban"] ul ul {
@@ -21185,27 +21251,19 @@ padding: 0px;
   background-color: var(--p-kanban-card-color-1) !important;
 }
 
-.callout.callout[data-callout*="kanban"] ul ul li:nth-child(even) {
-  background-color: var(--p-kanban-card-color-2) !important;
-}
-
-.callout.callout[data-callout*="kanban"] ul>li:hover {
-  border-color: var(--p-kanban-border-color) !important;
-}
-
-.callout.callout[data-callout*="kanban"] ul ul li:hover {
-  background: transparent !important;
+body.remove-shadow-p-kanban .callout.callout[data-callout*="kanban"] ul ul li:hover {
+  background: var(--p-kanban-card-color-2) !important;
   border-color: var(--p-kanban-border-color) !important;
   border-left: 1px solid var(--p-kanban-border-color) !important;
 }
 
-.theme-dark .callout.callout[data-callout*="kanban"] ul ul li:hover {
+body.remove-shadow-p-kanban.theme-dark .callout.callout[data-callout*="kanban"] ul ul li:hover {
   border-color: #696969e1 !important;
   border-left: 1px solid #696969e1 !important;
 }
 
 .callout.callout[data-callout*="kanban"] ul ul li .task-list-item-checkbox {
-  margin-left: 1.5rem;
+  margin-left: 1.5rem !important;
 }
 
 .callout.callout[data-callout*="kanban"] ul ul ul {
@@ -21214,7 +21272,7 @@ padding: 0px;
 
 .callout.callout[data-callout*="kanban"] ul ul::before {
   border-left: 0;
-  border-color: transparent!important;
+  border:0;
 }
 
 :is(.markdown-preview-view,.markdown-rendered).is-readable-line-width.callout.callout[data-callout*="kanban"] .markdown-preview-sizer>div>ul {
@@ -21232,28 +21290,43 @@ padding: 0px;
 .callout.callout[data-callout*="kanban"] ol.contains-task-list ul::before,
 .callout.callout[data-callout*="kanban"] ul.contains-task-list ol::before,
 .callout.callout[data-callout*="kanban"] ol.contains-task-list ol::before {
-  all: initial
+  all: initial;
 }
 
 .callout.callout[data-callout*="kanban"] ul > li.task-list-item {
   flex: 1 1 20%;
   padding: 0.1em 1em;
-  margin: 0 0.1em 0.3em 0;
   list-style: none;
   border: 1px solid var(--p-kanban-border-color);
   border-left: 1px solid var(--p-kanban-border-color) !important;
   border-radius: var(--radius-s);
   word-wrap: break-word;
   word-break: break-word;
-  text-indent: 0;
+  text-indent: 0.01em;
 }
 
 .callout.callout[data-callout*="kanban"] ul ul li.task-list-item {
   width: 100%;
   display: block;
   padding-left: 2em;
-  text-indent: -3.1em;
+  text-indent: -3em;
   background-color: var(--p-kanban-card-color-1) !important;
+}
+
+.callout.callout[data-callout*="kanban"] ul ul li.task-list-item .list-collapse-indicator.collapse-indicator.collapse-icon {
+  text-indent: -1em;
+}
+
+body:not(.default-icons) .callout.callout[data-callout*="kanban"] li.task-list-item .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+  margin-left: -0.2em;
+}
+
+body:not(.default-icons) .callout.callout[data-callout*="kanban"] li.task-list-item .task-list-item.is-collapsed .list-collapse-indicator.collapse-indicator.collapse-icon::before {
+  transform: translateX(-0.9em) translateY(-1em) rotate(-90deg);
+}
+
+body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-checkbox {
+  border-color: var(--text-normal) !important;
 }
 
 
@@ -21496,8 +21569,7 @@ padding: 0px;
 }
 
 
-
-  /******callout icon*****/
+/******callout icon*****/
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) {
   flex:unset !important;
@@ -21509,26 +21581,25 @@ padding: 0px;
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) .callout-title {
-display: none; 
+  display: none; 
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) .callout {
-overflow: visible;
-margin: 0;
+  overflow: visible;
+  margin: 0;
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) > .callout-content {
-display: inline-flex;
-align-items: center;
-padding:0 10px 0 10px;
+  display: inline-flex;
+  align-items: center;
+  padding:0 10px 0 10px;
 }
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) > .callout-content>svg {
-
-height: calc(1em + 12px);
-padding: 6px;
-border-radius: 4px;
-pointer-events: initial;
-transition: ease .2s background;
-font-size: 4em;
+  height: calc(1em + 12px);
+  padding: 6px;
+  border-radius: 4px;
+  pointer-events: initial;
+  transition: ease .2s background;
+  font-size: 4em;
 }

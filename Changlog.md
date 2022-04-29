@@ -1,18 +1,22 @@
+---
+mindmap-plugin: basic
+updated: 2022-04-29 17:18
+---
 ## ⏳更新日志
 ### 更新 📅2022-04-28
 - 主页天气数据优化 可以自动获取地址
-- 日记模板样式微调
+- 日记模板样式微调 支持自动获取天气地址
 ### 更新 📅2022-04-27
 - ✔️新增内容
 	- 教程
 		- 增加移植主页设计视频讲解[OB主页快速移植](https://www.bilibili.com/video/BV18S4y1Y7Wb?spm_id_from=333.999.0.0)
 	- 插件类
-		- markdown-prettifier 
-		- nldates-obsidian 
-		- chat view 
-		- folder note 
-		- obsidian-quiet-outline 
-		- obsidian-reveal-active-file 
+		- markdown-prettifier
+		- nldates-obsidian
+		- chat view
+		- folder note
+		- obsidian-quiet-outline
+		- obsidian-reveal-active-file
 		- obsidian-tasks-plugin
 		- plugin-changelogs
 		- scambier.obsidian-omnisearch
@@ -49,8 +53,8 @@
 	- home主页日历图标更换为动态svg图标
 - 🔔模板文件夹变动
 	- 内容修改
-		- fetchhomepage.js 
-		- moviefromdouban.js 
+		- fetchhomepage.js
+		- moviefromdouban.js
 		- getweather.js
 		- tp-movie-douban.md
 		- tp-日记模板-带进度.md
@@ -59,7 +63,6 @@
 		- button.md
 	- 新增
 		- weatherView.js
-
 ### 更新 2022-04-10
 1. 示例库配置字体 [LXGW WenKai / 霞鹜文楷](https://github.com/lxgw/LxgwWenKai/releases/tag/v1.233.5)
 2. 代码块采用等宽字体 [ JetBrainsMono](https://github.com/JetBrains/JetBrainsMono/releases/tag/v2.242)
@@ -67,10 +70,11 @@
 1. 重构分栏示例说明，增加更多的分栏效果
 2. 增加timeline callout示例
 3. 精简示例库体积
+
 视频:[告别单调的Obsidian，Ob的版面也可以丰富起来！ (bilibili.com)](https://www.bilibili.com/video/BV1G5411U7m8/)
 ### 更新 2022-04-04
 1. 更新cmenu插件 适应最新版增强编辑4.7以上版本
-2. 增加callout使用说明和示例[[ob提示框(Callout)样式展示]] 
+2. 增加callout使用说明和示例[[ob提示框(Callout)样式展示]]
 3. 豆瓣图书模板更新，使用callout模板[[tp-book-callout]]
 4. 豆瓣脚本支持更多属性比如出版年月，作者简介，原文摘要等[[《从零开始的女性主义》|豆瓣图书笔记示例]]
 5. 侧边栏增加音乐播放器[[如何在OB里添加多彩时钟和音乐播放器]]
@@ -81,13 +85,13 @@
 - 豆瓣脚本优化，支持输入isbn添加
 - 增加悬浮表格编辑插件
 - 主页伪看板字体大小统一
-  本次更新影响文件 
-|  文件名                     |  操作      |
-|:-------------------------|:---------|
-|  【自定义】myhome 样式.css      |  新增内容    |
-| bookfromdouban.js        | 新增内容     |
-| MD表格悬浮编辑测试.md            | 新添文件     |
+	本次更新影响文件
 
+| 文件名                | 操作   |
+| :----------------- | :--- |
+| 【自定义】myhome 样式.css | 新增内容 |
+| bookfromdouban.js  | 新增内容 |
+| MD表格悬浮编辑测试.md      | 新添文件 |
 ### 更新 2022-03-15
 - 增加侧边栏一键启动悬浮memos
 - 增加运行示例库最低配置说明[[README#常见问题]]
@@ -96,7 +100,6 @@
 - 增加嵌套库玩法 具体教程参考[[Obsidian 库中库玩法]]
 - 修复侧边栏按钮如果不打开md文件就无法点击的问题
 - 优化侧边栏memos样式
-
 ### 更新  2022-03-08
 - 更新了豆瓣图书脚本，解决有的图书无法获取的问题
 - 修复首页下拉到底部出现大块空白的问题
@@ -107,10 +110,9 @@
 - 使用 faststart脚本 大幅提高ob [[如何提高Obsidian的启动速度？|启动速度]]
 - 修复float-toc 插件目录太长无法滚动的问题
 - 添加Dynamic Highlights插件 实现时间和dataview字段突出显示
-
 ### 更新  2022-02-16
 增加从豆瓣获取电影卡片
-增加对dataview卡片直接编辑元数据 
+增加对dataview卡片直接编辑元数据
 增加插件Hoteys for specific files 直接在ob里打开嵌入网页
 优化日记模板,更具有通用性。
 修复了cmenu插件对zh编辑增强0.4.x的支持

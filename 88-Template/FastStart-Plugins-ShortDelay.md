@@ -5,6 +5,5 @@ obsidian-admonition
 obsidian-memos
 recent-files-obsidian
 obsidian-icon-folder
-recent-files-obsidian
 obsidian-view-mode-by-frontmatter
 obsidian-hover-editor

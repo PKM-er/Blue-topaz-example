@@ -37,7 +37,7 @@ async function weatherView(){
 	
 	let weather = await getWeather(locationId,days);
 	let air = await getair(locationId);
-	console.log('weather:'+weather);
+	
 	//添加Header
 	if(headerLevel!=0){
 		dv.header(headerLevel,"最近天气");
@@ -57,8 +57,17 @@ async function weatherView(){
 	//添加描述
 	if (addDesc){
 		let today = weather[0];
+		let windyspeed =Math.max(weather[0].windSpeedDay,weather[0].windSpeedNight);
+		if(windyspeed<12)//小风
+		{
+		windydesc = "微风习习";
+		}else if(windyspeed<39)//小风
+		{
+			windydesc = "清风徐徐";	
+		}else 
+		windydesc = "有"+today.windDirDay+"风出没，风力"+today.windScaleDay+'级';	
 		today.date = now.format("gggg年MM月DD日");
-		let desc = `今天是**${today.date}**，${city} ${today.textDay}， ${today.tempMin}~${today.tempMax}℃  ==${air.category}== 云朵充盈了${today.cloud}%的天空\n顺便，如果有机会看见月亮的话，那么它应该是这样的${today.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
+		let desc = `今天是**${today.date}**，${city} ${today.textDay}， ${today.tempMin}~${today.tempMax}℃  ==${air.category}== ${windydesc} \n云朵充盈了${today.cloud}%的天空\n顺便，如果有机会看见月亮的话，那么它应该是这样的${today.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
 		dv.paragraph(desc);
 		//dv.el("span",desc);
 	}

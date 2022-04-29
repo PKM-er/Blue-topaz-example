@@ -5,7 +5,7 @@ tag: moc
 ```ad-blank
 %% Begin Waypoint %%
 - **[[10-Help]]**
-	- [[获取命令ID]]
+	- [[获取插件列表]]
 	- [[每日一句接口说明]]
 	- [[Blue topaz--style setting 插件设置内容 简介]]
 	- [[css基础教学]]
