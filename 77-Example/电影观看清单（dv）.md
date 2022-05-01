@@ -32,10 +32,21 @@ sort rating desc
 >```
 
 ###  最近半个月看过的电影列表
-
+//（dv版本0.5.3以上 支持此语法）
 ```dataview
+
 TABLE  without id  "![|50](" + cover + ")" as Cover, file.link as Name,status as 状态,progress as 评级
 from #Movie
 where viewtime > dur(2 weeks) and !contains(file.folder, "88-Template")
 
+```
+
+//（dv版本0.4.6  支持此语法）
+```dataview
+table without id "![](" + cover + ")" as Cover, file.link as Name, year as Year,rating as Rating
+from #Movie  
+where !contains(file.folder, "88-Template")
+where startswith(cover, "http")
+where viewtime != null and (date(now)-date(viewtime)) <=15
+sort rating desc
 ```

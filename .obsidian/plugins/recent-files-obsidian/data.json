@@ -1,6 +1,182 @@
 {
   "recentFiles": [
     {
+      "basename": "心灵奇旅 Soul",
+      "path": "30-Reading/心灵奇旅 Soul.md"
+    },
+    {
+      "basename": "你好，李焕英",
+      "path": "30-Reading/你好，李焕英.md"
+    },
+    {
+      "basename": "孤味",
+      "path": "30-Reading/孤味.md"
+    },
+    {
+      "basename": "芬奇 Finch",
+      "path": "30-Reading/芬奇 Finch.md"
+    },
+    {
+      "basename": "白蛇传·情",
+      "path": "30-Reading/白蛇传·情.md"
+    },
+    {
+      "basename": "让子弹飞（本地封面图片测试）",
+      "path": "30-Reading/让子弹飞（本地封面图片测试）.md"
+    },
+    {
+      "basename": "77-Example",
+      "path": "77-Example/77-Example.md"
+    },
+    {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
+      "basename": "带进度条的任务列表",
+      "path": "77-Example/带进度条的任务列表.md"
+    },
+    {
+      "basename": "单独定制笔记背景",
+      "path": "77-Example/单独定制笔记背景.md"
+    },
+    {
+      "basename": "电影观看清单-状态控制（dvjs）",
+      "path": "77-Example/电影观看清单-状态控制（dvjs）.md"
+    },
+    {
+      "basename": "电影观看清单（dv）",
+      "path": "77-Example/电影观看清单（dv）.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
+    },
+    {
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
+    },
+    {
+      "basename": "天气js",
+      "path": "88-Template/天气js.md"
+    },
+    {
+      "basename": "music_toolbar",
+      "path": "88-Template/music_toolbar.md"
+    },
+    {
+      "basename": "FastStart-GenerateListOfInstalledPlugins",
+      "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "电影看板",
+      "path": "77-Example/电影看板.md"
+    },
+    {
+      "basename": "对话形式笔记",
+      "path": "77-Example/对话形式笔记.md"
+    },
+    {
+      "basename": "图书阅读清单(dv)",
+      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md"
+    },
+    {
+      "basename": "FastStart-Plugins-ShortDelay",
+      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
+    },
+    {
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
+    },
+    {
+      "basename": "10-Help",
+      "path": "10-Help/10-Help.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
+      "basename": "各级标题示例",
+      "path": "77-Example/各级标题示例.md"
+    },
+    {
+      "basename": "全宽显示-表格测试",
+      "path": "77-Example/◾ Cssclass声明样式举例/全宽显示-表格测试.md"
+    },
+    {
+      "basename": "四象限表格",
+      "path": "77-Example/◾ Cssclass声明样式举例/四象限表格.md"
+    },
+    {
+      "basename": "伪看板-yaml声明",
+      "path": "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md"
+    },
+    {
+      "basename": "图书阅读清单-状态控制(dvjs)",
+      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
+    },
+    {
+      "basename": "inline-list【行内列表】",
+      "path": "77-Example/◾ Cssclass声明样式举例/inline-list【行内列表】.md"
+    },
+    {
+      "basename": "预览隐藏frontmatter",
+      "path": "77-Example/◾ Cssclass声明样式举例/预览隐藏frontmatter.md"
+    },
+    {
+      "basename": "20-Diary",
+      "path": "20-Diary/20-Diary.md"
+    },
+    {
+      "basename": "FastStart-Plugins-LongDelay",
+      "path": "88-Template/FastStart-Plugins-LongDelay.md"
+    },
+    {
+      "basename": "FastStart-Plugins-simple",
+      "path": "88-Template/FastStart-Plugins-simple.md"
+    },
+    {
+      "basename": "多彩高亮（三种语法）",
+      "path": "77-Example/多彩高亮（三种语法）.md"
+    },
+    {
+      "basename": "示例库内置的插件列表",
+      "path": "88-Template/示例库内置的插件列表.md"
+    },
+    {
+      "basename": "FastStart-StartupScript",
+      "path": "88-Template/FastStart-StartupScript.md"
+    },
+    {
+      "basename": "彩色时钟",
+      "path": "88-Template/彩色时钟.md"
+    },
+    {
+      "basename": "ColorfulClock",
+      "path": "88-Template/ReactJS/ColorfulClock.md"
+    },
+    {
+      "basename": "react-buttons",
+      "path": "88-Template/ReactJS/react-buttons.md"
+    },
+    {
+      "basename": "react-music",
+      "path": "88-Template/ReactJS/react-music.md"
+    },
+    {
+      "basename": "moc",
+      "path": "88-Template/ReactJS/moc.md"
+    },
+    {
       "basename": "README",
       "path": "README.md"
     },
@@ -13,164 +189,16 @@
       "path": "从这开始.md"
     },
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
-    },
-    {
-      "basename": "30-Reading",
-      "path": "30-Reading/30-Reading.md"
-    },
-    {
-      "basename": "88-Template",
-      "path": "88-Template/88-Template.md"
-    },
-    {
       "basename": "常用工具react",
       "path": "88-Template/常用工具react.md"
-    },
-    {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
     },
     {
       "basename": "Blue topaz--style setting 插件设置内容 简介",
       "path": "10-Help/Blue topaz--style setting 插件设置内容 简介.md"
     },
     {
-      "basename": "10-Help",
-      "path": "10-Help/10-Help.md"
-    },
-    {
       "basename": "ob提示框(callout)样式展示",
       "path": "77-Example/ob提示框(callout)样式展示.md"
-    },
-    {
-      "basename": "伪看板-ad,callout声明",
-      "path": "77-Example/伪看板-ad,callout声明.md"
-    },
-    {
-      "basename": "77-Example",
-      "path": "77-Example/77-Example.md"
-    },
-    {
-      "basename": "单独定制笔记背景",
-      "path": "77-Example/单独定制笔记背景.md"
-    },
-    {
-      "basename": "如何把示例库移植到你现有的库中？",
-      "path": "00-Tips/▪示例库移植说明/如何把示例库移植到你现有的库中？.md"
-    },
-    {
-      "basename": "如何移植主页的各个元素？",
-      "path": "00-Tips/▪示例库移植说明/如何移植主页的各个元素？.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "2022-04-26",
-      "path": "20-Diary/2022-04-26.md"
-    },
-    {
-      "basename": "20-Diary",
-      "path": "20-Diary/20-Diary.md"
-    },
-    {
-      "basename": "FastStart-Plugins-ShortDelay",
-      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
-    },
-    {
-      "basename": "FastStart-Plugins-LongDelay",
-      "path": "88-Template/FastStart-Plugins-LongDelay.md"
-    },
-    {
-      "basename": "2022-04-29",
-      "path": "20-Diary/2022-04-29.md"
-    },
-    {
-      "basename": "日记统计",
-      "path": "20-Diary/日记统计.md"
-    },
-    {
-      "basename": "2022-04-28",
-      "path": "20-Diary/2022-04-28.md"
-    },
-    {
-      "basename": "获取插件列表",
-      "path": "10-Help/获取插件列表.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
-    },
-    {
-      "basename": "示例库内置的插件列表",
-      "path": "88-Template/示例库内置的插件列表.md"
-    },
-    {
-      "basename": "FastStart-GenerateListOfInstalledPlugins",
-      "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
-    },
-    {
-      "basename": "Obsidian 快捷键一览表",
-      "path": "10-Help/Obsidian 快捷键一览表.md"
-    },
-    {
-      "basename": "MarkDown教程 Obsidian版 2022.4.22",
-      "path": "10-Help/MarkDown教程 Obsidian版 2022.4.22.md"
-    },
-    {
-      "basename": "tp-日记模板",
-      "path": "88-Template/tp-日记模板.md"
-    },
-    {
-      "basename": "2022-04-27",
-      "path": "20-Diary/2022-04-27.md"
-    },
-    {
-      "basename": "tp-日记模板-带进度",
-      "path": "88-Template/tp-日记模板-带进度.md"
-    },
-    {
-      "basename": "2022-04-22",
-      "path": "20-Diary/2022-04-22.md"
-    },
-    {
-      "basename": "涂黑和挖空效果（三种语法）",
-      "path": "77-Example/涂黑和挖空效果（三种语法）.md"
-    },
-    {
-      "basename": "tp-movie-douban",
-      "path": "88-Template/tp-movie-douban.md"
-    },
-    {
-      "basename": "2022-04-19",
-      "path": "20-Diary/2022-04-19.md"
-    },
-    {
-      "basename": "2022-04-21",
-      "path": "20-Diary/2022-04-21.md"
-    },
-    {
-      "basename": "2022-W10",
-      "path": "20-Diary/2022-W10.md"
-    },
-    {
-      "basename": "2022-04-13",
-      "path": "20-Diary/2022-04-13.md"
-    },
-    {
-      "basename": "2022-04-18",
-      "path": "20-Diary/2022-04-18.md"
-    },
-    {
-      "basename": "2022-04-20",
-      "path": "20-Diary/2022-04-20.md"
-    },
-    {
-      "basename": "2022-04-16",
-      "path": "20-Diary/2022-04-16.md"
     }
   ],
   "omittedPaths": [],

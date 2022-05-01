@@ -1,4 +1,4 @@
-// Modified from by cuman  from author:@Lumos https://github.com/LumosLovegood/myScripts
+// Modified by cuman  from author:@Lumos https://github.com/LumosLovegood/myScripts
 // 数据来源：和风天气（https://www.qweather.com/）
 
 //接收传递过来的参数
@@ -82,6 +82,7 @@ async function weatherView(){
 }
 //生成动画
 function weathericon(iconDay,windyspeed){
+	
 	let weathernum=Number(iconDay);
 	console.log("windyspeed:"+windyspeed);
 	let sunny_wind_arr=[];
@@ -112,6 +113,8 @@ function weathericon(iconDay,windyspeed){
 			dv.span(cloud)
 		if (rain_arr.includes(weathernum))
 			dv.span(rain)
+		if (cloudy_lightning_arr.includes(weathernum))
+			dv.span(cloudy_lightning)
 		if (cloudy_rain_lightning_arr.includes(weathernum))
 			dv.span(cloudy_rain_lightning)
 		if (windy_arr.includes(weathernum))

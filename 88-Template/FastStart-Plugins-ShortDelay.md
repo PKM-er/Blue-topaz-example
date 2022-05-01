@@ -1,9 +1,5 @@
 hotkey-helper
-obsidian-banners
-dataview
-obsidian-admonition
-obsidian-memos
-recent-files-obsidian
-obsidian-icon-folder
-obsidian-view-mode-by-frontmatter
 obsidian-hover-editor
+obsidian-react-components
+cmenu-plugin
+dataview

@@ -1,5 +1,3 @@
-cmenu-plugin
-calendar
 Enhanced-editing
 markdown-table-editor
 metaedit
@@ -11,7 +9,6 @@ obsidian-float-toc-plugin
 obsidian-kanban
 nldates-obsidian
 obsidian-outliner
-obsidian-react-components
 obsidian-regex-replace
 obsidian-sortable
 obsidian-tasks-plugin
@@ -20,16 +17,18 @@ remember-cursor-position
 search-on-internet
 table-editor-obsidian
 various-complements
-obsidian-better-command-palette
 obsidian-linkcard-plugin
 quick-explorer
 folder-note-plugin
 waypoint
 obsidian-version-history-diff
 plugin-changelogs
-omnisearch
-markdown-prettifier
 obsidian-quiet-outline
 periodic-notes
 obsidian-chat-view
 obsidian-enhancing-mindmap
+obsidian-reveal-active-file
+obsidian-hotkeys-for-specific-files
+settings-search
+obsidian-view-mode-by-frontmatter
+omnisearch

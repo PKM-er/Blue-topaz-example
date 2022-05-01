@@ -29,7 +29,7 @@ tag: moc
 		- [[slidegallery]]
 	- **script**
 		- **template**
-			- [[未命名]]
+
 	- [[tp_foldermoc]]
 	- [[tp-日记模板-带进度]]
 	- [[tp-日记模板]]

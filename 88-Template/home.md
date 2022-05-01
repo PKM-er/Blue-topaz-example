@@ -2,7 +2,6 @@
 banner: "https://api.xygeng.cn/Bing/"
 cssclass: fullwidth,noyaml,noscroll,myhome
 obsidianUIMode: preview
-
 ---
 ````ad-flex
 ```ad-icon
