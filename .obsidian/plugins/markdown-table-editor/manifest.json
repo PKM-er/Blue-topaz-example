@@ -1,7 +1,7 @@
 {
 	"id": "markdown-table-editor",
 	"name": "Markdown Table Editor",
-	"version": "0.2.1",
+	"version": "0.2.2",
 	"minAppVersion": "0.12.0",
 	"description": "An Obsidian plugin to provide an editor for Markdown tables. It can open CSV, Microsoft Excel/Google Sheets data as Markdown tables from Obsidian Markdown editor.",
 	"author": "Ganessh Kumar R P <rpganesshkumar@gmail.com>",

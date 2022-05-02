@@ -1,4 +1,7 @@
 ---
+banner: "https://img9.doubanio.com/view/photo/1/public/p2634360594.jpg"
+---
+---
 name: 扎克·施奈德版正义联盟 Zack Snyder's Justice League
 cover: https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2634360594.jpg
 tags: Movie

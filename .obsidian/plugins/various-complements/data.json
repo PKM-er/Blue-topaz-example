@@ -37,5 +37,23 @@
   "enableFrontMatterComplement": true,
   "frontMatterComplementMatchStrategy": "inherit",
   "insertCommaAfterFrontMatterCompletion": false,
-  "showLogAboutPerformanceInConsole": false
+  "showLogAboutPerformanceInConsole": false,
+  "selectionHistoryTree": {
+    "table": {
+      "table": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1651460161158
+        }
+      }
+    },
+    "content": {
+      "content": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1651460173958
+        }
+      }
+    }
+  }
 }

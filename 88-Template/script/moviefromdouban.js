@@ -56,8 +56,8 @@ async function getmovieByurl(url) {
     let moviename = '';
     moviename = $("meta[property='og:title']")?.content
     director = $("meta[property='video:director']")?.content
-	summary = $("span[property='v:summary']").textContent??'-';
-	genre = $("span[property='v:genre']").textContent??'-';
+	summary = $("span[property='v:summary']")?.textContent??'-';
+	genre = $("span[property='v:genre']")?.textContent??'-';
 	console.log(genre)
 	let regx = /<[^>]*>|<\/[^>]*>/gm;
 	if (summary) {

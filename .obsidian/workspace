@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "30-Reading/心灵奇旅 Soul.md",
+            "file": "未命名.md",
             "mode": "source",
             "backlinks": false,
             "source": true
@@ -42,9 +42,9 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "path:88-Template/script js ",
                 "matchingCase": false,
-                "explainSearch": false,
+                "explainSearch": true,
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical"
@@ -81,14 +81,6 @@
               "type": "graph",
               "state": {}
             }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
-              "state": {}
-            }
           }
         ]
       }
@@ -119,7 +111,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "30-Reading/心灵奇旅 Soul.md"
+                "file": "未命名.md"
               }
             }
           },
@@ -136,8 +128,7 @@
               }
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "0b3485207df574dd",
@@ -150,7 +141,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "30-Reading/心灵奇旅 Soul.md",
+                "file": "未命名.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +158,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "30-Reading/心灵奇旅 Soul.md",
+                "file": "未命名.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -214,15 +205,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "30-Reading/心灵奇旅 Soul.md",
-    "30-Reading/你好，李焕英.md",
-    "30-Reading/孤味.md",
-    "30-Reading/芬奇 Finch.md",
-    "30-Reading/白蛇传·情.md",
-    "30-Reading/让子弹飞（本地封面图片测试）.md",
-    "77-Example/77-Example.md",
-    "88-Template/home.md",
-    "77-Example/带进度条的任务列表.md",
-    "77-Example/单独定制笔记背景.md"
+    "未命名.md",
+    "30-Reading/假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ.md",
+    "30-Reading/扎克·施奈德版正义联盟 Zack Snyder's Justice League.md",
+    "README.md",
+    "77-Example/分栏效果示例.md",
+    "20-Diary/2022-05-02.md",
+    "Changlog.md",
+    "77-Example/tiimeline callout效果.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "00-Tips/00-Tips.md"
   ]
 }

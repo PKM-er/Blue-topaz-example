@@ -21924,40 +21924,85 @@ var React4 = __toModule(require_react());
 
 // src/utils/markdown.ts
 var Papa = __toModule(require_papaparse_min());
+function sanitizeWikiLinks(input) {
+  const matches = (input || "").matchAll(/\[\[\w*\|\w*\]\]/g);
+  let match = matches.next();
+  while (!match.done) {
+    const value = match.value["0"];
+    input = input.replace(value, value.replace("|", "\\|"));
+    match = matches.next();
+  }
+  return input;
+}
+function extractAfterContent(input) {
+  var _a, _b;
+  if (input && ((_a = input[0]) == null ? void 0 : _a.length) && input[0].length > 1) {
+    let idx = -1;
+    for (idx = 0; idx < (input == null ? void 0 : input.length); idx++) {
+      if (((_b = input[idx]) == null ? void 0 : _b.length) == 1) {
+        break;
+      }
+    }
+    return input.splice(idx);
+  }
+  return [];
+}
+function removeAlignmentRow(input) {
+  if (input.length > 1) {
+    input.splice(1, 1);
+  }
+}
+function mergeWikiLinkCells(input) {
+  return input.map((row) => {
+    let writeIndex = 0;
+    const result = [];
+    for (let index = 0; index < row.length; index++) {
+      if (index === row.length - 1) {
+        result.push(row[index]);
+        continue;
+      }
+      if (row[index].includes("[[") && row[index].endsWith("\\") && row[index + 1].includes("]]")) {
+        let current = row[index];
+        let offset = 1;
+        while (current.includes("[[") && current.endsWith("\\") && row[index + offset].includes("]]")) {
+          current = `${current}|${row[index + offset]}`;
+          offset++;
+        }
+        result[writeIndex] = current;
+        writeIndex++;
+        index = index + offset;
+      } else {
+        result[writeIndex] = row[index];
+        writeIndex++;
+      }
+    }
+    return result;
+  });
+}
+var papaConfig = {
+  delimiter: "|",
+  escapeChar: "\\"
+};
 function parseInputData(input) {
   var _a;
-  let { data, meta } = Papa.parse((input || "").trim());
+  input = sanitizeWikiLinks(input);
+  let { data, meta } = Papa.parse((input || "").trim(), papaConfig);
+  let afterContent = void 0;
   if (data && ((_a = data[0]) == null ? void 0 : _a.length) && data[0].length > 1) {
+    afterContent = extractAfterContent(data);
     if (meta.delimiter === "|") {
-      if (data.length > 1) {
-        data.splice(1, 1);
-      }
+      removeAlignmentRow(data);
       data = data.map((row) => {
         row.splice(row.length - 1, 1);
         row.splice(0, 1);
         return row;
       });
-      data = data.map((row) => {
-        let writeIndex = 0;
-        const result = [];
-        for (let index = 0; index < row.length; index++) {
-          if (index === row.length - 1) {
-            result.push(row[index]);
-            continue;
-          }
-          if (row[index].includes("[[") && row[index].endsWith("\\") && row[index + 1].includes("]]")) {
-            result[writeIndex] = `${row[index]}|${row[index + 1]}`;
-            writeIndex++;
-            index++;
-          } else {
-            result[writeIndex] = row[index];
-            writeIndex++;
-          }
-        }
-        return result;
-      });
+      data = mergeWikiLinkCells(data);
     }
-    return data;
+    return {
+      content: data,
+      afterContent
+    };
   }
   return void 0;
 }
@@ -22044,37 +22089,37 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       }
     };
     if (row === 0) {
-      menu.addItem((item) => item.setTitle("左对齐").setIcon("alignLeft").onClick(() => {
+      menu.addItem((item) => item.setTitle("Left align").setIcon("alignLeft").onClick(() => {
         const newColJustify = [...colJustify];
         newColJustify[col] = "LEFT";
         setColJustify(newColJustify);
       }));
-      menu.addItem((item) => item.setTitle("居中对齐").setIcon("alignCenter").onClick(() => {
+      menu.addItem((item) => item.setTitle("Center align").setIcon("alignCenter").onClick(() => {
         const newColJustify = [...colJustify];
         newColJustify[col] = "CENTER";
         setColJustify(newColJustify);
       }));
-      menu.addItem((item) => item.setTitle("右对齐").setIcon("alignRight").onClick(() => {
+      menu.addItem((item) => item.setTitle("Right align").setIcon("alignRight").onClick(() => {
         const newColJustify = [...colJustify];
         newColJustify[col] = "RIGHT";
         setColJustify(newColJustify);
       }));
       menu.addSeparator();
-      menu.addItem((item) => item.setTitle("文本升序排列").setIcon("sortAsc").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort text ascending").setIcon("sortAsc").onClick(() => {
         let newValues = [...values];
         const firstRow = newValues.shift();
         newValues.sort((a, b) => a[col].localeCompare(b[col]));
         newValues = [firstRow].concat(newValues);
         validateAndSetValues(newValues);
       }));
-      menu.addItem((item) => item.setTitle("文本降序排列").setIcon("sortDesc").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort text descending").setIcon("sortDesc").onClick(() => {
         let newValues = [...values];
         const firstRow = newValues.shift();
         newValues.sort((a, b) => b[col].localeCompare(a[col]));
         newValues = [firstRow].concat(newValues);
         validateAndSetValues(newValues);
       }));
-      menu.addItem((item) => item.setTitle("数字升序排列").setIcon("sortAscNumeric").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort numeric ascending").setIcon("sortAscNumeric").onClick(() => {
         let newValues = [...values];
         const isAllNumeric = newValues.map((row2, idx) => idx === 0 || Number.isFinite(Number.parseFloat(row2[col]))).every((r) => r === true);
         if (!isAllNumeric) {
@@ -22085,7 +22130,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
         newValues = [firstRow].concat(newValues);
         validateAndSetValues(newValues);
       }));
-      menu.addItem((item) => item.setTitle("数字降序排列").setIcon("sortDescNumeric").onClick(() => {
+      menu.addItem((item) => item.setTitle("Sort numeric descending").setIcon("sortDescNumeric").onClick(() => {
         let newValues = [...values];
         const isAllNumeric = newValues.map((row2, idx) => idx === 0 || Number.isFinite(Number.parseFloat(row2[col]))).every((r) => r === true);
         if (!isAllNumeric) {
@@ -22098,25 +22143,25 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       }));
       menu.addSeparator();
     }
-    menu.addItem((item) => item.setTitle("在上面添加行").setIcon("insertRow").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add row above").setIcon("insertRow").onClick(() => {
       const colLen = values[0].length;
       const newValues = [...values];
       newValues.splice(row, 0, Array(colLen).fill(""));
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("在下面添加行").setIcon("insertRow").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add row below").setIcon("insertRow").onClick(() => {
       const colLen = values[0].length;
       const newValues = [...values];
       newValues.splice(row + 1, 0, Array(colLen).fill(""));
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("删除行").setIcon("deleteRow").onClick(() => {
+    menu.addItem((item) => item.setTitle("Remove row").setIcon("deleteRow").onClick(() => {
       const newValues = [...values];
       newValues.splice(row, 1);
       validateAndSetValues(newValues);
     }));
     menu.addSeparator();
-    menu.addItem((item) => item.setTitle("左侧添加列").setIcon("insertColumn").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add column left").setIcon("insertColumn").onClick(() => {
       const newValues = [...values];
       newValues.forEach((row2) => row2.splice(col, 0, ""));
       const newColJustify = [...colJustify];
@@ -22124,7 +22169,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       validateAndSetValues(newValues);
       setColJustify(newColJustify);
     }));
-    menu.addItem((item) => item.setTitle("右侧添加列").setIcon("insertColumn").onClick(() => {
+    menu.addItem((item) => item.setTitle("Add column right").setIcon("insertColumn").onClick(() => {
       const newValues = [...values];
       newValues.forEach((row2) => row2.splice(col + 1, 0, ""));
       const newColJustify = [...colJustify];
@@ -22132,7 +22177,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       validateAndSetValues(newValues);
       setColJustify(newColJustify);
     }));
-    menu.addItem((item) => item.setTitle("删除列").setIcon("deleteColumn").onClick(() => {
+    menu.addItem((item) => item.setTitle("Remove column").setIcon("deleteColumn").onClick(() => {
       const newValues = [...values];
       newValues.forEach((row2) => row2.splice(col, 1));
       const newColJustify = [...colJustify];
@@ -22141,36 +22186,36 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
       setColJustify(newColJustify);
     }));
     menu.addSeparator();
-    menu.addItem((item) => item.setTitle("向上移动行").setIcon("moveRowUp").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move row up").setIcon("moveRowUp").onClick(() => {
       if (row === 0) {
-        new import_obsidian.Notice("不能将本行向上移动！");
+        new import_obsidian.Notice("Can not move this row up!");
         return;
       }
       const newValues = [...values];
       [newValues[row - 1], newValues[row]] = [newValues[row], newValues[row - 1]];
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("向下移动行").setIcon("moveRowDown").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move row down").setIcon("moveRowDown").onClick(() => {
       if (row === values.length - 1) {
-        new import_obsidian.Notice("不能将本行向下移动！");
+        new import_obsidian.Notice("Can not move this row down!");
         return;
       }
       const newValues = [...values];
       [newValues[row + 1], newValues[row]] = [newValues[row], newValues[row + 1]];
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("向右移动列").setIcon("moveColumnRight").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move column right").setIcon("moveColumnRight").onClick(() => {
       if (col === values[0].length - 1) {
-        new import_obsidian.Notice("不能向右移动此列！");
+        new import_obsidian.Notice("Can not move this column right!");
         return;
       }
       const newValues = [...values];
       newValues.forEach((_, rowIdx) => [newValues[rowIdx][col + 1], newValues[rowIdx][col]] = [newValues[rowIdx][col], newValues[rowIdx][col + 1]]);
       validateAndSetValues(newValues);
     }));
-    menu.addItem((item) => item.setTitle("向左移动列").setIcon("moveColumnLeft").onClick(() => {
+    menu.addItem((item) => item.setTitle("Move column left").setIcon("moveColumnLeft").onClick(() => {
       if (col === 0) {
-        new import_obsidian.Notice("不能向左移动此列！");
+        new import_obsidian.Notice("Can not move this column left!");
         return;
       }
       const newValues = [...values];
@@ -22224,19 +22269,14 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
   const [newRows, setNewRows] = React4.useState(3);
   const [newCols, setNewCols] = React4.useState(3);
   const [values, setValues] = React4.useState([[""], [""]]);
+  const [afterValue, setAfterValue] = React4.useState("");
   const [colJustify, setColJustify] = React4.useState([]);
-  const [copyText, setCopyText] = React4.useState("复制");
+  const [copyText, setCopyText] = React4.useState("Copy as Markdown");
   const [autoFocusCell, setAutoFocusCell] = React4.useState({ row: -1, col: -1 });
   const onContentChanged = (rowIndex, colIndex, value) => {
     const newValues = [...values];
     newValues[rowIndex][colIndex] = value;
     setValues(newValues);
-    /*
-    replaceClicked();
-    let leaf = this.app.workspace.getLeafById(_leafid);
-    this.app.workspace.setActiveLeaf(leaf, false, true);
-    setAutoFocusCell({ row: rowIndex, col: colIndex });
-    */
   };
   const computeAutoFocusRow = React4.useCallback((values2) => {
     if (!values2 || !values2.length || values2.length === 0 || !values2[0] || !values2[0].length || values2[0].length === 0 || !values2[0][0]) {
@@ -22246,30 +22286,30 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
     }
   }, [inputData]);
   React4.useEffect(() => {
-    let data = parseInputData(inputData);
-    if (!data) {
-      if (!supressNotices) {
-        new import_obsidian2.Notice("选择不是有效的 Markdown 、CSV 表或 Excel 数据。请创建一个新表！");
-      }
-      data = [[""], [""]];
+    let result = parseInputData(inputData);
+    if (!result) {
+      result = { content: void 0, afterContent: [] };
     }
-    data = sanitize(data);
-    setValues(data);
-    setColJustify(Array(data[0].length).fill("LEFT"));
-    computeAutoFocusRow(data);
-    setAutoFocusCell({ row: 0, col: 0 });
+    let { content, afterContent } = result;
+    if (!content) {
+      if (!supressNotices) {
+        new import_obsidian2.Notice("Selection is not a valid Markdown table or CSV or Excel data. Creating a new table!");
+      }
+      content = [[""], [""]];
+    }
+    content = sanitize(content);
+    const processedAfterContent = afterContent.map((row) => row.join("")).join("  \n");
+    setValues(content);
+    setColJustify(Array(content[0].length).fill("LEFT"));
+    setAfterValue(processedAfterContent);
+    computeAutoFocusRow(content);
   }, [inputData]);
   React4.useEffect(() => {
-    if (copyText !== "复制") {
-      setCopyText("复制");
+    if (copyText !== "Copy as Markdown") {
+      setCopyText("Copy as Markdown");
     }
     updateViewData(toMarkdown(values, colJustify));
   }, [values, colJustify]);
-  const copyClicked = () => {
-    var _a2;
-    setCopyText("Copied!");
-    (_a2 = navigator == null ? void 0 : navigator.clipboard) == null ? void 0 : _a2.writeText(toMarkdown(values, colJustify));
-  };
   const newTableClicked = () => {
     const newValues = Array(newRows).fill([]).map((_) => Array(newCols).fill(""));
     setValues(newValues);
@@ -22284,6 +22324,16 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
       return true;
     }
     return false;
+  };
+  const getOutput = () => {
+    const tableContent = toMarkdown(values, colJustify);
+    return `${tableContent}  
+${afterValue}`;
+  };
+  const copyClicked = () => {
+    var _a2;
+    setCopyText("Copied!");
+    (_a2 = navigator == null ? void 0 : navigator.clipboard) == null ? void 0 : _a2.writeText(getOutput());
   };
   const replaceClicked = () => {
     const editorLeaf = app.workspace.activeLeaf;
@@ -22309,29 +22359,27 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
     }
     const startCursor = { line: lineAbove, ch: 0 };
     const endCursor = { line: lineBelow, ch: view.editor.getLine(lineBelow).length };
-    view.editor.replaceRange(toMarkdown(values, colJustify), startCursor, endCursor);
+    view.editor.replaceRange(getOutput(), startCursor, endCursor);
   };
   return /* @__PURE__ */ React4.createElement(React4.Fragment, null, /* @__PURE__ */ React4.createElement("div", {
     className: "mte button-container"
-  }, "行:", /* @__PURE__ */ React4.createElement("input", {
+  }, "Rows : ", /* @__PURE__ */ React4.createElement("input", {
     type: "text",
     onChange: (e) => setNewRows(parseInt(e.target.value)),
     placeholder: "3"
-  }), "列:", /* @__PURE__ */ React4.createElement("input", {
+  }), "Columns : ", /* @__PURE__ */ React4.createElement("input", {
     type: "text",
     onChange: (e) => setNewCols(parseInt(e.target.value)),
     placeholder: "3"
-  })), /* @__PURE__ */ React4.createElement("div", {
+  }), /* @__PURE__ */ React4.createElement("button", {
+    onClick: newTableClicked
+  }, "New Table"), /* @__PURE__ */ React4.createElement("button", {
+    onClick: clearClicked
+  }, "Clear Table")), /* @__PURE__ */ React4.createElement("div", {
     className: "mte button-container"
   }, /* @__PURE__ */ React4.createElement("button", {
-    onClick: newTableClicked
-  }, "新建"), /* @__PURE__ */ React4.createElement("button", {
-    onClick: clearClicked
-  }, "清除"),/* @__PURE__ */ React4.createElement("button", {
     onClick: copyClicked
-  }, copyText), /* @__PURE__ */ React4.createElement("button", {
-    onClick: replaceClicked
-  }, "更新")), /* @__PURE__ */ React4.createElement("div", {
+  }, copyText)), /* @__PURE__ */ React4.createElement("div", {
     className: "mte grid",
     style: {
       gridTemplateColumns: `repeat(${(_a = values[0]) == null ? void 0 : _a.length}, 1fr)`
@@ -22350,7 +22398,11 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
     onFocus: () => setAutoFocusCell({ row: rowIdx, col: colIdx })
   }))).flat()), /* @__PURE__ */ React4.createElement("div", {
     className: "mte button-container"
-  }));
+  }, /* @__PURE__ */ React4.createElement("button", {
+    onClick: copyClicked
+  }, copyText), /* @__PURE__ */ React4.createElement("button", {
+    onClick: replaceClicked
+  }, "Update Table")));
 };
 
 // src/view.tsx
@@ -22363,7 +22415,7 @@ var TableView = class extends import_obsidian3.ItemView {
     return MARKDOWN_TABLE_EDITOR_VIEW;
   }
   getDisplayText() {
-    return "表格编辑器";
+    return "Markdown Table Editor";
   }
   setState(state, result) {
     return __async(this, null, function* () {
@@ -22564,24 +22616,21 @@ var addIcons = () => {
 };
 
 // src/main.ts
-var VERTICAL_EDITOR_TEXT = "打开编辑器(在活动视图右侧)";
-var HORIZONTAL_EDITOR_TEXT = "打开编辑器(在活动视图底部)";
-var POPOVER_EDITOR_TEXT = "打开编辑器(悬浮窗口)";
+var VERTICAL_EDITOR_TEXT = "Open Editor (Next to the Active View)";
+var HORIZONTAL_EDITOR_TEXT = "Open Editor (Below the Active View)";
+var POPOVER_EDITOR_TEXT = "Open Editor (with the hover editor pluging)";
 var MarkdownTableEditorPlugin = class extends import_obsidian5.Plugin {
   onload() {
     return __async(this, null, function* () {
       addIcons();
       this.registerView(MARKDOWN_TABLE_EDITOR_VIEW, (leaf) => new TableView(leaf));
-      this.addRibbonIcon("spreadsheet", "打开表格编辑器", (event) => {
+      this.addRibbonIcon("spreadsheet", "Open Markdown Table Editor", (event) => {
         if (event.type == "click") {
           this.activateView("vertical");
           event.preventDefault();
           return;
         }
         const menu = new import_obsidian5.Menu(this.app);
-        menu.addItem((item) => item.setTitle(POPOVER_EDITOR_TEXT).setIcon("horizontal-split").onClick(() => {
-          this.activateView("popover");
-        }));
         menu.addItem((item) => item.setTitle(VERTICAL_EDITOR_TEXT).setIcon("vertical-split").onClick(() => {
           this.activateView("vertical");
         }));
@@ -22606,7 +22655,7 @@ var MarkdownTableEditorPlugin = class extends import_obsidian5.Plugin {
       });
       this.addCommand({
         id: "markdown-table-editor-select-table-content",
-        name: "选择周围的表格内容",
+        name: "Select surrounding Table Content",
         editorCallback: (_, view) => __async(this, null, function* () {
           this.selectTableContent(view);
         })
@@ -22647,7 +22696,7 @@ var MarkdownTableEditorPlugin = class extends import_obsidian5.Plugin {
       yield editorLeaf.setViewState({
         type: MARKDOWN_TABLE_EDITOR_VIEW,
         active: true,
-        state: { data, leafId: _leafid, cursor:_cursor }
+        state: { data, leafId: _leafid, cursor: _cursor }
       });
       this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(MARKDOWN_TABLE_EDITOR_VIEW)[0]);
     });
