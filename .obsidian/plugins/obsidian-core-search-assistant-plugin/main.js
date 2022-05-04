@@ -3691,11 +3691,6 @@ var Controller = class extends obsidian.Component {
           this.reset();
         }
       });
-      this.registerDomEvent(inputEl, "click", () => {
-        if (!this.modeScope.inSearchMode) {
-          this.enter();
-        }
-      });
       this.registerDomEvent(inputEl, "input", () => {
         if (!this.modeScope.inSearchMode) {
           this.enter();

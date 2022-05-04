@@ -24,7 +24,7 @@ obsidianUIMode: preview
 ```
 
 %%问候和天气数据 
-传统版本 可以自动根据ip获取天气
+传统版本
 ```ad-flex
 
 <div style="float:left"><%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %>
@@ -37,22 +37,23 @@ obsidianUIMode: preview
 <!-----指定城市后面添加城市拼音比例如 重庆天气预报：https://i.tianqi.com/?c=code&id=34&bdc=%23&icon=4&site=14&py=chongqing------>
 </div>
 ```
- %%
+%%
 %% 动画版本%%
 >[!note|noborder|banner]  ![[cat.gif|inlR|160]]
 >```dataviewjs
 let setting = {};
-//在和风天气中创建的 Api key https://console.qweather.com
-setting.key = "dc0f31ac6f37484f88e3e7d45b84e403";//如果无法显示天气请换成自己的key
-setting.city = "";//城市名，为空自动定位
-setting.days =1 ;//天气预报天数1-3
-setting.icon =true ;//是否显示动态图标
-setting.headerLevel = 0;//添加标题的等级
-setting.addDesc = true;//是否添加描述
-setting.onlyToday = false;//是否只在当天显示
-setting.anotherCity = "";//添加另外一个城市
-//脚本文件 weatherView.js 所在路径
-dv.view("88-Template/script/weatherView",setting)
+let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
+let today = moment().format("YYYY-MM-DD");
+if (history.hasOwnProperty(today))
+{let weather=history[today].weather;
+let todayweather = weather[0];
+setting.iconDay =  weather[0].iconDay;
+setting.windSpeedDay =  weather[0].windSpeedDay;
+setting.windSpeedNight =  weather[0].windSpeedNight;
+dv.view("88-Template/script/weatherSvg",setting)
+let desc = ` <%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %> ，${todayweather.city} ${todayweather.textDay}， ${todayweather.tempMin}~${todayweather.tempMax}℃  ==${todayweather.air.category}== ${todayweather.windydesc} [[最近天气查询|✈️]] \n云朵充盈了${todayweather.cloud}%的天空\n顺便，如果有机会看见月亮的话，那么它应该是这样的${todayweather.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
+dv.paragraph(desc);
+}
 >```
 
 ````

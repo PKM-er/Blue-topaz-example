@@ -1,6 +1,5 @@
 Enhanced-editing
 markdown-table-editor
-metaedit
 obsidian-bartender
 obsidian-collapse-all-plugin
 obsidian-dialogue-plugin

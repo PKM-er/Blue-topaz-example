@@ -1,8 +1,48 @@
 {
   "recentFiles": [
     {
-      "basename": "未命名",
-      "path": "未命名.md"
+      "basename": "任务卡片",
+      "path": "77-Example/任务卡片.md"
+    },
+    {
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/通过下拉框检索文件示例.md"
+    },
+    {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
+      "basename": "最近天气查询",
+      "path": "77-Example/最近天气查询.md"
+    },
+    {
+      "basename": "FastStart-Plugins-LongDelay",
+      "path": "88-Template/FastStart-Plugins-LongDelay.md"
+    },
+    {
+      "basename": "FastStart-Plugins-ShortDelay",
+      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
+    },
+    {
+      "basename": "tp_foldermoc",
+      "path": "88-Template/tp_foldermoc.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
+    },
+    {
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
+    },
+    {
+      "basename": "《茶叶与鸦片》",
+      "path": "30-Reading/《茶叶与鸦片》.md"
+    },
+    {
+      "basename": "FastStart-Plugins-simple",
+      "path": "88-Template/FastStart-Plugins-simple.md"
     },
     {
       "basename": "假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ",
@@ -39,10 +79,6 @@
     {
       "basename": "00-Tips",
       "path": "00-Tips/00-Tips.md"
-    },
-    {
-      "basename": "home",
-      "path": "88-Template/home.md"
     },
     {
       "basename": "心灵奇旅 Soul",
@@ -89,14 +125,6 @@
       "path": "77-Example/电影观看清单（dv）.md"
     },
     {
-      "basename": "30-Reading",
-      "path": "30-Reading/30-Reading.md"
-    },
-    {
-      "basename": "88-Template",
-      "path": "88-Template/88-Template.md"
-    },
-    {
       "basename": "天气js",
       "path": "88-Template/天气js.md"
     },
@@ -127,10 +155,6 @@
     {
       "basename": "图书阅读清单(dv)",
       "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md"
-    },
-    {
-      "basename": "FastStart-Plugins-ShortDelay",
-      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
     },
     {
       "basename": "10-Help",
@@ -173,32 +197,8 @@
       "path": "20-Diary/20-Diary.md"
     },
     {
-      "basename": "FastStart-Plugins-LongDelay",
-      "path": "88-Template/FastStart-Plugins-LongDelay.md"
-    },
-    {
-      "basename": "FastStart-Plugins-simple",
-      "path": "88-Template/FastStart-Plugins-simple.md"
-    },
-    {
       "basename": "多彩高亮（三种语法）",
       "path": "77-Example/多彩高亮（三种语法）.md"
-    },
-    {
-      "basename": "示例库内置的插件列表",
-      "path": "88-Template/示例库内置的插件列表.md"
-    },
-    {
-      "basename": "FastStart-StartupScript",
-      "path": "88-Template/FastStart-StartupScript.md"
-    },
-    {
-      "basename": "彩色时钟",
-      "path": "88-Template/彩色时钟.md"
-    },
-    {
-      "basename": "ColorfulClock",
-      "path": "88-Template/ReactJS/ColorfulClock.md"
     }
   ],
   "omittedPaths": [],

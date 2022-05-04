@@ -148,11 +148,11 @@
   "blue-topaz-theme@@bottom-padding-value": "10em",
   "blue-topaz-theme@@remove-colorful-highlight-bg": false,
   "blue-topaz-theme@@line-width-readable": 52,
-  "blue-topaz-theme@@admonition-bg-color@@light": "#FFFFFF00",
   "blue-topaz-theme@@blur-depth": 0,
   "blue-topaz-theme@@simple-p-kanban": false,
   "blue-topaz-theme@@colorful-p-kanban": false,
   "blue-topaz-theme@@remove-shadow-p-kanban": false,
   "blue-topaz-theme@@p-kanban-card-color-1@@light": "#F9F9F97A",
-  "blue-topaz-theme@@p-kanban-border-color@@light": "#A0A0A012"
+  "blue-topaz-theme@@p-kanban-border-color@@light": "#A0A0A012",
+  "blue-topaz-theme@@admonition-bg-color@@light": "#FFFFFF00"
 }

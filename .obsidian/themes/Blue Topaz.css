@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.14.7。uid [20220430] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.7, uid [20220430] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.7。uid [20220502] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.7, uid [20220502] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -1492,13 +1492,13 @@ settings:
     default: false
   -
     id: remove-custom-svg-icons
-    title: Remove Custom Icons
+    title: Toggle Default Icons
     title.zh: 还原默认图标
     type: class-toggle
     default: false
   - 
     id: default-icons
-    title: Remove Collapse Icons
+    title: Toggle Default Collapse Icons
     title.zh: 还原折叠图标
     type: class-toggle
     default: false
@@ -1526,6 +1526,9 @@ settings:
       - 
         label: without icons
         value: fancy-hr-no-icon
+      - 
+        label: with Numbers
+        value: fancy-hr-number
   -
     id: fancy-hr-folder-icon
     title: 2.3.1.1 w/ Icons
@@ -1534,8 +1537,32 @@ settings:
     level: 4
     collapsed: true
   -
-    id: hr-color-icon
-    title: hr color
+    id: hr-color-icon-1
+    title: Line color 1
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#007de4'
+    default-dark: '#53aaf5'
+  -
+    id: hr-color-icon-2
+    title: Line color 2
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#007de4'
+    default-dark: '#53aaf5'
+  -
+    id: hr-color-icon-3
+    title: Line color 3
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#007de4'
+    default-dark: '#53aaf5'
+  -
+    id: hr-color-icon-4
+    title: Line color 4
     type: variable-themed-color
     opacity: true
     format: hex
@@ -1558,8 +1585,8 @@ settings:
     format: deg
   -
     id: fancy-hr-folder-no-icon
-    title: 2.3.1.1 w/o Icons
-    title.zh: 2.3.1.1 没有图标的hr
+    title: 2.3.1.2 w/o Icons
+    title.zh: 2.3.1.2 没有图标的hr
     type: heading
     level: 4
     collapsed: true
@@ -1595,6 +1622,87 @@ settings:
     format: hex
     default-light: '#007de4'
     default-dark: '#53aaf5'
+  -
+    id: fancy-hr-folder-with-number
+    title: 2.3.1.3 w/ Numbers
+    title.zh: 2.3.1.3 带数字的hr
+    type: heading
+    level: 4
+    collapsed: true
+  -
+    id: hr-color-numbers-line-1
+    title: Line Color 1
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: hr-color-numbers-line-2
+    title: Line Color 2
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: hr-color-numbers-line-3
+    title: Line Color 3
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: hr-color-numbers-line-4
+    title: Line Color 4
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: hr-color-numbers-color
+    title: Number Color
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: hr-color-numbers-bg-color
+    title: Number Background Color
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  - 
+    id: hollow-number
+    title: Toggle Hollow Numbers
+    title.zh: 切换空心数字
+    type: class-toggle
+    default: false
+  -
+    id: hr-numbers-text-fill
+    title: Fill Color
+    title.zh: 数字颜色
+    description: Color inside the numbers
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: hr-numbers-text-stroke
+    title: Stroke Color
+    title.zh: 线条颜色
+    description: Color of lines drawn around numbers
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
   -
     id: list-style-change-options-folder
     title: 2.3.2 List
@@ -2237,6 +2345,12 @@ settings:
     type: variable-text
     default: 1rem
   -
+    id: unmute-checkbox-animation
+    title: Deactivate Checkbox Animation
+    title.zh: 取消勾选框摇摆动画
+    type: class-toggle
+    default: false
+  -
     id: style-options-for-other-plugins
     title: 3. For Plugins
     title.zh: 3. 插件样式
@@ -2813,11 +2927,22 @@ body {
   --nord14-0: #95b677;
   --nord15: #B48EAD;
 
-  --hr-color-icon: var(--theme-color);
+  --hr-color-icon-1: var(--theme-color);
+  --hr-color-icon-2: var(--theme-color);
+  --hr-color-icon-3: var(--theme-color);
+  --hr-color-icon-4: var(--theme-color);
   --hr-color-1: var(--theme-color);
   --hr-color-2: var(--theme-color);
   --hr-color-3: var(--theme-color);
   --hr-color-4: var(--theme-color);
+  --hr-color-numbers-line-1: var(--theme-color);
+  --hr-color-numbers-line-2: var(--theme-color);
+  --hr-color-numbers-line-3: var(--theme-color);
+  --hr-color-numbers-line-4: var(--theme-color);
+  --hr-color-numbers-bg-color: var(--theme-color-translucent-1);
+  --hr-color-numbers-color: var(--theme-color);
+  --hr-numbers-text-fill: transparent;
+  --hr-numbers-text-stroke: var(--text-normal);
 
   --cloze-bg-color: var(--accent-strong);
   --cloze-decoration: none;
@@ -3419,7 +3544,7 @@ body.all-dark .print.theme-light,
   --checkbox-color-6: #5f5f5f;
   --text-checked-checkbox: #9b9b9b;
 
-  --activeline-background: #468eeb21;
+  --activeline-background: #79b3ff21;
 
   /*pseudo-kanban*/
   --p-kanban-bg-color: #d3d3d32d;
@@ -8897,14 +9022,12 @@ li[data-task="-"]>p>input:checked {
   0% {
     -webkit-transform: translateX(-10px);
     transform: translateX(-10px);
-
     opacity: 0;
   }
 
   75% {
     -webkit-transform: translateX(0);
     transform: translateX(0);
-
     opacity: 1;
   }
 }
@@ -9360,7 +9483,7 @@ body.fancy-hr-icon .markdown-rendered hr {
   border-bottom: 2px solid;
   border-image-slice: 1;
   border-width: 2px;
-  border-image-source: linear-gradient(to right, transparent 0%, var(--hr-color-icon) 30%, var(--hr-color-icon) 46%, transparent 46%, transparent 54%, var(--hr-color-icon) 54%, var(--hr-color-icon) 70%, transparent 100%);
+  border-image-source: linear-gradient(to right, transparent 0%, var(--hr-color-icon-1) 30%, var(--hr-color-icon-2) 46%, transparent 46%, transparent 54%, var(--hr-color-icon-3) 54%, var(--hr-color-icon-4) 70%, transparent 100%) 1;
 }
 
 body.fancy-hr-icon .markdown-rendered hr::after {
@@ -9388,7 +9511,7 @@ body.fancy-hr-icon div:not(.CodeMirror-activeline) > .CodeMirror-line.HyperMD-hr
   content: '';
   width: 100%;
   height: 2px;
-  background-image: linear-gradient(to right, transparent 0%, var(--hr-color-icon) 30%, var(--hr-color-icon) 46%, transparent 46%, transparent 54%, var(--hr-color-icon) 54%, var(--hr-color-icon) 70%, transparent 100%);
+  border-image: linear-gradient(to right, transparent 0%, var(--hr-color-icon-1) 30%, var(--hr-color-icon-2) 46%, transparent 46%, transparent 54%, var(--hr-color-icon-3) 54%, var(--hr-color-icon-4) 70%, transparent 100%) 1;
   left: 0;
   top: 50%;
 }
@@ -9406,7 +9529,7 @@ body.fancy-hr-icon div:not(.CodeMirror-activeline) > .CodeMirror-line.HyperMD-hr
 }
 
 body.fancy-hr-icon .cm-s-obsidian hr {
-  border-image: linear-gradient(to right, transparent 0%, var(--hr-color-icon) 30%, var(--hr-color-icon) 46%, transparent 46%, transparent 54%, var(--hr-color-icon) 54%, var(--hr-color-icon) 70%, transparent 100%) 1;
+  border-image: linear-gradient(to right, transparent 0%, var(--hr-color-icon-1) 30%, var(--hr-color-icon-2) 46%, transparent 46%, transparent 54%, var(--hr-color-icon-3) 54%, var(--hr-color-icon-4) 70%, transparent 100%) 1;
   border-width: 2px;
 }
 
@@ -9445,6 +9568,108 @@ body.fancy-hr-no-icon div:not(.CodeMirror-activeline) > .CodeMirror-line.HyperMD
   background-image: linear-gradient(to right, transparent 0%, var(--hr-color-1) 20%, var(--hr-color-2) 40%, var(--hr-color-3) 60%, var(--hr-color-4) 80%, transparent 100%);
   left: 0;
   top: 50%;
+}
+
+body.fancy-hr-number .markdown-rendered {
+  counter-reset: fancyhrno;
+}
+
+body.fancy-hr-number .markdown-rendered hr {
+  margin-block-start: 2.5em;
+  margin-block-end: 2.5em;
+  border: none;
+  height: 0;
+  border-bottom: 2px solid;
+  border-image-slice: 1;
+  border-width: 2px;
+  border-image-source: linear-gradient(to right, transparent 0%, var(--hr-color-numbers-line-1) 30%, var(--hr-color-numbers-line-2) 46%, transparent 46%, transparent 54%, var(--hr-color-numbers-line-3) 54%, var(--hr-color-numbers-line-4) 70%, transparent 100%);
+  counter-increment: fancyhrno;
+}
+
+body.fancy-hr-number .markdown-rendered hr::after {
+  content: counter(fancyhrno);
+  display: inline-block;
+  font-family: var(--font-monospace-theme);
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--hr-color-numbers-color);  
+  background: var(--hr-color-numbers-bg-color);
+  border-radius: 50%;
+  padding: 0 0.44em 0 0.5em;
+}
+
+body.fancy-hr-number.hollow-number .markdown-rendered hr::after,
+body.fancy-hr-number.hollow-number .markdown-source-view.mod-cm6 hr::after,
+body.fancy-hr-number.hollow-number .markdown-source-view div:not(.CodeMirror-activeline) > .HyperMD-hr.CodeMirror-line::after {
+  -webkit-text-fill-color: var(--hr-numbers-text-fill); 
+  -webkit-text-stroke: 1px var(--hr-numbers-text-stroke);
+  font-family: var(--font-text-theme);
+}
+
+body.fancy-hr-number div:not(.CodeMirror-activeline) > .CodeMirror-line span.cm-hr {
+  opacity: 0;
+  position: relative;
+}
+
+body.fancy-hr-number div > .CodeMirror-line span.cm-hr {
+  display: inline-block;
+}
+
+body.fancy-hr-number .markdown-source-view {
+  counter-reset: fancyhrno1;
+}
+
+body.fancy-hr-number .markdown-source-view div:not(.CodeMirror-activeline) > .HyperMD-hr.CodeMirror-line::before {
+  position: absolute;
+  content: '';
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to right, transparent 0%, var(--hr-color-numbers-line-1) 30%, var(--hr-color-numbers-line-2) 46%, transparent 46%, transparent 54%, var(--hr-color-numbers-line-3) 54%, var(--hr-color-numbers-line-4) 70%, transparent 100%);
+  left: 0;
+  top: 50%;
+  counter-increment: fancyhrno1;
+}
+
+body.fancy-hr-number .markdown-source-view div:not(.CodeMirror-activeline) > .HyperMD-hr.CodeMirror-line::after {
+  content: counter(fancyhrno1);
+  display: inline-block;
+  font-family: var(--font-monospace-theme);
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--hr-color-numbers-color);  
+  background: var(--hr-color-numbers-bg-color);
+  border-radius: 50%;
+  padding: 0 0.44em 0 0.5em;
+}
+
+body.fancy-hr-number .cm-s-obsidian hr {
+  border-image: linear-gradient(to right, transparent 0%, var(--hr-color-numbers-line-1) 30%, var(--hr-color-numbers-line-2) 46%, transparent 46%, transparent 54%, var(--hr-color-numbers-line-3) 54%, var(--hr-color-numbers-line-4) 70%, transparent 100%) 1;
+  border-width: 2px;
+  counter-increment: fancyhrno;
+}
+
+body.fancy-hr-number .markdown-source-view.mod-cm6 {
+  counter-reset: fancyhrno;
+}
+
+body.fancy-hr-number .markdown-source-view.mod-cm6 .hr::after {
+  left: 50%;
+  top: 50%;
+  content: counter(fancyhrno);
+  display: inline-block;
+  font-family: var(--font-monospace-theme);
+  font-weight: bold;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  color: var(--hr-color-numbers-color);  
+  background: var(--hr-color-numbers-bg-color);
+  border-radius: 50%;
+  padding: 0 0.45em 0 0.5em;
 }
 
 .nav-files-container {
@@ -9768,6 +9993,10 @@ ol {
   padding-inline-start: 32px;
 }
 
+:is(.markdown-preview-view,.markdown-rendered):not(.kanban) li:not(.task-list-item) {
+  padding-left: 0.25rem;
+}
+
 :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item) {
   border-radius: var(--radius-s);
   word-wrap: break-word;
@@ -9833,11 +10062,6 @@ ul li,
 ol li {
   font-size: var(--font-size-list);
 }
-
-.HyperMD-list-line.HyperMD-list-line-nobullet.cm-line span[class^="cm-list-"]:not([class*="quote"]) {
-  margin-left: 0.17em;
-}
-
 
 body.list-bracket-left-two .markdown-rendered.show-indentation-guide li:not(.task-list-item) > ul::before, 
 body.list-bracket-left-two .markdown-rendered.show-indentation-guide li:not(.task-list-item) > ol::before,
@@ -9922,14 +10146,12 @@ body.list-vertical-line-one .kanban :is(ol,ul) ul::before {
   display: none;
 }
 
-body.list-vertical-line-one :is(ol,ul).contains-task-list :is(ol,ul)::before {
+body.list-vertical-line-one .markdown-rendered.show-indentation-guide li > :is(ol,ul)::before {
   content: ' ';
   border-left: 2px solid var(--background-modifier-border);
   border-right: none;
   position: absolute;
-  left: -0.9rem;
-  top: 1px;
-  height: 100%;
+  left: -1.1rem;
 }
 
 body.list-vertical-line-one :is(.markdown-preview-view,.markdown-rendered):not(.kanban) ul>li:not(.task-list-item),
@@ -9957,13 +10179,12 @@ body.list-vertical-line-two :is(ol,ul) :is(ol,ul) {
   position: relative;
 }
 
-body.list-vertical-line-two :is(ol,ul) :is(ol,ul)::before {
+body.list-vertical-line-two .markdown-rendered.show-indentation-guide li > :is(ol,ul)::before {
   content: '';
   border-left: 2px solid var(--background-modifier-border);
-  border-right:none!important;
+  border-right: none !important;
   position: absolute;
-  left: -0.9em;
-  height: 100%;
+  left: -1.1em !important;
 }
 body.list-vertical-line-two.is-mobile :is(ol,ul) :is(ol,ul)::before {
   left: -1em;
@@ -10054,14 +10275,12 @@ body.list-vertical-line-three ul>li:not(.task-list-item) {
   list-style-position: inside;
 }
 
-body.list-vertical-line-three :is(ol,ul) :is(ol,ul)::before {
+body.list-vertical-line-three .markdown-rendered.show-indentation-guide li > :is(ol,ul)::before {
   content: '';
   border-left: 2px solid var(--background-modifier-border);
   border-right: none !important;
   position: absolute;
   left: 0.1em !important;
-  top: 0 !important;
-  bottom: 0 !important;
 }
 
 body.list-vertical-line-three .kanban :is(ol,ul) ul::before {
@@ -11946,6 +12165,11 @@ body.muted-activeline-bg .HyperMD-codeblock-bg.CodeMirror-activeline-background.
   font-family: var(--font-monospace-theme);
 }
 
+.cm-lineNumbers .cm-active.cm-gutterElement {
+  color: var(--theme-color);
+  background: var(--activeline-background);
+}
+
 /*----file explorer smaller fonts & line height----*/
 .nav-file-title,
 .nav-folder-title {
@@ -12723,11 +12947,12 @@ body.hide-left-ribbon .workspace-ribbon.side-dock-ribbon.mod-left:not(:hover) {
 }
 
 /*======== optionnal mermaid style below ========*/
-div.mermaid svg {
-  width: 100%;
+:is(.markdown-preview-section,.markdown-rendered) .mermaid,
+.markdown-source-view.mod-cm6 .cm-scroller .mermaid {
+  letter-spacing: 0;
 }
 
-.markdown-source-view.is-live-preview div.mermaid svg {
+div.mermaid svg {
   width: 100%;
 }
 
@@ -12916,8 +13141,8 @@ div.mermaidTooltip {
 
 .mermaid .section1,
 .mermaid .section3 {
-  fill: var(--text-normal) !important;
-  opacity: 0.3 !important;
+  fill: var(--text-muted) !important;
+  opacity: 0.15 !important;
 }
 
 .mermaid .sectionTitle0 {
@@ -14979,16 +15204,6 @@ body.style-options-for-admonition-plugin .callout.admonition .admonition-content
   overflow: hidden;
 }
 
-.admonition {
-  background-color: var(--admonition-bg-color) !important;
-}
-
-.callout-title.admonition-title {
-  background-color: rgba(var(--admonition-color),0.15) ;
-}
-.callout.admonition {
-  border-color: rgba(var(--admonition-color),0.15) ;
-}
  .callout.admonition.admonition-plugin.is-collapsed {
   overflow: hidden;
 }
@@ -20128,48 +20343,42 @@ body.loading-animation .progress-bar-message {
 /* ================================== */
 
 /* ====cssclass background 属性可以使得banner作为笔记背景  ===== */
-.markdown-preview-view.background .obsidian-banner-wrapper
-{
-  position:absolute;
- width:100%;
- height:100%;
- top: 0;
- bottom: 0;
- left:0px;
- background-size:cover;
- z-index:-1;
- opacity: 0.8;
- background-attachment:fixed;
+.markdown-preview-view.background .obsidian-banner-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  z-index: -1;
+  opacity: 0.8;
+  background-attachment:fixed;
 }
 
- .markdown-preview-view.background .obsidian-banner
-{
+ .markdown-preview-view.background .obsidian-banner {
   top: -310px;
-  width:100%;
-  height:100%;
+  width: 100%;
+  height: 100%;
   background-repeat: no-repeat;
-  background-size:cover;
+  background-size: cover;
 }
 
-.is-live-preview.background .has-banner .obsidian-banner
-{
-position:absolute!important;
- width:100%;
- top: 0px;
- bottom: 0;
- left:0px;
- background-size:cover;
- z-index:-1;
+.is-live-preview.background .has-banner .obsidian-banner {
+  position: absolute!important;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-size: cover;
+  z-index: -1;
 }
-.is-live-preview.background .has-banner .cm-hmd-frontmatter
-{
- display:none;
+.is-live-preview.background .has-banner .cm-hmd-frontmatter {
+  display: none;
 }
-.is-live-preview.background .has-banner .obsidian-banner.cm6-banner
-{
-opacity: 0.5;
-height:100%;
-
+.is-live-preview.background .has-banner .obsidian-banner.cm6-banner {
+  opacity: 0.5;
+  height: 100%;
 }
 
 .obsidian-banner-wrapper {
@@ -20184,16 +20393,13 @@ height:100%;
 /* ================================== */
 
 
-
-:is(.markdown-preview-view,.markdown-rendered)  .tasks-backlink>.internal-link.internal-link-short-mode
-{
-   font-size:0;
+:is(.markdown-preview-view,.markdown-rendered)  .tasks-backlink>.internal-link.internal-link-short-mode {
+  font-size: 0;
 }
- :is(.markdown-preview-view,.markdown-rendered) .tasks-backlink>.internal-link.internal-link-short-mode::before
-{
+:is(.markdown-preview-view,.markdown-rendered) .tasks-backlink>.internal-link.internal-link-short-mode::before {
   content: "";
   background-image: url("data:image/svg+xml,%3Csvg width='' height='' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M330.97 451.71l-120.70 120.70a170.67 170.67 0 0 0 235.22 247.21l6.14-5.89 120.70-120.66 60.33 60.33-120.70 120.70A256 256 0 1 1 149.93 512l120.70-120.66 60.33 60.33z m301.70-60.33a42.67 42.67 0 0 1 0 60.33l-181.03 181.03a42.67 42.67 0 0 1-60.33-60.33l181.03-181.03a42.67 42.67 0 0 1 60.33 0z m241.37-241.37a256 256 0 0 1 0 362.03l-120.70 120.70-60.33-60.33 120.70-120.70a170.67 170.67 0 0 0-235.22-247.21l-6.14 5.85-120.70 120.70-60.33-60.33L512 150.02a256 256 0 0 1 362.03 0z' fill='%230061b0'/%3E%3C/svg%3E");
- background-size: 16px 16px;
+  background-size: 16px 16px;
   transform: translate(0, 2px);
   background-repeat: no-repeat;
   display: inline-block;
@@ -20323,9 +20529,14 @@ margin: 0px!important;
     color: var(--print-em-color) !important;
   }
 
-  body.hr-for-pagination hr {
+  body.hr-for-pagination .markdown-rendered hr {
     break-after: page;
     visibility: hidden;
+  }
+
+  body.hr-for-pagination.fancy-hr-number .markdown-rendered hr:after {
+    break-after: page;
+    visibility: visible;
   }
 
   body.show-url-after-link a::after {
@@ -20333,10 +20544,10 @@ margin: 0px!important;
   }
 
   body.fancy-hr-icon .markdown-rendered hr {
-    border-image-source: linear-gradient(to right, white 0%, var(--hr-color-icon) 30%, var(--hr-color-icon) 46%, transparent 46%, transparent 54%, var(--hr-color-icon) 54%, var(--hr-color-icon) 70%, white 100%);
+    border-image-source: linear-gradient(to right, var(--background-primary-bg-4-bt) 0%, var(--hr-color-icon-1) 30%, var(--hr-color-icon-2) 46%, transparent 46%, transparent 54%, var(--hr-color-icon-3) 54%, var(--hr-color-icon-4) 70%, var(--background-primary-bg-4-bt) 100%);
   }
   body.fancy-hr-no-icon .markdown-rendered hr {
-    border-image: linear-gradient(to right, white 0%, var(--hr-color-1) 20%, var(--hr-color-2) 40%, var(--hr-color-3) 60%, var(--hr-color-4) 80%, white 100%) 1;
+    border-image: linear-gradient(to right, var(--background-primary-bg-4-bt) 0%, var(--hr-color-1) 20%, var(--hr-color-2) 40%, var(--hr-color-3) 60%, var(--hr-color-4) 80%, var(--background-primary-bg-4-bt) 100%) 1;
   }
 
   body.all-dark .print :is(.markdown-preview-view,.markdown-rendered) {
@@ -20355,7 +20566,7 @@ margin: 0px!important;
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220430";
+  content: "uid:20220502";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;
@@ -21155,7 +21366,6 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   position: relative;
   height: auto;
   overflow: hidden;
-  border-radius: var(--radius-s) !important;
   background: radial-gradient(circle at 0px 0px, var(--background-modifier-box-shadow), 0, var(--background-modifier-box-shadow), var(--hibox), transparent var(--hibox), transparent 0);
   transition: --hibox 0.6s linear;
 }
