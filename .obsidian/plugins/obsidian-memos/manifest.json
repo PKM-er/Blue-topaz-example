@@ -2,7 +2,7 @@
   "id": "obsidian-memos",
   "name": "Obsidian Memos",
   "description": "A plugin for capturing ideas in Obsidian",
-  "version": "1.9.5",
+  "version": "1.9.6",
   "author": "Boninall",
   "authorUrl": "https://github.com/Quorafind/",
   "isDesktopOnly": false,

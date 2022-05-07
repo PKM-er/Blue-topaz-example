@@ -7880,7 +7880,10 @@ var en = {
   "Please check your daily note plugin OR periodic notes plugin settings": "Please check your daily note plugin OR periodic notes plugin settings",
   "Use Which Plugin's Default Configuration": "Use Which Plugin's Default Configuration",
   "Memos use the plugin's default configuration to fetch memos from daily, 'Daily' by default.": "Memos use the plugin's default configuration to fetch memos from daily, 'Daily' by default.",
-  Daily: "Daily"
+  Daily: "Daily",
+  "Always Show Leaf Sidebar on PC": "Always Show Leaf Sidebar on PC",
+  "Show left sidebar on PC even when the leaf width is less than 875px. False by default.": "Show left sidebar on PC even when the leaf width is less than 875px. False by default.",
+  "You didn't set format for daily notes in both periodic-notes and daily-notes plugins.": "You didn't set format for daily notes in both periodic-notes and daily-notes plugins."
 };
 var enGB = {};
 var es = {};
@@ -8051,7 +8054,7 @@ var pt = {
     "Novembro",
     "Dezembro"
   ],
-  monthsShort: ["Jan.", "Feb.", "Mar.", "Apr.", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."],
+  monthsShort: ["Jan.", "Fev.", "Mar.", "Abr.", "Maio", "Jun.", "Jul.", "Ago.", "Set.", "Out.", "Nov.", "Dez."],
   weekDays: ["Domingo", "Segunda", "Ter\xE7a", "Quarta", "Quinta", "Sexta", "S\xE1bado"],
   weekDaysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "S\xE1b"],
   to: "para",
@@ -8059,55 +8062,55 @@ var pt = {
   month: null,
   "Basic Options": "Op\xE7\xF5es B\xE1sicas",
   "User name in Memos": "Nome de Usu\xE1rio no Memos",
-  "Set your user name here. 'Memos \u{1F60F}' By default": "Define o nome de usu\xE1rio. Padr\xE3o: 'Memos \u{1F60F}'",
-  "Insert after heading": "Inserir ap\xF3s o t\xEDtulo",
-  "You should set the same heading below if you want to insert and process memos below the same heading.": "Deve definir o mesmo t\xEDtulo na op\xE7\xE3o abaixo se pretende inserir e processar Memos abaixo do t\xEDtulo aqui definido.",
-  "Allows admonitions to be created using ": "Permite que admonitions sejam criadas usando ",
-  "Process Memos below": "Processar Memos abaixo",
-  "Only entries below this string/section in your notes will be processed. If it does not exist no notes will be processed for that file.": "Somente as entradas abaixo deste T\xEDtulo/Sec\xE7\xE3o ser\xE3o processadas nas suas notas. Se esta Sec\xE7\xE3o n\xE3o estiver definida, nenhuma nota ser\xE1 processada para esse ficheiro.",
-  "Save Memo button label": "Legenda do bot\xE3o Guardar Memo",
-  "The text shown on the save Memo button in the UI. 'NOTEIT' by default.": 'Define o texto apresentado no bot\xE3o "Guardar Memo" na interface de usu\xE1rio. Padr\xE3o: "NOTEIT".',
+  "Set your user name here. 'Memos \u{1F60F}' By default": "Defina o nome de usu\xE1rio. Padr\xE3o: 'Memos \u{1F60F}'.",
+  "Insert after heading": "Inserir ap\xF3s o cabe\xE7alho",
+  "You should set the same heading below if you want to insert and process memos below the same heading.": "Deve definir o mesmo cabe\xE7alho na configura\xE7\xE3o posterior se pretende inserir e processar memorandos abaixo do cabe\xE7alho aqui definido.",
+  "Allows admonitions to be created using ": "Permitir que Admonitions sejam criadas usando ",
+  "Process Memos below": "Processar Memorandos abaixo do Cabe\xE7alho",
+  "Only entries below this string/section in your notes will be processed. If it does not exist no notes will be processed for that file.": "Somente as entradas abaixo deste cabe\xE7alho ser\xE3o processadas nas suas notas. Se n\xE3o configurar esta funcionalidade, nenhuma nota ser\xE1 processada para o ficheiro respetivo.",
+  "Save Memo button label": "Legenda do Bot\xE3o de Guardar Memorandos",
+  "The text shown on the save Memo button in the UI. 'NOTEIT' by default.": 'Define o texto apresentado na UI do bot\xE3o guardar memorandos. Padr\xE3o: "NOTEIT".',
   "Focus on editor when open memos": "Focar no Editor ao iniciar o Memos",
-  "Focus on Editor when open memos. Focus by default.": "Focar no editor ao iniciar o Memos. Focar est\xE1 definido como padr\xE3o.",
+  "Focus on Editor when open memos. Focus by default.": 'Focar no editor ao iniciar o Memos. Padr\xE3o: "Focar".',
   "Open daily memos with open memos": "Abrir memorandos di\xE1rios ao iniciar o Memos",
-  "Open daily memos with open memos. Open by default.": "Abrir memorandos di\xE1rios ao iniciar o Memos. Abrir est\xE1 definido como padr\xE3o.",
+  "Open daily memos with open memos. Open by default.": 'Abrir memorandos di\xE1rios ao iniciar o Memos. Padr\xE3o: "Abrir".',
   "Open Memos when obsidian opens": "Abrir Memos quando o Obsidian inicia",
-  "When enable this, Memos will open when Obsidian opens. False by default.": "Quando esta op\xE7\xE3o est\xE1 activa, o Memos abrir\xE1 quando o Obsidian inicia. Desactivado por padr\xE3o.",
-  "Hide done tasks in Memo list": "Ocultar tarefas conclu\xEDdas na lista de Memos",
-  "Hide all done tasks in Memo list. Show done tasks by default.": "Ocultar todas as tarefas conclu\xEDdas na lista de Memos. Mostrar as tarefas conclu\xEDdas est\xE1 definido como padr\xE3o.",
+  "When enable this, Memos will open when Obsidian opens. False by default.": 'Quando esta op\xE7\xE3o est\xE1 activa, o Memos abrir\xE1 quando o Obsidian inicia. Padr\xE3o: "Falso".',
+  "Hide done tasks in Memo list": "Ocultar tarefas conclu\xEDdas na lista de memorandos",
+  "Hide all done tasks in Memo list. Show done tasks by default.": 'Ocultar todas as tarefas conclu\xEDdas na lista de memorandos. Padr\xE3o: "Mostrar tarefas conclu\xEDdas".',
   "Advanced Options": "Op\xE7\xF5es Avan\xE7adas",
-  "UI language for date": "Idioma da Data na interface do usu\xE1rio",
-  "Translates the date UI language. Only 'en' and 'zh' are available.": "Define o idioma da Data na interface do usu\xE1rio. De momento, apenas 'en', 'fr', 'pt' e 'zh' est\xE3o dispon\xEDveis.",
-  "Default prefix": "Prefixo padr\xE3o",
+  "UI language for date": "Idioma na UI da Data ",
+  "Translates the date UI language. Only 'en' and 'zh' are available.": "Define o idioma na UI da Data. De momento, apenas 'en', 'fr', 'pt' e 'zh' est\xE3o dispon\xEDveis.",
+  "Default prefix": "Prefixo Padr\xE3o",
   "Set the default prefix when create memo, 'List' by default.": "Define o prefixo padr\xE3o quando um memorando \xE9 criado. Padr\xE3o: 'Lista'.",
-  "Default insert date format": "Formato padr\xE3o para inser\xE7\xE3o de Data",
-  "Set the default date format when insert date by @, 'Tasks' by default.": "Define o formato de Data padr\xE3o ao inserir a data usando @. Padr\xE3o: 'Tarefas'.",
-  "Default editor position on mobile": "Posi\xE7\xE3o padr\xE3o do editor de memos na vers\xE3o m\xF3vel.",
-  "Set the default editor position on Mobile, 'Top' by default.": "Define a posi\xE7\xE3o padr\xE3o do editor de Memos na vers\xE3o m\xF3vel. Padr\xE3o: 'Topo'.",
-  "Use button to show editor on mobile": "Usar um bot\xE3o para mostrar o editor na vers\xE3o m\xF3vel",
-  "Set a float button to call editor on mobile. Only when editor located at the bottom works.": "Define um bot\xE3o flutuante para abrir o editor na vers\xE3o m\xF3vel. Op\xE7\xE3o dispon\xEDvel somente quando a posi\xE7\xE3o do editor est\xE1 definida para 'Fundo'",
-  "Show Time When Copy Results": "Mostrar a Hora ao copiar os resultados",
-  "Show time when you copy results, like 12:00. Copy time by default.": "Mostrar a Hora ao copiar os resultados, como '12:00'. Copiar a Hora est\xE1 activado por padr\xE3o.",
-  "Show Date When Copy Results": "Mostrar a Data ao copiar os resultados",
-  "Show date when you copy results, like [[2022-01-01]]. Copy date by default.": "Mostrar a Data ao copiar os resultados, como [[2022-01-01]]. Copiar a Data est\xE1 activado por padr\xE3o.",
-  "Add Blank Line Between Different Date": "Adicionar linha em branco entre Datas diferentes.",
-  "Add blank line when copy result with date. No blank line by default.": "Adicionar linha em branco ao copiar resultados com Data. Por padr\xE3o nenhuma linha \xE9 adicionada.",
+  "Default insert date format": "Formato Padr\xE3o para Inser\xE7\xE3o de Data",
+  "Set the default date format when insert date by @, 'Tasks' by default.": "Define o formato de Data padr\xE3o ao inserir a data usando '@'. Padr\xE3o: 'Tarefas'.",
+  "Default editor position on mobile": "Posi\xE7\xE3o Padr\xE3o do Editor de Memorandos na Vers\xE3o M\xF3vel",
+  "Set the default editor position on Mobile, 'Top' by default.": "Define a posi\xE7\xE3o padr\xE3o do editor de memorandos na vers\xE3o m\xF3vel. Padr\xE3o: 'Topo'.",
+  "Use button to show editor on mobile": "Usar Bot\xE3o para Mostrar o Editor na Vers\xE3o M\xF3vel",
+  "Set a float button to call editor on mobile. Only when editor located at the bottom works.": "Define um bot\xE3o flutuante para abrir o editor na vers\xE3o m\xF3vel. Op\xE7\xE3o dispon\xEDvel somente quando a posi\xE7\xE3o do editor est\xE1 definida para 'Fundo'.",
+  "Show Time When Copy Results": "Mostrar a Hora ao Copiar os Resultados",
+  "Show time when you copy results, like 12:00. Copy time by default.": "Mostrar a Hora, no formato '12:00', ao copiar os resultados. Padr\xE3o: 'Copiar a hora'.",
+  "Show Date When Copy Results": "Mostrar a Data ao Copiar os Resultados",
+  "Show date when you copy results, like [[2022-01-01]]. Copy date by default.": 'Mostrar a Data, no formato [[2022-01-01]], ao copiar os resultados. Padr\xE3o: "Copiar a hora".',
+  "Add Blank Line Between Different Date": "Adicionar Linha em Branco entre Datas Diferentes.",
+  "Add blank line when copy result with date. No blank line by default.": 'Adicionar linha em branco ao copiar resultados com Data. Padr\xE3o: "N\xE3o adicionar linha."',
   "Share Options": "Op\xE7\xF5es de Partilha",
-  "Share Memos Image Footer Start": "Partilhar a Imagem de um Memo - In\xEDcio do rodap\xE9",
-  "Set anything you want here, use {MemosNum} to display Number of memos, {UsedDay} for days. '{MemosNum} Memos {UsedDay} Days' By default": "Defina o que quiser, use {MemosNum} para mostrar o n\xFAmero de Memos e use {UsedDay} para dias. 'Padr\xE3o: {MemosNum} Memos {UsedDay} Days'.",
-  "Share Memos Image Footer End": "Partilhar a Imagem de um Memo - Fim do rodap\xE9",
-  "Set anything you want here, use {UserName} as your username. '\u270D\uFE0F By {UserName}' By default": "Defina o que quiser, use {UserName} como o seu nome de usu\xE1rio. Padr\xE3o: '\u270D\uFE0F Por {UserName}'.",
-  "Save Shared Image To Folder For Mobile": "Guardar a imagem partilhada para pasta na vers\xE3o m\xF3vel",
-  "Save image to folder for mobile. False by Default": "Guardar a imagem partilhada para pasta na vers\xE3o m\xF3vel. Desactivado por padr\xE3o.",
+  "Share Memos Image Footer Start": "Partilhar a Imagem de um memorando - In\xEDcio do Rodap\xE9",
+  "Set anything you want here, use {MemosNum} to display Number of memos, {UsedDay} for days. '{MemosNum} Memos {UsedDay} Days' By default": "Defina como preferir, use {MemosNum} para mostrar o n\xFAmero de memorandos e use {UsedDay} para dias. 'Padr\xE3o: {MemosNum} Memorandos {UsedDay} Dias'.",
+  "Share Memos Image Footer End": "Partilhar a Imagem de um memorando - Fim do Rodap\xE9",
+  "Set anything you want here, use {UserName} as your username. '\u270D\uFE0F By {UserName}' By default": "Defina como preferir, use {UserName} como o seu nome de usu\xE1rio. Padr\xE3o: '\u270D\uFE0F Por {UserName}'.",
+  "Save Shared Image To Folder For Mobile": "Guardar a Imagem Partilhada para Pasta na Vers\xE3o M\xF3vel",
+  "Save image to folder for mobile. False by Default": 'Guardar a imagem partilhada para pasta na vers\xE3o m\xF3vel. Padr\xE3o: "Falso".',
   "Say Thank You": "Agrade\xE7a",
   Donate: "Doar",
   "If you like this plugin, consider donating to support continued development:": "Se gosta deste plugin, considere doar para apoiar o seu desenvolvimento cont\xEDnuo:",
   "File Name of Recycle Bin": "Nome da Reciclagem",
   "Set the filename for recycle bin. 'delete' By default": "Define o nome do ficheiro para a Reciclagem. Padr\xE3o: 'delete'.",
-  "File Name of Query File": "Nome do arquivo do ficheiro de Consulta",
-  "Set the filename for query file. 'query' By default": "Define o nome do ficheiro para Consultas. Padr\xE3o: 'Query'.",
+  "File Name of Query File": "Nome do Ficheiro de Query",
+  "Set the filename for query file. 'query' By default": "Define o nome do ficheiro de Query. Padr\xE3o: 'Query'.",
   "Use Tags In Vault": "Usar Tags no Vault",
-  "Use tags in vault rather than only in Memos. False by default.": "Usar as Tags do Vault e n\xE3o somente do Memos. Desactivado por padr\xE3o.",
+  "Use tags in vault rather than only in Memos. False by default.": 'Usar as Tags do Vault e n\xE3o somente dos memorandos. Padr\xE3o: "Falso".',
   "Ready to convert image into background": "Pronto para converter imagem em fundo",
   List: "Lista",
   Task: "Tarefa",
@@ -8125,7 +8128,7 @@ var pt = {
   Settings: "Defini\xE7\xF5es",
   "Recycle bin": "Reciclagem",
   "About Me": "Acerca de mim",
-  "Fetching data...": "A procurar dados...",
+  "Fetching data...": "A obter dados...",
   "Here is No Zettels.": "N\xE3o existem Zettels.",
   "Frequently Used Tags": "Tags Usadas Frequentemente",
   "What do you think now...": "Em que est\xE1 a pensar...",
@@ -8136,7 +8139,7 @@ var pt = {
   RESTORE: "RESTAURAR",
   "DELETE AT": "ELIMINADO EM",
   "Noooop!": "Noooop!",
-  "All Data is Loaded \u{1F389}": "Todos os dados foram carregados \u{1F389}",
+  "All Data is Loaded \u{1F389}": "Todos os Dados foram Carregados \u{1F389}",
   "Quick filter": "Filtro r\xE1pido",
   TYPE: "TIPO",
   LINKED: "LINKED",
@@ -8156,29 +8159,246 @@ var pt = {
   "EDIT QUERY": "EDITAR QUERY",
   MATCH: "IGUALA",
   TIMES: "VEZES",
-  "Share Memo Image": "Partilhar imagem do Memo",
+  "Share Memo Image": "Partilhar Imagem de Memo",
   "\u2197Click the button to save": "\u2197Clique no bot\xE3o para guardar",
   "Image is generating...": "A gerar Imagem..",
   "Image is loading...": "A carregar Imagem...",
   "Loading...": "Carregando...",
-  "\u{1F61F} Cannot load image, image link maybe broken": "\u{1F61F} N\xE3o \xE9 poss\xEDvel carregar a imagem, o link da imagem parece estar quebrado",
+  "\u{1F61F} Cannot load image, image link maybe broken": "\u{1F61F} N\xE3o \xE9 poss\xEDvel carregar a imagem, o link da imagem pode estar incorrecto",
   "Daily Memos": "Memos Di\xE1rios",
   "CANCEL EDIT": "CANCELAR EDI\xC7\xC3O",
   "LINK TO THE": "LINK PARA O",
   "Mobile Options": "Op\xE7\xF5es M\xF3veis",
-  "Don't support web image yet, please input image path in vault": "Ainda n\xE3o existe suporte para imagens de web. Por favor, insira o link para uma imagem no vault",
+  "Don't support web image yet, please input image path in vault": "Ainda n\xE3o existe suporte para imagens de web. Por favor, insira o link para uma imagem do vault",
   "Experimental Options": "Op\xE7\xF5es Experimentais",
-  "Background Image in Dark Theme": "Imagem de fundo no Tema Escuro",
-  "Background Image in Light Theme": "Imagem de fundo no Tema Claro",
-  'Set background image in dark theme. Set something like "Daily/one.png"': 'Defina a imagem de fundo no Tema Escuro. Defina algo como "Daily/one.png"',
-  'Set background image in light theme. Set something like "Daily/one.png"': 'Defina a imagem de fundo no Tema Claro. Defina algo como "Daily/one.png"',
-  'Set default memo composition, you should use {TIME} as "HH:mm" and {CONTENT} as content. "{TIME} {CONTENT}" by default': 'Defina a composi\xE7\xE3o padr\xE3o do Memo, deve usar {TIME} como "HH:mm" e {CONTENT} como conte\xFAdo. Padr\xE3o: "{TIME} {CONTENT}"',
-  "Default Memo Composition": "Composi\xE7\xE3o Padr\xE3o do Memo",
+  "Background Image in Dark Theme": "Imagem de Fundo no Tema Escuro",
+  "Background Image in Light Theme": "Imagem de Fundo no Tema Claro",
+  'Set background image in dark theme. Set something like "Daily/one.png"': 'Defina a imagem de fundo para o tema escuro. Defina da seguinte forma: "Daily/one.png".',
+  'Set background image in light theme. Set something like "Daily/one.png"': 'Defina a imagem de fundo para o tema claro. Defina da seguinte forma: "Daily/one.png".',
+  'Set default memo composition, you should use {TIME} as "HH:mm" and {CONTENT} as content. "{TIME} {CONTENT}" by default': 'Defina a composi\xE7\xE3o padr\xE3o do memorando, deve usar {TIME} como "HH:mm" e {CONTENT} como conte\xFAdo. Padr\xE3o: "{TIME} {CONTENT}".',
+  "Default Memo Composition": "Composi\xE7\xE3o Padr\xE3o de um Memorando",
   "Show Tasks Label": "Mostrar Etiquetas de Tarefas",
-  "Show tasks label near the time text. False by default": "Mostrar etiquetas de tarefas pr\xF3ximo ao texto de tempo. Desactivado por padr\xE3o",
-  "Please Open Memos First": "Por favor, abra os Memos primeiro"
+  "Show tasks label near the time text. False by default": 'Mostrar etiquetas de tarefas pr\xF3ximas do texto de tempo. Padr\xE3o: "Falso".',
+  "Please Open Memos First": "Por favor, abra o Memos primeiro",
+  DATE: "DATA",
+  OBSIDIAN_NLDATES_PLUGIN_NOT_ENABLED: "OBSIDIAN_NLDATES_PLUGIN_NOT_ENABLED",
+  BEFORE: "ANTES",
+  AFTER: "DEPOIS",
+  "Allow Comments On Memos": "Permitir Coment\xE1rios nos Memorandos",
+  "You can comment on memos. False by default": 'Permite que comente os memorandos. Padr\xE3o: "Falso".',
+  Import: "Importar",
+  "TITLE CANNOT BE NULL!": "O T\xCDTULO N\xC3O PODE SER NULO!",
+  "FILTER CANNOT BE NULL!": "O FILTRO N\xC3O PODE SER NULO!",
+  "Comments In Original DailyNotes/Notes": "Coment\xE1rios nas Notas/Notas Di\xE1rias Originais",
+  "You should install Dataview Plug-in ver 0.5.9 or later to use this feature.": "Deve instalar a vers\xE3o 0.5.9 ou posterior do plugin Dataview para usar esta funcionalidade.",
+  "Open Memos Successfully": "Memos Iniciado com Sucesso",
+  "Fetch Error": "\u{1F62D} Erro de Fetch",
+  "Copied to clipboard Successfully": "Copiado para a \xE1rea de transfer\xEAncia com sucesso",
+  "Check if you opened Daily Notes Plugin Or Periodic Notes Plugin": "Verifique se abriu o plugin de Notas Di\xE1rias ou de Notas Peri\xF3dicas",
+  "Please finish the last filter setting first": "Por favor, termine  primeiro a configura\xE7\xE3o do \xFAltimo filtro",
+  "Close Memos Successfully": "Memos Fechado com Sucesso",
+  "Insert as Memo": "Inserir como um Memorando",
+  "Insert file as memo content": "Inserir ficheiro como conte\xFAdo de um memorando",
+  "Image load failed": "Falha no carregamento da imagem",
+  "Content cannot be empty": "O Conte\xFAdo n\xE3o pode estar vazio",
+  "Unable to create new file.": "N\xE3o foi poss\xEDvel criar um novo ficheiro.",
+  "Failed to fetch deleted memos: ": "Falha no fetch dos memorandos removidos: ",
+  "RESTORE SUCCEED": "RESTAURO BEM SUCEDIDO",
+  "Save Memo button icon": "\xCDcone do Bot\xE3o para Guardar Memorandos",
+  "The icon shown on the save Memo button in the UI.": "O \xEDcone exibido na UI do bot\xE3o para guardar memorandos.",
+  "Fetch Memos From Particular Notes": "Obter Memorandos de Notas Espec\xEDficas",
+  'You can set any Dataview Query for memos to fetch it. All memos in those notes will show on list. "#memo" by default': 'Pode definir qualquer Query de Dataview para o Memos procurar. Todos os memorandos nessas notas ser\xE3o mostrados na lista. Padr\xE3o: "#memo".',
+  "Allow Memos to Fetch Memo from Notes": "Permitir que o Memos Obtenha memorandos das Notas",
+  "Use Memos to manage all memos in your notes, not only in daily notes. False by default": 'Use o Memos para gerir todos os memorandos nas suas notas e n\xE3o apenas nas notas di\xE1rias. Padr\xE3o: "Falso".',
+  "Always Show Memo Comments": "Mostrar Coment\xE1rios dos Memorandos",
+  "Always show memo comments on memos. False by default": 'Mostrar sempre os coment\xE1rios dos memorandos. Padr\xE3o: "Falso".',
+  "You didn't set folder for daily notes in both periodic-notes and daily-notes plugins.": "N\xE3o definiu a pasta para as notas di\xE1rias, quer no plugin the Notas Peri\xF3dicas ou de Notas Di\xE1rias.",
+  "Please check your daily note plugin OR periodic notes plugin settings": "Por favor, verifique as configura\xE7\xF5es dos plugins de Notas Di\xE1rias OU de Notas Peri\xF3dicas",
+  "Use Which Plugin's Default Configuration": "Usar a Configura\xE7\xE3o Padr\xE3o do Plugin",
+  "Memos use the plugin's default configuration to fetch memos from daily, 'Daily' by default.": "O Memos usa a configura\xE7\xE3o padr\xE3o do plugin seleccionado para obter memorandos diariamente. Padr\xE3o: 'Notas Di\xE1rias'.",
+  Daily: "Di\xE1rio"
 };
-var ptBR = {};
+var ptBR = {
+  welcome: "Bem-vindo ao Memos!",
+  ribbonIconTitle: "Memos",
+  months: [
+    "Janeiro",
+    "Fevereiro",
+    "Mar\xE7o",
+    "Abril",
+    "Maio",
+    "Junho",
+    "Julho",
+    "Agosto",
+    "Setembro",
+    "Outubro",
+    "Novembro",
+    "Dezembro"
+  ],
+  monthsShort: ["Jan.", "Fev.", "Mar.", "Abr.", "Maio", "Jun.", "Jul.", "Ago.", "Set.", "Out.", "Nov.", "Dez."],
+  weekDays: ["Domingo", "Segunda", "Ter\xE7a", "Quarta", "Quinta", "Sexta", "S\xE1bado"],
+  weekDaysShort: ["Dom", "Seg", "Ter", "Qua", "Qui", "Sex", "S\xE1b"],
+  to: "para",
+  year: null,
+  month: null,
+  "Basic Options": "Op\xE7\xF5es B\xE1sicas",
+  "User name in Memos": "Nome de Usu\xE1rio no Memos",
+  "Set your user name here. 'Memos \u{1F60F}' By default": "Defina o nome de usu\xE1rio. Padr\xE3o: 'Memos \u{1F60F}'.",
+  "Insert after heading": "Inserir ap\xF3s o cabe\xE7alho",
+  "You should set the same heading below if you want to insert and process memos below the same heading.": "Deve definir o mesmo cabe\xE7alho na configura\xE7\xE3o posterior se pretende inserir e processar memorandos abaixo do cabe\xE7alho aqui definido.",
+  "Allows admonitions to be created using ": "Permitir que Admonitions sejam criadas usando ",
+  "Process Memos below": "Processar Memorandos abaixo do Cabe\xE7alho",
+  "Only entries below this string/section in your notes will be processed. If it does not exist no notes will be processed for that file.": "Somente as entradas abaixo deste cabe\xE7alho ser\xE3o processadas nas suas notas. Se n\xE3o configurar esta funcionalidade, nenhuma nota ser\xE1 processada para o ficheiro respetivo.",
+  "Save Memo button label": "Legenda do Bot\xE3o de Guardar Memorandos",
+  "The text shown on the save Memo button in the UI. 'NOTEIT' by default.": 'Define o texto apresentado na UI do bot\xE3o guardar memorandos. Padr\xE3o: "NOTEIT".',
+  "Focus on editor when open memos": "Focar no Editor ao iniciar o Memos",
+  "Focus on Editor when open memos. Focus by default.": 'Focar no editor ao iniciar o Memos. Padr\xE3o: "Focar".',
+  "Open daily memos with open memos": "Abrir memorandos di\xE1rios ao iniciar o Memos",
+  "Open daily memos with open memos. Open by default.": 'Abrir memorandos di\xE1rios ao iniciar o Memos. Padr\xE3o: "Abrir".',
+  "Open Memos when obsidian opens": "Abrir Memos quando o Obsidian inicia",
+  "When enable this, Memos will open when Obsidian opens. False by default.": 'Quando esta op\xE7\xE3o est\xE1 activa, o Memos abrir\xE1 quando o Obsidian inicia. Padr\xE3o: "Falso".',
+  "Hide done tasks in Memo list": "Ocultar tarefas conclu\xEDdas na lista de memorandos",
+  "Hide all done tasks in Memo list. Show done tasks by default.": 'Ocultar todas as tarefas conclu\xEDdas na lista de memorandos. Padr\xE3o: "Mostrar tarefas conclu\xEDdas".',
+  "Advanced Options": "Op\xE7\xF5es Avan\xE7adas",
+  "UI language for date": "Idioma na UI da Data ",
+  "Translates the date UI language. Only 'en' and 'zh' are available.": "Define o idioma na UI da Data. De momento, apenas 'en', 'fr', 'pt' e 'zh' est\xE3o dispon\xEDveis.",
+  "Default prefix": "Prefixo Padr\xE3o",
+  "Set the default prefix when create memo, 'List' by default.": "Define o prefixo padr\xE3o quando um memorando \xE9 criado. Padr\xE3o: 'Lista'.",
+  "Default insert date format": "Formato Padr\xE3o para Inser\xE7\xE3o de Data",
+  "Set the default date format when insert date by @, 'Tasks' by default.": "Define o formato de Data padr\xE3o ao inserir a data usando '@'. Padr\xE3o: 'Tarefas'.",
+  "Default editor position on mobile": "Posi\xE7\xE3o Padr\xE3o do Editor de Memorandos na Vers\xE3o M\xF3vel",
+  "Set the default editor position on Mobile, 'Top' by default.": "Define a posi\xE7\xE3o padr\xE3o do editor de memorandos na vers\xE3o m\xF3vel. Padr\xE3o: 'Topo'.",
+  "Use button to show editor on mobile": "Usar Bot\xE3o para Mostrar o Editor na Vers\xE3o M\xF3vel",
+  "Set a float button to call editor on mobile. Only when editor located at the bottom works.": "Define um bot\xE3o flutuante para abrir o editor na vers\xE3o m\xF3vel. Op\xE7\xE3o dispon\xEDvel somente quando a posi\xE7\xE3o do editor est\xE1 definida para 'Fundo'.",
+  "Show Time When Copy Results": "Mostrar a Hora ao Copiar os Resultados",
+  "Show time when you copy results, like 12:00. Copy time by default.": "Mostrar a Hora, no formato '12:00', ao copiar os resultados. Padr\xE3o: 'Copiar a hora'.",
+  "Show Date When Copy Results": "Mostrar a Data ao Copiar os Resultados",
+  "Show date when you copy results, like [[2022-01-01]]. Copy date by default.": 'Mostrar a Data, no formato [[2022-01-01]], ao copiar os resultados. Padr\xE3o: "Copiar a hora".',
+  "Add Blank Line Between Different Date": "Adicionar Linha em Branco entre Datas Diferentes.",
+  "Add blank line when copy result with date. No blank line by default.": 'Adicionar linha em branco ao copiar resultados com Data. Padr\xE3o: "N\xE3o adicionar linha."',
+  "Share Options": "Op\xE7\xF5es de Partilha",
+  "Share Memos Image Footer Start": "Partilhar a Imagem de um memorando - In\xEDcio do Rodap\xE9",
+  "Set anything you want here, use {MemosNum} to display Number of memos, {UsedDay} for days. '{MemosNum} Memos {UsedDay} Days' By default": "Defina como preferir, use {MemosNum} para mostrar o n\xFAmero de memorandos e use {UsedDay} para dias. 'Padr\xE3o: {MemosNum} Memorandos {UsedDay} Dias'.",
+  "Share Memos Image Footer End": "Partilhar a Imagem de um memorando - Fim do Rodap\xE9",
+  "Set anything you want here, use {UserName} as your username. '\u270D\uFE0F By {UserName}' By default": "Defina como preferir, use {UserName} como o seu nome de usu\xE1rio. Padr\xE3o: '\u270D\uFE0F Por {UserName}'.",
+  "Save Shared Image To Folder For Mobile": "Guardar a Imagem Partilhada para Pasta na Vers\xE3o M\xF3vel",
+  "Save image to folder for mobile. False by Default": 'Guardar a imagem partilhada para pasta na vers\xE3o m\xF3vel. Padr\xE3o: "Falso".',
+  "Say Thank You": "Agrade\xE7a",
+  Donate: "Doar",
+  "If you like this plugin, consider donating to support continued development:": "Se gosta deste plugin, considere doar para apoiar o seu desenvolvimento cont\xEDnuo:",
+  "File Name of Recycle Bin": "Nome da Reciclagem",
+  "Set the filename for recycle bin. 'delete' By default": "Define o nome do ficheiro para a Reciclagem. Padr\xE3o: 'delete'.",
+  "File Name of Query File": "Nome do Ficheiro de Query",
+  "Set the filename for query file. 'query' By default": "Define o nome do ficheiro de Query. Padr\xE3o: 'Query'.",
+  "Use Tags In Vault": "Usar Tags no Vault",
+  "Use tags in vault rather than only in Memos. False by default.": 'Usar as Tags do Vault e n\xE3o somente dos memorandos. Padr\xE3o: "Falso".',
+  "Ready to convert image into background": "Pronto para converter imagem em fundo",
+  List: "Lista",
+  Task: "Tarefa",
+  Top: "Topo",
+  Bottom: "Fundo",
+  TAG: "TAG",
+  DAY: "DIA",
+  QUERY: "QUERY",
+  EDIT: "EDITAR",
+  PIN: "FIXAR",
+  UNPIN: "DESAFIXAR",
+  DELETE: "ELIMINAR",
+  "CONFIRM\uFF01": "CONFIRMAR\uFF01",
+  "CREATE FILTER": "CRIAR FILTRO",
+  Settings: "Defini\xE7\xF5es",
+  "Recycle bin": "Reciclagem",
+  "About Me": "Acerca de mim",
+  "Fetching data...": "A obter dados...",
+  "Here is No Zettels.": "N\xE3o existem Zettels.",
+  "Frequently Used Tags": "Tags Usadas Frequentemente",
+  "What do you think now...": "Em que est\xE1 a pensar...",
+  READ: "LER",
+  MARK: "ASSINALAR",
+  SHARE: "PARTILHAR",
+  SOURCE: "ORIGEM",
+  RESTORE: "RESTAURAR",
+  "DELETE AT": "ELIMINADO EM",
+  "Noooop!": "Noooop!",
+  "All Data is Loaded \u{1F389}": "Todos os Dados foram Carregados \u{1F389}",
+  "Quick filter": "Filtro r\xE1pido",
+  TYPE: "TIPO",
+  LINKED: "LINKED",
+  "NO TAGS": "SEM TAGS",
+  "HAS LINKS": "TEM LINKS",
+  "HAS IMAGES": "TEM IMAGENS",
+  INCLUDE: "INCLUIR",
+  EXCLUDE: "EXCLUIR",
+  TEXT: "TEXTO",
+  IS: "\xC9",
+  ISNOT: "N\xC3O \xC9",
+  SELECT: "SELECCIONAR",
+  "ADD FILTER TERMS": "ADICIONAR TERMOS DE FILTRAGEM",
+  FILTER: "FILTRAR",
+  TITLE: "T\xCDTULO",
+  "CREATE QUERY": "CRIAR QUERY",
+  "EDIT QUERY": "EDITAR QUERY",
+  MATCH: "IGUALA",
+  TIMES: "VEZES",
+  "Share Memo Image": "Partilhar Imagem de Memo",
+  "\u2197Click the button to save": "\u2197Clique no bot\xE3o para guardar",
+  "Image is generating...": "A gerar Imagem..",
+  "Image is loading...": "A carregar Imagem...",
+  "Loading...": "Carregando...",
+  "\u{1F61F} Cannot load image, image link maybe broken": "\u{1F61F} N\xE3o \xE9 poss\xEDvel carregar a imagem, o link da imagem pode estar incorrecto",
+  "Daily Memos": "Memos Di\xE1rios",
+  "CANCEL EDIT": "CANCELAR EDI\xC7\xC3O",
+  "LINK TO THE": "LINK PARA O",
+  "Mobile Options": "Op\xE7\xF5es M\xF3veis",
+  "Don't support web image yet, please input image path in vault": "Ainda n\xE3o existe suporte para imagens de web. Por favor, insira o link para uma imagem do vault",
+  "Experimental Options": "Op\xE7\xF5es Experimentais",
+  "Background Image in Dark Theme": "Imagem de Fundo no Tema Escuro",
+  "Background Image in Light Theme": "Imagem de Fundo no Tema Claro",
+  'Set background image in dark theme. Set something like "Daily/one.png"': 'Defina a imagem de fundo para o tema escuro. Defina da seguinte forma: "Daily/one.png".',
+  'Set background image in light theme. Set something like "Daily/one.png"': 'Defina a imagem de fundo para o tema claro. Defina da seguinte forma: "Daily/one.png".',
+  'Set default memo composition, you should use {TIME} as "HH:mm" and {CONTENT} as content. "{TIME} {CONTENT}" by default': 'Defina a composi\xE7\xE3o padr\xE3o do memorando, deve usar {TIME} como "HH:mm" e {CONTENT} como conte\xFAdo. Padr\xE3o: "{TIME} {CONTENT}".',
+  "Default Memo Composition": "Composi\xE7\xE3o Padr\xE3o de um Memorando",
+  "Show Tasks Label": "Mostrar Etiquetas de Tarefas",
+  "Show tasks label near the time text. False by default": 'Mostrar etiquetas de tarefas pr\xF3ximas do texto de tempo. Padr\xE3o: "Falso".',
+  "Please Open Memos First": "Por favor, abra o Memos primeiro",
+  DATE: "DATA",
+  OBSIDIAN_NLDATES_PLUGIN_NOT_ENABLED: "OBSIDIAN_NLDATES_PLUGIN_NOT_ENABLED",
+  BEFORE: "ANTES",
+  AFTER: "DEPOIS",
+  "Allow Comments On Memos": "Permitir Coment\xE1rios nos Memorandos",
+  "You can comment on memos. False by default": 'Permite que comente os memorandos. Padr\xE3o: "Falso".',
+  Import: "Importar",
+  "TITLE CANNOT BE NULL!": "O T\xCDTULO N\xC3O PODE SER NULO!",
+  "FILTER CANNOT BE NULL!": "O FILTRO N\xC3O PODE SER NULO!",
+  "Comments In Original DailyNotes/Notes": "Coment\xE1rios nas Notas/Notas Di\xE1rias Originais",
+  "You should install Dataview Plug-in ver 0.5.9 or later to use this feature.": "Deve instalar a vers\xE3o 0.5.9 ou posterior do plugin Dataview para usar esta funcionalidade.",
+  "Open Memos Successfully": "Memos Iniciado com Sucesso",
+  "Fetch Error": "\u{1F62D} Erro de Fetch",
+  "Copied to clipboard Successfully": "Copiado para a \xE1rea de transfer\xEAncia com sucesso",
+  "Check if you opened Daily Notes Plugin Or Periodic Notes Plugin": "Verifique se abriu o plugin de Notas Di\xE1rias ou de Notas Peri\xF3dicas",
+  "Please finish the last filter setting first": "Por favor, termine  primeiro a configura\xE7\xE3o do \xFAltimo filtro",
+  "Close Memos Successfully": "Memos Fechado com Sucesso",
+  "Insert as Memo": "Inserir como um Memorando",
+  "Insert file as memo content": "Inserir ficheiro como conte\xFAdo de um memorando",
+  "Image load failed": "Falha no carregamento da imagem",
+  "Content cannot be empty": "O Conte\xFAdo n\xE3o pode estar vazio",
+  "Unable to create new file.": "N\xE3o foi poss\xEDvel criar um novo ficheiro.",
+  "Failed to fetch deleted memos: ": "Falha no fetch dos memorandos removidos: ",
+  "RESTORE SUCCEED": "RESTAURO BEM SUCEDIDO",
+  "Save Memo button icon": "\xCDcone do Bot\xE3o para Guardar Memorandos",
+  "The icon shown on the save Memo button in the UI.": "O \xEDcone exibido na UI do bot\xE3o para guardar memorandos.",
+  "Fetch Memos From Particular Notes": "Obter Memorandos de Notas Espec\xEDficas",
+  'You can set any Dataview Query for memos to fetch it. All memos in those notes will show on list. "#memo" by default': 'Pode definir qualquer Query de Dataview para o Memos procurar. Todos os memorandos nessas notas ser\xE3o mostrados na lista. Padr\xE3o: "#memo".',
+  "Allow Memos to Fetch Memo from Notes": "Permitir que o Memos Obtenha memorandos das Notas",
+  "Use Memos to manage all memos in your notes, not only in daily notes. False by default": 'Use o Memos para gerir todos os memorandos nas suas notas e n\xE3o apenas nas notas di\xE1rias. Padr\xE3o: "Falso".',
+  "Always Show Memo Comments": "Mostrar Coment\xE1rios dos Memorandos",
+  "Always show memo comments on memos. False by default": 'Mostrar sempre os coment\xE1rios dos memorandos. Padr\xE3o: "Falso".',
+  "You didn't set folder for daily notes in both periodic-notes and daily-notes plugins.": "N\xE3o definiu a pasta para as notas di\xE1rias, quer no plugin the Notas Peri\xF3dicas ou de Notas Di\xE1rias.",
+  "Please check your daily note plugin OR periodic notes plugin settings": "Por favor, verifique as configura\xE7\xF5es dos plugins de Notas Di\xE1rias OU de Notas Peri\xF3dicas",
+  "Use Which Plugin's Default Configuration": "Usar a Configura\xE7\xE3o Padr\xE3o do Plugin",
+  "Memos use the plugin's default configuration to fetch memos from daily, 'Daily' by default.": "O Memos usa a configura\xE7\xE3o padr\xE3o do plugin seleccionado para obter memorandos diariamente. Padr\xE3o: 'Notas Di\xE1rias'.",
+  Daily: "Di\xE1rio"
+};
 var ro = {};
 var ru = {};
 var tr = {};
@@ -8348,7 +8568,10 @@ var zhCN = {
   "Please check your daily note plugin OR periodic notes plugin settings": "\u8BF7\u68C0\u67E5\u4F60\u7684\u65E5\u8BB0\u63D2\u4EF6\u548C/\u6216 Periodic Notes \u63D2\u4EF6\u7684\u8BBE\u7F6E",
   "Use Which Plugin's Default Configuration": "\u4F7F\u7528\u54EA\u4E2A\u63D2\u4EF6\u7684\u9ED8\u8BA4\u65E5\u8BB0\u914D\u7F6E",
   "Memos use the plugin's default configuration to fetch memos from daily, 'Daily' by default.": "Memos \u91C7\u7528\u6307\u5B9A\u63D2\u4EF6\u7684\u9ED8\u8BA4\u914D\u7F6E\u6765\u83B7\u53D6 Memos\u3002\u9ED8\u8BA4\u4E3A\u65E5\u8BB0\u63D2\u4EF6\u3002",
-  Daily: "\u65E5\u8BB0\u63D2\u4EF6"
+  Daily: "\u65E5\u8BB0\u63D2\u4EF6",
+  "Always Show Leaf Sidebar on PC": "\u5728 PC \u4E0A\u603B\u662F\u5C55\u793A\u5DE6\u4FA7\u680F",
+  "Show left sidebar on PC even when the leaf width is less than 875px. False by default.": "\u5728 PC \u4E0A\u5373\u4F7F\u9875\u9762\u5BBD\u5EA6\u5C0F\u4E8E 875px \u65F6\u90FD\u5C55\u793A\u5DE6\u4FA7\u680F\u3002\u9ED8\u8BA4\u4E3A\u5173\u95ED",
+  "You didn't set format for daily notes in both periodic-notes and daily-notes plugins.": "\u4F60\u5728 Periodic Notes \u63D2\u4EF6\u548C\u65E5\u8BB0\u63D2\u4EF6\u90FD\u6CA1\u8BBE\u7F6E\u65E5\u8BB0\u7684\u683C\u5F0F"
 };
 var zhTW = {};
 const localeMap = {
@@ -8619,20 +8842,30 @@ var utils;
   utils2.createDailyNoteCheck = createDailyNoteCheck;
 })(utils || (utils = {}));
 function getDailyNoteFormat() {
-  var _a, _b, _c, _d;
+  var _a, _b, _c, _d, _e, _f;
   let dailyNoteFormat = "";
-  if ((_b = (_a = window.app.plugins.getPlugin("periodic-notes")) == null ? void 0 : _a.calendarSetManager) == null ? void 0 : _b.getActiveConfig("day").enabled) {
-    const periodicNotes = window.app.plugins.getPlugin("periodic-notes");
-    dailyNoteFormat = periodicNotes.calendarSetManager.getActiveConfig("day").format || "YYYY-MM-DD";
-    return dailyNoteFormat;
+  let dailyNoteTempForPeriodicNotes = "";
+  const folderFromPeriodicNotesNew = (_c = (_b = (_a = window.app.plugins.getPlugin("periodic-notes")) == null ? void 0 : _a.calendarSetManager) == null ? void 0 : _b.getActiveConfig("day")) == null ? void 0 : _c.folder;
+  const folderFromPeriodicNotes = (_f = (_e = (_d = window.app.plugins.getPlugin("periodic-notes")) == null ? void 0 : _d.settings) == null ? void 0 : _e.daily) == null ? void 0 : _f.format;
+  if (folderFromPeriodicNotesNew === void 0) {
+    dailyNoteTempForPeriodicNotes = folderFromPeriodicNotes;
+  } else {
+    dailyNoteTempForPeriodicNotes = folderFromPeriodicNotesNew;
   }
-  if ((_d = (_c = window.app.plugins.getPlugin("periodic-notes")) == null ? void 0 : _c.settings) == null ? void 0 : _d.daily) {
-    const dailyNotes = window.app.plugins.getPlugin("periodic-notes");
-    dailyNoteFormat = dailyNotes.settings.daily.format || "YYYY-MM-DD";
-    return dailyNoteFormat;
+  switch (UseDailyOrPeriodic) {
+    case "Daily":
+      dailyNoteFormat = getDailyNoteSettings_1().format || "YYYY-MM-DD";
+      break;
+    case "Periodic":
+      dailyNoteFormat = dailyNoteTempForPeriodicNotes || "YYYY-MM-DD";
+      break;
+    default:
+      dailyNoteFormat = getDailyNoteSettings_1().format || "YYYY-MM-DD";
+      break;
   }
-  const dailyNotesSetting = getDailyNoteSettings_1();
-  dailyNoteFormat = dailyNotesSetting.format;
+  if (dailyNoteFormat === "" || dailyNoteFormat === void 0) {
+    new require$$0.Notice(t$1("You didn't set format for daily notes in both periodic-notes and daily-notes plugins."));
+  }
   return dailyNoteFormat;
 }
 function getDailyNotePath() {
@@ -11849,7 +12082,7 @@ const ShareMemoImageDialog = (props) => {
       }).catch(() => {
       });
     }, ANIMATION_DURATION);
-  }, [changeBackgroundImage, imgAmount]);
+  }, [imgAmount]);
   const handleCloseBtnClick = () => {
     destroy();
   };
@@ -14202,6 +14435,10 @@ const Memo = (props) => {
   return /* @__PURE__ */ jsxs("div", {
     className: `memo-wrapper ${"memos-" + propsMemo.id} ${propsMemo.memoType}`,
     onMouseLeave: handleMouseLeaveMemoWrapper,
+    draggable: "true",
+    onDragStart: (e) => {
+      e.dataTransfer.setData("text/plain", propsMemo.content.replace(/<br>/g, "\n"));
+    },
     children: [/* @__PURE__ */ jsxs("div", {
       className: "memo-top-wrapper",
       children: [/* @__PURE__ */ jsxs("div", {
@@ -19241,15 +19478,18 @@ class Memos extends require$$0.ItemView {
     const leaves = this.app.workspace.getLeavesOfType(MEMOS_VIEW_TYPE);
     if (leaves.length > 0) {
       const leaf = leaves[0];
-      if (leaf.width <= 875) {
-        globalStateService.setIsMobileView(true);
-        leaf.view.containerEl.classList.add("mobile-view");
-        globalStateService.setIsMobileView(leaf.width <= 875);
-      } else {
+      if (leaf.width > 875) {
         globalStateService.setIsMobileView(false);
         leaf.view.containerEl.classList.remove("mobile-view");
         globalStateService.setIsMobileView(leaf.width <= 875);
+        return;
       }
+      if (ShowLeftSideBar && !require$$0.Platform.isMobile) {
+        return;
+      }
+      globalStateService.setIsMobileView(true);
+      leaf.view.containerEl.classList.add("mobile-view");
+      globalStateService.setIsMobileView(leaf.width <= 875);
     }
   }
   async onOpen() {
@@ -19300,6 +19540,7 @@ class Memos extends require$$0.ItemView {
     FetchMemosFromNote = this.plugin.settings.FetchMemosFromNote;
     ShowCommentOnMemos = this.plugin.settings.ShowCommentOnMemos;
     UseDailyOrPeriodic = this.plugin.settings.UseDailyOrPeriodic;
+    ShowLeftSideBar = this.plugin.settings.ShowLeftSideBar;
     this.memosComponent = React.createElement(StrictApp);
     ReactDOM.render(this.memosComponent, this.contentEl);
   }
@@ -19337,6 +19578,7 @@ let FetchMemosMark;
 let FetchMemosFromNote;
 let ShowCommentOnMemos;
 let UseDailyOrPeriodic;
+let ShowLeftSideBar;
 const icons = {
   Memos: `<svg t="1641348507339" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2120" width="100" height="100"><path d="M126.692653 478.099639l-90.757281 0c-19.019408 0-34.437336 15.423923-34.437336 34.417356 0 18.992434 15.416929 34.477297 34.437336 34.477297l90.757281 0c19.013414 0 34.42335-15.484863 34.42335-34.477297C161.116003 493.523561 145.706067 478.099639 126.692653 478.099639zM244.662333 243.526943c13.742566-13.110184 14.310011-34.948836 1.185841-48.706388l-62.644762-65.668806c-13.128167-13.762547-34.974811-14.229091-48.717377-1.118906s-14.261059 34.911872-1.132893 48.674419l62.644762 65.668806C209.123074 256.13262 230.919767 256.637127 244.662333 243.526943zM543.066631 957.422083l-60.603757 0c-18.654764 0-33.794964 15.147193-33.794964 33.862898 0 18.661757 15.1402 32.71502 33.794964 32.71502l60.603757 0c18.654764 0 33.794964-14.053262 33.794964-32.71502C576.861595 972.568277 561.721395 957.422083 543.066631 957.422083zM988.076617 479.050709l-90.757281 0c-19.019408 0-34.437336 15.423923-34.437336 34.417356s15.416929 34.477297 34.437336 34.477297l90.757281 0c19.013414 0 34.42335-15.484863 34.42335-34.477297S1007.09003 479.050709 988.076617 479.050709zM512.268737 192.765564c-172.737143 0-312.75527 150.079292-312.75527 322.746503 0 125.630192 74.080583 233.957298 180.936128 283.703669l0 84.51838c0 16.762614 15.410935 31.35435 34.42335 31.35435 0.598415 0 1.193833-0.014985 1.785255-0.042958 0.618395 0.026974 1.239788 0.042958 1.867175 0.042958l187.479731 0c5.905227 0 11.455802-1.220807 16.288078-3.477601 12.231044-4.657447 20.795671-15.383962 20.795671-27.87575l0-84.052835c107.391021-49.534578 181.935151-158.147405 181.935151-284.168214C825.024007 342.843857 684.997888 192.765564 512.268737 192.765564zM574.863548 742.713968l0 80.17063c0 3.159911-0.221783 5.976158-0.642372 8.496694l0 19.092336-124.910895 0 0-17.71768c-0.423586-2.856208-0.642372-6.123015-0.642372-9.870351l0-80.443363c-99.204024-27.75387-171.970892-118.821847-171.970892-226.930167 0-130.094827 105.4689-245.507007 235.571719-245.507007s235.563727 115.41218 235.563727 245.507007C747.832465 623.984031 674.578074 715.293772 574.863548 742.713968zM895.407204 129.328576c-13.429872-13.429872-35.233558-13.439862-48.677416 0.004995l-64.174267 64.175266c-13.448853 13.448853-13.443858 35.257534-0.013986 48.687406 13.429872 13.429872 35.281511 13.477825 48.730364 0.028972l64.175266-64.175266C908.889025 164.605092 908.837076 142.758448 895.407204 129.328576zM511.796199 159.617967c18.992434 0 34.417356-15.410935 34.417356-34.42335l0-90.757281c0-19.019408-15.423923-34.437336-34.417356-34.437336-18.992434 0-34.477297 15.416929-34.477297 34.437336l0 90.757281C477.317903 144.208031 492.802766 159.617967 511.796199 159.617967z" fill="currentColor" p-id="2121"></path></svg>`
 };
@@ -19379,7 +19621,8 @@ const DEFAULT_SETTINGS = {
   CommentsInOriginalNotes: false,
   FetchMemosMark: "#memo",
   FetchMemosFromNote: false,
-  ShowCommentOnMemos: false
+  ShowCommentOnMemos: false,
+  ShowLeftSideBar: false
 };
 class MemosSettingTab extends require$$0.PluginSettingTab {
   constructor(app2, plugin) {
@@ -19452,6 +19695,10 @@ class MemosSettingTab extends require$$0.PluginSettingTab {
     }));
     new require$$0.Setting(containerEl).setName(t$1("Use Tags In Vault")).setDesc(t$1("Use tags in vault rather than only in Memos. False by default.")).addToggle((toggle) => toggle.setValue(this.plugin.settings.UseVaultTags).onChange(async (value) => {
       this.plugin.settings.UseVaultTags = value;
+      this.applySettingsUpdate();
+    }));
+    new require$$0.Setting(containerEl).setName(t$1("Always Show Leaf Sidebar on PC")).setDesc(t$1("Show left sidebar on PC even when the leaf width is less than 875px. False by default.")).addToggle((toggle) => toggle.setValue(this.plugin.settings.ShowLeftSideBar).onChange(async (value) => {
+      this.plugin.settings.ShowLeftSideBar = value;
       this.applySettingsUpdate();
     }));
     this.containerEl.createEl("h1", { text: t$1("Advanced Options") });

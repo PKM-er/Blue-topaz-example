@@ -238,10 +238,10 @@ class circle_btn blank
 ^button-kanbanwp
 
 ```button
-name <svg t="1642771907871" class="icon" viewBox="0 0 1111 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18754" width="30" height="30"><path d="M0 555.885714L555.885714 0l555.885715 555.885714h-146.285715v468.114286H146.285714V555.885714z" fill="#7dc5eb" p-id="18755"></path><path d="M409.6 1024V614.4h292.571429v409.6z" fill="#333333" p-id="18756"></path></svg>主页
+name <svg t="1642771907871" class="icon" viewBox="0 0 1111 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18754" width="30" height="30"><path d="M0 555.885714L555.885714 0l555.885715 555.885714h-146.285715v468.114286H146.285714V555.885714z" fill="#7dc5eb" p-id="18755"></path><path d="M409.6 1024V614.4h292.571429v409.6z" fill="#333333" p-id="18756"></path></svg>
 type command
 action QuickAdd: 刷新主页
-class circle_btn blank
+class blank
 ```
 ^button-homewp
 
@@ -276,3 +276,12 @@ action Omnisearch: Vault search
 class grad_button g_blue
 ```
 ^button-search
+
+```button
+name <svg t="1651945663442" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="731" width="20" height="20"><path d="M474.7264 282.9824v-130.048c-11.8272-54.3744-56.7296-21.248-56.7296-21.248L105.9328 398.7968c-68.5568 47.3088-4.7104 82.7392-4.7104 82.7392l307.3024 264.7552c61.4912 44.9536 66.2016-23.6544 66.2016-23.6544V602.112c312.064-96.9216 439.6544 290.7648 439.6544 290.7648 11.776 21.3504 18.8928 0 18.8928 0C1053.7984 311.3472 474.7264 282.9824 474.7264 282.9824z m0 0" fill="#00A0E9" p-id="732"></path></svg>上一级
+type command
+action Quick Explorer: Browse vault
+class blank
+```
+^button-browsevault
+

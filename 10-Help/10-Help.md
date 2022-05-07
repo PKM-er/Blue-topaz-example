@@ -1,8 +1,9 @@
 ---
 cssclass: kanban gridlist
 tag: moc
+obsidianUIMode: preview
 ---
-```ad-blank
+[[home|🏠 ]]    `button-browsevault`
 %% Begin Waypoint %%
 - **[[10-Help]]**
 	- [[获取插件列表]]
@@ -15,4 +16,3 @@ tag: moc
 	- [[Obsidian 快捷键一览表]]
 
 %% End Waypoint %%
-```

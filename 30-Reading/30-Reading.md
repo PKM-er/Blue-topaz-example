@@ -2,7 +2,8 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
---- 
+---
+[[home|🏠 ]]    `button-browsevault`
 %% Begin Waypoint %%
 - **[[30-Reading]]**
 	- [[《笔醒山河》]]

@@ -135,6 +135,11 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
 
 .tasks progress{
   background:#f0ec05; 
+    margin-left: -6px;
+    float: left;
+    margin-top: 8px;
+    overflow: hidden;
+    height: 8px;
 }
 .tasks progress.yellow::-moz-progress-bar { 
   background: #e78f0c; 
@@ -150,4 +155,37 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   color: var(--text-accent);
   font-size: 2em;
   margin: 0 .2em 0 0;
+}
+
+
+
+.myhome .admonition-blank .admonition-content{
+  
+  -webkit-mask-image: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, #ffffff 25%, #ffffff 75%, rgba(255, 255, 255, 0) 100%);
+  margin: 0 auto;
+}
+
+.myhome .admonition-blank .admonition-content ul {
+  text-align: center;
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 25%, rgba(255, 255, 255, 0.2) 75%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+.myhome .admonition-blank .admonition-content ul li {
+  display: inline-block;
+}
+
+.myhome .admonition-blank .admonition-content ul li a {
+  padding: 18px;
+  text-transform:uppercase;
+  color: var(--text-normal);
+  font-size: 18px;
+  text-decoration: none;
+  display: block;
+}
+
+.myhome .admonition-blank .admonition-content ul li a:hover {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), inset 0 0 1px rgba(255, 255, 255, 0.6);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--text-accent-hover);
 }

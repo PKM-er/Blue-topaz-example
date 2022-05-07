@@ -1,8 +1,9 @@
 ---
 cssclass: kanban gridlist
 tag: moc
+obsidianUIMode: preview
 ---
-```ad-blank
+[[home|🏠 ]]    `button-browsevault`
 %% Begin Waypoint %%
 - **[[88-Template]]**
 	- [[便签]]
@@ -40,4 +41,3 @@ tag: moc
 	- [[tp-movie]]
 
 %% End Waypoint %%
-```

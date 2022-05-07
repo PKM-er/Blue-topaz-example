@@ -1,8 +1,9 @@
 ---
 cssclass: kanban gridlist
 tag: moc
+obsidianUIMode: preview
 ---
-```ad-blank
+[[home|🏠 ]]    `button-browsevault`
 %% Begin Waypoint %%
 - **[[20-Diary]]**
 	- [[2021-12-30]]
@@ -39,4 +40,3 @@ tag: moc
 	- [[query]]
 
 %% End Waypoint %%
-```

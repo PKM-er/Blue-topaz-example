@@ -21034,9 +21034,9 @@ var require_fast_deep_equal = __commonJS({
   }
 });
 
-// node_modules/react-is/cjs/react-is.development.js
+// node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js
 var require_react_is_development = __commonJS({
-  "node_modules/react-is/cjs/react-is.development.js"(exports) {
+  "node_modules/prop-types/node_modules/react-is/cjs/react-is.development.js"(exports) {
     "use strict";
     if (true) {
       (function() {
@@ -21188,9 +21188,9 @@ var require_react_is_development = __commonJS({
   }
 });
 
-// node_modules/react-is/index.js
+// node_modules/prop-types/node_modules/react-is/index.js
 var require_react_is = __commonJS({
-  "node_modules/react-is/index.js"(exports, module2) {
+  "node_modules/prop-types/node_modules/react-is/index.js"(exports, module2) {
     "use strict";
     if (false) {
       module2.exports = null;
@@ -21947,6 +21947,19 @@ function extractAfterContent(input) {
   }
   return [];
 }
+function extractBeforeContent(input) {
+  var _a;
+  if (input && input[0]) {
+    let idx = -1;
+    for (idx = 0; idx < (input == null ? void 0 : input.length); idx++) {
+      if (((_a = input[idx]) == null ? void 0 : _a.length) > 1) {
+        break;
+      }
+    }
+    return input.splice(0, idx);
+  }
+  return [];
+}
 function removeAlignmentRow(input) {
   if (input.length > 1) {
     input.splice(1, 1);
@@ -21980,7 +21993,6 @@ function mergeWikiLinkCells(input) {
   });
 }
 var papaConfig = {
-  delimiter: "|",
   escapeChar: "\\"
 };
 function parseInputData(input) {
@@ -21988,20 +22000,26 @@ function parseInputData(input) {
   input = sanitizeWikiLinks(input);
   let { data, meta } = Papa.parse((input || "").trim(), papaConfig);
   let afterContent = void 0;
-  if (data && ((_a = data[0]) == null ? void 0 : _a.length) && data[0].length > 1) {
+  let beforeContent = void 0;
+  let leftContent = [];
+  if (data && ((_a = data[0]) == null ? void 0 : _a.length)) {
+    beforeContent = extractBeforeContent(data);
     afterContent = extractAfterContent(data);
     if (meta.delimiter === "|") {
-      removeAlignmentRow(data);
       data = data.map((row) => {
         row.splice(row.length - 1, 1);
-        row.splice(0, 1);
+        const dataOnLeft = row.splice(0, 1);
+        leftContent.push(dataOnLeft.join(""));
         return row;
       });
+      removeAlignmentRow(data);
       data = mergeWikiLinkCells(data);
     }
     return {
       content: data,
-      afterContent
+      afterContent,
+      beforeContent,
+      isInsideCallout: leftContent.map((v) => v.trim()).every((v) => v === ">")
     };
   }
   return void 0;
@@ -22017,7 +22035,7 @@ function sanitize(data) {
     }
   });
 }
-var toMarkdown = (values, colJustify) => {
+var toMarkdown = (values, colJustify, isInsideCallout = false) => {
   var _a;
   const cols = (_a = values[0]) == null ? void 0 : _a.length;
   let maxColWidth = Array(cols).fill(0);
@@ -22047,9 +22065,13 @@ var toMarkdown = (values, colJustify) => {
   }).join("|");
   alignMarker = `|${alignMarker}`;
   const rows = values.slice(1).map((row) => lineformatter(row)).join("\n");
-  return `${header}
+  let markdown = `${header}
 ${alignMarker}
 ${rows}`;
+  if (isInsideCallout) {
+    markdown = markdown.split("\n").map((row) => `> ${row}`).join("\n");
+  }
+  return markdown;
 };
 
 // src/views/Cell.tsx
@@ -22063,7 +22085,7 @@ var Cell = ({ row, col, content, onContentChanged, values, setValues, colJustify
     onContentChanged(row, col, evt.target.value);
   };
   const handleKeyDown = (evt) => {
-    if (evt.altKey && evt.code === "KeyO") {
+    if (evt.altKey && evt.ctrlKey && evt.code === "KeyO") {
       showContextMenu({
         x: contextMenu.current.getBoundingClientRect().left,
         y: contextMenu.current.getBoundingClientRect().top
@@ -22270,6 +22292,8 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
   const [newCols, setNewCols] = React4.useState(3);
   const [values, setValues] = React4.useState([[""], [""]]);
   const [afterValue, setAfterValue] = React4.useState("");
+  const [beforeValue, setBeforeValue] = React4.useState("");
+  const [isInsideCallout, setIsInsideCallout] = React4.useState(false);
   const [colJustify, setColJustify] = React4.useState([]);
   const [copyText, setCopyText] = React4.useState("Copy as Markdown");
   const [autoFocusCell, setAutoFocusCell] = React4.useState({ row: -1, col: -1 });
@@ -22288,9 +22312,14 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
   React4.useEffect(() => {
     let result = parseInputData(inputData);
     if (!result) {
-      result = { content: void 0, afterContent: [] };
+      result = {
+        content: void 0,
+        afterContent: [],
+        beforeContent: [],
+        isInsideCallout: false
+      };
     }
-    let { content, afterContent } = result;
+    let { content, afterContent, beforeContent, isInsideCallout: isInsideCallout2 } = result;
     if (!content) {
       if (!supressNotices) {
         new import_obsidian2.Notice("Selection is not a valid Markdown table or CSV or Excel data. Creating a new table!");
@@ -22299,9 +22328,12 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
     }
     content = sanitize(content);
     const processedAfterContent = afterContent.map((row) => row.join("")).join("  \n");
+    const processedBeforeContent = beforeContent.map((row) => row.join("")).join("  \n");
     setValues(content);
     setColJustify(Array(content[0].length).fill("LEFT"));
     setAfterValue(processedAfterContent);
+    setBeforeValue(processedBeforeContent);
+    setIsInsideCallout(isInsideCallout2);
     computeAutoFocusRow(content);
   }, [inputData]);
   React4.useEffect(() => {
@@ -22326,8 +22358,9 @@ var TableEditor = ({ leafId, cursor, inputData, updateViewData, supressNotices =
     return false;
   };
   const getOutput = () => {
-    const tableContent = toMarkdown(values, colJustify);
-    return `${tableContent}  
+    const tableContent = toMarkdown(values, colJustify, isInsideCallout);
+    return `${beforeValue}  
+${tableContent}  
 ${afterValue}`;
   };
   const copyClicked = () => {

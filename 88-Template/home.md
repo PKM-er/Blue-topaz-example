@@ -3,6 +3,7 @@ banner: "https://api.xygeng.cn/Bing/"
 cssclass: fullwidth,noyaml,noscroll,myhome
 obsidianUIMode: preview
 ---
+
 ````ad-flex
 ```ad-icon
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Calendar" role="img" viewBox="0 0 512 512" width="100%" height="100%" style="cursor: default">
@@ -58,6 +59,13 @@ dv.paragraph(desc);
 
 ````
 
+```ad-blank
+- [[00-Tips|使用技巧]]
+- [[77-Example|用法示例]]
+- [[▪示例库移植说明|移植说明]]
+- [[Dataview相关实例]]
+- [[电影看板|影视看板]]
+```
 
 `````ad-flex
 ````ad-summary
