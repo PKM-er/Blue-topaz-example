@@ -4,15 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "fc371ae36bc5eac7",
+        "id": "71abb2b5e98d7f1c",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "mindmapView",
           "state": {
-            "file": "77-Example/任务卡片.md",
-            "mode": "preview",
-            "backlinks": false,
-            "source": true
+            "file": "Changlog.md"
           }
         }
       }
@@ -42,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#Movie",
+                "query": "button",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -119,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "77-Example/任务卡片.md"
+                "file": "Changlog.md"
               }
             }
           },
@@ -150,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "77-Example/任务卡片.md",
+                "file": "Changlog.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "77-Example/任务卡片.md",
+                "file": "Changlog.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -206,23 +203,23 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
     "width": 265
   },
-  "active": "fc371ae36bc5eac7",
+  "active": "71abb2b5e98d7f1c",
   "lastOpenFiles": [
-    "77-Example/任务卡片.md",
-    "77-Example/通过下拉框检索文件示例.md",
+    "Changlog.md",
+    "未命名.md",
+    "77-Example/77-Example.md",
     "88-Template/home.md",
-    "77-Example/最近天气查询.md",
-    "88-Template/FastStart-Plugins-LongDelay.md",
-    "88-Template/FastStart-Plugins-ShortDelay.md",
-    "88-Template/tp_foldermoc.md",
-    "30-Reading/30-Reading.md",
-    "未命名 1.md",
-    "未命名.md"
+    "00-Tips/00-Tips.md",
+    "99-Attachment/99-Attachment.md",
+    "77-Example/Dataview相关实例/Dataview相关实例.md",
+    "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md",
+    "77-Example/◾ TableExample/◾ TableExample.md",
+    "88-Template/ReactJS/ReactJS.md"
   ]
 }
