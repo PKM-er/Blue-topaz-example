@@ -197,8 +197,10 @@ async function getWeather(city){
 		//天气动画
 		//weathericon(weather[0].iconDay,Math.max(weather[0].windSpeedDay,weather[0].windSpeedNight))
 		weather[0].city=city;
+		weather[0].air ='';
 		let air = await getair(locationId,key);
-		weather[0].air=air;
+		if(air.code==200)
+			weather[0].air= '=='+air.now.category+'==';
 		let windyspeed =Math.max(weather[0].windSpeedDay,weather[0].windSpeedNight);
 		if(windyspeed<12)//小风
 		{
@@ -314,7 +316,7 @@ async function getair(locationId,key){
 	if(data.code!="200"){
 	 	return -1;
  	}
-	let air= data.now;
+	let air= data;
 	return air;
 	
 }
