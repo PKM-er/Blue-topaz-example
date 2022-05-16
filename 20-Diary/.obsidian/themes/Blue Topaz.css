@@ -14521,7 +14521,7 @@ body.style-options-for-admonition-plugin .admonition-table {
 body.style-options-for-admonition-plugin .admonition-table .admonition-content {
   width: calc(100% - 5px);
   margin: 0;
-  overflow-x: auto; 
+  overflow-x: auto!important; 
   white-space: nowrap;
 }
 

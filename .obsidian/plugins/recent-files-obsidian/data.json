@@ -1,172 +1,104 @@
 {
   "recentFiles": [
     {
-      "basename": "任务卡片",
-      "path": "77-Example/任务卡片.md"
+      "basename": "Changlog",
+      "path": "Changlog.md"
     },
     {
-      "basename": "通过下拉框检索文件示例",
-      "path": "77-Example/通过下拉框检索文件示例.md"
+      "basename": "图片横排布局以及添加标题",
+      "path": "77-Example/图片横排布局以及添加标题.md"
     },
     {
       "basename": "home",
       "path": "88-Template/home.md"
     },
     {
-      "basename": "最近天气查询",
-      "path": "77-Example/最近天气查询.md"
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "ob提示框(callout)样式展示",
+      "path": "77-Example/ob提示框(callout)样式展示.md"
     },
     {
       "basename": "FastStart-Plugins-LongDelay",
       "path": "88-Template/FastStart-Plugins-LongDelay.md"
     },
     {
-      "basename": "FastStart-Plugins-ShortDelay",
-      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
-    },
-    {
-      "basename": "tp_foldermoc",
-      "path": "88-Template/tp_foldermoc.md"
-    },
-    {
-      "basename": "30-Reading",
-      "path": "30-Reading/30-Reading.md"
-    },
-    {
-      "basename": "88-Template",
-      "path": "88-Template/88-Template.md"
-    },
-    {
-      "basename": "《茶叶与鸦片》",
-      "path": "30-Reading/《茶叶与鸦片》.md"
-    },
-    {
-      "basename": "FastStart-Plugins-simple",
-      "path": "88-Template/FastStart-Plugins-simple.md"
-    },
-    {
-      "basename": "假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ",
-      "path": "30-Reading/假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ.md"
-    },
-    {
-      "basename": "扎克·施奈德版正义联盟 Zack Snyder's Justice League",
-      "path": "30-Reading/扎克·施奈德版正义联盟 Zack Snyder's Justice League.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
-    },
-    {
-      "basename": "分栏效果示例",
-      "path": "77-Example/分栏效果示例.md"
-    },
-    {
-      "basename": "2022-05-02",
-      "path": "20-Diary/2022-05-02.md"
-    },
-    {
-      "basename": "Changlog",
-      "path": "Changlog.md"
-    },
-    {
-      "basename": "tiimeline callout效果",
-      "path": "77-Example/tiimeline callout效果.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+      "basename": "示例库内置的插件列表",
+      "path": "88-Template/示例库内置的插件列表.md"
     },
     {
       "basename": "00-Tips",
       "path": "00-Tips/00-Tips.md"
     },
     {
-      "basename": "心灵奇旅 Soul",
-      "path": "30-Reading/心灵奇旅 Soul.md"
+      "basename": "全宽表格示例",
+      "path": "77-Example/全宽表格示例.md"
     },
     {
-      "basename": "你好，李焕英",
-      "path": "30-Reading/你好，李焕英.md"
-    },
-    {
-      "basename": "孤味",
-      "path": "30-Reading/孤味.md"
-    },
-    {
-      "basename": "芬奇 Finch",
-      "path": "30-Reading/芬奇 Finch.md"
-    },
-    {
-      "basename": "白蛇传·情",
-      "path": "30-Reading/白蛇传·情.md"
-    },
-    {
-      "basename": "让子弹飞（本地封面图片测试）",
-      "path": "30-Reading/让子弹飞（本地封面图片测试）.md"
-    },
-    {
-      "basename": "77-Example",
-      "path": "77-Example/77-Example.md"
-    },
-    {
-      "basename": "带进度条的任务列表",
-      "path": "77-Example/带进度条的任务列表.md"
-    },
-    {
-      "basename": "单独定制笔记背景",
-      "path": "77-Example/单独定制笔记背景.md"
-    },
-    {
-      "basename": "电影观看清单-状态控制（dvjs）",
-      "path": "77-Example/电影观看清单-状态控制（dvjs）.md"
-    },
-    {
-      "basename": "电影观看清单（dv）",
-      "path": "77-Example/电影观看清单（dv）.md"
-    },
-    {
-      "basename": "天气js",
-      "path": "88-Template/天气js.md"
-    },
-    {
-      "basename": "music_toolbar",
-      "path": "88-Template/music_toolbar.md"
-    },
-    {
-      "basename": "FastStart-GenerateListOfInstalledPlugins",
-      "path": "88-Template/FastStart-GenerateListOfInstalledPlugins.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
-    },
-    {
-      "basename": "button",
-      "path": "88-Template/button.md"
-    },
-    {
-      "basename": "电影看板",
-      "path": "77-Example/电影看板.md"
-    },
-    {
-      "basename": "对话形式笔记",
-      "path": "77-Example/对话形式笔记.md"
-    },
-    {
-      "basename": "图书阅读清单(dv)",
-      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md"
+      "basename": "Lillian Who Obsidian新手入门教程",
+      "path": "10-Help/Lillian Who Obsidian新手入门教程.md"
     },
     {
       "basename": "10-Help",
       "path": "10-Help/10-Help.md"
     },
     {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+      "basename": "伪看板-yaml声明",
+      "path": "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md"
+    },
+    {
+      "basename": "▪插件介绍",
+      "path": "00-Tips/▪插件介绍/▪插件介绍.md"
+    },
+    {
       "basename": "各类列表和彩虹大纲线",
       "path": "77-Example/各类列表和彩虹大纲线.md"
     },
     {
+      "basename": "2022-05-12",
+      "path": "20-Diary/2022-05-12.md"
+    },
+    {
+      "basename": "tiimeline callout效果",
+      "path": "77-Example/tiimeline callout效果.md"
+    },
+    {
+      "basename": "电影看板",
+      "path": "77-Example/Dataview相关实例/电影看板.md"
+    },
+    {
+      "basename": "20-Diary",
+      "path": "20-Diary/20-Diary.md"
+    },
+    {
+      "basename": "单独定制笔记背景",
+      "path": "77-Example/单独定制笔记背景.md"
+    },
+    {
+      "basename": "多彩高亮（三种语法）",
+      "path": "77-Example/多彩高亮（三种语法）.md"
+    },
+    {
       "basename": "各级标题示例",
       "path": "77-Example/各级标题示例.md"
+    },
+    {
+      "basename": "表格自定义样式",
+      "path": "77-Example/表格自定义样式.md"
+    },
+    {
+      "basename": "从这开始",
+      "path": "从这开始.md"
+    },
+    {
+      "basename": "可以编辑的dv表格",
+      "path": "77-Example/Dataview相关实例/可以编辑的dv表格.md"
     },
     {
       "basename": "全宽显示-表格测试",
@@ -177,28 +109,84 @@
       "path": "77-Example/◾ Cssclass声明样式举例/四象限表格.md"
     },
     {
-      "basename": "伪看板-yaml声明",
-      "path": "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md"
-    },
-    {
-      "basename": "图书阅读清单-状态控制(dvjs)",
-      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
-    },
-    {
-      "basename": "inline-list【行内列表】",
-      "path": "77-Example/◾ Cssclass声明样式举例/inline-list【行内列表】.md"
-    },
-    {
       "basename": "预览隐藏frontmatter",
       "path": "77-Example/◾ Cssclass声明样式举例/预览隐藏frontmatter.md"
     },
     {
-      "basename": "20-Diary",
-      "path": "20-Diary/20-Diary.md"
+      "basename": "77-Example",
+      "path": "77-Example/77-Example.md"
     },
     {
-      "basename": "多彩高亮（三种语法）",
-      "path": "77-Example/多彩高亮（三种语法）.md"
+      "basename": "▪示例库移植说明",
+      "path": "00-Tips/▪示例库移植说明/▪示例库移植说明.md"
+    },
+    {
+      "basename": "Obsidian 快捷键一览表",
+      "path": "10-Help/Obsidian 快捷键一览表.md"
+    },
+    {
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/Dataview相关实例/通过下拉框检索文件示例.md"
+    },
+    {
+      "basename": "电影观看清单-状态控制（dvjs）",
+      "path": "77-Example/Dataview相关实例/电影观看清单-状态控制（dvjs）.md"
+    },
+    {
+      "basename": "带进度条的任务列表",
+      "path": "77-Example/Dataview相关实例/带进度条的任务列表.md"
+    },
+    {
+      "basename": "电影观看清单（dv）",
+      "path": "77-Example/Dataview相关实例/电影观看清单（dv）.md"
+    },
+    {
+      "basename": "99-Attachment",
+      "path": "99-Attachment/99-Attachment.md"
+    },
+    {
+      "basename": "obsidian_image",
+      "path": "99-Attachment/obsidian_image.png"
+    },
+    {
+      "basename": "Callout环绕布局、缩进效果示例",
+      "path": "77-Example/Callout环绕布局、缩进效果示例.md"
+    },
+    {
+      "basename": "FastStart-StartupScript",
+      "path": "88-Template/FastStart-StartupScript.md"
+    },
+    {
+      "basename": "FastStart-Plugins-ShortDelay",
+      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
+    },
+    {
+      "basename": "react-buttons",
+      "path": "88-Template/ReactJS/react-buttons.md"
+    },
+    {
+      "basename": "◾ Cssclass声明样式举例",
+      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
+    },
+    {
+      "basename": "moc",
+      "path": "88-Template/ReactJS/moc.md"
+    },
+    {
+      "basename": "ColorfulClock",
+      "path": "88-Template/ReactJS/ColorfulClock.md"
+    },
+    {
+      "basename": "slidegallery",
+      "path": "88-Template/ReactJS/slidegallery.md"
+    },
+    {
+      "basename": "react-music",
+      "path": "88-Template/ReactJS/react-music.md"
+    },
+    {
+      "basename": "ReactJS",
+      "path": "88-Template/ReactJS/ReactJS.md"
     }
   ],
   "omittedPaths": [],

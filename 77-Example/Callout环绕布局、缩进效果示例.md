@@ -10,11 +10,11 @@ cssclass: fullwidth
 
 >[!infobox right 40%]+ #### **卡尔·马克思** Karl Marx
 >
-![Karl Marx 001.jpg](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Karl_Marx_001.jpg/250px-Karl_Marx_001.jpg)<center><small>1875年时，已经流亡至英国伦敦的卡尔·马克思</small></center>
+![Karl Marx 001.jpg](https://bkimg.cdn.bcebos.com/pic/a044ad345982b2b795c22d8438adcbef76099b14?x-bce-process=image/resize,m_lfit,w_440,limit_1/format,f_auto)<center><small>1875年时，已经流亡至英国伦敦的卡尔·马克思</small></center>
 >
 |||
 |-|-|
-|签名|![Karl Marx 001.jpg](https://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Karl_Marx_Signature.svg/225px-Karl_Marx_Signature.svg.png)|
+|签名|![Karl Marx 001.jpg](https://tse1-mm.cn.bing.net/th/id/OIP-C.mT_Kk2xJCtpzr_wzAYEHPQAAAA?pid=ImgDet&rs=1)|
 |出生|1818年5月5日 普鲁士王国特里尔|
 |逝世	|1883年3月14日（64岁）英国英格兰伦敦|
 |国籍	 |普鲁士王国（1818年－1845年）<br>无国籍（1845年之后）|

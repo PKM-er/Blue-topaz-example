@@ -239,12 +239,6 @@
           "type": "Obsidian",
           "id": "cc6b384b-ec44-4292-835a-e19dafa409d5",
           "commandId": "workspaces-plus:Home"
-        },
-        {
-          "name": "Wait",
-          "type": "Wait",
-          "id": "2d6f7c7b-f5e3-4ad4-8857-18fb797af476",
-          "time": 1000
         }
       ],
       "runOnStartup": true

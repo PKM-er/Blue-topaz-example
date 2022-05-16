@@ -75,6 +75,7 @@ updated: 2022-04-07 11:34
 ```
 
 ## 主题自定义示例
+#### 目前支持的callout类型
 通过添加callout类型，实现各类样式控制。下面以Blue Topaz主题内置的callout样式举例说明，目前支持的callout样式有：
 
 >
@@ -89,17 +90,24 @@ updated: 2022-04-07 11:34
 | indent                | 全文自动缩进2字符               | >[!indent]                              |
 | blank                 | callout 全透明块                | >[!blank]                               |
 | timeline                      |            时间线样式                     |    [[tiimeline callout效果]]                                     |
+
+
 **注意 以上类型都可以互相组合使用，具体看下面例子**
 Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 比如`> [!note|right]` 把一些属性信息用竖线分割，这样就不会影响callout类型。管道后的参数就是metadata。
-目前支持metadata的属性
+#### 目前支持metadata的属性
 
 | 属性名称            | 解释                          |
 | ------------------- | ----------------------------- |
 | xx%                 | callout宽度xx代表10-100的数值 |
 | right\|left\|center | callout布局位置               |
 | indent              | 全文自动缩进2字符             |
-| nowrap              | 元素不换行                    | 
+| nowrap              | 元素不换行(包括图片横排显示)                    |
+| noicon              | 隐藏callout图标               |
+| banner              | 可以用图片作为callout标题     |
+| notitle             | 隐藏callout标题栏             |
+| noborder            | 隐藏callout标题栏             |
+| grid                | 元素网格化布局                | 
 
 
 ### 模糊字体
@@ -202,15 +210,32 @@ When high school students finish their study, it is time to think about what kin
 当高中学生完成他们的学业,是时候考虑需要选择什么样的专业。这是一个非常重要的问题,选择专业需要考虑很多因素。第一个是关于兴趣。有激情的学习可以让学生感受到快乐和爱。第二个是关于前景。专业总会决定未来的工作,所以学生需要思考前景。
 
 
-> [!Example|nowrap] 表格 图片等元素单行显示
+> [!Example|nowrap] 表格 图片等元素单行显示 nowrap
 > 
-![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]![[obsidian_image.png\|+grid|150]]
+![](https://i.pinimg.com/564x/13/1f/e4/131fe4d97e3be0a49a5d07431a917d31.jpg)
+![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
+![](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
+![](https://i.pinimg.com/564x/c5/0f/09/c50f09d991dfcfdbea600ff139739fd8.jpg)
+![](https://i.pinimg.com/564x/a4/94/01/a494019c68ed85630de16cf8f32523f0.jpg)
+![[obsidian_image.png]]
+![[obsidian_image.png]]
 > 
 | 表头1                                                    | 表头2表头2                                                 | 表头3                                                                      |
 |:-------------------------------------------------------|:-------------------------------------------------------|:-------------------------------------------------------------------------|
 | 这是很长的表格内容看 会不会自动换行                                     | 这是很长的表格内容看 会不会自动换行                                     | 这是很长的表格内容看 会不会自动换行                                                       |
 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 |
 >
+
+> [!Example|noborder grid]+ 表格 图片等元素网格显示 grid
+> 
+![](https://i.pinimg.com/564x/13/1f/e4/131fe4d97e3be0a49a5d07431a917d31.jpg)
+![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
+![](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
+![](https://i.pinimg.com/564x/c5/0f/09/c50f09d991dfcfdbea600ff139739fd8.jpg)
+![](https://i.pinimg.com/564x/a4/94/01/a494019c68ed85630de16cf8f32523f0.jpg)
+
 
 ### 内容居中
 ![[涂黑和挖空效果（三种语法）#例子2]]

@@ -173,6 +173,28 @@
       "command": false,
       "injectColor": true,
       "noTitle": false
+    },
+    "grid": {
+      "type": "grid",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "ad",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": false
+    },
+    "masonry": {
+      "type": "masonry",
+      "color": "#7d7d7d",
+      "icon": {
+        "name": "ad",
+        "type": "font-awesome"
+      },
+      "command": false,
+      "injectColor": true,
+      "noTitle": false
     }
   },
   "syntaxHighlight": false,

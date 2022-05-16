@@ -21,18 +21,13 @@ obsidianUIMode: preview
 	- [[FastStart-StartupScript]]
 	- [[home]]
 	- [[music_toolbar]]
-	- **ReactJS**
-		- [[返回当前活动笔记的所有反向链接]]
-		- [[ColorfulClock]]
-		- [[moc]]
-		- [[react-buttons]]
-		- [[react-music]]
-		- [[slidegallery]]
+	- **[[ReactJS]]**
 	- **script**
 		- **template**
 
 	- [[tp_foldermoc]]
-	- [[tp-日记模板-带进度]]
+	- [[tp-日记模板-日历图标]]
+	- [[tp-日记模板-时间线]]
 	- [[tp-日记模板]]
 	- [[tp-通用模板]]
 	- [[tp-book-callout]]

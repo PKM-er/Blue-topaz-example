@@ -107,7 +107,7 @@ var MyPlugin = /** @class */ (function (_super) {
                     case 1:
                         _a.sent();
                         is_file_explorer_open_now = this.is_file_explorer_open();
-                        console.log("is_file_explorer_open_previously: ".concat(this.is_file_explorer_open_previously, ", is_file_explorer_open_now: ").concat(is_file_explorer_open_now));
+                        //console.log("is_file_explorer_open_previously: ".concat(this.is_file_explorer_open_previously, ", is_file_explorer_open_now: ").concat(is_file_explorer_open_now));
                         if (is_file_explorer_open_now && !this.is_file_explorer_open_previously) {
                             this.reveal();
                         }

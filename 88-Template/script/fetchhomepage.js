@@ -96,7 +96,6 @@ let url='https://api.uomg.com/api/rand.music?sort=%E7%83%AD%E6%AD%8C%E6%A6%9C&fo
 	{
 	   let music_url=getUrlQueryParams(data.url);
 		music_id= music_url.id;
-		console.log(music_id);
 		iframe='<iframe id="music" frameborder="no" border="0" marginwidth="0" marginheight="0" width=280 height=86 src="https://music.163.com/outchain/player?type=2&id='+music_id+'&auto=0&height=66"></iframe>' ;
 		return iframe;
 	}
@@ -225,6 +224,7 @@ async function getWWeather(city)
 		city='';
 	}
   let result = await fetch("https://wttr.in/"+city+"?format=%l:+%c+%t+%w").then(async (res) => await res.text());
+  if(result.includes("China"))
 	result = result.replace(/:/g,'').replace(/\+/g,'').replace(', China','');
  return result;
  
@@ -323,7 +323,7 @@ async function getair(locationId,key){
 
 //查询位置
 async function urlGet(url) {
-console.log(url);
+
   let finalURL = new URL(url);
   const res = await request({
     url: finalURL.href,

@@ -3,8 +3,6 @@ banner: "https://api.xygeng.cn/Bing/"
 cssclass: fullwidth,noyaml,noscroll,myhome
 obsidianUIMode: preview
 ---
-
-````ad-flex
 ```ad-icon
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-label="Calendar" role="img" viewBox="0 0 512 512" width="100%" height="100%" style="cursor: default">
       <path d="m512,455c0,32 -25,57 -57,57l-398,0c-32,0 -57,-25 -57,-57l0,-327c0,-31 25,-57 57,-57l398,0c32,0 57,26 57,57l0,327z" fill="#efefef"/>
@@ -51,13 +49,12 @@ let todayweather = weather[0];
 setting.iconDay =  weather[0].iconDay;
 setting.windSpeedDay =  weather[0].windSpeedDay;
 setting.windSpeedNight =  weather[0].windSpeedNight;
-dv.view("88-Template/script/weatherSvg",setting)
+await dv.view("88-Template/script/weatherSvg",setting)
 let desc = ` <%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %> ，${todayweather.city} ${todayweather.textDay}， ${todayweather.tempMin}~${todayweather.tempMax}℃  ${todayweather.air} ${todayweather.windydesc} [[最近天气查询|✈️]] \n云朵充盈了${todayweather.cloud}%的天空\n顺便，如果有机会看见月亮的话，那么它应该是这样的${todayweather.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
 dv.paragraph(desc);
 }
 >```
 
-````
 
 ```ad-blank
 - [[00-Tips|使用技巧]]

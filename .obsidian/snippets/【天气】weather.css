@@ -1,9 +1,3 @@
-.myhome .svg-contain {
-  position: absolute;
-  max-width: 120px;
-  left: 0%; 
-  top: -40px;
-}
 
 .svg-contain {
   display: inline-flex;

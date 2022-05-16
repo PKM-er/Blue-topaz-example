@@ -1,18 +1,17 @@
 [
-  "obsidian-style-settings",
   "csv-obsidian",
   "enhanced-editing",
   "templater-obsidian",
-  "workspaces-plus",
   "quickadd",
-  "calendar",
-  "obsidian-memos",
-  "buttons",
+  "metaedit",
+  "obsidian-style-settings",
+  "Enhanced-editing",
   "recent-files-obsidian",
+  "workspaces-plus",
+  "buttons",
   "obsidian-quiet-outline",
-  "obsidian-admonition",
-  "obsidian-banners",
-  "markdown-prettifier",
-  "mrj-text-expand",
-  "metaedit"
+  "obsidian-react-components",
+  "cmenu-plugin",
+  "obsidian-contextual-typography",
+  "obsidian-memos"
 ]

@@ -1,4 +1,3 @@
-Enhanced-editing
 markdown-table-editor
 obsidian-bartender
 obsidian-collapse-all-plugin
@@ -8,7 +7,6 @@ obsidian-float-toc-plugin
 obsidian-kanban
 nldates-obsidian
 obsidian-outliner
-obsidian-regex-replace
 obsidian-sortable
 obsidian-tasks-plugin
 obsidian42-brat
@@ -31,3 +29,5 @@ obsidian-hotkeys-for-specific-files
 settings-search
 obsidian-view-mode-by-frontmatter
 omnisearch
+mrj-text-expand
+obsidian-memos

@@ -52,17 +52,18 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
 
 .myhome .cus_pic {
   margin-top: -5px!important;
-  width: 75%;
- 
+  min-width: 120px;
+  max-width: 80%;
+
 }
 .myhome audio {
-  margin-left: 10%;
+  margin-left: calc(10% - 40px);
   margin-top: 20px;
   filter: sepia(20%) saturate(80%) grayscale(1) contrast(99%) invert(12%);
-  -moz-opacity: 0.3;
-  opacity: 0.3;
+  -moz-opacity: 0.2;
+  opacity: 0.15;
   width: 100px;
-  height: 30px;
+  height: 20px;
   position: absolute;
 }
 .myhome audio::-webkit-media-controls-mute-button {
@@ -176,10 +177,10 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
 }
 
 .myhome .admonition-blank .admonition-content ul li a {
-  padding: 18px;
+  padding: 8px;
   text-transform:uppercase;
   color: var(--text-normal);
-  font-size: 18px;
+  font-size: var(--font-size-edit-normal);
   text-decoration: none;
   display: block;
 }
@@ -189,3 +190,45 @@ body.style-options-for-admonition-plugin.is-mobile .myhome .admonition-kanban ul
   background: rgba(255, 255, 255, 0.1);
   color: var(--text-accent-hover);
 }
+/*主页天气动画位置*/
+.myhome .svg-contain {
+  display: block;
+  float: left;
+  max-width: 120px;
+} 
+.myhome [data-callout-metadata*="banner"] {
+  margin-top: -4em;
+}
+
+/* --- Marquee Animated Callout --- */
+div[data-callout="marquee"].callout { background: unset; border: unset; margin: unset; padding: unset; clear: both; overflow: hidden; }
+
+div[data-callout="marquee"].callout > .callout-title { display: none; }
+
+div[data-callout="marquee"].callout > .callout-content > p {
+    animation-duration: 6s;
+    animation-name: marquee;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    display: inline-block;
+    white-space: nowrap;
+    --tw: 61ch;
+    width: var(--tw);
+    color: #5bdcd2;
+    text-shadow: var(--tw) 0 currentColor, 
+            calc(var(--tw) * 2) 0 currentColor, 
+            calc(var(--tw) * 3) 0 currentColor,
+            calc(var(--tw) * 4) 0 currentColor;
+    will-change: transform;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    
+    to {
+        transform: translateX(-100%);
+    }
+}
+

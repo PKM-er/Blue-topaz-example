@@ -4,12 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "71abb2b5e98d7f1c",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "mindmapView",
+          "type": "markdown",
           "state": {
-            "file": "Changlog.md"
+            "file": "Changlog.md",
+            "mode": "source",
+            "backlinks": true,
+            "source": false
           }
         }
       }
@@ -39,7 +42,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "button",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -209,17 +212,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "71abb2b5e98d7f1c",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
     "Changlog.md",
-    "未命名.md",
-    "77-Example/77-Example.md",
+    "77-Example/图片横排布局以及添加标题.md",
     "88-Template/home.md",
-    "00-Tips/00-Tips.md",
-    "99-Attachment/99-Attachment.md",
-    "77-Example/Dataview相关实例/Dataview相关实例.md",
-    "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md",
-    "77-Example/◾ TableExample/◾ TableExample.md",
-    "88-Template/ReactJS/ReactJS.md"
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "77-Example/ob提示框(callout)样式展示.md",
+    "88-Template/FastStart-Plugins-LongDelay.md",
+    "88-Template/示例库内置的插件列表.md",
+    "未命名 2.md",
+    "未命名 1.md",
+    "未命名.md"
   ]
 }

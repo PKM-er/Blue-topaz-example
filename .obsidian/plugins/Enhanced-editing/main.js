@@ -5,7 +5,7 @@ var obsidian = require('obsidian');
 /* *****************************************************************************
 使用声明
 ZH增强编辑插件借鉴多款社区插件开发而成，蚕子水平有限，代码或有缺陷，不能保证任何操作均会正常，请在使用之前备份库笔记，谢谢配合。
-开发：蚕子 QQ：312815311 更新时间：2022-4-17
+开发：蚕子 QQ：312815311 更新时间：2022-4-18
 ***************************************************************************** */
 
 var en = {
@@ -196,11 +196,12 @@ class MyPlugin extends obsidian.Plugin {
             hotkeys: [{ modifiers: ["Alt"], key: "Z" } ]
         });
 
-        /*this.addCommand({
+        /**/
+        this.addCommand({
             id: 'all-links',
             name: '批量转换[[链接]]',
             callback: () => this.批量转换内链()
-        });*/
+        });
         this.addCommand({
             id: 'internal-link2',
             name: '[[链接|同名]]语法',
@@ -227,20 +228,6 @@ class MyPlugin extends obsidian.Plugin {
             callback: () => this.切换文件列表(1),
             hotkeys: [{ modifiers: ["Alt","Shift"], key: "N" } ]
         });
-        /*
-        this.addCommand({
-            id: 'view-up',
-            name: '向上查看同级页面',
-            callback: () => this.查看同级页面(-1),
-            hotkeys: [{ modifiers: ["Alt","Shift"], key: "I" } ]
-        });
-
-        this.addCommand({
-            id: 'view-down',
-            name: '向下查看同级页面',
-            callback: () => this.查看同级页面(1),
-            hotkeys: [{ modifiers: ["Alt","Shift"], key: "K" } ]
-        });*/
 
         this.addCommand({
             id: 'mouse-up',
@@ -341,18 +328,27 @@ class MyPlugin extends obsidian.Plugin {
             name: '调低标题级别',
             callback: () => this.调节标题级别(false)
         });
-        /*this.addCommand({
+        /**/
+        this.addCommand({
             id: 'auto-texts',
             name: '自动设置标题',
             callback: () => this.自动设置标题()
-        });*/
+        });
         
-        /*this.addCommand({
+        this.addCommand({
+            id: 'quit-format',
+            name: '关闭格式刷',
+            callback: () => {
+                this.关闭格式刷();
+                new obsidian.Notice("已关闭格式刷！");
+            }
+        }); 
+        this.addCommand({
             id: 'cuti-format',
             name: '**粗体**格式刷',
             callback: () => this.粗体格式刷(),
             hotkeys: [{ modifiers: ["Alt","Shift"], key: "C" } ]
-        }); */
+        }); 
         this.addCommand({
             id: 'cuti-text',
             name: '**粗体**',
@@ -360,12 +356,12 @@ class MyPlugin extends obsidian.Plugin {
             hotkeys: [{ modifiers: ["Alt"], key: "C" } ]
         }); 
 
-        /*this.addCommand({
+        this.addCommand({
             id: 'gaoliang-format',
             name: '==高亮==格式刷',
             callback: () => this.高亮格式刷(),
             hotkeys: [{ modifiers: ["Alt","Shift"], key: "G" } ]
-        });*/
+        });
         this.addCommand({
             id: 'gaoliang-text',
             name: '==高亮==',
@@ -373,12 +369,13 @@ class MyPlugin extends obsidian.Plugin {
             hotkeys: [{ modifiers: ["Alt"], key: "G" } ]
         });
 
-        /*this.addCommand({
+        /**/
+        this.addCommand({
             id: 'xieti-format',
             name: '*斜体*格式刷',
             callback: () => this.斜体格式刷(),
             hotkeys: [{ modifiers: ["Alt","Shift"], key: "X" } ]
-        });*/
+        });
         this.addCommand({
             id: 'xieti-text',
             name: '*斜体*',
@@ -386,12 +383,13 @@ class MyPlugin extends obsidian.Plugin {
             hotkeys: [{ modifiers: ["Alt"], key: "X" } ]
         });
 
-        /*this.addCommand({
+        /**/
+        this.addCommand({
             id: 'shanchu-format',
             name: '~~删除线~~格式刷',
             callback: () => this.删除线格式刷(),
             hotkeys: [{ modifiers: ["Alt","Shift"], key: "S" } ]
-        });*/
+        });
         this.addCommand({
             id: 'shanchu-text',
             name: '~~删除线~~',
@@ -399,12 +397,13 @@ class MyPlugin extends obsidian.Plugin {
             hotkeys: [{ modifiers: ["Alt"], key: "S" } ]
         });
 
-        /*this.addCommand({
+        /**/
+        this.addCommand({
             id: 'xiahua-format',
             name: '_下划线_格式刷',
             callback: () => this.下划线格式刷(),
             hotkeys: [{ modifiers: ["Alt","Shift"], key: "H" } ]
-        });*/
+        });
         this.addCommand({
             id: 'xiahua-text',
             name: '_下划线_',
@@ -962,11 +961,21 @@ class MyPlugin extends obsidian.Plugin {
             const menu = new obsidian.Menu(this.app);
 
             menu.addItem((item) => {
-                item.setTitle("打开设置面板");
+                item.setTitle("设置插件");
                 item.setIcon("gear");
                 item.onClick(() =>{
                     this.app.setting.open();
                     this.app.setting.openTabById("Enhanced-editing");
+                });
+            });
+            menu.addItem((item) => {
+                item.setTitle("设置快捷键");
+                item.setIcon("gear");
+                item.onClick(() =>{
+                    this.app.setting.open();
+                    this.app.setting.openTabById("Enhanced-editing");
+                    var e = this.app.setting.openTabById("hotkeys");
+                    e.setQuery("增强编辑");
                 });
             });
             menu.addItem((item) => {
@@ -1058,10 +1067,8 @@ class MyPlugin extends obsidian.Plugin {
             let 当前模式 = this.app.workspace.activeLeaf.view;
 		    if(当前模式.getMode() == "preview"){return};
             if(isCTxt ||isBgC ||isCTS || isGLS || isSB || isSCS || isXB || isXHS || isXTS){
-                newNotice.hide();
-                new obsidian.Notice("已关闭格式刷！");
                 this.关闭格式刷();
-                return;
+                new obsidian.Notice("已关闭格式刷！");
             }
 
             const statusBarRect1 = this.statusBarIcon.parentElement.getBoundingClientRect();
@@ -1072,14 +1079,24 @@ class MyPlugin extends obsidian.Plugin {
             menuDom.addClass("Enhanced-editing-menu");
 
             menu.addItem((item) => {
-                item.setTitle("设置面板");
+                item.setTitle("设置插件");
                 item.setIcon("gear");
                 item.onClick(() =>{
                     this.app.setting.open();
                     this.app.setting.openTabById("Enhanced-editing");
                 });
             });
-            
+            menu.addItem((item) => {
+                item.setTitle("设置快捷键");
+                item.setIcon("gear");
+                item.onClick(() =>{
+                    this.app.setting.open();
+                    this.app.setting.openTabById("Enhanced-editing");
+                    var e = this.app.setting.openTabById("hotkeys");
+                    e.setQuery("增强编辑");
+                });
+            });
+
             menu.addItem((item) => {
                 item.setTitle(" 上标⁺⁻ⁿ ");
                 item.setIcon("普通格式刷");
@@ -1115,9 +1132,8 @@ class MyPlugin extends obsidian.Plugin {
                 item.setTitle("关闭 格式刷");
                 item.setIcon("cross");
                 item.onClick(() =>{
-                    newNotice.hide();
-                    new obsidian.Notice("已关闭格式刷！");
                     this.关闭格式刷();
+                    new obsidian.Notice("已关闭格式刷！");
                 });
             });*/
          
@@ -1404,7 +1420,8 @@ class MyPlugin extends obsidian.Plugin {
     }
 
     关闭格式刷() {
-        //关闭所有格式刷
+        newNotice.hide();
+        //关闭所有格式刷变量
         isBgC = false;  //多彩背景刷
         isCTxt = false; //多彩文字刷
         isGLS =false;   //==普通高亮==
@@ -1414,6 +1431,7 @@ class MyPlugin extends obsidian.Plugin {
         isXHS = false;
         isSB = false;
         isXB = false;
+        
     };
 
     游标上移() {
@@ -1586,12 +1604,11 @@ class MyPlugin extends obsidian.Plugin {
         if(所选文本==null){
             if(isCTS){
                 isCTS = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭粗体格式刷！");
             }else{
                 this.关闭格式刷();
                 isCTS = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("**粗体格式刷** 已打开！\n首尾不要选中标点。",0);
             };
         };
@@ -1635,13 +1652,11 @@ class MyPlugin extends obsidian.Plugin {
         this.获取编辑器信息 ();
         if(所选文本==null){
             if(isGLS){
-                isGLS = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭高亮格式刷！");
             }else{
                 this.关闭格式刷();
                 isGLS = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("==高亮格式刷== 已打开！",0);
             }
         }
@@ -1680,13 +1695,11 @@ class MyPlugin extends obsidian.Plugin {
         this.获取编辑器信息 ();
         if(所选文本==null){
             if(isXTS){
-                isXTS = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭格式刷！");
             }else{
                 this.关闭格式刷();
                 isXTS = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("*斜体格式刷* 已打开！\n首尾不要选中标点。",0);
             }
         };
@@ -1723,13 +1736,11 @@ class MyPlugin extends obsidian.Plugin {
         this.获取编辑器信息 ();
         if(所选文本==null){
             if(isSCS){
-                isSCS = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭删除线格式刷！");
             }else{
                 this.关闭格式刷();
                 isSCS = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("~~删除线格式刷~~ 已打开！",0);
             }
         }
@@ -1768,13 +1779,11 @@ class MyPlugin extends obsidian.Plugin {
         this.获取编辑器信息 ();
         if(所选文本==null){
             if(isXHS){
-                isXHS = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭下划线格式刷！");
             }else{
                 this.关闭格式刷();
                 isXHS = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("<u>下划线格式刷</u> 已打开！",0);
             }
         }
@@ -1892,13 +1901,11 @@ class MyPlugin extends obsidian.Plugin {
         this.获取编辑器信息 ();
         if(所选文本==null){
             if(isSB){
-                isSB = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭挖空格式刷！");
             }else{
                 this.关闭格式刷();
                 isSB = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("<sup>上挖空格式刷</sup> 已打开！",0);
             }
         }
@@ -1935,13 +1942,11 @@ class MyPlugin extends obsidian.Plugin {
         this.获取编辑器信息 ();
         if(所选文本==null){
             if(isSB){
-                isSB = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭上标格式刷！");
             }else{
                 this.关闭格式刷();
                 isSB = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("<sup>上标格式刷</sup> 已打开！",0);
             }
         }
@@ -1978,13 +1983,11 @@ class MyPlugin extends obsidian.Plugin {
         this.获取编辑器信息 ();
         if(所选文本==null){
             if(isXB){
-                isXB = false;
-                newNotice.hide();
+                this.关闭格式刷();
                 new obsidian.Notice("已关闭下标格式刷！");
             }else{
                 this.关闭格式刷();
                 isXB = true;
-                newNotice.hide();
                 newNotice = new obsidian.Notice("<sub>下标格式刷</sub> 已打开！",0);
             }
         }
@@ -2251,7 +2254,6 @@ class MyPlugin extends obsidian.Plugin {
 
     彩字格式刷(_color){
         this.关闭格式刷();
-        newNotice.hide();
         isCTxt = true;
         this.settings.hColor = _color;
         newNotice = new obsidian.Notice("多彩文字格式刷 已打开！",0);
@@ -2284,7 +2286,6 @@ class MyPlugin extends obsidian.Plugin {
 
     彩底格式刷(_color){
         this.关闭格式刷();
-        newNotice.hide();
         isBgC = true;
         this.settings.bColor = _color;
         newNotice = new obsidian.Notice("多彩背景格式刷 已打开！",0);

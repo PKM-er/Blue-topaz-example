@@ -268,6 +268,17 @@
           "match"
         ],
         "css": ".basic-date {\n  display: inline-block;\n  background-color: rgb(219 208 208 / 6%) !important;\n  color: var(--text-muted);\n  font-size: .875rem;\n  font-weight: 400;\n  line-height: 1em;\n  padding: 2px 4px 2px 4px;\n  text-align: center;\n  text-decoration: none;\n  margin: 0px 0px;\n  border: 1px solid transparent;\n  border-radius: 0.4em;\n  transition: 150ms cubic-bezier(0.2, 0, 1, 0.9);\n  filter: saturate(1);\n}\n\n.basic-date:hover {\n  background-color:rgb(219 208 208 / 22%) !important;\n  color: var(--text-faint);\n}"
+      },
+      "img-caption": {
+        "class": "img-caption",
+        "color": "#42188000",
+        "regex": true,
+        "query": "(?<imgcaptionkey>\\[img-caption::)(?<imgcaptionvalue>.+)(?<imgcaptionbracket>\\])",
+        "mark": [
+          "match",
+          "group"
+        ],
+        "css": "[data-dv-key=\"img-caption\"] + span.dataview>span\n{\n  margin: 0.5rem 0;\n  display: block;\n  caption-side: bottom;\n  text-align: center;\n  font-size: 0.85rem;\n}\n.dataview.inline-field-key[data-dv-key=\"img-caption\"] + .dataview.inline-field-value\n{\n  background-color:unset;\n  border-radius: 0px;\n  padding: 0;\n  font-family: var(--font-text);\n}\n\n\n.dataview.inline-field-key[data-dv-key=\"img-caption\"] \n{\n  display:none;\n  background-color:unset;\n  font-size: 0px;\n  padding:0;\n  border-radius: 0px;\n}\n\n.is-live-preview .cm-line:not(.cm-active) .imgcaptionkey\n{\n  display: none;}\n.is-live-preview  .cm-line:not(.cm-active) .imgcaptionbracket\n{\n  display: none;\n}\n.is-live-preview  .cm-line:not(.cm-active) .imgcaptionvalue\n{\n  display: block;\n  margin-bottom: 1em;\n  caption-side: bottom;\n  text-align: center;\n  font-size: 0.85rem;\n  color: var(--text-normal);\n  font-family: var(--font-text);\n}\n"
       }
     },
     "queryOrder": [
@@ -296,7 +307,8 @@
       "light-time-12",
       "light-time-12-5",
       "inline-property-name",
-      "basic-date"
+      "basic-date",
+      "img-caption"
     ]
   },
   "light-time-8-5": {

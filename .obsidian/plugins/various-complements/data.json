@@ -10,8 +10,8 @@
   "disableSuggestionsDuringImeOn": true,
   "insertAfterCompletion": false,
   "firstCharactersDisableSuggestions": ":/^@",
-  "showMatchStrategy": true,
-  "showIndexingStatus": true,
+  "showMatchStrategy": false,
+  "showIndexingStatus": false,
   "descriptionOnSuggestion": "Short",
   "selectSuggestionKeys": "Enter",
   "additionalCycleThroughSuggestionsKeys": "Tab, Shift+Tab",
@@ -52,6 +52,222 @@
         "currentVault": {
           "count": 1,
           "lastUpdated": 1651460173958
+        }
+      }
+    },
+    "测试": {
+      "测试": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652253581268
+        }
+      }
+    },
+    "第一行": {
+      "第一行": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652255811457
+        }
+      }
+    },
+    "文档": {
+      "文档": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652256075891
+        }
+      }
+    },
+    "aaa": {
+      "aaa": {
+        "currentFile": {
+          "count": 6,
+          "lastUpdated": 1652262982757
+        }
+      }
+    },
+    "xxx": {
+      "xxx": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652262782690
+        }
+      }
+    },
+    "  ": {
+      "  ": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652284925369
+        }
+      }
+    },
+    "console": {
+      "console": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652343384056
+        }
+      }
+    },
+    "noborder": {
+      "noborder": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652402602158
+        }
+      }
+    },
+    "cssclass": {
+      "cssclass": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652405846795
+        }
+      }
+    },
+    "fullwidth": {
+      "fullwidth": {
+        "frontMatter": {
+          "count": 2,
+          "lastUpdated": 1652408501816
+        }
+      }
+    },
+    "jpg": {
+      "jpg": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652429917095
+        }
+      }
+    },
+    "nowrap": {
+      "nowrap": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1652435710824
+        }
+      }
+    },
+    "语法": {
+      "语法": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652432938724
+        }
+      }
+    },
+    "Contents": {
+      "Contents": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652664410753
+        }
+      }
+    },
+    "文内容": {
+      "文内容": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652664801275
+        }
+      }
+    },
+    "控制": {
+      "控制": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652671734513
+        }
+      }
+    },
+    "10-Help": {
+      "10-Help": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1652672002293
+        }
+      }
+    },
+    "注意": {
+      "注意": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652682391567
+        }
+      }
+    },
+    "标题": {
+      "标题": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652685850766
+        }
+      }
+    },
+    "note": {
+      "note": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652692920946
+        }
+      }
+    },
+    "tip": {
+      "tip": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652693018157
+        }
+      }
+    },
+    "方法": {
+      "方法": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652702727613
+        }
+      }
+    },
+    "设置": {
+      "设置": {
+        "currentVault": {
+          "count": 2,
+          "lastUpdated": 1652703301071
+        }
+      }
+    },
+    "功能": {
+      "功能": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652704212736
+        }
+      }
+    },
+    "演示": {
+      "演示": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652704256073
+        }
+      }
+    },
+    "修复": {
+      "修复": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652704674842
+        }
+      }
+    },
+    "正常": {
+      "正常": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1652704716030
         }
       }
     }

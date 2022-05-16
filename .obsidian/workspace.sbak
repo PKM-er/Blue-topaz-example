@@ -1,0 +1,228 @@
+{
+  "main": {
+    "id": "e8b4ea94b39a8520",
+    "type": "split",
+    "children": [
+      {
+        "id": "fc371ae36bc5eac7",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "图片横排带标题 全宽表格示例.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "687357708cbc920f",
+    "type": "split",
+    "children": [
+      {
+        "id": "4bc1edcafd063cfb",
+        "type": "tabs",
+        "dimension": 54.46650124069479,
+        "children": [
+          {
+            "id": "37c8f55a8ef7a09c",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "b3290ae399933a0b",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "3d21402f76dc34c3",
+            "type": "leaf",
+            "state": {
+              "type": "starred",
+              "state": {}
+            }
+          }
+        ]
+      },
+      {
+        "id": "d877e8285f98a38a",
+        "type": "tabs",
+        "dimension": 45.53349875930521,
+        "children": [
+          {
+            "id": "b37bc3d287f74512",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "80430a4f104c0c57",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "5ee52b332527fc75",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 255
+  },
+  "right": {
+    "id": "4e390742ffc29613",
+    "type": "split",
+    "children": [
+      {
+        "id": "d4c25b22f0c7d5f0",
+        "type": "tabs",
+        "dimension": 43,
+        "children": [
+          {
+            "id": "ca4e910af4602420",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "340969ccd24905e8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "图片横排带标题 全宽表格示例.md"
+              }
+            }
+          },
+          {
+            "id": "83061aceea29f566",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/彩色时钟.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "0b3485207df574dd",
+        "type": "tabs",
+        "dimension": 56.99999999999999,
+        "children": [
+          {
+            "id": "041c78328387b373",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "图片横排带标题 全宽表格示例.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "dc4a81bfd6624166",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "图片横排带标题 全宽表格示例.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "b2ae90cb6049dbe9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "8851ccb0aa4e524a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/常用工具.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4f457051e10f1a14",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      }
+    ],
+    "direction": "horizontal",
+    "width": 265
+  },
+  "active": "fc371ae36bc5eac7",
+  "lastOpenFiles": [
+    "图片横排带标题 全宽表格示例.md",
+    "未命名.md",
+    "88-Template/home.md",
+    "88-Template/ReactJS/react-buttons.md",
+    "88-Template/ReactJS/react-music.md",
+    "88-Template/ReactJS/ReactJS.md",
+    "00-Tips/00-Tips.md",
+    "77-Example/各级标题示例.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "从这开始.md"
+  ]
+}

@@ -250,8 +250,7 @@ text
 ![|inlL|100](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
 十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
 #### 图片并排
-![|inl|50](obsidian_image.png) 十十十十十十十十![|inl|50](obsidian_image.png) ![|inl|50](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png) ![|inl|50](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
-十十十十十十十十十十十十十十十十十十十十十十十十
+十十十十十十十十![|inl|50](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png) ![|inl|50](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
 十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十十
 `inlineL`/`InlineL`/`INLINEL`/`inlL` 这类写法都是支持的
 
@@ -305,6 +304,10 @@ text
 使用`#inl`
 ![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|200]]![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|100]]![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|150]]![[obsidian_image.png#inl|Figure 1. 这是鸡蛋|100]]
 
+
+####  `![]()`网络图片格式添加图片标题
+[[图片横排布局以及添加标题#图片添加标题]]
+
 ```ad-tips
 同样需要注意使用图片的位置。
 ```
@@ -333,6 +336,10 @@ cssclass: img-grid
 ```
 
 点击这里查看样式 [[Image-grid【图片自适应】]]
+
+#### 方法四
+[[图片横排布局以及添加标题#元素单行显示带滚动条]]
+[[图片横排布局以及添加标题#元素网格等比显示不带滚动条]]
 ## HTML标签
 ### stickies
 *thanks to death_au, Gabroel and Lithou from Obsidian Members Group on Discord*
@@ -369,6 +376,7 @@ blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 <aside><h1> Your words </h1></aside>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 <aside><h2> Your words </h2></aside>blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
+
 ## 勾选框
 - [<] 自定义
 	- [+] add
@@ -383,12 +391,13 @@ blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah 
 ---
 
 1. [ ] aaa
-		1. [x] as
-		1. [!] aa
-		2. [+] aaa
-2. [>] aa
-		1. [<] aaa
-3. [?] aaa
+	1. [!] xxx
+		1. [?] 444
+		2. [<] 444
+2. [>] aaa
+	1. [<] aaa
+3. [x] aaa
+	1. [x] 444
 ## mermaid
 mermaid做了宽度适配
 
