@@ -1,9 +1,9 @@
-/*蓝色托帕石，适合Obsidian v0.14.10。uid [20220514] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.10, uid [20220514] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.12。uid [20220517] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.12, uid [20220517] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
-@LillianWho @成雙酱 @嘴上云 @Klaas @Thinkbond @Rainbell129(AKA Lavi) @awyugan */
+@LillianWho @成雙酱 @嘴上云 @Klaas @Thinkbond @Rainbell129(AKA Lavi) @awyugan @GeoffreyOuO (WooYoo~~~)*/
 
 
 /* @settings
@@ -1019,7 +1019,7 @@ settings:
     description: Fonts except from the code texts
     description.zh: 除代码框外字体
     type: variable-text
-    default: "Bookerly, Merriweather, 'LXGW WenKai', 'Segoe UI Emoji', var(--font-default)"
+    default: "Bookerly, 'LXGW WenKai', 'Segoe UI Emoji', var(--font-default)"
   - 
     id: font-family-h1
     title: Header 1
@@ -1044,12 +1044,12 @@ settings:
     id: font-family-h5
     title: Header 5
     type: variable-text
-    default: "Bookerly, Merriweather, 'LXGW WenKai', var(--font-default)"
+    default: "Bookerly, 'LXGW WenKai', var(--font-default)"
   - 
     id: font-family-h6
     title: Header 6
     type: variable-text
-    default: "Bookerly, Merriweather, 'LXGW WenKai', var(--font-default)"
+    default: "Bookerly, 'LXGW WenKai', var(--font-default)"
   - 
     id: font-family-folder-file-title
     title: Folder & File Title
@@ -1514,12 +1514,6 @@ settings:
     title: Remove Colorful Background of Active File Title
     title.zh: 取消激活文件标题的彩色背景
     description: Make it austere
-    type: class-toggle
-    default: false
-  -
-    id: loading-animation
-    title: Animation on the Loading Page 
-    title.zh: 加载页面的动画
     type: class-toggle
     default: false
   - 
@@ -2492,6 +2486,149 @@ settings:
     level: 4
     collapsed: true
   -
+    id: loading-page-style-folder
+    title: 2.3.16 Loading Page 
+    title.zh: 2.3.16 加载页面
+    type: heading
+    level: 3
+    collapsed: true
+  -
+    id: default-loading-page
+    title: Toggle Default Loading Page
+    title.zh: 还原默认加载页面
+    type: class-toggle
+    default: false
+  -
+    id: loading-page-style-option
+    title: Loading Page Style
+    type: class-select
+    allowEmpty: false
+    default: loading-page-style-default
+    options:
+      - 
+        label: Shapes
+        value: loading-page-style-default
+      - 
+        label: Custom Text
+        value: loading-custom-text 
+      - 
+        label: Default Text w/ Icons Before and After
+        value: loading-add-icons
+      - 
+        label: Cat (GIF)
+        value: loading-animation-cat
+      - 
+        label: Adding Image or Animation (GIF)
+        value: loading-animation-custom
+  -
+    id: loading-custom-text-folder
+    title: 2.3.16.1 Custom Text
+    type: heading
+    level: 4
+    collapsed: false
+  -
+    id: loading-diy-text
+    title: Custom Text
+    title.zh: 自定义文字
+    type: variable-text
+    default: "'快乐摸鱼又一天，人生还剩多少天？'"
+  -
+    id: font-loading-text
+    title: Font Family of Custom Text 
+    title.zh: 字体
+    type: variable-text
+    default: "Arial"
+  -
+    id: font-size-loading-diy-text
+    title: Font Size
+    type: variable-text
+    default: 3em
+  -
+    id: loading-diy-text-color
+    title: Text Color
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: loading-text-typing-style
+    title: Typing Style
+    title.zh: 打字效果
+    type: class-toggle
+    default: true
+  -
+    id: loading-text-moving-style
+    title: Moving Style
+    title.zh: 移动效果
+    type: class-toggle
+    default: false
+  -
+    id: loading-text-shinning-style
+    title: Shinning Style
+    title.zh: 闪烁效果
+    type: class-toggle
+    default: false
+  -
+    id: loading-text-color-changing-style
+    title: Color-changing Style
+    title.zh: 变色效果
+    type: class-toggle
+    default: false
+  -
+    id: loading-add-icons-folder
+    title: 2.3.16.2 Custom Image/Animation
+    type: heading
+    level: 4
+    collapsed: false
+  -
+    id: loading-text-before
+    title: Adding Things Before
+    type: variable-text
+    default: "'❀✿'"
+  -
+    id: loading-text-after
+    title: Adding Things After
+    type: variable-text
+    default: "'✿❀'"
+  -
+    id: font-size-loading-add
+    title: Font Size
+    type: variable-text
+    default: 1.5em
+  -
+    id: loading-add-text-color
+    title: Text Color
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#D3959B'
+    default-dark: '#D3959B'
+  -
+    id: loading-add-text-color-alt
+    title: Text Color
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#BFE6BA'
+    default-dark: '#BFE6BA'
+  -
+    id: loading-animation-custom-folder
+    title: 2.3.16.3 Custom Image/Animation
+    type: heading
+    level: 4
+    collapsed: false
+  -
+    id: loading-page-custom-gif-url
+    title: Custom Loading Page Image/Animation
+    type: variable-text
+    default: url(https://)
+  -
+    id: loading-page-custom-gif-caption
+    title: Image Caption
+    type: variable-text
+    default: " "
+  -
     id: style-options-for-other-plugins
     title: 3. For Plugins
     title.zh: 3. 插件样式
@@ -3080,6 +3217,8 @@ body {
   --font-size-better-footnote: 1.3em;
   --font-size-checklist: 0.85em;
   --font-size-split: 0.85em;
+  --font-size-loading-diy-text: 3em;
+  --font-size-loading-add: 1.5em;
 
   /*font family*/
   --font-family-list: ;/*列表字体*/
@@ -3103,6 +3242,8 @@ body {
   --font-family-better-footnote: Arlrdbd, "Source Han Sans", "Segoe UI Emoji";
   --font-family-strong: Bookerly, "LXGW WenKai Screen", "LXGW WenKai Screen R", "Segoe UI Emoji", var(--font-default);
   --font-family-em: ;
+  --font-loading-text: Arial;
+
 
   /*radius*/
   --radius-xs: 0.1875em;/*3px*/
@@ -3144,6 +3285,15 @@ body {
 
   --checkbox-size: 1rem;
 
+  --loading-diy-text: '快乐摸鱼又一天，人生还剩多少天？';
+  --loading-diy-text-color: var(--text-normal);
+  --loading-page-custom-gif-caption: " ";
+  --loading-page-custom-gif-url: url(https://);
+  --loading-text-before: "❀✿";
+  --loading-text-after: "✿❀";
+  --loading-add-text-color: #d47e86;
+  --loading-add-text-color-alt: #a4e39c;
+  
   --nord0: #2E3440;
   --nord1: #3B4252;
   --nord1-1: #3B425251;
@@ -3225,7 +3375,7 @@ body {
   --fancy-cursor-radius: 3px;
   --fancy-cursor-transition: 200ms;
 
-  --print-strong-color: var(--accent-strong);
+  --print-strong-color: black;
   --print-em-color: var(--accent-em);
 }
 
@@ -3462,7 +3612,7 @@ body.all-dark .print.theme-light,
   --text-yellow: #ffdc51;
   --text-yellow-2: #cca217;
   --text-green: #52c7b2;
-  --text-blue: #8ca1ff;
+  --text-blue: #7c94ff;
   --text-purple: #b386f1;
   --text-pink: #ff6bba;
   --text-red: #ff4f4f;
@@ -11572,8 +11722,10 @@ body.table-style-three .markdown-source-view table tbody>tr {
 
   	/*	Reading View -- similar to Editing View, set all divs to normal-width and then selected divs to full-width, 
 		however, for Reading View, wide-dataview and wide-table will require Contextual Typography plugin */
-	div.markdown-preview-view:is(.wide-dataview,.wide-table,.wide-backlinks,.wide-callout) .markdown-preview-sizer.markdown-preview-sizer > div
+    :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)	div.markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:not(.obsidian-banner-wrapper)
   { max-width: var(--line-width-readable); margin-inline: auto; } /* important is for Atom theme */
+
+
 body.full-width-dvtable .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-lang-dataview),
 body.full-width-table .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-table),
 body.full-width-callout .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div[data-callout],
@@ -11730,7 +11882,7 @@ body.bt-status-off .status-bar {
   padding: 2px 8px 6px 3px;
 }
 body.bt-status-off .document-search-container{
-  width: 72%;
+  width: 80%;
   background-color: var(--background-secondary-bg-4-bt);
 }
 
@@ -12391,6 +12543,14 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
   margin-left: auto !important;
   margin-right: auto !important;
 }
+body:not(.image-zoom) .markdown-reading-view button img
+ {
+  pointer-events: none;
+  }
+  body:not(.image-zoom) .markdown-reading-view .callout-title-inner img
+  {
+   pointer-events: none;
+   }
 
 body:not(.image-zoom) .markdown-reading-view img:not([class*="emoji"]):active,
 .workspace-leaf-content[data-type="image"] img:active {
@@ -20459,34 +20619,244 @@ body.plain-file-title.theme-dark {
   --color-view-header-gradient-2: var(--background-primary-bg-4-bt);
 }
 
+body:not(.default-loading-page) .progress-bar-message {
+  visibility: hidden;
+}
+
+body:not(.default-loading-page) .progress-bar-message:before {
+  content: "";
+  width: 80px;
+  height: 80px;
+  position: relative;
+  animation: shape 2.5s infinite alternate;
+  visibility: visible !important;
+  display: block;
+}
+
+body:not(.default-loading-page).theme-light .progress-bar {
+  background-color: white;
+}
+
+@keyframes shape {
+  0% {background-color: transparent; left: -100px; top: -100px;border-radius: 50%;}
+  20% {background-color: var(--text-blue); left: -100px; top: -100px;}
+  35% {background-color: var(--text-green); left: 100px; top: -100px;border-radius: 10%;}
+  50% {background-color: var(--text-yellow); left: 100px; top: 100px;}
+  65% {background-color: var(--text-red); left: -100px; top: 100px;border-radius: 10%;}
+  80% {background-color: var(--text-blue); left: -100px; top: -100px;border-radius: 50%;}
+  100% {background-color: transparent; left: -100px; top: -100px;border-radius: 50%;}
+}
+
 /* the gif animation was created by @Jake Fleming https://dribbble.com/shots/9948351-kitty-wiggle */
-body.loading-animation .progress-bar-message::before {
+body:not(.default-loading-page).loading-animation-cat .progress-bar-message::before {
   content: "GIF creator: Jake Fleming"; 
   display: block;
-  background: no-repeat center/cover  url(https://cdn.dribbble.com/users/53712/screenshots/9948351/media/2397850c7727f8e70b0ec50b5a83fe76.gif);
+  background: no-repeat center/cover url(https://cdn.dribbble.com/users/53712/screenshots/9948351/media/2397850c7727f8e70b0ec50b5a83fe76.gif);
   width: 800px; 
   height: 500px;
   margin-top: -20px; 
   font-size: initial;
   color: var(--text-muted);
   filter: hue-rotate(-55deg) saturate(120%);
+  position: initial;
+  animation: unset;
 }
 
-body.loading-animation.theme-dark .progress-bar-message::before {
+body:not(.default-loading-page).loading-animation-cat.theme-dark .progress-bar-message::before {
   filter: invert(100%) hue-rotate(153deg) saturate(250%);
 }
 
-body.loading-animation.theme-light .progress-bar {
+body:not(.default-loading-page).loading-animation-cat.theme-light .progress-bar {
   background-color: white;
 }
 
-body.loading-animation.theme-dark .progress-bar {
+body:not(.default-loading-page).loading-animation-cat.theme-dark .progress-bar {
   background-color: black;
 }
 
-body.loading-animation .progress-bar-message {
+body:not(.default-loading-page).loading-animation-cat .progress-bar-message {
   color: var(--text-normal);
   font-size: 25px;
+  visibility: visible;
+}
+
+body:not(.default-loading-page).loading-animation-custom .progress-bar-message::before {
+  position: initial;
+  animation: unset;
+  display: block;
+  content: var(--loading-page-custom-gif-caption); 
+  background: no-repeat center/cover var(--loading-page-custom-gif-url);
+  width: 800px; 
+  height: 600px;
+  margin-top: -20px; 
+}
+
+body:not(.default-loading-page).loading-add-icons .progress-bar-message {
+  all: initial;
+  font-size: var(--font-size-loading-add);
+  color: var(--loading-add-text-color); 
+  animation: 1.5s infinite alternate;
+  animation-name: gradientChange, moving;
+} 
+
+/*加载画面的文字*/
+body:not(.default-loading-page).loading-add-icons .progress-bar-message::before {
+  all: initial;
+  color: var(--loading-add-text-color); 
+  content: var(--loading-text-before);
+  animation: 2s infinite alternate;
+  animation-name: gradientChange;
+}
+
+body:not(.default-loading-page).loading-add-icons .progress-bar-message::after {
+  all: initial;
+  color: var(--loading-add-text-color); 
+  content: var(--loading-text-after);
+  animation: 2s infinite alternate;
+  animation-name: gradientChange;
+}
+
+@keyframes gradientChange { 
+  100% { color: var(--loading-add-text-color-alt); }
+}
+@keyframes moving {
+  0% { transform: translateX(-100px); } 
+  100% { transform: translateX(100px); } 
+}
+
+body:not(.default-loading-page).loading-custom-text .progress-bar-message::before {
+  all: initial;
+  content: var(--loading-diy-text);
+  font-family: var(--font-loading-text) !important;
+  visibility: visible !important;
+  display: block;
+  font-size: var(--font-size-loading-diy-text);
+  line-height: 2;
+  color: var(--loading-diy-text-color);
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-typing-style .progress-bar-message::before {
+  overflow: hidden;
+  white-space: nowrap;
+  border-right: 0.1em solid;
+  margin: 2em 1em;
+  width: 26ch;
+  animation: typing-style 3s steps(26, end),
+    cursor-blink 0.3s step-end infinite alternate;
+}
+
+@keyframes cursor-blink {
+  50% {border-color: transparent;}
+}
+
+@keyframes typing-style {
+  0% {width: 0;}
+  100% {width: 26ch;}
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-moving-style .progress-bar-message::before {
+  animation: moving-style 3s ease-in-out infinite alternate;
+}
+
+@keyframes moving-style {
+  0% {-webkit-transform: translateX(-100px); transform: translateX(-100px);}
+  50% {-webkit-transform: translateX(100px); transform: translateX(100px);}
+  100% {-webkit-transform: translateX(-100px); transform: translateX(-100px)}
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-shinning-style .progress-bar-message::before {
+  animation: shinning-style 3s infinite;
+}
+
+@keyframes shinning-style {
+  0% { opacity: 1;}
+  45% { opacity: 0;}
+  90% { opacity: 1;}
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-color-changing-style .progress-bar-message::before {
+  animation: color-changing-style 3s infinite;
+}
+
+@keyframes color-changing-style {
+  0% { color: var(--text-blue);}
+  25% { color: var(--text-green);}
+  50% { color: var(--text-yellow);}
+  75% { color: var(--text-red);}
+  100% { color: var(--text-blue);}
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-typing-style.loading-text-moving-style .progress-bar-message::before {
+  animation: 
+    typing-style 3s steps(26, end),
+    cursor-blink 0.3s step-end infinite alternate,
+    moving-style 3s ease-in-out infinite alternate;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-typing-style.loading-text-shinning-style .progress-bar-message::before {
+  animation: 
+    typing-style 3s steps(26, end),
+    cursor-blink 0.3s step-end infinite alternate,
+    shinning-style 3s infinite;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-typing-style.loading-text-color-changing-style .progress-bar-message::before {
+  animation: 
+    color-changing-style 3s infinite, 
+    typing-style 3s steps(26, end),
+    cursor-blink 0.3s step-end infinite alternate;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-typing-style.loading-text-moving-style.loading-text-shinning-style .progress-bar-message::before {
+  animation: 
+    typing-style 3s steps(26, end),
+    cursor-blink 0.3s step-end infinite alternate,
+    moving-style 3s ease-in-out infinite alternate,
+    shinning-style 3s infinite;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-typing-style.loading-text-moving-style.loading-text-shinning-style.loading-text-color-changing-style .progress-bar-message::before {
+  animation: 
+    typing-style 3s steps(26, end),
+    cursor-blink 0.3s step-end infinite alternate,
+    moving-style 3s ease-in-out infinite alternate,
+    shinning-style 3s infinite,
+    color-changing-style 3s infinite;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-moving-style.loading-text-shinning-style .progress-bar-message::before {
+  animation: 
+    moving-style 3s ease-in-out infinite alternate,
+    shinning-style 3s infinite;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-moving-style.loading-text-color-changing-style .progress-bar-message::before {
+  animation: 
+    moving-style 3s ease-in-out infinite alternate,
+    color-changing-style 3s infinite;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-moving-style.loading-text-shinning-style.loading-text-color-changing-style .progress-bar-message::before {
+  animation: 
+    moving-style 3s ease-in-out infinite alternate,
+    shinning-style 3s infinite,
+    color-changing-style 3s infinite;
+}
+
+body:not(.default-loading-page).loading-custom-text.loading-text-shinning-style.loading-text-color-changing-style .progress-bar-message::before {
+  animation: 
+    shinning-style 3s infinite,
+    color-changing-style 3s infinite;
+}
+
+/*加载画面的进度条框*/
+body:not(.default-loading-page) .progress-bar-line {
+  display: none;
+}
+
+/*加载画面的进度条*/
+body:not(.default-loading-page) .progress-bar-subline {
+  display: none;
 }
 
 /* ================================== */
@@ -20610,7 +20980,10 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   max-width: 100%;
   /* margin: 0 auto; */
 }
-
+/*隐藏backlinks区域*/
+:is(.markdown-preview-view,.markdown-rendered).nobacklinks .embedded-backlinks {
+  display: none;
+}
 /*隐藏yaml区域*/
 :is(.markdown-preview-view,.markdown-rendered).noyaml div>.language-yaml {
   display: none;
@@ -20716,7 +21089,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220514";
+  content: "uid:20220517";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;

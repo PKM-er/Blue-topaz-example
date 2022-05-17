@@ -7,8 +7,13 @@
         "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "88-Template/home.md",
+            "mode": "preview",
+            "backlinks": false,
+            "source": false
+          }
         }
       }
     ],
@@ -113,7 +118,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "88-Template/home.md"
+              }
             }
           },
           {
@@ -143,6 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,6 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -205,15 +214,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "未命名.md",
     "88-Template/home.md",
-    "00-Tips/▪示例库移植说明/如何把示例库移植到你现有的库中？.md",
-    "00-Tips/▪示例库移植说明/▪示例库移植说明.md",
-    "00-Tips/00-Tips.md",
-    "Untitled.md",
-    "20-Diary/2022-05-17.md",
-    "20-Diary/日记统计.md",
-    "20-Diary/未命名 3.md",
-    "20-Diary/delete.md"
+    "Changlog.md",
+    "88-Template/常用工具.md",
+    "88-Template/FastStart-StartupScript.md",
+    "88-Template/FastStart-Plugins-simple.md",
+    "88-Template/FastStart-Plugins-ShortDelay.md",
+    "77-Example/全宽表格示例.md",
+    "77-Example/各类列表和彩虹大纲线.md",
+    "77-Example/77-Example.md",
+    "00-Tips/如何在Obsidian中添加电影卡片.md"
   ]
 }

@@ -89,7 +89,7 @@ updated: 2022-04-07 11:34
 | right\|left\|center   | callout布局位置                 | >[!right] <br>>[!left]<br>>[!center]    |
 | indent                | 全文自动缩进2字符               | >[!indent]                              |
 | blank                 | callout 全透明块                | >[!blank]                               |
-| timeline                      |            时间线样式                     |    [[tiimeline callout效果]]                                     |
+| timeline                      |            时间线样式                     |    [[timeline callout效果]]                                     |
 
 
 **注意 以上类型都可以互相组合使用，具体看下面例子**

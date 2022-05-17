@@ -1,6 +1,7 @@
 ## ✍ 前言
 - 电影数据卡片获取需要[quickadd/movies.js](https://github.com/chhoumann/quickadd/blob/master/docs/Examples/Attachments/movies.js) 通过[OMDb API - The Open Movie Database](https://www.omdbapi.com/) 抓取IMDB数据实现。
 - 卡片视图通过 dataview table 配合 cssclass cards实现。
+- 需要启用【卡片视图】cards.css片段
 - 此思路最早来自Minimal的作者和QuickAdd插件的作者合作实现
 
 ## 👉  如何使用？

@@ -1,5 +1,6 @@
 ---
 obsidianUIMode: preview
+cssclass: nobacklinks
 ---
 
 <div style="height:600px;margin:-100px 0px -40px -40px;" >

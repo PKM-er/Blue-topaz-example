@@ -36,7 +36,6 @@
   "blue-topaz-theme@@hr-color-2@@light": "#268EE4",
   "blue-topaz-theme@@hr-color-3@@light": "#BD30FF",
   "blue-topaz-theme@@hr-color-4@@light": "#6EB4EE",
-  "blue-topaz-theme@@loading-animation": true,
   "blue-topaz-theme@@magic-main-color@@light": "#34495E",
   "blue-topaz-theme@@magic-low-color@@light": "#B3E2B3",
   "blue-topaz-theme@@magic-deep-color@@light": "#3EAF7C",
@@ -152,8 +151,10 @@
   "blue-topaz-theme@@line-width-readable": 52,
   "blue-topaz-theme@@line-height-main": 1.5,
   "blue-topaz-theme@@font-monospace-theme": "'JetBrains Mono',Consolas, Monaco, 'Source Han Mono', 'Microsoft Yahei Mono', 'Segoe UI Emoji', 'Microsoft YaHei', 'Source Code Pro',  monospace",
-  "blue-topaz-theme@@full-width-table": false,
+  "blue-topaz-theme@@full-width-table": true,
   "blue-topaz-theme@@full-width-dvtable": false,
   "blue-topaz-theme@@full-width-callout": false,
-  "blue-topaz-theme@@full-width-backlinks": false
+  "blue-topaz-theme@@full-width-backlinks": false,
+  "blue-topaz-theme@@print-strong-color@@dark": "#525252",
+  "blue-topaz-theme@@loading-page-style-option": "loading-custom-text"
 }

@@ -1,5 +1,6 @@
 {
   "pluginList": [
+    "nothingislost/obsidian-print-preview",
     "scambier/obsidian-omnisearch",
     "obsidian-canzi/Enhanced-editing/",
     "windily-cloud/obsidian-AGtable",
@@ -10,7 +11,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-05-16T09:43:32Z"
+      "lastUpdate": "2022-05-17T12:06:50Z"
     }
   ],
   "updateAtStartup": true,

@@ -27,6 +27,6 @@ obsidianUIMode: preview
 	- **[[Dataview相关实例]]**
 	- [[MD表格悬浮编辑测试]]
 	- [[ob提示框(callout)样式展示]]
-	- [[tiimeline callout效果]]
+	- [[timeline callout效果]]
 
 %% End Waypoint %%

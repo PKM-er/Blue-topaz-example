@@ -1,6 +1,6 @@
 {
   "baseFontSize": 15,
-  "theme": "obsidian",
+  "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
     "【图标】预览网址加图标 - External Link Icons",
@@ -23,7 +23,8 @@
     "【Linkcard】",
     "【Memos】Heatmap",
     "【Memos】Popover",
-    "【Query】keep-live"
+    "【Query】keep-live",
+    "【卡片视图】cards"
   ],
   "translucency": false,
   "textFontFamily": "",

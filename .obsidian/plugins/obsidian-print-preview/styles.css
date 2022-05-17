@@ -1,0 +1,23 @@
+.print-preview .markdown-preview-view {
+  margin: auto;
+  width: 50rem; /* this appears to be the static width of the PDF output */
+  z-index: 20;
+  background-color: white;
+}
+
+.print-preview {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 20;
+  overflow: scroll;
+  background-color: black;
+}
+
+@media print {
+  * {
+    -webkit-print-color-adjust: exact;
+  }
+}
