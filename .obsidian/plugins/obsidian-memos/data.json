@@ -5,11 +5,9 @@
   "ProcessEntriesBelow": "## ✏随笔感悟",
   "Language": "zh",
   "SaveMemoButtonLabel": "记录",
-  "SaveMemoButtonIcon": "✍️",
   "ShareFooterStart": "{MemosNum} 记录 {UsedDay} 天",
   "ShareFooterEnd": "✍️ by {UserName}",
   "DefaultPrefix": "List",
-  "UseDailyOrPeriodic": "Daily",
   "InsertDateFormat": "Tasks",
   "DefaultEditorLocation": "Top",
   "UseButtonToShowEditor": false,
@@ -17,7 +15,7 @@
   "OpenDailyMemosWithMemos": true,
   "HideDoneTasks": false,
   "ShowTaskLabel": true,
-  "OpenMemosAutomatically": false,
+  "OpenMemosAutomatically": true,
   "ShowTime": true,
   "ShowDate": true,
   "AddBlankLineWhenDate": false,
@@ -27,10 +25,5 @@
   "UseVaultTags": false,
   "DefaultLightBackgroundImage": "",
   "DefaultDarkBackgroundImage": "",
-  "DefaultMemoComposition": "{TIME} {CONTENT}",
-  "CommentOnMemos": false,
-  "CommentsInOriginalNotes": true,
-  "FetchMemosMark": "#memo",
-  "FetchMemosFromNote": false,
-  "ShowCommentOnMemos": true
+  "DefaultMemoComposition": "{TIME} {CONTENT}"
 }

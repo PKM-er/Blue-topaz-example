@@ -19,6 +19,31 @@
   margin: 0;
 }
 
+/* experimental */
+/*.quiet-outline .n-tree-node-content__text p { */
+/* .quiet-outline .n-tree-node-wrapper {
+  white-space: pre;
+  overflow: hidden;
+} */
+
+/* .quiet-outline .n-tree:has( .n-tree-node.n-tree-node--highlight) .n-tree-node:not(.n-tree-node--highlight) {
+  display:none;
+} */
+
+/* test features */
+/* .quiet-outline .n-tree-node .n-tree-node-content p{
+  width: 100%;
+  overflow: hidden;
+}
+.quiet-outline .n-tree-node  {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.quiet-outline .n-tree-node:hover {
+  word-break: break-all;
+} */
+
 
 
 /* 悬浮时的背景颜色 */
@@ -116,4 +141,23 @@
 }
 .quiet-outline .level-6 .n-tree-node-indent {
   border-right: 2px solid rgb(188, 1, 226, 0.6);
+}
+
+
+/* location */
+.n-tree-node.located {
+  font-weight: bold !important;
+}
+.n-tree-node code {
+  font-weight: 500 !important;
+}
+.n-tree-node.located code {
+  font-weight: 1000 !important;
+}
+.n-tree-node.located mjx-math {
+  font-weight: bold !important;
+}
+
+.n-tree.n-tree--block-line .n-tree-node:not(.n-tree-node--disabled).n-tree-node--selected {
+  background-color: transparent !important;
 }

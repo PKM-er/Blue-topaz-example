@@ -26,9 +26,8 @@ obsidianUIMode: preview
 		- **template**
 
 	- [[tp_foldermoc]]
-	- [[tp-日记模板-日历图标]]
-	- [[tp-日记模板-时间线]]
-	- [[tp-日记模板]]
+	- [[tp-日记模板-日历]]
+	- [[tp-日记模板-心情]]
 	- [[tp-通用模板]]
 	- [[tp-book-callout]]
 	- [[tp-book]]

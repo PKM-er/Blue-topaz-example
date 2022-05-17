@@ -7,13 +7,8 @@
         "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "Changlog.md",
-            "mode": "source",
-            "backlinks": true,
-            "source": false
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
@@ -118,9 +113,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "Changlog.md"
-              }
+              "state": {}
             }
           },
           {
@@ -150,7 +143,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Changlog.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +159,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Changlog.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -214,15 +205,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "Changlog.md",
-    "77-Example/图片横排布局以及添加标题.md",
+    "未命名.md",
     "88-Template/home.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "77-Example/ob提示框(callout)样式展示.md",
-    "88-Template/FastStart-Plugins-LongDelay.md",
-    "88-Template/示例库内置的插件列表.md",
-    "未命名 2.md",
-    "未命名 1.md",
-    "未命名.md"
+    "00-Tips/▪示例库移植说明/如何把示例库移植到你现有的库中？.md",
+    "00-Tips/▪示例库移植说明/▪示例库移植说明.md",
+    "00-Tips/00-Tips.md",
+    "Untitled.md",
+    "20-Diary/2022-05-17.md",
+    "20-Diary/日记统计.md",
+    "20-Diary/未命名 3.md",
+    "20-Diary/delete.md"
   ]
 }

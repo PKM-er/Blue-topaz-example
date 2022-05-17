@@ -1,16 +1,104 @@
 {
   "recentFiles": [
     {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
+      "basename": "如何把示例库移植到你现有的库中？",
+      "path": "00-Tips/▪示例库移植说明/如何把示例库移植到你现有的库中？.md"
+    },
+    {
+      "basename": "▪示例库移植说明",
+      "path": "00-Tips/▪示例库移植说明/▪示例库移植说明.md"
+    },
+    {
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
+    },
+    {
+      "basename": "2022-05-17",
+      "path": "20-Diary/2022-05-17.md"
+    },
+    {
+      "basename": "日记统计",
+      "path": "20-Diary/日记统计.md"
+    },
+    {
+      "basename": "delete",
+      "path": "20-Diary/delete.md"
+    },
+    {
+      "basename": "query",
+      "path": "20-Diary/query.md"
+    },
+    {
+      "basename": "tp-日记模板-心情",
+      "path": "88-Template/tp-日记模板-心情.md"
+    },
+    {
+      "basename": "tp-日记模板-日历",
+      "path": "88-Template/tp-日记模板-日历.md"
+    },
+    {
+      "basename": "20-Diary",
+      "path": "20-Diary/20-Diary.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "2022-05-12",
+      "path": "20-Diary/2022-05-12.md"
+    },
+    {
+      "basename": "Calendar2021-2022",
+      "path": "88-Template/Calendar2021-2022.md"
+    },
+    {
+      "basename": "2022-W10",
+      "path": "20-Diary/2022-W10.md"
+    },
+    {
+      "basename": "常用工具react",
+      "path": "88-Template/常用工具react.md"
+    },
+    {
+      "basename": "ReactJS",
+      "path": "88-Template/ReactJS/ReactJS.md"
+    },
+    {
+      "basename": "react_music",
+      "path": "88-Template/ReactJS/react_music.md"
+    },
+    {
+      "basename": "react_buttons",
+      "path": "88-Template/ReactJS/react_buttons.md"
+    },
+    {
+      "basename": "slidegallery",
+      "path": "88-Template/ReactJS/slidegallery.md"
+    },
+    {
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
+    },
+    {
+      "basename": "电影看板",
+      "path": "77-Example/Dataview相关实例/电影看板.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
       "basename": "Changlog",
       "path": "Changlog.md"
     },
     {
       "basename": "图片横排布局以及添加标题",
       "path": "77-Example/图片横排布局以及添加标题.md"
-    },
-    {
-      "basename": "home",
-      "path": "88-Template/home.md"
     },
     {
       "basename": "🥑Blue Topaz Themes Tips",
@@ -29,10 +117,6 @@
       "path": "88-Template/示例库内置的插件列表.md"
     },
     {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
-    },
-    {
       "basename": "全宽表格示例",
       "path": "77-Example/全宽表格示例.md"
     },
@@ -43,10 +127,6 @@
     {
       "basename": "10-Help",
       "path": "10-Help/10-Help.md"
-    },
-    {
-      "basename": "分栏效果示例",
-      "path": "77-Example/分栏效果示例.md"
     },
     {
       "basename": "伪看板-yaml声明",
@@ -61,20 +141,8 @@
       "path": "77-Example/各类列表和彩虹大纲线.md"
     },
     {
-      "basename": "2022-05-12",
-      "path": "20-Diary/2022-05-12.md"
-    },
-    {
       "basename": "tiimeline callout效果",
       "path": "77-Example/tiimeline callout效果.md"
-    },
-    {
-      "basename": "电影看板",
-      "path": "77-Example/Dataview相关实例/电影看板.md"
-    },
-    {
-      "basename": "20-Diary",
-      "path": "20-Diary/20-Diary.md"
     },
     {
       "basename": "单独定制笔记背景",
@@ -117,10 +185,6 @@
       "path": "77-Example/77-Example.md"
     },
     {
-      "basename": "▪示例库移植说明",
-      "path": "00-Tips/▪示例库移植说明/▪示例库移植说明.md"
-    },
-    {
       "basename": "Obsidian 快捷键一览表",
       "path": "10-Help/Obsidian 快捷键一览表.md"
     },
@@ -131,62 +195,6 @@
     {
       "basename": "电影观看清单-状态控制（dvjs）",
       "path": "77-Example/Dataview相关实例/电影观看清单-状态控制（dvjs）.md"
-    },
-    {
-      "basename": "带进度条的任务列表",
-      "path": "77-Example/Dataview相关实例/带进度条的任务列表.md"
-    },
-    {
-      "basename": "电影观看清单（dv）",
-      "path": "77-Example/Dataview相关实例/电影观看清单（dv）.md"
-    },
-    {
-      "basename": "99-Attachment",
-      "path": "99-Attachment/99-Attachment.md"
-    },
-    {
-      "basename": "obsidian_image",
-      "path": "99-Attachment/obsidian_image.png"
-    },
-    {
-      "basename": "Callout环绕布局、缩进效果示例",
-      "path": "77-Example/Callout环绕布局、缩进效果示例.md"
-    },
-    {
-      "basename": "FastStart-StartupScript",
-      "path": "88-Template/FastStart-StartupScript.md"
-    },
-    {
-      "basename": "FastStart-Plugins-ShortDelay",
-      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
-    },
-    {
-      "basename": "react-buttons",
-      "path": "88-Template/ReactJS/react-buttons.md"
-    },
-    {
-      "basename": "◾ Cssclass声明样式举例",
-      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
-    },
-    {
-      "basename": "moc",
-      "path": "88-Template/ReactJS/moc.md"
-    },
-    {
-      "basename": "ColorfulClock",
-      "path": "88-Template/ReactJS/ColorfulClock.md"
-    },
-    {
-      "basename": "slidegallery",
-      "path": "88-Template/ReactJS/slidegallery.md"
-    },
-    {
-      "basename": "react-music",
-      "path": "88-Template/ReactJS/react-music.md"
-    },
-    {
-      "basename": "ReactJS",
-      "path": "88-Template/ReactJS/ReactJS.md"
     }
   ],
   "omittedPaths": [],

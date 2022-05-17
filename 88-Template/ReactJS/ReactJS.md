@@ -9,8 +9,8 @@ obsidianUIMode: preview
 	- [[返回当前活动笔记的所有反向链接]]
 	- [[ColorfulClock]]
 	- [[moc]]
-	- [[react-buttons]]
-	- [[react-music]]
+	- [[react_buttons]]
+	- [[react_music]]
 	- [[slidegallery]]
 
 %% End Waypoint %%

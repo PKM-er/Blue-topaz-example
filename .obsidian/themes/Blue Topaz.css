@@ -11730,7 +11730,7 @@ body.bt-status-off .status-bar {
   padding: 2px 8px 6px 3px;
 }
 body.bt-status-off .document-search-container{
-  width: 72%;
+  width: 80%;
   background-color: var(--background-secondary-bg-4-bt);
 }
 
@@ -12391,7 +12391,10 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
   margin-left: auto !important;
   margin-right: auto !important;
 }
-
+body:not(.image-zoom) .markdown-reading-view button img
+ {
+  pointer-events: none;
+  }
 body:not(.image-zoom) .markdown-reading-view img:not([class*="emoji"]):active,
 .workspace-leaf-content[data-type="image"] img:active {
   cursor: zoom-out !important;

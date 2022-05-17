@@ -9,7 +9,7 @@ cssclass: mynote,noyaml
 > [!blank] 
 > [timeline{{date:DDD}}::timeline]
 ```ad-flex
-(Weather::<% tp.user.getweather("{{date:YYYY-MM-DD}}") %>)
+(Weather::<% tp.user.getweather("") %>)
 > [!infobox|noicon]- 🔖 当天创建的文件
 > ```dataviewjs 
 const filename=dv.current().file.name;

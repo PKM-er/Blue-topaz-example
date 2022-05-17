@@ -16124,6 +16124,13 @@ body.style-options-for-admonition-plugin .admonition-flex .admonition-content>di
   flex: 1;
   margin: 0 0.625rem;
 }
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content[data-embed-type="image"] p{
+  align-self: baseline;
+}
+
+body.style-options-for-admonition-plugin .admonition-flex .admonition-content[data-embed-type="image"] {
+justify-content: space-around;
+}
 
 /*ad-table*/
 body.style-options-for-admonition-plugin .admonition-table {
@@ -21714,9 +21721,19 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   border: none;
   padding: 0;
   background-color: unset;
+
 }
 .callout.callout[data-callout="timeline"] .callout-content blockquote p::before {
   display: none;
+}
+.callout.callout[data-callout="timeline"] .callout-content blockquote {
+  padding-top: 1em;
+}
+.callout.callout[data-callout="timeline"] .callout-content blockquote + *:not(.callout) {
+  padding-top: 1em;
+}
+.callout.callout[data-callout="timeline"] .callout-content hr+ *:not(.callout) {
+  padding-top: 1em;
 }
 .callout.callout[data-callout="timeline"] .callout-content blockquote p {
   display: block;
@@ -21774,4 +21791,9 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   pointer-events: initial;
   transition: ease .2s background;
   font-size: 4em;
+}
+
+/*禁用点击超链接跳转 需要跳转 按ctrl+超链接即可*/
+.cm-s-obsidian span.cm-link {
+  pointer-events:none ;
 }
