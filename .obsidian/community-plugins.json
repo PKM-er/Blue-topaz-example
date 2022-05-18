@@ -19,5 +19,6 @@
   "dataview",
   "obsidian-react-components",
   "obsidian-hover-editor",
-  "obsidian-memos"
+  "obsidian-memos",
+  "obsidian-custom-frames"
 ]

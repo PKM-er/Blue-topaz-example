@@ -1,20 +1,72 @@
 {
   "recentFiles": [
     {
-      "basename": "全宽表格示例",
-      "path": "77-Example/全宽表格示例.md"
-    },
-    {
-      "basename": "ob提示框(callout)样式展示",
-      "path": "77-Example/ob提示框(callout)样式展示.md"
+      "basename": "历史上的今天",
+      "path": "50-Inbox/历史上的今天.md"
     },
     {
       "basename": "home",
       "path": "88-Template/home.md"
     },
     {
+      "basename": "文本处理-textce",
+      "path": "50-Inbox/文本处理-textce.md"
+    },
+    {
+      "basename": "50-Inbox",
+      "path": "50-Inbox/50-Inbox.md"
+    },
+    {
+      "basename": "Cubox",
+      "path": "50-Inbox/Cubox.md"
+    },
+    {
+      "basename": "react_weather",
+      "path": "88-Template/ReactJS/react_weather.md"
+    },
+    {
       "basename": "常用工具",
       "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "未命名",
+      "path": "未命名.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "ColorfulClock",
+      "path": "88-Template/ReactJS/ColorfulClock.md"
+    },
+    {
+      "basename": "react_buttons",
+      "path": "88-Template/ReactJS/react_buttons.md"
+    },
+    {
+      "basename": "返回当前活动笔记的所有反向链接",
+      "path": "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
+    },
+    {
+      "basename": "react_music",
+      "path": "88-Template/ReactJS/react_music.md"
+    },
+    {
+      "basename": "ReactJS",
+      "path": "88-Template/ReactJS/ReactJS.md"
+    },
+    {
+      "basename": "常用工具react",
+      "path": "88-Template/常用工具react.md"
+    },
+    {
+      "basename": "全宽表格示例",
+      "path": "77-Example/全宽表格示例.md"
+    },
+    {
+      "basename": "ob提示框(callout)样式展示",
+      "path": "77-Example/ob提示框(callout)样式展示.md"
     },
     {
       "basename": "01 - Default Table",
@@ -51,14 +103,6 @@
     {
       "basename": "分栏效果示例",
       "path": "77-Example/分栏效果示例.md"
-    },
-    {
-      "basename": "未命名",
-      "path": "未命名.md"
-    },
-    {
-      "basename": "README",
-      "path": "README.md"
     },
     {
       "basename": "FastStart-Plugins-LongDelay",
@@ -155,50 +199,6 @@
     {
       "basename": "电影观看清单-状态控制（dvjs）",
       "path": "77-Example/Dataview相关实例/电影观看清单-状态控制（dvjs）.md"
-    },
-    {
-      "basename": "电影看板",
-      "path": "77-Example/Dataview相关实例/电影看板.md"
-    },
-    {
-      "basename": "图书阅读清单-状态控制(dvjs)",
-      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
-    },
-    {
-      "basename": "各级标题示例",
-      "path": "77-Example/各级标题示例.md"
-    },
-    {
-      "basename": "2022-04-03",
-      "path": "20-Diary/2022-04-03.md"
-    },
-    {
-      "basename": "示例库内置的插件列表",
-      "path": "88-Template/示例库内置的插件列表.md"
-    },
-    {
-      "basename": "常用工具react",
-      "path": "88-Template/常用工具react.md"
-    },
-    {
-      "basename": "天气js",
-      "path": "88-Template/天气js.md"
-    },
-    {
-      "basename": "tp-日记模板-日历",
-      "path": "88-Template/tp-日记模板-日历.md"
-    },
-    {
-      "basename": "单独定制笔记背景",
-      "path": "77-Example/单独定制笔记背景.md"
-    },
-    {
-      "basename": "可以编辑的dv表格",
-      "path": "77-Example/Dataview相关实例/可以编辑的dv表格.md"
-    },
-    {
-      "basename": "任务卡片",
-      "path": "77-Example/任务卡片.md"
     }
   ],
   "omittedPaths": [],

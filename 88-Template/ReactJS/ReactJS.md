@@ -11,6 +11,7 @@ obsidianUIMode: preview
 	- [[moc]]
 	- [[react_buttons]]
 	- [[react_music]]
+	- [[react_weather]]
 	- [[slidegallery]]
 
 %% End Waypoint %%
