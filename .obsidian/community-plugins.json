@@ -10,10 +10,14 @@
   "workspaces-plus",
   "buttons",
   "obsidian-quiet-outline",
-  "obsidian-react-components",
   "cmenu-plugin",
   "obsidian-contextual-typography",
   "calendar",
-  "obsidian-memos",
-  "obsidian-print-preview"
+  "obsidian-print-preview",
+  "obsidian-banners",
+  "hotkey-helper",
+  "dataview",
+  "obsidian-react-components",
+  "obsidian-hover-editor",
+  "obsidian-memos"
 ]

@@ -161,7 +161,7 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 > 之后关羽跟随刘备投奔刘表，刘表去世后刘备在南逃过程中派遣关羽带领数百艘船前往江陵，并在被曹操追杀后成功与之汇合，一同前往夏口。在刘备平定益州后关羽总督荆州诸事，并在之后进行了刮骨疗毒的壮举。
 > 建安二十四年（219年）刘备自封为汉中王，赐关羽前将军之职，之后在樊城之战中一举斩落庞德，威震华夏。但之后由于孙权反水偷袭以及部下倒戈东吴，关羽军队溃散，败走麦城，被孙权部将抓获，同年十二月在临沮被斩杀。
 > 之后孙权将关羽的头颅送给曹操，曹操以诸侯之礼下葬于洛阳，孙权则将身躯下葬于当阳。后被蜀后主刘禅追谥为壮缪侯。
-> 
+> 关羽去世后，民间尊为“关公”，历代朝廷多有褒封。清朝雍正时期，尊为“武圣”，与“文圣”孔子地位等同。在小说《三国演义》中，名列“五虎上将”之首，使用青龙偃月刀。毛宗岗称其为《演义》三绝中的“义绝”。在宗教文化方面，关羽被道教尊为关圣帝君、文衡帝君，被佛教尊为护法伽蓝菩萨（伽蓝神）  、盖天古佛，被道教尊为协天大帝、翔汉天神等。
 
 ### 图书信息卡片 bookinfo
 
@@ -214,7 +214,7 @@ When high school students finish their study, it is time to think about what kin
 > 
 ![](https://i.pinimg.com/564x/13/1f/e4/131fe4d97e3be0a49a5d07431a917d31.jpg)
 ![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+![](https://s1.ax1x.com/2022/05/18/OI7Io9.png)
 ![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
 ![](https://i.pinimg.com/564x/c5/0f/09/c50f09d991dfcfdbea600ff139739fd8.jpg)
 ![](https://i.pinimg.com/564x/a4/94/01/a494019c68ed85630de16cf8f32523f0.jpg)
@@ -231,7 +231,7 @@ When high school students finish their study, it is time to think about what kin
 > 
 ![](https://i.pinimg.com/564x/13/1f/e4/131fe4d97e3be0a49a5d07431a917d31.jpg)
 ![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png)
+![](https://s1.ax1x.com/2022/05/18/OI7Io9.png)
 ![](https://i.pinimg.com/564x/84/6c/1c/846c1cab0d47dd7970f9a008eeebd68f.jpg)
 ![](https://i.pinimg.com/564x/c5/0f/09/c50f09d991dfcfdbea600ff139739fd8.jpg)
 ![](https://i.pinimg.com/564x/a4/94/01/a494019c68ed85630de16cf8f32523f0.jpg)

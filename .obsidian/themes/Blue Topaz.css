@@ -12536,7 +12536,9 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
   margin-left: auto;
   margin-right: auto;
 }
-
+.print :is(.markdown-preview-view,.markdown-rendered)  img:not([class*="emoji"]) {
+  display: block;
+}
 .view-content img:not([class*="emoji"]) {
   cursor: zoom-in;
   display: block;
@@ -16336,9 +16338,9 @@ body.style-options-for-admonition-plugin .callout.admonition-blank .admonition-c
 body.style-options-for-admonition-plugin :is(.admonition-def,.admonition-thm,.admonition-lem,.admonition-cor,.admonition-pro) {
   margin: 1.5625em 0 !important;
   overflow: visible !important;
-  border: 1px solid rgb(var(--admonition-color)) !important;
+  border: 1px solid rgb(var(--callout-color)) !important;
   border-radius: 0.3em !important;
-  background-color: rgba(var(--admonition-color),0.05) !important;
+  background-color: rgba(var(--callout-color),0.05) !important;
   box-shadow: 0 0 0 !important;
 }
 
@@ -16347,7 +16349,7 @@ body.style-options-for-admonition-plugin :is(.admonition-def,.admonition-thm,.ad
   top: -0.9em;
   left: 1.5em;
   padding: 1px 8px !important;
-  background-color: rgb(var(--admonition-color)) !important;
+  background-color: rgb(var(--callout-color)) !important;
   border-radius: 0.2em;
 }
 
@@ -16356,7 +16358,7 @@ body.style-options-for-admonition-plugin :is(.admonition-def,.admonition-thm,.ad
   top: unset;
   left: 1.5em;
   padding: 1px 8px !important;
-  background-color: rgb(var(--admonition-color)) !important;
+  background-color: rgb(var(--callout-color)) !important;
   border-radius: 0.2em;
   position: relative;
   width: fit-content;
@@ -16371,7 +16373,7 @@ body.style-options-for-admonition-plugin :is(.admonition-def,.admonition-thm,.ad
 body.style-options-for-admonition-plugin :is(.admonition-def,.admonition-thm,.admonition-lem,.admonition-cor,.admonition-pro) *.admonition-title-icon {
 	/* display: none !important; */
   color: white;
-  background-color: rgb(var(--admonition-color));
+  background-color: rgb(var(--callout-color));
   margin: 0.2em;
 }
 
@@ -16411,7 +16413,7 @@ body.style-options-for-admonition-plugin .admonition-hibox {
   height: auto;
   overflow: hidden;
   border-radius: var(--radius-s) !important;
-  background: radial-gradient(circle at 0px 0px, rgba(var(--admonition-color), 0.2) 0, rgba(var(--admonition-color), 0.2) var(--hibox), transparent var(--hibox), transparent 0);
+  background: radial-gradient(circle at 0px 0px, rgba(var(--callout-color), 0.2) 0, rgba(var(--callout-color), 0.2) var(--hibox), transparent var(--hibox), transparent 0);
   transition: --hibox 0.6s linear;
   border-left: none !important;
 }
@@ -17125,16 +17127,16 @@ div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-co
   background-color: var(--background-transparent-black-or-white-4) !important;
 }
 div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
-  background-color: rgba(var(--interactive-accent-rgb), 0.3) !important;
+  background-color: rgba(var(--interactive-accent-rgb), 0.4) !important;
 }
 div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
-  background-color: rgba(var(--interactive-accent-rgb), 0.5) !important;
+  background-color: rgba(var(--interactive-accent-rgb), 0.6) !important;
 }
 div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
-  background-color: rgba(var(--interactive-accent-rgb), 0.7) !important;
+  background-color: rgba(var(--interactive-accent-rgb), 0.8) !important;
 }
 div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
-  background-color: rgba(var(--interactive-accent-rgb), 0.9) !important;
+  background-color: rgba(var(--interactive-accent-rgb), 1) !important;
 }
 
 div[data-type="memos_view"] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.today {
@@ -17198,7 +17200,6 @@ div[data-type='memos_view'].mobile-view .tags-wrapper {
   background-color: var(--background-primary-bg-4-bt) !important;
 }
 
-
 body:is(.grass-light.theme-light,.grass-dark.theme-dark) {
   --stat-day-L1: #9be9a8;
   --stat-day-L2: #40c463;
@@ -17229,16 +17230,16 @@ body:is(.magenta-light.theme-light,.magenta-dark.theme-dark) {
   --stat-day-L3: #ae017e;
   --stat-day-L4: #610070;
 }
-div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
+body:not(.default-light):not(.default-dark) div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
   background-color: var(--stat-day-L1) !important;
 }
-div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+body:not(.default-light):not(.default-dark)div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
   background-color: var(--stat-day-L2) !important;
 }
-div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+body:not(.default-light):not(.default-dark)div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
   background-color: var(--stat-day-L3) !important;
 }
-div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+body:not(.default-light):not(.default-dark)div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
   background-color: var(--stat-day-L4) !important;
 }
 
@@ -20638,13 +20639,11 @@ body:not(.default-loading-page).theme-light .progress-bar {
 }
 
 @keyframes shape {
-  0% {background-color: transparent; left: -100px; top: -100px;border-radius: 50%;}
-  20% {background-color: var(--text-blue); left: -100px; top: -100px;}
-  35% {background-color: var(--text-green); left: 100px; top: -100px;border-radius: 10%;}
-  50% {background-color: var(--text-yellow); left: 100px; top: 100px;}
-  65% {background-color: var(--text-red); left: -100px; top: 100px;border-radius: 10%;}
-  80% {background-color: var(--text-blue); left: -100px; top: -100px;border-radius: 50%;}
-  100% {background-color: transparent; left: -100px; top: -100px;border-radius: 50%;}
+  0% {background-color: #53c7ff; left: -50px; top: -60px; border-radius: 50%;}
+  25% {background-color: #8fff7b; left: 130px; top: -60px;border-radius: 10%;}
+  50% {background-color: #ffe468; left: 130px; top: 120px; border-radius: 0;}
+  75% {background-color: #fe9289; left: -50px; top: 120px;border-radius: 10%;}
+  100% {background-color: #53c7ff; left: -50px; top: -60px;border-radius: 50%;}
 }
 
 /* the gif animation was created by @Jake Fleming https://dribbble.com/shots/9948351-kitty-wiggle */
@@ -20901,9 +20900,6 @@ body:not(.default-loading-page) .progress-bar-subline {
   height: 100%;
 }
 
-.obsidian-banner-wrapper {
-  margin-top: calc(var(--banner-height) + 10px)!important;
-}
 :is(.markdown-preview-view,.markdown-rendered) img.banner-image.full-width{
   max-width: none;
 }
@@ -21082,6 +21078,17 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   body.all-dark .print .markdown-preview-view {
     color: var(--text-normal) !important;
   }
+
+  .print .markdown-preview-view .callout.callout[data-callout="timeline"] >.callout-content
+  {
+    display: grid !important;
+  }
+  .print .markdown-preview-view .callout.callout[data-callout="timeline"] .callout-content hr {
+    visibility: visible;
+  }
+  .print .markdown-preview-view .admonition-flex .admonition-content {
+    display: flex !important;
+    } 
 }
 
 /* ================================== */
@@ -22110,8 +22117,8 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
 }
 .callout.callout[data-callout="timeline"] .callout-content blockquote p {
   display: block;
-  color: var(--time-font-color);
-  background-color: var(--time-color);
+  color: var(--text-on-accent);
+  background-color: var(--interactive-accent);
   font-style: normal;
   padding:6px;
   border-radius: 5px;
@@ -22136,7 +22143,7 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   background-color: transparent;
   box-shadow: none;
   float: left;
-  margin-top: -4.5em;
+  margin-top: -4em;
   margin-bottom: 0px;
 }
 .is-live-preview .callout.callout:is([data-callout-metadata^='icon'],

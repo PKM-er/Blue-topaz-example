@@ -30,16 +30,16 @@ Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
 总览图
 ![image](https://user-images.githubusercontent.com/42957010/165482190-91dc0585-9e75-406c-a7a3-1121c1fc88f7.png)
 
-![](https://gitee.com/cuman/imgbed/raw/master/images/202112312335857.jpg)
+![](https://s1.ax1x.com/2022/05/18/OIHZwQ.jpg)
 
 笔记模板
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201262104928.png)
+![](https://s1.ax1x.com/2022/05/18/OIHYTJ.png)
 卡片视图
 ![image](https://user-images.githubusercontent.com/42957010/165482534-f0ef2dd2-cf3a-4347-b141-e8bbae63566d.png)
 
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201282110608.png)
+![](https://s1.ax1x.com/2022/05/18/OIHbkj.png)
 读书笔记
-![](https://gitee.com/cuman/imgbed/raw/master/images/202201282111244.png)
+![](https://s1.ax1x.com/2022/05/18/OIHxXT.png)
 ## 内置的插件
 斜体插件为可选插件，基本是辅助类，不影响功能性使用。
 除去辅助类插件，剩余基本十几个插件就满足Ob个性化使用的同时还能体验不同的功能。
@@ -202,4 +202,4 @@ ad样式使用方法参考
 
 ![[Pasted image 20220429154332.png]]
 注意2.1 里面的颜色设置 是不是有自定义颜色。这里的自定义颜色设置优先级比较高，建议把里面的颜色设置都恢复成默认就可以了。
-```
+

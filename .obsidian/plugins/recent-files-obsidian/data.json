@@ -1,48 +1,148 @@
 {
   "recentFiles": [
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
+      "basename": "全宽表格示例",
+      "path": "77-Example/全宽表格示例.md"
     },
     {
-      "basename": "Changlog",
-      "path": "Changlog.md"
+      "basename": "ob提示框(callout)样式展示",
+      "path": "77-Example/ob提示框(callout)样式展示.md"
+    },
+    {
+      "basename": "home",
+      "path": "88-Template/home.md"
     },
     {
       "basename": "常用工具",
       "path": "88-Template/常用工具.md"
     },
     {
-      "basename": "FastStart-StartupScript",
-      "path": "88-Template/FastStart-StartupScript.md"
+      "basename": "01 - Default Table",
+      "path": "77-Example/◾ TableExample/01 - Default Table.md"
     },
     {
-      "basename": "FastStart-Plugins-simple",
-      "path": "88-Template/FastStart-Plugins-simple.md"
+      "basename": "◾ TableExample",
+      "path": "77-Example/◾ TableExample/◾ TableExample.md"
+    },
+    {
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
+    },
+    {
+      "basename": "2022-05-18",
+      "path": "20-Diary/2022-05-18.md"
+    },
+    {
+      "basename": "20-Diary",
+      "path": "20-Diary/20-Diary.md"
+    },
+    {
+      "basename": "涂黑和挖空效果（三种语法）",
+      "path": "77-Example/涂黑和挖空效果（三种语法）.md"
+    },
+    {
+      "basename": "图片横排布局以及添加标题",
+      "path": "77-Example/图片横排布局以及添加标题.md"
+    },
+    {
+      "basename": "timeline callout效果",
+      "path": "77-Example/timeline callout效果.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+      "basename": "未命名",
+      "path": "未命名.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "FastStart-Plugins-LongDelay",
+      "path": "88-Template/FastStart-Plugins-LongDelay.md"
     },
     {
       "basename": "FastStart-Plugins-ShortDelay",
       "path": "88-Template/FastStart-Plugins-ShortDelay.md"
     },
     {
-      "basename": "全宽表格示例",
-      "path": "77-Example/全宽表格示例.md"
+      "basename": "FastStart-StartupScript",
+      "path": "88-Template/FastStart-StartupScript.md"
     },
     {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "77-Example/各类列表和彩虹大纲线.md"
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "《从零开始的女性主义》",
+      "path": "30-Reading/《从零开始的女性主义》.md"
+    },
+    {
+      "basename": "图书阅读清单(dv)",
+      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md"
+    },
+    {
+      "basename": "◾ Cssclass声明样式举例",
+      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
+    },
+    {
+      "basename": "Dataview相关实例",
+      "path": "77-Example/Dataview相关实例/Dataview相关实例.md"
+    },
+    {
+      "basename": "电影观看清单（dv）",
+      "path": "77-Example/Dataview相关实例/电影观看清单（dv）.md"
     },
     {
       "basename": "77-Example",
       "path": "77-Example/77-Example.md"
     },
     {
-      "basename": "如何在Obsidian中添加电影卡片",
-      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+      "basename": "2022-05-12",
+      "path": "20-Diary/2022-05-12.md"
     },
     {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
+      "basename": "2022-05-11",
+      "path": "20-Diary/2022-05-11.md"
+    },
+    {
+      "basename": "2022-04-29",
+      "path": "20-Diary/2022-04-29.md"
+    },
+    {
+      "basename": "2022-05-02",
+      "path": "20-Diary/2022-05-02.md"
+    },
+    {
+      "basename": "2022-05-17",
+      "path": "20-Diary/2022-05-17.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "Changlog",
+      "path": "Changlog.md"
+    },
+    {
+      "basename": "FastStart-Plugins-simple",
+      "path": "88-Template/FastStart-Plugins-simple.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
     },
     {
       "basename": "10-Help",
@@ -53,10 +153,6 @@
       "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
     },
     {
-      "basename": "图书阅读清单(dv)",
-      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md"
-    },
-    {
       "basename": "电影观看清单-状态控制（dvjs）",
       "path": "77-Example/Dataview相关实例/电影观看清单-状态控制（dvjs）.md"
     },
@@ -65,28 +161,8 @@
       "path": "77-Example/Dataview相关实例/电影看板.md"
     },
     {
-      "basename": "Dataview相关实例",
-      "path": "77-Example/Dataview相关实例/Dataview相关实例.md"
-    },
-    {
-      "basename": "◾ Cssclass声明样式举例",
-      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
-    },
-    {
       "basename": "图书阅读清单-状态控制(dvjs)",
       "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
-    },
-    {
-      "basename": "电影观看清单（dv）",
-      "path": "77-Example/Dataview相关实例/电影观看清单（dv）.md"
-    },
-    {
-      "basename": "timeline callout效果",
-      "path": "77-Example/timeline callout效果.md"
-    },
-    {
-      "basename": "分栏效果示例",
-      "path": "77-Example/分栏效果示例.md"
     },
     {
       "basename": "各级标题示例",
@@ -117,88 +193,12 @@
       "path": "77-Example/单独定制笔记背景.md"
     },
     {
-      "basename": "涂黑和挖空效果（三种语法）",
-      "path": "77-Example/涂黑和挖空效果（三种语法）.md"
-    },
-    {
       "basename": "可以编辑的dv表格",
       "path": "77-Example/Dataview相关实例/可以编辑的dv表格.md"
     },
     {
       "basename": "任务卡片",
       "path": "77-Example/任务卡片.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "表格自定义样式",
-      "path": "77-Example/表格自定义样式.md"
-    },
-    {
-      "basename": "vika",
-      "path": "50-Inbox/vika.md"
-    },
-    {
-      "basename": "Cubox",
-      "path": "50-Inbox/Cubox.md"
-    },
-    {
-      "basename": "carbon 代码高亮分享",
-      "path": "50-Inbox/carbon 代码高亮分享.md"
-    },
-    {
-      "basename": "表格转换-tableconvert",
-      "path": "50-Inbox/表格转换-tableconvert.md"
-    },
-    {
-      "basename": "文本处理-textce",
-      "path": "50-Inbox/文本处理-textce.md"
-    },
-    {
-      "basename": "正则表达式验证",
-      "path": "50-Inbox/正则表达式验证.md"
-    },
-    {
-      "basename": "50-Inbox",
-      "path": "50-Inbox/50-Inbox.md"
-    },
-    {
-      "basename": "图片横排布局以及添加标题",
-      "path": "77-Example/图片横排布局以及添加标题.md"
-    },
-    {
-      "basename": "2022-05-17",
-      "path": "20-Diary/2022-05-17.md"
-    },
-    {
-      "basename": "2022-04-29",
-      "path": "20-Diary/2022-04-29.md"
-    },
-    {
-      "basename": "日记统计",
-      "path": "20-Diary/日记统计.md"
-    },
-    {
-      "basename": "如何把示例库移植到你现有的库中？",
-      "path": "00-Tips/▪示例库移植说明/如何把示例库移植到你现有的库中？.md"
-    },
-    {
-      "basename": "▪示例库移植说明",
-      "path": "00-Tips/▪示例库移植说明/▪示例库移植说明.md"
-    },
-    {
-      "basename": "delete",
-      "path": "20-Diary/delete.md"
-    },
-    {
-      "basename": "query",
-      "path": "20-Diary/query.md"
-    },
-    {
-      "basename": "tp-日记模板-心情",
-      "path": "88-Template/tp-日记模板-心情.md"
     }
   ],
   "omittedPaths": [],

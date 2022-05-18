@@ -11722,7 +11722,7 @@ body.table-style-three .markdown-source-view table tbody>tr {
 
   	/*	Reading View -- similar to Editing View, set all divs to normal-width and then selected divs to full-width, 
 		however, for Reading View, wide-dataview and wide-table will require Contextual Typography plugin */
-    :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)	div.markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:not(.obsidian-banner-wrapper)
+    :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)	div.markdown-preview-view:not(.fullwidth) .markdown-preview-sizer.markdown-preview-sizer > div:not(.obsidian-banner-wrapper)
   { max-width: var(--line-width-readable); margin-inline: auto; } /* important is for Atom theme */
 
 
@@ -11730,7 +11730,7 @@ body.full-width-dvtable .markdown-preview-view .markdown-preview-sizer.markdown-
 body.full-width-table .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-table),
 body.full-width-callout .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div[data-callout],
 body.full-width-backlinks .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.embedded-backlinks)
-  { max-width: 100%; }
+  { max-width: 100%!important; }
 
 
 /*Full-width table dvtable callout backlinks layout*/
@@ -11779,7 +11779,7 @@ body.full-width-backlinks .markdown-preview-view .markdown-preview-sizer.markdow
     div[class*="-table"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-table),
     div[class*="-callout"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div[data-callout],
     div[class*="-backlinks"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.embedded-backlinks)
-      { max-width: 100%; }
+      { max-width: 100%!important; }
   
 /***end--Full-width table display--end****/
 
@@ -20638,13 +20638,11 @@ body:not(.default-loading-page).theme-light .progress-bar {
 }
 
 @keyframes shape {
-  0% {background-color: transparent; left: -100px; top: -100px;border-radius: 50%;}
-  20% {background-color: var(--text-blue); left: -100px; top: -100px;}
-  35% {background-color: var(--text-green); left: 100px; top: -100px;border-radius: 10%;}
-  50% {background-color: var(--text-yellow); left: 100px; top: 100px;}
-  65% {background-color: var(--text-red); left: -100px; top: 100px;border-radius: 10%;}
-  80% {background-color: var(--text-blue); left: -100px; top: -100px;border-radius: 50%;}
-  100% {background-color: transparent; left: -100px; top: -100px;border-radius: 50%;}
+  0% {background-color: #53c7ff; left: -100px; top: -100px; border-radius: 50%;}
+  25% {background-color: #8fff7b; left: 100px; top: -100px;border-radius: 10%;}
+  50% {background-color: #ffe468; left: 100px; top: 100px; border-radius: 0;}
+  75% {background-color: #fe9289; left: -100px; top: 100px;border-radius: 10%;}
+  100% {background-color: #53c7ff; left: -100px; top: -100px;border-radius: 50%;}
 }
 
 /* the gif animation was created by @Jake Fleming https://dribbble.com/shots/9948351-kitty-wiggle */
@@ -20977,7 +20975,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
 /*主页预览宽度*/
 :is(.markdown-preview-view,.markdown-rendered).fullwidth.is-readable-line-width .markdown-preview-sizer, .markdown-source-view.is-readable-line-width.fullwidth .CodeMirror, .is-readable-line-width.fullwidth :is(.markdown-preview-section,.markdown-rendered), .is-readable-line-width.fullwidth :is(.markdown-preview-section,.markdown-rendered) > div, :is(.markdown-preview-view,.markdown-rendered).is-readable-line-width.fullwidth :is(.markdown-preview-section,.markdown-rendered) {
   width: 100% !important;
-  max-width: 100%;
+  max-width: 100%!important;
   /* margin: 0 auto; */
 }
 /*隐藏backlinks区域*/

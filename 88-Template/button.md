@@ -177,7 +177,7 @@ class circle_btn blank
 ^button-refreshhomepage
 
 ```button
-name <img title="重新加载数据" width="80" src="https://gitee.com/cuman/imgbed/raw/master/images/202201051445392.png"> 
+name <img title="重新加载数据" width="80" src="https://s1.ax1x.com/2022/05/18/OI7Io9.png"> 
 type command
 action QuickAdd: 重载主页
 class  blank

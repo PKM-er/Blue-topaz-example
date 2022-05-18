@@ -30,4 +30,3 @@ settings-search
 obsidian-view-mode-by-frontmatter
 omnisearch
 mrj-text-expand
-obsidian-memos

@@ -9,11 +9,27 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
-            "mode": "preview",
+            "file": "77-Example/全宽表格示例.md",
+            "mode": "source",
             "backlinks": false,
             "source": false
           }
+        }
+      },
+      {
+        "id": "ab66b3a87a44aa89",
+        "type": "leaf",
+        "state": {
+          "type": "memos_view",
+          "state": {}
+        }
+      },
+      {
+        "id": "09d19971c039247b",
+        "type": "leaf",
+        "state": {
+          "type": "style-settings",
+          "state": {}
         }
       }
     ],
@@ -81,14 +97,6 @@
               "type": "graph",
               "state": {}
             }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
-              "state": {}
-            }
           }
         ]
       }
@@ -119,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "77-Example/全宽表格示例.md"
               }
             }
           },
@@ -150,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "77-Example/全宽表格示例.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +175,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "77-Example/全宽表格示例.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -214,15 +222,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "88-Template/home.md",
-    "Changlog.md",
-    "88-Template/常用工具.md",
-    "88-Template/FastStart-StartupScript.md",
-    "88-Template/FastStart-Plugins-simple.md",
-    "88-Template/FastStart-Plugins-ShortDelay.md",
     "77-Example/全宽表格示例.md",
-    "77-Example/各类列表和彩虹大纲线.md",
-    "77-Example/77-Example.md",
-    "00-Tips/如何在Obsidian中添加电影卡片.md"
+    "77-Example/ob提示框(callout)样式展示.md",
+    "88-Template/home.md",
+    "88-Template/常用工具.md",
+    "77-Example/◾ TableExample/01 - Default Table.md",
+    "77-Example/◾ TableExample/◾ TableExample.md",
+    "00-Tips/00-Tips.md",
+    "20-Diary/2022-05-18.md",
+    "20-Diary/20-Diary.md",
+    "77-Example/涂黑和挖空效果（三种语法）.md"
   ]
 }
