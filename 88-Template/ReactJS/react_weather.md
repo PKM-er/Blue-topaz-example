@@ -6,9 +6,11 @@ defines-react-components: true
 //First debut by cuman in 🥑Blue Topaz example 
 //2022-05-18
 const isDarkMode = app.vault.getConfig("theme") === "obsidian";
+const city = props.src.trim(" ");
 let color='';
  if (isDarkMode) color='&color=d2d1cd';
-const weathersrc='https://tianqiapi.com/api.php?style=ta&skin=pear&fontsize=13&align=&paddingtop=2&paddingleft=15'+color;
+const weathersrc='https://tianqiapi.com/api.php?style=ta&skin=pear&fontsize=13&align=&paddingtop=2&paddingleft=15&city='+city+color;
+
 return (
 	<>
 		<iframe
@@ -22,7 +24,7 @@ return (
 )
 ```
 
-```jsx:
-<Weather></Weather>
+```jsx::Weather
+
 ```
 

@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.14.12。uid [20220517] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.12, uid [20220517] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.12。uid [20220518] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.12, uid [20220518] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -9402,50 +9402,22 @@ li[data-task="-"]>p>input:checked {
 }
 
 @keyframes fade-left {
-  0% {
-    -webkit-transform: translateX(-10px);
-    transform: translateX(-10px);
-    opacity: 0;
-  }
-
-  75% {
-    -webkit-transform: translateX(0);
-    transform: translateX(0);
-    opacity: 1;
-  }
+  0% {-webkit-transform: translateX(-10px); transform: translateX(-10px); opacity: 0;}
+  75% {-webkit-transform: translateX(0); transform: translateX(0); opacity: 1;}
 }
 
 @keyframes tada {
-  from {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
-
+  from {-webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1);}
   10%,
-  20% {
-    -webkit-transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);
-    transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);
-  }
-
+  20% {-webkit-transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);transform: scale3d(.95, .95, .95) rotate3d(0, 0, 1, -10deg);}
   30%,
   50%,
   70%,
-  90% {
-    -webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);
-    transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);
-  }
-
+  90% {-webkit-transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);transform: scale3d(1, 1, 1) rotate3d(0, 0, 1, 10deg);}
   40%,
   60%,
-  80% {
-    -webkit-transform: rotate3d(0, 0, 1, -10deg);
-    transform: rotate3d(0, 0, 1, -10deg);
-  }
-
-  to {
-    -webkit-transform: scale3d(1, 1, 1);
-    transform: scale3d(1, 1, 1);
-  }
+  80% {-webkit-transform: rotate3d(0, 0, 1, -10deg); transform: rotate3d(0, 0, 1, -10deg);}
+  to {-webkit-transform: scale3d(1, 1, 1); transform: scale3d(1, 1, 1);}
 }
 
 body.circular-checkbox input[type=checkbox] {
@@ -11961,12 +11933,8 @@ body.file-name-animation .nav-folder-title-content:not(.is-being-renamed):hover 
 }
 
 @keyframes filemove {
-  0% {
-    transform: translate(0, 0);
-  }
-  100% {
-    transform: translate(calc(-100% + 200px), 0);
-  }
+  0% {transform: translate(0, 0);}
+  100% {transform: translate(calc(-100% + 200px), 0);}
 }
 
 body.file-bg-rounded-rectangle .nav-file-title.is-active,
@@ -15174,12 +15142,6 @@ body.style-options-for-kanban-plugin-dynamic-neon-one .kanban-plugin__lane-wrapp
   -webkit-box-reflect: below 10px linear-gradient(transparent, rgba(0, 0, 0, .4));
 }
 
-@keyframes rotate {
-100% {
-  transform: translate(-50%, -50%) rotate(1turn);
-  }
-}
-
 body.style-options-for-kanban-plugin-dynamic-neon-one .kanban-plugin__lane-wrapper:nth-child(n)::before,
 body.style-options-for-kanban-plugin-dynamic-neon-two .kanban-plugin__lane-wrapper:nth-child(n)::before {
   content: '';
@@ -15223,9 +15185,7 @@ body.style-options-for-kanban-plugin-dynamic-neon-two .kanban-plugin__lane-wrapp
 }
 
 @keyframes rotate {
-100% {
-  transform: translate(-50%, -50%) rotate(1turn);
-  }
+  100% {transform: translate(-50%, -50%) rotate(1turn);}
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-one .kanban-plugin__lane-wrapper:nth-child(n):hover
@@ -15278,12 +15238,8 @@ body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wra
 }
 
 @keyframes huerotate-1 {
-  0% {
-      filter: hue-rotate(0deg);
-  }
-  100% {
-      filter: hue-rorate(360deg);
-  }
+  0% {filter: hue-rotate(0deg);}
+  100% {filter: hue-rorate(360deg);}
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wrapper:nth-child(n)::before {
@@ -15301,12 +15257,6 @@ body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wra
   background-position: 0 0;
   background-image: conic-gradient(var(--kanban-shadow), var(--kanban-shadow));
   animation: rotate 2s linear infinite;
-}
-
-@keyframes rotate {
-100% {
-  transform: translate(-50%, -50%) rotate(1turn);
-  }
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wrapper:nth-child(n)::after {
@@ -15335,12 +15285,8 @@ body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wra
 }
 
 @keyframes huerotate-2 {
-  0% {
-      filter: hue-rotate(50deg);
-  }
-  100% {
-      filter: hue-rorate(410deg);
-  }
+  0% {filter: hue-rotate(50deg);}
+  100% {filter: hue-rorate(410deg);}
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wrapper:nth-child(7n+3) {
@@ -15349,68 +15295,48 @@ body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wra
 }
 
 @keyframes huerotate-3 {
-  0% {
-      filter: hue-rotate(140deg);
-  }
-  100% {
-      filter: hue-rorate(500deg);
-  }
+  0% {filter: hue-rotate(140deg);}
+  100% {filter: hue-rorate(500deg);}
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wrapper:nth-child(7n+4) {
-filter: hue-rotate(540deg);
+  filter: hue-rotate(540deg);
   animation: huerotate-4 6s infinite linear;
 }
 
 @keyframes huerotate-4 {
-  0% {
-      filter: hue-rotate(180deg);
-  }
-  100% {
-      filter: hue-rorate(540deg);
-  }
+  0% {filter: hue-rotate(180deg);}
+  100% {filter: hue-rorate(540deg);}
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wrapper:nth-child(7n+5) {
-filter: hue-rotate(580deg);
+  filter: hue-rotate(580deg);
   animation: huerotate-5 6s infinite linear;
 }
 
 @keyframes huerotate-5 {
-  0% {
-      filter: hue-rotate(220deg);
-  }
-  100% {
-      filter: hue-rorate(580deg);
-  }
+  0% {filter: hue-rotate(220deg);}
+  100% {filter: hue-rorate(580deg);}
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wrapper:nth-child(7n+6) {
-filter: hue-rotate(640deg);
+  filter: hue-rotate(640deg);
   animation: huerotate-6 6s infinite linear;
 }
 
 @keyframes huerotate-6 {
-  0% {
-      filter: hue-rotate(280deg);
-  }
-  100% {
-      filter: hue-rorate(640deg);
-  }
+  0% {filter: hue-rotate(280deg);}
+  100% {filter: hue-rorate(640deg);}
 }
 
 body.style-options-for-kanban-plugin-dynamic-neon-three .kanban-plugin__lane-wrapper:nth-child(7n+0) {
-filter: hue-rotate(690deg);
+  filter: hue-rotate(690deg);
   animation: huerotate-7 6s infinite linear;
 }
 
 @keyframes huerotate-7 {
-  0% {
-      filter: hue-rotate(330deg);
-  }
-  100% {
-      filter: hue-rorate(690deg);
-  }
+  0% { filter: hue-rotate(330deg);}
+  100% { filter: hue-rorate(690deg);}
 }
 
 /* =========================================*/
@@ -17864,9 +17790,8 @@ body:not(.font-family-change-to-default).is-mobile .markdown-source-view.mod-cm6
 }
 /*小屏幕特别优化*/
 @media screen and(min-width: 480px) and (max-width: 767px) {
-  body.style-options-for-admonition-plugin .admonition-flex .admonition-content
-  {
-   gap:24px;
+  body.style-options-for-admonition-plugin .admonition-flex .admonition-content {
+    gap:24px;
   }
  /*  body.style-options-for-admonition-plugin .admonition-flex .admonition-content div
   {
@@ -17985,7 +17910,7 @@ body.dialogue-style-wechat .dialogue-plugin-message-wrapper-left .dialogue-plugi
 body.dialogue-style-wechat .dialogue-plugin-message-wrapper-right .dialogue-plugin-message .dialogue-plugin-message-content {
   color: black;
   background: #98e970;
-  margin-left: 0px;
+  margin-left: 0;
 }
 body.dialogue-style-wechat .dialogue-plugin-message-wrapper-right .dialogue-plugin-message .dialogue-plugin-message-content:after {
   background: #98e970;
@@ -18262,24 +18187,12 @@ body.rainbow-cursor .markdown-source-view.mod-cm6 .cm-content {
   animation: 6s infinite rainbow-cursor;
 }
 @keyframes rainbow-cursor {
-  0% { 
-    caret-color: var(--cursor-red); 
-  }
-  20% {
-    caret-color:  var(--cursor-yellow); 
-  }
-  40% { 
-    caret-color:  var(--cursor-green); 
-  }
-  60% { 
-    caret-color:  var(--cursor-blue); 
-  }
-  80% { 
-    caret-color:  var(--cursor-violet); 
-  }
-  100% { 
-    caret-color: var(--cursor-red); 
-  }
+  0% { caret-color: var(--cursor-red);}
+  20% {caret-color:  var(--cursor-yellow);}
+  40% { caret-color:  var(--cursor-green);}
+  60% { caret-color:  var(--cursor-blue);}
+  80% { caret-color:  var(--cursor-violet);}
+  100% { caret-color: var(--cursor-red);}
 }
 
 .markdown-source-view.mod-cm6 .cm-content {
@@ -20639,11 +20552,13 @@ body:not(.default-loading-page).theme-light .progress-bar {
 }
 
 @keyframes shape {
-  0% {background-color: #53c7ff; left: -50px; top: -60px; border-radius: 50%;}
-  25% {background-color: #8fff7b; left: 130px; top: -60px;border-radius: 10%;}
-  50% {background-color: #ffe468; left: 130px; top: 120px; border-radius: 0;}
-  75% {background-color: #fe9289; left: -50px; top: 120px;border-radius: 10%;}
-  100% {background-color: #53c7ff; left: -50px; top: -60px;border-radius: 50%;}
+  0% {background-color: transparent; left: -50px; top: -60px; border-radius: 50%;}
+  10% {background-color: #53c7ff; left: -50px; top: -60px; border-radius: 50%;}
+  30% {background-color: #8fff7b; left: 130px; top: -60px; border-radius: 0;}
+  50% {background-color: #ffe468; left: 130px; top: 120px; border-radius: 50%;}
+  70% {background-color: #fe9289; left: -50px; top: 120px; border-radius: 0;}
+  90% {background-color: #53c7ff; left: -50px; top: -60px; border-radius: 50%;}
+  100% {background-color: transparent; left: -50px; top: -60px; border-radius: 50%;}
 }
 
 /* the gif animation was created by @Jake Fleming https://dribbble.com/shots/9948351-kitty-wiggle */
@@ -21096,7 +21011,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220517";
+  content: "uid:20220518";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;
@@ -21117,12 +21032,10 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   content: "";
   background: linear-gradient(to left, rgba(255, 255, 255, 0) 0,rgba(208, 232, 255, 0.1) 50%,rgba(122,255,255,0) 100%);
   transform: skewX(-45deg);
-  animation: move 1.2s linear infinite;
+  animation: movin 1.2s linear infinite;
 }
-@keyframes move {
-  100% {
-    transform: translateX(350%);
-  }
+@keyframes movin {
+  100% {transform: translateX(350%);}
 }
 .community-theme-container .theme-list .community-theme.is-selected .clickable-icon:not([class*="u-muted"])::after {
   content: "Get Demo Vault";
@@ -21599,8 +21512,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
  overflow: hidden;
 }
 .callout.callout:is([data-callout-metadata*='grid'],
-[data-callout*='grid']) .callout-content 
-{
+[data-callout*='grid']) .callout-content {
   overflow-x: auto!important;
 }
 .callout.callout:is([data-callout-metadata*='grid'],
@@ -21977,7 +21889,6 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   justify-content: center;
 }
 .callout.callout[data-callout*=infobox].is-collapsed .callout-fold {
- 
   padding: 3px 10px;
 }
 .callout.callout[data-callout*=infobox]:not(:hover):not(.is-collapsible) .callout-title, .callout.callout[data-callout*=infobox]:not(.is-collapsible) .callout-title :is(.callout-icon, .callout-fold,.callout-title-inner) {
@@ -22101,7 +22012,6 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   border: none;
   padding: 0;
   background-color: unset;
-
 }
 .callout.callout[data-callout="timeline"] .callout-content blockquote p::before {
   display: none;
@@ -22144,7 +22054,7 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   box-shadow: none;
   float: left;
   margin-top: -4em;
-  margin-bottom: 0px;
+  margin-bottom: 0;
 }
 .is-live-preview .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) {

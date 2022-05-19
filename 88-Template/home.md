@@ -39,8 +39,10 @@ obsidianUIMode: preview
 </div>
 ```
 %%
-%% 动画版本%%
->[!note|noborder|banner]  ![[cat.gif|inlR|160]]
+%% 动画版本 %%
+```jsx::AnimationCat
+```
+>[!note|noborder banner]  &nbsp;
 >```dataviewjs
 let setting = {};
 let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
@@ -56,6 +58,7 @@ let desc = ` <%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %> ，${toda
 dv.paragraph(desc);
 }
 >```
+
 
 
 ```ad-blank

@@ -1,5 +1,6 @@
 {
   "pluginList": [
+    "zhaohongxuan/obsidian-weread-plugin",
     "nothingislost/obsidian-print-preview",
     "scambier/obsidian-omnisearch",
     "obsidian-canzi/Enhanced-editing/",
@@ -11,7 +12,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-05-18T04:23:33Z"
+      "lastUpdate": "2022-05-18T08:59:41Z"
     }
   ],
   "updateAtStartup": true,

@@ -106,8 +106,8 @@
     "console": {
       "console": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1652343384056
+          "count": 2,
+          "lastUpdated": 1652941417566
         }
       }
     },
@@ -122,8 +122,8 @@
     "cssclass": {
       "cssclass": {
         "currentVault": {
-          "count": 5,
-          "lastUpdated": 1652856464612
+          "count": 6,
+          "lastUpdated": 1652928591101
         }
       }
     },
@@ -316,6 +316,46 @@
         "frontMatter": {
           "count": 1,
           "lastUpdated": 1652856468284
+        }
+      }
+    },
+    "city": {
+      "city": {
+        "currentVault": {
+          "count": 2,
+          "lastUpdated": 1652923638119
+        }
+      }
+    },
+    "myhome": {
+      "myhome": {
+        "frontMatter": {
+          "count": 1,
+          "lastUpdated": 1652928594800
+        }
+      }
+    },
+    "xlinkHref": {
+      "xlinkHref": {
+        "currentFile": {
+          "count": 2,
+          "lastUpdated": 1652940977725
+        }
+      }
+    },
+    "catgif": {
+      "catgif": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652941707447
+        }
+      }
+    },
+    "width": {
+      "width": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1652943034623
         }
       }
     }

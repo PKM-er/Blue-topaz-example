@@ -4,11 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "1afbb86271cabe14",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "88-Template/home.md",
+            "mode": "preview",
+            "backlinks": false,
+            "source": true
+          }
         }
       }
     ],
@@ -113,7 +118,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "88-Template/home.md"
+              }
             }
           },
           {
@@ -143,6 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -159,6 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -203,17 +212,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "1afbb86271cabe14",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "50-Inbox/历史上的今天.md",
     "88-Template/home.md",
-    "50-Inbox/文本处理-textce.md",
-    "50-Inbox/50-Inbox.md",
-    "50-Inbox/Cubox.md",
-    "88-Template/ReactJS/react_weather.md",
-    "88-Template/常用工具.md",
-    "未命名.md",
-    "README.md",
-    "88-Template/ReactJS/ColorfulClock.md"
+    "88-Template/ReactJS/react_cat.md",
+    "88-Template/ReactJS/ColorfulClock.md",
+    "77-Example/Dataview相关实例/电影观看清单-状态控制（dvjs）.md",
+    "77-Example/Dataview相关实例/电影观看清单（dv）.md",
+    "99-Attachment/99-Attachment.md",
+    "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md",
+    "88-Template/ReactJS/react_buttons.md",
+    "88-Template/ReactJS/react_music.md",
+    "88-Template/ReactJS/ReactJS.md"
   ]
 }

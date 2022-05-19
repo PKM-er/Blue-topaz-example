@@ -1,7 +1,7 @@
 {
   "installedVersion": "1.0.0-beta1",
   "activeCalendarSet": "Default",
-  "showGettingStartedBanner": true,
+  "showGettingStartedBanner": false,
   "hasMigratedDailyNoteSettings": true,
   "hasMigratedWeeklyNoteSettings": false,
   "calendarSets": [
@@ -11,7 +11,7 @@
         "format": "YYYY-MM-DD",
         "folder": "20-Diary",
         "openAtStartup": false,
-        "templatePath": "88-Template/tp-日记模板-带进度"
+        "templatePath": "88-Template/tp-日记模板-日历.md"
       },
       "week": {
         "enabled": true,

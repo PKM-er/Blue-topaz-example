@@ -10,6 +10,7 @@ obsidianUIMode: preview
 	- [[ColorfulClock]]
 	- [[moc]]
 	- [[react_buttons]]
+	- [[react_cat]]
 	- [[react_music]]
 	- [[react_weather]]
 	- [[slidegallery]]

@@ -1,11 +1,11 @@
 buttons
 obsidian-view-mode-by-frontmatter
-obsidian-admonition
 obsidian-banners
 dataview
 obsidian-admonition
 recent-files-obsidian
 metaedit
-workspaces-plus
 quickadd
 obsidian-react-components
+obsidian-admonition
+workspaces-plus

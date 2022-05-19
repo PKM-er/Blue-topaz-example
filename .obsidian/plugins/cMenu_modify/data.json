@@ -263,7 +263,7 @@
   ],
   "appendMethod": "workspace",
   "shouldShowMenuOnSelect": false,
-  "cMenuVisibility": false,
+  "cMenuVisibility": true,
   "cMenuBottomValue": 4.75,
   "cMenuNumRows": 13,
   "cMenuXBottomValue": 17.25

@@ -219,7 +219,7 @@
           "name": "Wait",
           "type": "Wait",
           "id": "fc377b74-ed4a-4289-b365-298855ece976",
-          "time": 100
+          "time": 200
         },
         {
           "name": "fetchhomepage",
