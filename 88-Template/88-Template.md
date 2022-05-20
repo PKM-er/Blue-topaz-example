@@ -30,7 +30,6 @@ obsidianUIMode: preview
 	- [[tp-日记模板-心情]]
 	- [[tp-通用模板]]
 	- [[tp-book-callout]]
-	- [[tp-book]]
 	- [[tp-movie-douban]]
 	- [[tp-movie]]
 
