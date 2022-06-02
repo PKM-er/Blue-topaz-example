@@ -116,10 +116,14 @@ function formatDate(date){
 }
 
 if(searchType === "tags"){
-
+    if(searchTerm)
+	{
 	valueOfSearchTerm = "#"+searchTerm; // value of "searchTerm"
-
 	valueOfSearchTerm == "#undefined" ? valueOfSearchTerm = "" : valueOfSearchTerm = valueOfSearchTerm
+	}else
+	{
+	valueOfSearchTerm = ""
+	}
 
 	searchPagePaths = dv.pages(valueOfSearchTerm).file.path; // paths of all pages with searchTerm
 	
