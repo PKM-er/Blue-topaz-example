@@ -1,0 +1,57 @@
+{
+  "enabledButtons": [
+    {
+      "id": "quickadd:choice:fe31fa1a-99c5-4b58-9001-1cac23a2b9b5",
+      "icon": "lucide-home",
+      "name": "QuickAdd: 打开主页",
+      "showButtons": "both"
+    },
+    {
+      "id": "quickadd:choice:27d06043-87de-47b1-a058-cf6ff596b9c1",
+      "icon": "lucide-refresh-ccw",
+      "name": "QuickAdd: 刷新面板",
+      "showButtons": "both"
+    }
+  ],
+  "desktop": true,
+  "titleLeft": [
+    {
+      "id": "workspace:undo-close-pane",
+      "icon": "undo-glyph",
+      "name": "重新打开上一个关闭的面板"
+    },
+    {
+      "id": "quickadd:choice:b3db048c-5629-437d-bff9-83468e7f7318",
+      "icon": "lucide-refresh-cw",
+      "name": "QuickAdd: 刷新主页"
+    },
+    {
+      "id": "cmenu-plugin:hide-show-menu",
+      "icon": "cMenu",
+      "name": "cMenu: Hide/show "
+    },
+    {
+      "id": "quickadd:choice:e6bd2f03-b085-42c1-8ee0-4b0a47a1b80e",
+      "icon": "open-elsewhere-glyph",
+      "name": "QuickAdd: 库中库"
+    },
+    {
+      "id": "obsidian-version-history-diff:open-recovery-diff-view",
+      "icon": "lucide-timer-reset",
+      "name": "Version history diff: Show File Recovery diff view for active file"
+    },
+    {
+      "id": "obsidian-better-command-palette:open-better-commmand-palette",
+      "icon": "run-command",
+      "name": "Better Command Palette: Open better command palette"
+    },
+    {
+      "id": "omnisearch:show-modal",
+      "icon": "search",
+      "name": "Omnisearch: Vault search"
+    }
+  ],
+  "titleRight": [],
+  "titleCenter": [],
+  "paneRelief": false
+}

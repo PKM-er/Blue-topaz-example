@@ -1,0 +1,184 @@
+
+/* 
+ * progress bar
+ Modified from https://github.com/ceciliamay/obsidianmd-theme-primary
+ * ------------------------
+ */
+
+ progress {
+  -webkit-appearance: none;
+  appearance: none;
+  max-width: calc(var(--font-text-size) + 200px);
+  height: calc(var(--font-text-size) - 8px);
+  margin-right: 2em;
+    margin-top:-1em;
+  }
+
+@media screen and (max-width: 768px) {
+  progress {
+    width: calc(var(--font-text-size) + 50px);
+    height: calc(var(--font-text-size) - 8px);
+  }
+  
+}
+ progress::before{
+    content: attr(value) " %";
+  display: inline-block;
+  position: relative;
+  left: 102%;
+  top:1.2em;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+progress[value]::-webkit-progress-bar {
+  background: var(--background-primary-alt-bg-4-bt);
+  box-shadow: 0px 0px 0px 0.3px var(--background-modifier-form-field) inset;
+  border-radius: 16px;
+  overflow: hidden;
+}
+progress[value]::-webkit-progress-value {
+  border-radius: 16px;
+}
+
+.theme-light progress {
+  --color-l-progress-00: #b547499b;
+  --color-l-progress-10: #C70039;
+  --color-l-progress-20: #FF5733;
+  --color-l-progress-30: #FF5733;
+  --color-l-progress-40: #FFB300;
+  --color-l-progress-50: #FFB300;
+  --color-l-progress-60: #29B6F6;
+  --color-l-progress-70: #29B6F6;
+  --color-l-progress-80: #8BC34A;
+  --color-l-progress-90: #598b1e;
+  --color-l-progress-100: linear-gradient(45deg, #69cce095, #0dea0ab0);
+}
+
+.theme-light progress[value^="1"]::-webkit-progress-value {
+  background: var(--color-l-progress-10);
+}
+.theme-light progress[value^="2"]::-webkit-progress-value {
+  background: var(--color-l-progress-20);
+}
+.theme-light progress[value^="3"]::-webkit-progress-value {
+  background: var(--color-l-progress-30);
+}
+.theme-light progress[value^="4"]::-webkit-progress-value {
+  background: var(--color-l-progress-40);
+}
+.theme-light progress[value^="5"]::-webkit-progress-value {
+  background: var(--color-l-progress-50);
+}
+.theme-light progress[value^="6"]::-webkit-progress-value {
+  background: var(--color-l-progress-60);
+}
+.theme-light progress[value^="7"]::-webkit-progress-value {
+  background: var(--color-l-progress-70);
+}
+.theme-light progress[value^="8"]::-webkit-progress-value {
+  background: var(--color-l-progress-80);
+}
+.theme-light progress[value^="9"]::-webkit-progress-value {
+  background: var(--color-l-progress-90);
+}
+.theme-light progress[value^="100"]::-webkit-progress-value {
+  background: var(--color-l-progress-100);
+}
+.theme-light progress[value="1"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="2"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="3"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="4"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="5"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="6"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="7"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="8"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-light progress[value="9"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress {
+  --color-l-progress-00:#b547495c;
+  --color-d-progress-10: hsl(4, 66%, 30%);
+  --color-d-progress-20: hsl(4, 66%, 30%);
+  --color-d-progress-30: hsl(18, 69%, 50%);
+  --color-d-progress-40: hsl(18, 69%, 50%);
+  --color-d-progress-50: hsl(43, 100%, 42%);
+  --color-d-progress-60: hsl(43, 100%, 42%);
+  --color-d-progress-70: hsl(165, 63%, 29%);
+  --color-d-progress-80: hsl(205, 95%, 25%);
+  --color-d-progress-90: hsl(266, 70%, 30%);
+  --color-d-progress-100: linear-gradient(45deg, #ef92af95, #7bd7e995, #ffda2b95);
+}
+.theme-dark progress[value^="1"]::-webkit-progress-value {
+  background: var(--color-d-progress-10);
+}
+.theme-dark progress[value^="2"]::-webkit-progress-value {
+  background: var(--color-d-progress-20);
+}
+.theme-dark progress[value^="3"]::-webkit-progress-value {
+  background: var(--color-d-progress-30);
+}
+.theme-dark progress[value^="4"]::-webkit-progress-value {
+  background: var(--color-d-progress-40);
+}
+.theme-dark progress[value^="5"]::-webkit-progress-value {
+  background: var(--color-d-progress-50);
+}
+.theme-dark progress[value^="6"]::-webkit-progress-value {
+  background: var(--color-d-progress-60);
+}
+.theme-dark progress[value^="7"]::-webkit-progress-value {
+  background: var(--color-d-progress-70);
+}
+.theme-dark progress[value^="8"]::-webkit-progress-value {
+  background: var(--color-d-progress-80);
+}
+.theme-dark progress[value^="9"]::-webkit-progress-value {
+  background: var(--color-d-progress-90);
+}
+.theme-dark progress[value="100"]::-webkit-progress-value {
+  background: var(--color-d-progress-100);
+}
+
+.theme-dark progress[value="1"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="2"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="3"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="4"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="5"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="6"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="7"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="8"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}
+.theme-dark progress[value="9"]::-webkit-progress-value {
+  background: var(--color-l-progress-00);
+}

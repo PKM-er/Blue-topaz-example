@@ -1,5 +1,5 @@
 {
-  "command_timeout": 5,
+  "command_timeout": 6,
   "templates_folder": "88-Template",
   "templates_pairs": [
     [

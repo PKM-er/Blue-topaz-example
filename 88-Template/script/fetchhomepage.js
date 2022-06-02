@@ -1,9 +1,25 @@
-module.exports = fetchhomepage
-let quickAddApi;
+const CITY = "City name";
+module.exports = {
+	entry: fetchhomepage,
+	settings: {
+	  name: "Get Weather",
+	  author: "",
+	  options: {
+		[CITY]: {
+		  type: "text",
+		  defaultValue: "",
+		  placeholder: "Enter the city name",
+		},
+	  },
+	},
+  };
 
-async function fetchhomepage (params) {
+let Settings;
+let history ;
+let today;
+async function fetchhomepage (params,settings) {
     ({quickAddApi} = params) 
-
+	Settings = settings;
 //查看文件是否存在
  app.vault.adapter.exists(".obsidian/.diary-stats").then(async (exists) => {
             if (!exists) {
@@ -11,11 +27,12 @@ async function fetchhomepage (params) {
             }
 
 });
-let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
+history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
 //查看当天信息
-let today = moment().format("YYYY-MM-DD");
+today = moment().format("YYYY-MM-DD");
 await updateToday();
 
+}
 
 //获取每日一言信息
 //语句接口 (https://developer.hitokoto.cn/sentence/#%E8%AF%B7%E6%B1%82%E5%8F%82%E6%95%B0)
@@ -130,7 +147,7 @@ async function updateToday() {
             posters: await get_ciba(),
             music: await getmusicinfo(),
             themes: await get_BlueTopaz(),
-			weather: await getWeather(), //默认是自动获取，如果想获取指定城市的天气在这里添加
+			weather: await getWeather(Settings[CITY]), //默认是自动获取，如果想获取在quicadd中设置
             state: 0,       
         };
             history[moment().format("YYYY-MM-DD")] = newDay;
@@ -171,7 +188,7 @@ if (data.sid.length == 0) {
 // 数据来源：和风天气（https://www.qweather.com/）
 
 async function getWeather(city){
-	console.log("beigin fetch getWeather...");
+	console.log("beigin fetch getWeather..."+city);
 	let key='dc0f31ac6f37484f88e3e7d45b84e403'; //尽量换成自己申请的key以免接口失效https://console.qweather.com
 	let locationId='';
 	let windydesc='';
@@ -359,6 +376,3 @@ async function searchCity(city,key){
  	return -1;
 }
 
-
-
-}

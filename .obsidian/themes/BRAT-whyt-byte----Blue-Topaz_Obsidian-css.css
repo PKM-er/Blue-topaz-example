@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.14.12。uid [20220518] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.12, uid [20220518] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.15。uid [20220531] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.15, uid [20220531] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -419,6 +419,19 @@ settings:
     max: 1
     step: 0.05
   - 
+    id: background-settings-markdown-page
+    title: 1.2.4 File Explorer Background
+    title.zh: 1.2.4 文件栏背景
+    type: heading
+    level: 3
+    collapsed: true
+  - 
+    id: toggle-bg-file-page
+    title: Toggle Background Image
+    title.zh: 激活文件栏背景
+    type: class-toggle
+    default: false
+  - 
     id: layout-settings
     title: 1.3 Layout
     title.zh: 1.3 界面布局样式
@@ -482,6 +495,9 @@ settings:
       - 
         label: Rectangle
         value: layout-style-options-rectangle
+      - 
+        label: Asymmetric Style of Split Panes
+        value: asymmetric-split-left
   -
     id: hide-titlebar-text
     title: Hide text in Title Bar
@@ -1924,12 +1940,23 @@ settings:
       - 
         label: Pill
         value: file-bg-pill
-  -
-    id: file-name-animation
-    title: File Name Scrolling When Hovering
-    title.zh: 文件名自动滚动效果
-    type: class-toggle
-    default: false
+  - 
+    id: file-name-style-option
+    title: File Name Style
+    title.zh: 文件名样式
+    type: class-select
+    allowEmpty: false
+    default: file-name-wrapped
+    options:
+      -
+        label: Wrapped
+        value: file-name-wrapped
+      - 
+        label: Non-wrapped
+        value: file-name-non-wrapped
+      - 
+        label: File Name Scrolling When Hovering
+        value: file-name-animation
   -
     id: light-background-color-files
     title: Light File Background
@@ -2329,6 +2356,14 @@ settings:
     default-light: '#db4e4ecc'
     default-dark: '#f08080de'
   - 
+    id: link-click
+    title: Cancel click the link to trigger auto-jump
+    title.zh: 取消编辑模式下点击链接自动跳转
+    type: class-toggle
+    default: true
+    description: You can click on the link by holding down the ctrl key to jump
+    description.zh: 可以通过按住ctrl键点击链接跳转
+  -
     id: cursor-style-folder
     title: 2.3.12 Cursor
     title.zh: 2.3.12 输入光标
@@ -2520,6 +2555,9 @@ settings:
       - 
         label: Adding Image or Animation (GIF)
         value: loading-animation-custom
+      - 
+        label: Animation with Position Changing
+        value: loading-shape-with-custom-gif
   -
     id: loading-custom-text-folder
     title: 2.3.16.1 Custom Text
@@ -2531,13 +2569,13 @@ settings:
     title: Custom Text
     title.zh: 自定义文字
     type: variable-text
-    default: "'快乐摸鱼又一天，人生还剩多少天？'"
+    default: "快乐摸鱼又一天，人生还剩多少天？"
   -
     id: font-loading-text
     title: Font Family of Custom Text 
     title.zh: 字体
     type: variable-text
-    default: "Arial"
+    default: var(--font-monospace-theme)
   -
     id: font-size-loading-diy-text
     title: Font Size
@@ -2629,6 +2667,28 @@ settings:
     type: variable-text
     default: " "
   -
+    id: loading-shape-with-custom-gif-folder
+    title: 2.3.16.4 Custom Image/Animation with Position Changing
+    type: heading
+    level: 4
+    collapsed: false
+  -
+    id: loading-page-custom-gif-url-alt
+    title: Custom Loading Page Image/Animation
+    type: variable-text
+    default: url(https://cdn.dribbble.com/users/53712/screenshots/9948351/media/2397850c7727f8e70b0ec50b5a83fe76.gif)
+  -
+    id: loading-page-custom-gif-caption-alt
+    title: Image Caption
+    type: variable-text
+    default: " "
+  -
+    id: loading-shape-with-custom-high-contrast-bg
+    title: High Contrast Background
+    title.zh: 高对比度背景
+    type: class-toggle
+    default: false
+  -
     id: style-options-for-other-plugins
     title: 3. For Plugins
     title.zh: 3. 插件样式
@@ -2652,8 +2712,8 @@ settings:
     default-dark: '#1111118f'
   -
     id: full-width-callout
-    title: Full-width callout display
-    title.zh: callout全宽显示
+    title: Full-width layout for callout & admonition
+    title.zh: callout和ad块全宽显示
     description.zh: 不收缩减栏宽影响，全宽显示callout块
     type: class-toggle
     default: false
@@ -2951,7 +3011,7 @@ settings:
     title.zh: 伪看板 kanban
     type: heading
     level: 2
-    collapsed: true
+    collapsed: false
     description:  ❗cssclass：kanban❗ A kind of kanban-liked style for unordered lists. (Adapted from Spectrum theme by @Wiktoria Mielcarek)
     description.zh:  ❗cssclass：kanban❗ 实现类似看板样式并排显示，只对无序列表生效。改自Spectrum theme by @Wiktoria Mielcarek
   -
@@ -3240,10 +3300,9 @@ body {
 
   --mermaid-font-family: Segoe UI, "Microsoft YaHei", "Segoe UI Emoji", "trebuchet ms", verdana, Arial, cursive;
   --font-family-better-footnote: Arlrdbd, "Source Han Sans", "Segoe UI Emoji";
-  --font-family-strong: Bookerly, "LXGW WenKai Screen", "LXGW WenKai Screen R", "Segoe UI Emoji", var(--font-default);
+  --font-family-strong: Bookerly, "LXGW Zhenkai", "LXGW WenKai Screen", "LXGW WenKai Screen R", "Segoe UI Emoji", var(--font-default);
   --font-family-em: ;
-  --font-loading-text: Arial;
-
+  --font-loading-text: var(--font-monospace-theme);
 
   /*radius*/
   --radius-xs: 0.1875em;/*3px*/
@@ -3285,10 +3344,12 @@ body {
 
   --checkbox-size: 1rem;
 
-  --loading-diy-text: '快乐摸鱼又一天，人生还剩多少天？';
+  --loading-diy-text: "快乐摸鱼又一天，人生还剩多少天？";
   --loading-diy-text-color: var(--text-normal);
   --loading-page-custom-gif-caption: " ";
+  --loading-page-custom-gif-caption-alt: " ";
   --loading-page-custom-gif-url: url(https://);
+  --loading-page-custom-gif-url-alt: url(https://cdn.dribbble.com/users/53712/screenshots/9948351/media/2397850c7727f8e70b0ec50b5a83fe76.gif);
   --loading-text-before: "❀✿";
   --loading-text-after: "✿❀";
   --loading-add-text-color: #d47e86;
@@ -3459,10 +3520,12 @@ body.all-dark .print.theme-light,
   --background-primary-alt-bg-4-bt: #000000;
   --background-secondary-bg-4-bt: #1e1e1e;
   --background-secondary-alt-bg-4-bt: #000000;
+  --background-asymm-split-left: var(--background-secondary-alt-bg-4-bt);
 
   --background-mobile-drawer-1: #1b1b1b;
   --background-mobile-drawer-2: #1b1b1b69;
   --background-modifier-border-hr: #3f3f3f;
+  --background-modifier-border-asymm: #343434;
 
   --background-transparent-black-or-white-1: #1b1b1b9a;
   --background-transparent-black-or-white-2: #1e1e1ebd;
@@ -3765,10 +3828,12 @@ body.all-dark .print.theme-light,
   --background-primary-alt-bg-4-bt: #e9e9e9;
   --background-secondary-bg-4-bt: #fcfcfc;
   --background-secondary-alt-bg-4-bt: #eeeeee;
+  --background-asymm-split-left: var(--background-secondary-alt-bg-4-bt);
 
   --background-mobile-drawer-1: #ffffff;
   --background-mobile-drawer-2: #ffffff;
   --background-modifier-border-hr: #b9b9b9;
+  --background-modifier-border-asymm: #d8d8d8;
   --background-secondary-alt-bg-4-bt-publish: #f6f6f6;
 
   --background-transparent-black-or-white-1: #ffffffb0;
@@ -5812,7 +5877,6 @@ body.color-scheme-options-flamingo.theme-light #calendar-container .year {
 
 /*星期数 week*/
 body.color-scheme-options-flamingo.theme-light #calendar-container .week-num {
-  /*border-right: 2px solid var(--green) !important;*/
   background-color: var(--calendar-week-background-color);
   font-weight: 600;
 }
@@ -9017,7 +9081,7 @@ span.cm-strong.cm-em.cm-highlight {
 .nav-folder-children .nav-folder-children {
   margin-left: 0.71875rem;
   padding-left: 0;
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   border-radius: 0;
   transition: all 400ms ease-in;
 }
@@ -9307,14 +9371,14 @@ input[type=checkbox] {
   -webkit-appearance: none;
   appearance: none;
   border-radius: var(--radius-xs);
-  border: 2px solid var(--background-modifier-border);
+  border: 1px solid var(--background-modifier-border);
   padding: 0;
   margin:  0 7px 2px 3px;
   width: var(--checkbox-size);
   height: var(--checkbox-size);
 }
 input[type=checkbox]:hover {
-  border: 2px solid var(--theme-color);
+  border: 1px solid var(--theme-color);
 }
 
 :is(.markdown-preview-view,.markdown-rendered)  ul>li.task-list-item.is-checked, 
@@ -10145,7 +10209,7 @@ body:not(.default-split-style) .workspace>.workspace-split:not(.mod-root) .cm-li
   font-family: var(--font-monospace);
 }
 
-mjx-container[jax='CHTML'] {
+.math.math-block mjx-container[jax='CHTML'] {
   outline: none;
   font-size: var(--font-size-latex);
 }
@@ -10247,7 +10311,7 @@ div.math.math-block mjx-math {
 /*thanks to loikein and death_au from forum and icr1001 from GitHub*/
 .markdown-source-view.mod-cm5 .cm-hmd-list-indent .cm-tab::before {
   content: '';
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   position: absolute;
   height: 100%;
   margin-left: 3px;
@@ -10268,6 +10332,12 @@ ul>li::marker,
 .cm-formatting.cm-formatting-list.cm-formatting-list-ul {
   color: var(--list-format-ul);
 }
+
+/*
+div.HyperMD-list-line.cm-line:not(.HyperMD-table-row) {
+  word-break: break-all;
+}
+*/
 
 pre.HyperMD-list-line.HyperMD-list-line {
   text-align: start;
@@ -10494,7 +10564,7 @@ body.list-vertical-line-one :is(ol,ul) :is(ol,ul) {
 
 body.list-vertical-line-one :is(ol,ul) :is(ol,ul)::before {
   content: '';
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   border-right: none!important;
   position: absolute;
   left: -0.9em;
@@ -10507,7 +10577,7 @@ body.list-vertical-line-one .kanban :is(ol,ul) ul::before {
 
 body.list-vertical-line-one .markdown-rendered.show-indentation-guide li > :is(ol,ul)::before {
   content: ' ';
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   border-right: none;
   position: absolute;
   left: -1.1rem;
@@ -10540,7 +10610,7 @@ body.list-vertical-line-two :is(ol,ul) :is(ol,ul) {
 
 body.list-vertical-line-two .markdown-rendered.show-indentation-guide li > :is(ol,ul)::before {
   content: '';
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   border-right: none !important;
   position: absolute;
   left: -1.1em !important;
@@ -10556,7 +10626,7 @@ body.list-vertical-line-two .kanban :is(ol,ul) ul::before {
 
 body.list-vertical-line-two :is(ol,ul).contains-task-list :is(ol,ul)::before {
   content: ' ';
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   position: absolute;
   left: -0.85em;
   top: 0;
@@ -10652,7 +10722,7 @@ body.list-vertical-line-three .kanban ol.contains-task-list :is(ol,ul)::before {
 
 body.list-vertical-line-three ul.contains-task-list :is(ol,ul)::before {
   content: ' ';
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   position: absolute;
   left: -1.2em;
   top: 1px;
@@ -11670,88 +11740,101 @@ body.table-style-three .markdown-source-view table tbody>tr {
 :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks) .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer,
 :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div,
 :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div.cm-content,
-:is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div.cm-content .cm-table-widget
-  { max-width: 100%; width: 100%;}
+:is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div.cm-content .cm-table-widge { 
+  max-width: 100%; 
+  width: 100%;
+}
 
-  :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer, 
-  :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div
-  { max-width: 100%; margin-inline: auto; width: 100%;} 
+:is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer, 
+:is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div { 
+  max-width: 100%; 
+  margin-inline: auto; 
+  width: 100%;
+} 
 
 /*	Editing View -- set all divs back to normal width (ensuring specificity rule over some theme), then	expand to full-width for each selected css class */
-    :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks) div.markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div,
-    :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  div.markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > .cm-line
-      {max-width: var(--line-width-readable); margin-inline: auto !important;} /* important for margin needed because app.css:2842 use it */
- body.full-width-dvtable .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block:not(.admonition-parent), 
-  body.full-width-table .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.HyperMD-table-row, .cm-table-widget),
-  body.full-width-callout .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.cm-callout),
-  body.full-width-backlinks .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div:is(.embedded-backlinks) > div
-      { max-width: 100%; }
-  
-    body.full-width-dvtable .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block>div[class^="block-language"]:not(.block-language-dataview)
-    {
-      max-width: var(--line-width-readable); margin-inline: auto;
-    }
+:is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks) div.markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div,
+:is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)  div.markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > .cm-line {
+  max-width: var(--line-width-readable); 
+  margin-inline: auto !important;
+} /* important for margin needed because app.css:2842 use it */
 
-  	/*	Reading View -- similar to Editing View, set all divs to normal-width and then selected divs to full-width, 
+body.full-width-dvtable .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block:not(.admonition-parent), 
+body.full-width-table .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.HyperMD-table-row, .cm-table-widget),
+body.full-width-callout .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.cm-callout,.admonition-parent),
+body.full-width-backlinks .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div:is(.embedded-backlinks) > div { 
+  max-width: 100%; 
+}
+  
+body.full-width-dvtable .markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block>div[class^="block-language"]:not(.block-language-dataview) {
+  max-width: var(--line-width-readable); 
+  margin-inline: auto;
+}
+
+/*	Reading View -- similar to Editing View, set all divs to normal-width and then selected divs to full-width, 
 		however, for Reading View, wide-dataview and wide-table will require Contextual Typography plugin */
-    :is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)	div.markdown-preview-view:not(.fullwidth) .markdown-preview-sizer.markdown-preview-sizer > div:not(.obsidian-banner-wrapper)
-  { max-width: var(--line-width-readable); margin-inline: auto; } /* important is for Atom theme */
+:is(body.full-width-table,body.full-width-dvtable,body.full-width-callout,body.full-width-backlinks)	div.markdown-preview-view:not(.fullwidth) .markdown-preview-sizer.markdown-preview-sizer > div:not(.obsidian-banner-wrapper) { 
+  max-width: var(--line-width-readable); 
+  margin-inline: auto; 
+} 
 
 
 body.full-width-dvtable .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-lang-dataview),
 body.full-width-table .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-table),
-body.full-width-callout .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div[data-callout],
-body.full-width-backlinks .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.embedded-backlinks)
-  { max-width: 100%!important; }
-
+body.full-width-callout .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is([data-callout],.admonition-parent),
+body.full-width-backlinks .markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.embedded-backlinks) { 
+  max-width: 100%!important; 
+}
 
 /*Full-width table dvtable callout backlinks layout*/
 /*modified from https://github.com/efemkay */
 
-	/*	Editing View -- set Readable Line Length (RLL) to wide (100%) for any css class with "wide" word
-		in it. / "width:100%" added for Blue Topaz / div.cm-content added to override Mado 11 */
-    div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer,
-    div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div,
-    div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div.cm-content,
-    div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div.cm-content .cm-table-widget
-      { max-width: 100%; width: 100%;}
+/*	Editing View -- set Readable Line Length (RLL) to wide (100%) for any css class with "wide" word in it. / "width:100%" added for Blue Topaz / div.cm-content added to override Mado 11 */
+div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer,
+div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div,
+div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div.cm-content,
+div[class*="wide-"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div.cm-content .cm-table-widget { 
+  max-width: 100%; 
+  width: 100%;
+}
       
-    /*	Reading View -- similar to Editing View, set the RLL to 100% for any css class with "wide" word
-      in it. "width:100%" added for Blue Topaz */
-    div[class*="wide-"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer, 
-    div[class*="wide-"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div
-      { max-width: 100%; margin-inline: auto; width: 100%;} 
+/*	Reading View -- similar to Editing View, set the RLL to 100% for any css class with "wide" word in it. "width:100%" added for Blue Topaz */
+div[class*="wide-"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer, 
+div[class*="wide-"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div { 
+  max-width: 100%; 
+  margin-inline: auto; width: 100%;
+} 
     
+/* === Wide Dataview, Table & Backlink === */
+/*	Editing View -- set all divs back to normal width (ensuring specificity rule over some theme), then expand to full-width for each selected css class (i.e. wide-dataview, wide-table and wide-backlinks) */
+div.markdown-source-view.mod-cm6:is(.wide-dataview,.wide-table,.wide-backlinks,.wide-callout) .cm-contentContainer.cm-contentContainer > div > div,
+div.markdown-source-view.mod-cm6:is(.wide-dataview,.wide-table,.wide-backlinks,.wide-callout) .cm-contentContainer.cm-contentContainer > div > .cm-line {
+  max-width: var(--line-width-readable); 
+  margin-inline: auto !important;
+} /* important for margin needed because app.css:2842 use it */
+div[class*="-dataview"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block:not(.admonition-parent), 
+div[class*="-table"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.HyperMD-table-row, .cm-table-widget),
+div[class*="-callout"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.cm-callout,.admonition-parent),
+div[class*="-backlinks"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div:is(.embedded-backlinks) > div { 
+  max-width: 100%; 
+}
   
-  /* === Wide Dataview, Table & Backlink === */
-  
-    /*	Editing View -- set all divs back to normal width (ensuring specificity rule over some theme), then
-      expand to full-width for each selected css class (i.e. wide-dataview, wide-table and wide-backlinks) */
-    div.markdown-source-view.mod-cm6:is(.wide-dataview,.wide-table,.wide-backlinks,.wide-callout) .cm-contentContainer.cm-contentContainer > div > div,
-    div.markdown-source-view.mod-cm6:is(.wide-dataview,.wide-table,.wide-backlinks,.wide-callout) .cm-contentContainer.cm-contentContainer > div > .cm-line
-      {max-width: var(--line-width-readable); margin-inline: auto !important;} /* important for margin needed because app.css:2842 use it */
-    div[class*="-dataview"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block:not(.admonition-parent), 
-    div[class*="-table"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.HyperMD-table-row, .cm-table-widget),
-    div[class*="-callout"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div:is(.cm-callout),
-    div[class*="-backlinks"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div:is(.embedded-backlinks) > div
-      { max-width: 100%; }
-  
-    div[class*="-dataview"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block>div[class^="block-language"]:not(.block-language-dataview)
-    {
-      max-width: var(--line-width-readable); margin-inline: auto;
-    }
+div[class*="-dataview"].markdown-source-view.mod-cm6 .cm-contentContainer.cm-contentContainer > div > div.cm-preview-code-block>div[class^="block-language"]:not(.block-language-dataview) {
+  max-width: var(--line-width-readable); 
+  margin-inline: auto;
+}
 
-    
-  
-    /*	Reading View -- similar to Editing View, set all divs to normal-width and then selected divs to full-width, 
-      however, for Reading View, wide-dataview and wide-table will require Contextual Typography plugin */
-    div.markdown-preview-view:is(.wide-dataview,.wide-table,.wide-backlinks,.wide-callout) .markdown-preview-sizer.markdown-preview-sizer > div
-      { max-width: var(--line-width-readable); margin-inline: auto; } /* important is for Atom theme */
-    div[class*="-dataview"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-lang-dataview),
-    div[class*="-table"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-table),
-    div[class*="-callout"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div[data-callout],
-    div[class*="-backlinks"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.embedded-backlinks)
-      { max-width: 100%!important; }
+/*	Reading View -- similar to Editing View, set all divs to normal-width and then selected divs to full-width, however, for Reading View, wide-dataview and wide-table will require Contextual Typography plugin */
+div.markdown-preview-view:is(.wide-dataview,.wide-table,.wide-backlinks,.wide-callout) .markdown-preview-sizer.markdown-preview-sizer > div {
+  max-width: var(--line-width-readable); 
+  margin-inline: auto; 
+} 
+div[class*="-dataview"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-lang-dataview),
+div[class*="-table"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.el-table),
+div[class*="-callout"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is([data-callout],.admonition-parent),
+div[class*="-backlinks"].markdown-preview-view .markdown-preview-sizer.markdown-preview-sizer > div:is(.embedded-backlinks) { 
+  max-width: 100%!important; 
+}
   
 /***end--Full-width table display--end****/
 
@@ -11853,7 +11936,7 @@ body.bt-status-off .status-bar {
   max-height: 26px;
   padding: 2px 8px 6px 3px;
 }
-body.bt-status-off .document-search-container{
+body.bt-status-off .document-search-container {
   width: 80%;
   background-color: var(--background-secondary-bg-4-bt);
 }
@@ -11894,8 +11977,7 @@ body.bt-status-off #scroll-controls {
 }
 
 /** file name**/
-body.file-name-animation  .nav-files-container
-{
+body.file-name-animation .nav-files-container {
   overflow-x: auto;
 }
 body.file-name-animation .nav-file-title-content:not(.is-being-renamed):hover {
@@ -11948,7 +12030,23 @@ body.file-bg-pill .nav-file-title.is-active,
 body.file-bg-pill .nav-folder-title.is-active, 
 body:not(.is-grabbing).file-bg-pill .nav-file-title:hover, 
 body:not(.is-grabbing).file-bg-pill .nav-folder-title:hover {
-  border-radius: 12px;
+  border-radius: 15px;
+}
+
+body.file-bg-pill .nav-folder.mod-root>.nav-folder-title {
+  margin-left: -2px;
+}
+
+.item-list {
+  padding: 0;
+}
+
+body.file-bg-pill .item-list {
+  padding: 0 4px 0 1px;
+}
+
+.item-list .nav-file-icon {
+  margin-left: 2px;
 }
 
 body.light-background-color-files .nav-file-title.is-active {
@@ -11963,7 +12061,7 @@ body.light-background-color-files .nav-file-title.is-active {
 
 .nav-file:not(.is-active):hover .nav-file-title,
 .nav-folder:hover .nav-folder-content {
-  background-color: var(--theme-color-translucent);
+  background-color: var(--theme-color-translucent-1);
   font-weight: 500;
 }
 
@@ -12211,6 +12309,8 @@ body.adjustable-embed-content-height :is(.markdown-preview-view,.markdown-render
   font-size: var(--font-size-embed-title-size);
   line-height: inherit;
   height: unset;
+  word-wrap: break-word;
+  white-space: pre-wrap;
 }
 
 .file-embed-title {
@@ -12499,12 +12599,12 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
 }
 
 /* images : reduce displayed size of embedded files, zoom on hover */
-:is(.markdown-preview-view,.markdown-rendered) img:not([class*="emoji"]){
+:is(.markdown-preview-view,.markdown-rendered) img:not([class*="emoji"]) {
   max-width: min(100%, 800px);
   margin-left: auto;
   margin-right: auto;
 }
-.print :is(.markdown-preview-view,.markdown-rendered)  img:not([class*="emoji"]) {
+.print :is(.markdown-preview-view,.markdown-rendered) img:not([class*="emoji"]) {
   display: block;
 }
 .view-content img:not([class*="emoji"]) {
@@ -12513,14 +12613,12 @@ div.CodeMirror-activeline .CodeMirror-line span.cm-formatting.cm-formatting-head
   margin-left: auto !important;
   margin-right: auto !important;
 }
-body:not(.image-zoom) .markdown-reading-view button img
- {
+body:not(.image-zoom) .markdown-reading-view button img {
   pointer-events: none;
-  }
-  body:not(.image-zoom) .markdown-reading-view .callout-title-inner img
-  {
-   pointer-events: none;
-   }
+}
+body:not(.image-zoom) .markdown-reading-view .callout-title-inner img {
+  pointer-events: none;
+}
 
 body:not(.image-zoom) .markdown-reading-view img:not([class*="emoji"]):active,
 .workspace-leaf-content[data-type="image"] img:active {
@@ -12545,7 +12643,10 @@ body:not(.image-zoom) .markdown-reading-view img:not([class*="emoji"]):active,
   display: block;
 }
 
-.internal-embed[alt$="inline"], .internal-embed[alt$="Inline"], .internal-embed[alt$="INLINE"], .internal-embed[alt$="inl"] {
+.internal-embed[alt$="inline"], 
+.internal-embed[alt$="Inline"], 
+.internal-embed[alt$="INLINE"], 
+.internal-embed[alt$="inl"] {
   display: inline ;
 }
 
@@ -12564,6 +12665,13 @@ body.hide-vault-name .nav-folder.mod-root>.nav-folder-title {
 .nav-folder-title {
   white-space: normal;
   width: auto;
+}
+
+body.file-name-non-wrapped .nav-file-title,
+body.file-name-non-wrapped .nav-folder-title {
+  white-space: nowrap;
+  width: max-content;
+  min-width: 100%;
 }
 
 /* file explorer : Indent wrapped nav text */
@@ -12708,8 +12816,8 @@ body:not(.default-icons) .nav-folder-collapse-indicator svg {
   width: 7px;
 }
 
-body:not(.unmuted-collapsed-folder) .nav-folder.is-collapsed {
-  opacity: 0.55;
+body:not(.unmuted-collapsed-folder) .nav-folder.is-collapsed *:not(.is-being-renamed) {
+  opacity: 0.75;
 }
 
 body:not(.default-icons) .nav-folder.is-collapsed .nav-folder-collapse-indicator::after {
@@ -12937,7 +13045,7 @@ body:not(.default-icons) .outline .tree-item.is-collapsed .collapse-icon::before
 /*vertical lines in outline page*/
 .outline .tree-item-children {
   margin-left: 13px;
-  border-left: 2px solid #94949433;
+  border-left: 1px solid #94949433;
   border-radius: 0;
   transition: all 300ms ease-in-out;
 }
@@ -12992,7 +13100,7 @@ ul.contains-task-list .list-collapse-indicator.collapse-indicator.collapse-icon:
 /*tag collapse indicator*/
 .tag-container .tree-item-children {
   margin-left: 10px;
-  border-left: 2px solid #94949433;
+  border-left: 1px solid #94949433;
   border-radius: 0 3px 3px 0;
   transition: all 300ms ease-in-out;
 }
@@ -14748,7 +14856,7 @@ pre.frontmatter.language-yaml::before {
 }
 
 .kanban-plugin__item-title ol:not(.contains-task-list)>li:not(.task-list-item),
-.kanban-plugin__item-title ul>li:not(.task-list-item) {
+.kanban-plugin__item-title ul:not(.contains-task-list)>li:not(.task-list-item) {
   border-left: none;
   padding: 0 1px;
   margin-left: 0px;
@@ -16814,7 +16922,6 @@ body.translucent-setting-panel .vertical-tab-nav-item {
 .setting-item-info {
   word-wrap: break-word;
   word-break: break-word;
-  white-space: pre-wrap;
 }
 
 .style-settings-heading {
@@ -17159,13 +17266,13 @@ body:is(.magenta-light.theme-light,.magenta-dark.theme-dark) {
 body:not(.default-light):not(.default-dark) div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L1-bg {
   background-color: var(--stat-day-L1) !important;
 }
-body:not(.default-light):not(.default-dark)div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
+body:not(.default-light):not(.default-dark) div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L2-bg {
   background-color: var(--stat-day-L2) !important;
 }
-body:not(.default-light):not(.default-dark)div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
+body:not(.default-light):not(.default-dark) div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L3-bg {
   background-color: var(--stat-day-L3) !important;
 }
-body:not(.default-light):not(.default-dark)div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
+body:not(.default-light):not(.default-dark) div[data-type='memos_view'] .usage-heat-map-wrapper > .usage-heat-map > .stat-container.stat-day-L4-bg {
   background-color: var(--stat-day-L4) !important;
 }
 
@@ -18209,6 +18316,43 @@ body.rainbow-cursor .markdown-source-view.mod-cm6 .cm-content {
 }
 
 /*==== separators =====*/
+body.asymmetric-split-left .workspace-split.mod-horizontal.mod-left-split .workspace-leaf {
+  background-color: var(--background-asymm-split-left);
+}
+
+body.asymmetric-split-left .workspace-ribbon.mod-left {
+  border-right: 1px solid var(--background-modifier-border-asymm);
+}
+
+body.asymmetric-split-left .titlebar {
+  border-bottom: 1px solid var(--background-modifier-border-asymm);
+}
+
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tabs{
+  border-bottom: 1px solid var(--background-modifier-border-asymm);
+}
+
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-container-before.is-before-active .workspace-tab-header-inner,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-container-after.is-after-active .workspace-tab-header-inner,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header.is-before-active .workspace-tab-header-inner,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header.is-after-active .workspace-tab-header-inner,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header-inner,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header.is-after-active,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header.is-before-active,
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-container-before.is-before-active .workspace-tab-header-inner {
+  background-color: var(--background-asymm-split-left);
+  border-radius: 0;
+}
+
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header-container {
+  padding: 4px 0;
+}
+
+body.asymmetric-split-left .workspace-split.mod-left-split .workspace-tab-header-container {
+  border-bottom: 1px solid var(--background-modifier-border-asymm);
+}
+
 .workspace-split.mod-vertical>.workspace-leaf,
 .workspace-split.mod-root .workspace-split.mod-vertical .workspace-leaf-content,
 .workspace-split.mod-vertical>.workspace-split {
@@ -18221,7 +18365,7 @@ body.rainbow-cursor .markdown-source-view.mod-cm6 .cm-content {
 
 .workspace-split.mod-left-split>.workspace-leaf-resize-handle,
 .workspace-split.mod-right-split>.workspace-leaf-resize-handle {
-  height: 95.9%;
+  height: 100%;
   width: 2px;
 }
 
@@ -18253,7 +18397,7 @@ body.rainbow-cursor .markdown-source-view.mod-cm6 .cm-content {
 
 .workspace-tab-header-container {
   background-color: var(--background-secondary-alt-bg-4-bt);
-  flex: 0.005 0 auto;
+  flex: 0.004 0 auto;
   padding: 5px 0 0;
 }
 
@@ -18340,9 +18484,6 @@ body.folder-icons.remove-arrow:not(.default-icons) .nav-folder-collapse-indicato
 }
 body.folder-icons.remove-arrow:not(.default-icons) :is(.nav-folder-title,.nav-file-title) {
   padding-left: 0;
-}
-body.folder-icons.remove-arrow:not(.default-icons) .nav-files-container {
-  padding-left: 7px;
 }
 
 body:not(.remove-file-icons) .nav-folder-children .nav-file-title-content:first-child::before {
@@ -18586,6 +18727,35 @@ body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-action svg.brok
 .menu {
   border: none;
 }
+
+body.toggle-bg-file-page.theme-dark .nav-files-container::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.2;
+  background: no-repeat center/cover url(https://images.unsplash.com/photo-1612434995720-89c1537a3009?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170);
+  z-index: -1;
+}
+
+/*
+body.toggle-bg-file-page.theme-light .nav-files-container::before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  opacity: 0.25;
+  background: no-repeat center/cover url(https://images.unsplash.com/photo-1628882860274-0b9a99911691?ixlib=rb-1.2.1&raw_url=true&q=80&fm=jpg&crop=entropy&cs=tinysrgb&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1199);
+  z-index: -1;
+  filter: blur(3px) hue-rotate(70deg);
+}
+*/
 
 /* Sea and sky for Blue Topaz */
 .workspace-split.mod-root .workspace-leaf:nth-child(n) .workspace-leaf-content[data-type="markdown"]::before {
@@ -19104,7 +19274,7 @@ body:not(.background-image-settings-switch).background-image-settings-markdown-p
 .nav-view-outer .tree-item .tree-item .tree-item-children {
   margin-left: 12px;
   padding-left: 0;
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   border-radius: 0;
   transition: all 400ms ease-in;
 }
@@ -19161,7 +19331,7 @@ body:not(.default-icons) .nav-view-outer .tree-item.is-collapsed .tree-item-icon
 .outline-view-outer .tree-item .tree-item-children {
   margin-left: 12px;
   padding-left: 0;
-  border-left: 2px solid var(--background-modifier-border);
+  border-left: 1px solid var(--background-modifier-border);
   border-radius: 0;
   transition: all 400ms ease-in;
 }
@@ -19697,7 +19867,7 @@ body.folder-style-change-options-colorful.is-mobile .nav-folder-title {
 }
 
 body.folder-style-change-options-colorful .nav-folder-children .nav-folder-children {
-  border-left: 2px solid var(--text-muted);
+  border-left: 1px solid var(--text-muted);
 }
 
 body.folder-style-change-options-colorful.is-mobile .nav-folder.mod-root>.nav-folder-children>.nav-folder>.nav-folder-children {
@@ -20552,13 +20722,13 @@ body:not(.default-loading-page).theme-light .progress-bar {
 }
 
 @keyframes shape {
-  0% {background-color: transparent; left: -50px; top: -60px; border-radius: 50%;}
-  10% {background-color: #53c7ff; left: -50px; top: -60px; border-radius: 50%;}
-  30% {background-color: #8fff7b; left: 130px; top: -60px; border-radius: 0;}
-  50% {background-color: #ffe468; left: 130px; top: 120px; border-radius: 50%;}
-  70% {background-color: #fe9289; left: -50px; top: 120px; border-radius: 0;}
-  90% {background-color: #53c7ff; left: -50px; top: -60px; border-radius: 50%;}
-  100% {background-color: transparent; left: -50px; top: -60px; border-radius: 50%;}
+  0% {background-color: transparent; left: -50px; top: -50px; border-radius: 50%;}
+  10% {background-color: #53c7ff; left: -50px; top: -50px; border-radius: 50%;}
+  30% {background-color: #8fff7b; left: 110px; top: -50px; border-radius: 0;}
+  50% {background-color: #ffe468; left: 110px; top: 110px; border-radius: 50%;}
+  70% {background-color: #fe9289; left: -50px; top: 110px; border-radius: 0;}
+  90% {background-color: #53c7ff; left: -50px; top: -50px; border-radius: 50%;}
+  100% {background-color: transparent; left: -50px; top: -50px; border-radius: 50%;}
 }
 
 /* the gif animation was created by @Jake Fleming https://dribbble.com/shots/9948351-kitty-wiggle */
@@ -20603,6 +20773,43 @@ body:not(.default-loading-page).loading-animation-custom .progress-bar-message::
   width: 800px; 
   height: 600px;
   margin-top: -20px; 
+}
+
+body:not(.default-loading-page).loading-shape-with-custom-gif .progress-bar-message:before {
+  display: block;
+  width: 250px; 
+  height: 250px;
+  content: var(--loading-page-custom-gif-caption-alt); 
+  background: no-repeat center/cover var(--loading-page-custom-gif-url-alt);
+  animation: shape-gif 2.5s infinite alternate;
+}
+
+body:not(.default-loading-page).loading-shape-with-custom-gif.loading-shape-with-custom-high-contrast-bg.theme-light .progress-bar {
+  background-color: black;
+}
+
+body:not(.default-loading-page).loading-shape-with-custom-gif.loading-shape-with-custom-high-contrast-bg.theme-dark .progress-bar {
+  background-color: white;
+}
+
+body:not(.default-loading-page).loading-shape-with-custom-gif.loading-shape-with-custom-high-contrast-bg.theme-dark .progress-bar-message::before {
+  animation: shape-gif-dark 2.5s infinite alternate;
+}
+
+@keyframes shape-gif {
+  0% {filter: hue-rotate(0deg); left: -80px; top: -80px; border-radius: 50%;}
+  25% {filter: hue-rotate(90deg); left: 80px; top: -80px; border-radius: 0;}
+  50% {filter: hue-rotate(180deg); left: 80px; top: 80px; border-radius: 50%;}
+  75% {filter: hue-rotate(270deg); left: -80px; top: 80px; border-radius: 0;}
+  100% {filter: hue-rotate(360deg); left: -80px; top: -80px; border-radius: 50%;}
+}
+
+@keyframes shape-gif-dark {
+  0% {filter: hue-rotate(0deg) invert(100%); left: -80px; top: -80px; border-radius: 50%;}
+  25% {filter: hue-rotate(90deg) invert(100%); left: 80px; top: -80px; border-radius: 0;}
+  50% {filter: hue-rotate(180deg) invert(100%); left: 80px; top: 80px; border-radius: 50%;}
+  75% {filter: hue-rotate(270deg) invert(100%); left: -80px; top: 80px; border-radius: 0;}
+  100% {filter: hue-rotate(360deg) invert(100%); left: -80px; top: -80px; border-radius: 50%;}
 }
 
 body:not(.default-loading-page).loading-add-icons .progress-bar-message {
@@ -20652,10 +20859,8 @@ body:not(.default-loading-page).loading-custom-text .progress-bar-message::befor
 body:not(.default-loading-page).loading-custom-text.loading-text-typing-style .progress-bar-message::before {
   overflow: hidden;
   white-space: nowrap;
-  border-right: 0.1em solid;
-  margin: 2em 1em;
-  width: 26ch;
-  animation: typing-style 3s steps(26, end),
+  border-right: 0.07em solid;
+  animation: typing-style 3s steps(23, end),
     cursor-blink 0.3s step-end infinite alternate;
 }
 
@@ -20665,7 +20870,7 @@ body:not(.default-loading-page).loading-custom-text.loading-text-typing-style .p
 
 @keyframes typing-style {
   0% {width: 0;}
-  100% {width: 26ch;}
+  100% {width: 42ch;}
 }
 
 body:not(.default-loading-page).loading-custom-text.loading-text-moving-style .progress-bar-message::before {
@@ -21011,7 +21216,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220518";
+  content: "uid:20220531";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;
@@ -21123,12 +21328,35 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
 }
   
 /*cards 视图*/
+:root{
+  --cards-width: 138px;
+}
+
+@media (max-width: 450px) {
+  :root{
+      --cards-width: 112.64px;
+      }
+}
+
+@media (max-width: 375px) {
+  :root{
+      --cards-width: 102.4px;
+      }
+}
+
+@media (max-width: 350px) {
+  :root{
+      --cards-width: 87.04px;
+      }
+}
 .callout.callout[data-callout*=cards] .callout-content {
   padding: 0;
 }
 .callout.callout[data-callout*=cards] progress {
   position: absolute;
+  width: var(--cards-width);
   margin-top: -10px;
+  margin-left:   calc(var(--cards-width) /2 * -1);
   overflow: hidden;
   height: 3px;
   background: #f0ec05; 
@@ -21150,14 +21378,11 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
 }
 
 .callout.callout[data-callout*=cards] table.dataview tbody {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(var(--cards-width),1fr));
-  grid-column-gap: 1.2rem;
-  grid-row-gap: 0.75rem;    
-  justify-content: space-between;
-  margin-top: 40px;
-  margin-left: -25px;
-  width: 99%;
+  display: flex;
+  flex-flow: wrap;
+  margin-top: 20px;
+  margin-left: 0.5em;
+  width: 105%;
 }
 
 @media (max-width:1120px) {
@@ -21185,7 +21410,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   display: block;
   width:var(--cards-width);
   height: auto;
-  margin-left: 36px;
+  margin-left: 1.2em;
   margin-bottom: 44px;
   background-color: transparent;
 }
@@ -21241,6 +21466,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
 }
 .callout.callout[data-callout*=cards] table.dataview tbody>tr>td:not(:first-child), 
 .markdown-source-view.mod-cm6.callout.callout[data-callout*=cards] .dataview.table-view-table>tbody>tr>td:not(:first-child) {
+  text-align: center;
   padding: 0;
   margin-top: 4px;
   font-size: 15px;
@@ -21520,8 +21746,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, auto));
   grid-gap: 2px;
-  margin: 0;
-  margin-top: 5px;
+ 
 }
 .callout.callout:is([data-callout-metadata*='grid'],
 [data-callout*='grid'])  .callout-content img {
@@ -21953,10 +22178,16 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   padding-right: 5px;;
 }
 .callout.callout[data-callout*=bookinfo] .callout-content td:nth-child(2) {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
+  display: table-cell;
   overflow: hidden;
+}
+@media screen and (max-width: 768px) {
+  .callout.callout[data-callout*=bookinfo] .callout-content table {
+    width: 100%;
+}
+.callout.callout[data-callout*=bookinfo] .callout-content {
+  display: grid;
+}
 }
 /******callout timeline*****/
 .callout.callout[data-callout="timeline"] {
@@ -22083,7 +22314,231 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   font-size: 4em;
 }
 
+/***Sticky notes  便签效果**/
+.callout[data-callout="stickies"] { 
+
+  box-shadow:none;
+  border-left:0px;
+}
+.callout[data-callout="stickies"] >.callout-title { 
+  display: none;
+}
+
+.callout[data-callout="stickies"] >.callout-content { 
+  overflow:visible;
+  text-align: center;
+  transition: width 2s;
+  padding: 5px;
+  margin: 18px;
+  position: relative;
+  float: right;
+  right: -10px;
+  width: max(180px, 30%);
+  max-width: 50%;
+  background-color: var(--stickies-color-1);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(2deg);
+  transition: all 2s ease;
+  z-index: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 0px;
+  color: black;
+}
+.callout[data-callout="stickies"] >.callout-content::after  { 
+  content: "";
+  left: -5%;
+  top: -10px;
+  height: 40px;
+  width: 15px;
+  border-radius: var(--radius-l);
+  border: 3px solid #979797;
+  display: inline-block;
+  position: absolute;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(-11deg);
+  z-index: 11;
+}
+.callout[data-callout="stickies"] >.callout-content::before  { 
+  width: 11px;
+  height: 20px;
+  content: "";
+  display: inline-block;
+  position: absolute;
+  left: -3.5%;
+  top: -2px;
+  border-radius: var(--radius-l);
+  border: 3px solid #979797;
+  border-bottom: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  z-index: 10;
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg); 
+  transform: rotate(-11deg);
+}
+
+.callout[data-callout="stickies2"] { 
+
+  box-shadow:none;
+  border-left:0px;
+}
+.callout[data-callout="stickies2"] >.callout-title { 
+  display: none;
+}
+
+.callout[data-callout="stickies2"] >.callout-content { 
+  overflow:visible;
+  position: relative;
+  float: left;
+  box-shadow: 0 10px 10px 2px #9191912d;
+  width: max(180px, 30%);
+  max-width: 50%;
+  background-color: var(--stickies-color-2);
+  -webkit-transform: rotate(0deg);
+  -moz-transform: rotate(0deg);
+  -o-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(-2deg);
+  transition: all 2s ease;
+  z-index: 1;
+  padding: 20px;
+  margin: 10px;
+  color: black;
+}
+.callout[data-callout="stickies2"] >.callout-content::after  { 
+  content: "";
+  display: block;
+  height: 32px;
+  width: 2px;
+  position: absolute;
+  left: 50%;
+  top: -10px;
+  z-index: 1;
+  border-radius: 50%;
+  display: inline-block;
+  height: 15px;
+  width: 15px;
+  border: 1px;
+  box-shadow: inset -10px -10px 10px #f0b7a4, inset 3px 3px 5px;
+}
+
+.callout[data-callout="stickies3"] { 
+
+  box-shadow:none;
+  border-left:0px;
+  margin: 20px auto 0 auto!important; 
+}
+.callout[data-callout="stickies3"] >.callout-title { 
+  display: none;
+}
+
+.callout[data-callout="stickies3"] >.callout-content { 
+  overflow:visible;
+  width: max(180px, 30%);
+  max-width: 235px;
+	min-height: 235px;
+	padding-top: 1.5em; 
+  font-family:  Arial;
+  margin-top:20px;
+  margin-right:  25px;
+  position: relative;
+  vertical-align: top;
+  display: inline-block;
+  background: #F7E999;
+  text-align: center;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  color: black;
+  font-family: var(--font-family-vault);
+}
+div.is-live-preview .callout[data-callout="stickies3"] >.callout-content { 
+	padding: 20px 15px 10px 15px; 
+}
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content p { 
+margin-block-start: 0.5em;
+margin-block-end: 0.5em;
+}
+div.callout[data-callout="stickies3"] >.callout-content ul  { 
+  text-align: left;
+  margin-left:auto;
+}
+.callout[data-callout="stickies3"] >.callout-content::before  { 
+  display: block;
+  content: "";
+  background: rgba(227, 200, 114, 0.4);
+  width: 56%;
+  height: 28px;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 6px/18px 0;
+  position: absolute;
+  top: -13px;
+  left: 20%;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+.callout[data-callout="stickies3"] >.callout-content a {
+  color: #6b824f;
+  -webkit-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -ms-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+}
+.callout[data-callout="stickies3"] >.callout-content a:hover {
+  color: #D83A25;
+  background: transparent;
+}
+.callout[data-callout="stickies3"] >.callout-content a::before {
+content:"";
+}
+.callout:is([data-callout-metadata='yellow'])
+ {
+  background: #F7E999;
+  -webkit-transform: rotate(2deg);
+  -moz-transform: rotate(2deg);
+  -o-transform: rotate(2deg);
+  -ms-transform: rotate(2deg);
+  transform: rotate(2deg);
+}
+
+.callout:is([data-callout-metadata='blue'])  .callout-content {
+  background: #b9dcf4;
+  -webkit-transform: rotate(-2deg);
+  -moz-transform: rotate(-2deg);
+  -o-transform: rotate(-2deg);
+  -ms-transform: rotate(-2deg);
+  transform: rotate(-2deg);
+}
+
+.callout:is([data-callout-metadata='pink']) .callout-content {
+  background: #FFBDA3;
+  -webkit-transform: rotate(1deg);
+  -moz-transform: rotate(1deg);
+  -o-transform: rotate(1deg);
+  -ms-transform: rotate(1deg);
+  transform: rotate(1deg);
+}
+
+.callout:is([data-callout-metadata='green']) .callout-content {
+  background: #CAF4B9;
+  -webkit-transform: rotate(-1deg);
+  -moz-transform: rotate(-1deg);
+  -o-transform: rotate(-1deg);
+  -ms-transform: rotate(-1deg);
+  transform: rotate(-1deg);
+}
 /*禁用点击超链接跳转 需要跳转 按ctrl+超链接即可*/
-.cm-s-obsidian span.cm-link {
+body.link-click .cm-s-obsidian span.cm-link {
   pointer-events:none ;
 }

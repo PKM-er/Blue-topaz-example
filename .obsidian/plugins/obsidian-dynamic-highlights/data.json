@@ -279,6 +279,61 @@
           "group"
         ],
         "css": "[data-dv-key=\"img-caption\"] + span.dataview>span\n{\n  margin: 0.5rem 0;\n  display: block;\n  caption-side: bottom;\n  text-align: center;\n  font-size: 0.85rem;\n}\n.dataview.inline-field-key[data-dv-key=\"img-caption\"] + .dataview.inline-field-value\n{\n  background-color:unset;\n  border-radius: 0px;\n  padding: 0;\n  font-family: var(--font-text);\n}\n\n\n.dataview.inline-field-key[data-dv-key=\"img-caption\"] \n{\n  display:none;\n  background-color:unset;\n  font-size: 0px;\n  padding:0;\n  border-radius: 0px;\n}\n\n.is-live-preview .cm-line:not(.cm-active) .imgcaptionkey\n{\n  display: none;}\n.is-live-preview  .cm-line:not(.cm-active) .imgcaptionbracket\n{\n  display: none;\n}\n.is-live-preview  .cm-line:not(.cm-active) .imgcaptionvalue\n{\n  display: block;\n  margin-bottom: 1em;\n  caption-side: bottom;\n  text-align: center;\n  font-size: 0.85rem;\n  color: var(--text-normal);\n  font-family: var(--font-text);\n}\n"
+      },
+      "list-exclimation": {
+        "class": "list-exclimation",
+        "color": "#FFFF7F00",
+        "regex": true,
+        "query": "^[ \\t]*- (?<lmarker>(!|！|❗|💡))",
+        "mark": [
+          "group",
+          "line"
+        ],
+        "css": ".cm-line.list-exclimation:after {\n  background-color: rgba(255, 23, 68, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-exclimation\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-exclimation .lmarker {\n  font-weight: bold;\n  color: rgb(255, 23, 68);\n}"
+      },
+      "list-tilde": {
+        "class": "list-tilde",
+        "color": "#FFFF7F00",
+        "regex": true,
+        "query": "^[ \\t]*- (?<lmarker>~)",
+        "mark": [
+          "group",
+          "line"
+        ],
+        "css": ".cm-line.list-tilde:after {\n  background-color: rgba(124, 77, 255, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-tilde\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-tilde .lmarker {\n  font-weight: bold;\n  color: rgb(124, 77, 255);\n}"
+      },
+      "list-plus": {
+        "class": "list-plus",
+        "color": "#FFFF7F00",
+        "regex": true,
+        "query": "^[ \\t]*- (?<lmarker>\\+)",
+        "mark": [
+          "group",
+          "line"
+        ],
+        "css": ".cm-line.list-plus:after {\n  background-color: rgba(0, 184, 212, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-plus\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-plus .lmarker {\n  font-weight: bold;\n  color: rgb(0, 184, 212);\n}"
+      },
+      "list-question": {
+        "class": "list-question",
+        "color": "#FFFF7F00",
+        "regex": true,
+        "query": "^[ \\t]*- (?<lmarker>(\\?|？|❓))",
+        "mark": [
+          "group",
+          "line"
+        ],
+        "css": ".cm-line.list-question\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-question:after {\n  background-color: rgba(255, 145, 0, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n\n.cm-line.list-question .lmarker {\n  font-weight: bold;\n  color: rgb(255, 145, 0);\n}"
+      },
+      "list-dash": {
+        "class": "list-dash",
+        "color": "#FFFF7F00",
+        "regex": true,
+        "query": "^[ \\t]*- (?<lmarker>-)",
+        "mark": [
+          "group",
+          "line"
+        ],
+        "css": ".cm-line.list-dash:after {\n  background-color: rgba(158, 158, 158, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-dash\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-dash .lmarker {\n  font-weight: bold;\n  color: rgb(158, 158, 158);\n}"
       }
     },
     "queryOrder": [
@@ -308,7 +363,12 @@
       "light-time-12-5",
       "inline-property-name",
       "basic-date",
-      "img-caption"
+      "img-caption",
+      "list-exclimation",
+      "list-tilde",
+      "list-plus",
+      "list-question",
+      "list-dash"
     ]
   },
   "light-time-8-5": {

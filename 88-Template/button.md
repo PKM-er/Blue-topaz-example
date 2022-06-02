@@ -177,7 +177,7 @@ class circle_btn blank
 ^button-refreshhomepage
 
 ```button
-name <img title="重新加载数据" width="80" src="https://s1.ax1x.com/2022/05/18/OI7Io9.png"> 
+name <img title="重新加载数据" width="90" src="https://s1.ax1x.com/2022/05/18/OI7Io9.png"> 
 type command
 action QuickAdd: 重载主页
 class  blank
@@ -237,13 +237,6 @@ class circle_btn blank
 ```
 ^button-kanbanwp
 
-```button
-name <svg t="1642771907871" class="icon" viewBox="0 0 1111 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="18754" width="30" height="30"><path d="M0 555.885714L555.885714 0l555.885715 555.885714h-146.285715v468.114286H146.285714V555.885714z" fill="#7dc5eb" p-id="18755"></path><path d="M409.6 1024V614.4h292.571429v409.6z" fill="#333333" p-id="18756"></path></svg>
-type command
-action QuickAdd: 刷新主页
-class blank
-```
-^button-homewp
 
 ```button
 name <svg t="1642771976390" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="22304" width="30" height="30"><path d="M736 192a48 48 0 0 0 48-48V48a48 48 0 1 0-96 0v96a48 48 0 0 0 48 48z m-240 0a48 48 0 0 0 48-48V48a48 48 0 1 0-96 0v96a48 48 0 0 0 48 48z m464 640h-48v-48a48 48 0 1 0-96 0v48h-48a48 48 0 1 0 0 96h48v48a48 48 0 1 0 96 0v-48h48a48 48 0 1 0 0-96z m-288 48a96 96 0 0 1 96-96 96 96 0 1 1 192 0V144a48 48 0 0 0-48-48h-80v48a96 96 0 1 1-192 0V96h-48v48a96 96 0 1 1-192 0V96h-48v48a96 96 0 1 1-192 0V96H80a48 48 0 0 0-48 48v832a48 48 0 0 0 48 48h688v-48a96 96 0 0 1-96-96zM208 368h576a48 48 0 1 1 0 96H208a48 48 0 1 1 0-96z m296 496H200a40 40 0 1 1 0-80h304a40 40 0 1 1 0 80z m120-192H208a48 48 0 1 1 0-96h416a48 48 0 1 1 0 96zM256 192a48 48 0 0 0 48-48V48a48 48 0 1 0-96 0v96a48 48 0 0 0 48 48z" p-id="22305" fill="#1296db"></path></svg>记事
@@ -277,11 +270,37 @@ class grad_button g_blue
 ```
 ^button-search
 
+## 导航
+
 ```button
-name <svg t="1651945663442" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="731" width="20" height="20"><path d="M474.7264 282.9824v-130.048c-11.8272-54.3744-56.7296-21.248-56.7296-21.248L105.9328 398.7968c-68.5568 47.3088-4.7104 82.7392-4.7104 82.7392l307.3024 264.7552c61.4912 44.9536 66.2016-23.6544 66.2016-23.6544V602.112c312.064-96.9216 439.6544 290.7648 439.6544 290.7648 11.776 21.3504 18.8928 0 18.8928 0C1053.7984 311.3472 474.7264 282.9824 474.7264 282.9824z m0 0" fill="#00A0E9" p-id="732"></path></svg>上一级
+name <svg t="1653385409343" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5652" width="32" height="32"><path d="M341.333333 917.333333V554.666667h341.333334v362.666666h192V363.84L512 115.690667 149.333333 363.84V917.333333h192z m21.333334 85.333334H64V318.826667L512 12.309333l448 306.517334V1002.666667H597.333333V640h-170.666666v362.666667h-64z" p-id="5653"></path></svg>
 type command
-action Quick Explorer: Browse vault
-class blank
+action QuickAdd: 刷新主页
+class blank main-bar
+```
+^button-homewp
+
+```button
+name <svg viewBox="0 0 16 16"><path d="M16,7H3.8l5.6-5.6L8,0L0,8l8,8l1.4-1.4L3.8,9H16V7z"></path></svg>
+type command
+action 返回
+class blank main-bar
 ```
 ^button-browsevault
+
+```button
+name <svg viewBox="0 0 16 16"><path d="M8,0L6.6,1.4L12.2,7H0v2h12.2l-5.6,5.6L8,16l8-8L8,0z"></path></svg>
+type command
+action 前进
+class blank main-bar
+```
+^button-browsenext
+
+```button
+name  <svg viewBox="0 0 16 16"><path d="M13.6,2.3C12.2,0.9,10.2,0,8,0C3.6,0,0,3.6,0,8s3.6,8,8,8c3.7,0,6.8-2.5,7.7-6h-2.1c-0.8,2.3-3,4-5.6,4c-3.3,0-6-2.7-6-6	s2.7-6,6-6c1.7,0,3.1,0.7,4.2,1.8L9,7h7V0L13.6,2.3z"></path></svg>
+type command
+action QuickAdd: 刷新主页
+class blank main-bar
+```
+^button-browserefresh
 

@@ -18,7 +18,10 @@
   "hotkeyStyle": "auto",
   "createNewFileMod": "Shift",
   "createNewPaneMod": "Mod",
-  "hiddenCommands": [],
+  "hiddenCommands": [
+    "app:open-help",
+    "workspace:edit-file-title"
+  ],
   "hiddenFiles": [],
   "hiddenTags": []
 }

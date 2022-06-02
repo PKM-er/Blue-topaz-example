@@ -1,0 +1,8 @@
+{
+  "openFileOnWrite": true,
+  "openDailyInNewPane": false,
+  "openFileOnWriteInNewPane": false,
+  "openFileWithoutWriteInNewPane": false,
+  "idField": "id",
+  "useUID": false
+}

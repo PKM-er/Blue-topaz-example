@@ -25,10 +25,49 @@ SOFTWARE.
 /* ================================== */
 /* ======== Dataview Cards ========== */
 /* ================================== */
+/* @settings
+name: Cards view for dataview table
+description:  ❗cssclass：cards ❗ 
+id: dataview-cards-view
+settings:
+  - 
+    id: cards-width
+    title: cards width
+    title.zh: 定义卡片宽度
+    type: variable-number-slider
+    default: 138
+    format: px
+    min: 80
+    max: 260
+    step: 1
+  - 
+    id: image-aspect-ratio
+    title: image aspect ratio
+    title.zh: 设置图片宽高比
+    type: variable-select
+    default:  3 / 4
+    options:
+            - 
+                label: 1:1
+                value: 1 / 1
+            - 
+                label: 3:4
+                value: 3 / 4 
+            - 
+                label: 2:3
+                value: 2 / 3 
+            - 
+                label: 3:2
+                value: 3 /2
+            - 
+                label: 16:9
+                value:  16 / 9
+*/
 
 /*********covercards***********/
 :root{
   --cards-width: 138px;
+  --image-aspect-ratio: 3 /4;
 }
 
 @media (max-width: 450px) {
@@ -64,11 +103,21 @@ img[alt^="bookcover"] {
 .cards progress{
   
   position: absolute;
+  width: var(--cards-width);
+  min-width: none;
   margin-top: -10px;
+  margin-left:   calc(var(--cards-width) /2 * -1);
   overflow: hidden;
   height: 4px;
-  background: #f0ec05; 
 }
+
+.cards progress::before{
+  display: none;
+}
+.is-live-preview.cards progress{
+  margin-top: -5px;
+}
+
 .cards progress.yellow::-moz-progress-bar { 
   background: #e78f0c; 
 }
@@ -86,14 +135,11 @@ img[alt^="bookcover"] {
 }
 
 .cards table.dataview tbody {
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(var(--cards-width),1fr));
-  grid-column-gap:1.2rem;
-  grid-row-gap:0.75rem;    
-  justify-content: space-between;
-  margin-top: 40px;
-  margin-left: -25px;
-  width: 99%;
+  display:flex;
+  margin-left: -0.5em;
+  width: 101%;
+  flex-flow: wrap;
+  
 }
 
 @media (max-width:1120px) {
@@ -121,8 +167,8 @@ img[alt^="bookcover"] {
   display: block;
   width:var(--cards-width);
   height: auto;
-  margin-left: 36px;
-  margin-bottom: 44px;
+  margin-left: 1.2em;
+  margin-bottom: 1em;
   background-color:transparent;
 }
 
@@ -146,7 +192,7 @@ img[alt^="bookcover"] {
 }
 .cards .dataview.table-view-table button {
   text-align: left;
-  padding-left: 2px;
+  padding-left: 0.8em;
 }
 
 .cards table.dataview tbody>tr>td:first-child, 
@@ -159,13 +205,18 @@ img[alt^="bookcover"] {
 }
 
 .cards table.dataview tbody>tr>td img {
- 
+  
+  aspect-ratio: var(--image-aspect-ratio);
   vertical-align: top;
   width: 100%;
-  height: calc(var(--cards-width) / 0.7 );
+  height: auto;
   background-color:var(--background-secondary);
   -o-object-fit: cover;
   object-fit: cover;
+}
+.cards table.dataview tbody>tr>td:first-child:before
+{
+display: none;
 }
 .cards table.dataview tbody>tr>td:first-child:after{
   content: "";
@@ -179,6 +230,7 @@ img[alt^="bookcover"] {
 }
 .cards table.dataview tbody>tr>td:not(:first-child), 
 .markdown-source-view.mod-cm6.cards .dataview.table-view-table>tbody>tr>td:not(:first-child) {
+  text-align: center;
   padding: 0;
   margin-top: 4px;
   font-size: 15px;
@@ -199,7 +251,7 @@ img[alt^="bookcover"] {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.cards table.dataview tbody>tr>td>button {
+.cards table.dataview tbody>tr>td button {
   font-size: 12px;
   background-color: transparent;
   padding: 0;
@@ -278,4 +330,8 @@ img[alt^="bookcover"] {
 .cards table.dataview thead>tr>th:hover {
   color: var(--text-normal);
   background-color: var(--background-secondary);
+}
+
+:is(.markdown-source-view,.markdown-preview-view,.markdown-rendered).cards .block-language-dataview table {
+  box-shadow: none;
 }

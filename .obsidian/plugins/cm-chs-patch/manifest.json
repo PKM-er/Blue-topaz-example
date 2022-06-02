@@ -1,0 +1,10 @@
+{
+  "id": "cm-chs-patch",
+  "name": "Word Splitting for Simplified Chinese in Edit Mode",
+  "version": "1.8.1",
+  "minAppVersion": "0.13.8",
+  "description": "A patch for Obsidian's built-in CodeMirror Editor to support Simplified Chinese word splitting",
+  "author": "AidenLx",
+  "authorUrl": "https://github.com/AidenLx",
+  "isDesktopOnly": false
+}

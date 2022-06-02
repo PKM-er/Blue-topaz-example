@@ -48,7 +48,7 @@
   "memo-heatmap@@heatmap-dark": "ice-dark",
   "memo-heatmap@@heatmap-light": "grass-light",
   "blue-topaz-theme@@adjustable-embed-content-height": true,
-  "blue-topaz-theme@@embed-content-height": 450,
+  "blue-topaz-theme@@embed-content-height": 500,
   "blue-topaz-theme@@text-indentation-two-em": false,
   "blue-topaz-theme@@default-icons": false,
   "blue-topaz-theme@@h1-toggle-underline": true,
@@ -85,7 +85,6 @@
   "blue-topaz-theme@@whole-code-wrap": false,
   "blue-topaz-theme@@auto-serial-number-dvtable": true,
   "blue-topaz-theme@@remove-custom-svg-icons": false,
-  "blue-topaz-theme@@file-name-animation": true,
   "blue-topaz-theme@@folder-dataview-list-style": "dataview-list-style-pacman",
   "blue-topaz-theme@@text-folder-file-icon@@light": "#6FAACD",
   "blue-topaz-theme@@show-url-after-link": true,
@@ -162,5 +161,12 @@
   "blue-topaz-theme@@fancy-cursor-transition": "210ms",
   "blue-topaz-theme@@loading-text-moving-style": false,
   "blue-topaz-theme@@heatmap-light": "grass-light",
-  "blue-topaz-theme@@heatmap-dark": "olive-dark"
+  "blue-topaz-theme@@heatmap-dark": "olive-dark",
+  "blue-topaz-theme@@file-bg-shape-option": "file-bg-pill",
+  "blue-topaz-theme@@file-name-style-option": "file-name-animation",
+  "blue-topaz-theme@@toggle-bg-file-page": true,
+  "customizable-page-header-buttons@@page-header-spacing-desktop": 18,
+  "customizable-page-header-buttons@@page-header-spacing-mobile": 12,
+  "dataview-cards-view@@image-aspect-ratio": "3 / 4",
+  "dataview-cards-view@@cards-width": 138
 }

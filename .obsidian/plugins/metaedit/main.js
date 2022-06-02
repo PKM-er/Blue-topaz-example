@@ -4876,6 +4876,13 @@ class MetaController {
         }
         return null;
     }
+	async handleProperties(defaultOptions='',options) {
+		
+        let propName = await GenericPrompt.Prompt(this.app, "Select a value", 'Select a value', defaultOptions, options);
+        if (!propName)
+            return null;
+        return propName;   
+    }
     async updatePropertyInFile(property, newValue, file) {
         const fileContent = await this.app.vault.read(file);
         const newFileContent = fileContent.split("\n").map(line => {
@@ -5021,6 +5028,7 @@ class MetaEditApi {
     make() {
         return {
             autoprop: this.getAutopropFunction(),
+			suggestpromt: this.getsuggestpromtFunction(),
             update: this.getUpdateFunction(),
             getPropertyValue: this.getGetPropertyValueFunction(),
             getFilesWithProperty: this.getGetFilesWithPropertyFunction(),
@@ -5030,6 +5038,9 @@ class MetaEditApi {
     }
     getAutopropFunction() {
         return (propertyName) => new MetaController(this.plugin.app, this.plugin).handleAutoProperties(propertyName);
+    }
+	getsuggestpromtFunction() {
+        return (defaultOptions,options) => new MetaController(this.plugin.app, this.plugin).handleProperties(defaultOptions,options);
     }
     getUpdateFunction() {
         return async (propertyName, propertyValue, file) => {

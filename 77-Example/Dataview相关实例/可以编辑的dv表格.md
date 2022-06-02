@@ -8,7 +8,7 @@ updated: 2022-04-26 09:01
 
 ```dataviewjs
 //BlueTopaz example
-const {update,autoprop} = this.app.plugins.plugins["metaedit"].api;
+const {suggestpromt,update,autoprop} = this.app.plugins.plugins["metaedit"].api;
 const {createButton} = app.plugins.plugins["buttons"]
 
 function formatDate(date){
@@ -24,11 +24,19 @@ function formatDate(date){
 			let datestr =[year, month, day].join('-')
 		return datestr;
 	}
-//下拉框选择
+//下拉框选择metaedit维护的属性
 const dropdown = async(file, key) => {
 		const newtext = await autoprop("当前属性")
         await update(key, newtext, file);
 }
+
+//下拉框选择自建属性
+const dropdown1 = async(file, key) => {
+ const value = await suggestpromt('Item1',["Item1","item2"]);//默认值，选项
+ console.log(value)
+        await update(key, value, file);
+}
+
 
 //文本输入框
 const inputMaker =async (file,key,values,initial)=>{
@@ -66,7 +74,8 @@ const pages = dv.pages("#book")
 	createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
 	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
 	createButton({app, el: this.container, args: {name: t['readtime']?formatDate(t['readtime']):'更新',class:'tiny'}, clickOverride: {click: inputdate, params: [t.file.path, 'readtime',t['readtime']]}}),
-	//createButton({app, el: this.container, args: {name: '11',class:'tiny'}, clickOverride: {click: suggester, params: [t.file.path, 'updated',t['updated']]}})
+	
+	createButton({app, el: this.container, args: {name: '22',class:'tiny'}, clickOverride: {click: dropdown1, params: [t.file.path, 'updated',t['updated']]}})
 	]);
 //生成表格
 dv.table(["cover", "文件", "author","rating","阅读进度", "grade","status","阅读时间"], pages)

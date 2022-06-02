@@ -158,6 +158,27 @@
       "type": "Macro",
       "command": true,
       "macroId": "0f3e8714-a92b-4fc8-9e4e-ddb3c68a2fd8"
+    },
+    {
+      "id": "e6bd2f03-b085-42c1-8ee0-4b0a47a1b80e",
+      "name": "库中库",
+      "type": "Macro",
+      "command": true,
+      "macroId": "8477b3fc-f46b-40e1-aab8-443969aa5a4a"
+    },
+    {
+      "id": "fe31fa1a-99c5-4b58-9001-1cac23a2b9b5",
+      "name": "打开主页",
+      "type": "Macro",
+      "command": true,
+      "macroId": "04a61b45-2bac-4645-b06d-32d43c661091"
+    },
+    {
+      "id": "27d06043-87de-47b1-a058-cf6ff596b9c1",
+      "name": "刷新面板",
+      "type": "Macro",
+      "command": true,
+      "macroId": "a28a3873-f6a7-45eb-8abe-0dc9d4b07215"
     }
   ],
   "macros": [
@@ -226,13 +247,17 @@
           "type": "UserScript",
           "id": "e0945b1a-0def-4561-ae45-fdefc1ade009",
           "path": "88-Template/script/fetchhomepage.js",
-          "settings": {}
+          "settings": {
+            "": "",
+            "Enter the city name": "武汉",
+            "City name": ""
+          }
         },
         {
           "name": "Wait",
           "type": "Wait",
           "id": "60813cc2-37ac-41a0-822e-c88caace110e",
-          "time": 100
+          "time": 3500
         },
         {
           "name": "Workspaces Plus: Load: Home",
@@ -265,7 +290,9 @@
           "type": "UserScript",
           "id": "2ca88f5a-c2be-4d75-92f9-a8c94fa97238",
           "path": "88-Template/script/fetchhomepage.js",
-          "settings": {}
+          "settings": {
+            "City name": ""
+          }
         },
         {
           "name": "Wait",
@@ -491,7 +518,7 @@
         {
           "name": "大纲: 打开当前文件的大纲",
           "type": "Obsidian",
-          "id": "d4223a90-a41c-4310-9711-b6941182deb9",
+          "id": "f7b14dfa-1504-44ba-ad68-25622b0d93d3",
           "commandId": "outline:open-for-current"
         },
         {
@@ -545,6 +572,70 @@
             "openFile": false,
             "openFileInMode": "preview"
           }
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "库中库",
+      "id": "8477b3fc-f46b-40e1-aab8-443969aa5a4a",
+      "commands": [
+        {
+          "name": "openOb",
+          "type": "UserScript",
+          "id": "857e31c6-a3f2-4ff6-a8af-41a64e65988a",
+          "path": "88-Template/script/openOb.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "打开主页",
+      "id": "04a61b45-2bac-4645-b06d-32d43c661091",
+      "commands": [
+        {
+          "name": "关闭当前面板",
+          "type": "Obsidian",
+          "id": "6b348f35-2ed2-45c0-a40f-2771925ca7c8",
+          "commandId": "workspace:close"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "f3d72134-00a7-4f36-8cff-5ce7f059c003",
+          "time": 100
+        },
+        {
+          "name": "Hotkeys for specific files: Open 88-Template/home",
+          "type": "Obsidian",
+          "id": "2f836a98-ed51-4443-8b3f-bc0e91df1101",
+          "commandId": "obsidian-hotkeys-for-specific-files:88-Template/home.md"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "刷新页面",
+      "id": "a28a3873-f6a7-45eb-8abe-0dc9d4b07215",
+      "commands": [
+        {
+          "name": "关闭当前面板",
+          "type": "Obsidian",
+          "id": "5e6b09dd-794b-443e-bcaf-ecf27ce1f7e0",
+          "commandId": "workspace:close"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "da696b89-59a8-4c64-833b-561e34d86203",
+          "time": 300
+        },
+        {
+          "name": "重新打开上一个关闭的面板",
+          "type": "Obsidian",
+          "id": "3fd5ed39-ef42-4d18-9a9b-06d18d87f35b",
+          "commandId": "workspace:undo-close-pane"
         }
       ],
       "runOnStartup": false

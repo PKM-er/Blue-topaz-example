@@ -1,0 +1,10 @@
+{
+  "id": "customizable-page-header-buttons",
+  "name": "Customizable Page Header and Title Bar",
+  "version": "4.2.0",
+  "minAppVersion": "0.12.19",
+  "description": "This plugin lets you add buttons for executing commands to the page header and on desktop to the title bar.",
+  "author": "kometenstaub",
+  "authorUrl": "https://github.com/kometenstaub",
+  "isDesktopOnly": false
+}

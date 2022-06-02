@@ -1,192 +1,204 @@
 {
   "recentFiles": [
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
-    },
-    {
       "basename": "Changlog",
       "path": "Changlog.md"
     },
     {
-      "basename": "微信读书清单",
-      "path": "77-Example/Dataview相关实例/微信读书清单.md"
+      "basename": "home",
+      "path": "88-Template/home.md"
     },
     {
-      "basename": "电影看板",
-      "path": "77-Example/Dataview相关实例/电影看板.md"
+      "basename": "README",
+      "path": "README.md"
     },
     {
-      "basename": "图书阅读清单(dv)",
-      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md"
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
     },
     {
-      "basename": "◾ Cssclass声明样式举例",
-      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
+      "basename": "随机笔记模板",
+      "path": "88-Template/随机笔记模板.md"
     },
     {
-      "basename": "Dataview相关实例",
-      "path": "77-Example/Dataview相关实例/Dataview相关实例.md"
-    },
-    {
-      "basename": "◾ TableExample",
-      "path": "77-Example/◾ TableExample/◾ TableExample.md"
-    },
-    {
-      "basename": "全宽显示-表格测试",
-      "path": "77-Example/◾ Cssclass声明样式举例/全宽显示-表格测试.md"
-    },
-    {
-      "basename": "01 - Default Table",
-      "path": "77-Example/◾ TableExample/01 - Default Table.md"
-    },
-    {
-      "basename": "明朝那些事儿（全集）",
-      "path": "30-Reading/明朝那些事儿（全集）.md"
-    },
-    {
-      "basename": "30-Reading",
-      "path": "30-Reading/30-Reading.md"
-    },
-    {
-      "basename": "《从零开始的女性主义》",
-      "path": "30-Reading/《从零开始的女性主义》.md"
-    },
-    {
-      "basename": "《苏联解体亲历记》",
-      "path": "30-Reading/《苏联解体亲历记》.md"
-    },
-    {
-      "basename": "你好，李焕英",
-      "path": "30-Reading/你好，李焕英.md"
+      "basename": "Echarts",
+      "path": "77-Example/Echarts/Echarts.md"
     },
     {
       "basename": "77-Example",
       "path": "77-Example/77-Example.md"
     },
     {
-      "basename": "认知觉醒：开启自我改变的原动力",
-      "path": "30-Reading/认知觉醒：开启自我改变的原动力.md"
+      "basename": "echarts-笔记动态显示-分布",
+      "path": "77-Example/Echarts/echarts-笔记动态显示-分布.md"
     },
     {
-      "basename": "三体（全集）",
-      "path": "30-Reading/三体（全集）.md"
+      "basename": "echarts-treemap",
+      "path": "77-Example/Echarts/echarts-treemap.md"
     },
     {
-      "basename": "2022-05-18",
-      "path": "20-Diary/2022-05-18.md"
+      "basename": "echarts-drawing",
+      "path": "77-Example/Echarts/echarts-drawing.md"
     },
     {
-      "basename": "tp-book-callout",
-      "path": "88-Template/tp-book-callout.md"
+      "basename": "echarts-扇形图",
+      "path": "77-Example/Echarts/echarts-扇形图.md"
     },
     {
-      "basename": "tp-movie-douban",
-      "path": "88-Template/tp-movie-douban.md"
+      "basename": "echarts-日历",
+      "path": "77-Example/Echarts/echarts-日历.md"
+    },
+    {
+      "basename": "echarts-词云",
+      "path": "77-Example/Echarts/echarts-词云.md"
+    },
+    {
+      "basename": "echarts 示例库",
+      "path": "77-Example/Echarts/echarts 示例库.md"
+    },
+    {
+      "basename": "未命名",
+      "path": "未命名.md"
+    },
+    {
+      "basename": "未命名 4",
+      "path": "未命名 4.md"
+    },
+    {
+      "basename": "echart-获取当前文章热词",
+      "path": "77-Example/Echarts/echart-获取当前文章热词.md"
+    },
+    {
+      "basename": "图形化展示笔记",
+      "path": "77-Example/图形化展示笔记.md"
+    },
+    {
+      "basename": "任务卡片-dataview 任务查询举例",
+      "path": "77-Example/任务卡片-dataview 任务查询举例.md"
+    },
+    {
+      "basename": "当前页面的隐藏dv字段",
+      "path": "77-Example/Dataview相关实例/当前页面的隐藏dv字段.md"
+    },
+    {
+      "basename": "echarts-柱形图",
+      "path": "77-Example/Echarts/echarts-柱形图.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
     },
     {
       "basename": "88-Template",
       "path": "88-Template/88-Template.md"
     },
     {
-      "basename": "20-Diary",
-      "path": "20-Diary/20-Diary.md"
+      "basename": "Dataview相关实例",
+      "path": "77-Example/Dataview相关实例/Dataview相关实例.md"
     },
     {
-      "basename": "react_cat",
-      "path": "88-Template/ReactJS/react_cat.md"
-    },
-    {
-      "basename": "react_weather",
-      "path": "88-Template/ReactJS/react_weather.md"
-    },
-    {
-      "basename": "ColorfulClock",
-      "path": "88-Template/ReactJS/ColorfulClock.md"
-    },
-    {
-      "basename": "电影观看清单-状态控制（dvjs）",
-      "path": "77-Example/Dataview相关实例/电影观看清单-状态控制（dvjs）.md"
+      "basename": "文件夹所有标签",
+      "path": "77-Example/Dataview相关实例/文件夹所有标签.md"
     },
     {
       "basename": "电影观看清单（dv）",
       "path": "77-Example/Dataview相关实例/电影观看清单（dv）.md"
     },
     {
-      "basename": "99-Attachment",
-      "path": "99-Attachment/99-Attachment.md"
+      "basename": "随机显示文档中的图片和文字",
+      "path": "77-Example/Dataview相关实例/随机显示文档中的图片和文字.md"
     },
     {
-      "basename": "返回当前活动笔记的所有反向链接",
-      "path": "88-Template/ReactJS/返回当前活动笔记的所有反向链接.md"
-    },
-    {
-      "basename": "react_buttons",
-      "path": "88-Template/ReactJS/react_buttons.md"
-    },
-    {
-      "basename": "react_music",
-      "path": "88-Template/ReactJS/react_music.md"
-    },
-    {
-      "basename": "ReactJS",
-      "path": "88-Template/ReactJS/ReactJS.md"
-    },
-    {
-      "basename": "彩色时钟",
-      "path": "88-Template/彩色时钟.md"
-    },
-    {
-      "basename": "timeline callout效果",
-      "path": "77-Example/timeline callout效果.md"
-    },
-    {
-      "basename": "ob提示框(callout)样式展示",
-      "path": "77-Example/ob提示框(callout)样式展示.md"
-    },
-    {
-      "basename": "2022-01-25",
-      "path": "20-Diary/2022-01-25.md"
-    },
-    {
-      "basename": "2022-01-10",
-      "path": "20-Diary/2022-01-10.md"
-    },
-    {
-      "basename": "常用工具",
-      "path": "88-Template/常用工具.md"
-    },
-    {
-      "basename": "10-Help",
-      "path": "10-Help/10-Help.md"
-    },
-    {
-      "basename": "每日一句接口说明",
-      "path": "10-Help/每日一句接口说明.md"
-    },
-    {
-      "basename": "《笔醒山河》",
-      "path": "30-Reading/《笔醒山河》.md"
-    },
-    {
-      "basename": "《镰刀与城市》",
-      "path": "30-Reading/《镰刀与城市》.md"
-    },
-    {
-      "basename": "FastStart-StartupScript",
-      "path": "88-Template/FastStart-StartupScript.md"
+      "basename": "项目追踪（完成的字数和任务）",
+      "path": "77-Example/Dataview相关实例/项目追踪（完成的字数和任务）.md"
     },
     {
       "basename": "最近天气查询",
       "path": "77-Example/最近天气查询.md"
     },
     {
-      "basename": "FastStart-Plugins-simple",
-      "path": "88-Template/FastStart-Plugins-simple.md"
+      "basename": "可以编辑的dv表格",
+      "path": "77-Example/Dataview相关实例/可以编辑的dv表格.md"
     },
     {
-      "basename": "如何在Obsidian中添加电影卡片",
-      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/Dataview相关实例/通过下拉框检索文件示例.md"
+    },
+    {
+      "basename": "花束般的恋爱 花束みたいな恋をした",
+      "path": "30-Reading/花束般的恋爱 花束みたいな恋をした.md"
+    },
+    {
+      "basename": "10-Help",
+      "path": "10-Help/10-Help.md"
+    },
+    {
+      "basename": "获取指定标签的文件内容并形成表格",
+      "path": "77-Example/Dataview相关实例/获取指定标签的文件内容并形成表格.md"
+    },
+    {
+      "basename": "FastStart-StartupScript",
+      "path": "88-Template/FastStart-StartupScript.md"
+    },
+    {
+      "basename": "dataview实现任务查询（替代tasks插件）",
+      "path": "77-Example/Dataview相关实例/dataview实现任务查询（替代tasks插件）.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "moc",
+      "path": "88-Template/ReactJS/moc.md"
+    },
+    {
+      "basename": "20-Diary",
+      "path": "20-Diary/20-Diary.md"
+    },
+    {
+      "basename": "任务看板",
+      "path": "20-Diary/任务看板.md"
+    },
+    {
+      "basename": "《笔醒山河》",
+      "path": "30-Reading/《笔醒山河》.md"
+    },
+    {
+      "basename": "芬奇 Finch",
+      "path": "30-Reading/芬奇 Finch.md"
+    },
+    {
+      "basename": "心灵奇旅 Soul",
+      "path": "30-Reading/心灵奇旅 Soul.md"
+    },
+    {
+      "basename": "从这开始",
+      "path": "从这开始.md"
+    },
+    {
+      "basename": "进度条样式片段",
+      "path": "77-Example/进度条样式片段.md"
+    },
+    {
+      "basename": "获取最近打开的文件列表",
+      "path": "77-Example/Dataview相关实例/获取最近打开的文件列表.md"
+    },
+    {
+      "basename": "图书阅读清单-状态控制(dvjs)",
+      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
+    },
+    {
+      "basename": "《熊会滑雪吗？》",
+      "path": "30-Reading/《熊会滑雪吗？》.md"
+    },
+    {
+      "basename": "◾ Cssclass声明样式举例",
+      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
+    },
+    {
+      "basename": "react_weather",
+      "path": "88-Template/ReactJS/react_weather.md"
     }
   ],
   "omittedPaths": [],

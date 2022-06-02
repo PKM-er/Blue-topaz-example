@@ -30,3 +30,4 @@ settings-search
 obsidian-view-mode-by-frontmatter
 omnisearch
 mrj-text-expand
+customizable-page-header-buttons
