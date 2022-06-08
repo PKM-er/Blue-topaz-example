@@ -208,3 +208,7 @@ ad样式使用方法参考
     直接复制"文字版天气加图标"注释之间的内容，并copy"88-Template/script/dv_weatherSvg.js"   启用【天气】weather.css 样式片段就移植成功了。设置指定地区天气，需要在quickadd宏home工作区中如图设置即可。![[Pasted image 20220531101243.png|400]]
 14. 如何移植动画猫到自己的主页中？
     跟多彩时钟一样，动画猫也是react组件生成的。需要首先安装react_component插件，并copy`\88-Template\ReactJS\react_cat.md`  这样动画猫代码就生效了。
+    
+## 捐赠
+如果你觉得不错，这个示例库对你使用ob有帮助，可以支持我一下。
+![image](https://user-images.githubusercontent.com/42957010/172568261-8a732d3d-303a-4367-993e-23c3efbf62a8.png)
