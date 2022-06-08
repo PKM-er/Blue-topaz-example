@@ -1,4 +1,4 @@
-^---
+---
 obsidianUIMode: preview
 progress: 正在进行
 title: README
