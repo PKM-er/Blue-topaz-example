@@ -44,6 +44,7 @@ display:none;
 
 .workspace-split:not(.mod-root) .markdown-preview-view.mytools p
 {
+ 
   font-size: smaller;
   margin-left: 0.5em;
 }

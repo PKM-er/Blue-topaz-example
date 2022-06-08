@@ -2,12 +2,10 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[99-Attachment]]**
-	- **banner**
-
-	- [[77-Example/Echarts/echarts-柱形图]]
+	- [[99-Attachment]]
+	- **[[banner]]**
 
 %% End Waypoint %%

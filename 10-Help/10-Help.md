@@ -2,10 +2,10 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[10-Help]]**
+	- [[10-Help]]
 	- [[获取插件列表]]
 	- [[每日一句接口说明]]
 	- [[Blue topaz--style setting 插件设置内容 简介]]

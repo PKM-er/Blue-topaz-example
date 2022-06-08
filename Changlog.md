@@ -1,8 +1,15 @@
 ---
 mindmap-plugin: basic
-updated: 2022-05-08 02:04
+updated: 2022-06-09 02:04
 ---
 ## ⏳更新日志
+### 更新 📅2022-06-09
+- ✔️新增内容
+	- 增加生成moc 侧边栏按钮以及命令 可以一键对文件夹以及子文件夹生成[[moc]]
+	- 增加字体文件夹 包含示例库支持的字体 [[README#^d0e999]]
+	- 首页便签增加随机展示笔记图片并关联笔记。
+-  🛠️修复
+	- [[项目追踪（完成的字数和任务）]] 更新dv后报错
 ### 更新 📅2022-06-02[主页布局调整]
 - ✔️新增内容
 	- 主页改版
@@ -16,7 +23,7 @@ updated: 2022-05-08 02:04
 	- 功能
 		- callout增加stickies 便签类型演示[[callout 便签效果]]
 		- 增加 dataview示例 特别是有很多新版本出现的特性[[Dataview相关实例]]
-		- 在@锋华老哥的大力支持下，obsidian-echarts插件发布[obsidian-echarts](https://github.com/cumany/obsidian-echarts) 并有海量示例[[Echarts]]
+		- 在@锋华老哥的大力支持下，obsidian-echarts插件发布[obsidian-echarts](https://github.com/cumany/obsidian-echarts) 并有海量示例[[◾ Echarts]]
 		- 增加了多种任务查询方法，基本可以替代tasks插件[[任务卡片-dataview 任务查询举例]]
 		- 增加通过动态高亮插件 实现多彩文本框示例[[利用动态高亮插件实现多彩文本块]]
 		- 增加可视化dataview条件查询效果示例[[项目追踪（完成的字数和任务）]]

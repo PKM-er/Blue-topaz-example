@@ -2,10 +2,10 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[88-Template]]**
+	- [[88-Template]]
 	- [[便签]]
 	- [[彩色时钟]]
 	- [[常用工具]]
@@ -25,10 +25,8 @@ obsidianUIMode: preview
 	- [[home]]
 	- [[music_toolbar]]
 	- **[[ReactJS]]**
-	- **script**
-		- **template**
-
-	- [[tp_foldermoc]]
+	- **[[script]]**
+	- [[tp_foldermoc-Include-subfolders]]
 	- [[tp-日记模板-日历]]
 	- [[tp-日记模板-心情]]
 	- [[tp-通用模板]]

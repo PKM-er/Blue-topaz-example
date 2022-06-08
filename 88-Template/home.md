@@ -26,7 +26,7 @@ obsidianUIMode: preview
 ```
 
 %%问候和天气数据 
-传统版本 目前已注释弃用
+传统版本 目前已弃用
 ```ad-flex
 
 <div style="float:left"><%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %>
@@ -67,7 +67,7 @@ dv.paragraph(desc);
 - [[00-Tips|使用技巧]]
 - [[微信读书清单|微信读书]]
 - [[▪示例库移植说明|移植说明]]
-- [[Dataview相关实例]]
+- [[◾ Dataview相关实例]]
 - [[电影看板|影视看板]]
 ```
 
@@ -100,6 +100,7 @@ dv.paragraph(desc);
 >>[!profile-card-inf|noborder]
 >>```dataviewjs
 >>let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and !#moc'
+>>let fold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and !#moc'
 >>let files = dv.pages(nofold).file
 >>const random = Math.floor(Math.random() * (files.length - 1))
 >>const randomNote = files[random]
@@ -151,7 +152,28 @@ dv.span(lines)
 
 %%notice3%%
 > [!stickies3|pink]
-> ![[obsidian_image.png]]
+> ```dataviewjs
+let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and #book or #Movie'
+let reg =/!\[[^\]]*\]\((?<=\!\[.*\]\()(.*(jpg|jpeg|bmp|gif|png|JPG|JPEG|BMP|GIF|PNG|WebP).*)(?=\))\)/ //匹配网络链接图片
+let files = dv.pages(nofold).file
+const arr = files.map(async (file) => {
+const sampleTFile = this.app.vault.getAbstractFileByPath(file.path);
+const content = await this.app.vault.cachedRead(sampleTFile); 
+const links = content.match(reg);
+if (links) 
+{let res ={'file':file.path,'link':links[1]}
+return res}
+})
+Promise.all(arr).then(
+values => 
+{
+let flatvalues =values.filter(Boolean).flat()
+console.log(flatvalues)
+const random = Math.floor(Math.random() * (flatvalues.length - 1))
+dv.paragraph(`[![image|220](${flatvalues[random].link})](obsidian://open?file=${encodeURIComponent(flatvalues[random].file)})`)
+}
+)
+>```
 
 %%notice4%%
 > [!stickies3|green]
@@ -196,5 +218,13 @@ dv.el("blockquote", music);
 
 `````
 
-![[从这开始]]
 
+![[从这开始#MOC]]
+
+![[从这开始#最近编辑]]
+
+![[通过下拉框检索文件示例]]
+
+![[项目追踪（完成的字数和任务）#选择需要跟踪的项目]]
+
+---

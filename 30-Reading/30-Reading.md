@@ -2,8 +2,7 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[30-Reading]]**
 	- [[《笔醒山河》]]
@@ -19,6 +18,7 @@ obsidianUIMode: preview
 	- [[《熊会滑雪吗？》]]
 	- [[《知识生产与传播》]]
 	- [[《Fundamentals of Computer Graphics 5th Edition》]]
+	- [[30-Reading]]
 	- [[白蛇传·情]]
 	- [[芬奇 Finch]]
 	- [[孤味]]

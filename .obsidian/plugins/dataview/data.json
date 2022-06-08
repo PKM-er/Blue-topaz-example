@@ -4,7 +4,7 @@
   "taskCompletionText": "completion",
   "warnOnEmptyResult": true,
   "refreshEnabled": true,
-  "refreshInterval": 500,
+  "refreshInterval": 200,
   "defaultDateFormat": "yyyy年MM月dd日, ",
   "defaultDateTimeFormat": "yyyy-MM-dd hh:mm",
   "maxRecursiveRenderDepth": 6,

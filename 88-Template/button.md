@@ -41,6 +41,13 @@ class circle_btn blank
 ```
 ^button-tablehover
 
+```button
+name <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#1296db" class="bi bi-journal-text" viewBox="0 0 16 16"><path d="M5 10.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5zm0-2a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"/><path d="M3 0h10a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-1h1v1a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v1H1V2a2 2 0 0 1 2-2z"/><path d="M1 5v-.5a.5.5 0 0 1 1 0V5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0V8h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1zm0 3v-.5a.5.5 0 0 1 1 0v.5h.5a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1H1z"/></svg>生成moc 
+type command
+action Templater: Insert 88-Template/tp_foldermoc-Include-subfolders.md
+class  circle_btn blank
+```
+^button-genmoc
 
 ## 网页链接
 
@@ -275,7 +282,7 @@ class grad_button g_blue
 ```button
 name <svg t="1653385409343" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5652" width="32" height="32"><path d="M341.333333 917.333333V554.666667h341.333334v362.666666h192V363.84L512 115.690667 149.333333 363.84V917.333333h192z m21.333334 85.333334H64V318.826667L512 12.309333l448 306.517334V1002.666667H597.333333V640h-170.666666v362.666667h-64z" p-id="5653"></path></svg>
 type command
-action QuickAdd: 刷新主页
+action QuickAdd: 打开主页
 class blank main-bar
 ```
 ^button-homewp
@@ -299,7 +306,7 @@ class blank main-bar
 ```button
 name  <svg viewBox="0 0 16 16"><path d="M13.6,2.3C12.2,0.9,10.2,0,8,0C3.6,0,0,3.6,0,8s3.6,8,8,8c3.7,0,6.8-2.5,7.7-6h-2.1c-0.8,2.3-3,4-5.6,4c-3.3,0-6-2.7-6-6	s2.7-6,6-6c1.7,0,3.1,0.7,4.2,1.8L9,7h7V0L13.6,2.3z"></path></svg>
 type command
-action QuickAdd: 刷新主页
+action QuickAdd: 刷新面板
 class blank main-bar
 ```
 ^button-browserefresh

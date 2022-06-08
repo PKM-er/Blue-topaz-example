@@ -6,19 +6,19 @@
     },
     {
       "name": "wr_vid",
-      "value": "8273614"
+      "value": ""
     },
     {
       "name": "wr_skey",
-      "value": "nwSY96bi"
+      "value": ""
     },
     {
       "name": "wr_pf",
-      "value": "0"
+      "value": ""
     },
     {
       "name": "wr_rt",
-      "value": "web@NvhMk62s16kiICBC8Jv_WL"
+      "value": ""
     },
     {
       "name": "wr_localvid",
@@ -38,10 +38,11 @@
     }
   ],
   "noteLocation": "30-Reading",
-  "lastCookieTime": 1653366662758,
+  "lastCookieTime": 1654482035771,
   "isCookieValid": true,
   "user": "旭日东升",
   "template": "---\nname: {{metaData.title}}\ncover: '{{metaData.cover}}'\ntags: weread\nauthor: {{metaData.author}}\nisbn: {{metaData.isbn}}\nrating: \nbanner: \"![[true.jpg]]\"\npublish: {{metaData.publisher}}\npublishyear: \"{{metaData.publishTime|truncate(11,False,'')}}\"\ncategory: {{metaData.category}}\nnoteCount: {{metaData.noteCount}}\nreviewCount: {{metaData.reviewCount}}\ngrade:\nstatus: {{metaData.finish}}\nreadtime:\npagecount: \npageprogress: \n---\n> [!bookinfo]+ **《{{metaData.title}}》**\n> ![bookcover|200]({{metaData.cover}})\n>\n| 属性   | 内容                                       |\n|:------ |:------------------------------------------ |\n| ISBN   | {{metaData.isbn}}                           |\n| 作者   | {{metaData.author}}                         |\n| 出版年 | {{metaData.publishTime|truncate(11,False,'')}}                   | \n| 出版社 | {{metaData.publisher}}                       |\n| 来源   | [{{metaData.title}}](https://weread.qq.com/web/) |\n| 分类   | {{metaData.category}}                        |\n\n> [!abstract]- **内容简介**\n> \n《{{metaData.title}}》\n{{metaData.intro|striptags(true)|trim}}\n\n## 高亮划线\n{% for chapter in chapterHighlights -%}\n### {{chapter.chapterTitle}}\n{% for highlight in chapter.highlights %}{% if highlight.reviewContent -%}\n> [!quote|notitle] \n> {{ highlight.markText |trim }}  \n— created on [[{{highlight.createTime.slice(0, 10)}}]]{{highlight.createTime.slice(10, 16)}} ^{{highlight.chapterUid}}-{{highlight.range}}\n- {{highlight.reviewContent}}\n{% else %}\n> [!quote|notitle] \n> {{ highlight.markText |trim }}  \n— created on [[{{highlight.createTime.slice(0, 10)}}]]{{highlight.createTime.slice(10, 16)}} ^{{highlight.chapterUid}}-{{highlight.range}}\n{%- endif %} {%- endfor %}{%- endfor %}\n{% for chapter in bookReview.chapterReviews -%}\n{% if chapter.reviews or chapter.chapterReview -%}\n{%for review in chapter.reviews -%}\n> [!quote|notitle] \n> {{review.abstract |trim }} \n— created on [[{{review.createTime.slice(0, 10)}}]]{{review.createTime.slice(10, 16)}} ^{{review.reviewId}}\n- {{review.content}}\n {%- endfor %} \n{% if  chapter.chapterReview -%}\n### 读书笔记\n> [!quote|notitle] \n> {{chapter.chapterReview.content}}{%-endif %}\n{% if chapter.reviews %}{%for review in chapter.reviews -%}\n {%- endfor %} {%-endif %} {%- endif %} {%- endfor %}\n{% if bookReview.bookReview -%}\n### 本书评论\n{{bookReview.bookReview.mdContent}} ^{{bookReview.bookReview.reviewId}}\n{%- endif %}",
   "noteCountLimit": -1,
-  "subFolderType": "-1"
+  "subFolderType": "-1",
+  "fileNameType": "BOOK_NAME"
 }

@@ -2,13 +2,13 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[00-Tips]]**
 	- **[[▪插件介绍]]**
 	- **[[▪示例库移植说明]]**
 	- [[🥑Blue Topaz Themes Tips]]
+	- [[00-Tips]]
 	- [[魔方配色设置说明]]
 	- [[如何快速生成MOC(文件夹的文件目录列表)？]]
 	- [[如何提高Obsidian的启动速度？]]

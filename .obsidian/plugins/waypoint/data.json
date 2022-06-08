@@ -1,5 +1,6 @@
 {
   "waypointFlag": "%% moc %%",
   "stopScanAtFolderNotes": false,
+  "showFolderNotes": true,
   "debugLogging": false
 }

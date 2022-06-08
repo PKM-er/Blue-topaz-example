@@ -120,14 +120,10 @@ body.blockquote-style-quotation-mark.is-mobile .markdown-preview-view.myhome blo
   }
 
 
-  body.adjustable-embed-content-height .markdown-preview-view.myhome .markdown-embed-content {
-  
-    max-height: 100%;
-  }
- 
+
   .myhome.markdown-preview-view .markdown-preview-section
   {
-    padding-bottom: 0px !important;
+    padding-bottom: 2em !important;
   }
 
   .admonition-kanban li 
@@ -200,38 +196,6 @@ body.blockquote-style-quotation-mark.is-mobile .markdown-preview-view.myhome blo
 } 
 .myhome [data-callout-metadata*="banner"] {
   margin-top: -4em;
-}
-
-/* --- Marquee Animated Callout --- */
-div[data-callout="marquee"].callout { background: unset; border: unset; margin: unset; padding: unset; clear: both; overflow: hidden; }
-
-div[data-callout="marquee"].callout > .callout-title { display: none; }
-
-div[data-callout="marquee"].callout > .callout-content > p {
-    animation-duration: 6s;
-    animation-name: marquee;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    display: inline-block;
-    white-space: nowrap;
-    --tw: 61ch;
-    width: var(--tw);
-    color: #5bdcd2;
-    text-shadow: var(--tw) 0 currentColor, 
-            calc(var(--tw) * 2) 0 currentColor, 
-            calc(var(--tw) * 3) 0 currentColor,
-            calc(var(--tw) * 4) 0 currentColor;
-    will-change: transform;
-}
-
-@keyframes marquee {
-    from {
-        transform: translateX(0);
-    }
-    
-    to {
-        transform: translateX(-100%);
-    }
 }
 
 /*catgif*/
@@ -812,107 +776,6 @@ button.main-bar img {
 
 
 
- /* --- Attempted Tab Implementation Through Callouts ---
- from  https://gist.github.com/sailKiteV/e1124244161e2ab5ac3045562beee4ae
- */
-/* initial attribute setup */
-div[data-callout="tabbed-box"],
-div[data-callout="tabs"],
-div[data-callout="tab-content"] { background: unset; border: unset; margin: unset; padding: unset; clear: both; overflow: hidden; }
-
-div[data-callout="tabbed-box"].callout > .callout-title,
-div[data-callout="tabs"].callout > .callout-title,
-div[data-callout="tab-content"] > .callout-title { display: none; }
-
-div[data-callout="tabbed-box"] > .callout-content,
-div[data-callout="tabs"] > .callout-content,
-div[data-callout="tab-content"] > .callout-content {
-	border: none !important;
-}
-
-/* baseline label style */
-div[data-callout="tabbed-box"] label {
-  background: var(--background-primary);
-  padding: 10px;
-  top: 10px;
-  margin-left: -1px;
-  left: 0px; 
-}
-
-/* active label style */
-[type=radio]:checked + label {
-  background: var(--background-active-tab);
-  z-index: 2;
-}
-
-/* hide radio buttons */
-div[data-callout="tabbed-box"] > .callout-content > [type="radio"] {
-  display: none;
-}
-
-div[data-callout="tabbed-box"] > .callout-content {
-  --background-active-tab: var(--background-secondary-bg-4-bt);
-  padding: 0;
-  padding-top: 5px;
-}
-
-div[data-callout="tabs"] {
-  padding-top: 5px;
-}
-
-div[data-callout="tabs"] > .callout-content {
-  display: grid;
-  grid-template-columns: 1fr;
-  padding: 0;
-}
-
-/* stack content areas in grid */
-div[data-callout="tab-content"] {
-  grid-column-start: 1;
-  grid-column-end: 1;
-  grid-row: 1;
-}
-
-/* hide inactive content */
-div[data-callout="tab-content"] {
-  z-index: 1;
-  display: none;
-}
-
-div[data-callout="tab-content"] > .callout-content {
-  background-color: var(--background-active-tab);
-}
-
-div[data-callout="tab-content"] > .callout-content > p:nth-child(1),
-div[data-callout="tab-content"] > .callout-content > table:nth-child(1) {
-  margin-top: 10px;
-}
-
-/* ultra ugly list of label-to-active-tab relations */
-div[data-callout="tabbed-box"] > .callout-content > [type=radio][id$="1"]:checked ~ div[data-callout="tabs"] > .callout-content div[data-callout="tab-content"]:nth-of-type(1) {
-  z-index: 2;
-  display: block;
-}
-div[data-callout="tabbed-box"] > .callout-content > [type=radio][id$="2"]:checked ~ div[data-callout="tabs"] > .callout-content div[data-callout="tab-content"]:nth-of-type(2) {
-  z-index: 2;
-  display: block;
-}
-div[data-callout="tabbed-box"] > .callout-content > [type=radio][id$="3"]:checked ~ div[data-callout="tabs"] > .callout-content div[data-callout="tab-content"]:nth-of-type(3) {
-  z-index: 2;
-  display: block;
-}
-div[data-callout="tabbed-box"] > .callout-content > [type=radio][id$="4"]:checked ~ div[data-callout="tabs"] > .callout-content div[data-callout="tab-content"]:nth-of-type(4) {
-  z-index: 2;
-  display: block;
-}
-div[data-callout="tabbed-box"] > .callout-content > [type=radio][id$="5"]:checked ~ div[data-callout="tabs"] > .callout-content div[data-callout="tab-content"]:nth-of-type(5) {
-  z-index: 2;
-  display: block;
-}
-div[data-callout="tabbed-box"] > .callout-content > [type=radio][id$="6"]:checked ~ div[data-callout="tabs"] > .callout-content div[data-callout="tab-content"]:nth-of-type(6) {
-  z-index: 2;
-  display: block;
-}
 
 /***移除笔记面板前的md图标***/
 
@@ -963,7 +826,18 @@ margin-left: 0.5em;
   font-size: smaller;
 }
 
-
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content img { 
+ max-height: 205px;
+}
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content a.external-link::before { 
+ display: none;
+}
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content a.external-link { 
+  background-image:none;
+ }
+ .markdown-preview-view .callout[data-callout="stickies3"] >.callout-content .block-language-dataviewjs p { 
+  max-height: 195px;
+ }
 #task
 {
     background-color: #42b983a5;
@@ -987,3 +861,5 @@ margin-left: 0.5em;
   white-space: nowrap;
   
 }
+
+

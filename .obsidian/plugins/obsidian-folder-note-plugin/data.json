@@ -5,5 +5,5 @@
   "folderNoteKey": "ctrl",
   "folderNoteAutoRename": true,
   "folderDelete2Note": false,
-  "folderNoteStrInit": "---\ncssclass: kanban gridlist\ntag: moc\nobsidianUIMode: preview\n---\n[[home|🏠 ]]    `button-browsevault`\n%% moc %%\n"
+  "folderNoteStrInit": "---\ncssclass: kanban gridlist\ntag: moc\nobsidianUIMode: preview\n---\n`button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh`\n%% moc %%\n"
 }

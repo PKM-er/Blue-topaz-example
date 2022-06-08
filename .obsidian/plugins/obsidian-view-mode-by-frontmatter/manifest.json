@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-view-mode-by-frontmatter",
 	"name": "Force note view mode",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"minAppVersion": "0.9.12",
 	"description": "This plugin allows to force the view mode and editing mode for a note by using front matter",
 	"author": "Benny Wydooghe",

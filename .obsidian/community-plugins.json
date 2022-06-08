@@ -28,5 +28,6 @@
   "dataview",
   "cm-chs-patch",
   "omnisearch",
-  "obsidian-echarts"
+  "obsidian-echarts",
+  "obsidian-linkcard-plugin"
 ]

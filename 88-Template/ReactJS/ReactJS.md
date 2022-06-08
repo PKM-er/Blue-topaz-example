@@ -2,8 +2,7 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[ReactJS]]**
 	- [[返回当前活动笔记的所有反向链接]]
@@ -13,6 +12,7 @@ obsidianUIMode: preview
 	- [[react_cat]]
 	- [[react_music]]
 	- [[react_weather]]
+	- [[ReactJS]]
 	- [[slidegallery]]
 
 %% End Waypoint %%

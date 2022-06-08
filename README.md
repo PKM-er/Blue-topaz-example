@@ -1,4 +1,4 @@
----
+^---
 obsidianUIMode: preview
 progress: 正在进行
 title: README
@@ -171,9 +171,10 @@ ad样式使用方法参考
 1. 如何获取指定地区的天气？
 		主页天气代码默认根据ip地址自动获取，如果手动指定`https://i.tianqi.com/?c=code&id=34&bdc=%23&icon=4&site=14&py=chongqing` chongqing改为你想要的城市拼音即可。
 2. 如何更换字体？
-		打开 style settings设置，2.2.1字体设置，主字体里填写**字体名称**即可。注意如果字体名称有空格需要用单引号括起来。
+   示例库默认配置的主字体为[[LXGWWenKai-Light.ttf]]  代码块字体为[[JetBrainsMono-Regular.ttf]]  可以自行安装，即可自动识别。
+	如果要安装其他字体，打开 style settings设置，2.2.1字体设置，主字体里填写**字体名称**即可。注意如果字体名称有空格需要用单引号括起来。
 		字体需要安装到系统里才会成功调用，比如win系统安装后显示的**字体名称**才是真正的字体名称。
-		![[Pasted image 20220119151051.png]]
+		![[Pasted image 20220119151051.png]] ^d0e999
 3. 如何更换Ob背景图？
 		打开 style settings设置，1.2.1工作页面背景，开启背景，并在custom theme light(亮色主题使用)或者custom theme dark(暗色主题使用)里设置壁纸路径.壁纸路径需要使用类似格式url("app://local/XXXXX)设置本地图片。
 		比如windows图片路径置
@@ -211,4 +212,4 @@ ad样式使用方法参考
     
 ## 捐赠
 如果你觉得不错，这个示例库对你使用ob有帮助，可以支持我一下。
-![image](https://user-images.githubusercontent.com/42957010/172568261-8a732d3d-303a-4367-993e-23c3efbf62a8.png)
+![image|inl|350](https://user-images.githubusercontent.com/42957010/172568261-8a732d3d-303a-4367-993e-23c3efbf62a8.png) ![[Pasted image 20220608162248.png|inl|350]]

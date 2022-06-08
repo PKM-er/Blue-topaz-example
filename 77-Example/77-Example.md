@@ -2,12 +2,14 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[77-Example]]**
 	- **[[◾ Cssclass声明样式举例]]**
+	- **[[◾ Dataview相关实例]]**
+	- **[[◾ Echarts]]**
 	- **[[◾ TableExample]]**
+	- [[77-Example]]
 	- [[表格自定义样式]]
 	- [[单独定制笔记背景]]
 	- [[对话形式笔记]]
@@ -28,8 +30,6 @@ obsidianUIMode: preview
 	- [[最近天气查询]]
 	- [[callout 便签效果]]
 	- [[Callout环绕布局、缩进效果示例]]
-	- **[[Dataview相关实例]]**
-	- **[[Echarts]]**
 	- [[MD表格悬浮编辑测试]]
 	- [[ob提示框(callout)样式展示]]
 	- [[timeline callout效果]]

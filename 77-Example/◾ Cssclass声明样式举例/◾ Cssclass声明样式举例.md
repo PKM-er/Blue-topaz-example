@@ -2,10 +2,10 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[◾ Cssclass声明样式举例]]**
+	- [[◾ Cssclass声明样式举例]]
 	- [[全宽显示-表格测试]]
 	- [[四象限表格]]
 	- [[图书阅读清单-状态控制(dvjs)]]

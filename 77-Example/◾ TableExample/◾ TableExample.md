@@ -2,10 +2,10 @@
 cssclass: kanban gridlist
 tag: moc
 obsidianUIMode: preview
----
-[[home|🏠 ]]    `button-browsevault`
+--- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[◾ TableExample]]**
+	- [[◾ TableExample]]
 	- [[01 - Default Table]]
 	- [[02 - PurpleRed]]
 	- [[03 - FlatBlue]]
