@@ -1,12 +1,11 @@
 {
   "blue-topaz-theme@@style-options-for-admonition-plugin": true,
   "blue-topaz-theme@@color-scheme-options": "color-scheme-options-avocado-topaz",
-  "blue-topaz-theme@@translucent-setting-panel": false,
   "blue-topaz-theme@@image-zoom": false,
   "blue-topaz-theme@@muted-activeline-bg": false,
   "blue-topaz-theme@@background-settings-workplace-theme-light": "background-settings-workplace-theme-light-blue-mountain",
   "blue-topaz-theme@@bt-status-off": true,
-  "blue-topaz-theme@@circular-checkbox": false,
+  "blue-topaz-theme@@circular-checkbox": true,
   "blue-topaz-theme@@fancy-hr": "fancy-hr-icon",
   "blue-topaz-theme@@fancy-hr-icon": "'⚡'",
   "blue-topaz-theme@@remove-file-icons": false,
@@ -163,6 +162,10 @@
   "blue-topaz-theme@@table-format-options": "default-table",
   "blue-topaz-theme@@embed-content-height": 500,
   "blue-topaz-theme@@rainbow-cursor": false,
-  "blue-topaz-theme@@paragraph-spacing": 1.5,
-  "blue-topaz-theme@@toggle-calendar-shadow": true
+  "blue-topaz-theme@@toggle-calendar-shadow": true,
+  "blue-topaz-theme@@background-image-settings-command-palette-switch": false,
+  "blue-topaz-theme@@paragraph-spacing": 1.4,
+  "blue-topaz-theme@@dvtable-style-options": "no-wrapped-dvtable",
+  "blue-topaz-theme@@setting-etc-pane-style": "setting-default-frosted-glass",
+  "blue-topaz-theme@@bg-file-page-option": "file-page-bg-theme-dark-sea"
 }

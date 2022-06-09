@@ -1,5 +1,6 @@
 {
   "pluginList": [
+    "metawops/obsidian-table-to-csv-export",
     "cumany/obsidian-echarts",
     "cumany/cMenu-Plugin",
     "blacksmithgu/obsidian-dataview",
@@ -15,7 +16,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-06-08T06:14:41Z"
+      "lastUpdate": "2022-06-09T08:30:48Z"
     }
   ],
   "updateAtStartup": true,

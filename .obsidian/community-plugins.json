@@ -29,5 +29,7 @@
   "cm-chs-patch",
   "omnisearch",
   "obsidian-echarts",
-  "obsidian-linkcard-plugin"
+  "obsidian-linkcard-plugin",
+  "markdown-table-editor",
+  "obsidian-table-to-csv-exporter"
 ]

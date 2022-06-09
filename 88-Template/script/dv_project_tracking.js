@@ -105,7 +105,7 @@ function toTheProgressBar (share) {
 let progressBar =
 " <progress max=\"100\" value=\""
 + (share * 100).toFixed(0).toString()
-+ "\"> </progress>";
++ "\">"+ (share * 100).toFixed(0).toString()+"% </progress>";
 return progressBar;
 }
 function toPercentStr (share) {

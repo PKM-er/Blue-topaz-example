@@ -1,5 +1,5 @@
-/*蓝色托帕石，适合Obsidian v0.14.15。uid [20220608] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
-/*Blue Topaz for Obsidian v0.14.15, uid [20220608] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
+/*蓝色托帕石，适合Obsidian v0.14.15。uid [20220609] flying fly flies制作，欢迎使用及分享，借鉴（copy）了许多主题，在此一一感谢。如果喜欢，可以在Github里给我星星 https://github.com/whyt-byte */
+/*Blue Topaz for Obsidian v0.14.15, uid [20220609] created by flying fly flies. Feel free to use, share and modify. Thanks for all shared css themes which inspire me a lot. If you like the theme, please star me on GitHub https://github.com/whyt-byte */
 
 /* 致谢 Credits：
 Many thanks to @Cuman
@@ -10,11 +10,11 @@ name: Blue Topaz Theme
 id: blue-topaz-theme
 settings:
   - 
-    id: translucent-setting-panel
+    id: transparent-setting-panel
     title: Translucent Setting Panel
-    title.zh: 半透明窗口
-    description: Make this panel translucent
-    description.zh: 使本窗口半透明，便于设置
+    title.zh: 透明窗口
+    description: Make this panel transparent
+    description.zh: 使本窗口透明，便于设置
     type: class-toggle
     default: false
   - 
@@ -90,7 +90,7 @@ settings:
     description.zh: 主题色主要作用于标题，字体，列表等主色调，建议用对比度强，不易疲劳的色系。如果想单独调整个别类目请在2.1中继续细调。
     type: variable-themed-color
     opacity: true
-    format: rgb
+    format: hex
     default-light: '#95a503'
     default-dark: '#95a503'
   -
@@ -100,7 +100,7 @@ settings:
     description.zh: 浅色主要作用于各类触发背景底色，建议用不影响阅读的背景色系。
     type: variable-themed-color
     opacity: true
-    format: rgb
+    format: hex
     default-light: '#e0e79a'
     default-dark: '#e0e79a'
   -
@@ -110,7 +110,7 @@ settings:
     description.zh: 深色主要作用于主题强调色系，用在各种控件，提示等使用，建议用浅色相关的醒目色系。
     type: variable-themed-color
     opacity: true
-    format: rgb
+    format: hex
     default-light: '#746909'
     default-dark: '#746909'
   - 
@@ -1069,12 +1069,6 @@ settings:
     title.zh: 文件抬头标题 (非Sliding Pane plugin)
     type: variable-text
     default: 0.9375em
-  -
-    id: font-size-file-header-title-andy-plugin
-    title: File Header (for Sliding Pane plugin)
-    title.zh: 文件抬头标题 (Sliding Pane plugin)
-    type: variable-text
-    default: 1em
   -
     id: font-size-folder-and-file
     title: Folder and File
@@ -2346,8 +2340,8 @@ settings:
     default: false
   -
     id: cursor-color-temp
-    title: Cursor color (for Obsidian v0.14.6)
-    title.zh: 光标颜色 (适合软件v0.14.6版本)
+    title: Cursor color (Only for Obsidian version below 0.14.6)
+    title.zh: 光标颜色 (只适合软件v0.14.6以下版本)
     type: variable-themed-color
     opacity: true
     format: hex
@@ -2355,8 +2349,8 @@ settings:
     default-dark: '#'
   -
     id: fancy-cursor
-    title: Toggle fancy cursor (for Obsidian v0.14.6)
-    title.zh: 切换装饰性光标 (适合软件v0.14.6版本)
+    title: Toggle fancy cursor (Only for Obsidian version below 0.14.6)
+    title.zh: 切换装饰性光标 (只适合软件v0.14.6以下版本)
     type: class-toggle
     default: false
   -
@@ -2782,6 +2776,29 @@ settings:
     type: variable-text
     default: 1px
   -
+    id: tag-color-settings
+    title: 2.3.18 Setting, Menu, Option panes
+    title.zh: 2.3.18 设置、菜单、选项面板
+    type: heading
+    level: 3
+    collapsed: true
+  -
+    id: setting-etc-pane-style
+    title: Pane Style
+    type: class-select
+    allowEmpty: false
+    default: setting-default-frosted-glass
+    options:
+      - 
+        label: Frosted Glass
+        value: setting-default-frosted-glass
+      - 
+        label: Traditional
+        value: setting-style-traditional
+      - 
+        label: Translucent (only for setting panel)
+        value: translucent-setting-panel
+  -
     id: style-options-for-other-plugins
     title: 3. For Plugins
     title.zh: 3. 插件样式
@@ -3030,12 +3047,29 @@ settings:
     type: class-toggle
     default: false
   -
-    id: transparent-panes-alt
-    title: Transparent Panes (alt) for Sliding Panes Plugin
-    title.zh: 使用Sliding Panes插件时，透明化部分页面 (备用选项)
-    description: If the option above this option is not for you, you may try this one.
-    type: class-toggle
-    default: false
+    id: bg-sliding-pane-leaf
+    title: Page Background Color
+    title.zh: 笔记页面背景颜色
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: bg-sliding-pane-header
+    title: File Header Background Color
+    title.zh: 文件标题背景颜色
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: font-size-file-header-title-andy-plugin
+    title: Font Size of File Header
+    title.zh: 文件抬头标题字体大小
+    type: variable-text
+    default: 1em
   -
     id: style-options-for-dialogue-plugin-heading
     title: 3.9 Obsidian Memos
@@ -3562,33 +3596,6 @@ body {
   --paragraph-spacing: 1;
 }
 
-body.font-family-change-to-default .markdown-source-view,
-body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered),
-body.font-family-change-to-default .markdown-source-view.mod-cm6 .cm-scroller,
-body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) h5,
-body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) h6,
-body.font-family-change-to-default .nav-file-title,
-body.font-family-change-to-default .nav-folder-title,
-body.font-family-change-to-default a.tag,
-body.font-family-change-to-default .cm-s-obsidian span.cm-hashtag,
-body.font-family-change-to-default .nav-folder.mod-root>.nav-folder-title,
-body.font-family-change-to-default pre.frontmatter.language-yaml::before,
-body.font-family-change-to-default span.cm-strong,
-body.font-family-change-to-default :not(font)>strong,
-body.font-family-change-to-default a,
-body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) .internal-link,
-body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) th,
-body.font-family-change-to-default *:not(font)>em>strong,
-body.font-family-change-to-default *:not(font)>strong>em,
-body.font-family-change-to-default .cm-strong.cm-em {
-  font-family: unset !important;
-}
-
-body.font-family-change-to-default .markdown-rendered code,
-body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) code{
-  font-family: 'Source Code Pro', monospace !important;
-}
-
 body.all-dark .print.theme-light,
 .theme-dark {
   --background-primary: #222222;
@@ -3823,6 +3830,8 @@ body.all-dark .print.theme-light,
   /*Sliding panes*/
   --sliding-panes-header-color: #f1a634d0;
   --background-4-sliding-pane: #252525ed;
+  --bg-sliding-pane-header: #00000043;
+  --bg-sliding-pane-leaf: #0f0f0f36;
 
   /*admonition*/
   --admonition-bg-color: #1111118f;
@@ -3863,6 +3872,7 @@ body.all-dark .print.theme-light,
 
   /*style settings*/
   --background-secondary-translucent: #2c2c2c26;
+  --background-secondary-translucent-1: #2c2c2c26;
 
   /*rainbow-checklist*/
   --checklist-color-1: #005aa486;
@@ -3895,10 +3905,13 @@ body.all-dark .print.theme-light,
   --cursor-green: #7dff7d;
   --cursor-blue: #8ac7ff;
   --cursor-violet: #bf76ff;
-
-  --bg-color-settings-1: #a7a7a722;
-  --bg-color-settings-2: #1717174c;
+  
+  --bg-color-settings-0: #07070747;
+  --bg-color-settings-0-1: #ffffff00;
+  --bg-color-settings-1: #7c7c7c6d;
+  --bg-color-settings-2: #2a2a2a30;
   --bg-color-settings-3: #141414be;
+  --bg-color-settings-4: #6565656c;
 }
 
 .theme-light {
@@ -3971,6 +3984,12 @@ body.all-dark .print.theme-light,
   --background-black-or-white-1: #e4e4e4;
   --background-modifier-border-1: #e1dfdf;
   --background-transparent-blue: #c6e5ffde;
+  --bg-color-settings-0: #7d7d7d6b;
+  --bg-color-settings-0-1: #ffffff77;
+  --bg-color-settings-1: #ffffff17;
+  --bg-color-settings-2: #ffffff42;
+  --bg-color-settings-3: #ffffffda;
+  --bg-color-settings-4: #ffffffd2;
 
   --scrollbar-thumb: #c6c6c6a8;
 
@@ -4105,7 +4124,6 @@ body.all-dark .print.theme-light,
   --text-purple: #5d1fb9;
   --text-pink: #c40075;
   --text-red: #ff4343;
-
   --background-gray: #ebeced;
   --background-brown: #e9e5e3;
   --background-orange: #faebdd;
@@ -4127,16 +4145,18 @@ body.all-dark .print.theme-light,
   /*Sliding panes*/
   --sliding-panes-header-color: #0e64bb;
   --background-4-sliding-pane: #ffffffef;
+  --bg-sliding-pane-header: #ffffff97;
+  --bg-sliding-pane-leaf: #ffffff88;
 
   /*admonition*/
-  --admonition-bg-color: #ffffffa6;
+  --admonition-bg-color: #ffffff96;
 
   /*checklist*/
   --checklist-bg: #dfdfdf8e;
   --checklist-bg-hover: #ffffffcc;
 
-  --color-view-header-gradient-1: #eff8ffef;
-  --color-view-header-gradient-2: #f8fffeef;
+  --color-view-header-gradient-1: #eff8ff8f;
+  --color-view-header-gradient-2: #f8fffe86;
 
   /*checkbox*/
   --checkbox-color-0: #2f92e4;
@@ -4167,7 +4187,7 @@ body.all-dark .print.theme-light,
   --p-kanban-color-shadow: #cfcfcf4d;
 
   /*style settings*/
-  --background-secondary-translucent: #ffffff3d;
+  --background-secondary-translucent: #ffffff3d;  --background-secondary-translucent-1: #ffffff5d;
 
   /*rainbow-checklist*/
   --checklist-color-1: #bbdefbab;
@@ -4177,10 +4197,6 @@ body.all-dark .print.theme-light,
   --checklist-color-5: #ffe0b2ab;
   --checklist-color-6: #ffcdd2ab;
   --checklist-color-7: #e1bee7ab;
-
-  --bg-color-settings-1: #ffffff17;
-  --bg-color-settings-2: #cdcdcd4c;
-  --bg-color-settings-3: #ffffffda;
 
   --table-color-calendar-2: rgb(167, 223, 251);
   --table-color-rgb: 167, 223, 251;
@@ -4422,9 +4438,6 @@ body.color-scheme-options-avocado-topaz.theme-light {
   --text-checked-checkbox: #9b9b9b;
 
   --activeline-background: #d1f0e521;
-
-  /*style settings*/
-  --background-secondary-translucent: #ffffff3d;
 
   --table-color-calendar-2: rgb(182, 221, 191);
   --table-color-rgb: 182, 221, 191;
@@ -5746,8 +5759,8 @@ body.color-scheme-options-flamingo.theme-light {
   --tape-color: #acacac65;
   --header-color: #f5a7a2;
 
-  --color-view-header-gradient-1: #efe9d9;
-  --color-view-header-gradient-2: #efe9d9;
+  --color-view-header-gradient-1: #efe9d933;
+  --color-view-header-gradient-2: #efe9d933;
 
   --table-color-calendar-2: rgb(214, 118, 146);
   --table-color-rgb: 214, 118, 146;
@@ -5892,8 +5905,8 @@ body.color-scheme-options-flamingo.theme-dark {
   --tape-color: #ffccbc47;
   --header-color: #f39ba0;
 
-  --color-view-header-gradient-1: #212121;
-  --color-view-header-gradient-2: #212121;
+  --color-view-header-gradient-1: #21212122;
+  --color-view-header-gradient-2: #21212122;
 
   --table-color-calendar-2: rgb(215, 86, 125);
   --table-color-rgb: 215, 86, 125;
@@ -7775,7 +7788,7 @@ body.color-scheme-options-lilac.theme-light {
   --checklist-bg: #dfdfdf8e;
   --checklist-bg-hover: #ffffffcc;
 
-  --color-view-header-gradient-1: #efe0f1; /*标题上的颜色*/
+  --color-view-header-gradient-1: #efe0f1ef; /*标题上的颜色*/
   --color-view-header-gradient-2: #e1c9f1ef;
 
   /*checkbox*/
@@ -7792,9 +7805,6 @@ body.color-scheme-options-lilac.theme-light {
   --activeline-background: #d7c4f2;
 
   --interactive-hover: #dbdbdc;
-
-  /*style settings*/
-  --background-secondary-translucent: #ffffff3d;
 
   --table-color-calendar-2: rgb(211, 161, 247);
   --table-color-rgb: 211, 161, 247;
@@ -8014,9 +8024,6 @@ body.color-scheme-options-lilac.theme-dark {
 
   --interactive-hover: #dbdbdc;
 
-  /*style settings*/
-  --background-secondary-translucent: #2c2c2c26;
-
   --table-color-calendar-2: rgb(98, 36, 143);
   --table-color-rgb: 98, 36, 143;
 }
@@ -8067,10 +8074,36 @@ body.color-scheme-options-lilac.theme-dark #calendar-container {
 body.color-scheme-options-lilac.theme-light #calendar-container {
   --theme-color-translucent-3: #dccaffb0;
 }
-
 /*======@awyugan--end========*/
 
-/*===========*/
+body.font-family-change-to-default .markdown-source-view,
+body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered),
+body.font-family-change-to-default .markdown-source-view.mod-cm6 .cm-scroller,
+body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) h5,
+body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) h6,
+body.font-family-change-to-default .nav-file-title,
+body.font-family-change-to-default .nav-folder-title,
+body.font-family-change-to-default a.tag,
+body.font-family-change-to-default .cm-s-obsidian span.cm-hashtag,
+body.font-family-change-to-default .nav-folder.mod-root>.nav-folder-title,
+body.font-family-change-to-default pre.frontmatter.language-yaml::before,
+body.font-family-change-to-default span.cm-strong,
+body.font-family-change-to-default :not(font)>strong,
+body.font-family-change-to-default a,
+body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) .internal-link,
+body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) th,
+body.font-family-change-to-default *:not(font)>em>strong,
+body.font-family-change-to-default *:not(font)>strong>em,
+body.font-family-change-to-default .cm-strong.cm-em {
+  font-family: unset !important;
+}
+
+body.font-family-change-to-default .cm-s-obsidian .cm-hmd-frontmatter,
+body.font-family-change-to-default .markdown-rendered code,
+body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered) code{
+  font-family: 'Source Code Pro', monospace !important;
+}
+
 /* page-size in edit mode*/
 :is(.markdown-preview-view,.markdown-rendered) .markdown-preview-sizer,
 .markdown-source-view .CodeMirror {
@@ -14828,7 +14861,7 @@ body.plugin-sliding-panes.theme-dark .workspace-split.mod-vertical>.workspace-le
 }
 
 body.plugin-sliding-panes.plugin-sliding-panes-rotate-header .mod-root .workspace-leaf.mod-active .view-header {
-  background-color: var(--background-primary);
+  background-color: var(--bg-sliding-pane-header);
   border-left: 3px solid var(--interactive-accent) !important;
 }
 
@@ -14857,20 +14890,21 @@ body.plugin-sliding-panes .view-actions {
 }
 
 body.plugin-sliding-panes-rotate-header .workspace>.mod-root .view-header {
-  border-right: 1px solid var(--background-secondary-alt) !important;
-  border-left: 1px solid var(--background-secondary-alt) !important;
+  border-right: none !important;
+  border-left: none !important;
 }
 
 body.plugin-sliding-panes-rotate-header .workspace>.mod-root>.workspace-leaf>.workspace-leaf-content>.view-header .view-header-icon {
-  padding: 0 0 0 3px !important;
+  padding: 0 0 0 4px !important;
 }
 
 body.plugin-sliding-panes-rotate-header .workspace>.mod-root>.workspace-leaf>.workspace-leaf-content>.view-header .view-actions {
   padding: 0 0 5px 2px !important;
 }
 
-body.plugin-sliding-panes:not(.transparent-panes) .workspace-split.mod-root .workspace-leaf:not(:first-of-type) .workspace-leaf-content {
-  background-color: var(--background-4-sliding-pane);
+body.plugin-sliding-panes:not(.transparent-panes) .workspace-split.mod-root .workspace-leaf .workspace-leaf-content {
+  backdrop-filter: blur(10px);
+  background-color: var(--bg-sliding-pane-leaf);
 }
 
 body.plugin-sliding-panes.transparent-panes .workspace-leaf.mod-am-left-of-active .workspace-leaf-content .view-content,
@@ -17360,55 +17394,81 @@ span.cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight.hmd-hidd
 }
 
 /*translucent setting panel*/
-body.translucent-setting-panel .modal.mod-settings .vertical-tab-content-container {
+body.translucent-setting-panel .modal-bg {
+  background-color: var(--background-secondary-translucent-1);
+}
+
+body.transparent-setting-panel .modal.mod-settings .vertical-tab-content-container,
+body.transparent-setting-panel .horizontal-tab-content, 
+body.transparent-setting-panel .vertical-tab-content {
   background-color: var(--background-secondary-translucent) !important;
 }
 
-body.translucent-setting-panel .modal-bg,
-body.translucent-setting-panel .vertical-tab-header {
+body.transparent-setting-panel .modal-bg,
+body.transparent-setting-panel .modal.mod-settings {
   background-color: var(--background-secondary-translucent) !important;
+  backdrop-filter: blur(0) !important;	
 }
-.modal-bg {
-  backdrop-filter: blur(5px);	
+
+body:not(.setting-style-traditional) .prompt {
+  background-color: var(--bg-color-settings-4);
+  backdrop-filter: blur(3px);	
 }
-.modal-bg,
-.modal.mod-settings {
-  background-color: transparent;
-}
-.modal.mod-settings {
-  border: none;
-}
-.vertical-tab-header {
-  background-color: var(--bg-color-settings-1);
+
+body:not(.setting-style-traditional).theme-dark .prompt {
   backdrop-filter: blur(8px);	
 }
 
-.horizontal-tab-nav-item, 
-.vertical-tab-nav-item {
+body:not(.setting-style-traditional) .vertical-tab-header-group-title {
+  color: var(--text-normal);
+  border-top: 1px dashed var(--text-muted);
+}
+
+body:not(.setting-style-traditional) .modal-bg {
+  background-color: var(--bg-color-settings-0);  
+  backdrop-filter: blur(5px);	
+}
+body:not(.setting-style-traditional) .modal.mod-settings {
+  background-color: var(--bg-color-settings-0-1);
+  backdrop-filter: blur(3px);	
+}
+body:not(.setting-style-traditional) .modal.mod-settings {
+  border: none;
+}
+body:not(.setting-style-traditional) .vertical-tab-header {
+  background-color: var(--bg-color-settings-1);
+}
+
+body:not(.setting-style-traditional) .horizontal-tab-nav-item, 
+body:not(.setting-style-traditional) .vertical-tab-nav-item {
   background-color: transparent;
 }
 
-.horizontal-tab-nav-item:hover, 
-.vertical-tab-nav-item:hover,
-.horizontal-tab-nav-item.is-active, 
-.vertical-tab-nav-item.is-active {
+body:not(.setting-style-traditional) .horizontal-tab-nav-item:hover, 
+body:not(.setting-style-traditional) .vertical-tab-nav-item:hover,
+body:not(.setting-style-traditional) .horizontal-tab-nav-item.is-active, 
+body:not(.setting-style-traditional) .vertical-tab-nav-item.is-active {
   background-color: var(--bg-color-settings-2);
 }
 
-.horizontal-tab-content, 
-.vertical-tab-content {
+body:not(.setting-style-traditional) .horizontal-tab-content, 
+body:not(.setting-style-traditional) .vertical-tab-content {
   background-color: var(--bg-color-settings-3);
 }
 
-body.translucent-setting-panel .modal,
-body.translucent-setting-panel .modal.mod-settings,
 body.translucent-setting-panel .vertical-tab-content {
+  background-color: var(--bg-color-settings-1);
+}
+
+body.transparent-setting-panel .modal,
+body.transparent-setting-panel .modal.mod-settings,
+body.transparent-setting-panel .vertical-tab-content {
   background-color: transparent !important;
 }
 
-body.translucent-setting-panel .vertical-tab-header,
-body.translucent-setting-panel .horizontal-tab-nav-item, 
-body.translucent-setting-panel .vertical-tab-nav-item {
+body.transparent-setting-panel .vertical-tab-header,
+body.transparent-setting-panel .horizontal-tab-nav-item, 
+body.transparent-setting-panel .vertical-tab-nav-item {
   background-color: var(--background-secondary-translucent) !important;
 }
 
@@ -18150,6 +18210,10 @@ body.style-options-for-buttons-plugin  button.g_yellow {
 }
 
 button.tiny {
+  border-radius: 10px;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   font-size: 1em;
   min-width:3.5em;
   cursor: pointer;
@@ -18160,7 +18224,7 @@ button.tiny {
   position: relative;
   z-index: 1;
   overflow: hidden;
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 35px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 5px 35px, rgba(0, 0, 0, 0.05) 0px 5px 5px;
 }
 button.tiny:hover {
   color: var(--text-on-accent);
@@ -20890,7 +20954,7 @@ body.background-settings-workplace-background-image.simple-titlebar .titlebar::b
 
 body.background-settings-workplace-background-image.theme-light {
   --background-primary-bg-4-bt: #ffffffb2;
-  --background-secondary-bg-4-bt: #ffffff83;
+  --background-secondary-bg-4-bt: #ffffff63;
   --background-secondary-alt-bg-4-bt: #ffffff69;
   --background-primary-alt-bg-4-bt: #ffffffbe;
   --background-code: #fafafa94;
@@ -22341,6 +22405,20 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   .print .markdown-preview-view .admonition-flex .admonition-content {
     display: flex !important;
   }
+
+  body.text-indentation-two-em  .print *:not(blockquote) > p {
+    text-indent: 2em;
+  }
+  body.text-indentation-two-em   .print *:not(blockquote) > p>br {
+    content: ' ';
+    white-space: pre;
+    line-height: calc((var(--paragraph-spacing) + 0.3)*1em);
+    display:unset;
+  }
+  body.text-indentation-two-em   .print *:not(blockquote) > p>br::after {
+    content: '\A         ';
+  }
+  
 }
 
 /* ================================== */
@@ -22348,7 +22426,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   max-width: 290px;
 }
 .community-theme-container .theme-list .community-theme.is-selected .community-theme-title::before {
-  content: "uid:20220608";
+  content: "uid:20220609";
   font-family: var(--font-family-inline-code);
   font-size: 12px;
   font-weight: normal;

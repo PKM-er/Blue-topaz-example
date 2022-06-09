@@ -136,8 +136,7 @@ dv.paragraph(posters);
 > [!stickies3|blue]
 >```dataviewjs
 let reg=/[\u4e00-\u9fa5]/
-//let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox"'
-let nofold = '"00-Tips"'
+let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and !"20-Diary"'
 let files = dv.pages(nofold).file
 const random = Math.floor(Math.random() * (files.length - 1))
 const randomNote = files[random]
@@ -168,7 +167,6 @@ Promise.all(arr).then(
 values => 
 {
 let flatvalues =values.filter(Boolean).flat()
-console.log(flatvalues)
 const random = Math.floor(Math.random() * (flatvalues.length - 1))
 dv.paragraph(`[![image|220](${flatvalues[random].link})](obsidian://open?file=${encodeURIComponent(flatvalues[random].file)})`)
 }

@@ -14,7 +14,7 @@
   "showComplementAutomatically": true,
   "showIndexingStatus": false,
   "descriptionOnSuggestion": "Short",
-  "selectSuggestionKeys": "Enter",
+  "selectSuggestionKeys": "Space",
   "additionalCycleThroughSuggestionsKeys": "Tab, Shift+Tab",
   "disableUpDownKeysForCycleThroughSuggestionsKeys": false,
   "openSourceFileKey": "None",
@@ -43,19 +43,27 @@
   "insertCommaAfterFrontMatterCompletion": false,
   "showLogAboutPerformanceInConsole": false,
   "selectionHistoryTree": {
-    "  ": {
-      "  ": {
+    "3333": {
+      "3333": {
         "currentVault": {
           "count": 1,
-          "lastUpdated": 1652284925369
+          "lastUpdated": 1654755712029
+        }
+      }
+    },
+    "4444": {
+      "4444": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1654755714012
         }
       }
     },
     "console": {
       "console": {
         "currentVault": {
-          "count": 24,
-          "lastUpdated": 1654670065258
+          "count": 25,
+          "lastUpdated": 1654743622958
         }
       }
     },
@@ -114,8 +122,8 @@
     "Contents": {
       "Contents": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1652664410753
+          "count": 2,
+          "lastUpdated": 1654756255422
         }
       }
     },
@@ -178,8 +186,8 @@
     "方法": {
       "方法": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1652702727613
+          "count": 2,
+          "lastUpdated": 1654761021159
         }
       }
     },
@@ -754,8 +762,8 @@
     "author": {
       "author": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1653614942253
+          "count": 2,
+          "lastUpdated": 1654760829395
         }
       }
     },
@@ -1400,6 +1408,62 @@
         "internalLink": {
           "count": 1,
           "lastUpdated": 1654706277315
+        }
+      }
+    },
+    "cuman": {
+      "cuman": {
+        "frontMatter": {
+          "count": 1,
+          "lastUpdated": 1654760832108
+        }
+      }
+    },
+    "前言": {
+      "前言": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1654760874756
+        }
+      }
+    },
+    "一起": {
+      "一起": {
+        "currentVault": {
+          "count": 3,
+          "lastUpdated": 1654761100764
+        }
+      }
+    },
+    "button": {
+      "button": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1654761154158
+        }
+      }
+    },
+    "Dataview相关实例": {
+      "Dataview相关实例": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1654761387768
+        }
+      }
+    },
+    "表格": {
+      "表格": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1654762691411
+        }
+      }
+    },
+    "命令": {
+      "命令": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1654762694823
         }
       }
     }
