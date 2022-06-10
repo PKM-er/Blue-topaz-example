@@ -7,8 +7,11 @@ updated: 2022-06-09 10:00
 ## 💡引言
 This Vault  contains the basic functions of Obsidian and has built-in common Obsidian plugins.
 Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
-
+If you feel a little bloated, we recommend downloading the Lite version of the example vault to delete a large number of unnecessary plug-ins, download link
+https://github.com/cumany/Blue-topaz-examples/releases/tag/20220610-lite
 ---
+注意：本示例库包含大量插件目前有七十多个，很多插件都是辅助类插件，可以根据需要删除或者关闭，为了方便初学者，特推出一个简化版示例库删减了大量不必要的插件下载链接
+https://github.com/cumany/Blue-topaz-examples/releases/tag/20220610-lite
 
 本[Examples库](https://github.com/cumany/Blue-topaz-examples)由Cuman建立，Tips教程由[BT主题](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css)作者3F撰写。
 本库是一个包含Obsidian基本功能的入门库，并内置了Obsidian的常用插件。
