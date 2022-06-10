@@ -7,6 +7,7 @@ updated: 2022-06-09 10:00
 ## 💡引言
 This Vault  contains the basic functions of Obsidian and has built-in common Obsidian plugins.
 Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
+
 If you feel a little bloated, we recommend downloading the Lite version of the example vault to delete a large number of unnecessary plug-ins, download link
 https://github.com/cumany/Blue-topaz-examples/releases/tag/20220610-lite
 ---
