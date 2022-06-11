@@ -32,7 +32,7 @@ async function getWeather(city){
 		}else 
 			windydesc = "有"+today.windDirDay+"风出没，风力"+today.windScaleDay+'级';	
 		let today = weather[0];
-			let desc = `${city} ${today.textDay}，${today.tempMin}~${today.tempMax}℃ ==${air.category}== ${windydesc} ${today.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
+			let desc = `${city} ${today.textDay}，${today.tempMin}~${today.tempMax}℃ ${air.category} ${windydesc}${today.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
 			return desc;	
 	}
 }

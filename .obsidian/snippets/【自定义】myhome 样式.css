@@ -689,10 +689,12 @@ div[data-callout="profile-card"].callout > .callout-content {
             line-height: 1em;
             margin-bottom: -10px;
             }
- div[data-callout="item"].callout  .callout-title-inner>.external-link{ 
+.myhome .external-link{ 
 background-image:none;
 padding: 0px;
  }
+
+
 
 /****main-bar button 样式 ***/
 
@@ -822,22 +824,7 @@ min-width: 2em;
 margin-right: 0.2em;
 margin-left: 0.5em;
 }
-.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content span { 
-  font-size: smaller;
-}
 
-.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content img { 
- max-height: 205px;
-}
-.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content a.external-link::before { 
- display: none;
-}
-.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content a.external-link { 
-  background-image:none;
- }
- .markdown-preview-view .callout[data-callout="stickies3"] >.callout-content .block-language-dataviewjs p { 
-  max-height: 195px;
- }
 #task
 {
     background-color: #42b983a5;

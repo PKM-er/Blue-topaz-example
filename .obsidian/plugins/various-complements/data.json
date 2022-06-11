@@ -69,10 +69,6 @@
     },
     "noborder": {
       "noborder": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1652402602158
-        },
         "currentVault": {
           "count": 2,
           "lastUpdated": 1653308383682
@@ -92,14 +88,6 @@
         "frontMatter": {
           "count": 3,
           "lastUpdated": 1653283797061
-        }
-      }
-    },
-    "jpg": {
-      "jpg": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1652429917095
         }
       }
     },
@@ -558,8 +546,8 @@
     "return": {
       "return": {
         "currentFile": {
-          "count": 1,
-          "lastUpdated": 1653379569073
+          "count": 2,
+          "lastUpdated": 1654853997023
         }
       }
     },
@@ -1464,6 +1452,38 @@
         "currentFile": {
           "count": 1,
           "lastUpdated": 1654762694823
+        }
+      }
+    },
+    "function": {
+      "function": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1654853949008
+        }
+      }
+    },
+    "ait": {
+      "ait": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1654854035387
+        }
+      }
+    },
+    "😅": {
+      "😅": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1654854371149
+        }
+      }
+    },
+    "--": {
+      "--": {
+        "currentVault": {
+          "count": 4,
+          "lastUpdated": 1654854433567
         }
       }
     }

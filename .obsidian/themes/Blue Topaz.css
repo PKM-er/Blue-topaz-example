@@ -528,6 +528,20 @@ settings:
         label: Asymmetric Style of Split Panes
         value: asymmetric-split-left
   -
+    id: titlebar-close-button
+    title: Titlebar close button
+    title.zh: Ob标题栏关闭按钮
+    type: class-select
+    allowEmpty: false
+    default: default-titlebar
+    options:
+      - 
+        label: Default
+        value: default-titlebar
+      - 
+        label: Reversal
+        value: reversal-titlebar
+  -
     id: hide-titlebar-text
     title: Hide text in Title Bar
     title.zh: 隐藏Obsidian标题栏中的文字
@@ -1394,6 +1408,13 @@ settings:
     type: variable-number
     default: 1.5
   -
+    id: toggle-paragraph-spacing
+    title: Toggle  paragraph spacing in Reading Mode
+    title.zh: 开启阅读模式段间距
+    description.zh: 开启后对多个<br>标记不再生效
+    type: class-toggle
+    default: false
+  -
     id: paragraph-spacing
     title: Paragraph Spacing
     title.zh: 段间距
@@ -1422,8 +1443,8 @@ settings:
     step: 0.1
   -
     id: text-indentation-two-em
-    title: Slight Indentation of the First Line in Preview Mode
-    title.zh: 段落首行缩进（预览模式）
+    title: Slight Indentation of the First Line 
+    title.zh: 段落首行缩进
     description.zh: 需要安装Contextual Typography插件
     description: Contextual Typography plugin needs to be installed
     type: class-toggle
@@ -3909,9 +3930,10 @@ body.all-dark .print.theme-light,
   --bg-color-settings-0: #07070747;
   --bg-color-settings-0-1: #ffffff00;
   --bg-color-settings-1: #7c7c7c6d;
-  --bg-color-settings-2: #2a2a2a30;
+  --bg-color-settings-2: #1f1f1f52;
   --bg-color-settings-3: #141414be;
   --bg-color-settings-4: #6565656c;
+  --bg-color-settings-5: #69696951;
 }
 
 .theme-light {
@@ -3987,9 +4009,10 @@ body.all-dark .print.theme-light,
   --bg-color-settings-0: #7d7d7d6b;
   --bg-color-settings-0-1: #ffffff77;
   --bg-color-settings-1: #ffffff17;
-  --bg-color-settings-2: #ffffff42;
+  --bg-color-settings-2: #ffffff5a;
   --bg-color-settings-3: #ffffffda;
   --bg-color-settings-4: #ffffffd2;
+  --bg-color-settings-5: #d4d4d464;
 
   --scrollbar-thumb: #c6c6c6a8;
 
@@ -9292,8 +9315,7 @@ p {
 }
 
 
-
-:is(.markdown-preview-view,.markdown-rendered) p>br {
+body.toggle-paragraph-spacing :is(.markdown-preview-view,.markdown-rendered) p>br {
   content:" ";
   margin-top: calc((var(--paragraph-spacing) - 1)*1em);
   display: block;
@@ -10807,11 +10829,11 @@ ul>li::marker,
   color: var(--list-format-ul);
 }
 
-/*
-div.HyperMD-list-line.cm-line:not(.HyperMD-table-row) {
-  word-break: break-all;
+
+.cm-s-obsidian .HyperMD-table-row.HyperMD-table-row.HyperMD-table-row {
+  min-width: min-content;
+  white-space: pre-wrap;
 }
-*/
 
 pre.HyperMD-list-line.HyperMD-list-line {
   text-align: start;
@@ -13645,6 +13667,93 @@ ul.contains-task-list .list-collapse-indicator.collapse-indicator.collapse-icon:
 
 .dropdown {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBzdGFuZGFsb25lPSJubyI/Pgo8IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDIwMDEwOTA0Ly9FTiIKICJodHRwOi8vd3d3LnczLm9yZy9UUi8yMDAxL1JFQy1TVkctMjAwMTA5MDQvRFREL3N2ZzEwLmR0ZCI+CjxzdmcgdmVyc2lvbj0iMS4wIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciCiB3aWR0aD0iMTI4MC4wMDAwMDBwdCIgaGVpZ2h0PSI2NDAuMDAwMDAwcHQiIHZpZXdCb3g9IjAgMCAxMjgwLjAwMDAwMCA2NDAuMDAwMDAwIgogcHJlc2VydmVBc3BlY3RSYXRpbz0ieE1pZFlNaWQgbWVldCI+CjxtZXRhZGF0YT4KQ3JlYXRlZCBieSBwb3RyYWNlIDEuMTUsIHdyaXR0ZW4gYnkgUGV0ZXIgU2VsaW5nZXIgMjAwMS0yMDE3CjwvbWV0YWRhdGE+CjxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDAuMDAwMDAwLDY0MC4wMDAwMDApIHNjYWxlKDAuMTAwMDAwLC0wLjEwMDAwMCkiCmZpbGw9IiMyMTk2ZjMiIHN0cm9rZT0ibm9uZSI+CjxwYXRoIGQ9Ik0xMCA2MzkyIGMwIC00IDE0MzggLTE0NDUgMzE5NSAtMzIwMiBsMzE5NSAtMzE5NCAzMTk1IDMxOTQgYzE3NTcKMTc1NyAzMTk1IDMxOTggMzE5NSAzMjAyIDAgNSAtMjg3NSA4IC02MzkwIDggLTM1MTUgMCAtNjM5MCAtMyAtNjM5MCAtOHoiLz4KPC9nPgo8L3N2Zz4K);
+}
+
+/*translucent setting panel*/
+body.translucent-setting-panel .modal-bg {
+  background-color: var(--background-secondary-translucent-1);
+}
+
+body.transparent-setting-panel .modal.mod-settings .vertical-tab-content-container,
+body.transparent-setting-panel .horizontal-tab-content, 
+body.transparent-setting-panel .vertical-tab-content {
+  background-color: var(--background-secondary-translucent) !important;
+}
+
+body.transparent-setting-panel .modal-bg,
+body.transparent-setting-panel .modal.mod-settings {
+  background-color: var(--background-secondary-translucent) !important;
+  backdrop-filter: blur(0) !important;	
+}
+
+body:not(.setting-style-traditional) .prompt {
+  background-color: var(--bg-color-settings-4);
+  backdrop-filter: blur(3px);	
+}
+
+body:not(.setting-style-traditional).theme-dark .prompt {
+  backdrop-filter: blur(8px);	
+}
+
+body:not(.setting-style-traditional) .vertical-tab-header-group-title {
+  color: var(--text-normal);
+  border-top: 1px dashed var(--text-muted);
+}
+
+body:not(.setting-style-traditional) .modal-bg {
+  background-color: var(--bg-color-settings-0);  
+  backdrop-filter: blur(5px);	
+}
+body:not(.setting-style-traditional) .modal.mod-settings {
+  background-color: var(--bg-color-settings-0-1);
+  backdrop-filter: blur(3px);	
+}
+body:not(.setting-style-traditional) .modal.mod-settings {
+  border: none;
+}
+body:not(.setting-style-traditional) .vertical-tab-header {
+  background-color: var(--bg-color-settings-1);
+}
+
+body:not(.setting-style-traditional) .horizontal-tab-nav-item, 
+body:not(.setting-style-traditional) .vertical-tab-nav-item {
+  background-color: transparent;
+}
+
+body:not(.setting-style-traditional) .horizontal-tab-nav-item:hover, 
+body:not(.setting-style-traditional) .vertical-tab-nav-item:hover,
+body:not(.setting-style-traditional) .horizontal-tab-nav-item.is-active, 
+body:not(.setting-style-traditional) .vertical-tab-nav-item.is-active {
+  background-color: var(--bg-color-settings-2);
+}
+
+body:not(.setting-style-traditional) .horizontal-tab-content, 
+body:not(.setting-style-traditional) .vertical-tab-content {
+  background-color: var(--bg-color-settings-3);
+}
+
+body.translucent-setting-panel .vertical-tab-content {
+  background-color: var(--bg-color-settings-1);
+}
+
+body.transparent-setting-panel .modal,
+body.transparent-setting-panel .modal.mod-settings,
+body.transparent-setting-panel .vertical-tab-content {
+  background-color: transparent !important;
+}
+
+body.transparent-setting-panel .vertical-tab-header,
+body.transparent-setting-panel .horizontal-tab-nav-item, 
+body.transparent-setting-panel .vertical-tab-nav-item {
+  background-color: var(--background-secondary-translucent) !important;
+}
+
+.modal.mod-settings .vertical-tab-header {
+  padding: 0;
+}
+
+body:not(.setting-style-traditional) .vertical-tab-header-group-title {
+  border: none;
 }
 
 /* ======= graph view ==============*/
@@ -17393,85 +17502,6 @@ span.cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight.hmd-hidd
   padding-left: 20px;
 }
 
-/*translucent setting panel*/
-body.translucent-setting-panel .modal-bg {
-  background-color: var(--background-secondary-translucent-1);
-}
-
-body.transparent-setting-panel .modal.mod-settings .vertical-tab-content-container,
-body.transparent-setting-panel .horizontal-tab-content, 
-body.transparent-setting-panel .vertical-tab-content {
-  background-color: var(--background-secondary-translucent) !important;
-}
-
-body.transparent-setting-panel .modal-bg,
-body.transparent-setting-panel .modal.mod-settings {
-  background-color: var(--background-secondary-translucent) !important;
-  backdrop-filter: blur(0) !important;	
-}
-
-body:not(.setting-style-traditional) .prompt {
-  background-color: var(--bg-color-settings-4);
-  backdrop-filter: blur(3px);	
-}
-
-body:not(.setting-style-traditional).theme-dark .prompt {
-  backdrop-filter: blur(8px);	
-}
-
-body:not(.setting-style-traditional) .vertical-tab-header-group-title {
-  color: var(--text-normal);
-  border-top: 1px dashed var(--text-muted);
-}
-
-body:not(.setting-style-traditional) .modal-bg {
-  background-color: var(--bg-color-settings-0);  
-  backdrop-filter: blur(5px);	
-}
-body:not(.setting-style-traditional) .modal.mod-settings {
-  background-color: var(--bg-color-settings-0-1);
-  backdrop-filter: blur(3px);	
-}
-body:not(.setting-style-traditional) .modal.mod-settings {
-  border: none;
-}
-body:not(.setting-style-traditional) .vertical-tab-header {
-  background-color: var(--bg-color-settings-1);
-}
-
-body:not(.setting-style-traditional) .horizontal-tab-nav-item, 
-body:not(.setting-style-traditional) .vertical-tab-nav-item {
-  background-color: transparent;
-}
-
-body:not(.setting-style-traditional) .horizontal-tab-nav-item:hover, 
-body:not(.setting-style-traditional) .vertical-tab-nav-item:hover,
-body:not(.setting-style-traditional) .horizontal-tab-nav-item.is-active, 
-body:not(.setting-style-traditional) .vertical-tab-nav-item.is-active {
-  background-color: var(--bg-color-settings-2);
-}
-
-body:not(.setting-style-traditional) .horizontal-tab-content, 
-body:not(.setting-style-traditional) .vertical-tab-content {
-  background-color: var(--bg-color-settings-3);
-}
-
-body.translucent-setting-panel .vertical-tab-content {
-  background-color: var(--bg-color-settings-1);
-}
-
-body.transparent-setting-panel .modal,
-body.transparent-setting-panel .modal.mod-settings,
-body.transparent-setting-panel .vertical-tab-content {
-  background-color: transparent !important;
-}
-
-body.transparent-setting-panel .vertical-tab-header,
-body.transparent-setting-panel .horizontal-tab-nav-item, 
-body.transparent-setting-panel .vertical-tab-nav-item {
-  background-color: var(--background-secondary-translucent) !important;
-}
-
 .setting-item-description,
 .setting-item-info {
   word-wrap: break-word;
@@ -18207,6 +18237,34 @@ body.style-options-for-buttons-plugin button.g_lightgreen {
 body.style-options-for-buttons-plugin  button.g_yellow {
   color: #836f20;
   background: linear-gradient(135deg, #fcd539, #ffeb9b);
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_yellow {
+  color:  #e4cb58;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_green {
+  color:  #19bc8b;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_lightgreen {
+  color:  #8fc866;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_purple {
+  color:  #ffa260;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark  button.g_blue {
+  color:  #739df9;
+  background: none;
+  border: 1px solid;
+}
+body.style-options-for-buttons-plugin.theme-dark .grad_button:hover { 
+  color: var(--text-accent)
 }
 
 button.tiny {
@@ -19286,14 +19344,14 @@ body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-action svg.brok
   margin-right: 1px;
 }
 
-.menu {
+body:not(.setting-style-traditional) .menu {
   border: none;
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(10px);
   background-color: transparent;
 }
 
 .menu-item.selected:not(.is-disabled):not(.is-label) {
-  background-color: var(--bg-color-settings-2);
+  background-color: var(--bg-color-settings-5);
 }
 
 body.toggle-bg-file-page.theme-dark .nav-files-container::before {
@@ -23655,7 +23713,7 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
   width: max(180px, 30%);
   max-width: 235px;
 	min-height: 235px;
-	padding-top: 1.5em; 
+	padding-top: 2.5em; 
   font-family:  Arial;
   margin-top:20px;
   margin-right:  25px;
@@ -23711,6 +23769,34 @@ div.callout[data-callout="stickies3"] >.callout-content ul {
 .callout[data-callout="stickies3"] >.callout-content a::before {
 content: "";
 }
+
+
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content span { 
+  font-size: smaller;
+}
+
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content img { 
+ max-height: 205px;
+ margin-top:-2.5em;
+}
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content  { 
+  font-size: smaller;
+}
+.theme-dark .markdown-preview-view .callout[data-callout="stickies3"] >.callout-content blockquote { 
+  color: var(--interactive-normal);
+}
+.theme-dark .markdown-preview-view .callout[data-callout="stickies3"] >.callout-content em { 
+  color: var(--interactive-accent);
+  -webkit-text-fill-color:unset;
+}
+.theme-dark .markdown-preview-view .callout[data-callout="stickies3"] >.callout-content strong { 
+  color: var(--interactive-accent)!important;
+
+}
+.markdown-preview-view .callout[data-callout="stickies3"] >.callout-content .block-language-dataviewjs p { 
+  max-height: 195px;
+ }
+
 .callout:is([data-callout-metadata='yellow']) {
   background: #F7E999;
   -webkit-transform: rotate(2deg);
@@ -23754,4 +23840,8 @@ body.link-click .cm-s-obsidian span.cm-link {
 /*禁用实时预览点击标签跳转 需要跳转 点击#号即可*/
 body.tag-click .cm-line span.cm-hashtag:not(.cm-formatting) {
   pointer-events: none;
+}
+/*ob关闭按钮顺序调整*/
+body.reversal-titlebar .titlebar-button-container.mod-right {
+  direction: rtl;
 }

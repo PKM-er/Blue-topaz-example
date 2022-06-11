@@ -4,12 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "07eba8588d0f0d8f",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "mindmapView",
+          "type": "markdown",
           "state": {
-            "file": "Changlog.md"
+            "file": "88-Template/home.md",
+            "mode": "preview",
+            "backlinks": false,
+            "source": false
           }
         }
       }
@@ -91,8 +94,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 255,
-    "collapsed": true
+    "width": 255
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -117,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Changlog.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -148,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Changlog.md",
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -165,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Changlog.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -208,20 +210,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265,
-    "collapsed": true
+    "width": 265
   },
-  "active": "07eba8588d0f0d8f",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "Changlog.md",
     "88-Template/home.md",
-    "README.md",
-    "00-Tips/00-Tips.md",
-    "88-Template/随机笔记模板.md",
-    "77-Example/Echarts/Echarts.md",
+    "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
+    "77-Example/◾ Dataview相关实例/dataview实现任务查询（替代tasks插件）.md",
+    "77-Example/◾ Dataview相关实例/带进度条的任务列表.md",
+    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
     "77-Example/77-Example.md",
-    "77-Example/Echarts/echarts-笔记动态显示-分布.md",
-    "77-Example/Echarts/echarts-treemap.md",
-    "77-Example/Echarts/echarts-drawing.md"
+    "77-Example/进度条样式片段.md",
+    "00-Tips/▪示例库移植说明/如何全功能移植Blue Topaz 示例库到自己的库中.md",
+    "00-Tips/▪示例库移植说明/▪示例库移植说明.md",
+    "00-Tips/00-Tips.md"
   ]
 }

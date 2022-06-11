@@ -1,204 +1,200 @@
 {
   "recentFiles": [
     {
-      "basename": "Changlog",
-      "path": "Changlog.md"
-    },
-    {
       "basename": "home",
       "path": "88-Template/home.md"
     },
     {
-      "basename": "README",
-      "path": "README.md"
+      "basename": "项目追踪（完成的字数和任务）",
+      "path": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md"
     },
     {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
+      "basename": "dataview实现任务查询（替代tasks插件）",
+      "path": "77-Example/◾ Dataview相关实例/dataview实现任务查询（替代tasks插件）.md"
     },
     {
-      "basename": "随机笔记模板",
-      "path": "88-Template/随机笔记模板.md"
+      "basename": "带进度条的任务列表",
+      "path": "77-Example/◾ Dataview相关实例/带进度条的任务列表.md"
     },
     {
-      "basename": "Echarts",
-      "path": "77-Example/Echarts/Echarts.md"
+      "basename": "◾ Dataview相关实例",
+      "path": "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md"
     },
     {
       "basename": "77-Example",
       "path": "77-Example/77-Example.md"
     },
     {
-      "basename": "echarts-笔记动态显示-分布",
-      "path": "77-Example/Echarts/echarts-笔记动态显示-分布.md"
+      "basename": "进度条样式片段",
+      "path": "77-Example/进度条样式片段.md"
     },
     {
-      "basename": "echarts-treemap",
-      "path": "77-Example/Echarts/echarts-treemap.md"
+      "basename": "如何全功能移植Blue Topaz 示例库到自己的库中",
+      "path": "00-Tips/▪示例库移植说明/如何全功能移植Blue Topaz 示例库到自己的库中.md"
     },
     {
-      "basename": "echarts-drawing",
-      "path": "77-Example/Echarts/echarts-drawing.md"
+      "basename": "▪示例库移植说明",
+      "path": "00-Tips/▪示例库移植说明/▪示例库移植说明.md"
     },
     {
-      "basename": "echarts-扇形图",
-      "path": "77-Example/Echarts/echarts-扇形图.md"
-    },
-    {
-      "basename": "echarts-日历",
-      "path": "77-Example/Echarts/echarts-日历.md"
-    },
-    {
-      "basename": "echarts-词云",
-      "path": "77-Example/Echarts/echarts-词云.md"
-    },
-    {
-      "basename": "echarts 示例库",
-      "path": "77-Example/Echarts/echarts 示例库.md"
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
     },
     {
       "basename": "未命名",
       "path": "未命名.md"
     },
     {
-      "basename": "未命名 4",
-      "path": "未命名 4.md"
+      "basename": "Callout环绕布局、缩进效果示例",
+      "path": "77-Example/Callout环绕布局、缩进效果示例.md"
     },
     {
-      "basename": "echart-获取当前文章热词",
-      "path": "77-Example/Echarts/echart-获取当前文章热词.md"
-    },
-    {
-      "basename": "图形化展示笔记",
-      "path": "77-Example/图形化展示笔记.md"
-    },
-    {
-      "basename": "任务卡片-dataview 任务查询举例",
-      "path": "77-Example/任务卡片-dataview 任务查询举例.md"
-    },
-    {
-      "basename": "当前页面的隐藏dv字段",
-      "path": "77-Example/Dataview相关实例/当前页面的隐藏dv字段.md"
-    },
-    {
-      "basename": "echarts-柱形图",
-      "path": "77-Example/Echarts/echarts-柱形图.md"
-    },
-    {
-      "basename": "30-Reading",
-      "path": "30-Reading/30-Reading.md"
-    },
-    {
-      "basename": "88-Template",
-      "path": "88-Template/88-Template.md"
-    },
-    {
-      "basename": "Dataview相关实例",
-      "path": "77-Example/Dataview相关实例/Dataview相关实例.md"
-    },
-    {
-      "basename": "文件夹所有标签",
-      "path": "77-Example/Dataview相关实例/文件夹所有标签.md"
-    },
-    {
-      "basename": "电影观看清单（dv）",
-      "path": "77-Example/Dataview相关实例/电影观看清单（dv）.md"
-    },
-    {
-      "basename": "随机显示文档中的图片和文字",
-      "path": "77-Example/Dataview相关实例/随机显示文档中的图片和文字.md"
-    },
-    {
-      "basename": "项目追踪（完成的字数和任务）",
-      "path": "77-Example/Dataview相关实例/项目追踪（完成的字数和任务）.md"
-    },
-    {
-      "basename": "最近天气查询",
-      "path": "77-Example/最近天气查询.md"
-    },
-    {
-      "basename": "可以编辑的dv表格",
-      "path": "77-Example/Dataview相关实例/可以编辑的dv表格.md"
+      "basename": "如何把示例库移植到你现有的库中？",
+      "path": "00-Tips/▪示例库移植说明/如何把示例库移植到你现有的库中？.md"
     },
     {
       "basename": "通过下拉框检索文件示例",
-      "path": "77-Example/Dataview相关实例/通过下拉框检索文件示例.md"
+      "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
     },
     {
-      "basename": "花束般的恋爱 花束みたいな恋をした",
-      "path": "30-Reading/花束般的恋爱 花束みたいな恋をした.md"
+      "basename": "callout 便签效果",
+      "path": "77-Example/callout 便签效果.md"
     },
     {
-      "basename": "10-Help",
-      "path": "10-Help/10-Help.md"
-    },
-    {
-      "basename": "获取指定标签的文件内容并形成表格",
-      "path": "77-Example/Dataview相关实例/获取指定标签的文件内容并形成表格.md"
-    },
-    {
-      "basename": "FastStart-StartupScript",
-      "path": "88-Template/FastStart-StartupScript.md"
-    },
-    {
-      "basename": "dataview实现任务查询（替代tasks插件）",
-      "path": "77-Example/Dataview相关实例/dataview实现任务查询（替代tasks插件）.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "moc",
-      "path": "88-Template/ReactJS/moc.md"
+      "basename": "2022-06-08",
+      "path": "20-Diary/2022-06-08.md"
     },
     {
       "basename": "20-Diary",
       "path": "20-Diary/20-Diary.md"
     },
     {
-      "basename": "任务看板",
-      "path": "20-Diary/任务看板.md"
-    },
-    {
-      "basename": "《笔醒山河》",
-      "path": "30-Reading/《笔醒山河》.md"
-    },
-    {
-      "basename": "芬奇 Finch",
-      "path": "30-Reading/芬奇 Finch.md"
-    },
-    {
-      "basename": "心灵奇旅 Soul",
-      "path": "30-Reading/心灵奇旅 Soul.md"
-    },
-    {
-      "basename": "从这开始",
-      "path": "从这开始.md"
-    },
-    {
-      "basename": "进度条样式片段",
-      "path": "77-Example/进度条样式片段.md"
-    },
-    {
-      "basename": "获取最近打开的文件列表",
-      "path": "77-Example/Dataview相关实例/获取最近打开的文件列表.md"
-    },
-    {
-      "basename": "图书阅读清单-状态控制(dvjs)",
-      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
-    },
-    {
-      "basename": "《熊会滑雪吗？》",
-      "path": "30-Reading/《熊会滑雪吗？》.md"
+      "basename": "全宽显示-表格测试",
+      "path": "77-Example/◾ Cssclass声明样式举例/全宽显示-表格测试.md"
     },
     {
       "basename": "◾ Cssclass声明样式举例",
       "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
     },
     {
-      "basename": "react_weather",
-      "path": "88-Template/ReactJS/react_weather.md"
+      "basename": "从这开始",
+      "path": "从这开始.md"
+    },
+    {
+      "basename": "Changlog",
+      "path": "Changlog.md"
+    },
+    {
+      "basename": "如何移植主页的各个元素？",
+      "path": "00-Tips/▪示例库移植说明/如何移植主页的各个元素？.md"
+    },
+    {
+      "basename": "如何在dataview查询使用本地图片",
+      "path": "00-Tips/如何在dataview查询使用本地图片.md"
+    },
+    {
+      "basename": "Obsidian 库中库玩法",
+      "path": "00-Tips/Obsidian 库中库玩法.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+    },
+    {
+      "basename": "孤味",
+      "path": "30-Reading/孤味.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "常用工具",
+      "path": "88-Template/常用工具.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "如何导出dataview表格 或者普通表格成csv格式？",
+      "path": "00-Tips/如何导出dataview表格 或者普通表格成csv格式？.md"
+    },
+    {
+      "basename": "可以编辑的dv表格",
+      "path": "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md"
+    },
+    {
+      "basename": "电影观看清单-状态控制（dvjs）",
+      "path": "77-Example/◾ Dataview相关实例/电影观看清单-状态控制（dvjs）.md"
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+      "basename": "《镰刀与城市》",
+      "path": "30-Reading/《镰刀与城市》.md"
+    },
+    {
+      "basename": "当前页面的隐藏dv字段",
+      "path": "77-Example/◾ Dataview相关实例/当前页面的隐藏dv字段.md"
+    },
+    {
+      "basename": "电影观看清单（dv）",
+      "path": "77-Example/◾ Dataview相关实例/电影观看清单（dv）.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
+    },
+    {
+      "basename": "50-Inbox",
+      "path": "50-Inbox/50-Inbox.md"
+    },
+    {
+      "basename": "40-Booknote",
+      "path": "40-Booknote/40-Booknote.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
+    },
+    {
+      "basename": "涂黑和挖空效果（三种语法）",
+      "path": "77-Example/涂黑和挖空效果（三种语法）.md"
+    },
+    {
+      "basename": "10-Help",
+      "path": "10-Help/10-Help.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
+      "basename": "任务卡片-dataview 任务查询举例",
+      "path": "77-Example/任务卡片-dataview 任务查询举例.md"
+    },
+    {
+      "basename": "各级标题示例",
+      "path": "77-Example/各级标题示例.md"
+    },
+    {
+      "basename": "伪看板-yaml声明",
+      "path": "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md"
+    },
+    {
+      "basename": "全宽表格示例",
+      "path": "77-Example/全宽表格示例.md"
+    },
+    {
+      "basename": "tp_foldermoc-Include-subfolders",
+      "path": "88-Template/tp_foldermoc-Include-subfolders.md"
     }
   ],
   "omittedPaths": [],

@@ -146,3 +146,9 @@ display:none;
   display: none;
 }
  
+.markdown-preview-view.mytools .grad_button { 
+  min-width: 60px;
+  padding: 0  10px;
+  height: 32px;
+  font-size: 13px;
+  }

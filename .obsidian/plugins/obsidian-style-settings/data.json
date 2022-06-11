@@ -47,7 +47,7 @@
   "memo-heatmap@@heatmap-dark": "ice-dark",
   "memo-heatmap@@heatmap-light": "grass-light",
   "blue-topaz-theme@@adjustable-embed-content-height": true,
-  "blue-topaz-theme@@text-indentation-two-em": true,
+  "blue-topaz-theme@@text-indentation-two-em": false,
   "blue-topaz-theme@@default-icons": false,
   "blue-topaz-theme@@h1-toggle-underline": true,
   "blue-topaz-theme@@h1-text-align-settings": "h1-text-align-start",
@@ -78,7 +78,7 @@
   "mk-absolve@@mk-aside-styling": true,
   "mk-absolve@@mk-minimal-checkbox": false,
   "blue-topaz-theme@@font-family-change-to-default": false,
-  "blue-topaz-theme@@table-style-options": "table-style-default",
+  "blue-topaz-theme@@table-style-options": "table-style-four",
   "blue-topaz-theme@@show-border-table": false,
   "blue-topaz-theme@@whole-code-wrap": false,
   "blue-topaz-theme@@auto-serial-number-dvtable": true,
@@ -164,8 +164,10 @@
   "blue-topaz-theme@@rainbow-cursor": false,
   "blue-topaz-theme@@toggle-calendar-shadow": true,
   "blue-topaz-theme@@background-image-settings-command-palette-switch": false,
-  "blue-topaz-theme@@paragraph-spacing": 1.4,
   "blue-topaz-theme@@dvtable-style-options": "no-wrapped-dvtable",
   "blue-topaz-theme@@setting-etc-pane-style": "setting-default-frosted-glass",
-  "blue-topaz-theme@@bg-file-page-option": "file-page-bg-theme-dark-sea"
+  "blue-topaz-theme@@bg-file-page-option": "file-page-bg-theme-dark-sea",
+  "blue-topaz-theme@@titlebar-close-button": "reversal-titlebar",
+  "blue-topaz-theme@@toggle-paragraph-spacing": false,
+  "blue-topaz-theme@@paragraph-spacing": 1.4
 }
