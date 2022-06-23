@@ -28,8 +28,8 @@
   "omnisearch",
   "obsidian-linkcard-plugin",
   "markdown-table-editor",
-  "obsidian-table-to-csv-exporter",
   "obsidian-contextual-typography",
   "dataview",
-  "obsidian-echarts"
+  "obsidian-echarts",
+  "obsidian-table-to-csv-exporter"
 ]

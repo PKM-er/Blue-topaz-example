@@ -257,7 +257,7 @@
           "name": "Wait",
           "type": "Wait",
           "id": "60813cc2-37ac-41a0-822e-c88caace110e",
-          "time": 3500
+          "time": 4500
         },
         {
           "name": "Workspaces Plus: Load: Home",

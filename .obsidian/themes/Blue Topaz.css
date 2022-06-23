@@ -2667,7 +2667,7 @@ settings:
   -
     id: loading-diy-text
     title: Custom Text
-    title.zh: 自定义文字
+    title.zh: 自定义文字(加引号)
     type: variable-text
     default: "快乐摸鱼又一天，人生还剩多少天？"
   -

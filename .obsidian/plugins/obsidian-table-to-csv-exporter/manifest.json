@@ -1,1 +1,10 @@
-{"id":"obsidian-table-to-csv-exporter","name":"Table to CSV Exporter","version":"0.1.1","minAppVersion":"0.14.6","description":"This plugin allows for exporting tables from a pane in reading mode into CSV files.","author":"Stefan Wolfrum","authorUrl":"https://twitter.com/metawops","isDesktopOnly":false}
+{
+	"id": "obsidian-table-to-csv-exporter",
+	"name": "Table to CSV Exporter",
+	"version": "0.1.4",
+	"minAppVersion": "0.14.6",
+	"description": "This plugin allows for exporting tables from a pane in reading mode into CSV files.",
+	"author": "Stefan Wolfrum",
+	"authorUrl": "https://twitter.com/metawops",
+	"isDesktopOnly": false
+}

@@ -4,12 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "0a54a76e16b5fa3f",
+        "id": "c508a93b9c945bcf",
         "type": "leaf",
         "state": {
-          "type": "mindmapView",
+          "type": "markdown",
           "state": {
-            "file": "Changlog.md"
+            "file": "00-Tips/00-Tips.md",
+            "mode": "preview",
+            "backlinks": false,
+            "source": false
           }
         }
       }
@@ -39,7 +42,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "音乐",
+                "query": "表格",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -100,7 +103,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 61.79001721170396,
+        "dimension": 43,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -116,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Changlog.md"
+                "file": "00-Tips/00-Tips.md"
               }
             }
           },
@@ -139,7 +142,7 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 38.209982788296045,
+        "dimension": 56.99999999999999,
         "children": [
           {
             "id": "041c78328387b373",
@@ -147,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Changlog.md",
+                "file": "00-Tips/00-Tips.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -164,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Changlog.md",
+                "file": "00-Tips/00-Tips.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -193,6 +196,14 @@
                 "source": false
               }
             }
+          },
+          {
+            "id": "4f457051e10f1a14",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
           }
         ],
         "currentTab": 3
@@ -201,17 +212,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "0a54a76e16b5fa3f",
+  "active": "c508a93b9c945bcf",
   "lastOpenFiles": [
-    "Changlog.md",
     "00-Tips/00-Tips.md",
-    "77-Example/77-Example.md",
-    "88-Template/🎵Music.md",
-    "88-Template/home.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "88-Template/music_toolbar.md",
-    "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
+    "00-Tips/如何导出dataview表格，md表格为csv.md",
+    "未命名 1.md",
+    "77-Example/◾ Cssclass声明样式举例/全宽显示-表格测试.md",
+    "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md",
     "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
-    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md"
+    "未命名.md",
+    "88-Template/home.md",
+    "Changlog.md",
+    "77-Example/77-Example.md"
   ]
 }
