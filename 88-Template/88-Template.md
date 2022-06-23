@@ -5,6 +5,7 @@ obsidianUIMode: preview
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[88-Template]]**
+	- [[🎵Music]]
 	- [[88-Template]]
 	- [[便签]]
 	- [[彩色时钟]]
@@ -23,7 +24,6 @@ obsidianUIMode: preview
 	- [[FastStart-Plugins-simple]]
 	- [[FastStart-StartupScript]]
 	- [[home]]
-	- [[music_toolbar]]
 	- **[[ReactJS]]**
 	- **[[script]]**
 	- [[tp_foldermoc-Include-subfolders]]

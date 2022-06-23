@@ -83,6 +83,7 @@ String.prototype.strong = function () {
 let searchType = dv.current().searchType
 let searchTerm = dv.current().searchTerm
 let searchDate = dv.current().searchDate;
+let searchTerm_arr=searchTerm?.split(',')
 
 	function formatDate(date){
 		var d = new Date(date),
@@ -118,13 +119,24 @@ function formatDate(date){
 if(searchType === "tags"){
     if(searchTerm)
 	{
+		let searchTerm_arr_res=[]
+		if (searchTerm_arr.length>1)
+		{ 
+			searchTerm_arr.forEach((value) => {
+				if (value) if (!value.startsWith("#")) value = "#" + value;
+				searchTerm_arr_res.push(value)
+				})
+				valueOfSearchTerm=	searchTerm_arr_res.join(' and ')
+		}else
+		{
 	valueOfSearchTerm = "#"+searchTerm; // value of "searchTerm"
 	valueOfSearchTerm == "#undefined" ? valueOfSearchTerm = "" : valueOfSearchTerm = valueOfSearchTerm
+	}
 	}else
 	{
 	valueOfSearchTerm = ""
 	}
-
+	console.log(valueOfSearchTerm)
 	searchPagePaths = dv.pages(valueOfSearchTerm).file.path; // paths of all pages with searchTerm
 	
 } else if(searchType === "mdate") {

@@ -192,10 +192,20 @@ body.blockquote-style-quotation-mark.is-mobile .markdown-preview-view.myhome blo
   display: block;
   float: left;
   max-width: 120px;
-  height: 180px;
+  height: 120px;
 } 
+@media (max-width: 1024px) {
+  .myhome .svg-contain {
+    height: 180px;
+  }
+}
+
+.myhome a
+{
+color: var(--text-accent);
+}
 .myhome [data-callout-metadata*="banner"] {
-  margin-top: -4em;
+  margin-top: -5em;
 }
 
 /*catgif*/
@@ -638,9 +648,10 @@ div[data-callout="profile-card"].callout > .callout-content {
    margin: auto;
     }
   div[data-callout="profile-card-inf"].callout>.callout-content { 
-
+     max-height:330px;
     margin-top: 5px;
     padding: 0px 0px;
+    overflow: hidden;
     }
 
     div[data-callout="profile-card-inf"].callout>.callout-content>div>p { 
@@ -734,6 +745,10 @@ button.main-bar img {
   width: 16px;
 }
 
+.myhome button.blank
+{
+  font-size: 16px;
+}
 /****ad嵌入dataviewjs h3标题 和内容 错位显示***/
  .admonition-grid>.callout-content>.block-language-dataviewjs 
  {
@@ -786,30 +801,33 @@ body:not(.remove-custom-svg-icons) .workspace-leaf-content[data-type="markdown"]
   display: none;
 }
 
-dvjs ~ p
+:is(.markdown-preview-view,.markdown-rendered) dvjs ~ :is(p,select)
 {
 		display: table-cell;
     padding-right:5px;
     margin-right: 10px;
     white-space: nowrap;
     vertical-align: middle;
- 
+    margin-block-start:0em;
+    margin-block-end:0em;
+
 }
-dvjs ~ p>select
+:is(dvjs) ~ p>select
 {
-  display: inline-block;
-  width: 100%;
-  height: 25px;
+
+  height: 2.5em;
   border: none;
   position: relative;
-  vertical-align: text-bottom;
+  vertical-align: initial;
   overflow: hidden;
   text-shadow: none;
   border-radius: 4px;	
   transition: box-shadow 0.25s ease;
-  padding-left: 8px;
+  padding-left: 10px;
   z-index: 2;
 }
+
+
 
 @media screen and (max-width: 768px) {
   dvjs ~ p :is(h2,h3,h4,h5,h6)
@@ -824,7 +842,18 @@ min-width: 2em;
 margin-right: 0.2em;
 margin-left: 0.5em;
 }
-
+.markdown-preview-view.myhome  a.external-link::before { 
+ display: none;
+}
+.markdown-preview-view.myhome a.external-link { 
+  background-image:none;
+ }
+ .markdown-preview-view.myhome .callout[data-callout="stickies3"] >.callout-content img { 
+ padding-top: 0;
+ }
+ .markdown-preview-view.myhome .callout[data-callout="stickies3"] >.callout-content  { 
+ max-height: 235px;
+ }
 #task
 {
     background-color: #42b983a5;
@@ -849,4 +878,36 @@ margin-left: 0.5em;
   
 }
 
+ 
+ 
 
+.popover .popover-titlebar  .popover-title[data-path$='Music.md']::before
+{
+  float: left;
+  content: '';
+  height: 6px;
+  animation: mywave 0.9s linear 0s infinite alternate;
+  display: inline-block;
+  border-left: 2px solid #10ea14;
+  position: relative;
+}
+.popover .popover-titlebar  .popover-title[data-path$='Music.md']::after
+{
+  content: '';
+  height: 6px;
+  float: left;
+  animation: mywave 0.6s linear 0s infinite alternate;
+  display: inline-block;
+  border-left: 2px solid #10ea14;
+  margin: 0 1px;
+  position: relative;
+}
+@keyframes mywave{
+  0%{height:4px}
+  50%{height: 16px}
+  100%{height: 8px}
+}
+
+.none {
+  display: none;
+}

@@ -11,7 +11,7 @@
       "createFileIfItDoesntExist": {
         "enabled": true,
         "createWithTemplate": true,
-        "template": "88-Template/tp-日记模板.md"
+        "template": "88-Template/tp-日记模板-心情.md"
       },
       "format": {
         "enabled": true,
@@ -139,13 +139,6 @@
       "macroId": "d0d4ced8-94d2-4f26-9e8b-defd8d087193"
     },
     {
-      "id": "cb1a4a92-df5b-490c-bd78-7eee7893bfe1",
-      "name": "temp",
-      "type": "Macro",
-      "command": true,
-      "macroId": "45f1eba0-3659-4669-9714-452964a2c8e7"
-    },
-    {
       "id": "ec8144ef-93b6-4b8e-8bf7-49fe8abe140d",
       "name": "悬浮大纲",
       "type": "Macro",
@@ -179,6 +172,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "a28a3873-f6a7-45eb-8abe-0dc9d4b07215"
+    },
+    {
+      "id": "cd0405e7-6489-4e6a-beb1-07dac8f9a188",
+      "name": "play music",
+      "type": "Macro",
+      "command": true,
+      "macroId": "0e4a5a36-3d1c-4430-82c7-e7ff6682b088"
     }
   ],
   "macros": [
@@ -636,6 +636,49 @@
           "type": "Obsidian",
           "id": "3fd5ed39-ef42-4d18-9a9b-06d18d87f35b",
           "commandId": "workspace:undo-close-pane"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "open music",
+      "id": "0e4a5a36-3d1c-4430-82c7-e7ff6682b088",
+      "commands": [
+        {
+          "name": "Hover Editor: Open new Hover Editor",
+          "type": "Obsidian",
+          "id": "f2e0506d-d0fd-4d88-ae6e-5afbc01dbe8d",
+          "commandId": "obsidian-hover-editor:open-new-popover"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "4fdf6f59-a3ea-4dfc-8317-86f9f95e6963",
+          "time": 500
+        },
+        {
+          "name": "Hotkeys for specific files: Open 88-Template/🎵Music",
+          "type": "Obsidian",
+          "id": "19f9de5f-5375-4e0a-b239-7ccdfd871d19",
+          "commandId": "obsidian-hotkeys-for-specific-files:88-Template/🎵Music.md"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "479d7585-5e62-46c9-a4ec-a9cf8feb84b7",
+          "time": 100
+        },
+        {
+          "name": "将焦点切换到左侧面板",
+          "type": "Obsidian",
+          "id": "90b07c73-f1e5-4651-b035-979c4a8d2da3",
+          "commandId": "editor:focus-left"
+        },
+        {
+          "name": "Hover Editor: Restore active Hover Editor",
+          "type": "Obsidian",
+          "id": "54417752-a221-47c6-927a-b53b83bcf820",
+          "commandId": "obsidian-hover-editor:restore-active-popover"
         }
       ],
       "runOnStartup": false

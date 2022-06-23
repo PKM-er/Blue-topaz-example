@@ -95,18 +95,28 @@ dv.paragraph(desc);
 >>> 事项`)
 >>```
 
-> [!profile-card] ![[obsidian_image.png]]
-> 
->>[!profile-card-inf|noborder]
->>```dataviewjs
->>let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and !#moc'
->>let fold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and !#moc'
->>let files = dv.pages(nofold).file
->>const random = Math.floor(Math.random() * (files.length - 1))
->>const randomNote = files[random]
->>dv.paragraph(dv.page(randomNote.path).file.link)
->>dv.paragraph(dv.fileLink(randomNote.name,true))
->>```
+>[!profile-card-inf|noborder]
+> ```dataviewjs
+>let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and #book or #Movie'
+>let reg =/!\[[^\]]*\]\((?<=\!\[.*\]\()(.*(jpg|jpeg|bmp|gif|png|JPG|JPEG|BMP|GIF|PNG|WebP).*)(?=\))\)/ //匹配网络链接图片
+>let files = dv.pages(nofold).file
+>const arr = files.map(async (file) => {
+>const sampleTFile = this.app.vault.getAbstractFileByPath(file.path);
+>const content = await this.app.vault.cachedRead(sampleTFile); 
+>const links = content.match(reg);
+>if (links) 
+>{let res ={'file':file.path,'link':links[1]}
+>return res}
+>})
+>Promise.all(arr).then(
+>values => 
+>{
+>let flatvalues =values.filter(Boolean).flat()
+>const random = Math.floor(Math.random() * (flatvalues.length - 1))
+>dv.paragraph(`[![image|220](${flatvalues[random].link})](obsidian://open?file=${encodeURIComponent(flatvalues[random].file)})`)
+>}
+>)
+>```
 %%调用词霸的每日海报%%
 %%数据位于.obsidian/.diary-stats%%
 ```dataviewjs
@@ -127,7 +137,7 @@ dv.paragraph(posters);
 ````ad-flex
 %%notice1%%
 > [!stickies3]
-> ## 倒计时
+> #### 倒计时
 >> 今年已过去 <%+* tR+= moment().diff(tp.date.now("YYYY-1-1"), "days") %> 天
 >> 
 >> 距春节还有<%+* let edate = moment("2022-02-01", "yyyy-MM-DD"); let from = moment().startOf('day'); edate.diff(from, "days") >= 0 ? tR += edate.diff(from, "days") : tR += edate.add(1, "year").diff(from, "days") %> 天
@@ -145,49 +155,13 @@ const sampleTFile = this.app.vault.getAbstractFileByPath(randomNote.path);
 const contents = await this.app.vault.cachedRead(sampleTFile); 
 let lines = contents.split("---\n").filter(line => line.match(reg))
 const randomline = Math.floor(Math.random() * (lines.length - 1))
-lines = lines[randomline].replace(/(\r|\n|#|-|\*|\t|\>)/gi,"").substr(0,80) + '...';
+lines = lines[randomline]?.replace(/(\r|\n|#|-|\*|\t|\>)/gi,"").substr(0,80) + '...';
 dv.span(lines)
 >```
 
 %%notice3%%
 > [!stickies3|pink]
-> ```dataviewjs
-let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and #book or #Movie'
-let reg =/!\[[^\]]*\]\((?<=\!\[.*\]\()(.*(jpg|jpeg|bmp|gif|png|JPG|JPEG|BMP|GIF|PNG|WebP).*)(?=\))\)/ //匹配网络链接图片
-let files = dv.pages(nofold).file
-const arr = files.map(async (file) => {
-const sampleTFile = this.app.vault.getAbstractFileByPath(file.path);
-const content = await this.app.vault.cachedRead(sampleTFile); 
-const links = content.match(reg);
-if (links) 
-{let res ={'file':file.path,'link':links[1]}
-return res}
-})
-Promise.all(arr).then(
-values => 
-{
-let flatvalues =values.filter(Boolean).flat()
-const random = Math.floor(Math.random() * (flatvalues.length - 1))
-dv.paragraph(`[![image|220](${flatvalues[random].link})](obsidian://open?file=${encodeURIComponent(flatvalues[random].file)})`)
-}
-)
->```
-
-%%notice4%%
-> [!stickies3|green]
-> ### 💌
-> 开启美好的一天
-
-````
-
----
-
-
-`````ad-flex
-%%调用每日一句%%
-%%数据位于.obsidian/.diary-stats%%
-
-> [!tip] 每日一句
+> #### 每日一句
 > ```dataviewjs
  let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
  let today = moment().format("YYYY-MM-DD");
@@ -198,23 +172,15 @@ dv.paragraph(`[![image|220](${flatvalues[random].link})](obsidian://open?file=${
  }
 > ```
 
-
-%%调用网易热门歌曲榜%%
-%%数据位于.obsidian/.diary-stats%%
-````ad-note
-title: 🎵 每日音乐
-```dataviewjs
-let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
-let today = moment().format("YYYY-MM-DD");
-if (history.hasOwnProperty(today))
-{
-let music=history[today].music;
-dv.el("blockquote", music);
-}
-```
+%%notice4%%
+> [!stickies3|green]
+> ### 💌
+> 开启美好的一天
 ````
 
-`````
+---
+
+
 
 
 ![[从这开始#MOC]]

@@ -86,12 +86,17 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
       this.addCommand({
         id: "toggle-dark-light-mode",
         name: "Toggle between Dark and Light Mode",
-        callback: () => this.toggleTheme()
+        callback: () => this.toggleDarkMode()
       });
       this.addCommand({
         id: "cycle-views",
         name: "Cycle between Source Mode, Live Preview, and Reading Mode",
         callback: () => this.cycleViews()
+      });
+      this.addCommand({
+        id: "cycle-themes",
+        name: "Cycle between the installed themes",
+        callback: () => this.cycleThemes()
       });
       this.addCommand({
         id: "version-info",
@@ -112,7 +117,21 @@ Electron Version: ${electronVersion}`, versionInfoNoticeDuration * 1e3);
       console.log("Theme Design Utilities Plugin unloaded.");
     });
   }
-  toggleTheme() {
+  cycleThemes() {
+    const currentTheme = this.app.customCss.theme;
+    const installedThemes = [...this.app.customCss.themes];
+    installedThemes.push("");
+    if (installedThemes.length === 1) {
+      new import_obsidian.Notice("Cannot cycle themes since no theme is installed in this vault.");
+      return;
+    }
+    let indexOfNextTheme = installedThemes.indexOf(currentTheme) + 1;
+    if (indexOfNextTheme === installedThemes.length)
+      indexOfNextTheme = 0;
+    const nextTheme = installedThemes[indexOfNextTheme];
+    this.app.customCss.setTheme(nextTheme);
+  }
+  toggleDarkMode() {
     const isDarkMode = this.app.vault.getConfig("theme") === "obsidian";
     if (isDarkMode) {
       this.app.setTheme("moonstone");

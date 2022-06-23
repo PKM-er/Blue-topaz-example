@@ -1,1 +1,10 @@
-{"id":"obsidian-echarts","name":"obsidian echarts","version":"0.0.2","minAppVersion":"0.9.12","description":"obsidian echarts","author":"windily-cloud && Cuman","authorUrl":"","isDesktopOnly":false}
+{
+  "id": "obsidian-echarts",
+  "name": "obsidian echarts",
+  "version": "0.0.3",
+  "minAppVersion": "0.9.12",
+  "description": "obsidian echarts",
+  "author": "windily-cloud && Cuman",
+  "authorUrl": "https://github.com/cumany",
+  "isDesktopOnly": false
+}

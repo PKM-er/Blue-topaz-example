@@ -49,6 +49,11 @@
       "id": "omnisearch:show-modal",
       "icon": "search",
       "name": "Omnisearch: Vault search"
+    },
+    {
+      "id": "quickadd:choice:cd0405e7-6489-4e6a-beb1-07dac8f9a188",
+      "icon": "lucide-music",
+      "name": "QuickAdd: play music"
     }
   ],
   "titleRight": [],

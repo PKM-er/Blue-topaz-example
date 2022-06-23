@@ -31,11 +31,11 @@ const mostRecentIcon = source.mostRecentIcon;
 let sourceTag = source.sourceTag;
 let excludeTag = source.excludeTag;
 let container = input.container;
+
 const {createButton} = app.plugins.plugins["buttons"]
 const {update,autoprop} = this.app.plugins.plugins["metaedit"].api;
 
 // prepend hashtags for tags
-if (sourceTag) if (!sourceTag.startsWith("#")) sourceTag = "#" + sourceTag;
 if (excludeTag) if (!excludeTag.startsWith("#")) excludeTag = "#" + excludeTag;
 
 let numExcludedNotes = 0;
@@ -120,6 +120,34 @@ const dropdown = async(file, key) => {
 //----------------------------------------------------
 // Table Construction
 //----------------------------------------------------
+
+ function getilterfolder (sourceFolder_arr,exFolder_arr,sourceTag_arr) {
+    let filterfolder_arr_res=[]
+    if (sourceFolder_arr.length>0)
+    { 
+        sourceFolder_arr.forEach((value) => {
+        if (value)  value = '"'+value+'"';
+        filterfolder_arr_res.push(value)
+        })
+    }
+    if (exFolder_arr.length>0)
+    { 
+        exFolder_arr.forEach((value) => {
+         if (value)  value = '!'+'"'+value+'"';
+         filterfolder_arr_res.push(value)
+        })
+    }
+    if (sourceTag_arr.length>0)
+    { 
+        sourceTag_arr.forEach((value) => {
+         if (value) if (!value.startsWith("#")) value = "#" + value;
+         filterfolder_arr_res.push(value)
+        })
+    }
+        return filterfolder_arr_res.join(' and ')
+       
+    }
+
 async function getTableContents () {
 const output = [];
 let completeText = "";
@@ -132,32 +160,30 @@ let totalTasks = 0;
 let filterfolder ;
 let sections;
 //'!"88-Template" and !"99-Attachment" and !"50-Inbox"'
-if (exFolder) 
-{
-    filterfolder ='!'+'"'+exFolder+'"';
-    if (sourceFolder)  filterfolder = '"'+sourceFolder+'" and ' + filterfolder;
-    if (sourceTag)  filterfolder = filterfolder+ ' and ' +sourceTag  ;
-    sections = dv.pages(filterfolder);
-}else
-{
-    if (sourceFolder) 
-    {   
-        filterfolder ='"'+sourceFolder+'"';
-         if (sourceTag)  filterfolder = filterfolder+ ' and ' +sourceTag  ;
-         sections = dv.pages(filterfolder);
-    }
-    else sections = dv.pages(sourceTag);
-}
+let sourceFolder_arr=sourceFolder?.split(',')??''
+let exFolder_arr=exFolder?.split(',')??''
+let sourceTag_arr=sourceTag?.split(',')??''
+let excludeTag_arr=excludeTag?.split(',')??''
+filterfolder=getilterfolder(sourceFolder_arr,exFolder_arr,sourceTag_arr)
+console.log("filter",filterfolder)
+sections = dv.pages(filterfolder);
 // exclude certain notes
 numExcludeStatus = sections.filter(t => t.status === "exclude").length;
 sections = sections.filter(t => t.status !== "exclude");
-if (excludeTag !== "") {
+if (excludeTag_arr.length>0) {
 numExcludedNotes = sections.filter(t => t.file.tags.includes(excludeTag)).length;
-sections = sections.filter(t => !t.file.tags.includes(excludeTag));
+//sections = sections.filter(t => !t.file.tags.includes(excludeTag_arr));
+let excludeTag_arr_res=[]
+excludeTag_arr.forEach((value) => {
+    if (value) if (!value.startsWith("#")) value = "#" + value;
+    excludeTag_arr_res.push(value)
+   })
+console.log("excludeTag",excludeTag_arr_res)
+sections = sections.filter(t => !t.file.tags.every(val => excludeTag_arr_res.includes(val)));
 }
 // most recent note
 sections = sections.sort (s => s.file.mtime, "desc");
-const mostRecentNote = sections[0].file.name;
+const mostRecentNote = sections[0]?.file.name;
 // SORT sections
 if (pathToIndexFile) {
 const draftName = sourceFolder.split("/").pop();
@@ -208,7 +234,6 @@ if (toCount === "words") wcCount = getWordCount(content);
 if (toCount === "chars") wcCount = getCharacterCount(content);
 if (section.target == "tasks"||taskNum>0) share = (finishedTasksNum / (taskNum + finishedTasksNum));
 else share = (wcCount / (section.target??target));
-console.log("share:"+share+'-'+wcCount)
 // shareType
 let shareType = ""
 if (section.target == "tasks"||taskNum>0) 

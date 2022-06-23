@@ -4,15 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "fc371ae36bc5eac7",
+        "id": "0a54a76e16b5fa3f",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "mindmapView",
           "state": {
-            "file": "88-Template/home.md",
-            "mode": "preview",
-            "backlinks": false,
-            "source": false
+            "file": "Changlog.md"
           }
         }
       }
@@ -42,7 +39,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "音乐",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,7 +100,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 43,
+        "dimension": 61.79001721170396,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -119,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "Changlog.md"
               }
             }
           },
@@ -142,7 +139,7 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 56.99999999999999,
+        "dimension": 38.209982788296045,
         "children": [
           {
             "id": "041c78328387b373",
@@ -150,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "Changlog.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "Changlog.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -196,14 +193,6 @@
                 "source": false
               }
             }
-          },
-          {
-            "id": "4f457051e10f1a14",
-            "type": "leaf",
-            "state": {
-              "type": "quiet-outline",
-              "state": {}
-            }
           }
         ],
         "currentTab": 3
@@ -212,17 +201,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "fc371ae36bc5eac7",
+  "active": "0a54a76e16b5fa3f",
   "lastOpenFiles": [
-    "88-Template/home.md",
-    "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
-    "77-Example/◾ Dataview相关实例/dataview实现任务查询（替代tasks插件）.md",
-    "77-Example/◾ Dataview相关实例/带进度条的任务列表.md",
-    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
+    "Changlog.md",
+    "00-Tips/00-Tips.md",
     "77-Example/77-Example.md",
-    "77-Example/进度条样式片段.md",
-    "00-Tips/▪示例库移植说明/如何全功能移植Blue Topaz 示例库到自己的库中.md",
-    "00-Tips/▪示例库移植说明/▪示例库移植说明.md",
-    "00-Tips/00-Tips.md"
+    "88-Template/🎵Music.md",
+    "88-Template/home.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "88-Template/music_toolbar.md",
+    "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
+    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md"
   ]
 }
