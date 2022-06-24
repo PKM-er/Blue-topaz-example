@@ -84,6 +84,7 @@ let searchType = dv.current().searchType
 let searchTerm = dv.current().searchTerm
 let searchText = dv.current().searchText
 let searchDate = dv.current().searchDate;
+let limit = dv.current().limit;
 let searchTerm_arr=searchTerm?.split(',')
 
 	function formatDate(date){
@@ -137,22 +138,32 @@ if(searchType === "tags"){
 	{
 	valueOfSearchTerm = ""
 	}
-
-	let sections = dv.pages(valueOfSearchTerm);
+	let sections;
+  if(limit>0)
+	 sections = dv.pages(valueOfSearchTerm).slice(0,limit);
+	else
+	 sections = dv.pages(valueOfSearchTerm);
 	if(searchText)
 	sections = sections.filter(t => t.file.name.toLowerCase().includes(searchText.toLowerCase()));
-
+	
 	searchPagePaths =sections.file.path; // paths of all pages with searchTerm
 	
 } else if(searchType === "mdate") {
 	valueOfSearchTerm = searchDate; // value of "searchTerm"
 	
 	let dateRegex = new RegExp("[0-9]{4}-[0-9]{2}-[0-9]{2}")
-	
-	let mtimes = dv.pages().where(p => formatDate(p.file.mtime) == searchDate)
+	let mtimes
+	if(limit>0)
+	mtimes = dv.pages().where(p => formatDate(p.file.mtime) == searchDate).slice(0,limit);
+	  else
+	  mtimes = dv.pages().where(p => formatDate(p.file.mtime) == searchDate)
 
 	if(searchText)
 	mtimes = mtimes.filter(t => t.file.name.toLowerCase().includes(searchText.toLowerCase()));
+	if(limit>0)
+	{
+		mtimes.length=limit;
+	}
 	searchPagePaths = mtimes.file.path;
 	
 }

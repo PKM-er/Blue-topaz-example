@@ -802,16 +802,21 @@ body:not(.remove-custom-svg-icons) .workspace-leaf-content[data-type="markdown"]
 }
 
 /***dataview查询面板样式***/
-input#filename_text
+input#searchText {
+  background-image: url("data:image/svg+xml,%3Csvg  viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M954.4 813.95l-137.66-180.29c48.83-46.66 79.46-112.22 79.46-184.93 0-141.15-114.85-256-256-256s-256 114.85-256 256 114.85 256 256 256c45.47 0 88.10-12.03 125.15-32.90l138.14 180.93c6.30 8.26 15.81 12.61 25.47 12.61 6.75 0 13.6-2.11 19.36-6.56C962.43 848.06 965.12 827.97 954.4 813.95zM448.22 448.70c0-105.89 86.11-192 192-192s192 86.11 192 192-86.11 192-192 192S448.22 554.59 448.22 448.70z' fill='%238a8a8a'/%3E%3Cpath d='M320 320 128 320c-17.66 0-32-14.34-32-32s14.34-32 32-32l192 0c17.66 0 32 14.34 32 32S337.66 320 320 320z' fill='%238a8a8a'/%3E%3Cpath d='M256 576 128 576c-17.66 0-32-14.30-32-32 0-17.66 14.34-32 32-32l128 0c17.66 0 32 14.34 32 32C288 561.70 273.66 576 256 576z' fill='%238a8a8a'/%3E%3Cpath d='M480 800 128 800c-17.66 0-32-14.30-32-32s14.34-32 32-32l352 0c17.66 0 32 14.30 32 32S497.66 800 480 800z' fill='%238a8a8a'/%3E%3C/svg%3E");
+}
+input#limit {
+  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M856 128H168a40 40 0 0 0-40 40v688a40 40 0 0 0 40 40h688a40 40 0 0 0 40-40V168a40 40 0 0 0-40-40zM639 552.5h-80.4a4 4 0 0 0-4 4v193.1a4 4 0 0 1-4 4h-77.2a4 4 0 0 1-4-4V556.5a4 4 0 0 0-4-4H385a4 4 0 0 1-3.1-6.5l127-154.1a4.1 4.1 0 0 1 6.2 0l127 154.1a4 4 0 0 1-3.1 6.5z m65-222.1a3.9 3.9 0 0 1-4 4H324a3.9 3.9 0 0 1-4-4v-56a4 4 0 0 1 4-4h376a4 4 0 0 1 4 4z' fill='%23bfbfbf'/%3E%3C/svg%3E");
+}
+:is(dvjs) ~ p>input
 {
   max-width:200px;
   height: 2em;
   border-color: var(--background-modifier-border);
   position: relative;
   vertical-align: middle;
-  background-image: url("data:image/svg+xml,%3Csvg  viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M954.4 813.95l-137.66-180.29c48.83-46.66 79.46-112.22 79.46-184.93 0-141.15-114.85-256-256-256s-256 114.85-256 256 114.85 256 256 256c45.47 0 88.10-12.03 125.15-32.90l138.14 180.93c6.30 8.26 15.81 12.61 25.47 12.61 6.75 0 13.6-2.11 19.36-6.56C962.43 848.06 965.12 827.97 954.4 813.95zM448.22 448.70c0-105.89 86.11-192 192-192s192 86.11 192 192-86.11 192-192 192S448.22 554.59 448.22 448.70z' fill='%238a8a8a'/%3E%3Cpath d='M320 320 128 320c-17.66 0-32-14.34-32-32s14.34-32 32-32l192 0c17.66 0 32 14.34 32 32S337.66 320 320 320z' fill='%238a8a8a'/%3E%3Cpath d='M256 576 128 576c-17.66 0-32-14.30-32-32 0-17.66 14.34-32 32-32l128 0c17.66 0 32 14.34 32 32C288 561.70 273.66 576 256 576z' fill='%238a8a8a'/%3E%3Cpath d='M480 800 128 800c-17.66 0-32-14.30-32-32s14.34-32 32-32l352 0c17.66 0 32 14.30 32 32S497.66 800 480 800z' fill='%238a8a8a'/%3E%3C/svg%3E");
   background-repeat: no-repeat;
-  background-size: 20px;
+  background-size: 22px;
   background-position:10px center;
   padding:0 0 3px 40px;
   border-radius: 4px;	
@@ -821,11 +826,16 @@ input#filename_text
   color: var(--text-normal);
   border: 1px solid rgba(204, 204, 204, 0.76);
 }
-input#filename_text::-webkit-input-placeholder {
+:is(dvjs) ~ p>input::-webkit-input-placeholder {
   font-size: 13px;
   vertical-align: top;
 }
-
+input[type="date"] {
+  font-size: 13px;
+}
+input#limit{
+  width: 100px;
+}
 :is(.markdown-preview-view,.markdown-rendered) dvjs ~ :is(p,select,input)
 {
 
@@ -838,8 +848,9 @@ input#filename_text::-webkit-input-placeholder {
     margin-block-end:0em;
 
 }
-:is(dvjs) ~ p>:is(select,input)
+:is(dvjs) ~ p>:is(select)
 {
+
   background-color: transparent;
   color: var(--text-normal);
   border: 1px solid rgba(204, 204, 204, 0.76);

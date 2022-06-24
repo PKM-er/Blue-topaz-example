@@ -1,10 +1,6 @@
 {
   "recentFiles": [
     {
-      "basename": "Changlog",
-      "path": "Changlog.md"
-    },
-    {
       "basename": "项目追踪（完成的字数和任务）",
       "path": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md"
     },
@@ -15,6 +11,26 @@
     {
       "basename": "home",
       "path": "88-Template/home.md"
+    },
+    {
+      "basename": "从这开始",
+      "path": "从这开始.md"
+    },
+    {
+      "basename": "▪示例库移植说明",
+      "path": "00-Tips/▪示例库移植说明/▪示例库移植说明.md"
+    },
+    {
+      "basename": "如何在Obsidian中添加图书卡片",
+      "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
+    },
+    {
+      "basename": "ob提示框(callout)样式展示",
+      "path": "77-Example/ob提示框(callout)样式展示.md"
+    },
+    {
+      "basename": "Changlog",
+      "path": "Changlog.md"
     },
     {
       "basename": "各类列表和彩虹大纲线",
@@ -67,10 +83,6 @@
     {
       "basename": "如何在dataview查询使用本地图片",
       "path": "00-Tips/如何在dataview查询使用本地图片.md"
-    },
-    {
-      "basename": "如何在Obsidian中添加图书卡片",
-      "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
     },
     {
       "basename": "彩色时钟",
@@ -187,14 +199,6 @@
     {
       "basename": "wallhaven-0po71e",
       "path": "99-Attachment/banner/wallhaven-0po71e.jpg"
-    },
-    {
-      "basename": "wallhaven-kw96x7",
-      "path": "99-Attachment/banner/wallhaven-kw96x7.jpg"
-    },
-    {
-      "basename": "wallhaven-zx89ew",
-      "path": "99-Attachment/banner/wallhaven-zx89ew.jpg"
     }
   ],
   "omittedPaths": [],
