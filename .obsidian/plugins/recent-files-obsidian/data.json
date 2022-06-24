@@ -1,8 +1,40 @@
 {
   "recentFiles": [
     {
+      "basename": "Changlog",
+      "path": "Changlog.md"
+    },
+    {
+      "basename": "项目追踪（完成的字数和任务）",
+      "path": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md"
+    },
+    {
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
+    },
+    {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
       "basename": "00-Tips",
       "path": "00-Tips/00-Tips.md"
+    },
+    {
+      "basename": "77-Example",
+      "path": "77-Example/77-Example.md"
+    },
+    {
+      "basename": "微信读书清单",
+      "path": "77-Example/◾ Dataview相关实例/微信读书清单.md"
+    },
+    {
+      "basename": "🎵Music",
+      "path": "88-Template/🎵Music.md"
     },
     {
       "basename": "如何导出dataview表格，md表格为csv",
@@ -17,32 +49,8 @@
       "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
     },
     {
-      "basename": "通过下拉框检索文件示例",
-      "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
-    },
-    {
-      "basename": "home",
-      "path": "88-Template/home.md"
-    },
-    {
-      "basename": "Changlog",
-      "path": "Changlog.md"
-    },
-    {
-      "basename": "77-Example",
-      "path": "77-Example/77-Example.md"
-    },
-    {
-      "basename": "🎵Music",
-      "path": "88-Template/🎵Music.md"
-    },
-    {
       "basename": "🥑Blue Topaz Themes Tips",
       "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "项目追踪（完成的字数和任务）",
-      "path": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md"
     },
     {
       "basename": "◾ Dataview相关实例",
@@ -63,10 +71,6 @@
     {
       "basename": "如何在Obsidian中添加图书卡片",
       "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
-    },
-    {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "77-Example/各类列表和彩虹大纲线.md"
     },
     {
       "basename": "彩色时钟",

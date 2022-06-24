@@ -82,6 +82,7 @@ String.prototype.strong = function () {
 
 let searchType = dv.current().searchType
 let searchTerm = dv.current().searchTerm
+let searchText = dv.current().searchText
 let searchDate = dv.current().searchDate;
 let searchTerm_arr=searchTerm?.split(',')
 
@@ -136,8 +137,12 @@ if(searchType === "tags"){
 	{
 	valueOfSearchTerm = ""
 	}
-	console.log(valueOfSearchTerm)
-	searchPagePaths = dv.pages(valueOfSearchTerm).file.path; // paths of all pages with searchTerm
+
+	let sections = dv.pages(valueOfSearchTerm);
+	if(searchText)
+	sections = sections.filter(t => t.file.name.toLowerCase().includes(searchText.toLowerCase()));
+
+	searchPagePaths =sections.file.path; // paths of all pages with searchTerm
 	
 } else if(searchType === "mdate") {
 	valueOfSearchTerm = searchDate; // value of "searchTerm"
@@ -145,7 +150,9 @@ if(searchType === "tags"){
 	let dateRegex = new RegExp("[0-9]{4}-[0-9]{2}-[0-9]{2}")
 	
 	let mtimes = dv.pages().where(p => formatDate(p.file.mtime) == searchDate)
-	
+
+	if(searchText)
+	mtimes = mtimes.filter(t => t.file.name.toLowerCase().includes(searchText.toLowerCase()));
 	searchPagePaths = mtimes.file.path;
 	
 }

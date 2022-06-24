@@ -2269,10 +2269,17 @@ settings:
         value: table-style-three
   -
     id: codeblock-folder
-    title: 2.3.9 Codeblock
-    title.zh: 2.3.9 代码框
+    title: 2.3.9 Codebox and Inline Code
+    title.zh: 2.3.9 代码框和行内代码
     type: heading
     level: 3
+    collapsed: true
+  -
+    id: code-box-option-folder
+    title: 2.3.9.1 Codebox
+    title.zh: 2.3.9.1 代码框
+    type: heading
+    level: 4
     collapsed: true
   -
     id: whole-code-wrap
@@ -2280,6 +2287,75 @@ settings:
     title.zh: 代码换行
     type: class-toggle
     default: false
+  -
+    id: letter-space-code
+    title: Letter Spacing for Code
+    title.zh: 代码字间距
+    type: variable-number-slider
+    default: 0
+    min: 0
+    max: 2
+    step: 0.1
+  -
+    id: background-code
+    title: Codebox Background Color
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  -
+    id: code-box-style-option
+    title: Codebox Style
+    type: class-select
+    allowEmpty: false
+    default: codebox-default-style
+    options:
+      - 
+        label: Default
+        value: codebox-default-style
+      - 
+        label: Frosted Glass
+        value: codebox-frosted-glass
+  - 
+    id: blur-codebox-frosted-glass
+    title: Blur Radius (For Frosted Glass Style)
+    title.zh: 模糊程度 (毛玻璃效果)
+    type: variable-number-slider
+    default: 2
+    min: 0
+    max: 8
+    step: 1
+  -
+    id: style-options-for-other-plugins
+    title: 2.3.9.2 Inline Code
+    title.zh: 2.3.9.2 行内代码
+    type: heading
+    level: 4
+    collapsed: true
+  -
+    id: background-code-2
+    title: Inline Code Background Color
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#'
+    default-dark: '#'
+  - 
+    id: text-color-code
+    title: Inline Code Color
+    title.zh: 行内代码颜色
+    type: variable-themed-color
+    opacity: true
+    format: hex
+    default-light: '#e95d00'
+    default-dark: '#d58000'
+  -
+    id: font-weight-inline-code
+    title: Font Weight of Inline Code
+    title.zh: 行内代码字重
+    type: variable-text
+    default: bold
   -
     id: cloze-style
     title: 2.3.10 Cloze Style
@@ -2551,18 +2627,15 @@ settings:
     level: 3
     collapsed: true
   -
-    id: default-loading-page
-    title: Toggle Default Loading Page
-    title.zh: 还原默认加载页面
-    type: class-toggle
-    default: false
-  -
     id: loading-page-style-option
     title: Loading Page Style
     type: class-select
     allowEmpty: false
-    default: loading-page-style-default
+    default: default-loading-page
     options:
+      - 
+        label: Default Loading Page
+        value: default-loading-page
       - 
         label: Shapes
         value: loading-page-style-default
@@ -2596,7 +2669,7 @@ settings:
     title: Custom Text
     title.zh: 自定义文字
     type: variable-text
-    default: "快乐摸鱼又一天，人生还剩多少天？"
+    default: "'快乐摸鱼又一天，人生还剩多少天？'"
   -
     id: font-loading-text
     title: Font Family of Custom Text 
@@ -2868,89 +2941,6 @@ settings:
       - 
         label: Translucent (only for setting panel)
         value: translucent-setting-panel
-  -
-    id: code-box-option-folder
-    title: 2.3.19 Codebox and Inline Code
-    title.zh: 2.3.19 代码框和行内代码
-    type: heading
-    level: 3
-    collapsed: true
-  -
-    id: code-box-option-folder
-    title: 2.3.19.1 Codebox
-    title.zh: 2.3.19.1 代码框
-    type: heading
-    level: 4
-    collapsed: false
-  -
-    id: letter-space-code
-    title: Letter Spacing for Code
-    title.zh: 代码字间距
-    type: variable-number-slider
-    default: 0
-    min: 0
-    max: 2
-    step: 0.1
-  -
-    id: background-code
-    title: Codebox Background Color
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  -
-    id: code-box-style-option
-    title: Codebox Style
-    type: class-select
-    allowEmpty: false
-    default: codebox-default-style
-    options:
-      - 
-        label: Default
-        value: codebox-default-style
-      - 
-        label: Frosted Glass
-        value: codebox-frosted-glass
-  - 
-    id: blur-codebox-frosted-glass
-    title: Blur Radius (For Frosted Glass Style)
-    title.zh: 模糊程度 (毛玻璃效果)
-    type: variable-number-slider
-    default: 2
-    min: 0
-    max: 8
-    step: 1
-  -
-    id: style-options-for-other-plugins
-    title: 2.3.19.2 Inline Code
-    title.zh: 2.3.19.2 行内代码
-    type: heading
-    level: 4
-    collapsed: false
-  -
-    id: background-code-2
-    title: Inline Code Background Color
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#'
-    default-dark: '#'
-  - 
-    id: text-color-code
-    title: Inline Code Color
-    title.zh: 行内代码颜色
-    type: variable-themed-color
-    opacity: true
-    format: hex
-    default-light: '#e95d00'
-    default-dark: '#d58000'
-  -
-    id: font-weight-inline-code
-    title: Font Weight of Inline Code
-    title.zh: 行内代码字重
-    type: variable-text
-    default: bold
   -
     id: style-options-for-other-plugins
     title: 3. For Plugins
@@ -3655,7 +3645,7 @@ body {
 
   --checkbox-size: 1rem;
 
-  --loading-diy-text: "快乐摸鱼又一天，人生还剩多少天？";
+  --loading-diy-text: "'快乐摸鱼又一天，人生还剩多少天？'";
   --loading-diy-text-color: var(--text-normal);
   --loading-page-custom-gif-caption: " ";
   --loading-page-custom-gif-caption-alt: " ";
@@ -12707,6 +12697,14 @@ body:not(.whole-code-wrap) pre[class*='language-'] {
   tab-size: 4 !important;
 }
 
+body:not(.whole-code-wrap) .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock
+{
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: break-word;
+  white-space: pre;
+ overflow:auto;
+}
 body.whole-code-wrap code[class*='language-'],
 body.whole-code-wrap pre[class*='language-'] {
   word-spacing: normal;
@@ -21154,7 +21152,7 @@ body:not(.default-loading-page) .progress-bar-message {
   visibility: hidden;
 }
 
-body:not(.default-loading-page) .progress-bar-message:before {
+body:not(.default-loading-page).loading-page-style-default .progress-bar-message:before {
   content: "";
   width: 80px;
   height: 80px;

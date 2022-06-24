@@ -8,6 +8,7 @@
 // Import configuration
 //----------------------------------------------------
 const source = dv.current();
+const searchText = source.searchText;
 const sourceFolder = source.sourceFolder;
 const exFolder = source.exFolder;	
 const target = source.target;
@@ -181,6 +182,8 @@ excludeTag_arr.forEach((value) => {
 console.log("excludeTag",excludeTag_arr_res)
 sections = sections.filter(t => !t.file.tags.every(val => excludeTag_arr_res.includes(val)));
 }
+if(searchText)
+sections = sections.filter(t => t.file.name.toLowerCase().includes(searchText.toLowerCase()));
 // most recent note
 sections = sections.sort (s => s.file.mtime, "desc");
 const mostRecentNote = sections[0]?.file.name;
