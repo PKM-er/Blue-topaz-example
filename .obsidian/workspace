@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "a905347d8026956d",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
+            "file": "88-Template/home.md",
             "mode": "preview",
             "backlinks": false,
             "source": false
@@ -26,7 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 59.27770859277709,
+        "dimension": 54.46650124069479,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -62,59 +62,39 @@
         ]
       },
       {
-        "id": "81a04b2aa5e12243",
+        "id": "d877e8285f98a38a",
         "type": "tabs",
-        "dimension": 40.72229140722292,
+        "dimension": 45.53349875930521,
         "children": [
           {
-            "id": "81d2c4c87a745c7a",
-            "type": "leaf",
-            "state": {
-              "type": "localgraph",
-              "state": {
-                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
-                "options": {
-                  "collapse-filter": true,
-                  "search": "",
-                  "localJumps": 1,
-                  "localBacklinks": true,
-                  "localForelinks": true,
-                  "localInterlinks": false,
-                  "showTags": false,
-                  "showAttachments": false,
-                  "hideUnresolved": false,
-                  "collapse-color-groups": true,
-                  "colorGroups": [],
-                  "collapse-display": true,
-                  "showArrow": false,
-                  "textFadeMultiplier": 0,
-                  "nodeSizeMultiplier": 1,
-                  "lineSizeMultiplier": 1,
-                  "collapse-forces": true,
-                  "centerStrength": 0.518713248970312,
-                  "repelStrength": 10,
-                  "linkStrength": 1,
-                  "linkDistance": 250,
-                  "scale": 1,
-                  "close": true
-                }
-              }
-            }
-          },
-          {
-            "id": "fcdb389a6722ebae",
+            "id": "b37bc3d287f74512",
             "type": "leaf",
             "state": {
               "type": "recent-files",
               "state": {}
             }
+          },
+          {
+            "id": "80430a4f104c0c57",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "5ee52b332527fc75",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
+              "state": {}
+            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 232
+    "width": 255
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -123,7 +103,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 44.868035190615835,
+        "dimension": 43,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -134,43 +114,35 @@
             }
           },
           {
-            "id": "8851ccb0aa4e524a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/常用工具.md",
-                "mode": "preview",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
             "id": "340969ccd24905e8",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md"
+                "file": "88-Template/home.md"
               }
             }
           },
           {
-            "id": "c8a604062090b912",
+            "id": "83061aceea29f566",
             "type": "leaf",
             "state": {
-              "type": "memos_view",
-              "state": {}
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/彩色时钟.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       },
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 55.13196480938415,
+        "dimension": 56.99999999999999,
         "children": [
           {
             "id": "041c78328387b373",
@@ -178,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
+                "file": "88-Template/home.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -195,18 +167,10 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
-            }
-          },
-          {
-            "id": "9b181782551fdb19",
-            "type": "leaf",
-            "state": {
-              "type": "todo",
-              "state": {}
             }
           },
           {
@@ -219,18 +183,39 @@
                 "useHierarchy": true
               }
             }
+          },
+          {
+            "id": "8851ccb0aa4e524a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/常用工具.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4f457051e10f1a14",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
+              "state": {}
+            }
           }
         ],
         "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 360
+    "width": 265
   },
-  "active": "a905347d8026956d",
+  "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
     "88-Template/home.md",
+    "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
     "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md",
     "从这开始.md",
     "20-Diary/2022-06-30.md",

@@ -1,4 +1,7 @@
 ### echarts 示例库
+### 插件下载
+[cumany/obsidian-echarts](https://github.com/cumany/obsidian-echarts)
+### 教程示例
 - [官方Examples - Apache ECharts](https://echarts.apache.org/examples/zh/index.html)
 - [数据可视化技术分享-echarts热门组件 - Powered by Discuz!](http://192.144.199.210/forum.php?mod=forumdisplay&fid=2)
 - [DataInsight](http://analysis.datains.cn/finance-admin/index.html#/chartLib/all)
