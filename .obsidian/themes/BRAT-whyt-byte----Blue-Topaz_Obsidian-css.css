@@ -3645,7 +3645,7 @@ body {
 
   --checkbox-size: 1rem;
 
-  --loading-diy-text: "'快乐摸鱼又一天，人生还剩多少天？'";
+  --loading-diy-text: "快乐摸鱼又一天，人生还剩多少天？";
   --loading-diy-text-color: var(--text-normal);
   --loading-page-custom-gif-caption: " ";
   --loading-page-custom-gif-caption-alt: " ";

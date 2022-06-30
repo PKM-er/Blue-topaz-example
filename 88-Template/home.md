@@ -180,10 +180,71 @@ dv.span(lines)
 
 ---
 
+````ad-flex
+```ad-note
+title: 🤔 快速导航
+color: 178,155,64
+> “Quick Access”
+-  `button-richeng`
+
+-  `button-kanban`
+
+- `button-suibi2`
+
+- `button-renwu2`
+
+- 📆 `$= '[[日记统计#'+ moment().format("YYYY-MM") +'|当月日记]]'`
+
+```
+```ad-note
+title: 😏 功能
+color: 99,188,76
+> “Common actions”
+- Ⓜ️ [生成MOC](obsidian://advanced-uri?commandid=templater-obsidian%253A88-Template%252Ftp_foldermoc-Include-subfolders.md)
+
+- 📚 [豆瓣读书](obsidian://advanced-uri?commandid=quickadd%253Achoice%253A19402f67-f691-4b0f-9975-f8203e74be96)
+
+- 🎞️ [豆瓣电影](obsidian://advanced-uri?commandid=quickadd%253Achoice%253Aaabcb6ad-5faa-45fb-a713-deddc27bc384)
+
+- 💠 [[随机显示文档中的图片和文字|随机漫游]]
+
+```
+
+```ad-note
+title: 🥰 阅读笔记
+color: 178,22,164
+> “Media”
+
+- 💬 [[微信读书清单|微信阅读]]
+
+- 📑 [[图书阅读清单(dv)|图书馆]]
+
+- 👁 [[电影看板]]
+
+- 🛹[[可以编辑的dv表格|资料维护]]
+
+```
+```ad-note
+title: 🤩 帮助教程
+color: 139,65,06
+> “Tutorials”
+
+- 🚩 [Cuman的B站](https://b23.tv/2Uqt2dn)
+
+- 🥑 [[🥑Blue Topaz Themes Tips|主题TIPS]]
+
+- 🇲🇩 [[MarkDown教程 Obsidian版 2022.4.22|MD超级教程]]
+
+- 🔑 [[◾ Dataview相关实例|Dataview功能集]]
+
+- 💾 [[77-Example|示例库]]
+
+```
+````
 
 
 
-![[从这开始#MOC]]
+![[从这开始#MOC 另一种样式]]
 
 ![[从这开始#最近编辑]]
 

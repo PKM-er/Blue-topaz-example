@@ -31,5 +31,6 @@
   "obsidian-contextual-typography",
   "dataview",
   "obsidian-echarts",
-  "obsidian-table-to-csv-exporter"
+  "obsidian-table-to-csv-exporter",
+  "obsidian-outliner"
 ]

@@ -4,15 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "052c98e7fac9c882",
+        "id": "a905347d8026956d",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
+            "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
             "mode": "preview",
             "backlinks": false,
-            "source": true
+            "source": false
           }
         }
       }
@@ -26,7 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 54.46650124069479,
+        "dimension": 59.27770859277709,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -62,39 +62,59 @@
         ]
       },
       {
-        "id": "d877e8285f98a38a",
+        "id": "81a04b2aa5e12243",
         "type": "tabs",
-        "dimension": 45.53349875930521,
+        "dimension": 40.72229140722292,
         "children": [
           {
-            "id": "b37bc3d287f74512",
+            "id": "81d2c4c87a745c7a",
+            "type": "leaf",
+            "state": {
+              "type": "localgraph",
+              "state": {
+                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
+                "options": {
+                  "collapse-filter": true,
+                  "search": "",
+                  "localJumps": 1,
+                  "localBacklinks": true,
+                  "localForelinks": true,
+                  "localInterlinks": false,
+                  "showTags": false,
+                  "showAttachments": false,
+                  "hideUnresolved": false,
+                  "collapse-color-groups": true,
+                  "colorGroups": [],
+                  "collapse-display": true,
+                  "showArrow": false,
+                  "textFadeMultiplier": 0,
+                  "nodeSizeMultiplier": 1,
+                  "lineSizeMultiplier": 1,
+                  "collapse-forces": true,
+                  "centerStrength": 0.518713248970312,
+                  "repelStrength": 10,
+                  "linkStrength": 1,
+                  "linkDistance": 250,
+                  "scale": 1,
+                  "close": true
+                }
+              }
+            }
+          },
+          {
+            "id": "fcdb389a6722ebae",
             "type": "leaf",
             "state": {
               "type": "recent-files",
               "state": {}
             }
-          },
-          {
-            "id": "80430a4f104c0c57",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
-              "state": {}
-            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
-    "width": 255
+    "width": 232
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -103,7 +123,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 43,
+        "dimension": 44.868035190615835,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -111,77 +131,6 @@
             "state": {
               "type": "calendar",
               "state": {}
-            }
-          },
-          {
-            "id": "340969ccd24905e8",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md"
-              }
-            }
-          },
-          {
-            "id": "83061aceea29f566",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/彩色时钟.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": true
-              }
-            }
-          }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "0b3485207df574dd",
-        "type": "tabs",
-        "dimension": 56.99999999999999,
-        "children": [
-          {
-            "id": "041c78328387b373",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "dc4a81bfd6624166",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "b2ae90cb6049dbe9",
-            "type": "leaf",
-            "state": {
-              "type": "tag",
-              "state": {
-                "sortOrder": "frequency",
-                "useHierarchy": true
-              }
             }
           },
           {
@@ -198,11 +147,77 @@
             }
           },
           {
-            "id": "4f457051e10f1a14",
+            "id": "340969ccd24905e8",
             "type": "leaf",
             "state": {
-              "type": "quiet-outline",
+              "type": "outline",
+              "state": {
+                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md"
+              }
+            }
+          },
+          {
+            "id": "c8a604062090b912",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
               "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "0b3485207df574dd",
+        "type": "tabs",
+        "dimension": 55.13196480938415,
+        "children": [
+          {
+            "id": "041c78328387b373",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "dc4a81bfd6624166",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "9b181782551fdb19",
+            "type": "leaf",
+            "state": {
+              "type": "todo",
+              "state": {}
+            }
+          },
+          {
+            "id": "b2ae90cb6049dbe9",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
             }
           }
         ],
@@ -210,20 +225,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265,
-    "collapsed": true
+    "width": 360
   },
-  "active": "052c98e7fac9c882",
+  "active": "a905347d8026956d",
   "lastOpenFiles": [
-    "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
-    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+    "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
     "88-Template/home.md",
+    "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md",
     "从这开始.md",
-    "00-Tips/▪示例库移植说明/▪示例库移植说明.md",
-    "00-Tips/如何在Obsidian中添加图书卡片.md",
-    "77-Example/ob提示框(callout)样式展示.md",
-    "Changlog.md",
-    "77-Example/各类列表和彩虹大纲线.md",
-    "00-Tips/00-Tips.md"
+    "20-Diary/2022-06-30.md",
+    "99-Attachment/99-Attachment.md",
+    "99-Attachment/banner/banner.md",
+    "77-Example/◾ Dataview相关实例/文件夹所有标签.md",
+    "77-Example/任务卡片-dataview 任务查询举例.md",
+    "77-Example/◾ Echarts/echarts-笔记动态显示-分布.md"
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 17,
+  "baseFontSize": 16,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -18,7 +18,6 @@
     "【图标】iconfont",
     "【自定义】表格样式TableStyles",
     "【自定义】彩色时钟样式",
-    "【自定义】myhome 样式",
     "【自定义】mytools 样式",
     "【Linkcard】",
     "【Memos】Heatmap",
@@ -26,7 +25,8 @@
     "【卡片视图】cards",
     "【自定义】多彩进度条",
     "【卡片横版视图】cards2",
-    "【Memos】Popover"
+    "【Memos】Popover",
+    "【自定义】myhome 样式"
   ],
   "translucency": false,
   "textFontFamily": "",

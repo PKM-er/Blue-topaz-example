@@ -2,6 +2,7 @@
 }
 
 .omnisearch-result {
+  white-space: normal;
 }
 
 .omnisearch-result__title {

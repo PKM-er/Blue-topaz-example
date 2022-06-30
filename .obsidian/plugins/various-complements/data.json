@@ -107,14 +107,6 @@
         }
       }
     },
-    "span": {
-      "span": {
-        "currentVault": {
-          "count": 4,
-          "lastUpdated": 1653637009050
-        }
-      }
-    },
     "length": {
       "length": {
         "currentVault": {
@@ -1052,6 +1044,14 @@
         "currentVault": {
           "count": 1,
           "lastUpdated": 1656040834727
+        }
+      }
+    },
+    "fullwidth": {
+      "fullwidth": {
+        "frontMatter": {
+          "count": 1,
+          "lastUpdated": 1656087520571
         }
       }
     }

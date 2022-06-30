@@ -6,6 +6,7 @@ obsidianUIMode: preview
 %% Begin Waypoint %%
 - **[[99-Attachment]]**
 	- [[99-Attachment]]
-	- **[[banner]]**
+	- **banner**
+
 
 %% End Waypoint %%

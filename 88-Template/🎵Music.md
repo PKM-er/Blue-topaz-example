@@ -23,6 +23,13 @@ collapse: close
  <iframe frameborder="0" border="1" marginwidth="0" marginheight="0" width=280 height=86 src="https://music.163.com/outchain/player?type=2&id=492857516&auto=0&height=66"> </iframe>
 ```
 
+%%自行更换代码中的id 可以换成自己的歌单id，下面是推荐的%%
+%%安静看书的背景音乐 8418150 %%
+%%好听的热门歌单  6894168416 %%
+%% 高效率专注记忆音乐  6683129 %%
+%%lavi共享的歌单 7354648923%%
+
+
 ````ad-flex
 title: 精选歌单
 ```jsx::Musicbar

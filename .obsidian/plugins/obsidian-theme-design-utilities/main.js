@@ -99,6 +99,11 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
         callback: () => this.cycleThemes()
       });
       this.addCommand({
+        id: "debugging-outline",
+        name: "Toggle Red Outlines for Debugging",
+        callback: () => this.toggleDebuggingCSS()
+      });
+      this.addCommand({
         id: "version-info",
         name: "CSS Feature Compatibility / Tech Stack Versions",
         callback: () => {
@@ -176,5 +181,19 @@ Electron Version: ${electronVersion}`, versionInfoNoticeDuration * 1e3);
         break;
     }
     activePane.setViewState(newMode);
+  }
+  toggleDebuggingCSS() {
+    var _a;
+    const currentCSS = (_a = this.styleEl) == null ? void 0 : _a.textContent;
+    let cssToApply = "";
+    if (!currentCSS) {
+      cssToApply = "* {outline: red 1px solid !important}";
+      this.styleEl = document.createElement("style");
+      this.styleEl.setAttribute("type", "text/css");
+      document.head.appendChild(this.styleEl);
+      this.register(() => this.styleEl.detach());
+    }
+    this.styleEl.textContent = cssToApply;
+    this.app.workspace.trigger("css-change");
   }
 };

@@ -1496,6 +1496,14 @@ settings:
     type: variable-text
     default: 0em
   -
+    id: toggle-left-aligned-content
+    title: Toggle  Left-aligned note content
+    title.zh: 开启笔记内容居左
+    description.zh: 开启后内容整体居左，而不是默认居中
+    description: Left-aligned content when turned on, instead of centered by default
+    type: class-toggle
+    default: false
+  -
     id: other-typography-settings
     title: 2.2.5 *.md File in Split Pane
     title.zh: 2.2.5 侧面拆分面板中的md文件
@@ -2667,9 +2675,9 @@ settings:
   -
     id: loading-diy-text
     title: Custom Text
-    title.zh: 自定义文字(加引号)
+    title.zh: 自定义文字
     type: variable-text
-    default: "快乐摸鱼又一天，人生还剩多少天？"
+    default: "'快乐摸鱼又一天，人生还剩多少天？'"
   -
     id: font-loading-text
     title: Font Family of Custom Text 
@@ -9159,6 +9167,13 @@ body.toggle-paragraph-spacing :is(.markdown-preview-view,.markdown-rendered) p>b
   display: block;
 }
 
+body.toggle-left-aligned-content .markdown-source-view.mod-cm6.is-readable-line-width:not(.is-rtl) .cm-scroller > *:first-child {
+  margin-left: 0; 
+}
+
+body.toggle-left-aligned-content :is(.markdown-preview-view,.markdown-rendered).is-readable-line-width:not(.matrix) .markdown-preview-sizer, .markdown-source-view.is-readable-line-width:not(.matrix) .CodeMirror, :is(.markdown-preview-view,.markdown-rendered):not(.matrix) .is-readable-line-width :is(.markdown-preview-section,.markdown-rendered), :is(.markdown-preview-view,.markdown-rendered):not(.matrix) .is-readable-line-width :is(.markdown-preview-section,.markdown-rendered) > div, :is(.markdown-preview-view,.markdown-rendered).is-readable-line-width:not(.matrix) :is(.markdown-preview-section,.markdown-rendered) {
+    margin-left: 0;
+}
 
 .markdown-source-view.mod-cm6 div.cm-line {
   padding-bottom: calc((var(--paragraph-spacing) - 1)*1em)!important;

@@ -58,7 +58,7 @@ body.blockquote-style-quotation-mark.is-mobile .markdown-preview-view.myhome blo
   max-height: 320px;
 }
 .myhome audio {
-  margin-left: calc(20% - 110px);
+  margin-left: calc(5%);
   margin-top: 20px;
   filter: sepia(20%) saturate(80%) grayscale(1) contrast(99%) invert(12%);
   -moz-opacity: 0.2;
@@ -199,6 +199,8 @@ body.blockquote-style-quotation-mark.is-mobile .markdown-preview-view.myhome blo
     height: 180px;
   }
 }
+
+
 
 .myhome a
 {
@@ -565,7 +567,8 @@ position: relative;
 box-shadow: 0px 5px 50px 0px rgba(var(--interactive-accent-rgb),0.5), 0px 0px 0px 2px rgba(var(--interactive-accent-rgb),0.8);
 display: block;
 }
- 
+
+
 @media screen and (max-width:1200px) {
   div[data-callout="profile-card-inf"].callout> .callout-content div[data-callout="item"].callout  >.callout-title{ 
     font-size: 20px;
@@ -579,6 +582,9 @@ display: block;
   div.admonition-grid>.admonition-content 
     {
       grid-template-columns: repeat(auto-fit, minmax(0, 230px));
+    }
+    .myhome audio {
+      margin-left: calc(5% + 50px);
     }
 }
 @media screen and (max-width:900px) {
@@ -706,7 +712,6 @@ padding: 0px;
  }
 
 
-
 /****main-bar button 样式 ***/
 
 [data-callout="main-bar"].callout .callout-content>p
@@ -808,7 +813,11 @@ input#searchText {
 input#limit {
   background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 1024 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M856 128H168a40 40 0 0 0-40 40v688a40 40 0 0 0 40 40h688a40 40 0 0 0 40-40V168a40 40 0 0 0-40-40zM639 552.5h-80.4a4 4 0 0 0-4 4v193.1a4 4 0 0 1-4 4h-77.2a4 4 0 0 1-4-4V556.5a4 4 0 0 0-4-4H385a4 4 0 0 1-3.1-6.5l127-154.1a4.1 4.1 0 0 1 6.2 0l127 154.1a4 4 0 0 1-3.1 6.5z m65-222.1a3.9 3.9 0 0 1-4 4H324a3.9 3.9 0 0 1-4-4v-56a4 4 0 0 1 4-4h376a4 4 0 0 1 4 4z' fill='%23bfbfbf'/%3E%3C/svg%3E");
 }
-:is(dvjs) ~ p>input
+input[type="date"] {
+
+  background-image:url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 1136 1024' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M35.80 766.88l-13.92 13.35c20.17 15.91 36.08 30.97 47.73 45.17l14.21-14.21c-13.07-14.77-28.98-29.55-48.02-44.32z m165.07 250.87h65.91l5.11-20.46c-7.67 0.57-18.47 0.85-32.10 1.14-14.21 0.28-28.13 0.57-41.76 0.57-22.16 0-40.91-0.28-55.69-0.57-17.05-0.57-29.83-2.84-38.64-6.82-7.96-3.69-15.34-9.66-22.16-17.90a48.30 48.30 0 0 0-6.82-6.53V860.92H15.34v18.75h40.34V966.04c-11.93 5.11-25.29 19.89-40.63 44.04l15.34 13.92c15.91-26.71 27.27-39.78 34.38-39.78 3.41 0 7.10 2.27 11.08 7.10 8.81 10.23 18.75 17.33 29.83 20.74 11.36 3.13 26.42 4.83 44.61 5.11 18.18 0.28 35.23 0.57 50.57 0.57z m-24.43-256.27v36.37H138.93c3.41-9.09 6.53-18.47 9.38-28.41l-19.60-3.98c-6.82 25.57-17.90 49.15-33.24 70.46l17.90 11.08c6.25-9.09 11.93-18.75 17.05-29.55h46.03v40.63h-73.87v19.89h45.74c-0.85 17.62-3.69 32.96-8.52 45.46-7.39 17.05-22.44 31.25-45.46 42.62l13.35 16.19c26.71-13.92 44.04-31.82 51.42-53.41 4.83-14.21 7.67-31.25 8.52-50.86h28.70v80.69c0 6.25 1.70 11.36 5.68 15.34 3.69 3.98 9.09 5.97 16.48 5.97h20.46c9.66-0.28 16.48-2.56 20.46-6.53 4.26-4.55 7.39-18.47 9.09-42.05l-17.90-5.97c-1.14 20.17-3.41 31.54-6.82 34.09-2.27 1.70-5.11 2.56-9.09 2.56H224.45c-6.25 0-9.09-2.84-9.09-7.96V877.97h47.73v-19.89H196.32v-40.63h56.82v-19.60h-56.82V761.48h-19.89z m231.27 12.22v18.47h14.21c7.96 21.59 20.74 39.49 38.64 53.98-17.62 8.52-38.64 15.34-62.79 21.02l9.66 17.33c27.56-6.82 51.42-15.34 71.31-26.14 20.46 11.93 46.59 20.17 77.85 24.43l7.39-18.18c-25.85-3.41-48.02-9.38-66.20-17.90 21.59-15.34 36.37-33.81 44.61-55.97v-17.05h-134.67z m34.38 18.47h78.70c-8.81 17.05-22.73 31.54-42.05 43.75-16.76-11.36-28.98-26.14-36.65-43.75z m-105.69 228.14c16.76 0 25.29-8.24 25.29-24.72v-81.54c11.08-4.55 21.88-9.38 32.39-14.49v-20.74c-10.80 5.40-21.59 10.51-32.39 15.06v-57.39h31.82v-19.60h-31.82v-53.70h-21.02v53.70h-34.66v19.60h34.66v65.06c-12.79 4.26-25.85 7.96-39.21 11.08l5.11 20.46c11.36-3.41 22.73-7.10 34.09-11.08v68.19c0 7.39-3.98 11.36-11.36 11.36-7.10 0-14.49-0.57-21.88-1.14l4.26 19.89h24.72z m76.14-115.35v18.75h56.82v32.39h-71.31v19.04h71.31v44.89h19.89v-44.89h70.46v-19.04h-70.46v-32.39h55.97v-18.75h-55.97v-25.00h-19.89v25.00h-56.82z m400.88-131.26h-175.58v248.03h20.46v-21.88h134.39v21.59h20.74v-247.75z m-155.13 206.27v-85.52h134.39v85.52h-134.39z m0-105.41v-80.97h134.39v80.97h-134.39z m248.31-111.37v31.82h-17.62v19.04h17.62v120.18h-20.74v19.32h134.39v-19.32h-18.47v-120.18h17.05v-19.04h-17.05v-31.25h-19.89v31.25h-55.40v-31.82h-19.89z m19.89 171.04v-27.84h55.40v27.84h-55.40z m55.40-120.18v28.41h-55.40v-28.41h55.40z m-55.40 74.44v-28.13h55.40v28.13h-55.40z m50.29 72.45l-15.91 9.94c12.79 17.05 23.01 32.96 30.40 47.45l15.06-10.80c-0.28 0.57-0.57 1.14-1.14 1.70l15.63 14.49c18.75-25.00 30.12-55.97 34.09-93.47h55.12v58.24c0 8.52-3.69 12.79-11.08 12.79-9.09 0-18.75-0.57-29.26-1.14l5.68 20.17h30.12c16.48 0 25.00-8.24 25.00-24.43v-222.74h-94.33v132.96c-0.57 39.78-9.94 73.02-28.70 99.44-7.10-12.50-17.33-27.56-30.68-44.61z m-55.40-0.28c-10.51 19.32-23.01 35.80-37.22 49.72l16.19 11.65c14.21-15.06 26.71-32.96 37.50-53.41l-16.48-7.96z m134.95-99.72h53.70v50.57h-53.98c0-2.27 0.28-4.55 0.28-7.10V860.92z m53.70-18.75h-53.70v-49.72h53.70v49.72zM710.96 184.47c15.06 0 28.18-12.59 28.18-28.16V28.24c0-15.57-13.10-28.18-28.18-28.18-15.11 0-27.33 12.61-27.33 28.18V156.32c0 15.57 12.22 28.16 27.33 28.16z m-192.97-70.86h138.36V71.03h-138.36v42.59z m300.31-42.59h-51.42v42.33h53.41c15.68 0 28.95 13.69 28.95 29.89v98.50H325.14V143.25c0-16.19 13.27-29.89 28.98-29.89h53.75v-42.33h-51.37C316.70 71.03 284.11 104.64 284.11 145.72v433.13C284.11 619.91 315.48 653.52 355.31 653.52h462.99c39.80 0 72.39-33.61 72.39-74.66V145.72c0-41.08-32.59-74.69-72.39-74.69zM849.21 581.07c0 16.19-13.27 29.86-28.98 29.86H354.12c-15.71 0-28.98-13.67-28.98-29.86V284.14h524.10v296.90z m-414.32-169.05c22.93 0 41.48-19.18 41.48-42.82 0-23.64-18.55-42.79-41.48-42.79-22.90 0-41.48 19.15-41.48 42.79s18.58 42.82 41.48 42.82z m151.92 0c22.90 0 41.48-19.18 41.48-42.82 0-23.64-18.58-42.79-41.48-42.79-22.93 0-41.48 19.15-41.48 42.79s18.55 42.82 41.48 42.82z m-152.65 156.49c22.93 0 41.48-19.18 41.48-42.79 0-23.67-18.55-42.82-41.48-42.82-22.90 0-41.48 19.15-41.48 42.82 0 23.61 18.58 42.79 41.48 42.79z m152.65 0c22.90 0 41.48-19.18 41.48-42.79 0-23.67-18.58-42.82-41.48-42.82-22.93 0-41.48 19.15-41.48 42.82 0 23.61 18.55 42.79 41.48 42.79z m151.66-156.49c22.90 0 41.48-19.18 41.48-42.82 0-23.64-18.58-42.79-41.48-42.79-22.90 0-41.48 19.15-41.48 42.79s18.58 42.82 41.48 42.82z m-275.87-227.52c15.11 0 28.21-12.59 28.21-28.16V28.24c0-15.57-13.10-28.18-28.18-28.18-15.11 0-27.33 12.61-27.33 28.18V156.32c0 15.57 12.22 28.16 27.33 28.16z' fill=''/%3E%3C/svg%3E");
+}
+dvjs ~:is(p,b)>input
 {
   max-width:200px;
   height: 2em;
@@ -816,17 +825,21 @@ input#limit {
   position: relative;
   vertical-align: middle;
   background-repeat: no-repeat;
-  background-size: 22px;
+  background-size: 20px;
   background-position:10px center;
-  padding:0 0 3px 40px;
+  padding:0 0 2px 40px;
   border-radius: 4px;	
   transition: box-shadow 0.25s ease;
   line-height:normal;
   background-color: transparent;
   color: var(--text-normal);
   border: 1px solid rgba(204, 204, 204, 0.76);
+  font-size: 16px;
 }
-:is(dvjs) ~ p>input::-webkit-input-placeholder {
+button.tiny{
+  box-shadow:none;
+}
+dvjs ~:is(p,b)>input::-webkit-input-placeholder {
   font-size: 13px;
   vertical-align: top;
 }
@@ -836,7 +849,7 @@ input[type="date"] {
 input#limit{
   width: 100px;
 }
-:is(.markdown-preview-view,.markdown-rendered) dvjs ~ :is(p,select,input)
+:is(.markdown-preview-view,.markdown-rendered) dvjs ~ :is(b,p,select,input)
 {
 
 		display: inline-table;
@@ -848,13 +861,13 @@ input#limit{
     margin-block-end:0em;
 
 }
-:is(dvjs) ~ p>:is(select)
+dvjs ~ :is(p,b)>:is(select)
 {
 
   background-color: transparent;
   color: var(--text-normal);
   border: 1px solid rgba(204, 204, 204, 0.76);
-  height: 2.5em;
+  height: 2.1em;
   position: relative;
   vertical-align: initial;
   overflow: hidden;
@@ -865,7 +878,7 @@ input#limit{
   z-index: 2;
 }
 
-:is(dvjs) ~ p>select option
+dvjs ~ :is(p,b)>select option
 {
       color: var(--text-muted);
   }
@@ -873,19 +886,19 @@ input#limit{
 
 @media screen and (max-width: 768px) {
 
-:is(.markdown-preview-view,.markdown-rendered) dvjs ~ :is(p,select,input)
+:is(.markdown-preview-view,.markdown-rendered) dvjs ~ :is(b,select,input)
 {
 
-		display:inline-block;
+		display: grid !important; 
 }
-  dvjs ~ p :is(h2,h3,h4,h5,h6)
+  dvjs ~ :is(p,b) :is(h2,h3,h4,h5,h6)
   {
   white-space: break-spaces;
 min-width: 2em;
   }
 }
   
-:is(.markdown-preview-section,.markdown-rendered) dvjs ~ p :is(h2,h3,h4,h5,h6)
+:is(.markdown-preview-section,.markdown-rendered) dvjs ~ :is(p,b) :is(h2,h3,h4,h5,h6)
 {
 margin-right: 0.2em;
 margin-left: 0.5em;
