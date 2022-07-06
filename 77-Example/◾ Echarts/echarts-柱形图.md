@@ -1,3 +1,5 @@
+---
+---
 # 标签柱形图
 ```dataviewjs
 const pages = dv.pages("#Movie").filter((page) => {return page.rating && typeof(page.rating) == "number"})

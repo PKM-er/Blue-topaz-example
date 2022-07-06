@@ -252,18 +252,6 @@
             "Enter the city name": "武汉",
             "City name": ""
           }
-        },
-        {
-          "name": "Wait",
-          "type": "Wait",
-          "id": "60813cc2-37ac-41a0-822e-c88caace110e",
-          "time": 4500
-        },
-        {
-          "name": "Workspaces Plus: Load: Home",
-          "type": "Obsidian",
-          "id": "cc6b384b-ec44-4292-835a-e19dafa409d5",
-          "commandId": "workspaces-plus:Home"
         }
       ],
       "runOnStartup": true

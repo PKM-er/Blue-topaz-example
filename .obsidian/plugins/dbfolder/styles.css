@@ -166,6 +166,10 @@
   display: inline;
 }
 
+.database-plugin__markdown-preview-view {
+  padding: 0;
+}
+
 .svg-icon-sm svg {
   position: relative;
   height: 1.25em;
@@ -350,6 +354,10 @@
   display: flex;
   flex: 1 0 auto;
   background-color: var(--background-secondary);
+}
+
+.database-plugin__padding-left {
+  padding-left: 0.5rem;
 }
 
 .database-plugin__calendar {

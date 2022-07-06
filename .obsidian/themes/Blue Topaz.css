@@ -19151,7 +19151,7 @@ body:not(.remove-custom-svg-icons) .workspace-leaf-content .view-action svg.brok
   margin-right: 1px;
 }
 
-body:not(.setting-style-traditional) .menu {
+body:not(.setting-style-traditional) [class="menu"] {
   border: none;
   backdrop-filter: blur(8px);
   background-color: var(--bg-color-settings-6);
@@ -19161,7 +19161,10 @@ body:not(.setting-style-traditional) .menu {
 .menu-item.selected:not(.is-disabled):not(.is-label) {
   background-color: var(--bg-color-settings-5);
 }
-
+.menu-item:hover:not(.is-disabled):not(.is-label)
+{
+ background-color: var(--bg-color-settings-5);
+}
 body.toggle-bg-file-page .nav-files-container::before {
   content: '';
   display: block;

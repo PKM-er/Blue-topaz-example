@@ -1,3 +1,5 @@
+---
+---
 ```dataviewjs
 const echarts = app.plugins.plugins['obsidian-echarts'].echarts()
 let option = {

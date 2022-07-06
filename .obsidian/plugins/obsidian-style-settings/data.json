@@ -174,8 +174,10 @@
   "blue-topaz-theme@@loading-diy-text": "\"欢迎来到Blue Topaz 世界！𓃟𓃠𓃬𓃭𓃮𓃯𓃰𓃱𓃲𓃵𓃶𓄇𓄿𓅀𓅂𓅃𓅘𓅙𓅚𓅛𓅜𓅝𓅞𓅟𓅠𓅡𓅢𓅣𓅤𓅥𓅦𓅧𓅨𓅩𓅪𓅫𓅬𓅭\"",
   "blue-topaz-theme@@paragraph-spacing": 1,
   "blue-topaz-theme@@toggle-left-aligned-content": false,
-  "blue-topaz-theme@@font-size-split": "0.75em",
   "blue-topaz-theme@@transparent-setting-panel": false,
   "blue-topaz-theme@@setting-etc-pane-style": "setting-default-frosted-glass",
-  "blue-topaz-theme@@blur-p-kanban-frosted-glass": 5
+  "blue-topaz-theme@@blur-p-kanban-frosted-glass": 5,
+  "blue-topaz-theme@@font-size-split": "0.8em",
+  "blue-topaz-theme@@search-bar-style-option": "default-search-bar",
+  "blue-topaz-theme@@scrollbar-style-option": "hover-scrollbars"
 }

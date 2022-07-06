@@ -2,10 +2,12 @@
 
 var obsidian = require('obsidian');
 var punycode = require('punycode');
+var path = require('path');
 
 function _interopDefaultLegacy (e) { return e && typeof e === 'object' && 'default' in e ? e : { 'default': e }; }
 
 var punycode__default = /*#__PURE__*/_interopDefaultLegacy(punycode);
+var path__default = /*#__PURE__*/_interopDefaultLegacy(path);
 
 const TODO_VIEW_TYPE = "todo";
 const LOCAL_SORT_OPT = {
@@ -16,12 +18,16 @@ const LOCAL_SORT_OPT = {
 const DEFAULT_SETTINGS = {
     todoPageName: "todo",
     showChecked: false,
+    autoRefresh: true,
+    subGroups: false,
     groupBy: "page",
-    sortDirection: "old->new",
-    ignoreFiles: "",
+    sortDirectionItems: "new->old",
+    sortDirectionGroups: "new->old",
+    sortDirectionSubGroups: "new->old",
     includeFiles: "",
     lookAndFeel: "classic",
     _collapsedSections: [],
+    _hiddenTags: [],
 };
 class TodoSettingTab extends obsidian.PluginSettingTab {
     constructor(app, plugin) {
@@ -29,27 +35,33 @@ class TodoSettingTab extends obsidian.PluginSettingTab {
         this.plugin = plugin;
     }
     display() {
-        let { containerEl } = this;
         this.containerEl.empty();
         this.containerEl.createEl("h3", {
             text: "General Settings",
         });
-        new obsidian.Setting(containerEl)
+        this.buildSettings();
+    }
+    buildSettings() {
+        /** GENERAL */
+        new obsidian.Setting(this.containerEl).setName("General");
+        new obsidian.Setting(this.containerEl)
             .setName("Tag name")
-            .setDesc("e.g. #todo. Leave empty to capture all")
-            .addText((text) => text
+            .setDesc('e.g. "todo" will match #todo. You may add mutliple tags separated by a newline. Leave empty to capture all')
+            .addTextArea((text) => text
             .setPlaceholder("todo")
             .setValue(this.plugin.getSettingValue("todoPageName"))
             .onChange(async (value) => {
             await this.plugin.updateSettings({ todoPageName: value });
         }));
-        new obsidian.Setting(containerEl).setName("Show Completed?").addToggle((toggle) => {
+        new obsidian.Setting(this.containerEl).setName("Show Completed?").addToggle((toggle) => {
             toggle.setValue(this.plugin.getSettingValue("showChecked"));
             toggle.onChange(async (value) => {
                 await this.plugin.updateSettings({ showChecked: value });
             });
         });
-        new obsidian.Setting(containerEl).setName("Group By").addDropdown((dropdown) => {
+        /** GORUPING & SORTING */
+        new obsidian.Setting(this.containerEl).setName("Grouping & Sorting");
+        new obsidian.Setting(this.containerEl).setName("Group By").addDropdown((dropdown) => {
             dropdown.addOption("page", "Page");
             dropdown.addOption("tag", "Tag");
             dropdown.setValue(this.plugin.getSettingValue("groupBy"));
@@ -57,29 +69,57 @@ class TodoSettingTab extends obsidian.PluginSettingTab {
                 await this.plugin.updateSettings({ groupBy: value });
             });
         });
-        new obsidian.Setting(containerEl).setName("Group Sort").addDropdown((dropdown) => {
-            dropdown.addOption("new->old", "New -> Old");
-            dropdown.addOption("old->new", "Old -> New");
+        // new Setting(this.containerEl)
+        //   .setName("Enable Sub-Groups?")
+        //   .addToggle((toggle) => {
+        //     toggle.setValue(this.plugin.getSettingValue("subGroups"))
+        //     toggle.onChange(async (value) => {
+        //       await this.plugin.updateSettings({ subGroups: value })
+        //     })
+        //   })
+        //   .setDesc("When grouped by page you will see sub-groups by tag, and vice versa.")
+        new obsidian.Setting(this.containerEl)
+            .setName("Item Sort")
+            .addDropdown((dropdown) => {
             dropdown.addOption("a->z", "A -> Z");
             dropdown.addOption("z->a", "Z -> A");
-            dropdown.setValue(this.plugin.getSettingValue("sortDirection"));
+            dropdown.addOption("new->old", "New -> Old");
+            dropdown.addOption("old->new", "Old -> New");
+            dropdown.setValue(this.plugin.getSettingValue("sortDirectionItems"));
             dropdown.onChange(async (value) => {
-                await this.plugin.updateSettings({ sortDirection: value });
+                await this.plugin.updateSettings({ sortDirectionItems: value });
             });
-        });
-        new obsidian.Setting(containerEl)
-            .setName("Ignore Files")
-            .setDesc("Ignore files that contain this text anywhere in the filepath. (e.g. 'template' to ignore template.md and templates/file.md)")
-            .addText((text) => text.setValue(this.plugin.getSettingValue("ignoreFiles")).onChange(async (value) => {
-            await this.plugin.updateSettings({ ignoreFiles: value });
-        }));
-        new obsidian.Setting(containerEl)
-            .setName("Include Files")
-            .setDesc("Only search files whose path begins with this value (e.g. 'tasks' would search tasks/file.md and tasks_folder/file.md and not other_sub/file.md or file.md)")
-            .addText((text) => text.setValue(this.plugin.getSettingValue("includeFiles")).onChange(async (value) => {
-            await this.plugin.updateSettings({ includeFiles: value });
-        }));
-        new obsidian.Setting(containerEl).setName("Look and Feel").addDropdown((dropdown) => {
+        })
+            .setDesc("Time sorts are based on last time the file for a particular item was edited");
+        new obsidian.Setting(this.containerEl)
+            .setName("Group Sort")
+            .addDropdown((dropdown) => {
+            dropdown.addOption("a->z", "A -> Z");
+            dropdown.addOption("z->a", "Z -> A");
+            dropdown.addOption("new->old", "New -> Old");
+            dropdown.addOption("old->new", "Old -> New");
+            dropdown.setValue(this.plugin.getSettingValue("sortDirectionGroups"));
+            dropdown.onChange(async (value) => {
+                await this.plugin.updateSettings({ sortDirectionGroups: value });
+            });
+        })
+            .setDesc("Time sorts are based on last time the file for the newest or oldest item in a group was edited");
+        // new Setting(this.containerEl)
+        //   .setName("Sub-Group Sort")
+        //   .addDropdown((dropdown) => {
+        //     dropdown.addOption("a->z", "A -> Z")
+        //     dropdown.addOption("z->a", "Z -> A")
+        //     dropdown.addOption("new->old", "New -> Old")
+        //     dropdown.addOption("old->new", "Old -> New")
+        //     dropdown.setValue(this.plugin.getSettingValue("sortDirectionSubGroups"))
+        //     dropdown.onChange(async (value: SortDirection) => {
+        //       await this.plugin.updateSettings({ sortDirectionSubGroups: value })
+        //     })
+        //   })
+        //   .setDesc("Time sorts are based on last time the file for the newest or oldest item in a group was edited")
+        /** STYLING */
+        new obsidian.Setting(this.containerEl).setName("Styling");
+        new obsidian.Setting(this.containerEl).setName("Look and Feel").addDropdown((dropdown) => {
             dropdown.addOption("classic", "Classic");
             dropdown.addOption("compact", "Compact");
             dropdown.setValue(this.plugin.getSettingValue("lookAndFeel"));
@@ -87,6 +127,24 @@ class TodoSettingTab extends obsidian.PluginSettingTab {
                 await this.plugin.updateSettings({ lookAndFeel: value });
             });
         });
+        /** ADVANCED */
+        new obsidian.Setting(this.containerEl).setName("Advanced");
+        new obsidian.Setting(this.containerEl)
+            .setName("Include Files")
+            .setDesc('Include all files that match this glob pattern (e.g. "{*,!(exclude)/**/*}" includes all files except those in the exclude directory). Leave empty to check all files')
+            .setTooltip("**/*")
+            .addText((text) => text.setValue(this.plugin.getSettingValue("includeFiles")).onChange(async (value) => {
+            await this.plugin.updateSettings({ includeFiles: value });
+        }));
+        new obsidian.Setting(this.containerEl)
+            .setName("Auto Refresh List?")
+            .addToggle((toggle) => {
+            toggle.setValue(this.plugin.getSettingValue("autoRefresh"));
+            toggle.onChange(async (value) => {
+                await this.plugin.updateSettings({ autoRefresh: value });
+            });
+        })
+            .setDesc('It\'s recommended to leave this on unless you are expereince performance issues due to a large vault. You can then reload manually using the "Checklist: refresh" command');
     }
 }
 
@@ -112,9 +170,32 @@ function is_empty(obj) {
 function null_to_empty(value) {
     return value == null ? '' : value;
 }
-
+function action_destroyer(action_result) {
+    return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
+}
 function append(target, node) {
     target.appendChild(node);
+}
+function append_styles(target, style_sheet_id, styles) {
+    const append_styles_to = get_root_for_style(target);
+    if (!append_styles_to.getElementById(style_sheet_id)) {
+        const style = element('style');
+        style.id = style_sheet_id;
+        style.textContent = styles;
+        append_stylesheet(append_styles_to, style);
+    }
+}
+function get_root_for_style(node) {
+    if (!node)
+        return document;
+    const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+    if (root && root.host) {
+        return root;
+    }
+    return node.ownerDocument;
+}
+function append_stylesheet(node, style) {
+    append(node.head || node, style);
 }
 function insert(target, node, anchor) {
     target.insertBefore(node, anchor || null);
@@ -147,6 +228,13 @@ function listen(node, event, handler, options) {
     node.addEventListener(event, handler, options);
     return () => node.removeEventListener(event, handler, options);
 }
+function prevent_default(fn) {
+    return function (event) {
+        event.preventDefault();
+        // @ts-ignore
+        return fn.call(this, event);
+    };
+}
 function attr(node, attribute, value) {
     if (value == null)
         node.removeAttribute(attribute);
@@ -161,13 +249,40 @@ function set_data(text, data) {
     if (text.wholeText !== data)
         text.data = data;
 }
+function set_input_value(input, value) {
+    input.value = value == null ? '' : value;
+}
 function toggle_class(element, name, toggle) {
     element.classList[toggle ? 'add' : 'remove'](name);
+}
+function custom_event(type, detail, bubbles = false) {
+    const e = document.createEvent('CustomEvent');
+    e.initCustomEvent(type, bubbles, false, detail);
+    return e;
 }
 
 let current_component;
 function set_current_component(component) {
     current_component = component;
+}
+function get_current_component() {
+    if (!current_component)
+        throw new Error('Function called outside component initialization');
+    return current_component;
+}
+function createEventDispatcher() {
+    const component = get_current_component();
+    return (type, detail) => {
+        const callbacks = component.$$.callbacks[type];
+        if (callbacks) {
+            // TODO are there situations where events could be dispatched
+            // in a server (non-DOM) environment?
+            const event = custom_event(type, detail);
+            callbacks.slice().forEach(fn => {
+                fn.call(component, event);
+            });
+        }
+    };
 }
 
 const dirty_components = [];
@@ -185,22 +300,40 @@ function schedule_update() {
 function add_render_callback(fn) {
     render_callbacks.push(fn);
 }
-let flushing = false;
+// flush() calls callbacks in this order:
+// 1. All beforeUpdate callbacks, in order: parents before children
+// 2. All bind:this callbacks, in reverse order: children before parents.
+// 3. All afterUpdate callbacks, in order: parents before children. EXCEPT
+//    for afterUpdates called during the initial onMount, which are called in
+//    reverse order: children before parents.
+// Since callbacks might update component values, which could trigger another
+// call to flush(), the following steps guard against this:
+// 1. During beforeUpdate, any updated components will be added to the
+//    dirty_components array and will cause a reentrant call to flush(). Because
+//    the flush index is kept outside the function, the reentrant call will pick
+//    up where the earlier call left off and go through all dirty components. The
+//    current_component value is saved and restored so that the reentrant call will
+//    not interfere with the "parent" flush() call.
+// 2. bind:this callbacks cannot trigger new flush() calls.
+// 3. During afterUpdate, any updated components will NOT have their afterUpdate
+//    callback called a second time; the seen_callbacks set, outside the flush()
+//    function, guarantees this behavior.
 const seen_callbacks = new Set();
+let flushidx = 0; // Do *not* move this inside the flush() function
 function flush() {
-    if (flushing)
-        return;
-    flushing = true;
+    const saved_component = current_component;
     do {
         // first, call beforeUpdate functions
         // and update components
-        for (let i = 0; i < dirty_components.length; i += 1) {
-            const component = dirty_components[i];
+        while (flushidx < dirty_components.length) {
+            const component = dirty_components[flushidx];
+            flushidx++;
             set_current_component(component);
             update(component.$$);
         }
         set_current_component(null);
         dirty_components.length = 0;
+        flushidx = 0;
         while (binding_callbacks.length)
             binding_callbacks.pop()();
         // then, once components are updated, call
@@ -220,8 +353,8 @@ function flush() {
         flush_callbacks.pop()();
     }
     update_scheduled = false;
-    flushing = false;
     seen_callbacks.clear();
+    set_current_component(saved_component);
 }
 function update($$) {
     if ($$.fragment !== null) {
@@ -312,7 +445,7 @@ function make_dirty(component, i) {
     }
     component.$$.dirty[(i / 31) | 0] |= (1 << (i % 31));
 }
-function init(component, options, instance, create_fragment, not_equal, props, dirty = [-1]) {
+function init(component, options, instance, create_fragment, not_equal, props, append_styles, dirty = [-1]) {
     const parent_component = current_component;
     set_current_component(component);
     const $$ = component.$$ = {
@@ -329,12 +462,14 @@ function init(component, options, instance, create_fragment, not_equal, props, d
         on_disconnect: [],
         before_update: [],
         after_update: [],
-        context: new Map(parent_component ? parent_component.$$.context : options.context || []),
+        context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
         // everything else
         callbacks: blank_object(),
         dirty,
-        skip_bound: false
+        skip_bound: false,
+        root: options.target || parent_component.$$.root
     };
+    append_styles && append_styles($$.root);
     let ready = false;
     $$.ctx = instance
         ? instance(component, options.props || {}, (i, ret, ...rest) => {
@@ -397,30 +532,148 @@ class SvelteComponent {
     }
 }
 
-/*! *****************************************************************************
-Copyright (c) Microsoft Corporation.
-
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted.
-
-THE SOFTWARE IS PROVIDED "AS IS" AND THE AUTHOR DISCLAIMS ALL WARRANTIES WITH
-REGARD TO THIS SOFTWARE INCLUDING ALL IMPLIED WARRANTIES OF MERCHANTABILITY
-AND FITNESS. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY SPECIAL, DIRECT,
-INDIRECT, OR CONSEQUENTIAL DAMAGES OR ANY DAMAGES WHATSOEVER RESULTING FROM
-LOSS OF USE, DATA OR PROFITS, WHETHER IN AN ACTION OF CONTRACT, NEGLIGENCE OR
-OTHER TORTIOUS ACTION, ARISING OUT OF OR IN CONNECTION WITH THE USE OR
-PERFORMANCE OF THIS SOFTWARE.
-***************************************************************************** */
-
-function __awaiter(thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
+const isMacOS = () => window.navigator.userAgent.includes("Macintosh");
+const classifyString = (str) => {
+    const sanitzedGroupName = (str !== null && str !== void 0 ? str : "").replace(/[^A-Za-z0-9]/g, "");
+    const dasherizedGroupName = sanitzedGroupName.replace(/^([A-Z])|[\s\._](\w)/g, function (_, p1, p2) {
+        if (p2)
+            return "-" + p2.toLowerCase();
+        return p1.toLowerCase();
     });
-}
+    return dasherizedGroupName;
+};
+const removeTagFromText = (text, tag) => {
+    if (!text)
+        return "";
+    if (!tag)
+        return text.trim();
+    return text.replace(new RegExp(`\\s?\\#${tag}[^\\s]*`, "g"), "").trim();
+};
+const getTagMeta = (tag) => {
+    const tagMatch = /^\#([^\/]+)\/?(.*)?$/.exec(tag);
+    if (!tagMatch)
+        return { main: null, sub: null };
+    const [full, main, sub] = tagMatch;
+    return { main, sub };
+};
+const mapLinkMeta = (linkMeta) => {
+    const map = new Map();
+    for (const link of linkMeta)
+        map.set(link.filePath, link);
+    return map;
+};
+const setLineTo = (line, setTo) => line.replace(/^(\s*([\-\*]|[0-9]+\.)\s\[)([^\]]+)(\].*$)/, `$1${setTo ? "x" : " "}$4`);
+const getAllLinesFromFile = (cache) => cache.split(/\r?\n/);
+const combineFileLines = (lines) => lines.join("\n");
+const lineIsValidTodo = (line) => {
+    return /^\s*([\-\*]|[0-9]+\.)\s\[(.{1})\]\s{1,4}\S+/.test(line);
+};
+const extractTextFromTodoLine = (line) => { var _a; return (_a = /^\s*([\-\*]|[0-9]+\.)\s\[(.{1})\]\s{1,4}(\S{1}.*)$/.exec(line)) === null || _a === void 0 ? void 0 : _a[3]; };
+const getIndentationSpacesFromTodoLine = (line) => { var _a, _b, _c; return (_c = (_b = (_a = /^(\s*)([\-\*]|[0-9]+\.)\s\[(.{1})\]\s{1,4}(\S+)/.exec(line)) === null || _a === void 0 ? void 0 : _a[1]) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0; };
+const todoLineIsChecked = (line) => /^\s*([\-\*]|[0-9]+\.)\s\[(\S{1})\]/.test(line);
+const getFileLabelFromName = (filename) => { var _a; return (_a = /^(.+)\.md$/.exec(filename)) === null || _a === void 0 ? void 0 : _a[1]; };
+const sortGenericItemsInplace = (items, direction, sortByNameKey, sortByTimeKey) => {
+    if (direction === "a->z")
+        items.sort((a, b) => a[sortByNameKey].localeCompare(b[sortByNameKey], navigator.language, LOCAL_SORT_OPT));
+    if (direction === "z->a")
+        items.sort((a, b) => b[sortByNameKey].localeCompare(a[sortByNameKey], navigator.language, LOCAL_SORT_OPT));
+    if (direction === "new->old")
+        items.sort((a, b) => b[sortByTimeKey] - a[sortByTimeKey]);
+    if (direction === "old->new")
+        items.sort((a, b) => a[sortByTimeKey] - b[sortByTimeKey]);
+};
+const ensureMdExtension = (path) => {
+    if (!/\.md$/.test(path))
+        return `${path}.md`;
+    return path;
+};
+const isMetaPressed = (e) => {
+    return isMacOS() ? e.metaKey : e.ctrlKey;
+};
+const getFrontmatterTags = (cache, todoTags = []) => {
+    var _a;
+    const frontMatterTags = (_a = obsidian.parseFrontMatterTags(cache === null || cache === void 0 ? void 0 : cache.frontmatter)) !== null && _a !== void 0 ? _a : [];
+    if (todoTags.length > 0)
+        return frontMatterTags.filter((tag) => todoTags.includes(getTagMeta(tag).main));
+    return frontMatterTags;
+};
+const getAllTagsFromMetadata = (cache) => {
+    var _a;
+    if (!cache)
+        return [];
+    const frontmatterTags = getFrontmatterTags(cache);
+    const blockTags = ((_a = cache.tags) !== null && _a !== void 0 ? _a : []).map((e) => e.tag);
+    return [...frontmatterTags, ...blockTags];
+};
+const getFileFromPath = (vault, path) => {
+    let file = vault.getAbstractFileByPath(path);
+    if (file instanceof obsidian.TFile)
+        return file;
+    const files = vault.getFiles();
+    file = files.find((e) => e.name === path);
+    if (file instanceof obsidian.TFile)
+        return file;
+};
+
+const navToFile = async (app, path, ev, line) => {
+    var _a, _b;
+    path = ensureMdExtension(path);
+    const file = getFileFromPath(app.vault, path);
+    if (!file)
+        return;
+    const leaf = isMetaPressed(ev) ? app.workspace.splitActiveLeaf() : app.workspace.getUnpinnedLeaf();
+    await leaf.openFile(file);
+    if (line) {
+        (_b = (_a = app.workspace.getActiveViewOfType(obsidian.MarkdownView)) === null || _a === void 0 ? void 0 : _a.currentMode) === null || _b === void 0 ? void 0 : _b.applyScroll(line);
+    }
+};
+
+const groupTodos = (items, groupBy, sortGroups, sortItems, subGroups, subGroupSort) => {
+    var _a, _b, _c;
+    const groups = [];
+    for (const item of items) {
+        const itemKey = groupBy === "page" ? item.filePath : `#${[item.mainTag, item.subTag].filter((e) => e != null).join("/")}`;
+        let group = groups.find((g) => g.id === itemKey);
+        if (!group) {
+            const newGroup = {
+                id: itemKey,
+                sortName: "",
+                className: "",
+                type: groupBy,
+                todos: [],
+                oldestItem: Infinity,
+                newestItem: 0,
+            };
+            if (newGroup.type === "page") {
+                newGroup.pageName = item.fileLabel;
+                newGroup.sortName = item.fileLabel;
+                newGroup.className = classifyString(item.fileLabel);
+            }
+            else if (newGroup.type === "tag") {
+                newGroup.mainTag = item.mainTag;
+                newGroup.subTags = item.subTag;
+                newGroup.sortName = item.mainTag + ((_a = item.subTag) !== null && _a !== void 0 ? _a : "0");
+                newGroup.className = classifyString(((_b = newGroup.mainTag) !== null && _b !== void 0 ? _b : "") + ((_c = newGroup.subTags) !== null && _c !== void 0 ? _c : ""));
+            }
+            groups.push(newGroup);
+            group = newGroup;
+        }
+        if (group.newestItem < item.fileCreatedTs)
+            group.newestItem = item.fileCreatedTs;
+        if (group.oldestItem > item.fileCreatedTs)
+            group.oldestItem = item.fileCreatedTs;
+        group.todos.push(item);
+    }
+    const nonEmptyGroups = groups.filter((g) => g.todos.length > 0);
+    sortGenericItemsInplace(nonEmptyGroups, sortGroups, "sortName", sortGroups === "new->old" ? "newestItem" : "oldestItem");
+    if (!subGroups)
+        for (const g of groups)
+            sortGenericItemsInplace(g.todos, sortItems, "originalText", "fileCreatedTs");
+    else
+        for (const g of nonEmptyGroups)
+            g.groups = groupTodos(g.todos, groupBy === "page" ? "tag" : "page", subGroupSort, sortItems, false, null);
+    return nonEmptyGroups;
+};
 
 function createCommonjsModule(fn, basedir, module) {
 	return module = {
@@ -4687,11 +4940,6 @@ var require$$0 = {
 	zwnj: zwnj
 };
 
-/*eslint quotes:0*/
-var entities = require$$0;
-
-var regex$4=/[!-#%-\*,-\/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166D\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4E\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD803[\uDF55-\uDF59]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC8\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDC4B-\uDC4F\uDC5B\uDC5D\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDE60-\uDE6C\uDF3C-\uDF3E]|\uD806[\uDC3B\uDE3F-\uDE46\uDE9A-\uDE9C\uDE9E-\uDEA2]|\uD807[\uDC41-\uDC45\uDC70\uDC71\uDEF7\uDEF8]|\uD809[\uDC70-\uDC74]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD81B[\uDE97-\uDE9A]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]|\uD83A[\uDD5E\uDD5F]/;
-
 var encodeCache = {};
 
 
@@ -5218,35 +5466,40 @@ Url.prototype.parseHost = function(host) {
   if (host) { this.hostname = host; }
 };
 
-var parse$1 = urlParse;
+var parse$2 = urlParse;
+
+var regex$4=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
+
+var regex$3=/[\0-\x1F\x7F-\x9F]/;
+
+var regex$2=/[\xAD\u0600-\u0605\u061C\u06DD\u070F\u08E2\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u206F\uFEFF\uFFF9-\uFFFB]|\uD804[\uDCBD\uDCCD]|\uD82F[\uDCA0-\uDCA3]|\uD834[\uDD73-\uDD7A]|\uDB40[\uDC01\uDC20-\uDC7F]/;
+
+var regex$1=/[!-#%-\*,-\/:;\?@\[-\]_\{\}\xA1\xA7\xAB\xB6\xB7\xBB\xBF\u037E\u0387\u055A-\u055F\u0589\u058A\u05BE\u05C0\u05C3\u05C6\u05F3\u05F4\u0609\u060A\u060C\u060D\u061B\u061E\u061F\u066A-\u066D\u06D4\u0700-\u070D\u07F7-\u07F9\u0830-\u083E\u085E\u0964\u0965\u0970\u09FD\u0A76\u0AF0\u0C84\u0DF4\u0E4F\u0E5A\u0E5B\u0F04-\u0F12\u0F14\u0F3A-\u0F3D\u0F85\u0FD0-\u0FD4\u0FD9\u0FDA\u104A-\u104F\u10FB\u1360-\u1368\u1400\u166D\u166E\u169B\u169C\u16EB-\u16ED\u1735\u1736\u17D4-\u17D6\u17D8-\u17DA\u1800-\u180A\u1944\u1945\u1A1E\u1A1F\u1AA0-\u1AA6\u1AA8-\u1AAD\u1B5A-\u1B60\u1BFC-\u1BFF\u1C3B-\u1C3F\u1C7E\u1C7F\u1CC0-\u1CC7\u1CD3\u2010-\u2027\u2030-\u2043\u2045-\u2051\u2053-\u205E\u207D\u207E\u208D\u208E\u2308-\u230B\u2329\u232A\u2768-\u2775\u27C5\u27C6\u27E6-\u27EF\u2983-\u2998\u29D8-\u29DB\u29FC\u29FD\u2CF9-\u2CFC\u2CFE\u2CFF\u2D70\u2E00-\u2E2E\u2E30-\u2E4E\u3001-\u3003\u3008-\u3011\u3014-\u301F\u3030\u303D\u30A0\u30FB\uA4FE\uA4FF\uA60D-\uA60F\uA673\uA67E\uA6F2-\uA6F7\uA874-\uA877\uA8CE\uA8CF\uA8F8-\uA8FA\uA8FC\uA92E\uA92F\uA95F\uA9C1-\uA9CD\uA9DE\uA9DF\uAA5C-\uAA5F\uAADE\uAADF\uAAF0\uAAF1\uABEB\uFD3E\uFD3F\uFE10-\uFE19\uFE30-\uFE52\uFE54-\uFE61\uFE63\uFE68\uFE6A\uFE6B\uFF01-\uFF03\uFF05-\uFF0A\uFF0C-\uFF0F\uFF1A\uFF1B\uFF1F\uFF20\uFF3B-\uFF3D\uFF3F\uFF5B\uFF5D\uFF5F-\uFF65]|\uD800[\uDD00-\uDD02\uDF9F\uDFD0]|\uD801\uDD6F|\uD802[\uDC57\uDD1F\uDD3F\uDE50-\uDE58\uDE7F\uDEF0-\uDEF6\uDF39-\uDF3F\uDF99-\uDF9C]|\uD803[\uDF55-\uDF59]|\uD804[\uDC47-\uDC4D\uDCBB\uDCBC\uDCBE-\uDCC1\uDD40-\uDD43\uDD74\uDD75\uDDC5-\uDDC8\uDDCD\uDDDB\uDDDD-\uDDDF\uDE38-\uDE3D\uDEA9]|\uD805[\uDC4B-\uDC4F\uDC5B\uDC5D\uDCC6\uDDC1-\uDDD7\uDE41-\uDE43\uDE60-\uDE6C\uDF3C-\uDF3E]|\uD806[\uDC3B\uDE3F-\uDE46\uDE9A-\uDE9C\uDE9E-\uDEA2]|\uD807[\uDC41-\uDC45\uDC70\uDC71\uDEF7\uDEF8]|\uD809[\uDC70-\uDC74]|\uD81A[\uDE6E\uDE6F\uDEF5\uDF37-\uDF3B\uDF44]|\uD81B[\uDE97-\uDE9A]|\uD82F\uDC9F|\uD836[\uDE87-\uDE8B]|\uD83A[\uDD5E\uDD5F]/;
+
+var regex=/[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]/;
+
+/*eslint quotes:0*/
+var entities = require$$0;
 
 var encode = encode_1;
 var decode = decode_1;
 var format = format$1;
-var parse  = parse$1;
+var parse$1  = parse$2;
 
-var mdurl = {
+var D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl = {
 	encode: encode,
 	decode: decode,
 	format: format,
-	parse: parse
+	parse: parse$1
 };
 
-var regex$3=/[\0-\uD7FF\uE000-\uFFFF]|[\uD800-\uDBFF][\uDC00-\uDFFF]|[\uD800-\uDBFF](?![\uDC00-\uDFFF])|(?:[^\uD800-\uDBFF]|^)[\uDC00-\uDFFF]/;
-
-var regex$2=/[\0-\x1F\x7F-\x9F]/;
-
-var regex$1=/[\xAD\u0600-\u0605\u061C\u06DD\u070F\u08E2\u180E\u200B-\u200F\u202A-\u202E\u2060-\u2064\u2066-\u206F\uFEFF\uFFF9-\uFFFB]|\uD804[\uDCBD\uDCCD]|\uD82F[\uDCA0-\uDCA3]|\uD834[\uDD73-\uDD7A]|\uDB40[\uDC01\uDC20-\uDC7F]/;
-
-var regex=/[ \xA0\u1680\u2000-\u200A\u2028\u2029\u202F\u205F\u3000]/;
-
-var Any = regex$3;
-var Cc  = regex$2;
-var Cf  = regex$1;
-var P   = regex$4;
+var Any = regex$4;
+var Cc  = regex$3;
+var Cf  = regex$2;
+var P   = regex$1;
 var Z   = regex;
 
-var uc_micro = {
+var D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_uc_micro = {
 	Any: Any,
 	Cc: Cc,
 	Cf: Cf,
@@ -5254,7 +5507,7 @@ var uc_micro = {
 	Z: Z
 };
 
-var utils$1 = createCommonjsModule(function (module, exports) {
+createCommonjsModule(function (module, exports) {
 
 
 function _class(obj) { return Object.prototype.toString.call(obj); }
@@ -5440,7 +5693,7 @@ function isWhiteSpace(code) {
 
 // Currently without astral characters support.
 function isPunctChar(ch) {
-  return regex$4.test(ch);
+  return regex$1.test(ch);
 }
 
 
@@ -5550,8 +5803,8 @@ function normalizeReference(str) {
 // bundled size (e.g. a browser build).
 //
 exports.lib                 = {};
-exports.lib.mdurl           = mdurl;
-exports.lib.ucmicro         = uc_micro;
+exports.lib.mdurl           = D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl;
+exports.lib.ucmicro         = D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_uc_micro;
 
 exports.assign              = assign;
 exports.isString            = isString;
@@ -5570,6 +5823,327 @@ exports.isPunctChar         = isPunctChar;
 exports.escapeRE            = escapeRE;
 exports.normalizeReference  = normalizeReference;
 });
+
+var utils$2 = createCommonjsModule(function (module, exports) {
+
+
+function _class(obj) { return Object.prototype.toString.call(obj); }
+
+function isString(obj) { return _class(obj) === '[object String]'; }
+
+var _hasOwnProperty = Object.prototype.hasOwnProperty;
+
+function has(object, key) {
+  return _hasOwnProperty.call(object, key);
+}
+
+// Merge objects
+//
+function assign(obj /*from1, from2, from3, ...*/) {
+  var sources = Array.prototype.slice.call(arguments, 1);
+
+  sources.forEach(function (source) {
+    if (!source) { return; }
+
+    if (typeof source !== 'object') {
+      throw new TypeError(source + 'must be object');
+    }
+
+    Object.keys(source).forEach(function (key) {
+      obj[key] = source[key];
+    });
+  });
+
+  return obj;
+}
+
+// Remove element from array and put another array at those position.
+// Useful for some operations with tokens
+function arrayReplaceAt(src, pos, newElements) {
+  return [].concat(src.slice(0, pos), newElements, src.slice(pos + 1));
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+function isValidEntityCode(c) {
+  /*eslint no-bitwise:0*/
+  // broken sequence
+  if (c >= 0xD800 && c <= 0xDFFF) { return false; }
+  // never used
+  if (c >= 0xFDD0 && c <= 0xFDEF) { return false; }
+  if ((c & 0xFFFF) === 0xFFFF || (c & 0xFFFF) === 0xFFFE) { return false; }
+  // control codes
+  if (c >= 0x00 && c <= 0x08) { return false; }
+  if (c === 0x0B) { return false; }
+  if (c >= 0x0E && c <= 0x1F) { return false; }
+  if (c >= 0x7F && c <= 0x9F) { return false; }
+  // out of range
+  if (c > 0x10FFFF) { return false; }
+  return true;
+}
+
+function fromCodePoint(c) {
+  /*eslint no-bitwise:0*/
+  if (c > 0xffff) {
+    c -= 0x10000;
+    var surrogate1 = 0xd800 + (c >> 10),
+        surrogate2 = 0xdc00 + (c & 0x3ff);
+
+    return String.fromCharCode(surrogate1, surrogate2);
+  }
+  return String.fromCharCode(c);
+}
+
+
+var UNESCAPE_MD_RE  = /\\([!"#$%&'()*+,\-.\/:;<=>?@[\\\]^_`{|}~])/g;
+var ENTITY_RE       = /&([a-z#][a-z0-9]{1,31});/gi;
+var UNESCAPE_ALL_RE = new RegExp(UNESCAPE_MD_RE.source + '|' + ENTITY_RE.source, 'gi');
+
+var DIGITAL_ENTITY_TEST_RE = /^#((?:x[a-f0-9]{1,8}|[0-9]{1,8}))/i;
+
+
+
+function replaceEntityPattern(match, name) {
+  var code = 0;
+
+  if (has(entities, name)) {
+    return entities[name];
+  }
+
+  if (name.charCodeAt(0) === 0x23/* # */ && DIGITAL_ENTITY_TEST_RE.test(name)) {
+    code = name[1].toLowerCase() === 'x' ?
+      parseInt(name.slice(2), 16) : parseInt(name.slice(1), 10);
+
+    if (isValidEntityCode(code)) {
+      return fromCodePoint(code);
+    }
+  }
+
+  return match;
+}
+
+/*function replaceEntities(str) {
+  if (str.indexOf('&') < 0) { return str; }
+
+  return str.replace(ENTITY_RE, replaceEntityPattern);
+}*/
+
+function unescapeMd(str) {
+  if (str.indexOf('\\') < 0) { return str; }
+  return str.replace(UNESCAPE_MD_RE, '$1');
+}
+
+function unescapeAll(str) {
+  if (str.indexOf('\\') < 0 && str.indexOf('&') < 0) { return str; }
+
+  return str.replace(UNESCAPE_ALL_RE, function (match, escaped, entity) {
+    if (escaped) { return escaped; }
+    return replaceEntityPattern(match, entity);
+  });
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+var HTML_ESCAPE_TEST_RE = /[&<>"]/;
+var HTML_ESCAPE_REPLACE_RE = /[&<>"]/g;
+var HTML_REPLACEMENTS = {
+  '&': '&amp;',
+  '<': '&lt;',
+  '>': '&gt;',
+  '"': '&quot;'
+};
+
+function replaceUnsafeChar(ch) {
+  return HTML_REPLACEMENTS[ch];
+}
+
+function escapeHtml(str) {
+  if (HTML_ESCAPE_TEST_RE.test(str)) {
+    return str.replace(HTML_ESCAPE_REPLACE_RE, replaceUnsafeChar);
+  }
+  return str;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+var REGEXP_ESCAPE_RE = /[.?*+^$[\]\\(){}|-]/g;
+
+function escapeRE(str) {
+  return str.replace(REGEXP_ESCAPE_RE, '\\$&');
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+function isSpace(code) {
+  switch (code) {
+    case 0x09:
+    case 0x20:
+      return true;
+  }
+  return false;
+}
+
+// Zs (unicode class) || [\t\f\v\r\n]
+function isWhiteSpace(code) {
+  if (code >= 0x2000 && code <= 0x200A) { return true; }
+  switch (code) {
+    case 0x09: // \t
+    case 0x0A: // \n
+    case 0x0B: // \v
+    case 0x0C: // \f
+    case 0x0D: // \r
+    case 0x20:
+    case 0xA0:
+    case 0x1680:
+    case 0x202F:
+    case 0x205F:
+    case 0x3000:
+      return true;
+  }
+  return false;
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+/*eslint-disable max-len*/
+
+
+// Currently without astral characters support.
+function isPunctChar(ch) {
+  return regex$1.test(ch);
+}
+
+
+// Markdown ASCII punctuation characters.
+//
+// !, ", #, $, %, &, ', (, ), *, +, ,, -, ., /, :, ;, <, =, >, ?, @, [, \, ], ^, _, `, {, |, }, or ~
+// http://spec.commonmark.org/0.15/#ascii-punctuation-character
+//
+// Don't confuse with unicode punctuation !!! It lacks some chars in ascii range.
+//
+function isMdAsciiPunct(ch) {
+  switch (ch) {
+    case 0x21/* ! */:
+    case 0x22/* " */:
+    case 0x23/* # */:
+    case 0x24/* $ */:
+    case 0x25/* % */:
+    case 0x26/* & */:
+    case 0x27/* ' */:
+    case 0x28/* ( */:
+    case 0x29/* ) */:
+    case 0x2A/* * */:
+    case 0x2B/* + */:
+    case 0x2C/* , */:
+    case 0x2D/* - */:
+    case 0x2E/* . */:
+    case 0x2F/* / */:
+    case 0x3A/* : */:
+    case 0x3B/* ; */:
+    case 0x3C/* < */:
+    case 0x3D/* = */:
+    case 0x3E/* > */:
+    case 0x3F/* ? */:
+    case 0x40/* @ */:
+    case 0x5B/* [ */:
+    case 0x5C/* \ */:
+    case 0x5D/* ] */:
+    case 0x5E/* ^ */:
+    case 0x5F/* _ */:
+    case 0x60/* ` */:
+    case 0x7B/* { */:
+    case 0x7C/* | */:
+    case 0x7D/* } */:
+    case 0x7E/* ~ */:
+      return true;
+    default:
+      return false;
+  }
+}
+
+// Hepler to unify [reference labels].
+//
+function normalizeReference(str) {
+  // Trim and collapse whitespace
+  //
+  str = str.trim().replace(/\s+/g, ' ');
+
+  // In node v10 'ẞ'.toLowerCase() === 'Ṿ', which is presumed to be a bug
+  // fixed in v12 (couldn't find any details).
+  //
+  // So treat this one as a special case
+  // (remove this when node v10 is no longer supported).
+  //
+  if ('ẞ'.toLowerCase() === 'Ṿ') {
+    str = str.replace(/ẞ/g, 'ß');
+  }
+
+  // .toLowerCase().toUpperCase() should get rid of all differences
+  // between letter variants.
+  //
+  // Simple .toLowerCase() doesn't normalize 125 code points correctly,
+  // and .toUpperCase doesn't normalize 6 of them (list of exceptions:
+  // İ, ϴ, ẞ, Ω, K, Å - those are already uppercased, but have differently
+  // uppercased versions).
+  //
+  // Here's an example showing how it happens. Lets take greek letter omega:
+  // uppercase U+0398 (Θ), U+03f4 (ϴ) and lowercase U+03b8 (θ), U+03d1 (ϑ)
+  //
+  // Unicode entries:
+  // 0398;GREEK CAPITAL LETTER THETA;Lu;0;L;;;;;N;;;;03B8;
+  // 03B8;GREEK SMALL LETTER THETA;Ll;0;L;;;;;N;;;0398;;0398
+  // 03D1;GREEK THETA SYMBOL;Ll;0;L;<compat> 03B8;;;;N;GREEK SMALL LETTER SCRIPT THETA;;0398;;0398
+  // 03F4;GREEK CAPITAL THETA SYMBOL;Lu;0;L;<compat> 0398;;;;N;;;;03B8;
+  //
+  // Case-insensitive comparison should treat all of them as equivalent.
+  //
+  // But .toLowerCase() doesn't change ϑ (it's already lowercase),
+  // and .toUpperCase() doesn't change ϴ (already uppercase).
+  //
+  // Applying first lower then upper case normalizes any character:
+  // '\u0398\u03f4\u03b8\u03d1'.toLowerCase().toUpperCase() === '\u0398\u0398\u0398\u0398'
+  //
+  // Note: this is equivalent to unicode case folding; unicode normalization
+  // is a different step that is not required here.
+  //
+  // Final result should be uppercased, because it's later stored in an object
+  // (this avoid a conflict with Object.prototype members,
+  // most notably, `__proto__`)
+  //
+  return str.toLowerCase().toUpperCase();
+}
+
+////////////////////////////////////////////////////////////////////////////////
+
+// Re-export libraries commonly used in both markdown-it and its plugins,
+// so plugins won't have to depend on them explicitly, which reduces their
+// bundled size (e.g. a browser build).
+//
+exports.lib                 = {};
+exports.lib.mdurl           = D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl;
+exports.lib.ucmicro         = D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_uc_micro;
+
+exports.assign              = assign;
+exports.isString            = isString;
+exports.has                 = has;
+exports.unescapeMd          = unescapeMd;
+exports.unescapeAll         = unescapeAll;
+exports.isValidEntityCode   = isValidEntityCode;
+exports.fromCodePoint       = fromCodePoint;
+// exports.replaceEntities     = replaceEntities;
+exports.escapeHtml          = escapeHtml;
+exports.arrayReplaceAt      = arrayReplaceAt;
+exports.isSpace             = isSpace;
+exports.isWhiteSpace        = isWhiteSpace;
+exports.isMdAsciiPunct      = isMdAsciiPunct;
+exports.isPunctChar         = isPunctChar;
+exports.escapeRE            = escapeRE;
+exports.normalizeReference  = normalizeReference;
+});
+
+utils$2.unescapeAll;
+
+utils$2.unescapeAll;
 
 // Parse link label
 
@@ -5615,7 +6189,7 @@ var parse_link_label = function parseLinkLabel(state, start, disableNested) {
   return labelEnd;
 };
 
-var unescapeAll$2 = utils$1.unescapeAll;
+var unescapeAll$2 = utils$2.unescapeAll;
 
 
 var parse_link_destination = function parseLinkDestination(str, pos, max) {
@@ -5693,7 +6267,7 @@ var parse_link_destination = function parseLinkDestination(str, pos, max) {
   return result;
 };
 
-var unescapeAll$1 = utils$1.unescapeAll;
+var unescapeAll$1 = utils$2.unescapeAll;
 
 
 var parse_link_title = function parseLinkTitle(str, pos, max) {
@@ -5744,347 +6318,215 @@ var parse_link_title = function parseLinkTitle(str, pos, max) {
   return result;
 };
 
-var parseLinkLabel       = parse_link_label;
-var parseLinkDestination = parse_link_destination;
-var parseLinkTitle       = parse_link_title;
+utils$2.assign;
+utils$2.unescapeAll;
+utils$2.escapeHtml;
 
-var helpers = {
-	parseLinkLabel: parseLinkLabel,
-	parseLinkDestination: parseLinkDestination,
-	parseLinkTitle: parseLinkTitle
-};
+utils$2.arrayReplaceAt;
 
-var assign$1          = utils$1.assign;
-var unescapeAll     = utils$1.unescapeAll;
-var escapeHtml      = utils$1.escapeHtml;
+utils$2.isWhiteSpace;
+utils$2.isPunctChar;
+utils$2.isMdAsciiPunct;
 
-
-////////////////////////////////////////////////////////////////////////////////
-
-var default_rules = {};
-
-
-default_rules.code_inline = function (tokens, idx, options, env, slf) {
-  var token = tokens[idx];
-
-  return  '<code' + slf.renderAttrs(token) + '>' +
-          escapeHtml(tokens[idx].content) +
-          '</code>';
-};
-
-
-default_rules.code_block = function (tokens, idx, options, env, slf) {
-  var token = tokens[idx];
-
-  return  '<pre' + slf.renderAttrs(token) + '><code>' +
-          escapeHtml(tokens[idx].content) +
-          '</code></pre>\n';
-};
-
-
-default_rules.fence = function (tokens, idx, options, env, slf) {
-  var token = tokens[idx],
-      info = token.info ? unescapeAll(token.info).trim() : '',
-      langName = '',
-      langAttrs = '',
-      highlighted, i, arr, tmpAttrs, tmpToken;
-
-  if (info) {
-    arr = info.split(/(\s+)/g);
-    langName = arr[0];
-    langAttrs = arr.slice(2).join('');
-  }
-
-  if (options.highlight) {
-    highlighted = options.highlight(token.content, langName, langAttrs) || escapeHtml(token.content);
-  } else {
-    highlighted = escapeHtml(token.content);
-  }
-
-  if (highlighted.indexOf('<pre') === 0) {
-    return highlighted + '\n';
-  }
-
-  // If language exists, inject class gently, without modifying original token.
-  // May be, one day we will add .deepClone() for token and simplify this part, but
-  // now we prefer to keep things local.
-  if (info) {
-    i        = token.attrIndex('class');
-    tmpAttrs = token.attrs ? token.attrs.slice() : [];
-
-    if (i < 0) {
-      tmpAttrs.push([ 'class', options.langPrefix + langName ]);
-    } else {
-      tmpAttrs[i] = tmpAttrs[i].slice();
-      tmpAttrs[i][1] += ' ' + options.langPrefix + langName;
-    }
-
-    // Fake token just to render attributes
-    tmpToken = {
-      attrs: tmpAttrs
-    };
-
-    return  '<pre><code' + slf.renderAttrs(tmpToken) + '>'
-          + highlighted
-          + '</code></pre>\n';
-  }
-
-
-  return  '<pre><code' + slf.renderAttrs(token) + '>'
-        + highlighted
-        + '</code></pre>\n';
-};
-
-
-default_rules.image = function (tokens, idx, options, env, slf) {
-  var token = tokens[idx];
-
-  // "alt" attr MUST be set, even if empty. Because it's mandatory and
-  // should be placed on proper position for tests.
-  //
-  // Replace content with actual value
-
-  token.attrs[token.attrIndex('alt')][1] =
-    slf.renderInlineAsText(token.children, options, env);
-
-  return slf.renderToken(tokens, idx, options);
-};
-
-
-default_rules.hardbreak = function (tokens, idx, options /*, env */) {
-  return options.xhtmlOut ? '<br />\n' : '<br>\n';
-};
-default_rules.softbreak = function (tokens, idx, options /*, env */) {
-  return options.breaks ? (options.xhtmlOut ? '<br />\n' : '<br>\n') : '\n';
-};
-
-
-default_rules.text = function (tokens, idx /*, options, env */) {
-  return escapeHtml(tokens[idx].content);
-};
-
-
-default_rules.html_block = function (tokens, idx /*, options, env */) {
-  return tokens[idx].content;
-};
-default_rules.html_inline = function (tokens, idx /*, options, env */) {
-  return tokens[idx].content;
-};
+// Token class
 
 
 /**
- * new Renderer()
- *
- * Creates new [[Renderer]] instance and fill [[Renderer#rules]] with defaults.
+ * class Token
  **/
-function Renderer() {
+
+/**
+ * new Token(type, tag, nesting)
+ *
+ * Create new token and fill passed properties.
+ **/
+function Token(type, tag, nesting) {
+  /**
+   * Token#type -> String
+   *
+   * Type of the token (string, e.g. "paragraph_open")
+   **/
+  this.type     = type;
 
   /**
-   * Renderer#rules -> Object
+   * Token#tag -> String
    *
-   * Contains render rules for tokens. Can be updated and extended.
-   *
-   * ##### Example
-   *
-   * ```javascript
-   * var md = require('markdown-it')();
-   *
-   * md.renderer.rules.strong_open  = function () { return '<b>'; };
-   * md.renderer.rules.strong_close = function () { return '</b>'; };
-   *
-   * var result = md.renderInline(...);
-   * ```
-   *
-   * Each rule is called as independent static function with fixed signature:
-   *
-   * ```javascript
-   * function my_token_render(tokens, idx, options, env, renderer) {
-   *   // ...
-   *   return renderedHTML;
-   * }
-   * ```
-   *
-   * See [source code](https://github.com/markdown-it/markdown-it/blob/master/lib/renderer.js)
-   * for more details and examples.
+   * html tag name, e.g. "p"
    **/
-  this.rules = assign$1({}, default_rules);
+  this.tag      = tag;
+
+  /**
+   * Token#attrs -> Array
+   *
+   * Html attributes. Format: `[ [ name1, value1 ], [ name2, value2 ] ]`
+   **/
+  this.attrs    = null;
+
+  /**
+   * Token#map -> Array
+   *
+   * Source map info. Format: `[ line_begin, line_end ]`
+   **/
+  this.map      = null;
+
+  /**
+   * Token#nesting -> Number
+   *
+   * Level change (number in {-1, 0, 1} set), where:
+   *
+   * -  `1` means the tag is opening
+   * -  `0` means the tag is self-closing
+   * - `-1` means the tag is closing
+   **/
+  this.nesting  = nesting;
+
+  /**
+   * Token#level -> Number
+   *
+   * nesting level, the same as `state.level`
+   **/
+  this.level    = 0;
+
+  /**
+   * Token#children -> Array
+   *
+   * An array of child nodes (inline and img tokens)
+   **/
+  this.children = null;
+
+  /**
+   * Token#content -> String
+   *
+   * In a case of self-closing tag (code, html, fence, etc.),
+   * it has contents of this tag.
+   **/
+  this.content  = '';
+
+  /**
+   * Token#markup -> String
+   *
+   * '*' or '_' for emphasis, fence string for fence, etc.
+   **/
+  this.markup   = '';
+
+  /**
+   * Token#info -> String
+   *
+   * Additional information:
+   *
+   * - Info string for "fence" tokens
+   * - The value "auto" for autolink "link_open" and "link_close" tokens
+   * - The string value of the item marker for ordered-list "list_item_open" tokens
+   **/
+  this.info     = '';
+
+  /**
+   * Token#meta -> Object
+   *
+   * A place for plugins to store an arbitrary data
+   **/
+  this.meta     = null;
+
+  /**
+   * Token#block -> Boolean
+   *
+   * True for block-level tokens, false for inline tokens.
+   * Used in renderer to calculate line breaks
+   **/
+  this.block    = false;
+
+  /**
+   * Token#hidden -> Boolean
+   *
+   * If it's true, ignore this element when rendering. Used for tight lists
+   * to hide paragraphs.
+   **/
+  this.hidden   = false;
 }
 
 
 /**
- * Renderer.renderAttrs(token) -> String
+ * Token.attrIndex(name) -> Number
  *
- * Render token attributes to string.
+ * Search attribute index by name.
  **/
-Renderer.prototype.renderAttrs = function renderAttrs(token) {
-  var i, l, result;
+Token.prototype.attrIndex = function attrIndex(name) {
+  var attrs, i, len;
 
-  if (!token.attrs) { return ''; }
+  if (!this.attrs) { return -1; }
 
-  result = '';
+  attrs = this.attrs;
 
-  for (i = 0, l = token.attrs.length; i < l; i++) {
-    result += ' ' + escapeHtml(token.attrs[i][0]) + '="' + escapeHtml(token.attrs[i][1]) + '"';
+  for (i = 0, len = attrs.length; i < len; i++) {
+    if (attrs[i][0] === name) { return i; }
   }
-
-  return result;
+  return -1;
 };
 
 
 /**
- * Renderer.renderToken(tokens, idx, options) -> String
- * - tokens (Array): list of tokens
- * - idx (Numbed): token index to render
- * - options (Object): params of parser instance
+ * Token.attrPush(attrData)
  *
- * Default token renderer. Can be overriden by custom function
- * in [[Renderer#rules]].
+ * Add `[ name, value ]` attribute to list. Init attrs if necessary
  **/
-Renderer.prototype.renderToken = function renderToken(tokens, idx, options) {
-  var nextToken,
-      result = '',
-      needLf = false,
-      token = tokens[idx];
-
-  // Tight list paragraphs
-  if (token.hidden) {
-    return '';
+Token.prototype.attrPush = function attrPush(attrData) {
+  if (this.attrs) {
+    this.attrs.push(attrData);
+  } else {
+    this.attrs = [ attrData ];
   }
-
-  // Insert a newline between hidden paragraph and subsequent opening
-  // block-level tag.
-  //
-  // For example, here we should insert a newline before blockquote:
-  //  - a
-  //    >
-  //
-  if (token.block && token.nesting !== -1 && idx && tokens[idx - 1].hidden) {
-    result += '\n';
-  }
-
-  // Add token name, e.g. `<img`
-  result += (token.nesting === -1 ? '</' : '<') + token.tag;
-
-  // Encode attributes, e.g. `<img src="foo"`
-  result += this.renderAttrs(token);
-
-  // Add a slash for self-closing tags, e.g. `<img src="foo" /`
-  if (token.nesting === 0 && options.xhtmlOut) {
-    result += ' /';
-  }
-
-  // Check if we need to add a newline after this tag
-  if (token.block) {
-    needLf = true;
-
-    if (token.nesting === 1) {
-      if (idx + 1 < tokens.length) {
-        nextToken = tokens[idx + 1];
-
-        if (nextToken.type === 'inline' || nextToken.hidden) {
-          // Block-level tag containing an inline tag.
-          //
-          needLf = false;
-
-        } else if (nextToken.nesting === -1 && nextToken.tag === token.tag) {
-          // Opening tag + closing tag of the same type. E.g. `<li></li>`.
-          //
-          needLf = false;
-        }
-      }
-    }
-  }
-
-  result += needLf ? '>\n' : '>';
-
-  return result;
 };
 
 
 /**
- * Renderer.renderInline(tokens, options, env) -> String
- * - tokens (Array): list on block tokens to renter
- * - options (Object): params of parser instance
- * - env (Object): additional data from parsed input (references, for example)
+ * Token.attrSet(name, value)
  *
- * The same as [[Renderer.render]], but for single token of `inline` type.
+ * Set `name` attribute to `value`. Override old value if exists.
  **/
-Renderer.prototype.renderInline = function (tokens, options, env) {
-  var type,
-      result = '',
-      rules = this.rules;
+Token.prototype.attrSet = function attrSet(name, value) {
+  var idx = this.attrIndex(name),
+      attrData = [ name, value ];
 
-  for (var i = 0, len = tokens.length; i < len; i++) {
-    type = tokens[i].type;
-
-    if (typeof rules[type] !== 'undefined') {
-      result += rules[type](tokens, i, options, env, this);
-    } else {
-      result += this.renderToken(tokens, i, options);
-    }
+  if (idx < 0) {
+    this.attrPush(attrData);
+  } else {
+    this.attrs[idx] = attrData;
   }
-
-  return result;
-};
-
-
-/** internal
- * Renderer.renderInlineAsText(tokens, options, env) -> String
- * - tokens (Array): list on block tokens to renter
- * - options (Object): params of parser instance
- * - env (Object): additional data from parsed input (references, for example)
- *
- * Special kludge for image `alt` attributes to conform CommonMark spec.
- * Don't try to use it! Spec requires to show `alt` content with stripped markup,
- * instead of simple escaping.
- **/
-Renderer.prototype.renderInlineAsText = function (tokens, options, env) {
-  var result = '';
-
-  for (var i = 0, len = tokens.length; i < len; i++) {
-    if (tokens[i].type === 'text') {
-      result += tokens[i].content;
-    } else if (tokens[i].type === 'image') {
-      result += this.renderInlineAsText(tokens[i].children, options, env);
-    } else if (tokens[i].type === 'softbreak') {
-      result += '\n';
-    }
-  }
-
-  return result;
 };
 
 
 /**
- * Renderer.render(tokens, options, env) -> String
- * - tokens (Array): list on block tokens to renter
- * - options (Object): params of parser instance
- * - env (Object): additional data from parsed input (references, for example)
+ * Token.attrGet(name)
  *
- * Takes token stream and generates HTML. Probably, you will never need to call
- * this method directly.
+ * Get the value of attribute `name`, or null if it does not exist.
  **/
-Renderer.prototype.render = function (tokens, options, env) {
-  var i, len, type,
-      result = '',
-      rules = this.rules;
-
-  for (i = 0, len = tokens.length; i < len; i++) {
-    type = tokens[i].type;
-
-    if (type === 'inline') {
-      result += this.renderInline(tokens[i].children, options, env);
-    } else if (typeof rules[type] !== 'undefined') {
-      result += rules[tokens[i].type](tokens, i, options, env, this);
-    } else {
-      result += this.renderToken(tokens, i, options, env);
-    }
+Token.prototype.attrGet = function attrGet(name) {
+  var idx = this.attrIndex(name), value = null;
+  if (idx >= 0) {
+    value = this.attrs[idx][1];
   }
-
-  return result;
+  return value;
 };
 
-var renderer = Renderer;
+
+/**
+ * Token.attrJoin(name, value)
+ *
+ * Join value to existing attribute via space. Or create new attribute if not
+ * exists. Useful to operate with token classes.
+ **/
+Token.prototype.attrJoin = function attrJoin(name, value) {
+  var idx = this.attrIndex(name);
+
+  if (idx < 0) {
+    this.attrPush([ name, value ]);
+  } else {
+    this.attrs[idx][1] = this.attrs[idx][1] + ' ' + value;
+  }
+};
+
+
+var token = Token;
 
 /**
  * class Ruler
@@ -6484,7 +6926,7 @@ var inline = function inline(state) {
   }
 };
 
-var arrayReplaceAt = utils$1.arrayReplaceAt;
+var arrayReplaceAt = utils$2.arrayReplaceAt;
 
 
 function isLinkOpen(str) {
@@ -6708,9 +7150,9 @@ var replacements = function replace(state) {
   }
 };
 
-var isWhiteSpace$1   = utils$1.isWhiteSpace;
-var isPunctChar$1    = utils$1.isPunctChar;
-var isMdAsciiPunct$1 = utils$1.isMdAsciiPunct;
+var isWhiteSpace$1   = utils$2.isWhiteSpace;
+var isPunctChar$1    = utils$2.isPunctChar;
+var isMdAsciiPunct$1 = utils$2.isMdAsciiPunct;
 
 var QUOTE_TEST_RE = /['"]/;
 var QUOTE_RE = /['"]/g;
@@ -6905,205 +7347,6 @@ var smartquotes = function smartquotes(state) {
   }
 };
 
-// Token class
-
-
-/**
- * class Token
- **/
-
-/**
- * new Token(type, tag, nesting)
- *
- * Create new token and fill passed properties.
- **/
-function Token(type, tag, nesting) {
-  /**
-   * Token#type -> String
-   *
-   * Type of the token (string, e.g. "paragraph_open")
-   **/
-  this.type     = type;
-
-  /**
-   * Token#tag -> String
-   *
-   * html tag name, e.g. "p"
-   **/
-  this.tag      = tag;
-
-  /**
-   * Token#attrs -> Array
-   *
-   * Html attributes. Format: `[ [ name1, value1 ], [ name2, value2 ] ]`
-   **/
-  this.attrs    = null;
-
-  /**
-   * Token#map -> Array
-   *
-   * Source map info. Format: `[ line_begin, line_end ]`
-   **/
-  this.map      = null;
-
-  /**
-   * Token#nesting -> Number
-   *
-   * Level change (number in {-1, 0, 1} set), where:
-   *
-   * -  `1` means the tag is opening
-   * -  `0` means the tag is self-closing
-   * - `-1` means the tag is closing
-   **/
-  this.nesting  = nesting;
-
-  /**
-   * Token#level -> Number
-   *
-   * nesting level, the same as `state.level`
-   **/
-  this.level    = 0;
-
-  /**
-   * Token#children -> Array
-   *
-   * An array of child nodes (inline and img tokens)
-   **/
-  this.children = null;
-
-  /**
-   * Token#content -> String
-   *
-   * In a case of self-closing tag (code, html, fence, etc.),
-   * it has contents of this tag.
-   **/
-  this.content  = '';
-
-  /**
-   * Token#markup -> String
-   *
-   * '*' or '_' for emphasis, fence string for fence, etc.
-   **/
-  this.markup   = '';
-
-  /**
-   * Token#info -> String
-   *
-   * Additional information:
-   *
-   * - Info string for "fence" tokens
-   * - The value "auto" for autolink "link_open" and "link_close" tokens
-   **/
-  this.info     = '';
-
-  /**
-   * Token#meta -> Object
-   *
-   * A place for plugins to store an arbitrary data
-   **/
-  this.meta     = null;
-
-  /**
-   * Token#block -> Boolean
-   *
-   * True for block-level tokens, false for inline tokens.
-   * Used in renderer to calculate line breaks
-   **/
-  this.block    = false;
-
-  /**
-   * Token#hidden -> Boolean
-   *
-   * If it's true, ignore this element when rendering. Used for tight lists
-   * to hide paragraphs.
-   **/
-  this.hidden   = false;
-}
-
-
-/**
- * Token.attrIndex(name) -> Number
- *
- * Search attribute index by name.
- **/
-Token.prototype.attrIndex = function attrIndex(name) {
-  var attrs, i, len;
-
-  if (!this.attrs) { return -1; }
-
-  attrs = this.attrs;
-
-  for (i = 0, len = attrs.length; i < len; i++) {
-    if (attrs[i][0] === name) { return i; }
-  }
-  return -1;
-};
-
-
-/**
- * Token.attrPush(attrData)
- *
- * Add `[ name, value ]` attribute to list. Init attrs if necessary
- **/
-Token.prototype.attrPush = function attrPush(attrData) {
-  if (this.attrs) {
-    this.attrs.push(attrData);
-  } else {
-    this.attrs = [ attrData ];
-  }
-};
-
-
-/**
- * Token.attrSet(name, value)
- *
- * Set `name` attribute to `value`. Override old value if exists.
- **/
-Token.prototype.attrSet = function attrSet(name, value) {
-  var idx = this.attrIndex(name),
-      attrData = [ name, value ];
-
-  if (idx < 0) {
-    this.attrPush(attrData);
-  } else {
-    this.attrs[idx] = attrData;
-  }
-};
-
-
-/**
- * Token.attrGet(name)
- *
- * Get the value of attribute `name`, or null if it does not exist.
- **/
-Token.prototype.attrGet = function attrGet(name) {
-  var idx = this.attrIndex(name), value = null;
-  if (idx >= 0) {
-    value = this.attrs[idx][1];
-  }
-  return value;
-};
-
-
-/**
- * Token.attrJoin(name, value)
- *
- * Join value to existing attribute via space. Or create new attribute if not
- * exists. Useful to operate with token classes.
- **/
-Token.prototype.attrJoin = function attrJoin(name, value) {
-  var idx = this.attrIndex(name);
-
-  if (idx < 0) {
-    this.attrPush([ name, value ]);
-  } else {
-    this.attrs[idx][1] = this.attrs[idx][1] + ' ' + value;
-  }
-};
-
-
-var token = Token;
-
 function StateCore(src, md, env) {
   this.src = src;
   this.env = env;
@@ -7118,54 +7361,137 @@ StateCore.prototype.Token = token;
 
 var state_core = StateCore;
 
-var _rules$2 = [
-  [ 'normalize',      normalize      ],
-  [ 'block',          block          ],
-  [ 'inline',         inline         ],
-  [ 'linkify',        linkify        ],
-  [ 'replacements',   replacements   ],
-  [ 'smartquotes',    smartquotes    ]
+utils$2.isSpace;
+
+utils$2.isSpace;
+
+utils$2.isSpace;
+
+utils$2.isSpace;
+
+utils$2.normalizeReference;
+utils$2.isSpace;
+
+// List of valid html blocks names, accorting to commonmark spec
+
+
+var html_blocks = [
+  'address',
+  'article',
+  'aside',
+  'base',
+  'basefont',
+  'blockquote',
+  'body',
+  'caption',
+  'center',
+  'col',
+  'colgroup',
+  'dd',
+  'details',
+  'dialog',
+  'dir',
+  'div',
+  'dl',
+  'dt',
+  'fieldset',
+  'figcaption',
+  'figure',
+  'footer',
+  'form',
+  'frame',
+  'frameset',
+  'h1',
+  'h2',
+  'h3',
+  'h4',
+  'h5',
+  'h6',
+  'head',
+  'header',
+  'hr',
+  'html',
+  'iframe',
+  'legend',
+  'li',
+  'link',
+  'main',
+  'menu',
+  'menuitem',
+  'nav',
+  'noframes',
+  'ol',
+  'optgroup',
+  'option',
+  'p',
+  'param',
+  'section',
+  'source',
+  'summary',
+  'table',
+  'tbody',
+  'td',
+  'tfoot',
+  'th',
+  'thead',
+  'title',
+  'tr',
+  'track',
+  'ul'
 ];
 
+// Regexps to match html elements
 
-/**
- * new Core()
- **/
-function Core() {
-  /**
-   * Core#ruler -> Ruler
-   *
-   * [[Ruler]] instance. Keep configuration of core rules.
-   **/
-  this.ruler = new ruler();
+var attr_name     = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
 
-  for (var i = 0; i < _rules$2.length; i++) {
-    this.ruler.push(_rules$2[i][0], _rules$2[i][1]);
-  }
-}
+var unquoted      = '[^"\'=<>`\\x00-\\x20]+';
+var single_quoted = "'[^']*'";
+var double_quoted = '"[^"]*"';
 
+var attr_value  = '(?:' + unquoted + '|' + single_quoted + '|' + double_quoted + ')';
 
-/**
- * Core.process(state)
- *
- * Executes core chain rules.
- **/
-Core.prototype.process = function (state) {
-  var i, l, rules;
+var attribute   = '(?:\\s+' + attr_name + '(?:\\s*=\\s*' + attr_value + ')?)';
 
-  rules = this.ruler.getRules('');
+var open_tag    = '<[A-Za-z][A-Za-z0-9\\-]*' + attribute + '*\\s*\\/?>';
 
-  for (i = 0, l = rules.length; i < l; i++) {
-    rules[i](state);
-  }
+var close_tag   = '<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>';
+var comment     = '<!---->|<!--(?:-?[^>-])(?:-?[^-])*-->';
+var processing  = '<[?][\\s\\S]*?[?]>';
+var declaration = '<![A-Z]+\\s+[^>]*>';
+var cdata       = '<!\\[CDATA\\[[\\s\\S]*?\\]\\]>';
+
+var HTML_TAG_RE$1 = new RegExp('^(?:' + open_tag + '|' + close_tag + '|' + comment +
+                        '|' + processing + '|' + declaration + '|' + cdata + ')');
+var HTML_OPEN_CLOSE_TAG_RE$2 = new RegExp('^(?:' + open_tag + '|' + close_tag + ')');
+
+var HTML_TAG_RE_1 = HTML_TAG_RE$1;
+var HTML_OPEN_CLOSE_TAG_RE_1 = HTML_OPEN_CLOSE_TAG_RE$2;
+
+var html_re = {
+	HTML_TAG_RE: HTML_TAG_RE_1,
+	HTML_OPEN_CLOSE_TAG_RE: HTML_OPEN_CLOSE_TAG_RE_1
 };
 
-Core.prototype.State = state_core;
+var HTML_OPEN_CLOSE_TAG_RE$1 = html_re.HTML_OPEN_CLOSE_TAG_RE;
 
+// An array of opening and corresponding closing sequences for html tags,
+// last argument defines whether it can terminate a paragraph or not
+//
+[
+  [ /^<(script|pre|style|textarea)(?=(\s|>|$))/i, /<\/(script|pre|style|textarea)>/i, true ],
+  [ /^<!--/,        /-->/,   true ],
+  [ /^<\?/,         /\?>/,   true ],
+  [ /^<![A-Z]/,     />/,     true ],
+  [ /^<!\[CDATA\[/, /\]\]>/, true ],
+  [ new RegExp('^</?(' + html_blocks.join('|') + ')(?=(\\s|/?>|$))', 'i'), /^$/, true ],
+  [ new RegExp(HTML_OPEN_CLOSE_TAG_RE$1.source + '\\s*$'),  /^$/, false ]
+];
 
-var parser_core = Core;
+utils$2.isSpace;
 
-var isSpace$a = utils$1.isSpace;
+utils$2.isSpace;
+
+var isSpace$a = utils$2.isSpace;
 
 
 function getLine(state, line) {
@@ -7410,7 +7736,7 @@ var code = function code(state, startLine, endLine/*, silent*/) {
   state.line = last;
 
   token         = state.push('code_block', 'code', 0);
-  token.content = state.getLines(startLine, last, 4 + state.blkIndent, true);
+  token.content = state.getLines(startLine, last, 4 + state.blkIndent, false) + '\n';
   token.map     = [ startLine, state.line ];
 
   return true;
@@ -7513,7 +7839,7 @@ var fence = function fence(state, startLine, endLine, silent) {
   return true;
 };
 
-var isSpace$9 = utils$1.isSpace;
+var isSpace$9 = utils$2.isSpace;
 
 
 var blockquote = function blockquote(state, startLine, endLine, silent) {
@@ -7794,7 +8120,7 @@ var blockquote = function blockquote(state, startLine, endLine, silent) {
   return true;
 };
 
-var isSpace$8 = utils$1.isSpace;
+var isSpace$8 = utils$2.isSpace;
 
 
 var hr = function hr(state, startLine, endLine, silent) {
@@ -7836,7 +8162,7 @@ var hr = function hr(state, startLine, endLine, silent) {
   return true;
 };
 
-var isSpace$7 = utils$1.isSpace;
+var isSpace$7 = utils$2.isSpace;
 
 
 // Search `[-+*][\n ]`, returns next pos after marker on success
@@ -7995,7 +8321,7 @@ var list = function list(state, startLine, endLine, silent) {
   if ((posAfterMarker = skipOrderedListMarker(state, startLine)) >= 0) {
     isOrdered = true;
     start = state.bMarks[startLine] + state.tShift[startLine];
-    markerValue = Number(state.src.substr(start, posAfterMarker - start - 1));
+    markerValue = Number(state.src.slice(start, posAfterMarker - 1));
 
     // If we're starting a new ordered list right after
     // a paragraph, it should start with 1.
@@ -8088,6 +8414,9 @@ var list = function list(state, startLine, endLine, silent) {
     token        = state.push('list_item_open', 'li', 1);
     token.markup = String.fromCharCode(markerCharCode);
     token.map    = itemLines = [ startLine, 0 ];
+    if (isOrdered) {
+      token.info = state.src.slice(start, posAfterMarker - 1);
+    }
 
     // change current state, then restore it after parser subcall
     oldTight = state.tight;
@@ -8164,6 +8493,7 @@ var list = function list(state, startLine, endLine, silent) {
     if (isOrdered) {
       posAfterMarker = skipOrderedListMarker(state, nextLine);
       if (posAfterMarker < 0) { break; }
+      start = state.bMarks[nextLine] + state.tShift[nextLine];
     } else {
       posAfterMarker = skipBulletListMarker(state, nextLine);
       if (posAfterMarker < 0) { break; }
@@ -8193,8 +8523,8 @@ var list = function list(state, startLine, endLine, silent) {
   return true;
 };
 
-var normalizeReference$2   = utils$1.normalizeReference;
-var isSpace$6              = utils$1.isSpace;
+var normalizeReference$2   = utils$2.normalizeReference;
+var isSpace$6              = utils$2.isSpace;
 
 
 var reference = function reference(state, startLine, _endLine, silent) {
@@ -8385,113 +8715,13 @@ var reference = function reference(state, startLine, _endLine, silent) {
   return true;
 };
 
-// List of valid html blocks names, accorting to commonmark spec
-
-
-var html_blocks = [
-  'address',
-  'article',
-  'aside',
-  'base',
-  'basefont',
-  'blockquote',
-  'body',
-  'caption',
-  'center',
-  'col',
-  'colgroup',
-  'dd',
-  'details',
-  'dialog',
-  'dir',
-  'div',
-  'dl',
-  'dt',
-  'fieldset',
-  'figcaption',
-  'figure',
-  'footer',
-  'form',
-  'frame',
-  'frameset',
-  'h1',
-  'h2',
-  'h3',
-  'h4',
-  'h5',
-  'h6',
-  'head',
-  'header',
-  'hr',
-  'html',
-  'iframe',
-  'legend',
-  'li',
-  'link',
-  'main',
-  'menu',
-  'menuitem',
-  'nav',
-  'noframes',
-  'ol',
-  'optgroup',
-  'option',
-  'p',
-  'param',
-  'section',
-  'source',
-  'summary',
-  'table',
-  'tbody',
-  'td',
-  'tfoot',
-  'th',
-  'thead',
-  'title',
-  'tr',
-  'track',
-  'ul'
-];
-
-// Regexps to match html elements
-
-var attr_name     = '[a-zA-Z_:][a-zA-Z0-9:._-]*';
-
-var unquoted      = '[^"\'=<>`\\x00-\\x20]+';
-var single_quoted = "'[^']*'";
-var double_quoted = '"[^"]*"';
-
-var attr_value  = '(?:' + unquoted + '|' + single_quoted + '|' + double_quoted + ')';
-
-var attribute   = '(?:\\s+' + attr_name + '(?:\\s*=\\s*' + attr_value + ')?)';
-
-var open_tag    = '<[A-Za-z][A-Za-z0-9\\-]*' + attribute + '*\\s*\\/?>';
-
-var close_tag   = '<\\/[A-Za-z][A-Za-z0-9\\-]*\\s*>';
-var comment     = '<!---->|<!--(?:-?[^>-])(?:-?[^-])*-->';
-var processing  = '<[?][\\s\\S]*?[?]>';
-var declaration = '<![A-Z]+\\s+[^>]*>';
-var cdata       = '<!\\[CDATA\\[[\\s\\S]*?\\]\\]>';
-
-var HTML_TAG_RE$1 = new RegExp('^(?:' + open_tag + '|' + close_tag + '|' + comment +
-                        '|' + processing + '|' + declaration + '|' + cdata + ')');
-var HTML_OPEN_CLOSE_TAG_RE$1 = new RegExp('^(?:' + open_tag + '|' + close_tag + ')');
-
-var HTML_TAG_RE_1 = HTML_TAG_RE$1;
-var HTML_OPEN_CLOSE_TAG_RE_1 = HTML_OPEN_CLOSE_TAG_RE$1;
-
-var html_re = {
-	HTML_TAG_RE: HTML_TAG_RE_1,
-	HTML_OPEN_CLOSE_TAG_RE: HTML_OPEN_CLOSE_TAG_RE_1
-};
-
 var HTML_OPEN_CLOSE_TAG_RE = html_re.HTML_OPEN_CLOSE_TAG_RE;
 
 // An array of opening and corresponding closing sequences for html tags,
 // last argument defines whether it can terminate a paragraph or not
 //
 var HTML_SEQUENCES = [
-  [ /^<(script|pre|style)(?=(\s|>|$))/i, /<\/(script|pre|style)>/i, true ],
+  [ /^<(script|pre|style|textarea)(?=(\s|>|$))/i, /<\/(script|pre|style|textarea)>/i, true ],
   [ /^<!--/,        /-->/,   true ],
   [ /^<\?/,         /\?>/,   true ],
   [ /^<![A-Z]/,     />/,     true ],
@@ -8554,7 +8784,7 @@ var html_block = function html_block(state, startLine, endLine, silent) {
   return true;
 };
 
-var isSpace$5 = utils$1.isSpace;
+var isSpace$5 = utils$2.isSpace;
 
 
 var heading = function heading(state, startLine, endLine, silent) {
@@ -8739,7 +8969,7 @@ var paragraph = function paragraph(state, startLine/*, endLine*/) {
   return true;
 };
 
-var isSpace$4 = utils$1.isSpace;
+var isSpace$4 = utils$2.isSpace;
 
 
 function StateBlock(src, md, env, tokens) {
@@ -8966,117 +9196,30 @@ StateBlock.prototype.Token = token;
 
 var state_block = StateBlock;
 
-var _rules$1 = [
-  // First 2 params - rule name & source. Secondary array - list of rules,
-  // which can be terminated by this one.
-  [ 'table',      table,      [ 'paragraph', 'reference' ] ],
-  [ 'code',       code ],
-  [ 'fence',      fence,      [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
-  [ 'blockquote', blockquote, [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
-  [ 'hr',         hr,         [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
-  [ 'list',       list,       [ 'paragraph', 'reference', 'blockquote' ] ],
-  [ 'reference',  reference ],
-  [ 'html_block', html_block, [ 'paragraph', 'reference', 'blockquote' ] ],
-  [ 'heading',    heading,    [ 'paragraph', 'reference', 'blockquote' ] ],
-  [ 'lheading',   lheading ],
-  [ 'paragraph',  paragraph ]
-];
+utils$2.isSpace;
 
+utils$2.isSpace;
 
-/**
- * new ParserBlock()
- **/
-function ParserBlock() {
-  /**
-   * ParserBlock#ruler -> Ruler
-   *
-   * [[Ruler]] instance. Keep configuration of block rules.
-   **/
-  this.ruler = new ruler();
+var ESCAPED$1 = [];
 
-  for (var i = 0; i < _rules$1.length; i++) {
-    this.ruler.push(_rules$1[i][0], _rules$1[i][1], { alt: (_rules$1[i][2] || []).slice() });
-  }
-}
+for (var i$1 = 0; i$1 < 256; i$1++) { ESCAPED$1.push(0); }
 
+'\\!"#$%&\'()*+,./:;<=>?@[]^_`{|}~-'
+  .split('').forEach(function (ch) { ESCAPED$1[ch.charCodeAt(0)] = 1; });
 
-// Generate tokens for input range
-//
-ParserBlock.prototype.tokenize = function (state, startLine, endLine) {
-  var ok, i,
-      rules = this.ruler.getRules(''),
-      len = rules.length,
-      line = startLine,
-      hasEmptyLines = false,
-      maxNesting = state.md.options.maxNesting;
+utils$2.normalizeReference;
+utils$2.isSpace;
 
-  while (line < endLine) {
-    state.line = line = state.skipEmptyLines(line);
-    if (line >= endLine) { break; }
+utils$2.normalizeReference;
+utils$2.isSpace;
 
-    // Termination condition for nested calls.
-    // Nested calls currently used for blockquotes & lists
-    if (state.sCount[line] < state.blkIndent) { break; }
+utils$2.has;
+utils$2.isValidEntityCode;
+utils$2.fromCodePoint;
 
-    // If nesting level exceeded - skip tail to the end. That's not ordinary
-    // situation and we should not care about content.
-    if (state.level >= maxNesting) {
-      state.line = endLine;
-      break;
-    }
-
-    // Try all possible rules.
-    // On success, rule should:
-    //
-    // - update `state.line`
-    // - update `state.tokens`
-    // - return true
-
-    for (i = 0; i < len; i++) {
-      ok = rules[i](state, line, endLine, false);
-      if (ok) { break; }
-    }
-
-    // set state.tight if we had an empty line before current tag
-    // i.e. latest empty line should not count
-    state.tight = !hasEmptyLines;
-
-    // paragraph might "eat" one newline after it in nested lists
-    if (state.isEmpty(state.line - 1)) {
-      hasEmptyLines = true;
-    }
-
-    line = state.line;
-
-    if (line < endLine && state.isEmpty(line)) {
-      hasEmptyLines = true;
-      line++;
-      state.line = line;
-    }
-  }
-};
-
-
-/**
- * ParserBlock.parse(str, md, env, outTokens)
- *
- * Process input string and push block tokens into `outTokens`
- **/
-ParserBlock.prototype.parse = function (src, md, env, outTokens) {
-  var state;
-
-  if (!src) { return; }
-
-  state = new this.State(src, md, env, outTokens);
-
-  this.tokenize(state, state.line, state.lineMax);
-};
-
-
-ParserBlock.prototype.State = state_block;
-
-
-var parser_block = ParserBlock;
+utils$2.isWhiteSpace;
+utils$2.isPunctChar;
+utils$2.isMdAsciiPunct;
 
 // Skip text characters for text token, place those to pending buffer
 
@@ -9135,7 +9278,7 @@ var text = function text(state, silent) {
   return true;
 };
 
-var isSpace$3 = utils$1.isSpace;
+var isSpace$3 = utils$2.isSpace;
 
 
 var newline = function newline(state, silent) {
@@ -9174,7 +9317,7 @@ var newline = function newline(state, silent) {
   return true;
 };
 
-var isSpace$2 = utils$1.isSpace;
+var isSpace$2 = utils$2.isSpace;
 
 var ESCAPED = [];
 
@@ -9318,7 +9461,6 @@ var tokenize$1 = function strikethrough(state, silent) {
     state.delimiters.push({
       marker: marker,
       length: 0,     // disable "rule of 3" length checks meant for emphasis
-      jump:   i / 2, // for `~~` 1 marker = 2 characters
       token:  state.tokens.length - 1,
       end:    -1,
       open:   scanned.can_open,
@@ -9449,15 +9591,6 @@ var tokenize = function emphasis(state, silent) {
       //
       length: scanned.length,
 
-      // An amount of characters before this one that's equivalent to
-      // current one. In plain English: if this delimiter does not open
-      // an emphasis, neither do previous `jump` characters.
-      //
-      // Used to skip sequences like "*****" in one step, for 1st asterisk
-      // value will be 0, for 2nd it's 1 and so on.
-      //
-      jump:   i,
-
       // A position of the token this delimiter corresponds to.
       //
       token:  state.tokens.length - 1,
@@ -9511,9 +9644,11 @@ function postProcess(state, delimiters) {
     //
     isStrong = i > 0 &&
                delimiters[i - 1].end === startDelim.end + 1 &&
+               // check that first two markers match and adjacent
+               delimiters[i - 1].marker === startDelim.marker &&
                delimiters[i - 1].token === startDelim.token - 1 &&
-               delimiters[startDelim.end + 1].token === endDelim.token + 1 &&
-               delimiters[i - 1].marker === startDelim.marker;
+               // check that last two markers are adjacent (we can safely assume they match)
+               delimiters[startDelim.end + 1].token === endDelim.token + 1;
 
     ch = String.fromCharCode(startDelim.marker);
 
@@ -9561,8 +9696,8 @@ var emphasis = {
 	postProcess: postProcess_1
 };
 
-var normalizeReference$1   = utils$1.normalizeReference;
-var isSpace$1              = utils$1.isSpace;
+var normalizeReference$1   = utils$2.normalizeReference;
+var isSpace$1              = utils$2.isSpace;
 
 
 var link = function link(state, silent) {
@@ -9706,8 +9841,8 @@ var link = function link(state, silent) {
   return true;
 };
 
-var normalizeReference   = utils$1.normalizeReference;
-var isSpace              = utils$1.isSpace;
+var normalizeReference   = utils$2.normalizeReference;
+var isSpace              = utils$2.isSpace;
 
 
 var image = function image(state, silent) {
@@ -9973,9 +10108,9 @@ var html_inline = function html_inline(state, silent) {
   return true;
 };
 
-var has               = utils$1.has;
-var isValidEntityCode = utils$1.isValidEntityCode;
-var fromCodePoint     = utils$1.fromCodePoint;
+var has               = utils$2.has;
+var isValidEntityCode = utils$2.isValidEntityCode;
+var fromCodePoint     = utils$2.fromCodePoint;
 
 
 var DIGITAL_RE = /^&#((?:x[a-f0-9]{1,6}|[0-9]{1,7}));/i;
@@ -10026,8 +10161,27 @@ function processDelimiters(state, delimiters) {
       openersBottom = {},
       max = delimiters.length;
 
+  if (!max) return;
+
+  // headerIdx is the first delimiter of the current (where closer is) delimiter run
+  var headerIdx = 0;
+  var lastTokenIdx = -2; // needs any value lower than -1
+  var jumps = [];
+
   for (closerIdx = 0; closerIdx < max; closerIdx++) {
     closer = delimiters[closerIdx];
+
+    jumps.push(0);
+
+    // markers belong to same delimiter run if:
+    //  - they have adjacent tokens
+    //  - AND markers are the same
+    //
+    if (delimiters[headerIdx].marker !== closer.marker || lastTokenIdx !== closer.token - 1) {
+      headerIdx = closerIdx;
+    }
+
+    lastTokenIdx = closer.token;
 
     // Length is only used for emphasis-specific "rule of 3",
     // if it's not defined (in strikethrough or 3rd party plugins),
@@ -10038,21 +10192,20 @@ function processDelimiters(state, delimiters) {
     if (!closer.close) continue;
 
     // Previously calculated lower bounds (previous fails)
-    // for each marker and each delimiter length modulo 3.
+    // for each marker, each delimiter length modulo 3,
+    // and for whether this closer can be an opener;
+    // https://github.com/commonmark/cmark/commit/34250e12ccebdc6372b8b49c44fab57c72443460
     if (!openersBottom.hasOwnProperty(closer.marker)) {
-      openersBottom[closer.marker] = [ -1, -1, -1 ];
+      openersBottom[closer.marker] = [ -1, -1, -1, -1, -1, -1 ];
     }
 
-    minOpenerIdx = openersBottom[closer.marker][closer.length % 3];
+    minOpenerIdx = openersBottom[closer.marker][(closer.open ? 3 : 0) + (closer.length % 3)];
 
-    openerIdx = closerIdx - closer.jump - 1;
-
-    // avoid crash if `closer.jump` is pointing outside of the array, see #742
-    if (openerIdx < -1) openerIdx = -1;
+    openerIdx = headerIdx - jumps[headerIdx] - 1;
 
     newMinOpenerIdx = openerIdx;
 
-    for (; openerIdx > minOpenerIdx; openerIdx -= opener.jump + 1) {
+    for (; openerIdx > minOpenerIdx; openerIdx -= jumps[openerIdx] + 1) {
       opener = delimiters[openerIdx];
 
       if (opener.marker !== closer.marker) continue;
@@ -10082,15 +10235,19 @@ function processDelimiters(state, delimiters) {
           // sure algorithm has linear complexity (see *_*_*_*_*_... case).
           //
           lastJump = openerIdx > 0 && !delimiters[openerIdx - 1].open ?
-            delimiters[openerIdx - 1].jump + 1 :
+            jumps[openerIdx - 1] + 1 :
             0;
 
-          closer.jump  = closerIdx - openerIdx + lastJump;
+          jumps[closerIdx] = closerIdx - openerIdx + lastJump;
+          jumps[openerIdx] = lastJump;
+
           closer.open  = false;
           opener.end   = closerIdx;
-          opener.jump  = lastJump;
           opener.close = false;
           newMinOpenerIdx = -1;
+          // treat next token as start of run,
+          // it optimizes skips in **<...>**a**<...>** pathological case
+          lastTokenIdx = -2;
           break;
         }
       }
@@ -10104,7 +10261,7 @@ function processDelimiters(state, delimiters) {
       // See details here:
       // https://github.com/commonmark/cmark/issues/178#issuecomment-270417442
       //
-      openersBottom[closer.marker][(closer.length || 0) % 3] = newMinOpenerIdx;
+      openersBottom[closer.marker][(closer.open ? 3 : 0) + ((closer.length || 0) % 3)] = newMinOpenerIdx;
     }
   }
 }
@@ -10158,9 +10315,9 @@ var text_collapse = function text_collapse(state) {
   }
 };
 
-var isWhiteSpace   = utils$1.isWhiteSpace;
-var isPunctChar    = utils$1.isPunctChar;
-var isMdAsciiPunct = utils$1.isMdAsciiPunct;
+var isWhiteSpace   = utils$2.isWhiteSpace;
+var isPunctChar    = utils$2.isPunctChar;
+var isMdAsciiPunct = utils$2.isMdAsciiPunct;
 
 
 function StateInline(src, md, env, outTokens) {
@@ -10306,6 +10463,686 @@ StateInline.prototype.Token = token;
 
 
 var state_inline = StateInline;
+
+var re = function (opts) {
+  var re = {};
+
+  // Use direct extract instead of `regenerate` to reduse browserified size
+  re.src_Any = regex$4.source;
+  re.src_Cc  = regex$3.source;
+  re.src_Z   = regex.source;
+  re.src_P   = regex$1.source;
+
+  // \p{\Z\P\Cc\CF} (white spaces + control + format + punctuation)
+  re.src_ZPCc = [ re.src_Z, re.src_P, re.src_Cc ].join('|');
+
+  // \p{\Z\Cc} (white spaces + control)
+  re.src_ZCc = [ re.src_Z, re.src_Cc ].join('|');
+
+  // Experimental. List of chars, completely prohibited in links
+  // because can separate it from other part of text
+  var text_separators = '[><\uff5c]';
+
+  // All possible word characters (everything without punctuation, spaces & controls)
+  // Defined via punctuation & spaces to save space
+  // Should be something like \p{\L\N\S\M} (\w but without `_`)
+  re.src_pseudo_letter       = '(?:(?!' + text_separators + '|' + re.src_ZPCc + ')' + re.src_Any + ')';
+  // The same as abothe but without [0-9]
+  // var src_pseudo_letter_non_d = '(?:(?![0-9]|' + src_ZPCc + ')' + src_Any + ')';
+
+  ////////////////////////////////////////////////////////////////////////////////
+
+  re.src_ip4 =
+
+    '(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)';
+
+  // Prohibit any of "@/[]()" in user/pass to avoid wrong domain fetch.
+  re.src_auth    = '(?:(?:(?!' + re.src_ZCc + '|[@/\\[\\]()]).)+@)?';
+
+  re.src_port =
+
+    '(?::(?:6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5])))|[1-5]?\\d{1,4}))?';
+
+  re.src_host_terminator =
+
+    '(?=$|' + text_separators + '|' + re.src_ZPCc + ')(?!-|_|:\\d|\\.-|\\.(?!$|' + re.src_ZPCc + '))';
+
+  re.src_path =
+
+    '(?:' +
+      '[/?#]' +
+        '(?:' +
+          '(?!' + re.src_ZCc + '|' + text_separators + '|[()[\\]{}.,"\'?!\\-;]).|' +
+          '\\[(?:(?!' + re.src_ZCc + '|\\]).)*\\]|' +
+          '\\((?:(?!' + re.src_ZCc + '|[)]).)*\\)|' +
+          '\\{(?:(?!' + re.src_ZCc + '|[}]).)*\\}|' +
+          '\\"(?:(?!' + re.src_ZCc + '|["]).)+\\"|' +
+          "\\'(?:(?!" + re.src_ZCc + "|[']).)+\\'|" +
+          "\\'(?=" + re.src_pseudo_letter + '|[-]).|' +  // allow `I'm_king` if no pair found
+          '\\.{2,}[a-zA-Z0-9%/&]|' + // google has many dots in "google search" links (#66, #81).
+                                     // github has ... in commit range links,
+                                     // Restrict to
+                                     // - english
+                                     // - percent-encoded
+                                     // - parts of file path
+                                     // - params separator
+                                     // until more examples found.
+          '\\.(?!' + re.src_ZCc + '|[.]).|' +
+          (opts && opts['---'] ?
+            '\\-(?!--(?:[^-]|$))(?:-*)|' // `---` => long dash, terminate
+            :
+            '\\-+|'
+          ) +
+          ',(?!' + re.src_ZCc + ').|' +       // allow `,,,` in paths
+          ';(?!' + re.src_ZCc + ').|' +       // allow `;` if not followed by space-like char
+          '\\!+(?!' + re.src_ZCc + '|[!]).|' +  // allow `!!!` in paths, but not at the end
+          '\\?(?!' + re.src_ZCc + '|[?]).' +
+        ')+' +
+      '|\\/' +
+    ')?';
+
+  // Allow anything in markdown spec, forbid quote (") at the first position
+  // because emails enclosed in quotes are far more common
+  re.src_email_name =
+
+    '[\\-;:&=\\+\\$,\\.a-zA-Z0-9_][\\-;:&=\\+\\$,\\"\\.a-zA-Z0-9_]*';
+
+  re.src_xn =
+
+    'xn--[a-z0-9\\-]{1,59}';
+
+  // More to read about domain names
+  // http://serverfault.com/questions/638260/
+
+  re.src_domain_root =
+
+    // Allow letters & digits (http://test1)
+    '(?:' +
+      re.src_xn +
+      '|' +
+      re.src_pseudo_letter + '{1,63}' +
+    ')';
+
+  re.src_domain =
+
+    '(?:' +
+      re.src_xn +
+      '|' +
+      '(?:' + re.src_pseudo_letter + ')' +
+      '|' +
+      '(?:' + re.src_pseudo_letter + '(?:-|' + re.src_pseudo_letter + '){0,61}' + re.src_pseudo_letter + ')' +
+    ')';
+
+  re.src_host =
+
+    '(?:' +
+    // Don't need IP check, because digits are already allowed in normal domain names
+    //   src_ip4 +
+    // '|' +
+      '(?:(?:(?:' + re.src_domain + ')\\.)*' + re.src_domain/*_root*/ + ')' +
+    ')';
+
+  re.tpl_host_fuzzy =
+
+    '(?:' +
+      re.src_ip4 +
+    '|' +
+      '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))' +
+    ')';
+
+  re.tpl_host_no_ip_fuzzy =
+
+    '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))';
+
+  re.src_host_strict =
+
+    re.src_host + re.src_host_terminator;
+
+  re.tpl_host_fuzzy_strict =
+
+    re.tpl_host_fuzzy + re.src_host_terminator;
+
+  re.src_host_port_strict =
+
+    re.src_host + re.src_port + re.src_host_terminator;
+
+  re.tpl_host_port_fuzzy_strict =
+
+    re.tpl_host_fuzzy + re.src_port + re.src_host_terminator;
+
+  re.tpl_host_port_no_ip_fuzzy_strict =
+
+    re.tpl_host_no_ip_fuzzy + re.src_port + re.src_host_terminator;
+
+
+  ////////////////////////////////////////////////////////////////////////////////
+  // Main rules
+
+  // Rude test fuzzy links by host, for quick deny
+  re.tpl_host_fuzzy_test =
+
+    'localhost|www\\.|\\.\\d{1,3}\\.|(?:\\.(?:%TLDS%)(?:' + re.src_ZPCc + '|>|$))';
+
+  re.tpl_email_fuzzy =
+
+      '(^|' + text_separators + '|"|\\(|' + re.src_ZCc + ')' +
+      '(' + re.src_email_name + '@' + re.tpl_host_fuzzy_strict + ')';
+
+  re.tpl_link_fuzzy =
+      // Fuzzy link can't be prepended with .:/\- and non punctuation.
+      // but can start with > (markdown blockquote)
+      '(^|(?![.:/\\-_@])(?:[$+<=>^`|\uff5c]|' + re.src_ZPCc + '))' +
+      '((?![$+<=>^`|\uff5c])' + re.tpl_host_port_fuzzy_strict + re.src_path + ')';
+
+  re.tpl_link_no_ip_fuzzy =
+      // Fuzzy link can't be prepended with .:/\- and non punctuation.
+      // but can start with > (markdown blockquote)
+      '(^|(?![.:/\\-_@])(?:[$+<=>^`|\uff5c]|' + re.src_ZPCc + '))' +
+      '((?![$+<=>^`|\uff5c])' + re.tpl_host_port_no_ip_fuzzy_strict + re.src_path + ')';
+
+  return re;
+};
+
+var parseLinkLabel       = parse_link_label;
+var parseLinkDestination = parse_link_destination;
+var parseLinkTitle       = parse_link_title;
+
+var D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_markdownIt_lib_helpers = {
+	parseLinkLabel: parseLinkLabel,
+	parseLinkDestination: parseLinkDestination,
+	parseLinkTitle: parseLinkTitle
+};
+
+var assign$1          = utils$2.assign;
+var unescapeAll     = utils$2.unescapeAll;
+var escapeHtml      = utils$2.escapeHtml;
+
+
+////////////////////////////////////////////////////////////////////////////////
+
+var default_rules = {};
+
+
+default_rules.code_inline = function (tokens, idx, options, env, slf) {
+  var token = tokens[idx];
+
+  return  '<code' + slf.renderAttrs(token) + '>' +
+          escapeHtml(tokens[idx].content) +
+          '</code>';
+};
+
+
+default_rules.code_block = function (tokens, idx, options, env, slf) {
+  var token = tokens[idx];
+
+  return  '<pre' + slf.renderAttrs(token) + '><code>' +
+          escapeHtml(tokens[idx].content) +
+          '</code></pre>\n';
+};
+
+
+default_rules.fence = function (tokens, idx, options, env, slf) {
+  var token = tokens[idx],
+      info = token.info ? unescapeAll(token.info).trim() : '',
+      langName = '',
+      langAttrs = '',
+      highlighted, i, arr, tmpAttrs, tmpToken;
+
+  if (info) {
+    arr = info.split(/(\s+)/g);
+    langName = arr[0];
+    langAttrs = arr.slice(2).join('');
+  }
+
+  if (options.highlight) {
+    highlighted = options.highlight(token.content, langName, langAttrs) || escapeHtml(token.content);
+  } else {
+    highlighted = escapeHtml(token.content);
+  }
+
+  if (highlighted.indexOf('<pre') === 0) {
+    return highlighted + '\n';
+  }
+
+  // If language exists, inject class gently, without modifying original token.
+  // May be, one day we will add .deepClone() for token and simplify this part, but
+  // now we prefer to keep things local.
+  if (info) {
+    i        = token.attrIndex('class');
+    tmpAttrs = token.attrs ? token.attrs.slice() : [];
+
+    if (i < 0) {
+      tmpAttrs.push([ 'class', options.langPrefix + langName ]);
+    } else {
+      tmpAttrs[i] = tmpAttrs[i].slice();
+      tmpAttrs[i][1] += ' ' + options.langPrefix + langName;
+    }
+
+    // Fake token just to render attributes
+    tmpToken = {
+      attrs: tmpAttrs
+    };
+
+    return  '<pre><code' + slf.renderAttrs(tmpToken) + '>'
+          + highlighted
+          + '</code></pre>\n';
+  }
+
+
+  return  '<pre><code' + slf.renderAttrs(token) + '>'
+        + highlighted
+        + '</code></pre>\n';
+};
+
+
+default_rules.image = function (tokens, idx, options, env, slf) {
+  var token = tokens[idx];
+
+  // "alt" attr MUST be set, even if empty. Because it's mandatory and
+  // should be placed on proper position for tests.
+  //
+  // Replace content with actual value
+
+  token.attrs[token.attrIndex('alt')][1] =
+    slf.renderInlineAsText(token.children, options, env);
+
+  return slf.renderToken(tokens, idx, options);
+};
+
+
+default_rules.hardbreak = function (tokens, idx, options /*, env */) {
+  return options.xhtmlOut ? '<br />\n' : '<br>\n';
+};
+default_rules.softbreak = function (tokens, idx, options /*, env */) {
+  return options.breaks ? (options.xhtmlOut ? '<br />\n' : '<br>\n') : '\n';
+};
+
+
+default_rules.text = function (tokens, idx /*, options, env */) {
+  return escapeHtml(tokens[idx].content);
+};
+
+
+default_rules.html_block = function (tokens, idx /*, options, env */) {
+  return tokens[idx].content;
+};
+default_rules.html_inline = function (tokens, idx /*, options, env */) {
+  return tokens[idx].content;
+};
+
+
+/**
+ * new Renderer()
+ *
+ * Creates new [[Renderer]] instance and fill [[Renderer#rules]] with defaults.
+ **/
+function Renderer() {
+
+  /**
+   * Renderer#rules -> Object
+   *
+   * Contains render rules for tokens. Can be updated and extended.
+   *
+   * ##### Example
+   *
+   * ```javascript
+   * var md = require('markdown-it')();
+   *
+   * md.renderer.rules.strong_open  = function () { return '<b>'; };
+   * md.renderer.rules.strong_close = function () { return '</b>'; };
+   *
+   * var result = md.renderInline(...);
+   * ```
+   *
+   * Each rule is called as independent static function with fixed signature:
+   *
+   * ```javascript
+   * function my_token_render(tokens, idx, options, env, renderer) {
+   *   // ...
+   *   return renderedHTML;
+   * }
+   * ```
+   *
+   * See [source code](https://github.com/markdown-it/markdown-it/blob/master/lib/renderer.js)
+   * for more details and examples.
+   **/
+  this.rules = assign$1({}, default_rules);
+}
+
+
+/**
+ * Renderer.renderAttrs(token) -> String
+ *
+ * Render token attributes to string.
+ **/
+Renderer.prototype.renderAttrs = function renderAttrs(token) {
+  var i, l, result;
+
+  if (!token.attrs) { return ''; }
+
+  result = '';
+
+  for (i = 0, l = token.attrs.length; i < l; i++) {
+    result += ' ' + escapeHtml(token.attrs[i][0]) + '="' + escapeHtml(token.attrs[i][1]) + '"';
+  }
+
+  return result;
+};
+
+
+/**
+ * Renderer.renderToken(tokens, idx, options) -> String
+ * - tokens (Array): list of tokens
+ * - idx (Numbed): token index to render
+ * - options (Object): params of parser instance
+ *
+ * Default token renderer. Can be overriden by custom function
+ * in [[Renderer#rules]].
+ **/
+Renderer.prototype.renderToken = function renderToken(tokens, idx, options) {
+  var nextToken,
+      result = '',
+      needLf = false,
+      token = tokens[idx];
+
+  // Tight list paragraphs
+  if (token.hidden) {
+    return '';
+  }
+
+  // Insert a newline between hidden paragraph and subsequent opening
+  // block-level tag.
+  //
+  // For example, here we should insert a newline before blockquote:
+  //  - a
+  //    >
+  //
+  if (token.block && token.nesting !== -1 && idx && tokens[idx - 1].hidden) {
+    result += '\n';
+  }
+
+  // Add token name, e.g. `<img`
+  result += (token.nesting === -1 ? '</' : '<') + token.tag;
+
+  // Encode attributes, e.g. `<img src="foo"`
+  result += this.renderAttrs(token);
+
+  // Add a slash for self-closing tags, e.g. `<img src="foo" /`
+  if (token.nesting === 0 && options.xhtmlOut) {
+    result += ' /';
+  }
+
+  // Check if we need to add a newline after this tag
+  if (token.block) {
+    needLf = true;
+
+    if (token.nesting === 1) {
+      if (idx + 1 < tokens.length) {
+        nextToken = tokens[idx + 1];
+
+        if (nextToken.type === 'inline' || nextToken.hidden) {
+          // Block-level tag containing an inline tag.
+          //
+          needLf = false;
+
+        } else if (nextToken.nesting === -1 && nextToken.tag === token.tag) {
+          // Opening tag + closing tag of the same type. E.g. `<li></li>`.
+          //
+          needLf = false;
+        }
+      }
+    }
+  }
+
+  result += needLf ? '>\n' : '>';
+
+  return result;
+};
+
+
+/**
+ * Renderer.renderInline(tokens, options, env) -> String
+ * - tokens (Array): list on block tokens to render
+ * - options (Object): params of parser instance
+ * - env (Object): additional data from parsed input (references, for example)
+ *
+ * The same as [[Renderer.render]], but for single token of `inline` type.
+ **/
+Renderer.prototype.renderInline = function (tokens, options, env) {
+  var type,
+      result = '',
+      rules = this.rules;
+
+  for (var i = 0, len = tokens.length; i < len; i++) {
+    type = tokens[i].type;
+
+    if (typeof rules[type] !== 'undefined') {
+      result += rules[type](tokens, i, options, env, this);
+    } else {
+      result += this.renderToken(tokens, i, options);
+    }
+  }
+
+  return result;
+};
+
+
+/** internal
+ * Renderer.renderInlineAsText(tokens, options, env) -> String
+ * - tokens (Array): list on block tokens to render
+ * - options (Object): params of parser instance
+ * - env (Object): additional data from parsed input (references, for example)
+ *
+ * Special kludge for image `alt` attributes to conform CommonMark spec.
+ * Don't try to use it! Spec requires to show `alt` content with stripped markup,
+ * instead of simple escaping.
+ **/
+Renderer.prototype.renderInlineAsText = function (tokens, options, env) {
+  var result = '';
+
+  for (var i = 0, len = tokens.length; i < len; i++) {
+    if (tokens[i].type === 'text') {
+      result += tokens[i].content;
+    } else if (tokens[i].type === 'image') {
+      result += this.renderInlineAsText(tokens[i].children, options, env);
+    } else if (tokens[i].type === 'softbreak') {
+      result += '\n';
+    }
+  }
+
+  return result;
+};
+
+
+/**
+ * Renderer.render(tokens, options, env) -> String
+ * - tokens (Array): list on block tokens to render
+ * - options (Object): params of parser instance
+ * - env (Object): additional data from parsed input (references, for example)
+ *
+ * Takes token stream and generates HTML. Probably, you will never need to call
+ * this method directly.
+ **/
+Renderer.prototype.render = function (tokens, options, env) {
+  var i, len, type,
+      result = '',
+      rules = this.rules;
+
+  for (i = 0, len = tokens.length; i < len; i++) {
+    type = tokens[i].type;
+
+    if (type === 'inline') {
+      result += this.renderInline(tokens[i].children, options, env);
+    } else if (typeof rules[type] !== 'undefined') {
+      result += rules[tokens[i].type](tokens, i, options, env, this);
+    } else {
+      result += this.renderToken(tokens, i, options, env);
+    }
+  }
+
+  return result;
+};
+
+var renderer = Renderer;
+
+var _rules$2 = [
+  [ 'normalize',      normalize      ],
+  [ 'block',          block          ],
+  [ 'inline',         inline         ],
+  [ 'linkify',        linkify        ],
+  [ 'replacements',   replacements   ],
+  [ 'smartquotes',    smartquotes    ]
+];
+
+
+/**
+ * new Core()
+ **/
+function Core() {
+  /**
+   * Core#ruler -> Ruler
+   *
+   * [[Ruler]] instance. Keep configuration of core rules.
+   **/
+  this.ruler = new ruler();
+
+  for (var i = 0; i < _rules$2.length; i++) {
+    this.ruler.push(_rules$2[i][0], _rules$2[i][1]);
+  }
+}
+
+
+/**
+ * Core.process(state)
+ *
+ * Executes core chain rules.
+ **/
+Core.prototype.process = function (state) {
+  var i, l, rules;
+
+  rules = this.ruler.getRules('');
+
+  for (i = 0, l = rules.length; i < l; i++) {
+    rules[i](state);
+  }
+};
+
+Core.prototype.State = state_core;
+
+
+var parser_core = Core;
+
+var _rules$1 = [
+  // First 2 params - rule name & source. Secondary array - list of rules,
+  // which can be terminated by this one.
+  [ 'table',      table,      [ 'paragraph', 'reference' ] ],
+  [ 'code',       code ],
+  [ 'fence',      fence,      [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
+  [ 'blockquote', blockquote, [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
+  [ 'hr',         hr,         [ 'paragraph', 'reference', 'blockquote', 'list' ] ],
+  [ 'list',       list,       [ 'paragraph', 'reference', 'blockquote' ] ],
+  [ 'reference',  reference ],
+  [ 'html_block', html_block, [ 'paragraph', 'reference', 'blockquote' ] ],
+  [ 'heading',    heading,    [ 'paragraph', 'reference', 'blockquote' ] ],
+  [ 'lheading',   lheading ],
+  [ 'paragraph',  paragraph ]
+];
+
+
+/**
+ * new ParserBlock()
+ **/
+function ParserBlock() {
+  /**
+   * ParserBlock#ruler -> Ruler
+   *
+   * [[Ruler]] instance. Keep configuration of block rules.
+   **/
+  this.ruler = new ruler();
+
+  for (var i = 0; i < _rules$1.length; i++) {
+    this.ruler.push(_rules$1[i][0], _rules$1[i][1], { alt: (_rules$1[i][2] || []).slice() });
+  }
+}
+
+
+// Generate tokens for input range
+//
+ParserBlock.prototype.tokenize = function (state, startLine, endLine) {
+  var ok, i,
+      rules = this.ruler.getRules(''),
+      len = rules.length,
+      line = startLine,
+      hasEmptyLines = false,
+      maxNesting = state.md.options.maxNesting;
+
+  while (line < endLine) {
+    state.line = line = state.skipEmptyLines(line);
+    if (line >= endLine) { break; }
+
+    // Termination condition for nested calls.
+    // Nested calls currently used for blockquotes & lists
+    if (state.sCount[line] < state.blkIndent) { break; }
+
+    // If nesting level exceeded - skip tail to the end. That's not ordinary
+    // situation and we should not care about content.
+    if (state.level >= maxNesting) {
+      state.line = endLine;
+      break;
+    }
+
+    // Try all possible rules.
+    // On success, rule should:
+    //
+    // - update `state.line`
+    // - update `state.tokens`
+    // - return true
+
+    for (i = 0; i < len; i++) {
+      ok = rules[i](state, line, endLine, false);
+      if (ok) { break; }
+    }
+
+    // set state.tight if we had an empty line before current tag
+    // i.e. latest empty line should not count
+    state.tight = !hasEmptyLines;
+
+    // paragraph might "eat" one newline after it in nested lists
+    if (state.isEmpty(state.line - 1)) {
+      hasEmptyLines = true;
+    }
+
+    line = state.line;
+
+    if (line < endLine && state.isEmpty(line)) {
+      hasEmptyLines = true;
+      line++;
+      state.line = line;
+    }
+  }
+};
+
+
+/**
+ * ParserBlock.parse(str, md, env, outTokens)
+ *
+ * Process input string and push block tokens into `outTokens`
+ **/
+ParserBlock.prototype.parse = function (src, md, env, outTokens) {
+  var state;
+
+  if (!src) { return; }
+
+  state = new this.State(src, md, env, outTokens);
+
+  this.tokenize(state, state.line, state.lineMax);
+};
+
+
+ParserBlock.prototype.State = state_block;
+
+
+var parser_block = ParserBlock;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Parser rules
@@ -10474,184 +11311,6 @@ ParserInline.prototype.State = state_inline;
 
 var parser_inline = ParserInline;
 
-var re = function (opts) {
-  var re = {};
-
-  // Use direct extract instead of `regenerate` to reduse browserified size
-  re.src_Any = regex$3.source;
-  re.src_Cc  = regex$2.source;
-  re.src_Z   = regex.source;
-  re.src_P   = regex$4.source;
-
-  // \p{\Z\P\Cc\CF} (white spaces + control + format + punctuation)
-  re.src_ZPCc = [ re.src_Z, re.src_P, re.src_Cc ].join('|');
-
-  // \p{\Z\Cc} (white spaces + control)
-  re.src_ZCc = [ re.src_Z, re.src_Cc ].join('|');
-
-  // Experimental. List of chars, completely prohibited in links
-  // because can separate it from other part of text
-  var text_separators = '[><\uff5c]';
-
-  // All possible word characters (everything without punctuation, spaces & controls)
-  // Defined via punctuation & spaces to save space
-  // Should be something like \p{\L\N\S\M} (\w but without `_`)
-  re.src_pseudo_letter       = '(?:(?!' + text_separators + '|' + re.src_ZPCc + ')' + re.src_Any + ')';
-  // The same as abothe but without [0-9]
-  // var src_pseudo_letter_non_d = '(?:(?![0-9]|' + src_ZPCc + ')' + src_Any + ')';
-
-  ////////////////////////////////////////////////////////////////////////////////
-
-  re.src_ip4 =
-
-    '(?:(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)';
-
-  // Prohibit any of "@/[]()" in user/pass to avoid wrong domain fetch.
-  re.src_auth    = '(?:(?:(?!' + re.src_ZCc + '|[@/\\[\\]()]).)+@)?';
-
-  re.src_port =
-
-    '(?::(?:6(?:[0-4]\\d{3}|5(?:[0-4]\\d{2}|5(?:[0-2]\\d|3[0-5])))|[1-5]?\\d{1,4}))?';
-
-  re.src_host_terminator =
-
-    '(?=$|' + text_separators + '|' + re.src_ZPCc + ')(?!-|_|:\\d|\\.-|\\.(?!$|' + re.src_ZPCc + '))';
-
-  re.src_path =
-
-    '(?:' +
-      '[/?#]' +
-        '(?:' +
-          '(?!' + re.src_ZCc + '|' + text_separators + '|[()[\\]{}.,"\'?!\\-]).|' +
-          '\\[(?:(?!' + re.src_ZCc + '|\\]).)*\\]|' +
-          '\\((?:(?!' + re.src_ZCc + '|[)]).)*\\)|' +
-          '\\{(?:(?!' + re.src_ZCc + '|[}]).)*\\}|' +
-          '\\"(?:(?!' + re.src_ZCc + '|["]).)+\\"|' +
-          "\\'(?:(?!" + re.src_ZCc + "|[']).)+\\'|" +
-          "\\'(?=" + re.src_pseudo_letter + '|[-]).|' +  // allow `I'm_king` if no pair found
-          '\\.{2,}[a-zA-Z0-9%/&]|' + // google has many dots in "google search" links (#66, #81).
-                                     // github has ... in commit range links,
-                                     // Restrict to
-                                     // - english
-                                     // - percent-encoded
-                                     // - parts of file path
-                                     // - params separator
-                                     // until more examples found.
-          '\\.(?!' + re.src_ZCc + '|[.]).|' +
-          (opts && opts['---'] ?
-            '\\-(?!--(?:[^-]|$))(?:-*)|' // `---` => long dash, terminate
-            :
-            '\\-+|'
-          ) +
-          '\\,(?!' + re.src_ZCc + ').|' +       // allow `,,,` in paths
-          '\\!+(?!' + re.src_ZCc + '|[!]).|' +  // allow `!!!` in paths, but not at the end
-          '\\?(?!' + re.src_ZCc + '|[?]).' +
-        ')+' +
-      '|\\/' +
-    ')?';
-
-  // Allow anything in markdown spec, forbid quote (") at the first position
-  // because emails enclosed in quotes are far more common
-  re.src_email_name =
-
-    '[\\-;:&=\\+\\$,\\.a-zA-Z0-9_][\\-;:&=\\+\\$,\\"\\.a-zA-Z0-9_]*';
-
-  re.src_xn =
-
-    'xn--[a-z0-9\\-]{1,59}';
-
-  // More to read about domain names
-  // http://serverfault.com/questions/638260/
-
-  re.src_domain_root =
-
-    // Allow letters & digits (http://test1)
-    '(?:' +
-      re.src_xn +
-      '|' +
-      re.src_pseudo_letter + '{1,63}' +
-    ')';
-
-  re.src_domain =
-
-    '(?:' +
-      re.src_xn +
-      '|' +
-      '(?:' + re.src_pseudo_letter + ')' +
-      '|' +
-      '(?:' + re.src_pseudo_letter + '(?:-|' + re.src_pseudo_letter + '){0,61}' + re.src_pseudo_letter + ')' +
-    ')';
-
-  re.src_host =
-
-    '(?:' +
-    // Don't need IP check, because digits are already allowed in normal domain names
-    //   src_ip4 +
-    // '|' +
-      '(?:(?:(?:' + re.src_domain + ')\\.)*' + re.src_domain/*_root*/ + ')' +
-    ')';
-
-  re.tpl_host_fuzzy =
-
-    '(?:' +
-      re.src_ip4 +
-    '|' +
-      '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))' +
-    ')';
-
-  re.tpl_host_no_ip_fuzzy =
-
-    '(?:(?:(?:' + re.src_domain + ')\\.)+(?:%TLDS%))';
-
-  re.src_host_strict =
-
-    re.src_host + re.src_host_terminator;
-
-  re.tpl_host_fuzzy_strict =
-
-    re.tpl_host_fuzzy + re.src_host_terminator;
-
-  re.src_host_port_strict =
-
-    re.src_host + re.src_port + re.src_host_terminator;
-
-  re.tpl_host_port_fuzzy_strict =
-
-    re.tpl_host_fuzzy + re.src_port + re.src_host_terminator;
-
-  re.tpl_host_port_no_ip_fuzzy_strict =
-
-    re.tpl_host_no_ip_fuzzy + re.src_port + re.src_host_terminator;
-
-
-  ////////////////////////////////////////////////////////////////////////////////
-  // Main rules
-
-  // Rude test fuzzy links by host, for quick deny
-  re.tpl_host_fuzzy_test =
-
-    'localhost|www\\.|\\.\\d{1,3}\\.|(?:\\.(?:%TLDS%)(?:' + re.src_ZPCc + '|>|$))';
-
-  re.tpl_email_fuzzy =
-
-      '(^|' + text_separators + '|"|\\(|' + re.src_ZCc + ')' +
-      '(' + re.src_email_name + '@' + re.tpl_host_fuzzy_strict + ')';
-
-  re.tpl_link_fuzzy =
-      // Fuzzy link can't be prepended with .:/\- and non punctuation.
-      // but can start with > (markdown blockquote)
-      '(^|(?![.:/\\-_@])(?:[$+<=>^`|\uff5c]|' + re.src_ZPCc + '))' +
-      '((?![$+<=>^`|\uff5c])' + re.tpl_host_port_fuzzy_strict + re.src_path + ')';
-
-  re.tpl_link_no_ip_fuzzy =
-      // Fuzzy link can't be prepended with .:/\- and non punctuation.
-      // but can start with > (markdown blockquote)
-      '(^|(?![.:/\\-_@])(?:[$+<=>^`|\uff5c]|' + re.src_ZPCc + '))' +
-      '((?![$+<=>^`|\uff5c])' + re.tpl_host_port_no_ip_fuzzy_strict + re.src_path + ')';
-
-  return re;
-};
-
 ////////////////////////////////////////////////////////////////////////////////
 // Helpers
 
@@ -10673,7 +11332,7 @@ function assign(obj /*from1, from2, from3, ...*/) {
 
 function _class(obj) { return Object.prototype.toString.call(obj); }
 function isString(obj) { return _class(obj) === '[object String]'; }
-function isObject(obj) { return _class(obj) === '[object Object]'; }
+function isObject$1(obj) { return _class(obj) === '[object Object]'; }
 function isRegExp(obj) { return _class(obj) === '[object RegExp]'; }
 function isFunction(obj) { return _class(obj) === '[object Function]'; }
 
@@ -10844,7 +11503,7 @@ function compile(self) {
 
     self.__compiled__[name] = compiled;
 
-    if (isObject(val)) {
+    if (isObject$1(val)) {
       if (isRegExp(val.validate)) {
         compiled.validate = createValidator(val.validate);
       } else if (isFunction(val.validate)) {
@@ -11284,7 +11943,7 @@ LinkifyIt.prototype.onCompile = function onCompile() {
 };
 
 
-var linkifyIt = LinkifyIt;
+var D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_linkifyIt = LinkifyIt;
 
 // markdown-it default options
 
@@ -11496,7 +12155,7 @@ function validateLink(url) {
 var RECODE_HOSTNAME_FOR = [ 'http:', 'https:', 'mailto:' ];
 
 function normalizeLink(url) {
-  var parsed = mdurl.parse(url, true);
+  var parsed = D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl.parse(url, true);
 
   if (parsed.hostname) {
     // Encode hostnames in urls like:
@@ -11507,16 +12166,16 @@ function normalizeLink(url) {
     //
     if (!parsed.protocol || RECODE_HOSTNAME_FOR.indexOf(parsed.protocol) >= 0) {
       try {
-        parsed.hostname = punycode__default['default'].toASCII(parsed.hostname);
+        parsed.hostname = punycode__default["default"].toASCII(parsed.hostname);
       } catch (er) { /**/ }
     }
   }
 
-  return mdurl.encode(mdurl.format(parsed));
+  return D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl.encode(D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl.format(parsed));
 }
 
 function normalizeLinkText(url) {
-  var parsed = mdurl.parse(url, true);
+  var parsed = D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl.parse(url, true);
 
   if (parsed.hostname) {
     // Encode hostnames in urls like:
@@ -11527,13 +12186,13 @@ function normalizeLinkText(url) {
     //
     if (!parsed.protocol || RECODE_HOSTNAME_FOR.indexOf(parsed.protocol) >= 0) {
       try {
-        parsed.hostname = punycode__default['default'].toUnicode(parsed.hostname);
+        parsed.hostname = punycode__default["default"].toUnicode(parsed.hostname);
       } catch (er) { /**/ }
     }
   }
 
   // add '%' to exclude list because of https://github.com/markdown-it/markdown-it/issues/720
-  return mdurl.decode(mdurl.format(parsed), mdurl.decode.defaultChars + '%');
+  return D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl.decode(D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl.format(parsed), D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_mdurl.decode.defaultChars + '%');
 }
 
 
@@ -11639,7 +12298,7 @@ function normalizeLinkText(url) {
  *   highlight: function (str, lang) {
  *     if (lang && hljs.getLanguage(lang)) {
  *       try {
- *         return hljs.highlight(lang, str, true).value;
+ *         return hljs.highlight(str, { language: lang, ignoreIllegals: true }).value;
  *       } catch (__) {}
  *     }
  *
@@ -11659,7 +12318,7 @@ function normalizeLinkText(url) {
  *     if (lang && hljs.getLanguage(lang)) {
  *       try {
  *         return '<pre class="hljs"><code>' +
- *                hljs.highlight(lang, str, true).value +
+ *                hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
  *                '</code></pre>';
  *       } catch (__) {}
  *     }
@@ -11676,7 +12335,7 @@ function MarkdownIt(presetName, options) {
   }
 
   if (!options) {
-    if (!utils$1.isString(presetName)) {
+    if (!utils$2.isString(presetName)) {
       options = presetName || {};
       presetName = 'default';
     }
@@ -11739,7 +12398,7 @@ function MarkdownIt(presetName, options) {
    * Used by [linkify](https://github.com/markdown-it/markdown-it/blob/master/lib/rules_core/linkify.js)
    * rule.
    **/
-  this.linkify = new linkifyIt();
+  this.linkify = new D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_linkifyIt();
 
   /**
    * MarkdownIt#validateLink(url) -> Boolean
@@ -11782,7 +12441,7 @@ function MarkdownIt(presetName, options) {
    * Assorted utility functions, useful to write plugins. See details
    * [here](https://github.com/markdown-it/markdown-it/blob/master/lib/common/utils.js).
    **/
-  this.utils = utils$1;
+  this.utils = utils$2;
 
   /**
    * MarkdownIt#helpers -> helpers
@@ -11790,7 +12449,7 @@ function MarkdownIt(presetName, options) {
    * Link components parser functions, useful to write plugins. See details
    * [here](https://github.com/markdown-it/markdown-it/blob/master/lib/helpers).
    **/
-  this.helpers = utils$1.assign({}, helpers);
+  this.helpers = utils$2.assign({}, D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_markdownIt_lib_helpers);
 
 
   this.options = {};
@@ -11820,7 +12479,7 @@ function MarkdownIt(presetName, options) {
  * config.
  **/
 MarkdownIt.prototype.set = function (options) {
-  utils$1.assign(this.options, options);
+  utils$2.assign(this.options, options);
   return this;
 };
 
@@ -11838,7 +12497,7 @@ MarkdownIt.prototype.set = function (options) {
 MarkdownIt.prototype.configure = function (presets) {
   var self = this, presetName;
 
-  if (utils$1.isString(presets)) {
+  if (utils$2.isString(presets)) {
     presetName = presets;
     presets = config[presetName];
     if (!presets) { throw new Error('Wrong `markdown-it` preset "' + presetName + '", check name'); }
@@ -12030,9 +12689,2302 @@ MarkdownIt.prototype.renderInline = function (src, env) {
 };
 
 
-var lib = MarkdownIt;
+var D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_markdownIt_lib = MarkdownIt;
 
-var markdownIt = lib;
+var markdownIt = D__Checklist_Development__obsidian_plugins_obsidianChecklistPlugin_node_modules_markdownIt_lib;
+
+const WIN_SLASH$1 = '\\\\/';
+const WIN_NO_SLASH$1 = `[^${WIN_SLASH$1}]`;
+
+/**
+ * Posix glob regex
+ */
+
+const DOT_LITERAL$1 = '\\.';
+const PLUS_LITERAL$1 = '\\+';
+const QMARK_LITERAL$1 = '\\?';
+const SLASH_LITERAL$1 = '\\/';
+const ONE_CHAR$1 = '(?=.)';
+const QMARK$1 = '[^/]';
+const END_ANCHOR$1 = `(?:${SLASH_LITERAL$1}|$)`;
+const START_ANCHOR$1 = `(?:^|${SLASH_LITERAL$1})`;
+const DOTS_SLASH$1 = `${DOT_LITERAL$1}{1,2}${END_ANCHOR$1}`;
+const NO_DOT$1 = `(?!${DOT_LITERAL$1})`;
+const NO_DOTS$1 = `(?!${START_ANCHOR$1}${DOTS_SLASH$1})`;
+const NO_DOT_SLASH$1 = `(?!${DOT_LITERAL$1}{0,1}${END_ANCHOR$1})`;
+const NO_DOTS_SLASH$1 = `(?!${DOTS_SLASH$1})`;
+const QMARK_NO_DOT$1 = `[^.${SLASH_LITERAL$1}]`;
+const STAR$1 = `${QMARK$1}*?`;
+
+const POSIX_CHARS$1 = {
+  DOT_LITERAL: DOT_LITERAL$1,
+  PLUS_LITERAL: PLUS_LITERAL$1,
+  QMARK_LITERAL: QMARK_LITERAL$1,
+  SLASH_LITERAL: SLASH_LITERAL$1,
+  ONE_CHAR: ONE_CHAR$1,
+  QMARK: QMARK$1,
+  END_ANCHOR: END_ANCHOR$1,
+  DOTS_SLASH: DOTS_SLASH$1,
+  NO_DOT: NO_DOT$1,
+  NO_DOTS: NO_DOTS$1,
+  NO_DOT_SLASH: NO_DOT_SLASH$1,
+  NO_DOTS_SLASH: NO_DOTS_SLASH$1,
+  QMARK_NO_DOT: QMARK_NO_DOT$1,
+  STAR: STAR$1,
+  START_ANCHOR: START_ANCHOR$1
+};
+
+/**
+ * Windows glob regex
+ */
+
+const WINDOWS_CHARS$1 = {
+  ...POSIX_CHARS$1,
+
+  SLASH_LITERAL: `[${WIN_SLASH$1}]`,
+  QMARK: WIN_NO_SLASH$1,
+  STAR: `${WIN_NO_SLASH$1}*?`,
+  DOTS_SLASH: `${DOT_LITERAL$1}{1,2}(?:[${WIN_SLASH$1}]|$)`,
+  NO_DOT: `(?!${DOT_LITERAL$1})`,
+  NO_DOTS: `(?!(?:^|[${WIN_SLASH$1}])${DOT_LITERAL$1}{1,2}(?:[${WIN_SLASH$1}]|$))`,
+  NO_DOT_SLASH: `(?!${DOT_LITERAL$1}{0,1}(?:[${WIN_SLASH$1}]|$))`,
+  NO_DOTS_SLASH: `(?!${DOT_LITERAL$1}{1,2}(?:[${WIN_SLASH$1}]|$))`,
+  QMARK_NO_DOT: `[^.${WIN_SLASH$1}]`,
+  START_ANCHOR: `(?:^|[${WIN_SLASH$1}])`,
+  END_ANCHOR: `(?:[${WIN_SLASH$1}]|$)`
+};
+
+/**
+ * POSIX Bracket Regex
+ */
+
+const POSIX_REGEX_SOURCE$2 = {
+  alnum: 'a-zA-Z0-9',
+  alpha: 'a-zA-Z',
+  ascii: '\\x00-\\x7F',
+  blank: ' \\t',
+  cntrl: '\\x00-\\x1F\\x7F',
+  digit: '0-9',
+  graph: '\\x21-\\x7E',
+  lower: 'a-z',
+  print: '\\x20-\\x7E ',
+  punct: '\\-!"#$%&\'()\\*+,./:;<=>?@[\\]^_`{|}~',
+  space: ' \\t\\r\\n\\v\\f',
+  upper: 'A-Z',
+  word: 'A-Za-z0-9_',
+  xdigit: 'A-Fa-f0-9'
+};
+
+({
+  MAX_LENGTH: 1024 * 64,
+  POSIX_REGEX_SOURCE: POSIX_REGEX_SOURCE$2,
+
+  // regular expressions
+  REGEX_BACKSLASH: /\\(?![*+?^${}(|)[\]])/g,
+  REGEX_NON_SPECIAL_CHARS: /^[^@![\].,$*+?^{}()|\\/]+/,
+  REGEX_SPECIAL_CHARS: /[-*+?.^${}(|)[\]]/,
+  REGEX_SPECIAL_CHARS_BACKREF: /(\\?)((\W)(\3*))/g,
+  REGEX_SPECIAL_CHARS_GLOBAL: /([-*+?.^${}(|)[\]])/g,
+  REGEX_REMOVE_BACKSLASH: /(?:\[.*?[^\\]\]|\\(?=.))/g,
+
+  // Replace globs with equivalent patterns to reduce parsing time.
+  REPLACEMENTS: {
+    '***': '*',
+    '**/**': '**',
+    '**/**/**': '**'
+  },
+
+  // Digits
+  CHAR_0: 48, /* 0 */
+  CHAR_9: 57, /* 9 */
+
+  // Alphabet chars.
+  CHAR_UPPERCASE_A: 65, /* A */
+  CHAR_LOWERCASE_A: 97, /* a */
+  CHAR_UPPERCASE_Z: 90, /* Z */
+  CHAR_LOWERCASE_Z: 122, /* z */
+
+  CHAR_LEFT_PARENTHESES: 40, /* ( */
+  CHAR_RIGHT_PARENTHESES: 41, /* ) */
+
+  CHAR_ASTERISK: 42, /* * */
+
+  // Non-alphabetic chars.
+  CHAR_AMPERSAND: 38, /* & */
+  CHAR_AT: 64, /* @ */
+  CHAR_BACKWARD_SLASH: 92, /* \ */
+  CHAR_CARRIAGE_RETURN: 13, /* \r */
+  CHAR_CIRCUMFLEX_ACCENT: 94, /* ^ */
+  CHAR_COLON: 58, /* : */
+  CHAR_COMMA: 44, /* , */
+  CHAR_DOT: 46, /* . */
+  CHAR_DOUBLE_QUOTE: 34, /* " */
+  CHAR_EQUAL: 61, /* = */
+  CHAR_EXCLAMATION_MARK: 33, /* ! */
+  CHAR_FORM_FEED: 12, /* \f */
+  CHAR_FORWARD_SLASH: 47, /* / */
+  CHAR_GRAVE_ACCENT: 96, /* ` */
+  CHAR_HASH: 35, /* # */
+  CHAR_HYPHEN_MINUS: 45, /* - */
+  CHAR_LEFT_ANGLE_BRACKET: 60, /* < */
+  CHAR_LEFT_CURLY_BRACE: 123, /* { */
+  CHAR_LEFT_SQUARE_BRACKET: 91, /* [ */
+  CHAR_LINE_FEED: 10, /* \n */
+  CHAR_NO_BREAK_SPACE: 160, /* \u00A0 */
+  CHAR_PERCENT: 37, /* % */
+  CHAR_PLUS: 43, /* + */
+  CHAR_QUESTION_MARK: 63, /* ? */
+  CHAR_RIGHT_ANGLE_BRACKET: 62, /* > */
+  CHAR_RIGHT_CURLY_BRACE: 125, /* } */
+  CHAR_RIGHT_SQUARE_BRACKET: 93, /* ] */
+  CHAR_SEMICOLON: 59, /* ; */
+  CHAR_SINGLE_QUOTE: 39, /* ' */
+  CHAR_SPACE: 32, /*   */
+  CHAR_TAB: 9, /* \t */
+  CHAR_UNDERSCORE: 95, /* _ */
+  CHAR_VERTICAL_LINE: 124, /* | */
+  CHAR_ZERO_WIDTH_NOBREAK_SPACE: 65279, /* \uFEFF */
+
+  SEP: path__default["default"].sep,
+
+  /**
+   * Create EXTGLOB_CHARS
+   */
+
+  extglobChars(chars) {
+    return {
+      '!': { type: 'negate', open: '(?:(?!(?:', close: `))${chars.STAR})` },
+      '?': { type: 'qmark', open: '(?:', close: ')?' },
+      '+': { type: 'plus', open: '(?:', close: ')+' },
+      '*': { type: 'star', open: '(?:', close: ')*' },
+      '@': { type: 'at', open: '(?:', close: ')' }
+    };
+  },
+
+  /**
+   * Create GLOB_CHARS
+   */
+
+  globChars(win32) {
+    return win32 === true ? WINDOWS_CHARS$1 : POSIX_CHARS$1;
+  }
+});
+
+const WIN_SLASH = '\\\\/';
+const WIN_NO_SLASH = `[^${WIN_SLASH}]`;
+
+/**
+ * Posix glob regex
+ */
+
+const DOT_LITERAL = '\\.';
+const PLUS_LITERAL = '\\+';
+const QMARK_LITERAL = '\\?';
+const SLASH_LITERAL = '\\/';
+const ONE_CHAR = '(?=.)';
+const QMARK = '[^/]';
+const END_ANCHOR = `(?:${SLASH_LITERAL}|$)`;
+const START_ANCHOR = `(?:^|${SLASH_LITERAL})`;
+const DOTS_SLASH = `${DOT_LITERAL}{1,2}${END_ANCHOR}`;
+const NO_DOT = `(?!${DOT_LITERAL})`;
+const NO_DOTS = `(?!${START_ANCHOR}${DOTS_SLASH})`;
+const NO_DOT_SLASH = `(?!${DOT_LITERAL}{0,1}${END_ANCHOR})`;
+const NO_DOTS_SLASH = `(?!${DOTS_SLASH})`;
+const QMARK_NO_DOT = `[^.${SLASH_LITERAL}]`;
+const STAR = `${QMARK}*?`;
+
+const POSIX_CHARS = {
+  DOT_LITERAL,
+  PLUS_LITERAL,
+  QMARK_LITERAL,
+  SLASH_LITERAL,
+  ONE_CHAR,
+  QMARK,
+  END_ANCHOR,
+  DOTS_SLASH,
+  NO_DOT,
+  NO_DOTS,
+  NO_DOT_SLASH,
+  NO_DOTS_SLASH,
+  QMARK_NO_DOT,
+  STAR,
+  START_ANCHOR
+};
+
+/**
+ * Windows glob regex
+ */
+
+const WINDOWS_CHARS = {
+  ...POSIX_CHARS,
+
+  SLASH_LITERAL: `[${WIN_SLASH}]`,
+  QMARK: WIN_NO_SLASH,
+  STAR: `${WIN_NO_SLASH}*?`,
+  DOTS_SLASH: `${DOT_LITERAL}{1,2}(?:[${WIN_SLASH}]|$)`,
+  NO_DOT: `(?!${DOT_LITERAL})`,
+  NO_DOTS: `(?!(?:^|[${WIN_SLASH}])${DOT_LITERAL}{1,2}(?:[${WIN_SLASH}]|$))`,
+  NO_DOT_SLASH: `(?!${DOT_LITERAL}{0,1}(?:[${WIN_SLASH}]|$))`,
+  NO_DOTS_SLASH: `(?!${DOT_LITERAL}{1,2}(?:[${WIN_SLASH}]|$))`,
+  QMARK_NO_DOT: `[^.${WIN_SLASH}]`,
+  START_ANCHOR: `(?:^|[${WIN_SLASH}])`,
+  END_ANCHOR: `(?:[${WIN_SLASH}]|$)`
+};
+
+/**
+ * POSIX Bracket Regex
+ */
+
+const POSIX_REGEX_SOURCE$1 = {
+  alnum: 'a-zA-Z0-9',
+  alpha: 'a-zA-Z',
+  ascii: '\\x00-\\x7F',
+  blank: ' \\t',
+  cntrl: '\\x00-\\x1F\\x7F',
+  digit: '0-9',
+  graph: '\\x21-\\x7E',
+  lower: 'a-z',
+  print: '\\x20-\\x7E ',
+  punct: '\\-!"#$%&\'()\\*+,./:;<=>?@[\\]^_`{|}~',
+  space: ' \\t\\r\\n\\v\\f',
+  upper: 'A-Z',
+  word: 'A-Za-z0-9_',
+  xdigit: 'A-Fa-f0-9'
+};
+
+var constants = {
+  MAX_LENGTH: 1024 * 64,
+  POSIX_REGEX_SOURCE: POSIX_REGEX_SOURCE$1,
+
+  // regular expressions
+  REGEX_BACKSLASH: /\\(?![*+?^${}(|)[\]])/g,
+  REGEX_NON_SPECIAL_CHARS: /^[^@![\].,$*+?^{}()|\\/]+/,
+  REGEX_SPECIAL_CHARS: /[-*+?.^${}(|)[\]]/,
+  REGEX_SPECIAL_CHARS_BACKREF: /(\\?)((\W)(\3*))/g,
+  REGEX_SPECIAL_CHARS_GLOBAL: /([-*+?.^${}(|)[\]])/g,
+  REGEX_REMOVE_BACKSLASH: /(?:\[.*?[^\\]\]|\\(?=.))/g,
+
+  // Replace globs with equivalent patterns to reduce parsing time.
+  REPLACEMENTS: {
+    '***': '*',
+    '**/**': '**',
+    '**/**/**': '**'
+  },
+
+  // Digits
+  CHAR_0: 48, /* 0 */
+  CHAR_9: 57, /* 9 */
+
+  // Alphabet chars.
+  CHAR_UPPERCASE_A: 65, /* A */
+  CHAR_LOWERCASE_A: 97, /* a */
+  CHAR_UPPERCASE_Z: 90, /* Z */
+  CHAR_LOWERCASE_Z: 122, /* z */
+
+  CHAR_LEFT_PARENTHESES: 40, /* ( */
+  CHAR_RIGHT_PARENTHESES: 41, /* ) */
+
+  CHAR_ASTERISK: 42, /* * */
+
+  // Non-alphabetic chars.
+  CHAR_AMPERSAND: 38, /* & */
+  CHAR_AT: 64, /* @ */
+  CHAR_BACKWARD_SLASH: 92, /* \ */
+  CHAR_CARRIAGE_RETURN: 13, /* \r */
+  CHAR_CIRCUMFLEX_ACCENT: 94, /* ^ */
+  CHAR_COLON: 58, /* : */
+  CHAR_COMMA: 44, /* , */
+  CHAR_DOT: 46, /* . */
+  CHAR_DOUBLE_QUOTE: 34, /* " */
+  CHAR_EQUAL: 61, /* = */
+  CHAR_EXCLAMATION_MARK: 33, /* ! */
+  CHAR_FORM_FEED: 12, /* \f */
+  CHAR_FORWARD_SLASH: 47, /* / */
+  CHAR_GRAVE_ACCENT: 96, /* ` */
+  CHAR_HASH: 35, /* # */
+  CHAR_HYPHEN_MINUS: 45, /* - */
+  CHAR_LEFT_ANGLE_BRACKET: 60, /* < */
+  CHAR_LEFT_CURLY_BRACE: 123, /* { */
+  CHAR_LEFT_SQUARE_BRACKET: 91, /* [ */
+  CHAR_LINE_FEED: 10, /* \n */
+  CHAR_NO_BREAK_SPACE: 160, /* \u00A0 */
+  CHAR_PERCENT: 37, /* % */
+  CHAR_PLUS: 43, /* + */
+  CHAR_QUESTION_MARK: 63, /* ? */
+  CHAR_RIGHT_ANGLE_BRACKET: 62, /* > */
+  CHAR_RIGHT_CURLY_BRACE: 125, /* } */
+  CHAR_RIGHT_SQUARE_BRACKET: 93, /* ] */
+  CHAR_SEMICOLON: 59, /* ; */
+  CHAR_SINGLE_QUOTE: 39, /* ' */
+  CHAR_SPACE: 32, /*   */
+  CHAR_TAB: 9, /* \t */
+  CHAR_UNDERSCORE: 95, /* _ */
+  CHAR_VERTICAL_LINE: 124, /* | */
+  CHAR_ZERO_WIDTH_NOBREAK_SPACE: 65279, /* \uFEFF */
+
+  SEP: path__default["default"].sep,
+
+  /**
+   * Create EXTGLOB_CHARS
+   */
+
+  extglobChars(chars) {
+    return {
+      '!': { type: 'negate', open: '(?:(?!(?:', close: `))${chars.STAR})` },
+      '?': { type: 'qmark', open: '(?:', close: ')?' },
+      '+': { type: 'plus', open: '(?:', close: ')+' },
+      '*': { type: 'star', open: '(?:', close: ')*' },
+      '@': { type: 'at', open: '(?:', close: ')' }
+    };
+  },
+
+  /**
+   * Create GLOB_CHARS
+   */
+
+  globChars(win32) {
+    return win32 === true ? WINDOWS_CHARS : POSIX_CHARS;
+  }
+};
+
+createCommonjsModule(function (module, exports) {
+
+
+const win32 = process.platform === 'win32';
+const {
+  REGEX_BACKSLASH,
+  REGEX_REMOVE_BACKSLASH,
+  REGEX_SPECIAL_CHARS,
+  REGEX_SPECIAL_CHARS_GLOBAL
+} = constants;
+
+exports.isObject = val => val !== null && typeof val === 'object' && !Array.isArray(val);
+exports.hasRegexChars = str => REGEX_SPECIAL_CHARS.test(str);
+exports.isRegexChar = str => str.length === 1 && exports.hasRegexChars(str);
+exports.escapeRegex = str => str.replace(REGEX_SPECIAL_CHARS_GLOBAL, '\\$1');
+exports.toPosixSlashes = str => str.replace(REGEX_BACKSLASH, '/');
+
+exports.removeBackslashes = str => {
+  return str.replace(REGEX_REMOVE_BACKSLASH, match => {
+    return match === '\\' ? '' : match;
+  });
+};
+
+exports.supportsLookbehinds = () => {
+  const segs = process.version.slice(1).split('.').map(Number);
+  if (segs.length === 3 && segs[0] >= 9 || (segs[0] === 8 && segs[1] >= 10)) {
+    return true;
+  }
+  return false;
+};
+
+exports.isWindows = options => {
+  if (options && typeof options.windows === 'boolean') {
+    return options.windows;
+  }
+  return win32 === true || path__default["default"].sep === '\\';
+};
+
+exports.escapeLast = (input, char, lastIdx) => {
+  const idx = input.lastIndexOf(char, lastIdx);
+  if (idx === -1) return input;
+  if (input[idx - 1] === '\\') return exports.escapeLast(input, char, idx - 1);
+  return `${input.slice(0, idx)}\\${input.slice(idx)}`;
+};
+
+exports.removePrefix = (input, state = {}) => {
+  let output = input;
+  if (output.startsWith('./')) {
+    output = output.slice(2);
+    state.prefix = './';
+  }
+  return output;
+};
+
+exports.wrapOutput = (input, state = {}, options = {}) => {
+  const prepend = options.contains ? '' : '^';
+  const append = options.contains ? '' : '$';
+
+  let output = `${prepend}(?:${input})${append}`;
+  if (state.negated === true) {
+    output = `(?:^(?!${output}).*$)`;
+  }
+  return output;
+};
+});
+
+var utils$1 = createCommonjsModule(function (module, exports) {
+
+
+const win32 = process.platform === 'win32';
+const {
+  REGEX_BACKSLASH,
+  REGEX_REMOVE_BACKSLASH,
+  REGEX_SPECIAL_CHARS,
+  REGEX_SPECIAL_CHARS_GLOBAL
+} = constants;
+
+exports.isObject = val => val !== null && typeof val === 'object' && !Array.isArray(val);
+exports.hasRegexChars = str => REGEX_SPECIAL_CHARS.test(str);
+exports.isRegexChar = str => str.length === 1 && exports.hasRegexChars(str);
+exports.escapeRegex = str => str.replace(REGEX_SPECIAL_CHARS_GLOBAL, '\\$1');
+exports.toPosixSlashes = str => str.replace(REGEX_BACKSLASH, '/');
+
+exports.removeBackslashes = str => {
+  return str.replace(REGEX_REMOVE_BACKSLASH, match => {
+    return match === '\\' ? '' : match;
+  });
+};
+
+exports.supportsLookbehinds = () => {
+  const segs = process.version.slice(1).split('.').map(Number);
+  if (segs.length === 3 && segs[0] >= 9 || (segs[0] === 8 && segs[1] >= 10)) {
+    return true;
+  }
+  return false;
+};
+
+exports.isWindows = options => {
+  if (options && typeof options.windows === 'boolean') {
+    return options.windows;
+  }
+  return win32 === true || path__default["default"].sep === '\\';
+};
+
+exports.escapeLast = (input, char, lastIdx) => {
+  const idx = input.lastIndexOf(char, lastIdx);
+  if (idx === -1) return input;
+  if (input[idx - 1] === '\\') return exports.escapeLast(input, char, idx - 1);
+  return `${input.slice(0, idx)}\\${input.slice(idx)}`;
+};
+
+exports.removePrefix = (input, state = {}) => {
+  let output = input;
+  if (output.startsWith('./')) {
+    output = output.slice(2);
+    state.prefix = './';
+  }
+  return output;
+};
+
+exports.wrapOutput = (input, state = {}, options = {}) => {
+  const prepend = options.contains ? '' : '^';
+  const append = options.contains ? '' : '$';
+
+  let output = `${prepend}(?:${input})${append}`;
+  if (state.negated === true) {
+    output = `(?:^(?!${output}).*$)`;
+  }
+  return output;
+};
+});
+
+const {
+  CHAR_ASTERISK,             /* * */
+  CHAR_AT,                   /* @ */
+  CHAR_BACKWARD_SLASH,       /* \ */
+  CHAR_COMMA,                /* , */
+  CHAR_DOT,                  /* . */
+  CHAR_EXCLAMATION_MARK,     /* ! */
+  CHAR_FORWARD_SLASH,        /* / */
+  CHAR_LEFT_CURLY_BRACE,     /* { */
+  CHAR_LEFT_PARENTHESES,     /* ( */
+  CHAR_LEFT_SQUARE_BRACKET,  /* [ */
+  CHAR_PLUS,                 /* + */
+  CHAR_QUESTION_MARK,        /* ? */
+  CHAR_RIGHT_CURLY_BRACE,    /* } */
+  CHAR_RIGHT_PARENTHESES,    /* ) */
+  CHAR_RIGHT_SQUARE_BRACKET  /* ] */
+} = constants;
+
+const isPathSeparator = code => {
+  return code === CHAR_FORWARD_SLASH || code === CHAR_BACKWARD_SLASH;
+};
+
+const depth = token => {
+  if (token.isPrefix !== true) {
+    token.depth = token.isGlobstar ? Infinity : 1;
+  }
+};
+
+/**
+ * Quickly scans a glob pattern and returns an object with a handful of
+ * useful properties, like `isGlob`, `path` (the leading non-glob, if it exists),
+ * `glob` (the actual pattern), `negated` (true if the path starts with `!` but not
+ * with `!(`) and `negatedExtglob` (true if the path starts with `!(`).
+ *
+ * ```js
+ * const pm = require('picomatch');
+ * console.log(pm.scan('foo/bar/*.js'));
+ * { isGlob: true, input: 'foo/bar/*.js', base: 'foo/bar', glob: '*.js' }
+ * ```
+ * @param {String} `str`
+ * @param {Object} `options`
+ * @return {Object} Returns an object with tokens and regex source string.
+ * @api public
+ */
+
+const scan = (input, options) => {
+  const opts = options || {};
+
+  const length = input.length - 1;
+  const scanToEnd = opts.parts === true || opts.scanToEnd === true;
+  const slashes = [];
+  const tokens = [];
+  const parts = [];
+
+  let str = input;
+  let index = -1;
+  let start = 0;
+  let lastIndex = 0;
+  let isBrace = false;
+  let isBracket = false;
+  let isGlob = false;
+  let isExtglob = false;
+  let isGlobstar = false;
+  let braceEscaped = false;
+  let backslashes = false;
+  let negated = false;
+  let negatedExtglob = false;
+  let finished = false;
+  let braces = 0;
+  let prev;
+  let code;
+  let token = { value: '', depth: 0, isGlob: false };
+
+  const eos = () => index >= length;
+  const peek = () => str.charCodeAt(index + 1);
+  const advance = () => {
+    prev = code;
+    return str.charCodeAt(++index);
+  };
+
+  while (index < length) {
+    code = advance();
+    let next;
+
+    if (code === CHAR_BACKWARD_SLASH) {
+      backslashes = token.backslashes = true;
+      code = advance();
+
+      if (code === CHAR_LEFT_CURLY_BRACE) {
+        braceEscaped = true;
+      }
+      continue;
+    }
+
+    if (braceEscaped === true || code === CHAR_LEFT_CURLY_BRACE) {
+      braces++;
+
+      while (eos() !== true && (code = advance())) {
+        if (code === CHAR_BACKWARD_SLASH) {
+          backslashes = token.backslashes = true;
+          advance();
+          continue;
+        }
+
+        if (code === CHAR_LEFT_CURLY_BRACE) {
+          braces++;
+          continue;
+        }
+
+        if (braceEscaped !== true && code === CHAR_DOT && (code = advance()) === CHAR_DOT) {
+          isBrace = token.isBrace = true;
+          isGlob = token.isGlob = true;
+          finished = true;
+
+          if (scanToEnd === true) {
+            continue;
+          }
+
+          break;
+        }
+
+        if (braceEscaped !== true && code === CHAR_COMMA) {
+          isBrace = token.isBrace = true;
+          isGlob = token.isGlob = true;
+          finished = true;
+
+          if (scanToEnd === true) {
+            continue;
+          }
+
+          break;
+        }
+
+        if (code === CHAR_RIGHT_CURLY_BRACE) {
+          braces--;
+
+          if (braces === 0) {
+            braceEscaped = false;
+            isBrace = token.isBrace = true;
+            finished = true;
+            break;
+          }
+        }
+      }
+
+      if (scanToEnd === true) {
+        continue;
+      }
+
+      break;
+    }
+
+    if (code === CHAR_FORWARD_SLASH) {
+      slashes.push(index);
+      tokens.push(token);
+      token = { value: '', depth: 0, isGlob: false };
+
+      if (finished === true) continue;
+      if (prev === CHAR_DOT && index === (start + 1)) {
+        start += 2;
+        continue;
+      }
+
+      lastIndex = index + 1;
+      continue;
+    }
+
+    if (opts.noext !== true) {
+      const isExtglobChar = code === CHAR_PLUS
+        || code === CHAR_AT
+        || code === CHAR_ASTERISK
+        || code === CHAR_QUESTION_MARK
+        || code === CHAR_EXCLAMATION_MARK;
+
+      if (isExtglobChar === true && peek() === CHAR_LEFT_PARENTHESES) {
+        isGlob = token.isGlob = true;
+        isExtglob = token.isExtglob = true;
+        finished = true;
+        if (code === CHAR_EXCLAMATION_MARK && index === start) {
+          negatedExtglob = true;
+        }
+
+        if (scanToEnd === true) {
+          while (eos() !== true && (code = advance())) {
+            if (code === CHAR_BACKWARD_SLASH) {
+              backslashes = token.backslashes = true;
+              code = advance();
+              continue;
+            }
+
+            if (code === CHAR_RIGHT_PARENTHESES) {
+              isGlob = token.isGlob = true;
+              finished = true;
+              break;
+            }
+          }
+          continue;
+        }
+        break;
+      }
+    }
+
+    if (code === CHAR_ASTERISK) {
+      if (prev === CHAR_ASTERISK) isGlobstar = token.isGlobstar = true;
+      isGlob = token.isGlob = true;
+      finished = true;
+
+      if (scanToEnd === true) {
+        continue;
+      }
+      break;
+    }
+
+    if (code === CHAR_QUESTION_MARK) {
+      isGlob = token.isGlob = true;
+      finished = true;
+
+      if (scanToEnd === true) {
+        continue;
+      }
+      break;
+    }
+
+    if (code === CHAR_LEFT_SQUARE_BRACKET) {
+      while (eos() !== true && (next = advance())) {
+        if (next === CHAR_BACKWARD_SLASH) {
+          backslashes = token.backslashes = true;
+          advance();
+          continue;
+        }
+
+        if (next === CHAR_RIGHT_SQUARE_BRACKET) {
+          isBracket = token.isBracket = true;
+          isGlob = token.isGlob = true;
+          finished = true;
+          break;
+        }
+      }
+
+      if (scanToEnd === true) {
+        continue;
+      }
+
+      break;
+    }
+
+    if (opts.nonegate !== true && code === CHAR_EXCLAMATION_MARK && index === start) {
+      negated = token.negated = true;
+      start++;
+      continue;
+    }
+
+    if (opts.noparen !== true && code === CHAR_LEFT_PARENTHESES) {
+      isGlob = token.isGlob = true;
+
+      if (scanToEnd === true) {
+        while (eos() !== true && (code = advance())) {
+          if (code === CHAR_LEFT_PARENTHESES) {
+            backslashes = token.backslashes = true;
+            code = advance();
+            continue;
+          }
+
+          if (code === CHAR_RIGHT_PARENTHESES) {
+            finished = true;
+            break;
+          }
+        }
+        continue;
+      }
+      break;
+    }
+
+    if (isGlob === true) {
+      finished = true;
+
+      if (scanToEnd === true) {
+        continue;
+      }
+
+      break;
+    }
+  }
+
+  if (opts.noext === true) {
+    isExtglob = false;
+    isGlob = false;
+  }
+
+  let base = str;
+  let prefix = '';
+  let glob = '';
+
+  if (start > 0) {
+    prefix = str.slice(0, start);
+    str = str.slice(start);
+    lastIndex -= start;
+  }
+
+  if (base && isGlob === true && lastIndex > 0) {
+    base = str.slice(0, lastIndex);
+    glob = str.slice(lastIndex);
+  } else if (isGlob === true) {
+    base = '';
+    glob = str;
+  } else {
+    base = str;
+  }
+
+  if (base && base !== '' && base !== '/' && base !== str) {
+    if (isPathSeparator(base.charCodeAt(base.length - 1))) {
+      base = base.slice(0, -1);
+    }
+  }
+
+  if (opts.unescape === true) {
+    if (glob) glob = utils$1.removeBackslashes(glob);
+
+    if (base && backslashes === true) {
+      base = utils$1.removeBackslashes(base);
+    }
+  }
+
+  const state = {
+    prefix,
+    input,
+    start,
+    base,
+    glob,
+    isBrace,
+    isBracket,
+    isGlob,
+    isExtglob,
+    isGlobstar,
+    negated,
+    negatedExtglob
+  };
+
+  if (opts.tokens === true) {
+    state.maxDepth = 0;
+    if (!isPathSeparator(code)) {
+      tokens.push(token);
+    }
+    state.tokens = tokens;
+  }
+
+  if (opts.parts === true || opts.tokens === true) {
+    let prevIndex;
+
+    for (let idx = 0; idx < slashes.length; idx++) {
+      const n = prevIndex ? prevIndex + 1 : start;
+      const i = slashes[idx];
+      const value = input.slice(n, i);
+      if (opts.tokens) {
+        if (idx === 0 && start !== 0) {
+          tokens[idx].isPrefix = true;
+          tokens[idx].value = prefix;
+        } else {
+          tokens[idx].value = value;
+        }
+        depth(tokens[idx]);
+        state.maxDepth += tokens[idx].depth;
+      }
+      if (idx !== 0 || value !== '') {
+        parts.push(value);
+      }
+      prevIndex = i;
+    }
+
+    if (prevIndex && prevIndex + 1 < input.length) {
+      const value = input.slice(prevIndex + 1);
+      parts.push(value);
+
+      if (opts.tokens) {
+        tokens[tokens.length - 1].value = value;
+        depth(tokens[tokens.length - 1]);
+        state.maxDepth += tokens[tokens.length - 1].depth;
+      }
+    }
+
+    state.slashes = slashes;
+    state.parts = parts;
+  }
+
+  return state;
+};
+
+var scan_1 = scan;
+
+/**
+ * Constants
+ */
+
+const {
+  MAX_LENGTH,
+  POSIX_REGEX_SOURCE,
+  REGEX_NON_SPECIAL_CHARS,
+  REGEX_SPECIAL_CHARS_BACKREF,
+  REPLACEMENTS
+} = constants;
+
+/**
+ * Helpers
+ */
+
+const expandRange = (args, options) => {
+  if (typeof options.expandRange === 'function') {
+    return options.expandRange(...args, options);
+  }
+
+  args.sort();
+  const value = `[${args.join('-')}]`;
+
+  try {
+    /* eslint-disable-next-line no-new */
+    new RegExp(value);
+  } catch (ex) {
+    return args.map(v => utils$1.escapeRegex(v)).join('..');
+  }
+
+  return value;
+};
+
+/**
+ * Create the message for a syntax error
+ */
+
+const syntaxError = (type, char) => {
+  return `Missing ${type}: "${char}" - use "\\\\${char}" to match literal characters`;
+};
+
+/**
+ * Parse the given input string.
+ * @param {String} input
+ * @param {Object} options
+ * @return {Object}
+ */
+
+const parse = (input, options) => {
+  if (typeof input !== 'string') {
+    throw new TypeError('Expected a string');
+  }
+
+  input = REPLACEMENTS[input] || input;
+
+  const opts = { ...options };
+  const max = typeof opts.maxLength === 'number' ? Math.min(MAX_LENGTH, opts.maxLength) : MAX_LENGTH;
+
+  let len = input.length;
+  if (len > max) {
+    throw new SyntaxError(`Input length: ${len}, exceeds maximum allowed length: ${max}`);
+  }
+
+  const bos = { type: 'bos', value: '', output: opts.prepend || '' };
+  const tokens = [bos];
+
+  const capture = opts.capture ? '' : '?:';
+  const win32 = utils$1.isWindows(options);
+
+  // create constants based on platform, for windows or posix
+  const PLATFORM_CHARS = constants.globChars(win32);
+  const EXTGLOB_CHARS = constants.extglobChars(PLATFORM_CHARS);
+
+  const {
+    DOT_LITERAL,
+    PLUS_LITERAL,
+    SLASH_LITERAL,
+    ONE_CHAR,
+    DOTS_SLASH,
+    NO_DOT,
+    NO_DOT_SLASH,
+    NO_DOTS_SLASH,
+    QMARK,
+    QMARK_NO_DOT,
+    STAR,
+    START_ANCHOR
+  } = PLATFORM_CHARS;
+
+  const globstar = opts => {
+    return `(${capture}(?:(?!${START_ANCHOR}${opts.dot ? DOTS_SLASH : DOT_LITERAL}).)*?)`;
+  };
+
+  const nodot = opts.dot ? '' : NO_DOT;
+  const qmarkNoDot = opts.dot ? QMARK : QMARK_NO_DOT;
+  let star = opts.bash === true ? globstar(opts) : STAR;
+
+  if (opts.capture) {
+    star = `(${star})`;
+  }
+
+  // minimatch options support
+  if (typeof opts.noext === 'boolean') {
+    opts.noextglob = opts.noext;
+  }
+
+  const state = {
+    input,
+    index: -1,
+    start: 0,
+    dot: opts.dot === true,
+    consumed: '',
+    output: '',
+    prefix: '',
+    backtrack: false,
+    negated: false,
+    brackets: 0,
+    braces: 0,
+    parens: 0,
+    quotes: 0,
+    globstar: false,
+    tokens
+  };
+
+  input = utils$1.removePrefix(input, state);
+  len = input.length;
+
+  const extglobs = [];
+  const braces = [];
+  const stack = [];
+  let prev = bos;
+  let value;
+
+  /**
+   * Tokenizing helpers
+   */
+
+  const eos = () => state.index === len - 1;
+  const peek = state.peek = (n = 1) => input[state.index + n];
+  const advance = state.advance = () => input[++state.index] || '';
+  const remaining = () => input.slice(state.index + 1);
+  const consume = (value = '', num = 0) => {
+    state.consumed += value;
+    state.index += num;
+  };
+
+  const append = token => {
+    state.output += token.output != null ? token.output : token.value;
+    consume(token.value);
+  };
+
+  const negate = () => {
+    let count = 1;
+
+    while (peek() === '!' && (peek(2) !== '(' || peek(3) === '?')) {
+      advance();
+      state.start++;
+      count++;
+    }
+
+    if (count % 2 === 0) {
+      return false;
+    }
+
+    state.negated = true;
+    state.start++;
+    return true;
+  };
+
+  const increment = type => {
+    state[type]++;
+    stack.push(type);
+  };
+
+  const decrement = type => {
+    state[type]--;
+    stack.pop();
+  };
+
+  /**
+   * Push tokens onto the tokens array. This helper speeds up
+   * tokenizing by 1) helping us avoid backtracking as much as possible,
+   * and 2) helping us avoid creating extra tokens when consecutive
+   * characters are plain text. This improves performance and simplifies
+   * lookbehinds.
+   */
+
+  const push = tok => {
+    if (prev.type === 'globstar') {
+      const isBrace = state.braces > 0 && (tok.type === 'comma' || tok.type === 'brace');
+      const isExtglob = tok.extglob === true || (extglobs.length && (tok.type === 'pipe' || tok.type === 'paren'));
+
+      if (tok.type !== 'slash' && tok.type !== 'paren' && !isBrace && !isExtglob) {
+        state.output = state.output.slice(0, -prev.output.length);
+        prev.type = 'star';
+        prev.value = '*';
+        prev.output = star;
+        state.output += prev.output;
+      }
+    }
+
+    if (extglobs.length && tok.type !== 'paren') {
+      extglobs[extglobs.length - 1].inner += tok.value;
+    }
+
+    if (tok.value || tok.output) append(tok);
+    if (prev && prev.type === 'text' && tok.type === 'text') {
+      prev.value += tok.value;
+      prev.output = (prev.output || '') + tok.value;
+      return;
+    }
+
+    tok.prev = prev;
+    tokens.push(tok);
+    prev = tok;
+  };
+
+  const extglobOpen = (type, value) => {
+    const token = { ...EXTGLOB_CHARS[value], conditions: 1, inner: '' };
+
+    token.prev = prev;
+    token.parens = state.parens;
+    token.output = state.output;
+    const output = (opts.capture ? '(' : '') + token.open;
+
+    increment('parens');
+    push({ type, value, output: state.output ? '' : ONE_CHAR });
+    push({ type: 'paren', extglob: true, value: advance(), output });
+    extglobs.push(token);
+  };
+
+  const extglobClose = token => {
+    let output = token.close + (opts.capture ? ')' : '');
+    let rest;
+
+    if (token.type === 'negate') {
+      let extglobStar = star;
+
+      if (token.inner && token.inner.length > 1 && token.inner.includes('/')) {
+        extglobStar = globstar(opts);
+      }
+
+      if (extglobStar !== star || eos() || /^\)+$/.test(remaining())) {
+        output = token.close = `)$))${extglobStar}`;
+      }
+
+      if (token.inner.includes('*') && (rest = remaining()) && /^\.[^\\/.]+$/.test(rest)) {
+        output = token.close = `)${rest})${extglobStar})`;
+      }
+
+      if (token.prev.type === 'bos') {
+        state.negatedExtglob = true;
+      }
+    }
+
+    push({ type: 'paren', extglob: true, value, output });
+    decrement('parens');
+  };
+
+  /**
+   * Fast paths
+   */
+
+  if (opts.fastpaths !== false && !/(^[*!]|[/()[\]{}"])/.test(input)) {
+    let backslashes = false;
+
+    let output = input.replace(REGEX_SPECIAL_CHARS_BACKREF, (m, esc, chars, first, rest, index) => {
+      if (first === '\\') {
+        backslashes = true;
+        return m;
+      }
+
+      if (first === '?') {
+        if (esc) {
+          return esc + first + (rest ? QMARK.repeat(rest.length) : '');
+        }
+        if (index === 0) {
+          return qmarkNoDot + (rest ? QMARK.repeat(rest.length) : '');
+        }
+        return QMARK.repeat(chars.length);
+      }
+
+      if (first === '.') {
+        return DOT_LITERAL.repeat(chars.length);
+      }
+
+      if (first === '*') {
+        if (esc) {
+          return esc + first + (rest ? star : '');
+        }
+        return star;
+      }
+      return esc ? m : `\\${m}`;
+    });
+
+    if (backslashes === true) {
+      if (opts.unescape === true) {
+        output = output.replace(/\\/g, '');
+      } else {
+        output = output.replace(/\\+/g, m => {
+          return m.length % 2 === 0 ? '\\\\' : (m ? '\\' : '');
+        });
+      }
+    }
+
+    if (output === input && opts.contains === true) {
+      state.output = input;
+      return state;
+    }
+
+    state.output = utils$1.wrapOutput(output, state, options);
+    return state;
+  }
+
+  /**
+   * Tokenize input until we reach end-of-string
+   */
+
+  while (!eos()) {
+    value = advance();
+
+    if (value === '\u0000') {
+      continue;
+    }
+
+    /**
+     * Escaped characters
+     */
+
+    if (value === '\\') {
+      const next = peek();
+
+      if (next === '/' && opts.bash !== true) {
+        continue;
+      }
+
+      if (next === '.' || next === ';') {
+        continue;
+      }
+
+      if (!next) {
+        value += '\\';
+        push({ type: 'text', value });
+        continue;
+      }
+
+      // collapse slashes to reduce potential for exploits
+      const match = /^\\+/.exec(remaining());
+      let slashes = 0;
+
+      if (match && match[0].length > 2) {
+        slashes = match[0].length;
+        state.index += slashes;
+        if (slashes % 2 !== 0) {
+          value += '\\';
+        }
+      }
+
+      if (opts.unescape === true) {
+        value = advance();
+      } else {
+        value += advance();
+      }
+
+      if (state.brackets === 0) {
+        push({ type: 'text', value });
+        continue;
+      }
+    }
+
+    /**
+     * If we're inside a regex character class, continue
+     * until we reach the closing bracket.
+     */
+
+    if (state.brackets > 0 && (value !== ']' || prev.value === '[' || prev.value === '[^')) {
+      if (opts.posix !== false && value === ':') {
+        const inner = prev.value.slice(1);
+        if (inner.includes('[')) {
+          prev.posix = true;
+
+          if (inner.includes(':')) {
+            const idx = prev.value.lastIndexOf('[');
+            const pre = prev.value.slice(0, idx);
+            const rest = prev.value.slice(idx + 2);
+            const posix = POSIX_REGEX_SOURCE[rest];
+            if (posix) {
+              prev.value = pre + posix;
+              state.backtrack = true;
+              advance();
+
+              if (!bos.output && tokens.indexOf(prev) === 1) {
+                bos.output = ONE_CHAR;
+              }
+              continue;
+            }
+          }
+        }
+      }
+
+      if ((value === '[' && peek() !== ':') || (value === '-' && peek() === ']')) {
+        value = `\\${value}`;
+      }
+
+      if (value === ']' && (prev.value === '[' || prev.value === '[^')) {
+        value = `\\${value}`;
+      }
+
+      if (opts.posix === true && value === '!' && prev.value === '[') {
+        value = '^';
+      }
+
+      prev.value += value;
+      append({ value });
+      continue;
+    }
+
+    /**
+     * If we're inside a quoted string, continue
+     * until we reach the closing double quote.
+     */
+
+    if (state.quotes === 1 && value !== '"') {
+      value = utils$1.escapeRegex(value);
+      prev.value += value;
+      append({ value });
+      continue;
+    }
+
+    /**
+     * Double quotes
+     */
+
+    if (value === '"') {
+      state.quotes = state.quotes === 1 ? 0 : 1;
+      if (opts.keepQuotes === true) {
+        push({ type: 'text', value });
+      }
+      continue;
+    }
+
+    /**
+     * Parentheses
+     */
+
+    if (value === '(') {
+      increment('parens');
+      push({ type: 'paren', value });
+      continue;
+    }
+
+    if (value === ')') {
+      if (state.parens === 0 && opts.strictBrackets === true) {
+        throw new SyntaxError(syntaxError('opening', '('));
+      }
+
+      const extglob = extglobs[extglobs.length - 1];
+      if (extglob && state.parens === extglob.parens + 1) {
+        extglobClose(extglobs.pop());
+        continue;
+      }
+
+      push({ type: 'paren', value, output: state.parens ? ')' : '\\)' });
+      decrement('parens');
+      continue;
+    }
+
+    /**
+     * Square brackets
+     */
+
+    if (value === '[') {
+      if (opts.nobracket === true || !remaining().includes(']')) {
+        if (opts.nobracket !== true && opts.strictBrackets === true) {
+          throw new SyntaxError(syntaxError('closing', ']'));
+        }
+
+        value = `\\${value}`;
+      } else {
+        increment('brackets');
+      }
+
+      push({ type: 'bracket', value });
+      continue;
+    }
+
+    if (value === ']') {
+      if (opts.nobracket === true || (prev && prev.type === 'bracket' && prev.value.length === 1)) {
+        push({ type: 'text', value, output: `\\${value}` });
+        continue;
+      }
+
+      if (state.brackets === 0) {
+        if (opts.strictBrackets === true) {
+          throw new SyntaxError(syntaxError('opening', '['));
+        }
+
+        push({ type: 'text', value, output: `\\${value}` });
+        continue;
+      }
+
+      decrement('brackets');
+
+      const prevValue = prev.value.slice(1);
+      if (prev.posix !== true && prevValue[0] === '^' && !prevValue.includes('/')) {
+        value = `/${value}`;
+      }
+
+      prev.value += value;
+      append({ value });
+
+      // when literal brackets are explicitly disabled
+      // assume we should match with a regex character class
+      if (opts.literalBrackets === false || utils$1.hasRegexChars(prevValue)) {
+        continue;
+      }
+
+      const escaped = utils$1.escapeRegex(prev.value);
+      state.output = state.output.slice(0, -prev.value.length);
+
+      // when literal brackets are explicitly enabled
+      // assume we should escape the brackets to match literal characters
+      if (opts.literalBrackets === true) {
+        state.output += escaped;
+        prev.value = escaped;
+        continue;
+      }
+
+      // when the user specifies nothing, try to match both
+      prev.value = `(${capture}${escaped}|${prev.value})`;
+      state.output += prev.value;
+      continue;
+    }
+
+    /**
+     * Braces
+     */
+
+    if (value === '{' && opts.nobrace !== true) {
+      increment('braces');
+
+      const open = {
+        type: 'brace',
+        value,
+        output: '(',
+        outputIndex: state.output.length,
+        tokensIndex: state.tokens.length
+      };
+
+      braces.push(open);
+      push(open);
+      continue;
+    }
+
+    if (value === '}') {
+      const brace = braces[braces.length - 1];
+
+      if (opts.nobrace === true || !brace) {
+        push({ type: 'text', value, output: value });
+        continue;
+      }
+
+      let output = ')';
+
+      if (brace.dots === true) {
+        const arr = tokens.slice();
+        const range = [];
+
+        for (let i = arr.length - 1; i >= 0; i--) {
+          tokens.pop();
+          if (arr[i].type === 'brace') {
+            break;
+          }
+          if (arr[i].type !== 'dots') {
+            range.unshift(arr[i].value);
+          }
+        }
+
+        output = expandRange(range, opts);
+        state.backtrack = true;
+      }
+
+      if (brace.comma !== true && brace.dots !== true) {
+        const out = state.output.slice(0, brace.outputIndex);
+        const toks = state.tokens.slice(brace.tokensIndex);
+        brace.value = brace.output = '\\{';
+        value = output = '\\}';
+        state.output = out;
+        for (const t of toks) {
+          state.output += (t.output || t.value);
+        }
+      }
+
+      push({ type: 'brace', value, output });
+      decrement('braces');
+      braces.pop();
+      continue;
+    }
+
+    /**
+     * Pipes
+     */
+
+    if (value === '|') {
+      if (extglobs.length > 0) {
+        extglobs[extglobs.length - 1].conditions++;
+      }
+      push({ type: 'text', value });
+      continue;
+    }
+
+    /**
+     * Commas
+     */
+
+    if (value === ',') {
+      let output = value;
+
+      const brace = braces[braces.length - 1];
+      if (brace && stack[stack.length - 1] === 'braces') {
+        brace.comma = true;
+        output = '|';
+      }
+
+      push({ type: 'comma', value, output });
+      continue;
+    }
+
+    /**
+     * Slashes
+     */
+
+    if (value === '/') {
+      // if the beginning of the glob is "./", advance the start
+      // to the current index, and don't add the "./" characters
+      // to the state. This greatly simplifies lookbehinds when
+      // checking for BOS characters like "!" and "." (not "./")
+      if (prev.type === 'dot' && state.index === state.start + 1) {
+        state.start = state.index + 1;
+        state.consumed = '';
+        state.output = '';
+        tokens.pop();
+        prev = bos; // reset "prev" to the first token
+        continue;
+      }
+
+      push({ type: 'slash', value, output: SLASH_LITERAL });
+      continue;
+    }
+
+    /**
+     * Dots
+     */
+
+    if (value === '.') {
+      if (state.braces > 0 && prev.type === 'dot') {
+        if (prev.value === '.') prev.output = DOT_LITERAL;
+        const brace = braces[braces.length - 1];
+        prev.type = 'dots';
+        prev.output += value;
+        prev.value += value;
+        brace.dots = true;
+        continue;
+      }
+
+      if ((state.braces + state.parens) === 0 && prev.type !== 'bos' && prev.type !== 'slash') {
+        push({ type: 'text', value, output: DOT_LITERAL });
+        continue;
+      }
+
+      push({ type: 'dot', value, output: DOT_LITERAL });
+      continue;
+    }
+
+    /**
+     * Question marks
+     */
+
+    if (value === '?') {
+      const isGroup = prev && prev.value === '(';
+      if (!isGroup && opts.noextglob !== true && peek() === '(' && peek(2) !== '?') {
+        extglobOpen('qmark', value);
+        continue;
+      }
+
+      if (prev && prev.type === 'paren') {
+        const next = peek();
+        let output = value;
+
+        if (next === '<' && !utils$1.supportsLookbehinds()) {
+          throw new Error('Node.js v10 or higher is required for regex lookbehinds');
+        }
+
+        if ((prev.value === '(' && !/[!=<:]/.test(next)) || (next === '<' && !/<([!=]|\w+>)/.test(remaining()))) {
+          output = `\\${value}`;
+        }
+
+        push({ type: 'text', value, output });
+        continue;
+      }
+
+      if (opts.dot !== true && (prev.type === 'slash' || prev.type === 'bos')) {
+        push({ type: 'qmark', value, output: QMARK_NO_DOT });
+        continue;
+      }
+
+      push({ type: 'qmark', value, output: QMARK });
+      continue;
+    }
+
+    /**
+     * Exclamation
+     */
+
+    if (value === '!') {
+      if (opts.noextglob !== true && peek() === '(') {
+        if (peek(2) !== '?' || !/[!=<:]/.test(peek(3))) {
+          extglobOpen('negate', value);
+          continue;
+        }
+      }
+
+      if (opts.nonegate !== true && state.index === 0) {
+        negate();
+        continue;
+      }
+    }
+
+    /**
+     * Plus
+     */
+
+    if (value === '+') {
+      if (opts.noextglob !== true && peek() === '(' && peek(2) !== '?') {
+        extglobOpen('plus', value);
+        continue;
+      }
+
+      if ((prev && prev.value === '(') || opts.regex === false) {
+        push({ type: 'plus', value, output: PLUS_LITERAL });
+        continue;
+      }
+
+      if ((prev && (prev.type === 'bracket' || prev.type === 'paren' || prev.type === 'brace')) || state.parens > 0) {
+        push({ type: 'plus', value });
+        continue;
+      }
+
+      push({ type: 'plus', value: PLUS_LITERAL });
+      continue;
+    }
+
+    /**
+     * Plain text
+     */
+
+    if (value === '@') {
+      if (opts.noextglob !== true && peek() === '(' && peek(2) !== '?') {
+        push({ type: 'at', extglob: true, value, output: '' });
+        continue;
+      }
+
+      push({ type: 'text', value });
+      continue;
+    }
+
+    /**
+     * Plain text
+     */
+
+    if (value !== '*') {
+      if (value === '$' || value === '^') {
+        value = `\\${value}`;
+      }
+
+      const match = REGEX_NON_SPECIAL_CHARS.exec(remaining());
+      if (match) {
+        value += match[0];
+        state.index += match[0].length;
+      }
+
+      push({ type: 'text', value });
+      continue;
+    }
+
+    /**
+     * Stars
+     */
+
+    if (prev && (prev.type === 'globstar' || prev.star === true)) {
+      prev.type = 'star';
+      prev.star = true;
+      prev.value += value;
+      prev.output = star;
+      state.backtrack = true;
+      state.globstar = true;
+      consume(value);
+      continue;
+    }
+
+    let rest = remaining();
+    if (opts.noextglob !== true && /^\([^?]/.test(rest)) {
+      extglobOpen('star', value);
+      continue;
+    }
+
+    if (prev.type === 'star') {
+      if (opts.noglobstar === true) {
+        consume(value);
+        continue;
+      }
+
+      const prior = prev.prev;
+      const before = prior.prev;
+      const isStart = prior.type === 'slash' || prior.type === 'bos';
+      const afterStar = before && (before.type === 'star' || before.type === 'globstar');
+
+      if (opts.bash === true && (!isStart || (rest[0] && rest[0] !== '/'))) {
+        push({ type: 'star', value, output: '' });
+        continue;
+      }
+
+      const isBrace = state.braces > 0 && (prior.type === 'comma' || prior.type === 'brace');
+      const isExtglob = extglobs.length && (prior.type === 'pipe' || prior.type === 'paren');
+      if (!isStart && prior.type !== 'paren' && !isBrace && !isExtglob) {
+        push({ type: 'star', value, output: '' });
+        continue;
+      }
+
+      // strip consecutive `/**/`
+      while (rest.slice(0, 3) === '/**') {
+        const after = input[state.index + 4];
+        if (after && after !== '/') {
+          break;
+        }
+        rest = rest.slice(3);
+        consume('/**', 3);
+      }
+
+      if (prior.type === 'bos' && eos()) {
+        prev.type = 'globstar';
+        prev.value += value;
+        prev.output = globstar(opts);
+        state.output = prev.output;
+        state.globstar = true;
+        consume(value);
+        continue;
+      }
+
+      if (prior.type === 'slash' && prior.prev.type !== 'bos' && !afterStar && eos()) {
+        state.output = state.output.slice(0, -(prior.output + prev.output).length);
+        prior.output = `(?:${prior.output}`;
+
+        prev.type = 'globstar';
+        prev.output = globstar(opts) + (opts.strictSlashes ? ')' : '|$)');
+        prev.value += value;
+        state.globstar = true;
+        state.output += prior.output + prev.output;
+        consume(value);
+        continue;
+      }
+
+      if (prior.type === 'slash' && prior.prev.type !== 'bos' && rest[0] === '/') {
+        const end = rest[1] !== void 0 ? '|$' : '';
+
+        state.output = state.output.slice(0, -(prior.output + prev.output).length);
+        prior.output = `(?:${prior.output}`;
+
+        prev.type = 'globstar';
+        prev.output = `${globstar(opts)}${SLASH_LITERAL}|${SLASH_LITERAL}${end})`;
+        prev.value += value;
+
+        state.output += prior.output + prev.output;
+        state.globstar = true;
+
+        consume(value + advance());
+
+        push({ type: 'slash', value: '/', output: '' });
+        continue;
+      }
+
+      if (prior.type === 'bos' && rest[0] === '/') {
+        prev.type = 'globstar';
+        prev.value += value;
+        prev.output = `(?:^|${SLASH_LITERAL}|${globstar(opts)}${SLASH_LITERAL})`;
+        state.output = prev.output;
+        state.globstar = true;
+        consume(value + advance());
+        push({ type: 'slash', value: '/', output: '' });
+        continue;
+      }
+
+      // remove single star from output
+      state.output = state.output.slice(0, -prev.output.length);
+
+      // reset previous token to globstar
+      prev.type = 'globstar';
+      prev.output = globstar(opts);
+      prev.value += value;
+
+      // reset output with globstar
+      state.output += prev.output;
+      state.globstar = true;
+      consume(value);
+      continue;
+    }
+
+    const token = { type: 'star', value, output: star };
+
+    if (opts.bash === true) {
+      token.output = '.*?';
+      if (prev.type === 'bos' || prev.type === 'slash') {
+        token.output = nodot + token.output;
+      }
+      push(token);
+      continue;
+    }
+
+    if (prev && (prev.type === 'bracket' || prev.type === 'paren') && opts.regex === true) {
+      token.output = value;
+      push(token);
+      continue;
+    }
+
+    if (state.index === state.start || prev.type === 'slash' || prev.type === 'dot') {
+      if (prev.type === 'dot') {
+        state.output += NO_DOT_SLASH;
+        prev.output += NO_DOT_SLASH;
+
+      } else if (opts.dot === true) {
+        state.output += NO_DOTS_SLASH;
+        prev.output += NO_DOTS_SLASH;
+
+      } else {
+        state.output += nodot;
+        prev.output += nodot;
+      }
+
+      if (peek() !== '*') {
+        state.output += ONE_CHAR;
+        prev.output += ONE_CHAR;
+      }
+    }
+
+    push(token);
+  }
+
+  while (state.brackets > 0) {
+    if (opts.strictBrackets === true) throw new SyntaxError(syntaxError('closing', ']'));
+    state.output = utils$1.escapeLast(state.output, '[');
+    decrement('brackets');
+  }
+
+  while (state.parens > 0) {
+    if (opts.strictBrackets === true) throw new SyntaxError(syntaxError('closing', ')'));
+    state.output = utils$1.escapeLast(state.output, '(');
+    decrement('parens');
+  }
+
+  while (state.braces > 0) {
+    if (opts.strictBrackets === true) throw new SyntaxError(syntaxError('closing', '}'));
+    state.output = utils$1.escapeLast(state.output, '{');
+    decrement('braces');
+  }
+
+  if (opts.strictSlashes !== true && (prev.type === 'star' || prev.type === 'bracket')) {
+    push({ type: 'maybe_slash', value: '', output: `${SLASH_LITERAL}?` });
+  }
+
+  // rebuild the output if we had to backtrack at any point
+  if (state.backtrack === true) {
+    state.output = '';
+
+    for (const token of state.tokens) {
+      state.output += token.output != null ? token.output : token.value;
+
+      if (token.suffix) {
+        state.output += token.suffix;
+      }
+    }
+  }
+
+  return state;
+};
+
+/**
+ * Fast paths for creating regular expressions for common glob patterns.
+ * This can significantly speed up processing and has very little downside
+ * impact when none of the fast paths match.
+ */
+
+parse.fastpaths = (input, options) => {
+  const opts = { ...options };
+  const max = typeof opts.maxLength === 'number' ? Math.min(MAX_LENGTH, opts.maxLength) : MAX_LENGTH;
+  const len = input.length;
+  if (len > max) {
+    throw new SyntaxError(`Input length: ${len}, exceeds maximum allowed length: ${max}`);
+  }
+
+  input = REPLACEMENTS[input] || input;
+  const win32 = utils$1.isWindows(options);
+
+  // create constants based on platform, for windows or posix
+  const {
+    DOT_LITERAL,
+    SLASH_LITERAL,
+    ONE_CHAR,
+    DOTS_SLASH,
+    NO_DOT,
+    NO_DOTS,
+    NO_DOTS_SLASH,
+    STAR,
+    START_ANCHOR
+  } = constants.globChars(win32);
+
+  const nodot = opts.dot ? NO_DOTS : NO_DOT;
+  const slashDot = opts.dot ? NO_DOTS_SLASH : NO_DOT;
+  const capture = opts.capture ? '' : '?:';
+  const state = { negated: false, prefix: '' };
+  let star = opts.bash === true ? '.*?' : STAR;
+
+  if (opts.capture) {
+    star = `(${star})`;
+  }
+
+  const globstar = opts => {
+    if (opts.noglobstar === true) return star;
+    return `(${capture}(?:(?!${START_ANCHOR}${opts.dot ? DOTS_SLASH : DOT_LITERAL}).)*?)`;
+  };
+
+  const create = str => {
+    switch (str) {
+      case '*':
+        return `${nodot}${ONE_CHAR}${star}`;
+
+      case '.*':
+        return `${DOT_LITERAL}${ONE_CHAR}${star}`;
+
+      case '*.*':
+        return `${nodot}${star}${DOT_LITERAL}${ONE_CHAR}${star}`;
+
+      case '*/*':
+        return `${nodot}${star}${SLASH_LITERAL}${ONE_CHAR}${slashDot}${star}`;
+
+      case '**':
+        return nodot + globstar(opts);
+
+      case '**/*':
+        return `(?:${nodot}${globstar(opts)}${SLASH_LITERAL})?${slashDot}${ONE_CHAR}${star}`;
+
+      case '**/*.*':
+        return `(?:${nodot}${globstar(opts)}${SLASH_LITERAL})?${slashDot}${star}${DOT_LITERAL}${ONE_CHAR}${star}`;
+
+      case '**/.*':
+        return `(?:${nodot}${globstar(opts)}${SLASH_LITERAL})?${DOT_LITERAL}${ONE_CHAR}${star}`;
+
+      default: {
+        const match = /^(.*?)\.(\w+)$/.exec(str);
+        if (!match) return;
+
+        const source = create(match[1]);
+        if (!source) return;
+
+        return source + DOT_LITERAL + match[2];
+      }
+    }
+  };
+
+  const output = utils$1.removePrefix(input, state);
+  let source = create(output);
+
+  if (source && opts.strictSlashes !== true) {
+    source += `${SLASH_LITERAL}?`;
+  }
+
+  return source;
+};
+
+var parse_1 = parse;
+
+const isObject = val => val && typeof val === 'object' && !Array.isArray(val);
+
+/**
+ * Creates a matcher function from one or more glob patterns. The
+ * returned function takes a string to match as its first argument,
+ * and returns true if the string is a match. The returned matcher
+ * function also takes a boolean as the second argument that, when true,
+ * returns an object with additional information.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * // picomatch(glob[, options]);
+ *
+ * const isMatch = picomatch('*.!(*a)');
+ * console.log(isMatch('a.a')); //=> false
+ * console.log(isMatch('a.b')); //=> true
+ * ```
+ * @name picomatch
+ * @param {String|Array} `globs` One or more glob patterns.
+ * @param {Object=} `options`
+ * @return {Function=} Returns a matcher function.
+ * @api public
+ */
+
+const picomatch$1 = (glob, options, returnState = false) => {
+  if (Array.isArray(glob)) {
+    const fns = glob.map(input => picomatch$1(input, options, returnState));
+    const arrayMatcher = str => {
+      for (const isMatch of fns) {
+        const state = isMatch(str);
+        if (state) return state;
+      }
+      return false;
+    };
+    return arrayMatcher;
+  }
+
+  const isState = isObject(glob) && glob.tokens && glob.input;
+
+  if (glob === '' || (typeof glob !== 'string' && !isState)) {
+    throw new TypeError('Expected pattern to be a non-empty string');
+  }
+
+  const opts = options || {};
+  const posix = utils$1.isWindows(options);
+  const regex = isState
+    ? picomatch$1.compileRe(glob, options)
+    : picomatch$1.makeRe(glob, options, false, true);
+
+  const state = regex.state;
+  delete regex.state;
+
+  let isIgnored = () => false;
+  if (opts.ignore) {
+    const ignoreOpts = { ...options, ignore: null, onMatch: null, onResult: null };
+    isIgnored = picomatch$1(opts.ignore, ignoreOpts, returnState);
+  }
+
+  const matcher = (input, returnObject = false) => {
+    const { isMatch, match, output } = picomatch$1.test(input, regex, options, { glob, posix });
+    const result = { glob, state, regex, posix, input, output, match, isMatch };
+
+    if (typeof opts.onResult === 'function') {
+      opts.onResult(result);
+    }
+
+    if (isMatch === false) {
+      result.isMatch = false;
+      return returnObject ? result : false;
+    }
+
+    if (isIgnored(input)) {
+      if (typeof opts.onIgnore === 'function') {
+        opts.onIgnore(result);
+      }
+      result.isMatch = false;
+      return returnObject ? result : false;
+    }
+
+    if (typeof opts.onMatch === 'function') {
+      opts.onMatch(result);
+    }
+    return returnObject ? result : true;
+  };
+
+  if (returnState) {
+    matcher.state = state;
+  }
+
+  return matcher;
+};
+
+/**
+ * Test `input` with the given `regex`. This is used by the main
+ * `picomatch()` function to test the input string.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * // picomatch.test(input, regex[, options]);
+ *
+ * console.log(picomatch.test('foo/bar', /^(?:([^/]*?)\/([^/]*?))$/));
+ * // { isMatch: true, match: [ 'foo/', 'foo', 'bar' ], output: 'foo/bar' }
+ * ```
+ * @param {String} `input` String to test.
+ * @param {RegExp} `regex`
+ * @return {Object} Returns an object with matching info.
+ * @api public
+ */
+
+picomatch$1.test = (input, regex, options, { glob, posix } = {}) => {
+  if (typeof input !== 'string') {
+    throw new TypeError('Expected input to be a string');
+  }
+
+  if (input === '') {
+    return { isMatch: false, output: '' };
+  }
+
+  const opts = options || {};
+  const format = opts.format || (posix ? utils$1.toPosixSlashes : null);
+  let match = input === glob;
+  let output = (match && format) ? format(input) : input;
+
+  if (match === false) {
+    output = format ? format(input) : input;
+    match = output === glob;
+  }
+
+  if (match === false || opts.capture === true) {
+    if (opts.matchBase === true || opts.basename === true) {
+      match = picomatch$1.matchBase(input, regex, options, posix);
+    } else {
+      match = regex.exec(output);
+    }
+  }
+
+  return { isMatch: Boolean(match), match, output };
+};
+
+/**
+ * Match the basename of a filepath.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * // picomatch.matchBase(input, glob[, options]);
+ * console.log(picomatch.matchBase('foo/bar.js', '*.js'); // true
+ * ```
+ * @param {String} `input` String to test.
+ * @param {RegExp|String} `glob` Glob pattern or regex created by [.makeRe](#makeRe).
+ * @return {Boolean}
+ * @api public
+ */
+
+picomatch$1.matchBase = (input, glob, options, posix = utils$1.isWindows(options)) => {
+  const regex = glob instanceof RegExp ? glob : picomatch$1.makeRe(glob, options);
+  return regex.test(path__default["default"].basename(input));
+};
+
+/**
+ * Returns true if **any** of the given glob `patterns` match the specified `string`.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * // picomatch.isMatch(string, patterns[, options]);
+ *
+ * console.log(picomatch.isMatch('a.a', ['b.*', '*.a'])); //=> true
+ * console.log(picomatch.isMatch('a.a', 'b.*')); //=> false
+ * ```
+ * @param {String|Array} str The string to test.
+ * @param {String|Array} patterns One or more glob patterns to use for matching.
+ * @param {Object} [options] See available [options](#options).
+ * @return {Boolean} Returns true if any patterns match `str`
+ * @api public
+ */
+
+picomatch$1.isMatch = (str, patterns, options) => picomatch$1(patterns, options)(str);
+
+/**
+ * Parse a glob pattern to create the source string for a regular
+ * expression.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * const result = picomatch.parse(pattern[, options]);
+ * ```
+ * @param {String} `pattern`
+ * @param {Object} `options`
+ * @return {Object} Returns an object with useful properties and output to be used as a regex source string.
+ * @api public
+ */
+
+picomatch$1.parse = (pattern, options) => {
+  if (Array.isArray(pattern)) return pattern.map(p => picomatch$1.parse(p, options));
+  return parse_1(pattern, { ...options, fastpaths: false });
+};
+
+/**
+ * Scan a glob pattern to separate the pattern into segments.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * // picomatch.scan(input[, options]);
+ *
+ * const result = picomatch.scan('!./foo/*.js');
+ * console.log(result);
+ * { prefix: '!./',
+ *   input: '!./foo/*.js',
+ *   start: 3,
+ *   base: 'foo',
+ *   glob: '*.js',
+ *   isBrace: false,
+ *   isBracket: false,
+ *   isGlob: true,
+ *   isExtglob: false,
+ *   isGlobstar: false,
+ *   negated: true }
+ * ```
+ * @param {String} `input` Glob pattern to scan.
+ * @param {Object} `options`
+ * @return {Object} Returns an object with
+ * @api public
+ */
+
+picomatch$1.scan = (input, options) => scan_1(input, options);
+
+/**
+ * Compile a regular expression from the `state` object returned by the
+ * [parse()](#parse) method.
+ *
+ * @param {Object} `state`
+ * @param {Object} `options`
+ * @param {Boolean} `returnOutput` Intended for implementors, this argument allows you to return the raw output from the parser.
+ * @param {Boolean} `returnState` Adds the state to a `state` property on the returned regex. Useful for implementors and debugging.
+ * @return {RegExp}
+ * @api public
+ */
+
+picomatch$1.compileRe = (state, options, returnOutput = false, returnState = false) => {
+  if (returnOutput === true) {
+    return state.output;
+  }
+
+  const opts = options || {};
+  const prepend = opts.contains ? '' : '^';
+  const append = opts.contains ? '' : '$';
+
+  let source = `${prepend}(?:${state.output})${append}`;
+  if (state && state.negated === true) {
+    source = `^(?!${source}).*$`;
+  }
+
+  const regex = picomatch$1.toRegex(source, options);
+  if (returnState === true) {
+    regex.state = state;
+  }
+
+  return regex;
+};
+
+/**
+ * Create a regular expression from a parsed glob pattern.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * const state = picomatch.parse('*.js');
+ * // picomatch.compileRe(state[, options]);
+ *
+ * console.log(picomatch.compileRe(state));
+ * //=> /^(?:(?!\.)(?=.)[^/]*?\.js)$/
+ * ```
+ * @param {String} `state` The object returned from the `.parse` method.
+ * @param {Object} `options`
+ * @param {Boolean} `returnOutput` Implementors may use this argument to return the compiled output, instead of a regular expression. This is not exposed on the options to prevent end-users from mutating the result.
+ * @param {Boolean} `returnState` Implementors may use this argument to return the state from the parsed glob with the returned regular expression.
+ * @return {RegExp} Returns a regex created from the given pattern.
+ * @api public
+ */
+
+picomatch$1.makeRe = (input, options = {}, returnOutput = false, returnState = false) => {
+  if (!input || typeof input !== 'string') {
+    throw new TypeError('Expected a non-empty string');
+  }
+
+  let parsed = { negated: false, fastpaths: true };
+
+  if (options.fastpaths !== false && (input[0] === '.' || input[0] === '*')) {
+    parsed.output = parse_1.fastpaths(input, options);
+  }
+
+  if (!parsed.output) {
+    parsed = parse_1(input, options);
+  }
+
+  return picomatch$1.compileRe(parsed, options, returnOutput, returnState);
+};
+
+/**
+ * Create a regular expression from the given regex source string.
+ *
+ * ```js
+ * const picomatch = require('picomatch');
+ * // picomatch.toRegex(source[, options]);
+ *
+ * const { output } = picomatch.parse('*.js');
+ * console.log(picomatch.toRegex(output));
+ * //=> /^(?:(?!\.)(?=.)[^/]*?\.js)$/
+ * ```
+ * @param {String} `source` Regular expression source string.
+ * @param {Object} `options`
+ * @return {RegExp}
+ * @api public
+ */
+
+picomatch$1.toRegex = (source, options) => {
+  try {
+    const opts = options || {};
+    return new RegExp(source, opts.flags || (opts.nocase ? 'i' : ''));
+  } catch (err) {
+    if (options && options.debug === true) throw err;
+    return /$^/;
+  }
+};
+
+/**
+ * Picomatch constants.
+ * @return {Object}
+ */
+
+picomatch$1.constants = constants;
+
+/**
+ * Expose "picomatch"
+ */
+
+var picomatch_1 = picomatch$1;
+
+var picomatch = picomatch_1;
 
 const escape = (html) => String(html)
     .replace(/&/g, "&amp;")
@@ -12086,69 +15038,61 @@ const tagPlugin = regexPlugin(/\#\S+/, (match, utils) => {
     return `<a href="${utils.escape(content)}" data-type="link" class="tag" target="_blank" rel="noopener">${utils.escape(content)}</a>`;
 });
 
-/** public */
-const parseTodos = async (files, todoTag, cache, vault, ignoreFiles, includeFiles, sort) => {
+/**
+ * Finds all of the {@link TodoItem todos} in the {@link TFile files} that have been updated since the last re-render.
+ *
+ * @param files The files to search for todos.
+ * @param todoTags The tag(s) that should be present on todos in order to be displayed by this plugin.
+ * @param cache The Obsidian {@link MetadataCache} object.
+ * @param vault The Obsidian {@link Vault} object.
+ * @param includeFiles The pattern of files to include in the search for todos.
+ * @param showChecked Whether the user wants to show completed todos in the plugin's UI.
+ * @param lastRerender Timestamp of the last time we re-rendered the checklist.
+ * @returns A map containing each {@link TFile file} that was updated, and the {@link TodoItem todos} in that file.
+ * If there are no todos in a file, that file will still be present in the map, but the value for its entry will be an
+ * empty array. This is required to account for the case where a file that previously had todos no longer has any.
+ */
+const parseTodos = async (files, todoTags, cache, vault, includeFiles, showChecked, lastRerender) => {
+    const includePattern = includeFiles.trim() ? includeFiles.trim().split("\n") : "**/*";
     const filesWithCache = await Promise.all(files
         .filter((file) => {
-        if (ignoreFiles && file.path.includes(ignoreFiles))
+        if (file.stat.mtime < lastRerender)
             return false;
-        if (includeFiles && !file.path.startsWith(includeFiles))
+        if (!picomatch.isMatch(file.path, includePattern))
             return false;
-        if (!todoTag)
+        if (todoTags.length === 1 && todoTags[0] === "*")
             return true;
         const fileCache = cache.getFileCache(file);
         const allTags = getAllTagsFromMetadata(fileCache);
-        const tagsOnPage = allTags.filter((tag) => getTagMeta(tag).main === todoTag);
+        const tagsOnPage = allTags.filter((tag) => todoTags.includes(getTagMeta(tag).main.toLowerCase()));
         return tagsOnPage.length > 0;
     })
         .map(async (file) => {
         var _a, _b;
         const fileCache = cache.getFileCache(file);
-        const tagsOnPage = (_b = (_a = fileCache === null || fileCache === void 0 ? void 0 : fileCache.tags) === null || _a === void 0 ? void 0 : _a.filter((e) => getTagMeta(e.tag).main === todoTag)) !== null && _b !== void 0 ? _b : [];
-        const frontMatterTags = getFrontmatterTags(fileCache, todoTag);
+        const tagsOnPage = (_b = (_a = fileCache === null || fileCache === void 0 ? void 0 : fileCache.tags) === null || _a === void 0 ? void 0 : _a.filter((e) => todoTags.includes(getTagMeta(e.tag).main.toLowerCase()))) !== null && _b !== void 0 ? _b : [];
+        const frontMatterTags = getFrontmatterTags(fileCache, todoTags);
         const hasFrontMatterTag = frontMatterTags.length > 0;
-        const parseEntireFile = !todoTag || hasFrontMatterTag;
+        const parseEntireFile = todoTags[0] === "*" || hasFrontMatterTag;
         const content = await vault.cachedRead(file);
         return {
             content,
             cache: fileCache,
-            validTags: tagsOnPage,
+            validTags: tagsOnPage.map((e) => (Object.assign(Object.assign({}, e), { tag: e.tag.toLowerCase() }))),
             file,
             parseEntireFile,
-            frontmatterTag: todoTag ? frontMatterTags[0] : undefined,
+            frontmatterTag: todoTags.length ? frontMatterTags[0] : undefined,
         };
     }));
-    const allTodos = filesWithCache
-        .flatMap(findAllTodosInFile)
-        .filter((todo, i, a) => a.findIndex((_todo) => todo.line === _todo.line && todo.filePath === _todo.filePath) === i);
-    if (sort === "new->old")
-        allTodos.sort((a, b) => b.fileCreatedTs - a.fileCreatedTs);
-    if (sort === "old->new")
-        allTodos.sort((a, b) => a.fileCreatedTs - b.fileCreatedTs);
-    return allTodos;
-};
-const groupTodos = (items, groupBy, sort) => {
-    const groups = [];
-    for (const item of items) {
-        const itemKey = groupBy === "page" ? item.filePath : `#${[item.mainTag, item.subTag].filter((e) => e != null).join("/")}`;
-        let group = groups.find((g) => g.groupId === itemKey);
-        if (!group) {
-            group = {
-                groupId: itemKey,
-                groupName: groupBy === "page" ? item.fileLabel : item.subTag,
-                type: groupBy,
-                todos: [],
-            };
-            groups.push(group);
+    const todosForUpdatedFiles = new Map();
+    for (const fileInfo of filesWithCache) {
+        let todos = findAllTodosInFile(fileInfo);
+        if (!showChecked) {
+            todos = todos.filter(todo => !todo.checked);
         }
-        group.todos.push(item);
+        todosForUpdatedFiles.set(fileInfo.file, todos);
     }
-    const nonEmptyGroups = groups.filter((g) => g.todos.length > 0);
-    if (sort === "a->z")
-        nonEmptyGroups.sort((a, b) => a.groupName.localeCompare(b.groupName, navigator.language, LOCAL_SORT_OPT));
-    if (sort === "z->a")
-        nonEmptyGroups.sort((a, b) => b.groupName.localeCompare(a.groupName, navigator.language, LOCAL_SORT_OPT));
-    return nonEmptyGroups;
+    return todosForUpdatedFiles;
 };
 const toggleTodoItem = async (item, app) => {
     const file = getFileFromPath(app.vault, item.filePath);
@@ -12161,47 +15105,6 @@ const toggleTodoItem = async (item, app) => {
     const newData = setTodoStatusAtLineTo(currentFileLines, item.line, !item.checked);
     app.vault.modify(file, newData);
     item.checked = !item.checked;
-};
-const navToFile = async (app, path, ev) => {
-    path = ensureMdExtension(path);
-    const file = getFileFromPath(app.vault, path);
-    if (!file)
-        return;
-    const leaf = isMetaPressed(ev) ? app.workspace.splitActiveLeaf() : app.workspace.getUnpinnedLeaf();
-    await leaf.openFile(file);
-};
-/** private */
-const getFileFromPath = (vault, path) => {
-    let file = vault.getAbstractFileByPath(path);
-    if (file instanceof obsidian.TFile)
-        return file;
-    const files = vault.getFiles();
-    file = files.find((e) => e.name === path);
-    if (file instanceof obsidian.TFile)
-        return file;
-};
-const ensureMdExtension = (path) => {
-    if (!/\.md$/.test(path))
-        return `${path}.md`;
-    return path;
-};
-const isMetaPressed = (e) => {
-    return isMacOS() ? e.metaKey : e.ctrlKey;
-};
-const getFrontmatterTags = (cache, todoTag) => {
-    var _a;
-    const frontMatterTags = (_a = obsidian.parseFrontMatterTags(cache === null || cache === void 0 ? void 0 : cache.frontmatter)) !== null && _a !== void 0 ? _a : [];
-    if (todoTag)
-        return frontMatterTags.filter((tag) => getTagMeta(tag).main === todoTag);
-    return frontMatterTags;
-};
-const getAllTagsFromMetadata = (cache) => {
-    var _a;
-    if (!cache)
-        return [];
-    const frontmatterTags = getFrontmatterTags(cache);
-    const blockTags = ((_a = cache.tags) !== null && _a !== void 0 ? _a : []).map((e) => e.tag);
-    return [...frontmatterTags, ...blockTags];
 };
 const findAllTodosInFile = (file) => {
     var _a, _b;
@@ -12217,7 +15120,7 @@ const findAllTodosInFile = (file) => {
         const line = fileLines[i];
         if (line.length === 0)
             continue;
-        if (lineIsValidTodo(line, "")) {
+        if (lineIsValidTodo(line)) {
             todos.push(formTodo(line, file, links, i, tagMeta));
         }
     }
@@ -12232,7 +15135,7 @@ const findAllTodosFromTagBlock = (file, tag) => {
     const fileLines = getAllLinesFromFile(fileContents);
     const tagMeta = getTagMeta(tag.tag);
     const tagLine = fileLines[tag.position.start.line];
-    if (lineIsValidTodo(tagLine, tagMeta.main)) {
+    if (lineIsValidTodo(tagLine)) {
         return [formTodo(tagLine, file, links, tag.position.start.line, tagMeta)];
     }
     const todos = [];
@@ -12242,7 +15145,7 @@ const findAllTodosFromTagBlock = (file, tag) => {
             continue;
         if (line.length === 0)
             break;
-        if (lineIsValidTodo(line, tagMeta.main)) {
+        if (lineIsValidTodo(line)) {
             todos.push(formTodo(line, file, links, i, tagMeta));
         }
     }
@@ -12259,6 +15162,7 @@ const formTodo = (line, file, links, lineNum, tagMeta) => {
     const md = new markdownIt().use(commentPlugin).use(linkPlugin(linkMap)).use(tagPlugin).use(highlightPlugin);
     return {
         mainTag: tagMeta === null || tagMeta === void 0 ? void 0 : tagMeta.main,
+        subTag: tagMeta === null || tagMeta === void 0 ? void 0 : tagMeta.sub,
         checked: todoLineIsChecked(line),
         filePath: file.file.path,
         fileName: file.file.name,
@@ -12266,7 +15170,6 @@ const formTodo = (line, file, links, lineNum, tagMeta) => {
         fileCreatedTs: file.file.stat.ctime,
         rawHTML: md.render(tagStripped),
         line: lineNum,
-        subTag: tagMeta === null || tagMeta === void 0 ? void 0 : tagMeta.sub,
         spacesIndented,
         fileInfo: file,
         originalText: rawText,
@@ -12276,86 +15179,14 @@ const setTodoStatusAtLineTo = (fileLines, line, setTo) => {
     fileLines[line] = setLineTo(fileLines[line], setTo);
     return combineFileLines(fileLines);
 };
-const getTagMeta = (tag) => {
-    const tagMatch = /^\#([^\/]+)\/?(.*)?$/.exec(tag);
-    if (!tagMatch)
-        return { main: null, sub: null };
-    const [full, main, sub] = tagMatch;
-    return { main, sub };
-};
-const mapLinkMeta = (linkMeta) => {
-    const map = new Map();
-    for (const link of linkMeta)
-        map.set(link.filePath, link);
-    return map;
-};
-const setLineTo = (line, setTo) => line.replace(/^(\s*[\-\*]\s\[)([^\]]+)(\].*$)/, `$1${setTo ? "x" : " "}$3`);
-const getAllLinesFromFile = (cache) => cache.split(/\r?\n/);
-const combineFileLines = (lines) => lines.join("\n");
-const lineIsValidTodo = (line, tag) => {
-    removeTagFromText(line, tag);
-    return /^\s*[\-\*]\s\[(\s|x)\]\s*\S/.test(line);
-};
-const extractTextFromTodoLine = (line) => { var _a; return (_a = /^\s*[\-\*]\s\[(\s|x)\]\s?(.*)$/.exec(line)) === null || _a === void 0 ? void 0 : _a[2]; };
-const getIndentationSpacesFromTodoLine = (line) => { var _a, _b, _c; return (_c = (_b = (_a = /^(\s*)[\-\*]\s\[(\s|x)\]\s?.*$/.exec(line)) === null || _a === void 0 ? void 0 : _a[1]) === null || _b === void 0 ? void 0 : _b.length) !== null && _c !== void 0 ? _c : 0; };
-const todoLineIsChecked = (line) => /^\s*[\-\*]\s\[x\]/.test(line);
-const getFileLabelFromName = (filename) => { var _a; return (_a = /^(.+)\.md$/.exec(filename)) === null || _a === void 0 ? void 0 : _a[1]; };
-const removeTagFromText = (text, tag) => {
-    if (!text)
-        return "";
-    if (!tag)
-        return text.trim();
-    return text.replace(new RegExp(`\\s?\\#${tag}[^\\s]*`, "g"), "").trim();
-};
-const isMacOS = () => window.navigator.userAgent.includes("Macintosh");
 
-/* src/svelte/Loading.svelte generated by Svelte v3.38.2 */
+/* src\svelte\CheckCircle.svelte generated by Svelte v3.44.3 */
 
-function add_css$5() {
-	var style = element("style");
-	style.id = "svelte-1te4fvc-style";
-	style.textContent = ".loader.svelte-1te4fvc{background:transparent !important;border-radius:100%;border:2px solid;display:flex;animation-fill-mode:both;margin:0 auto;animation:svelte-1te4fvc-niceSpinLoader 0.75s 0s infinite linear;border-color:var(--todoList-loaderBorderColor);width:var(--todoList-loaderSize);height:var(--todoList-loaderSize)}@keyframes svelte-1te4fvc-niceSpinLoader{0%{transform:rotate(0deg)}50%{transform:rotate(180deg)}100%{transform:rotate(360deg)}}";
-	append(document.head, style);
+function add_css$5(target) {
+	append_styles(target, "svelte-1wagsqu", ".checkbox.svelte-1wagsqu{width:var(--checklist-checkboxSize);height:var(--checklist-checkboxSize);min-width:var(--checklist-checkboxSize);min-height:var(--checklist-checkboxSize);border-radius:50%;border:var(--checklist-checkboxBorder);padding:2px;position:relative}.checked.svelte-1wagsqu{background-color:var(--text-muted);width:var(--checklist-checkboxCheckedSize);height:var(--checklist-checkboxCheckedSize);border-radius:50%;position:absolute;top:calc(calc(var(--checklist-checkboxSize) - var(--checklist-checkboxCheckedSize)) / 4);left:calc(calc(var(--checklist-checkboxSize) - var(--checklist-checkboxCheckedSize)) / 4)}");
 }
 
 function create_fragment$5(ctx) {
-	let div;
-
-	return {
-		c() {
-			div = element("div");
-			attr(div, "class", "loader svelte-1te4fvc");
-		},
-		m(target, anchor) {
-			insert(target, div, anchor);
-		},
-		p: noop,
-		i: noop,
-		o: noop,
-		d(detaching) {
-			if (detaching) detach(div);
-		}
-	};
-}
-
-class Loading extends SvelteComponent {
-	constructor(options) {
-		super();
-		if (!document.getElementById("svelte-1te4fvc-style")) add_css$5();
-		init(this, options, null, create_fragment$5, safe_not_equal, {});
-	}
-}
-
-/* src/svelte/CheckCircle.svelte generated by Svelte v3.38.2 */
-
-function add_css$4() {
-	var style = element("style");
-	style.id = "svelte-4g53y-style";
-	style.textContent = ".checkbox.svelte-4g53y{width:var(--todoList-checkboxSize);height:var(--todoList-checkboxSize);min-width:var(--todoList-checkboxSize);min-height:var(--todoList-checkboxSize);border-radius:50%;border:var(--todoList-checkboxBorder);padding:2px;position:relative}.checked.svelte-4g53y{background-color:var(--text-muted);width:var(--todoList-checkboxCheckedSize);height:var(--todoList-checkboxCheckedSize);border-radius:50%;position:absolute;top:calc(calc(var(--todoList-checkboxSize) - var(--todoList-checkboxCheckedSize)) / 4);left:calc(calc(var(--todoList-checkboxSize) - var(--todoList-checkboxCheckedSize)) / 4)}";
-	append(document.head, style);
-}
-
-function create_fragment$4(ctx) {
 	let div1;
 	let div0;
 
@@ -12363,9 +15194,9 @@ function create_fragment$4(ctx) {
 		c() {
 			div1 = element("div");
 			div0 = element("div");
-			attr(div0, "class", "svelte-4g53y");
+			attr(div0, "class", "svelte-1wagsqu");
 			toggle_class(div0, "checked", /*checked*/ ctx[0]);
-			attr(div1, "class", "checkbox svelte-4g53y");
+			attr(div1, "class", "checkbox svelte-1wagsqu");
 		},
 		m(target, anchor) {
 			insert(target, div1, anchor);
@@ -12384,11 +15215,11 @@ function create_fragment$4(ctx) {
 	};
 }
 
-function instance$4($$self, $$props, $$invalidate) {
+function instance$5($$self, $$props, $$invalidate) {
 	let { checked = false } = $$props;
 
 	$$self.$$set = $$props => {
-		if ("checked" in $$props) $$invalidate(0, checked = $$props.checked);
+		if ('checked' in $$props) $$invalidate(0, checked = $$props.checked);
 	};
 
 	return [checked];
@@ -12397,21 +15228,17 @@ function instance$4($$self, $$props, $$invalidate) {
 class CheckCircle extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-4g53y-style")) add_css$4();
-		init(this, options, instance$4, create_fragment$4, safe_not_equal, { checked: 0 });
+		init(this, options, instance$5, create_fragment$5, safe_not_equal, { checked: 0 }, add_css$5);
 	}
 }
 
-/* src/svelte/ChecklistItem.svelte generated by Svelte v3.38.2 */
+/* src\svelte\ChecklistItem.svelte generated by Svelte v3.44.3 */
 
-function add_css$3() {
-	var style = element("style");
-	style.id = "svelte-gpx85b-style";
-	style.textContent = "li.svelte-gpx85b.svelte-gpx85b{display:flex;align-items:center;background-color:var(--todoList-listItemBackground);border-radius:var(--todoList-listItemBorderRadius);margin:var(--todoList-listItemMargin);cursor:pointer;transition:background-color 100ms ease-in-out}li.svelte-gpx85b.svelte-gpx85b:hover{background-color:var(--todoList-listItemBackground--hover)}.toggle.svelte-gpx85b.svelte-gpx85b{padding:var(--todoList-togglePadding);background:transparent;flex-shrink:1}.content.svelte-gpx85b.svelte-gpx85b{padding:var(--todoList-contentPadding);flex:1}.compact.svelte-gpx85b.svelte-gpx85b{bottom:var(--todoList-listItemMargin--compact)}.compact.svelte-gpx85b>.content.svelte-gpx85b{padding:var(--todoList-contentPadding--compact)}.compact.svelte-gpx85b>.toggle.svelte-gpx85b{padding:var(--todoList-togglePadding--compact)}.toggle.svelte-gpx85b.svelte-gpx85b:hover{opacity:0.8}";
-	append(document.head, style);
+function add_css$4(target) {
+	append_styles(target, "svelte-6nbpzm", "li.svelte-6nbpzm.svelte-6nbpzm{display:flex;align-items:center;background-color:var(--checklist-listItemBackground);border-radius:var(--checklist-listItemBorderRadius);margin:var(--checklist-listItemMargin);cursor:pointer;transition:background-color 100ms ease-in-out}li.svelte-6nbpzm.svelte-6nbpzm:hover{background-color:var(--checklist-listItemBackground--hover)}.toggle.svelte-6nbpzm.svelte-6nbpzm{padding:var(--checklist-togglePadding);background:transparent;flex-shrink:1;width:initial}.content.svelte-6nbpzm.svelte-6nbpzm{padding:var(--checklist-contentPadding);flex:1;font-size:var(--checklist-contentFontSize)}.compact.svelte-6nbpzm.svelte-6nbpzm{bottom:var(--checklist-listItemMargin--compact)}.compact.svelte-6nbpzm>.content.svelte-6nbpzm{padding:var(--checklist-contentPadding--compact)}.compact.svelte-6nbpzm>.toggle.svelte-6nbpzm{padding:var(--checklist-togglePadding--compact)}.toggle.svelte-6nbpzm.svelte-6nbpzm:hover{opacity:0.8}");
 }
 
-function create_fragment$3(ctx) {
+function create_fragment$4(ctx) {
 	let li;
 	let button;
 	let checkcircle;
@@ -12433,9 +15260,9 @@ function create_fragment$3(ctx) {
 			create_component(checkcircle.$$.fragment);
 			t = space();
 			div = element("div");
-			attr(button, "class", "toggle svelte-gpx85b");
-			attr(div, "class", "content svelte-gpx85b");
-			attr(li, "class", li_class_value = "" + (null_to_empty(`${/*lookAndFeel*/ ctx[1]}`) + " svelte-gpx85b"));
+			attr(button, "class", "toggle svelte-6nbpzm");
+			attr(div, "class", "content svelte-6nbpzm");
+			attr(li, "class", li_class_value = "" + (null_to_empty(`${/*lookAndFeel*/ ctx[1]}`) + " svelte-6nbpzm"));
 		},
 		m(target, anchor) {
 			insert(target, li, anchor);
@@ -12449,8 +15276,8 @@ function create_fragment$3(ctx) {
 			if (!mounted) {
 				dispose = [
 					listen(button, "click", /*click_handler*/ ctx[6]),
-					listen(div, "click", /*handleClick*/ ctx[5]),
-					listen(li, "click", /*click_handler_1*/ ctx[8])
+					listen(div, "click", /*click_handler_1*/ ctx[8]),
+					listen(li, "click", /*click_handler_2*/ ctx[9])
 				];
 
 				mounted = true;
@@ -12461,7 +15288,7 @@ function create_fragment$3(ctx) {
 			if (dirty & /*item*/ 1) checkcircle_changes.checked = /*item*/ ctx[0].checked;
 			checkcircle.$set(checkcircle_changes);
 
-			if (!current || dirty & /*lookAndFeel*/ 2 && li_class_value !== (li_class_value = "" + (null_to_empty(`${/*lookAndFeel*/ ctx[1]}`) + " svelte-gpx85b"))) {
+			if (!current || dirty & /*lookAndFeel*/ 2 && li_class_value !== (li_class_value = "" + (null_to_empty(`${/*lookAndFeel*/ ctx[1]}`) + " svelte-6nbpzm"))) {
 				attr(li, "class", li_class_value);
 			}
 		},
@@ -12484,26 +15311,24 @@ function create_fragment$3(ctx) {
 	};
 }
 
-function instance$3($$self, $$props, $$invalidate) {
-	
-	
+function instance$4($$self, $$props, $$invalidate) {
 	let { item } = $$props;
 	let { lookAndFeel } = $$props;
 	let { app } = $$props;
 	let contentDiv;
 
-	const toggleItem = item => __awaiter(void 0, void 0, void 0, function* () {
+	const toggleItem = async item => {
 		toggleTodoItem(item, app);
-	});
+	};
 
-	const handleClick = ev => {
+	const handleClick = (ev, item) => {
 		const target = ev.target;
 
 		if (target.tagName === "A") {
 			ev.stopPropagation();
 
 			if (target.dataset.type === "link") {
-				navToFile(app, target.dataset.filepath, ev);
+				navToFile(app, target.dataset.filepath, ev, item === null || item === void 0 ? void 0 : item.line);
 			} else if (target.dataset.type === "tag") ; // goto tag
 		}
 	};
@@ -12514,18 +15339,19 @@ function instance$3($$self, $$props, $$invalidate) {
 	};
 
 	function div_binding($$value) {
-		binding_callbacks[$$value ? "unshift" : "push"](() => {
+		binding_callbacks[$$value ? 'unshift' : 'push'](() => {
 			contentDiv = $$value;
 			($$invalidate(3, contentDiv), $$invalidate(0, item));
 		});
 	}
 
-	const click_handler_1 = ev => navToFile(app, item.filePath, ev);
+	const click_handler_1 = ev => handleClick(ev, item);
+	const click_handler_2 = ev => navToFile(app, item.filePath, ev);
 
 	$$self.$$set = $$props => {
-		if ("item" in $$props) $$invalidate(0, item = $$props.item);
-		if ("lookAndFeel" in $$props) $$invalidate(1, lookAndFeel = $$props.lookAndFeel);
-		if ("app" in $$props) $$invalidate(2, app = $$props.app);
+		if ('item' in $$props) $$invalidate(0, item = $$props.item);
+		if ('lookAndFeel' in $$props) $$invalidate(1, lookAndFeel = $$props.lookAndFeel);
+		if ('app' in $$props) $$invalidate(2, app = $$props.app);
 	};
 
 	$$self.$$.update = () => {
@@ -12545,32 +15371,71 @@ function instance$3($$self, $$props, $$invalidate) {
 		handleClick,
 		click_handler,
 		div_binding,
-		click_handler_1
+		click_handler_1,
+		click_handler_2
 	];
 }
 
 class ChecklistItem extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-gpx85b-style")) add_css$3();
-		init(this, options, instance$3, create_fragment$3, safe_not_equal, { item: 0, lookAndFeel: 1, app: 2 });
+		init(this, options, instance$4, create_fragment$4, safe_not_equal, { item: 0, lookAndFeel: 1, app: 2 }, add_css$4);
 	}
 }
 
-/* src/svelte/Icon.svelte generated by Svelte v3.38.2 */
+/* src\svelte\Icon.svelte generated by Svelte v3.44.3 */
 
-function add_css$2() {
-	var style = element("style");
-	style.id = "svelte-1jevfyc-style";
-	style.textContent = ".svg.svelte-1jevfyc{width:var(--todoList-iconSize);height:var(--todoList-iconSize);fill:var(--todoList-iconFill);transition:transform 150ms ease;cursor:pointer}.up.svelte-1jevfyc{transform:rotate(180deg)}.down.svelte-1jevfyc{transform:rotate(0deg)}.left.svelte-1jevfyc{transform:rotate(90deg)}.right.svelte-1jevfyc{transform:rotate(270deg)}";
-	append(document.head, style);
+function add_css$3(target) {
+	append_styles(target, "svelte-9fjno5", ".svg.svelte-9fjno5{width:var(--checklist-iconSize);height:var(--checklist-iconSize);transition:transform 150ms ease;cursor:pointer}.up.svelte-9fjno5{transform:rotate(180deg)}.down.svelte-9fjno5{transform:rotate(0deg)}.left.svelte-9fjno5{transform:rotate(90deg)}.right.svelte-9fjno5{transform:rotate(270deg)}.button.svelte-9fjno5{fill:var(--checklist-iconFill--accent);transition:fill 150ms ease}.button.svelte-9fjno5:hover{fill:var(--checklist-textColor)}.static.svelte-9fjno5{fill:var(--checklist-iconFill)}");
 }
 
-// (6:0) {#if name === "chevron"}
-function create_if_block$2(ctx) {
+// (22:30) 
+function create_if_block_1$3(ctx) {
 	let svg;
 	let path;
 	let svg_class_value;
+	let mounted;
+	let dispose;
+
+	return {
+		c() {
+			svg = svg_element("svg");
+			path = svg_element("path");
+			attr(path, "d", "M44.4,4c-1,0-1.8,0.7-2,1.7l-1.9,11.9c-2.3,0.7-4.6,1.6-6.7,2.7l-9.8-7c-0.8-0.6-1.9-0.5-2.6,0.2l-7.8,7.8 c-0.7,0.7-0.8,1.8-0.2,2.6l6.9,9.9c-1.2,2.1-2.1,4.4-2.8,6.7l-11.9,2c-1,0.2-1.7,1-1.7,2v11c0,1,0.7,1.8,1.6,2l11.9,2.1 c0.7,2.4,1.6,4.6,2.8,6.7l-7,9.8c-0.6,0.8-0.5,1.9,0.2,2.6l7.8,7.8c0.7,0.7,1.8,0.8,2.6,0.2l9.9-6.9c2.1,1.2,4.3,2.1,6.7,2.8 l2,11.9c0.2,1,1,1.7,2,1.7h11c1,0,1.8-0.7,2-1.7l2.1-12c2.3-0.7,4.6-1.6,6.7-2.8l10,7c0.8,0.6,1.9,0.5,2.6-0.2l7.8-7.8 c0.7-0.7,0.8-1.8,0.2-2.6l-7.1-9.9c1.1-2.1,2.1-4.3,2.7-6.6l12-2.1c1-0.2,1.7-1,1.7-2v-11c0-1-0.7-1.8-1.7-2l-12-2 c-0.7-2.3-1.6-4.5-2.7-6.6l7-10c0.6-0.8,0.5-1.9-0.2-2.6l-7.8-7.8c-0.7-0.7-1.8-0.8-2.6-0.2l-9.8,7.1c-2.1-1.2-4.3-2.1-6.7-2.8 l-2.1-12c-0.2-1-1-1.7-2-1.7L44.4,4z M46.1,8h7.6l2,11.4c0.1,0.8,0.7,1.4,1.5,1.6c2.9,0.7,5.7,1.9,8.2,3.4 c0.7,0.4,1.6,0.4,2.2-0.1l9.4-6.7l5.4,5.4l-6.7,9.5c-0.5,0.6-0.5,1.5-0.1,2.2c1.5,2.5,2.6,5.2,3.4,8.1c0.2,0.8,0.8,1.4,1.6,1.5 L92,46.1v7.6l-11.4,2c-0.8,0.1-1.4,0.7-1.6,1.5c-0.7,2.9-1.9,5.6-3.4,8.1c-0.4,0.7-0.4,1.6,0.1,2.2l6.8,9.4l-5.4,5.4l-9.5-6.7 c-0.7-0.5-1.5-0.5-2.2-0.1c-2.5,1.5-5.2,2.7-8.2,3.4c-0.8,0.2-1.3,0.8-1.5,1.6l-2,11.4h-7.6l-1.9-11.3c-0.1-0.8-0.7-1.4-1.5-1.6 c-2.9-0.7-5.7-1.9-8.2-3.4c-0.7-0.4-1.5-0.4-2.2,0.1l-9.4,6.6l-5.4-5.4l6.6-9.3c0.5-0.7,0.5-1.5,0.1-2.2c-1.5-2.5-2.7-5.3-3.4-8.2 c-0.2-0.8-0.8-1.3-1.6-1.5L8,53.7v-7.6l11.3-1.9c0.8-0.1,1.4-0.7,1.6-1.5c0.7-2.9,1.9-5.7,3.4-8.2c0.4-0.7,0.4-1.5-0.1-2.2 l-6.6-9.4l5.4-5.4l9.3,6.7c0.6,0.5,1.5,0.5,2.2,0.1c2.5-1.5,5.3-2.7,8.2-3.4c0.8-0.2,1.4-0.8,1.5-1.6L46.1,8z M50,34 c-8.8,0-16,7.2-16,16s7.2,16,16,16s16-7.2,16-16S58.8,34,50,34z M50,38c6.7,0,12,5.3,12,12s-5.3,12-12,12s-12-5.3-12-12 S43.3,38,50,38z");
+			attr(svg, "viewBox", "0 0 100 100");
+			attr(svg, "width", "18");
+			attr(svg, "height", "18");
+			attr(svg, "class", svg_class_value = "" + (null_to_empty(`svg settings ${/*style*/ ctx[2]}`) + " svelte-9fjno5"));
+		},
+		m(target, anchor) {
+			insert(target, svg, anchor);
+			append(svg, path);
+
+			if (!mounted) {
+				dispose = listen(svg, "click", /*onClick*/ ctx[3]);
+				mounted = true;
+			}
+		},
+		p(ctx, dirty) {
+			if (dirty & /*style*/ 4 && svg_class_value !== (svg_class_value = "" + (null_to_empty(`svg settings ${/*style*/ ctx[2]}`) + " svelte-9fjno5"))) {
+				attr(svg, "class", svg_class_value);
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(svg);
+			mounted = false;
+			dispose();
+		}
+	};
+}
+
+// (11:0) {#if name === "chevron"}
+function create_if_block$3(ctx) {
+	let svg;
+	let path;
+	let svg_class_value;
+	let mounted;
+	let dispose;
 
 	return {
 		c() {
@@ -12580,26 +15445,40 @@ function create_if_block$2(ctx) {
 			attr(svg, "focusable", "false");
 			attr(svg, "xmlns", "http://www.w3.org/2000/svg");
 			attr(svg, "viewBox", "0 0 256 512");
-			attr(svg, "class", svg_class_value = "" + (null_to_empty(`svg ${/*direction*/ ctx[1]}`) + " svelte-1jevfyc"));
+			attr(svg, "class", svg_class_value = "" + (null_to_empty(`svg ${/*direction*/ ctx[1]} ${/*style*/ ctx[2]}`) + " svelte-9fjno5"));
 		},
 		m(target, anchor) {
 			insert(target, svg, anchor);
 			append(svg, path);
+
+			if (!mounted) {
+				dispose = listen(svg, "click", /*onClick*/ ctx[3]);
+				mounted = true;
+			}
 		},
 		p(ctx, dirty) {
-			if (dirty & /*direction*/ 2 && svg_class_value !== (svg_class_value = "" + (null_to_empty(`svg ${/*direction*/ ctx[1]}`) + " svelte-1jevfyc"))) {
+			if (dirty & /*direction, style*/ 6 && svg_class_value !== (svg_class_value = "" + (null_to_empty(`svg ${/*direction*/ ctx[1]} ${/*style*/ ctx[2]}`) + " svelte-9fjno5"))) {
 				attr(svg, "class", svg_class_value);
 			}
 		},
 		d(detaching) {
 			if (detaching) detach(svg);
+			mounted = false;
+			dispose();
 		}
 	};
 }
 
-function create_fragment$2(ctx) {
+function create_fragment$3(ctx) {
 	let if_block_anchor;
-	let if_block = /*name*/ ctx[0] === "chevron" && create_if_block$2(ctx);
+
+	function select_block_type(ctx, dirty) {
+		if (/*name*/ ctx[0] === "chevron") return create_if_block$3;
+		if (/*name*/ ctx[0] === "settings") return create_if_block_1$3;
+	}
+
+	let current_block_type = select_block_type(ctx);
+	let if_block = current_block_type && current_block_type(ctx);
 
 	return {
 		c() {
@@ -12611,11 +15490,139 @@ function create_fragment$2(ctx) {
 			insert(target, if_block_anchor, anchor);
 		},
 		p(ctx, [dirty]) {
-			if (/*name*/ ctx[0] === "chevron") {
+			if (current_block_type === (current_block_type = select_block_type(ctx)) && if_block) {
+				if_block.p(ctx, dirty);
+			} else {
+				if (if_block) if_block.d(1);
+				if_block = current_block_type && current_block_type(ctx);
+
+				if (if_block) {
+					if_block.c();
+					if_block.m(if_block_anchor.parentNode, if_block_anchor);
+				}
+			}
+		},
+		i: noop,
+		o: noop,
+		d(detaching) {
+			if (if_block) {
+				if_block.d(detaching);
+			}
+
+			if (detaching) detach(if_block_anchor);
+		}
+	};
+}
+
+function instance$3($$self, $$props, $$invalidate) {
+	let { name } = $$props;
+	let { direction = "down" } = $$props;
+	let { style = "static" } = $$props;
+	const onClickDispatcher = createEventDispatcher();
+
+	const onClick = ev => {
+		onClickDispatcher("click", ev);
+	};
+
+	$$self.$$set = $$props => {
+		if ('name' in $$props) $$invalidate(0, name = $$props.name);
+		if ('direction' in $$props) $$invalidate(1, direction = $$props.direction);
+		if ('style' in $$props) $$invalidate(2, style = $$props.style);
+	};
+
+	return [name, direction, style, onClick];
+}
+
+class Icon extends SvelteComponent {
+	constructor(options) {
+		super();
+		init(this, options, instance$3, create_fragment$3, safe_not_equal, { name: 0, direction: 1, style: 2 }, add_css$3);
+	}
+}
+
+/* src\svelte\ChecklistGroup.svelte generated by Svelte v3.44.3 */
+
+function add_css$2(target) {
+	append_styles(target, "svelte-129fg97", ".page.svelte-129fg97{margin:var(--checklist-pageMargin);color:var(--checklist-textColor);transition:opacity 150ms ease-in-out;cursor:pointer}.file-link.svelte-129fg97:hover{opacity:0.8}header.svelte-129fg97{font-weight:var(--checklist-headerFontWeight);font-size:var(--checklist-headerFontSize);margin:var(--checklist-headerMargin);display:flex;gap:var(--checklist-headerGap);align-items:center}.space.svelte-129fg97{flex:1}button.svelte-129fg97,.count.svelte-129fg97,.title.svelte-129fg97{flex-shrink:1}.count.svelte-129fg97{padding:var(--checklist-countPadding);background:var(--checklist-countBackground);border-radius:var(--checklist-countBorderRadius);font-size:var(--checklist-countFontSize)}.title.svelte-129fg97{min-width:0;overflow:hidden;text-overflow:ellipsis;display:flex}button.svelte-129fg97{display:flex;padding:var(--checklist-buttonPadding);background:transparent}.tag-base.svelte-129fg97{color:var(--checklist-tagBaseColor)}.tag-sub.svelte-129fg97{color:var(--checklist-tagSubColor)}ul.svelte-129fg97{list-style:none;padding:0;margin:0;padding-inline-start:initial !important}.group.svelte-129fg97{margin-bottom:var(--checklist-groupMargin)}.collapse.svelte-129fg97{width:initial}");
+}
+
+function get_each_context$2(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[7] = list[i];
+	return child_ctx;
+}
+
+// (28:6) {:else}
+function create_else_block$1(ctx) {
+	let span;
+
+	return {
+		c() {
+			span = element("span");
+			span.textContent = "All Tags";
+			attr(span, "class", "tag-base svelte-129fg97");
+		},
+		m(target, anchor) {
+			insert(target, span, anchor);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(span);
+		}
+	};
+}
+
+// (20:30) 
+function create_if_block_2$1(ctx) {
+	let span0;
+	let t1;
+	let span1;
+	let t2_value = `${/*group*/ ctx[0].mainTag}${/*group*/ ctx[0].subTags != null ? "/" : ""}` + "";
+	let t2;
+	let span1_class_value;
+	let t3;
+	let if_block_anchor;
+	let if_block = /*group*/ ctx[0].subTags != null && create_if_block_3(ctx);
+
+	return {
+		c() {
+			span0 = element("span");
+			span0.textContent = "#";
+			t1 = space();
+			span1 = element("span");
+			t2 = text$1(t2_value);
+			t3 = space();
+			if (if_block) if_block.c();
+			if_block_anchor = empty$1();
+			attr(span0, "class", "tag-base svelte-129fg97");
+
+			attr(span1, "class", span1_class_value = "" + (null_to_empty(/*group*/ ctx[0].subTags == null
+			? "tag-sub"
+			: "tag-base") + " svelte-129fg97"));
+		},
+		m(target, anchor) {
+			insert(target, span0, anchor);
+			insert(target, t1, anchor);
+			insert(target, span1, anchor);
+			append(span1, t2);
+			insert(target, t3, anchor);
+			if (if_block) if_block.m(target, anchor);
+			insert(target, if_block_anchor, anchor);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*group*/ 1 && t2_value !== (t2_value = `${/*group*/ ctx[0].mainTag}${/*group*/ ctx[0].subTags != null ? "/" : ""}` + "")) set_data(t2, t2_value);
+
+			if (dirty & /*group*/ 1 && span1_class_value !== (span1_class_value = "" + (null_to_empty(/*group*/ ctx[0].subTags == null
+			? "tag-sub"
+			: "tag-base") + " svelte-129fg97"))) {
+				attr(span1, "class", span1_class_value);
+			}
+
+			if (/*group*/ ctx[0].subTags != null) {
 				if (if_block) {
 					if_block.p(ctx, dirty);
 				} else {
-					if_block = create_if_block$2(ctx);
+					if_block = create_if_block_3(ctx);
 					if_block.c();
 					if_block.m(if_block_anchor.parentNode, if_block_anchor);
 				}
@@ -12624,89 +15631,20 @@ function create_fragment$2(ctx) {
 				if_block = null;
 			}
 		},
-		i: noop,
-		o: noop,
 		d(detaching) {
+			if (detaching) detach(span0);
+			if (detaching) detach(t1);
+			if (detaching) detach(span1);
+			if (detaching) detach(t3);
 			if (if_block) if_block.d(detaching);
 			if (detaching) detach(if_block_anchor);
 		}
 	};
 }
 
-function instance$2($$self, $$props, $$invalidate) {
-	
-	let { name } = $$props;
-	let { direction = "down" } = $$props;
-
-	$$self.$$set = $$props => {
-		if ("name" in $$props) $$invalidate(0, name = $$props.name);
-		if ("direction" in $$props) $$invalidate(1, direction = $$props.direction);
-	};
-
-	return [name, direction];
-}
-
-class Icon extends SvelteComponent {
-	constructor(options) {
-		super();
-		if (!document.getElementById("svelte-1jevfyc-style")) add_css$2();
-		init(this, options, instance$2, create_fragment$2, safe_not_equal, { name: 0, direction: 1 });
-	}
-}
-
-/* src/svelte/ChecklistGroup.svelte generated by Svelte v3.38.2 */
-
-function add_css$1() {
-	var style = element("style");
-	style.id = "svelte-yzsyxo-style";
-	style.textContent = ".page.svelte-yzsyxo{margin:var(--todoList-pageMargin);color:var(--todoList-textColor);transition:opacity 150ms ease-in-out;cursor:pointer}.file-link.svelte-yzsyxo:hover{opacity:0.8}header.svelte-yzsyxo{font-weight:var(--todoList-headerFontWeight);font-size:var(--todoList-headerFontSize);margin:var(--todoList-headerMargin);display:flex;gap:var(--todoList-headerGap);align-items:center}.space.svelte-yzsyxo{flex:1}button.svelte-yzsyxo,.count.svelte-yzsyxo,.title.svelte-yzsyxo{flex-shrink:1}.count.svelte-yzsyxo{padding:var(--todoList-countPadding);background:var(--todoList-countBackground);border-radius:var(--todoList-countBorderRadius);font-size:var(--todoList-countFontSize)}.title.svelte-yzsyxo{min-width:0;overflow:hidden;text-overflow:ellipsis}button.svelte-yzsyxo{display:flex;padding:var(--todoList-buttonPadding);background:transparent}.tag-base.svelte-yzsyxo{color:var(--todoList-tagBaseColor)}.tag-sub.svelte-yzsyxo{color:var(--todoList-tagSub)}ul.svelte-yzsyxo{list-style:none;padding:0;margin:0}.group.svelte-yzsyxo{margin-bottom:var(--todoList-groupMargin)}";
-	append(document.head, style);
-}
-
-function get_each_context$1(ctx, list, i) {
-	const child_ctx = ctx.slice();
-	child_ctx[9] = list[i];
-	return child_ctx;
-}
-
-// (34:6) {:else}
-function create_else_block$1(ctx) {
-	let span0;
-	let t0_value = `#${/*mainTag*/ ctx[1]}${/*group*/ ctx[0].groupName != null ? "/" : ""}` + "";
-	let t0;
-	let span1;
-	let t1_value = (/*group*/ ctx[0].groupName ?? "") + "";
-	let t1;
-
-	return {
-		c() {
-			span0 = element("span");
-			t0 = text$1(t0_value);
-			span1 = element("span");
-			t1 = text$1(t1_value);
-			attr(span0, "class", "tag-base svelte-yzsyxo");
-			attr(span1, "class", "tag-sub svelte-yzsyxo");
-		},
-		m(target, anchor) {
-			insert(target, span0, anchor);
-			append(span0, t0);
-			insert(target, span1, anchor);
-			append(span1, t1);
-		},
-		p(ctx, dirty) {
-			if (dirty & /*mainTag, group*/ 3 && t0_value !== (t0_value = `#${/*mainTag*/ ctx[1]}${/*group*/ ctx[0].groupName != null ? "/" : ""}` + "")) set_data(t0, t0_value);
-			if (dirty & /*group*/ 1 && t1_value !== (t1_value = (/*group*/ ctx[0].groupName ?? "") + "")) set_data(t1, t1_value);
-		},
-		d(detaching) {
-			if (detaching) detach(span0);
-			if (detaching) detach(span1);
-		}
-	};
-}
-
-// (32:6) {#if group.type === "page"}
-function create_if_block_1$1(ctx) {
-	let t_value = /*group*/ ctx[0].groupName + "";
+// (18:6) {#if group.type === "page"}
+function create_if_block_1$2(ctx) {
+	let t_value = /*group*/ ctx[0].pageName + "";
 	let t;
 
 	return {
@@ -12717,7 +15655,7 @@ function create_if_block_1$1(ctx) {
 			insert(target, t, anchor);
 		},
 		p(ctx, dirty) {
-			if (dirty & /*group*/ 1 && t_value !== (t_value = /*group*/ ctx[0].groupName + "")) set_data(t, t_value);
+			if (dirty & /*group*/ 1 && t_value !== (t_value = /*group*/ ctx[0].pageName + "")) set_data(t, t_value);
 		},
 		d(detaching) {
 			if (detaching) detach(t);
@@ -12725,15 +15663,40 @@ function create_if_block_1$1(ctx) {
 	};
 }
 
-// (47:4) {#if !isCollapsed}
-function create_if_block$1(ctx) {
-	let each_1_anchor;
+// (25:8) {#if group.subTags != null}
+function create_if_block_3(ctx) {
+	let span;
+	let t_value = /*group*/ ctx[0].subTags + "";
+	let t;
+
+	return {
+		c() {
+			span = element("span");
+			t = text$1(t_value);
+			attr(span, "class", "tag-sub svelte-129fg97");
+		},
+		m(target, anchor) {
+			insert(target, span, anchor);
+			append(span, t);
+		},
+		p(ctx, dirty) {
+			if (dirty & /*group*/ 1 && t_value !== (t_value = /*group*/ ctx[0].subTags + "")) set_data(t, t_value);
+		},
+		d(detaching) {
+			if (detaching) detach(span);
+		}
+	};
+}
+
+// (38:2) {#if !isCollapsed}
+function create_if_block$2(ctx) {
+	let ul;
 	let current;
 	let each_value = /*group*/ ctx[0].todos;
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
-		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+		each_blocks[i] = create_each_block$2(get_each_context$2(ctx, each_value, i));
 	}
 
 	const out = i => transition_out(each_blocks[i], 1, 1, () => {
@@ -12742,36 +15705,39 @@ function create_if_block$1(ctx) {
 
 	return {
 		c() {
+			ul = element("ul");
+
 			for (let i = 0; i < each_blocks.length; i += 1) {
 				each_blocks[i].c();
 			}
 
-			each_1_anchor = empty$1();
+			attr(ul, "class", "svelte-129fg97");
 		},
 		m(target, anchor) {
+			insert(target, ul, anchor);
+
 			for (let i = 0; i < each_blocks.length; i += 1) {
-				each_blocks[i].m(target, anchor);
+				each_blocks[i].m(ul, null);
 			}
 
-			insert(target, each_1_anchor, anchor);
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*group, lookAndFeel, app*/ 25) {
+			if (dirty & /*group, lookAndFeel, app*/ 13) {
 				each_value = /*group*/ ctx[0].todos;
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
-					const child_ctx = get_each_context$1(ctx, each_value, i);
+					const child_ctx = get_each_context$2(ctx, each_value, i);
 
 					if (each_blocks[i]) {
 						each_blocks[i].p(child_ctx, dirty);
 						transition_in(each_blocks[i], 1);
 					} else {
-						each_blocks[i] = create_each_block$1(child_ctx);
+						each_blocks[i] = create_each_block$2(child_ctx);
 						each_blocks[i].c();
 						transition_in(each_blocks[i], 1);
-						each_blocks[i].m(each_1_anchor.parentNode, each_1_anchor);
+						each_blocks[i].m(ul, null);
 					}
 				}
 
@@ -12803,22 +15769,22 @@ function create_if_block$1(ctx) {
 			current = false;
 		},
 		d(detaching) {
+			if (detaching) detach(ul);
 			destroy_each(each_blocks, detaching);
-			if (detaching) detach(each_1_anchor);
 		}
 	};
 }
 
-// (48:6) {#each group.todos as item}
-function create_each_block$1(ctx) {
+// (40:6) {#each group.todos as item}
+function create_each_block$2(ctx) {
 	let checklistitem;
 	let current;
 
 	checklistitem = new ChecklistItem({
 			props: {
-				item: /*item*/ ctx[9],
-				lookAndFeel: /*lookAndFeel*/ ctx[3],
-				app: /*app*/ ctx[4]
+				item: /*item*/ ctx[7],
+				lookAndFeel: /*lookAndFeel*/ ctx[2],
+				app: /*app*/ ctx[3]
 			}
 		});
 
@@ -12832,9 +15798,9 @@ function create_each_block$1(ctx) {
 		},
 		p(ctx, dirty) {
 			const checklistitem_changes = {};
-			if (dirty & /*group*/ 1) checklistitem_changes.item = /*item*/ ctx[9];
-			if (dirty & /*lookAndFeel*/ 8) checklistitem_changes.lookAndFeel = /*lookAndFeel*/ ctx[3];
-			if (dirty & /*app*/ 16) checklistitem_changes.app = /*app*/ ctx[4];
+			if (dirty & /*group*/ 1) checklistitem_changes.item = /*item*/ ctx[7];
+			if (dirty & /*lookAndFeel*/ 4) checklistitem_changes.lookAndFeel = /*lookAndFeel*/ ctx[2];
+			if (dirty & /*app*/ 8) checklistitem_changes.app = /*app*/ ctx[3];
 			checklistitem.$set(checklistitem_changes);
 		},
 		i(local) {
@@ -12852,7 +15818,7 @@ function create_each_block$1(ctx) {
 	};
 }
 
-function create_fragment$1(ctx) {
+function create_fragment$2(ctx) {
 	let section;
 	let header;
 	let div0;
@@ -12867,14 +15833,14 @@ function create_fragment$1(ctx) {
 	let icon;
 	let header_class_value;
 	let t4;
-	let ul;
 	let section_class_value;
 	let current;
 	let mounted;
 	let dispose;
 
 	function select_block_type(ctx, dirty) {
-		if (/*group*/ ctx[0].type === "page") return create_if_block_1$1;
+		if (/*group*/ ctx[0].type === "page") return create_if_block_1$2;
+		if (/*group*/ ctx[0].mainTag) return create_if_block_2$1;
 		return create_else_block$1;
 	}
 
@@ -12884,11 +15850,11 @@ function create_fragment$1(ctx) {
 	icon = new Icon({
 			props: {
 				name: "chevron",
-				direction: /*isCollapsed*/ ctx[2] ? "left" : "down"
+				direction: /*isCollapsed*/ ctx[1] ? "left" : "down"
 			}
 		});
 
-	let if_block1 = !/*isCollapsed*/ ctx[2] && create_if_block$1(ctx);
+	let if_block1 = !/*isCollapsed*/ ctx[1] && create_if_block$2(ctx);
 
 	return {
 		c() {
@@ -12905,16 +15871,14 @@ function create_fragment$1(ctx) {
 			button = element("button");
 			create_component(icon.$$.fragment);
 			t4 = space();
-			ul = element("ul");
 			if (if_block1) if_block1.c();
-			attr(div0, "class", "title svelte-yzsyxo");
-			attr(div1, "class", "space svelte-yzsyxo");
-			attr(div2, "class", "count svelte-yzsyxo");
-			attr(button, "class", "collapse svelte-yzsyxo");
+			attr(div0, "class", "title svelte-129fg97");
+			attr(div1, "class", "space svelte-129fg97");
+			attr(div2, "class", "count svelte-129fg97");
+			attr(button, "class", "collapse svelte-129fg97");
 			attr(button, "title", "Toggle Group");
-			attr(header, "class", header_class_value = "" + (null_to_empty(`group-header ${/*group*/ ctx[0].type}`) + " svelte-yzsyxo"));
-			attr(ul, "class", "svelte-yzsyxo");
-			attr(section, "class", section_class_value = "group " + /*groupNameAsClass*/ ctx[6] + " svelte-yzsyxo");
+			attr(header, "class", header_class_value = "" + (null_to_empty(`group-header ${/*group*/ ctx[0].type}`) + " svelte-129fg97"));
+			attr(section, "class", section_class_value = "group " + /*group*/ ctx[0].className + " svelte-129fg97");
 		},
 		m(target, anchor) {
 			insert(target, section, anchor);
@@ -12930,14 +15894,13 @@ function create_fragment$1(ctx) {
 			append(header, button);
 			mount_component(icon, button, null);
 			append(section, t4);
-			append(section, ul);
-			if (if_block1) if_block1.m(ul, null);
+			if (if_block1) if_block1.m(section, null);
 			current = true;
 
 			if (!mounted) {
 				dispose = [
-					listen(div0, "click", /*clickTitle*/ ctx[7]),
-					listen(button, "click", /*click_handler*/ ctx[8])
+					listen(div0, "click", /*clickTitle*/ ctx[5]),
+					listen(button, "click", /*click_handler*/ ctx[6])
 				];
 
 				mounted = true;
@@ -12958,25 +15921,25 @@ function create_fragment$1(ctx) {
 
 			if ((!current || dirty & /*group*/ 1) && t2_value !== (t2_value = /*group*/ ctx[0].todos.length + "")) set_data(t2, t2_value);
 			const icon_changes = {};
-			if (dirty & /*isCollapsed*/ 4) icon_changes.direction = /*isCollapsed*/ ctx[2] ? "left" : "down";
+			if (dirty & /*isCollapsed*/ 2) icon_changes.direction = /*isCollapsed*/ ctx[1] ? "left" : "down";
 			icon.$set(icon_changes);
 
-			if (!current || dirty & /*group*/ 1 && header_class_value !== (header_class_value = "" + (null_to_empty(`group-header ${/*group*/ ctx[0].type}`) + " svelte-yzsyxo"))) {
+			if (!current || dirty & /*group*/ 1 && header_class_value !== (header_class_value = "" + (null_to_empty(`group-header ${/*group*/ ctx[0].type}`) + " svelte-129fg97"))) {
 				attr(header, "class", header_class_value);
 			}
 
-			if (!/*isCollapsed*/ ctx[2]) {
+			if (!/*isCollapsed*/ ctx[1]) {
 				if (if_block1) {
 					if_block1.p(ctx, dirty);
 
-					if (dirty & /*isCollapsed*/ 4) {
+					if (dirty & /*isCollapsed*/ 2) {
 						transition_in(if_block1, 1);
 					}
 				} else {
-					if_block1 = create_if_block$1(ctx);
+					if_block1 = create_if_block$2(ctx);
 					if_block1.c();
 					transition_in(if_block1, 1);
-					if_block1.m(ul, null);
+					if_block1.m(section, null);
 				}
 			} else if (if_block1) {
 				group_outros();
@@ -12988,7 +15951,7 @@ function create_fragment$1(ctx) {
 				check_outros();
 			}
 
-			if (!current || dirty & /*groupNameAsClass*/ 64 && section_class_value !== (section_class_value = "group " + /*groupNameAsClass*/ ctx[6] + " svelte-yzsyxo")) {
+			if (!current || dirty & /*group*/ 1 && section_class_value !== (section_class_value = "group " + /*group*/ ctx[0].className + " svelte-129fg97")) {
 				attr(section, "class", section_class_value);
 			}
 		},
@@ -13014,97 +15977,444 @@ function create_fragment$1(ctx) {
 	};
 }
 
-function instance$1($$self, $$props, $$invalidate) {
-	
-	
+function instance$2($$self, $$props, $$invalidate) {
 	let { group } = $$props;
-	let { mainTag } = $$props;
 	let { isCollapsed } = $$props;
 	let { lookAndFeel } = $$props;
 	let { app } = $$props;
 	let { onToggle } = $$props;
-	let groupNameAsClass;
 
 	function clickTitle(ev) {
-		if (group.type === "page") navToFile(app, group.groupId, ev);
+		if (group.type === "page") navToFile(app, group.id, ev);
 	}
 
-	const click_handler = () => onToggle(group.groupId);
+	const click_handler = () => onToggle(group.id);
 
 	$$self.$$set = $$props => {
-		if ("group" in $$props) $$invalidate(0, group = $$props.group);
-		if ("mainTag" in $$props) $$invalidate(1, mainTag = $$props.mainTag);
-		if ("isCollapsed" in $$props) $$invalidate(2, isCollapsed = $$props.isCollapsed);
-		if ("lookAndFeel" in $$props) $$invalidate(3, lookAndFeel = $$props.lookAndFeel);
-		if ("app" in $$props) $$invalidate(4, app = $$props.app);
-		if ("onToggle" in $$props) $$invalidate(5, onToggle = $$props.onToggle);
+		if ('group' in $$props) $$invalidate(0, group = $$props.group);
+		if ('isCollapsed' in $$props) $$invalidate(1, isCollapsed = $$props.isCollapsed);
+		if ('lookAndFeel' in $$props) $$invalidate(2, lookAndFeel = $$props.lookAndFeel);
+		if ('app' in $$props) $$invalidate(3, app = $$props.app);
+		if ('onToggle' in $$props) $$invalidate(4, onToggle = $$props.onToggle);
 	};
 
-	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*group, mainTag*/ 3) {
-			{
-				const groupName = group.groupName || mainTag;
-				const sanitzedGroupName = groupName.replace(/[^A-Za-z0-9]/g, "");
-
-				const dasherizedGroupName = sanitzedGroupName.replace(/^([A-Z])|[\s\._](\w)/g, function (_, p1, p2) {
-					if (p2) return "-" + p2.toLowerCase();
-					return p1.toLowerCase();
-				});
-
-				$$invalidate(6, groupNameAsClass = `group-${dasherizedGroupName}`);
-			}
-		}
-	};
-
-	return [
-		group,
-		mainTag,
-		isCollapsed,
-		lookAndFeel,
-		app,
-		onToggle,
-		groupNameAsClass,
-		clickTitle,
-		click_handler
-	];
+	return [group, isCollapsed, lookAndFeel, app, onToggle, clickTitle, click_handler];
 }
 
 class ChecklistGroup extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-yzsyxo-style")) add_css$1();
 
-		init(this, options, instance$1, create_fragment$1, safe_not_equal, {
-			group: 0,
-			mainTag: 1,
-			isCollapsed: 2,
-			lookAndFeel: 3,
-			app: 4,
-			onToggle: 5
-		});
+		init(
+			this,
+			options,
+			instance$2,
+			create_fragment$2,
+			safe_not_equal,
+			{
+				group: 0,
+				isCollapsed: 1,
+				lookAndFeel: 2,
+				app: 3,
+				onToggle: 4
+			},
+			add_css$2
+		);
 	}
 }
 
-/* src/svelte/App.svelte generated by Svelte v3.38.2 */
+function clickOutside(node) {
+    const handleClick = (event) => {
+        if (node && !node.contains(event.target) && !event.defaultPrevented) {
+            node.dispatchEvent(new CustomEvent("click_outside", node));
+        }
+    };
+    document.addEventListener("mousedown", handleClick, true);
+    return {
+        destroy() {
+            document.removeEventListener("mousedown", handleClick, true);
+        },
+    };
+}
 
-function add_css() {
-	var style = element("style");
-	style.id = "svelte-1rowz1t-style";
-	style.textContent = ".empty.svelte-1rowz1t{color:var(--text-faint);text-align:center}.checklist-plugin-main.svelte-1rowz1t{padding:initial;width:initial;height:initial;position:initial;overflow-y:initial;overflow-wrap:initial}";
-	append(document.head, style);
+/* src\svelte\Header.svelte generated by Svelte v3.44.3 */
+
+function add_css$1(target) {
+	append_styles(target, "svelte-rdace4", ".empty.svelte-rdace4.svelte-rdace4{color:var(--text-faint);text-align:center;margin-top:32px;font-style:italic}.container.svelte-rdace4.svelte-rdace4{height:32px;margin-bottom:12px;display:flex;flex-direction:row;gap:12px;align-items:center}.search.svelte-rdace4.svelte-rdace4{flex:1;background:var(--checklist-searchBackground);border:none;font-size:var(--checklist-contentFontSize);border-radius:var(--checklist-listItemBorderRadius);padding:0px 8px;color:var(--checklist-textColor);height:100%}.search.svelte-rdace4.svelte-rdace4:focus{box-shadow:0 0 0 2px var(--checklist-accentColor)}.settings-container.svelte-rdace4.svelte-rdace4{flex-shrink:1;display:flex;align-items:center;position:relative}.popover.svelte-rdace4.svelte-rdace4{position:absolute;top:32px;right:0px;width:300px;padding:12px;border-radius:var(--checklist-listItemBorderRadius);background:var(--checklist-searchBackground);box-shadow:0 2px 4px var(--background-modifier-cover);z-index:10}.section-title.svelte-rdace4.svelte-rdace4{font-weight:bold;margin-bottom:8px}section.svelte-rdace4.svelte-rdace4{margin-bottom:24px}.checkbox-item.svelte-rdace4 label.svelte-rdace4{gap:4px;display:flex;align-items:center;height:28px}.hash.svelte-rdace4.svelte-rdace4{color:var(--checklist-tagBaseColor)}");
+}
+
+function get_each_context$1(ctx, list, i) {
+	const child_ctx = ctx.slice();
+	child_ctx[12] = list[i];
+	return child_ctx;
+}
+
+// (28:4) {#if showPopover}
+function create_if_block$1(ctx) {
+	let div1;
+	let section;
+	let div0;
+	let t1;
+	let t2;
+	let clickOutside_action;
+	let mounted;
+	let dispose;
+	let each_value = /*todoTags*/ ctx[0];
+	let each_blocks = [];
+
+	for (let i = 0; i < each_value.length; i += 1) {
+		each_blocks[i] = create_each_block$1(get_each_context$1(ctx, each_value, i));
+	}
+
+	let if_block = /*todoTags*/ ctx[0].length === 0 && create_if_block_1$1();
+
+	return {
+		c() {
+			div1 = element("div");
+			section = element("section");
+			div0 = element("div");
+			div0.textContent = "Show Tags?";
+			t1 = space();
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].c();
+			}
+
+			t2 = space();
+			if (if_block) if_block.c();
+			attr(div0, "class", "section-title svelte-rdace4");
+			attr(section, "class", "svelte-rdace4");
+			attr(div1, "class", "popover svelte-rdace4");
+		},
+		m(target, anchor) {
+			insert(target, div1, anchor);
+			append(div1, section);
+			append(section, div0);
+			append(section, t1);
+
+			for (let i = 0; i < each_blocks.length; i += 1) {
+				each_blocks[i].m(section, null);
+			}
+
+			append(section, t2);
+			if (if_block) if_block.m(section, null);
+
+			if (!mounted) {
+				dispose = [
+					action_destroyer(clickOutside_action = clickOutside.call(null, div1)),
+					listen(div1, "click_outside", /*click_outside_handler*/ ctx[11])
+				];
+
+				mounted = true;
+			}
+		},
+		p(ctx, dirty) {
+			if (dirty & /*todoTags, hiddenTags, onTagStatusChange*/ 11) {
+				each_value = /*todoTags*/ ctx[0];
+				let i;
+
+				for (i = 0; i < each_value.length; i += 1) {
+					const child_ctx = get_each_context$1(ctx, each_value, i);
+
+					if (each_blocks[i]) {
+						each_blocks[i].p(child_ctx, dirty);
+					} else {
+						each_blocks[i] = create_each_block$1(child_ctx);
+						each_blocks[i].c();
+						each_blocks[i].m(section, t2);
+					}
+				}
+
+				for (; i < each_blocks.length; i += 1) {
+					each_blocks[i].d(1);
+				}
+
+				each_blocks.length = each_value.length;
+			}
+
+			if (/*todoTags*/ ctx[0].length === 0) {
+				if (if_block) ; else {
+					if_block = create_if_block_1$1();
+					if_block.c();
+					if_block.m(section, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+		d(detaching) {
+			if (detaching) detach(div1);
+			destroy_each(each_blocks, detaching);
+			if (if_block) if_block.d();
+			mounted = false;
+			run_all(dispose);
+		}
+	};
+}
+
+// (38:10) {#each todoTags as tag}
+function create_each_block$1(ctx) {
+	let div;
+	let label;
+	let input;
+	let input_checked_value;
+	let span;
+	let t1_value = /*tag*/ ctx[12] + "";
+	let t1;
+	let mounted;
+	let dispose;
+
+	function click_handler_1(...args) {
+		return /*click_handler_1*/ ctx[10](/*tag*/ ctx[12], ...args);
+	}
+
+	return {
+		c() {
+			div = element("div");
+			label = element("label");
+			input = element("input");
+			span = element("span");
+			span.textContent = "#";
+			t1 = text$1(t1_value);
+			attr(input, "type", "checkbox");
+			input.checked = input_checked_value = !/*hiddenTags*/ ctx[1].includes(/*tag*/ ctx[12]);
+			attr(span, "class", "hash svelte-rdace4");
+			attr(label, "class", "svelte-rdace4");
+			attr(div, "class", "checkbox-item svelte-rdace4");
+		},
+		m(target, anchor) {
+			insert(target, div, anchor);
+			append(div, label);
+			append(label, input);
+			append(label, span);
+			append(label, t1);
+
+			if (!mounted) {
+				dispose = listen(input, "click", prevent_default(click_handler_1));
+				mounted = true;
+			}
+		},
+		p(new_ctx, dirty) {
+			ctx = new_ctx;
+
+			if (dirty & /*hiddenTags, todoTags*/ 3 && input_checked_value !== (input_checked_value = !/*hiddenTags*/ ctx[1].includes(/*tag*/ ctx[12]))) {
+				input.checked = input_checked_value;
+			}
+
+			if (dirty & /*todoTags*/ 1 && t1_value !== (t1_value = /*tag*/ ctx[12] + "")) set_data(t1, t1_value);
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+			mounted = false;
+			dispose();
+		}
+	};
+}
+
+// (49:10) {#if todoTags.length === 0}
+function create_if_block_1$1(ctx) {
+	let div;
+
+	return {
+		c() {
+			div = element("div");
+			div.textContent = "No tags specified";
+			attr(div, "class", "empty svelte-rdace4");
+		},
+		m(target, anchor) {
+			insert(target, div, anchor);
+		},
+		d(detaching) {
+			if (detaching) detach(div);
+		}
+	};
+}
+
+function create_fragment$1(ctx) {
+	let div1;
+	let input;
+	let input_disabled_value;
+	let t0;
+	let div0;
+	let icon;
+	let t1;
+	let current;
+	let mounted;
+	let dispose;
+
+	icon = new Icon({
+			props: { name: "settings", style: "button" }
+		});
+
+	icon.$on("click", /*click_handler*/ ctx[9]);
+	let if_block = /*showPopover*/ ctx[5] && create_if_block$1(ctx);
+
+	return {
+		c() {
+			div1 = element("div");
+			input = element("input");
+			t0 = space();
+			div0 = element("div");
+			create_component(icon.$$.fragment);
+			t1 = space();
+			if (if_block) if_block.c();
+			input.disabled = input_disabled_value = /*disableSearch*/ ctx[2] && !/*search*/ ctx[6];
+			attr(input, "class", "search svelte-rdace4");
+			attr(input, "placeholder", "Search tasks");
+			attr(div0, "class", "settings-container svelte-rdace4");
+			attr(div1, "class", "container svelte-rdace4");
+		},
+		m(target, anchor) {
+			insert(target, div1, anchor);
+			append(div1, input);
+			set_input_value(input, /*search*/ ctx[6]);
+			append(div1, t0);
+			append(div1, div0);
+			mount_component(icon, div0, null);
+			append(div0, t1);
+			if (if_block) if_block.m(div0, null);
+			current = true;
+
+			if (!mounted) {
+				dispose = [
+					listen(input, "input", /*input_input_handler*/ ctx[7]),
+					listen(input, "input", /*input_handler*/ ctx[8])
+				];
+
+				mounted = true;
+			}
+		},
+		p(ctx, [dirty]) {
+			if (!current || dirty & /*disableSearch, search*/ 68 && input_disabled_value !== (input_disabled_value = /*disableSearch*/ ctx[2] && !/*search*/ ctx[6])) {
+				input.disabled = input_disabled_value;
+			}
+
+			if (dirty & /*search*/ 64 && input.value !== /*search*/ ctx[6]) {
+				set_input_value(input, /*search*/ ctx[6]);
+			}
+
+			if (/*showPopover*/ ctx[5]) {
+				if (if_block) {
+					if_block.p(ctx, dirty);
+				} else {
+					if_block = create_if_block$1(ctx);
+					if_block.c();
+					if_block.m(div0, null);
+				}
+			} else if (if_block) {
+				if_block.d(1);
+				if_block = null;
+			}
+		},
+		i(local) {
+			if (current) return;
+			transition_in(icon.$$.fragment, local);
+			current = true;
+		},
+		o(local) {
+			transition_out(icon.$$.fragment, local);
+			current = false;
+		},
+		d(detaching) {
+			if (detaching) detach(div1);
+			destroy_component(icon);
+			if (if_block) if_block.d();
+			mounted = false;
+			run_all(dispose);
+		}
+	};
+}
+
+function instance$1($$self, $$props, $$invalidate) {
+	let { todoTags } = $$props;
+	let { hiddenTags } = $$props;
+	let { disableSearch } = $$props;
+	let { onTagStatusChange } = $$props;
+	let { onSearch } = $$props;
+	let showPopover = false;
+	let search = "";
+
+	function input_input_handler() {
+		search = this.value;
+		$$invalidate(6, search);
+	}
+
+	const input_handler = () => onSearch(search);
+
+	const click_handler = ev => {
+		$$invalidate(5, showPopover = !showPopover);
+	};
+
+	const click_handler_1 = (tag, ev) => onTagStatusChange(tag, hiddenTags.includes(tag));
+
+	const click_outside_handler = ev => {
+		$$invalidate(5, showPopover = false);
+	};
+
+	$$self.$$set = $$props => {
+		if ('todoTags' in $$props) $$invalidate(0, todoTags = $$props.todoTags);
+		if ('hiddenTags' in $$props) $$invalidate(1, hiddenTags = $$props.hiddenTags);
+		if ('disableSearch' in $$props) $$invalidate(2, disableSearch = $$props.disableSearch);
+		if ('onTagStatusChange' in $$props) $$invalidate(3, onTagStatusChange = $$props.onTagStatusChange);
+		if ('onSearch' in $$props) $$invalidate(4, onSearch = $$props.onSearch);
+	};
+
+	return [
+		todoTags,
+		hiddenTags,
+		disableSearch,
+		onTagStatusChange,
+		onSearch,
+		showPopover,
+		search,
+		input_input_handler,
+		input_handler,
+		click_handler,
+		click_handler_1,
+		click_outside_handler
+	];
+}
+
+class Header extends SvelteComponent {
+	constructor(options) {
+		super();
+
+		init(
+			this,
+			options,
+			instance$1,
+			create_fragment$1,
+			safe_not_equal,
+			{
+				todoTags: 0,
+				hiddenTags: 1,
+				disableSearch: 2,
+				onTagStatusChange: 3,
+				onSearch: 4
+			},
+			add_css$1
+		);
+	}
+}
+
+/* src\svelte\App.svelte generated by Svelte v3.44.3 */
+
+function add_css(target) {
+	append_styles(target, "svelte-j2kqyp", ".empty.svelte-j2kqyp{color:var(--text-faint);text-align:center;margin-top:32px;font-style:italic}.checklist-plugin-main.svelte-j2kqyp{padding:initial;width:initial;height:initial;position:initial;overflow-y:initial;overflow-wrap:initial}");
 }
 
 function get_each_context(ctx, list, i) {
 	const child_ctx = ctx.slice();
-	child_ctx[17] = list[i];
+	child_ctx[11] = list[i];
 	return child_ctx;
 }
 
-// (56:2) {:else}
+// (44:4) {:else}
 function create_else_block_1(ctx) {
 	let each_1_anchor;
 	let current;
-	let each_value = /*todoGroups*/ ctx[5];
+	let each_value = /*todoGroups*/ ctx[6];
 	let each_blocks = [];
 
 	for (let i = 0; i < each_value.length; i += 1) {
@@ -13132,8 +16442,8 @@ function create_else_block_1(ctx) {
 			current = true;
 		},
 		p(ctx, dirty) {
-			if (dirty & /*todoGroups, app, lookAndFeel, todoTag, _collapsedSections, toggleGroup*/ 111) {
-				each_value = /*todoGroups*/ ctx[5];
+			if (dirty & /*todoGroups, app, lookAndFeel, _collapsedSections, toggleGroup*/ 358) {
+				each_value = /*todoGroups*/ ctx[6];
 				let i;
 
 				for (i = 0; i < each_value.length; i += 1) {
@@ -13184,12 +16494,13 @@ function create_else_block_1(ctx) {
 	};
 }
 
-// (48:36) 
-function create_if_block_1(ctx) {
+// (34:4) {#if todoGroups.length === 0}
+function create_if_block(ctx) {
 	let div;
 
 	function select_block_type_1(ctx, dirty) {
-		if (/*todoTag*/ ctx[0]) return create_if_block_2;
+		if (/*_hiddenTags*/ ctx[3].length === /*todoTags*/ ctx[0].length) return create_if_block_1;
+		if (/*visibleTags*/ ctx[7].length) return create_if_block_2;
 		return create_else_block;
 	}
 
@@ -13200,7 +16511,7 @@ function create_if_block_1(ctx) {
 		c() {
 			div = element("div");
 			if_block.c();
-			attr(div, "class", "empty svelte-1rowz1t");
+			attr(div, "class", "empty svelte-j2kqyp");
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
@@ -13228,49 +16539,18 @@ function create_if_block_1(ctx) {
 	};
 }
 
-// (46:2) {#if firstRun}
-function create_if_block(ctx) {
-	let loading;
-	let current;
-	loading = new Loading({});
-
-	return {
-		c() {
-			create_component(loading.$$.fragment);
-		},
-		m(target, anchor) {
-			mount_component(loading, target, anchor);
-			current = true;
-		},
-		p: noop,
-		i(local) {
-			if (current) return;
-			transition_in(loading.$$.fragment, local);
-			current = true;
-		},
-		o(local) {
-			transition_out(loading.$$.fragment, local);
-			current = false;
-		},
-		d(detaching) {
-			destroy_component(loading, detaching);
-		}
-	};
-}
-
-// (57:4) {#each todoGroups as group}
+// (45:6) {#each todoGroups as group}
 function create_each_block(ctx) {
 	let checklistgroup;
 	let current;
 
 	checklistgroup = new ChecklistGroup({
 			props: {
-				group: /*group*/ ctx[17],
-				app: /*app*/ ctx[3],
+				group: /*group*/ ctx[11],
+				app: /*app*/ ctx[5],
 				lookAndFeel: /*lookAndFeel*/ ctx[1],
-				mainTag: /*todoTag*/ ctx[0],
-				isCollapsed: /*_collapsedSections*/ ctx[2].includes(/*group*/ ctx[17].groupId),
-				onToggle: /*toggleGroup*/ ctx[6]
+				isCollapsed: /*_collapsedSections*/ ctx[2].includes(/*group*/ ctx[11].id),
+				onToggle: /*toggleGroup*/ ctx[8]
 			}
 		});
 
@@ -13284,11 +16564,10 @@ function create_each_block(ctx) {
 		},
 		p(ctx, dirty) {
 			const checklistgroup_changes = {};
-			if (dirty & /*todoGroups*/ 32) checklistgroup_changes.group = /*group*/ ctx[17];
-			if (dirty & /*app*/ 8) checklistgroup_changes.app = /*app*/ ctx[3];
+			if (dirty & /*todoGroups*/ 64) checklistgroup_changes.group = /*group*/ ctx[11];
+			if (dirty & /*app*/ 32) checklistgroup_changes.app = /*app*/ ctx[5];
 			if (dirty & /*lookAndFeel*/ 2) checklistgroup_changes.lookAndFeel = /*lookAndFeel*/ ctx[1];
-			if (dirty & /*todoTag*/ 1) checklistgroup_changes.mainTag = /*todoTag*/ ctx[0];
-			if (dirty & /*_collapsedSections, todoGroups*/ 36) checklistgroup_changes.isCollapsed = /*_collapsedSections*/ ctx[2].includes(/*group*/ ctx[17].groupId);
+			if (dirty & /*_collapsedSections, todoGroups*/ 68) checklistgroup_changes.isCollapsed = /*_collapsedSections*/ ctx[2].includes(/*group*/ ctx[11].id);
 			checklistgroup.$set(checklistgroup_changes);
 		},
 		i(local) {
@@ -13306,13 +16585,13 @@ function create_each_block(ctx) {
 	};
 }
 
-// (52:6) {:else}
+// (40:8) {:else}
 function create_else_block(ctx) {
 	let t;
 
 	return {
 		c() {
-			t = text$1("No checklists found");
+			t = text$1("No checklists found in all files");
 		},
 		m(target, anchor) {
 			insert(target, t, anchor);
@@ -13324,42 +16603,80 @@ function create_else_block(ctx) {
 	};
 }
 
-// (50:6) {#if todoTag}
+// (38:37) 
 function create_if_block_2(ctx) {
 	let t0;
+	let t1_value = (/*visibleTags*/ ctx[7].length > 1 ? "s" : "") + "";
 	let t1;
+	let t2;
+	let t3_value = /*visibleTags*/ ctx[7].map(func).join(" ") + "";
+	let t3;
 
 	return {
 		c() {
-			t0 = text$1("No checklists found for tag: #");
-			t1 = text$1(/*todoTag*/ ctx[0]);
+			t0 = text$1("No checklists found for tag");
+			t1 = text$1(t1_value);
+			t2 = text$1(": ");
+			t3 = text$1(t3_value);
 		},
 		m(target, anchor) {
 			insert(target, t0, anchor);
 			insert(target, t1, anchor);
+			insert(target, t2, anchor);
+			insert(target, t3, anchor);
 		},
-		p(ctx, dirty) {
-			if (dirty & /*todoTag*/ 1) set_data(t1, /*todoTag*/ ctx[0]);
-		},
+		p: noop,
 		d(detaching) {
 			if (detaching) detach(t0);
 			if (detaching) detach(t1);
+			if (detaching) detach(t2);
+			if (detaching) detach(t3);
+		}
+	};
+}
+
+// (36:8) {#if _hiddenTags.length === todoTags.length}
+function create_if_block_1(ctx) {
+	let t;
+
+	return {
+		c() {
+			t = text$1("All checklist set to hidden");
+		},
+		m(target, anchor) {
+			insert(target, t, anchor);
+		},
+		p: noop,
+		d(detaching) {
+			if (detaching) detach(t);
 		}
 	};
 }
 
 function create_fragment(ctx) {
 	let div;
+	let header;
+	let t;
 	let current_block_type_index;
 	let if_block;
 	let current;
-	const if_block_creators = [create_if_block, create_if_block_1, create_else_block_1];
+
+	header = new Header({
+			props: {
+				disableSearch: /*todoGroups*/ ctx[6].length === 0,
+				todoTags: /*todoTags*/ ctx[0],
+				hiddenTags: /*_hiddenTags*/ ctx[3],
+				onTagStatusChange: /*updateTagStatus*/ ctx[9],
+				onSearch: /*onSearch*/ ctx[4]
+			}
+		});
+
+	const if_block_creators = [create_if_block, create_else_block_1];
 	const if_blocks = [];
 
 	function select_block_type(ctx, dirty) {
-		if (/*firstRun*/ ctx[4]) return 0;
-		if (/*todoGroups*/ ctx[5].length === 0) return 1;
-		return 2;
+		if (/*todoGroups*/ ctx[6].length === 0) return 0;
+		return 1;
 	}
 
 	current_block_type_index = select_block_type(ctx);
@@ -13368,15 +16685,25 @@ function create_fragment(ctx) {
 	return {
 		c() {
 			div = element("div");
+			create_component(header.$$.fragment);
+			t = space();
 			if_block.c();
-			attr(div, "class", "checklist-plugin-main markdown-preview-view svelte-1rowz1t");
+			attr(div, "class", "checklist-plugin-main markdown-preview-view svelte-j2kqyp");
 		},
 		m(target, anchor) {
 			insert(target, div, anchor);
+			mount_component(header, div, null);
+			append(div, t);
 			if_blocks[current_block_type_index].m(div, null);
 			current = true;
 		},
 		p(ctx, [dirty]) {
+			const header_changes = {};
+			if (dirty & /*todoGroups*/ 64) header_changes.disableSearch = /*todoGroups*/ ctx[6].length === 0;
+			if (dirty & /*todoTags*/ 1) header_changes.todoTags = /*todoTags*/ ctx[0];
+			if (dirty & /*_hiddenTags*/ 8) header_changes.hiddenTags = /*_hiddenTags*/ ctx[3];
+			if (dirty & /*onSearch*/ 16) header_changes.onSearch = /*onSearch*/ ctx[4];
+			header.$set(header_changes);
 			let previous_block_index = current_block_type_index;
 			current_block_type_index = select_block_type(ctx);
 
@@ -13405,48 +16732,35 @@ function create_fragment(ctx) {
 		},
 		i(local) {
 			if (current) return;
+			transition_in(header.$$.fragment, local);
 			transition_in(if_block);
 			current = true;
 		},
 		o(local) {
+			transition_out(header.$$.fragment, local);
 			transition_out(if_block);
 			current = false;
 		},
 		d(detaching) {
 			if (detaching) detach(div);
+			destroy_component(header);
 			if_blocks[current_block_type_index].d();
 		}
 	};
 }
 
+const func = e => `#${e}`;
+
 function instance($$self, $$props, $$invalidate) {
-	
-	
-	
-	let { todoTag } = $$props;
-	let { showChecked } = $$props;
-	let { groupBy } = $$props;
-	let { sortDirection } = $$props;
+	let { todoTags } = $$props;
 	let { lookAndFeel } = $$props;
-	let { ignoreFiles } = $$props;
-	let { includeFiles } = $$props;
 	let { _collapsedSections } = $$props;
+	let { _hiddenTags } = $$props;
 	let { updateSetting } = $$props;
-	let { rerenderKey } = $$props;
+	let { onSearch } = $$props;
 	let { app } = $$props;
-	let todos = [];
-	let todoGroups = [];
-	let firstRun = true;
-
-	const formGroups = _todos => {
-		return groupTodos(showChecked ? _todos : _todos.filter(e => !e.checked), groupBy, sortDirection);
-	};
-
-	const recalcItems = () => __awaiter(void 0, void 0, void 0, function* () {
-		todos = yield parseTodos(app.vault.getFiles(), todoTag, app.metadataCache, app.vault, ignoreFiles, includeFiles, sortDirection);
-		$$invalidate(5, todoGroups = formGroups(todos));
-		$$invalidate(4, firstRun = false);
-	});
+	let { todoGroups = [] } = $$props;
+	const visibleTags = todoTags.filter(t => !_hiddenTags.includes(t));
 
 	const toggleGroup = id => {
 		const newCollapsedSections = _collapsedSections.includes(id)
@@ -13456,64 +16770,60 @@ function instance($$self, $$props, $$invalidate) {
 		updateSetting({ _collapsedSections: newCollapsedSections });
 	};
 
-	$$self.$$set = $$props => {
-		if ("todoTag" in $$props) $$invalidate(0, todoTag = $$props.todoTag);
-		if ("showChecked" in $$props) $$invalidate(7, showChecked = $$props.showChecked);
-		if ("groupBy" in $$props) $$invalidate(8, groupBy = $$props.groupBy);
-		if ("sortDirection" in $$props) $$invalidate(9, sortDirection = $$props.sortDirection);
-		if ("lookAndFeel" in $$props) $$invalidate(1, lookAndFeel = $$props.lookAndFeel);
-		if ("ignoreFiles" in $$props) $$invalidate(10, ignoreFiles = $$props.ignoreFiles);
-		if ("includeFiles" in $$props) $$invalidate(11, includeFiles = $$props.includeFiles);
-		if ("_collapsedSections" in $$props) $$invalidate(2, _collapsedSections = $$props._collapsedSections);
-		if ("updateSetting" in $$props) $$invalidate(12, updateSetting = $$props.updateSetting);
-		if ("rerenderKey" in $$props) $$invalidate(13, rerenderKey = $$props.rerenderKey);
-		if ("app" in $$props) $$invalidate(3, app = $$props.app);
+	const updateTagStatus = (tag, status) => {
+		const newHiddenTags = _hiddenTags.filter(t => t !== tag);
+		if (!status) newHiddenTags.push(tag);
+		updateSetting({ _hiddenTags: newHiddenTags });
 	};
 
-	$$self.$$.update = () => {
-		if ($$self.$$.dirty & /*rerenderKey, firstRun*/ 8208) {
-			{
-				if (firstRun) setTimeout(recalcItems, 600); else recalcItems();
-			}
-		}
+	$$self.$$set = $$props => {
+		if ('todoTags' in $$props) $$invalidate(0, todoTags = $$props.todoTags);
+		if ('lookAndFeel' in $$props) $$invalidate(1, lookAndFeel = $$props.lookAndFeel);
+		if ('_collapsedSections' in $$props) $$invalidate(2, _collapsedSections = $$props._collapsedSections);
+		if ('_hiddenTags' in $$props) $$invalidate(3, _hiddenTags = $$props._hiddenTags);
+		if ('updateSetting' in $$props) $$invalidate(10, updateSetting = $$props.updateSetting);
+		if ('onSearch' in $$props) $$invalidate(4, onSearch = $$props.onSearch);
+		if ('app' in $$props) $$invalidate(5, app = $$props.app);
+		if ('todoGroups' in $$props) $$invalidate(6, todoGroups = $$props.todoGroups);
 	};
 
 	return [
-		todoTag,
+		todoTags,
 		lookAndFeel,
 		_collapsedSections,
+		_hiddenTags,
+		onSearch,
 		app,
-		firstRun,
 		todoGroups,
+		visibleTags,
 		toggleGroup,
-		showChecked,
-		groupBy,
-		sortDirection,
-		ignoreFiles,
-		includeFiles,
-		updateSetting,
-		rerenderKey
+		updateTagStatus,
+		updateSetting
 	];
 }
 
 class App extends SvelteComponent {
 	constructor(options) {
 		super();
-		if (!document.getElementById("svelte-1rowz1t-style")) add_css();
 
-		init(this, options, instance, create_fragment, safe_not_equal, {
-			todoTag: 0,
-			showChecked: 7,
-			groupBy: 8,
-			sortDirection: 9,
-			lookAndFeel: 1,
-			ignoreFiles: 10,
-			includeFiles: 11,
-			_collapsedSections: 2,
-			updateSetting: 12,
-			rerenderKey: 13,
-			app: 3
-		});
+		init(
+			this,
+			options,
+			instance,
+			create_fragment,
+			safe_not_equal,
+			{
+				todoTags: 0,
+				lookAndFeel: 1,
+				_collapsedSections: 2,
+				_hiddenTags: 3,
+				updateSetting: 10,
+				onSearch: 4,
+				app: 5,
+				todoGroups: 6
+			},
+			add_css
+		);
 	}
 }
 
@@ -13521,6 +16831,10 @@ class TodoListView extends obsidian.ItemView {
     constructor(leaf, plugin) {
         super(leaf);
         this.plugin = plugin;
+        this.lastRerender = 0;
+        this.groupedItems = [];
+        this.itemsByFile = new Map();
+        this.searchTerm = "";
     }
     getViewType() {
         return TODO_VIEW_TYPE;
@@ -13531,50 +16845,120 @@ class TodoListView extends obsidian.ItemView {
     getIcon() {
         return "checkmark";
     }
+    get todoTagArray() {
+        return this.plugin
+            .getSettingValue("todoPageName")
+            .trim()
+            .split("\n")
+            .map((e) => e.toLowerCase())
+            .filter((e) => e);
+    }
+    get visibleTodoTagArray() {
+        return this.todoTagArray.filter((t) => !this.plugin.getSettingValue("_hiddenTags").includes(t));
+    }
     async onClose() {
         this._app.$destroy();
-    }
-    getProps() {
-        return {
-            todoTag: this.plugin.getSettingValue("todoPageName"),
-            showChecked: this.plugin.getSettingValue("showChecked"),
-            groupBy: this.plugin.getSettingValue("groupBy"),
-            sortDirection: this.plugin.getSettingValue("sortDirection"),
-            ignoreFiles: this.plugin.getSettingValue("ignoreFiles"),
-            includeFiles: this.plugin.getSettingValue("includeFiles"),
-            lookAndFeel: this.plugin.getSettingValue("lookAndFeel"),
-            rerenderKey: Symbol("[rerender]"),
-            _collapsedSections: this.plugin.getSettingValue("_collapsedSections"),
-            app: this.app,
-            updateSetting: (updates) => this.plugin.updateSettings(updates),
-        };
     }
     async onOpen() {
         this._app = new App({
             target: this.contentEl,
-            props: this.getProps(),
+            props: this.props(),
         });
-        this.registerEvent(this.app.metadataCache.on("resolved", (...args) => {
-            this.rerender();
+        this.registerEvent(this.app.metadataCache.on("resolved", async () => {
+            if (!this.plugin.getSettingValue("autoRefresh"))
+                return;
+            await this.refresh();
         }));
+        this.registerEvent(this.app.vault.on("delete", (file) => this.deleteFile(file.path)));
+        this.refresh();
+    }
+    async refresh(all = false) {
+        if (all) {
+            this.lastRerender = 0;
+            this.itemsByFile.clear();
+        }
+        await this.calculateAllItems();
+        this.groupItems();
+        this.renderView();
+        this.lastRerender = +new Date();
     }
     rerender() {
-        this._app.$set(this.getProps());
+        this.renderView();
+    }
+    deleteFile(path) {
+        this.itemsByFile.delete(path);
+        this.groupItems();
+        this.renderView();
+    }
+    props() {
+        return {
+            todoTags: this.todoTagArray,
+            lookAndFeel: this.plugin.getSettingValue("lookAndFeel"),
+            subGroups: this.plugin.getSettingValue("subGroups"),
+            _collapsedSections: this.plugin.getSettingValue("_collapsedSections"),
+            _hiddenTags: this.plugin.getSettingValue("_hiddenTags"),
+            app: this.app,
+            todoGroups: this.groupedItems,
+            updateSetting: (updates) => this.plugin.updateSettings(updates),
+            onSearch: (val) => {
+                this.searchTerm = val;
+                this.refresh();
+            },
+        };
+    }
+    async calculateAllItems() {
+        const todosForUpdatedFiles = await parseTodos(this.app.vault.getFiles(), this.todoTagArray.length === 0 ? ["*"] : this.visibleTodoTagArray, this.app.metadataCache, this.app.vault, this.plugin.getSettingValue("includeFiles"), this.plugin.getSettingValue("showChecked"), this.lastRerender);
+        for (const [file, todos] of todosForUpdatedFiles) {
+            this.itemsByFile.set(file.path, todos);
+        }
+    }
+    groupItems() {
+        const flattenedItems = Array.from(this.itemsByFile.values()).flat();
+        const searchedItems = flattenedItems.filter((e) => e.originalText.toLowerCase().includes(this.searchTerm));
+        this.groupedItems = groupTodos(searchedItems, this.plugin.getSettingValue("groupBy"), this.plugin.getSettingValue("sortDirectionGroups"), this.plugin.getSettingValue("sortDirectionItems"), this.plugin.getSettingValue("subGroups"), this.plugin.getSettingValue("sortDirectionSubGroups"));
+    }
+    renderView() {
+        this._app.$set(this.props());
     }
 }
 
 class TodoPlugin extends obsidian.Plugin {
+    get view() {
+        var _a;
+        return (_a = this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE)[0]) === null || _a === void 0 ? void 0 : _a.view;
+    }
     async onload() {
         await this.loadSettings();
         this.addSettingTab(new TodoSettingTab(this.app, this));
+        this.addCommand({
+            id: "show-checklist-view",
+            name: "Open View",
+            callback: () => {
+                const views = this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE);
+                if (views.length === 0)
+                    this.app.workspace.getRightLeaf(false).setViewState({
+                        type: TODO_VIEW_TYPE,
+                        active: true,
+                    });
+                else
+                    views[0].setViewState({ active: true, type: TODO_VIEW_TYPE });
+            },
+        });
+        this.addCommand({
+            id: "refresh-checklist-view",
+            name: "Refresh List",
+            callback: () => {
+                this.view.refresh();
+            },
+        });
         this.registerView(TODO_VIEW_TYPE, (leaf) => {
-            this.view = new TodoListView(leaf, this);
-            return this.view;
+            const newView = new TodoListView(leaf, this);
+            return newView;
         });
         if (this.app.workspace.layoutReady)
             this.initLeaf();
         else
-            this.registerEvent(this.app.workspace.on("layout-ready", () => this.initLeaf()));
+            this.app.workspace.onLayoutReady(() => this.initLeaf());
     }
     initLeaf() {
         if (this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE).length)
@@ -13586,7 +16970,6 @@ class TodoPlugin extends obsidian.Plugin {
     }
     async onunload() {
         var _a;
-        await this.view.onClose();
         (_a = this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE)[0]) === null || _a === void 0 ? void 0 : _a.detach();
     }
     async loadSettings() {
@@ -13596,7 +16979,18 @@ class TodoPlugin extends obsidian.Plugin {
     async updateSettings(updates) {
         Object.assign(this.settings, updates);
         await this.saveData(this.settings);
-        this.view.rerender();
+        const onlyRepaintWhenChanges = ["autoRefresh", "lookAndFeel", "_collapsedSections"];
+        const onlyReGroupWhenChanges = [
+            "subGroups",
+            "groupBy",
+            "sortDirectionGroups",
+            "sortDirectionSubGroups",
+            "sortDirectionItems",
+        ];
+        if (onlyRepaintWhenChanges.includes(Object.keys(updates)[0]))
+            this.view.rerender();
+        else
+            this.view.refresh(!onlyReGroupWhenChanges.includes(Object.keys(updates)[0]));
     }
     getSettingValue(setting) {
         return this.settings[setting];

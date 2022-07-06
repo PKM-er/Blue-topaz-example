@@ -17,13 +17,5 @@ sort rating desc
 
 ```
 
----
 
-```dataview
-table without id file.link as Name,  "<progress value=" + pageprogress + " max="+pagecount+"  class='yellow'>" as progress,file.link as Name, author as Author,publish,rating as Rating
-from #book 
-where !contains(file.folder, "88-Template") 
-sort rating desc
-
-```
 

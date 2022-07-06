@@ -18,7 +18,5 @@
   "enabled_templates_hotkeys": [
     "88-Template/tp_foldermoc-Include-subfolders.md"
   ],
-  "startup_templates": [
-    "88-Template/FastStart-StartupScript.md"
-  ]
+  "startup_templates": []
 }

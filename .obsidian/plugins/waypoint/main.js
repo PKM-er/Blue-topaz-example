@@ -56,7 +56,8 @@ var DEFAULT_SETTINGS = {
   waypointFlag: "%% Waypoint %%",
   stopScanAtFolderNotes: false,
   showFolderNotes: false,
-  debugLogging: false
+  debugLogging: false,
+  useWikiLinks: true
 };
 var _Waypoint = class extends import_obsidian.Plugin {
   constructor() {
@@ -191,14 +192,22 @@ ${_Waypoint.END_WAYPOINT}`;
       const bullet = "	".repeat(indentLevel) + "-";
       if (node instanceof import_obsidian.TFile) {
         if (node.path.endsWith(".md")) {
-          return `${bullet} [[${node.basename}]]`;
+          if (this.settings.useWikiLinks) {
+            return `${bullet} [[${node.basename}]]`;
+          } else {
+            return `${bullet} [${node.basename}](../${encodeURI(node.path)})`;
+          }
         }
         return null;
       } else if (node instanceof import_obsidian.TFolder) {
         let text = `${bullet} **${node.name}**`;
         const folderNote = this.app.vault.getAbstractFileByPath(node.path + "/" + node.name + ".md");
         if (folderNote instanceof import_obsidian.TFile) {
-          text = `${bullet} **[[${folderNote.basename}]]**`;
+          if (this.settings.useWikiLinks) {
+            text = `${bullet} **[[${folderNote.basename}]]**`;
+          } else {
+            text = `${bullet} **[${folderNote.basename}](../${encodeURI(folderNote.path)})**`;
+          }
           if (!topLevel) {
             if (this.settings.stopScanAtFolderNotes) {
               return text;
@@ -288,6 +297,10 @@ var WaypointSettingsTab = class extends import_obsidian.PluginSettingTab {
     })));
     new import_obsidian.Setting(containerEl).setName("Stop Scan at Folder Notes").setDesc("If enabled, the waypoint generator will stop scanning nested folders when it encounters a folder note. Otherwise, it will only stop if the folder note contains a waypoint.").addToggle((toggle) => toggle.setValue(this.plugin.settings.stopScanAtFolderNotes).onChange((value) => __async(this, null, function* () {
       this.plugin.settings.stopScanAtFolderNotes = value;
+      yield this.plugin.saveSettings();
+    })));
+    new import_obsidian.Setting(containerEl).setName("Use WikiLinks").setDesc("If enabled, links will be generated like [[My Page]] instead of [My Page](../Folder/My%Page.md).").addToggle((toggle) => toggle.setValue(this.plugin.settings.useWikiLinks).onChange((value) => __async(this, null, function* () {
+      this.plugin.settings.useWikiLinks = value;
       yield this.plugin.saveSettings();
     })));
     new import_obsidian.Setting(containerEl).setName("Waypoint Flag").setDesc("Text flag that triggers waypoint generation in a folder note. Must be surrounded by double-percent signs.").addText((text) => text.setPlaceholder(DEFAULT_SETTINGS.waypointFlag).setValue(this.plugin.settings.waypointFlag).onChange((value) => __async(this, null, function* () {

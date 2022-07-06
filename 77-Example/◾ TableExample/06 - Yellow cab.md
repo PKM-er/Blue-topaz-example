@@ -1,3 +1,5 @@
+---
+---
 | Planet  | Distance from the Sun | 1 Planetary day  | Moons |
 |----|----|----|----|
 | Mercury | 57.9 million km       | 58.7 Earth days  | 0     |
