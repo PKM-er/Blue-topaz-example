@@ -1,12 +1,24 @@
 {
   "recentFiles": [
     {
+      "basename": "📰数据化视图",
+      "path": "77-Example/📰数据化视图.md"
+    },
+    {
+      "basename": "Changlog",
+      "path": "Changlog.md"
+    },
+    {
       "basename": "home",
       "path": "88-Template/home.md"
     },
     {
       "basename": "通过下拉框检索文件示例",
       "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
     },
     {
       "basename": "fastgithub 加速访问Ob社区",
@@ -53,10 +65,6 @@
       "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
     },
     {
-      "basename": "📰数据化视图",
-      "path": "77-Example/📰数据化视图.md"
-    },
-    {
       "basename": "表格自定义样式",
       "path": "77-Example/表格自定义样式.md"
     },
@@ -95,10 +103,6 @@
     {
       "basename": "00-Tips",
       "path": "00-Tips/00-Tips.md"
-    },
-    {
-      "basename": "未命名 2",
-      "path": "未命名 2.md"
     },
     {
       "basename": "假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ",
@@ -195,10 +199,6 @@
     {
       "basename": "dataview实现任务查询（替代tasks插件）",
       "path": "77-Example/◾ Dataview相关实例/dataview实现任务查询（替代tasks插件）.md"
-    },
-    {
-      "basename": "伪看板-yaml声明",
-      "path": "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md"
     }
   ],
   "omittedPaths": [],

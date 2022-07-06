@@ -266,8 +266,8 @@
     "--": {
       "--": {
         "currentVault": {
-          "count": 14,
-          "lastUpdated": 1656040081928
+          "count": 16,
+          "lastUpdated": 1657075647318
         }
       }
     },
@@ -414,8 +414,8 @@
     "插件": {
       "插件": {
         "currentFile": {
-          "count": 1,
-          "lastUpdated": 1656920661295
+          "count": 3,
+          "lastUpdated": 1657075654668
         }
       }
     },
@@ -430,8 +430,16 @@
     "dbfolder": {
       "dbfolder": {
         "currentVault": {
+          "count": 2,
+          "lastUpdated": 1657075540036
+        }
+      }
+    },
+    "📅2022-07-06": {
+      "📅2022-07-06": {
+        "currentFile": {
           "count": 1,
-          "lastUpdated": 1657068037076
+          "lastUpdated": 1657075597719
         }
       }
     }

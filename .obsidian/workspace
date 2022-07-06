@@ -7,12 +7,9 @@
         "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "markdown",
+          "type": "database-plugin",
           "state": {
-            "file": "88-Template/home.md",
-            "mode": "preview",
-            "backlinks": false,
-            "source": false
+            "file": "77-Example/📰数据化视图.md"
           }
         }
       }
@@ -119,7 +116,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "77-Example/📰数据化视图.md"
               }
             }
           },
@@ -150,7 +147,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "77-Example/📰数据化视图.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -167,7 +164,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "77-Example/📰数据化视图.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -214,15 +211,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
+    "77-Example/📰数据化视图.md",
+    "Changlog.md",
     "88-Template/home.md",
     "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+    "README.md",
+    "Dataview 卡片笔记.md",
+    "未命名.md",
     "00-Tips/fastgithub 加速访问Ob社区.md",
     "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
-    "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
-    "77-Example/◾ Dataview相关实例/获取指定标签的文件内容并形成表格.md",
-    "77-Example/◾ Dataview相关实例/文件夹所有标签.md",
-    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
-    "77-Example/77-Example.md",
-    "77-Example/分栏效果示例.md"
+    "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md"
   ]
 }
