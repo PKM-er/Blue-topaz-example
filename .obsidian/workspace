@@ -7,9 +7,12 @@
         "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
-          "type": "database-plugin",
+          "type": "markdown",
           "state": {
-            "file": "77-Example/📰数据化视图.md"
+            "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
+            "mode": "preview",
+            "backlinks": false,
+            "source": false
           }
         }
       }
@@ -116,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "77-Example/📰数据化视图.md"
+                "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
               }
             }
           },
@@ -147,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "77-Example/📰数据化视图.md",
+                "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -164,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "77-Example/📰数据化视图.md",
+                "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -211,15 +214,15 @@
   },
   "active": "fc371ae36bc5eac7",
   "lastOpenFiles": [
-    "77-Example/📰数据化视图.md",
-    "Changlog.md",
+    "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
     "88-Template/home.md",
-    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
-    "README.md",
-    "Dataview 卡片笔记.md",
-    "未命名.md",
-    "00-Tips/fastgithub 加速访问Ob社区.md",
-    "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
-    "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md"
+    "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md",
+    "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md",
+    "77-Example/77-Example.md",
+    "88-Template/88-Template.md",
+    "未命名 1.md",
+    "77-Example/分栏效果示例.md",
+    "77-Example/图片横排布局以及添加标题.md",
+    "30-Reading/🎶影音数据库.md"
   ]
 }

@@ -105,7 +105,7 @@ img[alt^="bookcover"] {
   position: absolute;
   width: var(--cards-width);
   min-width: none;
-  margin-top: -10px;
+  margin-top: -15px;
   margin-left:   calc(var(--cards-width) /2 * -1);
   overflow: hidden;
   height: 4px;
@@ -334,4 +334,28 @@ display: none;
 
 :is(.markdown-source-view,.markdown-preview-view,.markdown-rendered).cards .block-language-dataview table {
   box-shadow: none;
+}
+
+.cards table.dataview tbody>tr>td span:not(.el-progress){
+  overflow-x: auto;
+  display: inline-block;
+  min-width:  var(--cards-width);
+}
+ 
+
+.cards table.dataview tbody>tr>td span:hover {
+  animation: filenamemove 3s 1 normal linear;
+}
+
+@keyframes filenamemove {
+  0% {
+    transform: translateX(0px);
+}
+25% {
+    transform: translateX(0px);
+}
+100% {
+    transform: translateX(calc(-100% + var(--cards-width)));
+}
+
 }

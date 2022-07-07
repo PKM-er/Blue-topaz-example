@@ -20,7 +20,6 @@
   "dataview",
   "obsidian-table-to-csv-exporter",
   "cmenu-plugin",
-  "obsidian-contextual-typography",
   "cm-chs-patch",
   "obsidian-react-components",
   "obsidian-custom-frames",
@@ -56,5 +55,6 @@
   "obsidian-better-command-palette",
   "homepage",
   "dbfolder",
-  "obsidian-theme-design-utilities"
+  "obsidian-theme-design-utilities",
+  "obsidian-contextual-typography"
 ]
