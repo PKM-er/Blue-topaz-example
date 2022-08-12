@@ -7,8 +7,13 @@
         "id": "8d7a20d56ab1b882",
         "type": "leaf",
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "README.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
         }
       }
     ],
@@ -68,7 +73,46 @@
         "type": "tabs",
         "children": [
           {
-            "id": "f585ef0c6029fe40",
+            "id": "ca4e910af4602420",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          },
+          {
+            "id": "340969ccd24905e8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "README.md"
+              }
+            }
+          },
+          {
+            "id": "83061aceea29f566",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/彩色时钟.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "0b3485207df574dd",
+        "type": "tabs",
+        "dimension": 63.65914786967418,
+        "children": [
+          {
+            "id": "041c78328387b373",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -89,6 +133,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,6 +165,18 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "8d7a20d56ab1b882",
-  "lastOpenFiles": []
+
+  "active": "81fb2bb3dad564cd",
+  "lastOpenFiles": [
+    "Changlog.md",
+    "88-Template/home.md",
+    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+    "88-Template/常用工具.md",
+    "#now.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "88-Template/🎵Music.md",
+    "88-Template/彩色时钟.md",
+    "88-Template/ReactJS/caidan.md",
+    "88-Template/ReactJS/react_cat.md"
+  ]
 }

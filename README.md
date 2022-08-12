@@ -2,7 +2,7 @@
 obsidianUIMode: preview
 progress: 正在进行
 title: README
-updated: 2022-07-07 10:00
+updated: 2022-08-13 00:00
 ---
 ## 💡引言
 This Vault  contains the basic functions of Obsidian and has built-in common Obsidian plugins.
