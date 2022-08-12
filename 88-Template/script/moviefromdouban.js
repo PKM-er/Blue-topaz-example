@@ -69,7 +69,7 @@ async function getmovieByurl(url) {
 	let movieinfo = {};
 	let reglead= /主演:([\s\S]*)(?=类型:)/g;
 	let regfilmlength = /片长:.(\d*)/g;
-  let regIMDb = /IMDb:.\w(.*)/g;
+	let regIMDb = /IMDb:.\w(.*)/g;
 	let regalias = /又名:([\s\S]*)(?=IMDb:)/g;
 	let reglanguage =/语言:([\s\S]*)(?=上映日期:)/g;
 	let regcountry = /制片国家\/地区:([\s\S]*)(?=语言:)/g;

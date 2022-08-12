@@ -162,7 +162,6 @@
   "blue-topaz-theme@@transparent-setting-panel": false,
   "blue-topaz-theme@@setting-etc-pane-style": "setting-default-frosted-glass",
   "blue-topaz-theme@@blur-p-kanban-frosted-glass": 5,
-<<<<<<< HEAD
   "blue-topaz-theme@@search-bar-style-option": "default-search-bar",
   "blue-topaz-theme@@scrollbar-style-option": "hover-scrollbars",
   "blue-topaz-theme@@remove-heading-indicator": false,
@@ -195,9 +194,4 @@
   "blue-topaz-theme@@folder-colorful-custom-color@@dark": "#E166FA",
   "blue-topaz-theme@@folder-colorful-custom-color@@light": "#2486FF78",
   "blue-topaz-theme@@funny-header-anim": true
-=======
-  "blue-topaz-theme@@font-size-split": "0.8em",
-  "blue-topaz-theme@@search-bar-style-option": "default-search-bar",
-  "blue-topaz-theme@@scrollbar-style-option": "hover-scrollbars"
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 }

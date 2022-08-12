@@ -1,16 +1,16 @@
 {
   "main": {
-    "id": "083c3c86254d9a21",
+    "id": "e8b4ea94b39a8520",
     "type": "split",
     "children": [
       {
-        "id": "8d7a20d56ab1b882",
+        "id": "81fb2bb3dad564cd",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "README.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": false,
             "source": false
           }
@@ -20,15 +20,16 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "0f847c79555da702",
+    "id": "687357708cbc920f",
     "type": "split",
     "children": [
       {
-        "id": "a37f02af47393a5e",
+        "id": "4bc1edcafd063cfb",
         "type": "tabs",
+        "dimension": 68.13048933500627,
         "children": [
           {
-            "id": "a754cea921a9f186",
+            "id": "37c8f55a8ef7a09c",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -36,7 +37,7 @@
             }
           },
           {
-            "id": "3e6b2fb0b7fe1073",
+            "id": "b3290ae399933a0b",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -51,10 +52,50 @@
             }
           },
           {
-            "id": "411c28e23a9ff357",
+            "id": "3d21402f76dc34c3",
             "type": "leaf",
             "state": {
               "type": "starred",
+              "state": {}
+            }
+          },
+          {
+            "id": "f2c2f4dfc8473d58",
+            "type": "leaf",
+            "state": {
+              "type": "file-tree-view",
+              "state": {}
+            }
+          }
+        ],
+        "currentTab": 3
+      },
+      {
+        "id": "d877e8285f98a38a",
+        "type": "tabs",
+        "dimension": 31.869510664993726,
+        "children": [
+          {
+            "id": "b37bc3d287f74512",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "80430a4f104c0c57",
+            "type": "leaf",
+            "state": {
+              "type": "graph",
+              "state": {}
+            }
+          },
+          {
+            "id": "5ee52b332527fc75",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
               "state": {}
             }
           }
@@ -62,15 +103,16 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 255
   },
   "right": {
-    "id": "c38d80157dbe6ae5",
+    "id": "4e390742ffc29613",
     "type": "split",
     "children": [
       {
-        "id": "7d154e39088fd8ee",
+        "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
+        "dimension": 36.340852130325814,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -86,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -117,9 +159,10 @@
             "state": {
               "type": "backlink",
               "state": {
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
+                "file": "88-Template/home.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "byModifiedTime",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
@@ -128,19 +171,19 @@
             }
           },
           {
-            "id": "99c083e22bc812ed",
+            "id": "dc4a81bfd6624166",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "fd2f130bc831f449",
+            "id": "b2ae90cb6049dbe9",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -151,31 +194,43 @@
             }
           },
           {
-            "id": "13aa92cfc56839a7",
+            "id": "8851ccb0aa4e524a",
             "type": "leaf",
             "state": {
-              "type": "outline",
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/常用工具.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4f457051e10f1a14",
+            "type": "leaf",
+            "state": {
+              "type": "quiet-outline",
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       }
     ],
     "direction": "horizontal",
-    "width": 300,
-    "collapsed": true
+    "width": 265
   },
-
-  "active": "81fb2bb3dad564cd",
+  "active": "f2c2f4dfc8473d58",
   "lastOpenFiles": [
-    "Changlog.md",
+    "88-Template/彩色时钟.md",
+    "20220813005724.md",
     "88-Template/home.md",
-    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
     "88-Template/常用工具.md",
+    "Changlog.md",
     "#now.md",
     "00-Tips/🥑Blue Topaz Themes Tips.md",
     "88-Template/🎵Music.md",
-    "88-Template/彩色时钟.md",
     "88-Template/ReactJS/caidan.md",
     "88-Template/ReactJS/react_cat.md"
   ]

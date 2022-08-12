@@ -1,12 +1,5 @@
 ---
 name: 心灵奇旅 Soul
-<<<<<<< HEAD
-=======
-<<<<<<<< HEAD:30-Reading/心灵奇旅 Soul.md
-cover: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2626308994.jpg"
-========
->>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a:30-Reading/⭐️⭐️⭐️⭐️⭐️/心灵奇旅 Soul.md
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 tags: Movie
 douban_url: "https://movie.douban.com/subject/24733428/"
 director: 彼特·道格特
@@ -21,19 +14,9 @@ lead: 杰米·福克斯/蒂娜·菲/菲利西亚·拉斯海德/阿米尔-卡利�
 language: 英语
 country: 美国
 updated: 
-<<<<<<< HEAD
 viewtime: 
 status: 1
 grade: ⭐️⭐️⭐️⭐️⭐️
-=======
-viewtime: 2022-05-28
-status: 1
-<<<<<<<< HEAD:30-Reading/心灵奇旅 Soul.md
-grade: ⭐⭐⭐⭐⭐
-========
-grade: ⭐️⭐️⭐️⭐️⭐️
->>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a:30-Reading/⭐️⭐️⭐️⭐️⭐️/心灵奇旅 Soul.md
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 ---
 > [!bookinfo|noicon]+ 🎬《心灵奇旅 Soul》
 > ![bookcover|200](https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2626308994.jpg)

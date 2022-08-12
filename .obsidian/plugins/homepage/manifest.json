@@ -1,11 +1,7 @@
 {
 	"id": "homepage",
 	"name": "Homepage",
-<<<<<<< HEAD
 	"version": "2.2.1",
-=======
-	"version": "2.1",
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 	"minAppVersion": "0.12.0",
 	"description": "Open a specified note on startup.",
 	"author": "novov",

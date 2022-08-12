@@ -1,11 +1,8 @@
 {
   "version": 2,
   "defaultNote": "88-Template/home",
-<<<<<<< HEAD
   "useMoment": false,
   "momentFormat": "YYYY-MM-DD",
-=======
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
   "workspace": "Home",
   "workspaceEnabled": true,
   "hasRibbonIcon": true,

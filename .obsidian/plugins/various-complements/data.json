@@ -2,8 +2,8 @@
   "strategy": "chinese",
   "matchStrategy": "prefix",
   "maxNumberOfSuggestions": 5,
-  "maxNumberOfWordsAsPhrase": 4,
-  "minNumberOfCharactersTriggered": 2,
+  "maxNumberOfWordsAsPhrase": 3,
+  "minNumberOfCharactersTriggered": 0,
   "minNumberOfWordsTriggeredPhrase": 1,
   "complementAutomatically": true,
   "delayMilliSeconds": 100,
@@ -17,8 +17,8 @@
   "selectSuggestionKeys": "Space",
   "additionalCycleThroughSuggestionsKeys": "Tab, Shift+Tab",
   "disableUpDownKeysForCycleThroughSuggestionsKeys": false,
-  "openSourceFileKey": "Ctrl/Cmd+Enter",
-  "propagateEsc": true,
+  "openSourceFileKey": "None",
+  "propagateEsc": false,
   "enableCurrentFileComplement": true,
   "currentFileMinNumberOfCharacters": 0,
   "onlyComplementEnglishOnCurrentFileComplement": false,
@@ -115,7 +115,6 @@
         }
       }
     },
-<<<<<<< HEAD
     "let": {
       "let": {
         "currentFile": {
@@ -249,21 +248,6 @@
         "currentVault": {
           "count": 1,
           "lastUpdated": 1659410341446
-=======
-    "Contents": {
-      "Contents": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1654756255422
-        }
-      }
-    },
-    "方法": {
-      "方法": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1654761021159
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
         }
       }
     },
@@ -275,28 +259,14 @@
         }
       }
     },
-<<<<<<< HEAD
     "aaa": {
       "aaa": {
-=======
-    "88-Template": {
-      "88-Template": {
-        "internalLink": {
-          "count": 3,
-          "lastUpdated": 1654654149239
-        }
-      }
-    },
-    "内容": {
-      "内容": {
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
         "currentVault": {
           "count": 2,
           "lastUpdated": 1659428300041
         }
       }
     },
-<<<<<<< HEAD
     "var": {
       "var": {
         "currentFile": {
@@ -310,277 +280,6 @@
         "currentFile": {
           "count": 1,
           "lastUpdated": 1659516422598
-=======
-    "author": {
-      "author": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1654760829395
-        }
-      }
-    },
-    "{}": {
-      "{}": {
-        "currentVault": {
-          "count": 8,
-          "lastUpdated": 1654651959939
-        }
-      }
-    },
-    "if": {
-      "if": {
-        "currentFile": {
-          "count": 3,
-          "lastUpdated": 1655804847215
-        }
-      }
-    },
-    "未命名22": {
-      "未命名22": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1654669746764
-        }
-      }
-    },
-    "js": {
-      "js": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1654670633221
-        }
-      }
-    },
-    "测试": {
-      "测试": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1654679198265
-        }
-      }
-    },
-    "📅2022-06-09": {
-      "📅2022-06-09": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1654706181090
-        }
-      }
-    },
-    "moc": {
-      "moc": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1654706249585
-        },
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1655344330446
-        }
-      }
-    },
-    "项目追踪（完成的字数和任务）": {
-      "项目追踪（完成的字数和任务）": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1654706277315
-        }
-      }
-    },
-    "cuman": {
-      "cuman": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1654760832108
-        }
-      }
-    },
-    "前言": {
-      "前言": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1654760874756
-        }
-      }
-    },
-    "一起": {
-      "一起": {
-        "currentVault": {
-          "count": 3,
-          "lastUpdated": 1654761100764
-        }
-      }
-    },
-    "button": {
-      "button": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1654761154158
-        }
-      }
-    },
-    "Dataview相关实例": {
-      "Dataview相关实例": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1654761387768
-        }
-      }
-    },
-    "表格": {
-      "表格": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1654762691411
-        }
-      }
-    },
-    "命令": {
-      "命令": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1654762694823
-        }
-      }
-    },
-    "function": {
-      "function": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1654853949008
-        }
-      }
-    },
-    "ait": {
-      "ait": {
-        "currentFile": {
-          "count": 2,
-          "lastUpdated": 1655346117698
-        }
-      }
-    },
-    "😅": {
-      "😅": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1654854371149
-        }
-      }
-    },
-    "--": {
-      "--": {
-        "currentVault": {
-          "count": 16,
-          "lastUpdated": 1657075647318
-        }
-      }
-    },
-    "###": {
-      "###": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1655971843216
-        }
-      }
-    },
-    "播放": {
-      "播放": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1655085691979
-        }
-      }
-    },
-    "const": {
-      "const": {
-        "currentFile": {
-          "count": 4,
-          "lastUpdated": 1655344410446
-        }
-      }
-    },
-    "book": {
-      "book": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1655344327792
-        }
-      }
-    },
-    "tag_select": {
-      "tag_select": {
-        "currentFile": {
-          "count": 2,
-          "lastUpdated": 1655350416775
-        }
-      }
-    },
-    "let": {
-      "let": {
-        "currentFile": {
-          "count": 7,
-          "lastUpdated": 1656032247576
-        },
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1655350410935
-        }
-      }
-    },
-    "for": {
-      "for": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1655350171209
-        }
-      }
-    },
-    "test": {
-      "test": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1655395792171
-        }
-      }
-    },
-    "-1": {
-      "-1": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1655804583277
-        }
-      }
-    },
-    "&&": {
-      "&&": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1655804588717
-        }
-      }
-    },
-    "sfsfsf": {
-      "sfsfsf": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1655971668558
-        }
-      }
-    },
-    "微调": {
-      "微调": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1655976041851
-        }
-      }
-    },
-    "export": {
-      "export": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1655995902393
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
         }
       }
     },
@@ -729,134 +428,6 @@
         "currentFile": {
           "count": 1,
           "lastUpdated": 1660132140466
-        }
-      }
-    },
-    "需要": {
-      "需要": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1656920652829
-        }
-      }
-    },
-    "插件": {
-      "插件": {
-        "currentFile": {
-          "count": 3,
-          "lastUpdated": 1657075654668
-        }
-      }
-    },
-    "借助": {
-      "借助": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1657068030376
-        }
-      }
-    },
-    "dbfolder": {
-      "dbfolder": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1657075540036
-        }
-      }
-    },
-    "📅2022-07-06": {
-      "📅2022-07-06": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1657075597719
-        }
-      }
-    },
-    "速度": {
-      "速度": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1657094482275
-        }
-      }
-    },
-    "距离": {
-      "距离": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1657094546130
-        }
-      }
-    },
-    "旋转": {
-      "旋转": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1657096611153
-        }
-      }
-    },
-    "方向": {
-      "方向": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1657096865913
-        }
-      }
-    },
-    "摇杆": {
-      "摇杆": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1657096936943
-        }
-      }
-    },
-    "向下": {
-      "向下": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1657096983770
-        }
-      }
-    },
-    "向上": {
-      "向上": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1657097029179
-        }
-      }
-    },
-    "环绕": {
-      "环绕": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1657097068010
-        }
-      }
-    },
-    "拉伸": {
-      "拉伸": {
-        "currentVault": {
-          "count": 3,
-          "lastUpdated": 1657097079848
-        }
-      }
-    },
-    "普拉": {
-      "普拉": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1657097167136
-        }
-      }
-    },
-    "普通": {
-      "普通": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1657097342410
         }
       }
     }

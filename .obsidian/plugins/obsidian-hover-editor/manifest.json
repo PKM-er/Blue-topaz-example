@@ -1,14 +1,1 @@
-<<<<<<< HEAD
 {"id":"obsidian-hover-editor","name":"Hover Editor","version":"0.11.4","minAppVersion":"0.14.5","description":"Transform the Page Preview hover popover into a fully working editor instance","author":"NothingIsLost","authorUrl":"https://github.com/nothingislost","isDesktopOnly":false}
-=======
-{
-  "id": "obsidian-hover-editor",
-  "name": "Hover Editor",
-  "version": "0.10.7",
-  "minAppVersion": "0.14.5",
-  "description": "Transform the Page Preview hover popover into a fully working editor instance",
-  "author": "NothingIsLost",
-  "authorUrl": "https://github.com/nothingislost",
-  "isDesktopOnly": false
-}
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a

@@ -14,11 +14,7 @@
     "cell_size": "normal",
     "sticky_first_column": false,
     "group_folder_column": "",
-<<<<<<< HEAD
     "show_metadata_created": false,
-=======
-    "show_metadata_created": true,
->>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
     "show_metadata_modified": true,
     "show_metadata_tasks": true,
     "source_data": "current_folder",
