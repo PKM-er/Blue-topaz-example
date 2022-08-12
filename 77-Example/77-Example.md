@@ -9,6 +9,11 @@ obsidianUIMode: preview
 	- **[[◾ Dataview相关实例]]**
 	- **[[◾ Echarts]]**
 	- **[[◾ TableExample]]**
+<<<<<<< HEAD
+=======
+	- [[📰数据化视图]]
+	- [[77-Example]]
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 	- [[表格自定义样式]]
 	- [[单独定制笔记背景]]
 	- [[对话形式笔记]]
@@ -24,6 +29,7 @@ obsidianUIMode: preview
 	- [[图形化展示笔记]]
 	- [[涂黑和挖空效果（三种语法）]]
 	- [[伪看板-ad,callout声明]]
+	- [[未命名]]
 	- [[以橱窗的方式浏览文件夹下的图片]]
 	- [[真Kanban]]
 	- [[最近天气查询]]

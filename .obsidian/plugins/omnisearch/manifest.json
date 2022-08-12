@@ -1,1 +1,5 @@
+<<<<<<< HEAD
 {"id":"omnisearch","name":"Omnisearch","version":"1.5.2","minAppVersion":"0.15.6","description":"A search engine that just works","author":"Simon Cambier","authorUrl":"https://github.com/scambier/obsidian-omnisearch","isDesktopOnly":false}
+=======
+{"id":"omnisearch","name":"Omnisearch","version":"1.4.2","minAppVersion":"0.14.2","description":"A search engine that just works","author":"Simon Cambier","authorUrl":"https://github.com/scambier/obsidian-omnisearch","isDesktopOnly":false}
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a

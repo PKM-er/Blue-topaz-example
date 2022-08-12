@@ -782,11 +782,19 @@ dvjs ~ :is(p,b,bold)>:is(select)
   padding-left: 10px;
   z-index: 2;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 dvjs ~ :is(p,b,bold)>select option
 {
       color: var(--text-muted);
   }
 @media screen and (max-width: 768px) {
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 :is(.markdown-preview-view,.markdown-rendered) dvjs ~ :is(b,bold,select,input)
 {
 		display: grid !important; 
@@ -797,6 +805,10 @@ dvjs ~ :is(p,b,bold)>select option
 min-width: 2em;
   }
 }
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 :is(.markdown-preview-section,.markdown-rendered) dvjs ~ :is(p,b,bold) :is(h2,h3,h4,h5,h6)
 {
 margin-right: 0.2em;
@@ -864,11 +876,114 @@ margin-left: 0.5em;
 .none {
   display: none;
 }
+<<<<<<< HEAD
 .nav-file-title.is-unsupported[data-count="cedict_ts.u8"]
+=======
+
+
+.nav-file-title.is-unsupported[data-path="cedict_ts.u8"]
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
 {
   display: none;
 }
 
+<<<<<<< HEAD
 .checkbox-container.is-enabled {
   background-color: var(--interactive-accent-rgb);
 }
+=======
+/**db folde*/
+.database-plugin__cell_size_normal div.dataview-error-box
+{
+  min-height:auto;
+}
+.database-plugin__cell_size_normal .database-plugin__tr  .data-input {
+  padding: 0;
+  flex: 0;
+  font-size: 0.8rem;
+  }
+  .database-plugin__cell_size_normal .database-plugin__tr  .data-input .markdown-preview-view {
+    padding:0px;
+    font-size: 0.8rem;
+  }
+.database-plugin__cell_size_normal .database-plugin__tr  .database-plugin__td .database-plugin__md_cell {
+padding: 0; 
+}
+
+.database-plugin__cell_size_normal .database-plugin__tr 
+{
+  font-size: 0.8rem;
+}
+
+.database-plugin__md_cell .database-plugin__markdown-preview-view
+{
+  font-size: 0.8rem;
+}
+
+
+
+ .data-input.database-plugin__calendar
+ {
+flex: 0;
+cursor: pointer;
+ }
+
+ div.react-datepicker-wrapper
+ {
+  flex: 0;
+ }
+ .data-input.text-align-right
+ {
+  flex: 0;
+ }
+ .database-plugin__td :is(.cell-padding, .data-input):empty::before{
+
+	content: "✏️";
+	text-align: center;
+	color: rgba(var(--interactive-accent-rgb),0.8)
+ }
+ .database-plugin__markdown-preview-view {
+  padding:0;
+ }
+ .database-plugin__markdown-preview-view p{
+  margin-block-start:0;
+  margin-block-end:0;
+ }
+ .database-plugin__td[role="cell"]
+ {
+  background-color: transparent;
+ }
+ .database-plugin__td .data-input
+ {
+  background-color: transparent;
+ }
+ div[role="rowgroup"] .database-plugin__tr:nth-child(odd){
+  
+  background-color: var(--table-background-color-odd);
+}
+
+.database-plugin__td .data-input-checkbox input[type="checkbox"]
+{
+ border: 1px dashed currentColor;
+}
+.database-plugin__td .data-input-checkbox input[type="checkbox"]:checked
+{
+ border: none;
+}
+.database-plugin__td  .data-input-checkbox input[type="checkbox"]:checked::before
+{
+  transform: scale(0);
+}
+.database-plugin__td  .data-input-checkbox input[type="checkbox"]:focus {
+  border: 1px solid currentColor;
+}
+
+div.dbfolder-table-container
+{
+  padding-bottom: 10em;
+}
+.database-plugin__td div[class$="-control"]
+{
+min-width: 220px;
+} 
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a

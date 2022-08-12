@@ -1,35 +1,29 @@
 {
   "main": {
-    "id": "e8b4ea94b39a8520",
+    "id": "083c3c86254d9a21",
     "type": "split",
     "children": [
       {
-        "id": "81fb2bb3dad564cd",
+        "id": "8d7a20d56ab1b882",
         "type": "leaf",
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "30-Reading/《世界是如何思考的》.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
+          "type": "empty",
+          "state": {}
         }
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "687357708cbc920f",
+    "id": "0f847c79555da702",
     "type": "split",
     "children": [
       {
-        "id": "4bc1edcafd063cfb",
+        "id": "a37f02af47393a5e",
         "type": "tabs",
-        "dimension": 68.13048933500627,
         "children": [
           {
-            "id": "37c8f55a8ef7a09c",
+            "id": "a754cea921a9f186",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -37,7 +31,7 @@
             }
           },
           {
-            "id": "b3290ae399933a0b",
+            "id": "3e6b2fb0b7fe1073",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -52,49 +46,10 @@
             }
           },
           {
-            "id": "3d21402f76dc34c3",
+            "id": "411c28e23a9ff357",
             "type": "leaf",
             "state": {
               "type": "starred",
-              "state": {}
-            }
-          },
-          {
-            "id": "f2c2f4dfc8473d58",
-            "type": "leaf",
-            "state": {
-              "type": "file-tree-view",
-              "state": {}
-            }
-          }
-        ]
-      },
-      {
-        "id": "d877e8285f98a38a",
-        "type": "tabs",
-        "dimension": 31.869510664993726,
-        "children": [
-          {
-            "id": "b37bc3d287f74512",
-            "type": "leaf",
-            "state": {
-              "type": "recent-files",
-              "state": {}
-            }
-          },
-          {
-            "id": "80430a4f104c0c57",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
               "state": {}
             }
           }
@@ -102,66 +57,25 @@
       }
     ],
     "direction": "horizontal",
-    "width": 255
+    "width": 300
   },
   "right": {
-    "id": "4e390742ffc29613",
+    "id": "c38d80157dbe6ae5",
     "type": "split",
     "children": [
       {
-        "id": "d4c25b22f0c7d5f0",
+        "id": "7d154e39088fd8ee",
         "type": "tabs",
-        "dimension": 36.340852130325814,
         "children": [
           {
-            "id": "ca4e910af4602420",
-            "type": "leaf",
-            "state": {
-              "type": "calendar",
-              "state": {}
-            }
-          },
-          {
-            "id": "340969ccd24905e8",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "30-Reading/《世界是如何思考的》.md"
-              }
-            }
-          },
-          {
-            "id": "83061aceea29f566",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/彩色时钟.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": true
-              }
-            }
-          }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "0b3485207df574dd",
-        "type": "tabs",
-        "dimension": 63.65914786967418,
-        "children": [
-          {
-            "id": "041c78328387b373",
+            "id": "f585ef0c6029fe40",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "30-Reading/《世界是如何思考的》.md",
-                "collapseAll": true,
-                "extraContext": true,
-                "sortOrder": "byModifiedTime",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
@@ -170,19 +84,18 @@
             }
           },
           {
-            "id": "dc4a81bfd6624166",
+            "id": "99c083e22bc812ed",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "30-Reading/《世界是如何思考的》.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "b2ae90cb6049dbe9",
+            "id": "fd2f130bc831f449",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -193,45 +106,20 @@
             }
           },
           {
-            "id": "8851ccb0aa4e524a",
+            "id": "13aa92cfc56839a7",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/常用工具.md",
-                "mode": "preview",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4f457051e10f1a14",
-            "type": "leaf",
-            "state": {
-              "type": "quiet-outline",
+              "type": "outline",
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       }
     ],
     "direction": "horizontal",
-    "width": 265,
+    "width": 300,
     "collapsed": true
   },
-  "active": "37c8f55a8ef7a09c",
-  "lastOpenFiles": [
-    "30-Reading/《从零开始的女性主义》.md",
-    "30-Reading/认知觉醒：开启自我改变的原动力.md",
-    "Changlog.md",
-    "88-Template/home.md",
-    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
-    "88-Template/常用工具.md",
-    "#now.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "88-Template/🎵Music.md",
-    "88-Template/彩色时钟.md"
-  ]
+  "active": "8d7a20d56ab1b882",
+  "lastOpenFiles": []
 }

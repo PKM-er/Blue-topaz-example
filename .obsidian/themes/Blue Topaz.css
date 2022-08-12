@@ -20428,7 +20428,11 @@ body.view-button-front:not(.remove-custom-svg-icons) .workspace-leaf-content .vi
   margin-right: 1px;
 }
 
+<<<<<<< HEAD
 body.setting-default-frosted-glass [class="menu"] {
+=======
+body:not(.setting-style-traditional) [class="menu"] {
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
   border: none;
   backdrop-filter: blur(8px);
   background-color: var(--bg-color-settings-6);
@@ -20442,7 +20446,11 @@ body.setting-default-frosted-glass [class="menu"] {
 {
  background-color: var(--bg-color-settings-5);
 }
+<<<<<<< HEAD
 body.toggle-bg-file-page :is(.nav-files-container,.file-tree-plugin-view)::before {
+=======
+body.toggle-bg-file-page .nav-files-container::before {
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
   content: '';
   display: block;
   position: fixed;
