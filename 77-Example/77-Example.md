@@ -1,5 +1,5 @@
 ---
-cssclass: kanban gridlist
+cssclass: kanban gridlist noyaml
 tag: moc
 obsidianUIMode: preview
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
@@ -9,7 +9,6 @@ obsidianUIMode: preview
 	- **[[◾ Dataview相关实例]]**
 	- **[[◾ Echarts]]**
 	- **[[◾ TableExample]]**
-	- [[77-Example]]
 	- [[表格自定义样式]]
 	- [[单独定制笔记背景]]
 	- [[对话形式笔记]]

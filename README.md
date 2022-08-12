@@ -173,7 +173,8 @@ ad样式使用方法参考
 | getweather.js      | 获取天气数据                         | tp-日记模板获取天气         |
 ## ❓ 常见问题
 1. 如何获取指定地区的天气？
-		主页天气代码默认根据ip地址自动获取，如果手动指定`https://i.tianqi.com/?c=code&id=34&bdc=%23&icon=4&site=14&py=chongqing` chongqing改为你想要的城市拼音即可。
+		- 侧边栏天气默认根据ip地址自动获取，修改[[常用工具]]  并手动指定`https://i.tianqi.com/?c=code&id=34&bdc=%23&icon=4&site=14&py=chongqing` chongqing改为你想要的城市拼音即可。
+		- 主页天气 也可以手动指定地区,quickadd 宏-home工作区--点击config-fetchhomepage 点击齿轮图标 即可设置天气.
 2. 如何更换字体？
    示例库默认配置的主字体为[[LXGWWenKai-Light.ttf]]  代码块字体为[[JetBrainsMono-Regular.ttf]]  可以自行安装，即可自动识别。
 	如果要安装其他字体，打开 style settings设置，2.2.1字体设置，主字体里填写**字体名称**即可。注意如果字体名称有空格需要用单引号括起来。

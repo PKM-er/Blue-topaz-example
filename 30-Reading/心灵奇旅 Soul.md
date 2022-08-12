@@ -1,22 +1,22 @@
 ---
 name: 心灵奇旅 Soul
-cover: https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2626308994.jpg
+cover: "https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2626308994.jpg"
 tags: Movie
-douban_url: https://movie.douban.com/subject/24733428/
-director: '彼特·道格特'
-alias: "灵魂奇遇记(港) / 灵魂急转弯(台) / 灵魂 / 心灵"
+douban_url: "https://movie.douban.com/subject/24733428/"
+director: 彼特·道格特
+alias: 灵魂奇遇记(港) / 灵魂急转弯(台) / 灵魂 / 心灵
 rating: 8.7
 year: 2020-12-25(中国大陆/美国网络)
 genre: 动画
 banner_icon: 🎞
 banner: "https://img9.doubanio.com/view/photo/1/public/p2626308994.jpg"
-IMDb:  t2948372
-lead: '杰米·福克斯/蒂娜·菲/菲利西亚·拉斯海德/阿米尔-卡利布·汤普森/戴维德·迪格斯/格拉汉姆·诺顿/瑞切尔·豪斯/艾莉丝·布拉加/理查德·艾欧阿德/唐尼尔·罗林斯/安吉拉·贝塞特/马戈·霍尔/罗德莎·琼斯/韦斯·斯塔迪/沙基纳·贾弗里/福琼·费姆斯特/卡鲁姆·格兰特/泽诺比娅·谢罗夫/朱恩·斯奎布/凯茜·卡瓦蒂妮/罗纳尔多·德尔·卡门/埃利萨皮·艾萨克/杰森·佩斯/科拉·尚波米耶' 
-language: 英语 
-country: 美国 
+IMDb: t2948372
+lead: 杰米·福克斯/蒂娜·菲/菲利西亚·拉斯海德/阿米尔-卡利布·汤普森/戴维德·迪格斯/格拉汉姆·诺顿/瑞切尔·豪斯/艾莉丝·布拉加/理查德·艾欧阿德/唐尼尔·罗林斯/安吉拉·贝塞特/马戈·霍尔/罗德莎·琼斯/韦斯·斯塔迪/沙基纳·贾弗里/福琼·费姆斯特/卡鲁姆·格兰特/泽诺比娅·谢罗夫/朱恩·斯奎布/凯茜·卡瓦蒂妮/罗纳尔多·德尔·卡门/埃利萨皮·艾萨克/杰森·佩斯/科拉·尚波米耶
+language: 英语
+country: 美国
 updated: 
-viewtime: "2022-05-28"
-status: 
+viewtime: 2022-05-28
+status: 1
 grade: ⭐⭐⭐⭐⭐
 ---
 > [!bookinfo|noicon]+ 🎬《心灵奇旅 Soul》

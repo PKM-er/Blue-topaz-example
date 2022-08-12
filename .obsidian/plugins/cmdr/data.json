@@ -1,0 +1,134 @@
+{
+  "confirmDeletion": true,
+  "showAddCommand": true,
+  "debug": false,
+  "editorMenu": [
+    {
+      "id": "workspace:split-vertical",
+      "icon": "vertical-split",
+      "name": "左右拆分",
+      "mode": "any"
+    },
+    {
+      "id": "workspace:split-horizontal",
+      "icon": "horizontal-split",
+      "name": "上下拆分",
+      "mode": "any"
+    }
+  ],
+  "fileMenu": [],
+  "leftRibbon": [],
+  "rightRibbon": [],
+  "titleBar": [
+    {
+      "id": "workspace:split-vertical",
+      "icon": "vertical-split",
+      "name": "左右拆分",
+      "mode": "any"
+    },
+    {
+      "id": "workspace:undo-close-pane",
+      "icon": "undo-glyph",
+      "name": "重新打开上一个关闭的面板",
+      "mode": "desktop"
+    },
+    {
+      "id": "quickadd:choice:b3db048c-5629-437d-bff9-83468e7f7318",
+      "icon": "refresh-cw",
+      "name": "QuickAdd: 刷新主页",
+      "mode": "desktop"
+    },
+    {
+      "id": "obsidian-version-history-diff:open-recovery-diff-view",
+      "icon": "timer-reset",
+      "name": "Version history diff: Show File Recovery diff view for active file",
+      "mode": "desktop"
+    },
+    {
+      "id": "omnisearch:show-modal",
+      "icon": "lucide-search",
+      "name": "Omnisearch: Vault search",
+      "mode": "any"
+    },
+    {
+      "id": "quickadd:choice:cd0405e7-6489-4e6a-beb1-07dac8f9a188",
+      "icon": "music",
+      "name": "QuickAdd: play music",
+      "mode": "any"
+    },
+    {
+      "id": "quick-explorer:go-next",
+      "icon": "arrow-down",
+      "name": "Go to next file in folder",
+      "mode": "any"
+    },
+    {
+      "id": "quick-explorer:go-prev",
+      "icon": "arrow-up",
+      "name": "Go to previous file in folder",
+      "mode": "any"
+    }
+  ],
+  "statusBar": [],
+  "pageHeader": [
+    {
+      "id": "quickadd:choice:79944a6f-1f8e-409d-b4e7-98674eb1b607",
+      "icon": "switch-camera",
+      "name": "切换视图",
+      "mode": "any"
+    },
+    {
+      "id": "quickadd:choice:27d06043-87de-47b1-a058-cf6ff596b9c1",
+      "icon": "refresh-ccw",
+      "name": "QuickAdd: 刷新面板",
+      "mode": "any"
+    },
+    {
+      "id": "quickadd:choice:fe31fa1a-99c5-4b58-9001-1cac23a2b9b5",
+      "icon": "home",
+      "name": "QuickAdd: 打开主页",
+      "mode": "any"
+    },
+    {
+      "id": "workspace:move-to-new-window",
+      "icon": "fullscreen",
+      "name": "将当前面板移动至新窗口",
+      "mode": "any"
+    },
+    {
+      "id": "window:toggle-always-on-top",
+      "icon": "cpu",
+      "name": "将当前窗口置顶",
+      "mode": "any"
+    },
+    {
+      "id": "file-tree-alternative:reveal-active-file",
+      "icon": "target",
+      "name": "定位到当前文件",
+      "mode": "any"
+    },
+    {
+      "id": "quickadd:choice:6224cb2b-a57e-41f9-99ad-a30f553042ec",
+      "icon": "align-horizontal-space-around",
+      "name": "收拢侧边栏",
+      "mode": "any"
+    }
+  ],
+  "macros": [],
+  "hide": {
+    "statusbar": [
+      "various-complements"
+    ],
+    "leftRibbon": [
+      "Memos",
+      "Open Markdown Table Editor",
+      "Open today's daily note",
+      "打开 Markdown 格式转换器",
+      "打开快速切换",
+      "Omnisearch",
+      "Open homepage",
+      "插入模板"
+    ]
+  },
+  "spacing": "8"
+}

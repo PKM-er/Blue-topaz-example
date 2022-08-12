@@ -1,11 +1,11 @@
 ---
-cssclass: cards
-usage: 对dataview表格渲染成卡片视图
+cssclass: "cards"
+usage: "对dataview表格渲染成卡片视图"
 banner: "99-Attachment/banner/baner6.jpg"
-obsidianUIMode: preview
+obsidianUIMode: "preview"
 banner_x: 0.5
 banner_y: 0.5
-updated: 2022-04-23 15:11
+updated: "2022-04-23 15:11"
 ---
 
 > 实现方法参考[[如何在Obsidian中添加电影卡片]]
@@ -57,7 +57,7 @@ const pages = dv.pages("#Movie")
     .sort(t => t.rating, 'desc')
     //.where(t => t.status != "Completed")
 	.where(t => t.file.folder !="88-Template" )
-    .map(t =>  [`![](${filePath(t.cover)})` , t.file.link, t.year,t.rating,
+    .map(t =>  [`![](${filePath(t.cover??'')})` , t.file.link, t.year,t.rating,
     createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
 	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
 	createButton({app, el: this.container, args: {name: t['viewtime']?formatDate(t['viewtime']):'更新',class:'tiny'}, clickOverride: {click: inputdate, params: [t.file.path, 'viewtime',t['viewtime']]}})
@@ -109,7 +109,7 @@ const pages = dv.pages("#Movie")
     .sort(t => t.rating, 'desc')
     //.where(t => t.status != "Completed")
 	.where(t => t.file.folder !="88-Template" )
-    .map(t =>  [t.image?dv.span(`${'!'+t.image}`):`![](${filePath(t.cover)})`, t.file.link, t.year,t.rating,
+    .map(t =>  [t.image?dv.span(`${'!'+t.image}`):`![](${filePath(t.cover??'')})`, t.file.link, t.year,t.rating,
     createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
 	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
 	createButton({app, el: this.container, args: {name: t['viewtime']?formatDate(t['viewtime']):'更新',class:'tiny'}, clickOverride: {click: inputdate, params: [t.file.path, 'viewtime',t['viewtime']]}})

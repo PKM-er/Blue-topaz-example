@@ -1,10 +1,10 @@
 ---
-created: 2021-12-18
-tags: []
-source: https://zh.wikipedia.wikimirror.org/wiki/%E5%8D%A1%E5%B0%94%C2%B7%E9%A9%AC%E5%85%8B%E6%80%9D
+created: "2021-12-18"
+tags: 
+source: "https://zh.wikipedia.wikimirror.org/wiki/%E5%8D%A1%E5%B0%94%C2%B7%E9%A9%AC%E5%85%8B%E6%80%9D"
 author: 
-usage: callout实现文章环绕，全文缩进效果
-cssclass: fullwidth
+usage: "callout实现文章环绕，全文缩进效果"
+cssclass: "fullwidth"
 ---
 # 卡尔·马克思
 

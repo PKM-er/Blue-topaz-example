@@ -1,9 +1,9 @@
 ---
-cssclass: cards
-usage: 对dataview表格渲染成卡片视图
+cssclass: "cards"
+usage: "对dataview表格渲染成卡片视图"
 banner: "99-Attachment/banner/baner6.jpg"
-obsidianUIMode: preview
-updated: ''
+obsidianUIMode: "preview"
+updated: 
 ---
 
 >  实现方法参考[[如何在Obsidian中添加电影卡片]]

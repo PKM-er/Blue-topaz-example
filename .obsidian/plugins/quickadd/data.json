@@ -11,7 +11,7 @@
       "createFileIfItDoesntExist": {
         "enabled": true,
         "createWithTemplate": true,
-        "template": "88-Template/tp-日记模板-心情.md"
+        "template": "88-Template/tp/tp-日记模板-心情.md"
       },
       "format": {
         "enabled": true,
@@ -179,6 +179,27 @@
       "type": "Macro",
       "command": true,
       "macroId": "0e4a5a36-3d1c-4430-82c7-e7ff6682b088"
+    },
+    {
+      "id": "9858a60b-c362-434f-a71d-a55816668bd7",
+      "name": "主题设置",
+      "type": "Macro",
+      "command": true,
+      "macroId": "8f7eb649-553c-4115-803a-b05e98ead7f7"
+    },
+    {
+      "id": "79944a6f-1f8e-409d-b4e7-98674eb1b607",
+      "name": "切换视图",
+      "type": "Macro",
+      "command": true,
+      "macroId": "cf968099-4a09-4f21-9eb3-1820dcb6f1c9"
+    },
+    {
+      "id": "6224cb2b-a57e-41f9-99ad-a30f553042ec",
+      "name": "收拢侧边栏",
+      "type": "Macro",
+      "command": true,
+      "macroId": "70c6d19b-c724-4db8-8785-0491e1c4ebe3"
     }
   ],
   "macros": [
@@ -240,7 +261,7 @@
           "name": "Wait",
           "type": "Wait",
           "id": "fc377b74-ed4a-4289-b365-298855ece976",
-          "time": 200
+          "time": 500
         },
         {
           "name": "fetchhomepage",
@@ -256,14 +277,14 @@
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "60813cc2-37ac-41a0-822e-c88caace110e",
-          "time": 4500
+          "id": "0a4e2484-6dbf-4bbd-af82-2040ecd7acee",
+          "time": 300
         },
         {
-          "name": "Workspaces Plus: Load: Home",
+          "name": "Homepage: Open homepage",
           "type": "Obsidian",
-          "id": "cc6b384b-ec44-4292-835a-e19dafa409d5",
-          "commandId": "workspaces-plus:Home"
+          "id": "e1e66c39-8248-431e-b3dc-83430e1f6283",
+          "commandId": "homepage:open-homepage"
         }
       ],
       "runOnStartup": true
@@ -500,13 +521,25 @@
           "name": "Wait",
           "type": "Wait",
           "id": "834de2c3-7d88-4726-8956-18e3b6ff379d",
-          "time": 500
+          "time": 300
         },
         {
           "name": "Obsidian Memos: Open Memos",
           "type": "Obsidian",
           "id": "1626d032-c1df-42c8-b8c1-382fee73891c",
           "commandId": "obsidian-memos:open-memos"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "cd1dfeaa-b458-49fb-830a-e936c63cbe07",
+          "time": 200
+        },
+        {
+          "name": "将当前面板移动至新窗口",
+          "type": "Obsidian",
+          "id": "26f26f19-2580-40ac-a348-2b6b1c12e3be",
+          "commandId": "workspace:move-to-new-window"
         }
       ],
       "runOnStartup": false
@@ -629,7 +662,7 @@
           "name": "Wait",
           "type": "Wait",
           "id": "da696b89-59a8-4c64-833b-561e34d86203",
-          "time": 300
+          "time": 500
         },
         {
           "name": "重新打开上一个关闭的面板",
@@ -679,6 +712,124 @@
           "type": "Obsidian",
           "id": "54417752-a221-47c6-927a-b53b83bcf820",
           "commandId": "obsidian-hover-editor:restore-active-popover"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "544da47b-45a0-46a1-93b0-ca2bb3ab9b39",
+          "time": 300
+        },
+        {
+          "name": "将当前窗口置顶",
+          "type": "Obsidian",
+          "id": "45643b1c-4d58-4032-8ed1-12977bf12b0c",
+          "commandId": "window:toggle-always-on-top"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "7af5587c-d6d5-4ebe-bdaf-065633d0fba2",
+          "time": 400
+        },
+        {
+          "name": "将当前面板移动至新窗口",
+          "type": "Obsidian",
+          "id": "e316bbe5-ac3b-4e19-8dca-a74785aba785",
+          "commandId": "workspace:move-to-new-window"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "主题设置",
+      "id": "8f7eb649-553c-4115-803a-b05e98ead7f7",
+      "commands": [
+        {
+          "name": "Hover Editor: Open new Hover Editor",
+          "type": "Obsidian",
+          "id": "9f77d33c-9747-40bb-a5c7-465fbe004a7a",
+          "commandId": "obsidian-hover-editor:open-new-popover"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "a965d982-e7d3-4409-9d24-637e3d85f881",
+          "time": 300
+        },
+        {
+          "name": "Hover Editor: Convert active pane to Hover Editor",
+          "type": "Obsidian",
+          "id": "08bb3d98-e8c7-4cd0-82b3-be87c410a088",
+          "commandId": "obsidian-hover-editor:convert-active-pane-to-popover"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "959a8aff-b514-4a94-916c-e0da5e1b5588",
+          "time": 100
+        },
+        {
+          "name": "Style Settings: Show style settings view",
+          "type": "Obsidian",
+          "id": "4b511d22-be89-4fde-b044-2b8214ec63ad",
+          "commandId": "obsidian-style-settings:show-style-settings-leaf"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "118d2aaa-d5a5-46c4-900e-b50e44f9e910",
+          "time": 300
+        },
+        {
+          "name": "将焦点切换到左侧面板",
+          "type": "Obsidian",
+          "id": "3fa89693-a830-4a8a-9cd0-b93f0923b929",
+          "commandId": "editor:focus-left"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "ab440476-09fa-4fc1-b39f-59cc3798eda0",
+          "time": 300
+        },
+        {
+          "name": "关闭当前面板",
+          "type": "Obsidian",
+          "id": "3df48db9-255a-4e0a-9858-5d2818f8dc91",
+          "commandId": "workspace:close"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "切换视图",
+      "id": "cf968099-4a09-4f21-9eb3-1820dcb6f1c9",
+      "commands": [
+        {
+          "name": "SwitchViews",
+          "type": "UserScript",
+          "id": "63f6da3f-254a-4033-adab-bbc689f5b5e1",
+          "path": "88-Template/script/SwitchViews.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "收起侧面板",
+      "id": "70c6d19b-c724-4db8-8785-0491e1c4ebe3",
+      "commands": [
+        {
+          "name": "折叠/展开左侧边栏",
+          "type": "Obsidian",
+          "id": "082dcdf8-89b7-4ef2-a926-92915132456a",
+          "commandId": "app:toggle-left-sidebar"
+        },
+        {
+          "name": "折叠/展开右侧边栏",
+          "type": "Obsidian",
+          "id": "dc79c133-3701-47fd-a075-98c7a4c06d19",
+          "commandId": "app:toggle-right-sidebar"
         }
       ],
       "runOnStartup": false

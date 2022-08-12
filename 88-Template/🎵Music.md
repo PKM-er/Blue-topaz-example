@@ -1,5 +1,6 @@
 ---
 obsidianUIMode: preview
+desc: 播放音乐组件，可以嵌入到其他文档，或者通过命令play music 调用
 ---
 
 ````ad-music

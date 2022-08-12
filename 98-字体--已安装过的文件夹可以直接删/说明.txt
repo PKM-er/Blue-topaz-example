@@ -1,0 +1,4 @@
+本文件夹是字体文件，字体需要手动安装到系统里，这样Blue topaz 主题可以直接调用这些字体，实现最佳展示效果。
+JetBrainsMono-Regular.ttf 是代码块常用的等宽连体字体。
+LXGWWenKai-Regular.ttf 是霞鹜文楷普通字体
+LXGWWenKaiScreenR.ttf 是霞鹜文楷加粗字体

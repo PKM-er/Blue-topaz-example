@@ -1,6 +1,6 @@
 ---
-cssclass: inline-list
-usage: 图片和列表混排 
+cssclass: "inline-list"
+usage: "图片和列表混排"
 ---
 
 >  这是一个行内列表显示图片的示例，需要在yaml区域声明cssclass

@@ -1,5 +1,5 @@
 ---
-cssclass: academia, wideTable
+cssclass: "academia, wideTable"
 ---
 
 # Latex like table

@@ -1,5 +1,5 @@
 ---
-cssclass: centerAlign
+cssclass: "centerAlign"
 ---
 
 # Default Theme table

@@ -1,3 +1,5 @@
+---
+---
 ### echarts 示例库
 ### 插件下载
 [cumany/obsidian-echarts](https://github.com/cumany/obsidian-echarts)

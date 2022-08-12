@@ -289,7 +289,7 @@
           "group",
           "line"
         ],
-        "css": ".cm-line.list-exclimation:after {\n  background-color: rgba(255, 23, 68, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-exclimation\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-exclimation .lmarker {\n  font-weight: bold;\n  color: rgb(255, 23, 68);\n}"
+        "css": ".cm-line.list-exclimation:after {\n  background-color: rgba(255, 23, 68, 0.1);\n  border-radius: 4px;\n  bottom: 4px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: 2px;\n  z-index: -1;\n}\n.cm-line.list-exclimation\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-exclimation .lmarker {\n  font-weight: bold;\n  color: rgb(255, 23, 68);\n}"
       },
       "list-tilde": {
         "class": "list-tilde",
@@ -300,7 +300,7 @@
           "group",
           "line"
         ],
-        "css": ".cm-line.list-tilde:after {\n  background-color: rgba(124, 77, 255, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-tilde\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-tilde .lmarker {\n  font-weight: bold;\n  color: rgb(124, 77, 255);\n}"
+        "css": ".cm-line.list-tilde:after {\n  background-color: rgba(124, 77, 255, 0.1);\n  border-radius: 4px;\n  bottom: 4px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: 2px;\n  z-index: -1;\n}\n.cm-line.list-tilde\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-tilde .lmarker {\n  font-weight: bold;\n  color: rgb(124, 77, 255);\n}"
       },
       "list-plus": {
         "class": "list-plus",
@@ -311,7 +311,7 @@
           "group",
           "line"
         ],
-        "css": ".cm-line.list-plus:after {\n  background-color: rgba(0, 184, 212, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-plus\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-plus .lmarker {\n  font-weight: bold;\n  color: rgb(0, 184, 212);\n}"
+        "css": ".cm-line.list-plus:after {\n  background-color: rgba(0, 184, 212, 0.1);\n  border-radius: 4px;\n  bottom: 4px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: 2px;\n  z-index: -1;\n}\n.cm-line.list-plus\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-plus .lmarker {\n  font-weight: bold;\n  color: rgb(0, 184, 212);\n}"
       },
       "list-question": {
         "class": "list-question",
@@ -322,7 +322,7 @@
           "group",
           "line"
         ],
-        "css": ".cm-line.list-question\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-question:after {\n  background-color: rgba(255, 145, 0, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n\n.cm-line.list-question .lmarker {\n  font-weight: bold;\n  color: rgb(255, 145, 0);\n}"
+        "css": ".cm-line.list-question\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-question:after {\n  background-color: rgba(255, 145, 0, 0.1);\n  border-radius: 4px;\n  bottom: 4px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: 2px;\n  z-index: -1;\n}\n\n.cm-line.list-question .lmarker {\n  font-weight: bold;\n  color: rgb(255, 145, 0);\n}"
       },
       "list-dash": {
         "class": "list-dash",
@@ -333,7 +333,7 @@
           "group",
           "line"
         ],
-        "css": ".cm-line.list-dash:after {\n  background-color: rgba(158, 158, 158, 0.1);\n  border-radius: 4px;\n  bottom: 0px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: -1px;\n  z-index: -1;\n}\n.cm-line.list-dash\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-dash .lmarker {\n  font-weight: bold;\n  color: rgb(158, 158, 158);\n}"
+        "css": ".cm-line.list-dash:after {\n  background-color: rgba(158, 158, 158, 0.1);\n  border-radius: 4px;\n  bottom: 4px;\n  content: \" \";\n  display: block;\n  left: -8px;\n  position: absolute;\n  right: -3px;\n  top: 2px;\n  z-index: -1;\n}\n.cm-line.list-dash\n{\n  padding-bottom: 0.3em;\n}\n.cm-line.list-dash .lmarker {\n  font-weight: bold;\n  color: rgb(158, 158, 158);\n}"
       }
     },
     "queryOrder": [

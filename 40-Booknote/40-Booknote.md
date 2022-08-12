@@ -1,5 +1,5 @@
 ---
-cssclass: kanban gridlist
+cssclass: kanban gridlist noyaml
 tag: moc
 obsidianUIMode: preview
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 

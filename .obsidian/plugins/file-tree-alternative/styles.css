@@ -1,0 +1,333 @@
+:root {
+    --oz-fta-folder-font-size: 13px;
+    --oz-fta-file-font-size: 12px;
+}
+
+.oz-file-tree-header {
+    height: 22px;
+    color: var(--text-normal);
+    margin-top: 3px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.oz-nav-action-button {
+    color: var(--text-normal);
+    display: inline-block;
+    padding: 0px 0px 0px 2px;
+    margin-left: 5px;
+    opacity: 0.5;
+}
+
+.oz-nav-action-button:hover {
+    color: var(--interactive-accent-hover);
+}
+
+.oz-nav-action-button svg {
+    vertical-align: middle !important;
+}
+
+.oz-input-container {
+    margin-bottom: 3px !important;
+    margin-top: 3px !important;
+    height: 30px;
+}
+
+.oz-input-container input {
+    width: 100%;
+}
+
+.oz-nav-buttons-right-block {
+    text-align: right;
+}
+
+.oz-nav-file-title {
+    width: calc(100% - 30px);
+    display: flex;
+    white-space: nowrap;
+    min-width: 100%;
+    cursor: pointer;
+    line-height: 19px;
+    border-radius: 3px;
+    font-size: var(--oz-fta-file-font-size);
+    padding: 1px 2px 0px 2px;
+    min-width: 100%;
+    border: 1px solid transparent;
+    color: var(--text-muted);
+}
+
+.is-mobile .oz-nav-file-title {
+    line-height: 21px;
+}
+
+.oz-nav-file-title .oz-nav-file-title-content {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+div.oz-nav-file.is-active,
+div.oz-nav-file.is-active div.oz-nav-file-title,
+div.oz-nav-file.is-active div.oz-nav-file-title-content {
+    background-color: var(--background-secondary-alt);
+    color: var(--text-normal);
+    font-weight: bold;
+}
+
+.oz-nav-file-tag {
+    color: var(--text-muted);
+    background-color: var(--background-secondary-alt);
+    border-radius: 3px;
+    font-size: 9px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    margin: 0px 2px 0px 4px;
+    text-transform: uppercase;
+    align-self: center;
+    padding: 0px 4px 0px 4px;
+    vertical-align: middle !important;
+    line-height: 13px;
+}
+
+div.workspace-leaf-content[data-type='file-tree-view'] > div.view-content {
+    padding: 10px 5px 5px 5px;
+}
+
+.oz-flex-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 26px;
+}
+
+.is-mobile .oz-flex-container {
+    height: 31px;
+}
+
+.oz-explorer-container {
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+}
+
+.oz-file-tree-files {
+    padding-top: 3px !important;
+}
+
+.drag-entered,
+.oz-folder-element:hover,
+.oz-nav-file:hover {
+    background-color: var(--background-secondary-alt);
+    color: var(--text-normal);
+}
+
+.oz-nav-file {
+    margin-left: 3px;
+    padding-right: 3px;
+}
+
+.oz-folders-action-items {
+    text-align: center;
+}
+
+.oz-folder-contents {
+    will-change: transform, opacity, height;
+    margin-left: 6;
+    padding-left: 14px;
+    border-left: 2px solid var(--text-accent);
+    margin-left: 5px !important;
+    border-left-color: var(--text-muted);
+}
+
+.oz-folder-toggle {
+    width: 1em;
+    height: 1em;
+    margin-right: 10px;
+    cursor: pointer;
+    vertical-align: middle;
+}
+
+.treeview {
+    position: relative;
+    padding: 0px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    vertical-align: middle;
+}
+
+.oz-folder-type {
+    text-transform: uppercase;
+    font-family: monospace;
+    font-size: 0.6em;
+    vertical-align: middle;
+    display: inline-block;
+}
+
+.oz-folder-name {
+    vertical-align: middle;
+    display: inline-block;
+    color: var(--text-muted);
+    font-size: var(--oz-fta-folder-font-size);
+}
+
+div.oz-folder-name.is-root-folder {
+    font-size: calc(var(--oz-fta-folder-font-size) + 2.5px);
+}
+
+.is-mobile .oz-folder-name.is-root-folder {
+    font-size: calc(var(--oz-fta-folder-font-size) + 2.5px);
+}
+
+.is-mobile .oz-folder-name {
+    font-size: var(--oz-fta-folder-font-size);
+}
+
+.is-mobile div.oz-nav-file-title .nav-file-title-content {
+    font-size: calc(var(--oz-fta-file-font-size) + 3px);
+}
+
+.oz-icon-div {
+    display: inline-block;
+}
+
+.oz-folder-line {
+    display: flex;
+    flex-flow: row;
+    white-space: nowrap;
+    min-width: 100%;
+}
+
+.oz-folder-block {
+    display: flex;
+    flex-grow: 1;
+    padding-top: 2px;
+}
+
+.oz-folder-count {
+    margin-left: auto;
+    height: 1.4em;
+}
+
+.oz-folder-element {
+    line-height: 1.4em;
+    padding: 0px 0px 0px 0px;
+}
+
+.oz-folders-tree-wrapper {
+    overflow: hidden;
+    overflow-y: auto;
+    padding-bottom: 5px;
+    padding-left: 8px;
+    height: 100%;
+}
+
+.oz-input-container > input {
+    padding-left: 8px;
+    padding-right: 4px;
+}
+
+.is-mobile .oz-input-container > input {
+    height: 33px;
+}
+
+.is-mobile .oz-nav-action-button svg {
+    transform: scale(1.2);
+}
+
+.file-tree-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    max-height: 100%;
+}
+
+.file-tree-plugin-view {
+    height: 100%;
+}
+
+.oz-folder-pane {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+    height: 50%;
+    resize: vertical;
+}
+
+.oz-file-list-pane {
+    display: block;
+    width: 100%;
+    overflow-y: auto;
+    flex: 1;
+}
+
+.oz-coffee-div {
+    text-align: center;
+    margin-top: 20px;
+}
+
+#file-tree-divider {
+    height: 3.8px;
+    opacity: 0.3;
+    cursor: row-resize;
+    border-bottom: 0.5px solid var(--text-muted);
+}
+
+div#file-tree-divider.active-divider {
+    background-color: var(--interactive-accent);
+    border-bottom: 0.5px solid var(--interactive-accent);
+}
+
+#file-tree-divider:hover {
+    background-color: var(--text-muted);
+}
+
+.is-folder-active {
+    color: var(--text-normal);
+    font-weight: bold;
+}
+
+.file-tree-header-fixed {
+    position: sticky;
+    top: 0;
+    padding-left: 4px;
+    padding-right: 4px;
+    background-color: var(--background-secondary);
+    z-index: 100;
+}
+
+.file-tree-files-fixed {
+    display: flex;
+    flex-direction: column;
+}
+
+.file-tree-files-fixed-with-search {
+    display: flex;
+    flex-direction: column;
+}
+
+svg.oz-folder-toggle path {
+    fill: var(--interactive-accent);
+}
+
+/* Solution for React-Icon Center Issue */
+.oz-folder-name svg {
+    vertical-align: middle !important;
+}
+
+.oz-nav-file-icon {
+    line-height: 1;
+    display: inline-block;
+    font-weight: normal;
+    font-style: normal;
+    font-variant: normal;
+    margin-right: 2px;
+    padding-bottom: 2.5px;
+    vertical-align: middle;
+}

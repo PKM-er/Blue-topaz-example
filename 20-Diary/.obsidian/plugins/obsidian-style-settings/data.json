@@ -1,6 +1,8 @@
 {
-  "blue-topaz-theme@@hide-left-ribbon": true,
   "blue-topaz-theme@@color-scheme-options": "color-scheme-options-monochrome-topaz",
   "blue-topaz-theme@@hide-titlebar-text": true,
-  "blue-topaz-theme@@bt-status-off": true
+  "blue-topaz-theme@@bt-status-off": true,
+  "blue-topaz-theme@@heatmap-light": "ice-light",
+  "blue-topaz-theme@@list-style-change-options": "list-no-border",
+  "blue-topaz-theme@@left-ribbon-style": "hide-left-ribbon"
 }

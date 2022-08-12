@@ -1,12 +1,11 @@
 {
   "files": [
-    "50-Inbox/Cubox.md",
-    "50-Inbox/文本处理-textce.md",
-    "50-Inbox/表格转换-tableconvert.md",
-    "50-Inbox/carbon 代码高亮分享.md",
-    "50-Inbox/vika.md",
-    "88-Template/home.md",
+    "50-Inbox/Website/Cubox.md",
+    "50-Inbox/Website/文本处理-textce.md",
+    "50-Inbox/Website/表格转换-tableconvert.md",
+    "50-Inbox/Website/carbon 代码高亮分享.md",
+    "50-Inbox/Website/vika.md",
     "88-Template/🎵Music.md"
   ],
-  "useExistingPane": true
+  "useExistingPane": false
 }

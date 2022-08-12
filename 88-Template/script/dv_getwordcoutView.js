@@ -74,18 +74,51 @@ String.prototype.strong = function () {
 		var sentencesLength = sentences.length;
 		return sentencesLength;
 	}
-
-
+	function imageview (value) {
+		if((typeof(value)=='string')&&(value))
+		{
+			
+			let inreg =/(https?:[^:<>"]*\/)([^:<>"]*)(\.((png!thumbnail)|(jpg|jpeg|bmp|gif|png|JPG|JPEG|BMP|GIF|PNG|WebP)))/ //匹配网络图片
+			const links = value.match(inreg);
+			if (links) 
+			value	=`![inlL|50](${links[0]})`
+		}
+		return value
+	}
+	function getfilter (sections,exclude,type="") {
+		let exclude_arr=exclude?.split(',')??''
+		if (exclude_arr.length>0) {
+			let exclude_arr_res=[]
+			if (type==="tag")
+			{
+				exclude_arr.forEach((value) => {
+					if (value) if (!value.startsWith("#")) value = "#" + value;
+					exclude_arr_res.push(value)
+				   })
+				sections = sections.filter(t => !t.file.tags.every(val => exclude_arr_res.includes(val)),);
+			}
+			if (type==="folder")
+			sections = sections.filter(t => !exclude_arr.includes(t.file.folder));
+			
+			}
+		   return sections;
+		}
 /* =================== Search Logic =================== */
 
 // before search field we need a searchType tag, mdate etc.
 
 let searchType = dv.current().searchType
 let searchTerm = dv.current().searchTerm
-let searchText = dv.current().searchText
+let searchText = dv.current().searchText??''
 let searchDate = dv.current().searchDate;
+let cusfield =dv.current().cusfield;
 let limit = dv.current().limit;
 let searchTerm_arr=searchTerm?.split(',')
+let cusfield_arr=cusfield?.split(',')
+let  exFolder = dv.current().exFolder;	
+let excludeTag = dv.current().excludeTag;
+let exFolder_arr=exFolder?.split(',')??''
+
 
 	function formatDate(date){
 		var d = new Date(date),
@@ -117,7 +150,7 @@ function formatDate(date){
 
 	return [year, month, day].join('-');
 }
-
+let sections;
 if(searchType === "tags"){
     if(searchTerm)
 	{
@@ -138,16 +171,18 @@ if(searchType === "tags"){
 	{
 	valueOfSearchTerm = ""
 	}
-	let sections;
+	
   if(limit>0)
 	 sections = dv.pages(valueOfSearchTerm).slice(0,limit);
 	else
 	 sections = dv.pages(valueOfSearchTerm);
 	if(searchText)
-	sections = sections.filter(t => t.file.name.toLowerCase().includes(searchText.toLowerCase()));
-	
+	sections = sections.filter(t => t.file.name.toLowerCase().includes(searchText.toString().toLowerCase()));
+	sections=getfilter(sections,excludeTag,"tag")
+	sections=getfilter(sections,exFolder,"folder")
 	searchPagePaths =sections.file.path; // paths of all pages with searchTerm
-	
+	//cusfielddata=sections[cusfield]
+
 } else if(searchType === "mdate") {
 	valueOfSearchTerm = searchDate; // value of "searchTerm"
 	
@@ -164,7 +199,8 @@ if(searchType === "tags"){
 	{
 		mtimes.length=limit;
 	}
-	searchPagePaths = mtimes.file.path;
+	sections=mtimes
+searchPagePaths = mtimes.file.path;
 	
 }
 
@@ -185,16 +221,45 @@ const getTableContents = async() => {
 	let text = new Array();
 	let mtime = new Array();
 	let output = new Array()
+	//let cusfielddata=new Array();
+	let  cusfielddata_array = new Array();
 
 	// fill text and name with values
+	
 	for(let i=0; i < searchPagePaths.length;i++){
+		if (cusfield_arr) {
+		let cusfielddata=new Array();
+		if (cusfield_arr.length>1)
+		{
+			for(let j=0; j < cusfield_arr.length;j++){
+				if(cusfield_arr[j].indexOf("file.")!=-1)
+				{
+					let newcusfield= cusfield_arr[j].replace("file.",""); //
+					cusfielddata[j]=sections[i].file[newcusfield]
+					
+				}else
+				cusfielddata[j]=imageview(sections[i][cusfield_arr[j]])
+			}
+		}else
+		{
+			cusfielddata=[];
+			if(cusfield.indexOf("file.")!=-1)
+				{
+					let newcusfield=cusfield.replace("file.",""); //
+					cusfielddata.push(sections[i].file[newcusfield])
+				}else
+				
+			cusfielddata.push(imageview(sections[i][cusfield]))
+		}
+		cusfielddata_array.push(cusfielddata)
+	}
 		let page = this.app.vault.getAbstractFileByPath(searchPagePaths.values[i]);
 		const content = await app.vault.cachedRead(page);
 		page != null ? mtime.push(page.stat.mtime) : null;
-		page != null ? name.push("[["+page.basename+"]]") : null;
+		//page != null ? name.push("[["+page.basename+"]]") : null;
+		name.push( "__" + sections[i].file.link + "__");
 		content != null ? text.push(content) : null;
 	};
-	
 	mtime.forEach((date, index) => {
 		var d = new Date(date),
         month = '' + (d.getMonth() + 1),
@@ -209,7 +274,6 @@ const getTableContents = async() => {
     	mtime[index] = [year, month, day].join('-');
 	})
 
-	
 	// do word, character, and sentence count on pages and format for dv.table
 	for(let i=0; i<text.length;i++){
 		// https://www.tutorialspoint.com/how-to-count-a-number-of-words-in-given-string-in-javascript
@@ -225,20 +289,33 @@ const getTableContents = async() => {
 		allCharCount.push(characterCount);
 		allSentenceCount.push(sentenceCount);
 		allMdate.push(mtime[i])
-
-
-		output.push([[name[i]].toString(), mtime[i], wordCount, characterCount, sentenceCount]); // array with link to file, word count, character count, and sentence count
+		let outfield=[mtime[i], wordCount, characterCount, sentenceCount]
+		if (cusfield_arr)  outfield.unshift(...cusfielddata_array[i])
+		outfield.unshift([name[i]].toString())
+		output.push(outfield); // array with link to file, word count, character count, and sentence count
 		};
 		pageCount.push(allNames.length)
 		wordCountSum.push(allWordCount.reduce((a, b) => a + b, 0))
 		charCountSum.push(allCharCount.reduce((a, b) => a + b, 0))
 		sentenceCountSum.push(allSentenceCount.reduce((a, b) => a + b, 0))
-		output.push(["<strong>总计</strong>", "", wordCountSum.toString(), charCountSum.toString(), sentenceCountSum.toString() ])
+		let sumfield = [wordCountSum.toString(), charCountSum.toString(), sentenceCountSum.toString() ]
+		
+		if (cusfield_arr) 
+		{
+			let arr =  new Array(cusfield_arr.length).fill("")
+			sumfield.unshift(...arr)
+		}
+		sumfield.unshift("<strong>总计</strong>","")
+		output.push(sumfield)
 		return output;
 	}
+ let field = ["修改日期", "字数",  "字符数", "段落数"]
+ if (cusfield_arr) field.unshift(...cusfield_arr)
+ field.unshift("文件名")
 
-	dv.table(["文件名", "修改日期", "字数",  "字符数", "段落数"], await getTableContents()
-	)
+ 
+dv.table(field, await getTableContents())
+ 
 	
 	if(searchType == "mdate" && searchPagePaths. length < 1){
 		dv.paragraph("<strong>No Pages Modified On That Date</strong>")

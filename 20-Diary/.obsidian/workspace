@@ -4,7 +4,7 @@
     "type": "split",
     "children": [
       {
-        "id": "58cef72d655ebd97",
+        "id": "f995aa6847448694",
         "type": "leaf",
         "state": {
           "type": "memos_view",
@@ -49,7 +49,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300,
+    "width": 147.99801588058472,
     "collapsed": true
   },
   "right": {
@@ -83,8 +83,12 @@
     "width": 153,
     "collapsed": true
   },
-  "active": "58cef72d655ebd97",
+  "active": "f995aa6847448694",
   "lastOpenFiles": [
+    "2022-08-11.md",
+    "memos模板.md",
+    "2022-08-10.md",
+    "日记统计.md",
     "2022-04-20.md",
     "2021-12-30.md"
   ]

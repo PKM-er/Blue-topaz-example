@@ -1,5 +1,5 @@
 ---
-cssclass: flatBlue, wideTable
+cssclass: "flatBlue, wideTable"
 ---
 
 # Flat Blue table

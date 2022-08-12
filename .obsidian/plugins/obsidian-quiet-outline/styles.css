@@ -161,3 +161,20 @@
 .n-tree.n-tree--block-line .n-tree-node:not(.n-tree-node--disabled).n-tree-node--selected {
   background-color: transparent !important;
 }
+
+
+/* 固定功能栏 */
+.quiet-outline {
+  height: 100%;
+}
+.quiet-outline #container {
+  height: 100%;
+}
+.quiet-outline .n-config-provider {
+  display:flex;
+  flex-direction:column;
+  height: 100%;
+}
+.quiet-outline .n-tree {
+  overflow: auto;
+}

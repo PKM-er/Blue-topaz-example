@@ -8,7 +8,7 @@
 // Import configuration
 //----------------------------------------------------
 const source = dv.current();
-const searchText = source.searchText;
+const searchText = source.searchText??'';
 const sourceFolder = source.sourceFolder;
 const exFolder = source.exFolder;	
 const target = source.target;
@@ -122,7 +122,7 @@ const dropdown = async(file, key) => {
 // Table Construction
 //----------------------------------------------------
 
- function getilterfolder (sourceFolder_arr,exFolder_arr,sourceTag_arr) {
+ function gefilterfolder (sourceFolder_arr,exFolder_arr,sourceTag_arr) {
     let filterfolder_arr_res=[]
     if (sourceFolder_arr.length>0)
     { 
@@ -165,7 +165,7 @@ let sourceFolder_arr=sourceFolder?.split(',')??''
 let exFolder_arr=exFolder?.split(',')??''
 let sourceTag_arr=sourceTag?.split(',')??''
 let excludeTag_arr=excludeTag?.split(',')??''
-filterfolder=getilterfolder(sourceFolder_arr,exFolder_arr,sourceTag_arr)
+filterfolder=gefilterfolder(sourceFolder_arr,exFolder_arr,sourceTag_arr)
 console.log("filter",filterfolder)
 sections = dv.pages(filterfolder);
 // exclude certain notes
@@ -183,7 +183,7 @@ console.log("excludeTag",excludeTag_arr_res)
 sections = sections.filter(t => !t.file.tags.every(val => excludeTag_arr_res.includes(val)));
 }
 if(searchText)
-sections = sections.filter(t => t.file.name.toLowerCase().includes(searchText.toLowerCase()));
+sections = sections.filter(t => t.file.name.toLowerCase().includes(searchText.toString().toLowerCase()));
 // most recent note
 sections = sections.sort (s => s.file.mtime, "desc");
 const mostRecentNote = sections[0]?.file.name;

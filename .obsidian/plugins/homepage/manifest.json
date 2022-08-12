@@ -1,0 +1,10 @@
+{
+	"id": "homepage",
+	"name": "Homepage",
+	"version": "2.2.1",
+	"minAppVersion": "0.12.0",
+	"description": "Open a specified note on startup.",
+	"author": "novov",
+	"authorUrl": "https://novov.me",
+	"isDesktopOnly": false
+}

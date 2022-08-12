@@ -1,5 +1,5 @@
 ---
-cssclass: kanban gridlist
+cssclass: kanban gridlist noyaml
 tag: moc
 obsidianUIMode: preview
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
@@ -13,6 +13,7 @@ obsidianUIMode: preview
 	- [[Johnny学OB 资料汇总]]
 	- [[Lillian Who Obsidian新手入门教程]]
 	- [[MarkDown教程 Obsidian版 2022.4.22]]
+	- [[Mermaid从入门到入土]]
 	- [[Obsidian 快捷键一览表]]
 
 %% End Waypoint %%

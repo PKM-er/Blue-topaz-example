@@ -92,7 +92,18 @@
   background-color: var(--background-primary);
   box-sizing: border-box;
   flex: 1 1 auto;
-  text-align: justify;
+  text-align: -webkit-center;
+  vertical-align: middle;
+}
+/** children of data-input fills parent div*/
+.data-input > * {
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+
+.data-input > *:focus {
+  outline: none;
 }
 
 .data-input * {
@@ -103,15 +114,19 @@
   background-color: var(--background-secondary);
 }
 
-.data-input:focus {
-  outline: none;
+.database-plugin__td span.is-loaded,
+span.database-plugin__calendar,
+div.database-plugin__checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.data-input-checkbox {
+.database-plugin__checkbox {
   place-self: center;
 }
 
-.data-input-checkbox input[type="checkbox"] {
+.database-plugin__checkbox input[type="checkbox"] {
   /* Add if not using autoprefixer */
   -webkit-appearance: none;
   /* Remove most all native input styles */
@@ -132,7 +147,7 @@
   place-content: center;
 }
 
-.data-input-checkbox input[type="checkbox"]::before {
+.database-plugin__checkbox input[type="checkbox"]::before {
   content: "";
   width: 0.65em;
   height: 0.65em;
@@ -145,25 +160,30 @@
   background-color: CanvasText;
 }
 
-.data-input-checkbox input[type="checkbox"]:checked {
+.database-plugin__checkbox input[type="checkbox"]:checked {
   background-color: var(--text-accent);
 }
 
-.data-input-checkbox input[type="checkbox"]:checked::before {
+.database-plugin__checkbox input[type="checkbox"]:checked::before {
   transform: scale(1);
 }
 
-.data-input-checkbox input[type="checkbox"]:focus {
+.database-plugin__checkbox input[type="checkbox"]:focus {
   outline: max(2px, 0.15em) solid currentColor;
   outline-offset: max(2px, 0.15em);
 }
 
 .database-plugin__md_cell {
-  padding: 0.5rem;
+  vertical-align: middle;
 }
 
 .database-plugin__md_cell p {
   display: inline;
+}
+
+.database-plugin__markdown-preview-view {
+  padding: 0;
+  height: fit-content;
 }
 
 .svg-icon-sm svg {
@@ -196,6 +216,33 @@
   user-select: none;
 }
 
+.resizer {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background: var(--background-modifier-border);
+  cursor: col-resize;
+  user-select: none;
+  touch-action: none;
+}
+
+.resizer.isResizing {
+  background: var(--background-modifier-error);
+  opacity: 1;
+}
+
+@media (hover: hover) {
+  .resizer {
+    opacity: 0;
+  }
+
+  *:hover > .resizer {
+    opacity: 1;
+  }
+}
+
 .overlay {
   position: fixed;
   top: 0;
@@ -225,6 +272,10 @@
   padding: 0;
 }
 
+.database-plugin__tr {
+  display: table-row;
+}
+
 .database-plugin__tr:last-child .database-plugin__td {
   border-bottom: 0;
 }
@@ -232,24 +283,26 @@
 .database-plugin__add-row {
   color: var(--text-accent);
   padding: 0.5rem;
-  display: flex;
   align-items: center;
   font-size: 0.875rem;
   cursor: pointer;
+  position: sticky;
+  bottom: 0;
+  background-color: var(--background-primary);
 }
 
-.database-plugin__add-row:hover {
+.database-plugin__add-row .svg-icon:hover {
   background-color: var(--background-secondary);
   color: var(--text-accent-hover);
+  padding: 0.3rem;
 }
 
 .database-plugin__add-row .database-plugin__td {
   border: none;
   background-color: transparent;
   color: var(--text-muted);
-
-  flex-direction: row;
-  align-items: center;
+  display: inline-flex;
+  vertical-align: middle;
 }
 
 .database-plugin__th {
@@ -258,6 +311,7 @@
   font-size: 0.875rem;
   cursor: pointer;
   background-color: var(--background-primary);
+  display: table-cell;
 }
 
 .database-plugin__th:hover {
@@ -280,7 +334,7 @@
   align-items: stretch;
   justify-content: center;
   padding: 0;
-  display: flex;
+  display: table-cell;
   padding: 0.5rem;
   flex-direction: column;
 }
@@ -294,7 +348,7 @@
   flex-wrap: nowrap;
 }
 
-.database-plugin__cell_size_compact .database-plugin__td span.data-input {
+.database-plugin__cell_size_compact .data-input {
   white-space: nowrap;
 }
 
@@ -320,7 +374,8 @@
 .database-plugin__table {
   border-spacing: 0;
   border-bottom: 1px solid var(--background-modifier-border);
-  display: "flex";
+  display: table;
+  height: 1px; /** Hack to prevent collapsing of table cells */
 }
 
 .database-plugin__th:last-child {
@@ -342,14 +397,33 @@
 
 .database-plugin__header-group,
 .database-plugin__header {
-  justify-content: space-between;
+  justify-content: flex-start;
   background-color: var(--background-secondary);
 }
 
+.database-plugin__sticky-level-1 {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+}
+.database-plugin__sticky-level-2 {
+  position: sticky;
+  top: 4rem;
+  z-index: 2;
+}
+
+.database-plugin__table-header-group {
+  border-top: 1px solid var(--background-modifier-border);
+  display: table-header-group;
+}
+
 .database-plugin__navbar {
-  display: flex;
   flex: 1 0 auto;
   background-color: var(--background-secondary);
+}
+
+.database-plugin__padding-left {
+  padding-left: 0.5rem;
 }
 
 .database-plugin__calendar {
@@ -396,8 +470,10 @@
   gap: 0.3rem;
 }
 
-.text-align-right {
-  text-align: right;
+span.text-align-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
 }
 
 .cell-padding {

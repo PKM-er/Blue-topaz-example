@@ -1,10 +1,1 @@
-{
-  "id": "Enhanced-editing",
-  "name": "增强编辑",
-  "version": "0.5.2",
-  "minAppVersion": "0.10.0",
-  "description": "增强大量文本编辑功能，如（允许批量）转换内部链接、转换Markdown或Html语法（支持格式刷）、智能化补充括号、智能化粘贴表格或代码、（批量）增减空行或空格、修复错误语法或标点等。",
-  "author": "obsidian-canzi",
-  "authorUrl": "https://github.com/obsidian-canzi/Enhanced-editing",
-  "isDesktopOnly": false
-}
+{"id":"Enhanced-editing","name":"ZH增强编辑","version":"0.5.4","minAppVersion":"0.15.0","description":"增强大量文本编辑功能，如（允许批量）转换内部链接、转换Markdown或Html语法（支持格式刷）、智能化补充括号、智能化粘贴表格或代码、（批量）增减空行或空格、修复错误语法或标点等。","author":"obsidian-canzi","authorUrl":"https://github.com/obsidian-canzi/Enhanced-editing","isDesktopOnly":false}

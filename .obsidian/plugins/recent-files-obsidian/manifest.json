@@ -1,7 +1,7 @@
 {
   "id": "recent-files-obsidian",
   "name": "Recent Files",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "minAppVersion": "0.11.6",
   "description": "List files by most recently opened",
   "author": "Tony Grosinger",

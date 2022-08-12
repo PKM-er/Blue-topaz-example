@@ -1,5 +1,7 @@
 {
   "pluginList": [
+    "dsarman/better-inline-fields",
+    "nothingislost/obsidian-query-control",
     "cumany/obsidian-echarts",
     "cumany/cMenu-Plugin",
     "zhaohongxuan/obsidian-weread-plugin",
@@ -14,7 +16,7 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-06-30T03:39:40Z"
+      "lastUpdate": "2022-08-12T12:56:24Z"
     }
   ],
   "updateAtStartup": true,

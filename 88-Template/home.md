@@ -65,9 +65,9 @@ dv.paragraph(desc);
 
 ```ad-blank
 - [[00-Tips|使用技巧]]
-- [[微信读书清单|微信读书]]
-- [[▪示例库移植说明|移植说明]]
-- [[◾ Dataview相关实例]]
+- `button-inbox`
+- [[示例库移植说明|移植说明]]
+- [[◾ Dataview相关实例|Dataview]]
 - [[电影看板|影视看板]]
 ```
 

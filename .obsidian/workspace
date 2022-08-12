@@ -4,13 +4,13 @@
     "type": "split",
     "children": [
       {
-        "id": "fc371ae36bc5eac7",
+        "id": "81fb2bb3dad564cd",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
-            "mode": "preview",
+            "file": "Changlog.md",
+            "mode": "source",
             "backlinks": false,
             "source": false
           }
@@ -26,7 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 54.46650124069479,
+        "dimension": 68.13048933500627,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -58,13 +58,22 @@
               "type": "starred",
               "state": {}
             }
+          },
+          {
+            "id": "f2c2f4dfc8473d58",
+            "type": "leaf",
+            "state": {
+              "type": "file-tree-view",
+              "state": {}
+            }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "d877e8285f98a38a",
         "type": "tabs",
-        "dimension": 45.53349875930521,
+        "dimension": 31.869510664993726,
         "children": [
           {
             "id": "b37bc3d287f74512",
@@ -103,7 +112,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 43,
+        "dimension": 36.340852130325814,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -119,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "Changlog.md"
               }
             }
           },
@@ -142,7 +151,7 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
-        "dimension": 56.99999999999999,
+        "dimension": 63.65914786967418,
         "children": [
           {
             "id": "041c78328387b373",
@@ -150,10 +159,10 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
-                "collapseAll": false,
-                "extraContext": false,
-                "sortOrder": "alphabetical",
+                "file": "Changlog.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "byModifiedTime",
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
@@ -167,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "Changlog.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -212,17 +221,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "fc371ae36bc5eac7",
+  "active": "81fb2bb3dad564cd",
   "lastOpenFiles": [
     "88-Template/home.md",
-    "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md",
-    "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md",
-    "从这开始.md",
-    "20-Diary/2022-06-30.md",
-    "99-Attachment/99-Attachment.md",
-    "99-Attachment/banner/banner.md",
-    "77-Example/◾ Dataview相关实例/文件夹所有标签.md",
-    "77-Example/任务卡片-dataview 任务查询举例.md",
-    "77-Example/◾ Echarts/echarts-笔记动态显示-分布.md"
+    "88-Template/常用工具.md",
+    "Changlog.md",
+    "#now.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "88-Template/🎵Music.md",
+    "88-Template/彩色时钟.md",
+    "88-Template/ReactJS/caidan.md",
+    "88-Template/ReactJS/react_cat.md",
+    "20220812205103.md"
   ]
 }

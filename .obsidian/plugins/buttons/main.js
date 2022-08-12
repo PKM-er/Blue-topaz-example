@@ -4240,18 +4240,18 @@ class ButtonsPlugin extends obsidian.Plugin {
             name: "Insert Inline Button",
             callback: () => new InlineButtonModal(this.app).open(),
         });
-        this.registerMarkdownCodeBlockProcessor("button", async (source, el) => {
+        this.registerMarkdownCodeBlockProcessor("button", async (source, el,ctx) => {
             // create an object out of the arguments
-            const activeView = this.app.workspace.getActiveViewOfType(obsidian.MarkdownView);
-            if (activeView) {
-                addButtonToStore(this.app, activeView.file);
+			 const file = this.app.vault.getFiles().find((f) => f.path === ctx.sourcePath);
+			 addButtonToStore(this.app, file);
+           
                 let args = createArgumentObject(source);
                 const storeArgs = await getButtonFromStore(this.app, args);
                 args = storeArgs ? storeArgs.args : args;
                 const id = storeArgs && storeArgs.id;
                 createButton({ app: this.app, el, args, inline: false, id });
             }
-        });
+        );
         this.registerMarkdownPostProcessor(async (el, ctx) => {
             // Search for <code> blocks inside this element; for each one, look for things of the form `
             const codeblocks = el.querySelectorAll("code");

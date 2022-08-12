@@ -1,5 +1,5 @@
 ---
-cssclass: whiteRed, wideTable
+cssclass: "whiteRed, wideTable"
 ---
 
 # White red table

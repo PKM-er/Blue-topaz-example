@@ -25,11 +25,7 @@
 .markdown-preview-view.mytools::-webkit-scrollbar{
 display:none;
 }
-.workspace-split.mod-left-split>.workspace-leaf-resize-handle:not(:hover), 
- .workspace-split.mod-right-split>.workspace-leaf-resize-handle:not(:hover), 
- .workspace-split.mod-vertical>*>.workspace-leaf-resize-handle:not(:hover) {
-  background-color: #ebebeb00!important;
-}
+ 
 /*隐藏yaml区域*/
 .markdown-preview-view.mytools  div>.language-yaml
 {	

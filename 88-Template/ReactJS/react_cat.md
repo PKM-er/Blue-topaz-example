@@ -55,20 +55,20 @@ let catsrc= <svg id="bongo-cat" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="h
             <polygon points="410.6 286.5 399.1 288 398.9 288.8 499.9 308.3 513.3 305.9 513.5 305 410.6 286.5" fill="#3e3e54"></polygon>
             <polygon points="395.7 283.7 395.9 282.8 248.2 255.7 239.2 257.3 239 258 384.3 286 395.7 283.7" fill="#3e3e54"></polygon>
           </g>
-          <polygon points="371.3 273.9 256.9 252.7 266.4 250.3 382.4 271.5 371.3 273.9" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="237.6 264.9 221.4 261.7 230.4 259.4 246.8 262.6 237.6 264.9" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="474.8 312 250 267.3 259.4 265.1 487.7 309.6 474.8 312" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="412 308.5 204.4 266 213.1 263.8 423.9 306.3 412 308.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="450.2 316.4 428.8 312 440.9 309.7 462.8 314.1 450.2 316.4" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="201.7 273.1 187.7 270.2 196.2 268 210.4 271 201.7 273.1" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="222.8 277.6 208.3 274.5 217.1 272.4 231.8 275.4 222.8 277.6" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="363.1 307.3 231.7 279.5 240.9 277.3 374.2 305.1 363.1 307.3" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="444.6 287.5 385.4 276.5 396.8 274.1 456.9 285 444.6 287.5" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="526.3 302.7 460.3 290.4 473 288 540.1 300.2 526.3 302.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-          <polygon points="426.4 320.7 376.3 310.1 387.6 307.9 438.5 318.5 426.4 320.7" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+          <polygon points="371.3 273.9 256.9 252.7 266.4 250.3 382.4 271.5 371.3 273.9" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="237.6 264.9 221.4 261.7 230.4 259.4 246.8 262.6 237.6 264.9" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="474.8 312 250 267.3 259.4 265.1 487.7 309.6 474.8 312" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="412 308.5 204.4 266 213.1 263.8 423.9 306.3 412 308.5" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="450.2 316.4 428.8 312 440.9 309.7 462.8 314.1 450.2 316.4" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="201.7 273.1 187.7 270.2 196.2 268 210.4 271 201.7 273.1" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="222.8 277.6 208.3 274.5 217.1 272.4 231.8 275.4 222.8 277.6" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="363.1 307.3 231.7 279.5 240.9 277.3 374.2 305.1 363.1 307.3" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="444.6 287.5 385.4 276.5 396.8 274.1 456.9 285 444.6 287.5" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="526.3 302.7 460.3 290.4 473 288 540.1 300.2 526.3 302.7" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+          <polygon points="426.4 320.7 376.3 310.1 387.6 307.9 438.5 318.5 426.4 320.7" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
           <g>
-            <polygon points="410.7 285.6 399.1 288 500.1 307.4 513.5 305 410.7 285.6" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
-            <polygon points="395.9 282.8 248.4 255 239.2 257.3 384.5 285.2 395.9 282.8" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.2"></polygon>
+            <polygon points="410.7 285.6 399.1 288 500.1 307.4 513.5 305 410.7 285.6" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
+            <polygon points="395.9 282.8 248.4 255 239.2 257.3 384.5 285.2 395.9 282.8" stroke="#000" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.2"></polygon>
           </g>
         </g>
         <g id="paw-right">
@@ -90,21 +90,21 @@ let catsrc= <svg id="bongo-cat" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="h
         </g>
         <g id="laptop__terminal_code_scene">
           <g id="laptop__code">
-            <g stroke="#3DE0E8" stroke-width="6" transform="matrix(-1 0 0 1 278 103)">
+            <g stroke="#3DE0E8" strokeWidth="6" transform="matrix(-1 0 0 1 278 103)">
               <g id="f3" transform="translate(0 76)">
-                <path class="typing-animation" id="f3-l9" d="M8,25L8,25" stroke-dasharray="60,10"></path>
-                <path class="typing-animation" id="f3-l8" d="M8,13L8,13" stroke-dasharray="50,10"></path>
-                <path class="typing-animation" id="f3-l7" d="M0,1L0,1" stroke-dasharray="25,10"></path>
+                <path className="typing-animation" id="f3-l9" d="M8,25L8,25" strokeDasharray="60,10"></path>
+                <path className="typing-animation" id="f3-l8" d="M8,13L8,13" strokeDasharray="50,10"></path>
+                <path className="typing-animation" id="f3-l7" d="M0,1L0,1" strokeDasharray="25,10"></path>
               </g>
               <g id="f2" transform="translate(0 38)">
-                <path class="typing-animation" id="f2-l6" d="M8,25L8,25" stroke-dasharray="40,10"></path>
-                <path class="typing-animation" id="f2-l5" d="M8,13L8,13" stroke-dasharray="60,10"></path>
-                <path class="typing-animation" id="f2-l4" d="M0,1L0,1" stroke-dasharray="30,10"></path>
+                <path className="typing-animation" id="f2-l6" d="M8,25L8,25" strokeDasharray="40,10"></path>
+                <path className="typing-animation" id="f2-l5" d="M8,13L8,13" strokeDasharray="60,10"></path>
+                <path className="typing-animation" id="f2-l4" d="M0,1L0,1" strokeDasharray="30,10"></path>
               </g>
               <g id="f1">
-                <path class="typing-animation" id="f1-l3" d="M8,25L8,25" stroke-dasharray="60,10"></path>
-                <path class="typing-animation" id="f1-l2" d="M8,13L8,13" stroke-dasharray="60,10"></path>
-                <path class="typing-animation" id="f1-l1" d="M0,1L0,1" stroke-dasharray="60,10"></path>
+                <path className="typing-animation" id="f1-l3" d="M8,25L8,25" strokeDasharray="60,10"></path>
+                <path className="typing-animation" id="f1-l2" d="M8,13L8,13" strokeDasharray="60,10"></path>
+                <path className="typing-animation" id="f1-l1" d="M0,1L0,1" strokeDasharray="60,10"></path>
               </g>
             </g>
           </g>

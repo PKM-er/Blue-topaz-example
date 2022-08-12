@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 16,
+  "baseFontSize": 15,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -15,8 +15,6 @@
     "【日记】Time",
     "【日记】timeline",
     "【天气】weather",
-    "【图标】iconfont",
-    "【自定义】表格样式TableStyles",
     "【自定义】彩色时钟样式",
     "【自定义】mytools 样式",
     "【Linkcard】",
@@ -25,11 +23,15 @@
     "【卡片视图】cards",
     "【自定义】多彩进度条",
     "【卡片横版视图】cards2",
-    "【Memos】Popover",
-    "【自定义】myhome 样式"
+    "【自定义】myhome 样式",
+    "【自定义】表格样式TableStyles",
+    "【图标】iconfont",
+    "【格式】标题行距",
+    "【Memos】Popover"
   ],
   "translucency": false,
   "textFontFamily": "",
   "monospaceFontFamily": "",
-  "interfaceFontFamily": ""
+  "interfaceFontFamily": "",
+  "baseFontSizeAction": true
 }

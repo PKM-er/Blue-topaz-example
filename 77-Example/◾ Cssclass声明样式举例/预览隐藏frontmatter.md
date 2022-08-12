@@ -1,12 +1,16 @@
 ---
-alias: 测试dataview 长表格
-cssclass: noyaml
-usage: 预览状态不显示frontmatter区域
+alias: "测试dataview 长表格"
+cssclass: "noyaml"
+usage: "预览状态不显示frontmatter区域"
 时间: 
 status: 2
 rating: 0
-tags: [dvtest,good,test,dataview]
-updated: ''
+tags:
+ - "dvtest"
+ - "good"
+ - "test"
+ - "dataview"
+updated: 
 ---
 
 ```ad-tip

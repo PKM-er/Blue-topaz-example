@@ -3,6 +3,8 @@
 
 .omnisearch-result {
   white-space: normal;
+  display: flex;
+  flex-direction: column;
 }
 
 .omnisearch-result__title {

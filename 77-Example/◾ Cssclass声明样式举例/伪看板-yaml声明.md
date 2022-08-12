@@ -1,7 +1,7 @@
 ---
-cssclass: kanban 
-usage: 伪看板的样式，无序列表四分栏
-updated: 2022-03-14 20:31
+cssclass: "kanban"
+usage: "伪看板的样式，无序列表四分栏"
+updated: "2022-03-14 20:31"
 ---
  ```ad-tip
  - 这是一个伪看板的样式示例，需要在yaml区域声明cssclass

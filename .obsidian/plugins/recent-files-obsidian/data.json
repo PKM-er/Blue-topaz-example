@@ -1,204 +1,196 @@
 {
   "recentFiles": [
     {
+      "basename": "Changlog",
+      "path": "Changlog.md"
+    },
+    {
       "basename": "home",
       "path": "88-Template/home.md"
-    },
-    {
-      "basename": "随机显示文档中的图片和文字",
-      "path": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md"
-    },
-    {
-      "basename": "可以编辑的dv表格",
-      "path": "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md"
-    },
-    {
-      "basename": "从这开始",
-      "path": "从这开始.md"
-    },
-    {
-      "basename": "2022-06-30",
-      "path": "20-Diary/2022-06-30.md"
-    },
-    {
-      "basename": "99-Attachment",
-      "path": "99-Attachment/99-Attachment.md"
-    },
-    {
-      "basename": "文件夹所有标签",
-      "path": "77-Example/◾ Dataview相关实例/文件夹所有标签.md"
-    },
-    {
-      "basename": "任务卡片-dataview 任务查询举例",
-      "path": "77-Example/任务卡片-dataview 任务查询举例.md"
-    },
-    {
-      "basename": "echarts-笔记动态显示-分布",
-      "path": "77-Example/◾ Echarts/echarts-笔记动态显示-分布.md"
-    },
-    {
-      "basename": "项目追踪（完成的字数和任务）",
-      "path": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md"
-    },
-    {
-      "basename": "带进度条的任务列表",
-      "path": "77-Example/◾ Dataview相关实例/带进度条的任务列表.md"
-    },
-    {
-      "basename": "通过下拉框检索文件示例",
-      "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
-    },
-    {
-      "basename": "认知觉醒：开启自我改变的原动力",
-      "path": "30-Reading/认知觉醒：开启自我改变的原动力.md"
-    },
-    {
-      "basename": "微信读书清单",
-      "path": "77-Example/◾ Dataview相关实例/微信读书清单.md"
-    },
-    {
-      "basename": "心灵奇旅 Soul",
-      "path": "30-Reading/心灵奇旅 Soul.md"
-    },
-    {
-      "basename": "30-Reading",
-      "path": "30-Reading/30-Reading.md"
-    },
-    {
-      "basename": "77-Example",
-      "path": "77-Example/77-Example.md"
-    },
-    {
-      "basename": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
-    },
-    {
-      "basename": "伪看板-yaml声明",
-      "path": "77-Example/◾ Cssclass声明样式举例/伪看板-yaml声明.md"
-    },
-    {
-      "basename": "◾ Cssclass声明样式举例",
-      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
-    },
-    {
-      "basename": "Cmenu插件魔改版 Obsidian上的工具栏",
-      "path": "00-Tips/▪插件介绍/Cmenu插件魔改版 Obsidian上的工具栏.md"
-    },
-    {
-      "basename": "彩色时钟",
-      "path": "88-Template/彩色时钟.md"
     },
     {
       "basename": "常用工具",
       "path": "88-Template/常用工具.md"
     },
     {
-      "basename": "40-Booknote",
-      "path": "40-Booknote/40-Booknote.md"
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
     },
     {
       "basename": "🎵Music",
       "path": "88-Template/🎵Music.md"
     },
     {
-      "basename": "booknote插件-更好的pdf office文档阅读和标注神器",
-      "path": "00-Tips/▪插件介绍/booknote插件-更好的pdf office文档阅读和标注神器.md"
+      "basename": "彩色时钟",
+      "path": "88-Template/彩色时钟.md"
     },
     {
-      "basename": "如何导出dataview表格 或者普通表格成csv格式？",
-      "path": "00-Tips/如何导出dataview表格 或者普通表格成csv格式？.md"
+      "basename": "react_cat",
+      "path": "88-Template/ReactJS/react_cat.md"
     },
     {
-      "basename": "▪插件介绍",
-      "path": "00-Tips/▪插件介绍/▪插件介绍.md"
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
     },
     {
-      "basename": "进度条样式片段",
-      "path": "77-Example/进度条样式片段.md"
-    },
-    {
-      "basename": "各类列表和彩虹大纲线",
-      "path": "77-Example/各类列表和彩虹大纲线.md"
-    },
-    {
-      "basename": "未命名",
-      "path": "未命名.md"
-    },
-    {
-      "basename": "◾ Dataview相关实例",
-      "path": "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md"
-    },
-    {
-      "basename": "88-Template",
-      "path": "88-Template/88-Template.md"
-    },
-    {
-      "basename": "Dataview 卡片笔记",
-      "path": "Dataview 卡片笔记.md"
+      "basename": "10-Help",
+      "path": "10-Help/10-Help.md"
     },
     {
       "basename": "20-Diary",
       "path": "20-Diary/20-Diary.md"
     },
     {
-      "basename": "2022-05-17",
-      "path": "20-Diary/2022-05-17.md"
+      "basename": "各级标题示例",
+      "path": "77-Example/各级标题示例.md"
     },
     {
-      "basename": "2022-05-24",
-      "path": "20-Diary/2022-05-24.md"
+      "basename": "如何在Obsidian中添加图书卡片",
+      "path": "00-Tips/如何在Obsidian中添加图书卡片.md"
     },
     {
-      "basename": "2022-06-07",
-      "path": "20-Diary/2022-06-07.md"
+      "basename": "Mermaid从入门到入土",
+      "path": "10-Help/Mermaid从入门到入土.md"
     },
     {
-      "basename": "2022-06-13",
-      "path": "20-Diary/2022-06-13.md"
+      "basename": "Obsidian 库中库玩法",
+      "path": "00-Tips/Obsidian 库中库玩法.md"
     },
     {
-      "basename": "2022-06-25",
-      "path": "20-Diary/2022-06-25.md"
+      "basename": "让子弹飞（本地封面图片测试）",
+      "path": "30-Reading/让子弹飞（本地封面图片测试）.md"
     },
     {
-      "basename": "2022-01-25",
-      "path": "20-Diary/2022-01-25.md"
+      "basename": "如何在dataview查询使用本地图片",
+      "path": "00-Tips/如何在dataview查询使用本地图片.md"
+    },
+    {
+      "basename": "Blue topaz--style setting 插件设置内容 简介",
+      "path": "10-Help/Blue topaz--style setting 插件设置内容 简介.md"
+    },
+    {
+      "basename": "40-Booknote",
+      "path": "40-Booknote/40-Booknote.md"
     },
     {
       "basename": "2022-01-09",
       "path": "20-Diary/2022-01-09.md"
     },
     {
-      "basename": "2022-03-21",
-      "path": "20-Diary/2022-03-21.md"
+      "basename": "如何导出dataview表格 或者普通表格成csv格式？",
+      "path": "00-Tips/如何导出dataview表格 或者普通表格成csv格式？.md"
     },
     {
-      "basename": "FastStart-Plugins-ShortDelay",
-      "path": "88-Template/FastStart-Plugins-ShortDelay.md"
+      "basename": "如何在Obsidian中添加电影卡片",
+      "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
     },
     {
-      "basename": "FastStart-Plugins-simple",
-      "path": "88-Template/FastStart-Plugins-simple.md"
+      "basename": "如何快速生成MOC(文件夹的文件目录列表)？",
+      "path": "00-Tips/如何快速生成MOC(文件夹的文件目录列表)？.md"
     },
     {
-      "basename": "FastStart-StartupScript",
-      "path": "88-Template/FastStart-StartupScript.md"
+      "basename": "如何提高Obsidian的启动速度？",
+      "path": "00-Tips/如何提高Obsidian的启动速度？.md"
     },
     {
-      "basename": "获取最近打开的文件列表",
-      "path": "77-Example/◾ Dataview相关实例/获取最近打开的文件列表.md"
+      "basename": "魔方配色设置说明",
+      "path": "00-Tips/魔方配色设置说明.md"
     },
     {
-      "basename": "books-data",
-      "path": "40-Booknote/books-data/books-data.md"
+      "basename": "示例库移植说明",
+      "path": "00-Tips/示例库移植说明/示例库移植说明.md"
     },
     {
-      "basename": "电影看板",
-      "path": "77-Example/◾ Dataview相关实例/电影看板.md"
+      "basename": "🎶影音数据库",
+      "path": "30-Reading/🎶影音数据库.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
+    },
+    {
+      "basename": "50-Inbox",
+      "path": "50-Inbox/50-Inbox.md"
+    },
+    {
+      "basename": "77-Example",
+      "path": "77-Example/77-Example.md"
+    },
+    {
+      "basename": "2022-04-07",
+      "path": "20-Diary/2022-04-07.md"
+    },
+    {
+      "basename": "2022-04-08",
+      "path": "20-Diary/2022-04-08.md"
+    },
+    {
+      "basename": "2022-04-16",
+      "path": "20-Diary/2022-04-16.md"
+    },
+    {
+      "basename": "2022-04-02",
+      "path": "20-Diary/2022-04-02.md"
+    },
+    {
+      "basename": "2022-01-25",
+      "path": "20-Diary/2022-01-25.md"
+    },
+    {
+      "basename": "99-Attachment",
+      "path": "99-Attachment/99-Attachment.md"
+    },
+    {
+      "basename": "首行缩进--以2022政府工作报告为例",
+      "path": "77-Example/◾ Cssclass声明样式举例/首行缩进--以2022政府工作报告为例.md"
+    },
+    {
+      "basename": "图片横排布局以及添加标题",
+      "path": "77-Example/图片横排布局以及添加标题.md"
+    },
+    {
+      "basename": "《从零开始的女性主义》",
+      "path": "30-Reading/《从零开始的女性主义》.md"
+    },
+    {
+      "basename": "tp-人物模板",
+      "path": "88-Template/tp/tp-人物模板.md"
+    },
+    {
+      "basename": "tp-通用模板",
+      "path": "88-Template/tp/tp-通用模板.md"
+    },
+    {
+      "basename": "tp-笔记收集箱",
+      "path": "88-Template/tp/tp-笔记收集箱.md"
+    },
+    {
+      "basename": "tp-流水账模板",
+      "path": "88-Template/tp/tp-流水账模板.md"
+    },
+    {
+      "basename": "tp-笔记分类模板",
+      "path": "88-Template/tp/tp-笔记分类模板.md"
+    },
+    {
+      "basename": "tp-默认笔记模板",
+      "path": "88-Template/tp/tp-默认笔记模板.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
+    },
+    {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "tp-自动选择模板",
+      "path": "88-Template/tp/tp-自动选择模板.md"
     }
   ],
   "omittedPaths": [],

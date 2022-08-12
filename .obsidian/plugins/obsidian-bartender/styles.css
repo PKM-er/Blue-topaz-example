@@ -39,7 +39,7 @@ div.separator svg {
 .side-dock-ribbon div.separator svg {
   -webkit-mask-image: var(--up-indicator);
 }
-.side-dock-ribbon div.separator.is-collapsed.sortable-chosen svg {
+.side-dock-ribbon div.separator.is-collapsed.bt-sortable-chosen svg {
   /* so that the icon updates to show the expand icon on drag start */
   -webkit-mask-image: var(--up-indicator);
 }
@@ -60,7 +60,7 @@ div.separator svg {
 .hider-ribbon .side-dock-ribbon div.separator svg {
   -webkit-mask-image: var(--left-indicator);
 }
-.hider-ribbon .side-dock-ribbon div.separator.is-collapsed.sortable-chosen svg {
+.hider-ribbon .side-dock-ribbon div.separator.is-collapsed.bt-sortable-chosen svg {
   /* so that the icon updates to show the expand icon on drag start */
   -webkit-mask-image: var(--left-indicator);
 }
@@ -95,7 +95,7 @@ div.separator svg {
 }
 
 .status-bar div.separator svg,
-.status-bar div.separator.is-collapsed.sortable-chosen svg {
+.status-bar div.separator.is-collapsed.bt-sortable-chosen svg {
   -webkit-mask-image: var(--right-indicator);
 }
 
@@ -103,9 +103,9 @@ div.separator svg {
   -webkit-mask-image: var(--left-indicator);
 }
 
-.side-dock-ribbon div.side-dock-ribbon-action.sortable-chosen,
-.side-dock-ribbon div.separator.sortable-chosen,
-.status-bar div.separator.sortable-chosen {
+.side-dock-ribbon div.side-dock-ribbon-action.bt-sortable-chosen,
+.side-dock-ribbon div.separator.bt-sortable-chosen,
+.status-bar div.separator.bt-sortable-chosen {
   --cursor: grabbing;
   cursor: grabbing;
 }
@@ -138,3 +138,4 @@ div.nav-action-button[data-sort-method] + div.nav-action-button.drag-to-rearrang
 div.nav-action-button[data-sort-method="custom"] + div.nav-action-button.drag-to-rearrange {
   display: block;
 }
+.nav-files-container .sortable-fallback { display: none;}

@@ -1,6 +1,6 @@
 ---
-cssclass: code-wrap
-usage: 代码块自动换行
+cssclass: "code-wrap"
+usage: "代码块自动换行"
 ---
 
 > 这是一个代码块自动换行的样式示例，需要在yaml区域声明cssclass

@@ -29,5 +29,6 @@
   "showIndentGuide": true,
   "userIgnoreFilters": [
     "88-Template/"
-  ]
+  ],
+  "trashOption": "system"
 }

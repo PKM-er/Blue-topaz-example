@@ -1,5 +1,5 @@
 ---
-cssclass: purpleRed,wideTable, fixedFc
+cssclass: "purpleRed,wideTable, fixedFc"
 ---
 
 # Purple Red table

@@ -52,4 +52,21 @@
 body .recent-files-donation{
     text-align:left;	
 }
-  
+
+
+/*设置 *斜体* 语法为镂空+下划线效果
+.cm-em ,.markdown-preview-view em{
+    font-style: normal;
+    text-decoration: underline;
+    text-decoration-color: var(--text-normal);
+    color: transparent;
+    background-color: transparent;
+}
+
+/*鼠标触击时恢复文字颜色及背景色
+.cm-em:hover ,.markdown-preview-view em:hover{
+    color: var(--text-normal);
+    background-color: transparent;
+}
+
+*/

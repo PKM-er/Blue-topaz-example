@@ -1,0 +1,6 @@
+.bif-boolean-toggle {
+	width: 15px;
+	height: 15px;
+	filter: hue-rotate(42deg);
+	vertical-align: sub !important;
+}

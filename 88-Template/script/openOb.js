@@ -2,7 +2,7 @@ module.exports = startob
 
 async function startob () {
  let msg = "第一次运行，需要打开库文件夹，并选择'20-Diary'目录作为库打开，否则会报错。";
- await ToastMessage(`${msg}`,20, async ()=>{execommand('打开其他库')  });
+ await ToastMessage(`${msg}`,20, async ()=>{execommand('打开其他仓库')  });
  window.open('obsidian://open?vault=20-Diary')
 }
 

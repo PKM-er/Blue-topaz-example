@@ -1,14 +1,13 @@
 ---
 banner: "99-Attachment/banner/book.jpg"
-cssclass: cards
-usage: 对dataview表格渲染成卡片视图
-banner: "99-Attachment/banner/book.jpg"
-obsidianUIMode: preview
+cssclass: "cards"
+usage: "对dataview表格渲染成卡片视图"
+obsidianUIMode: "preview"
 banner_x: 0.5
 banner_y: 0.5
-updated:: 2022-04-08 14:54:36
-created:: 2022-02-16 14:32:20
-title: 图书阅读清单-状态控制
+updated:: "2022-04-08 14:54:36"
+created:: "2022-02-16 14:32:20"
+title: "图书阅读清单-状态控制"
 ---
 
 

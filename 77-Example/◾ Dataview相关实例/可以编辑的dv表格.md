@@ -1,10 +1,8 @@
 ---
-created: 2022-04-24 14:18
-updated: 2022-04-26 09:01
+created: "2022-04-24 14:18"
+updated: "2022-04-26 09:01"
 ---
 > 通过把dataview查询的yaml字段用button按钮替代，就可以实现点击字段名称即可修改。根据字段类型可以选择下拉框，建议框，日期输入框，文本输入框等
-
-
 
 ```dataviewjs
 //BlueTopaz example
@@ -37,10 +35,17 @@ const dropdown1 = async(file, key) => {
         await update(key, value, file);
 }
 
-
+//是否确定框
+const yesNoPrompt = async(file, key,head,text) => {
+const value = await app.plugins.plugins['templater-obsidian'].templater.functions_generator.internal_functions.modules_array[4].static_functions.get('yesNoPrompt')(head,text);
+if(value)
+console.log("yes")
+if(!value)
+console.log("false")
+}
 //文本输入框
 const inputMaker =async (file,key,values,initial)=>{
-	 const value = await app.plugins.plugins['templater-obsidian'].templater.functions_generator.internal_functions.modules_array[4].static_functions.get('prompt')("请输入"+key,values??initial,true);
+	 const value = await app.plugins.plugins['templater-obsidian'].templater.functions_generator.internal_functions.modules_array[4].static_functions.get('prompt')("请输入"+key,values!=null?values.toString():initial,true,true);
 	 await update(key, value, file)
 }
 //建议框
@@ -74,7 +79,7 @@ const pages = dv.pages("#book")
 	createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
 	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
 	createButton({app, el: this.container, args: {name: t['readtime']?formatDate(t['readtime']):'更新',class:'tiny'}, clickOverride: {click: inputdate, params: [t.file.path, 'readtime',t['readtime']]}}),
-	
+	createButton({app, el: this.container, args: {name: '❌',class:'tiny'}, clickOverride: {click: yesNoPrompt, params: [t.file.path, 'updated','是否删除',t['updated']]}}),
 	createButton({app, el: this.container, args: {name: '22',class:'tiny'}, clickOverride: {click: dropdown1, params: [t.file.path, 'updated',t['updated']]}})
 	]);
 //生成表格

@@ -1,7 +1,5 @@
 ---
-
-kanban-plugin: basic
-
+kanban-plugin: "basic"
 ---
 
 ## Project 1

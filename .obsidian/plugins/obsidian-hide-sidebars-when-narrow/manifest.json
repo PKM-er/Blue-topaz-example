@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-hide-sidebars-when-narrow",
+	"name": "Hide Sidebars When Narrow",
+	"version": "1.0.2",
+	"minAppVersion": "0.12.12",
+	"description": "Automatically hides the sidebars when your window is narrow.",
+	"author": "Michael Hanson",
+	"authorUrl": "https://github.com/mybuddymichael",
+	"isDesktopOnly": true
+}

@@ -2741,10 +2741,11 @@ var import_obsidian11 = __toModule(require("obsidian"));
 // src/core/functions/internal_functions/system/PromptModal.ts
 var import_obsidian9 = __toModule(require("obsidian"));
 var PromptModal = class extends import_obsidian9.Modal {
-  constructor(app, prompt_text, default_value) {
+  constructor(app, prompt_text, default_value, multi_line) {
     super(app);
     this.prompt_text = prompt_text;
     this.default_value = default_value;
+	 this.multi_line = multi_line;
     this.submitted = false;
   }
   onOpen() {
@@ -2761,21 +2762,48 @@ var PromptModal = class extends import_obsidian9.Modal {
     var _a;
     const div = this.contentEl.createDiv();
     div.addClass("templater-prompt-div");
-    const form = div.createEl("form");
-    form.addClass("templater-prompt-form");
-    form.type = "submit";
-    form.onsubmit = (e) => {
-      this.submitted = true;
-      e.preventDefault();
-      this.resolve(this.promptEl.value);
-      this.close();
-    };
-    this.promptEl = form.createEl("input");
-    this.promptEl.type = "text";
-    this.promptEl.placeholder = "Type text here...";
-    this.promptEl.value = (_a = this.default_value) != null ? _a : "";
-    this.promptEl.addClass("templater-prompt-input");
-    this.promptEl.select();
+    let textInput;
+    if (this.multi_line) {
+      textInput = new import_obsidian9.TextAreaComponent(div);
+      const buttonDiv = this.contentEl.createDiv();
+      buttonDiv.addClass("templater-button-div");
+      const submitButton = new import_obsidian9.ButtonComponent(buttonDiv);
+      submitButton.buttonEl.addClass("mod-cta");
+      submitButton.setButtonText("Submit").onClick((evt) => {
+        this.resolveAndClose(evt);
+      });
+    } else {
+      textInput = new import_obsidian9.TextComponent(div);
+    }
+    textInput.inputEl.addClass("templater-prompt-input");
+    textInput.setValue((_a = this.default_value) != null ? _a : "");
+    textInput.setPlaceholder("Type text here");
+    textInput.onChange((value) => this.value = value);
+    textInput.inputEl.addEventListener("keydown", (evt) => this.enterCallback(evt));
+  }
+  enterCallback(evt) {
+    if (this.multi_line) {
+      if (import_obsidian9.Platform.isDesktop) {
+        if (evt.shiftKey && evt.key === "Enter") {
+        } else if (evt.key === "Enter") {
+          this.resolveAndClose(evt);
+        }
+      } else {
+        if (evt.key === "Enter") {
+          evt.preventDefault();
+        }
+      }
+    } else {
+      if (evt.key === "Enter") {
+        this.resolveAndClose(evt);
+      }
+    }
+  }
+  resolveAndClose(evt) {
+    this.submitted = true;
+    evt.preventDefault();
+    this.resolve(this.value);
+    this.close();
   }
   openAndGetValue(resolve2, reject) {
     return __async(this, null, function* () {
@@ -2785,6 +2813,8 @@ var PromptModal = class extends import_obsidian9.Modal {
     });
   }
 };
+
+
 var PromptModal2 = class extends import_obsidian9.Modal {
   constructor(app, prompt_text, default_value) {
     super(app);
@@ -2821,7 +2851,6 @@ var PromptModal2 = class extends import_obsidian9.Modal {
 		evt.preventDefault();
          this.values=this.promptEl.value;
         })
-	this.values = this.default_value;
     this.promptEl = form.createEl("input");
     this.promptEl.type = "date";
     this.promptEl.placeholder = "Choose date here...";
@@ -2838,6 +2867,52 @@ var PromptModal2 = class extends import_obsidian9.Modal {
     });
   }
 };
+
+var GenericYesNoPrompt = class extends import_obsidian9.Modal  {
+    constructor(app, header, text) {
+        super(app);
+        this.header = header;
+        this.text = text;
+        this.didSubmit = false;
+        this.waitForClose = new Promise((resolve, reject) => {
+            this.resolvePromise = resolve;
+            this.rejectPromise = reject;
+        });
+        this.open();
+        this.display();
+    }
+    static Prompt(app, header, text) {
+        const newPromptModal = new GenericYesNoPrompt(app, header, text);
+        return newPromptModal.waitForClose;
+    }
+    display() {
+        this.containerEl.addClass('quickAddModal', 'qaYesNoPrompt');
+        this.contentEl.empty();
+        this.titleEl.textContent = this.header;
+        this.contentEl.createEl('p').innerHTML =this.text;
+        const buttonsDiv = this.contentEl.createDiv({ cls: 'yesNoPromptButtonContainer' });
+        new import_obsidian9.ButtonComponent(buttonsDiv)
+            .setButtonText('No')
+            .onClick(() => this.submit(false));
+        const yesButton = new import_obsidian9.ButtonComponent(buttonsDiv)
+            .setButtonText('Yes')
+            .onClick(() => this.submit(true))
+            .setWarning();
+        yesButton.buttonEl.focus();
+    }
+    submit(input) {
+        this.input = input;
+        this.didSubmit = true;
+        this.close();
+    }
+    onClose() {
+        super.onClose();
+        if (!this.didSubmit)
+            this.rejectPromise("No answer given.");
+        else
+            this.resolvePromise(this.input);
+    }
+}
 
 // src/core/functions/internal_functions/system/SuggesterModal.ts
 var import_obsidian10 = __toModule(require("obsidian"));
@@ -2892,6 +2967,7 @@ var InternalModuleSystem = class extends InternalModule {
       this.static_functions.set("clipboard", this.generate_clipboard());
       this.static_functions.set("prompt", this.generate_prompt());
 	  this.static_functions.set("prompt_date", this.generate_prompt_date());
+	    this.static_functions.set("yesNoPrompt", this.generate_yesNoPrompt());
       this.static_functions.set("suggester", this.generate_suggester());
     });
   }
@@ -2908,8 +2984,8 @@ var InternalModuleSystem = class extends InternalModule {
     });
   }
   generate_prompt() {
-    return (prompt_text, default_value, throw_on_cancel = false) => __async(this, null, function* () {
-      const prompt = new PromptModal(this.app, prompt_text, default_value);
+    return (prompt_text, default_value, throw_on_cancel = false, multi_line = false) => __async(this, null, function* () {
+      const prompt = new PromptModal(this.app, prompt_text, default_value, multi_line);
       const promise = new Promise((resolve2, reject) => prompt.openAndGetValue(resolve2, reject));
       try {
         return yield promise;
@@ -2932,6 +3008,20 @@ var InternalModuleSystem = class extends InternalModule {
           throw error;
         }
         return null;
+      }
+    });
+  }
+   generate_yesNoPrompt() {
+    return (header, text, throw_on_cancel = false) => __async(this, null, function* () {
+     // const prompt =  new GenericYesNoPrompt(this.app, header, text);
+      const promise = GenericYesNoPrompt.Prompt(this.app, header, text);
+      try {
+       return yield promise;
+      } catch (error) {
+        if (throw_on_cancel) {
+          throw error;
+        }
+        return false;
       }
     });
   }

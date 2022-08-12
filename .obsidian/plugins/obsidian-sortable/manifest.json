@@ -1,7 +1,7 @@
 {
     "id": "obsidian-sortable",
     "name": "Sortable",
-    "version": "0.2.5",
+    "version": "0.2.6",
     "minAppVersion": "0.12.0",
     "description": "Wiki-like table sorting.",
     "author": "Alexandru Dinu",

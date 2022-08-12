@@ -1,0 +1,89 @@
+{
+  "settings_version": "0.14.0",
+  "debug": false,
+  "obsidian_command_palette_prefix": "Execute: ",
+  "preview_variables_in_command_palette": true,
+  "show_autocomplete_menu": true,
+  "working_directory": "",
+  "default_shells": {},
+  "environment_variable_path_augmentations": {},
+  "error_message_duration": 20,
+  "notification_message_duration": 10,
+  "output_channel_clipboard_also_outputs_to_notification": true,
+  "enable_events": true,
+  "approve_modals_by_pressing_enter_key": true,
+  "max_visible_lines_in_shell_command_fields": false,
+  "shell_commands": {
+    "0": {
+      "platform_specific_commands": {
+        "default": "code --goto {{event_file_path:absolute}}"
+      },
+      "shells": {},
+      "alias": "使用VScode打开",
+      "icon": "file-code",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "output_channels": {
+        "stdout": "ignore",
+        "stderr": "notification"
+      },
+      "output_channel_order": "stdout-first",
+      "events": {
+        "file-menu": {
+          "enabled": true
+        }
+      },
+      "command_palette_availability": "enabled",
+      "preactions": [],
+      "variable_default_values": {}
+    },
+    "1": {
+      "platform_specific_commands": {
+        "default": "code --goto {{event_folder_path:absolute}}"
+      },
+      "shells": {},
+      "alias": "使用VScode打开",
+      "icon": "file-code",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "output_channels": {
+        "stdout": "ignore",
+        "stderr": "notification"
+      },
+      "output_channel_order": "stdout-first",
+      "events": {
+        "folder-menu": {
+          "enabled": true
+        }
+      },
+      "command_palette_availability": "enabled",
+      "preactions": [],
+      "variable_default_values": {}
+    },
+    "2": {
+      "platform_specific_commands": {
+        "default": "F:\\系统工具\\XYplorer22.40\\XYplorer.exe  /select=\"{{event_file_path:absolute}}\""
+      },
+      "shells": {},
+      "alias": "使用XYplorer打开",
+      "icon": "folder-minus",
+      "confirm_execution": false,
+      "ignore_error_codes": [],
+      "output_channels": {
+        "stdout": "ignore",
+        "stderr": "notification"
+      },
+      "output_channel_order": "stdout-first",
+      "events": {
+        "file-menu": {
+          "enabled": true
+        }
+      },
+      "command_palette_availability": "enabled",
+      "preactions": [],
+      "variable_default_values": {}
+    }
+  },
+  "prompts": [],
+  "custom_variables": []
+}

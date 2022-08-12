@@ -1,6 +1,9 @@
 {
   "waypointFlag": "%% moc %%",
   "stopScanAtFolderNotes": false,
-  "showFolderNotes": true,
-  "debugLogging": false
+  "showFolderNotes": false,
+  "debugLogging": false,
+  "useWikiLinks": true,
+  "showEnclosingNote": false,
+  "folderNoteType": "INSIDE_FOLDER"
 }

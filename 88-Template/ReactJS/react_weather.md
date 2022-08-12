@@ -16,7 +16,7 @@ return (
 		<iframe
       title="iframe"
       src={weathersrc}
-      style={{ width: 245, border: 0, height: 20 }}
+      style={{marginLeft:'10%',width: 245, border: 0, height: 20 }}
       sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
       scrolling="no"
     ></iframe>

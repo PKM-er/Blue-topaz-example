@@ -1,5 +1,5 @@
 ---
-cssclass: kanban gridlist
+cssclass: kanban gridlist noyaml
 tag: moc
 obsidianUIMode: preview
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
@@ -13,6 +13,7 @@ obsidianUIMode: preview
 	- [[echarts-词云]]
 	- [[echarts-日历]]
 	- [[echarts-扇形图]]
+	- [[echarts-西游记人物关系]]
 	- [[echarts-柱形图]]
 	- [[echarts-drawing]]
 	- [[echarts-treemap]]
