@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Changlog.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": false,
             "source": false
           }
@@ -128,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Changlog.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -159,7 +159,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Changlog.md",
+                "file": "88-Template/home.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -176,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Changlog.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -221,17 +221,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "81fb2bb3dad564cd",
+  "active": "f2c2f4dfc8473d58",
   "lastOpenFiles": [
+    "Changlog.md",
+    "88-Template/彩色时钟.md",
+    "30-Reading/cesces.md",
+    "30-Reading/30-Reading.md",
+    "00-Tips/00-Tips.md",
+    "00-Tips/插件介绍/插件介绍.md",
+    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
     "88-Template/home.md",
     "88-Template/常用工具.md",
-    "Changlog.md",
-    "#now.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "88-Template/🎵Music.md",
-    "88-Template/彩色时钟.md",
-    "88-Template/ReactJS/caidan.md",
-    "88-Template/ReactJS/react_cat.md",
-    "20220812205103.md"
+    "#now.md"
   ]
 }

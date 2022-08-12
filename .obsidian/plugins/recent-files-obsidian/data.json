@@ -1,12 +1,32 @@
 {
   "recentFiles": [
     {
+      "basename": "home",
+      "path": "88-Template/home.md"
+    },
+    {
       "basename": "Changlog",
       "path": "Changlog.md"
     },
     {
-      "basename": "home",
-      "path": "88-Template/home.md"
+      "basename": "彩色时钟",
+      "path": "88-Template/彩色时钟.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
+    },
+    {
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
+    },
+    {
+      "basename": "插件介绍",
+      "path": "00-Tips/插件介绍/插件介绍.md"
+    },
+    {
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
     },
     {
       "basename": "常用工具",
@@ -21,16 +41,8 @@
       "path": "88-Template/🎵Music.md"
     },
     {
-      "basename": "彩色时钟",
-      "path": "88-Template/彩色时钟.md"
-    },
-    {
       "basename": "react_cat",
       "path": "88-Template/ReactJS/react_cat.md"
-    },
-    {
-      "basename": "00-Tips",
-      "path": "00-Tips/00-Tips.md"
     },
     {
       "basename": "10-Help",
@@ -103,10 +115,6 @@
     {
       "basename": "🎶影音数据库",
       "path": "30-Reading/🎶影音数据库.md"
-    },
-    {
-      "basename": "30-Reading",
-      "path": "30-Reading/30-Reading.md"
     },
     {
       "basename": "50-Inbox",
@@ -187,10 +195,6 @@
     {
       "basename": "README",
       "path": "README.md"
-    },
-    {
-      "basename": "tp-自动选择模板",
-      "path": "88-Template/tp/tp-自动选择模板.md"
     }
   ],
   "omittedPaths": [],

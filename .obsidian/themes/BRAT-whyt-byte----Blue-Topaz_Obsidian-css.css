@@ -8340,7 +8340,9 @@ body.color-scheme-options-simplicity-topaz .nav-action-button.is-active {
   background-color: var(--simple-blue-2);
  
 }
-
+body.color-scheme-options-simplicity-topaz .checkbox-container.is-enabled {
+  background-color: var(--interactive-accent-hover);
+}
 
 
 /* Hide dock's tab menu, and show them when hovered  */
@@ -9629,6 +9631,11 @@ body.tag-clear-style .cm-s-obsidian span.cm-hashtag-begin+.cm-hashtag.cm-meta {
   color: var(--text-accent) !important;
   text-decoration: underline;
   padding: 0;
+}
+
+body.tag-clear-style .cm-s-obsidian span.cm-hashtag-begin+span.cm-hashtag.cm-meta+span.cm-hashtag.cm-hashtag-end
+{
+  background-color: transparent;
 }
 
 .cm-s-obsidian:not([class="markdown-source-view cm-s-obsidian mod-cm6"]) .cm-formatting.cm-formatting-hashtag.cm-hashtag.cm-hashtag-begin.cm-meta.cm-tag-dailynote,
