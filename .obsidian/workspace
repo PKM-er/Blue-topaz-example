@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Changlog.md",
+            "file": "30-Reading/《世界是如何思考的》.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -67,8 +67,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "d877e8285f98a38a",
@@ -128,7 +127,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Changlog.md"
+                "file": "30-Reading/《世界是如何思考的》.md"
               }
             }
           },
@@ -159,7 +158,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Changlog.md",
+                "file": "30-Reading/《世界是如何思考的》.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -176,7 +175,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Changlog.md",
+                "file": "30-Reading/《世界是如何思考的》.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -219,19 +218,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265
+    "width": 265,
+    "collapsed": true
   },
-  "active": "81fb2bb3dad564cd",
+  "active": "37c8f55a8ef7a09c",
   "lastOpenFiles": [
-    "88-Template/home.md",
-    "88-Template/常用工具.md",
+    "30-Reading/《从零开始的女性主义》.md",
+    "30-Reading/认知觉醒：开启自我改变的原动力.md",
     "Changlog.md",
+    "88-Template/home.md",
+    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+    "88-Template/常用工具.md",
     "#now.md",
     "00-Tips/🥑Blue Topaz Themes Tips.md",
     "88-Template/🎵Music.md",
-    "88-Template/彩色时钟.md",
-    "88-Template/ReactJS/caidan.md",
-    "88-Template/ReactJS/react_cat.md",
-    "20220812205103.md"
+    "88-Template/彩色时钟.md"
   ]
 }

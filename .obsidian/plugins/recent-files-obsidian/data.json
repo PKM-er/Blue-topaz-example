@@ -1,12 +1,28 @@
 {
   "recentFiles": [
     {
+      "basename": "《世界是如何思考的》",
+      "path": "30-Reading/《世界是如何思考的》.md"
+    },
+    {
+      "basename": "《从零开始的女性主义》",
+      "path": "30-Reading/《从零开始的女性主义》.md"
+    },
+    {
+      "basename": "认知觉醒：开启自我改变的原动力",
+      "path": "30-Reading/认知觉醒：开启自我改变的原动力.md"
+    },
+    {
       "basename": "Changlog",
       "path": "Changlog.md"
     },
     {
       "basename": "home",
       "path": "88-Template/home.md"
+    },
+    {
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
     },
     {
       "basename": "常用工具",
@@ -149,10 +165,6 @@
       "path": "77-Example/图片横排布局以及添加标题.md"
     },
     {
-      "basename": "《从零开始的女性主义》",
-      "path": "30-Reading/《从零开始的女性主义》.md"
-    },
-    {
       "basename": "tp-人物模板",
       "path": "88-Template/tp/tp-人物模板.md"
     },
@@ -187,10 +199,6 @@
     {
       "basename": "README",
       "path": "README.md"
-    },
-    {
-      "basename": "tp-自动选择模板",
-      "path": "88-Template/tp/tp-自动选择模板.md"
     }
   ],
   "omittedPaths": [],
