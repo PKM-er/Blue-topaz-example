@@ -2,7 +2,8 @@
 created: "2022-04-24 14:18"
 updated: "2022-04-26 09:01"
 ---
-> 通过把dataview查询的yaml字段用button按钮替代，就可以实现点击字段名称即可修改。根据字段类型可以选择下拉框，建议框，日期输入框，文本输入框等
+> - 通过把dataview查询的yaml字段用button按钮替代，就可以实现点击字段名称即可修改。根据字段类型可以选择下拉框，建议框，日期输入框，文本输入框等
+> - 另一种方式是借助[dbfolder](obsidian://show-plugin?id=dbfolder) 实现可以编辑的dv表格，可以更新和创建不存在的字段，参考[[🎶影音数据库]]
 
 ```dataviewjs
 //BlueTopaz example

@@ -273,6 +273,7 @@
             "Enter the city name": "武汉",
             "City name": ""
           }
+<<<<<<< HEAD
         },
         {
           "name": "Wait",
@@ -285,6 +286,8 @@
           "type": "Obsidian",
           "id": "e1e66c39-8248-431e-b3dc-83430e1f6283",
           "commandId": "homepage:open-homepage"
+=======
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
         }
       ],
       "runOnStartup": true

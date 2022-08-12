@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
+            "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
             "mode": "preview",
             "backlinks": false,
             "source": false
@@ -112,7 +112,11 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
+<<<<<<< HEAD
         "dimension": 36.340852130325814,
+=======
+        "dimension": 30,
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -128,7 +132,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
               }
             }
           },
@@ -151,7 +155,11 @@
       {
         "id": "0b3485207df574dd",
         "type": "tabs",
+<<<<<<< HEAD
         "dimension": 63.65914786967418,
+=======
+        "dimension": 70,
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
         "children": [
           {
             "id": "041c78328387b373",
@@ -159,10 +167,17 @@
             "state": {
               "type": "backlink",
               "state": {
+<<<<<<< HEAD
                 "file": "88-Template/home.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
+=======
+                "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
                 "showSearch": false,
                 "searchQuery": "",
                 "backlinkCollapsed": false,
@@ -176,7 +191,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -223,6 +238,7 @@
   },
   "active": "f2c2f4dfc8473d58",
   "lastOpenFiles": [
+<<<<<<< HEAD
     "Changlog.md",
     "88-Template/彩色时钟.md",
     "30-Reading/cesces.md",
@@ -233,5 +249,17 @@
     "88-Template/home.md",
     "88-Template/常用工具.md",
     "#now.md"
+=======
+    "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md",
+    "88-Template/home.md",
+    "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md",
+    "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md",
+    "77-Example/77-Example.md",
+    "88-Template/88-Template.md",
+    "未命名 1.md",
+    "77-Example/分栏效果示例.md",
+    "77-Example/图片横排布局以及添加标题.md",
+    "30-Reading/🎶影音数据库.md"
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
   ]
 }

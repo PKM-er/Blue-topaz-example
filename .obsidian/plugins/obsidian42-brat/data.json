@@ -16,7 +16,11 @@
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
+<<<<<<< HEAD
       "lastUpdate": "2022-08-12T14:02:30Z"
+=======
+      "lastUpdate": "2022-07-07T10:12:01Z"
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
     }
   ],
   "updateAtStartup": true,

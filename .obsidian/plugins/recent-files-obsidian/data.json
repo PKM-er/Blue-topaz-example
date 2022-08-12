@@ -1,10 +1,15 @@
 {
   "recentFiles": [
     {
+      "basename": "图书阅读清单-状态控制(dvjs)",
+      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单-状态控制(dvjs).md"
+    },
+    {
       "basename": "home",
       "path": "88-Template/home.md"
     },
     {
+<<<<<<< HEAD
       "basename": "Changlog",
       "path": "Changlog.md"
     },
@@ -47,12 +52,33 @@
     {
       "basename": "10-Help",
       "path": "10-Help/10-Help.md"
+=======
+      "basename": "图书阅读清单(dv)",
+      "path": "77-Example/◾ Cssclass声明样式举例/图书阅读清单(dv).md"
     },
     {
-      "basename": "20-Diary",
-      "path": "20-Diary/20-Diary.md"
+      "basename": "◾ Cssclass声明样式举例",
+      "path": "77-Example/◾ Cssclass声明样式举例/◾ Cssclass声明样式举例.md"
     },
     {
+      "basename": "77-Example",
+      "path": "77-Example/77-Example.md"
+    },
+    {
+      "basename": "88-Template",
+      "path": "88-Template/88-Template.md"
+    },
+    {
+      "basename": "未命名 1",
+      "path": "未命名 1.md"
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
+    },
+    {
+      "basename": "分栏效果示例",
+      "path": "77-Example/分栏效果示例.md"
+    },
+    {
+<<<<<<< HEAD
       "basename": "各级标题示例",
       "path": "77-Example/各级标题示例.md"
     },
@@ -83,24 +109,126 @@
     {
       "basename": "40-Booknote",
       "path": "40-Booknote/40-Booknote.md"
+=======
+      "basename": "图片横排布局以及添加标题",
+      "path": "77-Example/图片横排布局以及添加标题.md"
     },
     {
-      "basename": "2022-01-09",
-      "path": "20-Diary/2022-01-09.md"
+      "basename": "🎶影音数据库",
+      "path": "30-Reading/🎶影音数据库.md"
     },
     {
+      "basename": "README",
+      "path": "README.md"
+    },
+    {
+      "basename": "未命名",
+      "path": "未命名.md"
+    },
+    {
+      "basename": "《微习惯》",
+      "path": "30-Reading/《微习惯》.md"
+    },
+    {
+      "basename": "30-Reading",
+      "path": "30-Reading/30-Reading.md"
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
+    },
+    {
+      "basename": "📰数据化视图",
+      "path": "77-Example/📰数据化视图.md"
+    },
+    {
+<<<<<<< HEAD
       "basename": "如何导出dataview表格 或者普通表格成csv格式？",
       "path": "00-Tips/如何导出dataview表格 或者普通表格成csv格式？.md"
     },
     {
       "basename": "如何在Obsidian中添加电影卡片",
       "path": "00-Tips/如何在Obsidian中添加电影卡片.md"
+=======
+      "basename": "MarkDown教程 Obsidian版 2022.4.22",
+      "path": "10-Help/MarkDown教程 Obsidian版 2022.4.22.md"
+    },
+    {
+      "basename": "Changlog",
+      "path": "Changlog.md"
+    },
+    {
+      "basename": "button",
+      "path": "88-Template/button.md"
+    },
+    {
+      "basename": "文本处理-textce",
+      "path": "50-Inbox/文本处理-textce.md"
+    },
+    {
+      "basename": "通过下拉框检索文件示例",
+      "path": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
+    },
+    {
+      "basename": "fastgithub 加速访问Ob社区",
+      "path": "00-Tips/fastgithub 加速访问Ob社区.md"
+    },
+    {
+      "basename": "项目追踪（完成的字数和任务）",
+      "path": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md"
+    },
+    {
+      "basename": "随机显示文档中的图片和文字",
+      "path": "77-Example/◾ Dataview相关实例/随机显示文档中的图片和文字.md"
+    },
+    {
+      "basename": "获取指定标签的文件内容并形成表格",
+      "path": "77-Example/◾ Dataview相关实例/获取指定标签的文件内容并形成表格.md"
+    },
+    {
+      "basename": "文件夹所有标签",
+      "path": "77-Example/◾ Dataview相关实例/文件夹所有标签.md"
+    },
+    {
+      "basename": "◾ Dataview相关实例",
+      "path": "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md"
+    },
+    {
+      "basename": "各级标题示例",
+      "path": "77-Example/各级标题示例.md"
+    },
+    {
+      "basename": "各类列表和彩虹大纲线",
+      "path": "77-Example/各类列表和彩虹大纲线.md"
+    },
+    {
+      "basename": "表格自定义样式",
+      "path": "77-Example/表格自定义样式.md"
+    },
+    {
+      "basename": "Image-grid【图片自适应】",
+      "path": "77-Example/◾ Cssclass声明样式举例/Image-grid【图片自适应】.md"
+    },
+    {
+      "basename": "10-Help",
+      "path": "10-Help/10-Help.md"
+    },
+    {
+      "basename": "可以编辑的dv表格",
+      "path": "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md"
+    },
+    {
+      "basename": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "basename": "获取当天过生日的人",
+      "path": "77-Example/◾ Dataview相关实例/获取当天过生日的人.md"
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
     },
     {
       "basename": "如何快速生成MOC(文件夹的文件目录列表)？",
       "path": "00-Tips/如何快速生成MOC(文件夹的文件目录列表)？.md"
     },
     {
+<<<<<<< HEAD
       "basename": "如何提高Obsidian的启动速度？",
       "path": "00-Tips/如何提高Obsidian的启动速度？.md"
     },
@@ -195,6 +323,66 @@
     {
       "basename": "README",
       "path": "README.md"
+=======
+      "basename": "00-Tips",
+      "path": "00-Tips/00-Tips.md"
+    },
+    {
+      "basename": "假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ",
+      "path": "30-Reading/假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ.md"
+    },
+    {
+      "basename": "扎克·施奈德版正义联盟 Zack Snyder's Justice League",
+      "path": "30-Reading/扎克·施奈德版正义联盟 Zack Snyder's Justice League.md"
+    },
+    {
+      "basename": "微信读书清单",
+      "path": "77-Example/◾ Dataview相关实例/微信读书清单.md"
+    },
+    {
+      "basename": "花束般的恋爱 花束みたいな恋をした",
+      "path": "30-Reading/花束般的恋爱 花束みたいな恋をした.md"
+    },
+    {
+      "basename": "认知觉醒：开启自我改变的原动力",
+      "path": "30-Reading/认知觉醒：开启自我改变的原动力.md"
+    },
+    {
+      "basename": "《Fundamentals of Computer Graphics 5th Edition》",
+      "path": "30-Reading/《Fundamentals of Computer Graphics 5th Edition》.md"
+    },
+    {
+      "basename": "《世界是如何思考的》",
+      "path": "30-Reading/《世界是如何思考的》.md"
+    },
+    {
+      "basename": "《苏联解体亲历记》",
+      "path": "30-Reading/《苏联解体亲历记》.md"
+    },
+    {
+      "basename": "《斜屋犯罪》1",
+      "path": "30-Reading/《斜屋犯罪》1.md"
+    },
+    {
+      "basename": "《知识生产与传播》",
+      "path": "30-Reading/《知识生产与传播》.md"
+    },
+    {
+      "basename": "《镰刀与城市》",
+      "path": "30-Reading/《镰刀与城市》.md"
+    },
+    {
+      "basename": "《领悟方法》",
+      "path": "30-Reading/⭐️⭐️⭐️/《领悟方法》.md"
+    },
+    {
+      "basename": "《笔醒山河》",
+      "path": "30-Reading/《笔醒山河》.md"
+    },
+    {
+      "basename": "《如何阅读尼采》",
+      "path": "30-Reading/《如何阅读尼采》.md"
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
     }
   ],
   "omittedPaths": [],

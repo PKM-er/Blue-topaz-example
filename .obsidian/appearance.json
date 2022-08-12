@@ -1,5 +1,9 @@
 {
+<<<<<<< HEAD
   "baseFontSize": 15,
+=======
+  "baseFontSize": 17,
+>>>>>>> 1f5fdd2ec646e9be43a6f0ccfc1903bb5c22a73a
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
