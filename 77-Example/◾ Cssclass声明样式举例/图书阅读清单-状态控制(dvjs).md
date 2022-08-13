@@ -34,9 +34,9 @@ const buttonMaker = (pn, pv, fpath) => {
 
 
 const pages = dv.pages("#book")
-    .sort(t => t.rating, 'desc')
+    .sort(t => t.pageprogress/t.pagecount, 'desc')
     //.where(t => t.status != "Completed")
-	.where(t => t.file.folder !="88-Template" )
+	.where(t => !t.file.folder.includes("88-Template") )
     .map(t =>  ["![]("+t.cover+")" ,"<progress value=" + t.pageprogress + " max=" +t.pagecount+" class='hot'>", t.file.link, t.author ,t.rating,buttonMaker('grade',t.grade??'评级',t.file.path),buttonMaker('status',t.status??'状态',t.file.path)])
 
 

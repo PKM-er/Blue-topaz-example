@@ -56,7 +56,7 @@ function formatDate(date){
 const pages = dv.pages("#Movie")
     .sort(t => t.rating, 'desc')
     //.where(t => t.status != "Completed")
-	.where(t => t.file.folder !="88-Template" )
+	.where(t => !t.file.folder.includes("88-Template") )
     .map(t =>  [`![](${filePath(t.cover??'')})` , t.file.link, t.year,t.rating,
     createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
 	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
@@ -108,7 +108,7 @@ function formatDate(date){
 const pages = dv.pages("#Movie")
     .sort(t => t.rating, 'desc')
     //.where(t => t.status != "Completed")
-	.where(t => t.file.folder !="88-Template" )
+	.where(t => !t.file.folder.includes("88-Template") )
     .map(t =>  [t.image?dv.span(`${'!'+t.image}`):`![](${filePath(t.cover??'')})`, t.file.link, t.year,t.rating,
     createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
 	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),

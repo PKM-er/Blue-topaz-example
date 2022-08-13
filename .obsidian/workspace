@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "81fb2bb3dad564cd",
+        "id": "fc371ae36bc5eac7",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
+            "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
             "mode": "preview",
             "backlinks": false,
             "source": false
@@ -26,7 +26,6 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
-        "dimension": 68.13048933500627,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -60,7 +59,7 @@
             }
           },
           {
-            "id": "f2c2f4dfc8473d58",
+            "id": "fca5b26d7aef0c07",
             "type": "leaf",
             "state": {
               "type": "file-tree-view",
@@ -69,37 +68,6 @@
           }
         ],
         "currentTab": 3
-      },
-      {
-        "id": "d877e8285f98a38a",
-        "type": "tabs",
-        "dimension": 31.869510664993726,
-        "children": [
-          {
-            "id": "b37bc3d287f74512",
-            "type": "leaf",
-            "state": {
-              "type": "recent-files",
-              "state": {}
-            }
-          },
-          {
-            "id": "80430a4f104c0c57",
-            "type": "leaf",
-            "state": {
-              "type": "graph",
-              "state": {}
-            }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
-              "state": {}
-            }
-          }
-        ]
       }
     ],
     "direction": "horizontal",
@@ -112,7 +80,6 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
-        "dimension": 36.340852130325814,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -128,57 +95,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
-              }
-            }
-          },
-          {
-            "id": "83061aceea29f566",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/彩色时钟.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": true
-              }
-            }
-          }
-        ],
-        "currentTab": 2
-      },
-      {
-        "id": "0b3485207df574dd",
-        "type": "tabs",
-        "dimension": 63.65914786967418,
-        "children": [
-          {
-            "id": "041c78328387b373",
-            "type": "leaf",
-            "state": {
-              "type": "backlink",
-              "state": {
-                "file": "88-Template/home.md",
-                "collapseAll": true,
-                "extraContext": true,
-                "sortOrder": "byModifiedTime",
-                "showSearch": false,
-                "searchQuery": "",
-                "backlinkCollapsed": false,
-                "unlinkedCollapsed": true
-              }
-            }
-          },
-          {
-            "id": "dc4a81bfd6624166",
-            "type": "leaf",
-            "state": {
-              "type": "outgoing-link",
-              "state": {
-                "file": "88-Template/home.md",
-                "linksCollapsed": false,
-                "unlinkedCollapsed": true
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md"
               }
             }
           },
@@ -194,20 +111,7 @@
             }
           },
           {
-            "id": "8851ccb0aa4e524a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/常用工具.md",
-                "mode": "preview",
-                "backlinks": true,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "4f457051e10f1a14",
+            "id": "6e02af8751b5488e",
             "type": "leaf",
             "state": {
               "type": "quiet-outline",
@@ -221,17 +125,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "f2c2f4dfc8473d58",
+  "active": "6e02af8751b5488e",
   "lastOpenFiles": [
+    "20-Diary/20-Diary.md",
     "88-Template/彩色时钟.md",
-    "20220813005724.md",
-    "88-Template/home.md",
-    "88-Template/常用工具.md",
+    "30-Reading/30-Reading.md",
+    "40-Booknote/40-Booknote.md",
+    "50-Inbox/50-Inbox.md",
     "Changlog.md",
-    "#now.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "88-Template/🎵Music.md",
-    "88-Template/ReactJS/caidan.md",
-    "88-Template/ReactJS/react_cat.md"
+    "README.md",
+    "88-Template/ReactJS/react_music.md",
+    "88-Template/ReactJS/ReactJS.md",
+    "88-Template/home.md"
   ]
 }

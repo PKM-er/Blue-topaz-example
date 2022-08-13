@@ -36,7 +36,5 @@ obsidianUIMode: preview
 	- [[雄狮少年]]
 	- [[悬崖之上]]
 	- [[扎克·施奈德版正义联盟 Zack Snyder's Justice League]]
-	- [[cesces]]
-	- [[cescesf]]
 
 %% End Waypoint %%

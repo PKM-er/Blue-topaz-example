@@ -73,7 +73,7 @@ const filePath = (file) =>
 const pages = dv.pages("#book")
     .sort(t => t.rating, 'desc')
     //.where(t => t.status != "Completed")
-	.where(t => t.file.folder !="88-Template" )
+	.where(t => !t.file.folder.includes("88-Template") )
 	.map(t => ["![]("+t.cover+")" ,t.file.link,t.author,t.rating,
 	createButton({app, el: this.container, args: {name: t.pageprogress??'阅读进度',class:'tiny'}, clickOverride: {click: inputMaker, params: [t.file.path, 'pageprogress',t.pageprogress]}}),
 	createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
