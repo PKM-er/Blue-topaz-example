@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 15,
+  "baseFontSize": 17,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -27,7 +27,9 @@
     "【自定义】表格样式TableStyles",
     "【图标】iconfont",
     "【格式】标题行距",
-    "【Memos】Popover"
+    "【Memos】Popover",
+    "【图标】checkbox from minimal Theme Modified",
+    "【图标】checkbox"
   ],
   "translucency": false,
   "textFontFamily": "",

@@ -11,10 +11,10 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "20-Diary/20-Diary.md",
+                "file": "88-Template/home.md",
                 "mode": "preview",
                 "backlinks": false,
-                "source": false
+                "source": true
               }
             }
           }
@@ -69,7 +69,8 @@
                   "state": {}
                 }
               }
-            ]
+            ],
+            "currentTab": 3
           },
           {
             "id": "d877e8285f98a38a",
@@ -92,8 +93,7 @@
                   "state": {}
                 }
               }
-            ],
-            "currentTab": 1
+            ]
           }
         ],
         "direction": "horizontal",
@@ -122,7 +122,7 @@
                 "state": {
                   "type": "outline",
                   "state": {
-                    "file": "20-Diary/20-Diary.md"
+                    "file": "88-Template/home.md"
                   }
                 }
               },
@@ -153,7 +153,7 @@
                 "state": {
                   "type": "backlink",
                   "state": {
-                    "file": "20-Diary/20-Diary.md",
+                    "file": "88-Template/home.md",
                     "collapseAll": true,
                     "extraContext": true,
                     "sortOrder": "byModifiedTime",
@@ -170,7 +170,7 @@
                 "state": {
                   "type": "outgoing-link",
                   "state": {
-                    "file": "20-Diary/20-Diary.md",
+                    "file": "88-Template/home.md",
                     "linksCollapsed": false,
                     "unlinkedCollapsed": true
                   }
@@ -215,7 +215,7 @@
         "direction": "horizontal",
         "width": 265
       },
-      "active": "37c8f55a8ef7a09c"
+      "active": "f2c2f4dfc8473d58"
     },
     "Diary": {
       "main": {
@@ -1019,5 +1019,5 @@
       "active": "6e02af8751b5488e"
     }
   },
-  "active": "Simple"
+  "active": "Home"
 }

@@ -4,15 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "fc371ae36bc5eac7",
+        "id": "80430a4f104c0c57",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
+            "file": "88-Template/home.md",
             "mode": "preview",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         }
       }
@@ -26,6 +26,7 @@
       {
         "id": "4bc1edcafd063cfb",
         "type": "tabs",
+        "dimension": 68.13048933500627,
         "children": [
           {
             "id": "37c8f55a8ef7a09c",
@@ -59,7 +60,7 @@
             }
           },
           {
-            "id": "fca5b26d7aef0c07",
+            "id": "f2c2f4dfc8473d58",
             "type": "leaf",
             "state": {
               "type": "file-tree-view",
@@ -68,6 +69,29 @@
           }
         ],
         "currentTab": 3
+      },
+      {
+        "id": "d877e8285f98a38a",
+        "type": "tabs",
+        "dimension": 31.869510664993726,
+        "children": [
+          {
+            "id": "b37bc3d287f74512",
+            "type": "leaf",
+            "state": {
+              "type": "recent-files",
+              "state": {}
+            }
+          },
+          {
+            "id": "5ee52b332527fc75",
+            "type": "leaf",
+            "state": {
+              "type": "memos_view",
+              "state": {}
+            }
+          }
+        ]
       }
     ],
     "direction": "horizontal",
@@ -80,6 +104,7 @@
       {
         "id": "d4c25b22f0c7d5f0",
         "type": "tabs",
+        "dimension": 36.340852130325814,
         "children": [
           {
             "id": "ca4e910af4602420",
@@ -95,7 +120,57 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00-Tips/🥑Blue Topaz Themes Tips.md"
+                "file": "88-Template/home.md"
+              }
+            }
+          },
+          {
+            "id": "83061aceea29f566",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/彩色时钟.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          }
+        ],
+        "currentTab": 2
+      },
+      {
+        "id": "0b3485207df574dd",
+        "type": "tabs",
+        "dimension": 63.65914786967418,
+        "children": [
+          {
+            "id": "041c78328387b373",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "88-Template/home.md",
+                "collapseAll": true,
+                "extraContext": true,
+                "sortOrder": "byModifiedTime",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "dc4a81bfd6624166",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "88-Template/home.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
               }
             }
           },
@@ -111,7 +186,20 @@
             }
           },
           {
-            "id": "6e02af8751b5488e",
+            "id": "8851ccb0aa4e524a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "88-Template/常用工具.md",
+                "mode": "preview",
+                "backlinks": true,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "4f457051e10f1a14",
             "type": "leaf",
             "state": {
               "type": "quiet-outline",
@@ -125,17 +213,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "6e02af8751b5488e",
+  "active": "f2c2f4dfc8473d58",
   "lastOpenFiles": [
-    "20-Diary/20-Diary.md",
-    "88-Template/彩色时钟.md",
-    "30-Reading/30-Reading.md",
-    "40-Booknote/40-Booknote.md",
-    "50-Inbox/50-Inbox.md",
-    "Changlog.md",
-    "README.md",
-    "88-Template/ReactJS/react_music.md",
-    "88-Template/ReactJS/ReactJS.md",
-    "88-Template/home.md"
+    "20220815092824.md",
+    "20220813225412.md",
+    "88-Template/home.md",
+    "88-Template/常用工具.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "77-Example/各类列表和彩虹大纲线.md",
+    "77-Example/进度条样式片段.md",
+    "77-Example/分栏效果示例.md",
+    "77-Example/各级标题示例.md",
+    "77-Example/77-Example.md"
   ]
 }

@@ -3,7 +3,6 @@
   "enhanced-editing",
   "obsidian-style-settings",
   "recent-files-obsidian",
-  "obsidian-quiet-outline",
   "cmenu-plugin",
   "calendar",
   "obsidian-banners",
@@ -39,7 +38,6 @@
   "nldates-obsidian",
   "obsidian42-brat",
   "periodic-notes",
-  "plugin-changelogs",
   "quick-explorer",
   "remember-cursor-position",
   "settings-search",
@@ -59,5 +57,7 @@
   "Enhanced-editing",
   "file-tree-alternative",
   "quickadd",
-  "obsidian-hide-sidebars-when-narrow"
+  "obsidian-hide-sidebars-when-narrow",
+  "obsidian-quiet-outline",
+  "obsidian-table-generator"
 ]

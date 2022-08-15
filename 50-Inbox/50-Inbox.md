@@ -10,6 +10,7 @@ obsidianUIMode: preview
 	- **People**
 		- [[李四]]
 	- **Study**
+		- [[cesce]]
 	- **[[Website]]**
 	- **Work**
 

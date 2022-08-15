@@ -8288,7 +8288,15 @@ body.color-scheme-options-simplicity-topaz.theme-dark {
   body.color-scheme-options-simplicity-topaz .view-header .view-actions  .view-action{
     opacity:1!important;
   }
+  body.color-scheme-options-simplicity-topaz .workspace>.workspace-split.mod-vertical{
+    padding: 0;
+  }
 }
+
+body.is-mobile.color-scheme-options-simplicity-topaz .workspace>.workspace-split.mod-vertical{
+  padding: 0;
+}
+
 body.color-scheme-options-simplicity-topaz .view-header .view-actions  .view-action,
 body.color-scheme-options-simplicity-topaz  .titlebar-button-container.mod-right{
 	opacity:0;
@@ -8413,11 +8421,7 @@ body.color-scheme-options-simplicity-topaz .horizontal-main-container {
 body.color-scheme-options-simplicity-topaz .workspace {
   overflow: visible; 
 }
-body.color-scheme-options-simplicity-topaz.theme-light .workspace>.workspace-split.mod-vertical {
-  /* z-index: 2; */
-  top: -11.5px;
-  height:102%;
-}
+
 /*
 --------------------------- 
 	Note Title
@@ -8523,7 +8527,7 @@ body.color-scheme-options-simplicity-topaz .workspace-split.mod-vertical.mod-roo
 	gap:18px;
 }
 body.color-scheme-options-simplicity-topaz .workspace>.workspace-split.mod-vertical{
-	padding: 10px 33px 0;
+	padding: 0px 33px 0;
 }
 
 body.theme-light.color-scheme-options-simplicity-topaz .workspace-split.mod-vertical.mod-root .workspace-leaf{
@@ -14321,7 +14325,7 @@ body.transparent-setting-panel .vertical-tab-nav-item {
 }
 
 .modal.mod-settings .vertical-tab-header {
-  padding: 0;
+  padding: 0 0 40px 0px;
 }
 
 body.setting-default-frosted-glass .vertical-tab-header-group-title {
@@ -17955,7 +17959,7 @@ span.cm-formatting.cm-formatting-highlight.cm-strong.cm-em.cm-highlight.hmd-hidd
 }
 
 .vertical-tab-content {
-  padding-bottom: 40px;
+  padding-bottom: 4em;
 }
 
 .modal-container .modal-content textarea {
@@ -22512,8 +22516,8 @@ body.background-settings-workplace-background-image.background-settings-workplac
 body.background-settings-workplace-background-image.background-settings-workplace-waves.theme-dark .workspace:before
 {
 	content:"";
-	position:absolute;
-	height:300px;
+	position:fixed;
+  height:auto;
 	width: 300%;
   transform: rotate(180deg);
   top: 75%;
@@ -22529,8 +22533,8 @@ body.background-settings-workplace-background-image.background-settings-workplac
 body.background-settings-workplace-background-image.background-settings-workplace-waves2-light.theme-light .workspace::before,
 body.background-settings-workplace-background-image.background-settings-workplace-waves2.theme-dark .workspace:before{
 	content:"";
-	position:absolute;
-  height:300px;
+	position:fixed;
+  height:auto;
 	width: 300%;
   top: 75%;
 	left:-25%;

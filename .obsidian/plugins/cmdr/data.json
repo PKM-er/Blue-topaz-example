@@ -14,6 +14,12 @@
       "icon": "horizontal-split",
       "name": "上下拆分",
       "mode": "any"
+    },
+    {
+      "id": "markdown-table-editor:markdown-table-editor-open-in-popover",
+      "icon": "table",
+      "name": "Table Editor",
+      "mode": "any"
     }
   ],
   "fileMenu": [],
