@@ -1,7 +1,6 @@
 [
   "csv-obsidian",
   "enhanced-editing",
-  "obsidian-style-settings",
   "recent-files-obsidian",
   "cmenu-plugin",
   "calendar",
@@ -14,7 +13,6 @@
   "workspaces-plus",
   "obsidian-advanced-uri",
   "obsidian-hotkeys-for-specific-files",
-  "obsidian-better-command-palette",
   "metaedit",
   "cm-chs-patch",
   "omnisearch",
@@ -45,7 +43,6 @@
   "various-complements",
   "obsidian-version-history-diff",
   "obsidian-react-components",
-  "obsidian-shellcommands",
   "buttons",
   "templater-obsidian",
   "obsidian-dynamic-highlights",
@@ -53,11 +50,11 @@
   "obsidian-reveal-active-file",
   "obsidian-query-control",
   "folder-note-plugin",
-  "better-inline-fields",
   "Enhanced-editing",
   "file-tree-alternative",
   "quickadd",
   "obsidian-hide-sidebars-when-narrow",
-  "obsidian-quiet-outline",
-  "obsidian-table-generator"
+  "obsidian-table-generator",
+  "obsidian-style-settings",
+  "obsidian-quiet-outline"
 ]

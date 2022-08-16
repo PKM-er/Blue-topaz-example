@@ -1,5 +1,9 @@
 {
+  "search_support": true,
   "level_switch": true,
   "markdown": true,
-  "expand_level": "2"
+  "expand_level": "2",
+  "hide_unsearched": true,
+  "auto_expand": true,
+  "regex_search": false
 }

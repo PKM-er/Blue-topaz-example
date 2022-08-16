@@ -21,7 +21,6 @@ obsidianUIMode: preview
 	- [[FastStart-Plugins-ShortDelay]]
 	- [[FastStart-Plugins-simple]]
 	- [[FastStart-StartupScript]]
-	- [[home]]
 	- **[[ReactJS]]**
 	- **script**
 		- **[[template]]**

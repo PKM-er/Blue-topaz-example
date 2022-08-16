@@ -769,6 +769,9 @@ input#limit{
 }
 dvjs ~ :is(p,b,bold)>:is(select)
 {
+appearance:none; 
+-moz-appearance:none; 
+-webkit-appearance:none; 
   background-color: transparent;
   color: var(--text-normal);
   border: 1px solid rgba(204, 204, 204, 0.76);
@@ -784,6 +787,8 @@ dvjs ~ :is(p,b,bold)>:is(select)
 }
 dvjs ~ :is(p,b,bold)>select option
 {
+
+background-color:var(--background-primary);
       color: var(--text-muted);
   }
 @media screen and (max-width: 768px) {
@@ -835,7 +840,11 @@ margin-left: 0.5em;
   letter-spacing: .1em;
   white-space: nowrap;
 }
-.popover .popover-titlebar  .popover-title[data-count$='Music.md']::before
+
+ 
+ 
+
+.popover .popover-titlebar  .popover-title[data-path$='Music.md']::before
 {
   float: left;
   content: '';
@@ -845,7 +854,7 @@ margin-left: 0.5em;
   border-left: 2px solid #10ea14;
   position: relative;
 }
-.popover .popover-titlebar  .popover-title[data-count$='Music.md']::after
+.popover .popover-titlebar  .popover-title[data-path$='Music.md']::after
 {
   content: '';
   height: 6px;
@@ -868,4 +877,3 @@ margin-left: 0.5em;
 {
   display: none;
 }
-

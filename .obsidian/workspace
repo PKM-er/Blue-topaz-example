@@ -4,15 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "80430a4f104c0c57",
+        "id": "30eef316d07cbdd8",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
-            "mode": "preview",
+            "file": "88-Template/tp/tp-流水账模板.md",
+            "mode": "source",
             "backlinks": false,
-            "source": true
+            "source": false
           }
         }
       }
@@ -120,7 +120,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "88-Template/tp/tp-流水账模板.md"
               }
             }
           },
@@ -151,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "88-Template/tp/tp-流水账模板.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -168,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "88-Template/tp/tp-流水账模板.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -213,17 +213,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "f2c2f4dfc8473d58",
+  "active": "30eef316d07cbdd8",
   "lastOpenFiles": [
-    "20220815092824.md",
-    "20220813225412.md",
-    "88-Template/home.md",
     "88-Template/常用工具.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "77-Example/各类列表和彩虹大纲线.md",
-    "77-Example/进度条样式片段.md",
-    "77-Example/分栏效果示例.md",
-    "77-Example/各级标题示例.md",
-    "77-Example/77-Example.md"
+    "50-Inbox/Logs/8888.md",
+    "88-Template/tp/tp-流水账模板.md",
+    "50-Inbox/Logs/home.md",
+    "50-Inbox/Logs/20220816221114.md",
+    "50-Inbox/Logs/20220816221041.md",
+    "20220816220427.md",
+    "88-Template/彩色时钟.md",
+    "20220816220414.md",
+    "50-Inbox/20220816220226.md"
   ]
 }
