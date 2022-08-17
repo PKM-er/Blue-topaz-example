@@ -205,5 +205,6 @@
   "blue-topaz-theme@@blur-depth": 0,
   "blue-topaz-theme@@simple-titlebar": false,
   "blue-topaz-theme@@titlebar-blur-depth": 8,
-  "blue-topaz-theme@@titlebar-brightness": 1
+  "blue-topaz-theme@@titlebar-brightness": 1,
+  "blue-topaz-theme@@head-tag-style": true
 }

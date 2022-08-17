@@ -95,7 +95,8 @@ String.prototype.strong = function () {
 					if (value) if (!value.startsWith("#")) value = "#" + value;
 					exclude_arr_res.push(value)
 				   })
-				sections = sections.filter(t => !t.file.tags.every(val => exclude_arr_res.includes(val)),);
+				sections = sections.filter(t => !t.file.tags.some(val => exclude_arr_res.includes(val)),);
+				
 			}
 			if (type==="folder")
 			sections = sections.filter(t => !exclude_arr.includes(t.file.folder));

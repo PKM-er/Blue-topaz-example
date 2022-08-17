@@ -46,7 +46,6 @@
   "buttons",
   "templater-obsidian",
   "obsidian-dynamic-highlights",
-  "obsidian-bartender",
   "obsidian-reveal-active-file",
   "obsidian-query-control",
   "folder-note-plugin",
@@ -56,5 +55,7 @@
   "obsidian-hide-sidebars-when-narrow",
   "obsidian-table-generator",
   "obsidian-style-settings",
-  "obsidian-quiet-outline"
+  "obsidian-quiet-outline",
+  "obsidian-print-preview",
+  "obsidian-bartender"
 ]

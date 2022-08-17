@@ -15,7 +15,7 @@ Nodes:
 # Array of DQL queries to pull in relationships between nodes - see ReadMe
 # | Source | Destination | Arrow |
 Links:  
- - 'TABLE WITHOUT ID status, file.name, "" FROM #book WHERE status FLATTEN status'
+ - 'TABLE WITHOUT ID status, file.name, "" FROM #book WHERE status FLATTEN status where !contains(file.folder, "88-Template")'
 
 # Custom node styles if you don't like the built in colours (like red, purple, etc) - see ReadMe
 Styles: 

@@ -43,6 +43,22 @@
   "insertCommaAfterFrontMatterCompletion": false,
   "showLogAboutPerformanceInConsole": false,
   "selectionHistoryTree": {
+    "40": {
+      "40": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660702738066
+        }
+      }
+    },
+    "333": {
+      "333": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660701262561
+        }
+      }
+    },
     "2022": {
       "2022": {
         "currentFile": {
@@ -130,8 +146,8 @@
     "list": {
       "list": {
         "currentVault": {
-          "count": 7,
-          "lastUpdated": 1659598961097
+          "count": 12,
+          "lastUpdated": 1660704877862
         }
       }
     },
@@ -158,8 +174,8 @@
     "from": {
       "from": {
         "currentVault": {
-          "count": 3,
-          "lastUpdated": 1659600202848
+          "count": 5,
+          "lastUpdated": 1660704880262
         }
       }
     },
@@ -206,8 +222,8 @@
     "ithout": {
       "ithout": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659405710521
+          "count": 2,
+          "lastUpdated": 1660716127717
         }
       }
     },
@@ -428,6 +444,94 @@
         "currentFile": {
           "count": 1,
           "lastUpdated": 1660132140466
+        }
+      }
+    },
+    "we": {
+      "we": {
+        "currentVault": {
+          "count": 2,
+          "lastUpdated": 1660698481557
+        }
+      }
+    },
+    "cdn": {
+      "cdn": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660701292452
+        }
+      }
+    },
+    "三级": {
+      "三级": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660701300162
+        }
+      }
+    },
+    "标签": {
+      "标签": {
+        "currentVault": {
+          "count": 2,
+          "lastUpdated": 1660704976070
+        }
+      }
+    },
+    "#important": {
+      "#important": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660704966498
+        }
+      }
+    },
+    "embed": {
+      "embed": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660716280574
+        }
+      }
+    },
+    "for": {
+      "for": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660718773599
+        }
+      }
+    },
+    "forEach": {
+      "forEach": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660718779634
+        }
+      }
+    },
+    "正在进行": {
+      "正在进行": {
+        "frontMatter": {
+          "count": 1,
+          "lastUpdated": 1660721219213
+        }
+      }
+    },
+    "进行中": {
+      "进行中": {
+        "frontMatter": {
+          "count": 1,
+          "lastUpdated": 1660721237694
+        }
+      }
+    },
+    "插件": {
+      "插件": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660723749028
         }
       }
     }
