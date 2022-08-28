@@ -2629,6 +2629,10 @@ var InternalModuleFile = class extends InternalModule {
   }
   generate_path() {
     return (relative = false) => {
+		if (relative) {
+        return this.config.target_file.path;
+      }
+	  
       if (import_obsidian8.Platform.isMobileApp) {
         return UNSUPPORTED_MOBILE_TEMPLATE;
       }
@@ -2636,11 +2640,8 @@ var InternalModuleFile = class extends InternalModule {
         throw new TemplaterError("app.vault is not a FileSystemAdapter instance");
       }
       const vault_path = this.app.vault.adapter.getBasePath();
-      if (relative) {
-        return this.config.target_file.path;
-      } else {
-        return `${vault_path}/${this.config.target_file.path}`;
-      }
+      return `${vault_path}/${this.config.target_file.path}`;
+      
     };
   }
   generate_rename() {
@@ -2821,7 +2822,7 @@ var PromptModal2 = class extends import_obsidian9.Modal {
     this.prompt_text = prompt_text;
     this.default_value = default_value;
     this.submitted = false;
-	this.values ='';
+	this.values =default_value;
   }
   onOpen() {
     this.titleEl.setText(this.prompt_text);
@@ -3220,7 +3221,7 @@ var UserFunctions = class {
       if (this.plugin.settings.enable_system_commands) {
         user_system_functions = yield this.user_system_functions.generate_object(config2);
       }
-      if (import_obsidian13.Platform.isDesktopApp && this.plugin.settings.user_scripts_folder) {
+      if (this.plugin.settings.user_scripts_folder) {
         user_script_functions = yield this.user_script_functions.generate_object(config2);
       }
       return __spreadValues(__spreadValues({}, user_system_functions), user_script_functions);
