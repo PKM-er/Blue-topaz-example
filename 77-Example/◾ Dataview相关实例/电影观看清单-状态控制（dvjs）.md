@@ -24,10 +24,9 @@ const {createButton} = app.plugins.plugins["buttons"]
 
 //输入日期
 const inputdate = async (file, key,values) => {
-	let today = new Date().toISOString().slice(0, 10)
-	//values=values?new Date(+new Date(values)+8*3600*1000).toISOString().slice(0, 10):values
-	
-    const value = await app.plugins.plugins['templater-obsidian'].templater.functions_generator.internal_functions.modules_array[4].static_functions.get('prompt_date')("请选择日期？",values?formatDate(values):today,true)
+	let today = new Date().toISOString().slice(0, 10)	//values=values?new Date(+new Date(values)+8*3600*1000).toISOString().slice(0, 10):values
+    let value = await app.plugins.plugins['templater-obsidian'].templater.functions_generator.internal_functions.modules_array[4].static_functions.get('prompt_date')("请选择日期？",values?formatDate(values):today,true)
+  
     //const date = app.plugins.plugins['nldates-obsidian'].parseDate(value).moment.format("YYYY-MM-DD")
     await update(key, '\"'+value+ '\"', file)
 }
@@ -78,7 +77,6 @@ const {createButton} = app.plugins.plugins["buttons"]
 const inputdate = async (file, key,values) => {
 	let today = new Date().toISOString().slice(0, 10)
 	//values=values?new Date(+new Date(values)+8*3600*1000).toISOString().slice(0, 10):values
-	
     const value = await app.plugins.plugins['templater-obsidian'].templater.functions_generator.internal_functions.modules_array[4].static_functions.get('prompt_date')("请选择日期？",values?formatDate(values):today,true)
     //const date = app.plugins.plugins['nldates-obsidian'].parseDate(value).moment.format("YYYY-MM-DD")
     await update(key, '\"'+value+ '\"', file)

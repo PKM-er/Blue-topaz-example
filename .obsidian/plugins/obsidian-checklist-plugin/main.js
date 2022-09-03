@@ -6397,7 +6397,7 @@ var highlightPlugin = regexPlugin(/\=\=([^\=]+)\=\=/, (match, utils2) => {
 // src/plugins/link.ts
 var linkPlugin = (linkMap) => regexPlugin(/\[\[([^\]]+)\]\]/, (match, utils2) => {
   const content = match[1];
-  const [link, label] = content.split("|");
+  const [link, label] = content.trim().split("|");
   const linkItem = linkMap.get(link);
   let displayText = label ? label : linkItem ? linkItem.linkName : link;
   if (label) {
@@ -8183,16 +8183,24 @@ var TodoPlugin = class extends import_obsidian5.Plugin {
       this.addSettingTab(new TodoSettingTab(this.app, this));
       this.addCommand({
         id: "show-checklist-view",
-        name: "Open View",
+        name: "Show Checklist Pane",
         callback: () => {
-          const views = this.app.workspace.getLeavesOfType(TODO_VIEW_TYPE);
-          if (views.length === 0)
-            this.app.workspace.getRightLeaf(false).setViewState({
+          const workspace = this.app.workspace;
+          const views = workspace.getLeavesOfType(TODO_VIEW_TYPE);
+          if (views.length === 0) {
+            workspace.getRightLeaf(false).setViewState({
               type: TODO_VIEW_TYPE,
               active: true
+            }).then(() => {
+              const todoLeaf = workspace.getLeavesOfType(TODO_VIEW_TYPE)[0];
+              workspace.revealLeaf(todoLeaf);
+              workspace.setActiveLeaf(todoLeaf, true, true);
             });
-          else
+          } else {
             views[0].setViewState({ active: true, type: TODO_VIEW_TYPE });
+            workspace.revealLeaf(views[0]);
+            workspace.setActiveLeaf(views[0], true, true);
+          }
         }
       });
       this.addCommand({

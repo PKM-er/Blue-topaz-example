@@ -1,0 +1,10 @@
+{
+	"id": "window-collapse",
+	"name": "Window Collapse",
+	"version": "1.0.2",
+	"minAppVersion": "0.9.7",
+	"description": "This plugins provides an easy way to collapse the sidebars without going fullscreen.",
+	"author": "Guilherme Quental",
+	"authorUrl": "https://obsidian.md/about",
+	"isDesktopOnly": false
+}

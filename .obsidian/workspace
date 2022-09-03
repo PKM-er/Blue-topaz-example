@@ -4,15 +4,15 @@
     "type": "split",
     "children": [
       {
-        "id": "2ccfcac3cd483d9e",
+        "id": "80430a4f104c0c57",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+            "file": "88-Template/home.md",
             "mode": "preview",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         }
       }
@@ -42,7 +42,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#标签",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -68,7 +68,7 @@
             }
           }
         ],
-        "currentTab": 2
+        "currentTab": 3
       },
       {
         "id": "d877e8285f98a38a",
@@ -120,7 +120,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -151,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+                "file": "88-Template/home.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -168,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -211,19 +211,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265
+    "width": 265,
+    "collapsed": true
   },
-  "active": "2ccfcac3cd483d9e",
+  "active": "80430a4f104c0c57",
   "lastOpenFiles": [
-    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
+    "10-Help/Dataview系列教程/🔑Dataview教程.md",
+    "00-Tips/00-Tips.md",
+    "10-Help/Dataview系列教程/Dataview系列教程.md",
+    "88-Template/home.md",
+    "10-Help/Dataview系列教程/入门到退坑系列/Dataview Learnings.md",
+    "00-Tips/插件介绍/表格增强插件.md",
+    "00-Tips/插件介绍/Cmenu插件魔改版 Obsidian上的工具栏.md",
     "77-Example/各级标题示例.md",
-    "88-Template/常用工具.md",
-    "77-Example/77-Example.md",
-    "77-Example/各类列表和彩虹大纲线.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "77-Example/分栏效果示例.md",
-    "77-Example/ob提示框(callout)样式展示.md",
-    "77-Example/最近天气查询.md",
-    "20-Diary/2022-04-08.md"
+    "00-Tips/示例库移植说明/如何把示例库移植到你现有的库中？.md",
+    "00-Tips/插件介绍/插件介绍.md"
   ]
 }

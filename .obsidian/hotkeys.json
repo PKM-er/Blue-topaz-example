@@ -69,14 +69,6 @@
   "editor:toggle-numbered-list": [],
   "editor:toggle-checklist-status": [],
   "obsidian-regex-replace:obsidian-regex-replace": [],
-  "editor:toggle-blockquote": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "Y"
-    }
-  ],
   "editor:toggle-code": [
     {
       "modifiers": [
@@ -110,5 +102,22 @@
       ],
       "key": "O"
     }
-  ]
+  ],
+  "file-explorer:open": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "F"
+    }
+  ],
+  "editor:focus": [
+    {
+      "modifiers": [
+        "Alt"
+      ],
+      "key": "E"
+    }
+  ],
+  "templater-obsidian:insert-templater": []
 }

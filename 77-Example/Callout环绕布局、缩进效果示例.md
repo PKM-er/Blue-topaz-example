@@ -1,5 +1,5 @@
 ---
-created: "2021-12-18"
+created: 2021-12-18
 tags: 
 source: "https://zh.wikipedia.wikimirror.org/wiki/%E5%8D%A1%E5%B0%94%C2%B7%E9%A9%AC%E5%85%8B%E6%80%9D"
 author: 
@@ -8,7 +8,7 @@ cssclass: "fullwidth"
 ---
 # 卡尔·马克思
 
->[!infobox right 40%]+ #### **卡尔·马克思** Karl Marx
+>[!infobox|noicon|right 40%]+ #### **卡尔·马克思** Karl Marx
 >
 ![Karl Marx 001.jpg](https://bkimg.cdn.bcebos.com/pic/a044ad345982b2b795c22d8438adcbef76099b14?x-bce-process=image/resize,m_lfit,w_440,limit_1/format,f_auto)<center><small>1875年时，已经流亡至英国伦敦的卡尔·马克思</small></center>
 >
@@ -19,9 +19,9 @@ cssclass: "fullwidth"
 |逝世	|1883年3月14日（64岁）英国英格兰伦敦|
 |国籍	 |普鲁士王国（1818年－1845年）<br>无国籍（1845年之后）|
 |教育程度	|波恩大学（1835年－1836年）<br>柏林洪堡大学（1836年－1841年）<br>耶拿大学哲学博士学位（1841年)<br>|
-|知名作品|	《共产党宣言》、《资本论》|
-|信仰	|无神论|
-|配偶	|燕妮·马克思（1843年结婚）|
+|知名作品|《共产党宣言》、《资本论》|
+|信仰|无神论|
+|配偶|燕妮·马克思（1843年结婚）|
 |父母|	海因里希·马克思（父亲）、亨丽埃塔·普莱斯堡（母亲）|
 |时代|	19世纪哲学|
 |地区|西方哲学和德国哲学|

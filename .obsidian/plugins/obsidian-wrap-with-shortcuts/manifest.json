@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-wrap-with-shortcuts",
+  "name": "Wrap with shortcuts",
+  "description": "Wrap selected text in custom tags with shortcuts. E.g.: underline, sub, ruby(フリガナ)",
+  "isDesktopOnly": false,
+  "author": "Manic Chuang",
+  "authorUrl": "https://github.com/manic/obsidian-wrap-with-shortcuts",
+  "js": "main.js",
+  "version": "1.1.0"
+}

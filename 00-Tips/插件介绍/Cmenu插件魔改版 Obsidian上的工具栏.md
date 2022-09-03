@@ -1,4 +1,30 @@
 
+### Cmenu Plus <sup> 2.0</sup>
+
+[谁说Obsidian不如语雀，这个插件让你使用ob不用再记那么多指令了，ob工具栏你值得拥有_哔哩哔哩_bilibili](https://www.bilibili.com/video/BV1mY4y1T7g2/)
+
+> [!info]
+> 2.0版本进行了较大更改，增加了几百行代码，内置了众多指令。
+
+- 界面升级优化 
+- 支持子菜单选项
+- 支持自定义图标
+- 支持自定义名称
+- 跟随定位更准确。
+- 支持跟随模式，固定模式，置顶模式
+- 内置了众多指令，比如全屏，修改字体颜色，背景颜色，格式刷等等
+- 各个菜单选项拖拉操作
+- 重写了css 更换了一些默认图标。
+- 工作区宽度变化工具栏可自动收缩
+....
+enjoy it ：）
+-
+如果觉得不错 请给个星星
+[cumany/cMenu-Plugin: An Obsidian.md plugin that adds a minimal text editor modal for a smoother writing/editing experience ✍🏽. (github.com)](https://github.com/cumany/cMenu-Plugin)
+
+---
+以下为旧版。
+
 > 此插件是在cMenu1.1.2 跟随悬浮效果 基础上魔改而成，增加了 固定和跟随选项设置
 - 增加位置固定和跟随选项。
 - 增加了 cmenu 风格 tiny样式，更紧凑。

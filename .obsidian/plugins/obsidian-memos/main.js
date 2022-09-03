@@ -9614,12 +9614,14 @@ async function getMemosFromDailyNote(dailyNote, allMemos, commentMemos) {
       } catch (e) {
         console.error(e);
       }
+    
     } else {
       try {
         underComments = (_d = (_c = dataviewAPI.page(dailyNote.path)) == null ? void 0 : _c.file.lists.values) == null ? void 0 : _d.filter((item) => item.children.length > 0);
       } catch (e) {
         console.error(e);
       }
+   
     }
   }
   let fileContents = await vault.read(dailyNote);
@@ -9693,6 +9695,7 @@ async function getMemosFromDailyNote(dailyNote, allMemos, commentMemos) {
           hasId,
           linkId: commentId
         });
+        
         continue;
       }
       if (rawText !== "" && !rawText.contains(" comment") && underComments !== null && underComments !== void 0 && underComments.length > 0) {
@@ -9700,25 +9703,27 @@ async function getMemosFromDailyNote(dailyNote, allMemos, commentMemos) {
         const commentsInMemos = underComments.filter((item) => item.text === originalText || item.line === i || item.blockId === originId);
         if (commentsInMemos.length === 0)
           continue;
-        if (((_g = (_f = commentsInMemos[0].children) == null ? void 0 : _f.values) == null ? void 0 : _g.length) > 0) {
-          for (let j = 0; j < commentsInMemos[0].children.values.length; j++) {
+          if (commentsInMemos[0].children?.length > 0) {
+       // if (((_g = (_f = commentsInMemos[0].children) == null ) == null ? void 0 : _g.length) > 0) {
+          for (let j = 0; j < commentsInMemos[0].children.length; j++) {
             const hasId = "";
             let commentTime;
-            if (/^\d{12}/.test(commentsInMemos[0].children.values[j].text)) {
-              commentTime = (_h = commentsInMemos[0].children.values[j].text) == null ? void 0 : _h.match(/^\d{14}/)[0];
+            if (/^\d{12}/.test(commentsInMemos[0].children[j].text)) {
+              commentTime = (_h = commentsInMemos[0].children[j].text) == null ? void 0 : _h.match(/^\d{14}/)[0];
             } else {
               commentTime = startDate.format("YYYYMMDDHHmmSS");
             }
+          
             commentMemos.push({
-              id: commentTime + commentsInMemos[0].children.values[j].line,
-              content: commentsInMemos[0].children.values[j].text,
+              id: commentTime + commentsInMemos[0].children[j].line,
+              content: commentsInMemos[0].children[j].text,
               user_id: 1,
               createdAt: require$$0.moment(commentTime, "YYYYMMDDHHmmSS").format("YYYY/MM/DD HH:mm:SS"),
               updatedAt: require$$0.moment(commentTime, "YYYYMMDDHHmmSS").format("YYYY/MM/DD HH:mm:SS"),
-              memoType: commentsInMemos[0].children.values[j].task ? getTaskType(commentsInMemos[0].children.values[j].status) : "JOURNAL",
+              memoType: commentsInMemos[0].children[j].task ? getTaskType(commentsInMemos[0].children[j].status) : "JOURNAL",
               hasId,
               linkId: originId,
-              path: commentsInMemos[0].children.values[j].path
+              path: commentsInMemos[0].children[j].path
             });
           }
         }
@@ -9736,26 +9741,30 @@ async function getMemosFromNote(allMemos, commentMemos) {
   if (files.length === 0)
     return;
   files = files.filter((item) => item.file.name !== QueryFileName && item.file.name !== DeleteFileName && item["excalidraw-plugin"] === void 0 && item["kanban-plugin"] === void 0 && item.file.folder !== dailyNotesPath);
+
   for (let i = 0; i < files.length; i++) {
-    const createDate = files[i]["creation-date"];
+    const createDate = files[i]["created"];
     const list = (_a = files[i].file.lists) == null ? void 0 : _a.filter((item) => item.parent === void 0);
     if (list.length === 0)
       continue;
     for (let j = 0; j < list.length; j++) {
-      const content = list[j].text;
-      const header = list[j].header.subpath;
-      const path = list[j].path;
-      const line = list[j].line;
+      const content = list.values[j].text;
+      const header = list.values[j].header.subpath;
+      const path = list.values[j].path;
+      const line = list.values[j].line;
       let memoType = "JOURNAL";
       let hasId;
-      let realCreateDate = require$$0.moment(createDate, "YYYY-MM-DD HH:mm");
+      //let realCreateDate = require$$0.moment(createDate, "YYYY-MM-DD HH:mm");
+      let realCreateDate = createDate.toFormat("yyyy-MM-dd HH:mm");
+      
+      
       if (/\^\S{6}$/g.test(content)) {
         hasId = content.slice(-6);
       } else {
         hasId = Math.random().toString(36).slice(-6);
       }
-      if (list[j].task === true) {
-        memoType = getTaskType(list[j].status);
+      if (list.values[j].task === true) {
+        memoType = getTaskType(list.values[j].status);
       }
       if (header !== void 0) {
         if (require$$0.moment(header).isValid()) {
@@ -9767,7 +9776,8 @@ async function getMemosFromNote(allMemos, commentMemos) {
         const timeArr = time.split(":");
         const hour = parseInt(timeArr[0], 10);
         const minute = parseInt(timeArr[1], 10);
-        realCreateDate = require$$0.moment(createDate, "YYYYMMDDHHmmSS").hours(hour).minutes(minute);
+        realCreateDate = require$$0.moment(realCreateDate).hours(hour).minutes(minute);
+     
       }
       allMemos.push({
         id: realCreateDate.format("YYYYMMDDHHmmSS") + line,
@@ -9780,15 +9790,15 @@ async function getMemosFromNote(allMemos, commentMemos) {
         linkId: "",
         path
       });
-      if (((_b = list[j].children) == null ? void 0 : _b.values.length) > 0) {
-        for (let k = 0; k < list[j].children.values.length; k++) {
-          const childContent = list[j].children.values[k].text;
-          const childLine = list[j].children.values[k].line;
+      if (((_b = list.values[j].children) == null ? void 0 : _b.length) > 0) {
+        for (let k = 0; k < list[j].children.length; k++) {
+          const childContent = list[j].children[k].text;
+          const childLine = list[j].children[k].line;
           let childMemoType = "JOURNAL";
           let childRealCreateDate = realCreateDate;
           let commentTime;
-          if (list[j].children.values[k].task === true) {
-            childMemoType = getTaskType(list[j].children.values[k].status);
+          if (list[j].children[k].task === true) {
+            childMemoType = getTaskType(list[j].children[k].status);
           }
           if (/^\d{12}/.test(childContent)) {
             commentTime = childContent == null ? void 0 : childContent.match(/^\d{14}/)[0];
@@ -9812,6 +9822,8 @@ async function getMemosFromNote(allMemos, commentMemos) {
             linkId: hasId,
             path
           });
+
+     
         }
       }
     }
@@ -10541,6 +10553,7 @@ async function commentMemo(MemoContent, isList2, path, oriID, hasID) {
   if (path === void 0) {
     return;
   }
+
   const file = metadataCache.getFirstLinkpathDest("", path);
   const time = require$$0.moment();
   const formatTime = time.format("YYYYMMDDHHmmss");
@@ -10555,6 +10568,7 @@ async function commentMemo(MemoContent, isList2, path, oriID, hasID) {
       if (dataviewAPI !== void 0) {
         try {
           underComments = (_b = (_a = dataviewAPI.page(file.path)) == null ? void 0 : _a.file.lists.values) == null ? void 0 : _b.filter((item) => item.line === parseInt(ID));
+      
         } catch (e) {
           console.error(e);
         }
@@ -10562,6 +10576,7 @@ async function commentMemo(MemoContent, isList2, path, oriID, hasID) {
     }
     const fileContents = await vault.read(file);
     let endLine = 0;
+
     if (underComments[0].children.values.length > 0) {
       endLine = underComments[0].children.values[underComments[0].children.values.length - 1].line;
     } else {
@@ -13095,7 +13110,7 @@ var Autocomplete = /* @__PURE__ */ function(_React$Component) {
       }
       if (!this.containerElem || !this.containerElem.contains(this.ref)) {
         {
-          throw new Error("RTA: Invalid prop boundariesElement: it has to be one of the parents of the RTA.");
+         // throw new Error("RTA: Invalid prop boundariesElement: it has to be one of the parents of the RTA.");
         }
       }
     }
@@ -13946,6 +13961,7 @@ const Editor = _react_17_0_2_react.exports.forwardRef((props, ref) => {
       fileManager
     } = appStore.getState().dailyNotesState.app;
     if (event.currentTrigger === "#") {
+		
       const prevValue = editorRef.current.value;
       let removeCharNum;
       if (actualToken !== null && actualToken !== void 0) {
@@ -19457,7 +19473,6 @@ class Memos extends require$$0.ItemView {
   }
   async onFileModified(file) {
     const date = getDateFromFile_1(file, "day");
-    console.log("debounce");
     if (globalStateService.getState().changedByMemos) {
       globalStateService.setChangedByMemos(false);
       return;

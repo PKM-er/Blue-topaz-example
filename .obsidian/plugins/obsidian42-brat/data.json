@@ -1,31 +1,30 @@
 {
   "pluginList": [
+    "Quorafind/Obsidian-Virtual-Hotkey-Keyboard",
+    "Stardusten/ob-table-enhancer",
     "Quorafind/Obsidian-Table-Generator",
-    "dsarman/better-inline-fields",
     "nothingislost/obsidian-query-control",
     "cumany/obsidian-echarts",
     "cumany/cMenu-Plugin",
     "zhaohongxuan/obsidian-weread-plugin",
-    "nothingislost/obsidian-print-preview",
     "scambier/obsidian-omnisearch",
     "obsidian-canzi/Enhanced-editing/",
     "windily-cloud/obsidian-AGtable",
-    "nothingislost/obsidian-hover-editor",
     "nothingislost/obsidian-bartender"
   ],
   "pluginSubListFrozenVersion": [],
   "themesList": [
     {
       "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-08-16T07:42:57Z"
+      "lastUpdate": "2022-08-28T05:17:37Z"
     }
   ],
   "updateAtStartup": true,
   "updateThemesAtStartup": true,
   "ribbonIconEnabled": false,
   "loggingEnabled": false,
-  "loggingPath": "BRAT-log",
+  "loggingPath": "",
   "loggingVerboseEnabled": false,
   "debuggingMode": false,
-  "notificationsEnabled": true
+  "notificationsEnabled": false
 }

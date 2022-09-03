@@ -23233,23 +23233,23 @@ var ObsidianTextEditor = /** @class */ (function () {
         var _this = this;
         this.getCursorPosition = function () {
             var position = _this.editor.getCursor();
-            console.debug("getCursorPosition was called: line " + position.line + ", ch " + position.ch);
+          //  // console.debug("getCursorPosition was called: line " + position.line + ", ch " + position.ch);
             return new lib$1.Point(position.line, position.ch);
         };
         this.setCursorPosition = function (pos) {
-            console.debug("setCursorPosition was called: line " + pos.row + ", ch " + pos.column);
+          //  // console.debug("setCursorPosition was called: line " + pos.row + ", ch " + pos.column);
             _this.editor.setCursor({ line: pos.row, ch: pos.column });
         };
         this.setSelectionRange = function (range) {
-            console.debug('setSelectionRange was called');
+          //  // console.debug('setSelectionRange was called');
             _this.editor.setSelection({ line: range.start.row, ch: range.start.column }, { line: range.end.row, ch: range.end.column });
         };
         this.getLastRow = function () {
-            console.debug('getLastRow was called');
+          //  // console.debug('getLastRow was called');
             return _this.editor.lastLine();
         };
         this.acceptsTableEdit = function (row) {
-            console.debug("acceptsTableEdit was called on row " + row);
+          //  // console.debug("acceptsTableEdit was called on row " + row);
             var cache = _this.app.metadataCache.getFileCache(_this.file);
             if (!cache.sections) {
                 return true;
@@ -23261,7 +23261,7 @@ var ObsidianTextEditor = /** @class */ (function () {
                     section.type !== 'math';
             });
             if (table === undefined) {
-                console.debug('acceptsTableEdit returning false, table not found');
+             //   // console.debug('acceptsTableEdit returning false, table not found');
                 return false;
             }
             // Check that the text `-tx-` is not on the line immediately preceeding the
@@ -23277,12 +23277,12 @@ var ObsidianTextEditor = /** @class */ (function () {
             return true;
         };
         this.getLine = function (row) {
-            console.debug("getLine was called on line " + row);
+         //   // console.debug("getLine was called on line " + row);
             return _this.editor.getLine(row);
         };
         this.insertLine = function (row, line) {
-            console.debug("insertLine was called at line " + row);
-            console.debug("New line: " + line);
+        //    // console.debug("insertLine was called at line " + row);
+            // console.debug("New line: " + line);
             if (row > _this.getLastRow()) {
                 _this.editor.replaceRange('\n' + line, { line: row, ch: 0 });
             }
@@ -23291,7 +23291,7 @@ var ObsidianTextEditor = /** @class */ (function () {
             }
         };
         this.deleteLine = function (row) {
-            console.debug("deleteLine was called on line " + row);
+           // // console.debug("deleteLine was called on line " + row);
             // If on the last line of the file, we cannot replace to the next row.
             // Instead, replace all the contents of this line.
             if (row === _this.getLastRow()) {

@@ -3,7 +3,7 @@
   "matchStrategy": "prefix",
   "maxNumberOfSuggestions": 5,
   "maxNumberOfWordsAsPhrase": 3,
-  "minNumberOfCharactersTriggered": 0,
+  "minNumberOfCharactersTriggered": 2,
   "minNumberOfWordsTriggeredPhrase": 1,
   "complementAutomatically": true,
   "delayMilliSeconds": 100,
@@ -11,14 +11,14 @@
   "insertAfterCompletion": false,
   "firstCharactersDisableSuggestions": "-#:/^@",
   "showMatchStrategy": false,
-  "showComplementAutomatically": true,
+  "showComplementAutomatically": false,
   "showIndexingStatus": false,
   "descriptionOnSuggestion": "Short",
-  "selectSuggestionKeys": "Space",
-  "additionalCycleThroughSuggestionsKeys": "Tab, Shift+Tab",
+  "selectSuggestionKeys": "Tab",
+  "additionalCycleThroughSuggestionsKeys": "None",
   "disableUpDownKeysForCycleThroughSuggestionsKeys": false,
   "openSourceFileKey": "None",
-  "propagateEsc": false,
+  "propagateEsc": true,
   "enableCurrentFileComplement": true,
   "currentFileMinNumberOfCharacters": 0,
   "onlyComplementEnglishOnCurrentFileComplement": false,
@@ -51,95 +51,35 @@
         }
       }
     },
+    "233": {
+      "233": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1662123392249
+        }
+      }
+    },
     "333": {
       "333": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660701262561
+          "count": 2,
+          "lastUpdated": 1662104382000
         }
       }
     },
-    "2022": {
-      "2022": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659710029675
-        }
-      }
-    },
-    "react-component": {
-      "react-component": {
+    "444": {
+      "444": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659330541894
-        }
-      }
-    },
-    "ob": {
-      "ob": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659330548363
-        }
-      }
-    },
-    "style": {
-      "style": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659337929738
-        }
-      }
-    },
-    "stylesetting": {
-      "stylesetting": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659337930799
-        }
-      }
-    },
-    "auth": {
-      "auth": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659339852853
-        }
-      }
-    },
-    "author": {
-      "author": {
-        "currentFile": {
-          "count": 3,
-          "lastUpdated": 1659359630164
-        }
-      }
-    },
-    "WHERE": {
-      "WHERE": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659340883183
+          "count": 2,
+          "lastUpdated": 1662123387103
         }
       }
     },
     "console": {
       "console": {
         "currentVault": {
-          "count": 16,
-          "lastUpdated": 1660050929109
-        }
-      }
-    },
-    "let": {
-      "let": {
-        "currentFile": {
-          "count": 6,
-          "lastUpdated": 1659590181456
-        },
-        "currentVault": {
-          "count": 3,
-          "lastUpdated": 1659428331310
+          "count": 22,
+          "lastUpdated": 1662099417842
         }
       }
     },
@@ -151,26 +91,6 @@
         }
       }
     },
-    "allkeys": {
-      "allkeys": {
-        "currentFile": {
-          "count": 3,
-          "lastUpdated": 1659409929034
-        },
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659371253482
-        }
-      }
-    },
-    "file": {
-      "file": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1659371057955
-        }
-      }
-    },
     "from": {
       "from": {
         "currentVault": {
@@ -179,191 +99,19 @@
         }
       }
     },
-    "allkeys+": {
-      "allkeys+": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659371256699
-        }
-      }
-    },
-    "by": {
-      "by": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659401434257
-        }
-      }
-    },
-    "cuman": {
-      "cuman": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659401436278
-        }
-      }
-    },
-    "const": {
-      "const": {
-        "currentFile": {
-          "count": 3,
-          "lastUpdated": 1659573912126
-        }
-      }
-    },
-    "or": {
-      "or": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659405310000
-        }
-      }
-    },
     "ithout": {
       "ithout": {
         "currentVault": {
-          "count": 2,
-          "lastUpdated": 1660716127717
-        }
-      }
-    },
-    "reading": {
-      "reading": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1659406076907
-        }
-      }
-    },
-    "科幻": {
-      "科幻": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1659406307829
-        }
-      }
-    },
-    "ID": {
-      "ID": {
-        "currentFile": {
-          "count": 2,
-          "lastUpdated": 1659409288734
-        }
-      }
-    },
-    "delete": {
-      "delete": {
-        "internalLink": {
-          "count": 2,
-          "lastUpdated": 1659409954283
-        }
-      }
-    },
-    "if": {
-      "if": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659410341446
-        }
-      }
-    },
-    "return": {
-      "return": {
-        "currentFile": {
-          "count": 3,
-          "lastUpdated": 1659534988829
-        }
-      }
-    },
-    "aaa": {
-      "aaa": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1659428300041
-        }
-      }
-    },
-    "var": {
-      "var": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659514858526
-        }
-      }
-    },
-    "gethtmltable": {
-      "gethtmltable": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659516422598
+          "count": 5,
+          "lastUpdated": 1660792522276
         }
       }
     },
     "async": {
       "async": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1659537933410
-        }
-      }
-    },
-    "--": {
-      "--": {
-        "currentFile": {
-          "count": 2,
-          "lastUpdated": 1659539679403
-        },
         "currentVault": {
           "count": 1,
-          "lastUpdated": 1659539670149
-        }
-      }
-    },
-    "csv": {
-      "csv": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659593223684
-        }
-      }
-    },
-    "ctrl+alt+v": {
-      "ctrl+alt+v": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659593306844
-        }
-      }
-    },
-    "人物": {
-      "人物": {
-        "currentVault": {
-          "count": 3,
-          "lastUpdated": 1659597573931
-        }
-      }
-    },
-    "###": {
-      "###": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1659599484561
-        }
-      }
-    },
-    "说明": {
-      "说明": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659598621562
-        }
-      }
-    },
-    "and": {
-      "and": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659600980433
+          "lastUpdated": 1660808474354
         }
       }
     },
@@ -372,10 +120,6 @@
         "frontMatter": {
           "count": 2,
           "lastUpdated": 1660121274024
-        },
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1659678135246
         }
       }
     },
@@ -418,8 +162,8 @@
     "Sort": {
       "Sort": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660055039167
+          "count": 2,
+          "lastUpdated": 1660968550778
         }
       }
     },
@@ -434,8 +178,8 @@
     "indent": {
       "indent": {
         "frontMatter": {
-          "count": 3,
-          "lastUpdated": 1660124022348
+          "count": 4,
+          "lastUpdated": 1661012811492
         }
       }
     },
@@ -532,6 +276,102 @@
         "currentVault": {
           "count": 1,
           "lastUpdated": 1660723749028
+        }
+      }
+    },
+    "是否": {
+      "是否": {
+        "currentVault": {
+          "count": 2,
+          "lastUpdated": 1660788998301
+        }
+      }
+    },
+    "归入": {
+      "归入": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660792045167
+        }
+      }
+    },
+    "hello": {
+      "hello": {
+        "currentVault": {
+          "count": 3,
+          "lastUpdated": 1660796948710
+        }
+      }
+    },
+    "HE": {
+      "HE": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660792797313
+        }
+      }
+    },
+    "he": {
+      "he": {
+        "currentVault": {
+          "count": 2,
+          "lastUpdated": 1660792954062
+        }
+      }
+    },
+    "her": {
+      "her": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660792942517
+        }
+      }
+    },
+    "hen": {
+      "hen": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660792965843
+        }
+      }
+    },
+    "rider": {
+      "rider": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660792973086
+        }
+      }
+    },
+    "function": {
+      "function": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1660808458770
+        }
+      }
+    },
+    "cmenu-plugin": {
+      "cmenu-plugin": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1661939278679
+        }
+      }
+    },
+    "77-Example": {
+      "77-Example": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1661998837484
+        }
+      }
+    },
+    "方式": {
+      "方式": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1662200225907
         }
       }
     }

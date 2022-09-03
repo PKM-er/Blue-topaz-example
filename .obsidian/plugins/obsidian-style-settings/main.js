@@ -3376,10 +3376,23 @@ function generateColorVariables(key, format, colorStr, opacity, altFormats = [])
         }
     }
 }
-function getCSSVariables(settings, config) {
+function pushColors(arr, id, from, to, format, step, pad) {
+    const scale = chroma.scale([from.trim(), to.trim()]).domain([0, 100]);
+    for (let i = 0; i <= 100; i++) {
+        if (i % step === 0) {
+            const c = scale(i);
+            arr.push(...generateColorVariables(`${id}-${i.toString().padStart(pad, "0")}`, format, c.css(), c.alpha() !== 1));
+        }
+    }
+}
+function getCSSVariables(settings, config, gradients, settingsManager) {
     const vars = [];
     const themedLight = [];
     const themedDark = [];
+    const gradientCandidates = {};
+    const gradientCandidatesLight = {};
+    const gradientCandidatesDark = {};
+    const seenGradientSections = new Set();
     for (const key in settings) {
         const [sectionId, settingId, modifier] = key.split("@@");
         const section = config[sectionId];
@@ -3392,11 +3405,8 @@ function getCSSVariables(settings, config) {
         switch (setting.type) {
             case "variable-number":
             case "variable-number-slider":
-                const format = setting
-                    .format;
-                const val = value !== undefined
-                    ? value
-                    : setting.default;
+                const format = setting.format;
+                const val = value !== undefined ? value : setting.default;
                 vars.push({
                     key: setting.id,
                     value: `${val}${format || ""}`,
@@ -3405,9 +3415,7 @@ function getCSSVariables(settings, config) {
             case "variable-text":
             case "variable-select":
                 const format_text = setting;
-                let text = value !== undefined
-                    ? value.toString()
-                    : format_text.default.toString();
+                let text = value !== undefined ? value.toString() : format_text.default.toString();
                 if (format_text.quotes) {
                     if (text !== `""`) {
                         text = `'${text}'`;
@@ -3418,29 +3426,76 @@ function getCSSVariables(settings, config) {
                 }
                 vars.push({
                     key: setting.id,
-                    value: text
+                    value: text,
                 });
                 continue;
             case "variable-color": {
+                if (!seenGradientSections.has(sectionId))
+                    seenGradientSections.add(sectionId);
                 const colorSetting = setting;
                 const color = value !== undefined ? value.toString() : colorSetting.default;
                 vars.push(...generateColorVariables(setting.id, colorSetting.format, color, colorSetting.opacity, colorSetting["alt-format"]));
+                generateColorVariables(setting.id, "rgb", color, colorSetting.opacity).forEach((kv) => {
+                    gradientCandidates[kv.key] = kv.value;
+                });
                 continue;
             }
             case "variable-themed-color": {
+                if (!seenGradientSections.has(sectionId))
+                    seenGradientSections.add(sectionId);
                 const colorSetting = setting;
                 const color = value !== undefined
                     ? value.toString()
                     : colorSetting[modifier === "light" ? "default-light" : "default-dark"];
                 (modifier === "light" ? themedLight : themedDark).push(...generateColorVariables(setting.id, colorSetting.format, color, colorSetting.opacity, colorSetting["alt-format"]));
+                generateColorVariables(setting.id, "rgb", color, colorSetting.opacity).forEach((kv) => {
+                    if (modifier === "light") {
+                        gradientCandidatesLight[kv.key] = kv.value;
+                    }
+                    else {
+                        gradientCandidatesDark[kv.key] = kv.value;
+                    }
+                });
+                continue;
             }
         }
     }
+    seenGradientSections.forEach((sectionId) => {
+        const g = gradients[sectionId];
+        if (!g)
+            return;
+        g.forEach((def) => {
+            var _a, _b, _c;
+            const { from, to, format, step, id, pad = 0 } = def;
+            if (gradientCandidatesLight[from]) {
+                const fromColor = gradientCandidatesLight[from];
+                const toColor = gradientCandidatesLight[to] || ((_a = settingsManager.plugin.getCSSVar(to).light) === null || _a === void 0 ? void 0 : _a.trim());
+                if (toColor) {
+                    pushColors(themedLight, id, fromColor, toColor, format, step, pad);
+                }
+            }
+            if (gradientCandidatesDark[from]) {
+                const fromColor = gradientCandidatesDark[from];
+                const toColor = gradientCandidatesDark[to] || ((_b = settingsManager.plugin.getCSSVar(to).dark) === null || _b === void 0 ? void 0 : _b.trim());
+                if (toColor) {
+                    pushColors(themedDark, id, fromColor, toColor, format, step, pad);
+                }
+            }
+            if (gradientCandidates[from]) {
+                const fromColor = gradientCandidates[from];
+                const toColor = gradientCandidates[to] || ((_c = settingsManager.plugin.getCSSVar(to).current) === null || _c === void 0 ? void 0 : _c.trim());
+                if (toColor) {
+                    pushColors(vars, id, fromColor, toColor, format, step, pad);
+                }
+            }
+        });
+    });
     return [vars, themedLight, themedDark];
 }
 class CSSSettingsManager {
     constructor(plugin) {
         this.config = {};
+        this.gradients = {};
         this.plugin = plugin;
         this.settings = {};
         this.styleTag = document.createElement("style");
@@ -3470,8 +3525,7 @@ class CSSSettingsManager {
                 if (setting.type === "class-toggle") {
                     const classToggle = setting;
                     let value = this.getSetting(section, settingId);
-                    if (value === true ||
-                        (value === undefined && classToggle.default === true)) {
+                    if (value === true || (value === undefined && classToggle.default === true)) {
                         document.body.classList.add(setting.id);
                     }
                 }
@@ -3505,7 +3559,7 @@ class CSSSettingsManager {
         });
     }
     setCSSVariables() {
-        const [vars, themedLight, themedDark] = getCSSVariables(this.settings, this.config);
+        const [vars, themedLight, themedDark] = getCSSVariables(this.settings, this.config, this.gradients, this);
         this.styleTag.innerText = `
       body.css-settings-manager {
         ${vars.reduce((combined, current) => {
@@ -3530,10 +3584,16 @@ class CSSSettingsManager {
     }
     setConfig(settings) {
         this.config = {};
+        this.gradients = {};
         settings.forEach((s) => {
             this.config[s.id] = {};
             s.settings.forEach((setting) => {
                 this.config[s.id][setting.id] = setting;
+                if (setting.type === "color-gradient") {
+                    if (!this.gradients[s.id])
+                        this.gradients[s.id] = [];
+                    this.gradients[s.id].push(setting);
+                }
             });
         });
         let pruned = false;
@@ -3610,9 +3670,7 @@ class ExportModal extends obsidian.Modal {
     onOpen() {
         let { contentEl, modalEl } = this;
         modalEl.addClass("modal-style-settings");
-        new obsidian.Setting(contentEl)
-            .setName(`Export settings for: ${this.section}`)
-            .then((setting) => {
+        new obsidian.Setting(contentEl).setName(`Export settings for: ${this.section}`).then((setting) => {
             const output = JSON.stringify(this.config, null, 2);
             // Build a copy to clipboard link
             setting.controlEl.createEl("a", {
@@ -3620,9 +3678,7 @@ class ExportModal extends obsidian.Modal {
                 text: "Copy to clipboard",
                 href: "#",
             }, (copyButton) => {
-                new obsidian.TextAreaComponent(contentEl)
-                    .setValue(output)
-                    .then((textarea) => {
+                new obsidian.TextAreaComponent(contentEl).setValue(output).then((textarea) => {
                     copyButton.addEventListener("click", (e) => {
                         e.preventDefault();
                         // Select the textarea contents and copy them to the clipboard
@@ -3719,12 +3775,8 @@ class ImportModal extends obsidian.Modal {
                     for: "style-settings-import-input",
                 },
             });
-            new obsidian.TextAreaComponent(contentEl)
-                .setPlaceholder("Paste config here...")
-                .then((ta) => {
-                new obsidian.ButtonComponent(contentEl)
-                    .setButtonText("Save")
-                    .onClick(() => __awaiter(this, void 0, void 0, function* () {
+            new obsidian.TextAreaComponent(contentEl).setPlaceholder("Paste config here...").then((ta) => {
+                new obsidian.ButtonComponent(contentEl).setButtonText("Save").onClick(() => __awaiter(this, void 0, void 0, function* () {
                     yield importAndClose(ta.getValue().trim());
                 }));
             });
@@ -4222,7 +4274,12 @@ function isValidDefaultColor(color) {
     return /^(#|rgb|hsl)/.test(color);
 }
 function createVariableColor(opts) {
+    var _a;
     const { isView, sectionId, config, containerEl, settingsManager } = opts;
+    if (typeof config.default !== "string" ||
+        !isValidDefaultColor(config.default)) {
+        config.default = (_a = settingsManager.plugin.getCSSVar(config.id).current) === null || _a === void 0 ? void 0 : _a.trim();
+    }
     if (typeof config.default !== "string" ||
         !isValidDefaultColor(config.default)) {
         return console.error(`${t("Error:")} ${getTitle(config)} ${t("missing default value, or value is not in a valid color format")}`);
@@ -8592,9 +8649,18 @@ class CSSSettingsPlugin extends obsidian.Plugin {
             this.registerEvent(this.app.workspace.on("parse-style-settings", () => {
                 this.parseCSS();
             }));
+            this.lightEl = document.body.createDiv("theme-light style-settings-ref");
+            this.darkEl = document.body.createDiv("theme-dark style-settings-ref");
             document.body.classList.add("css-settings-manager");
             this.parseCSS();
         });
+    }
+    getCSSVar(id) {
+        const light = getComputedStyle(this.lightEl).getPropertyValue(`--${id}`);
+        const dark = getComputedStyle(this.darkEl).getPropertyValue(`--${id}`);
+        const current = getComputedStyle(document.body).getPropertyValue(`--${id}`);
+        console.log(id, light, dark, current);
+        return { light, dark, current };
     }
     parseCSS() {
         clearTimeout(this.debounceTimer);
@@ -8643,6 +8709,10 @@ class CSSSettingsPlugin extends obsidian.Plugin {
         }, 100);
     }
     onunload() {
+        this.lightEl.remove();
+        this.darkEl.remove();
+        this.lightEl = null;
+        this.darkEl = null;
         document.body.classList.remove("css-settings-manager");
         this.settingsManager.cleanup();
         this.settingsTab.settingsMarkup.cleanup();

@@ -70,3 +70,132 @@ body .recent-files-donation{
 }
 
 */
+
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="settings"]+ .menu-separator::before
+{
+content: "MD标准格式刷";
+font-size: 0.6em;
+margin-top: -2px;
+position: absolute;
+left: 25%;
+text-align: center;
+width: 8em;
+line-height: 5px;
+color: var(--text-muted);
+background-color: var(--background-primary);
+}
+
+
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="format"]:nth-child(7) .menu-item-title  
+{
+    text-decoration: line-through;
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="format"]:nth-child(8)   
+{
+  color: var(--accent-em);
+  font-family: var(--font-family-em);
+  font-style: italic;
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="format"]:nth-child(9)   
+{
+  font-weight: bold;
+  color: var(--accent-strong) ;
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="format"]+ .menu-separator::before
+{
+content: "多彩高亮MD刷";
+font-size: 0.6em;
+margin-top: -2px;
+position: absolute;
+left: 25%;
+text-align: center;
+width: 8em;
+line-height: 5px;
+color: var(--text-muted);
+background-color: var(--background-primary);
+}
+
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="highlight"]:nth-child(11)   
+{
+  background-color: var(--text-highlight-bg);
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="highlight"]:nth-child(12)   
+{
+  background-color: var(--bg-color-highlight-1);
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="highlight"]:nth-child(13)   
+{
+  background-color: var(--bg-color-highlight-2);
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="highlight"]:nth-child(14)   
+{
+  background-color: var(--bg-color-highlight-3);
+}
+
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="highlight"]+ .menu-separator::before
+{
+content: "涂黑挖空MD刷";
+font-size: 0.6em;
+margin-top: -1px;
+position: absolute;
+left: 25%;
+text-align: center;
+width: 8em;
+line-height: 5px;
+color: var(--text-muted);
+background-color: var(--background-primary);
+}
+
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="paint"]:nth-child(16)::after   
+{
+  content: "███";
+  letter-spacing: -1px;
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="paint"]:nth-child(17)::after   
+{
+  content: "🟧🟧";
+  letter-spacing: -8px;
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="paint"]:nth-child(18)::after   
+{
+  content: "_____";
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="paint"]+ .menu-separator
+{
+height: 5px;
+ 
+
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="paint"]+ .menu-separator::before
+{
+content: "html多彩刷";
+font-size: 0.6em;
+margin-top: 3px;
+position: absolute;
+left: 30%;
+text-align: center;
+width: 30%;
+line-height: 5px;
+color: var(--text-muted);
+background-color: var(--background-primary);
+}
+div.menu.Enhanced-editing-menu > .menu-item:is([data-section="fontcolor"],[data-section="highlight_html"]) {
+  display: inline-flex;
+  padding: 0px 0px 15px 10px;
+  align-items: center;
+}
+div.menu.Enhanced-editing-menu > .menu-item:is([data-section="fontcolor"],[data-section="highlight_html"]) .menu-item-icon
+{
+ margin-right: -0.5em;
+ margin-left: 5px;
+}
+div.menu.Enhanced-editing-menu > div.menu-item[data-section="fontcolor"]+ .menu-separator
+{
+  border-bottom:none;
+  margin: -8px;
+}
+
+div.menu.Enhanced-editing-menu > div.menu-item
+{
+font-size: 12px;
+}

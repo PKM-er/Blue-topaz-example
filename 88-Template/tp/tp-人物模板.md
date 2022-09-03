@@ -1,16 +1,9 @@
 ---
-<%-* 
-let  newtitle
-if(tp.file.title.includes("未命名") || tp.file.title.toLowerCase().includes("untitled")) 
-{ title=await tp.system.prompt("请输入要创建的文件名");
-  newtitle=title||tp.date.now("YYYYMMDDHHmmss")
-	await tp.file.rename(newtitle)}
-	else newtitle=tp.file.title
--%>
+
 <%-*
-var cleanTitle = tp.user.getTitleSnippet(newtitle) 
-var title = `${cleanTitle}`;
-await tp.file.rename(`${title}`);
+var cleanTitle = tp.user.getTitleSnippet(newtitle)
+var title = ${cleanTitle};
+await tp.file.rename(${title});
 let filetype = await tp.system.suggester(["人物目录", "临时"], ["人物", "其他"], false, "Which template do you want to use?") 
 if (filetype === "人物") { 
 myFilePath = "/50-Inbox/People/" +  `${title}`;

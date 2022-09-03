@@ -1,0 +1,422 @@
+/* bt设置 */
+/* Specific Settings for Blue Topaz Transplant */
+
+
+body.auto-serial-number-dvtable .zettelkasten:not(.cards) .dataview.table-view-table> tbody > tr> td:first-child::before
+{
+content:'';
+	
+}
+
+.zettelkasten table.dataview tbody {
+    margin-top: 0px;
+    margin-left: 5px;
+}
+
+.zettelkasten table.dataview tbody>tr>td .el-p {    
+    word-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+	z-index: 2;
+}
+
+.zettelkasten table.dataview>tbody>tr {
+	width: 100%;
+	height: auto;
+	box-shadow: 0 4px 6px 0 var(--background-modifier-box-shadow);
+}
+
+.zettelkasten table.dataview>tbody>tr:hover {
+	box-shadow: 2px 8px 12px 6px rgb(0 0 0 / 100%) !important, 0 1px 3px 1px rgb(0 0 0 / 3%);
+}
+
+/* .zettelkasten table.dataview tbody>tr>td:first-child:after {
+	background-color: green;
+	z-index: -1;
+} */
+
+
+.zettelkasten body:not(.no-wrapped-dvtable) :is(.markdown-preview-view,.markdown-rendered) .table-view-table>tbody>tr>td, body:not(.no-wrapped-dvtable) .markdown-source-view.mod-cm6 .table-view-table>tbody>tr>td {
+	max-width: 100%;
+}
+ 
+.zettelkasten table.dataview tbody>tr>td:first-child, .markdown-source-view.mod-cm6.zettelkasten .dataview.table-view-table>tbody>tr>td:first-child {
+	background-color: rgba(var(--interactive-accent-rgb), 0.05);
+	padding:  0 calc(var(--zettelkasten-padding)/2) ;
+	width: 100%;
+}
+
+/* 大一些的阴影取消 */
+/* box shadow disabled */
+
+:is(.markdown-preview-view,.markdown-rendered) table {
+	box-shadow: 0px 0px 0px rgba(0, 0, 0, 0.1);
+}
+
+/* minimal原本设置 */
+/* minimal original settings */
+
+:root {
+	--zettelkasten-min-width: 180px;
+	--zettelkasten-max-width: 1fr;
+	--zettelkasten-mobile-width: 120px;
+	--zettelkasten-image-height: 400px;
+	--zettelkasten-padding: 1.2em;
+	--zettelkasten-image-fit: contain;
+	--zettelkasten-background: var(--background-secondary);
+	--zettelkasten-border-width: 0px;
+	/* 新参数 new params rgb(220, 239, 239)
+	--zettelkasten-title-background: rgb(220, 239, 239);*/
+}
+
+@media (max-width:400pt) {
+	:root {
+		--zettelkasten-min-width: var(--zettelkasten-mobile-width)
+	}
+}
+
+
+.zettelkasten.table-100 table.dataview tbody,
+.table-100 .zettelkasten table.dataview tbody {
+	padding: .25rem .75rem
+}
+
+.zettelkasten .el-pre+.el-lang-dataview .table-view-thead {
+	padding-top: 8px
+}
+
+.zettelkasten table.dataview>tbody>tr {
+	/* background-color: rgba(249, 249, 249, 0.925); */
+	background-color: var(--background-primary);
+}
+
+.zettelkasten table.dataview tbody {
+	clear: both;
+	padding: .5rem 0;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(var(--zettelkasten-min-width), var(--zettelkasten-max-width)));
+	grid-column-gap: 0.75rem;
+	grid-row-gap: 0.75rem
+}
+
+.zettelkasten table.dataview>tbody>tr {
+	background-color: var(--zettelkasten-background);
+	border: var(--zettelkasten-border-width) solid var(--background-modifier-border);
+	display: flex;
+	flex-direction: column;
+	margin: 0;
+	padding: 0 0 calc(var(--zettelkasten-padding)/3) 0;
+	border-radius: 6px;
+	overflow: hidden;
+	transition: box-shadow .15s linear
+}
+
+.zettelkasten table.dataview>tbody>tr:hover {
+	border: var(--zettelkasten-border-width) solid var(--background-modifier-border-hover);
+	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, .05), 0 1px 3px 1px rgba(0, 0, 0, .025);
+	transition: box-shadow .15s linear
+}
+
+.markdown-source-view.mod-cm6.zettelkasten .dataview.table-view-table>tbody>tr>td,
+.trim-cols .zettelkasten table.dataview tbody>tr>td {
+	white-space: normal
+}
+
+.zettelkasten table.dataview tbody>tr>td,
+.markdown-source-view.mod-cm6.zettelkasten .dataview.table-view-table>tbody>tr>td {
+	border-bottom: none;
+	padding: 0;
+	line-height: 1.2;
+	width: calc(100% - var(--zettelkasten-padding));
+	margin: 0 auto;
+	overflow: visible !important;
+	max-width: 100%;
+	display: flex
+}
+
+.zettelkasten table.dataview tbody>tr>td .el-p {
+	display: block;
+	width: 100%
+}
+
+.zettelkasten table.dataview tbody>tr>td:first-child {
+	font-weight: var(--bold-weight)
+}
+
+.zettelkasten table.dataview tbody>tr>td:first-child a {
+	padding: 0 0 calc(var(--zettelkasten-padding)/3);
+	display: block
+}
+
+.zettelkasten table.dataview tbody>tr>td:not(:first-child) {
+	font-size: 90%;
+	color: var(--text-muted)
+}
+
+@media (max-width:400pt) {
+	.zettelkasten table.dataview tbody>tr>td:not(:first-child) {
+		font-size: 80%
+	}
+}
+
+.zettelkasten-cover.zettelkasten table.dataview tbody>tr>td img {
+	object-fit: cover
+}
+
+.zettelkasten-16-9.zettelkasten table.dataview tbody>tr>td img {
+	aspect-ratio: 16/9
+}
+
+.zettelkasten-1-1.zettelkasten table.dataview tbody>tr>td img {
+	aspect-ratio: 1/1
+}
+
+.zettelkasten-2-1.zettelkasten table.dataview tbody>tr>td img {
+	aspect-ratio: 2/1
+}
+
+.zettelkasten-2-3.zettelkasten table.dataview tbody>tr>td img {
+	aspect-ratio: 2/3
+}
+
+.zettelkasten-align-bottom.zettelkasten table.dataview tbody>tr>td:last-child {
+	align-items: flex-end;
+	flex-grow: 1
+}
+
+.zettelkasten-cols-1 table.dataview tbody {
+	grid-template-columns: repeat(1, minmax(0, 1fr))
+}
+
+.zettelkasten-cols-2 table.dataview tbody {
+	grid-template-columns: repeat(2, minmax(0, 1fr))
+}
+
+@media (min-width:400pt) {
+	.zettelkasten-cols-3 table.dataview tbody {
+		grid-template-columns: repeat(3, minmax(0, 1fr))
+	}
+
+	.zettelkasten-cols-4 table.dataview tbody {
+		grid-template-columns: repeat(4, minmax(0, 1fr))
+	}
+
+	.zettelkasten-cols-5 table.dataview tbody {
+		grid-template-columns: repeat(5, minmax(0, 1fr))
+	}
+
+	.zettelkasten-cols-6 table.dataview tbody {
+		grid-template-columns: repeat(6, minmax(0, 1fr))
+	}
+
+	.zettelkasten-cols-7 table.dataview tbody {
+		grid-template-columns: repeat(7, minmax(0, 1fr))
+	}
+
+	.zettelkasten-cols-8 table.dataview tbody {
+		grid-template-columns: repeat(8, minmax(0, 1fr))
+	}
+}
+
+.zettelkasten table.dataview tbody>tr>td>:not(.el-embed-image) {
+	padding: calc(var(--zettelkasten-padding)/3) 0
+}
+
+.zettelkasten table.dataview tbody>tr>td:not(:last-child):not(:first-child)>.el-p:not(.el-embed-image) {
+	border-bottom: 1px solid var(--background-modifier-border);
+	width: 100%
+}
+
+.zettelkasten table.dataview tbody>tr>td a {
+	text-decoration: none
+}
+
+.links-int-on .zettelkasten table.dataview tbody>tr>td a {
+	text-decoration: none
+}
+
+.zettelkasten table.dataview tbody>tr>td>button {
+	width: 100%;
+	margin: calc(var(--zettelkasten-padding)/2) 0
+}
+
+.zettelkasten table.dataview tbody>tr>td:last-child>button {
+	margin-bottom: calc(var(--zettelkasten-padding)/6)
+}
+
+.zettelkasten table.dataview tbody>tr>td>ul {
+	width: 100%;
+	padding: .25em 0 !important;
+	margin: 0 auto !important
+}
+
+.zettelkasten table.dataview tbody>tr>td:not(:last-child)>ul {
+	border-bottom: 1px solid var(--background-modifier-border)
+}
+
+.zettelkasten table.dataview tbody>tr>td .el-embed-image {
+	background-color: var(--background-secondary);
+	display: block;
+	margin: 0 calc(var(--zettelkasten-padding)/-2) 0 calc(var(--zettelkasten-padding)/-2);
+	width: calc(100% + var(--zettelkasten-padding))
+}
+
+.zettelkasten table.dataview tbody>tr>td img {
+	width: 100%;
+	object-fit: var(--zettelkasten-image-fit);
+	max-height: var(--zettelkasten-image-height);
+	background-color: var(--background-secondary);
+	vertical-align: bottom
+}
+
+.markdown-source-view.mod-cm6.zettelkasten .edit-block-button {
+	top: 0;
+	right: 26px;
+	opacity: 1;
+	background-color: transparent
+}
+
+.zettelkasten.table-100 table.dataview thead>tr,
+.table-100 .zettelkasten table.dataview thead>tr {
+	right: .75rem
+}
+
+.zettelkasten.table-100 table.dataview thead:before,
+.table-100 .zettelkasten table.dataview thead:before {
+	margin-right: .75rem
+}
+
+.zettelkasten table.dataview thead {
+	user-select: none;
+	width: 180px;
+	display: block;
+	float: right;
+	position: relative;
+	text-align: right;
+	height: 24px;
+	padding-bottom: 4px
+}
+
+.zettelkasten table.dataview thead:before {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 0;
+	height: var(--icon-size);
+	background-repeat: no-repeat;
+	cursor: var(--cursor);
+	text-align: right;
+	padding: 4px 10px;
+	margin-bottom: 2px;
+	border-radius: 5px;
+	font-weight: 500;
+	font-size: var(--font-adaptive-small)
+}
+
+.zettelkasten table.dataview thead:before {
+	opacity: .25;
+	background-position: center center;
+	background-size: var(--icon-size);
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="white" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>')
+}
+
+.theme-light .zettelkasten table.dataview thead:before {
+	background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 100 100"><path fill="black" d="M49.792 33.125l-5.892 5.892L33.333 28.45V83.333H25V28.45L14.438 39.017L8.542 33.125L29.167 12.5l20.625 20.625zm41.667 33.75L70.833 87.5l-20.625 -20.625l5.892 -5.892l10.571 10.567L66.667 16.667h8.333v54.883l10.567 -10.567l5.892 5.892z"></path></svg>')
+}
+
+.zettelkasten table.dataview thead:hover:before {
+	opacity: .5
+}
+
+.zettelkasten table.dataview thead>tr {
+	top: 0;
+	position: absolute;
+	display: none;
+	z-index: 9;
+	border: 1px solid var(--background-modifier-border);
+	background-color: var(--background-secondary);
+	box-shadow: 0 2px 8px var(--background-modifier-box-shadow);
+	padding: 6px;
+	border-radius: 6px;
+	flex-direction: column;
+	margin: 26px 0 0 0;
+	width: 100%
+}
+
+.zettelkasten table.dataview thead:hover>tr {
+	display: flex
+}
+
+.zettelkasten table.dataview thead>tr>th {
+	display: block;
+	padding: 3px 30px 3px 6px !important;
+	border-radius: 5px;
+	width: 100%;
+	font-weight: 400;
+	color: var(--text-muted);
+	cursor: var(--cursor);
+	border: none;
+	font-size: var(--font-adaptive-small)
+}
+
+.zettelkasten table.dataview thead>tr>th[sortable-style=sortable-asc],
+.zettelkasten table.dataview thead>tr>th[sortable-style=sortable-desc] {
+	color: var(--text-normal)
+}
+
+.zettelkasten table.dataview thead>tr>th:hover {
+	color: var(--text-normal);
+	background-color: var(--background-tertiary)
+}
+
+
+/* @settings
+name: Zettelkasten
+id: zettelkasten-style
+settings:
+    - 
+        id: zettelkasten-min-width
+        title: Card minimum width
+        type: variable-text
+        default: 180px
+    - 
+        id: zettelkasten-max-width
+        title: Card maximum width
+        description: Default fills the available width, accepts valid CSS units
+        type: variable-text
+        default: 1fr
+    - 
+        id: zettelkasten-mobile-width
+        title: Card minimum width on mobile
+        type: variable-text
+        default: 120px
+    - 
+        id: zettelkasten-padding
+        title: Card padding
+        type: variable-text
+        default: 1.2em
+    - 
+        id: zettelkasten-image-height
+        title: Card maximum image height
+        type: variable-text
+        default: 400px
+    - 
+        id: zettelkasten-border-width
+        title: Card border width
+        type: variable-text
+        default: 1px
+    -  
+        id: zettelkasten-background
+        title: Card background color
+        type: variable-themed-color
+        format: hex
+        default-light: '#'
+        default-dark: '#'
+	-
+		id: zettelkasten-title-background
+		title: Card title background color
+		type: variable-themed-color
+        format: hex
+        default-light: '#'
+        default-dark: '#'
+*/

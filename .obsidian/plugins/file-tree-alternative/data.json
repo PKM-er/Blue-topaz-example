@@ -1,4 +1,5 @@
 {
+  "openViewOnStart": true,
   "ribbonIcon": false,
   "showRootFolder": true,
   "showFilesFromSubFolders": false,
@@ -10,7 +11,7 @@
   "folderIcon": "typicon",
   "folderCount": true,
   "folderCountOption": "notes",
-  "evernoteView": true,
+  "evernoteView": false,
   "filePreviewOnHover": true,
   "iconBeforeFileName": false,
   "sortFilesBy": "name",

@@ -20,9 +20,28 @@
       "icon": "table",
       "name": "Table Editor",
       "mode": "any"
+    },
+    {
+      "id": "obsidian-table-generator:create-table-genertator",
+      "icon": "audio-file",
+      "name": "Table Generator: createTableGenerator",
+      "mode": "any"
     }
   ],
-  "fileMenu": [],
+  "fileMenu": [
+    {
+      "id": "app:delete-file",
+      "icon": "trash",
+      "name": "删除当前选中的文件",
+      "mode": "any"
+    },
+    {
+      "id": "file-explorer:move-file",
+      "icon": "paper-plane-glyph",
+      "name": "移动到其他文件夹",
+      "mode": "any"
+    }
+  ],
   "leftRibbon": [],
   "rightRibbon": [],
   "titleBar": [
@@ -63,15 +82,15 @@
       "mode": "any"
     },
     {
-      "id": "quick-explorer:go-next",
-      "icon": "arrow-down",
-      "name": "Go to next file in folder",
+      "id": "cmenu-plugin:fullscreen-focus",
+      "icon": "airplay",
+      "name": "Fullscreen focus mode",
       "mode": "any"
     },
     {
-      "id": "quick-explorer:go-prev",
-      "icon": "arrow-up",
-      "name": "Go to previous file in folder",
+      "id": "obsidian-virtual-hotkey-keyboard:open-virtual-hotkey-modal",
+      "icon": "keyboard",
+      "name": " Open Virtual Hotkey Board Modal",
       "mode": "any"
     }
   ],
@@ -93,24 +112,6 @@
       "id": "quickadd:choice:fe31fa1a-99c5-4b58-9001-1cac23a2b9b5",
       "icon": "home",
       "name": "QuickAdd: 打开主页",
-      "mode": "any"
-    },
-    {
-      "id": "workspace:move-to-new-window",
-      "icon": "fullscreen",
-      "name": "将当前面板移动至新窗口",
-      "mode": "any"
-    },
-    {
-      "id": "window:toggle-always-on-top",
-      "icon": "cpu",
-      "name": "将当前窗口置顶",
-      "mode": "any"
-    },
-    {
-      "id": "file-tree-alternative:reveal-active-file",
-      "icon": "target",
-      "name": "定位到当前文件",
       "mode": "any"
     },
     {

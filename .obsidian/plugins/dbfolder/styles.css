@@ -56,7 +56,6 @@
 
 .database-plugin__form-input {
   padding: 0.375rem;
-  background-color: var(--background-primary);
   border: none;
   border-radius: 4px;
   font-size: 0.875rem;
@@ -81,6 +80,14 @@
   width: 100%;
 }
 
+.database-plugin__tr .data-input {
+  background-color: var(--background-primary);
+}
+
+.database-plugin__tr-hovered .data-input {
+  background-color: var(--background-secondary);
+}
+
 .data-input {
   white-space: pre-wrap;
   border: none;
@@ -89,12 +96,12 @@
   font-size: 1rem;
   border-radius: 4px;
   resize: none;
-  background-color: var(--background-primary);
   box-sizing: border-box;
   flex: 1 1 auto;
   text-align: -webkit-center;
   vertical-align: middle;
 }
+
 /** children of data-input fills parent div*/
 .data-input > * {
   border: none;
@@ -262,7 +269,6 @@ div.database-plugin__checkbox {
   color: var(--text-muted);
   cursor: pointer;
   text-align: left;
-
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -272,11 +278,13 @@ div.database-plugin__checkbox {
   padding: 0;
 }
 
-.database-plugin__tr {
+.database-plugin__tr,
+.database-plugin__tr-hovered {
   display: table-row;
 }
 
-.database-plugin__tr:last-child .database-plugin__td {
+.database-plugin__tr:last-child .database-plugin__td,
+.database-plugin__tr-hovered:last-child .database-plugin__td {
   border-bottom: 0;
 }
 
@@ -286,8 +294,11 @@ div.database-plugin__checkbox {
   align-items: center;
   font-size: 0.875rem;
   cursor: pointer;
-  position: sticky;
   bottom: 0;
+  z-index: 3;
+  opacity: 0.8;
+  position: sticky;
+  left: 0;
   background-color: var(--background-primary);
 }
 
@@ -330,7 +341,6 @@ div.database-plugin__checkbox {
 .database-plugin__td {
   overflow: hidden;
   color: var(--text-normal);
-  background-color: var(--background-primary);
   align-items: stretch;
   justify-content: center;
   padding: 0;
@@ -364,8 +374,10 @@ div.database-plugin__checkbox {
   padding: 0.6rem;
 }
 
-.database-plugin__sticky_first_column .database-plugin__td:first-child,
-.database-plugin__sticky_first_column .database-plugin__th:first-child {
+.database-plugin__sticky_first_column .database-plugin__td:nth-child(2),
+.database-plugin__sticky_first_column .database-plugin__th:nth-child(2),
+.database-plugin__table .database-plugin__td:first-child,
+.database-plugin__table .database-plugin__th:first-child {
   position: sticky;
   left: 0;
   z-index: 1;
@@ -404,6 +416,7 @@ div.database-plugin__checkbox {
 .database-plugin__sticky-level-1 {
   position: sticky;
   top: 0;
+  left: 0;
   z-index: 2;
 }
 .database-plugin__sticky-level-2 {
@@ -422,7 +435,7 @@ div.database-plugin__checkbox {
   background-color: var(--background-secondary);
 }
 
-.database-plugin__padding-left {
+.database-plugin__padding-left-05 {
   padding-left: 0.5rem;
 }
 
@@ -543,11 +556,98 @@ span.text-align-right {
 .configuration-section-container-columns-template {
   background-color: var(--background-modifier-box-shadow);
 }
+/**
+*  Row styles
+*/
+/* row context menu shows an icon to the left of the first cell translucent*/
+.database-plugin__row-context-menu {
+  padding: 0;
+}
+
+.database-plugin__tr-hovered {
+  background-color: var(--background-secondary);
+}
+
+/**
+* AUTOCOMPLETE STYLES
+*/
+.database-plugin__autocomplete {
+  font-size: 0.875rem;
+  border: 1px solid var(--background-modifier-border);
+  background-color: var(--background-primary);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  min-width: 20ch;
+  max-width: 40ch;
+  max-height: 200px;
+  border-radius: 6px;
+  box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.2);
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.database-plugin__autocomplete li {
+  margin: 0;
+}
+
+.database-plugin__autocomplete li em {
+  opacity: 0.6;
+}
+
+.database-plugin .textcomplete-footer,
+.database-plugin .textcomplete-header {
+  display: none;
+}
+
+.database-plugin__autocomplete-item-active,
+.database-plugin__autocomplete-item {
+  border-top: 1px solid var(--background-modifier-border);
+  padding: 4px 6px;
+  cursor: pointer;
+}
+
+.database-plugin__autocomplete
+  .textcomplete-header
+  + .database-plugin__autocomplete-item,
+.database-plugin__autocomplete
+  .textcomplete-header
+  + .database-plugin__autocomplete-item-active {
+  border-top: none;
+}
+
+.database-plugin__autocomplete-item:hover,
+.database-plugin__autocomplete-item-active {
+  color: var(--text-on-accent);
+  background-color: var(--interactive-accent-hover);
+}
+
+.database-plugin__file-suggestion-wrapper {
+  display: flex;
+  line-height: 1.2;
+}
+
+.database-plugin__file-suggestion-icon {
+  flex-shrink: 0;
+  flex-grow: 0;
+  padding-right: 4px;
+}
+
+.database-plugin__file-suggestion-subtitle {
+  font-size: 0.875em;
+  color: var(--text-muted);
+}
+
+.database-plugin__autocomplete-item:hover
+  .database-plugin__file-suggestion-subtitle,
+.database-plugin__autocomplete-item-active
+  .database-plugin__file-suggestion-subtitle {
+  color: var(--text-on-accent);
+}
 
 /*
 *  React-datepicker styles
 */
-
 .react-datepicker__year-read-view--down-arrow,
 .react-datepicker__month-read-view--down-arrow,
 .react-datepicker__month-year-read-view--down-arrow,
@@ -675,6 +775,7 @@ span.text-align-right {
   border-radius: 0.3rem;
   display: inline-block;
   position: relative;
+  z-index: 4;
 }
 
 .react-datepicker--time-only .react-datepicker__triangle {
@@ -697,7 +798,7 @@ span.text-align-right {
 }
 
 .react-datepicker-popper {
-  z-index: 1;
+  z-index: 4;
 }
 
 .react-datepicker-popper[data-placement^="bottom"] {
@@ -792,7 +893,7 @@ span.text-align-right {
   top: 2px;
   padding: 0;
   border: none;
-  z-index: 1;
+  z-index: 4;
   height: 32px;
   width: 32px;
   text-indent: -999em;
@@ -1317,7 +1418,7 @@ span.text-align-right {
   width: 50%;
   left: 25%;
   top: 30px;
-  z-index: 1;
+  z-index: 4;
   text-align: center;
   border-radius: 0.3rem;
   border: 1px solid #aeaeae;
@@ -1445,7 +1546,7 @@ span.text-align-right {
   justify-content: center;
   align-items: center;
   display: flex;
-  z-index: 2147483647;
+  z-index: 4;
 }
 
 .react-datepicker__portal .react-datepicker__day-name,

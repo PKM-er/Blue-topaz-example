@@ -19,9 +19,9 @@ dv.el("blockquote", music);
 ```ad-music
 title: 自选歌单
 collapse: close
- <iframe frameborder="0" border="1" marginwidth="0" marginheight="0" width=280 height=86 src="https://music.163.com/outchain/player?type=2&id=488249475&auto=0&height=66"> </iframe>
+ <iframe frameborder="0" border="1" marginwidth="0" marginheight="0" width=100% height=86 src="https://music.163.com/outchain/player?type=2&id=488249475&auto=0&height=66"> </iframe>
 
- <iframe frameborder="0" border="1" marginwidth="0" marginheight="0" width=280 height=86 src="https://music.163.com/outchain/player?type=2&id=492857516&auto=0&height=66"> </iframe>
+ <iframe frameborder="0" border="1" marginwidth="0" marginheight="0" width=100% height=86 src="https://music.163.com/outchain/player?type=2&id=492857516&auto=0&height=66"> </iframe>
 ```
 
 %%自行更换代码中的id 可以换成自己的歌单id，下面是推荐的%%
@@ -31,7 +31,7 @@ collapse: close
 %%lavi共享的歌单 7354648923%%
 
 
-````ad-flex
+````ad-col2
 title: 精选歌单
 ```jsx::Musicbar
 6894168416

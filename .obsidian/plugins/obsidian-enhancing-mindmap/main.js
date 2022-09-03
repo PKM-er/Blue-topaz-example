@@ -37122,7 +37122,6 @@ class MindMapView extends obsidian.TextFileView {
         return this.data;
     }
     setViewData(data) {
-        var _a;
         if (this.mindmap) {
             this.mindmap.clear();
             this.contentEl.innerHTML = '';
@@ -37142,11 +37141,10 @@ class MindMapView extends obsidian.TextFileView {
         //   });
         // }
         this.mindmap = new MindMap(mindData, this.contentEl, this.plugin.settings);
-        this.mindmap.path = ((_a = this.app.workspace.getActiveFile()) === null || _a === void 0 ? void 0 : _a.path) || '';
         this.mindmap.colors = this.colors;
         if (this.firstInit) {
             setTimeout(() => {
-                var leaf = this.app.workspace.activeLeaf;
+                var leaf = this.leaf;
                 if (leaf) {
                     var view = leaf.view;
                     this.mindmap.path = view === null || view === void 0 ? void 0 : view.file.path;
@@ -37165,6 +37163,7 @@ class MindMapView extends obsidian.TextFileView {
             var view = this.leaf.view;
             this.fileCache = this.app.metadataCache.getFileCache(view.file);
             this.yamlString = this.getFrontMatter();
+            this.mindmap.path = view === null || view === void 0 ? void 0 : view.file.path;
             this.mindmap.init();
             this.mindmap.refresh();
             this.mindmap.view = this;
@@ -37525,10 +37524,16 @@ class MindMapPlugin extends obsidian.Plugin {
                 // @ts-ignore
                 const mindmap = yield this.app.fileManager.createNewMarkdownFile(targetFolder, `${t('Untitled mindmap')}`);
                 yield this.app.vault.modify(mindmap, basicFrontmatter);
-                yield this.app.workspace.activeLeaf.setViewState({
-                    type: mindmapViewType,
-                    state: { file: mindmap.path },
-                });
+                // await this.app.workspace.activeLeaf.setViewState({
+                //   type: mindmapViewType,
+                //   state: { file: mindmap.path },
+                // });
+                setTimeout(() => __awaiter(this, void 0, void 0, function* () {
+                    yield this.app.workspace.getLeaf().setViewState({
+                        type: mindmapViewType,
+                        state: { file: mindmap.path },
+                    });
+                }), 100);
             }
             catch (e) {
                 console.error("Error creating mindmap board:", e);
@@ -37580,6 +37585,7 @@ class MindMapPlugin extends obsidian.Plugin {
                         .setIcon('document')
                         .onClick(() => this.newMindMap(file));
                 });
+                return;
             }
             //add markdown view menu  open as mind map view
             if (leaf && this.mindmapFileModes[leaf.id || file.path] == 'markdown') {

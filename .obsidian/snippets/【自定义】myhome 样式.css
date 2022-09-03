@@ -842,7 +842,10 @@ margin-left: 0.5em;
 }
 
  
- 
+.timeline-container
+{
+  top: 86px!important;
+}
 
 .popover .popover-titlebar  .popover-title[data-path$='Music.md']::before
 {
@@ -876,5 +879,41 @@ margin-left: 0.5em;
 :is(.nav-file-title.is-unsupported,.oz-nav-file-title)[data-path="cedict_ts.u8"]
 {
   display: none;
+}
+
+.modal-content .cmdr-setting-content
+{
+ height: auto;
+}
+
+/****table  enhancer*********/
+
+.markdown-source-view.is-live-preview
+table tr :is(td,th):empty
+{
+  height: 2em;
+}
+
+.markdown-source-view.is-live-preview
+table tr :is(td,th).is-editing
+{
+  border: 1px solid var(--background-modifier-border);
+}
+.ob-table-enhancer-col-bar
+{
+
+  transition: all 0.2s ease-in-out  !important;
+}
+.ob-table-enhancer-row-bar
+{
+  transition: all 0.3s ease-in-out   !important;
+}
+/****table enhancer*********/
+
+
+.notice-container
+{
+  
+  top: 0px;
 }
 

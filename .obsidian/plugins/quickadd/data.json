@@ -200,6 +200,32 @@
       "type": "Macro",
       "command": true,
       "macroId": "70c6d19b-c724-4db8-8785-0491e1c4ebe3"
+    },
+    {
+      "id": "e97130ed-3df6-4c31-98ad-dd8f66820985",
+      "name": "inbox",
+      "type": "Template",
+      "command": true,
+      "templatePath": "88-Template/tp/tp-笔记收集箱.md",
+      "fileNameFormat": {
+        "enabled": true,
+        "format": "untitled"
+      },
+      "folder": {
+        "enabled": false,
+        "folders": [],
+        "chooseWhenCreatingNote": false,
+        "createInSameFolderAsActiveFile": false
+      },
+      "appendLink": false,
+      "incrementFileName": true,
+      "openFileInNewTab": {
+        "enabled": true,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": true,
+      "openFileInMode": "default"
     }
   ],
   "macros": [
@@ -380,7 +406,7 @@
             "name": "movie日记",
             "type": "Template",
             "command": false,
-            "templatePath": "88-Template/tp-movie.md",
+            "templatePath": "88-Template/tp/tp-movie.md",
             "fileNameFormat": {
               "enabled": true,
               "format": "{{VALUE:fileName}}"
@@ -427,7 +453,7 @@
             "name": "豆瓣读书笔记",
             "type": "Template",
             "command": false,
-            "templatePath": "88-Template/tp-book-callout.md",
+            "templatePath": "88-Template/tp/tp-book-callout.md",
             "fileNameFormat": {
               "enabled": true,
               "format": "《{{VALUE:bookname}}》"
@@ -480,7 +506,7 @@
             "name": "豆瓣电影",
             "type": "Template",
             "command": false,
-            "templatePath": "88-Template/tp-movie-douban.md",
+            "templatePath": "88-Template/tp/tp-movie-douban.md",
             "fileNameFormat": {
               "enabled": true,
               "format": "{{VALUE:fileName}}"
@@ -512,15 +538,15 @@
       "id": "d0d4ced8-94d2-4f26-9e8b-defd8d087193",
       "commands": [
         {
-          "name": "Hover Editor: Open new popover",
+          "name": "Hover Editor: Open new Hover Editor",
           "type": "Obsidian",
-          "id": "fe7f4f15-86b2-412e-8d9b-060d011564d5",
+          "id": "87219468-aaff-47e0-8319-c4f6d8f90bb7",
           "commandId": "obsidian-hover-editor:open-new-popover"
         },
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "834de2c3-7d88-4726-8956-18e3b6ff379d",
+          "id": "8ad62a7a-2d80-4c27-be91-9a0201b5a505",
           "time": 300
         },
         {
@@ -532,7 +558,19 @@
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "cd1dfeaa-b458-49fb-830a-e936c63cbe07",
+          "id": "0435dbdf-7dea-4e98-a9f3-0f614707ae71",
+          "time": 500
+        },
+        {
+          "name": "Hover Editor: Restore active Hover Editor",
+          "type": "Obsidian",
+          "id": "21779864-056e-4a9e-8f2a-d569ae51b6d0",
+          "commandId": "obsidian-hover-editor:restore-active-popover"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "834de2c3-7d88-4726-8956-18e3b6ff379d",
           "time": 200
         },
         {
@@ -540,6 +578,18 @@
           "type": "Obsidian",
           "id": "26f26f19-2580-40ac-a348-2b6b1c12e3be",
           "commandId": "workspace:move-to-new-window"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "1a28a3ad-68eb-4cad-a674-50e15ba1d4f0",
+          "time": 300
+        },
+        {
+          "name": "将当前窗口置顶",
+          "type": "Obsidian",
+          "id": "78ac987a-6346-429f-ac42-1eaf8ee56445",
+          "commandId": "window:toggle-always-on-top"
         }
       ],
       "runOnStartup": false
@@ -678,16 +728,16 @@
       "id": "0e4a5a36-3d1c-4430-82c7-e7ff6682b088",
       "commands": [
         {
-          "name": "Hover Editor: Open new Hover Editor",
+          "name": "左右拆分",
           "type": "Obsidian",
-          "id": "f2e0506d-d0fd-4d88-ae6e-5afbc01dbe8d",
-          "commandId": "obsidian-hover-editor:open-new-popover"
+          "id": "31fd9bc7-8f78-431d-922c-73ca866e6acb",
+          "commandId": "workspace:split-vertical"
         },
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "4fdf6f59-a3ea-4dfc-8317-86f9f95e6963",
-          "time": 500
+          "id": "df23fbbf-b58e-48df-a883-783a02535694",
+          "time": 100
         },
         {
           "name": "Hotkeys for specific files: Open 88-Template/🎵Music",
@@ -698,20 +748,14 @@
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "479d7585-5e62-46c9-a4ec-a9cf8feb84b7",
-          "time": 100
+          "id": "4fdf6f59-a3ea-4dfc-8317-86f9f95e6963",
+          "time": 500
         },
         {
-          "name": "将焦点切换到左侧面板",
+          "name": "Hover Editor: Convert active pane to Hover Editor",
           "type": "Obsidian",
-          "id": "90b07c73-f1e5-4651-b035-979c4a8d2da3",
-          "commandId": "editor:focus-left"
-        },
-        {
-          "name": "Hover Editor: Restore active Hover Editor",
-          "type": "Obsidian",
-          "id": "54417752-a221-47c6-927a-b53b83bcf820",
-          "commandId": "obsidian-hover-editor:restore-active-popover"
+          "id": "73f5f803-1fd1-4ce8-ab42-3b0c1f35b9c7",
+          "commandId": "obsidian-hover-editor:convert-active-pane-to-popover"
         },
         {
           "name": "Wait",
@@ -720,22 +764,34 @@
           "time": 300
         },
         {
-          "name": "将当前窗口置顶",
+          "name": "Hover Editor: Restore active Hover Editor",
           "type": "Obsidian",
-          "id": "45643b1c-4d58-4032-8ed1-12977bf12b0c",
-          "commandId": "window:toggle-always-on-top"
+          "id": "86f9b0b4-6214-4b96-8c48-3d66f98d8c3a",
+          "commandId": "obsidian-hover-editor:restore-active-popover"
         },
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "7af5587c-d6d5-4ebe-bdaf-065633d0fba2",
-          "time": 400
+          "id": "b55863a3-edc2-4a1e-bffe-654e309d9b52",
+          "time": 100
         },
         {
           "name": "将当前面板移动至新窗口",
           "type": "Obsidian",
           "id": "e316bbe5-ac3b-4e19-8dca-a74785aba785",
           "commandId": "workspace:move-to-new-window"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "c60e3ced-d471-4edd-a507-e56f6bdb1a8b",
+          "time": 300
+        },
+        {
+          "name": "将当前窗口置顶",
+          "type": "Obsidian",
+          "id": "9be9e91d-60e0-4eb8-a510-1876837d9282",
+          "commandId": "window:toggle-always-on-top"
         }
       ],
       "runOnStartup": false

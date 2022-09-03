@@ -1,25 +1,19 @@
 ---
-Direction: "LR" # LR | TD
-ShowCode: false # Code or Diagram
-SubGroupNames: ["Authors", "Fiction", "Non-Fiction"] # Subgroup names ("" or " " allowed)
-RemoveOrphans: false #Only keep nodes that link to something
-KeepLinksWithoutSource: true #Only draw links that start from an imported node
-KeepLinksWithoutDest: true #Only draw links that end at an imported node
-
-# Array of DQL queries to pull in nodes - see ReadMe
-# | Link | DisplayName | OpenBracket | CloseBracket | Style |
+Direction: "LR"
+ShowCode: false
+SubGroupNames:
+ - "Authors"
+ - "Fiction"
+ - "Non-Fiction"
+RemoveOrphans: false
+KeepLinksWithoutSource: true
+KeepLinksWithoutDest: true
 Nodes:
- - 'TABLE file.name, "([", "])", "yellow" FROM  #book where !contains(file.folder, "88-Template")'
-
-
-# Array of DQL queries to pull in relationships between nodes - see ReadMe
-# | Source | Destination | Arrow |
-Links:  
- - 'TABLE WITHOUT ID status, file.name, "" FROM #book WHERE status FLATTEN status where !contains(file.folder, "88-Template")'
-
-# Custom node styles if you don't like the built in colours (like red, purple, etc) - see ReadMe
-Styles: 
- - 'classDef Custom1 fill:#DDEEFF,color:#000,stroke:#000,stroke-width:1px'
+ - "TABLE file.name, \"([\", \"])\", \"yellow\" FROM  #book where !contains(file.folder, \"88-Template\")"
+Links:
+ - "TABLE WITHOUT ID status, file.name, \"\" FROM #book WHERE status FLATTEN status where !contains(file.folder, \"88-Template\")"
+Styles:
+ - "classDef Custom1 fill:#DDEEFF,color:#000,stroke:#000,stroke-width:1px"
 ---
 # Mermaid Output
 ``` dataviewjs

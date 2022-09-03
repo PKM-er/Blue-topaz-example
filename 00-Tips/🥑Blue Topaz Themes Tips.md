@@ -11,7 +11,7 @@ created: 2022-04-07 15:08
 开始部分的最后，感谢Topaz社区的各位，没有社区的各位，不会有现在的主题。这个主题献给他们。
 ```
 ## 强调
-在笔记中，不可避免的会用到一些强调方式，比如加粗、高亮等等，这里做一个展示：
+在笔记中，不可避到一些强调方式，比如加粗、高亮等等，这里做一个展示：
 *斜体*
 **加粗**
 ***加粗斜体***
@@ -187,11 +187,11 @@ admonition里也设置了这种样式，需要在Style Settings插件里启用
 - [ ] 打群主，分bug
 ```
 ### 第三种，涂黑挖空
-Lorem ipsum dolor sit amet, consectetur ==~~adipiscing~~== elit, sed do ==~~eiusmod~~== tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮组合：==~~xx~~==`鼠标悬浮触发）
+Lorem ipsum dolor sit amet, consectetur ==~~adipiscing~~== elit, sed do ==~~eiusmod~~== tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮组合：==~~涂黑~~==`鼠标悬浮触发）
 
-Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==*  elit, sed doe *==~~eiusmod~~==*  tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮+斜体组合：*==~~xx~~==*`点击触发）
+Lorem ipsum dolor sit amet, consectetur *==~~adipiscing~~==*  elit, sed doe *==~~eiusmod~~==*  tempor incididunt ut labore et dolore magna aliqua. （`删除+高亮+斜体组合：*==~~涂彩~~==*`点击触发）
 
-Lorem ipsum dolor sit amet, consectetur *~~adipiscing~~* elit, sed do *~~eiusmod~~* tempor incididunt ut labore et dolore magna aliqua. （`删除+斜体组合：*~~xx~~*`点击触发  无背景颜色）
+Lorem ipsum dolor sit amet, consectetur *~~adipiscing~~* elit, sed do *~~eiusmod~~* tempor incididunt ut labore et dolore magna aliqua. （`删除+斜体组合：*~~挖空~~*`点击触发  无背景颜色）
 
 以上效果无需另外开启，主题默认支持，如果想取消在2.3.10中关闭，即使关闭了也可以在YAML中声明`cssclass: cloze` 对该笔记启用。
 ![image](https://user-images.githubusercontent.com/72023275/164038180-c6e2dff4-9aee-4f42-8051-854a748979ec.png)

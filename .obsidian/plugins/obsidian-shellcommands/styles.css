@@ -67,6 +67,7 @@ div.SC-setting-group div.setting-item div.setting-item-control {
 }
 
 div.SC-setting-group div.setting-item input[type=text],
+div.SC-setting-group div.setting-item input[type=search],
 div.SC-setting-group div.setting-item textarea,
 div.SC-setting-group div.setting-item select {
     width: 100%; /* Enlarge fields. */

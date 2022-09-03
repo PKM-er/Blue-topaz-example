@@ -10,7 +10,7 @@ return (
 		<iframe
       title="iframe"
       src={musicsrc}
-      style={{ width: 270, border: 0, height: 240 }}
+      style={{ width: '100%', border: 0, height: 240 }}
       sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
       scrolling="no"
     ></iframe>

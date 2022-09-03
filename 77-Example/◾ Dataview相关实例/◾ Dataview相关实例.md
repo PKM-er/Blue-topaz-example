@@ -1,7 +1,7 @@
 ---
-cssclass: kanban gridlist noyaml
-tag: moc
-obsidianUIMode: preview
+cssclass: "kanban gridlist noyaml"
+tag: "moc"
+obsidianUIMode: "preview"
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[◾ Dataview相关实例]]**
@@ -15,6 +15,7 @@ obsidianUIMode: preview
 	- [[获取当天过生日的人]]
 	- [[获取指定标签的文件内容并形成表格]]
 	- [[获取最近打开的文件列表]]
+	- [[卡片视图 展示笔记]]
 	- [[可以编辑的dv表格]]
 	- [[列出已链接但未创建的笔记和孤岛笔记]]
 	- [[随机显示文档中的图片和文字]]

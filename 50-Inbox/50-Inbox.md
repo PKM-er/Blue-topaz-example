@@ -6,7 +6,6 @@ obsidianUIMode: preview
 %% Begin Waypoint %%
 - **[[50-Inbox]]**
 	- **Logs**
-		- [[home]]
 	- **Other**
 	- **People**
 		- [[李四]]

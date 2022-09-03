@@ -67,7 +67,7 @@ dv.paragraph(desc);
 - [[00-Tips|使用技巧]]
 - `button-inbox`
 - [[示例库移植说明|移植说明]]
-- [[◾ Dataview相关实例|Dataview]]
+- [[🔑Dataview教程]]
 - [[电影看板|影视看板]]
 ```
 
@@ -145,18 +145,28 @@ dv.paragraph(posters);
 %%notice2%%
 > [!stickies3|blue]
 >```dataviewjs
+async function removeMarkdown (text) {
+let excludeComments= true;
+let excludeCode= true; 
+let plaintext = text;
+if (excludeComments) {plaintext = plaintext.replace(/<!--.*?-->/sg, "").replace(/%%.*?%%/sg, "");}
+if (excludeCode) {plaintext = plaintext.replace(/```([\s\S]*)```[\s]*/g, "");}plaintext = plaintext.replace(/`\$?=[^`]+`/g, "").replace(/^---\n.*?\n---\n/s, "").replace(/!?\[(.+)\]\(.+\)/g, "$1").replace(/\*|_|\[\[|\]\]|\||==|~~|---|#|> |`/g, ""); return plaintext;}
+async function getradomnote (files) {
+const random = Math.floor(Math.random() * (files.length - 1));
+const randomNote = files[random];
+dv.paragraph(randomNote.link);
+const sampleTFile = app.vault.getAbstractFileByPath(randomNote.path);
+const contents = await app.vault.cachedRead(sampleTFile); 
+return contents;}
 let reg=/[\u4e00-\u9fa5]/
-let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and !"20-Diary"'
-let files = dv.pages(nofold).file
-const random = Math.floor(Math.random() * (files.length - 1))
-const randomNote = files[random]
-dv.paragraph(randomNote.link)
-const sampleTFile = this.app.vault.getAbstractFileByPath(randomNote.path);
-const contents = await this.app.vault.cachedRead(sampleTFile); 
-let lines = contents.split("---\n").filter(line => line.match(reg))
-const randomline = Math.floor(Math.random() * (lines.length - 1))
+let nofold = '!"88-Template" and !"99-Attachment" and !"50-Inbox" and !"20-Diary"';
+let files = dv.pages(nofold).file;
+let content =await getradomnote(files);
+let clean= await removeMarkdown(content);
+let lines = clean?.split("\n").filter(line => line.match(reg));
+const randomline = Math.floor(Math.random() * (lines.length - 1));
 lines = lines[randomline]?.replace(/(\r|\n|#|-|\*|\t|\>)/gi,"").substr(0,80) + '...';
-dv.span(lines)
+dv.span(lines);
 >```
 
 %%notice3%%
@@ -235,7 +245,7 @@ color: 139,65,06
 
 - 🇲🇩 [[MarkDown教程 Obsidian版 2022.4.22|MD超级教程]]
 
-- 🔑 [[◾ Dataview相关实例|Dataview功能集]]
+- 🔑 [[Dataview教程|Dataview]]
 
 - 💾 [[77-Example|示例库]]
 

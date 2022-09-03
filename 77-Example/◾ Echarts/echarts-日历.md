@@ -4,7 +4,7 @@
 ```dataviewjs
 const echarts = app.plugins.plugins['obsidian-echarts'].echarts()
 function getVirtulData(year) {
-  year = year || '2017';
+  year = year || '2022';
   var date = +echarts.number.parseDate(year + '-01-01');
   var end = +echarts.number.parseDate(+year + 1 + '-01-01');
   var dayTime = 3600 * 24 * 1000;

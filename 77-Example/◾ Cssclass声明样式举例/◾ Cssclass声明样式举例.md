@@ -1,7 +1,7 @@
 ---
-cssclass: kanban gridlist noyaml
-tag: moc
-obsidianUIMode: preview
+cssclass: "kanban gridlist noyaml"
+tag: "moc"
+obsidianUIMode: "preview"
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[◾ Cssclass声明样式举例]]**
