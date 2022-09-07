@@ -17925,7 +17925,10 @@ body.style-options-for-admonition-plugin .admonition-hibox .admonition-title {
   background-color: var(--background-red);
   color: var(--text-color-code-normal);
 }
-
+.notice-container
+{
+  top: 0px;
+}
 /* ================================== */
 /* ============ checklist =========== */
 /* ================================== */
@@ -19630,6 +19633,7 @@ body:not(.default-icons).is-mobile div.is-collapsed h2 div.heading-collapse-indi
 
 .is-mobile .view-header-title {
   line-height: 37px;
+  -webkit-mask-image:unset;
 }
 
 .is-mobile .view-header-title-container,

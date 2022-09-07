@@ -9,8 +9,8 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "88-Template/home.md",
-            "mode": "preview",
+            "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
+            "mode": "source",
             "backlinks": false,
             "source": true
           }
@@ -120,7 +120,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md"
               }
             }
           },
@@ -151,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -168,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -211,20 +211,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265,
-    "collapsed": true
+    "width": 265
   },
   "active": "80430a4f104c0c57",
   "lastOpenFiles": [
-    "10-Help/Dataview系列教程/🔑Dataview教程.md",
-    "00-Tips/00-Tips.md",
-    "10-Help/Dataview系列教程/Dataview系列教程.md",
     "88-Template/home.md",
-    "10-Help/Dataview系列教程/入门到退坑系列/Dataview Learnings.md",
-    "00-Tips/插件介绍/表格增强插件.md",
+    "88-Template/彩色时钟.md",
+    "20220904105920.md",
+    "20220905172038.md",
+    "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
     "00-Tips/插件介绍/Cmenu插件魔改版 Obsidian上的工具栏.md",
-    "77-Example/各级标题示例.md",
-    "00-Tips/示例库移植说明/如何把示例库移植到你现有的库中？.md",
-    "00-Tips/插件介绍/插件介绍.md"
+    "00-Tips/插件介绍/插件介绍.md",
+    "00-Tips/00-Tips.md",
+    "10-Help/10-Help.md",
+    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
   ]
 }

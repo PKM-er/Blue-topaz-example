@@ -7,10 +7,10 @@ If your plugin does not need CSS, delete this file.
 
 */
 
-.markdown-source-view.is-live-preview
-table tr :is(td,th):empty
-{
-  height: 2em;
+.ob-table-enhancer > thead > tr > th,
+.ob-table-enhancer > tbody > tr > td {
+	height: 2em !important;
+	transition: background-color 50ms ease-out;
 }
 
 .ob-table-enhancer-row-bar {
@@ -54,5 +54,11 @@ table tr :is(td,th):empty
 
 .is-editing {
 	filter: brightness(1.5);
-	background-color: var(--bg1) !important;
+}
+.theme-dark .is-editing {
+	background-color: rgba(255, 255, 255, 0.1) !important;
+}
+
+.theme-light .is-editing {
+	background-color: rgba(0, 0, 0, 0.1) !important;
 }

@@ -911,9 +911,3 @@ table tr :is(td,th).is-editing
 /****table enhancer*********/
 
 
-.notice-container
-{
-  
-  top: 0px;
-}
-

@@ -1,11 +1,11 @@
 {
   "pluginList": [
+    "cumany/obsidian-editing-toolbar",
     "Quorafind/Obsidian-Virtual-Hotkey-Keyboard",
     "Stardusten/ob-table-enhancer",
     "Quorafind/Obsidian-Table-Generator",
     "nothingislost/obsidian-query-control",
     "cumany/obsidian-echarts",
-    "cumany/cMenu-Plugin",
     "zhaohongxuan/obsidian-weread-plugin",
     "scambier/obsidian-omnisearch",
     "obsidian-canzi/Enhanced-editing/",
@@ -26,5 +26,5 @@
   "loggingPath": "",
   "loggingVerboseEnabled": false,
   "debuggingMode": false,
-  "notificationsEnabled": false
+  "notificationsEnabled": true
 }

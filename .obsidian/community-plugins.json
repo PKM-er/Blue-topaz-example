@@ -54,11 +54,11 @@
   "templater-obsidian",
   "obsidian-admonition",
   "obsidian-virtual-hotkey-keyboard",
-  "obsidian-wrap-with-shortcuts",
   "table-editor-obsidian",
   "Enhanced-editing",
   "obsidian-table-generator",
-  "cmenu-plugin",
+  "metaedit",
+  "quick-explorer",
   "ob-table-enhancer",
-  "metaedit"
+  "obsidian-editing-toolbar"
 ]

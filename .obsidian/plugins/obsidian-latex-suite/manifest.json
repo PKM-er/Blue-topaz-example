@@ -1,0 +1,10 @@
+{
+	"id": "obsidian-latex-suite",
+	"name": "Latex Suite",
+	"version": "1.4.3",
+	"minAppVersion": "0.15.0",
+	"description": "Make typesetting LaTeX math as fast as handwriting",
+	"author": "artisticat",
+	"authorUrl": "https://github.com/artisticat1",
+	"isDesktopOnly": false
+}

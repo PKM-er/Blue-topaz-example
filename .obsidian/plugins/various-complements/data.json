@@ -123,42 +123,6 @@
         }
       }
     },
-    "ueries": {
-      "ueries": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1660036070087
-        },
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660036308735
-        }
-      }
-    },
-    "consolas": {
-      "consolas": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660050925577
-        }
-      }
-    },
-    "template": {
-      "template": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1660053802132
-        }
-      }
-    },
-    "SOR": {
-      "SOR": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660055026518
-        }
-      }
-    },
     "Sort": {
       "Sort": {
         "currentVault": {
@@ -372,6 +336,14 @@
         "currentVault": {
           "count": 1,
           "lastUpdated": 1662200225907
+        }
+      }
+    },
+    "Obsidian Editing Toolbar Plugin": {
+      "Obsidian Editing Toolbar Plugin": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1662567323457
         }
       }
     }

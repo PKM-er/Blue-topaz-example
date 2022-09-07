@@ -34,6 +34,7 @@ obsidianUIMode: preview
 	- [[三体（全集）]]
 	- [[心灵奇旅 Soul]]
 	- [[新·福音战士剧场版：终 シン・エヴァンゲリオン劇場版]]
+	- [[星际穿越 Interstellar]]
 	- [[雄狮少年]]
 	- [[悬崖之上]]
 	- [[扎克·施奈德版正义联盟 Zack Snyder's Justice League]]

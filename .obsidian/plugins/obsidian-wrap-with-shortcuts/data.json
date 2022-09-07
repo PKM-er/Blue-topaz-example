@@ -1,9 +1,0 @@
-{
-  "wrapperTags": [
-    {
-      "name": "Underline",
-      "startTag": "<u>",
-      "endTag": "</u>"
-    }
-  ]
-}

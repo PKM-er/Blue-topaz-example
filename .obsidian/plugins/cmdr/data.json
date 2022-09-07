@@ -14,18 +14,6 @@
       "icon": "horizontal-split",
       "name": "上下拆分",
       "mode": "any"
-    },
-    {
-      "id": "markdown-table-editor:markdown-table-editor-open-in-popover",
-      "icon": "table",
-      "name": "Table Editor",
-      "mode": "any"
-    },
-    {
-      "id": "obsidian-table-generator:create-table-genertator",
-      "icon": "audio-file",
-      "name": "Table Generator: createTableGenerator",
-      "mode": "any"
     }
   ],
   "fileMenu": [
@@ -79,12 +67,6 @@
       "id": "quickadd:choice:cd0405e7-6489-4e6a-beb1-07dac8f9a188",
       "icon": "music",
       "name": "QuickAdd: play music",
-      "mode": "any"
-    },
-    {
-      "id": "cmenu-plugin:fullscreen-focus",
-      "icon": "airplay",
-      "name": "Fullscreen focus mode",
       "mode": "any"
     },
     {

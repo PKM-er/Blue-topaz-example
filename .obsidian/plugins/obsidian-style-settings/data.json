@@ -52,8 +52,8 @@
   "blue-topaz-theme@@magic-deep-color@@light": "#3EAF7C",
   "CodeMirror Options@@cm5-minimal-embeds": false,
   "blue-topaz-theme@@blockquote-style-change-options": "blockquote-style-quotation-mark",
-  "blue-topaz-theme@@background-image-settings-switch": false,
-  "blue-topaz-theme@@background-settings-workplace-theme-dark": "background-settings-workplace-waves2",
+  "blue-topaz-theme@@background-image-settings-switch": true,
+  "blue-topaz-theme@@background-settings-workplace-theme-dark": "background-settings-workplace-theme-dark-in-the-sky",
   "blue-topaz-theme@@style-options-for-buttons-plugin": true,
   "blue-topaz-theme@@adjustable-embed-content-height": false,
   "blue-topaz-theme@@text-indentation-two-em": false,
@@ -177,7 +177,7 @@
   "obsidian-prism-theme@@pt-minimal-right-sidebar": true,
   "obsidian-prism-theme@@color-schemes-lt": "pt-color-scheme-swan-lt",
   "blue-topaz-theme@@line-width-readable": 50,
-  "blue-topaz-theme@@background-image-settings-markdown-page-options": "background-image-settings-markdown-page-transparent",
+  "blue-topaz-theme@@background-image-settings-markdown-page-options": "background-image-settings-markdown-page-default",
   "blue-topaz-theme@@font-size-split": "0.8em",
   "blue-topaz-theme@@paragraph-spacing": 1.3,
   "blue-topaz-theme@@folder-colorful-custom-color@@dark": "#E166FA",
@@ -205,5 +205,6 @@
   "blue-topaz-theme@@memos-inputbox": true,
   "blue-topaz-theme@@brightness-4-bg": 0.9,
   "blue-topaz-theme@@blur-depth": 0,
-  "blue-topaz-theme@@custom-titlebar-bg@@light": "#FFFFFFFC"
+  "blue-topaz-theme@@custom-titlebar-bg@@light": "#FFFFFFFC",
+  "@@": false
 }

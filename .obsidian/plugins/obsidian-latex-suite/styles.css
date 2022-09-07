@@ -1,0 +1,283 @@
+/* Settings */
+
+.snippets-text-area {
+    width: 100%;
+    display: inline-block;
+}
+
+.snippets-text-area .setting-item-info {
+    margin-bottom: 0.75rem;
+}
+
+
+.snippets-text-area .setting-item-control {
+    flex-direction: column;
+    align-items: flex-end;
+}
+
+
+.snippets-editor-wrapper {
+    width: 100%;
+    margin-bottom: 0.75rem;
+}
+
+
+.snippets-editor-wrapper .cm-editor {
+    height: 20em;
+    font-size: var(--font-inputs);
+    text-align: left;
+    outline: none !important;
+
+    border: 1px solid var(--background-modifier-border);
+}
+
+
+.snippets-editor-wrapper .cm-editor, .cm-scroller {
+    border-radius: 4px;
+}
+
+
+.snippets-editor-wrapper .cm-line, .snippets-editor-wrapper .cm-lineNumbers {
+    font-family: var(--font-monospace);
+}
+
+
+.snippets-footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+
+.snippets-editor-validity {
+    display: flex;
+    align-items: center;
+}
+
+
+.snippets-editor-validity-indicator {
+    color: white;
+    display: inline-block;
+    border-radius: 1em;
+    padding: 0.1em;
+    cursor: default;
+    visibility: hidden;
+}
+
+
+.snippets-editor-validity-indicator svg {
+    width: 16px !important;
+    height: 16px !important;
+}
+
+
+.snippets-editor-validity-indicator:hover {
+    color: white;
+}
+
+
+.snippets-editor-validity-indicator.valid {
+    background-color: #7dc535;
+    visibility: visible;
+}
+
+
+.theme-dark .snippets-editor-validity-indicator.valid {
+    background-color: #588b24;
+}
+
+
+.snippets-editor-validity-indicator.invalid {
+    background-color: #ea5555;
+    visibility: visible;
+}
+
+
+
+.snippets-editor-buttons {
+    display: flex;
+    flex-direction: row;
+}
+
+
+
+.latex-suite-confirmation-modal .setting-item {
+    border: none;
+}
+
+
+.latex-suite-suggestion-placeholder {
+    border-width: 1px 0 1px 0;
+    border-style: solid;
+}
+
+
+/**
+Snippet color classes.
+["lightskyblue", "orange", "lime", "pink", "cornsilk", "magenta", "navajowhite"]
+ */
+
+.latex-suite-suggestion-placeholder0 {
+    border-color: lightskyblue;
+}
+
+/* These extra selectors enforce their color on all children, because CodeMirror does weird nesting of spans when
+ nesting multiple decorations. */
+span.latex-suite-suggestion-placeholder0 span {
+    border-color: lightskyblue;
+}
+
+.latex-suite-suggestion-placeholder1 {
+    border-color: orange;
+}
+
+span.latex-suite-suggestion-placeholder1 span {
+    border-color: orange;
+}
+
+.latex-suite-suggestion-placeholder2 {
+    border-color: lime;
+}
+
+span.latex-suite-suggestion-placeholder2 span {
+    border-color: lime;
+}
+
+.latex-suite-suggestion-placeholder3 {
+    border-color: pink;
+}
+
+span.latex-suite-suggestion-placeholder3 span {
+    border-color: pink;
+}
+
+.latex-suite-suggestion-placeholder4 {
+    border-color: cornsilk;
+}
+
+span.latex-suite-suggestion-placeholder4 span {
+    border-color: cornsilk;
+}
+
+.latex-suite-suggestion-placeholder5 {
+    border-color: magenta;
+}
+
+span.latex-suite-suggestion-placeholder5 span {
+    border-color: magenta;
+}
+
+.latex-suite-suggestion-placeholder6 {
+    border-color: navajowhite;
+}
+
+span.latex-suite-suggestion-placeholder6 span {
+    border-color: navajowhite;
+} */
+
+
+/* Conceal */
+
+.cm-concealed-bold {
+    font-weight: bold;
+}
+
+span.cm-math.cm-concealed-mathrm {
+    font-style: normal;
+}
+
+
+/* Highlight brackets */
+/* TODO: Change these colors to be distinct from selection color */
+.theme-light .latex-suite-highlighted-bracket, .theme-light .latex-suite-highlighted-bracket [class^="latex-suite-color-bracket-"] {
+    background-color: rgba(106, 188, 255, 0.16);
+}
+
+.theme-dark .latex-suite-highlighted-bracket, .theme-dark .latex-suite-highlighted-bracket [class^="latex-suite-color-bracket-"] {
+    background-color: rgba(0, 110, 255, 0.169);
+}
+
+
+/* .latex-suite-highlighted-bracket:before {
+  content: " ";
+  position: absolute;
+  width: 0.4rem;
+  border: 2px solid --var(--text-accent);
+} */
+
+
+
+/* Panda Syntax theme */
+/* .latex-suite-color-bracket-0 {
+    color: #FFB86C;
+}
+
+.latex-suite-color-bracket-1 {
+    color: #FF75B5;
+}
+
+.latex-suite-color-bracket-2 {
+    color: #45A9F9;
+}
+
+.latex-suite-color-bracket-3 {
+    color: #B084EB;
+}
+
+.latex-suite-color-bracket-4 {
+    color: #19f9d8;
+} */
+
+
+/* VScode */
+/* .latex-suite-color-bracket-0 {
+    color: #5caeef;
+}
+
+.latex-suite-color-bracket-1 {
+    color: #dfb976;
+}
+
+.latex-suite-color-bracket-2 {
+    color: #c172d9;
+}
+
+.latex-suite-color-bracket-3 {
+    color: #4fb1bc;
+}
+
+.latex-suite-color-bracket-4 {
+    color: #97c26c;
+} */
+
+
+/* Custom colors */
+
+.theme-light .latex-suite-color-bracket-0 {
+    color: #527aff;
+}
+
+.theme-dark .latex-suite-color-bracket-0 {
+    color: #47b8ff;
+}
+
+.theme-light .latex-suite-color-bracket-1 {
+    color: #ff50b7;
+}
+
+.theme-dark .latex-suite-color-bracket-1 {
+    color: #ff55cd;
+}
+
+.theme-light .latex-suite-color-bracket-2 {
+    color: #69ba00;
+}
+
+.theme-dark .latex-suite-color-bracket-2 {
+    color: #73ff63;
+}
+
+/* .latex-suite-color-bracket-3 {
+    color: #8de15c;
+} */
