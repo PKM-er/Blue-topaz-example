@@ -51,7 +51,6 @@
   "obsidian-memos",
   "waypoint",
   "obsidian42-brat",
-  "templater-obsidian",
   "obsidian-admonition",
   "obsidian-virtual-hotkey-keyboard",
   "table-editor-obsidian",
@@ -60,5 +59,6 @@
   "metaedit",
   "quick-explorer",
   "ob-table-enhancer",
-  "obsidian-editing-toolbar"
+  "obsidian-editing-toolbar",
+  "templater-obsidian"
 ]

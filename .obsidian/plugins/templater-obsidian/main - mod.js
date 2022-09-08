@@ -68,7 +68,7 @@ var __async = (__this, __arguments, generator) => {
 __export(exports, {
   default: () => TemplaterPlugin
 });
-var import_obsidian19 = __toModule(require("obsidian"));
+var import_obsidian18 = __toModule(require("obsidian"));
 
 // src/settings/Settings.ts
 var import_obsidian6 = __toModule(require("obsidian"));
@@ -265,33 +265,52 @@ var max = Math.max;
 var min = Math.min;
 var round = Math.round;
 
+// node_modules/@popperjs/core/lib/utils/userAgent.js
+function getUAString() {
+  var uaData = navigator.userAgentData;
+  if (uaData != null && uaData.brands) {
+    return uaData.brands.map(function(item) {
+      return item.brand + "/" + item.version;
+    }).join(" ");
+  }
+  return navigator.userAgent;
+}
+
+// node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js
+function isLayoutViewport() {
+  return !/^((?!chrome|android).)*safari/i.test(getUAString());
+}
+
 // node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js
-function getBoundingClientRect(element, includeScale) {
+function getBoundingClientRect(element, includeScale, isFixedStrategy) {
   if (includeScale === void 0) {
     includeScale = false;
   }
-  var rect = element.getBoundingClientRect();
+  if (isFixedStrategy === void 0) {
+    isFixedStrategy = false;
+  }
+  var clientRect = element.getBoundingClientRect();
   var scaleX = 1;
   var scaleY = 1;
-  if (isHTMLElement(element) && includeScale) {
-    var offsetHeight = element.offsetHeight;
-    var offsetWidth = element.offsetWidth;
-    if (offsetWidth > 0) {
-      scaleX = round(rect.width) / offsetWidth || 1;
-    }
-    if (offsetHeight > 0) {
-      scaleY = round(rect.height) / offsetHeight || 1;
-    }
+  if (includeScale && isHTMLElement(element)) {
+    scaleX = element.offsetWidth > 0 ? round(clientRect.width) / element.offsetWidth || 1 : 1;
+    scaleY = element.offsetHeight > 0 ? round(clientRect.height) / element.offsetHeight || 1 : 1;
   }
+  var _ref = isElement(element) ? getWindow(element) : window, visualViewport = _ref.visualViewport;
+  var addVisualOffsets = !isLayoutViewport() && isFixedStrategy;
+  var x = (clientRect.left + (addVisualOffsets && visualViewport ? visualViewport.offsetLeft : 0)) / scaleX;
+  var y = (clientRect.top + (addVisualOffsets && visualViewport ? visualViewport.offsetTop : 0)) / scaleY;
+  var width = clientRect.width / scaleX;
+  var height = clientRect.height / scaleY;
   return {
-    width: rect.width / scaleX,
-    height: rect.height / scaleY,
-    top: rect.top / scaleY,
-    right: rect.right / scaleX,
-    bottom: rect.bottom / scaleY,
-    left: rect.left / scaleX,
-    x: rect.left / scaleX,
-    y: rect.top / scaleY
+    width,
+    height,
+    top: y,
+    right: x + width,
+    bottom: y + height,
+    left: x,
+    x,
+    y
   };
 }
 
@@ -362,8 +381,8 @@ function getTrueOffsetParent(element) {
   return element.offsetParent;
 }
 function getContainingBlock(element) {
-  var isFirefox = navigator.userAgent.toLowerCase().indexOf("firefox") !== -1;
-  var isIE = navigator.userAgent.indexOf("Trident") !== -1;
+  var isFirefox = /firefox/i.test(getUAString());
+  var isIE = /Trident/i.test(getUAString());
   if (isIE && isHTMLElement(element)) {
     var elementCss = getComputedStyle(element);
     if (elementCss.position === "fixed") {
@@ -711,7 +730,7 @@ function getWindowScrollBarX(element) {
 }
 
 // node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js
-function getViewportRect(element) {
+function getViewportRect(element, strategy) {
   var win = getWindow(element);
   var html = getDocumentElement(element);
   var visualViewport = win.visualViewport;
@@ -722,7 +741,8 @@ function getViewportRect(element) {
   if (visualViewport) {
     width = visualViewport.width;
     height = visualViewport.height;
-    if (!/^((?!chrome|android).)*safari/i.test(navigator.userAgent)) {
+    var layoutViewport = isLayoutViewport();
+    if (layoutViewport || !layoutViewport && strategy === "fixed") {
       x = visualViewport.offsetLeft;
       y = visualViewport.offsetTop;
     }
@@ -798,8 +818,8 @@ function rectToClientRect(rect) {
 }
 
 // node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js
-function getInnerBoundingClientRect(element) {
-  var rect = getBoundingClientRect(element);
+function getInnerBoundingClientRect(element, strategy) {
+  var rect = getBoundingClientRect(element, false, strategy === "fixed");
   rect.top = rect.top + element.clientTop;
   rect.left = rect.left + element.clientLeft;
   rect.bottom = rect.top + element.clientHeight;
@@ -810,8 +830,8 @@ function getInnerBoundingClientRect(element) {
   rect.y = rect.top;
   return rect;
 }
-function getClientRectFromMixedType(element, clippingParent) {
-  return clippingParent === viewport ? rectToClientRect(getViewportRect(element)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
+function getClientRectFromMixedType(element, clippingParent, strategy) {
+  return clippingParent === viewport ? rectToClientRect(getViewportRect(element, strategy)) : isElement(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : rectToClientRect(getDocumentRect(getDocumentElement(element)));
 }
 function getClippingParents(element) {
   var clippingParents2 = listScrollParents(getParentNode(element));
@@ -824,18 +844,18 @@ function getClippingParents(element) {
     return isElement(clippingParent) && contains(clippingParent, clipperElement) && getNodeName(clippingParent) !== "body";
   });
 }
-function getClippingRect(element, boundary, rootBoundary) {
+function getClippingRect(element, boundary, rootBoundary, strategy) {
   var mainClippingParents = boundary === "clippingParents" ? getClippingParents(element) : [].concat(boundary);
   var clippingParents2 = [].concat(mainClippingParents, [rootBoundary]);
   var firstClippingParent = clippingParents2[0];
   var clippingRect = clippingParents2.reduce(function(accRect, clippingParent) {
-    var rect = getClientRectFromMixedType(element, clippingParent);
+    var rect = getClientRectFromMixedType(element, clippingParent, strategy);
     accRect.top = max(rect.top, accRect.top);
     accRect.right = min(rect.right, accRect.right);
     accRect.bottom = min(rect.bottom, accRect.bottom);
     accRect.left = max(rect.left, accRect.left);
     return accRect;
-  }, getClientRectFromMixedType(element, firstClippingParent));
+  }, getClientRectFromMixedType(element, firstClippingParent, strategy));
   clippingRect.width = clippingRect.right - clippingRect.left;
   clippingRect.height = clippingRect.bottom - clippingRect.top;
   clippingRect.x = clippingRect.left;
@@ -903,12 +923,12 @@ function detectOverflow(state, options) {
   if (options === void 0) {
     options = {};
   }
-  var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
+  var _options = options, _options$placement = _options.placement, placement = _options$placement === void 0 ? state.placement : _options$placement, _options$strategy = _options.strategy, strategy = _options$strategy === void 0 ? state.strategy : _options$strategy, _options$boundary = _options.boundary, boundary = _options$boundary === void 0 ? clippingParents : _options$boundary, _options$rootBoundary = _options.rootBoundary, rootBoundary = _options$rootBoundary === void 0 ? viewport : _options$rootBoundary, _options$elementConte = _options.elementContext, elementContext = _options$elementConte === void 0 ? popper : _options$elementConte, _options$altBoundary = _options.altBoundary, altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary, _options$padding = _options.padding, padding = _options$padding === void 0 ? 0 : _options$padding;
   var paddingObject = mergePaddingObject(typeof padding !== "number" ? padding : expandToHashMap(padding, basePlacements));
   var altContext = elementContext === popper ? reference : popper;
   var popperRect = state.rects.popper;
   var element = state.elements[altBoundary ? altContext : elementContext];
-  var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary);
+  var clippingClientRect = getClippingRect(isElement(element) ? element : element.contextElement || getDocumentElement(state.elements.popper), boundary, rootBoundary, strategy);
   var referenceClientRect = getBoundingClientRect(state.elements.reference);
   var popperOffsets2 = computeOffsets({
     reference: referenceClientRect,
@@ -1315,7 +1335,7 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
   var isOffsetParentAnElement = isHTMLElement(offsetParent);
   var offsetParentIsScaled = isHTMLElement(offsetParent) && isElementScaled(offsetParent);
   var documentElement = getDocumentElement(offsetParent);
-  var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled);
+  var rect = getBoundingClientRect(elementOrVirtualElement, offsetParentIsScaled, isFixed);
   var scroll = {
     scrollLeft: 0,
     scrollTop: 0
@@ -1955,7 +1975,8 @@ var DEFAULT_SETTINGS = {
   folder_templates: [{ folder: "", template: "" }],
   syntax_highlighting: true,
   enabled_templates_hotkeys: [""],
-  startup_templates: [""]
+  startup_templates: [""],
+  enable_ribbon_icon: true
 };
 var TemplaterSettingTab = class extends import_obsidian6.PluginSettingTab {
   constructor(app, plugin) {
@@ -1971,6 +1992,7 @@ var TemplaterSettingTab = class extends import_obsidian6.PluginSettingTab {
     this.add_syntax_highlighting_setting();
     this.add_auto_jump_to_cursor();
     this.add_trigger_on_new_file_creation_setting();
+    this.add_ribbon_icon_setting();
     this.add_templates_hotkeys_setting();
     if (this.plugin.settings.trigger_on_file_creation) {
       this.add_folder_templates_setting();
@@ -2032,6 +2054,24 @@ var TemplaterSettingTab = class extends import_obsidian6.PluginSettingTab {
         this.plugin.save_settings();
         this.plugin.event_handler.update_trigger_file_on_creation();
         this.display();
+      });
+    });
+  }
+  add_ribbon_icon_setting() {
+    const desc = document.createDocumentFragment();
+    desc.append("Show Templater icon in sidebar ribbon, allowing you to quickly use templates anywhere.");
+    new import_obsidian6.Setting(this.containerEl).setName("Show icon in sidebar").setDesc(desc).addToggle((toggle) => {
+      toggle.setValue(this.plugin.settings.enable_ribbon_icon).onChange((enable_ribbon_icon) => {
+        var _a;
+        this.plugin.settings.enable_ribbon_icon = enable_ribbon_icon;
+        this.plugin.save_settings();
+        if (this.plugin.settings.enable_ribbon_icon) {
+          this.plugin.addRibbonIcon("templater-icon", "Templater", () => __async(this, null, function* () {
+            this.fuzzy_suggester.insert_template();
+          })).setAttribute("id", "rb-templater-icon");
+        } else {
+          (_a = document.getElementById("rb-templater-icon")) == null ? void 0 : _a.remove();
+        }
       });
     });
   }
@@ -2388,7 +2428,7 @@ var UNSUPPORTED_MOBILE_TEMPLATE = "Error_MobileUnsupportedTemplate";
 var ICON_DATA = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51.1328 28.7"><path d="M0 15.14 0 10.15 18.67 1.51 18.67 6.03 4.72 12.33 4.72 12.76 18.67 19.22 18.67 23.74 0 15.14ZM33.6928 1.84C33.6928 1.84 33.9761 2.1467 34.5428 2.76C35.1094 3.38 35.3928 4.56 35.3928 6.3C35.3928 8.0466 34.8195 9.54 33.6728 10.78C32.5261 12.02 31.0995 12.64 29.3928 12.64C27.6862 12.64 26.2661 12.0267 25.1328 10.8C23.9928 9.5733 23.4228 8.0867 23.4228 6.34C23.4228 4.6 23.9995 3.1066 25.1528 1.86C26.2994.62 27.7261 0 29.4328 0C31.1395 0 32.5594.6133 33.6928 1.84M49.8228.67 29.5328 28.38 24.4128 28.38 44.7128.67 49.8228.67M31.0328 8.38C31.0328 8.38 31.1395 8.2467 31.3528 7.98C31.5662 7.7067 31.6728 7.1733 31.6728 6.38C31.6728 5.5867 31.4461 4.92 30.9928 4.38C30.5461 3.84 29.9995 3.57 29.3528 3.57C28.7061 3.57 28.1695 3.84 27.7428 4.38C27.3228 4.92 27.1128 5.5867 27.1128 6.38C27.1128 7.1733 27.3361 7.84 27.7828 8.38C28.2361 8.9267 28.7861 9.2 29.4328 9.2C30.0795 9.2 30.6128 8.9267 31.0328 8.38M49.4328 17.9C49.4328 17.9 49.7161 18.2067 50.2828 18.82C50.8495 19.4333 51.1328 20.6133 51.1328 22.36C51.1328 24.1 50.5594 25.59 49.4128 26.83C48.2595 28.0766 46.8295 28.7 45.1228 28.7C43.4228 28.7 42.0028 28.0833 40.8628 26.85C39.7295 25.6233 39.1628 24.1366 39.1628 22.39C39.1628 20.65 39.7361 19.16 40.8828 17.92C42.0361 16.6733 43.4628 16.05 45.1628 16.05C46.8694 16.05 48.2928 16.6667 49.4328 17.9M46.8528 24.52C46.8528 24.52 46.9595 24.3833 47.1728 24.11C47.3795 23.8367 47.4828 23.3033 47.4828 22.51C47.4828 21.7167 47.2595 21.05 46.8128 20.51C46.3661 19.97 45.8162 19.7 45.1628 19.7C44.5161 19.7 43.9828 19.97 43.5628 20.51C43.1428 21.05 42.9328 21.7167 42.9328 22.51C42.9328 23.3033 43.1561 23.9733 43.6028 24.52C44.0494 25.06 44.5961 25.33 45.2428 25.33C45.8895 25.33 46.4261 25.06 46.8528 24.52Z" fill="currentColor"/></svg>`;
 
 // src/core/Templater.ts
-var import_obsidian14 = __toModule(require("obsidian"));
+var import_obsidian13 = __toModule(require("obsidian"));
 
 // src/core/functions/internal_functions/InternalModule.ts
 var InternalModule = class {
@@ -2470,6 +2510,7 @@ var InternalModuleDate = class extends InternalModule {
 
 // src/core/functions/internal_functions/file/InternalModuleFile.ts
 var import_obsidian8 = __toModule(require("obsidian"));
+var import_path = __toModule(require("path"));
 var DEPTH_LIMIT = 10;
 var InternalModuleFile = class extends InternalModule {
   constructor() {
@@ -2621,9 +2662,17 @@ var InternalModuleFile = class extends InternalModule {
     };
   }
   generate_move() {
-    return (path) => __async(this, null, function* () {
-      const new_path = (0, import_obsidian8.normalizePath)(`${path}.${this.config.target_file.extension}`);
-      yield this.app.fileManager.renameFile(this.config.target_file, new_path);
+    return (path, file_to_move) => __async(this, null, function* () {
+      const file = file_to_move || this.config.target_file;
+      const new_path = (0, import_obsidian8.normalizePath)(`${path}.${file.extension}`);
+      if (import_obsidian8.Platform.isMobileApp) {
+        return UNSUPPORTED_MOBILE_TEMPLATE;
+      }
+      if (!(this.app.vault.adapter instanceof import_obsidian8.FileSystemAdapter)) {
+        throw new TemplaterError("app.vault is not a FileSystemAdapter instance");
+      }
+      this.app.vault.adapter.mkdir((0, import_path.dirname)(new_path).split(import_path.sep).pop());
+      yield this.app.fileManager.renameFile(file, new_path);
       return "";
     });
   }
@@ -2690,29 +2739,46 @@ var InternalModuleWeb = class extends InternalModule {
   }
   getRequest(url) {
     return __async(this, null, function* () {
-      const response = yield fetch(url);
-      if (!response.ok) {
+      try {
+        const response = yield fetch(url);
+        if (!response.ok) {
+          throw new TemplaterError("Error performing GET request");
+        }
+        return response;
+      } catch (error) {
         throw new TemplaterError("Error performing GET request");
       }
-      return response;
     });
   }
   generate_daily_quote() {
     return () => __async(this, null, function* () {
-      const response = yield this.getRequest("https://api.quotable.io/random");
-      const json = yield response.json();
-      const author = json.author;
-      const quote = json.content;
-      const new_content = `> ${quote}
+      try {
+        const response = yield this.getRequest("https://api.quotable.io/random");
+        const json = yield response.json();
+        const author = json.author;
+        const quote = json.content;
+        const new_content = `> ${quote}
 > \u2014 <cite>${author}</cite>`;
-      return new_content;
+        return new_content;
+      } catch (error) {
+        new TemplaterError("Error generating daily quote");
+        return "Error generating daily quote";
+      }
     });
   }
   generate_random_picture() {
-    return (size, query) => __async(this, null, function* () {
-      const response = yield this.getRequest(`https://source.unsplash.com/random/${size != null ? size : ""}?${query != null ? query : ""}`);
-      const url = response.url;
-      return `![tp.web.random_picture](${url})`;
+    return (size, query, include_size = false) => __async(this, null, function* () {
+      try {
+        const response = yield this.getRequest(`https://source.unsplash.com/random/${size != null ? size : ""}?${query != null ? query : ""}`);
+        const url = response.url;
+        if (include_size) {
+          return `![tp.web.random_picture|${size}](${url})`;
+        }
+        return `![tp.web.random_picture](${url})`;
+      } catch (error) {
+        new TemplaterError("Error generating random picture");
+        return "Error generating random picture";
+      }
     });
   }
 };
@@ -2741,10 +2807,11 @@ var import_obsidian11 = __toModule(require("obsidian"));
 // src/core/functions/internal_functions/system/PromptModal.ts
 var import_obsidian9 = __toModule(require("obsidian"));
 var PromptModal = class extends import_obsidian9.Modal {
-  constructor(app, prompt_text, default_value) {
+  constructor(app, prompt_text, default_value, multi_line) {
     super(app);
     this.prompt_text = prompt_text;
     this.default_value = default_value;
+    this.multi_line = multi_line;
     this.submitted = false;
   }
   onOpen() {
@@ -2754,28 +2821,55 @@ var PromptModal = class extends import_obsidian9.Modal {
   onClose() {
     this.contentEl.empty();
     if (!this.submitted) {
-      this.reject(new TemplaterError("Cancelled prompt"));
+      this.reject();
     }
   }
   createForm() {
     var _a;
     const div = this.contentEl.createDiv();
     div.addClass("templater-prompt-div");
-    const form = div.createEl("form");
-    form.addClass("templater-prompt-form");
-    form.type = "submit";
-    form.onsubmit = (e) => {
-      this.submitted = true;
-      e.preventDefault();
-      this.resolve(this.promptEl.value);
-      this.close();
-    };
-    this.promptEl = form.createEl("input");
-    this.promptEl.type = "text";
-    this.promptEl.placeholder = "Type text here...";
-    this.promptEl.value = (_a = this.default_value) != null ? _a : "";
-    this.promptEl.addClass("templater-prompt-input");
-    this.promptEl.select();
+    let textInput;
+    if (this.multi_line) {
+      textInput = new import_obsidian9.TextAreaComponent(div);
+      const buttonDiv = this.contentEl.createDiv();
+      buttonDiv.addClass("templater-button-div");
+      const submitButton = new import_obsidian9.ButtonComponent(buttonDiv);
+      submitButton.buttonEl.addClass("mod-cta");
+      submitButton.setButtonText("Submit").onClick((evt) => {
+        this.resolveAndClose(evt);
+      });
+    } else {
+      textInput = new import_obsidian9.TextComponent(div);
+    }
+    textInput.inputEl.addClass("templater-prompt-input");
+    textInput.setPlaceholder("Type text here");
+    textInput.setValue((_a = this.default_value) != null ? _a : "");
+    textInput.onChange((value) => this.value = value);
+    textInput.inputEl.addEventListener("keydown", (evt) => this.enterCallback(evt));
+  }
+  enterCallback(evt) {
+    if (this.multi_line) {
+      if (import_obsidian9.Platform.isDesktop) {
+        if (evt.shiftKey && evt.key === "Enter") {
+        } else if (evt.key === "Enter") {
+          this.resolveAndClose(evt);
+        }
+      } else {
+        if (evt.key === "Enter") {
+          evt.preventDefault();
+        }
+      }
+    } else {
+      if (evt.key === "Enter") {
+        this.resolveAndClose(evt);
+      }
+    }
+  }
+  resolveAndClose(evt) {
+    this.submitted = true;
+    evt.preventDefault();
+    this.resolve(this.value);
+    this.close();
   }
   openAndGetValue(resolve2, reject) {
     return __async(this, null, function* () {
@@ -2785,13 +2879,15 @@ var PromptModal = class extends import_obsidian9.Modal {
     });
   }
 };
+
+
 var PromptModal2 = class extends import_obsidian9.Modal {
   constructor(app, prompt_text, default_value) {
     super(app);
     this.prompt_text = prompt_text;
     this.default_value = default_value;
     this.submitted = false;
-	this.values ='';
+	this.values =default_value;
   }
   onOpen() {
     this.titleEl.setText(this.prompt_text);
@@ -2837,6 +2933,52 @@ var PromptModal2 = class extends import_obsidian9.Modal {
     });
   }
 };
+
+var GenericYesNoPrompt = class extends import_obsidian9.Modal  {
+    constructor(app, header, text) {
+        super(app);
+        this.header = header;
+        this.text = text;
+        this.didSubmit = false;
+        this.waitForClose = new Promise((resolve, reject) => {
+            this.resolvePromise = resolve;
+            this.rejectPromise = reject;
+        });
+        this.open();
+        this.display();
+    }
+    static Prompt(app, header, text) {
+        const newPromptModal = new GenericYesNoPrompt(app, header, text);
+        return newPromptModal.waitForClose;
+    }
+    display() {
+        this.containerEl.addClass('quickAddModal', 'qaYesNoPrompt');
+        this.contentEl.empty();
+        this.titleEl.textContent = this.header;
+        this.contentEl.createEl('p').innerHTML =this.text;
+        const buttonsDiv = this.contentEl.createDiv({ cls: 'yesNoPromptButtonContainer' });
+        new import_obsidian9.ButtonComponent(buttonsDiv)
+            .setButtonText('No')
+            .onClick(() => this.submit(false));
+        const yesButton = new import_obsidian9.ButtonComponent(buttonsDiv)
+            .setButtonText('Yes')
+            .onClick(() => this.submit(true))
+            .setWarning();
+        yesButton.buttonEl.focus();
+    }
+    submit(input) {
+        this.input = input;
+        this.didSubmit = true;
+        this.close();
+    }
+    onClose() {
+        super.onClose();
+        if (!this.didSubmit)
+            this.rejectPromise("No answer given.");
+        else
+            this.resolvePromise(this.input);
+    }
+}
 
 // src/core/functions/internal_functions/system/SuggesterModal.ts
 var import_obsidian10 = __toModule(require("obsidian"));
@@ -2891,6 +3033,7 @@ var InternalModuleSystem = class extends InternalModule {
       this.static_functions.set("clipboard", this.generate_clipboard());
       this.static_functions.set("prompt", this.generate_prompt());
 	  this.static_functions.set("prompt_date", this.generate_prompt_date());
+	    this.static_functions.set("yesNoPrompt", this.generate_yesNoPrompt());
       this.static_functions.set("suggester", this.generate_suggester());
     });
   }
@@ -2907,8 +3050,8 @@ var InternalModuleSystem = class extends InternalModule {
     });
   }
   generate_prompt() {
-    return (prompt_text, default_value, throw_on_cancel = false) => __async(this, null, function* () {
-      const prompt = new PromptModal(this.app, prompt_text, default_value);
+    return (prompt_text, default_value, throw_on_cancel = false, multi_line = false) => __async(this, null, function* () {
+      const prompt = new PromptModal(this.app, prompt_text, default_value, multi_line);
       const promise = new Promise((resolve2, reject) => prompt.openAndGetValue(resolve2, reject));
       try {
         return yield promise;
@@ -2931,6 +3074,20 @@ var InternalModuleSystem = class extends InternalModule {
           throw error;
         }
         return null;
+      }
+    });
+  }
+   generate_yesNoPrompt() {
+    return (header, text, throw_on_cancel = false) => __async(this, null, function* () {
+     // const prompt =  new GenericYesNoPrompt(this.app, header, text);
+      const promise = GenericYesNoPrompt.Prompt(this.app, header, text);
+      try {
+       return yield promise;
+      } catch (error) {
+        if (throw_on_cancel) {
+          throw error;
+        }
+        return false;
       }
     });
   }
@@ -3001,9 +3158,6 @@ var InternalFunctions = class {
     });
   }
 };
-
-// src/core/functions/user_functions/UserFunctions.ts
-var import_obsidian13 = __toModule(require("obsidian"));
 
 // src/core/functions/user_functions/UserSystemFunctions.ts
 var import_child_process = __toModule(require("child_process"));
@@ -3129,7 +3283,7 @@ var UserFunctions = class {
       if (this.plugin.settings.enable_system_commands) {
         user_system_functions = yield this.user_system_functions.generate_object(config2);
       }
-      if (import_obsidian13.Platform.isDesktopApp && this.plugin.settings.user_scripts_folder) {
+      if (this.plugin.settings.user_scripts_folder) {
         user_script_functions = yield this.user_script_functions.generate_object(config2);
       }
       return __spreadValues(__spreadValues({}, user_system_functions), user_script_functions);
@@ -3186,7 +3340,7 @@ var FunctionsGenerator = class {
 
 // node_modules/eta/dist/eta.es.js
 var import_fs = __toModule(require("fs"));
-var import_path = __toModule(require("path"));
+var import_path2 = __toModule(require("path"));
 function setPrototypeOf(obj, proto) {
   if (Object.setPrototypeOf) {
     Object.setPrototypeOf(obj, proto);
@@ -3546,7 +3700,7 @@ function compile(str, config2) {
 }
 var _BOM = /^\uFEFF/;
 function getWholeFilePath(name, parentfile, isDirectory) {
-  var includePath = (0, import_path.resolve)(isDirectory ? parentfile : (0, import_path.dirname)(parentfile), name) + ((0, import_path.extname)(name) ? "" : ".eta");
+  var includePath = (0, import_path2.resolve)(isDirectory ? parentfile : (0, import_path2.dirname)(parentfile), name) + ((0, import_path2.extname)(name) ? "" : ".eta");
   return includePath;
 }
 function getPath(path, options) {
@@ -3785,7 +3939,7 @@ var Templater = class {
       const created_note = yield this.app.fileManager.createNewMarkdownFile(folder, filename != null ? filename : "Untitled");
       let running_config;
       let output_content;
-      if (template instanceof import_obsidian14.TFile) {
+      if (template instanceof import_obsidian13.TFile) {
         running_config = this.create_running_config(template, created_note, 0);
         output_content = yield errorWrapper(() => __async(this, null, function* () {
           return this.read_and_parse_template(running_config);
@@ -3806,7 +3960,7 @@ var Templater = class {
         content: output_content
       });
       if (open_new_note) {
-        const active_leaf = this.app.workspace.activeLeaf;
+        const active_leaf = this.app.workspace.getLeaf(false);
         if (!active_leaf) {
           log_error(new TemplaterError("No active leaf"));
           return;
@@ -3824,7 +3978,7 @@ var Templater = class {
   }
   append_template_to_active_file(template_file) {
     return __async(this, null, function* () {
-      const active_view = this.app.workspace.getActiveViewOfType(import_obsidian14.MarkdownView);
+      const active_view = this.app.workspace.getActiveViewOfType(import_obsidian13.MarkdownView);
       if (active_view === null) {
         log_error(new TemplaterError("No active view, can't append templates."));
         return;
@@ -3867,7 +4021,7 @@ var Templater = class {
     });
   }
   overwrite_active_file_commands() {
-    const active_view = this.app.workspace.getActiveViewOfType(import_obsidian14.MarkdownView);
+    const active_view = this.app.workspace.getActiveViewOfType(import_obsidian13.MarkdownView);
     if (active_view === null) {
       log_error(new TemplaterError("Active view is null, can't overwrite content"));
       return;
@@ -3903,7 +4057,7 @@ var Templater = class {
         let match;
         if ((match = dynamic_command_regex.exec(content)) != null) {
           const file = this.app.metadataCache.getFirstLinkpathDest("", ctx.sourcePath);
-          if (!file || !(file instanceof import_obsidian14.TFile)) {
+          if (!file || !(file instanceof import_obsidian13.TFile)) {
             return;
           }
           if (!pass) {
@@ -3942,10 +4096,10 @@ var Templater = class {
   }
   static on_file_creation(templater, file) {
     return __async(this, null, function* () {
-      if (!(file instanceof import_obsidian14.TFile) || file.extension !== "md") {
+      if (!(file instanceof import_obsidian13.TFile) || file.extension !== "md") {
         return;
       }
-      const template_folder = (0, import_obsidian14.normalizePath)(templater.plugin.settings.templates_folder);
+      const template_folder = (0, import_obsidian13.normalizePath)(templater.plugin.settings.templates_folder);
       if (file.path.includes(template_folder) && template_folder !== "/") {
         return;
       }
@@ -3987,7 +4141,7 @@ var Templater = class {
 };
 
 // src/handlers/EventHandler.ts
-var import_obsidian15 = __toModule(require("obsidian"));
+var import_obsidian14 = __toModule(require("obsidian"));
 var EventHandler = class {
   constructor(app, plugin, templater, settings) {
     this.app = app;
@@ -4033,7 +4187,7 @@ var EventHandler = class {
   }
   update_file_menu() {
     this.plugin.registerEvent(this.app.workspace.on("file-menu", (menu, file) => {
-      if (file instanceof import_obsidian15.TFolder) {
+      if (file instanceof import_obsidian14.TFolder) {
         menu.addItem((item) => {
           item.setTitle("Create new note from template").setIcon("templater-icon").onClick(() => {
             this.plugin.fuzzy_suggester.create_new_note_from_template(file);
@@ -4136,17 +4290,17 @@ var CommandHandler = class {
 };
 
 // src/editor/Editor.ts
-var import_obsidian18 = __toModule(require("obsidian"));
+var import_obsidian17 = __toModule(require("obsidian"));
 
 // src/editor/CursorJumper.ts
-var import_obsidian16 = __toModule(require("obsidian"));
+var import_obsidian15 = __toModule(require("obsidian"));
 var CursorJumper = class {
   constructor(app) {
     this.app = app;
   }
   jump_to_next_cursor_location() {
     return __async(this, null, function* () {
-      const active_view = this.app.workspace.getActiveViewOfType(import_obsidian16.MarkdownView);
+      const active_view = this.app.workspace.getActiveViewOfType(import_obsidian15.MarkdownView);
       if (!active_view) {
         return;
       }
@@ -4202,7 +4356,7 @@ var CursorJumper = class {
     return { new_content: content, positions };
   }
   set_cursor_location(positions) {
-    const active_view = this.app.workspace.getActiveViewOfType(import_obsidian16.MarkdownView);
+    const active_view = this.app.workspace.getActiveViewOfType(import_obsidian15.MarkdownView);
     if (!active_view) {
       return;
     }
@@ -4219,10 +4373,10 @@ var CursorJumper = class {
 };
 
 // src/editor/Autocomplete.ts
-var import_obsidian17 = __toModule(require("obsidian"));
+var import_obsidian16 = __toModule(require("obsidian"));
 
 // toml:/home/runner/work/Templater/Templater/docs/documentation.toml
-var tp = { config: { name: "config", description: "This module exposes Templater's running configuration.\n\nThis is mostly useful when writing scripts requiring some context information.\n", functions: { template_file: { name: "template_file", description: "The `TFile` object representing the template file.", definition: "tp.file.template_file" }, target_file: { name: "target_file", description: "The `TFile` object representing the target file where the template will be inserted.", definition: "tp.config.target_file" }, run_mode: { name: "run_mode", description: "The `RunMode`, representing the way Templater was launched (Create new from template, Append to active file, ...)", definition: "tp.config.run_mode" }, active_file: { name: "active_file", description: "The active file (if existing) when launching Templater.", definition: "tp.config.active_file?" } } }, date: { name: "date", description: "This module contains every internal function related to dates.", functions: { now: { name: "now", description: "Retrieves the date.", definition: 'tp.date.now(format: string = "YYYY-MM-DD", offset?: number\u23AEstring, reference?: string, reference_format?: string)', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" }, offset: { name: "offset", description: "Offset for the day, e.g. set this to `-7` to get last week's date. You can also specify the offset as a string using the ISO 8601 format" }, reference: { name: "reference", description: "The date referential, e.g. set this to the note's title" }, reference_format: { name: "reference_format", description: "The date reference format." } } }, tomorrow: { name: "tomorrow", description: "Retrieves tomorrow's date.", definition: 'tp.date.tomorrow(format: string = "YYYY-MM-DD")', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" } } }, yesterday: { name: "yesterday", description: "Retrieves yesterday's date.", definition: 'tp.date.yesterday(format: string = "YYYY-MM-DD")', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" } } }, weekday: { name: "weekday", description: "", definition: 'tp.date.weekday(format: string = "YYYY-MM-DD", weekday: number, reference?: string, reference_format?: string)', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" }, weekday: { name: "weekday", description: "Week day number. If the locale assigns Monday as the first day of the week, `0` will be Monday, `-7` will be last week's day." }, reference: { name: "reference", description: "The date referential, e.g. set this to the note's title" }, reference_format: { name: "reference_format", description: "The date reference format." } } } } }, file: { name: "file", description: "This module contains every internal function related to files.", functions: { content: { name: "content", description: "Retrieves the file's content", definition: "tp.file.content" }, create_new: { name: "create_new", description: "Creates a new file using a specified template or with a specified content.", definition: "tp.file.create_new(template: TFile \u23AE string, filename?: string, open_new: boolean = false, folder?: TFolder)", args: { template: { name: "template", description: "Either the template used for the new file content, or the file content as a string." }, filename: { name: "filename", description: 'The filename of the new file, defaults to "Untitled".' }, open_new: { name: "open_new", description: "Whether to open or not the newly created file. Warning: if you use this option, since commands are executed asynchronously, the file can be opened first and then other commands are appended to that new file and not the previous file." }, folder: { name: "folder", description: "The folder to put the new file in, defaults to obsidian's default location." } } }, creation_date: { name: "creation_date", description: "Retrieves the file's creation date.", definition: 'tp.file.creation_date(format: string = "YYYY-MM-DD HH:mm")', args: { format: { name: "format", description: "Format for the date, refer to format reference" } } }, cursor: { name: "cursor", description: "Sets the cursor to this location after the template has been inserted. \n\nYou can navigate between the different tp.file.cursor using the configured hotkey in obsidian settings.\n", definition: "tp.file.cursor(order?: number)", args: { order: { name: "order", description: "The order of the different cursors jump, e.g. it will jump from 1 to 2 to 3, and so on.\nIf you specify multiple tp.file.cursor with the same order, the editor will switch to multi-cursor.\n" } } }, cursor_append: { name: "cursor_append", description: "Appends some content after the active cursor in the file.", definition: "tp.file.cursor_append(content: string)", args: { content: { name: "content", description: "The content to append after the active cursor" } } }, exists: { name: "exists", description: "Checks if a file exists or not. Returns a true / false boolean.", definition: "tp.file.exists(filename: string)", args: { filename: { name: "filename", description: "The filename of the file we want to check existence, e.g. MyFile." } } }, find_tfile: { name: "find_tfile", description: "Retrieves the file's folder name.", definition: "tp.file.folder(relative: boolean = false)", args: { relative: { name: "relative", description: "If set to true, appends the vault relative path to the folder name." } } }, include: { name: "include", description: "Includes the file's link content. Templates in the included content will be resolved.", definition: "tp.file.include(include_link: string \u23AE TFile)", args: { include_link: { name: "include_link", description: "The link to the file to include, e.g. [[MyFile]], or a TFile object. Also supports sections or blocks inclusions, e.g. [[MyFile#Section1]]" } } }, last_modified_date: { name: "last_modified_date", description: "Retrieves the file's last modification date.", definition: 'tp.file.last_modified_date(format: string = "YYYY-MM-DD HH:mm")', args: { format: { name: "format", description: "Format for the date, refer to format reference." } } }, move: { name: "functions.move", description: "Moves the file to the desired vault location.", definition: "tp.file.move(new_path: string)", args: { new_path: { name: "new_path", description: "The new vault relative path of the file, without the file extension. Note: the new path needs to include the folder and the filename, e.g. /Notes/MyNote" } } }, path: { name: "path", description: "Retrieves the file's absolute path on the system.", definition: "tp.file.path(relative: boolean = false)", args: { relative: { name: "relative", description: "If set to true, only retrieves the vault's relative path." } } }, rename: { name: "rename", description: "Renames the file (keeps the same file extension).", definition: "tp.file.rename(new_title: string)", args: { new_title: { name: "new_title", description: "The new file title." } } }, selection: { name: "selection", description: "Retrieves the active file's text selection.", definition: "tp.file.selection()" }, tags: { name: "tags", description: "Retrieves the file's tags (array of string)", definition: "tp.file.tags" }, title: { name: "title", definition: "tp.file.title", description: "Retrieves the file's title." } } }, frontmatter: { name: "frontmatter", description: "This modules exposes all the frontmatter variables of a file as variables." }, obsidian: { name: "obsidian", description: "This module exposes all the functions and classes from the obsidian API." }, system: { name: "system", description: "This module contains system related functions.", functions: { clipboard: { name: "clipboard", description: "Retrieves the clipboard's content", definition: "tp.system.clipboard()" }, prompt: { name: "prompt", description: "Spawns a prompt modal and returns the user's input.", definition: "tp.system.prompt(prompt_text?: string, default_value?: string, throw_on_cancel: boolean = false)", args: { prompt_text: { name: "prompt_text", description: "Text placed above the input field" }, default_value: { name: "default_value", description: "A default value for the input field" }, throw_on_cancel: { name: "throw_on_cancel", description: "Throws an error if the prompt is canceled, instead of returning a `null` value" } } }, suggester: { name: "suggester", description: "Spawns a suggester prompt and returns the user's chosen item.", definition: 'tp.system.suggester(text_items: string[] \u23AE ((item: T) => string), items: T[], throw_on_cancel: boolean = false, placeholder: string = "", limit?: number = undefined)', args: { text_items: { name: "text_items", description: "Array of strings representing the text that will be displayed for each item in the suggester prompt. This can also be a function that maps an item to its text representation." }, items: { name: "items", description: "Array containing the values of each item in the correct order." }, throw_on_cancel: { name: "throw_on_cancel", description: "Throws an error if the prompt is canceled, instead of returning a `null` value" }, placeholder: { name: "placeholder", description: "Placeholder string of the prompt" }, limit: { name: "limit", description: "Limit the number of items rendered at once (useful to improve performance when displaying large lists)" } } } } }, web: { name: "web", description: "This modules contains every internal function related to the web (making web requests).", functions: { daily_quote: { name: "daily_quote", description: "Retrieves and parses the daily quote from the API https://api.quotable.io", definition: "tp.web.daily_quote()" }, random_picture: { name: "random_picture", description: "Gets a random image from https://unsplash.com/", definition: "tp.web.random_picture(size?: string, query?: string)", args: { size: { name: "size", description: "Image size in the format `<width>x<height>`" }, query: { name: "query", description: "Limits selection to photos matching a search term. Multiple search terms can be passed separated by a comma `,`" } } } } } };
+var tp = { config: { name: "config", description: "This module exposes Templater's running configuration.\n\nThis is mostly useful when writing scripts requiring some context information.\n", functions: { template_file: { name: "template_file", description: "The `TFile` object representing the template file.", definition: "tp.file.template_file" }, target_file: { name: "target_file", description: "The `TFile` object representing the target file where the template will be inserted.", definition: "tp.config.target_file" }, run_mode: { name: "run_mode", description: "The `RunMode`, representing the way Templater was launched (Create new from template, Append to active file, ...)", definition: "tp.config.run_mode" }, active_file: { name: "active_file", description: "The active file (if existing) when launching Templater.", definition: "tp.config.active_file?" } } }, date: { name: "date", description: "This module contains every internal function related to dates.", functions: { now: { name: "now", description: "Retrieves the date.", definition: 'tp.date.now(format: string = "YYYY-MM-DD", offset?: number\u23AEstring, reference?: string, reference_format?: string)', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" }, offset: { name: "offset", description: "Offset for the day, e.g. set this to `-7` to get last week's date. You can also specify the offset as a string using the ISO 8601 format" }, reference: { name: "reference", description: "The date referential, e.g. set this to the note's title" }, reference_format: { name: "reference_format", description: "The date reference format." } } }, tomorrow: { name: "tomorrow", description: "Retrieves tomorrow's date.", definition: 'tp.date.tomorrow(format: string = "YYYY-MM-DD")', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" } } }, yesterday: { name: "yesterday", description: "Retrieves yesterday's date.", definition: 'tp.date.yesterday(format: string = "YYYY-MM-DD")', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" } } }, weekday: { name: "weekday", description: "", definition: 'tp.date.weekday(format: string = "YYYY-MM-DD", weekday: number, reference?: string, reference_format?: string)', args: { format: { name: "format", description: "Format for the date, refer to [format reference](https://momentjs.com/docs/#/displaying/format/)" }, weekday: { name: "weekday", description: "Week day number. If the locale assigns Monday as the first day of the week, `0` will be Monday, `-7` will be last week's day." }, reference: { name: "reference", description: "The date referential, e.g. set this to the note's title" }, reference_format: { name: "reference_format", description: "The date reference format." } } } } }, file: { name: "file", description: "This module contains every internal function related to files.", functions: { content: { name: "content", description: "Retrieves the file's content", definition: "tp.file.content" }, create_new: { name: "create_new", description: "Creates a new file using a specified template or with a specified content.", definition: "tp.file.create_new(template: TFile \u23AE string, filename?: string, open_new: boolean = false, folder?: TFolder)", args: { template: { name: "template", description: "Either the template used for the new file content, or the file content as a string. If it is the template to use, you retrieve it with `tp.file.find_tfile(TEMPLATENAME)`" }, filename: { name: "filename", description: 'The filename of the new file, defaults to "Untitled".' }, open_new: { name: "open_new", description: "Whether to open or not the newly created file. Warning: if you use this option, since commands are executed asynchronously, the file can be opened first and then other commands are appended to that new file and not the previous file." }, folder: { name: "folder", description: 'The folder to put the new file in, defaults to obsidian\'s default location. If you want the file to appear in a different folder, specify it with `app.vault.getAbstractFileByPath("FOLDERNAME")`' } } }, creation_date: { name: "creation_date", description: "Retrieves the file's creation date.", definition: 'tp.file.creation_date(format: string = "YYYY-MM-DD HH:mm")', args: { format: { name: "format", description: "Format for the date, refer to format reference" } } }, cursor: { name: "cursor", description: "Sets the cursor to this location after the template has been inserted. \n\nYou can navigate between the different tp.file.cursor using the configured hotkey in obsidian settings.\n", definition: "tp.file.cursor(order?: number)", args: { order: { name: "order", description: "The order of the different cursors jump, e.g. it will jump from 1 to 2 to 3, and so on.\nIf you specify multiple tp.file.cursor with the same order, the editor will switch to multi-cursor.\n" } } }, cursor_append: { name: "cursor_append", description: "Appends some content after the active cursor in the file.", definition: "tp.file.cursor_append(content: string)", args: { content: { name: "content", description: "The content to append after the active cursor" } } }, exists: { name: "exists", description: "Checks if a file exists or not. Returns a true / false boolean.", definition: "tp.file.exists(filename: string)", args: { filename: { name: "filename", description: "The filename of the file we want to check existence, e.g. MyFile." } } }, find_tfile: { name: "find_tfile", description: "Search for a file and returns its `TFile` instance", definition: "tp.file.find_tfile(filename: string)", args: { filename: { name: "filename", description: "The filename we want to search and resolve as a `TFile`" } } }, folder: { name: "folder", description: "Retrieves the file's folder name.", definition: "tp.file.folder(relative: boolean = false)", args: { relative: { name: "relative", description: "If set to true, appends the vault relative path to the folder name." } } }, include: { name: "include", description: "Includes the file's link content. Templates in the included content will be resolved.", definition: "tp.file.include(include_link: string \u23AE TFile)", args: { include_link: { name: "include_link", description: "The link to the file to include, e.g. [[MyFile]], or a TFile object. Also supports sections or blocks inclusions, e.g. [[MyFile#Section1]]" } } }, last_modified_date: { name: "last_modified_date", description: "Retrieves the file's last modification date.", definition: 'tp.file.last_modified_date(format: string = "YYYY-MM-DD HH:mm")', args: { format: { name: "format", description: "Format for the date, refer to format reference." } } }, move: { name: "functions.move", description: "Moves the file to the desired vault location.", definition: "tp.file.move(new_path: string, file_to_move?: TFile)", args: { new_path: { name: "new_path", description: "The new vault relative path of the file, without the file extension. Note: the new path needs to include the folder and the filename, e.g. /Notes/MyNote" } } }, path: { name: "path", description: "Retrieves the file's absolute path on the system.", definition: "tp.file.path(relative: boolean = false)", args: { relative: { name: "relative", description: "If set to true, only retrieves the vault's relative path." } } }, rename: { name: "rename", description: "Renames the file (keeps the same file extension).", definition: "tp.file.rename(new_title: string)", args: { new_title: { name: "new_title", description: "The new file title." } } }, selection: { name: "selection", description: "Retrieves the active file's text selection.", definition: "tp.file.selection()" }, tags: { name: "tags", description: "Retrieves the file's tags (array of string)", definition: "tp.file.tags" }, title: { name: "title", definition: "tp.file.title", description: "Retrieves the file's title." } } }, frontmatter: { name: "frontmatter", description: "This modules exposes all the frontmatter variables of a file as variables." }, obsidian: { name: "obsidian", description: "This module exposes all the functions and classes from the obsidian API." }, system: { name: "system", description: "This module contains system related functions.", functions: { clipboard: { name: "clipboard", description: "Retrieves the clipboard's content", definition: "tp.system.clipboard()" }, prompt: { name: "prompt", description: "Spawns a prompt modal and returns the user's input.", definition: "tp.system.prompt(prompt_text?: string, default_value?: string, throw_on_cancel: boolean = false, multiline?: boolean = false)", args: { prompt_text: { name: "prompt_text", description: "Text placed above the input field" }, default_value: { name: "default_value", description: "A default value for the input field" }, throw_on_cancel: { name: "throw_on_cancel", description: "Throws an error if the prompt is canceled, instead of returning a `null` value" }, multiline: { name: "multiline", description: "If set to true, the input field will be a multiline textarea" } } }, suggester: { name: "suggester", description: "Spawns a suggester prompt and returns the user's chosen item.", definition: 'tp.system.suggester(text_items: string[] \u23AE ((item: T) => string), items: T[], throw_on_cancel: boolean = false, placeholder: string = "", limit?: number = undefined)', args: { text_items: { name: "text_items", description: "Array of strings representing the text that will be displayed for each item in the suggester prompt. This can also be a function that maps an item to its text representation." }, items: { name: "items", description: "Array containing the values of each item in the correct order." }, throw_on_cancel: { name: "throw_on_cancel", description: "Throws an error if the prompt is canceled, instead of returning a `null` value" }, placeholder: { name: "placeholder", description: "Placeholder string of the prompt" }, limit: { name: "limit", description: "Limit the number of items rendered at once (useful to improve performance when displaying large lists)" } } } } }, web: { name: "web", description: "This modules contains every internal function related to the web (making web requests).", functions: { daily_quote: { name: "daily_quote", description: "Retrieves and parses the daily quote from the API https://api.quotable.io", definition: "tp.web.daily_quote()" }, random_picture: { name: "random_picture", description: "Gets a random image from https://unsplash.com/", definition: "tp.web.random_picture(size?: string, query?: string, include_size?: boolean)", args: { size: { name: "size", description: "Image size in the format `<width>x<height>`" }, query: { name: "query", description: "Limits selection to photos matching a search term. Multiple search terms can be passed separated by a comma `,`" }, include_dimensions: { name: "include_size", description: "Optional argument to include the specified size in the image link markdown. Defaults to false" } } } } } };
 var documentation_default = { tp };
 
 // src/editor/TpDocumentation.ts
@@ -4267,7 +4421,7 @@ var Documentation = class {
 };
 
 // src/editor/Autocomplete.ts
-var Autocomplete = class extends import_obsidian17.EditorSuggest {
+var Autocomplete = class extends import_obsidian16.EditorSuggest {
   constructor(app, plugin) {
     super(app);
     this.app = app;
@@ -4326,7 +4480,7 @@ var Autocomplete = class extends import_obsidian17.EditorSuggest {
     }
   }
   selectSuggestion(value, evt) {
-    const active_view = this.app.workspace.getActiveViewOfType(import_obsidian17.MarkdownView);
+    const active_view = this.app.workspace.getActiveViewOfType(import_obsidian16.MarkdownView);
     if (!active_view) {
       return;
     }
@@ -5004,9 +5158,9 @@ var Autocomplete = class extends import_obsidian17.EditorSuggest {
       if (type2 == "(")
         return pass(functiondef);
     }
-    function commasep(what, end2, sep) {
+    function commasep(what, end2, sep2) {
       function proceed(type2, value) {
-        if (sep ? sep.indexOf(type2) > -1 : type2 == ",") {
+        if (sep2 ? sep2.indexOf(type2) > -1 : type2 == ",") {
           var lex = cx.state.lexical;
           if (lex.info == "call")
             lex.pos = (lex.pos || 0) + 1;
@@ -5018,7 +5172,7 @@ var Autocomplete = class extends import_obsidian17.EditorSuggest {
         }
         if (type2 == end2 || value == end2)
           return cont();
-        if (sep && sep.indexOf(";") > -1)
+        if (sep2 && sep2.indexOf(";") > -1)
           return pass(what);
         return cont(expect(end2));
       }
@@ -5643,7 +5797,7 @@ var Editor2 = class {
       if (!this.plugin.settings.syntax_highlighting) {
         return;
       }
-      if (import_obsidian18.Platform.isMobileApp) {
+      if (import_obsidian17.Platform.isMobileApp) {
         return;
       }
       const js_mode = window.CodeMirror.getMode({}, "javascript");
@@ -5731,7 +5885,7 @@ var Editor2 = class {
 };
 
 // src/main.ts
-var TemplaterPlugin = class extends import_obsidian19.Plugin {
+var TemplaterPlugin = class extends import_obsidian18.Plugin {
   onload() {
     return __async(this, null, function* () {
       yield this.load_settings();
@@ -5744,10 +5898,12 @@ var TemplaterPlugin = class extends import_obsidian19.Plugin {
       this.event_handler.setup();
       this.command_handler = new CommandHandler(this.app, this);
       this.command_handler.setup();
-      (0, import_obsidian19.addIcon)("templater-icon", ICON_DATA);
-      this.addRibbonIcon("templater-icon", "Templater", () => __async(this, null, function* () {
-        this.fuzzy_suggester.insert_template();
-      }));
+      (0, import_obsidian18.addIcon)("templater-icon", ICON_DATA);
+      if (this.settings.enable_ribbon_icon) {
+        this.addRibbonIcon("templater-icon", "Templater", () => __async(this, null, function* () {
+          this.fuzzy_suggester.insert_template();
+        })).setAttribute("id", "rb-templater-icon");
+      }
       this.addSettingTab(new TemplaterSettingTab(this.app, this));
       this.app.workspace.onLayoutReady(() => {
         this.templater.execute_startup_scripts();

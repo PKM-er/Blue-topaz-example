@@ -62,6 +62,7 @@
 .templater-prompt-input {
     flex-grow: 1;
 }
+
 .templater-button-div {
     display: flex;
     flex-direction: column;
@@ -76,6 +77,7 @@ textarea.templater-prompt-input {
 textarea.templater-prompt-input:focus {
     border-color: var(--interactive-accent);
 }
+
 .cm-s-obsidian .templater-command-bg {
     left: 0px;
     right: 0px;

@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
+            "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md",
             "mode": "source",
             "backlinks": false,
-            "source": true
+            "source": false
           }
         }
       }
@@ -67,8 +67,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "d877e8285f98a38a",
@@ -120,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md"
+                "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md"
               }
             }
           },
@@ -151,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
+                "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -168,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
+                "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -215,15 +214,15 @@
   },
   "active": "80430a4f104c0c57",
   "lastOpenFiles": [
+    "30-Reading/🎶影音数据库.md",
+    "30-Reading/30-Reading.md",
+    "77-Example/77-Example.md",
     "88-Template/home.md",
-    "88-Template/彩色时钟.md",
-    "20220904105920.md",
-    "20220905172038.md",
-    "00-Tips/插件介绍/Obsidian Editing Toolbar Plugin.md",
-    "00-Tips/插件介绍/Cmenu插件魔改版 Obsidian上的工具栏.md",
-    "00-Tips/插件介绍/插件介绍.md",
-    "00-Tips/00-Tips.md",
-    "10-Help/10-Help.md",
-    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md"
+    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+    "77-Example/◾ Dataview相关实例/电影观看清单-状态控制（dvjs）.md",
+    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
+    "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md",
+    "20-Diary/2022-09-08.md",
+    "88-Template/常用工具.md"
   ]
 }
