@@ -1,7 +1,11 @@
 # Obsidian Editing Toolbar Plugin
-
+😀💔⚫
+![[cmenu-demo.gif]]
 感谢 [cmenu](https://github.com/chetachiezikeuzor/cMenu-Plugin)插件的开发，给我了很多灵感，但这个插件已经一年多没有维护了，于是我重新魔改了它，并增加了很多有趣的功能，包括置顶工具栏,光标跟随等，于是Cmenu toolbar 就诞生了。
+**Obsidian Editing Toolbar**是一个提供类似于MS-Word的工具栏的插件，并增加了一个最小的和用户友好的文本编辑器模式，以获得更顺畅的写作/编辑体验。不需要记住复杂的markdown命令，类似于富文本编辑器的所见即所得。
+这个插件是专门为那些希望有一个简单的文本编辑器来帮助标记他们的笔记设计的。它解决了必须记住许多热键或命令来实现所需要的功能的问题。一个简单的工具条可以改善你在Obsidian中的写作体验。
 
+> 建议配合[增强编辑插件](https://github.com/obsidian-canzi/Enhanced-editing)，可以添加更多的实用的编辑指令。
 
 ## 如何安装
 1.  brat安装。插件目前还没有上架官方商店可以通过 [BRAT Plugin](https://obsidian.md/plugins?id=obsidian42-brat)去安装。
@@ -47,10 +51,17 @@
 
 
 
-以下为旧版。
 
-> 此插件是在cMenu1.1.2 跟随悬浮效果 基础上魔改而成，增加了 固定和跟随选项设置
-- 增加位置固定和跟随选项。
+跟其他插件协作
+1. 配合[emjoi toolbar ](obsidian://show-plugin?id=obsidian-emoji-toolbar)快捷插入表情
+   ![](https://ghproxy.com/https://raw.githubusercontent.com/cumany/cumany/main/pic/202209092001600.gif)
+
+
+2. 配合 [Obsidian-Table-Generator](https://github.com/Quorafind/Obsidian-Table-Generator/)   和 [ob-table-enhance](https://github.com/Stardusten/ob-table-enhancer)快捷 插入表格并编辑
+   ![](https://ghproxy.com/https://raw.githubusercontent.com/cumany/cumany/main/pic/202209092008571.gif)
+
+
+增加位置固定和跟随选项。
 - 增加了 cmenu 风格 tiny样式，更紧凑。
 - 修复了 插件跟随位置判断
 - 修复了悬浮效果在边界触发溢出的问题
@@ -58,9 +69,7 @@
 - 修复 黑暗模式图标颜色不一致
 - 修复 工具栏越界问题
 
-本示例库已经集成。
-文件下载链接:
-[Release cmenu 1.1.30 魔改版 · cumany/cMenu-Plugin (github.com)](https://github.com/cumany/cMenu-Plugin/releases/tag/1.1.30)
+本示例库已经集成。github.com)](https://github.com/cumany/cMenu-Plugin/releases/tag/1.1.30)
 
 介绍文章：
 [Cmenu插件魔改版1.1.23 Obsidian上的工具栏 - 飞书文档 (feishu.cn)](https://kknwfe6755.feishu.cn/docs/doccnQpRTqGYqMT3GAKka5IRnMf)

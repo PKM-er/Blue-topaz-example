@@ -1,1 +1,10 @@
-{"id":"obsidian-editing-toolbar","name":"Obsidian Editing Toolbar","version":"2.0.3","minAppVersion":"0.9.12","description":"The Obsidian Editing Toolbar is modified from cmenu, which provides more powerful customization settings and has many built-in editing commands to be a MS Word-like toolbar editing experience.","author":"Cuman","authorUrl":"https://github.com/cumany/obsidian-editing-toolbar","isDesktopOnly":true}
+{
+  "id": "obsidian-editing-toolbar",
+  "name": "Obsidian Editing Toolbar",
+  "version": "2.0.6",
+  "minAppVersion": "0.9.12",
+  "description": "The Obsidian Editing Toolbar is modified from cmenu, which provides more powerful customization settings and has many built-in editing commands to be a MS Word-like toolbar editing experience.",
+  "author": "Cuman",
+  "authorUrl": "https://github.com/cumany/obsidian-editing-toolbar",
+  "isDesktopOnly": true
+}

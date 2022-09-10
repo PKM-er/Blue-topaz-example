@@ -1,0 +1,9 @@
+{
+  "id": "obsidian-emoji-toolbar",
+  "name": "Emoji Toolbar",
+  "version": "0.4.0",
+  "description": "Quickly search for and insert emojis into your notes.",
+  "author": "oliveryh",
+  "authorUrl": "https://github.com/oliveryh/obsidian-emoji-toolbar",
+  "isDesktopOnly": false
+}

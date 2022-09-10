@@ -1,3 +1,4 @@
 {
-  "enableFloatingToolBar": true
+  "enableFloatingToolBar": true,
+  "enableInReadingMode": false
 }

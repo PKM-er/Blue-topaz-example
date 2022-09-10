@@ -9,10 +9,10 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md",
-            "mode": "source",
+            "file": "88-Template/home.md",
+            "mode": "preview",
             "backlinks": false,
-            "source": false
+            "source": true
           }
         }
       }
@@ -67,7 +67,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "d877e8285f98a38a",
@@ -119,7 +120,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -150,7 +151,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md",
+                "file": "88-Template/home.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -167,7 +168,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "30-Reading/花束般的恋爱 花束みたいな恋をした.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -212,17 +213,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "active": "80430a4f104c0c57",
+  "active": "f2c2f4dfc8473d58",
   "lastOpenFiles": [
-    "30-Reading/🎶影音数据库.md",
-    "30-Reading/30-Reading.md",
-    "77-Example/77-Example.md",
+    "88-Template/彩色时钟.md",
+    "77-Example/◾ Echarts/echarts-笔记动态显示-分布.md",
     "88-Template/home.md",
-    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
-    "77-Example/◾ Dataview相关实例/电影观看清单-状态控制（dvjs）.md",
+    "77-Example/◾ Dataview相关实例/文件夹所有标签.md",
+    "77-Example/任务卡片-dataview 任务查询举例.md",
+    "77-Example/77-Example.md",
     "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
-    "77-Example/◾ Dataview相关实例/可以编辑的dv表格.md",
-    "20-Diary/2022-09-08.md",
-    "88-Template/常用工具.md"
+    "77-Example/◾ Dataview相关实例/dataview实现任务查询（替代tasks插件）.md",
+    "20-Diary/任务看板.md",
+    "20-Diary/20-Diary.md"
   ]
 }

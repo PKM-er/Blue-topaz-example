@@ -2510,7 +2510,6 @@ var InternalModuleDate = class extends InternalModule {
 
 // src/core/functions/internal_functions/file/InternalModuleFile.ts
 var import_obsidian8 = __toModule(require("obsidian"));
-var import_path = __toModule(require("path"));
 var DEPTH_LIMIT = 10;
 var InternalModuleFile = class extends InternalModule {
   constructor() {
@@ -2665,13 +2664,14 @@ var InternalModuleFile = class extends InternalModule {
     return (path, file_to_move) => __async(this, null, function* () {
       const file = file_to_move || this.config.target_file;
       const new_path = (0, import_obsidian8.normalizePath)(`${path}.${file.extension}`);
-      if (import_obsidian8.Platform.isMobileApp) {
-        return UNSUPPORTED_MOBILE_TEMPLATE;
+      const dirs = new_path.replace(/\\/g, "/").split("/");
+      dirs.pop();
+      if (dirs.length) {
+        const dir = dirs.join("/");
+        if (!window.app.vault.getAbstractFileByPath(dir)) {
+          yield window.app.vault.createFolder(dir);
+        }
       }
-      if (!(this.app.vault.adapter instanceof import_obsidian8.FileSystemAdapter)) {
-        throw new TemplaterError("app.vault is not a FileSystemAdapter instance");
-      }
-      this.app.vault.adapter.mkdir((0, import_path.dirname)(new_path).split(import_path.sep).pop());
       yield this.app.fileManager.renameFile(file, new_path);
       return "";
     });
@@ -2841,9 +2841,10 @@ var PromptModal = class extends import_obsidian9.Modal {
     } else {
       textInput = new import_obsidian9.TextComponent(div);
     }
+    this.value = (_a = this.default_value) != null ? _a : "";
     textInput.inputEl.addClass("templater-prompt-input");
     textInput.setPlaceholder("Type text here");
-    textInput.setValue((_a = this.default_value) != null ? _a : "");
+    textInput.setValue(this.value);
     textInput.onChange((value) => this.value = value);
     textInput.inputEl.addEventListener("keydown", (evt) => this.enterCallback(evt));
   }
@@ -3340,7 +3341,7 @@ var FunctionsGenerator = class {
 
 // node_modules/eta/dist/eta.es.js
 var import_fs = __toModule(require("fs"));
-var import_path2 = __toModule(require("path"));
+var import_path = __toModule(require("path"));
 function setPrototypeOf(obj, proto) {
   if (Object.setPrototypeOf) {
     Object.setPrototypeOf(obj, proto);
@@ -3700,7 +3701,7 @@ function compile(str, config2) {
 }
 var _BOM = /^\uFEFF/;
 function getWholeFilePath(name, parentfile, isDirectory) {
-  var includePath = (0, import_path2.resolve)(isDirectory ? parentfile : (0, import_path2.dirname)(parentfile), name) + ((0, import_path2.extname)(name) ? "" : ".eta");
+  var includePath = (0, import_path.resolve)(isDirectory ? parentfile : (0, import_path.dirname)(parentfile), name) + ((0, import_path.extname)(name) ? "" : ".eta");
   return includePath;
 }
 function getPath(path, options) {
@@ -5158,9 +5159,9 @@ var Autocomplete = class extends import_obsidian16.EditorSuggest {
       if (type2 == "(")
         return pass(functiondef);
     }
-    function commasep(what, end2, sep2) {
+    function commasep(what, end2, sep) {
       function proceed(type2, value) {
-        if (sep2 ? sep2.indexOf(type2) > -1 : type2 == ",") {
+        if (sep ? sep.indexOf(type2) > -1 : type2 == ",") {
           var lex = cx.state.lexical;
           if (lex.info == "call")
             lex.pos = (lex.pos || 0) + 1;
@@ -5172,7 +5173,7 @@ var Autocomplete = class extends import_obsidian16.EditorSuggest {
         }
         if (type2 == end2 || value == end2)
           return cont();
-        if (sep2 && sep2.indexOf(";") > -1)
+        if (sep && sep.indexOf(";") > -1)
           return pass(what);
         return cont(expect(end2));
       }

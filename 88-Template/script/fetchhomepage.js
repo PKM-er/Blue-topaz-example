@@ -43,11 +43,12 @@ let url='https://v1.hitokoto.cn/?encode=json&c=d&c=i';
    let finalURL = new URL(url);
 let response = await request({method: 'GET', url: finalURL.toString()});
 let data = JSON.parse(response);
+console.log(data)
 	if(data.length===0)
 	{
 		return null;
 	}else{
-	let who =data['from_who'];
+	let who =data['from'];
 		 if(!who) who =' ';
   const new_content = `${data['hitokoto'].trim()} <br> <em style="line-height: 2.8;float: right;"> &mdash; 来自 ${who}  《${data['from']}》</em>`; 
   return new_content;
@@ -132,15 +133,16 @@ async function updateToday() {
 
         if (!history.hasOwnProperty(moment().format("YYYY-MM-DD"))) {
 			const quote1 = await getinfo();
-			const quote2 = await getinfo2();
+			const quote2 ='';
+		//	const quote2 = await getinfo2();
 			let quote='';
-		if(quote1!=null && quote2!=null)
-			{
-				let quotearr = [quote1,quote2];
-				quote = quotearr[Math.floor(Math.random()*quotearr.length)];
+		if(quote1!=null)
+			{   quote=quote1;
+				//let quotearr = [quote1,quote2];
+				//quote = quotearr[Math.floor(Math.random()*quotearr.length)];
 			}else
 			{
-				quote=quote1?quote1:quote2;
+				quote=" 再困难的事情，你一去做便不再困难了。\n Difficult thing again, you no longer difficult to do.";
 			}
 		const newDay = {
             quotes: quote,

@@ -1,1 +1,10 @@
-{"id":"ob-table-enhancer","name":"Table Enhancer","version":"0.2.2","minAppVersion":"0.15.0","description":"Manipulate tables in Obsidian without editing source code","author":"stardust","authorUrl":"https://github.com/Stardusten/ob-table-enhancer","isDesktopOnly":false}
+{
+	"id": "ob-table-enhancer",
+	"name": "Table Enhancer",
+	"version": "0.2.1",
+	"minAppVersion": "0.15.0",
+	"description": "Manipulate tables in Obsidian without editing source code",
+	"author": "stardust",
+	"authorUrl": "https://github.com/Stardusten/ob-table-enhancer",
+	"isDesktopOnly": false
+}

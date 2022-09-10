@@ -26,5 +26,5 @@
   "loggingPath": "",
   "loggingVerboseEnabled": false,
   "debuggingMode": false,
-  "notificationsEnabled": true
+  "notificationsEnabled": false
 }

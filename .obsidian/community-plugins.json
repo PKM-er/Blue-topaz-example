@@ -34,7 +34,6 @@
   "obsidian-react-components",
   "buttons",
   "obsidian-reveal-active-file",
-  "obsidian-query-control",
   "folder-note-plugin",
   "file-tree-alternative",
   "quickadd",
@@ -51,14 +50,16 @@
   "obsidian-memos",
   "waypoint",
   "obsidian42-brat",
-  "obsidian-admonition",
   "obsidian-virtual-hotkey-keyboard",
   "table-editor-obsidian",
   "Enhanced-editing",
-  "obsidian-table-generator",
   "metaedit",
   "quick-explorer",
-  "ob-table-enhancer",
+  "obsidian-admonition",
+  "obsidian-emoji-toolbar",
+  "obsidian-table-generator",
+  "templater-obsidian",
   "obsidian-editing-toolbar",
-  "templater-obsidian"
+  "ob-table-enhancer",
+  "obsidian-better-command-palette"
 ]

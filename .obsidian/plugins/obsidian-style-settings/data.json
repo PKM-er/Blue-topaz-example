@@ -206,5 +206,6 @@
   "blue-topaz-theme@@brightness-4-bg": 0.9,
   "blue-topaz-theme@@blur-depth": 0,
   "blue-topaz-theme@@custom-titlebar-bg@@light": "#FFFFFFFC",
-  "@@": false
+  "@@": false,
+  "blue-topaz-theme@@link-underline-external": true
 }

@@ -24801,6 +24801,7 @@ body .popover.hover-popover:not(.is-loaded) :is(.markdown-preview-view,.markdown
   top: 0;
   border-radius: var(--radius-s);
   right: 10px;
+  opacity:0.5;
 }
 .markdown-source-view.mod-cm6 .edit-block-button::before {
   width: 25px;

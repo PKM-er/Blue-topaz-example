@@ -489,6 +489,12 @@ span.text-align-right {
   justify-content: flex-end;
 }
 
+.database-plugin__text-align-left {
+  display: flex;
+  text-align: left;
+  justify-content: flex-start;
+}
+
 .cell-padding {
   padding: 0.5rem;
 }

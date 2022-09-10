@@ -78,15 +78,6 @@
       "key": "D"
     }
   ],
-  "obsidian-hover-editor:convert-active-pane-to-popover": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "V"
-    }
-  ],
   "markdown-prettifier:markdown-prettifier-run": [
     {
       "modifiers": [

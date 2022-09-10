@@ -6,7 +6,6 @@ obsidianUIMode: preview
 %% Begin Waypoint %%
 - **[[30-Reading]]**
 	- [[《笔醒山河》]]
-	- [[《茶叶与鸦片》]]
 	- [[《从零开始的女性主义》]]
 	- [[《理解海德格尔》]]
 	- [[《镰刀与城市》]]
