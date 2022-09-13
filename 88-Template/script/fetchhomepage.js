@@ -147,7 +147,7 @@ async function updateToday() {
 		const newDay = {
             quotes: quote,
             posters: await get_ciba(),
-            music: await getmusicinfo(),
+           // music: await getmusicinfo(),
             themes: await get_BlueTopaz(),
 			weather: await getWeather(Settings[CITY]), //默认是自动获取，如果想获取在quicadd中设置
             state: 0,       
