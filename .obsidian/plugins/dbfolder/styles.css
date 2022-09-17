@@ -188,6 +188,12 @@ div.database-plugin__checkbox {
   display: inline;
 }
 
+.database-plugin__md_cell ul {
+  margin-block-start: unset !important;
+  margin-block-end: unset !important;
+  display: inline-table;
+}
+
 .database-plugin__markdown-preview-view {
   padding: 0;
   height: fit-content;
@@ -766,7 +772,7 @@ span.text-align-right {
   font-size: 1rem;
   resize: none;
   box-sizing: border-box;
-  height: inherit;
+  height: 100%;
   width: inherit;
   align-self: center;
   top: 0;
@@ -1506,26 +1512,21 @@ span.text-align-right {
   cursor: pointer;
   background-color: transparent;
   border: 0;
+  box-shadow: none;
   outline: 0;
   padding: 0 6px 0 0;
   position: absolute;
   top: 0;
   right: 0;
-  height: 100%;
   display: table-cell;
   vertical-align: middle;
 }
 
 .react-datepicker__close-icon::after {
   cursor: pointer;
-  background-color: #216ba5;
-  color: #fff;
+  background-color: var(--text-accent);
+  color: var(--text-primary);
   border-radius: 50%;
-  height: 16px;
-  width: 16px;
-  padding: 2px;
-  font-size: 12px;
-  line-height: 1;
   text-align: center;
   display: table-cell;
   vertical-align: middle;

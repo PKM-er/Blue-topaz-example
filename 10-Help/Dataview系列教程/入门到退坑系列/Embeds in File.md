@@ -3,11 +3,13 @@ source: "https://publish.obsidian.md/napkinium/Ideas/Dataview/Learnings/Dataview
 ---
 
 Setting up a Composite Vault in Obsidian
+
 ```
 const re = /!\[\[([^\]]+)\]\]/g;
 var dvfile = dv.current();
 var thisTFile = this.app.vault.getAbstractFileByPath(dvfile.file.path);
-var content = thisTFile.unsafeCachedData;
+const content = await this.app.vault.cachedRead(thisTFile); 
+console.log(content)
 var result = [];
 for (var match of content.matchAll(re)) {
 result.push(match[0])

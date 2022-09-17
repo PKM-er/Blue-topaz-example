@@ -9,7 +9,7 @@ if(tp.file.title.includes("未命名") || tp.file.title.toLowerCase().includes("
 -%>
 
 UID: <% tp.date.now("YYYYMMDDHHmmss") %> 
-alias: 
+aliases: 
 tags: 
 source: 
 cssclass: 

@@ -14,10 +14,10 @@
   "showComplementAutomatically": false,
   "showIndexingStatus": false,
   "descriptionOnSuggestion": "Short",
-  "selectSuggestionKeys": "Tab",
-  "additionalCycleThroughSuggestionsKeys": "None",
+  "selectSuggestionKeys": "Backquote",
+  "additionalCycleThroughSuggestionsKeys": "Tab, Shift+Tab",
   "disableUpDownKeysForCycleThroughSuggestionsKeys": false,
-  "openSourceFileKey": "None",
+  "openSourceFileKey": "Shift+Enter",
   "propagateEsc": true,
   "enableCurrentFileComplement": true,
   "currentFileMinNumberOfCharacters": 0,
@@ -43,14 +43,6 @@
   "insertCommaAfterFrontMatterCompletion": false,
   "showLogAboutPerformanceInConsole": false,
   "selectionHistoryTree": {
-    "40": {
-      "40": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660702738066
-        }
-      }
-    },
     "233": {
       "233": {
         "currentVault": {
@@ -75,27 +67,19 @@
         }
       }
     },
+    "1111": {
+      "1111": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1663146298101
+        }
+      }
+    },
     "console": {
       "console": {
         "currentVault": {
           "count": 22,
           "lastUpdated": 1662099417842
-        }
-      }
-    },
-    "list": {
-      "list": {
-        "currentVault": {
-          "count": 12,
-          "lastUpdated": 1660704877862
-        }
-      }
-    },
-    "from": {
-      "from": {
-        "currentVault": {
-          "count": 5,
-          "lastUpdated": 1660704880262
         }
       }
     },
@@ -115,14 +99,6 @@
         }
       }
     },
-    "noyaml": {
-      "noyaml": {
-        "frontMatter": {
-          "count": 2,
-          "lastUpdated": 1660121274024
-        }
-      }
-    },
     "Sort": {
       "Sort": {
         "currentVault": {
@@ -131,123 +107,11 @@
         }
       }
     },
-    "cssclass": {
-      "cssclass": {
-        "currentVault": {
-          "count": 3,
-          "lastUpdated": 1660122912075
-        }
-      }
-    },
     "indent": {
       "indent": {
         "frontMatter": {
           "count": 4,
           "lastUpdated": 1661012811492
-        }
-      }
-    },
-    "笔记": {
-      "笔记": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1660132140466
-        }
-      }
-    },
-    "we": {
-      "we": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1660698481557
-        }
-      }
-    },
-    "cdn": {
-      "cdn": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660701292452
-        }
-      }
-    },
-    "三级": {
-      "三级": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660701300162
-        }
-      }
-    },
-    "标签": {
-      "标签": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1660704976070
-        }
-      }
-    },
-    "#important": {
-      "#important": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660704966498
-        }
-      }
-    },
-    "embed": {
-      "embed": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660716280574
-        }
-      }
-    },
-    "for": {
-      "for": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660718773599
-        }
-      }
-    },
-    "forEach": {
-      "forEach": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660718779634
-        }
-      }
-    },
-    "正在进行": {
-      "正在进行": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1660721219213
-        }
-      }
-    },
-    "进行中": {
-      "进行中": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1660721237694
-        }
-      }
-    },
-    "插件": {
-      "插件": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660723749028
-        }
-      }
-    },
-    "是否": {
-      "是否": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1660788998301
         }
       }
     },
@@ -344,6 +208,54 @@
         "internalLink": {
           "count": 1,
           "lastUpdated": 1662567323457
+        }
+      }
+    },
+    "moc": {
+      "moc": {
+        "frontMatter": {
+          "count": 5,
+          "lastUpdated": 1663146231485
+        }
+      }
+    },
+    "book": {
+      "book": {
+        "frontMatter": {
+          "count": 1,
+          "lastUpdated": 1663146236102
+        }
+      }
+    },
+    "test": {
+      "test": {
+        "frontMatter": {
+          "count": 2,
+          "lastUpdated": 1663146277883
+        }
+      }
+    },
+    "expander": {
+      "expander": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1663206331263
+        }
+      }
+    },
+    "ext": {
+      "ext": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1663206565926
+        }
+      }
+    },
+    "collapse": {
+      "collapse": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1663208989484
         }
       }
     }

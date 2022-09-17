@@ -1277,7 +1277,7 @@ const getButtonPosition = (content, args) => {
 const getInlineButtonPosition = async (app, id) => {
     const content = await createContentArray(app);
     const position = { lineStart: 0, lineEnd: 0 };
-    content.contentArray
+    content?.contentArray
         .map((line) => line.split(" "))
         .forEach((words, index) => {
         words.forEach((word) => {

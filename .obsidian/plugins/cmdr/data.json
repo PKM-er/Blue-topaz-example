@@ -68,12 +68,6 @@
       "icon": "music",
       "name": "QuickAdd: play music",
       "mode": "any"
-    },
-    {
-      "id": "obsidian-virtual-hotkey-keyboard:open-virtual-hotkey-modal",
-      "icon": "keyboard",
-      "name": " Open Virtual Hotkey Board Modal",
-      "mode": "any"
     }
   ],
   "statusBar": [],

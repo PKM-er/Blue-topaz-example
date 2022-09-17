@@ -1,8 +1,6 @@
 :root {
     --oz-fta-folder-font-size: 13px;
     --oz-fta-file-font-size: 12px;
-    --oz-drop-shadow: hsl(0 0% 0% / 10%) 0 1px 2px 0;
-    --oz-drop-shadow-popup: hsl(0 0% 0% / 3%) 0 1px 2px, hsl(0 0% 0% / 3%) 0 2px 4px, hsl(0 0% 0% / 3%) 0 4px 8px, hsl(0 0% 0% / 3%) 0 8px 16px;
 }
 
 .oz-file-tree-header {
@@ -132,7 +130,6 @@ div.workspace-leaf-content[data-type='file-tree-view'] > div.view-content {
     background: var(--background-secondary-alt);
     border: 1px solid var(--background-secondary-alt);
     border-radius: 8px;
-    box-shadow: var(--oz-drop-shadow-popup);
     stroke-width: 2px;
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
@@ -297,7 +294,6 @@ div#file-tree-divider.active-divider {
 
 #file-tree-divider:hover {
     background-color: var(--text-muted);
-    box-shadow: var(--oz-drop-shadow);
 }
 
 .is-folder-active {

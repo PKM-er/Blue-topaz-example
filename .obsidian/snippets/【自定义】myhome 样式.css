@@ -885,6 +885,9 @@ margin-left: 0.5em;
 {
  height: auto;
 }
+.modal{
+ max-width: unset ;
+}
 
 /****table  enhancer*********/
 

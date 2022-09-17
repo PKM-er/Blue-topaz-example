@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-linter",
+  "name": "Linter",
+  "version": "1.4.4",
+  "minAppVersion": "0.15.6",
+  "description": "Enforces consistent markdown styling.",
+  "author": "Victor Tao",
+  "authorUrl": "https://github.com/platers",
+  "isDesktopOnly": false
+}

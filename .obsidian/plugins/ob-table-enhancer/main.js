@@ -24,7 +24,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // main.ts
 var main_exports = {};
 __export(main_exports, {
-  default: () => MyPlugin
+  default: () => TableEnhancer
 });
 module.exports = __toCommonJS(main_exports);
 var import_obsidian5 = require("obsidian");
@@ -200,7 +200,10 @@ var TableEditor = class {
             break;
         }
         table2.toRowIndex = i;
-        this.tables.set(TableEditor.getIdentifier(table2), table2);
+        const tableId2 = TableEditor.getIdentifier(table2);
+        if (this.tables.get(tableId2))
+          continue;
+        this.tables.set(tableId2, table2);
       }
     }
     if (existNonStandardTable) {
@@ -244,7 +247,8 @@ var TableEditor = class {
       const newLine = TableEditor.rowCells2rowString(table2.cells[rowIndex]);
       if (editor.getLine(rowLineNumber).length == newLine.length)
         setLineWithoutScroll(editor, rowLineNumber, newLine + " ");
-      setLineWithoutScroll(editor, rowLineNumber, newLine);
+      else
+        setLineWithoutScroll(editor, rowLineNumber, newLine);
       await markdownView.save();
     }
   }
@@ -263,7 +267,8 @@ var TableEditor = class {
       const newLine = TableEditor.rowCells2rowString(table2.cells[0]);
       if (editor.getLine(rowLineNumber).length == newLine.length)
         setLineWithoutScroll(editor, rowLineNumber, newLine + " ");
-      setLineWithoutScroll(editor, rowLineNumber, newLine);
+      else
+        setLineWithoutScroll(editor, rowLineNumber, newLine);
       await markdownView.save();
     }
   }
@@ -368,6 +373,10 @@ var TableEditor = class {
       const text = "| Col 1 | Col 2 |\n|---|---|\n| xxxx | xxxx |\n";
       insertLineBelowWithText(editor, rowIndex, text);
       await markdownView.save();
+      const firstCell = activeDocument.querySelector("#\u2C9C00");
+      if (firstCell instanceof HTMLTableCellElement) {
+        firstCell.click();
+      }
     }
   }
   async swapCols(tableId2, colIndex1, colIndex2) {
@@ -408,16 +417,16 @@ var TableEditor = class {
     const rowNum = table2.cells.length;
     for (let i2 = 0; i2 < rowNum; i2++) {
       const str2 = table2.cells[i2][0];
-      if (str2 && str2.trim() != "" && !str2.match(/[!<>*#\[\]`$=]/))
-        result.push(str2.trim());
+      if (str2 && !str2.match(/[!<>*#\[\]`$=]/))
+        result.push(str2.replace(/[\r\n\t\f\v \u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\ufeff]/g, ""));
     }
     let i = table2.cells[0].length;
     while (i--) {
       const str2 = table2.cells[0][i];
-      if (str2 && str2.trim() != "" && !str2.match(/[!<>*#\[\]`$=]/))
-        result.push(str2.trim());
+      if (str2 && !str2.match(/[!<>*#\[\]`$=]/))
+        result.push(str2.replace(/[\r\n\t\f\v \u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\ufeff]/g, ""));
     }
-    let resultStr = result.join("").replace(/\s/g, "");
+    let resultStr = result.join("");
     if (resultStr.length == 0)
       return "\u7A7A\u8868";
     resultStr += table2.cells.length.toString();
@@ -985,7 +994,7 @@ var ObTableEnhancerSettingTab = class extends import_obsidian4.PluginSettingTab 
 var DEFAULT_SETTINGS = {
   enableFloatingToolBar: false
 };
-var MyPlugin = class extends import_obsidian5.Plugin {
+var TableEnhancer = class extends import_obsidian5.Plugin {
   async onload() {
     await this.loadSettings();
     this.addSettingTab(new ObTableEnhancerSettingTab(this.app, this));
@@ -996,14 +1005,6 @@ var MyPlugin = class extends import_obsidian5.Plugin {
       this.suggestPopper = new ReferenceSuggestionPopper(this);
       if (this.settings.enableFloatingToolBar)
         this.toolBar = new ToolBar(this);
-      const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian5.MarkdownView);
-      if (markdownView instanceof import_obsidian5.MarkdownView) {
-        const cm = markdownView.editor.cm;
-        this.registerDomEvent(cm.scrollDOM, "scroll", (e) => {
-          e.preventDefault();
-          e.stopImmediatePropagation();
-        }, true);
-      }
       this.registerDomEvent(activeDocument, "keydown", async (e) => {
         if (!this.editingCell)
           return;
@@ -1169,10 +1170,12 @@ var MyPlugin = class extends import_obsidian5.Plugin {
         const tableId = this.getIdentifier(table);
         table.classList.add("ob-table-enhancer");
         table.setAttr("id", tableId);
-        table.onmouseenter = (e) => {
+        table.addEventListener("mouseenter", () => {
           this.hoverTableId = tableId;
-        };
-        table.onclick = (e) => e.preventDefault();
+        });
+        table.addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
         for (let j = 0; j < table.rows.length; j++) {
           const row = table.rows[j];
           for (let k = 0; k < row.cells.length; k++) {
@@ -1201,7 +1204,7 @@ var MyPlugin = class extends import_obsidian5.Plugin {
                 console.error(err);
               }
             }
-            cellEl.onmouseenter = (e) => {
+            cellEl.addEventListener("mouseenter", (e) => {
               var _a2;
               this.hoverCell = {
                 tableId,
@@ -1210,14 +1213,16 @@ var MyPlugin = class extends import_obsidian5.Plugin {
                 cellEl
               };
               (_a2 = this.toolBar) == null ? void 0 : _a2.tryShowFor(this.hoverCell);
-            };
-            cellEl.onmouseout = (e) => {
+            });
+            cellEl.addEventListener("mouseout", (e) => {
               var _a2;
               this.hoverCell = null;
               (_a2 = this.toolBar) == null ? void 0 : _a2.tryHide(200);
-            };
-            cellEl.onclick = async (e) => {
+            });
+            cellEl.addEventListener("click", async (e) => {
               var _a2;
+              if (e.targetNode != cellEl)
+                return;
               e.preventDefault();
               e.stopPropagation();
               if (this.ctrl || inReadingView())
@@ -1247,7 +1252,7 @@ var MyPlugin = class extends import_obsidian5.Plugin {
               cellEl.classList.add("is-editing");
               this.editingCell = { tableId: this.hoverTableId, rowIndex: j, colIndex: k, cellEl };
               (_a2 = this.suggestPopper) == null ? void 0 : _a2.bindOuterEl(cellEl);
-            };
+            });
           }
         }
       });
@@ -1255,7 +1260,7 @@ var MyPlugin = class extends import_obsidian5.Plugin {
     this.addCommand({
       id: "insert2x2table",
       name: "Insert 2x2 table",
-      callback: async () => {
+      editorCallback: async (editor, view) => {
         await this.tableEditor.parseActiveFile();
         await this.tableEditor.createMinimalNewTable();
       }
@@ -1277,12 +1282,37 @@ var MyPlugin = class extends import_obsidian5.Plugin {
             (_c = activeWindow.getSelection()) == null ? void 0 : _c.removeAllRanges();
           });
         });
-        menu.addItem((item) => {
+        menu.addItem(async (item) => {
+          item.setTitle("Copy as Markdown");
+          item.onClick(async (e) => {
+            if (!this.hoverTableId)
+              return;
+            await this.tableEditor.parseActiveFile();
+            const table2 = this.tableEditor.tables.get(this.hoverTableId);
+            if (!table2)
+              return;
+            const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian5.MarkdownView);
+            if (markdownView instanceof import_obsidian5.MarkdownView) {
+              const editor2 = markdownView.editor;
+              const tableMd = [];
+              let firstRowCells = table2.cells[0];
+              firstRowCells = firstRowCells.map((s) => `${s}\u3000`);
+              const firstRow = TableEditor.rowCells2rowString(firstRowCells);
+              tableMd.push(firstRow);
+              for (let i = table2.fromRowIndex + 1; i < table2.toRowIndex; i++)
+                tableMd.push(editor2.getLine(i));
+              await navigator.clipboard.writeText(tableMd.join("\n"));
+            }
+          });
+        });
+        menu.addItem(async (item) => {
           item.setTitle("Delete entire table");
           item.onClick(async () => {
             var _a;
             if (!this.hoverTableId)
               return;
+            if (this.editingCell)
+              await this.doneEdit(this.editingCell);
             await this.tableEditor.parseActiveFile();
             await ((_a = this.tableEditor) == null ? void 0 : _a.deleteEntireTable(this.hoverTableId));
           });
@@ -1299,17 +1329,27 @@ var MyPlugin = class extends import_obsidian5.Plugin {
     const { tableId: tableId2, rowIndex, colIndex, cellEl: cellElem } = cell;
     if (!this.hoverTableId)
       return;
+    const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian5.MarkdownView);
+    if (!(markdownView instanceof import_obsidian5.MarkdownView))
+      return;
     cellElem.setAttr("contenteditable", false);
+    const editor = markdownView.editor;
+    const cm = editor.cm;
+    const scrollDom = cm.scrollDOM;
+    const x = scrollDom.scrollLeft;
+    const y = scrollDom.scrollTop;
+    const resetScroll = () => {
+      scrollDom.scrollTo(x, y);
+      editor.blur();
+    };
+    scrollDom.addEventListener("scroll", resetScroll, true);
     await this.tableEditor.update(this.hoverTableId, rowIndex, colIndex, cellElem.innerText.trim());
+    scrollDom.removeEventListener("scroll", resetScroll, true);
+    editor.blur();
     await this.tableEditor.parseActiveFile();
     cellElem.classList.remove("is-editing");
     if (this.suggestPopper)
       this.suggestPopper.disable();
-    const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian5.MarkdownView);
-    if (markdownView instanceof import_obsidian5.MarkdownView) {
-      const editor = markdownView.editor;
-      editor.blur();
-    }
     this.editingCell = null;
   }
   getIdentifier(table2) {
@@ -1317,17 +1357,17 @@ var MyPlugin = class extends import_obsidian5.Plugin {
     const rowNum = table2.rows.length;
     for (let i2 = 0; i2 < rowNum; i2++) {
       const str2 = table2.rows[i2].cells[0].innerHTML.replace(/&nbsp;/gi, "");
-      if (str2 && str2.trim() != "" && !str2.match(/[!<>*#\[\]`$&=]/)) {
-        result.push(str2.trim());
+      if (str2 != "" && !str2.match(/[!<>*#\[\]`$&=]/)) {
+        result.push(str2.replace(/[\r\n\t\f\v \u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\ufeff]/g, ""));
       }
     }
     let i = table2.rows[0].cells.length;
     while (i--) {
       const str2 = table2.rows[0].cells[i].innerHTML.replace(/&nbsp;/gi, "");
-      if (str2 && str2.trim() != "" && !str2.match(/[!<>*#\[\]`$&=]/))
-        result.push(str2.trim());
+      if (str2 && !str2.match(/[!<>*#\[\]`$&=]/))
+        result.push(str2.replace(/[\r\n\t\f\v \u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\ufeff]/g, ""));
     }
-    let resultStr = result.join("").replace(/\s/g, "");
+    let resultStr = result.join("");
     if (resultStr.length == 0)
       return "\u7A7A\u8868";
     resultStr += table2.rows.length.toString();
@@ -1338,10 +1378,13 @@ var MyPlugin = class extends import_obsidian5.Plugin {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
   }
   async saveSettings() {
+    var _a;
     await this.saveData(this.settings);
-    if (!this.settings.enableFloatingToolBar)
+    if (!this.settings.enableFloatingToolBar) {
+      (_a = this.toolBar) == null ? void 0 : _a.onUnload();
       this.toolBar = null;
-    else
+    } else {
       this.toolBar = new ToolBar(this);
+    }
   }
 };

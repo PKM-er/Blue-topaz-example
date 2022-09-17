@@ -9,13 +9,19 @@
   border-radius: 6px;
   position: absolute;
   transition: 200ms ease;
+  -webkit-transition: 200ms ease;
   min-width: fit-content;
   justify-content: space-around;
   z-index: var(--layer-status-bar);
   box-shadow: 0px 3px 32px rgb(31 38 135 / 15%);
   border: 1px solid var(--background-modifier-border);
 }
-
+#cMenuToolbarModalBar.cMenuToolbarFlex {
+  display: flex;
+}
+#cMenuToolbarModalBar.cMenuToolbarFlex :is(.cMenuToolbarCommandItem,button[class^=cMenuToolbarCommandsubItem]) {
+  min-width: 20px;
+}
 #cMenuToolbarModalBar .cMenuToolbarCommandItem {
   margin: 2px;
   border: none;
@@ -119,14 +125,17 @@ cMenuToolbar CLASS CHANGES
 {
 border: 1px solid var(--background-modifier-border);
 }
-
+#cMenuToolbarModalBar.cMenuToolbarDefaultAesthetic:not(.top) :is(.cMenuToolbarCommandItem,button[class^=cMenuToolbarCommandsubItem])
+{
+min-height:28px ;
+}
 #cMenuToolbarModalBar.cMenuToolbarDefaultAesthetic:not(.top) button[class^=cMenuToolbarCommandsubItem]  {
   margin: auto;
+  padding: 6px;
 
-  max-width: 32px;
-
+ border: none;
   background-color: transparent;
-  font-family: remixicon;
+
   place-items: center;
 
 }
@@ -153,7 +162,6 @@ background-color: var(--background-primary);
     margin-right: 0px;
     position: relative;
     background-color: transparent;
-    font-family: remixicon;
     place-items: center;
     clear: both;
     max-width: 28px;
@@ -234,11 +242,19 @@ cMenuToolbar STATUS BAR MENU
 .cMenuToolbar-statusbar-menu  .menu-item-icon svg  path   {
     fill: var(--text-muted);
 }
-
+.cMenuToolbar-statusbar-menu  .menu-item-icon svg    {
+  stroke: var(--text-muted);
+}
 .cMenuToolbar-statusbar-menu  > .menu-item:is([data-section="ButtonAdd"]) {
     display: inline-flex;
     padding: 0px 0px 5px 5px;
     align-items: center;
+}
+
+.cMenuToolbar-statusbar-menu  > .menu-item {
+  display: inline-flex;
+  padding: 0px 0px 5px 5px;
+  align-items: center;
 }
 .cMenuToolbar-statusbar-menu  > .menu-item:is([data-section="ButtonAdd"]) .menu-item-icon{
   text-align: center;
@@ -295,7 +311,7 @@ background-color:#ffffff00;
   justify-content: center;
   align-content: center;
   place-items: center;
-  font-family: remixicon;
+
   }	
   
 
@@ -383,7 +399,7 @@ font-size: 10px;
   margin-right: 0px;
   position: relative;
   background-color: transparent;
-  font-family: remixicon;
+ 
   place-items: center;
   clear: both;
   max-width: 28px;
@@ -399,6 +415,7 @@ font-size: 10px;
 
 }
 
+
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar)  button[class^=cMenuToolbarCommandsubItem]  >.subitem
 {
     background-color: var(--background-primary);
@@ -409,7 +426,8 @@ font-size: 10px;
     z-index: var(--layer-menu);
     user-select: none;
     transform: translateY(90%) translateX(-40%);
- 
+    -webkit-transform: translateY(90%) translateX(-40%);
+    display: flex;
     
 }
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button[class^=cMenuToolbarCommandsubItem]  >.subitem svg
@@ -422,6 +440,7 @@ font-size: 10px;
 {
     background-color: var(--background-primary);
     line-height:2em;
+    display: inline;
 }
 
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button[class^=cMenuToolbarCommandsubItem]  >.subitem button:hover
@@ -439,19 +458,17 @@ font-size: 10px;
  
  visibility:hidden;
  transition: all 0.3s linear;
+ -webkit-transition:  all 0.3s linear;
 }
 
 
 
-:is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button.cMenuToolbarCommandsubItem-font-color::after
-{
-  content: none;
-}
+
 
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar)  button.cMenuToolbarCommandsubItem-font-color .triangle-icon
 {
   position: absolute;
-  margin-left: 16px;
+  margin-left: 18px;
   bottom: 8%;
 background-size: 4px 4px;
 background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' version='1.1' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1024 1024' enable-background='new 0 0 1024 1024' xml:space='preserve'%3E%3Cpath fill='%23666' d='M13.24 80.11 l461.75 560.8 q14.56 16.02 36.41 16.02 q21.85 0 36.42 -16.02 l463.2 -560.8 q10.2 -10.19 12.38 -24.75 q2.18 -14.57 -3.64 -27.68 q-5.82 -13.11 -18.21 -20.39 q-12.39 -7.29 -26.95 -7.29 l-924.95 0 q-20.4 0 -34.23 13.11 q-13.84 13.11 -15.29 32.77 q-1.46 19.66 13.11 34.23 Z'/%3E%3C/svg%3E");
@@ -468,29 +485,27 @@ background-image: url("data:image/svg+xml,%3Csvg width='4' height='4' version='1
  :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar):not(.top) button.cMenuToolbarCommandsubItem-font-color .triangle-icon 
  {
   margin-left: 16px;
-  bottom: 0px;
+  
  }
  
- :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar):not(.top) button.cMenuToolbarCommandsubItem-font-color .triangle-icon .x-color-picker-wrapper
+ :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar):not(.top) button.cMenuToolbarCommandsubItem-font-color .x-color-picker-wrapper
 {
   top:auto;
 bottom:calc(100% + 1em);
 }
 
  
-:is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button.cMenuToolbarCommandsubItem-font-color .triangle-icon>.subitem
+:is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button.cMenuToolbarCommandsubItem-font-color .subitem
 {
   visibility:hidden;
   transition: all 0.3s linear;
+  -webkit-transition:  all 0.3s linear;
  }
- :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button.cMenuToolbarCommandsubItem-font-color .triangle-icon:hover >.subitem  {
- 
-  visibility:visible;
- transition: all 0.3s linear;
-}
-:is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button.cMenuToolbarCommandsubItem-font-color .triangle-icon>.subitem:hover  {
+
+:is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button.cMenuToolbarCommandsubItem-font-color .subitem:hover  {
   visibility:visible;
   transition: all 0.3s linear;
+  -webkit-transition:  all 0.3s linear;
  }
 
 
@@ -498,10 +513,12 @@ bottom:calc(100% + 1em);
  
   visibility:visible;
  transition: all 0.3s linear;
+ -webkit-transition:  all 0.3s linear;
 }
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button[class^=cMenuToolbarCommandsubItem] >.subitem:hover  {
   visibility:visible;
   transition: all 0.3s linear;
+  -webkit-transition:  all 0.3s linear;
  }
 
  .cMenuToolbarCommandsubItem-font-color button
@@ -564,6 +581,7 @@ flex: 0;
 .setting-item button.cMenuToolbarSettingsIcon{
   display: block;
   transform: translateX(-30%); 
+  -webkit-transform: translateX(-30%); 
 }
 .setting-item button.cMenuToolbarSettingsIcon:empty::before{
  content: "❗";
@@ -610,7 +628,7 @@ flex: 0;
 
 .x-color-picker-wrapper {
   right: 0px;
-  top:3.5em;
+  top:1.8em;
   min-width: 1px;
   padding: 10px;
   box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14);
@@ -621,15 +639,17 @@ flex: 0;
   border-radius: 4px;
   background-color: var(--background-primary);
 }
-.x-color-picker-wrapper table.x-color-picker-table#x-color-picker-table {
+.markdown-source-view.mod-cm6 .x-color-picker-wrapper table.x-color-picker-table#x-color-picker-table {
   width: unset;
   border-collapse: separate;
   border-spacing: 6px;
+  margin: auto !important;
 }
 .x-color-picker-wrapper table.x-color-picker-table#x-backgroundcolor-picker-table {
   width: unset;
   border-collapse: separate;
   border-spacing: 6px;
+  margin: auto !important;
 }
 .x-color-picker-wrapper .x-color-picker-table th {
   border: 0;
@@ -666,6 +686,7 @@ background-color:transparent !important;
     height: 38px;
     align-items: center;
     transition: all 0.2s linear;
+    -webkit-transition:  all 0.2s linear;
     
 }
 
@@ -688,7 +709,8 @@ font-size: 10px;
     justify-content: center;
     align-items: center;
     transition: all 0.2s linear;
-    font-family: remixicon;
+    -webkit-transition:  all 0.2s linear;
+
  
 
     
@@ -714,6 +736,7 @@ font-size: 10px;
       margin-left: auto;
       margin-right: 25px;
       transition: all 0.1s linear;
+      -webkit-transition:  all 0.1s linear;
       margin-top: 32px;
     position: absolute;
     right: 0;
@@ -740,7 +763,8 @@ margin-left: 4px;
     justify-content: center;
     align-items: center;
     transition: all 0.2s linear;
-    font-family: remixicon;
+    -webkit-transition:  all 0.2s linear;
+   
 }
 #cMenuToolbarPopoverBar :is(.cMenuToolbarCommandItem,button[class^=cMenuToolbarCommandsubItem]):hover{
   background-color: var(--interactive-hover);

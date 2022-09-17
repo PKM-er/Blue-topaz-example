@@ -454,7 +454,7 @@ class TextExpander extends obsidian.Plugin {
                 el
                     .createDiv()
                     .createEl('button', { text: 'Run expand query' })
-                    .addEventListener('click', this.init.bind(this, false, ctx.getSectionInfo(el).lineStart));
+                    .addEventListener('click', this.init.bind(this, false, ctx.getSectionInfo(el)?.lineStart));
             });
             this.addCommand({
                 id: 'editor-expand',

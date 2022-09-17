@@ -336,3 +336,11 @@ class blank main-bar
 ```
 ^button-browserefresh
 
+## 快捷操作
+```button
+name 🔍更新索引
+type command
+action Text expand: expand
+class  grad_button g_yellow tiny
+```
+^button-expand
