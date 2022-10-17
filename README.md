@@ -1,14 +1,21 @@
 ---
+aliases: README
+tags: 
+cssclass:
+source:
 obsidianUIMode: preview
 progress: 正在进行
 title: README
-updated: 2022-09-14 08:55:43
+updated: 2022-10-18 12:08:54
 created: 2022-09-01 09:56:37
 ---
 ![](https://user-images.githubusercontent.com/42957010/184872220-f9b52079-8695-46a7-b517-0588426aa7b5.jpg)
+
+## Compatible with Obsidian 1.0 !!
 ## 💡引言
-This Vault  contains the basic functions of Obsidian and has built-in common Obsidian plugins.
+This Vault contains the basic functions of Obsidian and has built-in common Obsidian plugins.
 Notice：You need to open this vault with [Obsidian](https://obsidian.md/)
+
 
 Recommend downloading the Lite version of the example vault to delete a large number of unnecessary plug-ins, download link
 https://github.com/cumany/Blue-topaz-examples/releases/tag/20220816-lite
@@ -19,8 +26,8 @@ https://github.com/cumany/Blue-topaz-examples/releases/tag/20220816-lite
 本 [Examples库](https://github.com/cumany/Blue-topaz-examples) 由 Cuman 建立，Tips 教程由 [BT主题](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css) 作者 3F 撰写。
 本库是一个包含 Obsidian 基本功能的入门库，并内置了 Obsidian 的常用插件。
 需要用 [Obsidian](https://obsidian.md/) 软件打开本库即可。
-特别感谢@Johnny @Lillianwho  @lavi @成雙酱 @锋华 提供的教程和创作思路。
-如果有问题或者建议 请加入 Topaz 社区 [Topaz QQ群](https://jq.qq.com/?_wv=1027&k=TWGhXs40)  [Obsidian频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=zHpby&from=246610&biz=ka)
+特别感谢@Johnny @Lillianwho @lavi @成雙酱 @锋华 提供的教程和创作思路。
+如果有问题或者建议 请加入 Topaz 社区 [Topaz QQ群](https://jq.qq.com/?_wv=1027&k=TWGhXs40) [Obsidian频道](https://qun.qq.com/qqweb/qunpro/share?_wv=3&_wwv=128&inviteCode=zHpby&from=246610&biz=ka)
 ## 🎞视频教程
 <https://space.bilibili.com/1970226/channel/series>
 ## 👉后续更新 请关注
