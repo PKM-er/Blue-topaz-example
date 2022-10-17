@@ -2,7 +2,7 @@
   "mediaFragmentsEmbed": true,
   "timestampLink": true,
   "extendedImageEmbedSyntax": true,
-  "thumbnailPlaceholder": false,
+  "thumbnailPlaceholder": true,
   "useYoutubeControls": false,
   "interalBiliPlayback": true,
   "hideYtbRecomm": false,

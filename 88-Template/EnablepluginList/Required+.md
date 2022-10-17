@@ -1,0 +1,13 @@
+templater-obsidian
+calendar
+buttons
+metaedit
+obsidian-view-mode-by-frontmatter
+obsidian-banners
+dataview
+obsidian-admonition
+recent-files-obsidian
+quickadd
+obsidian-react-components
+workspaces-plus
+obsidian-style-settings

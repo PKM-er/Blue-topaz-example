@@ -8,7 +8,8 @@
 .database-plugin:before,
 .database-plugin:after {
   box-sizing: inherit;
-  overflow-x: auto;
+  overflow-x: hidden;
+  overflow-y: hidden;
 }
 
 .database-plugin {
@@ -80,12 +81,8 @@
   width: 100%;
 }
 
-.database-plugin__tr .data-input {
-  background-color: var(--background-primary);
-}
-
-.database-plugin__tr-hovered .data-input {
-  background-color: var(--background-secondary);
+div.database-plugin__td.data-input:hover {
+  box-shadow: 0 0 1px 2px var(--text-accent-hover);
 }
 
 .data-input {
@@ -284,27 +281,22 @@ div.database-plugin__checkbox {
   padding: 0;
 }
 
-.database-plugin__tr,
-.database-plugin__tr-hovered {
+.database-plugin__tr {
   display: table-row;
 }
 
-.database-plugin__tr:last-child .database-plugin__td,
-.database-plugin__tr-hovered:last-child .database-plugin__td {
+.database-plugin__tr:last-child .database-plugin__td {
   border-bottom: 0;
 }
 
 .database-plugin__add-row {
   color: var(--text-accent);
-  padding: 0.5rem;
   align-items: center;
-  font-size: 0.875rem;
   cursor: pointer;
-  bottom: 0;
   z-index: 3;
-  opacity: 0.8;
   position: sticky;
   left: 0;
+  bottom: 0;
   background-color: var(--background-primary);
 }
 
@@ -314,12 +306,16 @@ div.database-plugin__checkbox {
   padding: 0.3rem;
 }
 
-.database-plugin__add-row .database-plugin__td {
-  border: none;
-  background-color: transparent;
-  color: var(--text-muted);
-  display: inline-flex;
-  vertical-align: middle;
+.database-plugin__add-row-input {
+  height: 30px;
+  max-height: 30px;
+  border: 0 !important;
+}
+
+.database-plugin__add-row-input:focus {
+  outline: none;
+  border: 0 !important;
+  box-shadow: 0 0 0 0 !important;
 }
 
 .database-plugin__th {
@@ -380,8 +376,6 @@ div.database-plugin__checkbox {
   padding: 0.6rem;
 }
 
-.database-plugin__sticky_first_column .database-plugin__td:nth-child(2),
-.database-plugin__sticky_first_column .database-plugin__th:nth-child(2),
 .database-plugin__table .database-plugin__td:first-child,
 .database-plugin__table .database-plugin__th:first-child {
   position: sticky;
@@ -389,11 +383,21 @@ div.database-plugin__checkbox {
   z-index: 1;
 }
 
+.database-plugin__sticky_first_column .database-plugin__td:nth-child(2),
+.database-plugin__sticky_first_column .database-plugin__th:nth-child(2) {
+  position: sticky;
+  z-index: 2;
+  left: 30px;
+  background-color: var(--background-secondary);
+}
+
 .database-plugin__table {
+  position: relative;
   border-spacing: 0;
   border-bottom: 1px solid var(--background-modifier-border);
   display: table;
   height: 1px; /** Hack to prevent collapsing of table cells */
+  overflow: scroll;
 }
 
 .database-plugin__th:last-child {
@@ -419,16 +423,12 @@ div.database-plugin__checkbox {
   background-color: var(--background-secondary);
 }
 
-.database-plugin__sticky-level-1 {
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 2;
-}
 .database-plugin__sticky-level-2 {
+  position: -webkit-sticky;
   position: sticky;
-  top: 4rem;
-  z-index: 2;
+  left: 0;
+  top: 2.65rem;
+  z-index: 3;
 }
 
 .database-plugin__table-header-group {
@@ -437,8 +437,12 @@ div.database-plugin__checkbox {
 }
 
 .database-plugin__navbar {
-  flex: 1 0 auto;
-  background-color: var(--background-secondary);
+  width: 100%;
+  position: sticky;
+  position: -webkit-sticky;
+  left: 0;
+  top: 0;
+  z-index: 2;
 }
 
 .database-plugin__padding-left-05 {
@@ -488,46 +492,44 @@ div.database-plugin__checkbox {
 .database-plugin__tags-container {
   gap: 0.3rem;
 }
+/************************************************************
+ *  CELL CONTENT STYLES
+ ************************************************************/
+.database-plugin__text-align-right {
+  display: flex;
+  justify-content: flex-end;
+  text-align: right;
+}
 
-span.text-align-right {
+.database-plugin__text-align-center {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .database-plugin__text-align-left {
   display: flex;
-  text-align: left;
   justify-content: flex-start;
+  text-align: left;
 }
 
-.cell-padding {
-  padding: 0.5rem;
-}
-
-.d-flex {
+.database-plugin__text-align-justify {
   display: flex;
+  text-align: justify;
 }
 
-.cursor-default {
-  cursor: default;
+.database-plugin__text-wrap {
+  white-space: normal;
 }
 
-.align-items-center {
-  align-items: center;
-}
-
-.flex-wrap-wrap {
-  flex-wrap: wrap;
+.database-plugin__text-nowrap {
+  white-space: nowrap;
 }
 
 .menu.database-plugin__popper {
   position: relative;
   padding: 0;
-}
-
-.cursor-pointer {
-  cursor: pointer;
 }
 
 .icon-margin {
@@ -542,13 +544,26 @@ span.text-align-right {
   font-size: 0.75rem;
 }
 
-.flex-1 {
-  flex: 1;
-}
-
 /**
 *  Database Styles
 */
+.dbfolder-table-container {
+  contain: content;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  display: flex;
+}
+
+.database-plugin__scroll-horizontal {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.database-plugin__scroll-container {
+  will-change: transform;
+}
+
 .dbfolder-table-container tr input {
   background: var(--background-modifier-box-shadow);
 }
@@ -574,10 +589,7 @@ span.text-align-right {
 /* row context menu shows an icon to the left of the first cell translucent*/
 .database-plugin__row-context-menu {
   padding: 0;
-}
-
-.database-plugin__tr-hovered {
-  background-color: var(--background-secondary);
+  background-color: var(--background-primary);
 }
 
 /**
@@ -1041,15 +1053,7 @@ span.text-align-right {
   .react-datepicker-time__input-container
   .react-datepicker-time__input
   input[type="time"]::-webkit-outer-spin-button {
-  -webkit-appearance: none;
   margin: 0;
-}
-
-.react-datepicker__input-time-container
-  .react-datepicker-time__input-container
-  .react-datepicker-time__input
-  input[type="time"] {
-  -moz-appearance: textfield;
 }
 
 .react-datepicker__input-time-container

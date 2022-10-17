@@ -62,7 +62,7 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
         id: "freeze-obsidian",
         name: "Freeze Obsidian (with " + freezeDelaySecs.toString() + "s delay)",
         callback: () => {
-          new import_obsidian.Notice("Will freeze Obsidian in " + freezeDelaySecs.toString() + "s (if the console is open.)", (freezeDelaySecs - 1) * 1e3);
+          new import_obsidian.Notice("Will freeze Obsidian in " + freezeDelaySecs.toString() + "s \n(if the console is open.)", (freezeDelaySecs - 1) * 1e3);
           setTimeout(() => {
             debugger;
           }, freezeDelaySecs * 1e3);
@@ -82,6 +82,11 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
         id: "cheatsheet-css-classes",
         name: "Cheatsheet \u2013 Obsidian CSS Classes",
         callback: () => window.open("https://raw.githubusercontent.com/chrisgrieser/obsidian-theme-design-utilities/master/cheatsheets/css-classes.png")
+      });
+      this.addCommand({
+        id: "color-playground",
+        name: "Open GitHub Folder with Color Playground files to download",
+        callback: () => window.open("https://github.com/chrisgrieser/obsidian-theme-design-utilities/tree/main/color-playground")
       });
       this.addCommand({
         id: "toggle-dark-light-mode",
@@ -104,6 +109,16 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
         callback: () => this.toggleDebuggingCSS()
       });
       this.addCommand({
+        id: "toggle-garbled-text",
+        name: "Toggle Garbled Text",
+        callback: () => this.toggleGarbleText()
+      });
+      this.addCommand({
+        id: "test-body-class",
+        name: 'Toggle class ".foobar" for .app-container',
+        callback: () => this.toggleTestClass()
+      });
+      this.addCommand({
         id: "version-info",
         name: "CSS Feature Compatibility / Tech Stack Versions",
         callback: () => {
@@ -120,16 +135,20 @@ Electron Version: ${electronVersion}`, versionInfoNoticeDuration * 1e3);
   onunload() {
     return __async(this, null, function* () {
       console.log("Theme Design Utilities Plugin unloaded.");
+      this.app.dom.appContainerEl.removeClass("foobar");
     });
   }
   cycleThemes() {
     const currentTheme = this.app.customCss.theme;
-    const installedThemes = [...this.app.customCss.themes];
-    installedThemes.push("");
-    if (installedThemes.length === 1) {
-      new import_obsidian.Notice("Cannot cycle themes since no theme is installed in this vault.");
+    const installedThemes = [
+      ...Object.keys(this.app.customCss.themes),
+      ...this.app.customCss.oldThemes
+    ];
+    if (installedThemes.length === 0) {
+      new import_obsidian.Notice("Cannot cycle themes since no community theme is installed.");
       return;
     }
+    installedThemes.push("");
     let indexOfNextTheme = installedThemes.indexOf(currentTheme) + 1;
     if (indexOfNextTheme === installedThemes.length)
       indexOfNextTheme = 0;
@@ -195,5 +214,26 @@ Electron Version: ${electronVersion}`, versionInfoNoticeDuration * 1e3);
     }
     this.styleEl.textContent = cssToApply;
     this.app.workspace.trigger("css-change");
+  }
+  toggleGarbleText() {
+    var _a;
+    const currentCSS = (_a = this.styleEl) == null ? void 0 : _a.textContent;
+    let cssToApply = "";
+    if (!currentCSS) {
+      cssToApply = "body *:not(:hover) { font-family: Flow Circular !important; }";
+      this.styleEl = document.createElement("style");
+      this.styleEl.setAttribute("type", "text/css");
+      document.head.appendChild(this.styleEl);
+      this.register(() => this.styleEl.detach());
+    }
+    this.styleEl.textContent = cssToApply;
+    this.app.workspace.trigger("css-change");
+  }
+  toggleTestClass() {
+    const foobarActive = this.app.dom.appContainerEl.classList.value.includes("foobar");
+    if (foobarActive)
+      this.app.dom.appContainerEl.removeClass("foobar");
+    else
+      this.app.dom.appContainerEl.addClass("foobar");
   }
 };

@@ -54,7 +54,7 @@ settings:
   padding: 5px;
 }
 
-.button-default {
+button.button-default {
   border: 0.5px solid var(--button-border, #7a9486);
   border-radius: var(--button-border-radius, 5px);
   background-color: var(--button-background);
@@ -68,7 +68,7 @@ settings:
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-.button-default:hover {
+button.button-default:hover {
   z-index: 100;
   box-shadow: 0 4px 4px var(--button-box-shadow, rgba(0, 0, 0, 0.25)),
     0 10px 10px var(--button-box-shadow, rgba(0, 0, 0, 0.22));
@@ -76,58 +76,58 @@ settings:
   background-color: var(--button-background);
 }
 
-.theme-dark .button-default {
+.theme-dark button.button-default {
   border: 0.5px solid var(--button-border, #84a83a);
 }
 
-.theme-dark .button-default:hover {
+.theme-dark button.button-default:hover {
   z-index: 100;
   box-shadow: 0 4px 4px var(--button-box-shadow, rgba(210, 210, 210, 0.25)),
     0 10px 10px var(--button-box-shadow, rgba(210, 210, 210, 0.22));
   transform: translate3d(0px, -1.5px, 0px);
 }
 
-.blue {
+button.blue {
   background: #76b3fa;
   color: black;
 }
 
-.red {
-  background: red;
+button.red {
+  background-color: red;
 }
 
-.green {
+button.green {
   background: green;
 }
 
-.yellow {
+button.yellow {
   background: yellow;
   color: black;
 }
 
-.purple {
+button.purple {
   background: #725585;
 }
 
-.blue:hover {
+button.blue:hover {
   background: #76b3fa;
   color: black;
 }
 
-.red:hover {
+button.red:hover {
   background: red;
 }
 
-.green:hover {
+button.green:hover {
   background: green;
 }
 
-.yellow:hover {
+button.yellow:hover {
   background: yellow;
   color: black;
 }
 
-.purple:hover {
+button.purple:hover {
   background: #725585;
 }
 

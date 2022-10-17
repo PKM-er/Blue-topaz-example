@@ -1,0 +1,10 @@
+{
+	"id": "easy-typing-obsidian",
+	"name": "Easy Typing",
+	"version": "5.0.7",
+	"minAppVersion": "0.15.0",
+	"description": "Autoformat your note as typing.(Auto captalize, autospace)",
+	"author": "yaozhuwa",
+	"authorUrl": "https://github.com/Yaozhuwa",
+	"isDesktopOnly": false
+}

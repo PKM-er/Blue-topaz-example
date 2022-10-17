@@ -1,0 +1,15 @@
+:root {
+	--spacing-xs: 2px;
+	--spacing-sm: 4px;
+	--spacing-md: 8px;
+	--spacing-lg: 16px;
+
+	--border-radius-xs: 2px;
+	--border-radius-sm: 4px;
+	--border-radius-md: 8px;
+	--border-radius-lg: 16px;
+}
+
+.workspace-leaf-content[data-type="obsidian-projects"] .view-content {
+	padding: 0;
+}

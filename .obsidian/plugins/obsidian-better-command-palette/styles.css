@@ -21,26 +21,26 @@
 }
 .better-command-palette .suggestion-item .suggestion-flair {
   color: var(--text-faint);
+  margin-right: 10px;
 }
-.better-command-palette .suggestion-item .recent-text {
-  color: var(--text-faint);
+.better-command-palette .suggestion-item .suggestion-hotkey {
+  white-space: nowrap;
   margin-left: 10px;
-  float: right;
-}
-.better-command-palette .suggestion-item .suggestion-content {
-  display: inline-flex;
-  align-items: center;
+  padding: 0px 10px;
 }
 .better-command-palette .suggestion-item .suggestion-content svg {
   margin: 0px 5px;
   color: var(--text-muted);
 }
-.better-command-palette .suggestion-item .suggestion-description {
-  display: inline;
-  color: var(--text-muted);
+.better-command-palette .suggestion-item .suggestion-aux {
+  flex-direction: row-reverse;
 }
-.better-command-palette .suggestion-item .suggestion-sub-content {
-  color: var(--text-faint);
+.better-command-palette .suggestion-item .suggestion-title {
+  display: flex;
+  align-items: center;
+}
+.better-command-palette .suggestion-item .suggestion-note {
+  flex: 1;
 }
 .better-command-palette .suggestion-item .unresolved {
   color: var(--text-muted);

@@ -190,6 +190,7 @@
               {
                 "id": "8851ccb0aa4e524a",
                 "type": "leaf",
+                "pinned": true,
                 "state": {
                   "type": "markdown",
                   "state": {
@@ -197,15 +198,8 @@
                     "mode": "preview",
                     "backlinks": true,
                     "source": false
-                  }
-                }
-              },
-              {
-                "id": "4f457051e10f1a14",
-                "type": "leaf",
-                "state": {
-                  "type": "quiet-outline",
-                  "state": {}
+                  },
+                  "pinned": true
                 }
               }
             ],
@@ -215,7 +209,7 @@
         "direction": "horizontal",
         "width": 265
       },
-      "active": "f2c2f4dfc8473d58"
+      "active": "80430a4f104c0c57"
     },
     "Diary": {
       "main": {

@@ -1,0 +1,23 @@
+{
+  "respectExcluded": true,
+  "ignoreDiacritics": true,
+  "indexedFileTypes": [],
+  "PDFIndexing": false,
+  "backgroundProcesses": 4,
+  "showIndexingNotices": false,
+  "showShortName": false,
+  "ribbonIcon": true,
+  "showExcerpt": true,
+  "showCreateButton": false,
+  "weightBasename": 2,
+  "weightH1": 1.5,
+  "weightH2": 1.3,
+  "weightH3": 1.1,
+  "CtrlJK": false,
+  "CtrlNP": false,
+  "persistCache": false,
+  "welcomeMessage": "",
+  "indexPDFs": false,
+  "storeIndexInFile": false,
+  "showContext": true
+}

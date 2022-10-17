@@ -2,11 +2,6 @@
   "items": [
     {
       "type": "file",
-      "title": "🥑Blue Topaz Themes Tips",
-      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
-    },
-    {
-      "type": "file",
       "title": "各级标题示例",
       "path": "77-Example/各级标题示例.md"
     },
@@ -39,6 +34,11 @@
       "type": "file",
       "title": "Dataview教程",
       "path": "10-Help/Dataview系列教程/🔑Dataview教程.md"
+    },
+    {
+      "type": "file",
+      "title": "🥑Blue Topaz Themes Tips",
+      "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
     }
   ]
 }

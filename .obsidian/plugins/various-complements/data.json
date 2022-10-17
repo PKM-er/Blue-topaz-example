@@ -41,53 +41,33 @@
   "enableFrontMatterComplement": true,
   "frontMatterComplementMatchStrategy": "inherit",
   "insertCommaAfterFrontMatterCompletion": false,
+  "intelligentSuggestionPrioritization": {
+    "maxDaysToKeepHistory": 30,
+    "maxNumberOfHistoryToKeep": 0
+  },
   "showLogAboutPerformanceInConsole": false,
   "selectionHistoryTree": {
-    "233": {
-      "233": {
+    "555": {
+      "555": {
         "currentVault": {
           "count": 1,
-          "lastUpdated": 1662123392249
-        }
-      }
-    },
-    "333": {
-      "333": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1662104382000
-        }
-      }
-    },
-    "444": {
-      "444": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1662123387103
-        }
-      }
-    },
-    "1111": {
-      "1111": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1663146298101
+          "lastUpdated": 1663924414803
         }
       }
     },
     "console": {
       "console": {
         "currentVault": {
-          "count": 22,
-          "lastUpdated": 1662099417842
+          "count": 28,
+          "lastUpdated": 1665545338241
         }
       }
     },
-    "ithout": {
-      "ithout": {
+    "document": {
+      "document": {
         "currentVault": {
-          "count": 5,
-          "lastUpdated": 1660792522276
+          "count": 1,
+          "lastUpdated": 1663678694408
         }
       }
     },
@@ -95,167 +75,95 @@
       "async": {
         "currentVault": {
           "count": 1,
-          "lastUpdated": 1660808474354
+          "lastUpdated": 1664119735949
         }
       }
     },
-    "Sort": {
-      "Sort": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1660968550778
-        }
-      }
-    },
-    "indent": {
-      "indent": {
-        "frontMatter": {
-          "count": 4,
-          "lastUpdated": 1661012811492
-        }
-      }
-    },
-    "归入": {
-      "归入": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660792045167
-        }
-      }
-    },
-    "hello": {
-      "hello": {
-        "currentVault": {
-          "count": 3,
-          "lastUpdated": 1660796948710
-        }
-      }
-    },
-    "HE": {
-      "HE": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660792797313
-        }
-      }
-    },
-    "he": {
-      "he": {
-        "currentVault": {
-          "count": 2,
-          "lastUpdated": 1660792954062
-        }
-      }
-    },
-    "her": {
-      "her": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660792942517
-        }
-      }
-    },
-    "hen": {
-      "hen": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660792965843
-        }
-      }
-    },
-    "rider": {
-      "rider": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660792973086
-        }
-      }
-    },
-    "function": {
-      "function": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1660808458770
-        }
-      }
-    },
-    "cmenu-plugin": {
-      "cmenu-plugin": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1661939278679
-        }
-      }
-    },
-    "77-Example": {
-      "77-Example": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1661998837484
-        }
-      }
-    },
-    "方式": {
-      "方式": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1662200225907
-        }
-      }
-    },
-    "Obsidian Editing Toolbar Plugin": {
-      "Obsidian Editing Toolbar Plugin": {
-        "internalLink": {
-          "count": 1,
-          "lastUpdated": 1662567323457
-        }
-      }
-    },
-    "moc": {
-      "moc": {
-        "frontMatter": {
-          "count": 5,
-          "lastUpdated": 1663146231485
-        }
-      }
-    },
-    "book": {
-      "book": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1663146236102
-        }
-      }
-    },
-    "test": {
-      "test": {
-        "frontMatter": {
-          "count": 2,
-          "lastUpdated": 1663146277883
-        }
-      }
-    },
-    "expander": {
-      "expander": {
+    "plugins": {
+      "plugins": {
         "currentFile": {
           "count": 1,
-          "lastUpdated": 1663206331263
+          "lastUpdated": 1664121196976
         }
       }
     },
-    "ext": {
-      "ext": {
+    "returns": {
+      "returns": {
         "currentVault": {
           "count": 1,
-          "lastUpdated": 1663206565926
+          "lastUpdated": 1664122182772
         }
       }
     },
-    "collapse": {
-      "collapse": {
+    "noyaml": {
+      "noyaml": {
+        "frontMatter": {
+          "count": 1,
+          "lastUpdated": 1665205500760
+        }
+      }
+    },
+    "circle_btn": {
+      "circle_btn": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1665284476260
+        }
+      }
+    },
+    "88-Template": {
+      "88-Template": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1665292953112
+        }
+      }
+    },
+    "选择": {
+      "选择": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1665293180143
+        }
+      }
+    },
+    "modified": {
+      "modified": {
         "currentVault": {
           "count": 1,
-          "lastUpdated": 1663208989484
+          "lastUpdated": 1665377140564
+        }
+      }
+    },
+    "#tag": {
+      "#tag": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1665765716589
+        }
+      }
+    },
+    "sfsfsf": {
+      "sfsfsf": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1665998823431
+        }
+      }
+    },
+    "center": {
+      "center": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1666015047917
+        }
+      }
+    },
+    "盒子": {
+      "盒子": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1666021043268
         }
       }
     }

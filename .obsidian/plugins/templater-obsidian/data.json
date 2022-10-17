@@ -25,7 +25,9 @@
   ],
   "syntax_highlighting": true,
   "enabled_templates_hotkeys": [
-    "88-Template/tp/tp_foldermoc-Include-subfolders.md"
+    "88-Template/tp/tp_foldermoc-Include-subfolders.md",
+    "88-Template/tp/tp-插件启停模板.md"
   ],
-  "startup_templates": []
+  "startup_templates": [],
+  "enable_ribbon_icon": true
 }

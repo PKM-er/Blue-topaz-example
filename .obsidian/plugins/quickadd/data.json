@@ -226,6 +226,13 @@
       },
       "openFile": true,
       "openFileInMode": "default"
+    },
+    {
+      "id": "deec549a-d2dd-4e1d-b87e-c5abdfdc2802",
+      "name": "切换明暗",
+      "type": "Macro",
+      "command": true,
+      "macroId": "ebf7a10a-351e-489f-b393-2c46b39a4cee"
     }
   ],
   "macros": [
@@ -801,58 +808,46 @@
       "id": "8f7eb649-553c-4115-803a-b05e98ead7f7",
       "commands": [
         {
-          "name": "Hover Editor: Open new Hover Editor",
+          "name": "Focus on tab group to the left",
           "type": "Obsidian",
-          "id": "9f77d33c-9747-40bb-a5c7-465fbe004a7a",
-          "commandId": "obsidian-hover-editor:open-new-popover"
+          "id": "e1b02d7e-239a-49f6-89f8-c6dba677d331",
+          "commandId": "editor:focus-left"
         },
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "a965d982-e7d3-4409-9d24-637e3d85f881",
-          "time": 300
-        },
-        {
-          "name": "Hover Editor: Convert active pane to Hover Editor",
-          "type": "Obsidian",
-          "id": "08bb3d98-e8c7-4cd0-82b3-be87c410a088",
-          "commandId": "obsidian-hover-editor:convert-active-pane-to-popover"
-        },
-        {
-          "name": "Wait",
-          "type": "Wait",
-          "id": "959a8aff-b514-4a94-916c-e0da5e1b5588",
+          "id": "78a1dba7-bdf7-4bab-96d0-836adcb24232",
           "time": 100
+        },
+        {
+          "name": "New tab",
+          "type": "Obsidian",
+          "id": "fe1e0fec-d344-47b3-8bf5-4fa6835da8c4",
+          "commandId": "workspace:new-tab"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "03ddbe79-f73c-469e-afb2-dd93eee54363",
+          "time": 100
+        },
+        {
+          "name": "Focus on tab group to the left",
+          "type": "Obsidian",
+          "id": "93670ad5-55cd-4596-a537-cf0c5adc68b0",
+          "commandId": "editor:focus-left"
+        },
+        {
+          "name": "Wait",
+          "type": "Wait",
+          "id": "88c88f2e-399b-4e1c-8890-7a0415ace5b8",
+          "time": 300
         },
         {
           "name": "Style Settings: Show style settings view",
           "type": "Obsidian",
           "id": "4b511d22-be89-4fde-b044-2b8214ec63ad",
           "commandId": "obsidian-style-settings:show-style-settings-leaf"
-        },
-        {
-          "name": "Wait",
-          "type": "Wait",
-          "id": "118d2aaa-d5a5-46c4-900e-b50e44f9e910",
-          "time": 300
-        },
-        {
-          "name": "将焦点切换到左侧面板",
-          "type": "Obsidian",
-          "id": "3fa89693-a830-4a8a-9cd0-b93f0923b929",
-          "commandId": "editor:focus-left"
-        },
-        {
-          "name": "Wait",
-          "type": "Wait",
-          "id": "ab440476-09fa-4fc1-b39f-59cc3798eda0",
-          "time": 300
-        },
-        {
-          "name": "关闭当前面板",
-          "type": "Obsidian",
-          "id": "3df48db9-255a-4e0a-9858-5d2818f8dc91",
-          "commandId": "workspace:close"
         }
       ],
       "runOnStartup": false
@@ -886,6 +881,20 @@
           "type": "Obsidian",
           "id": "dc79c133-3701-47fd-a075-98c7a4c06d19",
           "commandId": "app:toggle-right-sidebar"
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "切换明暗模式",
+      "id": "ebf7a10a-351e-489f-b393-2c46b39a4cee",
+      "commands": [
+        {
+          "name": "SwitcLightdark",
+          "type": "UserScript",
+          "id": "55729e83-9b1c-43ac-bacc-c2f9a253d986",
+          "path": "88-Template/script/SwitcLightdark.js",
+          "settings": {}
         }
       ],
       "runOnStartup": false

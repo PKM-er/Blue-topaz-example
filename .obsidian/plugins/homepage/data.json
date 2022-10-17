@@ -5,8 +5,8 @@
   "momentFormat": "YYYY-MM-DD",
   "workspace": "Home",
   "workspaceEnabled": true,
-  "hasRibbonIcon": true,
+  "hasRibbonIcon": false,
   "openMode": "Replace all open notes",
   "view": "Default view",
-  "refreshDataview": false
+  "refreshDataview": true
 }

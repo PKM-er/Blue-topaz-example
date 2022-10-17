@@ -11,7 +11,7 @@
   "spellcheckLanguages": [],
   "attachmentFolderPath": "99-Attachment",
   "showLineNumber": true,
-  "defaultViewMode": "source",
+  "defaultViewMode": "preview",
   "showUnsupportedFiles": true,
   "strictLineBreaks": false,
   "tabSize": 4,
@@ -30,5 +30,7 @@
   "userIgnoreFilters": [
     "88-Template/"
   ],
-  "trashOption": "system"
+  "trashOption": "system",
+  "vimMode": false,
+  "showInlineTitle": false
 }

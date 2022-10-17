@@ -178,3 +178,10 @@
 .quiet-outline .n-tree {
   overflow: auto;
 }
+
+
+
+/*no data*/
+.n-tree__empty {
+  display: none;
+}

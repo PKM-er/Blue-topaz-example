@@ -1,6 +1,6 @@
 {
   "confirmDeletion": true,
-  "showAddCommand": true,
+  "showAddCommand": false,
   "debug": false,
   "editorMenu": [
     {
@@ -30,7 +30,14 @@
       "mode": "any"
     }
   ],
-  "leftRibbon": [],
+  "leftRibbon": [
+    {
+      "id": "file-explorer:reveal-active-file",
+      "icon": "navigate-glyph",
+      "name": "显示当前文件",
+      "mode": "any"
+    }
+  ],
   "rightRibbon": [],
   "titleBar": [
     {
@@ -46,18 +53,6 @@
       "mode": "desktop"
     },
     {
-      "id": "quickadd:choice:b3db048c-5629-437d-bff9-83468e7f7318",
-      "icon": "refresh-cw",
-      "name": "QuickAdd: 刷新主页",
-      "mode": "desktop"
-    },
-    {
-      "id": "obsidian-version-history-diff:open-recovery-diff-view",
-      "icon": "timer-reset",
-      "name": "Version history diff: Show File Recovery diff view for active file",
-      "mode": "desktop"
-    },
-    {
       "id": "omnisearch:show-modal",
       "icon": "lucide-search",
       "name": "Omnisearch: Vault search",
@@ -66,11 +61,18 @@
     {
       "id": "quickadd:choice:cd0405e7-6489-4e6a-beb1-07dac8f9a188",
       "icon": "music",
-      "name": "QuickAdd: play music",
+      "name": "play music",
       "mode": "any"
     }
   ],
-  "statusBar": [],
+  "statusBar": [
+    {
+      "id": "quickadd:choice:fe31fa1a-99c5-4b58-9001-1cac23a2b9b5",
+      "icon": "home",
+      "name": "QuickAdd: 打开主页",
+      "mode": "any"
+    }
+  ],
   "pageHeader": [
     {
       "id": "quickadd:choice:79944a6f-1f8e-409d-b4e7-98674eb1b607",
@@ -82,18 +84,6 @@
       "id": "quickadd:choice:27d06043-87de-47b1-a058-cf6ff596b9c1",
       "icon": "refresh-ccw",
       "name": "QuickAdd: 刷新面板",
-      "mode": "any"
-    },
-    {
-      "id": "quickadd:choice:fe31fa1a-99c5-4b58-9001-1cac23a2b9b5",
-      "icon": "home",
-      "name": "QuickAdd: 打开主页",
-      "mode": "any"
-    },
-    {
-      "id": "quickadd:choice:6224cb2b-a57e-41f9-99ad-a30f553042ec",
-      "icon": "align-horizontal-space-around",
-      "name": "收拢侧边栏",
       "mode": "any"
     }
   ],

@@ -50,7 +50,12 @@ class RecentFilesListView extends obsidian.ItemView {
                     menu.showAtPosition({ x: event.clientX, y: event.clientY });
                 });
                 navFile.addEventListener('click', (event) => {
+					//Modified  by Cuman
+					if(event.shiftKey)
+					this.focusFile(currentFile, 'shift');
+				else
                     this.focusFile(currentFile, event.ctrlKey || event.metaKey);
+					
                 });
             });
             const contentEl = this.containerEl.children[1];
@@ -87,8 +92,17 @@ class RecentFilesListView extends obsidian.ItemView {
                 let leaf = this.app.workspace.getMostRecentLeaf();
                 const createLeaf = shouldSplit || leaf.getViewState().pinned;
                 if (createLeaf) {
-                    leaf = this.app.workspace.createLeafBySplit(leaf);
-                }
+					if(shouldSplit=='shift'){
+					leaf = this.app.workspace.createLeafBySplit(leaf);
+				    leaf.openFile(targetFile);
+					}
+                   
+				 else{
+					leaf = this.app.workspace.getLeaf(true);
+					leaf.openFile(targetFile, {...this.app.workspace.activeLeaf?.getViewState(),active: false,})
+				 }
+				
+                }else
                 leaf.openFile(targetFile);
             }
             else {

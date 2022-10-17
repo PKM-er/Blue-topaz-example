@@ -2,7 +2,8 @@
 cssclass: "kanban gridlist noyaml"
 tag: "moc"
 obsidianUIMode: "preview"
---- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
+--- 
+`button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[77-Example]]**
 	- **[[◾ Cssclass声明样式举例]]**
@@ -33,6 +34,7 @@ obsidianUIMode: "preview"
 	- [[example database]]
 	- [[MD表格悬浮编辑测试]]
 	- [[ob提示框(callout)样式展示]]
+	- [[obsidian Roundup Newsletter]]
 	- [[timeline callout效果]]
 
 %% End Waypoint %%

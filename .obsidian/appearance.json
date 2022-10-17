@@ -23,18 +23,21 @@
     "【卡片视图】cards",
     "【自定义】多彩进度条",
     "【卡片横版视图】cards2",
-    "【自定义】myhome 样式",
     "【自定义】表格样式TableStyles",
-    "【图标】iconfont",
     "【格式】标题行距",
     "【Memos】Popover",
     "【图标】checkbox from minimal Theme Modified",
     "【图标】checkbox",
-    "【卡片视图】zettelkasten"
+    "【卡片视图】zettelkasten",
+    "【自定义】myhome 样式",
+    "【图标】iconfont"
   ],
   "translucency": false,
   "textFontFamily": "",
   "monospaceFontFamily": "",
   "interfaceFontFamily": "",
-  "baseFontSizeAction": true
+  "baseFontSizeAction": true,
+  "accentColor": "",
+  "nativeMenus": false,
+  "showViewHeader": true
 }

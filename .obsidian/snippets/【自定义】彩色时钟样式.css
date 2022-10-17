@@ -117,3 +117,10 @@ opacity: 0.2;
 [data-group="s"]:hover ~ .progress-clock__rings [data-units="s"] {
 opacity: 1;
 }
+
+#clock button:not(.clickable-icon)
+{
+  box-shadow: none;
+  background-color:transparent;
+  display: block;
+}

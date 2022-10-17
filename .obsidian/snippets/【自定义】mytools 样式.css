@@ -42,8 +42,9 @@ display:none;
 {
  
   font-size: smaller;
-  margin-left: 0.5em;
+ 
 }
+
 /*编辑模式缩小行距*/
 .workspace-split:not(.mod-root) .markdown-source-view.mytools .markdown-preview-section  .cm-content,
 .workspace-split:not(.mod-root) .markdown-source-view.mytools  .cm-editor,
@@ -54,16 +55,18 @@ display:none;
   padding: 0!important;
 }
 
+
 /*减少ad标签的左右空白*/
 .markdown-preview-view.mytools .admonition {
     margin: 0;
 }
 .markdown-preview-view.mytools .admonition .admonition-content {
-  margin: 0px 5px;
+  margin: -12px  0 0 5px;
 }
 .markdown-preview-view.mytools .admonition .callout-content.admonition-content {
-  margin-left: -5px;
+ 
   margin-right: -5px;
+ 
 }
 .markdown-preview-view.mytools .admonition-title-markdown {
   font-size: initial;
@@ -148,3 +151,28 @@ display:none;
   height: 32px;
   font-size: 13px;
   }
+
+  /*ob 1.0*/
+.mytools  .inline-title
+{
+display: none;
+}
+ 
+.mytools .callout-title {
+  align-items: center;
+}
+
+.workspace-tab-header[aria-label="常用工具"] .workspace-tab-header-status-container
+{
+  display: none;
+}
+
+:is(.workspace-tab-header[aria-label="常用工具"],.workspace-tab-header[aria-label="彩色时钟"]).is-active
+{
+  background-color:transparent;
+}
+
+.callout.callout[data-callout*="bookinfo"]
+{
+  overflow: unset;
+}

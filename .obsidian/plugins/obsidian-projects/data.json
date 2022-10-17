@@ -1,0 +1,49 @@
+{
+  "projects": [
+    {
+      "id": "452d8da3-6b6b-4c47-805f-4d9c0448647f",
+      "name": "Reading",
+      "path": "30-Reading",
+      "recursive": false,
+      "defaultName": "",
+      "templates": [],
+      "views": [
+        {
+          "id": "c9df6f2d-41a6-4bf2-9424-f6566c8c0581",
+          "name": "Board",
+          "type": "board",
+          "config": {
+            "groupByField": "status",
+            "priorityField": ""
+          }
+        },
+        {
+          "id": "c57be598-7568-4930-be1d-11a3696b1a4b",
+          "name": "Table",
+          "type": "table",
+          "config": {
+            "fieldConfig": {
+              "name": {
+                "width": 193
+              }
+            }
+          }
+        },
+        {
+          "id": "585d39fd-f88b-4249-bd78-0874094f140d",
+          "name": "Calendar",
+          "type": "calendar",
+          "config": {
+            "dateField": "readtime",
+            "interval": "month",
+            "checkField": "进度"
+          }
+        }
+      ],
+      "dataview": false
+    }
+  ],
+  "version": 1,
+  "lastProjectId": "452d8da3-6b6b-4c47-805f-4d9c0448647f",
+  "lastViewId": "c57be598-7568-4930-be1d-11a3696b1a4b"
+}

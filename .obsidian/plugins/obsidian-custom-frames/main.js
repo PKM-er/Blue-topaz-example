@@ -88,7 +88,7 @@ var presets = {
 }`
   },
   "calendar": {
-    url: "https://calendar.google.com/calendar/u/0/r/day",
+    url: "https://calendar.google.com/calendar",
     displayName: "Google Calendar",
     icon: "calendar",
     hideOnMobile: true,
@@ -96,15 +96,11 @@ var presets = {
     openInCenter: true,
     zoomLevel: 1,
     forceIframe: false,
-    customCss: `/* hide right-side menu, and some buttons */
-div.d6McF,
-div.pw6cBb,
-div.gb_Td.gb_Va.gb_Id,
-div.Kk7lMc-QWPxkf-LgbsSe-haAclf,
-div.h8Aqhb,
-div.gboEAb,
-div.dwlvNd {
-    display: none !important;
+    customCss: `/* hide the menu bar, "Keep" text, and logo */
+html > body > div:nth-child(2) > div:nth-child(2) > div:first-child[class*=" "],
+html > body > div:first-child > header:first-child > div > div:first-child > div > div:first-child,
+html > body > div:nth-child(2) > div:nth-child(2) > div:first-child > div:first-child {
+display: none !important;
 }`
   },
   "keep": {
@@ -253,6 +249,13 @@ var CustomFrame = class {
   }
   getCurrentUrl() {
     return this.frame instanceof HTMLIFrameElement ? this.frame.contentWindow.location.href : this.frame.getURL();
+  }
+  focus() {
+    if (this.frame instanceof HTMLIFrameElement) {
+      this.frame.contentWindow.focus();
+    } else {
+      this.frame.focus();
+    }
   }
 };
 
@@ -442,6 +445,9 @@ var _CustomFrameView = class extends import_obsidian3.ItemView {
   getIcon() {
     return getIcon(this.data);
   }
+  focus() {
+    this.frame.focus();
+  }
 };
 var CustomFrameView = _CustomFrameView;
 CustomFrameView.actions = [
@@ -551,15 +557,18 @@ var CustomFramesPlugin = class extends import_obsidian4.Plugin {
   }
   openLeaf(name, center, split) {
     return __async(this, null, function* () {
+      let leaf;
       if (center) {
-        this.app.workspace.detachLeavesOfType(name);
-        let leaf = this.app.workspace.getLeaf(split);
+        leaf = this.app.workspace.getLeaf(split);
         yield leaf.setViewState({ type: name, active: true });
       } else {
         if (!this.app.workspace.getLeavesOfType(name).length)
           yield this.app.workspace.getRightLeaf(false).setViewState({ type: name, active: true });
-        this.app.workspace.revealLeaf(this.app.workspace.getLeavesOfType(name)[0]);
+        leaf = this.app.workspace.getLeavesOfType(name)[0];
+        this.app.workspace.revealLeaf(leaf);
       }
+      if (leaf.view instanceof CustomFrameView)
+        leaf.view.focus();
     });
   }
 };

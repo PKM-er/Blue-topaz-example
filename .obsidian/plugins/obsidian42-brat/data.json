@@ -1,24 +1,19 @@
 {
   "pluginList": [
+    "marcusolsson/obsidian-projects",
+    "cumany/obsidian-floating-toc-plugin",
     "cumany/obsidian-editing-toolbar",
     "Quorafind/Obsidian-Virtual-Hotkey-Keyboard",
     "Stardusten/ob-table-enhancer",
-    "Quorafind/Obsidian-Table-Generator",
     "nothingislost/obsidian-query-control",
     "cumany/obsidian-echarts",
     "zhaohongxuan/obsidian-weread-plugin",
     "scambier/obsidian-omnisearch",
     "obsidian-canzi/Enhanced-editing/",
-    "windily-cloud/obsidian-AGtable",
     "nothingislost/obsidian-bartender"
   ],
   "pluginSubListFrozenVersion": [],
-  "themesList": [
-    {
-      "repo": "whyt-byte/Blue-Topaz_Obsidian-css",
-      "lastUpdate": "2022-08-28T05:17:37Z"
-    }
-  ],
+  "themesList": [],
   "updateAtStartup": true,
   "updateThemesAtStartup": true,
   "ribbonIconEnabled": false,

@@ -224,4 +224,5 @@ ad 样式使用方法参考
     
 ## 捐赠
 如果你觉得不错，这个示例库对你使用 ob 有帮助，可以支持我一下。
-![image|inl|350](https://user-images.githubusercontent.com/42957010/172568261-8a732d3d-303a-4367-993e-23c3efbf62a8.png) ![[Pasted image 20220608162248.png|inl|350]]
+
+![image|350](https://ghproxy.com/https://raw.githubusercontent.com/cumany/cumany/main/pic/202209192228895.png)

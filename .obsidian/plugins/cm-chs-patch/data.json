@@ -1,5 +1,5 @@
 {
   "useJieba": true,
-  "hmm": false,
+  "hmm": true,
   "dict": ""
 }

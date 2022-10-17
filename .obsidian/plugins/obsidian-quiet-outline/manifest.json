@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-quiet-outline",
 	"name": "Quiet Outline",
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"minAppVersion": "0.15.6",
 	"description": "Make outline quiet and more powerful, including no-auto-expand, rendering heading as markdown, and search support.",
 	"author": "the_tree",

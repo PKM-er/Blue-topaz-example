@@ -1,0 +1,10 @@
+{
+  "id": "mx-bili-plugin",
+  "name": "Media Extended BiliBili Plugin",
+  "version": "0.3.1",
+  "minAppVersion": "0.12.2",
+  "description": "Add advanced bilibili videos support for Media Extended plugin",
+  "author": "AidenLx",
+  "authorUrl": "https://github.com/AidenLx/",
+  "isDesktopOnly": true
+}

@@ -1,7 +1,7 @@
 {
 	"id": "obsidian-code-block-enhancer",
 	"name": "Code Block Enhancer",
-	"version": "1.0.5",
+	"version": "1.0.8",
 	"minAppVersion": "0.9.12",
 	"description": "Enhance obsidian markdown code block,provides copy button,linenumber,language name tip and so on.",
 	"author": "hafuhafu",

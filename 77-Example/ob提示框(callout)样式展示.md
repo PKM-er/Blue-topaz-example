@@ -1,11 +1,13 @@
 ---
-updated: "2022-04-07 11:34"
+updated: 2022-10-17 09:58:32
+aliases: ob提示框(callout)样式展示
+created: 2022-08-13 12:45:38
 ---
 
 > Obaidian 0.14.2 版本后增加了Callout功能，这个功能就是之前 admonition(简称ad插件) 插件收编的，目前语法跟Microsoft Docs 一致。之前用ad插件设置的提示框可以一键转换成最新的语法样式。
 
 ## 调用办法
-- `ctrl+p`  输入 callout 即可自动输入模板
+- `ctrl+p` 输入 callout 即可自动输入模板
 - 如果先有内容 后加callout 就先选择内容 然后 `ctrl+p`  callout  就搞定了
 ## 视频教程
 [告别单调的Obsidian，Ob的版面也可以丰富起来！ (bilibili.com)](https://www.bilibili.com/video/BV1G5411U7m8/)
@@ -43,29 +45,30 @@ updated: "2022-04-07 11:34"
 
 
 除了info 类型还支持以下类型
--   note
--   abstract, summary, tldr
--   info, todo
--   tip, hint, important
--   success, check, done
--   question, help, faq
--   warning, caution, attention
--   failure, fail, missing
--   danger, error
--   bug
--   example
--   quote, cite
+- note
+- abstract, summary, tldr
+- info, todo
+- tip, hint, important
+- success, check, done
+- question, help, faq
+- warning, caution, attention
+- failure, fail, missing
+- danger, error
+- bug
+- example
+- quote, cite
 ### 提示框的各种用法
 
 1. 可以没有内容直接显示标题
 > [!TIP] Callouts can have custom titles, which also supports **markdown**!
 
-2. 折叠提示框
+1. 折叠提示框
 > [!FAQ]- Are callouts foldable?
 > Yes! In a foldable callout, the contents are hidden until it is expanded.
 
-3. 自定义提示框
+1. 自定义提示框
 可以通过css设置my-callout-type 的样式
+
 ```css
 .callout[data-callout="my-callout-type"] {
     --callout-color: 0, 0, 0;
@@ -77,8 +80,6 @@ updated: "2022-04-07 11:34"
 ## 主题自定义示例
 #### 目前支持的callout类型
 通过添加callout类型，实现各类样式控制。下面以Blue Topaz主题内置的callout样式举例说明，目前支持的callout样式有：
-
-
 
 | Callout类型           | 解释                            | 使用                                    |
 | --------------------- | ------------------------------- | --------------------------------------- |
@@ -92,13 +93,12 @@ updated: "2022-04-07 11:34"
 | blank                 | callout 全透明块                | >[!blank]                               |
 | timeline                      |            时间线样式                     |    [[timeline callout效果]]                                     |
 
-
 **注意 以上类型都可以互相组合使用，具体看下面例子**
 Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 比如`> [!note|right]` 把一些属性信息用竖线分割，这样就不会影响callout类型。管道后的参数就是metadata。
 #### 目前支持metadata的属性
 
-| 属性名称            | 解释                          |
+|属性名称            |解释                          |
 | ------------------- | ----------------------------- |
 | xx%                 | callout宽度xx代表10-100的数值 |
 | right\|left\|center | callout布局位置               |
@@ -107,15 +107,14 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 | noicon              | 隐藏callout图标               |
 | banner              | 可以用图片作为callout标题     |
 | notitle             | 隐藏callout标题栏             |
-| noborder            | 隐藏callout标题栏             |
+| noborder            | 隐藏callout边框             |
 | grid                | 元素网格化布局                | 
-
 
 ### 模糊字体
 >[!cloze]
 >隐藏文本
 
-### 伪看板  kanban
+### 伪看板 kanban
 > [!kanban]+ Callout 看板测试
 >- [ ] callout 看板测试
 >	- [ ] 3333
@@ -127,7 +126,7 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 >- [ ] 第三个菜单 最好在源码模式下编辑
 >	- [ ] 测试测333
 >	- [ ] 测试测444
->- [ ]  22222
+>- [ ] 22222
 >- [ ] 2234444
 >- 555555
 >- 777777
@@ -145,6 +144,7 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 > [!Infobox|notitle right 45%]+ ## 关羽
 >![[Pasted image 20220331161219.png|circle]]
 > 
+
 | 本名     | 关羽                          |
 |:-------- |:--------------------------------------------- |
 | 别名     | 关云长、关公、汉寿亭侯、武圣                 |
@@ -162,13 +162,14 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 > 之后关羽跟随刘备投奔刘表，刘表去世后刘备在南逃过程中派遣关羽带领数百艘船前往江陵，并在被曹操追杀后成功与之汇合，一同前往夏口。在刘备平定益州后关羽总督荆州诸事，并在之后进行了刮骨疗毒的壮举。
 > 建安二十四年（219年）刘备自封为汉中王，赐关羽前将军之职，之后在樊城之战中一举斩落庞德，威震华夏。但之后由于孙权反水偷袭以及部下倒戈东吴，关羽军队溃散，败走麦城，被孙权部将抓获，同年十二月在临沮被斩杀。
 > 之后孙权将关羽的头颅送给曹操，曹操以诸侯之礼下葬于洛阳，孙权则将身躯下葬于当阳。后被蜀后主刘禅追谥为壮缪侯。
-> 关羽去世后，民间尊为“关公”，历代朝廷多有褒封。清朝雍正时期，尊为“武圣”，与“文圣”孔子地位等同。在小说《三国演义》中，名列“五虎上将”之首，使用青龙偃月刀。毛宗岗称其为《演义》三绝中的“义绝”。在宗教文化方面，关羽被道教尊为关圣帝君、文衡帝君，被佛教尊为护法伽蓝菩萨（伽蓝神）  、盖天古佛，被道教尊为协天大帝、翔汉天神等。
+> 关羽去世后，民间尊为“关公”，历代朝廷多有褒封。清朝雍正时期，尊为“武圣”，与“文圣”孔子地位等同。在小说《三国演义》中，名列“五虎上将”之首，使用青龙偃月刀。毛宗岗称其为《演义》三绝中的“义绝”。在宗教文化方面，关羽被道教尊为关圣帝君、文衡帝君，被佛教尊为护法伽蓝菩萨（伽蓝神） 、盖天古佛，被道教尊为协天大帝、翔汉天神等。
 
 ### 图书信息卡片 bookinfo
 
 > [!bookinfo]+ 《从零开始的女性主义》
 > ![bookcover|200](https://img2.doubanio.com/view/subject/l/public/s33984963.jpg)
 >
+
 | 属性     | 内容                                           |
 |:-------|:---------------------------------------------|
 |  ISBN  |  9787559652317                              |
@@ -182,6 +183,7 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 > 目前支持的位置属性有 right，center，left
 支持的宽度属性 10%-100% 比如10% 15% 20% 等
 它们可以组合使用，支持下面两种写法
+
 ```html
  > [!note|30%]
  > [!note 30%]
@@ -195,10 +197,13 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 
 With the development of Chinese economy, the world is watching us. More and more foreigners have sensed the great potential market and come to China to seek for cooperation. Chinese film market had been ignored before, but now more Hollywood directors show their willingness to work with Chinese actors, so as to catch more Chinese audiences and increase the box office.  
  Indeed, Chinese box office is increasing every year, even surpasses the foreign’s, which makes the foreign directors pay so much attention to Chinese audiences. It also shows that China has influnced the world and it plays more and more important role in the world economy. There is no doubt that more cooperations will happen during foreign enterprises and Chinese business.
+ > [!tips center]+ Title
+>  Indeed, Chinese box office is increasing every year, even surpasses the foreign’s, which makes the foreign directors pay so much attention to Chinese audiences. It also shows that China has influnced the world and it plays more and more important role in the world economy. There is no doubt that more cooperations will happen during foreign enterprises and Chinese business. 
  With the development of Chinese economy, the world is watching us. More and more foreigners have sensed the great potential market and come to China to seek for cooperation. Chinese film market had been ignored before, but now more Hollywood directors show their willingness to work with Chinese actors, so as to catch more Chinese audiences and increase the box office.  
 
 ### 首行缩进2字符 indent 
 > 支持下面两种写法
+
 ```html
  > [!note|indent]
  > [!note indent]
@@ -222,10 +227,12 @@ When high school students finish their study, it is time to think about what kin
 ![[obsidian_image.png]]
 ![[obsidian_image.png]]
 > 
+
 | 表头1                                                    | 表头2表头2                                                 | 表头3                                                                      |
 |:-------------------------------------------------------|:-------------------------------------------------------|:-------------------------------------------------------------------------|
 | 这是很长的表格内容看 会不会自动换行                                     | 这是很长的表格内容看 会不会自动换行                                     | 这是很长的表格内容看 会不会自动换行                                                       |
 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 | 这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行这是很长的表格内容看 会不会自动换行 |
+
 >
 
 > [!Example|noborder grid]+ 表格 图片等元素网格显示 grid
