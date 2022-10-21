@@ -85,13 +85,15 @@ div.database-plugin__td.data-input:hover {
   box-shadow: 0 0 1px 2px var(--text-accent-hover);
 }
 
+/******************************************************
+ *                  Inputs of cells
+ ******************************************************/
 .data-input {
   white-space: pre-wrap;
   border: none;
   padding: 0.5rem;
   color: var(--text-normal);
   font-size: 1rem;
-  border-radius: 4px;
   resize: none;
   box-sizing: border-box;
   flex: 1 1 auto;
@@ -393,7 +395,7 @@ div.database-plugin__checkbox {
 
 .database-plugin__table {
   position: relative;
-  border-spacing: 0;
+  border-spacing: 2px;
   border-bottom: 1px solid var(--background-modifier-border);
   display: table;
   height: 1px; /** Hack to prevent collapsing of table cells */

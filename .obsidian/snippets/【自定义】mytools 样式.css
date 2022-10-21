@@ -172,7 +172,4 @@ display: none;
   background-color:transparent;
 }
 
-.callout.callout[data-callout*="bookinfo"]
-{
-  overflow: unset;
-}
+ 

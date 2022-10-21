@@ -217,17 +217,18 @@
         "type": "split",
         "children": [
           {
-            "id": "528a5dbf77ea4243",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "20-Diary/2022-03-02.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": true
+            "id": "c8058c633fdb2078",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "528a5dbf77ea4243",
+                "type": "leaf",
+                "state": {
+                  "type": "empty",
+                  "state": {}
+                }
               }
-            }
+            ]
           }
         ],
         "direction": "vertical"
@@ -246,7 +247,9 @@
                 "type": "leaf",
                 "state": {
                   "type": "file-explorer",
-                  "state": {}
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
                 }
               },
               {
@@ -285,7 +288,6 @@
                 "state": {
                   "type": "localgraph",
                   "state": {
-                    "file": "20-Diary/2022-03-02.md",
                     "options": {
                       "collapse-filter": true,
                       "search": "",
@@ -336,7 +338,7 @@
           {
             "id": "d4c25b22f0c7d5f0",
             "type": "tabs",
-            "dimension": 44.868035190615835,
+            "dimension": 44.86803519061584,
             "children": [
               {
                 "id": "ca4e910af4602420",
@@ -364,9 +366,7 @@
                 "type": "leaf",
                 "state": {
                   "type": "outline",
-                  "state": {
-                    "file": "20-Diary/2022-03-02.md"
-                  }
+                  "state": {}
                 }
               },
               {
@@ -391,7 +391,6 @@
                 "state": {
                   "type": "backlink",
                   "state": {
-                    "file": "20-Diary/2022-03-02.md",
                     "collapseAll": false,
                     "extraContext": false,
                     "sortOrder": "alphabetical",
@@ -408,7 +407,6 @@
                 "state": {
                   "type": "outgoing-link",
                   "state": {
-                    "file": "20-Diary/2022-03-02.md",
                     "linksCollapsed": false,
                     "unlinkedCollapsed": true
                   }
@@ -440,7 +438,10 @@
         "direction": "horizontal",
         "width": 360
       },
-      "active": "528a5dbf77ea4243"
+      "ribbon": {
+        "mostRecentAction": ""
+      },
+      "active": "c8a604062090b912"
     },
     "kanban": {
       "main": {
@@ -640,34 +641,18 @@
         "type": "split",
         "children": [
           {
-            "id": "f62ab28329ad559c",
-            "type": "split",
+            "id": "9b45db536100e59c",
+            "type": "tabs",
             "children": [
               {
                 "id": "528a5dbf77ea4243",
                 "type": "leaf",
                 "state": {
-                  "type": "markdown",
-                  "state": {
-                    "file": "20-Diary/2022-03-15.md",
-                    "mode": "source",
-                    "backlinks": false,
-                    "source": false
-                  }
-                }
-              },
-              {
-                "id": "7097002b691e195a",
-                "type": "leaf",
-                "state": {
-                  "type": "kanban",
-                  "state": {
-                    "file": "77-Example/真Kanban.md"
-                  }
+                  "type": "empty",
+                  "state": {}
                 }
               }
-            ],
-            "direction": "horizontal"
+            ]
           }
         ],
         "direction": "vertical"
@@ -686,7 +671,9 @@
                 "type": "leaf",
                 "state": {
                   "type": "file-explorer",
-                  "state": {}
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
                 }
               },
               {
@@ -725,7 +712,6 @@
                 "state": {
                   "type": "localgraph",
                   "state": {
-                    "file": "20-Diary/2022-03-15.md",
                     "options": {
                       "collapse-filter": true,
                       "search": "",
@@ -776,7 +762,7 @@
           {
             "id": "d4c25b22f0c7d5f0",
             "type": "tabs",
-            "dimension": 44.868035190615835,
+            "dimension": 44.86803519061585,
             "children": [
               {
                 "id": "ca4e910af4602420",
@@ -804,9 +790,7 @@
                 "type": "leaf",
                 "state": {
                   "type": "outline",
-                  "state": {
-                    "file": "20-Diary/2022-03-15.md"
-                  }
+                  "state": {}
                 }
               },
               {
@@ -831,7 +815,6 @@
                 "state": {
                   "type": "backlink",
                   "state": {
-                    "file": "20-Diary/2022-03-15.md",
                     "collapseAll": false,
                     "extraContext": false,
                     "sortOrder": "alphabetical",
@@ -848,7 +831,6 @@
                 "state": {
                   "type": "outgoing-link",
                   "state": {
-                    "file": "20-Diary/2022-03-15.md",
                     "linksCollapsed": false,
                     "unlinkedCollapsed": true
                   }
@@ -881,6 +863,9 @@
         "width": 360,
         "collapsed": true
       },
+      "ribbon": {
+        "mostRecentAction": ""
+      },
       "active": "528a5dbf77ea4243"
     },
     "Simple": {
@@ -889,17 +874,23 @@
         "type": "split",
         "children": [
           {
-            "id": "fc371ae36bc5eac7",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": false
+            "id": "5e81ee842a136b28",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "fc371ae36bc5eac7",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
+                    "mode": "preview",
+                    "backlinks": false,
+                    "source": false
+                  }
+                }
               }
-            }
+            ]
           }
         ],
         "direction": "vertical"
@@ -917,7 +908,9 @@
                 "type": "leaf",
                 "state": {
                   "type": "file-explorer",
-                  "state": {}
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
                 }
               },
               {
@@ -994,23 +987,18 @@
                     "useHierarchy": true
                   }
                 }
-              },
-              {
-                "id": "6e02af8751b5488e",
-                "type": "leaf",
-                "state": {
-                  "type": "quiet-outline",
-                  "state": {}
-                }
               }
             ],
-            "currentTab": 3
+            "currentTab": 1
           }
         ],
         "direction": "horizontal",
         "width": 265
       },
-      "active": "6e02af8751b5488e"
+      "ribbon": {
+        "mostRecentAction": ""
+      },
+      "active": "340969ccd24905e8"
     }
   },
   "active": "Home"

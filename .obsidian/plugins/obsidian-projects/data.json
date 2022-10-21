@@ -41,6 +41,22 @@
         }
       ],
       "dataview": false
+    },
+    {
+      "id": "a6202afb-e904-4cbb-a090-1a40b5a5ec50",
+      "name": "30-Reading",
+      "path": "30-Reading",
+      "recursive": false,
+      "defaultName": "",
+      "templates": [],
+      "views": [
+        {
+          "id": "74ef48a1-4b1a-4a70-a59f-4dd4aa371e75",
+          "name": "Table",
+          "type": "table",
+          "config": {}
+        }
+      ]
     }
   ],
   "version": 1,

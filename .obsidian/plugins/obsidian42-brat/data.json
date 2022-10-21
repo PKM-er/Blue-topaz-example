@@ -1,5 +1,6 @@
 {
   "pluginList": [
+    "Trikzon/obsidian-web-browser/",
     "marcusolsson/obsidian-projects",
     "cumany/obsidian-floating-toc-plugin",
     "cumany/obsidian-editing-toolbar",

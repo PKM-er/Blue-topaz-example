@@ -161,6 +161,13 @@ body {
   padding: 0;
   z-index: var(--he-popover-layer-inactive);
   border-radius: var(--he-popover-border-radius);
+
+  /* Prevent snagging on titlebar */
+  -webkit-app-region: no-drag;
+}
+
+.popover.hover-editor .markdown-preview-view {
+  font-size: inherit;
 }
 
 .popover.hover-editor.is-active {
@@ -422,6 +429,11 @@ body {
 .popover.hover-editor .view-header {
   border-top: none;
   transition: all var(--he-popover-header-transition-speed);
+  display: flex;
+}
+
+.popover.hover-editor .view-header .view-header-icon {
+  display: flex;
 }
 
 .popover.hover-editor.show-navbar:not(.is-minimized) .popover-title {

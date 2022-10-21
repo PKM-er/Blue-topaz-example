@@ -504,6 +504,9 @@ position: relative;
 box-shadow: 0px 5px 50px 0px rgba(var(--interactive-accent-rgb),0.2), 0px 0px 0px 2px rgba(var(--interactive-accent-rgb),0.5);
 display: block;
 }
+div[data-callout="profile-card"].callout > .callout-title>.callout-title-inner button { 
+  cursor:pointer;
+}
 @media screen and (max-width:1200px) {
   div[data-callout="profile-card-inf"].callout> .callout-content div[data-callout="item"].callout  >.callout-title{ 
     font-size: 20px;
@@ -885,14 +888,7 @@ margin-left: 0.5em;
   display: none;
 }
 
-.modal-content .cmdr-setting-content
-{
- height: auto;
-}
-.modal{
- max-width: unset ;
-}
-
+ 
 /****table  enhancer*********/
 
 .markdown-source-view.is-live-preview
@@ -1083,4 +1079,10 @@ dvjs ~ :is(p,b,bold)>:is(select)
 }
 
 
+ .inline-title {
+  font-size: var(--h1-size);
+  font-style: italic;
+  color: var(--text-faint);
+}
 
+ 

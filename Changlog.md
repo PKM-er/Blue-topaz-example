@@ -8,6 +8,10 @@ aliases: Changlog
 created: 2022-04-27 10:05:00
 ---
 ## ⏳更新日志
+### 更新📅2022-10-21
+- 增加 projecs 插件 并优化样式
+- 增加 web-browser 插件并优化样式
+- 修复 worksplaces plus 插件 无法在ob1.0使用的问题
 ### 更新📅2022-10-17
 - 适配 Obsidian 1.0
 - 增加[[插件信息展示]]
