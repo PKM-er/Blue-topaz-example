@@ -1,1 +1,1 @@
-{"id":"web-browser","name":"Obsidian Web Browser","version":"0.0.1","minAppVersion":"1.0.0","description":"Lets you browse the web within Obsidian.","author":"Dion Tryban (Trikzon)","authorUrl":"https://github.com/Trikzon","isDesktopOnly":true}
+{"id":"web-browser","name":"Web Browser","version":"0.0.3-beta","minAppVersion":"1.0.0","description":"Lets you browse the web within Obsidian.","author":"Dion Tryban (Trikzon)","authorUrl":"https://github.com/Trikzon","isDesktopOnly":true}

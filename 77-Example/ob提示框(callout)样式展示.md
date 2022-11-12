@@ -98,17 +98,17 @@ Ob 0.14.5 以后支持 metadata写法 也就是用管道分割
 比如`> [!note|right]` 把一些属性信息用竖线分割，这样就不会影响callout类型。管道后的参数就是metadata。
 #### 目前支持metadata的属性
 
-|属性名称            |解释                          |
+| 属性名称            | 解释                          |
 | ------------------- | ----------------------------- |
 | xx%                 | callout宽度xx代表10-100的数值 |
 | right\|left\|center | callout布局位置               |
 | indent              | 全文自动缩进2字符             |
-| nowrap              | 元素不换行(包括图片横排显示)                    |
+| nowrap              | 元素不换行(包括图片横排显示)  |
 | noicon              | 隐藏callout图标               |
 | banner              | 可以用图片作为callout标题     |
 | notitle             | 隐藏callout标题栏             |
-| noborder            | 隐藏callout边框             |
-| grid                | 元素网格化布局                | 
+| noborder            | 隐藏callout边框               |
+| grid                | 元素网格化布局                |                           |
 
 ### 模糊字体
 >[!cloze]

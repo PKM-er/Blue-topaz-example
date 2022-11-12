@@ -87,6 +87,12 @@ button.button-default:hover {
   transform: translate3d(0px, -1.5px, 0px);
 }
 
+button.button-inline {
+  width: unset;
+  height: unset;
+  padding: 0 8px;
+}
+
 button.blue {
   background: #76b3fa;
   color: black;

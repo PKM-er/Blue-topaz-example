@@ -1,297 +1,149 @@
 {
-  "aestheticStyle": "glass",
+  "aestheticStyle": "tiny",
   "positionStyle": "top",
   "menuCommands": [
     {
-      "id": "obsidian-emoji-toolbar:emoji-picker:open-picker",
-      "name": "Emoji Toolbar: Open emoji picker",
-      "hotkeys": [],
-      "icon": "<svg t=\"1662683900458\" class=\"icon\" viewBox=\"0 0 1024 1024\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\" p-id=\"6160\" width=\"18\" height=\"18\"><path d=\"M556.8 454.4m-398.933333 0a398.933333 398.933333 0 1 0 797.866666 0 398.933333 398.933333 0 1 0-797.866666 0Z\" fill=\"#FFE500\" p-id=\"6161\"></path><path d=\"M556.8 55.466667C337.066667 55.466667 157.866667 234.666667 157.866667 454.4S337.066667 853.333333 556.8 853.333333s398.933333-179.2 398.933333-398.933333S776.533333 55.466667 556.8 55.466667z m0 738.133333c-200.533333 0-362.666667-162.133333-362.666667-362.666667s162.133333-362.666667 362.666667-362.666666 362.666667 162.133333 362.666667 362.666666c0 198.4-162.133333 362.666667-362.666667 362.666667z\" fill=\"#EBCB00\" p-id=\"6162\"></path><path d=\"M437.333333 136.533333a119.466667 29.866667 0 1 0 238.933334 0 119.466667 29.866667 0 1 0-238.933334 0Z\" fill=\"#FFF48C\" p-id=\"6163\"></path><path d=\"M168.533333 836.266667c4.266667-17.066667 17.066667-32 36.266667-36.266667l72.533333-17.066667c2.133333 0 4.266667-2.133333 4.266667-6.4 0-2.133333-2.133333-4.266667-4.266667-6.4l-72.533333-17.066666c-17.066667-4.266667-32-17.066667-36.266667-36.266667l-17.066666-72.533333c0-2.133333-2.133333-4.266667-6.4-4.266667s-4.266667 2.133333-6.4 4.266667l-17.066667 72.533333c-4.266667 17.066667-17.066667 32-36.266667 36.266667l-72.533333 17.066666c-2.133333 0-4.266667 2.133333-4.266667 6.4 0 2.133333 2.133333 4.266667 4.266667 6.4l72.533333 17.066667c17.066667 4.266667 32 17.066667 36.266667 36.266667l17.066667 72.533333c0 2.133333 2.133333 4.266667 6.4 4.266667s4.266667-2.133333 6.4-4.266667l17.066666-72.533333zM951.466667 138.666667l55.466666-19.2c2.133333 0 4.266667-2.133333 4.266667-4.266667s-2.133333-4.266667-4.266667-4.266667L960 96c-6.4-2.133333-10.666667-6.4-12.8-12.8l-14.933333-46.933333c0-2.133333-2.133333-4.266667-4.266667-4.266667s-4.266667 2.133333-4.266667 4.266667l-14.933333 46.933333c-2.133333 6.4-6.4 10.666667-12.8 12.8l-46.933333 14.933333c-2.133333 0-4.266667 2.133333-4.266667 4.266667s2.133333 4.266667 4.266667 4.266667l46.933333 14.933333c6.4 2.133333 10.666667 6.4 12.8 12.8l14.933333 46.933333c0 2.133333 2.133333 4.266667 4.266667 4.266667s4.266667-2.133333 4.266667-4.266667l19.2-55.466666z\" fill=\"#FFFFFF\" p-id=\"6164\"></path><path d=\"M238.933333 960a317.866667 32 0 1 0 635.733334 0 317.866667 32 0 1 0-635.733334 0Z\" fill=\"#45413C\" p-id=\"6165\"></path><path d=\"M746.666667 554.666667a49.066667 29.866667 0 1 0 98.133333 0 49.066667 29.866667 0 1 0-98.133333 0Z\" fill=\"#FFAA54\" p-id=\"6166\"></path><path d=\"M268.8 554.666667a49.066667 29.866667 0 1 0 98.133333 0 49.066667 29.866667 0 1 0-98.133333 0Z\" fill=\"#FFAA54\" p-id=\"6167\"></path><path d=\"M842.666667 524.8H725.333333c-55.466667 0-104.533333-40.533333-113.066666-96l-14.933334-96c-6.4-34.133333 21.333333-66.133333 57.6-66.133333h256c34.133333 0 61.866667 29.866667 57.6 64l-10.666666 91.733333c-8.533333 57.6-57.6 102.4-115.2 102.4z\" fill=\"#656769\" p-id=\"6168\"></path><path d=\"M612.266667 428.8c6.4 32 23.466667 59.733333 49.066666 76.8l238.933334-238.933333H652.8c-36.266667 0-61.866667 32-57.6 66.133333l17.066667 96z\" fill=\"#87898C\" p-id=\"6169\"></path><path d=\"M270.933333 524.8h115.2c55.466667 0 104.533333-40.533333 113.066667-96l14.933333-96c6.4-34.133333-21.333333-66.133333-57.6-66.133333h-256c-34.133333 0-61.866667 29.866667-57.6 64l10.666667 91.733333c10.666667 57.6 59.733333 102.4 117.333333 102.4z\" fill=\"#656769\" p-id=\"6170\"></path><path d=\"M157.866667 422.4c4.266667 38.4 27.733333 70.4 61.866666 89.6l245.333334-245.333333H206.933333c-34.133333 0-61.866667 29.866667-57.6 64l8.533334 91.733333z\" fill=\"#87898C\" p-id=\"6171\"></path></svg>"
-    },
-    {
       "id": "editing-toolbar:editor-undo",
-      "name": "undo",
-      "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M322 436 l0 0 q13 -11 14 -27 q1 -16 -9 -29 q-10 -13 -26.5 -14.5 q-16.5 -1.5 -29.5 8.5 l-166 137 q-22 19 -25 48 q-3 29 16 52 q5 6 10 10 l166 136 q13 10 29 8 q16 -2 26 -14 l1 -1 q10 -13 8 -29 q-2 -16 -14 -27 l-96 -78 l409 0 q93 0 167 -38 q71 -36 111 -101.5 q40 -65.5 40 -148 q0 -82.5 -39.5 -147.5 q-39.5 -65 -109.5 -102 q-72 -38 -163 -39 l-201 0 q-16 0 -28 11.5 q-12 11.5 -12 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l196 0 q72 0 126 26.5 q54 26.5 83 73.5 q29 47 29 107.5 q0 60.5 -28.5 107.5 q-28.5 47 -81.5 73.5 q-53 26.5 -124 27.5 l-439 0 l122 -100 Z\"></path></g></svg>"
+      "name": "undo editor",
+      "icon": "undo-glyph"
     },
     {
       "id": "editing-toolbar:editor-redo",
-      "name": "redo",
-      "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M711 436 l-1 0 q-12 -11 -13.5 -27 q-1.5 -16 9 -29 q10.5 -13 26.5 -14.5 q16 -1.5 29 8.5 l167 137 q22 19 24.5 48 q2.5 29 -15.5 52 q-4 5 -9 9 l-167 137 q-12 10 -28 8.5 q-16 -1.5 -27 -13.5 l-1 -2 q-10 -13 -8.5 -28.5 q1.5 -15.5 13.5 -26.5 l97 -79 l-409 0 q-93 0 -167 -38 q-71 -36 -111 -101.5 q-40 -65.5 -40 -148 q0 -82.5 39 -147.5 q39 -65 109 -102 q72 -38 164 -39 l200 0 q17 0 28.5 11.5 q11.5 11.5 11.5 28 q0 16.5 -11 28.5 q-11 12 -27 12 l-196 0 q-72 0 -126 26.5 q-54 26.5 -83 73.5 q-29 47 -29 107.5 q0 60.5 28.5 107.5 q28.5 47 81.5 73.5 q53 26.5 123 27.5 l440 0 l-122 -100 Z\"></path></g></svg>"
-    },
-    {
-      "id": "SubmenuCommands-l7h22tc79",
-      "name": "子菜单",
-      "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M556 268 l-88 0 q-30 0 -51 -21 q-21 -21 -21 -51 l0 -140 q0 -32 15.5 -58.5 q15.5 -26.5 42 -42 q26.5 -15.5 58.5 -15.5 q32 0 58.5 15.5 q26.5 15.5 42 42 q15.5 26.5 15.5 58.5 l0 140 q0 30 -21 51 q-21 21 -51 21 ZM476 188 l72 0 l0 -132 q0 -15 -10.5 -25.5 q-10.5 -10.5 -25.5 -10.5 l-1 0 q-15 0 -25 10.5 q-10 10.5 -10 25.5 l0 132 ZM748 796 l-472 0 q-28 0 -52 -14 q-24 -14 -38 -38 q-14 -24 -14 -52 l0 -104 q0 -28 14 -52 q14 -24 38 -38 q24 -14 52 -14 l472 0 q28 0 52 14 q24 14 38 38 q14 24 14 52 l0 104 q0 28 -14 52 q-14 24 -38 38 q-24 14 -52 14 ZM276 716 l472 0 q10 0 17 -7 q7 -7 7 -17 l0 -104 q0 -10 -7 -17 q-7 -7 -17 -7 l-472 0 q-10 0 -17 7 q-7 7 -7 17 l0 104 q0 10 7 17 q7 7 17 7 ZM889 684 q29 0 50 -20.5 q21 -20.5 21 -50.5 l1 -201 q0 -29 -21 -50 q-21 -21 -50 -22 l-340 0 l0 -104 l-80 0 l0 112 q0 29 20.5 50 q20.5 21 50.5 22 l339 0 l0 184 l-32 0 l0 80 l41 0 Z\"></path></g></svg>",
-      "SubmenuCommands": [
-        {
-          "id": "Enhanced-editing:cuti-format",
-          "name": " **粗体**格式刷",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Alt",
-                "Shift"
-              ],
-              "key": "C"
-            }
-          ],
-          "icon": "bold-glyph"
-        },
-        {
-          "id": "Enhanced-editing:xieti-format",
-          "name": "*斜体*格式刷",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Alt",
-                "Shift"
-              ],
-              "key": "X"
-            }
-          ],
-          "icon": "italic-glyph"
-        },
-        {
-          "id": "Enhanced-editing:xiahua-format",
-          "name": " _下划线_格式刷",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Alt",
-                "Shift"
-              ],
-              "key": "H"
-            }
-          ],
-          "icon": "underline-glyph"
-        },
-        {
-          "id": "Enhanced-editing:gaoliang-format",
-          "name": "==高亮==格式刷",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Alt",
-                "Shift"
-              ],
-              "key": "G"
-            }
-          ],
-          "icon": "highlight-glyph"
-        }
-      ]
+      "name": "redo editor",
+      "icon": "redo-glyph"
     },
     {
       "id": "editing-toolbar:format-eraser",
-      "name": "Format Eraser",
+      "name": "Clear text formatting",
       "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M889 512 l-211 211 q-26 27 -61 36 q-35 9 -70 0 q-35 -9 -61 -36 l-351 -350 q-26 -27 -35.5 -62 q-9.5 -35 0 -70 q9.5 -35 35.5 -61 l170 -170 q12 -12 29 -12 l215 0 q17 0 29 12 l311 310 q26 26 35.5 61 q9.5 35 0 70 q-9.5 35 -35.5 61 ZM831 453 q15 -15 15.5 -36.5 q0.5 -21.5 -14.5 -37.5 l-300 -298 l-181 0 l-158 158 q-15 15 -15 37 q0 22 15 38 l351 351 q16 16 38 16 q22 0 37 -16 l212 -212 ZM686 217 l-59 -59 l-317 315 l58 59 l318 -315 ZM883 81 q18 0 30.5 -12 q12.5 -12 12.5 -29 q0 -17 -12.5 -29 q-12.5 -12 -29.5 -13 l-456 0 q-17 0 -29.5 12 q-12.5 12 -12.5 29 q0 17 12 29 q12 12 29 13 l456 0 Z\"></path></g></svg>"
-    },
-    {
-      "id": "cMenuToolbar-Divider-Line",
-      "name": "HR",
-      "icon": "vertical-split"
     },
     {
       "id": "editing-toolbar:header2-text",
       "name": "Header 2",
-      "hotkeys": [
-        {
-          "modifiers": [
-            "Mod"
-          ],
-          "key": "2"
-        }
-      ],
       "icon": "header-2"
     },
     {
       "id": "editing-toolbar:header3-text",
       "name": "Header 3",
-      "hotkeys": [
-        {
-          "modifiers": [
-            "Mod"
-          ],
-          "key": "3"
-        }
-      ],
       "icon": "header-3"
     },
     {
-      "id": "SubmenuCommands-l7c2ejln3",
-      "name": "子菜单",
-      "icon": "<svg width=\"14\" height=\"14\" viewBox=\"0 0 24 24\" ><path d=\"M2 3a1 1 0 0 0-1 1v16a1 1 0 1 0 2 0v-7h9v7a1 1 0 1 0 2 0V4a1 1 0 1 0-2 0v7H3V4a1 1 0 0 0-1-1Zm14 9a1 1 0 0 1 1.984-.177 4.099 4.099 0 0 1 1.757-.576 3.447 3.447 0 0 1 3.759 3.432V20a1 1 0 1 1-2 0v-5.32c0-.851-.73-1.519-1.578-1.442A2.114 2.114 0 0 0 18 15.344V20a1 1 0 1 1-2 0v-8Z\" fill=\"currentColor\"></path></svg>",
+      "id": "SubmenuCommands-header",
+      "name": "submenu",
+      "icon": "header-n",
       "SubmenuCommands": [
         {
           "id": "editing-toolbar:header1-text",
           "name": "Header 1",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Mod"
-              ],
-              "key": "1"
-            }
-          ],
           "icon": "header-1"
         },
         {
           "id": "editing-toolbar:header4-text",
           "name": "Header 4",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Mod"
-              ],
-              "key": "4"
-            }
-          ],
           "icon": "header-4"
         },
         {
           "id": "editing-toolbar:header5-text",
           "name": "Header 5",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Mod"
-              ],
-              "key": "5"
-            }
-          ],
           "icon": "header-5"
         },
         {
           "id": "editing-toolbar:header6-text",
           "name": "Header 6",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Mod"
-              ],
-              "key": "6"
-            }
-          ],
           "icon": "header-6"
         }
       ]
     },
     {
       "id": "editing-toolbar:editor:toggle-bold",
-      "name": " bold",
+      "name": "Toggle bold",
       "icon": "bold-glyph"
     },
     {
       "id": "editing-toolbar:editor:toggle-italics",
-      "name": "italics",
+      "name": "Toggle italics",
       "icon": "italic-glyph"
     },
     {
       "id": "editing-toolbar:editor:toggle-strikethrough",
-      "name": "cMenu: Toggle strikethrough",
-      "icon": "<svg width=\"22\" height=\"22\" viewBox=\"0 0 22 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M5.25 11.91H9.5c.183.058.38.117.593.16l1.348.323c1.523.366 2.16.864 2.16 1.743 0 1.055-1.077 1.824-2.607 1.824-1.355 0-2.373-.623-2.747-1.663-.132-.315-.293-.454-.6-.454-.396 0-.638.242-.638.623 0 .132.022.27.059.41.388 1.384 1.912 2.263 3.926 2.263 2.431 0 3.991-1.252 3.991-3.164 0-.915-.336-1.575-1.076-2.065h2.834c.169 0 .3-.132.3-.3 0-.17-.131-.3-.3-.3h-4.204a7.666 7.666 0 00-.652-.177l-1.194-.285c-1.486-.36-2.116-.813-2.116-1.626 0-1.026 1.01-1.75 2.41-1.75 1.26 0 2.16.57 2.519 1.581.117.279.293.41.586.41.38 0 .615-.22.615-.586 0-.11-.015-.227-.044-.336-.33-1.333-1.794-2.256-3.677-2.256-2.204 0-3.794 1.26-3.794 3.032 0 .864.323 1.509 1.011 1.992H5.25c-.168 0-.3.132-.3.3 0 .169.132.3.3.3z\" fill=\"currentColor\"></path></svg>"
+      "name": "Toggle strikethrough",
+      "icon": "strikethrough-glyph"
+    },
+    {
+      "id": "editing-toolbar:underline",
+      "name": "Toggle underline",
+      "icon": "underline-glyph"
     },
     {
       "id": "editor:toggle-highlight",
-      "name": "高亮/取消高亮",
+      "name": "==Toggle highlight ==",
       "icon": "highlight-glyph"
     },
     {
-      "id": "SubmenuCommands-l7h7lu29r",
-      "name": "子菜单",
+      "id": "editing-toolbar:editor:toggle-blockquote",
+      "name": "Toggle blockquote",
+      "icon": "quote-glyph"
+    },
+    {
+      "id": "SubmenuCommands-mdcmder",
+      "name": "submenu",
       "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M464 608 l0 -568 q0 -3 -2.5 -5.5 q-2.5 -2.5 -5.5 -2.5 l-80 0 q-3 0 -5.5 2.5 q-2.5 2.5 -2.5 5.5 l0 568 l-232 0 q-3 0 -5.5 2.5 q-2.5 2.5 -2.5 5.5 l0 80 q0 3 2.5 5.5 q2.5 2.5 5.5 2.5 l560 0 q3 0 5.5 -2.5 q2.5 -2.5 2.5 -5.5 l0 -80 q0 -3 -2.5 -5.5 q-2.5 -2.5 -5.5 -2.5 l-232 0 ZM864 696 q17 0 28.5 11.5 q11.5 11.5 11.5 28.5 q0 17 -11.5 28.5 q-11.5 11.5 -28.5 11.5 q-17 0 -28.5 -11.5 q-11.5 -11.5 -11.5 -28.5 q0 -17 11.5 -28.5 q11.5 -11.5 28.5 -11.5 ZM864 640 q-40 0 -68 28 q-28 28 -28 68 q0 40 28 68 q28 28 68 28 q40 0 68 -28 q28 -28 28 -68 q0 -40 -28 -68 q-28 -28 -68 -28 ZM576 322 l0 -63 q0 -3 2 -5 l89 -70 l-89 -70 q-2 -2 -2 -5 l0 -63 q0 -4 3.5 -5.5 q3.5 -1.5 6.5 0.5 l170 133 q4 3 4.5 8.5 q0.5 5.5 -2.5 9.5 l-2 2 l-170 133 q-3 2 -6.5 0.5 q-3.5 -1.5 -3.5 -5.5 ZM256 322 l0 -63 q0 -3 -2 -5 l-89 -70 l89 -70 q2 -2 2 -5 l0 -63 q0 -4 -3.5 -5.5 q-3.5 -1.5 -6.5 0.5 l-170 133 q-4 3 -4.5 8.5 q-0.5 5.5 2.5 9.5 l2 2 l170 133 q3 2 6.5 0.5 q3.5 -1.5 3.5 -5.5 Z\"></path></g></svg>",
       "SubmenuCommands": [
         {
           "id": "editing-toolbar:superscript",
-          "name": "cMenu: Toggle superscript",
+          "name": "Toggle superscript",
           "icon": "superscript-glyph"
         },
         {
           "id": "editing-toolbar:subscript",
-          "name": "subscript",
+          "name": "Toggle subscript",
           "icon": "subscript-glyph"
         },
         {
           "id": "editing-toolbar:editor:toggle-code",
-          "name": "行内代码",
+          "name": "inline code",
           "icon": "code-glyph"
         },
         {
-          "id": "Enhanced-editing:add-daima",
-          "name": " ```代码块```",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Alt"
-              ],
-              "key": "D"
-            }
-          ],
+          "id": "editing-toolbar:codeblock",
+          "name": "Toggle codeblock",
           "icon": "codeblock-glyph"
         },
         {
           "id": "editing-toolbar:editor:insert-wikilink",
-          "name": "内部链接[[]]",
+          "name": "insert wikilink [[]]",
           "icon": "<svg width=\"15\" height=\"15\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M306 134 l91 0 q1 0 1 -8 l0 -80 q0 -8 -1 -8 l-91 0 q-1 0 -1 7 q0 -8 -5 -8 l-45 0 q-5 0 -5 8 l0 784 q0 8 5 8 l45 0 q5 0 5 -8 q0 8 1 8 l91 0 q1 0 1 -8 l0 -80 q0 -8 -1 -8 l-91 0 q-1 0 -1 8 l0 -623 q0 8 1 8 ZM139 134 l91 0 q1 0 1 -8 l0 -80 q0 -8 -1 -8 l-91 0 q-1 0 -1 7 q0 -8 -5 -8 l-45 0 q-5 0 -5 8 l0 784 q0 8 5 8 l45 0 q5 0 5 -8 q0 8 1 8 l91 0 q1 0 1 -8 l0 -80 q0 -8 -1 -8 l-91 0 q-1 0 -1 8 l0 -623 q0 8 1 8 ZM711 134 q1 0 1 -8 l0 623 q0 -8 -1 -8 l-91 0 q-1 0 -1 8 l0 80 q0 8 1 8 l91 0 q1 0 1 -8 q0 8 4 8 l46 0 q4 0 4 -8 l0 -784 q0 -8 -4 -8 l-46 0 q-4 0 -4 8 q0 -7 -1 -7 l-91 0 q-1 0 -1 8 l0 80 q0 8 1 8 l91 0 ZM878 134 q1 0 1 -8 l0 623 q0 -8 -1 -8 l-91 0 q-1 0 -1 8 l0 80 q0 8 1 8 l91 0 q1 0 1 -8 q0 8 5 8 l45 0 q4 0 4 -8 l0 -784 q0 -8 -4 -8 l-45 0 q-5 0 -5 8 q0 -7 -1 -7 l-91 0 q-1 0 -1 8 l0 80 q0 8 1 8 l91 0 Z\"></path></g></svg>"
         },
         {
           "id": "editing-toolbar:editor:insert-link",
-          "name": "插入链接[]()",
+          "name": "insert link []()",
           "icon": "link-glyph"
         },
         {
           "id": "editing-toolbar:editor:insert-embed",
-          "name": "嵌入 ![[]]",
+          "name": "insert embed ![[]]",
           "icon": "note-glyph"
         },
         {
           "id": "editing-toolbar:hrline",
           "name": "Horizontal divider",
           "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M912 424 l0 -80 q0 -3 -2.5 -5.5 q-2.5 -2.5 -5.5 -2.5 l-784 0 q-3 0 -5.5 2.5 q-2.5 2.5 -2.5 5.5 l0 80 q0 3 2.5 5.5 q2.5 2.5 5.5 2.5 l784 0 q3 0 5.5 -2.5 q2.5 -2.5 2.5 -5.5 Z\"></path></g></svg>"
-        },
-        {
-          "id": "editing-toolbar:underline",
-          "name": "cMenu: Toggle underline",
-          "icon": "underline-glyph"
         }
       ]
     },
     {
-      "id": "cMenuToolbar-Divider-Line",
-      "name": "HR",
-      "icon": "vertical-split"
-    },
-    {
-      "id": "editor:toggle-checklist-status",
-      "name": "切换待办事项状态",
-      "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M675 538 q12 12 28.5 12 q16.5 0 28 -12 q11.5 -12 11.5 -28 q0 -16 -11 -28 l-253 -248 q-11 -11 -27 -11 q-16 0 -28 11 l-131 128 q-12 12 -12 28.5 q0 16.5 11.5 28 q11.5 11.5 27.5 12 q16 0.5 28 -10.5 l103 -101 l224 219 ZM803 804 q34 0 63.5 -17 q29.5 -17 46.5 -46.5 q17 -29.5 17 -63.5 l0 -582 q0 -35 -17 -64 q-17 -29 -46.5 -46 q-29.5 -17 -63.5 -17 l-582 0 q-34 0 -63.5 17 q-29.5 17 -46.5 46 q-17 29 -17 64 l0 582 q0 34 17 63.5 q17 29.5 46.5 46.5 q29.5 17 63.5 17 l582 0 ZM803 725 l-582 0 q-19 0 -33 -14 q-14 -14 -15 -33 l0 -583 q0 -19 14 -33 q14 -14 33 -15 l583 0 q19 0 33 14 q14 14 15 33 l0 583 q0 19 -14 33 q-14 14 -33 15 l-1 0 Z\"></path></g></svg>",
-      "hotkeys": [
-        {
-          "modifiers": [
-            "Mod"
-          ],
-          "key": "Enter"
-        }
-      ]
-    },
-    {
-      "id": "editing-toolbar:editor:toggle-blockquote",
-      "name": "cMenu: Toggle blockquote",
-      "icon": "<svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" xmlns=\"http://www.w3.org/2000/svg\"><path d=\"M9.855 10.45c-.725-.171-1.2-.564-1.424-1.179-.224-.615-.256-1.295-.098-2.04.177-.832.522-1.538 1.036-2.12.487-.544 1.033-.905 1.635-1.084a.459.459 0 01.342.013c.134.07.227.185.278.346.073.228-.097.447-.313.55-.415.199-.722.409-.923.631-.251.266-.424.619-.518 1.06-.117.47.046.745.49.821l.382.081c.39.083.676.277.86.582.183.305.228.678.134 1.118-.104.492-.338.841-.7 1.048-.347.21-.74.268-1.181.174zM5.111 10.45c-.725-.171-1.2-.564-1.423-1.179-.224-.615-.257-1.295-.098-2.04.176-.832.521-1.538 1.035-2.12.488-.544 1.033-.905 1.635-1.084a.459.459 0 01.342.013c.135.07.227.185.279.346.073.228-.098.447-.314.55-.415.199-.722.409-.923.631-.25.266-.423.619-.517 1.06-.118.47.045.745.49.821l.381.081c.39.083.677.277.86.582.183.305.228.678.134 1.118-.104.492-.338.841-.7 1.048-.346.21-.74.268-1.18.174z\" fill=\"#2C2C2C\"></path><path fill-rule=\"evenodd\" clip-rule=\"evenodd\" d=\"M3.4 14a.6.6 0 01.6-.6h16a.6.6 0 110 1.2H4a.6.6 0 01-.6-.6zM3.4 18.5a.6.6 0 01.6-.6h16a.6.6 0 110 1.2H4a.6.6 0 01-.6-.6zM13.4 9.5a.6.6 0 01.6-.6h6a.6.6 0 110 1.2h-6a.6.6 0 01-.6-.6zM13.4 5a.6.6 0 01.6-.6h6a.6.6 0 110 1.2h-6a.6.6 0 01-.6-.6z\" fill=\"currentColor\"></path></svg>"
-    },
-    {
-      "id": "SubmenuCommands-l7jv9ucmc",
-      "name": "子菜单",
-      "icon": "remix-ListCheck",
+      "id": "SubmenuCommands-list",
+      "name": "submenu-list",
+      "icon": "bullet-list-glyph",
       "SubmenuCommands": [
         {
           "id": "editor:toggle-numbered-list",
-          "name": "有序列表",
+          "name": "numbered list",
           "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M860 424 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-457 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l457 0 ZM860 756 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-457 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l457 0 ZM860 92 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-457 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l457 0 ZM264 136 l-3 -3 l-51 -57 l56 0 q14 0 24.5 -10 q10.5 -10 11.5 -25 l0 -1 q0 -15 -10.5 -25.5 q-10.5 -10.5 -24.5 -10.5 l-137 0 q-15 0 -25 10 q-10 10 -11 24.5 q-1 14.5 9 25.5 l63 70 l49 54 q7 7 7 16.5 q0 9.5 -7.5 16.5 q-7.5 7 -18.5 7 q-11 0 -18.5 -6.5 q-7.5 -6.5 -8.5 -16.5 l0 0 q0 -15 -10.5 -25.5 q-10.5 -10.5 -25.5 -10.5 q-15 0 -25.5 10.5 q-10.5 10.5 -10.5 25.5 q0 26 13.5 47.5 q13.5 21.5 36 34.5 q22.5 13 49 13 q26.5 0 49.5 -13 q23 -13 36 -34.5 q13 -21.5 13 -47.5 q0 -20 -7.5 -37.5 q-7.5 -17.5 -21.5 -30.5 l-1 -1 ZM173 794 q11 11 25 10.5 q14 -0.5 24.5 -10.5 q10.5 -10 10.5 -25 l0 -293 q0 -15 -10 -25.5 q-10 -10.5 -25 -10.5 q-15 0 -25.5 10 q-10.5 10 -11.5 25 l0 211 q-10 -8 -23.5 -7 q-13.5 1 -22.5 11 l-1 0 q-10 11 -9.5 25.5 q0.5 14.5 10.5 24.5 l58 54 Z\"></path></g></svg>"
         },
         {
           "id": "editor:toggle-bullet-list",
-          "name": "无序列表",
+          "name": "bullet list",
           "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M860 424 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-477 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l477 0 ZM860 756 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-477 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l477 0 ZM860 92 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-477 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l477 0 ZM176 716 l0 0 ZM112 716 q0 -27 18.5 -45.5 q18.5 -18.5 45.5 -18.5 q27 0 45.5 18.5 q18.5 18.5 18.5 45.5 q0 27 -18.5 45.5 q-18.5 18.5 -45.5 18.5 q-27 0 -45.5 -18.5 q-18.5 -18.5 -18.5 -45.5 ZM176 384 l0 0 ZM112 384 q0 -27 18.5 -45.5 q18.5 -18.5 45.5 -18.5 q27 0 45.5 18.5 q18.5 18.5 18.5 45.5 q0 27 -18.5 45.5 q-18.5 18.5 -45.5 18.5 q-27 0 -45.5 -18.5 q-18.5 -18.5 -18.5 -45.5 ZM176 52 l0 0 ZM112 52 q0 -27 18.5 -45.5 q18.5 -18.5 45.5 -18.5 q27 0 45.5 18.5 q18.5 18.5 18.5 45.5 q0 27 -18.5 45.5 q-18.5 18.5 -45.5 18.5 q-27 0 -45.5 -18.5 q-18.5 -18.5 -18.5 -45.5 Z\"></path></g></svg>"
         },
         {
@@ -307,71 +159,8 @@
       ]
     },
     {
-      "id": "SubmenuCommands-l7kglusn9",
-      "name": "子菜单",
-      "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M702 32 q-1 0 -2 0 q-6 1 -10 4.5 q-4 3.5 -5 9.5 l-74 340 q-3 7 1 13 l2 3 l-2 -3 q2 4 5 6 q7 6 16 3 l316 -136 q4 -2 7 -6 q4 -6 2 -12 q-1 -10 -8 -14 l-5 -1 l-102 -28 l89 -117 q5 -6 4 -13.5 q-1 -7.5 -7 -11.5 l-42 -34 l-4 -2 l4 2 q-3 -2 -6.5 -3 q-3.5 -1 -6.5 0 l-4 1 l-4 2 l-4 3 l-84 112 l-61 -109 q-3 -7 -11 -9 l-4 0 ZM928 736 q12 0 20.5 -7.5 q8.5 -7.5 10.5 -18.5 l1 -6 l0 -332 l-72 31 l0 61 l-143 0 l-76 33 q-28 11 -58 6.5 q-30 -4.5 -53 -23.5 q-10 -7 -17 -16 l-129 0 l0 -160 l118 0 l14 -64 l-132 0 l0 -136 l162 0 l15 -72 l-493 0 q-12 0 -20.5 7.5 q-8.5 7.5 -10.5 18.5 l-1 6 l0 640 q0 12 7.5 20.5 q7.5 8.5 18.5 10.5 l6 1 l832 0 ZM348 240 l-212 0 l0 -136 l212 0 l0 136 ZM348 464 l-212 0 l0 -160 l212 0 l0 160 ZM888 664 l-212 0 l0 -136 l212 0 l0 136 ZM612 664 l-200 0 l0 -136 l200 0 l0 136 ZM348 664 l-212 0 l0 -136 l212 0 l0 136 Z\"></path></g></svg>",
-      "SubmenuCommands": [
-        {
-          "id": "table-editor-obsidian:table-control-bar",
-          "name": "Advanced Tables: Open table controls toolbar",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Mod",
-                "Shift"
-              ],
-              "key": "d"
-            }
-          ],
-          "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M880 784 q12 0 20.5 -7.5 q8.5 -7.5 10.5 -18.5 l1 -6 l0 -345 l0 0 l-1 -2 q-2 -23 -18 -38.5 q-16 -15.5 -38 -18.5 l-7 0 l-300 0 l0 -300 q0 -24 -16 -42.5 q-16 -18.5 -40 -21.5 l-8 0 l-340 0 q-12 0 -20.5 7.5 q-8.5 7.5 -10.5 18.5 l-1 6 l0 736 q0 12 7.5 20.5 q7.5 8.5 18.5 10.5 l6 1 l736 0 ZM184 349 l0 -293 l292 0 l0 292 l-252 0 q-21 0 -40 1 ZM477 712 l-293 0 l0 -293 q15 1 30 1 l262 0 l0 251 q0 21 1 41 ZM840 420 l0 292 l-293 0 q1 -13 1 -31 l0 -261 l292 0 ZM857 290 l52 -52 q2 -2 2 -5 q0 -3 -2 -4 l-228 -229 q-2 -1 -4 -2 l-58 -5 q-3 0 -5 2 q-2 2 -2 5 l6 58 q0 2 2 4 l228 228 q2 2 4.5 2 q2.5 0 4.5 -2 Z\"></path></g></svg>"
-        },
-        {
-          "id": "markdown-table-editor:markdown-table-editor-open-in-popover",
-          "name": "Markdown Table Editor: Open Editor (with the hover editor pluging)",
-          "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M702 32 q-1 0 -2 0 q-6 1 -10 4.5 q-4 3.5 -5 9.5 l-74 340 q-3 7 1 13 l2 3 l-2 -3 q2 4 5 6 q7 6 16 3 l316 -136 q4 -2 7 -6 q4 -6 2 -12 q-1 -10 -8 -14 l-5 -1 l-102 -28 l89 -117 q5 -6 4 -13.5 q-1 -7.5 -7 -11.5 l-42 -34 l-4 -2 l4 2 q-3 -2 -6.5 -3 q-3.5 -1 -6.5 0 l-4 1 l-4 2 l-4 3 l-84 112 l-61 -109 q-3 -7 -11 -9 l-4 0 ZM928 736 q12 0 20.5 -7.5 q8.5 -7.5 10.5 -18.5 l1 -6 l0 -332 l-72 31 l0 61 l-143 0 l-76 33 q-28 11 -58 6.5 q-30 -4.5 -53 -23.5 q-10 -7 -17 -16 l-129 0 l0 -160 l118 0 l14 -64 l-132 0 l0 -136 l162 0 l15 -72 l-493 0 q-12 0 -20.5 7.5 q-8.5 7.5 -10.5 18.5 l-1 6 l0 640 q0 12 7.5 20.5 q7.5 8.5 18.5 10.5 l6 1 l832 0 ZM348 240 l-212 0 l0 -136 l212 0 l0 136 ZM348 464 l-212 0 l0 -160 l212 0 l0 160 ZM888 664 l-212 0 l0 -136 l212 0 l0 136 ZM612 664 l-200 0 l0 -136 l200 0 l0 136 ZM348 664 l-212 0 l0 -136 l212 0 l0 136 Z\"></path></g></svg>"
-        },
-        {
-          "id": "obsidian-table-generator:create-table-genertator",
-          "name": "Table Generator: createTableGenerator",
-          "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M1028 747 l-857 0 q-14 0 -23.5 -10 q-9.5 -10 -9.5 -23 l0 -660 q0 -13 9.5 -23 q9.5 -10 23.5 -10 l857 0 q13 0 23 10 q10 10 10 23 l0 660 q0 13 -10 23 q-10 10 -23 10 ZM987 532 l-219 0 l0 140 l219 0 l0 -140 ZM987 302 l-219 0 l0 164 l219 0 l0 -164 ZM496 466 l206 0 l0 -164 l-206 0 l0 164 ZM702 532 l-206 0 l0 140 l206 0 l0 -140 ZM212 466 l218 0 l0 -164 l-218 0 l0 164 ZM212 672 l218 0 l0 -140 l-218 0 l0 140 ZM212 236 l218 0 l0 -140 l-218 0 l0 140 ZM496 236 l206 0 l0 -140 l-206 0 l0 140 ZM987 96 l-219 0 l0 140 l219 0 l0 -140 Z\"></path></g></svg>"
-        },
-        {
-          "id": "obsidian-table-to-csv-exporter:obsidian-table-to-csv-exporter",
-          "name": "Table to CSV Exporter: Export table to CSV file",
-          "icon": "csv"
-        }
-      ]
-    },
-    {
-      "id": "SubmenuCommands-l7hbfi7m1",
-      "name": "子菜单",
-      "icon": "image-file",
-      "SubmenuCommands": [
-        {
-          "id": "obsidian-admonition:insert-admonition",
-          "name": "Insert Admonition",
-          "icon": "remix-AdvertisementFill"
-        },
-        {
-          "id": "obsidian-admonition:insert-callout",
-          "name": "Admonition: Insert Callout",
-          "icon": "remix-EditBoxFill"
-        },
-        {
-          "id": "editor:attach-file",
-          "name": "插入附件",
-          "icon": "image-glyph"
-        }
-      ]
-    },
-    {
-      "id": "cMenuToolbar-Divider-Line",
-      "name": "HR",
-      "icon": "vertical-split"
-    },
-    {
-      "id": "SubmenuCommands-l7h8id7hk",
-      "name": "子菜单",
+      "id": "SubmenuCommands-aligin",
+      "name": "submenu-aligin",
       "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M724 304 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-421 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l421 0 ZM872 540 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-721 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l721 0 ZM724 776 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-421 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l421 0 ZM872 68 q17 0 28.5 -11.5 q11.5 -11.5 11.5 -28 q0 -16.5 -11.5 -28.5 q-11.5 -12 -27.5 -12 l-721 0 q-17 0 -28.5 11.5 q-11.5 11.5 -11.5 28 q0 16.5 11.5 28.5 q11.5 12 27.5 12 l721 0 Z\"></path></g></svg>",
       "SubmenuCommands": [
         {
@@ -397,9 +186,14 @@
       ]
     },
     {
-      "id": "editing-toolbar:workplace-fullscreen-focus",
-      "name": "workplace-Fullscreen",
-      "icon": "<svg width=\"18\" height=\"18\" focusable=\"false\" fill=\"currentColor\"  viewBox=\"0 0 1024 1024\"><g transform=\"scale(1, -1) translate(0, -896) scale(0.9, 0.9) \"><path class=\"path\" d=\"M248 422 l136 0 l0 286 l-196 0 l0 -124 q0 -3 -2.5 -5.5 q-2.5 -2.5 -5.5 -2.5 l-60 0 q-3 0 -5.5 2.5 q-2.5 2.5 -2.5 5.5 l0 168 q0 13 9.5 22.5 q9.5 9.5 22.5 9.5 l284 0 q13 0 22.5 -9.5 q9.5 -9.5 9.5 -22.5 l0 -736 q0 -13 -9.5 -22.5 q-9.5 -9.5 -22.5 -9.5 l-284 0 q-13 0 -22.5 9.5 q-9.5 9.5 -9.5 22.5 l0 168 q0 3 2.5 5.5 q2.5 2.5 5.5 2.5 l60 0 q3 0 5.5 -2.5 q2.5 -2.5 2.5 -5.5 l0 -124 l196 0 l0 286 l-136 0 l0 -81 q0 -6 -5 -8 q-5 -2 -9 1 l-151 119 q-3 3 -3 7 q0 4 3 7 l151 119 q4 3 9 1 q5 -2 5 -8 l0 -81 ZM776 346 l-136 0 l0 -286 l196 0 l0 124 q0 3 2.5 5.5 q2.5 2.5 5.5 2.5 l60 0 q3 0 5.5 -2.5 q2.5 -2.5 2.5 -5.5 l0 -168 q0 -13 -9.5 -22.5 q-9.5 -9.5 -22.5 -9.5 l-284 0 q-13 0 -22.5 9.5 q-9.5 9.5 -9.5 22.5 l0 736 q0 13 9.5 22.5 q9.5 9.5 22.5 9.5 l284 0 q13 0 22.5 -9.5 q9.5 -9.5 9.5 -22.5 l0 -168 q0 -3 -2.5 -5.5 q-2.5 -2.5 -5.5 -2.5 l-60 0 q-3 0 -5.5 2.5 q-2.5 2.5 -2.5 5.5 l0 124 l-196 0 l0 -286 l136 0 l0 81 q0 6 5 8 q5 2 9 -1 l151 -119 q3 -3 3 -7 q0 -4 -3 -7 l-151 -119 q-4 -3 -9 -1 q-5 2 -5 8 l0 81 Z\"></path></g></svg>"
+      "id": "editing-toolbar:change-font-color",
+      "name": "Change font color[html]",
+      "icon": "<svg width=\"24\" height=\"24\" focusable=\"false\" fill=\"currentColor\"><g fill-rule=\"evenodd\"><path id=\"change-font-color-icon\" d=\"M3 18h18v3H3z\" style=\"fill:#2DC26B\"></path><path d=\"M8.7 16h-.8a.5.5 0 01-.5-.6l2.7-9c.1-.3.3-.4.5-.4h2.8c.2 0 .4.1.5.4l2.7 9a.5.5 0 01-.5.6h-.8a.5.5 0 01-.4-.4l-.7-2.2c0-.3-.3-.4-.5-.4h-3.4c-.2 0-.4.1-.5.4l-.7 2.2c0 .3-.2.4-.4.4zm2.6-7.6l-.6 2a.5.5 0 00.5.6h1.6a.5.5 0 00.5-.6l-.6-2c0-.3-.3-.4-.5-.4h-.4c-.2 0-.4.1-.5.4z\"></path></g></svg>"
+    },
+    {
+      "id": "editing-toolbar:change-background-color",
+      "name": "Change Backgroundcolor[html]",
+      "icon": "<svg width=\"18\" height=\"24\" viewBox=\"0 0 256 256\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><g   stroke=\"none\" stroke-width=\"1\" fill=\"currentColor\" fill-rule=\"evenodd\"><g  ><g fill=\"currentColor\"><g transform=\"translate(119.502295, 137.878331) rotate(-135.000000) translate(-119.502295, -137.878331) translate(48.002295, 31.757731)\" ><path d=\"M100.946943,60.8084699 L43.7469427,60.8084699 C37.2852111,60.8084699 32.0469427,66.0467383 32.0469427,72.5084699 L32.0469427,118.70847 C32.0469427,125.170201 37.2852111,130.40847 43.7469427,130.40847 L100.946943,130.40847 C107.408674,130.40847 112.646943,125.170201 112.646943,118.70847 L112.646943,72.5084699 C112.646943,66.0467383 107.408674,60.8084699 100.946943,60.8084699 Z M93.646,79.808 L93.646,111.408 L51.046,111.408 L51.046,79.808 L93.646,79.808 Z\" fill-rule=\"nonzero\"></path><path d=\"M87.9366521,16.90916 L87.9194966,68.2000001 C87.9183543,69.4147389 86.9334998,70.399264 85.7187607,70.4 L56.9423078,70.4 C55.7272813,70.4 54.7423078,69.4150264 54.7423078,68.2 L54.7423078,39.4621057 C54.7423078,37.2523513 55.5736632,35.1234748 57.0711706,33.4985176 L76.4832996,12.4342613 C78.9534987,9.75382857 83.1289108,9.5834005 85.8093436,12.0535996 C87.1658473,13.303709 87.9372691,15.0644715 87.9366521,16.90916 Z\" fill-rule=\"evenodd\"></path><path d=\"M131.3,111.241199 L11.7,111.241199 C5.23826843,111.241199 0,116.479467 0,122.941199 L0,200.541199 C0,207.002931 5.23826843,212.241199 11.7,212.241199 L131.3,212.241199 C137.761732,212.241199 143,207.002931 143,200.541199 L143,122.941199 C143,116.479467 137.761732,111.241199 131.3,111.241199 Z M124,130.241 L124,193.241 L19,193.241 L19,130.241 L124,130.241 Z\" fill-rule=\"nonzero\"></path></g></g><path d=\"M51,218 L205,218 C211.075132,218 216,222.924868 216,229 C216,235.075132 211.075132,240 205,240 L51,240 C44.9248678,240 40,235.075132 40,229 C40,222.924868 44.9248678,218 51,218 Z\" id=\"change-background-color-icon\" style=\"fill:#FA541C\"></path></g></g></svg>"
     },
     {
       "id": "editing-toolbar:fullscreen-focus",
@@ -407,107 +201,17 @@
       "icon": "fullscreen"
     },
     {
-      "id": "Enhanced-editing:paste-form",
-      "name": "ZH增强编辑: 智能粘贴",
-      "hotkeys": [
-        {
-          "modifiers": [
-            "Mod",
-            "Alt"
-          ],
-          "key": "V"
-        }
-      ],
-      "icon": "paste"
-    },
-    {
-      "id": "global-search:open",
-      "name": "搜索: 在所有文件中搜索",
-      "icon": "search-glyph",
-      "hotkeys": [
-        {
-          "modifiers": [
-            "Mod",
-            "Shift"
-          ],
-          "key": "F"
-        }
-      ]
-    },
-    {
-      "id": "SubmenuCommands-l7lr70siq",
-      "name": "子菜单",
-      "icon": "vertical-three-dots",
-      "SubmenuCommands": [
-        {
-          "id": "insert-current-date",
-          "name": "模板: 插入当前日期",
-          "icon": "calendar-glyph"
-        },
-        {
-          "id": "Enhanced-editing:del-lines",
-          "name": "ZH增强编辑: 批量去除空行",
-          "hotkeys": [
-            {
-              "modifiers": [
-                "Mod",
-                "Alt"
-              ],
-              "key": "l"
-            }
-          ],
-          "icon": "deleteRow"
-        },
-        {
-          "id": "Enhanced-editing:tiqu-text",
-          "name": "ZH增强编辑: 获取标注文本",
-          "icon": "blocks"
-        },
-        {
-          "id": "Enhanced-editing:jianId-lines",
-          "name": "ZH增强编辑: 去除段落编号",
-          "icon": "remix-MenuFoldFill"
-        },
-        {
-          "id": "Enhanced-editing:jiaId-lines",
-          "name": "ZH增强编辑: 添加段落编号",
-          "icon": "remix-MenuUnfoldFill"
-        },
-        {
-          "id": "Enhanced-editing:all-links",
-          "name": "ZH增强编辑: 批量转换[[链接]]",
-          "icon": "links-coming-in"
-        },
-        {
-          "id": "Enhanced-editing:list-mermaid",
-          "name": "ZH增强编辑: 列表转为图示",
-          "icon": "graph-glyph"
-        }
-      ]
-    },
-    {
-      "id": "cMenuToolbar-Divider-Line",
-      "name": "HR",
-      "icon": "vertical-split"
-    },
-    {
-      "id": "editing-toolbar:change-font-color",
-      "name": "cMenu: Change font color[html]",
-      "icon": "<svg width=\"24\" height=\"24\" focusable=\"false\" fill=\"currentColor\"><g fill-rule=\"evenodd\"><path id=\"change-font-color-icon\" d=\"M3 18h18v3H3z\" style=\"fill:#2DC26B\"></path><path d=\"M8.7 16h-.8a.5.5 0 01-.5-.6l2.7-9c.1-.3.3-.4.5-.4h2.8c.2 0 .4.1.5.4l2.7 9a.5.5 0 01-.5.6h-.8a.5.5 0 01-.4-.4l-.7-2.2c0-.3-.3-.4-.5-.4h-3.4c-.2 0-.4.1-.5.4l-.7 2.2c0 .3-.2.4-.4.4zm2.6-7.6l-.6 2a.5.5 0 00.5.6h1.6a.5.5 0 00.5-.6l-.6-2c0-.3-.3-.4-.5-.4h-.4c-.2 0-.4.1-.5.4z\"></path></g></svg>"
-    },
-    {
-      "id": "editing-toolbar:change-background-color",
-      "name": "cMenu: Change Backgroundcolor[html]",
-      "icon": "<svg width=\"18px\" height=\"18px\" viewBox=\"0 0 256 256\" version=\"1.1\" xmlns=\"http://www.w3.org/2000/svg\"><g   stroke=\"none\" stroke-width=\"1\" fill=\"currentColor\" fill-rule=\"evenodd\"><g  ><g fill=\"currentColor\"><g transform=\"translate(119.502295, 137.878331) rotate(-135.000000) translate(-119.502295, -137.878331) translate(48.002295, 31.757731)\" ><path d=\"M100.946943,60.8084699 L43.7469427,60.8084699 C37.2852111,60.8084699 32.0469427,66.0467383 32.0469427,72.5084699 L32.0469427,118.70847 C32.0469427,125.170201 37.2852111,130.40847 43.7469427,130.40847 L100.946943,130.40847 C107.408674,130.40847 112.646943,125.170201 112.646943,118.70847 L112.646943,72.5084699 C112.646943,66.0467383 107.408674,60.8084699 100.946943,60.8084699 Z M93.646,79.808 L93.646,111.408 L51.046,111.408 L51.046,79.808 L93.646,79.808 Z\" fill-rule=\"nonzero\"></path><path d=\"M87.9366521,16.90916 L87.9194966,68.2000001 C87.9183543,69.4147389 86.9334998,70.399264 85.7187607,70.4 L56.9423078,70.4 C55.7272813,70.4 54.7423078,69.4150264 54.7423078,68.2 L54.7423078,39.4621057 C54.7423078,37.2523513 55.5736632,35.1234748 57.0711706,33.4985176 L76.4832996,12.4342613 C78.9534987,9.75382857 83.1289108,9.5834005 85.8093436,12.0535996 C87.1658473,13.303709 87.9372691,15.0644715 87.9366521,16.90916 Z\" fill-rule=\"evenodd\"></path><path d=\"M131.3,111.241199 L11.7,111.241199 C5.23826843,111.241199 0,116.479467 0,122.941199 L0,200.541199 C0,207.002931 5.23826843,212.241199 11.7,212.241199 L131.3,212.241199 C137.761732,212.241199 143,207.002931 143,200.541199 L143,122.941199 C143,116.479467 137.761732,111.241199 131.3,111.241199 Z M124,130.241 L124,193.241 L19,193.241 L19,130.241 L124,130.241 Z\" fill-rule=\"nonzero\"></path></g></g><path d=\"M51,218 L205,218 C211.075132,218 216,222.924868 216,229 C216,235.075132 211.075132,240 205,240 L51,240 C44.9248678,240 40,235.075132 40,229 C40,222.924868 44.9248678,218 51,218 Z\" id=\"change-background-color-icon\" style=\"fill:#FA541C\"></path></g></g></svg>"
+      "id": "editing-toolbar:workplace-fullscreen-focus",
+      "name": "workplace-Fullscreen ",
+      "icon": "remix-SplitCellsHorizontal"
     }
   ],
   "appendMethod": "workspace",
   "shouldShowMenuOnSelect": false,
   "cMenuVisibility": true,
-  "cMenuBottomValue": 3.5,
+  "cMenuBottomValue": 4.25,
   "cMenuNumRows": 12,
-  "cMenuWidth": 796,
-  "cMenuFontColor": "#1d1b10",
-  "cMenuBackgroundColor": "#affad1",
-  "cMenuXBottomValue": 17.25
+  "cMenuWidth": 502,
+  "cMenuFontColor": "#9bbb59",
+  "cMenuBackgroundColor": "#fdbfff"
 }

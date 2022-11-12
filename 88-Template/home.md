@@ -25,43 +25,33 @@ obsidianUIMode: preview
 </svg>
 ```
 
-%%问候和天气数据 
-传统版本 目前已弃用
-```ad-flex
-
-<div style="float:left"><%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %>
-</div> 
-<div>
-<iframe style="float:right; margin-top:3px" width="300" scrolling="no" height="20" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?c=code&id=34&bdc=%23&icon=4&site=14"></iframe>
-<!------- 黑暗模式使用下面代码
-<iframe style="float:right; margin-top:3px" width="300" scrolling="no" height="20" frameborder="0" allowtransparency="true" src="https://i.tianqi.com?color=%23%FFFFFE&c=code&id=34&bdc=%23&icon=4&site=14"></iframe>
-------->
-<!-----指定城市后面添加城市拼音比例如 重庆天气预报：https://i.tianqi.com/?c=code&id=34&bdc=%23&icon=4&site=14&py=chongqing------>
-</div>
-```
-%%
+%%问候和天气数据 %%
 %% 动画猫 %%
 ```jsx::AnimationCat
 ```
 %% --文字版天气加图标--开始 %%
+
 >[!note|noborder banner]  &nbsp;
 >```dataviewjs
 let setting = {};
 let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
 let today = moment().format("YYYY-MM-DD");
+let moonIndex = moment().diff(moment().startOf('year'),"hours");
 if (history.hasOwnProperty(today))
 {let weather=history[today].weather;
 let todayweather = weather[0];
 setting.iconDay =  weather[0].iconDay;
 setting.windSpeedDay =  weather[0].windSpeedDay;
 setting.windSpeedNight =  weather[0].windSpeedNight;
-await dv.view("88-Template/script/dv_weatherSvg",setting)
-let desc = ` <%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %> ，${todayweather.city} ${todayweather.textDay}， ${todayweather.tempMin}~${todayweather.tempMax}℃  ${todayweather.air} ${todayweather.windydesc} [[最近天气查询|✈️]] \n云朵充盈了${todayweather.cloud}%的天空\n顺便，如果有机会看见月亮的话，那么它应该是这样的${todayweather.moonPhase.replace(/[\u4e00-\u9fa5]/g,"")}`;
-dv.paragraph(desc);
+await dv.view("dv_weatherSvg",setting)
+let desc = ` <%+ tp.date.now("A好，今天是YYYY年MM月Do dddd") %> ，${todayweather.city} ${todayweather.textDay}， ${todayweather.tempMin}~${todayweather.tempMax}℃  ${todayweather.air} ${todayweather.windydesc} [[最近天气查询|✈️]] \n云朵充盈了${todayweather.cloud}%的天空\n顺便，月亮会在${todayweather.moonrise} 时浮起，${todayweather.moonset} 时沉落\n 如果足够幸运碰见它的话，我想它应该是这样的👉🏻`;
+dv.paragraph(desc + `<img style="margin-top:-50px;vertical-align: bottom; -webkit-clip-path: circle(42.55% at 50% 50%);" width="50" alt="|inl" src="https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004955/frames/216x216_1x1_30p/moon.${moonIndex}.jpg">`);
 }
 >```
-%% ---文字版天气加图标--结束 %%
 
+
+
+%% ---文字版天气加图标--结束 %%
 
 ```ad-blank
 - [[00-Tips|使用技巧]]
@@ -245,7 +235,7 @@ color: 139,65,06
 
 - 🇲🇩 [[MarkDown教程 Obsidian版 2022.4.22|MD超级教程]]
 
-- 🔑 [[Dataview教程|Dataview]]
+- [[🔑Dataview教程]]
 
 - 💾 [[77-Example|示例库]]
 

@@ -1,12 +1,23 @@
 ---
+aliases: 30-Reading
+tags:
+  - 
+source:
 cssclass: kanban gridlist noyaml
 tag: moc
+created: "2022-08-13 00:45"
+updated: "2022-10-26 14:52"
+---
+
+
 obsidianUIMode: preview
---- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
+--- 
+`button-homewp` `button-browsevault` `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[30-Reading]]**
 	- [[《笔醒山河》]]
 	- [[《从零开始的女性主义》]]
+	- [[《大话数据结构》]]
 	- [[《理解海德格尔》]]
 	- [[《镰刀与城市》]]
 	- [[《如何阅读尼采》]]
@@ -16,9 +27,9 @@ obsidianUIMode: preview
 	- [[《熊会滑雪吗？》]]
 	- [[《知识生产与传播》]]
 	- [[《Fundamentals of Computer Graphics 5th Edition》]]
-	- **[[⭐️⭐️⭐️]]**
-	- **[[⭐️⭐️⭐️⭐️]]**
-	- **[[⭐️⭐️⭐️⭐️⭐️]]**
+	- [[《Rust for Rustaceans_ Idiomatic Programming for Experienced Developers》]]
+	- **⭐️**
+		- [[扎克·施奈德版正义联盟 Zack Snyder's Justice League]]
 	- [[🎶影音数据库]]
 	- [[霸王别姬]]
 	- [[白蛇传·情]]
@@ -36,6 +47,5 @@ obsidianUIMode: preview
 	- [[星际穿越 Interstellar]]
 	- [[雄狮少年]]
 	- [[悬崖之上]]
-	- [[扎克·施奈德版正义联盟 Zack Snyder's Justice League]]
 
 %% End Waypoint %%

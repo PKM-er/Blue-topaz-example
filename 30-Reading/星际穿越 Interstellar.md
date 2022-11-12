@@ -1,7 +1,11 @@
 ---
+aliases: 星际穿越 Interstellar
+cssclass:
+source:
 name: 星际穿越 Interstellar
 cover: https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614988097.jpg
-tags: Movie
+tags:
+  - Movie
 douban_url: https://movie.douban.com/subject/1889243/
 director: '克里斯托弗·诺兰'
 alias: "星际启示录(港) / 星际效应(台) / 星际空间 / 星际之间 / 星际远航 / 星际 / Flora's Letter"
@@ -15,9 +19,10 @@ lead: '马修·麦康纳/安妮·海瑟薇/杰西卡·查斯坦/麦肯吉·弗�
 language: 英语 
 country: 美国 / 英国 / 加拿大 
 viewtime:
-updated: 
+updated: "2022-10-26 14:52"
 status: 
 grade: 
+created: "2022-09-05 17:10"
 ---
 > [!bookinfo|noicon]+ 🎬《星际穿越 Interstellar》
 > ![bookcover|200](https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2614988097.jpg)

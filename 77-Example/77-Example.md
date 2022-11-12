@@ -10,6 +10,7 @@ obsidianUIMode: "preview"
 	- **[[◾ Dataview相关实例]]**
 	- **[[◾ Echarts]]**
 	- **[[◾ TableExample]]**
+	- **[[50-Inbox]]**
 	- [[表格自定义样式]]
 	- [[单独定制笔记背景]]
 	- [[对话形式笔记]]

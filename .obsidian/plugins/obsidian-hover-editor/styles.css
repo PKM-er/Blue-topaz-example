@@ -345,6 +345,7 @@ body {
 
 .popover.hover-editor.snap-to-viewport {
   max-height: unset !important;
+  max-width: unset !important;
 }
 
 .popover.hover-editor .popover-titlebar {

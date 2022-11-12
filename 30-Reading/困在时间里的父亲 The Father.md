@@ -1,7 +1,11 @@
 ---
+aliases: 困在时间里的父亲 The Father
+cssclass:
+source:
 name: 困在时间里的父亲 The Father
 cover: https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2628877926.jpg
-tags: Movie
+tags:
+  - Movie
 douban_url: https://movie.douban.com/subject/33432655/
 director: '佛罗莱恩·泽勒'
 alias: "爸爸可否不要老(港) / 父亲(台) / 老父"
@@ -14,10 +18,11 @@ IMDb:  t10272386
 lead: '安东尼·霍普金斯/奥利维娅·科尔曼/马克·加蒂斯/奥莉维亚·威廉姆斯/伊莫琴·普茨/卢夫斯·塞维尔/阿耶莎·达尔克/罗曼·泽勒/雷·伯内特/阿德南·昆迪/斯科特·穆林斯/布赖恩·罗杰/艾薇·维' 
 language: 英语 
 country: 英国 / 法国 
-updated: 
+updated: "2022-10-26 14:52"
 viewtime: "2022-09-08"
 status: 
 grade: 
+created: "2022-08-13 00:45"
 ---
 > [!bookinfo|noicon]+ 🎬《困在时间里的父亲 The Father》
 > ![bookcover|200](https://img9.doubanio.com/view/photo/s_ratio_poster/public/p2628877926.jpg)

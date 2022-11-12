@@ -1,8 +1,0 @@
-{
-  "excludeLangs": [
-    "todoist\nnote-orange-bg\nnote-yellow-bg\nnote-green-bg\nnote-blue-bg\nnote-purple-bg\nnote-pink-bg\nnote-red-bg\nnote-gray-bg\nnote-brown-bg\nnote-orange\nnote-yellow\nnote-green\nnote-blue\nnote-purple\nnote-pink\nnote-red\nnote-gray\nnote-brown\nnote-cloze\nnote-imp\nhibox"
-  ],
-  "showLangName": false,
-  "showLineNumber": true,
-  "useContextMenu": true
-}

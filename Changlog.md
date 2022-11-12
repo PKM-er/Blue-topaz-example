@@ -8,6 +8,14 @@ aliases: Changlog
 created: 2022-04-27 10:05:00
 ---
 ## ⏳更新日志
+### 更新📅2022-11-12
+- 示例库自带的所有插件全部更新到最新版本。
+- 修复豆瓣读书插件 如果图书名称包含特殊字符创建文件失败的问题。【quickadd 获取豆瓣读书的宏命令，增加了filename字段用来给文件命名。】
+- 增加了monokai pro 配色的style settings设置 感谢@MR.W 提供 [[配色分享monokai pro 配色]]
+-  [[列出包含摘要和缩略图的笔记列表]]
+-  iconfont css片段 增加 file:/// 协议的文件夹图标
+-  增加 better  codeblock 插件的支持
+-   增加主页月亮图片效果 感谢@Wingardium Leviosa 分享的思路
 ### 更新📅2022-10-21
 - 增加 projecs 插件 并优化样式
 - 增加 web-browser 插件并优化样式

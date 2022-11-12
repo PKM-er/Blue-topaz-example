@@ -51,7 +51,7 @@ console.log('detailUrl:'+detailurl);
  }	 
  
 function isNotEmptyStr(s) {
-	s = s.trim();
+	s = s.trim();	
 	if (typeof s == 'string' && s.length > 0) {
         return true
 	}
@@ -72,6 +72,7 @@ async function getbookByurl(url) {
     let author = '';
     let bookname = '';
     bookname = $("meta[property='og:title']")?.content
+
     //author = $("meta[property='book:author']")?.content
     // let intro_class_list = $2(".intro");
     // let intro = '';
@@ -95,13 +96,13 @@ async function getbookByurl(url) {
         var temp2 = temp1.nextElementSibling.querySelectorAll("div.intro")
         var temp3 = temp2[temp2.length-1].querySelectorAll("p");
         for(var i=0;i<temp3.length;i++){
-            intro = intro+temp3[i].textContent+"\n";
+            intro = intro+temp3[i]?.textContent+"\n";
         }
         try{
             temp2 = $2("h2")[1].nextElementSibling.querySelectorAll("div.intro");
             temp3 = temp2[temp2.length-1].querySelectorAll("p");
             for(var i=0;i<temp3.length;i++){
-                authorintro = authorintro+temp3[i].textContent+"\n";
+                authorintro = authorintro+temp3[i]?.textContent+"\n";
             }
         }catch(e){
             new Notice("没有作者简介");
@@ -110,26 +111,27 @@ async function getbookByurl(url) {
         var temp2 = temp1.nextElementSibling.querySelectorAll("div.intro")
         var temp3 = temp2[temp2.length-1].querySelectorAll("p");
         for(var i=0;i<temp3.length;i++){
-            authorintro = authorintro+temp3[i].textContent+"\n";
+            authorintro = authorintro+temp3[i]?.textContent+"\n";
         }
     }
-	
+	//	console.log(authorintro,'11')
     //原文摘录
     let quote1 = " ";
     let quote2 = " ";
     let quoteList = $2("figure");
     let sourceList = $2("figcaption");
     if(quoteList.length!=0){
-        quote1 = quoteList[0]?.childNodes[0].textContent.replace(/(\r\n|\n)[\t\s]*(\r\n|\n)/g,"\n").replace(/[ 　]+/g,"").replace(/\(/g,"").trim()+"\n"+sourceList[0].textContent.replace(/\s/g,"").trim();
-        quote2 = quoteList[1]?.childNodes[0].textContent.replace(/(\r\n|\n)[\t\s]*(\r\n|\n)/g,"\n").replace(/[ 　]+/g,"").replace(/\(/g,"").trim()+"\n"+sourceList[1].textContent.replace(/\s/g,"").trim();
+        quote1 = quoteList[0]?.childNodes[0]?.textContent.replace(/(\r\n|\n)[\t\s]*(\r\n|\n)/g,"\n").replace(/[ 　]+/g,"").replace(/\(/g,"").trim()+"\n"+sourceList[0]?.textContent.replace(/\s/g,"").trim();
+		if(quoteList[1])
+        quote2 = quoteList[1]?.childNodes[0]?.textContent.replace(/(\r\n|\n)[\t\s]*(\r\n|\n)/g,"\n").replace(/[ 　]+/g,"").replace(/\(/g,"").trim()+"\n"+sourceList[1]?.textContent.replace(/\s/g,"").trim();
     }
-	
+	//console.log(quoteList,'22')
 	/*******************************************/
 	intro=isNotEmptyStr(intro)?intro.replace(/<[^>]*>|<\/[^>]*>/gm, "").trim().replace(/\s\s\s\s/gm, "\n").replace(/=*/gm, ""):' ';
 	authorintro=isNotEmptyStr(authorintro)?'> [!tip]- **作者简介**\n>\n'+authorintro:' ';
 	quote1=isNotEmptyStr(quote1)?'> [!quote]- **原文摘录**\n>\n'+'>>'+quote1:' ';
 	quote2=isNotEmptyStr(quote2)?'>\n>> '+quote2:' ';
-	  
+
 	let bookinfo = {};
 	let regauthor= /作者:([\s\S]*)(?=出版社:)/g;
 	let regpagecount = /页数:.(\d*)/g;
@@ -146,6 +148,7 @@ async function getbookByurl(url) {
 	bookinfo.publishyear=(publishyear==null)?'未知':publishyear[1].trim();
 	//bookinfo.publish=regpublish.exec(str)[1]?.trim()??'未知';
 	bookinfo.bookname =bookname.replace(/(^\s*)|\^|\.|\*|\?|\!|\/|\\|\$|\#|\&|\||,|\[|\]|\{|\}|\(|\)|\-|\+|\=|(\s*$)/g, "");
+	bookinfo.filename =bookname.replace(/[\\\\/:*?\"<>|]/g,"_");
 	bookinfo.cover = $("meta[property='og:image']")?.content;
 	bookinfo.type = 'book';
 	bookinfo.description = $("meta[property='og:description']")?.content;
@@ -177,7 +180,7 @@ async function getBookByisbn(isbn){
     let p = new DOMParser();
     let doc = p.parseFromString(page, "text/html");
 	let $ = s => doc.querySelector(s);
-    let title = $("div.subject-info span").textContent;
+    let title = $("div.subject-info span")?.textContent;
     let detailUrl = String($("ul li a").href).replace("app://obsidian.md","https://m.douban.com");
     if (!detailUrl){
         return null;

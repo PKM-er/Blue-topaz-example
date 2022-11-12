@@ -1,5 +1,5 @@
 ---
-name: {{VALUE:bookname}}
+name: '{{VALUE:bookname}}'
 cover: {{VALUE:cover}}
 tags: book
 douban_url: {{VALUE:douban_url}}

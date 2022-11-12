@@ -1,7 +1,11 @@
 ---
+aliases: 芬奇 Finch
+cssclass:
+source:
 name: 芬奇 Finch
 cover: https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2721066869.jpg
-tags: Movie
+tags:
+  - Movie
 douban_url: https://movie.douban.com/subject/26897885/
 director: '米格尔·萨普什尼克'
 alias: "芬奇的旅程 / 生化 / 人生 / BIOS"
@@ -15,9 +19,10 @@ lead: '汤姆·汉克斯/卡赖伯·兰德里·琼斯/希默斯/洛拉·玛汀�
 language: 英语 
 country: 美国 
 viewtime: "2022-08-01"
-updated: 
+updated: "2022-10-26 14:52"
 status: 
 grade: 
+created: "2022-08-13 00:45"
 ---
 > [!bookinfo|noicon]+ 🎬《芬奇 Finch》
 > ![bookcover|200](https://img1.doubanio.com/view/photo/s_ratio_poster/public/p2721066869.jpg)

@@ -2,21 +2,14 @@
   "confirmDeletion": true,
   "showAddCommand": false,
   "debug": false,
-  "editorMenu": [
+  "editorMenu": [],
+  "fileMenu": [
     {
-      "id": "workspace:split-vertical",
-      "icon": "vertical-split",
-      "name": "左右拆分",
+      "id": "workspace:close-others",
+      "icon": "lucide-x",
+      "name": "Close all other tabs",
       "mode": "any"
     },
-    {
-      "id": "workspace:split-horizontal",
-      "icon": "horizontal-split",
-      "name": "上下拆分",
-      "mode": "any"
-    }
-  ],
-  "fileMenu": [
     {
       "id": "app:delete-file",
       "icon": "trash",
@@ -88,6 +81,7 @@
     }
   ],
   "macros": [],
+  "explorer": [],
   "hide": {
     "statusbar": [
       "various-complements"
@@ -103,5 +97,15 @@
       "插入模板"
     ]
   },
-  "spacing": "8"
+  "spacing": "8",
+  "advancedToolbar": {
+    "rowHeight": 48,
+    "rowCount": 1,
+    "spacing": 0,
+    "buttonWidth": 48,
+    "columnLayout": false,
+    "mappedIcons": [],
+    "tooltips": false,
+    "heightOffset": 0
+  }
 }

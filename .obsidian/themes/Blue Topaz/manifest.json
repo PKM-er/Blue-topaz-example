@@ -1,6 +1,7 @@
-{
-    "name": "Blue Topaz",
-    "version": "0.0.0",
-    "minAppVersion": "0.16.0",
-    "author": "Whyl"
+{  
+   "name": "Blue Topaz",  
+   "version": "20221108.1",
+   "minAppVersion": "1.0.0",  
+   "author": "WhyI",  
+   "authorUrl": "https://github.com/whyt-byte"  
 }

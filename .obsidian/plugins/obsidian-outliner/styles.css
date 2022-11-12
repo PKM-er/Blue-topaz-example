@@ -65,6 +65,7 @@
 
 .outliner-plugin-vertical-lines
   .markdown-source-view.mod-cm6
+  .cm-hmd-list-indent
   .cm-indent::before {
   content: none;
 }

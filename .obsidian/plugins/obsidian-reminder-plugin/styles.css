@@ -1,1 +1,124 @@
-/* styles.css */
+/* fakecss:/home/runner/work/obsidian-reminder/obsidian-reminder/src/ui/components/Calendar.esbuild-svelte-fake-css */
+.reminder-calendar.svelte-18sic8s.svelte-18sic8s {
+  padding: 0.5rem;
+}
+.reminder-calendar.svelte-18sic8s .year-month.svelte-18sic8s {
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+}
+.reminder-calendar.svelte-18sic8s .month-nav.svelte-18sic8s {
+  color: var(--text-muted);
+  margin-left: 1rem;
+  margin-right: 1rem;
+  cursor: pointer;
+}
+.reminder-calendar.svelte-18sic8s .month.svelte-18sic8s {
+  color: var(--text-muted);
+}
+.reminder-calendar.svelte-18sic8s .year.svelte-18sic8s {
+  color: var(--text-accent);
+}
+.reminder-calendar.svelte-18sic8s th.svelte-18sic8s {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+}
+.reminder-calendar.svelte-18sic8s .calendar-date.svelte-18sic8s {
+  text-align: center;
+  min-width: 2rem;
+  max-width: 2rem;
+}
+.reminder-calendar.svelte-18sic8s .calendar-date.svelte-18sic8s:hover {
+  background-color: var(--background-secondary-alt);
+}
+.reminder-calendar.svelte-18sic8s .is-selected.svelte-18sic8s {
+  background-color: var(--text-accent) !important;
+  color: var(--text-normal) !important;
+}
+.reminder-calendar.svelte-18sic8s .other-month.svelte-18sic8s,
+.reminder-calendar.svelte-18sic8s .is-past.svelte-18sic8s,
+.reminder-calendar.svelte-18sic8s .is-holiday.svelte-18sic8s {
+  color: var(--text-faint);
+}
+
+/* fakecss:/home/runner/work/obsidian-reminder/obsidian-reminder/src/ui/components/ReminderListByDate.esbuild-svelte-fake-css */
+.reminder-group.svelte-gzdxib {
+  margin-bottom: 1rem;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+.reminder-list-item.svelte-gzdxib {
+  list-style: none;
+  line-height: 14px;
+  padding: 3px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  width: 100%;
+}
+.reminder-list-item.svelte-gzdxib:hover {
+  color: var(--text-normal);
+  background-color: var(--background-secondary-alt);
+}
+.reminder-time.svelte-gzdxib {
+  font-size: 14px;
+  font-family: monospace, serif;
+}
+.reminder-file.svelte-gzdxib {
+  color: var(--text-faint);
+}
+.no-reminders.svelte-gzdxib {
+  font-style: italic;
+}
+
+/* fakecss:/home/runner/work/obsidian-reminder/obsidian-reminder/src/ui/components/DateTimeChooser.esbuild-svelte-fake-css */
+.dtchooser.svelte-fjfxbq {
+  background-color: var(--background-primary-alt);
+  z-index: 2147483647;
+}
+.dtchooser-divider.svelte-fjfxbq {
+  margin: 0.5rem;
+}
+.reminder-list-container.svelte-fjfxbq {
+  padding: 0.5rem;
+  max-width: 16rem;
+}
+
+/* fakecss:/home/runner/work/obsidian-reminder/obsidian-reminder/src/ui/components/Icon.esbuild-svelte-fake-css */
+.icon.svelte-1gcidq0 {
+  vertical-align: middle;
+}
+
+/* fakecss:/home/runner/work/obsidian-reminder/obsidian-reminder/src/ui/components/Reminder.esbuild-svelte-fake-css */
+main.svelte-yfmg28 {
+  padding: 1em;
+  margin: 0 auto;
+}
+.reminder-actions.svelte-yfmg28 {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.5rem;
+}
+.reminder-file.svelte-yfmg28 {
+  color: var(--text-muted);
+  cursor: pointer;
+}
+.reminder-file.svelte-yfmg28:hover {
+  color: var(--text-normal);
+  text-decoration: underline;
+}
+.later-select.svelte-yfmg28 {
+  font-size: 14px;
+}
+
+/* fakecss:/home/runner/work/obsidian-reminder/obsidian-reminder/src/ui/components/ReminderList.esbuild-svelte-fake-css */
+.group-name.svelte-2zqui4 {
+  font-size: 14px;
+  color: var(--text-muted);
+  border-bottom: 1px solid var(--text-muted);
+  margin-bottom: 0.5rem;
+}
+.group-name-overdue.svelte-2zqui4 {
+  color: var(--text-accent);
+}

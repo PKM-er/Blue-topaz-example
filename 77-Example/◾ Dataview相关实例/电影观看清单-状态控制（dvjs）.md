@@ -10,7 +10,7 @@ updated: "2022-04-23 15:11"
 
 > 实现方法参考[[如何在Obsidian中添加电影卡片]]
 > 需要安装metaedit 插件实现 点击修改元数据和状态控制
-> 点击进度 和状态 即可修改元数据
+>  点击评级 和状态 选择数据 按回车键即可修改元数据
 > cover字段同时支持本地图片和网络图片
 
 ^79cf0d
@@ -34,7 +34,10 @@ const dropdown = async(file, key) => {
 		const newtext = await autoprop("当前属性")
         await update(key, newtext, file);
 }
-
+const dropdown_progress = async(file, key) => {
+		const newtext = await autoprop("当前进度")
+        await update(key, newtext, file);
+}
 const filePath = (file) =>
     file.startsWith("http") ?
         file :
@@ -58,7 +61,7 @@ const pages = dv.pages("#Movie")
 	.where(t => !t.file.folder.includes("88-Template") )
     .map(t =>  [`![](${filePath(t.cover??'')})` , t.file.link, t.year,t.rating,
     createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
-	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
+	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown_progress, params: [t.file.path, 'status']}}),
 	createButton({app, el: this.container, args: {name: t['viewtime']?formatDate(t['viewtime']):'更新',class:'tiny'}, clickOverride: {click: inputdate, params: [t.file.path, 'viewtime',t['viewtime']]}})
     ])
 
@@ -86,6 +89,10 @@ const dropdown = async(file, key) => {
         await update(key, newtext, file);
 }
 
+const dropdown_progress = async(file, key) => {
+		const newtext = await autoprop("当前进度")
+        await update(key, newtext, file);
+}
 const filePath = (file) =>
     file.startsWith("http") ?
         file :
@@ -109,7 +116,7 @@ const pages = dv.pages("#Movie")
 	.where(t => !t.file.folder.includes("88-Template") )
     .map(t =>  [t.image?dv.span(`${'!'+t.image}`):`![](${filePath(t.cover??'')})`, t.file.link, t.year,t.rating,
     createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
-	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
+	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown_progress, params: [t.file.path, 'status']}}),
 	createButton({app, el: this.container, args: {name: t['viewtime']?formatDate(t['viewtime']):'更新',class:'tiny'}, clickOverride: {click: inputdate, params: [t.file.path, 'viewtime',t['viewtime']]}})
     ])
 

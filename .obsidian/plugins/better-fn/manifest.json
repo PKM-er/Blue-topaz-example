@@ -1,0 +1,10 @@
+{
+  "id": "better-fn",
+  "name": "Better footnote",
+  "version": "1.0.1",
+  "minAppVersion": "0.12.4",
+  "description": "Footnote popover for Obsidian",
+  "author": "",
+  "authorUrl": "",
+  "isDesktopOnly": true
+}

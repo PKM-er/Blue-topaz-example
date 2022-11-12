@@ -463,7 +463,7 @@
             "templatePath": "88-Template/tp/tp-book-callout.md",
             "fileNameFormat": {
               "enabled": true,
-              "format": "《{{VALUE:bookname}}》"
+              "format": "《{{VALUE:filename}}》"
             },
             "folder": {
               "enabled": true,

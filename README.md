@@ -6,10 +6,14 @@ source:
 obsidianUIMode: preview
 progress: 正在进行
 title: README
-updated: 2022-10-18 12:08:54
-created: 2022-09-01 09:56:37
+updated: "2022-11-13 00:06"
+created: "2022-09-01 09:56"
 ---
 ![](https://user-images.githubusercontent.com/42957010/184872220-f9b52079-8695-46a7-b517-0588426aa7b5.jpg)
+
+感谢@代码7 的视频
+
+<video autoplay="autoplay" loop="loop" id="video" x-webkit-airplay="true" webkit-playsinline="true" muted=""><source src="https://user-images.githubusercontent.com/72023275/198887920-575d0735-2433-41ff-8960-3c7bacbdf532.mp4" type="video/mp4"></video>
 
 ## Compatible with Obsidian 1.0 !!
 ## 💡引言
@@ -115,8 +119,6 @@ path: 77-Example usage:
 ^|---|---|	---|
 |[[$filename]]|$frontmatter:cssclass|$frontmatter:usage|
 ```
-
- 
 
 |文件名称|cssclass|用法|
 |---|---|	---|

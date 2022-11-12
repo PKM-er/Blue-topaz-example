@@ -4,47 +4,19 @@
     "type": "split",
     "children": [
       {
-        "id": "2f6ea3d202c1e586",
+        "id": "6e61241820a4828d",
         "type": "tabs",
         "children": [
           {
-            "id": "dcef7b8d9522ac37",
+            "id": "80430a4f104c0c57",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
+                "file": "Changlog.md",
                 "mode": "preview",
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "d7f51f74d61b595a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
-                "mode": "preview",
-                "source": false
-              }
-            }
-          }
-        ],
-        "currentTab": 1
-      },
-      {
-        "id": "98e0dbff83d7337f",
-        "type": "tabs",
-        "children": [
-          {
-            "id": "340969ccd24905e8",
-            "type": "leaf",
-            "state": {
-              "type": "outline",
-              "state": {
-                "file": "00-Tips/🥑Blue Topaz Themes Tips.md"
+                "backlinks": false,
+                "source": true
               }
             }
           }
@@ -78,7 +50,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "callo",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -103,7 +75,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "d877e8285f98a38a",
@@ -150,6 +123,16 @@
             }
           },
           {
+            "id": "340969ccd24905e8",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "Changlog.md"
+              }
+            }
+          },
+          {
             "id": "83061aceea29f566",
             "type": "leaf",
             "state": {
@@ -162,7 +145,8 @@
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       },
       {
         "id": "0b3485207df574dd",
@@ -175,7 +159,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
+                "file": "Changlog.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -192,7 +176,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
+                "file": "Changlog.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -231,20 +215,17 @@
     "direction": "horizontal",
     "width": 265
   },
-  "ribbon": {
-    "mostRecentAction": ""
-  },
-  "active": "37c8f55a8ef7a09c",
+  "active": "80430a4f104c0c57",
   "lastOpenFiles": [
-    "20221017233635.md",
-    "88-Template/常用工具.md",
-    "00-Tips/🥑Blue Topaz Themes Tips.md",
-    "00-Tips/00-Tips.md",
-    "Changlog.md",
     "88-Template/home.md",
-    "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
-    "77-Example/◾ Dataview相关实例/统计已安装插件信息.md",
-    "77-Example/◾ Dataview相关实例/微信读书清单.md",
-    "77-Example/◾ Dataview相关实例/文章预览模式下自动添加标题.md"
+    "Changlog.md",
+    "77-Example/◾ Dataview相关实例/列出包含摘要和缩略图的笔记列表.md",
+    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
+    "00-Tips/00-Tips.md",
+    "77-Example/77-Example.md",
+    "88-Template/88-Template.md",
+    "20-Diary/20-Diary.md",
+    "README.md",
+    "Demo Note.md"
   ]
 }

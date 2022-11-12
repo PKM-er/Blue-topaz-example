@@ -211,6 +211,29 @@ function dirname(path) {
   var _a, _b;
   return (_b = (_a = path.match(/(.+)[\\/].+$/)) == null ? void 0 : _a[1]) != null ? _b : ".";
 }
+function normalizePath(path) {
+  return path.replace(/\\/g, "/").replace(/\/+/g, "/");
+}
+function normalizeRelativePath(path, base) {
+  const sep = /[\\/]/;
+  let es = [];
+  path.split(sep).forEach((x, i) => {
+    if (i === 0 && x === ".") {
+      es = base.split("/");
+      return;
+    }
+    if (x === "..") {
+      if (i === 0) {
+        es = base.split("/");
+      }
+      es = dirname(es.join("/")).split("/").filter((x2) => x2 !== ".");
+      return;
+    }
+    es = [...es, x];
+  });
+  const r = es.filter((x) => x !== "").join("/");
+  return base[0] === "/" ? "/" + r : r;
+}
 
 // src/errors.ts
 var ExhaustiveError = class extends Error {
@@ -236,6 +259,10 @@ var AppHelper = class {
   getCurrentEditor() {
     var _a, _b;
     return (_b = (_a = this.getMarkdownViewInActiveLeaf()) == null ? void 0 : _a.editor) != null ? _b : null;
+  }
+  getCurrentDirPath() {
+    var _a, _b;
+    return (_b = (_a = this.getActiveFile()) == null ? void 0 : _a.parent.path) != null ? _b : "";
   }
   getCurrentOffset() {
     var _a;
@@ -791,7 +818,13 @@ function smartWhitespaceSplit(text) {
 }
 
 // src/matcher.ts
-function matchQuery(item, query, searchByTags, searchByHeaders, searchByLinks, isNormalizeAccentsDiacritics) {
+function matchQuery(item, query, options) {
+  const {
+    searchByTags,
+    searchByHeaders,
+    searchByLinks,
+    isNormalizeAccentsDiacritics
+  } = options;
   if (searchByTags && query.startsWith("#")) {
     const tags = item.tags.filter(
       (tag) => smartIncludes(tag.slice(1), query.slice(1), isNormalizeAccentsDiacritics)
@@ -886,29 +919,13 @@ function matchQuery(item, query, searchByTags, searchByHeaders, searchByLinks, i
   }
   return results.length === 0 ? [{ type: "not found", query }] : results;
 }
-function matchQueryAll(item, queries, searchByTags, searchByHeaders, searchByLinks, isNormalizeAccentsDiacritics) {
-  return queries.flatMap(
-    (q) => matchQuery(
-      item,
-      q,
-      searchByTags,
-      searchByHeaders,
-      searchByLinks,
-      isNormalizeAccentsDiacritics
-    )
-  );
+function matchQueryAll(item, queries, options) {
+  return queries.flatMap((q) => matchQuery(item, q, options));
 }
-function stampMatchResults(item, queries, searchByTags, searchByHeaders, searchByLinks, isNormalizeAccentsDiacritics) {
+function stampMatchResults(item, queries, options) {
   return {
     ...item,
-    matchResults: matchQueryAll(
-      item,
-      queries,
-      searchByTags,
-      searchByHeaders,
-      searchByLinks,
-      isNormalizeAccentsDiacritics
-    )
+    matchResults: matchQueryAll(item, queries, options)
   };
 }
 
@@ -1436,15 +1453,14 @@ var AnotherQuickSwitcherModal = class extends import_obsidian3.SuggestModal {
     return false;
   }
   prefilterItems(command) {
-    var _a, _b;
     const filterItems = (includePatterns, excludePatterns) => {
       let items = this.originItems;
       if (command.searchTarget === "backlink") {
         const backlinksMap = this.appHelper.createBacklinksMap();
         items = items.filter(
           (x) => {
-            var _a2, _b2, _c;
-            return (_c = backlinksMap[(_b2 = (_a2 = this.appHelper.getActiveFile()) == null ? void 0 : _a2.path) != null ? _b2 : ""]) == null ? void 0 : _c.has(
+            var _a, _b, _c;
+            return (_c = backlinksMap[(_b = (_a = this.appHelper.getActiveFile()) == null ? void 0 : _a.path) != null ? _b : ""]) == null ? void 0 : _c.has(
               x.file.path
             );
           }
@@ -1458,13 +1474,12 @@ var AnotherQuickSwitcherModal = class extends import_obsidian3.SuggestModal {
       }
       return items;
     };
-    const currentDirPath = (_b = (_a = this.appHelper.getActiveFile()) == null ? void 0 : _a.parent.path) != null ? _b : "";
     return filterItems(
       command.includePrefixPathPatterns.map(
-        (p) => p.replace(/<current_dir>/g, currentDirPath)
+        (p) => p.replace(/<current_dir>/g, this.appHelper.getCurrentDirPath)
       ),
       command.excludePrefixPathPatterns.map(
-        (p) => p.replace(/<current_dir>/g, currentDirPath)
+        (p) => p.replace(/<current_dir>/g, this.appHelper.getCurrentDirPath)
       )
     );
   }
@@ -1503,14 +1518,12 @@ var AnotherQuickSwitcherModal = class extends import_obsidian3.SuggestModal {
     }
     const isQueryEmpty = !this.searchQuery.trim();
     const matchedSuggestions = isQueryEmpty ? this.ignoredItems : this.ignoredItems.map(
-      (x) => stampMatchResults(
-        x,
-        qs,
-        this.command.searchBy.tag,
-        this.command.searchBy.header,
-        this.command.searchBy.link,
-        this.settings.normalizeAccentsAndDiacritics
-      )
+      (x) => stampMatchResults(x, qs, {
+        isNormalizeAccentsDiacritics: this.settings.normalizeAccentsAndDiacritics,
+        searchByHeaders: this.command.searchBy.header,
+        searchByLinks: this.command.searchBy.link,
+        searchByTags: this.command.searchBy.tag
+      })
     ).filter((x) => x.matchResults.every((x2) => x2.type !== "not found"));
     const items = sort(
       matchedSuggestions,
@@ -1631,7 +1644,7 @@ var AnotherQuickSwitcherModal = class extends import_obsidian3.SuggestModal {
   registerKeys(key, handler) {
     var _a;
     (_a = this.settings.hotkeys.main[key]) == null ? void 0 : _a.forEach((x) => {
-      this.scope.register(x.modifiers, x.key, (evt) => {
+      this.scope.register(x.modifiers, x.key.toUpperCase(), (evt) => {
         evt.preventDefault();
         handler();
         return false;
@@ -1866,7 +1879,7 @@ var MoveModal = class extends import_obsidian4.SuggestModal {
   registerKeys(key, handler) {
     var _a;
     (_a = this.settings.hotkeys.move[key]) == null ? void 0 : _a.forEach((x) => {
-      this.scope.register(x.modifiers, x.key, (evt) => {
+      this.scope.register(x.modifiers, x.key.toUpperCase(), (evt) => {
         evt.preventDefault();
         handler();
         return false;
@@ -2038,7 +2051,7 @@ var HeaderModal = class extends import_obsidian5.SuggestModal {
   registerKeys(key, handler) {
     var _a;
     (_a = this.settings.hotkeys.header[key]) == null ? void 0 : _a.forEach((x) => {
-      this.scope.register(x.modifiers, x.key, (evt) => {
+      this.scope.register(x.modifiers, x.key.toUpperCase(), (evt) => {
         evt.preventDefault();
         handler(evt);
         return false;
@@ -2149,6 +2162,7 @@ async function rg(cmd, ...args) {
 // src/ui/GrepModal.ts
 var globalInternalStorage = {
   items: [],
+  basePath: void 0,
   selected: void 0
 };
 function buildLogMessage2(message, msec) {
@@ -2158,31 +2172,109 @@ var GrepModal = class extends import_obsidian6.SuggestModal {
   constructor(app2, settings) {
     super(app2);
     this.suggestions = globalInternalStorage.items;
+    this.vaultRootPath = normalizePath(
+      this.app.vault.adapter.basePath
+    );
     this.appHelper = new AppHelper(app2);
     this.settings = settings;
     this.limit = 255;
-    this.setPlaceholder("Search around the vault by TAB key");
+    const searchCmd = this.settings.hotkeys.grep.search.at(0);
+    if (searchCmd) {
+      const inst = createInstruction("_", {
+        key: searchCmd.key,
+        modifiers: searchCmd.modifiers
+      });
+      this.setPlaceholder(`Search around the vault by ${inst == null ? void 0 : inst.command} key`);
+    } else {
+      this.setPlaceholder(
+        `Please set a key about "search" in the "Grep dialog" setting`
+      );
+    }
     this.setHotkeys();
   }
   onOpen() {
-    var _a;
+    var _a, _b;
     super.onOpen();
     (_a = activeWindow.activeDocument.querySelector(".modal-bg")) == null ? void 0 : _a.addClass("another-quick-switcher__grep__floating-modal-bg");
+    this.basePath = (_b = globalInternalStorage.basePath) != null ? _b : "";
     const promptEl = activeWindow.activeDocument.querySelector(".prompt");
     promptEl == null ? void 0 : promptEl.addClass("another-quick-switcher__grep__floating-prompt");
     window.setTimeout(() => {
       if (globalInternalStorage.selected != null) {
         this.chooser.setSelectedItem(globalInternalStorage.selected);
       }
+      this.basePathInputEl = createEl("input", {
+        value: this.basePath,
+        placeholder: "path from vault root (./ means current directory. ../ means parent directory)",
+        cls: "another-quick-switcher__grep__path-input",
+        type: "text"
+      });
+      this.basePathInputEl.setAttrs({
+        autocomplete: "on",
+        list: "directories"
+      });
+      const basePathInputList = createEl("datalist");
+      basePathInputList.setAttrs({ id: "directories" });
+      this.appHelper.getFolders().filter((x) => !x.isRoot()).forEach((x) => {
+        basePathInputList.appendChild(createEl("option", { value: x.path }));
+      });
+      this.basePathInputElChangeEventListener = (evt) => {
+        this.basePath = evt.target.value;
+      };
+      this.basePathInputElKeydownEventListener = (evt) => {
+        if (!evt.key) {
+          evt.preventDefault();
+          return;
+        }
+        const hotkey = this.settings.hotkeys.grep.search[0];
+        if (!hotkey) {
+          return;
+        }
+        const keyEvent = evt;
+        if (equalsAsHotkey(hotkey, keyEvent)) {
+          evt.preventDefault();
+          this.basePath = evt.target.value;
+          this.currentQuery = this.clonedInputEl.value;
+          this.inputEl.value = this.currentQuery;
+          this.inputEl.dispatchEvent(new Event("input"));
+        }
+      };
+      this.basePathInputEl.addEventListener(
+        "change",
+        this.basePathInputElChangeEventListener
+      );
+      this.basePathInputEl.addEventListener(
+        "keydown",
+        this.basePathInputElKeydownEventListener
+      );
+      const wrapper = createDiv({
+        cls: "another-quick-switcher__grep__path-input__wrapper"
+      });
+      wrapper.appendChild(this.basePathInputEl);
+      wrapper.appendChild(basePathInputList);
+      const promptInputContainerEl = activeWindow.activeDocument.querySelector(
+        ".prompt-input-container"
+      );
+      promptInputContainerEl == null ? void 0 : promptInputContainerEl.after(wrapper);
+      wrapper.insertAdjacentHTML("afterbegin", FOLDER);
     }, 0);
   }
   onClose() {
     super.onClose();
     globalInternalStorage.items = this.suggestions;
+    globalInternalStorage.basePath = this.basePath;
     globalInternalStorage.selected = this.chooser.selectedItem;
     this.clonedInputEl.removeEventListener(
-      "keyup",
-      this.clonedInputElKeyupEventListener
+      "keydown",
+      this.clonedInputElKeydownEventListener
+    );
+    this.basePathInputEl.removeEventListener(
+      "change",
+      this.basePathInputElChangeEventListener
+    );
+    this.basePathInputEl.removeEventListener(
+      "keydown",
+      this.basePathInputElKeydownEventListener
     );
   }
   async searchSuggestions(query) {
@@ -2195,7 +2287,10 @@ var GrepModal = class extends import_obsidian6.SuggestModal {
     });
     this.clonedInputEl.before(this.countInputEl);
     const hasCapitalLetter = query.toLowerCase() !== query;
-    const basePath = this.app.vault.adapter.basePath;
+    const absolutePathFromRoot = normalizeRelativePath(
+      this.basePath,
+      this.appHelper.getCurrentDirPath()
+    );
     const rgResults = await rg(
       this.settings.ripgrepCommand,
       ...[
@@ -2204,19 +2299,24 @@ var GrepModal = class extends import_obsidian6.SuggestModal {
         hasCapitalLetter ? "" : "-i",
         "--",
         query,
-        basePath
+        `${this.vaultRootPath}/${absolutePathFromRoot}`
       ].filter((x) => x)
     );
-    const items = rgResults.map((x, order) => ({
-      order,
-      file: this.appHelper.getMarkdownFileByPath(
-        (0, import_obsidian6.normalizePath)(x.data.path.text.replace(basePath, ""))
-      ),
-      line: x.data.lines.text,
-      lineNumber: x.data.line_number,
-      offset: x.data.absolute_offset,
-      submatches: x.data.submatches
-    }));
+    const items = rgResults.map((x, order) => {
+      return {
+        order,
+        file: this.appHelper.getMarkdownFileByPath(
+          normalizePath(x.data.path.text).replace(
+            this.vaultRootPath + "/",
+            ""
+          )
+        ),
+        line: x.data.lines.text,
+        lineNumber: x.data.line_number,
+        offset: x.data.absolute_offset,
+        submatches: x.data.submatches
+      };
+    }).filter((x) => x.file != null);
     this.showDebugLog(
       () => buildLogMessage2(`getSuggestions: `, performance.now() - start)
     );
@@ -2315,7 +2415,7 @@ var GrepModal = class extends import_obsidian6.SuggestModal {
   registerKeys(key, handler) {
     var _a;
     (_a = this.settings.hotkeys.grep[key]) == null ? void 0 : _a.forEach((x) => {
-      this.scope.register(x.modifiers, x.key, (evt) => {
+      this.scope.register(x.modifiers, x.key.toUpperCase(), (evt) => {
         evt.preventDefault();
         handler();
         return false;
@@ -2339,7 +2439,7 @@ var GrepModal = class extends import_obsidian6.SuggestModal {
     }
     this.clonedInputEl = this.inputEl.cloneNode(true);
     (_a = this.inputEl.parentNode) == null ? void 0 : _a.replaceChild(this.clonedInputEl, this.inputEl);
-    this.clonedInputElKeyupEventListener = (evt) => {
+    this.clonedInputElKeydownEventListener = (evt) => {
       const keyEvent = evt;
       const hotkey = this.settings.hotkeys.grep.search[0];
       if (!hotkey) {
@@ -2354,7 +2454,7 @@ var GrepModal = class extends import_obsidian6.SuggestModal {
     };
     this.clonedInputEl.addEventListener(
       "keydown",
-      this.clonedInputElKeyupEventListener
+      this.clonedInputElKeydownEventListener
     );
     this.registerKeys("up", () => {
       document.dispatchEvent(new KeyboardEvent("keydown", { key: "ArrowUp" }));
@@ -2367,6 +2467,15 @@ var GrepModal = class extends import_obsidian6.SuggestModal {
     this.registerKeys("clear input", () => {
       this.clonedInputEl.value = "";
       this.clonedInputEl.dispatchEvent(new InputEvent("input"));
+      this.clonedInputEl.focus();
+    });
+    this.registerKeys("clear path", () => {
+      this.basePathInputEl.value = "";
+      this.basePathInputEl.dispatchEvent(new InputEvent("change"));
+    });
+    this.registerKeys("set ./ to path", () => {
+      this.basePathInputEl.value = "./";
+      this.basePathInputEl.dispatchEvent(new InputEvent("change"));
     });
     this.registerKeys("open in new tab", () => {
       this.chooseCurrentSuggestion("new-tab");
@@ -2536,6 +2645,8 @@ var createDefaultHotkeys = () => ({
     up: [{ modifiers: ["Mod"], key: "p" }],
     down: [{ modifiers: ["Mod"], key: "n" }],
     "clear input": [{ modifiers: ["Mod"], key: "d" }],
+    "clear path": [{ modifiers: ["Alt"], key: "d" }],
+    "set ./ to path": [{ modifiers: ["Alt"], key: "c" }],
     "open in new tab": [{ modifiers: ["Mod"], key: "Enter" }],
     "open in new pane (horizontal)": [{ modifiers: ["Mod"], key: "-" }],
     "open in new pane (vertical)": [{ modifiers: ["Mod"], key: "i" }],

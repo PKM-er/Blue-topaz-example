@@ -16,11 +16,7 @@ obsidianUIMode: preview
 	- [[button]]
 	- [[Calendar2021-2022]]
 	- [[chinese_stopwords]]
-	- **EnablepluginList**
-		- [[Edit+]]
-		- [[Required+]]
-		- [[Table+]]
-		- [[View+]]
+	- **[[EnablepluginList]]**
 	- [[FastStart-GenerateListOfInstalledPlugins]]
 	- [[FastStart-Plugins-LongDelay]]
 	- [[FastStart-Plugins-ShortDelay]]
@@ -29,6 +25,10 @@ obsidianUIMode: preview
 	- [[home]]
 	- **[[ReactJS]]**
 	- **script**
+		- **notesList**
+			- [[README]]
+		- **tasksCalendar**
+			- [[README]]
 		- **[[template]]**
 	- **tp**
 		- [[tp_foldermoc-Include-subfolders]]

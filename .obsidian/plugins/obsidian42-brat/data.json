@@ -1,9 +1,10 @@
 {
   "pluginList": [
+    "Quorafind/Obsidian-Daily-Notes-Editor",
+    "mvdkwast/obsidian-copy-as-html",
+    "zhouhua/obsidian-export-image",
     "Trikzon/obsidian-web-browser/",
     "marcusolsson/obsidian-projects",
-    "cumany/obsidian-floating-toc-plugin",
-    "cumany/obsidian-editing-toolbar",
     "Quorafind/Obsidian-Virtual-Hotkey-Keyboard",
     "Stardusten/ob-table-enhancer",
     "nothingislost/obsidian-query-control",

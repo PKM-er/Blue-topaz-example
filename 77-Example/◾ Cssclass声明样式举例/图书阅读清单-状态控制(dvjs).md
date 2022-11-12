@@ -13,7 +13,7 @@ title: "图书阅读清单-状态控制"
 
 > 实现方法参考[[如何在Obsidian中添加图书卡片]]
 > 需要安装metaedit 插件实现 点击修改元数据和状态控制
->  点击评级 和状态 即可修改元数据
+>  点击评级 和状态 选择数据 按回车键即可修改元数据
 >  阅读进度 通过阅读页数计算，根据获取到的图书总页数(pagecount), 自己填上阅读的页码(pagegrade) 就知道进度
 
 
@@ -25,7 +25,11 @@ const buttonMaker = (pn, pv, fpath) => {
     const btn = this.container.createEl('button', {"text": pv});
     btn.addEventListener('click', async (evt) => {
         evt.preventDefault();
-		const newtext = await autoprop("当前属性")
+        let newtext
+        if(pn=='grade')
+		 newtext = await autoprop("当前属性")
+		 else if(pn=='status')
+		 newtext = await autoprop("当前进度")
         await update(pn, newtext, fpath);
     });
     return btn;

@@ -13,7 +13,7 @@
           "name": "Board",
           "type": "board",
           "config": {
-            "groupByField": "status",
+            "groupByField": "tags",
             "priorityField": ""
           }
         },
@@ -34,7 +34,7 @@
           "name": "Calendar",
           "type": "calendar",
           "config": {
-            "dateField": "readtime",
+            "dateField": "viewtime",
             "interval": "month",
             "checkField": "进度"
           }
@@ -46,12 +46,51 @@
       "id": "a6202afb-e904-4cbb-a090-1a40b5a5ec50",
       "name": "30-Reading",
       "path": "30-Reading",
-      "recursive": false,
+      "recursive": true,
       "defaultName": "",
       "templates": [],
       "views": [
         {
           "id": "74ef48a1-4b1a-4a70-a59f-4dd4aa371e75",
+          "name": "Table",
+          "type": "table",
+          "config": {}
+        },
+        {
+          "id": "8135d89f-7848-4b7a-a525-2005b99eaccf",
+          "name": "Board",
+          "type": "board",
+          "config": {}
+        },
+        {
+          "id": "38b4b14e-b813-446a-8dc2-f5e8f37508a8",
+          "name": "Calendar",
+          "type": "calendar",
+          "config": {}
+        }
+      ]
+    },
+    {
+      "id": "9fedc95d-29ff-4baa-98b9-3a25810a0f5b",
+      "name": "tips",
+      "path": "",
+      "recursive": false,
+      "defaultName": "",
+      "templates": [],
+      "views": [],
+      "dataview": true,
+      "query": "TABLE\ntags,author,readtime,pagecount\nfrom #book"
+    },
+    {
+      "id": "78fa420e-ac24-4e1d-91f4-a3dcfb314e64",
+      "name": "test",
+      "path": "test",
+      "recursive": false,
+      "defaultName": "",
+      "templates": [],
+      "views": [
+        {
+          "id": "e7bb2340-c802-4558-9423-b5d94fdfe77f",
           "name": "Table",
           "type": "table",
           "config": {}

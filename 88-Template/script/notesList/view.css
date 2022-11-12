@@ -1,0 +1,275 @@
+.NotesList {
+	display: flex;
+	flex-wrap: wrap;
+	flex-direction: row;
+	justify-content: space-around;
+	cursor: default;
+	background: var(--background-primary);
+	border-radius: 10px;
+	overflow: hidden;
+}
+.NotesList span {
+	display: contents;
+}
+.NotesList .cm-link {
+	pointer-events: none;
+}
+.NotesList[view='normal'] .listViewItem:not(:last-child) {
+	border-bottom: 1px solid var(--background-modifier-hover);
+}
+.NotesList[view='normal'] .listViewItem {
+	display: block;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	cursor: pointer;
+	margin: 0;
+	border-radius: 0;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+.NotesList[view='compact'] .listViewItem {
+	display: block;
+	height: 100%;
+	width: 100%;
+	overflow: hidden;
+	cursor: pointer;
+	margin: 0;
+	border-radius: 0;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+.NotesList[view='compact'] .listViewItem:not(:last-child) {
+	border-bottom: 1px solid var(--background-modifier-hover);
+}
+.NotesList .inner {
+	height: 100%;
+	display: block;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5px;
+	overflow: hidden;
+}
+.NotesList .internal-link {
+	text-decoration: none !important;
+	color: var(--text-normal);
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+.NotesList .itemHeader {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	overflow: hidden;
+	width: 100%;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+.NotesList .itemContent {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	overflow: hidden;
+	width: 100%;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+.NotesList .fileName {
+	flex-shrink: 1;
+	flex-grow: 1;
+	text-align: left;
+	color: var(--text-normal);
+	font-size: 16px;
+	font-weight: bold;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+.NotesList .fileDate {
+	flex-shrink: 0;
+	flex-grow: 0;
+	text-align: right;
+	color: var(--text-faint);
+	font-size: 12px;
+	font-weight: normal;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+	margin-left: 10px;
+}
+.NotesList .fileDescription {
+	text-align: left;
+	color: var(--text-normal);
+	font-size: 12px;
+	font-weight: normal;
+	margin: 10px 0;
+	line-height: 1.4;
+	/* text-overflow: ellipsis; */
+	overflow: hidden;
+	display: -webkit-box;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+	-webkit-hyphens: auto;
+	flex-shrink: 1;
+	flex-grow: 1;
+	word-break: break-word;
+}
+.NotesList .fileAttachments {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	width: 100%;
+	overflow-x: auto;
+	overflow-y: hidden;
+	justify-content: flex-start;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+.NotesList .fileAttachments:empty {
+	display: none;
+}
+.NotesList .fileAttachments::-webkit-scrollbar {
+	display: none;
+}
+.NotesList[view='normal'] img,
+.NotesList[view='compact'] img,
+.NotesList[view='normal'] .file,
+.NotesList[view='compact'] .file {
+	min-width: 70px;
+	max-width: 70px;
+	min-height: 70px;
+	max-height: 70px;
+}
+.NotesList img {
+	width: 70px;
+	height: 70px;
+	margin-right: 10px;
+	object-fit: cover;
+	border-radius: 5px;
+	cursor: default;
+	pointer-events: none !important;
+	opacity: 1 !important;
+	background-color: var(--nav-item-background-active);
+	border: 1px solid var(--nav-item-background-active);
+}
+.NotesList .file {
+	width: 70px;
+	height: 70px;
+	background: var(--nav-item-background-active);
+	border-radius: 5px;
+	margin-right: 10px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border: 1px solid var(--nav-item-background-active);
+}
+.NotesList .fileExtension {
+	background: white;
+	color: var(--text-faint);
+	height: 50px;
+	width: 40px;
+	text-align: center;
+	line-height: 50px;
+	border-radius: 3px 13px 3px 3px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	font-size: 12px;
+}
+
+
+
+
+
+.NotesList[view='compact'] .listViewItem .itemContent {
+	flex-direction: row;
+}
+.NotesList[view='compact'] .listViewItem .fileAttachments {
+	width: 70px;
+	margin-left: 10px;
+	overflow: hidden;
+	justify-content: center;
+}
+.NotesList[view='compact'] .listViewItem .fileAttachments img {
+	margin-right: 0;
+}
+.NotesList[view='compact'] .listViewItem .fileAttachments img:not(:first-child) {
+	display: none;
+}
+.NotesList[view='compact'] .listViewItem .fileAttachments .file {
+	margin-right: 0;
+}
+.NotesList[view='compact'] .listViewItem .fileAttachments .file:not(:first-child) {
+	display: none;
+}
+
+
+
+
+.NotesList[view='cards'] {
+	padding: 5px;
+}
+.NotesList[view='cards'] .listViewItem {
+	flex-direction: column;
+	min-width: 150px;
+	width: 150px;
+	max-width: 100%;
+	flex-shrink: 1;
+	flex-grow: 1;
+	height: 190px;
+	margin: 5px;
+	padding: 0;
+	border: 1px solid var(--background-modifier-hover);
+	background: var(--background-modifier-hover);
+	border-radius: 10px;
+}
+.NotesList[view='cards'] .listViewItem .itemHeader {
+	flex-direction: column;
+}
+.NotesList[view='cards'] .listViewItem .inner {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+}
+.NotesList[view='cards'] .listViewItem .fileDate {
+	text-align: left;
+}
+.NotesList[view='cards'] .listViewItem .fileName {
+	padding: 10px 10px 0 10px;
+}
+.NotesList[view='cards'] .listViewItem .fileDescription {
+	padding: 0 10px;
+	flex-shrink: 1;
+	flex-grow: 1;
+}
+.NotesList[view='cards'] .listViewItem[outlinks='0'] .fileDescription {
+	-webkit-line-clamp: 7;
+}
+.NotesList[view='cards'] .listViewItem .fileAttachments {
+	width: 100%;
+	margin-left: 0;
+	overflow: hidden;
+	justify-content: center;
+}
+.NotesList[view='cards'] .listViewItem .fileAttachments img {
+	margin: 0;
+	border-radius: 0;
+	width: 100%;
+	height: 70px;
+	border: none;
+}
+.NotesList[view='cards'] .listViewItem .fileAttachments img:not(:first-child) {
+	display: none;
+}
+.NotesList[view='cards'] .listViewItem .fileAttachments .file {
+	width: 100%;
+	border-radius: 0;
+	margin: 0;
+	border: none;
+}
+.NotesList[view='cards'] .listViewItem .fileAttachments .file:not(:first-child) {
+	display: none;
+}

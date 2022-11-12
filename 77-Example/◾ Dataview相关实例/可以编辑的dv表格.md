@@ -1,5 +1,5 @@
 ---
-created: "2022-04-24 14:18"
+created: 2022-04-24 14:18
 updated: "2022-04-26 09:01"
 ---
 > 通过把dataview查询的yaml字段用button按钮替代，就可以实现点击字段名称即可修改。根据字段类型可以选择下拉框，建议框，日期输入框，文本输入框等
@@ -25,6 +25,10 @@ function formatDate(date){
 //下拉框选择metaedit维护的属性
 const dropdown = async(file, key) => {
 		const newtext = await autoprop("当前属性")
+        await update(key, newtext, file);
+}
+const dropdown_progress = async(file, key) => {
+		const newtext = await autoprop("当前进度")
         await update(key, newtext, file);
 }
 
@@ -77,7 +81,7 @@ const pages = dv.pages("#book")
 	.map(t => ["![]("+t.cover+")" ,t.file.link,t.author,t.rating,
 	createButton({app, el: this.container, args: {name: t.pageprogress??'阅读进度',class:'tiny'}, clickOverride: {click: inputMaker, params: [t.file.path, 'pageprogress',t.pageprogress]}}),
 	createButton({app, el: this.container, args: {name: t.grade??'评级',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'grade']}}),
-	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown, params: [t.file.path, 'status']}}),
+	createButton({app, el: this.container, args: {name: t.status??'状态',class:'tiny'}, clickOverride: {click: dropdown_progress, params: [t.file.path, 'status']}}),
 	createButton({app, el: this.container, args: {name: t['readtime']?formatDate(t['readtime']):'更新',class:'tiny'}, clickOverride: {click: inputdate, params: [t.file.path, 'readtime',t['readtime']]}}),
 	createButton({app, el: this.container, args: {name: '❌',class:'tiny'}, clickOverride: {click: yesNoPrompt, params: [t.file.path, 'updated','是否删除',t['updated']]}}),
 	createButton({app, el: this.container, args: {name: '22',class:'tiny'}, clickOverride: {click: dropdown1, params: [t.file.path, 'updated',t['updated']]}})

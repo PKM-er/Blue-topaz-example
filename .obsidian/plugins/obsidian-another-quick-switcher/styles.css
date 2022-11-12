@@ -171,6 +171,32 @@
     top: 20px;
 }
 
+.another-quick-switcher__grep__path-input {
+    width: 100%;
+    padding-left: 0.3rem;
+    margin-left: 0.5rem;
+    /*noinspection CssUnresolvedCustomProperty*/
+    background-color: var(--background-primary);
+    /*noinspection CssUnresolvedCustomProperty*/
+    font-size: var(--font-ui-medium);
+    /*noinspection CssUnresolvedCustomProperty*/
+    color: var(--text-normal);
+    border: none;
+}
+.another-quick-switcher__grep__path-input::placeholder {
+    /*noinspection CssUnresolvedCustomProperty*/
+    color: var(--text-muted);
+    height: 20px;
+    border-radius: 0;
+}
+
+.another-quick-switcher__grep__path-input__wrapper {
+    display: flex;
+    align-items: center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+}
+
 .another-quick-switcher__item__directory {
     display: flex;
     align-items: center;

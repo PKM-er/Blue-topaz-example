@@ -1,7 +1,7 @@
 {
   "id": "various-complements",
   "name": "Various Complements",
-  "version": "7.2.4",
+  "version": "7.3.0",
   "minAppVersion": "0.16.0",
   "description": "This plugin enables you to complete words like the auto-completion of IDE",
   "author": "tadashi-aikawa",

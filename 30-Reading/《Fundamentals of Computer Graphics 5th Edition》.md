@@ -1,4 +1,7 @@
 ---
+aliases: 《Fundamentals of Computer Graphics 5th Edition》
+cssclass:
+source:
 name: Fundamentals of Computer Graphics 5th Edition
 cover: https://img1.doubanio.com/view/subject/l/public/s34110589.jpg
 tags:
@@ -15,7 +18,8 @@ readtime: null
 status: 已完成
 pagecount: 700
 pageprogress: null
-updated: 2022-04-25
+updated: "2022-10-26 14:52"
+created: "2022-08-13 00:45"
 ---
 ## 内容简介
 《Fundamentals of Computer Graphics 5th Edition》

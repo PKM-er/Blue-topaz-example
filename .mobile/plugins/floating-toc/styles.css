@@ -1,0 +1,776 @@
+
+/* @settings
+
+name: Floating TOC
+id: floating-toc-styles
+settings:
+    - 
+        id: floating-toc-font-color-header
+        title:  color setting
+        title.zh: 颜色相关设置
+        type: heading
+        level: 2
+        collapsed: true
+    - 
+        id: floating-toc-font-color
+        title: font color
+        title.zh: 目录字体颜色
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#f5f6f8'
+        default-dark: '#1b1b1b'
+    - 
+        id: floating-toc-hover-color
+        title: hover color
+        title.zh: 鼠标聚焦hover色
+        description: The header color when the mouse is over the line .
+        description.zh: 当鼠标在条目上方时，标题颜色。
+        type: variable-themed-color
+        format: hex
+        opacity: false
+        default-light: '#f5f6f8'
+        default-dark: '#1b1b1b'
+    - 
+        id: floating-toc-header-background-color
+        title: Header background color
+        title.zh: 标题背景色
+        type: variable-themed-color
+        format: hex
+        opacity: true
+        default-light: '#ffffff8c'
+        default-dark: '#202020c4'
+    - 
+        id: floating-toc-background-color
+        title:  toc background color
+        title.zh: 目录背景色
+        type: variable-themed-color
+        format: hex
+        opacity: true
+        default-light: '#dddddd4d'
+        default-dark: '#20202066'
+    -
+        id: floating-toc-highlight-color
+        title: highlight color
+        title.zh: 高亮颜色
+        description: Click on the header background color and the indicator color when scrolling .
+        description.zh: 点击标题背景色和同步滚动时的指示器颜色
+        type: variable-color
+        format: hex
+        alt-format:
+            -
+                id: floating-toc-highlight-color-rgb
+                format: rgb-values
+        default: '#ff8000'
+    - 
+        id: floating-toc-line-color
+        title: Indicator line color
+        title.zh: 指示条颜色
+        type: variable-themed-color
+        format: hex
+        opacity: true
+        default-light: '#7a9486'
+        default-dark: '#84a83a'
+    - 
+        id: floating-toc-layout-header
+        title:  layout settings
+        title.zh: 版面相关设置
+        type: heading
+        level: 2
+        collapsed: true
+    -  
+        id: enable-heading-nowrap
+        title:  Header single line display
+        title.zh: 目录标题单行显示
+        type: class-toggle
+        default: false
+    -  
+        id: floating-toc-font-size
+        title: font size
+        title.zh: 字体大小
+        type: variable-number
+        format: rem
+        default: 0.7
+    - 
+        id: floating-toc-line-height
+        title: line height
+        title.zh: 目录行间距
+        type: variable-number
+        format: rem
+        default: 1.5
+    -
+        id: floating-toc-position
+        title: Position relative to the edge
+        title.zh: 距离边界的相对位置
+        type: variable-number-slider
+        default: 0
+        format: px
+        min: 0
+        max: 100
+        step: 1
+    - 
+        id: floating-toc-appearance-header
+        title:  Appearance settings
+        title.zh: 外观设置
+        type: heading
+        level: 2
+        collapsed: true
+    -  
+        id: enable-bar-heading-text
+        title:  Show heading text next to indicator bar (including parent)
+        title.zh: 在指示条旁边显示标题上下级
+        type: class-toggle
+        default: false
+    - 
+        id: focus-heading
+        title: Focus on the current heading
+        title.zh: 突出显示当前标题
+        description: Focus on  the header corresponding to the current scrollbar, other headers will be faded . Set the fade level here.
+        description.zh: 重点突出当前滚动条对应的标题，其他标题将淡化显示。这里调整淡化程度。
+        type: variable-number-slider
+        default: 0.9
+        min: 0
+        max: 1
+        step: 0.1
+    - 
+        id: floating-toc-response-time
+        title: Response Time
+        title.zh: 浮动目录响应速度
+        description: Adjust the eject sensitivity. The larger the value, the less sensitive it is
+        description.zh: 调整浮动目录弹出灵敏度。值越大越不灵敏
+        type: variable-number-slider
+        level: 1
+        format: s
+        default: 0.3
+        min: 0
+        max: 1
+        step: 0.1
+    -
+        id: floating-background-settings
+        title:  Notes background blur effect settings
+        title.zh: 笔记背景模糊效果设置
+        type: heading
+        level: 3
+        collapsed: true
+    - 
+        id: enable-background-blur-dept
+        title:  Activate Blurred background 
+        title.zh: 是否开启触发目录后笔记背景模糊效果
+        type: class-toggle
+        default: false
+    - 
+        id: background-blur-depth
+        title: Blurred background after opening the toc
+        title.zh: 触发目录背景模糊程度
+        description: To adjust the radius of blur
+        description.zh: 调整背景模糊程度
+        type: variable-number-slider
+        default: 2
+        format: px
+        min: 0
+        max: 30
+        step: 1
+    -  
+        id: floating-toc
+        title: If you have ideas or feedback,  welcome to commit issues on github 😁
+        title.zh:  有任何想法可以跟我交流😁，欢迎来访，QQ群:908688452
+        type: heading
+        level: 1
+        collapsed: true
+*/
+
+.theme-light,
+.theme-dark {
+  --background-blur-depth:2px;
+  --floating-toc-font-color: var(--text-normal);
+  --floating-toc-hover-color: var(--text-accent-hover);
+  --floating-toc-font-size: 0.7rem;
+  --floating-toc-highlight-color: var(--text-highlight-bg-active);
+  --floating-toc-highlight-color-rgb: 255,128,0;
+  --floating-toc-line-color: var(--text-accent);
+  --floating-toc-line-height: 1.5rem;
+  --floating-toc-response-time: 0.3s;
+  --floating-toc-position:0px;
+  --focus-heading:0.9;
+ 
+}
+.theme-light{
+  --floating-toc-header-background-color:var(--background-primary);
+  --floating-toc-background-color: rgba(221, 221, 221, 0.3);
+}
+.theme-dark{
+  --floating-toc-header-background-color: rgb(32 32 32 / 77%);
+  --floating-toc-background-color: rgba(32, 32, 32, 0.4);
+}
+
+
+div.workspace-leaf-content[data-type="style-settings"] div.style-settings-heading[data-id="floating-toc"] {
+  margin-top: 10px;
+  margin-bottom: 0;
+  pointer-events: none;
+  cursor: text;
+  border-top: 2px solid var(--background-modifier-border);
+  pointer-events: none;
+}
+
+.style-settings-heading[data-id="floating-toc"] .setting-item-control,
+.style-settings-heading[data-id="floating-toc"] .style-settings-collapse-indicator {
+  display: none;
+}
+
+.style-settings-heading[data-id="floating-toc"] .setting-item-name::before {
+  display: inline-block;
+  width: 20px;
+  height: fit-content;
+  padding-right: 8px;
+  font-family: "Segoe UI Emoji", "Apple Color Emoji", sans-serif;
+  font-weight: initial;
+  color: unset;
+  content: "❤️";
+}
+
+
+.heading-list-item.located .line-wrap .line {
+  background: rgb(var(--floating-toc-highlight-color-rgb),0.8);
+  height: 2.5px;
+}
+
+.heading-list-item.located .text-wrap:not(.located) .text {
+  color: var(--floating-toc-highlight-color);
+}
+
+.heading-list-item .text-wrap.located .text {
+  background-color: rgba(var(--floating-toc-highlight-color-rgb),0.4);
+}
+
+.heading-list-item {
+
+  z-index: 1;
+  font-size: var(--floating-toc-font-size);
+  min-height: var(--floating-toc-line-height);
+  padding: 0;
+  white-space: nowrap;
+  position: relative;
+}
+
+.heading-list-item .line-wrap {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 1.5rem;
+  z-index: -1;
+  animation: lineAppear-72a6a55b 250ms cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes lineAppear-72a6a55b {
+  0% {
+    transform: translateX(1rem);
+  }
+
+  100% {
+    transform: translateX(0rem);
+  }
+}
+
+.heading-list-item .line-wrap .line {
+  position: absolute;
+  top: 50%;
+  margin-top: calc(2px / -2);
+  height: 2px;
+  width: 1.5rem;
+  background: var(--floating-toc-line-color);
+}
+
+.heading-list-item .text-wrap {
+  z-index: 9999;
+  opacity: 0;
+  pointer-events: none;
+  height: 100%;
+  display: inline-flex;
+  align-items: center;
+  animation: textAppear-72a6a55b 250ms cubic-bezier(0.34, 1.56, 0.64, 1);
+  position: relative;
+}
+
+@keyframes textAppear-72a6a55b {
+  0% {
+    transform: translateX(-1rem);
+  }
+
+  100% {
+    transform: translateX(0rem);
+  }
+}
+
+.heading-list-item .text-wrap .text {
+  padding: 0.25rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  cursor: pointer;
+  color: var(--floating-toc-font-color);
+  backdrop-filter: blur(5px);
+  background: var(--floating-toc-header-background-color);
+}
+ 
+body.enable-heading-nowrap .floating-toc-div.pin .floating-toc .heading-list-item>.text-wrap {
+  max-width: unset;
+}
+body.enable-heading-nowrap .heading-list-item .text-wrap .text {
+  max-width: 14rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.heading-list-item .text-wrap .text:hover {
+  color: var(--floating-toc-hover-color);
+  font-weight: bold;
+}
+
+.heading-list-item .text-wrap .text:hover::after {
+  font-size: 8px;
+}
+
+
+.heading-list-item:hover .line-wrap .line {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.heading-list-item:hover .text-wrap {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.heading-list-item[data-level="1"] {
+  padding-left: 0rem;
+}
+
+.heading-list-item[data-level="1"] .text::after {
+  content: "H1";
+  font-size: 6px;
+  margin-left: 1px;
+  color: var(--text-muted);
+  font-weight: normal !important;
+  padding: 1px 2px 1px 2px;
+}
+
+.heading-list-item[data-level="2"] {
+  padding-left: 0.5rem;
+}
+
+.heading-list-item[data-level="2"] .text::after {
+  content: "H2";
+  font-size: 6px;
+  margin-left: 1px;
+  color: var(--text-muted);
+  font-weight: normal !important;
+  padding: 1px 2px 1px 2px;
+}
+
+.heading-list-item[data-level="3"] {
+  padding-left: 0.8rem;
+}
+.heading-list-item[data-level="3"] .text-wrap {
+  padding-left: 0.2rem;
+}
+
+.heading-list-item[data-level="3"] .text::after {
+  content: "H3";
+  font-size: 6px;
+  margin-left: 1px;
+  color: var(--text-muted);
+  font-weight: normal !important;
+  padding: 1px 2px 1px 2px;
+}
+
+.heading-list-item[data-level="4"] {
+  padding-left: 1.1rem;
+}
+.heading-list-item[data-level="4"] .text-wrap {
+  padding-left: 0.4rem;
+}
+
+.heading-list-item[data-level="4"] .text::after {
+  content: "H4";
+  font-size: 6px;
+  margin-left: 1px;
+  color: var(--text-muted);
+  font-weight: normal !important;
+  padding: 1px 2px 1px 2px;
+}
+
+.heading-list-item[data-level="5"] {
+  padding-left: 1.4rem;
+}
+.heading-list-item[data-level="5"] .text-wrap {
+  padding-left: 0.6rem;
+}
+.heading-list-item[data-level="5"] .text::after {
+  content: "H5";
+  font-size: 6px;
+  margin-left: 1px;
+  color: var(--text-muted);
+  font-weight: normal !important;
+  padding: 1px 2px 1px 2px;
+}
+
+.heading-list-item[data-level="6"] {
+  padding-left: 1.6rem;
+}
+.heading-list-item[data-level="6"] .text-wrap {
+  padding-left: 0.9rem;
+}
+.heading-list-item[data-level="6"] .text::after {
+  content: "H6";
+  font-size: 6px;
+  margin-left: 1px;
+  color: var(--text-muted);
+  font-weight: normal !important;
+  padding: 1px 2px 1px 2px;
+}
+
+
+.floating-toc {
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 0.1rem;
+  position: absolute;
+  top: 95px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  bottom: 40px;
+  width: 13rem;
+  scroll-behavior: smooth;
+  min-height: max-content;
+  max-height: calc(100% - 135px) ;
+  left:var(--floating-toc-position);
+}
+
+.floating-toc-div.pin .floating-toc,
+.floating-toc:hover {
+  z-index: 2;
+  align-items: flex-start;
+  min-width: 6rem;
+  max-width: 70%;
+  width: auto;
+  overflow-y: auto;
+  background: var(--floating-toc-background-color);
+}
+
+.floating-toc-div.pin .floating-toc::-webkit-scrollbar,
+.floating-toc:hover::-webkit-scrollbar {
+  display: none;
+}
+
+
+body:not(.enable-heading-nowrap) .floating-toc-div.pin .floating-toc .heading-list-item,
+body:not(.enable-heading-nowrap) .floating-toc:hover .heading-list-item {
+  min-height: auto;
+}
+
+ 
+.floating-toc-div.pin .floating-toc .heading-list-item
+{
+  max-width: fit-content;
+}
+
+body.enable-heading-nowrap .floating-toc-div.pin .floating-toc .heading-list-item>.text-wrap,
+body.enable-heading-nowrap .floating-toc:hover .heading-list-item>.text-wrap {
+  white-space: nowrap;
+}
+.floating-toc-div.pin .floating-toc .heading-list-item>.text-wrap,
+.floating-toc:hover .heading-list-item>.text-wrap {
+  min-width: 12rem;
+  white-space: normal;
+  opacity: 1;
+  transition-delay: var(--floating-toc-response-time);
+  transition-property: opacity;
+  transition-timing-function: ease-in-out;
+  -webkit-transition-delay: var(--floating-toc-response-time);
+  -webkit-transition-property: opacity;
+  -webkit-transition-timing-function: ease-in-out;
+}
+
+
+.floating-toc-div.pin .heading-list-item>.line-wrap,
+.floating-toc:hover .heading-list-item>.line-wrap {
+  display: none;
+
+}
+
+.workspace-leaf-content .floating-toc-div.floating-left+.markdown-source-view .cm-editor {
+  padding-left: 2rem;
+}
+
+.workspace-leaf-content .floating-toc-div.floating-left~.markdown-reading-view .markdown-preview-view {
+  padding-left: 4rem;
+}
+
+.floating-toc-div.floating-left+.markdown-source-view .cm-panels {
+  margin-left: -2rem;
+}
+
+/****right*********/
+.floating-toc-div.pin .floating-toc .heading-list-item>.text-wrap a>a,
+.floating-toc-div .floating-toc:hover .heading-list-item>.text-wrap a>a {
+
+  pointer-events: none;
+}
+
+.floating-toc-div.pin .floating-toc .heading-list-item>.text-wrap a>a.external-link,
+.floating-toc-div .floating-toc:hover .heading-list-item>.text-wrap a>a.external-link {
+
+  background-image: none;
+}
+
+
+
+.workspace-leaf-content .floating-toc-div.floating-right~.markdown-reading-view .markdown-preview-view {
+  padding-right: 2rem;
+  
+}
+
+.floating-toc-div.floating-right .floating-toc {
+  right: calc(0.5rem + var(--floating-toc-position));
+  align-items: flex-end;
+  left: unset;
+}
+
+.floating-toc-div.floating-right .heading-list-item {
+  text-align: right;
+}
+
+.floating-toc-div.floating-right .heading-list-item .line-wrap {
+  right: 0.5rem;
+}
+
+
+.floating-toc-div.floating-right .heading-list-item[data-level="1"] .line-wrap {
+  padding-left: 0.5rem;
+}
+
+.floating-toc-div.floating-right .heading-list-item[data-level="2"] .line-wrap {
+  padding-left: 0.7rem;
+}
+
+.floating-toc-div.floating-right .heading-list-item[data-level="3"] .line-wrap {
+  padding-left: 0.9rem;
+}
+
+.floating-toc-div.floating-right .heading-list-item[data-level="4"] .line-wrap {
+  padding-left: 1.1rem;
+}
+
+.floating-toc-div.floating-right .heading-list-item[data-level="5"] .line-wrap {
+  padding-left: 1.3rem;
+}
+
+.floating-toc-div.floating-right .heading-list-item[data-level="6"] .line-wrap {
+  padding-left: 1.5rem;
+}
+
+.floating-toc-div.floating-right.pin .floating-toc .heading-list-item>.text-wrap,
+.floating-toc-div.floating-right .floating-toc:hover .heading-list-item>.text-wrap {
+  justify-content: flex-end;
+  text-align: right;
+  display: inline-flex;
+}
+
+/****pin button***/
+
+.floating-right.floating-toc-div .toolbar.pin {
+  right: 10px;
+ 
+}
+
+
+.floating-toc-div.pin .toolbar.pin {
+  opacity: 1;
+  display: block;
+}
+
+
+.floating-toc-div .toolbar.pin:hover {
+  opacity: 1;
+
+}
+.floating-toc-div .toolbar button:hover {
+ 
+  animation: shake 0.6s;
+}
+
+@keyframes shake {
+
+  0%,
+  100% {
+    -webkit-transform: translateX(0);
+  }
+
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    -webkit-transform: translateX(-0.5px);
+  }
+
+  20%,
+  40%,
+  60%,
+  80% {
+    -webkit-transform: translateX(0.8px);
+  }
+}
+.floating-toc-div .toolbar.pin.hide {
+  opacity: 0;
+}
+
+.floating-toc-div .toolbar
+{
+  display: list-item;
+  opacity: 0.3;
+  z-index: 2;
+  background-color: transparent;
+  position: fixed;
+  top: 75px;
+  margin-left: 10px;
+}
+
+.floating-toc-div .toolbar  button
+{
+  margin: 0;
+  padding: 0 10px;
+  background-color:transparent;
+  margin-right: 5px;
+  width: 10px;
+}
+
+.floating-toc-div.pin .floating-toc {
+  padding: 0 1rem;
+}
+
+.floating-toc-div.pin .floating-toc .heading-list-item>.text-wrap {
+  max-width: 40%;
+}
+
+
+body.enable-background-blur-dept .workspace-leaf-content .floating-toc-div.hover:not(.pin)+.markdown-source-view .cm-editor
+{
+  
+  filter: blur(var(--background-blur-depth));
+  -webkit-filter: blur(var(--background-blur-depth));
+  background: var(--floating-toc-background-color);
+}
+body.enable-background-blur-dept .workspace-leaf-content .floating-toc-div.hover:not(.pin) ~.markdown-reading-view .markdown-preview-view
+{
+  filter: blur(var(--background-blur-depth));
+  -webkit-filter: blur(var(--background-blur-depth));
+  background: var(--floating-toc-background-color);
+}
+
+body.enable-background-blur-dept .floating-toc-div.hover:not(.pin) .heading-list-item .text-wrap:not(.located) .text {
+  background: transparent;
+  
+   
+}
+
+body.enable-background-blur-dept .floating-toc-div.pin .floating-toc,
+body.enable-background-blur-dept .floating-toc:hover {
+  background: transparent;
+}
+
+
+/****alignLeft**/
+
+.floating-right.floating-toc-div.alignLeft .toolbar.pin {
+  right: 4rem;
+}
+.floating-toc-div.floating-right.alignLeft.pin .floating-toc .heading-list-item>.text-wrap, 
+.floating-toc-div.floating-right.alignLeft .floating-toc:hover .heading-list-item>.text-wrap
+{
+   max-width: 12rem;
+    text-overflow: ellipsis;
+justify-content: flex-start;
+text-align: left;
+}
+
+
+.floating-right.alignLeft .heading-list-item[data-level="2"] .text-wrap {
+  padding-left: 0.5rem;
+}
+.floating-right.alignLeft .heading-list-item[data-level="3"] .text-wrap {
+  padding-left: 1rem;
+}
+.floating-right.alignLeft .heading-list-item[data-level="4"] .text-wrap {
+  padding-left: 1.5rem;
+}
+
+.floating-right.alignLeft .heading-list-item[data-level="5"] .text-wrap {
+  padding-left: 1.8rem;
+}
+.floating-right.alignLeft .heading-list-item[data-level="6"] .text-wrap {
+  padding-left: 2.1rem;
+}
+
+.heading-list-item.located  .text::before
+{
+  content: "•";
+  margin-right: 2px;
+}
+.heading-list-item.focus  .text::before
+{
+  content: "▾";
+  margin-right: 2px;
+}
+.floating-toc-div:not(:is(.hover,.pin)) .heading-list-item
+{
+  width: 2rem;
+  overflow: hidden;
+}
+.floating-toc-div:hover .heading-list-item
+{
+  width: unset;
+}
+.floating-toc-div:not(:is(.hover)) .heading-list-item:not(:is(.located,.focus))
+{
+opacity: var(--focus-heading);
+}
+
+ 
+
+/****enable-bar-heading-text**/
+
+body.enable-bar-heading-text .floating-toc-div:not(:is(.hover,.pin)) .heading-list-item:is(.located,.focus)
+{
+width:unset;
+}
+body.enable-bar-heading-text  .floating-toc-div:not(:is(.hover,.pin)) .heading-list-item:is(.located,.focus) .text-wrap
+{
+  opacity: 1;
+  margin-left: 10px;
+ 
+}
+body.enable-bar-heading-text .floating-toc-div:not(:is(.hover,.pin)) .heading-list-item:is(.located,.focus) .text-wrap .text
+{
+  max-width: 12rem;
+  overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+  color: var(--text-normal);
+}
+
+body.enable-bar-heading-text .floating-toc-div:not(:is(.hover,.pin)) .heading-list-item:is(.located,.focus) .text-wrap .text::before
+{
+content: '';
+margin-left: 0.2rem;
+}
+
+.heading-list-item.focus .text-wrap .text {
+  font-weight:bolder;
+}
+/******/
+ .heading-list-item:not(.focus,.located) .text-wrap .text {
+  font-weight:normal;
+}
+

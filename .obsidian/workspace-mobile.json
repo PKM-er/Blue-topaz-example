@@ -1,0 +1,159 @@
+{
+  "main": {
+    "id": "63d5273371a15f8d",
+    "type": "split",
+    "children": [
+      {
+        "id": "63cd523cfa64bf15",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ebd8d2d20e22f3f9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "73b7938038c466d2",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "5ab38f4d4c6c410c",
+        "type": "leaf",
+        "state": {
+          "type": "recent-files",
+          "state": {}
+        }
+      },
+      {
+        "id": "6769624d56472bf2",
+        "type": "leaf",
+        "state": {
+          "type": "file-explorer",
+          "state": {
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "c662bf91ffe71c66",
+        "type": "leaf",
+        "state": {
+          "type": "search",
+          "state": {
+            "query": "timeline",
+            "matchingCase": false,
+            "explainSearch": false,
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical"
+          }
+        }
+      },
+      {
+        "id": "75ed9255e401acdd",
+        "type": "leaf",
+        "state": {
+          "type": "tag",
+          "state": {
+            "sortOrder": "frequency",
+            "useHierarchy": true
+          }
+        }
+      },
+      {
+        "id": "1881018487446042",
+        "type": "leaf",
+        "state": {
+          "type": "starred",
+          "state": {}
+        }
+      },
+      {
+        "id": "4e75e2766ad23cb3",
+        "type": "leaf",
+        "state": {
+          "type": "file-tree-view",
+          "state": {}
+        }
+      }
+    ],
+    "currentTab": 5
+  },
+  "right": {
+    "id": "f49acf5a1a1391a2",
+    "type": "mobile-drawer",
+    "children": [
+      {
+        "id": "cdcfcfcfff3e9c79",
+        "type": "leaf",
+        "state": {
+          "type": "calendar",
+          "state": {}
+        }
+      },
+      {
+        "id": "e552180f3c1946e9",
+        "type": "leaf",
+        "state": {
+          "type": "backlink",
+          "state": {
+            "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md",
+            "collapseAll": false,
+            "extraContext": false,
+            "sortOrder": "alphabetical",
+            "showSearch": false,
+            "searchQuery": "",
+            "backlinkCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "6779e3fc26d5d857",
+        "type": "leaf",
+        "state": {
+          "type": "outgoing-link",
+          "state": {
+            "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md",
+            "linksCollapsed": false,
+            "unlinkedCollapsed": true
+          }
+        }
+      },
+      {
+        "id": "c54dd43514231fea",
+        "type": "leaf",
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md"
+          }
+        }
+      }
+    ],
+    "currentTab": 0
+  },
+  "ribbon": {
+    "mostRecentAction": ""
+  },
+  "active": "ebd8d2d20e22f3f9",
+  "lastOpenFiles": [
+    "88-Template/home.md",
+    "77-Example/timeline callout效果.md",
+    "20221023220657.md",
+    "77-Example/77-Example.md"
+  ]
+}

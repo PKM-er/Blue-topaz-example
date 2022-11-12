@@ -133,7 +133,7 @@ min-height:28px ;
 #cMenuToolbarModalBar.cMenuToolbarDefaultAesthetic:not(.top) button[class^=cMenuToolbarCommandsubItem]  {
   margin: auto;
   padding: 6px;
-
+box-shadow: none;
  border: none;
   background-color: transparent;
 
@@ -356,7 +356,7 @@ body.theme-dark .modal-container.cMenuToolbar-Modal  .modal  input[type='range']
   justify-items: center;  
   border: none;
   backdrop-filter: none;
-  background-color: var(--background-secondary);
+  background-color: var(--background-primary);
   box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
  }
 
@@ -443,6 +443,7 @@ font-size: 10px;
     line-height:2em;
     display: inline-flex;
     box-shadow: none;
+    align-items: center;
 }
 
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button[class^=cMenuToolbarCommandsubItem]  >.subitem button:hover
@@ -453,8 +454,8 @@ font-size: 10px;
 
 
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button[class^=cMenuToolbarCommandsubItem]  >.subitem .menu-item {
- 
-  margin-right: 4px;
+  margin-left: 2px;
+  margin-right: 2px;
   padding: 0px 4px 0px 4px;
 }
 :is(#cMenuToolbarModalBar,#cMenuToolbarPopoverBar) button[class^=cMenuToolbarCommandsubItem] >.subitem  {

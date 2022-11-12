@@ -1,3 +1,7 @@
+.quiet-outline .n-tree {
+  font-size: var(--nav-item-size);
+}
+
 
 .quiet-outline .n-tree-node-wrapper {
   padding: 0px;
@@ -19,30 +23,30 @@
   margin: 0;
 }
 
-/* experimental */
-/*.quiet-outline .n-tree-node-content__text p { */
-/* .quiet-outline .n-tree-node-wrapper {
-  white-space: pre;
-  overflow: hidden;
-} */
 
-/* .quiet-outline .n-tree:has( .n-tree-node.n-tree-node--highlight) .n-tree-node:not(.n-tree-node--highlight) {
-  display:none;
-} */
 
-/* test features */
-/* .quiet-outline .n-tree-node .n-tree-node-content p{
-  width: 100%;
-  overflow: hidden;
+
+
+/* ellipsis */
+.quiet-outline .n-tree.ellipsis {
+  overflow-x: hidden;
 }
-.quiet-outline .n-tree-node  {
+
+.quiet-outline .n-tree.ellipsis .n-tree-node .n-tree-node-content p{
   overflow: hidden;
   text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.quiet-outline .n-tree-node:hover {
-  word-break: break-all;
-} */
+.quiet-outline .n-tree.ellipsis .n-tree-node-content__text {
+  width: 100%;
+}
+
+.quiet-outline .n-tree.ellipsis .n-tree-node-content {
+  width: 90%;
+}
+
+
 
 
 
@@ -59,14 +63,26 @@
   margin-bottom: 10px;
 }
 
-.quiet-outline .function-bar>:first-child {
+.quiet-outline .function-bar .n-button {
   margin-right: 5px;
   text-align: center;
 }
 
-.quiet-outline .function-bar>:last-child {
+.quiet-outline .function-bar .n-input {
   flex: 1;
   min-width: 10px;
+}
+
+
+/*mobile behaves weird*/
+.is-mobile .quiet-outline .function-bar .n-button {
+  margin-right: 5px;
+  text-align: center;
+  flex: 1;
+}
+.is-mobile .quiet-outline .function-bar .n-input {
+  min-width: 10px;
+  flex: none;
 }
 
 
@@ -77,13 +93,21 @@
 }
 
 .quiet-outline code {
-  color:#ca254e;
-  font-weight: 500;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color:var(--text-color-code, var(--code-normal));
+  font-weight: bold;
+  /* font-size: var(--font-size-code, var(--code-size)); */
+  font-family: var(--font-monospace);
+  background-color: var(--code-background);
+  border-radius:var(--radius-s);
 }
 
 .quiet-outline .internal-link {
-  color: #705dcf;
+  color: var(--link-external-color);
+}
+
+.quiet-outline mark {
+  background-color: var(--text-highlight-bg);
+  color: var(--text-normal);
 }
 
 /* ===================== */
@@ -148,9 +172,9 @@
 .n-tree-node.located {
   font-weight: bold !important;
 }
-.n-tree-node code {
+/* .n-tree-node code {
   font-weight: 500 !important;
-}
+} */
 .n-tree-node.located code {
   font-weight: 1000 !important;
 }
@@ -181,7 +205,11 @@
 
 
 
-/*no data*/
+/*remove 'no data'*/
 .n-tree__empty {
   display: none;
 }
+
+
+
+/* experimental */

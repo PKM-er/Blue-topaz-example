@@ -169,12 +169,13 @@ Electron Version: ${electronVersion}`, versionInfoNoticeDuration * 1e3);
   }
   cycleViews() {
     const noticeDuration = 2e3;
-    const activePane = this.app.workspace.activeLeaf;
-    const currentView = activePane.getViewState();
-    if (currentView.type === "empty") {
-      new import_obsidian.Notice("There is currently no file open.");
+    const isMarkdownView = this.app.workspace.getActiveViewOfType(import_obsidian.MarkdownView);
+    if (!isMarkdownView) {
+      new import_obsidian.Notice("Not a regular note or no file open.");
       return;
     }
+    const activePane = this.app.workspace.activeLeaf;
+    const currentView = activePane.getViewState();
     let currentMode;
     if (currentView.state.mode === "preview")
       currentMode = "preview";

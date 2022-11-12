@@ -1,0 +1,156 @@
+sup.footnote-ref {
+  user-select: none;
+  cursor: pointer;
+  color: var(--text-accent);
+}
+
+.visuallyhidden:not(:focus):not(:active) {
+  position: absolute;
+
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+
+  white-space: nowrap;
+
+  clip-path: inset(100%);
+  overflow: hidden;
+}
+
+.markdown-preview-view .tippy-content > span.internal-embed {
+  min-width: 20em;
+}
+
+.markdown-preview-view .tippy-content {
+  max-height: 20em;
+  overflow-x: auto;
+  font-size: calc(var(--editor-font-size) * 0.9);
+}
+
+.markdown-preview-view .tippy-content a.footnote-backref {
+  display: none;
+}
+
+span > [data-tippy-root] {
+  display: inline;
+}
+
+section.footnotes li[data-footnote-id] {
+  transition: background-color 0.5s ease-in-out;
+}
+
+.tippy-box[data-theme~="obsidian"] {
+  background-color: var(--background-primary);
+  background-clip: padding-box;
+  border: 1px solid var(--background-modifier-border);
+  color: var(--text-normal);
+  box-shadow: 0 4px 14px -2px var(--background-modifier-box-shadow);
+}
+.tippy-box[data-theme~="obsidian"] > .tippy-backdrop {
+  background-color: var(--background-primary);
+}
+.tippy-box[data-theme~="obsidian"] > .tippy-arrow:after,
+.tippy-box[data-theme~="obsidian"] > .tippy-svg-arrow:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+}
+.tippy-box[data-theme~="obsidian"] > .tippy-arrow:after {
+  border-color: transparent;
+  border-style: solid;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="top"]
+  > .tippy-arrow:before {
+  border-top-color: var(--background-primary);
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="top"] > .tippy-arrow:after {
+  border-top-color: var(--background-modifier-border);
+  border-width: 7px 7px 0;
+  top: 17px;
+  left: 1px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="top"]
+  > .tippy-svg-arrow
+  > svg {
+  top: 16px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="top"]
+  > .tippy-svg-arrow:after {
+  top: 17px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="bottom"]
+  > .tippy-arrow:before {
+  border-bottom-color: var(--background-primary);
+  bottom: 16px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="bottom"]
+  > .tippy-arrow:after {
+  border-bottom-color: var(--background-modifier-border);
+  border-width: 0 7px 7px;
+  bottom: 17px;
+  left: 1px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="bottom"]
+  > .tippy-svg-arrow
+  > svg {
+  bottom: 16px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="bottom"]
+  > .tippy-svg-arrow:after {
+  bottom: 17px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="left"]
+  > .tippy-arrow:before {
+  border-left-color: var(--background-primary);
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="left"]
+  > .tippy-arrow:after {
+  border-left-color: var(--background-modifier-border);
+  border-width: 7px 0 7px 7px;
+  left: 17px;
+  top: 1px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="left"]
+  > .tippy-svg-arrow
+  > svg {
+  left: 11px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="left"]
+  > .tippy-svg-arrow:after {
+  left: 12px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="right"]
+  > .tippy-arrow:before {
+  border-right-color: var(--background-primary);
+  right: 16px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="right"]
+  > .tippy-arrow:after {
+  border-width: 7px 7px 7px 0;
+  right: 17px;
+  top: 1px;
+  border-right-color: var(--background-modifier-border);
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="right"]
+  > .tippy-svg-arrow
+  > svg {
+  right: 11px;
+}
+.tippy-box[data-theme~="obsidian"][data-placement^="right"]
+  > .tippy-svg-arrow:after {
+  right: 12px;
+}
+.tippy-box[data-theme~="obsidian"] > .tippy-svg-arrow {
+  fill: var(--background-primary);
+}
+.tippy-box[data-theme~="obsidian"] > .tippy-svg-arrow:after {
+  background-image: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iNiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cGF0aCBkPSJNMCA2czEuNzk2LS4wMTMgNC42Ny0zLjYxNUM1Ljg1MS45IDYuOTMuMDA2IDggMGMxLjA3LS4wMDYgMi4xNDguODg3IDMuMzQzIDIuMzg1QzE0LjIzMyA2LjAwNSAxNiA2IDE2IDZIMHoiIGZpbGw9InJnYmEoMCwgOCwgMTYsIDAuMikiLz48L3N2Zz4=);
+  background-size: 16px 6px;
+  width: 16px;
+  height: 6px;
+}
+
+.tippy-box[data-animation=fade][data-state=hidden]{opacity:0}[data-tippy-root]{max-width:calc(100vw - 10px)}.tippy-box{position:relative;background-color:#333;color:#fff;border-radius:4px;font-size:14px;line-height:1.4;outline:0;transition-property:transform,visibility,opacity}.tippy-box[data-placement^=top]>.tippy-arrow{bottom:0}.tippy-box[data-placement^=top]>.tippy-arrow:before{bottom:-7px;left:0;border-width:8px 8px 0;border-top-color:initial;transform-origin:center top}.tippy-box[data-placement^=bottom]>.tippy-arrow{top:0}.tippy-box[data-placement^=bottom]>.tippy-arrow:before{top:-7px;left:0;border-width:0 8px 8px;border-bottom-color:initial;transform-origin:center bottom}.tippy-box[data-placement^=left]>.tippy-arrow{right:0}.tippy-box[data-placement^=left]>.tippy-arrow:before{border-width:8px 0 8px 8px;border-left-color:initial;right:-7px;transform-origin:center left}.tippy-box[data-placement^=right]>.tippy-arrow{left:0}.tippy-box[data-placement^=right]>.tippy-arrow:before{left:-7px;border-width:8px 8px 8px 0;border-right-color:initial;transform-origin:center right}.tippy-box[data-inertia][data-state=visible]{transition-timing-function:cubic-bezier(.54,1.5,.38,1.11)}.tippy-arrow{width:16px;height:16px;color:#333}.tippy-arrow:before{content:"";position:absolute;border-color:transparent;border-style:solid}.tippy-content{position:relative;padding:5px 9px;z-index:1}
+.tippy-box[data-animation=shift-toward-subtle][data-state=hidden]{opacity:0}.tippy-box[data-animation=shift-toward-subtle][data-state=hidden][data-placement^=top][data-state=hidden]{transform:translateY(-5px)}.tippy-box[data-animation=shift-toward-subtle][data-state=hidden][data-placement^=bottom][data-state=hidden]{transform:translateY(5px)}.tippy-box[data-animation=shift-toward-subtle][data-state=hidden][data-placement^=left][data-state=hidden]{transform:translateX(-5px)}.tippy-box[data-animation=shift-toward-subtle][data-state=hidden][data-placement^=right][data-state=hidden]{transform:translateX(5px)}

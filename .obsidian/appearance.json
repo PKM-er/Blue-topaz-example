@@ -1,5 +1,5 @@
 {
-  "baseFontSize": 17,
+  "baseFontSize": 14,
   "theme": "moonstone",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
@@ -29,8 +29,9 @@
     "【图标】checkbox from minimal Theme Modified",
     "【图标】checkbox",
     "【卡片视图】zettelkasten",
-    "【图标】iconfont",
-    "【自定义】myhome 样式"
+    "【自定义】myhome 样式",
+    "extended-colorschemes",
+    "【图标】iconfont"
   ],
   "translucency": false,
   "textFontFamily": "",

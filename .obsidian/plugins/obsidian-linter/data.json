@@ -2,18 +2,14 @@
   "ruleConfigs": {
     "Escape YAML Special Characters": {
       "Escapes colons with a space after them (: ), single quotes ('), and double quotes (\") in YAML.": false,
-      "Default Escape Character": "'",
-      "Try to Escape Single Line Arrays": false,
-      "Force Yaml Escape on Keys": ""
+      "Try to Escape Single Line Arrays": false
     },
     "Format Tags in YAML": {
       "Remove Hashtags from tags in the YAML frontmatter, as they make the tags there invalid.": true
     },
     "Format Yaml Array": {
       "Allows for the formatting of regular yaml arrays as either multi-line or single-line and `tags` and `aliases` are allowed to have some Obsidian specific yaml formats. Note that single string to single-line goes from a single string entry to a single-line array if more than 1 entry is present. The same is true for single string to multi-line except it becomes a multi-line array.": true,
-      "Yaml aliases section style": "single-line",
       "Format yaml aliases section": true,
-      "Yaml tags section style": "single string comma delimited",
       "Format yaml tags section": true,
       "Default yaml array section style": "single-line",
       "Format yaml array sections": true,
@@ -26,9 +22,8 @@
     },
     "Move Tags to Yaml": {
       "Move all tags to Yaml frontmatter of the document.": false,
-      "Yaml tags section style": "single-line",
-      "Remove the hashtag from tags in content body": false,
-      "Tags to ignore": ""
+      "Tags to ignore": "",
+      "Body tag operation": "Nothing"
     },
     "Remove YAML Keys": {
       "Removes the YAML keys specified": false,
@@ -47,18 +42,17 @@
       "Date Created Key": "created",
       "Date Modified": true,
       "Date Modified Key": "updated",
-      "Format": "YYYY-MM-DD hh:mm:ss"
+      "Format": "\"YYYY-MM-DD HH:mm\""
     },
     "YAML Title": {
-      "Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.": true,
+      "Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.": false,
       "Title Key": "aliases"
     },
     "YAML Title Alias": {
-      "Inserts the title of the file into the YAML frontmatter's aliases section. Gets the title from the first H1 or filename.": false,
-      "YAML aliases section style": "Single string that expands to multi-line array if needed",
+      "Inserts the title of the file into the YAML frontmatter's aliases section. Gets the title from the first H1 or filename.": true,
       "Preserve existing aliases section style": true,
-      "Keep alias that matches the filename": false,
-      "Use the YAML key `linter-yaml-title-alias` to help with filename and heading changes": true
+      "Keep alias that matches the filename": true,
+      "Use the YAML key `linter-yaml-title-alias` to help with filename and heading changes": false
     },
     "Capitalize Headings": {
       "Headings should be formatted with capitalization": false,
@@ -142,7 +136,7 @@
       "Ensures that there is an empty line around code fences unless they start or end a document.": true
     },
     "Empty Line Around Tables": {
-      "Ensures that there is an empty line around github flavored tables unless they start or end a document.": true
+      "Ensures that there is an empty line around github flavored tables unless they start or end a document.": false
     },
     "Heading blank lines": {
       "All headings have a blank line both before and after (except where the heading is at the beginning or end of the document).": false,
@@ -174,6 +168,40 @@
     "Trailing spaces": {
       "Removes extra spaces after every line.": false,
       "Two Space Linebreak": false
+    },
+    "Force YAML Escape": {
+      "Escapes the values for the specified YAML keys.": false,
+      "Force YAML Escape on Keys": ""
+    },
+    "Empty Line Around Math Blocks": {
+      "Ensures that there is an empty line around math blocks using `Number of Dollar Signs to Indicate a Math Block` to determine how many dollar signs indicates a math block for single-line math.": false
+    },
+    "Move Math Block Indicators to Their Own Line": {
+      "Move all starting and ending math block indicators to their own lines using `Number of Dollar Signs to Indicate a Math Block` to determine how many dollar signs indicates a math block for single-line math.": false
+    },
+    "Add Blockquote Indentation on Paste": {
+      "Adds blockquotes to all but the first line, when the cursor is in a blockquote/callout line during pasting": false
+    },
+    "Prevent Double Checklist Indicator on Paste": {
+      "Removes starting checklist indicator from the text to paste if the line the cursor is on in the file has a checklist indicator": false
+    },
+    "Prevent Double List Item Indicator on Paste": {
+      "Removes starting list indicator from the text to paste if the line the cursor is on in the file has a list indicator": false
+    },
+    "Proper Ellipsis on Paste": {
+      "Replaces three consecutive dots with an ellipsis even if they have a space between them in the text to paste": false
+    },
+    "Remove Hyphens on Paste": {
+      "Removes hyphens from the text to paste": false
+    },
+    "Remove Leading or Trailing Whitespace on Paste": {
+      "Removes any leading non-tab whitespace and all trailing whitespace for the text to paste": false
+    },
+    "Remove Leftover Footnotes from Quote on Paste": {
+      "Removes any leftover footnote references for the text to paste": false
+    },
+    "Remove Multiple Blank Lines on Paste": {
+      "Condenses multiple blank lines down into one blank line for the text to paste": false
     }
   },
   "lintOnSave": true,
@@ -183,5 +211,11 @@
   ],
   "linterLocale": "system-default",
   "logLevel": 4,
-  "lintCommands": []
+  "lintCommands": [],
+  "commonStyles": {
+    "aliasArrayStyle": "single string to multi-line",
+    "tagArrayStyle": "single string to multi-line",
+    "minimumNumberOfDollarSignsToBeAMathBlock": 2,
+    "escapeCharacter": "'"
+  }
 }
