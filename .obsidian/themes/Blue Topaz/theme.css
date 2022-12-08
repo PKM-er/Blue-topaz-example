@@ -5563,7 +5563,7 @@ body.all-dark .print.theme-light,
   --prompt-box-shadow: #bebebe;
   --background-titlebar-inner: hsla(var(--accent-h), var(--accent-s), var(--accent-l),30%);
   --window-shadow: 0 1px 3px hsla(212, 17%, 80%, 0.2);
-  --window-shadow2:	0 0 9px hsla(217, 15%, 83%, 0.7);
+  --window-shadow2: 0 0 9px hsla(217, 15%, 83%, 0.7);
 }
 
 body.color-scheme-options-avocado-topaz .theme-light,
