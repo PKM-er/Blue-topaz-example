@@ -9256,13 +9256,11 @@ body.color-scheme-options-simplicity-topaz
   padding-left: 0.5em;
   display: flex;
   flex-direction: column;
-  gap: 2px;
+}
+body.color-scheme-options-simplicity-topaz .nav-folder{
+padding-bottom: 2px;
 }
 
-body.color-scheme-options-simplicity-topaz .nav-file-title,
-body.color-scheme-options-simplicity-topaz .nav-folder-title{
-  transition: 0.05s ease-in;
-}
 body.color-scheme-options-simplicity-topaz .nav-folder-title{
   font-weight: 500;
 }
@@ -10824,9 +10822,7 @@ span.cm-strong.cm-em.cm-highlight {
   background-color: var(--text-highlight-bg);
 }
 
-.nav-folder.mod-root .nav-folder > .nav-folder-children {
-  transition: all 400ms ease-in-out;
-}
+ 
 
 body.default-icons .nav-folder.mod-root .nav-folder > .nav-folder-children {
   margin: 0 0 0 16px;
@@ -27717,14 +27713,17 @@ select:focus,
 .workspace-leaf.mod-active .nav-folder.has-focus > .nav-folder-title, .workspace-leaf.mod-active .nav-file.has-focus > .nav-file-title {
   box-shadow: none;
 }
-.nav-folder:not(.is-collapsed) .nav-folder-children {
-  height: auto !important;
-}
+ 
 body.remove-arrow:not(.default-icons) :is(.nav-folder-title,.nav-file-title) {
   padding-left: 0.5em;
 }
 .nav-folder.mod-root > .nav-folder-children > .nav-file .nav-file-title {
   padding-left: var(--size-2-3);
+}
+
+.nav-folder .nav-folder-children[style="height: 0px;"]
+{
+  height: auto !important;
 }
 
 textarea:active, 

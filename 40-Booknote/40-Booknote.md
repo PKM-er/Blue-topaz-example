@@ -1,10 +1,12 @@
 ---
-cssclass: kanban gridlist noyaml
-tag: moc
-obsidianUIMode: preview
---- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
-%% Begin Waypoint %%
-- **[[40-Booknote]]**
-	- **[[books-data]]**
+UID: 20221208160944 
+aliases: 
+tags: 
+source: 
+cssclass: 
+created: 2022-12-08
+---
 
-%% End Waypoint %%
+## ✍内容
+
+

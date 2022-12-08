@@ -1,18 +1,10 @@
 ---
-aliases: 30-Reading
-tags:
-  - 
-source:
 cssclass: kanban gridlist noyaml
 tag: moc
-created: "2022-08-13 00:45"
-updated: "2022-10-26 14:52"
----
-
-
 obsidianUIMode: preview
---- 
-`button-homewp` `button-browsevault` `button-browsenext` `button-browserefresh` 
+---
+`button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh`
+
 %% Begin Waypoint %%
 - **[[30-Reading]]**
 	- [[《笔醒山河》]]
