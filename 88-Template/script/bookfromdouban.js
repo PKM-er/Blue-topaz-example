@@ -147,8 +147,8 @@ async function getbookByurl(url) {
 	let publishyear=regpublishyear.exec(str);
 	bookinfo.publishyear=(publishyear==null)?'未知':publishyear[1].trim();
 	//bookinfo.publish=regpublish.exec(str)[1]?.trim()??'未知';
-	bookinfo.bookname =bookname.replace(/(^\s*)|\^|\.|\*|\?|\!|\/|\\|\$|\#|\&|\||,|\[|\]|\{|\}|\(|\)|\-|\+|\=|(\s*$)/g, "");
-	bookinfo.filename =bookname.replace(/[\\\\/:*?\"<>|]/g,"_");
+	bookinfo.bookname =bookname;
+	bookinfo.filename =bookname.replace(/(^\s*)|\^|\.|\*|\?|\!|\/|\\|\$|\#|\&|\||,|\[|\]|\{|\}|\(|\)|\-|\+|\=|(\s*$)/g, "").replace(/[\\\\/:*?\"<>|]/g,"_");
 	bookinfo.cover = $("meta[property='og:image']")?.content;
 	bookinfo.type = 'book';
 	bookinfo.description = $("meta[property='og:description']")?.content;

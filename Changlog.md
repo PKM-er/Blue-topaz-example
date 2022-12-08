@@ -3,7 +3,7 @@ tags:
 cssclass:
 source:
 mindmap-plugin: basic
-updated: "2022-12-08 10:23"
+updated: "2022-12-08 10:37"
 aliases:
   - ## ⏳更新日志
   - Changlog
@@ -17,6 +17,7 @@ created: "2022-04-27 10:05"
 - 修复50-inbox目录存放错误造成模板报错
 - 删除一些过时插件
 - 增加插件 surfing， make-md，obsidain-tray等插件
+- 更新豆瓣读书脚本 图书名不再处理，只处理文件名
 ### 更新📅2022-11-12
 - 示例库自带的所有插件全部更新到最新版本。
 - 修复豆瓣读书插件 如果图书名称包含特殊字符创建文件失败的问题。【quickadd 获取豆瓣读书的宏命令，增加了filename字段用来给文件命名。】
