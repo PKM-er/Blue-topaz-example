@@ -8,41 +8,15 @@
         "type": "tabs",
         "children": [
           {
-            "id": "1bea40d761d074fe",
+            "id": "80430a4f104c0c57",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Changlog.md",
-                "mode": "source",
-                "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "31c7b214be26aa0a",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "77-Example/分栏效果示例.md",
+                "file": "88-Template/home.md",
                 "mode": "preview",
                 "backlinks": false,
-                "source": false
-              }
-            }
-          },
-          {
-            "id": "0ea225e190fe3649",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "77-Example/各类列表和彩虹大纲线.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": false
+                "source": true
               }
             }
           }
@@ -145,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Changlog.md"
+                "file": "88-Template/home.md"
               }
             }
           },
@@ -176,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Changlog.md",
+                "file": "88-Template/home.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -193,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Changlog.md",
+                "file": "88-Template/home.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -230,11 +204,11 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265,
-    "collapsed": true
+    "width": 265
   },
-  "active": "1bea40d761d074fe",
+  "active": "37c8f55a8ef7a09c",
   "lastOpenFiles": [
+    "Changlog.md",
     "77-Example/各级标题示例.md",
     "30-Reading/《水の環境史 _ 「京の名水」はなぜ失われたか 》.md",
     "30-Reading/《Murder @ Maggodycom _ An Arly Hanks Mystery》.md",
@@ -243,7 +217,6 @@
     "30-Reading/认知觉醒：开启自我改变的原动力.md",
     "30-Reading/《新·福音战士剧场版：终 シン・エヴァンゲリオン劇場版_│▌》.md",
     "30-Reading/《笔醒山河》.md",
-    "30-Reading/《从零开始的女性主义》.md",
-    "30-Reading/《理解海德格尔》.md"
+    "30-Reading/《从零开始的女性主义》.md"
   ]
 }
