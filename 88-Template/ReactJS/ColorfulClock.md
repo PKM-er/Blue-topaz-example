@@ -12,8 +12,8 @@ useEffect(()=>{
 	return ()=>{clearInterval(timerId)}
 })
 
-//moment().locale('en');
-moment().locale('zh-cn');
+//moment.locale('en-us');
+moment.locale('zh-cn');
 let formatDate = moment().format("dddd-MMMM-D-H-mm-ss-a").split("-")
 let secProgress = formatDate[5] / 60
 let minProgress = (formatDate[4]) / 60

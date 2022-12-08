@@ -1,0 +1,6 @@
+{
+  "launchOnStartup": true,
+  "runInBackground": true,
+  "createTrayIcon": true,
+  "toggleWindowFocusHotkey": "CmdOrCtrl+Shift+Tab"
+}

@@ -78,6 +78,31 @@
       "icon": "refresh-ccw",
       "name": "QuickAdd: 刷新面板",
       "mode": "any"
+    },
+    {
+      "id": "surfing:refresh-page",
+      "icon": "refresh-cw",
+      "name": "Surfing: 刷新当前页面",
+      "mode": "any"
+    },
+    {
+      "id": "surfing:open-current-url-with-external-browser",
+      "icon": "chrome",
+      "name": "Surfing: 在外部浏览器中打开当前网址",
+      "mode": "any"
+    },
+    {
+      "id": "surfing:clear-current-page-history",
+      "icon": "shield-off",
+      "name": "Surfing: 清除当前页面的历史记录",
+      "mode": "any",
+      "color": "#d59d01"
+    },
+    {
+      "id": "quickadd:choice:6224cb2b-a57e-41f9-99ad-a30f553042ec",
+      "icon": "expand",
+      "name": "QuickAdd: 收拢侧边栏",
+      "mode": "any"
     }
   ],
   "macros": [],

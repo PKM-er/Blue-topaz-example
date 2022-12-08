@@ -15260,7 +15260,7 @@ var Markdown_default = Markdown;
 // src/ui/components/ReminderListByDate.svelte
 function get_each_context2(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[5] = list[i];
+  child_ctx[7] = list[i];
   return child_ctx;
 }
 function create_else_block(ctx) {
@@ -15289,7 +15289,7 @@ function create_else_block(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if (dirty & 15) {
+      if (dirty & 31) {
         each_value = ctx2[0];
         let i;
         for (i = 0; i < each_value.length; i += 1) {
@@ -15356,7 +15356,7 @@ function create_if_block(ctx) {
 function create_each_block2(ctx) {
   let div;
   let span0;
-  let t0_value = ctx[3](ctx[5].time) + "";
+  let t0_value = ctx[3](ctx[7].time) + "";
   let t0;
   let t1;
   let span1;
@@ -15364,7 +15364,7 @@ function create_each_block2(ctx) {
   let t2;
   let span2;
   let t3;
-  let t4_value = ctx[5].getFileName() + "";
+  let t4_value = ctx[7].getFileName() + "";
   let t4;
   let t5;
   let div_aria_label_value;
@@ -15373,13 +15373,16 @@ function create_each_block2(ctx) {
   let dispose;
   markdown = new Markdown_default({
     props: {
-      markdown: ctx[5].title,
-      sourcePath: ctx[5].file,
+      markdown: ctx[7].title,
+      sourcePath: ctx[7].file,
       component: ctx[1]
     }
   });
+  function dragstart_handler(...args) {
+    return ctx[5](ctx[7], ...args);
+  }
   function click_handler() {
-    return ctx[4](ctx[5]);
+    return ctx[6](ctx[7]);
   }
   return {
     c() {
@@ -15398,7 +15401,8 @@ function create_each_block2(ctx) {
       attr(span1, "class", "reminder-title");
       attr(span2, "class", "reminder-file svelte-gzdxib");
       attr(div, "class", "reminder-list-item svelte-gzdxib");
-      attr(div, "aria-label", div_aria_label_value = `[${ctx[5].time.toString()}] ${ctx[5].title} - ${ctx[5].getFileName()}`);
+      attr(div, "aria-label", div_aria_label_value = `[${ctx[7].time.toString()}] ${ctx[7].title} - ${ctx[7].getFileName()},`);
+      attr(div, "draggable", "true");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -15414,25 +15418,28 @@ function create_each_block2(ctx) {
       append(div, t5);
       current = true;
       if (!mounted) {
-        dispose = listen(div, "click", click_handler);
+        dispose = [
+          listen(div, "dragstart", dragstart_handler),
+          listen(div, "click", click_handler)
+        ];
         mounted = true;
       }
     },
     p(new_ctx, dirty) {
       ctx = new_ctx;
-      if ((!current || dirty & 9) && t0_value !== (t0_value = ctx[3](ctx[5].time) + ""))
+      if ((!current || dirty & 9) && t0_value !== (t0_value = ctx[3](ctx[7].time) + ""))
         set_data(t0, t0_value);
       const markdown_changes = {};
       if (dirty & 1)
-        markdown_changes.markdown = ctx[5].title;
+        markdown_changes.markdown = ctx[7].title;
       if (dirty & 1)
-        markdown_changes.sourcePath = ctx[5].file;
+        markdown_changes.sourcePath = ctx[7].file;
       if (dirty & 2)
         markdown_changes.component = ctx[1];
       markdown.$set(markdown_changes);
-      if ((!current || dirty & 1) && t4_value !== (t4_value = ctx[5].getFileName() + ""))
+      if ((!current || dirty & 1) && t4_value !== (t4_value = ctx[7].getFileName() + ""))
         set_data(t4, t4_value);
-      if (!current || dirty & 1 && div_aria_label_value !== (div_aria_label_value = `[${ctx[5].time.toString()}] ${ctx[5].title} - ${ctx[5].getFileName()}`)) {
+      if (!current || dirty & 1 && div_aria_label_value !== (div_aria_label_value = `[${ctx[7].time.toString()}] ${ctx[7].title} - ${ctx[7].getFileName()},`)) {
         attr(div, "aria-label", div_aria_label_value);
       }
     },
@@ -15451,7 +15458,7 @@ function create_each_block2(ctx) {
         detach(div);
       destroy_component(markdown);
       mounted = false;
-      dispose();
+      run_all(dispose);
     }
   };
 }
@@ -15528,6 +15535,11 @@ function instance3($$self, $$props, $$invalidate) {
   let { onOpenReminder = () => {
   } } = $$props;
   let { timeToString = (time) => time.format("HH:MM") } = $$props;
+  let { generateLink } = $$props;
+  const dragstart_handler = (reminder, e) => {
+    var _a;
+    (_a = e.dataTransfer) == null ? void 0 : _a.setData("text/plain", generateLink(reminder));
+  };
   const click_handler = (reminder) => {
     onOpenReminder(reminder);
   };
@@ -15540,8 +15552,18 @@ function instance3($$self, $$props, $$invalidate) {
       $$invalidate(2, onOpenReminder = $$props2.onOpenReminder);
     if ("timeToString" in $$props2)
       $$invalidate(3, timeToString = $$props2.timeToString);
+    if ("generateLink" in $$props2)
+      $$invalidate(4, generateLink = $$props2.generateLink);
   };
-  return [reminders, component, onOpenReminder, timeToString, click_handler];
+  return [
+    reminders,
+    component,
+    onOpenReminder,
+    timeToString,
+    generateLink,
+    dragstart_handler,
+    click_handler
+  ];
 }
 var ReminderListByDate = class extends SvelteComponent {
   constructor(options) {
@@ -15550,7 +15572,8 @@ var ReminderListByDate = class extends SvelteComponent {
       reminders: 0,
       component: 1,
       onOpenReminder: 2,
-      timeToString: 3
+      timeToString: 3,
+      generateLink: 4
     });
   }
 };
@@ -16479,25 +16502,26 @@ var VIEW_TYPE_REMINDER_LIST = "reminder-list";
 // src/ui/components/ReminderList.svelte
 function get_each_context4(ctx, list, i) {
   const child_ctx = ctx.slice();
-  child_ctx[4] = list[i];
+  child_ctx[5] = list[i];
   return child_ctx;
 }
 function create_each_block4(ctx) {
   let div;
-  let t0_value = ctx[4].name + "";
+  let t0_value = ctx[5].name + "";
   let t0;
   let t1;
   let reminderlistbydate;
   let current;
   function func(...args) {
-    return ctx[3](ctx[4], ...args);
+    return ctx[4](ctx[5], ...args);
   }
   reminderlistbydate = new ReminderListByDate_default({
     props: {
-      reminders: ctx[4].reminders,
+      reminders: ctx[5].reminders,
       component: ctx[1],
       onOpenReminder: ctx[2],
-      timeToString: func
+      timeToString: func,
+      generateLink: ctx[3]
     }
   });
   return {
@@ -16507,7 +16531,7 @@ function create_each_block4(ctx) {
       t1 = space();
       create_component(reminderlistbydate.$$.fragment);
       attr(div, "class", "group-name svelte-2zqui4");
-      toggle_class(div, "group-name-overdue", ctx[4].isOverdue);
+      toggle_class(div, "group-name-overdue", ctx[5].isOverdue);
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -16518,20 +16542,22 @@ function create_each_block4(ctx) {
     },
     p(new_ctx, dirty) {
       ctx = new_ctx;
-      if ((!current || dirty & 1) && t0_value !== (t0_value = ctx[4].name + ""))
+      if ((!current || dirty & 1) && t0_value !== (t0_value = ctx[5].name + ""))
         set_data(t0, t0_value);
       if (!current || dirty & 1) {
-        toggle_class(div, "group-name-overdue", ctx[4].isOverdue);
+        toggle_class(div, "group-name-overdue", ctx[5].isOverdue);
       }
       const reminderlistbydate_changes = {};
       if (dirty & 1)
-        reminderlistbydate_changes.reminders = ctx[4].reminders;
+        reminderlistbydate_changes.reminders = ctx[5].reminders;
       if (dirty & 2)
         reminderlistbydate_changes.component = ctx[1];
       if (dirty & 4)
         reminderlistbydate_changes.onOpenReminder = ctx[2];
       if (dirty & 1)
         reminderlistbydate_changes.timeToString = func;
+      if (dirty & 8)
+        reminderlistbydate_changes.generateLink = ctx[3];
       reminderlistbydate.$set(reminderlistbydate_changes);
     },
     i(local) {
@@ -16582,7 +16608,7 @@ function create_fragment7(ctx) {
       current = true;
     },
     p(ctx2, [dirty]) {
-      if (dirty & 7) {
+      if (dirty & 15) {
         each_value = ctx2[0];
         let i;
         for (i = 0; i < each_value.length; i += 1) {
@@ -16632,6 +16658,7 @@ function instance7($$self, $$props, $$invalidate) {
   let { groups } = $$props;
   let { component } = $$props;
   let { onOpenReminder } = $$props;
+  let { generateLink } = $$props;
   const func = (group, time) => group.timeToString(time);
   $$self.$$set = ($$props2) => {
     if ("groups" in $$props2)
@@ -16640,8 +16667,10 @@ function instance7($$self, $$props, $$invalidate) {
       $$invalidate(1, component = $$props2.component);
     if ("onOpenReminder" in $$props2)
       $$invalidate(2, onOpenReminder = $$props2.onOpenReminder);
+    if ("generateLink" in $$props2)
+      $$invalidate(3, generateLink = $$props2.generateLink);
   };
-  return [groups, component, onOpenReminder, func];
+  return [groups, component, onOpenReminder, generateLink, func];
 }
 var ReminderList = class extends SvelteComponent {
   constructor(options) {
@@ -16649,7 +16678,8 @@ var ReminderList = class extends SvelteComponent {
     init(this, options, instance7, create_fragment7, safe_not_equal, {
       groups: 0,
       component: 1,
-      onOpenReminder: 2
+      onOpenReminder: 2,
+      generateLink: 3
     });
   }
 };
@@ -16679,7 +16709,18 @@ var ReminderListItemView = class extends import_obsidian11.ItemView {
         props: {
           groups: this.remindersForView(),
           onOpenReminder: this.onOpenReminder,
-          component: this
+          component: this,
+          generateLink: (reminder) => {
+            const aFile = this.app.vault.getAbstractFileByPath(reminder.file);
+            const destinationFile = this.app.workspace.getActiveFile();
+            let linkMd;
+            if (!(aFile instanceof import_obsidian11.TFile) || destinationFile == null) {
+              linkMd = `[[${reminder.getFileName()}]]`;
+            } else {
+              linkMd = this.app.fileManager.generateMarkdownLink(aFile, destinationFile.path);
+            }
+            return `${reminder.title} - ${linkMd}`;
+          }
         }
       });
     });

@@ -208,5 +208,17 @@
       ],
       "key": "Enter"
     }
-  ]
+  ],
+  "tab-switcher:open-switcher-for-tabs": [
+    {
+      "modifiers": [
+        "Mod",
+        "Shift"
+      ],
+      "key": "S"
+    }
+  ],
+  "Enhanced-editing:add-Line0": [],
+  "Enhanced-editing:del-lines": [],
+  "Enhanced-editing:biaoti0-text": []
 }

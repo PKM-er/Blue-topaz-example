@@ -2,7 +2,7 @@
 source: "https://publish.obsidian.md/napkinium/Ideas/Dataview/Learnings/Dataview+Learnings"
 ---
 > 本篇内容：`dv.list`，`dv.paragraph`
-````dialogue
+````chat
 left: 😯
 right: 🤣
 titleMode: all

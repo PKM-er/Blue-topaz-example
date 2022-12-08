@@ -1,8 +1,8 @@
 {
   "defaultMode": "match",
   "autoPin": "onMove",
-  "triggerDelay": 800,
-  "closeDelay": 600,
+  "triggerDelay": 400,
+  "closeDelay": 400,
   "autoFocus": false,
   "rollDown": false,
   "snapToEdges": true,
@@ -10,5 +10,5 @@
   "initialWidth": "40%",
   "showViewHeader": true,
   "imageZoom": true,
-  "hoverEmbeds": false
+  "hoverEmbeds": true
 }

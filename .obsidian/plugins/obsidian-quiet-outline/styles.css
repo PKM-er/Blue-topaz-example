@@ -60,7 +60,7 @@
   display: flex;
   align-items: center;
   padding: 0px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 .quiet-outline .function-bar .n-button {
@@ -190,6 +190,8 @@
 /* 固定功能栏 */
 .quiet-outline {
   height: 100%;
+  /*避免被底部状态栏挡住*/
+  padding-bottom: 24px;
 }
 .quiet-outline #container {
   height: 100%;

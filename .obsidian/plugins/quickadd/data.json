@@ -233,6 +233,40 @@
       "type": "Macro",
       "command": true,
       "macroId": "ebf7a10a-351e-489f-b393-2c46b39a4cee"
+    },
+    {
+      "id": "1cffa909-d496-4eec-9f7f-134c11092528",
+      "name": "内联转yaml",
+      "type": "Capture",
+      "command": true,
+      "appendLink": false,
+      "captureTo": "",
+      "captureToActiveFile": true,
+      "createFileIfItDoesntExist": {
+        "enabled": false,
+        "createWithTemplate": false,
+        "template": ""
+      },
+      "format": {
+        "enabled": true,
+        "format": "{{MACRO:dv内联字段转yaml}}"
+      },
+      "insertAfter": {
+        "enabled": false,
+        "after": "",
+        "insertAtEnd": false,
+        "createIfNotFound": false,
+        "createIfNotFoundLocation": "top"
+      },
+      "prepend": false,
+      "task": false,
+      "openFileInNewTab": {
+        "enabled": false,
+        "direction": "vertical",
+        "focus": true
+      },
+      "openFile": false,
+      "openFileInMode": "default"
     }
   ],
   "macros": [
@@ -808,27 +842,21 @@
       "id": "8f7eb649-553c-4115-803a-b05e98ead7f7",
       "commands": [
         {
-          "name": "Focus on tab group to the left",
-          "type": "Obsidian",
-          "id": "e1b02d7e-239a-49f6-89f8-c6dba677d331",
-          "commandId": "editor:focus-left"
-        },
-        {
           "name": "Wait",
           "type": "Wait",
-          "id": "78a1dba7-bdf7-4bab-96d0-836adcb24232",
+          "id": "03ddbe79-f73c-469e-afb2-dd93eee54363",
           "time": 100
         },
         {
           "name": "New tab",
           "type": "Obsidian",
-          "id": "fe1e0fec-d344-47b3-8bf5-4fa6835da8c4",
+          "id": "51e555d8-2110-4440-9a2b-57b479477a42",
           "commandId": "workspace:new-tab"
         },
         {
           "name": "Wait",
           "type": "Wait",
-          "id": "03ddbe79-f73c-469e-afb2-dd93eee54363",
+          "id": "666bff67-04b9-4e85-8a9e-0178eb0230a9",
           "time": 100
         },
         {
@@ -898,7 +926,22 @@
         }
       ],
       "runOnStartup": false
+    },
+    {
+      "name": "dv内联字段转yaml",
+      "id": "eec5fb02-fd11-4fd7-b6e7-cd085d86986b",
+      "commands": [
+        {
+          "name": "changeInlineToYaml",
+          "type": "UserScript",
+          "id": "335ba083-4e89-4562-b748-5a579cfe9d7b",
+          "path": "88-Template/script/changeInlineToYaml.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
     }
   ],
-  "inputPrompt": "multi-line"
+  "inputPrompt": "multi-line",
+  "devMode": false
 }

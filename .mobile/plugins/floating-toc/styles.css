@@ -440,7 +440,7 @@ body.enable-heading-nowrap .heading-list-item .text-wrap .text {
   flex-direction: column;
   justify-content: flex-start;
   bottom: 40px;
-  width: 13rem;
+  /* width: 13rem; */
   scroll-behavior: smooth;
   min-height: max-content;
   max-height: calc(100% - 135px) ;
@@ -596,8 +596,8 @@ body.enable-heading-nowrap .floating-toc:hover .heading-list-item>.text-wrap {
 
 }
 .floating-toc-div .toolbar button:hover {
- 
-  animation: shake 0.6s;
+  box-shadow: none;
+  color: var( --interactive-accent-hover);
 }
 
 @keyframes shake {
@@ -612,18 +612,18 @@ body.enable-heading-nowrap .floating-toc:hover .heading-list-item>.text-wrap {
   50%,
   70%,
   90% {
-    -webkit-transform: translateX(-0.5px);
+    -webkit-transform: translateX(-0.1px);
   }
 
   20%,
   40%,
   60%,
   80% {
-    -webkit-transform: translateX(0.8px);
+    -webkit-transform: translateX(0.1px);
   }
 }
 .floating-toc-div .toolbar.pin.hide {
-  opacity: 0;
+ display: none;
 }
 
 .floating-toc-div .toolbar
@@ -644,6 +644,14 @@ body.enable-heading-nowrap .floating-toc:hover .heading-list-item>.text-wrap {
   background-color:transparent;
   margin-right: 5px;
   width: 10px;
+  display: inline-grid;
+  box-shadow: none;
+
+}
+
+.floating-toc-div .toolbar  button svg{
+  width: 12px;
+  height: 12px;
 }
 
 .floating-toc-div.pin .floating-toc {
@@ -774,3 +782,7 @@ margin-left: 0.2rem;
   font-weight:normal;
 }
 
+.workspace-tabs.mod-stacked  .workspace-tab-header:not(.is-active) + .workspace-leaf .floating-toc-div
+{
+  opacity: 0;
+}

@@ -59,6 +59,7 @@ display:none;
 /*减少ad标签的左右空白*/
 .markdown-preview-view.mytools .admonition {
     margin: 0;
+    margin-left: -1px;
 }
 .markdown-preview-view.mytools .admonition .admonition-content {
   margin: -12px  0 0 5px;

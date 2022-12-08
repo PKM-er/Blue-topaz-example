@@ -1,7 +1,7 @@
 ---
 source: "https://publish.obsidian.md/napkinium/Ideas/Dataview/Learnings/Dataview+Learnings"
 ---
-````dialogue
+````chat
 left: 😯
 right: 🤣
 titleMode: all
@@ -11,27 +11,8 @@ titleMode: all
 < 咳咳。呐，上次的作业，答案给一下。  
 > （尖锐）你做了么，就要答案。  
 < 呃，做了的，只是……对一下答案。  
-> ……喏。
-
-```
-dv.list(dv.pages('"Test"').sort(p => p.file.mtime).file.mtime);
-```
-
-```
-dv.list(dv.pages('"Test"').sort(p => p.file.name.length).file.name);
-```
-
-```
-function timeFromInDays(p) { 
-  return Math.abs(luxon.Interval.fromDateTimes( 
-    p.file.ctime, 
-    luxon.DateTime.fromISO("2021-08-15") 
-  ).length("days"));
-} 
-
-dv.list(dv.pages('"Test"').sort(timeFromInDays, 'asc').file.cday);
-```
-
+> ……喏。<br>`dv.list(dv.pages('"Test"').sort(p => p.file.mtime).file.mtime);`<br>`dv.list(dv.pages('"Test"').sort(p => p.file.name.length).file.name;`
+> `function timeFromInDays(p) { return Math.abs(luxon.Interval.fromDateTimes( p.file.ctime,luxon.DateTime.fromISO("2021-08-15")).length("days"));}`<br>`dv.list(dv.pages('"Test"').sort(timeFromInDays, 'asc').file.cday);`
 < 你这个最后一个也太坑了吧，谁会有这么奇葩的需求啊？  
 > 你不是也从来没有在一个笼子里养过鸡和兔子。  
 < 那也……确实。  

@@ -4,23 +4,45 @@
     "type": "split",
     "children": [
       {
-        "id": "63cd523cfa64bf15",
+        "id": "c081bdfa7d639de4",
         "type": "tabs",
         "children": [
           {
-            "id": "ebd8d2d20e22f3f9",
+            "id": "d2cb209a62c6333d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md",
+                "file": "77-Example/分栏效果示例.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "b3e138e5d21985d3",
+            "type": "leaf",
+            "state": {
+              "type": "empty",
+              "state": {}
+            }
+          },
+          {
+            "id": "7d1ecf9b7169fefd",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20221204231631.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -90,7 +112,7 @@
         }
       }
     ],
-    "currentTab": 5
+    "currentTab": 4
   },
   "right": {
     "id": "f49acf5a1a1391a2",
@@ -110,7 +132,7 @@
         "state": {
           "type": "backlink",
           "state": {
-            "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md",
+            "file": "20221204231631.md",
             "collapseAll": false,
             "extraContext": false,
             "sortOrder": "alphabetical",
@@ -127,7 +149,7 @@
         "state": {
           "type": "outgoing-link",
           "state": {
-            "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md",
+            "file": "20221204231631.md",
             "linksCollapsed": false,
             "unlinkedCollapsed": true
           }
@@ -139,18 +161,16 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md"
+            "file": "20221204231631.md"
           }
         }
       }
     ],
     "currentTab": 0
   },
-  "ribbon": {
-    "mostRecentAction": ""
-  },
-  "active": "ebd8d2d20e22f3f9",
+  "active": "7d1ecf9b7169fefd",
   "lastOpenFiles": [
+    "77-Example/分栏效果示例.md",
     "88-Template/home.md",
     "77-Example/timeline callout效果.md",
     "20221023220657.md",

@@ -63,38 +63,6 @@
         }
       }
     },
-    "#tag": {
-      "#tag": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1665765716589
-        }
-      }
-    },
-    "sfsfsf": {
-      "sfsfsf": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1665998823431
-        }
-      }
-    },
-    "center": {
-      "center": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1666015047917
-        }
-      }
-    },
-    "盒子": {
-      "盒子": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1666021043268
-        }
-      }
-    },
     "想看": {
       "想看": {
         "frontMatter": {
@@ -178,8 +146,8 @@
     "collapse": {
       "collapse": {
         "currentVault": {
-          "count": 1,
-          "lastUpdated": 1668088247695
+          "count": 2,
+          "lastUpdated": 1668834584861
         }
       }
     },

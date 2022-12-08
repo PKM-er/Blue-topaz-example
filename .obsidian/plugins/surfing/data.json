@@ -1,0 +1,19 @@
+{
+  "defaultSearchEngine": "bing",
+  "customSearchEngine": [
+    {
+      "name": "豆瓣读书",
+      "url": "https://search.douban.com/book/subject_search?search_text="
+    }
+  ],
+  "alwaysShowCustomSearch": true,
+  "showOtherSearchEngines": true,
+  "showSearchBarInPage": true,
+  "markdownPath": "/",
+  "customHighlightFormat": true,
+  "highlightFormat": "[{CONTENT}]({URL})",
+  "highlightInSameTab": true,
+  "openInSameTab": false,
+  "openInObsidianWeb": true,
+  "useCustomIcons": false
+}

@@ -46,7 +46,7 @@ grid-row: 2;
 margin: 0;
 }
 .progress-clock__time-colon {
-line-height: 1.275;
+line-height: calc(var(--font-text-size)*1.5);
 }
 
 .is-mobile .progress-clock__time-colon {

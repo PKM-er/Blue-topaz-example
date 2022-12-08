@@ -85,6 +85,6592 @@ var require_lib = __commonJS({
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     require("obsidian");
+    var commonjsGlobal = typeof globalThis !== "undefined" ? globalThis : typeof window !== "undefined" ? window : typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : {};
+    var luxon = {};
+    Object.defineProperty(luxon, "__esModule", { value: true });
+    function _defineProperties2(target, props) {
+      for (var i2 = 0; i2 < props.length; i2++) {
+        var descriptor = props[i2];
+        descriptor.enumerable = descriptor.enumerable || false;
+        descriptor.configurable = true;
+        if ("value" in descriptor)
+          descriptor.writable = true;
+        Object.defineProperty(target, descriptor.key, descriptor);
+      }
+    }
+    function _createClass2(Constructor, protoProps, staticProps) {
+      if (protoProps)
+        _defineProperties2(Constructor.prototype, protoProps);
+      if (staticProps)
+        _defineProperties2(Constructor, staticProps);
+      return Constructor;
+    }
+    function _extends2() {
+      _extends2 = Object.assign || function(target) {
+        for (var i2 = 1; i2 < arguments.length; i2++) {
+          var source = arguments[i2];
+          for (var key in source) {
+            if (Object.prototype.hasOwnProperty.call(source, key)) {
+              target[key] = source[key];
+            }
+          }
+        }
+        return target;
+      };
+      return _extends2.apply(this, arguments);
+    }
+    function _inheritsLoose(subClass, superClass) {
+      subClass.prototype = Object.create(superClass.prototype);
+      subClass.prototype.constructor = subClass;
+      _setPrototypeOf2(subClass, superClass);
+    }
+    function _getPrototypeOf2(o2) {
+      _getPrototypeOf2 = Object.setPrototypeOf ? Object.getPrototypeOf : function _getPrototypeOf3(o3) {
+        return o3.__proto__ || Object.getPrototypeOf(o3);
+      };
+      return _getPrototypeOf2(o2);
+    }
+    function _setPrototypeOf2(o2, p2) {
+      _setPrototypeOf2 = Object.setPrototypeOf || function _setPrototypeOf3(o3, p3) {
+        o3.__proto__ = p3;
+        return o3;
+      };
+      return _setPrototypeOf2(o2, p2);
+    }
+    function _isNativeReflectConstruct2() {
+      if (typeof Reflect === "undefined" || !Reflect.construct)
+        return false;
+      if (Reflect.construct.sham)
+        return false;
+      if (typeof Proxy === "function")
+        return true;
+      try {
+        Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function() {
+        }));
+        return true;
+      } catch (e) {
+        return false;
+      }
+    }
+    function _construct(Parent, args, Class) {
+      if (_isNativeReflectConstruct2()) {
+        _construct = Reflect.construct;
+      } else {
+        _construct = function _construct2(Parent2, args2, Class2) {
+          var a2 = [null];
+          a2.push.apply(a2, args2);
+          var Constructor = Function.bind.apply(Parent2, a2);
+          var instance104 = new Constructor();
+          if (Class2)
+            _setPrototypeOf2(instance104, Class2.prototype);
+          return instance104;
+        };
+      }
+      return _construct.apply(null, arguments);
+    }
+    function _isNativeFunction(fn3) {
+      return Function.toString.call(fn3).indexOf("[native code]") !== -1;
+    }
+    function _wrapNativeSuper(Class) {
+      var _cache = typeof Map === "function" ? new Map() : void 0;
+      _wrapNativeSuper = function _wrapNativeSuper2(Class2) {
+        if (Class2 === null || !_isNativeFunction(Class2))
+          return Class2;
+        if (typeof Class2 !== "function") {
+          throw new TypeError("Super expression must either be null or a function");
+        }
+        if (typeof _cache !== "undefined") {
+          if (_cache.has(Class2))
+            return _cache.get(Class2);
+          _cache.set(Class2, Wrapper);
+        }
+        function Wrapper() {
+          return _construct(Class2, arguments, _getPrototypeOf2(this).constructor);
+        }
+        Wrapper.prototype = Object.create(Class2.prototype, {
+          constructor: {
+            value: Wrapper,
+            enumerable: false,
+            writable: true,
+            configurable: true
+          }
+        });
+        return _setPrototypeOf2(Wrapper, Class2);
+      };
+      return _wrapNativeSuper(Class);
+    }
+    function _objectWithoutPropertiesLoose3(source, excluded) {
+      if (source == null)
+        return {};
+      var target = {};
+      var sourceKeys = Object.keys(source);
+      var key, i2;
+      for (i2 = 0; i2 < sourceKeys.length; i2++) {
+        key = sourceKeys[i2];
+        if (excluded.indexOf(key) >= 0)
+          continue;
+        target[key] = source[key];
+      }
+      return target;
+    }
+    function _unsupportedIterableToArray3(o2, minLen) {
+      if (!o2)
+        return;
+      if (typeof o2 === "string")
+        return _arrayLikeToArray3(o2, minLen);
+      var n3 = Object.prototype.toString.call(o2).slice(8, -1);
+      if (n3 === "Object" && o2.constructor)
+        n3 = o2.constructor.name;
+      if (n3 === "Map" || n3 === "Set")
+        return Array.from(o2);
+      if (n3 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n3))
+        return _arrayLikeToArray3(o2, minLen);
+    }
+    function _arrayLikeToArray3(arr, len) {
+      if (len == null || len > arr.length)
+        len = arr.length;
+      for (var i2 = 0, arr2 = new Array(len); i2 < len; i2++)
+        arr2[i2] = arr[i2];
+      return arr2;
+    }
+    function _createForOfIteratorHelperLoose(o2, allowArrayLike) {
+      var it = typeof Symbol !== "undefined" && o2[Symbol.iterator] || o2["@@iterator"];
+      if (it)
+        return (it = it.call(o2)).next.bind(it);
+      if (Array.isArray(o2) || (it = _unsupportedIterableToArray3(o2)) || allowArrayLike && o2 && typeof o2.length === "number") {
+        if (it)
+          o2 = it;
+        var i2 = 0;
+        return function() {
+          if (i2 >= o2.length)
+            return {
+              done: true
+            };
+          return {
+            done: false,
+            value: o2[i2++]
+          };
+        };
+      }
+      throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+    }
+    var LuxonError = /* @__PURE__ */ function(_Error) {
+      _inheritsLoose(LuxonError2, _Error);
+      function LuxonError2() {
+        return _Error.apply(this, arguments) || this;
+      }
+      return LuxonError2;
+    }(/* @__PURE__ */ _wrapNativeSuper(Error));
+    var InvalidDateTimeError = /* @__PURE__ */ function(_LuxonError) {
+      _inheritsLoose(InvalidDateTimeError2, _LuxonError);
+      function InvalidDateTimeError2(reason) {
+        return _LuxonError.call(this, "Invalid DateTime: " + reason.toMessage()) || this;
+      }
+      return InvalidDateTimeError2;
+    }(LuxonError);
+    var InvalidIntervalError = /* @__PURE__ */ function(_LuxonError2) {
+      _inheritsLoose(InvalidIntervalError2, _LuxonError2);
+      function InvalidIntervalError2(reason) {
+        return _LuxonError2.call(this, "Invalid Interval: " + reason.toMessage()) || this;
+      }
+      return InvalidIntervalError2;
+    }(LuxonError);
+    var InvalidDurationError = /* @__PURE__ */ function(_LuxonError3) {
+      _inheritsLoose(InvalidDurationError2, _LuxonError3);
+      function InvalidDurationError2(reason) {
+        return _LuxonError3.call(this, "Invalid Duration: " + reason.toMessage()) || this;
+      }
+      return InvalidDurationError2;
+    }(LuxonError);
+    var ConflictingSpecificationError = /* @__PURE__ */ function(_LuxonError4) {
+      _inheritsLoose(ConflictingSpecificationError2, _LuxonError4);
+      function ConflictingSpecificationError2() {
+        return _LuxonError4.apply(this, arguments) || this;
+      }
+      return ConflictingSpecificationError2;
+    }(LuxonError);
+    var InvalidUnitError = /* @__PURE__ */ function(_LuxonError5) {
+      _inheritsLoose(InvalidUnitError2, _LuxonError5);
+      function InvalidUnitError2(unit) {
+        return _LuxonError5.call(this, "Invalid unit " + unit) || this;
+      }
+      return InvalidUnitError2;
+    }(LuxonError);
+    var InvalidArgumentError = /* @__PURE__ */ function(_LuxonError6) {
+      _inheritsLoose(InvalidArgumentError2, _LuxonError6);
+      function InvalidArgumentError2() {
+        return _LuxonError6.apply(this, arguments) || this;
+      }
+      return InvalidArgumentError2;
+    }(LuxonError);
+    var ZoneIsAbstractError = /* @__PURE__ */ function(_LuxonError7) {
+      _inheritsLoose(ZoneIsAbstractError2, _LuxonError7);
+      function ZoneIsAbstractError2() {
+        return _LuxonError7.call(this, "Zone is an abstract class") || this;
+      }
+      return ZoneIsAbstractError2;
+    }(LuxonError);
+    var n2 = "numeric";
+    var s2 = "short";
+    var l2 = "long";
+    var DATE_SHORT = {
+      year: n2,
+      month: n2,
+      day: n2
+    };
+    var DATE_MED = {
+      year: n2,
+      month: s2,
+      day: n2
+    };
+    var DATE_MED_WITH_WEEKDAY = {
+      year: n2,
+      month: s2,
+      day: n2,
+      weekday: s2
+    };
+    var DATE_FULL = {
+      year: n2,
+      month: l2,
+      day: n2
+    };
+    var DATE_HUGE = {
+      year: n2,
+      month: l2,
+      day: n2,
+      weekday: l2
+    };
+    var TIME_SIMPLE = {
+      hour: n2,
+      minute: n2
+    };
+    var TIME_WITH_SECONDS = {
+      hour: n2,
+      minute: n2,
+      second: n2
+    };
+    var TIME_WITH_SHORT_OFFSET = {
+      hour: n2,
+      minute: n2,
+      second: n2,
+      timeZoneName: s2
+    };
+    var TIME_WITH_LONG_OFFSET = {
+      hour: n2,
+      minute: n2,
+      second: n2,
+      timeZoneName: l2
+    };
+    var TIME_24_SIMPLE = {
+      hour: n2,
+      minute: n2,
+      hourCycle: "h23"
+    };
+    var TIME_24_WITH_SECONDS = {
+      hour: n2,
+      minute: n2,
+      second: n2,
+      hourCycle: "h23"
+    };
+    var TIME_24_WITH_SHORT_OFFSET = {
+      hour: n2,
+      minute: n2,
+      second: n2,
+      hourCycle: "h23",
+      timeZoneName: s2
+    };
+    var TIME_24_WITH_LONG_OFFSET = {
+      hour: n2,
+      minute: n2,
+      second: n2,
+      hourCycle: "h23",
+      timeZoneName: l2
+    };
+    var DATETIME_SHORT = {
+      year: n2,
+      month: n2,
+      day: n2,
+      hour: n2,
+      minute: n2
+    };
+    var DATETIME_SHORT_WITH_SECONDS = {
+      year: n2,
+      month: n2,
+      day: n2,
+      hour: n2,
+      minute: n2,
+      second: n2
+    };
+    var DATETIME_MED = {
+      year: n2,
+      month: s2,
+      day: n2,
+      hour: n2,
+      minute: n2
+    };
+    var DATETIME_MED_WITH_SECONDS = {
+      year: n2,
+      month: s2,
+      day: n2,
+      hour: n2,
+      minute: n2,
+      second: n2
+    };
+    var DATETIME_MED_WITH_WEEKDAY = {
+      year: n2,
+      month: s2,
+      day: n2,
+      weekday: s2,
+      hour: n2,
+      minute: n2
+    };
+    var DATETIME_FULL = {
+      year: n2,
+      month: l2,
+      day: n2,
+      hour: n2,
+      minute: n2,
+      timeZoneName: s2
+    };
+    var DATETIME_FULL_WITH_SECONDS = {
+      year: n2,
+      month: l2,
+      day: n2,
+      hour: n2,
+      minute: n2,
+      second: n2,
+      timeZoneName: s2
+    };
+    var DATETIME_HUGE = {
+      year: n2,
+      month: l2,
+      day: n2,
+      weekday: l2,
+      hour: n2,
+      minute: n2,
+      timeZoneName: l2
+    };
+    var DATETIME_HUGE_WITH_SECONDS = {
+      year: n2,
+      month: l2,
+      day: n2,
+      weekday: l2,
+      hour: n2,
+      minute: n2,
+      second: n2,
+      timeZoneName: l2
+    };
+    function isUndefined(o2) {
+      return typeof o2 === "undefined";
+    }
+    function isNumber2(o2) {
+      return typeof o2 === "number";
+    }
+    function isInteger(o2) {
+      return typeof o2 === "number" && o2 % 1 === 0;
+    }
+    function isString2(o2) {
+      return typeof o2 === "string";
+    }
+    function isDate3(o2) {
+      return Object.prototype.toString.call(o2) === "[object Date]";
+    }
+    function hasRelative() {
+      try {
+        return typeof Intl !== "undefined" && !!Intl.RelativeTimeFormat;
+      } catch (e) {
+        return false;
+      }
+    }
+    function maybeArray(thing) {
+      return Array.isArray(thing) ? thing : [thing];
+    }
+    function bestBy(arr, by, compare) {
+      if (arr.length === 0) {
+        return void 0;
+      }
+      return arr.reduce(function(best, next2) {
+        var pair = [by(next2), next2];
+        if (!best) {
+          return pair;
+        } else if (compare(best[0], pair[0]) === best[0]) {
+          return best;
+        } else {
+          return pair;
+        }
+      }, null)[1];
+    }
+    function pick(obj, keys) {
+      return keys.reduce(function(a2, k2) {
+        a2[k2] = obj[k2];
+        return a2;
+      }, {});
+    }
+    function hasOwnProperty(obj, prop) {
+      return Object.prototype.hasOwnProperty.call(obj, prop);
+    }
+    function integerBetween(thing, bottom2, top2) {
+      return isInteger(thing) && thing >= bottom2 && thing <= top2;
+    }
+    function floorMod(x2, n3) {
+      return x2 - n3 * Math.floor(x2 / n3);
+    }
+    function padStart(input, n3) {
+      if (n3 === void 0) {
+        n3 = 2;
+      }
+      var isNeg = input < 0;
+      var padded;
+      if (isNeg) {
+        padded = "-" + ("" + -input).padStart(n3, "0");
+      } else {
+        padded = ("" + input).padStart(n3, "0");
+      }
+      return padded;
+    }
+    function parseInteger(string2) {
+      if (isUndefined(string2) || string2 === null || string2 === "") {
+        return void 0;
+      } else {
+        return parseInt(string2, 10);
+      }
+    }
+    function parseFloating(string2) {
+      if (isUndefined(string2) || string2 === null || string2 === "") {
+        return void 0;
+      } else {
+        return parseFloat(string2);
+      }
+    }
+    function parseMillis(fraction) {
+      if (isUndefined(fraction) || fraction === null || fraction === "") {
+        return void 0;
+      } else {
+        var f2 = parseFloat("0." + fraction) * 1e3;
+        return Math.floor(f2);
+      }
+    }
+    function roundTo(number, digits, towardZero) {
+      if (towardZero === void 0) {
+        towardZero = false;
+      }
+      var factor = Math.pow(10, digits), rounder = towardZero ? Math.trunc : Math.round;
+      return rounder(number * factor) / factor;
+    }
+    function isLeapYear(year) {
+      return year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0);
+    }
+    function daysInYear(year) {
+      return isLeapYear(year) ? 366 : 365;
+    }
+    function daysInMonth(year, month) {
+      var modMonth = floorMod(month - 1, 12) + 1, modYear = year + (month - modMonth) / 12;
+      if (modMonth === 2) {
+        return isLeapYear(modYear) ? 29 : 28;
+      } else {
+        return [31, null, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31][modMonth - 1];
+      }
+    }
+    function objToLocalTS(obj) {
+      var d2 = Date.UTC(obj.year, obj.month - 1, obj.day, obj.hour, obj.minute, obj.second, obj.millisecond);
+      if (obj.year < 100 && obj.year >= 0) {
+        d2 = new Date(d2);
+        d2.setUTCFullYear(d2.getUTCFullYear() - 1900);
+      }
+      return +d2;
+    }
+    function weeksInWeekYear(weekYear) {
+      var p1 = (weekYear + Math.floor(weekYear / 4) - Math.floor(weekYear / 100) + Math.floor(weekYear / 400)) % 7, last = weekYear - 1, p2 = (last + Math.floor(last / 4) - Math.floor(last / 100) + Math.floor(last / 400)) % 7;
+      return p1 === 4 || p2 === 3 ? 53 : 52;
+    }
+    function untruncateYear(year) {
+      if (year > 99) {
+        return year;
+      } else
+        return year > 60 ? 1900 + year : 2e3 + year;
+    }
+    function parseZoneInfo(ts, offsetFormat, locale, timeZone) {
+      if (timeZone === void 0) {
+        timeZone = null;
+      }
+      var date = new Date(ts), intlOpts = {
+        hourCycle: "h23",
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
+        hour: "2-digit",
+        minute: "2-digit"
+      };
+      if (timeZone) {
+        intlOpts.timeZone = timeZone;
+      }
+      var modified = _extends2({
+        timeZoneName: offsetFormat
+      }, intlOpts);
+      var parsed = new Intl.DateTimeFormat(locale, modified).formatToParts(date).find(function(m) {
+        return m.type.toLowerCase() === "timezonename";
+      });
+      return parsed ? parsed.value : null;
+    }
+    function signedOffset(offHourStr, offMinuteStr) {
+      var offHour = parseInt(offHourStr, 10);
+      if (Number.isNaN(offHour)) {
+        offHour = 0;
+      }
+      var offMin = parseInt(offMinuteStr, 10) || 0, offMinSigned = offHour < 0 || Object.is(offHour, -0) ? -offMin : offMin;
+      return offHour * 60 + offMinSigned;
+    }
+    function asNumber(value) {
+      var numericValue = Number(value);
+      if (typeof value === "boolean" || value === "" || Number.isNaN(numericValue))
+        throw new InvalidArgumentError("Invalid unit value " + value);
+      return numericValue;
+    }
+    function normalizeObject(obj, normalizer) {
+      var normalized = {};
+      for (var u2 in obj) {
+        if (hasOwnProperty(obj, u2)) {
+          var v2 = obj[u2];
+          if (v2 === void 0 || v2 === null)
+            continue;
+          normalized[normalizer(u2)] = asNumber(v2);
+        }
+      }
+      return normalized;
+    }
+    function formatOffset(offset3, format2) {
+      var hours = Math.trunc(Math.abs(offset3 / 60)), minutes = Math.trunc(Math.abs(offset3 % 60)), sign = offset3 >= 0 ? "+" : "-";
+      switch (format2) {
+        case "short":
+          return "" + sign + padStart(hours, 2) + ":" + padStart(minutes, 2);
+        case "narrow":
+          return "" + sign + hours + (minutes > 0 ? ":" + minutes : "");
+        case "techie":
+          return "" + sign + padStart(hours, 2) + padStart(minutes, 2);
+        default:
+          throw new RangeError("Value format " + format2 + " is out of range for property format");
+      }
+    }
+    function timeObject(obj) {
+      return pick(obj, ["hour", "minute", "second", "millisecond"]);
+    }
+    var ianaRegex = /[A-Za-z_+-]{1,256}(?::?\/[A-Za-z0-9_+-]{1,256}(?:\/[A-Za-z0-9_+-]{1,256})?)?/;
+    var monthsLong = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var monthsShort = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    var monthsNarrow = ["J", "F", "M", "A", "M", "J", "J", "A", "S", "O", "N", "D"];
+    function months(length) {
+      switch (length) {
+        case "narrow":
+          return [].concat(monthsNarrow);
+        case "short":
+          return [].concat(monthsShort);
+        case "long":
+          return [].concat(monthsLong);
+        case "numeric":
+          return ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12"];
+        case "2-digit":
+          return ["01", "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12"];
+        default:
+          return null;
+      }
+    }
+    var weekdaysLong = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+    var weekdaysShort = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+    var weekdaysNarrow = ["M", "T", "W", "T", "F", "S", "S"];
+    function weekdays(length) {
+      switch (length) {
+        case "narrow":
+          return [].concat(weekdaysNarrow);
+        case "short":
+          return [].concat(weekdaysShort);
+        case "long":
+          return [].concat(weekdaysLong);
+        case "numeric":
+          return ["1", "2", "3", "4", "5", "6", "7"];
+        default:
+          return null;
+      }
+    }
+    var meridiems = ["AM", "PM"];
+    var erasLong = ["Before Christ", "Anno Domini"];
+    var erasShort = ["BC", "AD"];
+    var erasNarrow = ["B", "A"];
+    function eras(length) {
+      switch (length) {
+        case "narrow":
+          return [].concat(erasNarrow);
+        case "short":
+          return [].concat(erasShort);
+        case "long":
+          return [].concat(erasLong);
+        default:
+          return null;
+      }
+    }
+    function meridiemForDateTime(dt) {
+      return meridiems[dt.hour < 12 ? 0 : 1];
+    }
+    function weekdayForDateTime(dt, length) {
+      return weekdays(length)[dt.weekday - 1];
+    }
+    function monthForDateTime(dt, length) {
+      return months(length)[dt.month - 1];
+    }
+    function eraForDateTime(dt, length) {
+      return eras(length)[dt.year < 0 ? 0 : 1];
+    }
+    function formatRelativeTime(unit, count, numeric, narrow) {
+      if (numeric === void 0) {
+        numeric = "always";
+      }
+      if (narrow === void 0) {
+        narrow = false;
+      }
+      var units = {
+        years: ["year", "yr."],
+        quarters: ["quarter", "qtr."],
+        months: ["month", "mo."],
+        weeks: ["week", "wk."],
+        days: ["day", "day", "days"],
+        hours: ["hour", "hr."],
+        minutes: ["minute", "min."],
+        seconds: ["second", "sec."]
+      };
+      var lastable = ["hours", "minutes", "seconds"].indexOf(unit) === -1;
+      if (numeric === "auto" && lastable) {
+        var isDay = unit === "days";
+        switch (count) {
+          case 1:
+            return isDay ? "tomorrow" : "next " + units[unit][0];
+          case -1:
+            return isDay ? "yesterday" : "last " + units[unit][0];
+          case 0:
+            return isDay ? "today" : "this " + units[unit][0];
+        }
+      }
+      var isInPast = Object.is(count, -0) || count < 0, fmtValue = Math.abs(count), singular = fmtValue === 1, lilUnits = units[unit], fmtUnit = narrow ? singular ? lilUnits[1] : lilUnits[2] || lilUnits[1] : singular ? units[unit][0] : unit;
+      return isInPast ? fmtValue + " " + fmtUnit + " ago" : "in " + fmtValue + " " + fmtUnit;
+    }
+    function stringifyTokens(splits, tokenToString) {
+      var s3 = "";
+      for (var _iterator = _createForOfIteratorHelperLoose(splits), _step; !(_step = _iterator()).done; ) {
+        var token = _step.value;
+        if (token.literal) {
+          s3 += token.val;
+        } else {
+          s3 += tokenToString(token.val);
+        }
+      }
+      return s3;
+    }
+    var _macroTokenToFormatOpts = {
+      D: DATE_SHORT,
+      DD: DATE_MED,
+      DDD: DATE_FULL,
+      DDDD: DATE_HUGE,
+      t: TIME_SIMPLE,
+      tt: TIME_WITH_SECONDS,
+      ttt: TIME_WITH_SHORT_OFFSET,
+      tttt: TIME_WITH_LONG_OFFSET,
+      T: TIME_24_SIMPLE,
+      TT: TIME_24_WITH_SECONDS,
+      TTT: TIME_24_WITH_SHORT_OFFSET,
+      TTTT: TIME_24_WITH_LONG_OFFSET,
+      f: DATETIME_SHORT,
+      ff: DATETIME_MED,
+      fff: DATETIME_FULL,
+      ffff: DATETIME_HUGE,
+      F: DATETIME_SHORT_WITH_SECONDS,
+      FF: DATETIME_MED_WITH_SECONDS,
+      FFF: DATETIME_FULL_WITH_SECONDS,
+      FFFF: DATETIME_HUGE_WITH_SECONDS
+    };
+    var Formatter2 = /* @__PURE__ */ function() {
+      Formatter3.create = function create(locale, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        return new Formatter3(locale, opts);
+      };
+      Formatter3.parseFormat = function parseFormat(fmt) {
+        var current = null, currentFull = "", bracketed = false;
+        var splits = [];
+        for (var i2 = 0; i2 < fmt.length; i2++) {
+          var c2 = fmt.charAt(i2);
+          if (c2 === "'") {
+            if (currentFull.length > 0) {
+              splits.push({
+                literal: bracketed,
+                val: currentFull
+              });
+            }
+            current = null;
+            currentFull = "";
+            bracketed = !bracketed;
+          } else if (bracketed) {
+            currentFull += c2;
+          } else if (c2 === current) {
+            currentFull += c2;
+          } else {
+            if (currentFull.length > 0) {
+              splits.push({
+                literal: false,
+                val: currentFull
+              });
+            }
+            currentFull = c2;
+            current = c2;
+          }
+        }
+        if (currentFull.length > 0) {
+          splits.push({
+            literal: bracketed,
+            val: currentFull
+          });
+        }
+        return splits;
+      };
+      Formatter3.macroTokenToFormatOpts = function macroTokenToFormatOpts(token) {
+        return _macroTokenToFormatOpts[token];
+      };
+      function Formatter3(locale, formatOpts) {
+        this.opts = formatOpts;
+        this.loc = locale;
+        this.systemLoc = null;
+      }
+      var _proto = Formatter3.prototype;
+      _proto.formatWithSystemDefault = function formatWithSystemDefault(dt, opts) {
+        if (this.systemLoc === null) {
+          this.systemLoc = this.loc.redefaultToSystem();
+        }
+        var df = this.systemLoc.dtFormatter(dt, _extends2({}, this.opts, opts));
+        return df.format();
+      };
+      _proto.formatDateTime = function formatDateTime(dt, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var df = this.loc.dtFormatter(dt, _extends2({}, this.opts, opts));
+        return df.format();
+      };
+      _proto.formatDateTimeParts = function formatDateTimeParts(dt, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var df = this.loc.dtFormatter(dt, _extends2({}, this.opts, opts));
+        return df.formatToParts();
+      };
+      _proto.resolvedOptions = function resolvedOptions(dt, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var df = this.loc.dtFormatter(dt, _extends2({}, this.opts, opts));
+        return df.resolvedOptions();
+      };
+      _proto.num = function num(n3, p2) {
+        if (p2 === void 0) {
+          p2 = 0;
+        }
+        if (this.opts.forceSimple) {
+          return padStart(n3, p2);
+        }
+        var opts = _extends2({}, this.opts);
+        if (p2 > 0) {
+          opts.padTo = p2;
+        }
+        return this.loc.numberFormatter(opts).format(n3);
+      };
+      _proto.formatDateTimeFromString = function formatDateTimeFromString(dt, fmt) {
+        var _this = this;
+        var knownEnglish = this.loc.listingMode() === "en", useDateTimeFormatter = this.loc.outputCalendar && this.loc.outputCalendar !== "gregory", string2 = function string3(opts, extract) {
+          return _this.loc.extract(dt, opts, extract);
+        }, formatOffset2 = function formatOffset3(opts) {
+          if (dt.isOffsetFixed && dt.offset === 0 && opts.allowZ) {
+            return "Z";
+          }
+          return dt.isValid ? dt.zone.formatOffset(dt.ts, opts.format) : "";
+        }, meridiem = function meridiem2() {
+          return knownEnglish ? meridiemForDateTime(dt) : string2({
+            hour: "numeric",
+            hourCycle: "h12"
+          }, "dayperiod");
+        }, month = function month2(length, standalone) {
+          return knownEnglish ? monthForDateTime(dt, length) : string2(standalone ? {
+            month: length
+          } : {
+            month: length,
+            day: "numeric"
+          }, "month");
+        }, weekday = function weekday2(length, standalone) {
+          return knownEnglish ? weekdayForDateTime(dt, length) : string2(standalone ? {
+            weekday: length
+          } : {
+            weekday: length,
+            month: "long",
+            day: "numeric"
+          }, "weekday");
+        }, maybeMacro = function maybeMacro2(token) {
+          var formatOpts = Formatter3.macroTokenToFormatOpts(token);
+          if (formatOpts) {
+            return _this.formatWithSystemDefault(dt, formatOpts);
+          } else {
+            return token;
+          }
+        }, era = function era2(length) {
+          return knownEnglish ? eraForDateTime(dt, length) : string2({
+            era: length
+          }, "era");
+        }, tokenToString = function tokenToString2(token) {
+          switch (token) {
+            case "S":
+              return _this.num(dt.millisecond);
+            case "u":
+            case "SSS":
+              return _this.num(dt.millisecond, 3);
+            case "s":
+              return _this.num(dt.second);
+            case "ss":
+              return _this.num(dt.second, 2);
+            case "uu":
+              return _this.num(Math.floor(dt.millisecond / 10), 2);
+            case "uuu":
+              return _this.num(Math.floor(dt.millisecond / 100));
+            case "m":
+              return _this.num(dt.minute);
+            case "mm":
+              return _this.num(dt.minute, 2);
+            case "h":
+              return _this.num(dt.hour % 12 === 0 ? 12 : dt.hour % 12);
+            case "hh":
+              return _this.num(dt.hour % 12 === 0 ? 12 : dt.hour % 12, 2);
+            case "H":
+              return _this.num(dt.hour);
+            case "HH":
+              return _this.num(dt.hour, 2);
+            case "Z":
+              return formatOffset2({
+                format: "narrow",
+                allowZ: _this.opts.allowZ
+              });
+            case "ZZ":
+              return formatOffset2({
+                format: "short",
+                allowZ: _this.opts.allowZ
+              });
+            case "ZZZ":
+              return formatOffset2({
+                format: "techie",
+                allowZ: _this.opts.allowZ
+              });
+            case "ZZZZ":
+              return dt.zone.offsetName(dt.ts, {
+                format: "short",
+                locale: _this.loc.locale
+              });
+            case "ZZZZZ":
+              return dt.zone.offsetName(dt.ts, {
+                format: "long",
+                locale: _this.loc.locale
+              });
+            case "z":
+              return dt.zoneName;
+            case "a":
+              return meridiem();
+            case "d":
+              return useDateTimeFormatter ? string2({
+                day: "numeric"
+              }, "day") : _this.num(dt.day);
+            case "dd":
+              return useDateTimeFormatter ? string2({
+                day: "2-digit"
+              }, "day") : _this.num(dt.day, 2);
+            case "c":
+              return _this.num(dt.weekday);
+            case "ccc":
+              return weekday("short", true);
+            case "cccc":
+              return weekday("long", true);
+            case "ccccc":
+              return weekday("narrow", true);
+            case "E":
+              return _this.num(dt.weekday);
+            case "EEE":
+              return weekday("short", false);
+            case "EEEE":
+              return weekday("long", false);
+            case "EEEEE":
+              return weekday("narrow", false);
+            case "L":
+              return useDateTimeFormatter ? string2({
+                month: "numeric",
+                day: "numeric"
+              }, "month") : _this.num(dt.month);
+            case "LL":
+              return useDateTimeFormatter ? string2({
+                month: "2-digit",
+                day: "numeric"
+              }, "month") : _this.num(dt.month, 2);
+            case "LLL":
+              return month("short", true);
+            case "LLLL":
+              return month("long", true);
+            case "LLLLL":
+              return month("narrow", true);
+            case "M":
+              return useDateTimeFormatter ? string2({
+                month: "numeric"
+              }, "month") : _this.num(dt.month);
+            case "MM":
+              return useDateTimeFormatter ? string2({
+                month: "2-digit"
+              }, "month") : _this.num(dt.month, 2);
+            case "MMM":
+              return month("short", false);
+            case "MMMM":
+              return month("long", false);
+            case "MMMMM":
+              return month("narrow", false);
+            case "y":
+              return useDateTimeFormatter ? string2({
+                year: "numeric"
+              }, "year") : _this.num(dt.year);
+            case "yy":
+              return useDateTimeFormatter ? string2({
+                year: "2-digit"
+              }, "year") : _this.num(dt.year.toString().slice(-2), 2);
+            case "yyyy":
+              return useDateTimeFormatter ? string2({
+                year: "numeric"
+              }, "year") : _this.num(dt.year, 4);
+            case "yyyyyy":
+              return useDateTimeFormatter ? string2({
+                year: "numeric"
+              }, "year") : _this.num(dt.year, 6);
+            case "G":
+              return era("short");
+            case "GG":
+              return era("long");
+            case "GGGGG":
+              return era("narrow");
+            case "kk":
+              return _this.num(dt.weekYear.toString().slice(-2), 2);
+            case "kkkk":
+              return _this.num(dt.weekYear, 4);
+            case "W":
+              return _this.num(dt.weekNumber);
+            case "WW":
+              return _this.num(dt.weekNumber, 2);
+            case "o":
+              return _this.num(dt.ordinal);
+            case "ooo":
+              return _this.num(dt.ordinal, 3);
+            case "q":
+              return _this.num(dt.quarter);
+            case "qq":
+              return _this.num(dt.quarter, 2);
+            case "X":
+              return _this.num(Math.floor(dt.ts / 1e3));
+            case "x":
+              return _this.num(dt.ts);
+            default:
+              return maybeMacro(token);
+          }
+        };
+        return stringifyTokens(Formatter3.parseFormat(fmt), tokenToString);
+      };
+      _proto.formatDurationFromString = function formatDurationFromString(dur, fmt) {
+        var _this2 = this;
+        var tokenToField = function tokenToField2(token) {
+          switch (token[0]) {
+            case "S":
+              return "millisecond";
+            case "s":
+              return "second";
+            case "m":
+              return "minute";
+            case "h":
+              return "hour";
+            case "d":
+              return "day";
+            case "w":
+              return "week";
+            case "M":
+              return "month";
+            case "y":
+              return "year";
+            default:
+              return null;
+          }
+        }, tokenToString = function tokenToString2(lildur) {
+          return function(token) {
+            var mapped = tokenToField(token);
+            if (mapped) {
+              return _this2.num(lildur.get(mapped), token.length);
+            } else {
+              return token;
+            }
+          };
+        }, tokens = Formatter3.parseFormat(fmt), realTokens = tokens.reduce(function(found, _ref) {
+          var literal = _ref.literal, val = _ref.val;
+          return literal ? found : found.concat(val);
+        }, []), collapsed = dur.shiftTo.apply(dur, realTokens.map(tokenToField).filter(function(t3) {
+          return t3;
+        }));
+        return stringifyTokens(tokens, tokenToString(collapsed));
+      };
+      return Formatter3;
+    }();
+    var Invalid = /* @__PURE__ */ function() {
+      function Invalid2(reason, explanation) {
+        this.reason = reason;
+        this.explanation = explanation;
+      }
+      var _proto = Invalid2.prototype;
+      _proto.toMessage = function toMessage() {
+        if (this.explanation) {
+          return this.reason + ": " + this.explanation;
+        } else {
+          return this.reason;
+        }
+      };
+      return Invalid2;
+    }();
+    var Zone = /* @__PURE__ */ function() {
+      function Zone2() {
+      }
+      var _proto = Zone2.prototype;
+      _proto.offsetName = function offsetName(ts, opts) {
+        throw new ZoneIsAbstractError();
+      };
+      _proto.formatOffset = function formatOffset2(ts, format2) {
+        throw new ZoneIsAbstractError();
+      };
+      _proto.offset = function offset3(ts) {
+        throw new ZoneIsAbstractError();
+      };
+      _proto.equals = function equals(otherZone) {
+        throw new ZoneIsAbstractError();
+      };
+      _createClass2(Zone2, [{
+        key: "type",
+        get: function get2() {
+          throw new ZoneIsAbstractError();
+        }
+      }, {
+        key: "name",
+        get: function get2() {
+          throw new ZoneIsAbstractError();
+        }
+      }, {
+        key: "ianaName",
+        get: function get2() {
+          return this.name;
+        }
+      }, {
+        key: "isUniversal",
+        get: function get2() {
+          throw new ZoneIsAbstractError();
+        }
+      }, {
+        key: "isValid",
+        get: function get2() {
+          throw new ZoneIsAbstractError();
+        }
+      }]);
+      return Zone2;
+    }();
+    var singleton$1 = null;
+    var SystemZone = /* @__PURE__ */ function(_Zone) {
+      _inheritsLoose(SystemZone2, _Zone);
+      function SystemZone2() {
+        return _Zone.apply(this, arguments) || this;
+      }
+      var _proto = SystemZone2.prototype;
+      _proto.offsetName = function offsetName(ts, _ref) {
+        var format2 = _ref.format, locale = _ref.locale;
+        return parseZoneInfo(ts, format2, locale);
+      };
+      _proto.formatOffset = function formatOffset$1(ts, format2) {
+        return formatOffset(this.offset(ts), format2);
+      };
+      _proto.offset = function offset3(ts) {
+        return -new Date(ts).getTimezoneOffset();
+      };
+      _proto.equals = function equals(otherZone) {
+        return otherZone.type === "system";
+      };
+      _createClass2(SystemZone2, [{
+        key: "type",
+        get: function get2() {
+          return "system";
+        }
+      }, {
+        key: "name",
+        get: function get2() {
+          return new Intl.DateTimeFormat().resolvedOptions().timeZone;
+        }
+      }, {
+        key: "isUniversal",
+        get: function get2() {
+          return false;
+        }
+      }, {
+        key: "isValid",
+        get: function get2() {
+          return true;
+        }
+      }], [{
+        key: "instance",
+        get: function get2() {
+          if (singleton$1 === null) {
+            singleton$1 = new SystemZone2();
+          }
+          return singleton$1;
+        }
+      }]);
+      return SystemZone2;
+    }(Zone);
+    var dtfCache = {};
+    function makeDTF(zone) {
+      if (!dtfCache[zone]) {
+        dtfCache[zone] = new Intl.DateTimeFormat("en-US", {
+          hour12: false,
+          timeZone: zone,
+          year: "numeric",
+          month: "2-digit",
+          day: "2-digit",
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+          era: "short"
+        });
+      }
+      return dtfCache[zone];
+    }
+    var typeToPos = {
+      year: 0,
+      month: 1,
+      day: 2,
+      era: 3,
+      hour: 4,
+      minute: 5,
+      second: 6
+    };
+    function hackyOffset(dtf, date) {
+      var formatted = dtf.format(date).replace(/\u200E/g, ""), parsed = /(\d+)\/(\d+)\/(\d+) (AD|BC),? (\d+):(\d+):(\d+)/.exec(formatted), fMonth = parsed[1], fDay = parsed[2], fYear = parsed[3], fadOrBc = parsed[4], fHour = parsed[5], fMinute = parsed[6], fSecond = parsed[7];
+      return [fYear, fMonth, fDay, fadOrBc, fHour, fMinute, fSecond];
+    }
+    function partsOffset(dtf, date) {
+      var formatted = dtf.formatToParts(date);
+      var filled = [];
+      for (var i2 = 0; i2 < formatted.length; i2++) {
+        var _formatted$i = formatted[i2], type = _formatted$i.type, value = _formatted$i.value;
+        var pos = typeToPos[type];
+        if (type === "era") {
+          filled[pos] = value;
+        } else if (!isUndefined(pos)) {
+          filled[pos] = parseInt(value, 10);
+        }
+      }
+      return filled;
+    }
+    var ianaZoneCache = {};
+    var IANAZone = /* @__PURE__ */ function(_Zone) {
+      _inheritsLoose(IANAZone2, _Zone);
+      IANAZone2.create = function create(name) {
+        if (!ianaZoneCache[name]) {
+          ianaZoneCache[name] = new IANAZone2(name);
+        }
+        return ianaZoneCache[name];
+      };
+      IANAZone2.resetCache = function resetCache() {
+        ianaZoneCache = {};
+        dtfCache = {};
+      };
+      IANAZone2.isValidSpecifier = function isValidSpecifier(s3) {
+        return this.isValidZone(s3);
+      };
+      IANAZone2.isValidZone = function isValidZone(zone) {
+        if (!zone) {
+          return false;
+        }
+        try {
+          new Intl.DateTimeFormat("en-US", {
+            timeZone: zone
+          }).format();
+          return true;
+        } catch (e) {
+          return false;
+        }
+      };
+      function IANAZone2(name) {
+        var _this;
+        _this = _Zone.call(this) || this;
+        _this.zoneName = name;
+        _this.valid = IANAZone2.isValidZone(name);
+        return _this;
+      }
+      var _proto = IANAZone2.prototype;
+      _proto.offsetName = function offsetName(ts, _ref) {
+        var format2 = _ref.format, locale = _ref.locale;
+        return parseZoneInfo(ts, format2, locale, this.name);
+      };
+      _proto.formatOffset = function formatOffset$1(ts, format2) {
+        return formatOffset(this.offset(ts), format2);
+      };
+      _proto.offset = function offset3(ts) {
+        var date = new Date(ts);
+        if (isNaN(date))
+          return NaN;
+        var dtf = makeDTF(this.name);
+        var _ref2 = dtf.formatToParts ? partsOffset(dtf, date) : hackyOffset(dtf, date), year = _ref2[0], month = _ref2[1], day = _ref2[2], adOrBc = _ref2[3], hour = _ref2[4], minute = _ref2[5], second = _ref2[6];
+        if (adOrBc === "BC") {
+          year = -Math.abs(year) + 1;
+        }
+        var adjustedHour = hour === 24 ? 0 : hour;
+        var asUTC = objToLocalTS({
+          year,
+          month,
+          day,
+          hour: adjustedHour,
+          minute,
+          second,
+          millisecond: 0
+        });
+        var asTS = +date;
+        var over = asTS % 1e3;
+        asTS -= over >= 0 ? over : 1e3 + over;
+        return (asUTC - asTS) / (60 * 1e3);
+      };
+      _proto.equals = function equals(otherZone) {
+        return otherZone.type === "iana" && otherZone.name === this.name;
+      };
+      _createClass2(IANAZone2, [{
+        key: "type",
+        get: function get2() {
+          return "iana";
+        }
+      }, {
+        key: "name",
+        get: function get2() {
+          return this.zoneName;
+        }
+      }, {
+        key: "isUniversal",
+        get: function get2() {
+          return false;
+        }
+      }, {
+        key: "isValid",
+        get: function get2() {
+          return this.valid;
+        }
+      }]);
+      return IANAZone2;
+    }(Zone);
+    var singleton = null;
+    var FixedOffsetZone = /* @__PURE__ */ function(_Zone) {
+      _inheritsLoose(FixedOffsetZone2, _Zone);
+      FixedOffsetZone2.instance = function instance104(offset3) {
+        return offset3 === 0 ? FixedOffsetZone2.utcInstance : new FixedOffsetZone2(offset3);
+      };
+      FixedOffsetZone2.parseSpecifier = function parseSpecifier(s3) {
+        if (s3) {
+          var r2 = s3.match(/^utc(?:([+-]\d{1,2})(?::(\d{2}))?)?$/i);
+          if (r2) {
+            return new FixedOffsetZone2(signedOffset(r2[1], r2[2]));
+          }
+        }
+        return null;
+      };
+      function FixedOffsetZone2(offset3) {
+        var _this;
+        _this = _Zone.call(this) || this;
+        _this.fixed = offset3;
+        return _this;
+      }
+      var _proto = FixedOffsetZone2.prototype;
+      _proto.offsetName = function offsetName() {
+        return this.name;
+      };
+      _proto.formatOffset = function formatOffset$1(ts, format2) {
+        return formatOffset(this.fixed, format2);
+      };
+      _proto.offset = function offset3() {
+        return this.fixed;
+      };
+      _proto.equals = function equals(otherZone) {
+        return otherZone.type === "fixed" && otherZone.fixed === this.fixed;
+      };
+      _createClass2(FixedOffsetZone2, [{
+        key: "type",
+        get: function get2() {
+          return "fixed";
+        }
+      }, {
+        key: "name",
+        get: function get2() {
+          return this.fixed === 0 ? "UTC" : "UTC" + formatOffset(this.fixed, "narrow");
+        }
+      }, {
+        key: "ianaName",
+        get: function get2() {
+          if (this.fixed === 0) {
+            return "Etc/UTC";
+          } else {
+            return "Etc/GMT" + formatOffset(-this.fixed, "narrow");
+          }
+        }
+      }, {
+        key: "isUniversal",
+        get: function get2() {
+          return true;
+        }
+      }, {
+        key: "isValid",
+        get: function get2() {
+          return true;
+        }
+      }], [{
+        key: "utcInstance",
+        get: function get2() {
+          if (singleton === null) {
+            singleton = new FixedOffsetZone2(0);
+          }
+          return singleton;
+        }
+      }]);
+      return FixedOffsetZone2;
+    }(Zone);
+    var InvalidZone = /* @__PURE__ */ function(_Zone) {
+      _inheritsLoose(InvalidZone2, _Zone);
+      function InvalidZone2(zoneName) {
+        var _this;
+        _this = _Zone.call(this) || this;
+        _this.zoneName = zoneName;
+        return _this;
+      }
+      var _proto = InvalidZone2.prototype;
+      _proto.offsetName = function offsetName() {
+        return null;
+      };
+      _proto.formatOffset = function formatOffset2() {
+        return "";
+      };
+      _proto.offset = function offset3() {
+        return NaN;
+      };
+      _proto.equals = function equals() {
+        return false;
+      };
+      _createClass2(InvalidZone2, [{
+        key: "type",
+        get: function get2() {
+          return "invalid";
+        }
+      }, {
+        key: "name",
+        get: function get2() {
+          return this.zoneName;
+        }
+      }, {
+        key: "isUniversal",
+        get: function get2() {
+          return false;
+        }
+      }, {
+        key: "isValid",
+        get: function get2() {
+          return false;
+        }
+      }]);
+      return InvalidZone2;
+    }(Zone);
+    function normalizeZone(input, defaultZone2) {
+      if (isUndefined(input) || input === null) {
+        return defaultZone2;
+      } else if (input instanceof Zone) {
+        return input;
+      } else if (isString2(input)) {
+        var lowered = input.toLowerCase();
+        if (lowered === "local" || lowered === "system")
+          return defaultZone2;
+        else if (lowered === "utc" || lowered === "gmt")
+          return FixedOffsetZone.utcInstance;
+        else
+          return FixedOffsetZone.parseSpecifier(lowered) || IANAZone.create(input);
+      } else if (isNumber2(input)) {
+        return FixedOffsetZone.instance(input);
+      } else if (typeof input === "object" && input.offset && typeof input.offset === "number") {
+        return input;
+      } else {
+        return new InvalidZone(input);
+      }
+    }
+    var now2 = function now3() {
+      return Date.now();
+    };
+    var defaultZone = "system";
+    var defaultLocale = null;
+    var defaultNumberingSystem = null;
+    var defaultOutputCalendar = null;
+    var throwOnInvalid;
+    var Settings = /* @__PURE__ */ function() {
+      function Settings2() {
+      }
+      Settings2.resetCaches = function resetCaches() {
+        Locale.resetCache();
+        IANAZone.resetCache();
+      };
+      _createClass2(Settings2, null, [{
+        key: "now",
+        get: function get2() {
+          return now2;
+        },
+        set: function set2(n3) {
+          now2 = n3;
+        }
+      }, {
+        key: "defaultZone",
+        get: function get2() {
+          return normalizeZone(defaultZone, SystemZone.instance);
+        },
+        set: function set2(zone) {
+          defaultZone = zone;
+        }
+      }, {
+        key: "defaultLocale",
+        get: function get2() {
+          return defaultLocale;
+        },
+        set: function set2(locale) {
+          defaultLocale = locale;
+        }
+      }, {
+        key: "defaultNumberingSystem",
+        get: function get2() {
+          return defaultNumberingSystem;
+        },
+        set: function set2(numberingSystem) {
+          defaultNumberingSystem = numberingSystem;
+        }
+      }, {
+        key: "defaultOutputCalendar",
+        get: function get2() {
+          return defaultOutputCalendar;
+        },
+        set: function set2(outputCalendar) {
+          defaultOutputCalendar = outputCalendar;
+        }
+      }, {
+        key: "throwOnInvalid",
+        get: function get2() {
+          return throwOnInvalid;
+        },
+        set: function set2(t3) {
+          throwOnInvalid = t3;
+        }
+      }]);
+      return Settings2;
+    }();
+    var _excluded3 = ["base"];
+    var _excluded22 = ["padTo", "floor"];
+    var intlLFCache = {};
+    function getCachedLF(locString, opts) {
+      if (opts === void 0) {
+        opts = {};
+      }
+      var key = JSON.stringify([locString, opts]);
+      var dtf = intlLFCache[key];
+      if (!dtf) {
+        dtf = new Intl.ListFormat(locString, opts);
+        intlLFCache[key] = dtf;
+      }
+      return dtf;
+    }
+    var intlDTCache = {};
+    function getCachedDTF(locString, opts) {
+      if (opts === void 0) {
+        opts = {};
+      }
+      var key = JSON.stringify([locString, opts]);
+      var dtf = intlDTCache[key];
+      if (!dtf) {
+        dtf = new Intl.DateTimeFormat(locString, opts);
+        intlDTCache[key] = dtf;
+      }
+      return dtf;
+    }
+    var intlNumCache = {};
+    function getCachedINF(locString, opts) {
+      if (opts === void 0) {
+        opts = {};
+      }
+      var key = JSON.stringify([locString, opts]);
+      var inf = intlNumCache[key];
+      if (!inf) {
+        inf = new Intl.NumberFormat(locString, opts);
+        intlNumCache[key] = inf;
+      }
+      return inf;
+    }
+    var intlRelCache = {};
+    function getCachedRTF(locString, opts) {
+      if (opts === void 0) {
+        opts = {};
+      }
+      var _opts = opts;
+      _opts.base;
+      var cacheKeyOpts = _objectWithoutPropertiesLoose3(_opts, _excluded3);
+      var key = JSON.stringify([locString, cacheKeyOpts]);
+      var inf = intlRelCache[key];
+      if (!inf) {
+        inf = new Intl.RelativeTimeFormat(locString, opts);
+        intlRelCache[key] = inf;
+      }
+      return inf;
+    }
+    var sysLocaleCache = null;
+    function systemLocale() {
+      if (sysLocaleCache) {
+        return sysLocaleCache;
+      } else {
+        sysLocaleCache = new Intl.DateTimeFormat().resolvedOptions().locale;
+        return sysLocaleCache;
+      }
+    }
+    function parseLocaleString(localeStr) {
+      var uIndex = localeStr.indexOf("-u-");
+      if (uIndex === -1) {
+        return [localeStr];
+      } else {
+        var options;
+        var smaller = localeStr.substring(0, uIndex);
+        try {
+          options = getCachedDTF(localeStr).resolvedOptions();
+        } catch (e) {
+          options = getCachedDTF(smaller).resolvedOptions();
+        }
+        var _options = options, numberingSystem = _options.numberingSystem, calendar = _options.calendar;
+        return [smaller, numberingSystem, calendar];
+      }
+    }
+    function intlConfigString(localeStr, numberingSystem, outputCalendar) {
+      if (outputCalendar || numberingSystem) {
+        localeStr += "-u";
+        if (outputCalendar) {
+          localeStr += "-ca-" + outputCalendar;
+        }
+        if (numberingSystem) {
+          localeStr += "-nu-" + numberingSystem;
+        }
+        return localeStr;
+      } else {
+        return localeStr;
+      }
+    }
+    function mapMonths(f2) {
+      var ms = [];
+      for (var i2 = 1; i2 <= 12; i2++) {
+        var dt = DateTime.utc(2016, i2, 1);
+        ms.push(f2(dt));
+      }
+      return ms;
+    }
+    function mapWeekdays(f2) {
+      var ms = [];
+      for (var i2 = 1; i2 <= 7; i2++) {
+        var dt = DateTime.utc(2016, 11, 13 + i2);
+        ms.push(f2(dt));
+      }
+      return ms;
+    }
+    function listStuff(loc, length, defaultOK, englishFn, intlFn) {
+      var mode = loc.listingMode(defaultOK);
+      if (mode === "error") {
+        return null;
+      } else if (mode === "en") {
+        return englishFn(length);
+      } else {
+        return intlFn(length);
+      }
+    }
+    function supportsFastNumbers(loc) {
+      if (loc.numberingSystem && loc.numberingSystem !== "latn") {
+        return false;
+      } else {
+        return loc.numberingSystem === "latn" || !loc.locale || loc.locale.startsWith("en") || new Intl.DateTimeFormat(loc.intl).resolvedOptions().numberingSystem === "latn";
+      }
+    }
+    var PolyNumberFormatter = /* @__PURE__ */ function() {
+      function PolyNumberFormatter2(intl, forceSimple, opts) {
+        this.padTo = opts.padTo || 0;
+        this.floor = opts.floor || false;
+        opts.padTo;
+        opts.floor;
+        var otherOpts = _objectWithoutPropertiesLoose3(opts, _excluded22);
+        if (!forceSimple || Object.keys(otherOpts).length > 0) {
+          var intlOpts = _extends2({
+            useGrouping: false
+          }, opts);
+          if (opts.padTo > 0)
+            intlOpts.minimumIntegerDigits = opts.padTo;
+          this.inf = getCachedINF(intl, intlOpts);
+        }
+      }
+      var _proto = PolyNumberFormatter2.prototype;
+      _proto.format = function format2(i2) {
+        if (this.inf) {
+          var fixed = this.floor ? Math.floor(i2) : i2;
+          return this.inf.format(fixed);
+        } else {
+          var _fixed = this.floor ? Math.floor(i2) : roundTo(i2, 3);
+          return padStart(_fixed, this.padTo);
+        }
+      };
+      return PolyNumberFormatter2;
+    }();
+    var PolyDateFormatter = /* @__PURE__ */ function() {
+      function PolyDateFormatter2(dt, intl, opts) {
+        this.opts = opts;
+        var z2;
+        if (dt.zone.isUniversal) {
+          var gmtOffset = -1 * (dt.offset / 60);
+          var offsetZ = gmtOffset >= 0 ? "Etc/GMT+" + gmtOffset : "Etc/GMT" + gmtOffset;
+          if (dt.offset !== 0 && IANAZone.create(offsetZ).valid) {
+            z2 = offsetZ;
+            this.dt = dt;
+          } else {
+            z2 = "UTC";
+            if (opts.timeZoneName) {
+              this.dt = dt;
+            } else {
+              this.dt = dt.offset === 0 ? dt : DateTime.fromMillis(dt.ts + dt.offset * 60 * 1e3);
+            }
+          }
+        } else if (dt.zone.type === "system") {
+          this.dt = dt;
+        } else {
+          this.dt = dt;
+          z2 = dt.zone.name;
+        }
+        var intlOpts = _extends2({}, this.opts);
+        if (z2) {
+          intlOpts.timeZone = z2;
+        }
+        this.dtf = getCachedDTF(intl, intlOpts);
+      }
+      var _proto2 = PolyDateFormatter2.prototype;
+      _proto2.format = function format2() {
+        return this.dtf.format(this.dt.toJSDate());
+      };
+      _proto2.formatToParts = function formatToParts() {
+        return this.dtf.formatToParts(this.dt.toJSDate());
+      };
+      _proto2.resolvedOptions = function resolvedOptions() {
+        return this.dtf.resolvedOptions();
+      };
+      return PolyDateFormatter2;
+    }();
+    var PolyRelFormatter = /* @__PURE__ */ function() {
+      function PolyRelFormatter2(intl, isEnglish, opts) {
+        this.opts = _extends2({
+          style: "long"
+        }, opts);
+        if (!isEnglish && hasRelative()) {
+          this.rtf = getCachedRTF(intl, opts);
+        }
+      }
+      var _proto3 = PolyRelFormatter2.prototype;
+      _proto3.format = function format2(count, unit) {
+        if (this.rtf) {
+          return this.rtf.format(count, unit);
+        } else {
+          return formatRelativeTime(unit, count, this.opts.numeric, this.opts.style !== "long");
+        }
+      };
+      _proto3.formatToParts = function formatToParts(count, unit) {
+        if (this.rtf) {
+          return this.rtf.formatToParts(count, unit);
+        } else {
+          return [];
+        }
+      };
+      return PolyRelFormatter2;
+    }();
+    var Locale = /* @__PURE__ */ function() {
+      Locale2.fromOpts = function fromOpts(opts) {
+        return Locale2.create(opts.locale, opts.numberingSystem, opts.outputCalendar, opts.defaultToEN);
+      };
+      Locale2.create = function create(locale, numberingSystem, outputCalendar, defaultToEN) {
+        if (defaultToEN === void 0) {
+          defaultToEN = false;
+        }
+        var specifiedLocale = locale || Settings.defaultLocale;
+        var localeR = specifiedLocale || (defaultToEN ? "en-US" : systemLocale());
+        var numberingSystemR = numberingSystem || Settings.defaultNumberingSystem;
+        var outputCalendarR = outputCalendar || Settings.defaultOutputCalendar;
+        return new Locale2(localeR, numberingSystemR, outputCalendarR, specifiedLocale);
+      };
+      Locale2.resetCache = function resetCache() {
+        sysLocaleCache = null;
+        intlDTCache = {};
+        intlNumCache = {};
+        intlRelCache = {};
+      };
+      Locale2.fromObject = function fromObject(_temp) {
+        var _ref = _temp === void 0 ? {} : _temp, locale = _ref.locale, numberingSystem = _ref.numberingSystem, outputCalendar = _ref.outputCalendar;
+        return Locale2.create(locale, numberingSystem, outputCalendar);
+      };
+      function Locale2(locale, numbering, outputCalendar, specifiedLocale) {
+        var _parseLocaleString = parseLocaleString(locale), parsedLocale = _parseLocaleString[0], parsedNumberingSystem = _parseLocaleString[1], parsedOutputCalendar = _parseLocaleString[2];
+        this.locale = parsedLocale;
+        this.numberingSystem = numbering || parsedNumberingSystem || null;
+        this.outputCalendar = outputCalendar || parsedOutputCalendar || null;
+        this.intl = intlConfigString(this.locale, this.numberingSystem, this.outputCalendar);
+        this.weekdaysCache = {
+          format: {},
+          standalone: {}
+        };
+        this.monthsCache = {
+          format: {},
+          standalone: {}
+        };
+        this.meridiemCache = null;
+        this.eraCache = {};
+        this.specifiedLocale = specifiedLocale;
+        this.fastNumbersCached = null;
+      }
+      var _proto4 = Locale2.prototype;
+      _proto4.listingMode = function listingMode() {
+        var isActuallyEn = this.isEnglish();
+        var hasNoWeirdness = (this.numberingSystem === null || this.numberingSystem === "latn") && (this.outputCalendar === null || this.outputCalendar === "gregory");
+        return isActuallyEn && hasNoWeirdness ? "en" : "intl";
+      };
+      _proto4.clone = function clone3(alts) {
+        if (!alts || Object.getOwnPropertyNames(alts).length === 0) {
+          return this;
+        } else {
+          return Locale2.create(alts.locale || this.specifiedLocale, alts.numberingSystem || this.numberingSystem, alts.outputCalendar || this.outputCalendar, alts.defaultToEN || false);
+        }
+      };
+      _proto4.redefaultToEN = function redefaultToEN(alts) {
+        if (alts === void 0) {
+          alts = {};
+        }
+        return this.clone(_extends2({}, alts, {
+          defaultToEN: true
+        }));
+      };
+      _proto4.redefaultToSystem = function redefaultToSystem(alts) {
+        if (alts === void 0) {
+          alts = {};
+        }
+        return this.clone(_extends2({}, alts, {
+          defaultToEN: false
+        }));
+      };
+      _proto4.months = function months$1(length, format2, defaultOK) {
+        var _this = this;
+        if (format2 === void 0) {
+          format2 = false;
+        }
+        if (defaultOK === void 0) {
+          defaultOK = true;
+        }
+        return listStuff(this, length, defaultOK, months, function() {
+          var intl = format2 ? {
+            month: length,
+            day: "numeric"
+          } : {
+            month: length
+          }, formatStr = format2 ? "format" : "standalone";
+          if (!_this.monthsCache[formatStr][length]) {
+            _this.monthsCache[formatStr][length] = mapMonths(function(dt) {
+              return _this.extract(dt, intl, "month");
+            });
+          }
+          return _this.monthsCache[formatStr][length];
+        });
+      };
+      _proto4.weekdays = function weekdays$1(length, format2, defaultOK) {
+        var _this2 = this;
+        if (format2 === void 0) {
+          format2 = false;
+        }
+        if (defaultOK === void 0) {
+          defaultOK = true;
+        }
+        return listStuff(this, length, defaultOK, weekdays, function() {
+          var intl = format2 ? {
+            weekday: length,
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          } : {
+            weekday: length
+          }, formatStr = format2 ? "format" : "standalone";
+          if (!_this2.weekdaysCache[formatStr][length]) {
+            _this2.weekdaysCache[formatStr][length] = mapWeekdays(function(dt) {
+              return _this2.extract(dt, intl, "weekday");
+            });
+          }
+          return _this2.weekdaysCache[formatStr][length];
+        });
+      };
+      _proto4.meridiems = function meridiems$1(defaultOK) {
+        var _this3 = this;
+        if (defaultOK === void 0) {
+          defaultOK = true;
+        }
+        return listStuff(this, void 0, defaultOK, function() {
+          return meridiems;
+        }, function() {
+          if (!_this3.meridiemCache) {
+            var intl = {
+              hour: "numeric",
+              hourCycle: "h12"
+            };
+            _this3.meridiemCache = [DateTime.utc(2016, 11, 13, 9), DateTime.utc(2016, 11, 13, 19)].map(function(dt) {
+              return _this3.extract(dt, intl, "dayperiod");
+            });
+          }
+          return _this3.meridiemCache;
+        });
+      };
+      _proto4.eras = function eras$1(length, defaultOK) {
+        var _this4 = this;
+        if (defaultOK === void 0) {
+          defaultOK = true;
+        }
+        return listStuff(this, length, defaultOK, eras, function() {
+          var intl = {
+            era: length
+          };
+          if (!_this4.eraCache[length]) {
+            _this4.eraCache[length] = [DateTime.utc(-40, 1, 1), DateTime.utc(2017, 1, 1)].map(function(dt) {
+              return _this4.extract(dt, intl, "era");
+            });
+          }
+          return _this4.eraCache[length];
+        });
+      };
+      _proto4.extract = function extract(dt, intlOpts, field) {
+        var df = this.dtFormatter(dt, intlOpts), results = df.formatToParts(), matching = results.find(function(m) {
+          return m.type.toLowerCase() === field;
+        });
+        return matching ? matching.value : null;
+      };
+      _proto4.numberFormatter = function numberFormatter(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        return new PolyNumberFormatter(this.intl, opts.forceSimple || this.fastNumbers, opts);
+      };
+      _proto4.dtFormatter = function dtFormatter(dt, intlOpts) {
+        if (intlOpts === void 0) {
+          intlOpts = {};
+        }
+        return new PolyDateFormatter(dt, this.intl, intlOpts);
+      };
+      _proto4.relFormatter = function relFormatter(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        return new PolyRelFormatter(this.intl, this.isEnglish(), opts);
+      };
+      _proto4.listFormatter = function listFormatter(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        return getCachedLF(this.intl, opts);
+      };
+      _proto4.isEnglish = function isEnglish() {
+        return this.locale === "en" || this.locale.toLowerCase() === "en-us" || new Intl.DateTimeFormat(this.intl).resolvedOptions().locale.startsWith("en-us");
+      };
+      _proto4.equals = function equals(other) {
+        return this.locale === other.locale && this.numberingSystem === other.numberingSystem && this.outputCalendar === other.outputCalendar;
+      };
+      _createClass2(Locale2, [{
+        key: "fastNumbers",
+        get: function get2() {
+          if (this.fastNumbersCached == null) {
+            this.fastNumbersCached = supportsFastNumbers(this);
+          }
+          return this.fastNumbersCached;
+        }
+      }]);
+      return Locale2;
+    }();
+    function combineRegexes() {
+      for (var _len = arguments.length, regexes = new Array(_len), _key = 0; _key < _len; _key++) {
+        regexes[_key] = arguments[_key];
+      }
+      var full = regexes.reduce(function(f2, r2) {
+        return f2 + r2.source;
+      }, "");
+      return RegExp("^" + full + "$");
+    }
+    function combineExtractors() {
+      for (var _len2 = arguments.length, extractors = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        extractors[_key2] = arguments[_key2];
+      }
+      return function(m) {
+        return extractors.reduce(function(_ref, ex) {
+          var mergedVals = _ref[0], mergedZone = _ref[1], cursor = _ref[2];
+          var _ex = ex(m, cursor), val = _ex[0], zone = _ex[1], next2 = _ex[2];
+          return [_extends2({}, mergedVals, val), zone || mergedZone, next2];
+        }, [{}, null, 1]).slice(0, 2);
+      };
+    }
+    function parse2(s3) {
+      if (s3 == null) {
+        return [null, null];
+      }
+      for (var _len3 = arguments.length, patterns = new Array(_len3 > 1 ? _len3 - 1 : 0), _key3 = 1; _key3 < _len3; _key3++) {
+        patterns[_key3 - 1] = arguments[_key3];
+      }
+      for (var _i = 0, _patterns = patterns; _i < _patterns.length; _i++) {
+        var _patterns$_i = _patterns[_i], regex = _patterns$_i[0], extractor = _patterns$_i[1];
+        var m = regex.exec(s3);
+        if (m) {
+          return extractor(m);
+        }
+      }
+      return [null, null];
+    }
+    function simpleParse() {
+      for (var _len4 = arguments.length, keys = new Array(_len4), _key4 = 0; _key4 < _len4; _key4++) {
+        keys[_key4] = arguments[_key4];
+      }
+      return function(match2, cursor) {
+        var ret = {};
+        var i2;
+        for (i2 = 0; i2 < keys.length; i2++) {
+          ret[keys[i2]] = parseInteger(match2[cursor + i2]);
+        }
+        return [ret, null, cursor + i2];
+      };
+    }
+    var offsetRegex = /(?:(Z)|([+-]\d\d)(?::?(\d\d))?)/;
+    var isoExtendedZone = "(?:" + offsetRegex.source + "?(?:\\[(" + ianaRegex.source + ")\\])?)?";
+    var isoTimeBaseRegex = /(\d\d)(?::?(\d\d)(?::?(\d\d)(?:[.,](\d{1,30}))?)?)?/;
+    var isoTimeRegex = RegExp("" + isoTimeBaseRegex.source + isoExtendedZone);
+    var isoTimeExtensionRegex = RegExp("(?:T" + isoTimeRegex.source + ")?");
+    var isoYmdRegex = /([+-]\d{6}|\d{4})(?:-?(\d\d)(?:-?(\d\d))?)?/;
+    var isoWeekRegex = /(\d{4})-?W(\d\d)(?:-?(\d))?/;
+    var isoOrdinalRegex = /(\d{4})-?(\d{3})/;
+    var extractISOWeekData = simpleParse("weekYear", "weekNumber", "weekDay");
+    var extractISOOrdinalData = simpleParse("year", "ordinal");
+    var sqlYmdRegex = /(\d{4})-(\d\d)-(\d\d)/;
+    var sqlTimeRegex = RegExp(isoTimeBaseRegex.source + " ?(?:" + offsetRegex.source + "|(" + ianaRegex.source + "))?");
+    var sqlTimeExtensionRegex = RegExp("(?: " + sqlTimeRegex.source + ")?");
+    function int3(match2, pos, fallback) {
+      var m = match2[pos];
+      return isUndefined(m) ? fallback : parseInteger(m);
+    }
+    function extractISOYmd(match2, cursor) {
+      var item = {
+        year: int3(match2, cursor),
+        month: int3(match2, cursor + 1, 1),
+        day: int3(match2, cursor + 2, 1)
+      };
+      return [item, null, cursor + 3];
+    }
+    function extractISOTime(match2, cursor) {
+      var item = {
+        hours: int3(match2, cursor, 0),
+        minutes: int3(match2, cursor + 1, 0),
+        seconds: int3(match2, cursor + 2, 0),
+        milliseconds: parseMillis(match2[cursor + 3])
+      };
+      return [item, null, cursor + 4];
+    }
+    function extractISOOffset(match2, cursor) {
+      var local = !match2[cursor] && !match2[cursor + 1], fullOffset = signedOffset(match2[cursor + 1], match2[cursor + 2]), zone = local ? null : FixedOffsetZone.instance(fullOffset);
+      return [{}, zone, cursor + 3];
+    }
+    function extractIANAZone(match2, cursor) {
+      var zone = match2[cursor] ? IANAZone.create(match2[cursor]) : null;
+      return [{}, zone, cursor + 1];
+    }
+    var isoTimeOnly = RegExp("^T?" + isoTimeBaseRegex.source + "$");
+    var isoDuration = /^-?P(?:(?:(-?\d{1,9}(?:\.\d{1,9})?)Y)?(?:(-?\d{1,9}(?:\.\d{1,9})?)M)?(?:(-?\d{1,9}(?:\.\d{1,9})?)W)?(?:(-?\d{1,9}(?:\.\d{1,9})?)D)?(?:T(?:(-?\d{1,9}(?:\.\d{1,9})?)H)?(?:(-?\d{1,9}(?:\.\d{1,9})?)M)?(?:(-?\d{1,20})(?:[.,](-?\d{1,9}))?S)?)?)$/;
+    function extractISODuration(match2) {
+      var s3 = match2[0], yearStr = match2[1], monthStr = match2[2], weekStr = match2[3], dayStr = match2[4], hourStr = match2[5], minuteStr = match2[6], secondStr = match2[7], millisecondsStr = match2[8];
+      var hasNegativePrefix = s3[0] === "-";
+      var negativeSeconds = secondStr && secondStr[0] === "-";
+      var maybeNegate = function maybeNegate2(num, force) {
+        if (force === void 0) {
+          force = false;
+        }
+        return num !== void 0 && (force || num && hasNegativePrefix) ? -num : num;
+      };
+      return [{
+        years: maybeNegate(parseFloating(yearStr)),
+        months: maybeNegate(parseFloating(monthStr)),
+        weeks: maybeNegate(parseFloating(weekStr)),
+        days: maybeNegate(parseFloating(dayStr)),
+        hours: maybeNegate(parseFloating(hourStr)),
+        minutes: maybeNegate(parseFloating(minuteStr)),
+        seconds: maybeNegate(parseFloating(secondStr), secondStr === "-0"),
+        milliseconds: maybeNegate(parseMillis(millisecondsStr), negativeSeconds)
+      }];
+    }
+    var obsOffsets = {
+      GMT: 0,
+      EDT: -4 * 60,
+      EST: -5 * 60,
+      CDT: -5 * 60,
+      CST: -6 * 60,
+      MDT: -6 * 60,
+      MST: -7 * 60,
+      PDT: -7 * 60,
+      PST: -8 * 60
+    };
+    function fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr) {
+      var result = {
+        year: yearStr.length === 2 ? untruncateYear(parseInteger(yearStr)) : parseInteger(yearStr),
+        month: monthsShort.indexOf(monthStr) + 1,
+        day: parseInteger(dayStr),
+        hour: parseInteger(hourStr),
+        minute: parseInteger(minuteStr)
+      };
+      if (secondStr)
+        result.second = parseInteger(secondStr);
+      if (weekdayStr) {
+        result.weekday = weekdayStr.length > 3 ? weekdaysLong.indexOf(weekdayStr) + 1 : weekdaysShort.indexOf(weekdayStr) + 1;
+      }
+      return result;
+    }
+    var rfc2822 = /^(?:(Mon|Tue|Wed|Thu|Fri|Sat|Sun),\s)?(\d{1,2})\s(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)\s(\d{2,4})\s(\d\d):(\d\d)(?::(\d\d))?\s(?:(UT|GMT|[ECMP][SD]T)|([Zz])|(?:([+-]\d\d)(\d\d)))$/;
+    function extractRFC2822(match2) {
+      var weekdayStr = match2[1], dayStr = match2[2], monthStr = match2[3], yearStr = match2[4], hourStr = match2[5], minuteStr = match2[6], secondStr = match2[7], obsOffset = match2[8], milOffset = match2[9], offHourStr = match2[10], offMinuteStr = match2[11], result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
+      var offset3;
+      if (obsOffset) {
+        offset3 = obsOffsets[obsOffset];
+      } else if (milOffset) {
+        offset3 = 0;
+      } else {
+        offset3 = signedOffset(offHourStr, offMinuteStr);
+      }
+      return [result, new FixedOffsetZone(offset3)];
+    }
+    function preprocessRFC2822(s3) {
+      return s3.replace(/\([^)]*\)|[\n\t]/g, " ").replace(/(\s\s+)/g, " ").trim();
+    }
+    var rfc1123 = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun), (\d\d) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) (\d{4}) (\d\d):(\d\d):(\d\d) GMT$/;
+    var rfc850 = /^(Monday|Tuesday|Wedsday|Thursday|Friday|Saturday|Sunday), (\d\d)-(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)-(\d\d) (\d\d):(\d\d):(\d\d) GMT$/;
+    var ascii = /^(Mon|Tue|Wed|Thu|Fri|Sat|Sun) (Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec) ( \d|\d\d) (\d\d):(\d\d):(\d\d) (\d{4})$/;
+    function extractRFC1123Or850(match2) {
+      var weekdayStr = match2[1], dayStr = match2[2], monthStr = match2[3], yearStr = match2[4], hourStr = match2[5], minuteStr = match2[6], secondStr = match2[7], result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
+      return [result, FixedOffsetZone.utcInstance];
+    }
+    function extractASCII(match2) {
+      var weekdayStr = match2[1], monthStr = match2[2], dayStr = match2[3], hourStr = match2[4], minuteStr = match2[5], secondStr = match2[6], yearStr = match2[7], result = fromStrings(weekdayStr, yearStr, monthStr, dayStr, hourStr, minuteStr, secondStr);
+      return [result, FixedOffsetZone.utcInstance];
+    }
+    var isoYmdWithTimeExtensionRegex = combineRegexes(isoYmdRegex, isoTimeExtensionRegex);
+    var isoWeekWithTimeExtensionRegex = combineRegexes(isoWeekRegex, isoTimeExtensionRegex);
+    var isoOrdinalWithTimeExtensionRegex = combineRegexes(isoOrdinalRegex, isoTimeExtensionRegex);
+    var isoTimeCombinedRegex = combineRegexes(isoTimeRegex);
+    var extractISOYmdTimeAndOffset = combineExtractors(extractISOYmd, extractISOTime, extractISOOffset, extractIANAZone);
+    var extractISOWeekTimeAndOffset = combineExtractors(extractISOWeekData, extractISOTime, extractISOOffset, extractIANAZone);
+    var extractISOOrdinalDateAndTime = combineExtractors(extractISOOrdinalData, extractISOTime, extractISOOffset, extractIANAZone);
+    var extractISOTimeAndOffset = combineExtractors(extractISOTime, extractISOOffset, extractIANAZone);
+    function parseISODate(s3) {
+      return parse2(s3, [isoYmdWithTimeExtensionRegex, extractISOYmdTimeAndOffset], [isoWeekWithTimeExtensionRegex, extractISOWeekTimeAndOffset], [isoOrdinalWithTimeExtensionRegex, extractISOOrdinalDateAndTime], [isoTimeCombinedRegex, extractISOTimeAndOffset]);
+    }
+    function parseRFC2822Date(s3) {
+      return parse2(preprocessRFC2822(s3), [rfc2822, extractRFC2822]);
+    }
+    function parseHTTPDate(s3) {
+      return parse2(s3, [rfc1123, extractRFC1123Or850], [rfc850, extractRFC1123Or850], [ascii, extractASCII]);
+    }
+    function parseISODuration(s3) {
+      return parse2(s3, [isoDuration, extractISODuration]);
+    }
+    var extractISOTimeOnly = combineExtractors(extractISOTime);
+    function parseISOTimeOnly(s3) {
+      return parse2(s3, [isoTimeOnly, extractISOTimeOnly]);
+    }
+    var sqlYmdWithTimeExtensionRegex = combineRegexes(sqlYmdRegex, sqlTimeExtensionRegex);
+    var sqlTimeCombinedRegex = combineRegexes(sqlTimeRegex);
+    var extractISOTimeOffsetAndIANAZone = combineExtractors(extractISOTime, extractISOOffset, extractIANAZone);
+    function parseSQL(s3) {
+      return parse2(s3, [sqlYmdWithTimeExtensionRegex, extractISOYmdTimeAndOffset], [sqlTimeCombinedRegex, extractISOTimeOffsetAndIANAZone]);
+    }
+    var INVALID$2 = "Invalid Duration";
+    var lowOrderMatrix = {
+      weeks: {
+        days: 7,
+        hours: 7 * 24,
+        minutes: 7 * 24 * 60,
+        seconds: 7 * 24 * 60 * 60,
+        milliseconds: 7 * 24 * 60 * 60 * 1e3
+      },
+      days: {
+        hours: 24,
+        minutes: 24 * 60,
+        seconds: 24 * 60 * 60,
+        milliseconds: 24 * 60 * 60 * 1e3
+      },
+      hours: {
+        minutes: 60,
+        seconds: 60 * 60,
+        milliseconds: 60 * 60 * 1e3
+      },
+      minutes: {
+        seconds: 60,
+        milliseconds: 60 * 1e3
+      },
+      seconds: {
+        milliseconds: 1e3
+      }
+    };
+    var casualMatrix = _extends2({
+      years: {
+        quarters: 4,
+        months: 12,
+        weeks: 52,
+        days: 365,
+        hours: 365 * 24,
+        minutes: 365 * 24 * 60,
+        seconds: 365 * 24 * 60 * 60,
+        milliseconds: 365 * 24 * 60 * 60 * 1e3
+      },
+      quarters: {
+        months: 3,
+        weeks: 13,
+        days: 91,
+        hours: 91 * 24,
+        minutes: 91 * 24 * 60,
+        seconds: 91 * 24 * 60 * 60,
+        milliseconds: 91 * 24 * 60 * 60 * 1e3
+      },
+      months: {
+        weeks: 4,
+        days: 30,
+        hours: 30 * 24,
+        minutes: 30 * 24 * 60,
+        seconds: 30 * 24 * 60 * 60,
+        milliseconds: 30 * 24 * 60 * 60 * 1e3
+      }
+    }, lowOrderMatrix);
+    var daysInYearAccurate = 146097 / 400;
+    var daysInMonthAccurate = 146097 / 4800;
+    var accurateMatrix = _extends2({
+      years: {
+        quarters: 4,
+        months: 12,
+        weeks: daysInYearAccurate / 7,
+        days: daysInYearAccurate,
+        hours: daysInYearAccurate * 24,
+        minutes: daysInYearAccurate * 24 * 60,
+        seconds: daysInYearAccurate * 24 * 60 * 60,
+        milliseconds: daysInYearAccurate * 24 * 60 * 60 * 1e3
+      },
+      quarters: {
+        months: 3,
+        weeks: daysInYearAccurate / 28,
+        days: daysInYearAccurate / 4,
+        hours: daysInYearAccurate * 24 / 4,
+        minutes: daysInYearAccurate * 24 * 60 / 4,
+        seconds: daysInYearAccurate * 24 * 60 * 60 / 4,
+        milliseconds: daysInYearAccurate * 24 * 60 * 60 * 1e3 / 4
+      },
+      months: {
+        weeks: daysInMonthAccurate / 7,
+        days: daysInMonthAccurate,
+        hours: daysInMonthAccurate * 24,
+        minutes: daysInMonthAccurate * 24 * 60,
+        seconds: daysInMonthAccurate * 24 * 60 * 60,
+        milliseconds: daysInMonthAccurate * 24 * 60 * 60 * 1e3
+      }
+    }, lowOrderMatrix);
+    var orderedUnits$1 = ["years", "quarters", "months", "weeks", "days", "hours", "minutes", "seconds", "milliseconds"];
+    var reverseUnits = orderedUnits$1.slice(0).reverse();
+    function clone$1(dur, alts, clear) {
+      if (clear === void 0) {
+        clear = false;
+      }
+      var conf = {
+        values: clear ? alts.values : _extends2({}, dur.values, alts.values || {}),
+        loc: dur.loc.clone(alts.loc),
+        conversionAccuracy: alts.conversionAccuracy || dur.conversionAccuracy
+      };
+      return new Duration(conf);
+    }
+    function antiTrunc(n3) {
+      return n3 < 0 ? Math.floor(n3) : Math.ceil(n3);
+    }
+    function convert(matrix2, fromMap, fromUnit, toMap, toUnit) {
+      var conv = matrix2[toUnit][fromUnit], raw = fromMap[fromUnit] / conv, sameSign = Math.sign(raw) === Math.sign(toMap[toUnit]), added = !sameSign && toMap[toUnit] !== 0 && Math.abs(raw) <= 1 ? antiTrunc(raw) : Math.trunc(raw);
+      toMap[toUnit] += added;
+      fromMap[fromUnit] -= added * conv;
+    }
+    function normalizeValues(matrix2, vals) {
+      reverseUnits.reduce(function(previous, current) {
+        if (!isUndefined(vals[current])) {
+          if (previous) {
+            convert(matrix2, vals, previous, vals, current);
+          }
+          return current;
+        } else {
+          return previous;
+        }
+      }, null);
+    }
+    var Duration = /* @__PURE__ */ function() {
+      function Duration2(config) {
+        var accurate = config.conversionAccuracy === "longterm" || false;
+        this.values = config.values;
+        this.loc = config.loc || Locale.create();
+        this.conversionAccuracy = accurate ? "longterm" : "casual";
+        this.invalid = config.invalid || null;
+        this.matrix = accurate ? accurateMatrix : casualMatrix;
+        this.isLuxonDuration = true;
+      }
+      Duration2.fromMillis = function fromMillis(count, opts) {
+        return Duration2.fromObject({
+          milliseconds: count
+        }, opts);
+      };
+      Duration2.fromObject = function fromObject(obj, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        if (obj == null || typeof obj !== "object") {
+          throw new InvalidArgumentError("Duration.fromObject: argument expected to be an object, got " + (obj === null ? "null" : typeof obj));
+        }
+        return new Duration2({
+          values: normalizeObject(obj, Duration2.normalizeUnit),
+          loc: Locale.fromObject(opts),
+          conversionAccuracy: opts.conversionAccuracy
+        });
+      };
+      Duration2.fromDurationLike = function fromDurationLike(durationLike) {
+        if (isNumber2(durationLike)) {
+          return Duration2.fromMillis(durationLike);
+        } else if (Duration2.isDuration(durationLike)) {
+          return durationLike;
+        } else if (typeof durationLike === "object") {
+          return Duration2.fromObject(durationLike);
+        } else {
+          throw new InvalidArgumentError("Unknown duration argument " + durationLike + " of type " + typeof durationLike);
+        }
+      };
+      Duration2.fromISO = function fromISO(text2, opts) {
+        var _parseISODuration = parseISODuration(text2), parsed = _parseISODuration[0];
+        if (parsed) {
+          return Duration2.fromObject(parsed, opts);
+        } else {
+          return Duration2.invalid("unparsable", 'the input "' + text2 + `" can't be parsed as ISO 8601`);
+        }
+      };
+      Duration2.fromISOTime = function fromISOTime(text2, opts) {
+        var _parseISOTimeOnly = parseISOTimeOnly(text2), parsed = _parseISOTimeOnly[0];
+        if (parsed) {
+          return Duration2.fromObject(parsed, opts);
+        } else {
+          return Duration2.invalid("unparsable", 'the input "' + text2 + `" can't be parsed as ISO 8601`);
+        }
+      };
+      Duration2.invalid = function invalid(reason, explanation) {
+        if (explanation === void 0) {
+          explanation = null;
+        }
+        if (!reason) {
+          throw new InvalidArgumentError("need to specify a reason the Duration is invalid");
+        }
+        var invalid2 = reason instanceof Invalid ? reason : new Invalid(reason, explanation);
+        if (Settings.throwOnInvalid) {
+          throw new InvalidDurationError(invalid2);
+        } else {
+          return new Duration2({
+            invalid: invalid2
+          });
+        }
+      };
+      Duration2.normalizeUnit = function normalizeUnit2(unit) {
+        var normalized = {
+          year: "years",
+          years: "years",
+          quarter: "quarters",
+          quarters: "quarters",
+          month: "months",
+          months: "months",
+          week: "weeks",
+          weeks: "weeks",
+          day: "days",
+          days: "days",
+          hour: "hours",
+          hours: "hours",
+          minute: "minutes",
+          minutes: "minutes",
+          second: "seconds",
+          seconds: "seconds",
+          millisecond: "milliseconds",
+          milliseconds: "milliseconds"
+        }[unit ? unit.toLowerCase() : unit];
+        if (!normalized)
+          throw new InvalidUnitError(unit);
+        return normalized;
+      };
+      Duration2.isDuration = function isDuration(o2) {
+        return o2 && o2.isLuxonDuration || false;
+      };
+      var _proto = Duration2.prototype;
+      _proto.toFormat = function toFormat(fmt, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var fmtOpts = _extends2({}, opts, {
+          floor: opts.round !== false && opts.floor !== false
+        });
+        return this.isValid ? Formatter2.create(this.loc, fmtOpts).formatDurationFromString(this, fmt) : INVALID$2;
+      };
+      _proto.toHuman = function toHuman(opts) {
+        var _this = this;
+        if (opts === void 0) {
+          opts = {};
+        }
+        var l3 = orderedUnits$1.map(function(unit) {
+          var val = _this.values[unit];
+          if (isUndefined(val)) {
+            return null;
+          }
+          return _this.loc.numberFormatter(_extends2({
+            style: "unit",
+            unitDisplay: "long"
+          }, opts, {
+            unit: unit.slice(0, -1)
+          })).format(val);
+        }).filter(function(n3) {
+          return n3;
+        });
+        return this.loc.listFormatter(_extends2({
+          type: "conjunction",
+          style: opts.listStyle || "narrow"
+        }, opts)).format(l3);
+      };
+      _proto.toObject = function toObject() {
+        if (!this.isValid)
+          return {};
+        return _extends2({}, this.values);
+      };
+      _proto.toISO = function toISO() {
+        if (!this.isValid)
+          return null;
+        var s3 = "P";
+        if (this.years !== 0)
+          s3 += this.years + "Y";
+        if (this.months !== 0 || this.quarters !== 0)
+          s3 += this.months + this.quarters * 3 + "M";
+        if (this.weeks !== 0)
+          s3 += this.weeks + "W";
+        if (this.days !== 0)
+          s3 += this.days + "D";
+        if (this.hours !== 0 || this.minutes !== 0 || this.seconds !== 0 || this.milliseconds !== 0)
+          s3 += "T";
+        if (this.hours !== 0)
+          s3 += this.hours + "H";
+        if (this.minutes !== 0)
+          s3 += this.minutes + "M";
+        if (this.seconds !== 0 || this.milliseconds !== 0)
+          s3 += roundTo(this.seconds + this.milliseconds / 1e3, 3) + "S";
+        if (s3 === "P")
+          s3 += "T0S";
+        return s3;
+      };
+      _proto.toISOTime = function toISOTime(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        if (!this.isValid)
+          return null;
+        var millis = this.toMillis();
+        if (millis < 0 || millis >= 864e5)
+          return null;
+        opts = _extends2({
+          suppressMilliseconds: false,
+          suppressSeconds: false,
+          includePrefix: false,
+          format: "extended"
+        }, opts);
+        var value = this.shiftTo("hours", "minutes", "seconds", "milliseconds");
+        var fmt = opts.format === "basic" ? "hhmm" : "hh:mm";
+        if (!opts.suppressSeconds || value.seconds !== 0 || value.milliseconds !== 0) {
+          fmt += opts.format === "basic" ? "ss" : ":ss";
+          if (!opts.suppressMilliseconds || value.milliseconds !== 0) {
+            fmt += ".SSS";
+          }
+        }
+        var str = value.toFormat(fmt);
+        if (opts.includePrefix) {
+          str = "T" + str;
+        }
+        return str;
+      };
+      _proto.toJSON = function toJSON() {
+        return this.toISO();
+      };
+      _proto.toString = function toString2() {
+        return this.toISO();
+      };
+      _proto.toMillis = function toMillis() {
+        return this.as("milliseconds");
+      };
+      _proto.valueOf = function valueOf() {
+        return this.toMillis();
+      };
+      _proto.plus = function plus(duration) {
+        if (!this.isValid)
+          return this;
+        var dur = Duration2.fromDurationLike(duration), result = {};
+        for (var _iterator = _createForOfIteratorHelperLoose(orderedUnits$1), _step; !(_step = _iterator()).done; ) {
+          var k2 = _step.value;
+          if (hasOwnProperty(dur.values, k2) || hasOwnProperty(this.values, k2)) {
+            result[k2] = dur.get(k2) + this.get(k2);
+          }
+        }
+        return clone$1(this, {
+          values: result
+        }, true);
+      };
+      _proto.minus = function minus(duration) {
+        if (!this.isValid)
+          return this;
+        var dur = Duration2.fromDurationLike(duration);
+        return this.plus(dur.negate());
+      };
+      _proto.mapUnits = function mapUnits(fn3) {
+        if (!this.isValid)
+          return this;
+        var result = {};
+        for (var _i = 0, _Object$keys = Object.keys(this.values); _i < _Object$keys.length; _i++) {
+          var k2 = _Object$keys[_i];
+          result[k2] = asNumber(fn3(this.values[k2], k2));
+        }
+        return clone$1(this, {
+          values: result
+        }, true);
+      };
+      _proto.get = function get2(unit) {
+        return this[Duration2.normalizeUnit(unit)];
+      };
+      _proto.set = function set2(values) {
+        if (!this.isValid)
+          return this;
+        var mixed = _extends2({}, this.values, normalizeObject(values, Duration2.normalizeUnit));
+        return clone$1(this, {
+          values: mixed
+        });
+      };
+      _proto.reconfigure = function reconfigure(_temp) {
+        var _ref = _temp === void 0 ? {} : _temp, locale = _ref.locale, numberingSystem = _ref.numberingSystem, conversionAccuracy = _ref.conversionAccuracy;
+        var loc = this.loc.clone({
+          locale,
+          numberingSystem
+        }), opts = {
+          loc
+        };
+        if (conversionAccuracy) {
+          opts.conversionAccuracy = conversionAccuracy;
+        }
+        return clone$1(this, opts);
+      };
+      _proto.as = function as(unit) {
+        return this.isValid ? this.shiftTo(unit).get(unit) : NaN;
+      };
+      _proto.normalize = function normalize() {
+        if (!this.isValid)
+          return this;
+        var vals = this.toObject();
+        normalizeValues(this.matrix, vals);
+        return clone$1(this, {
+          values: vals
+        }, true);
+      };
+      _proto.shiftTo = function shiftTo() {
+        for (var _len = arguments.length, units = new Array(_len), _key = 0; _key < _len; _key++) {
+          units[_key] = arguments[_key];
+        }
+        if (!this.isValid)
+          return this;
+        if (units.length === 0) {
+          return this;
+        }
+        units = units.map(function(u2) {
+          return Duration2.normalizeUnit(u2);
+        });
+        var built = {}, accumulated = {}, vals = this.toObject();
+        var lastUnit;
+        for (var _iterator2 = _createForOfIteratorHelperLoose(orderedUnits$1), _step2; !(_step2 = _iterator2()).done; ) {
+          var k2 = _step2.value;
+          if (units.indexOf(k2) >= 0) {
+            lastUnit = k2;
+            var own = 0;
+            for (var ak in accumulated) {
+              own += this.matrix[ak][k2] * accumulated[ak];
+              accumulated[ak] = 0;
+            }
+            if (isNumber2(vals[k2])) {
+              own += vals[k2];
+            }
+            var i2 = Math.trunc(own);
+            built[k2] = i2;
+            accumulated[k2] = (own * 1e3 - i2 * 1e3) / 1e3;
+            for (var down in vals) {
+              if (orderedUnits$1.indexOf(down) > orderedUnits$1.indexOf(k2)) {
+                convert(this.matrix, vals, down, built, k2);
+              }
+            }
+          } else if (isNumber2(vals[k2])) {
+            accumulated[k2] = vals[k2];
+          }
+        }
+        for (var key in accumulated) {
+          if (accumulated[key] !== 0) {
+            built[lastUnit] += key === lastUnit ? accumulated[key] : accumulated[key] / this.matrix[lastUnit][key];
+          }
+        }
+        return clone$1(this, {
+          values: built
+        }, true).normalize();
+      };
+      _proto.negate = function negate() {
+        if (!this.isValid)
+          return this;
+        var negated = {};
+        for (var _i2 = 0, _Object$keys2 = Object.keys(this.values); _i2 < _Object$keys2.length; _i2++) {
+          var k2 = _Object$keys2[_i2];
+          negated[k2] = this.values[k2] === 0 ? 0 : -this.values[k2];
+        }
+        return clone$1(this, {
+          values: negated
+        }, true);
+      };
+      _proto.equals = function equals(other) {
+        if (!this.isValid || !other.isValid) {
+          return false;
+        }
+        if (!this.loc.equals(other.loc)) {
+          return false;
+        }
+        function eq(v1, v2) {
+          if (v1 === void 0 || v1 === 0)
+            return v2 === void 0 || v2 === 0;
+          return v1 === v2;
+        }
+        for (var _iterator3 = _createForOfIteratorHelperLoose(orderedUnits$1), _step3; !(_step3 = _iterator3()).done; ) {
+          var u2 = _step3.value;
+          if (!eq(this.values[u2], other.values[u2])) {
+            return false;
+          }
+        }
+        return true;
+      };
+      _createClass2(Duration2, [{
+        key: "locale",
+        get: function get2() {
+          return this.isValid ? this.loc.locale : null;
+        }
+      }, {
+        key: "numberingSystem",
+        get: function get2() {
+          return this.isValid ? this.loc.numberingSystem : null;
+        }
+      }, {
+        key: "years",
+        get: function get2() {
+          return this.isValid ? this.values.years || 0 : NaN;
+        }
+      }, {
+        key: "quarters",
+        get: function get2() {
+          return this.isValid ? this.values.quarters || 0 : NaN;
+        }
+      }, {
+        key: "months",
+        get: function get2() {
+          return this.isValid ? this.values.months || 0 : NaN;
+        }
+      }, {
+        key: "weeks",
+        get: function get2() {
+          return this.isValid ? this.values.weeks || 0 : NaN;
+        }
+      }, {
+        key: "days",
+        get: function get2() {
+          return this.isValid ? this.values.days || 0 : NaN;
+        }
+      }, {
+        key: "hours",
+        get: function get2() {
+          return this.isValid ? this.values.hours || 0 : NaN;
+        }
+      }, {
+        key: "minutes",
+        get: function get2() {
+          return this.isValid ? this.values.minutes || 0 : NaN;
+        }
+      }, {
+        key: "seconds",
+        get: function get2() {
+          return this.isValid ? this.values.seconds || 0 : NaN;
+        }
+      }, {
+        key: "milliseconds",
+        get: function get2() {
+          return this.isValid ? this.values.milliseconds || 0 : NaN;
+        }
+      }, {
+        key: "isValid",
+        get: function get2() {
+          return this.invalid === null;
+        }
+      }, {
+        key: "invalidReason",
+        get: function get2() {
+          return this.invalid ? this.invalid.reason : null;
+        }
+      }, {
+        key: "invalidExplanation",
+        get: function get2() {
+          return this.invalid ? this.invalid.explanation : null;
+        }
+      }]);
+      return Duration2;
+    }();
+    var INVALID$1 = "Invalid Interval";
+    function validateStartEnd(start2, end2) {
+      if (!start2 || !start2.isValid) {
+        return Interval.invalid("missing or invalid start");
+      } else if (!end2 || !end2.isValid) {
+        return Interval.invalid("missing or invalid end");
+      } else if (end2 < start2) {
+        return Interval.invalid("end before start", "The end of an interval must be after its start, but you had start=" + start2.toISO() + " and end=" + end2.toISO());
+      } else {
+        return null;
+      }
+    }
+    var Interval = /* @__PURE__ */ function() {
+      function Interval2(config) {
+        this.s = config.start;
+        this.e = config.end;
+        this.invalid = config.invalid || null;
+        this.isLuxonInterval = true;
+      }
+      Interval2.invalid = function invalid(reason, explanation) {
+        if (explanation === void 0) {
+          explanation = null;
+        }
+        if (!reason) {
+          throw new InvalidArgumentError("need to specify a reason the Interval is invalid");
+        }
+        var invalid2 = reason instanceof Invalid ? reason : new Invalid(reason, explanation);
+        if (Settings.throwOnInvalid) {
+          throw new InvalidIntervalError(invalid2);
+        } else {
+          return new Interval2({
+            invalid: invalid2
+          });
+        }
+      };
+      Interval2.fromDateTimes = function fromDateTimes(start2, end2) {
+        var builtStart = friendlyDateTime(start2), builtEnd = friendlyDateTime(end2);
+        var validateError = validateStartEnd(builtStart, builtEnd);
+        if (validateError == null) {
+          return new Interval2({
+            start: builtStart,
+            end: builtEnd
+          });
+        } else {
+          return validateError;
+        }
+      };
+      Interval2.after = function after(start2, duration) {
+        var dur = Duration.fromDurationLike(duration), dt = friendlyDateTime(start2);
+        return Interval2.fromDateTimes(dt, dt.plus(dur));
+      };
+      Interval2.before = function before(end2, duration) {
+        var dur = Duration.fromDurationLike(duration), dt = friendlyDateTime(end2);
+        return Interval2.fromDateTimes(dt.minus(dur), dt);
+      };
+      Interval2.fromISO = function fromISO(text2, opts) {
+        var _split = (text2 || "").split("/", 2), s3 = _split[0], e = _split[1];
+        if (s3 && e) {
+          var start2, startIsValid;
+          try {
+            start2 = DateTime.fromISO(s3, opts);
+            startIsValid = start2.isValid;
+          } catch (e2) {
+            startIsValid = false;
+          }
+          var end2, endIsValid;
+          try {
+            end2 = DateTime.fromISO(e, opts);
+            endIsValid = end2.isValid;
+          } catch (e2) {
+            endIsValid = false;
+          }
+          if (startIsValid && endIsValid) {
+            return Interval2.fromDateTimes(start2, end2);
+          }
+          if (startIsValid) {
+            var dur = Duration.fromISO(e, opts);
+            if (dur.isValid) {
+              return Interval2.after(start2, dur);
+            }
+          } else if (endIsValid) {
+            var _dur = Duration.fromISO(s3, opts);
+            if (_dur.isValid) {
+              return Interval2.before(end2, _dur);
+            }
+          }
+        }
+        return Interval2.invalid("unparsable", 'the input "' + text2 + `" can't be parsed as ISO 8601`);
+      };
+      Interval2.isInterval = function isInterval(o2) {
+        return o2 && o2.isLuxonInterval || false;
+      };
+      var _proto = Interval2.prototype;
+      _proto.length = function length(unit) {
+        if (unit === void 0) {
+          unit = "milliseconds";
+        }
+        return this.isValid ? this.toDuration.apply(this, [unit]).get(unit) : NaN;
+      };
+      _proto.count = function count(unit) {
+        if (unit === void 0) {
+          unit = "milliseconds";
+        }
+        if (!this.isValid)
+          return NaN;
+        var start2 = this.start.startOf(unit), end2 = this.end.startOf(unit);
+        return Math.floor(end2.diff(start2, unit).get(unit)) + 1;
+      };
+      _proto.hasSame = function hasSame(unit) {
+        return this.isValid ? this.isEmpty() || this.e.minus(1).hasSame(this.s, unit) : false;
+      };
+      _proto.isEmpty = function isEmpty2() {
+        return this.s.valueOf() === this.e.valueOf();
+      };
+      _proto.isAfter = function isAfter(dateTime) {
+        if (!this.isValid)
+          return false;
+        return this.s > dateTime;
+      };
+      _proto.isBefore = function isBefore(dateTime) {
+        if (!this.isValid)
+          return false;
+        return this.e <= dateTime;
+      };
+      _proto.contains = function contains2(dateTime) {
+        if (!this.isValid)
+          return false;
+        return this.s <= dateTime && this.e > dateTime;
+      };
+      _proto.set = function set2(_temp) {
+        var _ref = _temp === void 0 ? {} : _temp, start2 = _ref.start, end2 = _ref.end;
+        if (!this.isValid)
+          return this;
+        return Interval2.fromDateTimes(start2 || this.s, end2 || this.e);
+      };
+      _proto.splitAt = function splitAt() {
+        var _this = this;
+        if (!this.isValid)
+          return [];
+        for (var _len = arguments.length, dateTimes = new Array(_len), _key = 0; _key < _len; _key++) {
+          dateTimes[_key] = arguments[_key];
+        }
+        var sorted = dateTimes.map(friendlyDateTime).filter(function(d2) {
+          return _this.contains(d2);
+        }).sort(), results = [];
+        var s3 = this.s, i2 = 0;
+        while (s3 < this.e) {
+          var added = sorted[i2] || this.e, next2 = +added > +this.e ? this.e : added;
+          results.push(Interval2.fromDateTimes(s3, next2));
+          s3 = next2;
+          i2 += 1;
+        }
+        return results;
+      };
+      _proto.splitBy = function splitBy(duration) {
+        var dur = Duration.fromDurationLike(duration);
+        if (!this.isValid || !dur.isValid || dur.as("milliseconds") === 0) {
+          return [];
+        }
+        var s3 = this.s, idx = 1, next2;
+        var results = [];
+        while (s3 < this.e) {
+          var added = this.start.plus(dur.mapUnits(function(x2) {
+            return x2 * idx;
+          }));
+          next2 = +added > +this.e ? this.e : added;
+          results.push(Interval2.fromDateTimes(s3, next2));
+          s3 = next2;
+          idx += 1;
+        }
+        return results;
+      };
+      _proto.divideEqually = function divideEqually(numberOfParts) {
+        if (!this.isValid)
+          return [];
+        return this.splitBy(this.length() / numberOfParts).slice(0, numberOfParts);
+      };
+      _proto.overlaps = function overlaps(other) {
+        return this.e > other.s && this.s < other.e;
+      };
+      _proto.abutsStart = function abutsStart(other) {
+        if (!this.isValid)
+          return false;
+        return +this.e === +other.s;
+      };
+      _proto.abutsEnd = function abutsEnd(other) {
+        if (!this.isValid)
+          return false;
+        return +other.e === +this.s;
+      };
+      _proto.engulfs = function engulfs(other) {
+        if (!this.isValid)
+          return false;
+        return this.s <= other.s && this.e >= other.e;
+      };
+      _proto.equals = function equals(other) {
+        if (!this.isValid || !other.isValid) {
+          return false;
+        }
+        return this.s.equals(other.s) && this.e.equals(other.e);
+      };
+      _proto.intersection = function intersection(other) {
+        if (!this.isValid)
+          return this;
+        var s3 = this.s > other.s ? this.s : other.s, e = this.e < other.e ? this.e : other.e;
+        if (s3 >= e) {
+          return null;
+        } else {
+          return Interval2.fromDateTimes(s3, e);
+        }
+      };
+      _proto.union = function union(other) {
+        if (!this.isValid)
+          return this;
+        var s3 = this.s < other.s ? this.s : other.s, e = this.e > other.e ? this.e : other.e;
+        return Interval2.fromDateTimes(s3, e);
+      };
+      Interval2.merge = function merge(intervals) {
+        var _intervals$sort$reduc = intervals.sort(function(a2, b2) {
+          return a2.s - b2.s;
+        }).reduce(function(_ref2, item) {
+          var sofar = _ref2[0], current = _ref2[1];
+          if (!current) {
+            return [sofar, item];
+          } else if (current.overlaps(item) || current.abutsStart(item)) {
+            return [sofar, current.union(item)];
+          } else {
+            return [sofar.concat([current]), item];
+          }
+        }, [[], null]), found = _intervals$sort$reduc[0], final = _intervals$sort$reduc[1];
+        if (final) {
+          found.push(final);
+        }
+        return found;
+      };
+      Interval2.xor = function xor(intervals) {
+        var _Array$prototype;
+        var start2 = null, currentCount = 0;
+        var results = [], ends = intervals.map(function(i3) {
+          return [{
+            time: i3.s,
+            type: "s"
+          }, {
+            time: i3.e,
+            type: "e"
+          }];
+        }), flattened = (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, ends), arr = flattened.sort(function(a2, b2) {
+          return a2.time - b2.time;
+        });
+        for (var _iterator = _createForOfIteratorHelperLoose(arr), _step; !(_step = _iterator()).done; ) {
+          var i2 = _step.value;
+          currentCount += i2.type === "s" ? 1 : -1;
+          if (currentCount === 1) {
+            start2 = i2.time;
+          } else {
+            if (start2 && +start2 !== +i2.time) {
+              results.push(Interval2.fromDateTimes(start2, i2.time));
+            }
+            start2 = null;
+          }
+        }
+        return Interval2.merge(results);
+      };
+      _proto.difference = function difference() {
+        var _this2 = this;
+        for (var _len2 = arguments.length, intervals = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          intervals[_key2] = arguments[_key2];
+        }
+        return Interval2.xor([this].concat(intervals)).map(function(i2) {
+          return _this2.intersection(i2);
+        }).filter(function(i2) {
+          return i2 && !i2.isEmpty();
+        });
+      };
+      _proto.toString = function toString2() {
+        if (!this.isValid)
+          return INVALID$1;
+        return "[" + this.s.toISO() + " \u2013 " + this.e.toISO() + ")";
+      };
+      _proto.toISO = function toISO(opts) {
+        if (!this.isValid)
+          return INVALID$1;
+        return this.s.toISO(opts) + "/" + this.e.toISO(opts);
+      };
+      _proto.toISODate = function toISODate() {
+        if (!this.isValid)
+          return INVALID$1;
+        return this.s.toISODate() + "/" + this.e.toISODate();
+      };
+      _proto.toISOTime = function toISOTime(opts) {
+        if (!this.isValid)
+          return INVALID$1;
+        return this.s.toISOTime(opts) + "/" + this.e.toISOTime(opts);
+      };
+      _proto.toFormat = function toFormat(dateFormat, _temp2) {
+        var _ref3 = _temp2 === void 0 ? {} : _temp2, _ref3$separator = _ref3.separator, separator = _ref3$separator === void 0 ? " \u2013 " : _ref3$separator;
+        if (!this.isValid)
+          return INVALID$1;
+        return "" + this.s.toFormat(dateFormat) + separator + this.e.toFormat(dateFormat);
+      };
+      _proto.toDuration = function toDuration(unit, opts) {
+        if (!this.isValid) {
+          return Duration.invalid(this.invalidReason);
+        }
+        return this.e.diff(this.s, unit, opts);
+      };
+      _proto.mapEndpoints = function mapEndpoints(mapFn) {
+        return Interval2.fromDateTimes(mapFn(this.s), mapFn(this.e));
+      };
+      _createClass2(Interval2, [{
+        key: "start",
+        get: function get2() {
+          return this.isValid ? this.s : null;
+        }
+      }, {
+        key: "end",
+        get: function get2() {
+          return this.isValid ? this.e : null;
+        }
+      }, {
+        key: "isValid",
+        get: function get2() {
+          return this.invalidReason === null;
+        }
+      }, {
+        key: "invalidReason",
+        get: function get2() {
+          return this.invalid ? this.invalid.reason : null;
+        }
+      }, {
+        key: "invalidExplanation",
+        get: function get2() {
+          return this.invalid ? this.invalid.explanation : null;
+        }
+      }]);
+      return Interval2;
+    }();
+    var Info = /* @__PURE__ */ function() {
+      function Info2() {
+      }
+      Info2.hasDST = function hasDST(zone) {
+        if (zone === void 0) {
+          zone = Settings.defaultZone;
+        }
+        var proto = DateTime.now().setZone(zone).set({
+          month: 12
+        });
+        return !zone.isUniversal && proto.offset !== proto.set({
+          month: 6
+        }).offset;
+      };
+      Info2.isValidIANAZone = function isValidIANAZone(zone) {
+        return IANAZone.isValidZone(zone);
+      };
+      Info2.normalizeZone = function normalizeZone$1(input) {
+        return normalizeZone(input, Settings.defaultZone);
+      };
+      Info2.months = function months2(length, _temp) {
+        if (length === void 0) {
+          length = "long";
+        }
+        var _ref = _temp === void 0 ? {} : _temp, _ref$locale = _ref.locale, locale = _ref$locale === void 0 ? null : _ref$locale, _ref$numberingSystem = _ref.numberingSystem, numberingSystem = _ref$numberingSystem === void 0 ? null : _ref$numberingSystem, _ref$locObj = _ref.locObj, locObj = _ref$locObj === void 0 ? null : _ref$locObj, _ref$outputCalendar = _ref.outputCalendar, outputCalendar = _ref$outputCalendar === void 0 ? "gregory" : _ref$outputCalendar;
+        return (locObj || Locale.create(locale, numberingSystem, outputCalendar)).months(length);
+      };
+      Info2.monthsFormat = function monthsFormat(length, _temp2) {
+        if (length === void 0) {
+          length = "long";
+        }
+        var _ref2 = _temp2 === void 0 ? {} : _temp2, _ref2$locale = _ref2.locale, locale = _ref2$locale === void 0 ? null : _ref2$locale, _ref2$numberingSystem = _ref2.numberingSystem, numberingSystem = _ref2$numberingSystem === void 0 ? null : _ref2$numberingSystem, _ref2$locObj = _ref2.locObj, locObj = _ref2$locObj === void 0 ? null : _ref2$locObj, _ref2$outputCalendar = _ref2.outputCalendar, outputCalendar = _ref2$outputCalendar === void 0 ? "gregory" : _ref2$outputCalendar;
+        return (locObj || Locale.create(locale, numberingSystem, outputCalendar)).months(length, true);
+      };
+      Info2.weekdays = function weekdays2(length, _temp3) {
+        if (length === void 0) {
+          length = "long";
+        }
+        var _ref3 = _temp3 === void 0 ? {} : _temp3, _ref3$locale = _ref3.locale, locale = _ref3$locale === void 0 ? null : _ref3$locale, _ref3$numberingSystem = _ref3.numberingSystem, numberingSystem = _ref3$numberingSystem === void 0 ? null : _ref3$numberingSystem, _ref3$locObj = _ref3.locObj, locObj = _ref3$locObj === void 0 ? null : _ref3$locObj;
+        return (locObj || Locale.create(locale, numberingSystem, null)).weekdays(length);
+      };
+      Info2.weekdaysFormat = function weekdaysFormat(length, _temp4) {
+        if (length === void 0) {
+          length = "long";
+        }
+        var _ref4 = _temp4 === void 0 ? {} : _temp4, _ref4$locale = _ref4.locale, locale = _ref4$locale === void 0 ? null : _ref4$locale, _ref4$numberingSystem = _ref4.numberingSystem, numberingSystem = _ref4$numberingSystem === void 0 ? null : _ref4$numberingSystem, _ref4$locObj = _ref4.locObj, locObj = _ref4$locObj === void 0 ? null : _ref4$locObj;
+        return (locObj || Locale.create(locale, numberingSystem, null)).weekdays(length, true);
+      };
+      Info2.meridiems = function meridiems2(_temp5) {
+        var _ref5 = _temp5 === void 0 ? {} : _temp5, _ref5$locale = _ref5.locale, locale = _ref5$locale === void 0 ? null : _ref5$locale;
+        return Locale.create(locale).meridiems();
+      };
+      Info2.eras = function eras2(length, _temp6) {
+        if (length === void 0) {
+          length = "short";
+        }
+        var _ref6 = _temp6 === void 0 ? {} : _temp6, _ref6$locale = _ref6.locale, locale = _ref6$locale === void 0 ? null : _ref6$locale;
+        return Locale.create(locale, null, "gregory").eras(length);
+      };
+      Info2.features = function features() {
+        return {
+          relative: hasRelative()
+        };
+      };
+      return Info2;
+    }();
+    function dayDiff(earlier, later) {
+      var utcDayStart = function utcDayStart2(dt) {
+        return dt.toUTC(0, {
+          keepLocalTime: true
+        }).startOf("day").valueOf();
+      }, ms = utcDayStart(later) - utcDayStart(earlier);
+      return Math.floor(Duration.fromMillis(ms).as("days"));
+    }
+    function highOrderDiffs(cursor, later, units) {
+      var differs = [["years", function(a2, b2) {
+        return b2.year - a2.year;
+      }], ["quarters", function(a2, b2) {
+        return b2.quarter - a2.quarter;
+      }], ["months", function(a2, b2) {
+        return b2.month - a2.month + (b2.year - a2.year) * 12;
+      }], ["weeks", function(a2, b2) {
+        var days = dayDiff(a2, b2);
+        return (days - days % 7) / 7;
+      }], ["days", dayDiff]];
+      var results = {};
+      var lowestOrder, highWater;
+      for (var _i = 0, _differs = differs; _i < _differs.length; _i++) {
+        var _differs$_i = _differs[_i], unit = _differs$_i[0], differ = _differs$_i[1];
+        if (units.indexOf(unit) >= 0) {
+          var _cursor$plus;
+          lowestOrder = unit;
+          var delta = differ(cursor, later);
+          highWater = cursor.plus((_cursor$plus = {}, _cursor$plus[unit] = delta, _cursor$plus));
+          if (highWater > later) {
+            var _cursor$plus2;
+            cursor = cursor.plus((_cursor$plus2 = {}, _cursor$plus2[unit] = delta - 1, _cursor$plus2));
+            delta -= 1;
+          } else {
+            cursor = highWater;
+          }
+          results[unit] = delta;
+        }
+      }
+      return [cursor, results, highWater, lowestOrder];
+    }
+    function _diff(earlier, later, units, opts) {
+      var _highOrderDiffs = highOrderDiffs(earlier, later, units), cursor = _highOrderDiffs[0], results = _highOrderDiffs[1], highWater = _highOrderDiffs[2], lowestOrder = _highOrderDiffs[3];
+      var remainingMillis = later - cursor;
+      var lowerOrderUnits = units.filter(function(u2) {
+        return ["hours", "minutes", "seconds", "milliseconds"].indexOf(u2) >= 0;
+      });
+      if (lowerOrderUnits.length === 0) {
+        if (highWater < later) {
+          var _cursor$plus3;
+          highWater = cursor.plus((_cursor$plus3 = {}, _cursor$plus3[lowestOrder] = 1, _cursor$plus3));
+        }
+        if (highWater !== cursor) {
+          results[lowestOrder] = (results[lowestOrder] || 0) + remainingMillis / (highWater - cursor);
+        }
+      }
+      var duration = Duration.fromObject(results, opts);
+      if (lowerOrderUnits.length > 0) {
+        var _Duration$fromMillis;
+        return (_Duration$fromMillis = Duration.fromMillis(remainingMillis, opts)).shiftTo.apply(_Duration$fromMillis, lowerOrderUnits).plus(duration);
+      } else {
+        return duration;
+      }
+    }
+    var numberingSystems = {
+      arab: "[\u0660-\u0669]",
+      arabext: "[\u06F0-\u06F9]",
+      bali: "[\u1B50-\u1B59]",
+      beng: "[\u09E6-\u09EF]",
+      deva: "[\u0966-\u096F]",
+      fullwide: "[\uFF10-\uFF19]",
+      gujr: "[\u0AE6-\u0AEF]",
+      hanidec: "[\u3007|\u4E00|\u4E8C|\u4E09|\u56DB|\u4E94|\u516D|\u4E03|\u516B|\u4E5D]",
+      khmr: "[\u17E0-\u17E9]",
+      knda: "[\u0CE6-\u0CEF]",
+      laoo: "[\u0ED0-\u0ED9]",
+      limb: "[\u1946-\u194F]",
+      mlym: "[\u0D66-\u0D6F]",
+      mong: "[\u1810-\u1819]",
+      mymr: "[\u1040-\u1049]",
+      orya: "[\u0B66-\u0B6F]",
+      tamldec: "[\u0BE6-\u0BEF]",
+      telu: "[\u0C66-\u0C6F]",
+      thai: "[\u0E50-\u0E59]",
+      tibt: "[\u0F20-\u0F29]",
+      latn: "\\d"
+    };
+    var numberingSystemsUTF16 = {
+      arab: [1632, 1641],
+      arabext: [1776, 1785],
+      bali: [6992, 7001],
+      beng: [2534, 2543],
+      deva: [2406, 2415],
+      fullwide: [65296, 65303],
+      gujr: [2790, 2799],
+      khmr: [6112, 6121],
+      knda: [3302, 3311],
+      laoo: [3792, 3801],
+      limb: [6470, 6479],
+      mlym: [3430, 3439],
+      mong: [6160, 6169],
+      mymr: [4160, 4169],
+      orya: [2918, 2927],
+      tamldec: [3046, 3055],
+      telu: [3174, 3183],
+      thai: [3664, 3673],
+      tibt: [3872, 3881]
+    };
+    var hanidecChars = numberingSystems.hanidec.replace(/[\[|\]]/g, "").split("");
+    function parseDigits(str) {
+      var value = parseInt(str, 10);
+      if (isNaN(value)) {
+        value = "";
+        for (var i2 = 0; i2 < str.length; i2++) {
+          var code = str.charCodeAt(i2);
+          if (str[i2].search(numberingSystems.hanidec) !== -1) {
+            value += hanidecChars.indexOf(str[i2]);
+          } else {
+            for (var key in numberingSystemsUTF16) {
+              var _numberingSystemsUTF = numberingSystemsUTF16[key], min2 = _numberingSystemsUTF[0], max2 = _numberingSystemsUTF[1];
+              if (code >= min2 && code <= max2) {
+                value += code - min2;
+              }
+            }
+          }
+        }
+        return parseInt(value, 10);
+      } else {
+        return value;
+      }
+    }
+    function digitRegex(_ref, append2) {
+      var numberingSystem = _ref.numberingSystem;
+      if (append2 === void 0) {
+        append2 = "";
+      }
+      return new RegExp("" + numberingSystems[numberingSystem || "latn"] + append2);
+    }
+    var MISSING_FTP = "missing Intl.DateTimeFormat.formatToParts support";
+    function intUnit(regex, post) {
+      if (post === void 0) {
+        post = function post2(i2) {
+          return i2;
+        };
+      }
+      return {
+        regex,
+        deser: function deser(_ref) {
+          var s3 = _ref[0];
+          return post(parseDigits(s3));
+        }
+      };
+    }
+    var NBSP = String.fromCharCode(160);
+    var spaceOrNBSP = "[ " + NBSP + "]";
+    var spaceOrNBSPRegExp = new RegExp(spaceOrNBSP, "g");
+    function fixListRegex(s3) {
+      return s3.replace(/\./g, "\\.?").replace(spaceOrNBSPRegExp, spaceOrNBSP);
+    }
+    function stripInsensitivities(s3) {
+      return s3.replace(/\./g, "").replace(spaceOrNBSPRegExp, " ").toLowerCase();
+    }
+    function oneOf(strings, startIndex) {
+      if (strings === null) {
+        return null;
+      } else {
+        return {
+          regex: RegExp(strings.map(fixListRegex).join("|")),
+          deser: function deser(_ref2) {
+            var s3 = _ref2[0];
+            return strings.findIndex(function(i2) {
+              return stripInsensitivities(s3) === stripInsensitivities(i2);
+            }) + startIndex;
+          }
+        };
+      }
+    }
+    function offset2(regex, groups) {
+      return {
+        regex,
+        deser: function deser(_ref3) {
+          var h2 = _ref3[1], m = _ref3[2];
+          return signedOffset(h2, m);
+        },
+        groups
+      };
+    }
+    function simple(regex) {
+      return {
+        regex,
+        deser: function deser(_ref4) {
+          var s3 = _ref4[0];
+          return s3;
+        }
+      };
+    }
+    function escapeToken(value) {
+      return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, "\\$&");
+    }
+    function unitForToken(token, loc) {
+      var one = digitRegex(loc), two = digitRegex(loc, "{2}"), three = digitRegex(loc, "{3}"), four = digitRegex(loc, "{4}"), six = digitRegex(loc, "{6}"), oneOrTwo = digitRegex(loc, "{1,2}"), oneToThree = digitRegex(loc, "{1,3}"), oneToSix = digitRegex(loc, "{1,6}"), oneToNine = digitRegex(loc, "{1,9}"), twoToFour = digitRegex(loc, "{2,4}"), fourToSix = digitRegex(loc, "{4,6}"), literal = function literal2(t3) {
+        return {
+          regex: RegExp(escapeToken(t3.val)),
+          deser: function deser(_ref5) {
+            var s3 = _ref5[0];
+            return s3;
+          },
+          literal: true
+        };
+      }, unitate = function unitate2(t3) {
+        if (token.literal) {
+          return literal(t3);
+        }
+        switch (t3.val) {
+          case "G":
+            return oneOf(loc.eras("short", false), 0);
+          case "GG":
+            return oneOf(loc.eras("long", false), 0);
+          case "y":
+            return intUnit(oneToSix);
+          case "yy":
+            return intUnit(twoToFour, untruncateYear);
+          case "yyyy":
+            return intUnit(four);
+          case "yyyyy":
+            return intUnit(fourToSix);
+          case "yyyyyy":
+            return intUnit(six);
+          case "M":
+            return intUnit(oneOrTwo);
+          case "MM":
+            return intUnit(two);
+          case "MMM":
+            return oneOf(loc.months("short", true, false), 1);
+          case "MMMM":
+            return oneOf(loc.months("long", true, false), 1);
+          case "L":
+            return intUnit(oneOrTwo);
+          case "LL":
+            return intUnit(two);
+          case "LLL":
+            return oneOf(loc.months("short", false, false), 1);
+          case "LLLL":
+            return oneOf(loc.months("long", false, false), 1);
+          case "d":
+            return intUnit(oneOrTwo);
+          case "dd":
+            return intUnit(two);
+          case "o":
+            return intUnit(oneToThree);
+          case "ooo":
+            return intUnit(three);
+          case "HH":
+            return intUnit(two);
+          case "H":
+            return intUnit(oneOrTwo);
+          case "hh":
+            return intUnit(two);
+          case "h":
+            return intUnit(oneOrTwo);
+          case "mm":
+            return intUnit(two);
+          case "m":
+            return intUnit(oneOrTwo);
+          case "q":
+            return intUnit(oneOrTwo);
+          case "qq":
+            return intUnit(two);
+          case "s":
+            return intUnit(oneOrTwo);
+          case "ss":
+            return intUnit(two);
+          case "S":
+            return intUnit(oneToThree);
+          case "SSS":
+            return intUnit(three);
+          case "u":
+            return simple(oneToNine);
+          case "uu":
+            return simple(oneOrTwo);
+          case "uuu":
+            return intUnit(one);
+          case "a":
+            return oneOf(loc.meridiems(), 0);
+          case "kkkk":
+            return intUnit(four);
+          case "kk":
+            return intUnit(twoToFour, untruncateYear);
+          case "W":
+            return intUnit(oneOrTwo);
+          case "WW":
+            return intUnit(two);
+          case "E":
+          case "c":
+            return intUnit(one);
+          case "EEE":
+            return oneOf(loc.weekdays("short", false, false), 1);
+          case "EEEE":
+            return oneOf(loc.weekdays("long", false, false), 1);
+          case "ccc":
+            return oneOf(loc.weekdays("short", true, false), 1);
+          case "cccc":
+            return oneOf(loc.weekdays("long", true, false), 1);
+          case "Z":
+          case "ZZ":
+            return offset2(new RegExp("([+-]" + oneOrTwo.source + ")(?::(" + two.source + "))?"), 2);
+          case "ZZZ":
+            return offset2(new RegExp("([+-]" + oneOrTwo.source + ")(" + two.source + ")?"), 2);
+          case "z":
+            return simple(/[a-z_+-/]{1,256}?/i);
+          default:
+            return literal(t3);
+        }
+      };
+      var unit = unitate(token) || {
+        invalidReason: MISSING_FTP
+      };
+      unit.token = token;
+      return unit;
+    }
+    var partTypeStyleToTokenVal = {
+      year: {
+        "2-digit": "yy",
+        numeric: "yyyyy"
+      },
+      month: {
+        numeric: "M",
+        "2-digit": "MM",
+        short: "MMM",
+        long: "MMMM"
+      },
+      day: {
+        numeric: "d",
+        "2-digit": "dd"
+      },
+      weekday: {
+        short: "EEE",
+        long: "EEEE"
+      },
+      dayperiod: "a",
+      dayPeriod: "a",
+      hour: {
+        numeric: "h",
+        "2-digit": "hh"
+      },
+      minute: {
+        numeric: "m",
+        "2-digit": "mm"
+      },
+      second: {
+        numeric: "s",
+        "2-digit": "ss"
+      }
+    };
+    function tokenForPart(part, locale, formatOpts) {
+      var type = part.type, value = part.value;
+      if (type === "literal") {
+        return {
+          literal: true,
+          val: value
+        };
+      }
+      var style = formatOpts[type];
+      var val = partTypeStyleToTokenVal[type];
+      if (typeof val === "object") {
+        val = val[style];
+      }
+      if (val) {
+        return {
+          literal: false,
+          val
+        };
+      }
+      return void 0;
+    }
+    function buildRegex(units) {
+      var re = units.map(function(u2) {
+        return u2.regex;
+      }).reduce(function(f2, r2) {
+        return f2 + "(" + r2.source + ")";
+      }, "");
+      return ["^" + re + "$", units];
+    }
+    function match(input, regex, handlers) {
+      var matches2 = input.match(regex);
+      if (matches2) {
+        var all = {};
+        var matchIndex = 1;
+        for (var i2 in handlers) {
+          if (hasOwnProperty(handlers, i2)) {
+            var h2 = handlers[i2], groups = h2.groups ? h2.groups + 1 : 1;
+            if (!h2.literal && h2.token) {
+              all[h2.token.val[0]] = h2.deser(matches2.slice(matchIndex, matchIndex + groups));
+            }
+            matchIndex += groups;
+          }
+        }
+        return [matches2, all];
+      } else {
+        return [matches2, {}];
+      }
+    }
+    function dateTimeFromMatches(matches2) {
+      var toField = function toField2(token) {
+        switch (token) {
+          case "S":
+            return "millisecond";
+          case "s":
+            return "second";
+          case "m":
+            return "minute";
+          case "h":
+          case "H":
+            return "hour";
+          case "d":
+            return "day";
+          case "o":
+            return "ordinal";
+          case "L":
+          case "M":
+            return "month";
+          case "y":
+            return "year";
+          case "E":
+          case "c":
+            return "weekday";
+          case "W":
+            return "weekNumber";
+          case "k":
+            return "weekYear";
+          case "q":
+            return "quarter";
+          default:
+            return null;
+        }
+      };
+      var zone = null;
+      var specificOffset;
+      if (!isUndefined(matches2.z)) {
+        zone = IANAZone.create(matches2.z);
+      }
+      if (!isUndefined(matches2.Z)) {
+        if (!zone) {
+          zone = new FixedOffsetZone(matches2.Z);
+        }
+        specificOffset = matches2.Z;
+      }
+      if (!isUndefined(matches2.q)) {
+        matches2.M = (matches2.q - 1) * 3 + 1;
+      }
+      if (!isUndefined(matches2.h)) {
+        if (matches2.h < 12 && matches2.a === 1) {
+          matches2.h += 12;
+        } else if (matches2.h === 12 && matches2.a === 0) {
+          matches2.h = 0;
+        }
+      }
+      if (matches2.G === 0 && matches2.y) {
+        matches2.y = -matches2.y;
+      }
+      if (!isUndefined(matches2.u)) {
+        matches2.S = parseMillis(matches2.u);
+      }
+      var vals = Object.keys(matches2).reduce(function(r2, k2) {
+        var f2 = toField(k2);
+        if (f2) {
+          r2[f2] = matches2[k2];
+        }
+        return r2;
+      }, {});
+      return [vals, zone, specificOffset];
+    }
+    var dummyDateTimeCache = null;
+    function getDummyDateTime() {
+      if (!dummyDateTimeCache) {
+        dummyDateTimeCache = DateTime.fromMillis(1555555555555);
+      }
+      return dummyDateTimeCache;
+    }
+    function maybeExpandMacroToken(token, locale) {
+      if (token.literal) {
+        return token;
+      }
+      var formatOpts = Formatter2.macroTokenToFormatOpts(token.val);
+      if (!formatOpts) {
+        return token;
+      }
+      var formatter = Formatter2.create(locale, formatOpts);
+      var parts = formatter.formatDateTimeParts(getDummyDateTime());
+      var tokens = parts.map(function(p2) {
+        return tokenForPart(p2, locale, formatOpts);
+      });
+      if (tokens.includes(void 0)) {
+        return token;
+      }
+      return tokens;
+    }
+    function expandMacroTokens(tokens, locale) {
+      var _Array$prototype;
+      return (_Array$prototype = Array.prototype).concat.apply(_Array$prototype, tokens.map(function(t3) {
+        return maybeExpandMacroToken(t3, locale);
+      }));
+    }
+    function explainFromTokens(locale, input, format2) {
+      var tokens = expandMacroTokens(Formatter2.parseFormat(format2), locale), units = tokens.map(function(t3) {
+        return unitForToken(t3, locale);
+      }), disqualifyingUnit = units.find(function(t3) {
+        return t3.invalidReason;
+      });
+      if (disqualifyingUnit) {
+        return {
+          input,
+          tokens,
+          invalidReason: disqualifyingUnit.invalidReason
+        };
+      } else {
+        var _buildRegex = buildRegex(units), regexString = _buildRegex[0], handlers = _buildRegex[1], regex = RegExp(regexString, "i"), _match = match(input, regex, handlers), rawMatches = _match[0], matches2 = _match[1], _ref6 = matches2 ? dateTimeFromMatches(matches2) : [null, null, void 0], result = _ref6[0], zone = _ref6[1], specificOffset = _ref6[2];
+        if (hasOwnProperty(matches2, "a") && hasOwnProperty(matches2, "H")) {
+          throw new ConflictingSpecificationError("Can't include meridiem when specifying 24-hour format");
+        }
+        return {
+          input,
+          tokens,
+          regex,
+          rawMatches,
+          matches: matches2,
+          result,
+          zone,
+          specificOffset
+        };
+      }
+    }
+    function parseFromTokens(locale, input, format2) {
+      var _explainFromTokens = explainFromTokens(locale, input, format2), result = _explainFromTokens.result, zone = _explainFromTokens.zone, specificOffset = _explainFromTokens.specificOffset, invalidReason = _explainFromTokens.invalidReason;
+      return [result, zone, specificOffset, invalidReason];
+    }
+    var nonLeapLadder = [0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334];
+    var leapLadder = [0, 31, 60, 91, 121, 152, 182, 213, 244, 274, 305, 335];
+    function unitOutOfRange(unit, value) {
+      return new Invalid("unit out of range", "you specified " + value + " (of type " + typeof value + ") as a " + unit + ", which is invalid");
+    }
+    function dayOfWeek(year, month, day) {
+      var d2 = new Date(Date.UTC(year, month - 1, day));
+      if (year < 100 && year >= 0) {
+        d2.setUTCFullYear(d2.getUTCFullYear() - 1900);
+      }
+      var js = d2.getUTCDay();
+      return js === 0 ? 7 : js;
+    }
+    function computeOrdinal(year, month, day) {
+      return day + (isLeapYear(year) ? leapLadder : nonLeapLadder)[month - 1];
+    }
+    function uncomputeOrdinal(year, ordinal) {
+      var table = isLeapYear(year) ? leapLadder : nonLeapLadder, month0 = table.findIndex(function(i2) {
+        return i2 < ordinal;
+      }), day = ordinal - table[month0];
+      return {
+        month: month0 + 1,
+        day
+      };
+    }
+    function gregorianToWeek(gregObj) {
+      var year = gregObj.year, month = gregObj.month, day = gregObj.day, ordinal = computeOrdinal(year, month, day), weekday = dayOfWeek(year, month, day);
+      var weekNumber = Math.floor((ordinal - weekday + 10) / 7), weekYear;
+      if (weekNumber < 1) {
+        weekYear = year - 1;
+        weekNumber = weeksInWeekYear(weekYear);
+      } else if (weekNumber > weeksInWeekYear(year)) {
+        weekYear = year + 1;
+        weekNumber = 1;
+      } else {
+        weekYear = year;
+      }
+      return _extends2({
+        weekYear,
+        weekNumber,
+        weekday
+      }, timeObject(gregObj));
+    }
+    function weekToGregorian(weekData) {
+      var weekYear = weekData.weekYear, weekNumber = weekData.weekNumber, weekday = weekData.weekday, weekdayOfJan4 = dayOfWeek(weekYear, 1, 4), yearInDays = daysInYear(weekYear);
+      var ordinal = weekNumber * 7 + weekday - weekdayOfJan4 - 3, year;
+      if (ordinal < 1) {
+        year = weekYear - 1;
+        ordinal += daysInYear(year);
+      } else if (ordinal > yearInDays) {
+        year = weekYear + 1;
+        ordinal -= daysInYear(weekYear);
+      } else {
+        year = weekYear;
+      }
+      var _uncomputeOrdinal = uncomputeOrdinal(year, ordinal), month = _uncomputeOrdinal.month, day = _uncomputeOrdinal.day;
+      return _extends2({
+        year,
+        month,
+        day
+      }, timeObject(weekData));
+    }
+    function gregorianToOrdinal(gregData) {
+      var year = gregData.year, month = gregData.month, day = gregData.day;
+      var ordinal = computeOrdinal(year, month, day);
+      return _extends2({
+        year,
+        ordinal
+      }, timeObject(gregData));
+    }
+    function ordinalToGregorian(ordinalData) {
+      var year = ordinalData.year, ordinal = ordinalData.ordinal;
+      var _uncomputeOrdinal2 = uncomputeOrdinal(year, ordinal), month = _uncomputeOrdinal2.month, day = _uncomputeOrdinal2.day;
+      return _extends2({
+        year,
+        month,
+        day
+      }, timeObject(ordinalData));
+    }
+    function hasInvalidWeekData(obj) {
+      var validYear = isInteger(obj.weekYear), validWeek = integerBetween(obj.weekNumber, 1, weeksInWeekYear(obj.weekYear)), validWeekday = integerBetween(obj.weekday, 1, 7);
+      if (!validYear) {
+        return unitOutOfRange("weekYear", obj.weekYear);
+      } else if (!validWeek) {
+        return unitOutOfRange("week", obj.week);
+      } else if (!validWeekday) {
+        return unitOutOfRange("weekday", obj.weekday);
+      } else
+        return false;
+    }
+    function hasInvalidOrdinalData(obj) {
+      var validYear = isInteger(obj.year), validOrdinal = integerBetween(obj.ordinal, 1, daysInYear(obj.year));
+      if (!validYear) {
+        return unitOutOfRange("year", obj.year);
+      } else if (!validOrdinal) {
+        return unitOutOfRange("ordinal", obj.ordinal);
+      } else
+        return false;
+    }
+    function hasInvalidGregorianData(obj) {
+      var validYear = isInteger(obj.year), validMonth = integerBetween(obj.month, 1, 12), validDay = integerBetween(obj.day, 1, daysInMonth(obj.year, obj.month));
+      if (!validYear) {
+        return unitOutOfRange("year", obj.year);
+      } else if (!validMonth) {
+        return unitOutOfRange("month", obj.month);
+      } else if (!validDay) {
+        return unitOutOfRange("day", obj.day);
+      } else
+        return false;
+    }
+    function hasInvalidTimeData(obj) {
+      var hour = obj.hour, minute = obj.minute, second = obj.second, millisecond = obj.millisecond;
+      var validHour = integerBetween(hour, 0, 23) || hour === 24 && minute === 0 && second === 0 && millisecond === 0, validMinute = integerBetween(minute, 0, 59), validSecond = integerBetween(second, 0, 59), validMillisecond = integerBetween(millisecond, 0, 999);
+      if (!validHour) {
+        return unitOutOfRange("hour", hour);
+      } else if (!validMinute) {
+        return unitOutOfRange("minute", minute);
+      } else if (!validSecond) {
+        return unitOutOfRange("second", second);
+      } else if (!validMillisecond) {
+        return unitOutOfRange("millisecond", millisecond);
+      } else
+        return false;
+    }
+    var INVALID = "Invalid DateTime";
+    var MAX_DATE = 864e13;
+    function unsupportedZone(zone) {
+      return new Invalid("unsupported zone", 'the zone "' + zone.name + '" is not supported');
+    }
+    function possiblyCachedWeekData(dt) {
+      if (dt.weekData === null) {
+        dt.weekData = gregorianToWeek(dt.c);
+      }
+      return dt.weekData;
+    }
+    function clone2(inst, alts) {
+      var current = {
+        ts: inst.ts,
+        zone: inst.zone,
+        c: inst.c,
+        o: inst.o,
+        loc: inst.loc,
+        invalid: inst.invalid
+      };
+      return new DateTime(_extends2({}, current, alts, {
+        old: current
+      }));
+    }
+    function fixOffset(localTS, o2, tz) {
+      var utcGuess = localTS - o2 * 60 * 1e3;
+      var o22 = tz.offset(utcGuess);
+      if (o2 === o22) {
+        return [utcGuess, o2];
+      }
+      utcGuess -= (o22 - o2) * 60 * 1e3;
+      var o3 = tz.offset(utcGuess);
+      if (o22 === o3) {
+        return [utcGuess, o22];
+      }
+      return [localTS - Math.min(o22, o3) * 60 * 1e3, Math.max(o22, o3)];
+    }
+    function tsToObj(ts, offset3) {
+      ts += offset3 * 60 * 1e3;
+      var d2 = new Date(ts);
+      return {
+        year: d2.getUTCFullYear(),
+        month: d2.getUTCMonth() + 1,
+        day: d2.getUTCDate(),
+        hour: d2.getUTCHours(),
+        minute: d2.getUTCMinutes(),
+        second: d2.getUTCSeconds(),
+        millisecond: d2.getUTCMilliseconds()
+      };
+    }
+    function objToTS(obj, offset3, zone) {
+      return fixOffset(objToLocalTS(obj), offset3, zone);
+    }
+    function adjustTime(inst, dur) {
+      var oPre = inst.o, year = inst.c.year + Math.trunc(dur.years), month = inst.c.month + Math.trunc(dur.months) + Math.trunc(dur.quarters) * 3, c2 = _extends2({}, inst.c, {
+        year,
+        month,
+        day: Math.min(inst.c.day, daysInMonth(year, month)) + Math.trunc(dur.days) + Math.trunc(dur.weeks) * 7
+      }), millisToAdd = Duration.fromObject({
+        years: dur.years - Math.trunc(dur.years),
+        quarters: dur.quarters - Math.trunc(dur.quarters),
+        months: dur.months - Math.trunc(dur.months),
+        weeks: dur.weeks - Math.trunc(dur.weeks),
+        days: dur.days - Math.trunc(dur.days),
+        hours: dur.hours,
+        minutes: dur.minutes,
+        seconds: dur.seconds,
+        milliseconds: dur.milliseconds
+      }).as("milliseconds"), localTS = objToLocalTS(c2);
+      var _fixOffset = fixOffset(localTS, oPre, inst.zone), ts = _fixOffset[0], o2 = _fixOffset[1];
+      if (millisToAdd !== 0) {
+        ts += millisToAdd;
+        o2 = inst.zone.offset(ts);
+      }
+      return {
+        ts,
+        o: o2
+      };
+    }
+    function parseDataToDateTime(parsed, parsedZone, opts, format2, text2, specificOffset) {
+      var setZone = opts.setZone, zone = opts.zone;
+      if (parsed && Object.keys(parsed).length !== 0) {
+        var interpretationZone = parsedZone || zone, inst = DateTime.fromObject(parsed, _extends2({}, opts, {
+          zone: interpretationZone,
+          specificOffset
+        }));
+        return setZone ? inst : inst.setZone(zone);
+      } else {
+        return DateTime.invalid(new Invalid("unparsable", 'the input "' + text2 + `" can't be parsed as ` + format2));
+      }
+    }
+    function toTechFormat(dt, format2, allowZ) {
+      if (allowZ === void 0) {
+        allowZ = true;
+      }
+      return dt.isValid ? Formatter2.create(Locale.create("en-US"), {
+        allowZ,
+        forceSimple: true
+      }).formatDateTimeFromString(dt, format2) : null;
+    }
+    function _toISODate(o2, extended) {
+      var longFormat = o2.c.year > 9999 || o2.c.year < 0;
+      var c2 = "";
+      if (longFormat && o2.c.year >= 0)
+        c2 += "+";
+      c2 += padStart(o2.c.year, longFormat ? 6 : 4);
+      if (extended) {
+        c2 += "-";
+        c2 += padStart(o2.c.month);
+        c2 += "-";
+        c2 += padStart(o2.c.day);
+      } else {
+        c2 += padStart(o2.c.month);
+        c2 += padStart(o2.c.day);
+      }
+      return c2;
+    }
+    function _toISOTime(o2, extended, suppressSeconds, suppressMilliseconds, includeOffset, extendedZone) {
+      var c2 = padStart(o2.c.hour);
+      if (extended) {
+        c2 += ":";
+        c2 += padStart(o2.c.minute);
+        if (o2.c.second !== 0 || !suppressSeconds) {
+          c2 += ":";
+        }
+      } else {
+        c2 += padStart(o2.c.minute);
+      }
+      if (o2.c.second !== 0 || !suppressSeconds) {
+        c2 += padStart(o2.c.second);
+        if (o2.c.millisecond !== 0 || !suppressMilliseconds) {
+          c2 += ".";
+          c2 += padStart(o2.c.millisecond, 3);
+        }
+      }
+      if (includeOffset) {
+        if (o2.isOffsetFixed && o2.offset === 0 && !extendedZone) {
+          c2 += "Z";
+        } else if (o2.o < 0) {
+          c2 += "-";
+          c2 += padStart(Math.trunc(-o2.o / 60));
+          c2 += ":";
+          c2 += padStart(Math.trunc(-o2.o % 60));
+        } else {
+          c2 += "+";
+          c2 += padStart(Math.trunc(o2.o / 60));
+          c2 += ":";
+          c2 += padStart(Math.trunc(o2.o % 60));
+        }
+      }
+      if (extendedZone) {
+        c2 += "[" + o2.zone.ianaName + "]";
+      }
+      return c2;
+    }
+    var defaultUnitValues = {
+      month: 1,
+      day: 1,
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    };
+    var defaultWeekUnitValues = {
+      weekNumber: 1,
+      weekday: 1,
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    };
+    var defaultOrdinalUnitValues = {
+      ordinal: 1,
+      hour: 0,
+      minute: 0,
+      second: 0,
+      millisecond: 0
+    };
+    var orderedUnits = ["year", "month", "day", "hour", "minute", "second", "millisecond"];
+    var orderedWeekUnits = ["weekYear", "weekNumber", "weekday", "hour", "minute", "second", "millisecond"];
+    var orderedOrdinalUnits = ["year", "ordinal", "hour", "minute", "second", "millisecond"];
+    function normalizeUnit(unit) {
+      var normalized = {
+        year: "year",
+        years: "year",
+        month: "month",
+        months: "month",
+        day: "day",
+        days: "day",
+        hour: "hour",
+        hours: "hour",
+        minute: "minute",
+        minutes: "minute",
+        quarter: "quarter",
+        quarters: "quarter",
+        second: "second",
+        seconds: "second",
+        millisecond: "millisecond",
+        milliseconds: "millisecond",
+        weekday: "weekday",
+        weekdays: "weekday",
+        weeknumber: "weekNumber",
+        weeksnumber: "weekNumber",
+        weeknumbers: "weekNumber",
+        weekyear: "weekYear",
+        weekyears: "weekYear",
+        ordinal: "ordinal"
+      }[unit.toLowerCase()];
+      if (!normalized)
+        throw new InvalidUnitError(unit);
+      return normalized;
+    }
+    function quickDT(obj, opts) {
+      var zone = normalizeZone(opts.zone, Settings.defaultZone), loc = Locale.fromObject(opts), tsNow = Settings.now();
+      var ts, o2;
+      if (!isUndefined(obj.year)) {
+        for (var _iterator = _createForOfIteratorHelperLoose(orderedUnits), _step; !(_step = _iterator()).done; ) {
+          var u2 = _step.value;
+          if (isUndefined(obj[u2])) {
+            obj[u2] = defaultUnitValues[u2];
+          }
+        }
+        var invalid = hasInvalidGregorianData(obj) || hasInvalidTimeData(obj);
+        if (invalid) {
+          return DateTime.invalid(invalid);
+        }
+        var offsetProvis = zone.offset(tsNow);
+        var _objToTS = objToTS(obj, offsetProvis, zone);
+        ts = _objToTS[0];
+        o2 = _objToTS[1];
+      } else {
+        ts = tsNow;
+      }
+      return new DateTime({
+        ts,
+        zone,
+        loc,
+        o: o2
+      });
+    }
+    function diffRelative(start2, end2, opts) {
+      var round2 = isUndefined(opts.round) ? true : opts.round, format2 = function format3(c2, unit2) {
+        c2 = roundTo(c2, round2 || opts.calendary ? 0 : 2, true);
+        var formatter = end2.loc.clone(opts).relFormatter(opts);
+        return formatter.format(c2, unit2);
+      }, differ = function differ2(unit2) {
+        if (opts.calendary) {
+          if (!end2.hasSame(start2, unit2)) {
+            return end2.startOf(unit2).diff(start2.startOf(unit2), unit2).get(unit2);
+          } else
+            return 0;
+        } else {
+          return end2.diff(start2, unit2).get(unit2);
+        }
+      };
+      if (opts.unit) {
+        return format2(differ(opts.unit), opts.unit);
+      }
+      for (var _iterator2 = _createForOfIteratorHelperLoose(opts.units), _step2; !(_step2 = _iterator2()).done; ) {
+        var unit = _step2.value;
+        var count = differ(unit);
+        if (Math.abs(count) >= 1) {
+          return format2(count, unit);
+        }
+      }
+      return format2(start2 > end2 ? -0 : 0, opts.units[opts.units.length - 1]);
+    }
+    function lastOpts(argList) {
+      var opts = {}, args;
+      if (argList.length > 0 && typeof argList[argList.length - 1] === "object") {
+        opts = argList[argList.length - 1];
+        args = Array.from(argList).slice(0, argList.length - 1);
+      } else {
+        args = Array.from(argList);
+      }
+      return [opts, args];
+    }
+    var DateTime = /* @__PURE__ */ function() {
+      function DateTime2(config) {
+        var zone = config.zone || Settings.defaultZone;
+        var invalid = config.invalid || (Number.isNaN(config.ts) ? new Invalid("invalid input") : null) || (!zone.isValid ? unsupportedZone(zone) : null);
+        this.ts = isUndefined(config.ts) ? Settings.now() : config.ts;
+        var c2 = null, o2 = null;
+        if (!invalid) {
+          var unchanged = config.old && config.old.ts === this.ts && config.old.zone.equals(zone);
+          if (unchanged) {
+            var _ref = [config.old.c, config.old.o];
+            c2 = _ref[0];
+            o2 = _ref[1];
+          } else {
+            var ot = zone.offset(this.ts);
+            c2 = tsToObj(this.ts, ot);
+            invalid = Number.isNaN(c2.year) ? new Invalid("invalid input") : null;
+            c2 = invalid ? null : c2;
+            o2 = invalid ? null : ot;
+          }
+        }
+        this._zone = zone;
+        this.loc = config.loc || Locale.create();
+        this.invalid = invalid;
+        this.weekData = null;
+        this.c = c2;
+        this.o = o2;
+        this.isLuxonDateTime = true;
+      }
+      DateTime2.now = function now3() {
+        return new DateTime2({});
+      };
+      DateTime2.local = function local() {
+        var _lastOpts = lastOpts(arguments), opts = _lastOpts[0], args = _lastOpts[1], year = args[0], month = args[1], day = args[2], hour = args[3], minute = args[4], second = args[5], millisecond = args[6];
+        return quickDT({
+          year,
+          month,
+          day,
+          hour,
+          minute,
+          second,
+          millisecond
+        }, opts);
+      };
+      DateTime2.utc = function utc() {
+        var _lastOpts2 = lastOpts(arguments), opts = _lastOpts2[0], args = _lastOpts2[1], year = args[0], month = args[1], day = args[2], hour = args[3], minute = args[4], second = args[5], millisecond = args[6];
+        opts.zone = FixedOffsetZone.utcInstance;
+        return quickDT({
+          year,
+          month,
+          day,
+          hour,
+          minute,
+          second,
+          millisecond
+        }, opts);
+      };
+      DateTime2.fromJSDate = function fromJSDate(date, options) {
+        if (options === void 0) {
+          options = {};
+        }
+        var ts = isDate3(date) ? date.valueOf() : NaN;
+        if (Number.isNaN(ts)) {
+          return DateTime2.invalid("invalid input");
+        }
+        var zoneToUse = normalizeZone(options.zone, Settings.defaultZone);
+        if (!zoneToUse.isValid) {
+          return DateTime2.invalid(unsupportedZone(zoneToUse));
+        }
+        return new DateTime2({
+          ts,
+          zone: zoneToUse,
+          loc: Locale.fromObject(options)
+        });
+      };
+      DateTime2.fromMillis = function fromMillis(milliseconds, options) {
+        if (options === void 0) {
+          options = {};
+        }
+        if (!isNumber2(milliseconds)) {
+          throw new InvalidArgumentError("fromMillis requires a numerical input, but received a " + typeof milliseconds + " with value " + milliseconds);
+        } else if (milliseconds < -MAX_DATE || milliseconds > MAX_DATE) {
+          return DateTime2.invalid("Timestamp out of range");
+        } else {
+          return new DateTime2({
+            ts: milliseconds,
+            zone: normalizeZone(options.zone, Settings.defaultZone),
+            loc: Locale.fromObject(options)
+          });
+        }
+      };
+      DateTime2.fromSeconds = function fromSeconds(seconds, options) {
+        if (options === void 0) {
+          options = {};
+        }
+        if (!isNumber2(seconds)) {
+          throw new InvalidArgumentError("fromSeconds requires a numerical input");
+        } else {
+          return new DateTime2({
+            ts: seconds * 1e3,
+            zone: normalizeZone(options.zone, Settings.defaultZone),
+            loc: Locale.fromObject(options)
+          });
+        }
+      };
+      DateTime2.fromObject = function fromObject(obj, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        obj = obj || {};
+        var zoneToUse = normalizeZone(opts.zone, Settings.defaultZone);
+        if (!zoneToUse.isValid) {
+          return DateTime2.invalid(unsupportedZone(zoneToUse));
+        }
+        var tsNow = Settings.now(), offsetProvis = !isUndefined(opts.specificOffset) ? opts.specificOffset : zoneToUse.offset(tsNow), normalized = normalizeObject(obj, normalizeUnit), containsOrdinal = !isUndefined(normalized.ordinal), containsGregorYear = !isUndefined(normalized.year), containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber, loc = Locale.fromObject(opts);
+        if ((containsGregor || containsOrdinal) && definiteWeekDef) {
+          throw new ConflictingSpecificationError("Can't mix weekYear/weekNumber units with year/month/day or ordinals");
+        }
+        if (containsGregorMD && containsOrdinal) {
+          throw new ConflictingSpecificationError("Can't mix ordinal dates with month/day");
+        }
+        var useWeekData = definiteWeekDef || normalized.weekday && !containsGregor;
+        var units, defaultValues, objNow = tsToObj(tsNow, offsetProvis);
+        if (useWeekData) {
+          units = orderedWeekUnits;
+          defaultValues = defaultWeekUnitValues;
+          objNow = gregorianToWeek(objNow);
+        } else if (containsOrdinal) {
+          units = orderedOrdinalUnits;
+          defaultValues = defaultOrdinalUnitValues;
+          objNow = gregorianToOrdinal(objNow);
+        } else {
+          units = orderedUnits;
+          defaultValues = defaultUnitValues;
+        }
+        var foundFirst = false;
+        for (var _iterator3 = _createForOfIteratorHelperLoose(units), _step3; !(_step3 = _iterator3()).done; ) {
+          var u2 = _step3.value;
+          var v2 = normalized[u2];
+          if (!isUndefined(v2)) {
+            foundFirst = true;
+          } else if (foundFirst) {
+            normalized[u2] = defaultValues[u2];
+          } else {
+            normalized[u2] = objNow[u2];
+          }
+        }
+        var higherOrderInvalid = useWeekData ? hasInvalidWeekData(normalized) : containsOrdinal ? hasInvalidOrdinalData(normalized) : hasInvalidGregorianData(normalized), invalid = higherOrderInvalid || hasInvalidTimeData(normalized);
+        if (invalid) {
+          return DateTime2.invalid(invalid);
+        }
+        var gregorian = useWeekData ? weekToGregorian(normalized) : containsOrdinal ? ordinalToGregorian(normalized) : normalized, _objToTS2 = objToTS(gregorian, offsetProvis, zoneToUse), tsFinal = _objToTS2[0], offsetFinal = _objToTS2[1], inst = new DateTime2({
+          ts: tsFinal,
+          zone: zoneToUse,
+          o: offsetFinal,
+          loc
+        });
+        if (normalized.weekday && containsGregor && obj.weekday !== inst.weekday) {
+          return DateTime2.invalid("mismatched weekday", "you can't specify both a weekday of " + normalized.weekday + " and a date of " + inst.toISO());
+        }
+        return inst;
+      };
+      DateTime2.fromISO = function fromISO(text2, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var _parseISODate = parseISODate(text2), vals = _parseISODate[0], parsedZone = _parseISODate[1];
+        return parseDataToDateTime(vals, parsedZone, opts, "ISO 8601", text2);
+      };
+      DateTime2.fromRFC2822 = function fromRFC2822(text2, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var _parseRFC2822Date = parseRFC2822Date(text2), vals = _parseRFC2822Date[0], parsedZone = _parseRFC2822Date[1];
+        return parseDataToDateTime(vals, parsedZone, opts, "RFC 2822", text2);
+      };
+      DateTime2.fromHTTP = function fromHTTP(text2, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var _parseHTTPDate = parseHTTPDate(text2), vals = _parseHTTPDate[0], parsedZone = _parseHTTPDate[1];
+        return parseDataToDateTime(vals, parsedZone, opts, "HTTP", opts);
+      };
+      DateTime2.fromFormat = function fromFormat(text2, fmt, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        if (isUndefined(text2) || isUndefined(fmt)) {
+          throw new InvalidArgumentError("fromFormat requires an input string and a format");
+        }
+        var _opts = opts, _opts$locale = _opts.locale, locale = _opts$locale === void 0 ? null : _opts$locale, _opts$numberingSystem = _opts.numberingSystem, numberingSystem = _opts$numberingSystem === void 0 ? null : _opts$numberingSystem, localeToUse = Locale.fromOpts({
+          locale,
+          numberingSystem,
+          defaultToEN: true
+        }), _parseFromTokens = parseFromTokens(localeToUse, text2, fmt), vals = _parseFromTokens[0], parsedZone = _parseFromTokens[1], specificOffset = _parseFromTokens[2], invalid = _parseFromTokens[3];
+        if (invalid) {
+          return DateTime2.invalid(invalid);
+        } else {
+          return parseDataToDateTime(vals, parsedZone, opts, "format " + fmt, text2, specificOffset);
+        }
+      };
+      DateTime2.fromString = function fromString(text2, fmt, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        return DateTime2.fromFormat(text2, fmt, opts);
+      };
+      DateTime2.fromSQL = function fromSQL(text2, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var _parseSQL = parseSQL(text2), vals = _parseSQL[0], parsedZone = _parseSQL[1];
+        return parseDataToDateTime(vals, parsedZone, opts, "SQL", text2);
+      };
+      DateTime2.invalid = function invalid(reason, explanation) {
+        if (explanation === void 0) {
+          explanation = null;
+        }
+        if (!reason) {
+          throw new InvalidArgumentError("need to specify a reason the DateTime is invalid");
+        }
+        var invalid2 = reason instanceof Invalid ? reason : new Invalid(reason, explanation);
+        if (Settings.throwOnInvalid) {
+          throw new InvalidDateTimeError(invalid2);
+        } else {
+          return new DateTime2({
+            invalid: invalid2
+          });
+        }
+      };
+      DateTime2.isDateTime = function isDateTime(o2) {
+        return o2 && o2.isLuxonDateTime || false;
+      };
+      var _proto = DateTime2.prototype;
+      _proto.get = function get2(unit) {
+        return this[unit];
+      };
+      _proto.resolvedLocaleOptions = function resolvedLocaleOptions(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        var _Formatter$create$res = Formatter2.create(this.loc.clone(opts), opts).resolvedOptions(this), locale = _Formatter$create$res.locale, numberingSystem = _Formatter$create$res.numberingSystem, calendar = _Formatter$create$res.calendar;
+        return {
+          locale,
+          numberingSystem,
+          outputCalendar: calendar
+        };
+      };
+      _proto.toUTC = function toUTC(offset3, opts) {
+        if (offset3 === void 0) {
+          offset3 = 0;
+        }
+        if (opts === void 0) {
+          opts = {};
+        }
+        return this.setZone(FixedOffsetZone.instance(offset3), opts);
+      };
+      _proto.toLocal = function toLocal() {
+        return this.setZone(Settings.defaultZone);
+      };
+      _proto.setZone = function setZone(zone, _temp) {
+        var _ref2 = _temp === void 0 ? {} : _temp, _ref2$keepLocalTime = _ref2.keepLocalTime, keepLocalTime = _ref2$keepLocalTime === void 0 ? false : _ref2$keepLocalTime, _ref2$keepCalendarTim = _ref2.keepCalendarTime, keepCalendarTime = _ref2$keepCalendarTim === void 0 ? false : _ref2$keepCalendarTim;
+        zone = normalizeZone(zone, Settings.defaultZone);
+        if (zone.equals(this.zone)) {
+          return this;
+        } else if (!zone.isValid) {
+          return DateTime2.invalid(unsupportedZone(zone));
+        } else {
+          var newTS = this.ts;
+          if (keepLocalTime || keepCalendarTime) {
+            var offsetGuess = zone.offset(this.ts);
+            var asObj = this.toObject();
+            var _objToTS3 = objToTS(asObj, offsetGuess, zone);
+            newTS = _objToTS3[0];
+          }
+          return clone2(this, {
+            ts: newTS,
+            zone
+          });
+        }
+      };
+      _proto.reconfigure = function reconfigure(_temp2) {
+        var _ref3 = _temp2 === void 0 ? {} : _temp2, locale = _ref3.locale, numberingSystem = _ref3.numberingSystem, outputCalendar = _ref3.outputCalendar;
+        var loc = this.loc.clone({
+          locale,
+          numberingSystem,
+          outputCalendar
+        });
+        return clone2(this, {
+          loc
+        });
+      };
+      _proto.setLocale = function setLocale(locale) {
+        return this.reconfigure({
+          locale
+        });
+      };
+      _proto.set = function set2(values) {
+        if (!this.isValid)
+          return this;
+        var normalized = normalizeObject(values, normalizeUnit), settingWeekStuff = !isUndefined(normalized.weekYear) || !isUndefined(normalized.weekNumber) || !isUndefined(normalized.weekday), containsOrdinal = !isUndefined(normalized.ordinal), containsGregorYear = !isUndefined(normalized.year), containsGregorMD = !isUndefined(normalized.month) || !isUndefined(normalized.day), containsGregor = containsGregorYear || containsGregorMD, definiteWeekDef = normalized.weekYear || normalized.weekNumber;
+        if ((containsGregor || containsOrdinal) && definiteWeekDef) {
+          throw new ConflictingSpecificationError("Can't mix weekYear/weekNumber units with year/month/day or ordinals");
+        }
+        if (containsGregorMD && containsOrdinal) {
+          throw new ConflictingSpecificationError("Can't mix ordinal dates with month/day");
+        }
+        var mixed;
+        if (settingWeekStuff) {
+          mixed = weekToGregorian(_extends2({}, gregorianToWeek(this.c), normalized));
+        } else if (!isUndefined(normalized.ordinal)) {
+          mixed = ordinalToGregorian(_extends2({}, gregorianToOrdinal(this.c), normalized));
+        } else {
+          mixed = _extends2({}, this.toObject(), normalized);
+          if (isUndefined(normalized.day)) {
+            mixed.day = Math.min(daysInMonth(mixed.year, mixed.month), mixed.day);
+          }
+        }
+        var _objToTS4 = objToTS(mixed, this.o, this.zone), ts = _objToTS4[0], o2 = _objToTS4[1];
+        return clone2(this, {
+          ts,
+          o: o2
+        });
+      };
+      _proto.plus = function plus(duration) {
+        if (!this.isValid)
+          return this;
+        var dur = Duration.fromDurationLike(duration);
+        return clone2(this, adjustTime(this, dur));
+      };
+      _proto.minus = function minus(duration) {
+        if (!this.isValid)
+          return this;
+        var dur = Duration.fromDurationLike(duration).negate();
+        return clone2(this, adjustTime(this, dur));
+      };
+      _proto.startOf = function startOf(unit) {
+        if (!this.isValid)
+          return this;
+        var o2 = {}, normalizedUnit = Duration.normalizeUnit(unit);
+        switch (normalizedUnit) {
+          case "years":
+            o2.month = 1;
+          case "quarters":
+          case "months":
+            o2.day = 1;
+          case "weeks":
+          case "days":
+            o2.hour = 0;
+          case "hours":
+            o2.minute = 0;
+          case "minutes":
+            o2.second = 0;
+          case "seconds":
+            o2.millisecond = 0;
+            break;
+        }
+        if (normalizedUnit === "weeks") {
+          o2.weekday = 1;
+        }
+        if (normalizedUnit === "quarters") {
+          var q2 = Math.ceil(this.month / 3);
+          o2.month = (q2 - 1) * 3 + 1;
+        }
+        return this.set(o2);
+      };
+      _proto.endOf = function endOf(unit) {
+        var _this$plus;
+        return this.isValid ? this.plus((_this$plus = {}, _this$plus[unit] = 1, _this$plus)).startOf(unit).minus(1) : this;
+      };
+      _proto.toFormat = function toFormat(fmt, opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        return this.isValid ? Formatter2.create(this.loc.redefaultToEN(opts)).formatDateTimeFromString(this, fmt) : INVALID;
+      };
+      _proto.toLocaleString = function toLocaleString(formatOpts, opts) {
+        if (formatOpts === void 0) {
+          formatOpts = DATE_SHORT;
+        }
+        if (opts === void 0) {
+          opts = {};
+        }
+        return this.isValid ? Formatter2.create(this.loc.clone(opts), formatOpts).formatDateTime(this) : INVALID;
+      };
+      _proto.toLocaleParts = function toLocaleParts(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        return this.isValid ? Formatter2.create(this.loc.clone(opts), opts).formatDateTimeParts(this) : [];
+      };
+      _proto.toISO = function toISO(_temp3) {
+        var _ref4 = _temp3 === void 0 ? {} : _temp3, _ref4$format = _ref4.format, format2 = _ref4$format === void 0 ? "extended" : _ref4$format, _ref4$suppressSeconds = _ref4.suppressSeconds, suppressSeconds = _ref4$suppressSeconds === void 0 ? false : _ref4$suppressSeconds, _ref4$suppressMillise = _ref4.suppressMilliseconds, suppressMilliseconds = _ref4$suppressMillise === void 0 ? false : _ref4$suppressMillise, _ref4$includeOffset = _ref4.includeOffset, includeOffset = _ref4$includeOffset === void 0 ? true : _ref4$includeOffset, _ref4$extendedZone = _ref4.extendedZone, extendedZone = _ref4$extendedZone === void 0 ? false : _ref4$extendedZone;
+        if (!this.isValid) {
+          return null;
+        }
+        var ext = format2 === "extended";
+        var c2 = _toISODate(this, ext);
+        c2 += "T";
+        c2 += _toISOTime(this, ext, suppressSeconds, suppressMilliseconds, includeOffset, extendedZone);
+        return c2;
+      };
+      _proto.toISODate = function toISODate(_temp4) {
+        var _ref5 = _temp4 === void 0 ? {} : _temp4, _ref5$format = _ref5.format, format2 = _ref5$format === void 0 ? "extended" : _ref5$format;
+        if (!this.isValid) {
+          return null;
+        }
+        return _toISODate(this, format2 === "extended");
+      };
+      _proto.toISOWeekDate = function toISOWeekDate() {
+        return toTechFormat(this, "kkkk-'W'WW-c");
+      };
+      _proto.toISOTime = function toISOTime(_temp5) {
+        var _ref6 = _temp5 === void 0 ? {} : _temp5, _ref6$suppressMillise = _ref6.suppressMilliseconds, suppressMilliseconds = _ref6$suppressMillise === void 0 ? false : _ref6$suppressMillise, _ref6$suppressSeconds = _ref6.suppressSeconds, suppressSeconds = _ref6$suppressSeconds === void 0 ? false : _ref6$suppressSeconds, _ref6$includeOffset = _ref6.includeOffset, includeOffset = _ref6$includeOffset === void 0 ? true : _ref6$includeOffset, _ref6$includePrefix = _ref6.includePrefix, includePrefix = _ref6$includePrefix === void 0 ? false : _ref6$includePrefix, _ref6$extendedZone = _ref6.extendedZone, extendedZone = _ref6$extendedZone === void 0 ? false : _ref6$extendedZone, _ref6$format = _ref6.format, format2 = _ref6$format === void 0 ? "extended" : _ref6$format;
+        if (!this.isValid) {
+          return null;
+        }
+        var c2 = includePrefix ? "T" : "";
+        return c2 + _toISOTime(this, format2 === "extended", suppressSeconds, suppressMilliseconds, includeOffset, extendedZone);
+      };
+      _proto.toRFC2822 = function toRFC2822() {
+        return toTechFormat(this, "EEE, dd LLL yyyy HH:mm:ss ZZZ", false);
+      };
+      _proto.toHTTP = function toHTTP() {
+        return toTechFormat(this.toUTC(), "EEE, dd LLL yyyy HH:mm:ss 'GMT'");
+      };
+      _proto.toSQLDate = function toSQLDate() {
+        if (!this.isValid) {
+          return null;
+        }
+        return _toISODate(this, true);
+      };
+      _proto.toSQLTime = function toSQLTime(_temp6) {
+        var _ref7 = _temp6 === void 0 ? {} : _temp6, _ref7$includeOffset = _ref7.includeOffset, includeOffset = _ref7$includeOffset === void 0 ? true : _ref7$includeOffset, _ref7$includeZone = _ref7.includeZone, includeZone = _ref7$includeZone === void 0 ? false : _ref7$includeZone, _ref7$includeOffsetSp = _ref7.includeOffsetSpace, includeOffsetSpace = _ref7$includeOffsetSp === void 0 ? true : _ref7$includeOffsetSp;
+        var fmt = "HH:mm:ss.SSS";
+        if (includeZone || includeOffset) {
+          if (includeOffsetSpace) {
+            fmt += " ";
+          }
+          if (includeZone) {
+            fmt += "z";
+          } else if (includeOffset) {
+            fmt += "ZZ";
+          }
+        }
+        return toTechFormat(this, fmt, true);
+      };
+      _proto.toSQL = function toSQL(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        if (!this.isValid) {
+          return null;
+        }
+        return this.toSQLDate() + " " + this.toSQLTime(opts);
+      };
+      _proto.toString = function toString2() {
+        return this.isValid ? this.toISO() : INVALID;
+      };
+      _proto.valueOf = function valueOf() {
+        return this.toMillis();
+      };
+      _proto.toMillis = function toMillis() {
+        return this.isValid ? this.ts : NaN;
+      };
+      _proto.toSeconds = function toSeconds() {
+        return this.isValid ? this.ts / 1e3 : NaN;
+      };
+      _proto.toUnixInteger = function toUnixInteger() {
+        return this.isValid ? Math.floor(this.ts / 1e3) : NaN;
+      };
+      _proto.toJSON = function toJSON() {
+        return this.toISO();
+      };
+      _proto.toBSON = function toBSON() {
+        return this.toJSDate();
+      };
+      _proto.toObject = function toObject(opts) {
+        if (opts === void 0) {
+          opts = {};
+        }
+        if (!this.isValid)
+          return {};
+        var base = _extends2({}, this.c);
+        if (opts.includeConfig) {
+          base.outputCalendar = this.outputCalendar;
+          base.numberingSystem = this.loc.numberingSystem;
+          base.locale = this.loc.locale;
+        }
+        return base;
+      };
+      _proto.toJSDate = function toJSDate() {
+        return new Date(this.isValid ? this.ts : NaN);
+      };
+      _proto.diff = function diff(otherDateTime, unit, opts) {
+        if (unit === void 0) {
+          unit = "milliseconds";
+        }
+        if (opts === void 0) {
+          opts = {};
+        }
+        if (!this.isValid || !otherDateTime.isValid) {
+          return Duration.invalid("created by diffing an invalid DateTime");
+        }
+        var durOpts = _extends2({
+          locale: this.locale,
+          numberingSystem: this.numberingSystem
+        }, opts);
+        var units = maybeArray(unit).map(Duration.normalizeUnit), otherIsLater = otherDateTime.valueOf() > this.valueOf(), earlier = otherIsLater ? this : otherDateTime, later = otherIsLater ? otherDateTime : this, diffed = _diff(earlier, later, units, durOpts);
+        return otherIsLater ? diffed.negate() : diffed;
+      };
+      _proto.diffNow = function diffNow(unit, opts) {
+        if (unit === void 0) {
+          unit = "milliseconds";
+        }
+        if (opts === void 0) {
+          opts = {};
+        }
+        return this.diff(DateTime2.now(), unit, opts);
+      };
+      _proto.until = function until(otherDateTime) {
+        return this.isValid ? Interval.fromDateTimes(this, otherDateTime) : this;
+      };
+      _proto.hasSame = function hasSame(otherDateTime, unit) {
+        if (!this.isValid)
+          return false;
+        var inputMs = otherDateTime.valueOf();
+        var adjustedToZone = this.setZone(otherDateTime.zone, {
+          keepLocalTime: true
+        });
+        return adjustedToZone.startOf(unit) <= inputMs && inputMs <= adjustedToZone.endOf(unit);
+      };
+      _proto.equals = function equals(other) {
+        return this.isValid && other.isValid && this.valueOf() === other.valueOf() && this.zone.equals(other.zone) && this.loc.equals(other.loc);
+      };
+      _proto.toRelative = function toRelative(options) {
+        if (options === void 0) {
+          options = {};
+        }
+        if (!this.isValid)
+          return null;
+        var base = options.base || DateTime2.fromObject({}, {
+          zone: this.zone
+        }), padding = options.padding ? this < base ? -options.padding : options.padding : 0;
+        var units = ["years", "months", "days", "hours", "minutes", "seconds"];
+        var unit = options.unit;
+        if (Array.isArray(options.unit)) {
+          units = options.unit;
+          unit = void 0;
+        }
+        return diffRelative(base, this.plus(padding), _extends2({}, options, {
+          numeric: "always",
+          units,
+          unit
+        }));
+      };
+      _proto.toRelativeCalendar = function toRelativeCalendar(options) {
+        if (options === void 0) {
+          options = {};
+        }
+        if (!this.isValid)
+          return null;
+        return diffRelative(options.base || DateTime2.fromObject({}, {
+          zone: this.zone
+        }), this, _extends2({}, options, {
+          numeric: "auto",
+          units: ["years", "months", "days"],
+          calendary: true
+        }));
+      };
+      DateTime2.min = function min2() {
+        for (var _len = arguments.length, dateTimes = new Array(_len), _key = 0; _key < _len; _key++) {
+          dateTimes[_key] = arguments[_key];
+        }
+        if (!dateTimes.every(DateTime2.isDateTime)) {
+          throw new InvalidArgumentError("min requires all arguments be DateTimes");
+        }
+        return bestBy(dateTimes, function(i2) {
+          return i2.valueOf();
+        }, Math.min);
+      };
+      DateTime2.max = function max2() {
+        for (var _len2 = arguments.length, dateTimes = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          dateTimes[_key2] = arguments[_key2];
+        }
+        if (!dateTimes.every(DateTime2.isDateTime)) {
+          throw new InvalidArgumentError("max requires all arguments be DateTimes");
+        }
+        return bestBy(dateTimes, function(i2) {
+          return i2.valueOf();
+        }, Math.max);
+      };
+      DateTime2.fromFormatExplain = function fromFormatExplain(text2, fmt, options) {
+        if (options === void 0) {
+          options = {};
+        }
+        var _options = options, _options$locale = _options.locale, locale = _options$locale === void 0 ? null : _options$locale, _options$numberingSys = _options.numberingSystem, numberingSystem = _options$numberingSys === void 0 ? null : _options$numberingSys, localeToUse = Locale.fromOpts({
+          locale,
+          numberingSystem,
+          defaultToEN: true
+        });
+        return explainFromTokens(localeToUse, text2, fmt);
+      };
+      DateTime2.fromStringExplain = function fromStringExplain(text2, fmt, options) {
+        if (options === void 0) {
+          options = {};
+        }
+        return DateTime2.fromFormatExplain(text2, fmt, options);
+      };
+      _createClass2(DateTime2, [{
+        key: "isValid",
+        get: function get2() {
+          return this.invalid === null;
+        }
+      }, {
+        key: "invalidReason",
+        get: function get2() {
+          return this.invalid ? this.invalid.reason : null;
+        }
+      }, {
+        key: "invalidExplanation",
+        get: function get2() {
+          return this.invalid ? this.invalid.explanation : null;
+        }
+      }, {
+        key: "locale",
+        get: function get2() {
+          return this.isValid ? this.loc.locale : null;
+        }
+      }, {
+        key: "numberingSystem",
+        get: function get2() {
+          return this.isValid ? this.loc.numberingSystem : null;
+        }
+      }, {
+        key: "outputCalendar",
+        get: function get2() {
+          return this.isValid ? this.loc.outputCalendar : null;
+        }
+      }, {
+        key: "zone",
+        get: function get2() {
+          return this._zone;
+        }
+      }, {
+        key: "zoneName",
+        get: function get2() {
+          return this.isValid ? this.zone.name : null;
+        }
+      }, {
+        key: "year",
+        get: function get2() {
+          return this.isValid ? this.c.year : NaN;
+        }
+      }, {
+        key: "quarter",
+        get: function get2() {
+          return this.isValid ? Math.ceil(this.c.month / 3) : NaN;
+        }
+      }, {
+        key: "month",
+        get: function get2() {
+          return this.isValid ? this.c.month : NaN;
+        }
+      }, {
+        key: "day",
+        get: function get2() {
+          return this.isValid ? this.c.day : NaN;
+        }
+      }, {
+        key: "hour",
+        get: function get2() {
+          return this.isValid ? this.c.hour : NaN;
+        }
+      }, {
+        key: "minute",
+        get: function get2() {
+          return this.isValid ? this.c.minute : NaN;
+        }
+      }, {
+        key: "second",
+        get: function get2() {
+          return this.isValid ? this.c.second : NaN;
+        }
+      }, {
+        key: "millisecond",
+        get: function get2() {
+          return this.isValid ? this.c.millisecond : NaN;
+        }
+      }, {
+        key: "weekYear",
+        get: function get2() {
+          return this.isValid ? possiblyCachedWeekData(this).weekYear : NaN;
+        }
+      }, {
+        key: "weekNumber",
+        get: function get2() {
+          return this.isValid ? possiblyCachedWeekData(this).weekNumber : NaN;
+        }
+      }, {
+        key: "weekday",
+        get: function get2() {
+          return this.isValid ? possiblyCachedWeekData(this).weekday : NaN;
+        }
+      }, {
+        key: "ordinal",
+        get: function get2() {
+          return this.isValid ? gregorianToOrdinal(this.c).ordinal : NaN;
+        }
+      }, {
+        key: "monthShort",
+        get: function get2() {
+          return this.isValid ? Info.months("short", {
+            locObj: this.loc
+          })[this.month - 1] : null;
+        }
+      }, {
+        key: "monthLong",
+        get: function get2() {
+          return this.isValid ? Info.months("long", {
+            locObj: this.loc
+          })[this.month - 1] : null;
+        }
+      }, {
+        key: "weekdayShort",
+        get: function get2() {
+          return this.isValid ? Info.weekdays("short", {
+            locObj: this.loc
+          })[this.weekday - 1] : null;
+        }
+      }, {
+        key: "weekdayLong",
+        get: function get2() {
+          return this.isValid ? Info.weekdays("long", {
+            locObj: this.loc
+          })[this.weekday - 1] : null;
+        }
+      }, {
+        key: "offset",
+        get: function get2() {
+          return this.isValid ? +this.o : NaN;
+        }
+      }, {
+        key: "offsetNameShort",
+        get: function get2() {
+          if (this.isValid) {
+            return this.zone.offsetName(this.ts, {
+              format: "short",
+              locale: this.locale
+            });
+          } else {
+            return null;
+          }
+        }
+      }, {
+        key: "offsetNameLong",
+        get: function get2() {
+          if (this.isValid) {
+            return this.zone.offsetName(this.ts, {
+              format: "long",
+              locale: this.locale
+            });
+          } else {
+            return null;
+          }
+        }
+      }, {
+        key: "isOffsetFixed",
+        get: function get2() {
+          return this.isValid ? this.zone.isUniversal : null;
+        }
+      }, {
+        key: "isInDST",
+        get: function get2() {
+          if (this.isOffsetFixed) {
+            return false;
+          } else {
+            return this.offset > this.set({
+              month: 1,
+              day: 1
+            }).offset || this.offset > this.set({
+              month: 5
+            }).offset;
+          }
+        }
+      }, {
+        key: "isInLeapYear",
+        get: function get2() {
+          return isLeapYear(this.year);
+        }
+      }, {
+        key: "daysInMonth",
+        get: function get2() {
+          return daysInMonth(this.year, this.month);
+        }
+      }, {
+        key: "daysInYear",
+        get: function get2() {
+          return this.isValid ? daysInYear(this.year) : NaN;
+        }
+      }, {
+        key: "weeksInWeekYear",
+        get: function get2() {
+          return this.isValid ? weeksInWeekYear(this.weekYear) : NaN;
+        }
+      }], [{
+        key: "DATE_SHORT",
+        get: function get2() {
+          return DATE_SHORT;
+        }
+      }, {
+        key: "DATE_MED",
+        get: function get2() {
+          return DATE_MED;
+        }
+      }, {
+        key: "DATE_MED_WITH_WEEKDAY",
+        get: function get2() {
+          return DATE_MED_WITH_WEEKDAY;
+        }
+      }, {
+        key: "DATE_FULL",
+        get: function get2() {
+          return DATE_FULL;
+        }
+      }, {
+        key: "DATE_HUGE",
+        get: function get2() {
+          return DATE_HUGE;
+        }
+      }, {
+        key: "TIME_SIMPLE",
+        get: function get2() {
+          return TIME_SIMPLE;
+        }
+      }, {
+        key: "TIME_WITH_SECONDS",
+        get: function get2() {
+          return TIME_WITH_SECONDS;
+        }
+      }, {
+        key: "TIME_WITH_SHORT_OFFSET",
+        get: function get2() {
+          return TIME_WITH_SHORT_OFFSET;
+        }
+      }, {
+        key: "TIME_WITH_LONG_OFFSET",
+        get: function get2() {
+          return TIME_WITH_LONG_OFFSET;
+        }
+      }, {
+        key: "TIME_24_SIMPLE",
+        get: function get2() {
+          return TIME_24_SIMPLE;
+        }
+      }, {
+        key: "TIME_24_WITH_SECONDS",
+        get: function get2() {
+          return TIME_24_WITH_SECONDS;
+        }
+      }, {
+        key: "TIME_24_WITH_SHORT_OFFSET",
+        get: function get2() {
+          return TIME_24_WITH_SHORT_OFFSET;
+        }
+      }, {
+        key: "TIME_24_WITH_LONG_OFFSET",
+        get: function get2() {
+          return TIME_24_WITH_LONG_OFFSET;
+        }
+      }, {
+        key: "DATETIME_SHORT",
+        get: function get2() {
+          return DATETIME_SHORT;
+        }
+      }, {
+        key: "DATETIME_SHORT_WITH_SECONDS",
+        get: function get2() {
+          return DATETIME_SHORT_WITH_SECONDS;
+        }
+      }, {
+        key: "DATETIME_MED",
+        get: function get2() {
+          return DATETIME_MED;
+        }
+      }, {
+        key: "DATETIME_MED_WITH_SECONDS",
+        get: function get2() {
+          return DATETIME_MED_WITH_SECONDS;
+        }
+      }, {
+        key: "DATETIME_MED_WITH_WEEKDAY",
+        get: function get2() {
+          return DATETIME_MED_WITH_WEEKDAY;
+        }
+      }, {
+        key: "DATETIME_FULL",
+        get: function get2() {
+          return DATETIME_FULL;
+        }
+      }, {
+        key: "DATETIME_FULL_WITH_SECONDS",
+        get: function get2() {
+          return DATETIME_FULL_WITH_SECONDS;
+        }
+      }, {
+        key: "DATETIME_HUGE",
+        get: function get2() {
+          return DATETIME_HUGE;
+        }
+      }, {
+        key: "DATETIME_HUGE_WITH_SECONDS",
+        get: function get2() {
+          return DATETIME_HUGE_WITH_SECONDS;
+        }
+      }]);
+      return DateTime2;
+    }();
+    function friendlyDateTime(dateTimeish) {
+      if (DateTime.isDateTime(dateTimeish)) {
+        return dateTimeish;
+      } else if (dateTimeish && dateTimeish.valueOf && isNumber2(dateTimeish.valueOf())) {
+        return DateTime.fromJSDate(dateTimeish);
+      } else if (dateTimeish && typeof dateTimeish === "object") {
+        return DateTime.fromObject(dateTimeish);
+      } else {
+        throw new InvalidArgumentError("Unknown datetime argument: " + dateTimeish + ", of type " + typeof dateTimeish);
+      }
+    }
+    var VERSION = "2.4.0";
+    var DateTime_1 = luxon.DateTime = DateTime;
+    var Duration_1 = luxon.Duration = Duration;
+    luxon.FixedOffsetZone = FixedOffsetZone;
+    luxon.IANAZone = IANAZone;
+    luxon.Info = Info;
+    luxon.Interval = Interval;
+    luxon.InvalidZone = InvalidZone;
+    luxon.Settings = Settings;
+    luxon.SystemZone = SystemZone;
+    luxon.VERSION = VERSION;
+    luxon.Zone = Zone;
+    var DEFAULT_QUERY_SETTINGS = {
+      renderNullAs: "\\-",
+      taskCompletionTracking: false,
+      taskCompletionUseEmojiShorthand: false,
+      taskCompletionText: "completion",
+      taskCompletionDateFormat: "yyyy-MM-dd",
+      recursiveSubTaskCompletion: false,
+      warnOnEmptyResult: true,
+      refreshEnabled: true,
+      refreshInterval: 2500,
+      defaultDateFormat: "MMMM dd, yyyy",
+      defaultDateTimeFormat: "h:mm a - MMMM dd, yyyy",
+      maxRecursiveRenderDepth: 4,
+      tableIdColumnName: "File",
+      tableGroupColumnName: "Group"
+    };
+    var DEFAULT_EXPORT_SETTINGS = {
+      allowHtml: true
+    };
+    __spreadValues(__spreadValues(__spreadValues({}, DEFAULT_QUERY_SETTINGS), DEFAULT_EXPORT_SETTINGS), {
+      inlineQueryPrefix: "=",
+      inlineJsQueryPrefix: "$=",
+      inlineQueriesInCodeblocks: true,
+      enableInlineDataview: true,
+      enableDataviewJs: false,
+      enableInlineDataviewJs: false,
+      prettyRenderInlineFields: true
+    });
+    var Success = class {
+      constructor(value) {
+        this.value = value;
+        this.successful = true;
+      }
+      map(f2) {
+        return new Success(f2(this.value));
+      }
+      flatMap(f2) {
+        return f2(this.value);
+      }
+      mapErr(f2) {
+        return this;
+      }
+      bimap(succ, _fail) {
+        return this.map(succ);
+      }
+      orElse(_value) {
+        return this.value;
+      }
+      cast() {
+        return this;
+      }
+      orElseThrow(_message) {
+        return this.value;
+      }
+    };
+    var Failure = class {
+      constructor(error2) {
+        this.error = error2;
+        this.successful = false;
+      }
+      map(_f) {
+        return this;
+      }
+      flatMap(_f) {
+        return this;
+      }
+      mapErr(f2) {
+        return new Failure(f2(this.error));
+      }
+      bimap(_succ, fail) {
+        return this.mapErr(fail);
+      }
+      orElse(value) {
+        return value;
+      }
+      cast() {
+        return this;
+      }
+      orElseThrow(message) {
+        if (message)
+          throw new Error(message(this.error));
+        else
+          throw new Error("" + this.error);
+      }
+    };
+    var Result;
+    (function(Result2) {
+      function success(value) {
+        return new Success(value);
+      }
+      Result2.success = success;
+      function failure(error2) {
+        return new Failure(error2);
+      }
+      Result2.failure = failure;
+      function flatMap2(first, second, f2) {
+        if (first.successful) {
+          if (second.successful)
+            return f2(first.value, second.value);
+          else
+            return failure(second.error);
+        } else {
+          return failure(first.error);
+        }
+      }
+      Result2.flatMap2 = flatMap2;
+      function map2(first, second, f2) {
+        return flatMap2(first, second, (a2, b2) => success(f2(a2, b2)));
+      }
+      Result2.map2 = map2;
+    })(Result || (Result = {}));
+    var parsimmon_umd_min = { exports: {} };
+    (function(module3, exports2) {
+      !function(n3, t3) {
+        module3.exports = t3();
+      }(typeof self != "undefined" ? self : commonjsGlobal, function() {
+        return function(n3) {
+          var t3 = {};
+          function r2(e) {
+            if (t3[e])
+              return t3[e].exports;
+            var u2 = t3[e] = { i: e, l: false, exports: {} };
+            return n3[e].call(u2.exports, u2, u2.exports, r2), u2.l = true, u2.exports;
+          }
+          return r2.m = n3, r2.c = t3, r2.d = function(n4, t4, e) {
+            r2.o(n4, t4) || Object.defineProperty(n4, t4, { configurable: false, enumerable: true, get: e });
+          }, r2.r = function(n4) {
+            Object.defineProperty(n4, "__esModule", { value: true });
+          }, r2.n = function(n4) {
+            var t4 = n4 && n4.__esModule ? function() {
+              return n4.default;
+            } : function() {
+              return n4;
+            };
+            return r2.d(t4, "a", t4), t4;
+          }, r2.o = function(n4, t4) {
+            return Object.prototype.hasOwnProperty.call(n4, t4);
+          }, r2.p = "", r2(r2.s = 0);
+        }([function(n3, t3, r2) {
+          function e(n4) {
+            if (!(this instanceof e))
+              return new e(n4);
+            this._ = n4;
+          }
+          var u2 = e.prototype;
+          function o2(n4, t4) {
+            for (var r3 = 0; r3 < n4; r3++)
+              t4(r3);
+          }
+          function i2(n4, t4, r3) {
+            return function(n5, t5) {
+              o2(t5.length, function(r4) {
+                n5(t5[r4], r4, t5);
+              });
+            }(function(r4, e2, u3) {
+              t4 = n4(t4, r4, e2, u3);
+            }, r3), t4;
+          }
+          function a2(n4, t4) {
+            return i2(function(t5, r3, e2, u3) {
+              return t5.concat([n4(r3, e2, u3)]);
+            }, [], t4);
+          }
+          function f2(n4, t4) {
+            var r3 = { v: 0, buf: t4 };
+            return o2(n4, function() {
+              var n5;
+              r3 = { v: r3.v << 1 | (n5 = r3.buf, n5[0] >> 7), buf: function(n6) {
+                var t5 = i2(function(n7, t6, r4, e2) {
+                  return n7.concat(r4 === e2.length - 1 ? Buffer.from([t6, 0]).readUInt16BE(0) : e2.readUInt16BE(r4));
+                }, [], n6);
+                return Buffer.from(a2(function(n7) {
+                  return (n7 << 1 & 65535) >> 8;
+                }, t5));
+              }(r3.buf) };
+            }), r3;
+          }
+          function c2() {
+            return typeof Buffer != "undefined";
+          }
+          function s3() {
+            if (!c2())
+              throw new Error("Buffer global does not exist; please use webpack if you need to parse Buffers in the browser.");
+          }
+          function l3(n4) {
+            s3();
+            var t4 = i2(function(n5, t5) {
+              return n5 + t5;
+            }, 0, n4);
+            if (t4 % 8 != 0)
+              throw new Error("The bits [" + n4.join(", ") + "] add up to " + t4 + " which is not an even number of bytes; the total should be divisible by 8");
+            var r3, u3 = t4 / 8, o3 = (r3 = function(n5) {
+              return n5 > 48;
+            }, i2(function(n5, t5) {
+              return n5 || (r3(t5) ? t5 : n5);
+            }, null, n4));
+            if (o3)
+              throw new Error(o3 + " bit range requested exceeds 48 bit (6 byte) Number max.");
+            return new e(function(t5, r4) {
+              var e2 = u3 + r4;
+              return e2 > t5.length ? x2(r4, u3.toString() + " bytes") : b2(e2, i2(function(n5, t6) {
+                var r5 = f2(t6, n5.buf);
+                return { coll: n5.coll.concat(r5.v), buf: r5.buf };
+              }, { coll: [], buf: t5.slice(r4, e2) }, n4).coll);
+            });
+          }
+          function h2(n4, t4) {
+            return new e(function(r3, e2) {
+              return s3(), e2 + t4 > r3.length ? x2(e2, t4 + " bytes for " + n4) : b2(e2 + t4, r3.slice(e2, e2 + t4));
+            });
+          }
+          function p2(n4, t4) {
+            if (typeof (r3 = t4) != "number" || Math.floor(r3) !== r3 || t4 < 0 || t4 > 6)
+              throw new Error(n4 + " requires integer length in range [0, 6].");
+            var r3;
+          }
+          function d2(n4) {
+            return p2("uintBE", n4), h2("uintBE(" + n4 + ")", n4).map(function(t4) {
+              return t4.readUIntBE(0, n4);
+            });
+          }
+          function v2(n4) {
+            return p2("uintLE", n4), h2("uintLE(" + n4 + ")", n4).map(function(t4) {
+              return t4.readUIntLE(0, n4);
+            });
+          }
+          function g2(n4) {
+            return p2("intBE", n4), h2("intBE(" + n4 + ")", n4).map(function(t4) {
+              return t4.readIntBE(0, n4);
+            });
+          }
+          function m(n4) {
+            return p2("intLE", n4), h2("intLE(" + n4 + ")", n4).map(function(t4) {
+              return t4.readIntLE(0, n4);
+            });
+          }
+          function y2(n4) {
+            return n4 instanceof e;
+          }
+          function E2(n4) {
+            return {}.toString.call(n4) === "[object Array]";
+          }
+          function w2(n4) {
+            return c2() && Buffer.isBuffer(n4);
+          }
+          function b2(n4, t4) {
+            return { status: true, index: n4, value: t4, furthest: -1, expected: [] };
+          }
+          function x2(n4, t4) {
+            return E2(t4) || (t4 = [t4]), { status: false, index: -1, value: null, furthest: n4, expected: t4 };
+          }
+          function B2(n4, t4) {
+            if (!t4)
+              return n4;
+            if (n4.furthest > t4.furthest)
+              return n4;
+            var r3 = n4.furthest === t4.furthest ? function(n5, t5) {
+              if (function() {
+                if (e._supportsSet !== void 0)
+                  return e._supportsSet;
+                var n6 = typeof Set != "undefined";
+                return e._supportsSet = n6, n6;
+              }() && Array.from) {
+                for (var r4 = new Set(n5), u3 = 0; u3 < t5.length; u3++)
+                  r4.add(t5[u3]);
+                var o3 = Array.from(r4);
+                return o3.sort(), o3;
+              }
+              for (var i3 = {}, a3 = 0; a3 < n5.length; a3++)
+                i3[n5[a3]] = true;
+              for (var f3 = 0; f3 < t5.length; f3++)
+                i3[t5[f3]] = true;
+              var c3 = [];
+              for (var s4 in i3)
+                ({}).hasOwnProperty.call(i3, s4) && c3.push(s4);
+              return c3.sort(), c3;
+            }(n4.expected, t4.expected) : t4.expected;
+            return { status: n4.status, index: n4.index, value: n4.value, furthest: t4.furthest, expected: r3 };
+          }
+          var j2 = {};
+          function S2(n4, t4) {
+            if (w2(n4))
+              return { offset: t4, line: -1, column: -1 };
+            n4 in j2 || (j2[n4] = {});
+            for (var r3 = j2[n4], e2 = 0, u3 = 0, o3 = 0, i3 = t4; i3 >= 0; ) {
+              if (i3 in r3) {
+                e2 = r3[i3].line, o3 === 0 && (o3 = r3[i3].lineStart);
+                break;
+              }
+              (n4.charAt(i3) === "\n" || n4.charAt(i3) === "\r" && n4.charAt(i3 + 1) !== "\n") && (u3++, o3 === 0 && (o3 = i3 + 1)), i3--;
+            }
+            var a3 = e2 + u3, f3 = t4 - o3;
+            return r3[t4] = { line: a3, lineStart: o3 }, { offset: t4, line: a3 + 1, column: f3 + 1 };
+          }
+          function _24(n4) {
+            if (!y2(n4))
+              throw new Error("not a parser: " + n4);
+          }
+          function L2(n4, t4) {
+            return typeof n4 == "string" ? n4.charAt(t4) : n4[t4];
+          }
+          function O2(n4) {
+            if (typeof n4 != "number")
+              throw new Error("not a number: " + n4);
+          }
+          function k2(n4) {
+            if (typeof n4 != "function")
+              throw new Error("not a function: " + n4);
+          }
+          function P2(n4) {
+            if (typeof n4 != "string")
+              throw new Error("not a string: " + n4);
+          }
+          var q2 = 2, A2 = 3, I2 = 8, F2 = 5 * I2, M2 = 4 * I2, z2 = "  ";
+          function R2(n4, t4) {
+            return new Array(t4 + 1).join(n4);
+          }
+          function U2(n4, t4, r3) {
+            var e2 = t4 - n4.length;
+            return e2 <= 0 ? n4 : R2(r3, e2) + n4;
+          }
+          function W2(n4, t4, r3, e2) {
+            return { from: n4 - t4 > 0 ? n4 - t4 : 0, to: n4 + r3 > e2 ? e2 : n4 + r3 };
+          }
+          function D2(n4, t4) {
+            var r3, e2, u3, o3, f3, c3 = t4.index, s4 = c3.offset, l4 = 1;
+            if (s4 === n4.length)
+              return "Got the end of the input";
+            if (w2(n4)) {
+              var h3 = s4 - s4 % I2, p3 = s4 - h3, d3 = W2(h3, F2, M2 + I2, n4.length), v3 = a2(function(n5) {
+                return a2(function(n6) {
+                  return U2(n6.toString(16), 2, "0");
+                }, n5);
+              }, function(n5, t5) {
+                var r4 = n5.length, e3 = [], u4 = 0;
+                if (r4 <= t5)
+                  return [n5.slice()];
+                for (var o4 = 0; o4 < r4; o4++)
+                  e3[u4] || e3.push([]), e3[u4].push(n5[o4]), (o4 + 1) % t5 == 0 && u4++;
+                return e3;
+              }(n4.slice(d3.from, d3.to).toJSON().data, I2));
+              o3 = function(n5) {
+                return n5.from === 0 && n5.to === 1 ? { from: n5.from, to: n5.to } : { from: n5.from / I2, to: Math.floor(n5.to / I2) };
+              }(d3), e2 = h3 / I2, r3 = 3 * p3, p3 >= 4 && (r3 += 1), l4 = 2, u3 = a2(function(n5) {
+                return n5.length <= 4 ? n5.join(" ") : n5.slice(0, 4).join(" ") + "  " + n5.slice(4).join(" ");
+              }, v3), (f3 = (8 * (o3.to > 0 ? o3.to - 1 : o3.to)).toString(16).length) < 2 && (f3 = 2);
+            } else {
+              var g3 = n4.split(/\r\n|[\n\r\u2028\u2029]/);
+              r3 = c3.column - 1, e2 = c3.line - 1, o3 = W2(e2, q2, A2, g3.length), u3 = g3.slice(o3.from, o3.to), f3 = o3.to.toString().length;
+            }
+            var m2 = e2 - o3.from;
+            return w2(n4) && (f3 = (8 * (o3.to > 0 ? o3.to - 1 : o3.to)).toString(16).length) < 2 && (f3 = 2), i2(function(t5, e3, u4) {
+              var i3, a3 = u4 === m2, c4 = a3 ? "> " : z2;
+              return i3 = w2(n4) ? U2((8 * (o3.from + u4)).toString(16), f3, "0") : U2((o3.from + u4 + 1).toString(), f3, " "), [].concat(t5, [c4 + i3 + " | " + e3], a3 ? [z2 + R2(" ", f3) + " | " + U2("", r3, " ") + R2("^", l4)] : []);
+            }, [], u3).join("\n");
+          }
+          function N(n4, t4) {
+            return ["\n", "-- PARSING FAILED " + R2("-", 50), "\n\n", D2(n4, t4), "\n\n", (r3 = t4.expected, r3.length === 1 ? "Expected:\n\n" + r3[0] : "Expected one of the following: \n\n" + r3.join(", ")), "\n"].join("");
+            var r3;
+          }
+          function G2(n4) {
+            return n4.flags !== void 0 ? n4.flags : [n4.global ? "g" : "", n4.ignoreCase ? "i" : "", n4.multiline ? "m" : "", n4.unicode ? "u" : "", n4.sticky ? "y" : ""].join("");
+          }
+          function C() {
+            for (var n4 = [].slice.call(arguments), t4 = n4.length, r3 = 0; r3 < t4; r3 += 1)
+              _24(n4[r3]);
+            return e(function(r4, e2) {
+              for (var u3, o3 = new Array(t4), i3 = 0; i3 < t4; i3 += 1) {
+                if (!(u3 = B2(n4[i3]._(r4, e2), u3)).status)
+                  return u3;
+                o3[i3] = u3.value, e2 = u3.index;
+              }
+              return B2(b2(e2, o3), u3);
+            });
+          }
+          function J() {
+            var n4 = [].slice.call(arguments);
+            if (n4.length === 0)
+              throw new Error("seqMap needs at least one argument");
+            var t4 = n4.pop();
+            return k2(t4), C.apply(null, n4).map(function(n5) {
+              return t4.apply(null, n5);
+            });
+          }
+          function T() {
+            var n4 = [].slice.call(arguments), t4 = n4.length;
+            if (t4 === 0)
+              return Y2("zero alternates");
+            for (var r3 = 0; r3 < t4; r3 += 1)
+              _24(n4[r3]);
+            return e(function(t5, r4) {
+              for (var e2, u3 = 0; u3 < n4.length; u3 += 1)
+                if ((e2 = B2(n4[u3]._(t5, r4), e2)).status)
+                  return e2;
+              return e2;
+            });
+          }
+          function V2(n4, t4) {
+            return H2(n4, t4).or(X2([]));
+          }
+          function H2(n4, t4) {
+            return _24(n4), _24(t4), J(n4, t4.then(n4).many(), function(n5, t5) {
+              return [n5].concat(t5);
+            });
+          }
+          function K(n4) {
+            P2(n4);
+            var t4 = "'" + n4 + "'";
+            return e(function(r3, e2) {
+              var u3 = e2 + n4.length, o3 = r3.slice(e2, u3);
+              return o3 === n4 ? b2(u3, o3) : x2(e2, t4);
+            });
+          }
+          function Q2(n4, t4) {
+            !function(n5) {
+              if (!(n5 instanceof RegExp))
+                throw new Error("not a regexp: " + n5);
+              for (var t5 = G2(n5), r4 = 0; r4 < t5.length; r4++) {
+                var e2 = t5.charAt(r4);
+                if (e2 !== "i" && e2 !== "m" && e2 !== "u" && e2 !== "s")
+                  throw new Error('unsupported regexp flag "' + e2 + '": ' + n5);
+              }
+            }(n4), arguments.length >= 2 ? O2(t4) : t4 = 0;
+            var r3 = function(n5) {
+              return RegExp("^(?:" + n5.source + ")", G2(n5));
+            }(n4), u3 = "" + n4;
+            return e(function(n5, e2) {
+              var o3 = r3.exec(n5.slice(e2));
+              if (o3) {
+                if (0 <= t4 && t4 <= o3.length) {
+                  var i3 = o3[0], a3 = o3[t4];
+                  return b2(e2 + i3.length, a3);
+                }
+                return x2(e2, "valid match group (0 to " + o3.length + ") in " + u3);
+              }
+              return x2(e2, u3);
+            });
+          }
+          function X2(n4) {
+            return e(function(t4, r3) {
+              return b2(r3, n4);
+            });
+          }
+          function Y2(n4) {
+            return e(function(t4, r3) {
+              return x2(r3, n4);
+            });
+          }
+          function Z2(n4) {
+            if (y2(n4))
+              return e(function(t4, r3) {
+                var e2 = n4._(t4, r3);
+                return e2.index = r3, e2.value = "", e2;
+              });
+            if (typeof n4 == "string")
+              return Z2(K(n4));
+            if (n4 instanceof RegExp)
+              return Z2(Q2(n4));
+            throw new Error("not a string, regexp, or parser: " + n4);
+          }
+          function $(n4) {
+            return _24(n4), e(function(t4, r3) {
+              var e2 = n4._(t4, r3), u3 = t4.slice(r3, e2.index);
+              return e2.status ? x2(r3, 'not "' + u3 + '"') : b2(r3, null);
+            });
+          }
+          function nn2(n4) {
+            return k2(n4), e(function(t4, r3) {
+              var e2 = L2(t4, r3);
+              return r3 < t4.length && n4(e2) ? b2(r3 + 1, e2) : x2(r3, "a character/byte matching " + n4);
+            });
+          }
+          function tn2(n4, t4) {
+            arguments.length < 2 && (t4 = n4, n4 = void 0);
+            var r3 = e(function(n5, e2) {
+              return r3._ = t4()._, r3._(n5, e2);
+            });
+            return n4 ? r3.desc(n4) : r3;
+          }
+          function rn2() {
+            return Y2("fantasy-land/empty");
+          }
+          u2.parse = function(n4) {
+            if (typeof n4 != "string" && !w2(n4))
+              throw new Error(".parse must be called with a string or Buffer as its argument");
+            var t4, r3 = this.skip(an2)._(n4, 0);
+            return t4 = r3.status ? { status: true, value: r3.value } : { status: false, index: S2(n4, r3.furthest), expected: r3.expected }, delete j2[n4], t4;
+          }, u2.tryParse = function(n4) {
+            var t4 = this.parse(n4);
+            if (t4.status)
+              return t4.value;
+            var r3 = N(n4, t4), e2 = new Error(r3);
+            throw e2.type = "ParsimmonError", e2.result = t4, e2;
+          }, u2.assert = function(n4, t4) {
+            return this.chain(function(r3) {
+              return n4(r3) ? X2(r3) : Y2(t4);
+            });
+          }, u2.or = function(n4) {
+            return T(this, n4);
+          }, u2.trim = function(n4) {
+            return this.wrap(n4, n4);
+          }, u2.wrap = function(n4, t4) {
+            return J(n4, this, t4, function(n5, t5) {
+              return t5;
+            });
+          }, u2.thru = function(n4) {
+            return n4(this);
+          }, u2.then = function(n4) {
+            return _24(n4), C(this, n4).map(function(n5) {
+              return n5[1];
+            });
+          }, u2.many = function() {
+            var n4 = this;
+            return e(function(t4, r3) {
+              for (var e2 = [], u3 = void 0; ; ) {
+                if (!(u3 = B2(n4._(t4, r3), u3)).status)
+                  return B2(b2(r3, e2), u3);
+                if (r3 === u3.index)
+                  throw new Error("infinite loop detected in .many() parser --- calling .many() on a parser which can accept zero characters is usually the cause");
+                r3 = u3.index, e2.push(u3.value);
+              }
+            });
+          }, u2.tieWith = function(n4) {
+            return P2(n4), this.map(function(t4) {
+              if (function(n5) {
+                if (!E2(n5))
+                  throw new Error("not an array: " + n5);
+              }(t4), t4.length) {
+                P2(t4[0]);
+                for (var r3 = t4[0], e2 = 1; e2 < t4.length; e2++)
+                  P2(t4[e2]), r3 += n4 + t4[e2];
+                return r3;
+              }
+              return "";
+            });
+          }, u2.tie = function() {
+            return this.tieWith("");
+          }, u2.times = function(n4, t4) {
+            var r3 = this;
+            return arguments.length < 2 && (t4 = n4), O2(n4), O2(t4), e(function(e2, u3) {
+              for (var o3 = [], i3 = void 0, a3 = void 0, f3 = 0; f3 < n4; f3 += 1) {
+                if (a3 = B2(i3 = r3._(e2, u3), a3), !i3.status)
+                  return a3;
+                u3 = i3.index, o3.push(i3.value);
+              }
+              for (; f3 < t4 && (a3 = B2(i3 = r3._(e2, u3), a3), i3.status); f3 += 1)
+                u3 = i3.index, o3.push(i3.value);
+              return B2(b2(u3, o3), a3);
+            });
+          }, u2.result = function(n4) {
+            return this.map(function() {
+              return n4;
+            });
+          }, u2.atMost = function(n4) {
+            return this.times(0, n4);
+          }, u2.atLeast = function(n4) {
+            return J(this.times(n4), this.many(), function(n5, t4) {
+              return n5.concat(t4);
+            });
+          }, u2.map = function(n4) {
+            k2(n4);
+            var t4 = this;
+            return e(function(r3, e2) {
+              var u3 = t4._(r3, e2);
+              return u3.status ? B2(b2(u3.index, n4(u3.value)), u3) : u3;
+            });
+          }, u2.contramap = function(n4) {
+            k2(n4);
+            var t4 = this;
+            return e(function(r3, e2) {
+              var u3 = t4.parse(n4(r3.slice(e2)));
+              return u3.status ? b2(e2 + r3.length, u3.value) : u3;
+            });
+          }, u2.promap = function(n4, t4) {
+            return k2(n4), k2(t4), this.contramap(n4).map(t4);
+          }, u2.skip = function(n4) {
+            return C(this, n4).map(function(n5) {
+              return n5[0];
+            });
+          }, u2.mark = function() {
+            return J(en2, this, en2, function(n4, t4, r3) {
+              return { start: n4, value: t4, end: r3 };
+            });
+          }, u2.node = function(n4) {
+            return J(en2, this, en2, function(t4, r3, e2) {
+              return { name: n4, value: r3, start: t4, end: e2 };
+            });
+          }, u2.sepBy = function(n4) {
+            return V2(this, n4);
+          }, u2.sepBy1 = function(n4) {
+            return H2(this, n4);
+          }, u2.lookahead = function(n4) {
+            return this.skip(Z2(n4));
+          }, u2.notFollowedBy = function(n4) {
+            return this.skip($(n4));
+          }, u2.desc = function(n4) {
+            E2(n4) || (n4 = [n4]);
+            var t4 = this;
+            return e(function(r3, e2) {
+              var u3 = t4._(r3, e2);
+              return u3.status || (u3.expected = n4), u3;
+            });
+          }, u2.fallback = function(n4) {
+            return this.or(X2(n4));
+          }, u2.ap = function(n4) {
+            return J(n4, this, function(n5, t4) {
+              return n5(t4);
+            });
+          }, u2.chain = function(n4) {
+            var t4 = this;
+            return e(function(r3, e2) {
+              var u3 = t4._(r3, e2);
+              return u3.status ? B2(n4(u3.value)._(r3, u3.index), u3) : u3;
+            });
+          }, u2.concat = u2.or, u2.empty = rn2, u2.of = X2, u2["fantasy-land/ap"] = u2.ap, u2["fantasy-land/chain"] = u2.chain, u2["fantasy-land/concat"] = u2.concat, u2["fantasy-land/empty"] = u2.empty, u2["fantasy-land/of"] = u2.of, u2["fantasy-land/map"] = u2.map;
+          var en2 = e(function(n4, t4) {
+            return b2(t4, S2(n4, t4));
+          }), un2 = e(function(n4, t4) {
+            return t4 >= n4.length ? x2(t4, "any character/byte") : b2(t4 + 1, L2(n4, t4));
+          }), on3 = e(function(n4, t4) {
+            return b2(n4.length, n4.slice(t4));
+          }), an2 = e(function(n4, t4) {
+            return t4 < n4.length ? x2(t4, "EOF") : b2(t4, null);
+          }), fn3 = Q2(/[0-9]/).desc("a digit"), cn2 = Q2(/[0-9]*/).desc("optional digits"), sn2 = Q2(/[a-z]/i).desc("a letter"), ln2 = Q2(/[a-z]*/i).desc("optional letters"), hn = Q2(/\s*/).desc("optional whitespace"), pn2 = Q2(/\s+/).desc("whitespace"), dn2 = K("\r"), vn2 = K("\n"), gn = K("\r\n"), mn = T(gn, vn2, dn2).desc("newline"), yn = T(mn, an2);
+          e.all = on3, e.alt = T, e.any = un2, e.cr = dn2, e.createLanguage = function(n4) {
+            var t4 = {};
+            for (var r3 in n4)
+              ({}).hasOwnProperty.call(n4, r3) && function(r4) {
+                t4[r4] = tn2(function() {
+                  return n4[r4](t4);
+                });
+              }(r3);
+            return t4;
+          }, e.crlf = gn, e.custom = function(n4) {
+            return e(n4(b2, x2));
+          }, e.digit = fn3, e.digits = cn2, e.empty = rn2, e.end = yn, e.eof = an2, e.fail = Y2, e.formatError = N, e.index = en2, e.isParser = y2, e.lazy = tn2, e.letter = sn2, e.letters = ln2, e.lf = vn2, e.lookahead = Z2, e.makeFailure = x2, e.makeSuccess = b2, e.newline = mn, e.noneOf = function(n4) {
+            return nn2(function(t4) {
+              return n4.indexOf(t4) < 0;
+            }).desc("none of '" + n4 + "'");
+          }, e.notFollowedBy = $, e.of = X2, e.oneOf = function(n4) {
+            for (var t4 = n4.split(""), r3 = 0; r3 < t4.length; r3++)
+              t4[r3] = "'" + t4[r3] + "'";
+            return nn2(function(t5) {
+              return n4.indexOf(t5) >= 0;
+            }).desc(t4);
+          }, e.optWhitespace = hn, e.Parser = e, e.range = function(n4, t4) {
+            return nn2(function(r3) {
+              return n4 <= r3 && r3 <= t4;
+            }).desc(n4 + "-" + t4);
+          }, e.regex = Q2, e.regexp = Q2, e.sepBy = V2, e.sepBy1 = H2, e.seq = C, e.seqMap = J, e.seqObj = function() {
+            for (var n4, t4 = {}, r3 = 0, u3 = (n4 = arguments, Array.prototype.slice.call(n4)), o3 = u3.length, i3 = 0; i3 < o3; i3 += 1) {
+              var a3 = u3[i3];
+              if (!y2(a3)) {
+                if (E2(a3) && a3.length === 2 && typeof a3[0] == "string" && y2(a3[1])) {
+                  var f3 = a3[0];
+                  if (Object.prototype.hasOwnProperty.call(t4, f3))
+                    throw new Error("seqObj: duplicate key " + f3);
+                  t4[f3] = true, r3++;
+                  continue;
+                }
+                throw new Error("seqObj arguments must be parsers or [string, parser] array pairs.");
+              }
+            }
+            if (r3 === 0)
+              throw new Error("seqObj expects at least one named parser, found zero");
+            return e(function(n5, t5) {
+              for (var r4, e2 = {}, i4 = 0; i4 < o3; i4 += 1) {
+                var a4, f4;
+                if (E2(u3[i4]) ? (a4 = u3[i4][0], f4 = u3[i4][1]) : (a4 = null, f4 = u3[i4]), !(r4 = B2(f4._(n5, t5), r4)).status)
+                  return r4;
+                a4 && (e2[a4] = r4.value), t5 = r4.index;
+              }
+              return B2(b2(t5, e2), r4);
+            });
+          }, e.string = K, e.succeed = X2, e.takeWhile = function(n4) {
+            return k2(n4), e(function(t4, r3) {
+              for (var e2 = r3; e2 < t4.length && n4(L2(t4, e2)); )
+                e2++;
+              return b2(e2, t4.slice(r3, e2));
+            });
+          }, e.test = nn2, e.whitespace = pn2, e["fantasy-land/empty"] = rn2, e["fantasy-land/of"] = X2, e.Binary = { bitSeq: l3, bitSeqObj: function(n4) {
+            s3();
+            var t4 = {}, r3 = 0, e2 = a2(function(n5) {
+              if (E2(n5)) {
+                var e3 = n5;
+                if (e3.length !== 2)
+                  throw new Error("[" + e3.join(", ") + "] should be length 2, got length " + e3.length);
+                if (P2(e3[0]), O2(e3[1]), Object.prototype.hasOwnProperty.call(t4, e3[0]))
+                  throw new Error("duplicate key in bitSeqObj: " + e3[0]);
+                return t4[e3[0]] = true, r3++, e3;
+              }
+              return O2(n5), [null, n5];
+            }, n4);
+            if (r3 < 1)
+              throw new Error("bitSeqObj expects at least one named pair, got [" + n4.join(", ") + "]");
+            var u3 = a2(function(n5) {
+              return n5[0];
+            }, e2);
+            return l3(a2(function(n5) {
+              return n5[1];
+            }, e2)).map(function(n5) {
+              return i2(function(n6, t5) {
+                return t5[0] !== null && (n6[t5[0]] = t5[1]), n6;
+              }, {}, a2(function(t5, r4) {
+                return [t5, n5[r4]];
+              }, u3));
+            });
+          }, byte: function(n4) {
+            if (s3(), O2(n4), n4 > 255)
+              throw new Error("Value specified to byte constructor (" + n4 + "=0x" + n4.toString(16) + ") is larger in value than a single byte.");
+            var t4 = (n4 > 15 ? "0x" : "0x0") + n4.toString(16);
+            return e(function(r3, e2) {
+              var u3 = L2(r3, e2);
+              return u3 === n4 ? b2(e2 + 1, u3) : x2(e2, t4);
+            });
+          }, buffer: function(n4) {
+            return h2("buffer", n4).map(function(n5) {
+              return Buffer.from(n5);
+            });
+          }, encodedString: function(n4, t4) {
+            return h2("string", t4).map(function(t5) {
+              return t5.toString(n4);
+            });
+          }, uintBE: d2, uint8BE: d2(1), uint16BE: d2(2), uint32BE: d2(4), uintLE: v2, uint8LE: v2(1), uint16LE: v2(2), uint32LE: v2(4), intBE: g2, int8BE: g2(1), int16BE: g2(2), int32BE: g2(4), intLE: m, int8LE: m(1), int16LE: m(2), int32LE: m(4), floatBE: h2("floatBE", 4).map(function(n4) {
+            return n4.readFloatBE(0);
+          }), floatLE: h2("floatLE", 4).map(function(n4) {
+            return n4.readFloatLE(0);
+          }), doubleBE: h2("doubleBE", 8).map(function(n4) {
+            return n4.readDoubleBE(0);
+          }), doubleLE: h2("doubleLE", 8).map(function(n4) {
+            return n4.readDoubleLE(0);
+          }) }, n3.exports = e;
+        }]);
+      });
+    })(parsimmon_umd_min);
+    var emojiRegex = () => {
+      return /(?:[#*0-9]\uFE0F?\u20E3|[\xA9\xAE\u203C\u2049\u2122\u2139\u2194-\u2199\u21A9\u21AA\u231A\u231B\u2328\u23CF\u23ED-\u23EF\u23F1\u23F2\u23F8-\u23FA\u24C2\u25AA\u25AB\u25B6\u25C0\u25FB\u25FC\u25FE\u2600-\u2604\u260E\u2611\u2614\u2615\u2618\u2620\u2622\u2623\u2626\u262A\u262E\u262F\u2638-\u263A\u2640\u2642\u2648-\u2653\u265F\u2660\u2663\u2665\u2666\u2668\u267B\u267E\u267F\u2692\u2694-\u2697\u2699\u269B\u269C\u26A0\u26A7\u26AA\u26B0\u26B1\u26BD\u26BE\u26C4\u26C8\u26CF\u26D1\u26D3\u26E9\u26F0-\u26F5\u26F7\u26F8\u26FA\u2702\u2708\u2709\u270F\u2712\u2714\u2716\u271D\u2721\u2733\u2734\u2744\u2747\u2757\u2763\u27A1\u2934\u2935\u2B05-\u2B07\u2B1B\u2B1C\u2B55\u3030\u303D\u3297\u3299]\uFE0F?|[\u261D\u270C\u270D](?:\uFE0F|\uD83C[\uDFFB-\uDFFF])?|[\u270A\u270B](?:\uD83C[\uDFFB-\uDFFF])?|[\u23E9-\u23EC\u23F0\u23F3\u25FD\u2693\u26A1\u26AB\u26C5\u26CE\u26D4\u26EA\u26FD\u2705\u2728\u274C\u274E\u2753-\u2755\u2795-\u2797\u27B0\u27BF\u2B50]|\u26F9(?:\uFE0F|\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|\u2764\uFE0F?(?:\u200D(?:\uD83D\uDD25|\uD83E\uDE79))?|\uD83C(?:[\uDC04\uDD70\uDD71\uDD7E\uDD7F\uDE02\uDE37\uDF21\uDF24-\uDF2C\uDF36\uDF7D\uDF96\uDF97\uDF99-\uDF9B\uDF9E\uDF9F\uDFCD\uDFCE\uDFD4-\uDFDF\uDFF5\uDFF7]\uFE0F?|[\uDF85\uDFC2\uDFC7](?:\uD83C[\uDFFB-\uDFFF])?|[\uDFC3\uDFC4\uDFCA](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDFCB\uDFCC](?:\uFE0F|\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDCCF\uDD8E\uDD91-\uDD9A\uDE01\uDE1A\uDE2F\uDE32-\uDE36\uDE38-\uDE3A\uDE50\uDE51\uDF00-\uDF20\uDF2D-\uDF35\uDF37-\uDF7C\uDF7E-\uDF84\uDF86-\uDF93\uDFA0-\uDFC1\uDFC5\uDFC6\uDFC8\uDFC9\uDFCF-\uDFD3\uDFE0-\uDFF0\uDFF8-\uDFFF]|\uDDE6\uD83C[\uDDE8-\uDDEC\uDDEE\uDDF1\uDDF2\uDDF4\uDDF6-\uDDFA\uDDFC\uDDFD\uDDFF]|\uDDE7\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEF\uDDF1-\uDDF4\uDDF6-\uDDF9\uDDFB\uDDFC\uDDFE\uDDFF]|\uDDE8\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDEE\uDDF0-\uDDF5\uDDF7\uDDFA-\uDDFF]|\uDDE9\uD83C[\uDDEA\uDDEC\uDDEF\uDDF0\uDDF2\uDDF4\uDDFF]|\uDDEA\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDED\uDDF7-\uDDFA]|\uDDEB\uD83C[\uDDEE-\uDDF0\uDDF2\uDDF4\uDDF7]|\uDDEC\uD83C[\uDDE6\uDDE7\uDDE9-\uDDEE\uDDF1-\uDDF3\uDDF5-\uDDFA\uDDFC\uDDFE]|\uDDED\uD83C[\uDDF0\uDDF2\uDDF3\uDDF7\uDDF9\uDDFA]|\uDDEE\uD83C[\uDDE8-\uDDEA\uDDF1-\uDDF4\uDDF6-\uDDF9]|\uDDEF\uD83C[\uDDEA\uDDF2\uDDF4\uDDF5]|\uDDF0\uD83C[\uDDEA\uDDEC-\uDDEE\uDDF2\uDDF3\uDDF5\uDDF7\uDDFC\uDDFE\uDDFF]|\uDDF1\uD83C[\uDDE6-\uDDE8\uDDEE\uDDF0\uDDF7-\uDDFB\uDDFE]|\uDDF2\uD83C[\uDDE6\uDDE8-\uDDED\uDDF0-\uDDFF]|\uDDF3\uD83C[\uDDE6\uDDE8\uDDEA-\uDDEC\uDDEE\uDDF1\uDDF4\uDDF5\uDDF7\uDDFA\uDDFF]|\uDDF4\uD83C\uDDF2|\uDDF5\uD83C[\uDDE6\uDDEA-\uDDED\uDDF0-\uDDF3\uDDF7-\uDDF9\uDDFC\uDDFE]|\uDDF6\uD83C\uDDE6|\uDDF7\uD83C[\uDDEA\uDDF4\uDDF8\uDDFA\uDDFC]|\uDDF8\uD83C[\uDDE6-\uDDEA\uDDEC-\uDDF4\uDDF7-\uDDF9\uDDFB\uDDFD-\uDDFF]|\uDDF9\uD83C[\uDDE6\uDDE8\uDDE9\uDDEB-\uDDED\uDDEF-\uDDF4\uDDF7\uDDF9\uDDFB\uDDFC\uDDFF]|\uDDFA\uD83C[\uDDE6\uDDEC\uDDF2\uDDF3\uDDF8\uDDFE\uDDFF]|\uDDFB\uD83C[\uDDE6\uDDE8\uDDEA\uDDEC\uDDEE\uDDF3\uDDFA]|\uDDFC\uD83C[\uDDEB\uDDF8]|\uDDFD\uD83C\uDDF0|\uDDFE\uD83C[\uDDEA\uDDF9]|\uDDFF\uD83C[\uDDE6\uDDF2\uDDFC]|\uDFF3\uFE0F?(?:\u200D(?:\u26A7\uFE0F?|\uD83C\uDF08))?|\uDFF4(?:\u200D\u2620\uFE0F?|\uDB40\uDC67\uDB40\uDC62\uDB40(?:\uDC65\uDB40\uDC6E\uDB40\uDC67|\uDC73\uDB40\uDC63\uDB40\uDC74|\uDC77\uDB40\uDC6C\uDB40\uDC73)\uDB40\uDC7F)?)|\uD83D(?:[\uDC3F\uDCFD\uDD49\uDD4A\uDD6F\uDD70\uDD73\uDD76-\uDD79\uDD87\uDD8A-\uDD8D\uDDA5\uDDA8\uDDB1\uDDB2\uDDBC\uDDC2-\uDDC4\uDDD1-\uDDD3\uDDDC-\uDDDE\uDDE1\uDDE3\uDDE8\uDDEF\uDDF3\uDDFA\uDECB\uDECD-\uDECF\uDEE0-\uDEE5\uDEE9\uDEF0\uDEF3]\uFE0F?|[\uDC42\uDC43\uDC46-\uDC50\uDC66\uDC67\uDC6B-\uDC6D\uDC72\uDC74-\uDC76\uDC78\uDC7C\uDC83\uDC85\uDC8F\uDC91\uDCAA\uDD7A\uDD95\uDD96\uDE4C\uDE4F\uDEC0\uDECC](?:\uD83C[\uDFFB-\uDFFF])?|[\uDC6E\uDC70\uDC71\uDC73\uDC77\uDC81\uDC82\uDC86\uDC87\uDE45-\uDE47\uDE4B\uDE4D\uDE4E\uDEA3\uDEB4-\uDEB6](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD74\uDD90](?:\uFE0F|\uD83C[\uDFFB-\uDFFF])?|[\uDC00-\uDC07\uDC09-\uDC14\uDC16-\uDC3A\uDC3C-\uDC3E\uDC40\uDC44\uDC45\uDC51-\uDC65\uDC6A\uDC79-\uDC7B\uDC7D-\uDC80\uDC84\uDC88-\uDC8E\uDC90\uDC92-\uDCA9\uDCAB-\uDCFC\uDCFF-\uDD3D\uDD4B-\uDD4E\uDD50-\uDD67\uDDA4\uDDFB-\uDE2D\uDE2F-\uDE34\uDE37-\uDE44\uDE48-\uDE4A\uDE80-\uDEA2\uDEA4-\uDEB3\uDEB7-\uDEBF\uDEC1-\uDEC5\uDED0-\uDED2\uDED5-\uDED7\uDEDD-\uDEDF\uDEEB\uDEEC\uDEF4-\uDEFC\uDFE0-\uDFEB\uDFF0]|\uDC08(?:\u200D\u2B1B)?|\uDC15(?:\u200D\uD83E\uDDBA)?|\uDC3B(?:\u200D\u2744\uFE0F?)?|\uDC41\uFE0F?(?:\u200D\uD83D\uDDE8\uFE0F?)?|\uDC68(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDC68\uDC69]\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?)|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?\uDC68\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D\uDC68\uD83C[\uDFFB-\uDFFE])))?))?|\uDC69(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:\uDC8B\u200D\uD83D)?[\uDC68\uDC69]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D(?:[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?|\uDC69\u200D\uD83D(?:\uDC66(?:\u200D\uD83D\uDC66)?|\uDC67(?:\u200D\uD83D[\uDC66\uDC67])?))|\uD83E[\uDDAF-\uDDB3\uDDBC\uDDBD])|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFC-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFD-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFD\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D\uD83D(?:[\uDC68\uDC69]|\uDC8B\u200D\uD83D[\uDC68\uDC69])\uD83C[\uDFFB-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83D[\uDC68\uDC69]\uD83C[\uDFFB-\uDFFE])))?))?|\uDC6F(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDD75(?:\uFE0F|\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|\uDE2E(?:\u200D\uD83D\uDCA8)?|\uDE35(?:\u200D\uD83D\uDCAB)?|\uDE36(?:\u200D\uD83C\uDF2B\uFE0F?)?)|\uD83E(?:[\uDD0C\uDD0F\uDD18-\uDD1F\uDD30-\uDD34\uDD36\uDD77\uDDB5\uDDB6\uDDBB\uDDD2\uDDD3\uDDD5\uDEC3-\uDEC5\uDEF0\uDEF2-\uDEF6](?:\uD83C[\uDFFB-\uDFFF])?|[\uDD26\uDD35\uDD37-\uDD39\uDD3D\uDD3E\uDDB8\uDDB9\uDDCD-\uDDCF\uDDD4\uDDD6-\uDDDD](?:\uD83C[\uDFFB-\uDFFF])?(?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDDDE\uDDDF](?:\u200D[\u2640\u2642]\uFE0F?)?|[\uDD0D\uDD0E\uDD10-\uDD17\uDD20-\uDD25\uDD27-\uDD2F\uDD3A\uDD3F-\uDD45\uDD47-\uDD76\uDD78-\uDDB4\uDDB7\uDDBA\uDDBC-\uDDCC\uDDD0\uDDE0-\uDDFF\uDE70-\uDE74\uDE78-\uDE7C\uDE80-\uDE86\uDE90-\uDEAC\uDEB0-\uDEBA\uDEC0-\uDEC2\uDED0-\uDED9\uDEE0-\uDEE7]|\uDD3C(?:\u200D[\u2640\u2642]\uFE0F?|\uD83C[\uDFFB-\uDFFF])?|\uDDD1(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83E\uDDD1))|\uD83C(?:\uDFFB(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFC-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFC(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFD-\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFD(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFE(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFD\uDFFF]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?|\uDFFF(?:\u200D(?:[\u2695\u2696\u2708]\uFE0F?|\u2764\uFE0F?\u200D(?:\uD83D\uDC8B\u200D)?\uD83E\uDDD1\uD83C[\uDFFB-\uDFFE]|\uD83C[\uDF3E\uDF73\uDF7C\uDF84\uDF93\uDFA4\uDFA8\uDFEB\uDFED]|\uD83D[\uDCBB\uDCBC\uDD27\uDD2C\uDE80\uDE92]|\uD83E(?:[\uDDAF-\uDDB3\uDDBC\uDDBD]|\uDD1D\u200D\uD83E\uDDD1\uD83C[\uDFFB-\uDFFF])))?))?|\uDEF1(?:\uD83C(?:\uDFFB(?:\u200D\uD83E\uDEF2\uD83C[\uDFFC-\uDFFF])?|\uDFFC(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFD-\uDFFF])?|\uDFFD(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB\uDFFC\uDFFE\uDFFF])?|\uDFFE(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFD\uDFFF])?|\uDFFF(?:\u200D\uD83E\uDEF2\uD83C[\uDFFB-\uDFFE])?))?))/g;
+    };
+    function normalizeDuration(dur) {
+      if (dur === void 0 || dur === null)
+        return dur;
+      return dur.shiftTo("years", "months", "weeks", "days", "hours", "minutes", "seconds", "milliseconds").normalize();
+    }
+    function getFileTitle(path3) {
+      if (path3.includes("/"))
+        path3 = path3.substring(path3.lastIndexOf("/") + 1);
+      if (path3.endsWith(".md"))
+        path3 = path3.substring(0, path3.length - 3);
+      return path3;
+    }
+    parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regex(new RegExp(emojiRegex(), "")), parsimmon_umd_min.exports.regex(/[0-9\p{Letter}_-]+/u).map((str) => str.toLocaleLowerCase()), parsimmon_umd_min.exports.whitespace.map((_24) => "-"), parsimmon_umd_min.exports.any.map((_24) => "")).many().map((result) => result.join(""));
+    var HEADER_CANONICALIZER = parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regex(new RegExp(emojiRegex(), "")), parsimmon_umd_min.exports.regex(/[0-9\p{Letter}_-]+/u), parsimmon_umd_min.exports.whitespace.map((_24) => " "), parsimmon_umd_min.exports.any.map((_24) => " ")).many().map((result) => {
+      return result.join("").split(/\s+/).join(" ").trim();
+    });
+    function normalizeHeaderForLink(header) {
+      return HEADER_CANONICALIZER.tryParse(header);
+    }
+    function renderMinimalDuration(dur) {
+      dur = normalizeDuration(dur);
+      let result = "";
+      if (dur.years)
+        result += `${dur.years} years, `;
+      if (dur.months)
+        result += `${dur.months} months, `;
+      if (dur.weeks)
+        result += `${dur.weeks} weeks, `;
+      if (dur.days)
+        result += `${dur.days} days, `;
+      if (dur.hours)
+        result += `${dur.hours} hours, `;
+      if (dur.minutes)
+        result += `${dur.minutes} minutes, `;
+      if (dur.seconds)
+        result += `${Math.round(dur.seconds)} seconds, `;
+      if (dur.milliseconds)
+        result += `${Math.round(dur.milliseconds)} ms, `;
+      if (result.endsWith(", "))
+        result = result.substring(0, result.length - 2);
+      return result;
+    }
+    var Values;
+    (function(Values2) {
+      function toString2(field, setting = DEFAULT_QUERY_SETTINGS, recursive = false) {
+        let wrapped = wrapValue(field);
+        if (!wrapped)
+          return setting.renderNullAs;
+        switch (wrapped.type) {
+          case "null":
+            return setting.renderNullAs;
+          case "string":
+            return wrapped.value;
+          case "number":
+          case "boolean":
+            return "" + wrapped.value;
+          case "html":
+            return wrapped.value.outerHTML;
+          case "widget":
+            return wrapped.value.markdown();
+          case "link":
+            return wrapped.value.markdown();
+          case "function":
+            return "<function>";
+          case "array":
+            let result = "";
+            if (recursive)
+              result += "[";
+            result += wrapped.value.map((f2) => toString2(f2, setting, true)).join(", ");
+            if (recursive)
+              result += "]";
+            return result;
+          case "object":
+            return "{ " + Object.entries(wrapped.value).map((e) => e[0] + ": " + toString2(e[1], setting, true)).join(", ") + " }";
+          case "date":
+            if (wrapped.value.second == 0 && wrapped.value.hour == 0 && wrapped.value.minute == 0) {
+              return wrapped.value.toFormat(setting.defaultDateFormat);
+            }
+            return wrapped.value.toFormat(setting.defaultDateTimeFormat);
+          case "duration":
+            return renderMinimalDuration(wrapped.value);
+        }
+      }
+      Values2.toString = toString2;
+      function wrapValue(val) {
+        if (isNull(val))
+          return { type: "null", value: val };
+        else if (isNumber3(val))
+          return { type: "number", value: val };
+        else if (isString3(val))
+          return { type: "string", value: val };
+        else if (isBoolean2(val))
+          return { type: "boolean", value: val };
+        else if (isDuration(val))
+          return { type: "duration", value: val };
+        else if (isDate4(val))
+          return { type: "date", value: val };
+        else if (isWidget(val))
+          return { type: "widget", value: val };
+        else if (isArray(val))
+          return { type: "array", value: val };
+        else if (isLink3(val))
+          return { type: "link", value: val };
+        else if (isFunction(val))
+          return { type: "function", value: val };
+        else if (isHtml(val))
+          return { type: "html", value: val };
+        else if (isObject(val))
+          return { type: "object", value: val };
+        else
+          return void 0;
+      }
+      Values2.wrapValue = wrapValue;
+      function mapLeaves(val, func7) {
+        if (isObject(val)) {
+          let result = {};
+          for (let [key, value] of Object.entries(val))
+            result[key] = mapLeaves(value, func7);
+          return result;
+        } else if (isArray(val)) {
+          let result = [];
+          for (let value of val)
+            result.push(mapLeaves(value, func7));
+          return result;
+        } else {
+          return func7(val);
+        }
+      }
+      Values2.mapLeaves = mapLeaves;
+      function compareValue(val1, val2, linkNormalizer) {
+        var _a, _b;
+        if (val1 === void 0)
+          val1 = null;
+        if (val2 === void 0)
+          val2 = null;
+        if (val1 === null && val2 === null)
+          return 0;
+        else if (val1 === null)
+          return -1;
+        else if (val2 === null)
+          return 1;
+        let wrap1 = wrapValue(val1);
+        let wrap2 = wrapValue(val2);
+        if (wrap1 === void 0 && wrap2 === void 0)
+          return 0;
+        else if (wrap1 === void 0)
+          return -1;
+        else if (wrap2 === void 0)
+          return 1;
+        if (wrap1.type != wrap2.type)
+          return wrap1.type.localeCompare(wrap2.type);
+        if (wrap1.value === wrap2.value)
+          return 0;
+        switch (wrap1.type) {
+          case "string":
+            return wrap1.value.localeCompare(wrap2.value);
+          case "number":
+            if (wrap1.value < wrap2.value)
+              return -1;
+            else if (wrap1.value == wrap2.value)
+              return 0;
+            return 1;
+          case "null":
+            return 0;
+          case "boolean":
+            if (wrap1.value == wrap2.value)
+              return 0;
+            else
+              return wrap1.value ? 1 : -1;
+          case "link":
+            let link1 = wrap1.value;
+            let link2 = wrap2.value;
+            let normalize = linkNormalizer !== null && linkNormalizer !== void 0 ? linkNormalizer : (x2) => x2;
+            let pathCompare = normalize(link1.path).localeCompare(normalize(link2.path));
+            if (pathCompare != 0)
+              return pathCompare;
+            let typeCompare = link1.type.localeCompare(link2.type);
+            if (typeCompare != 0)
+              return typeCompare;
+            if (link1.subpath && !link2.subpath)
+              return 1;
+            if (!link1.subpath && link2.subpath)
+              return -1;
+            if (!link1.subpath && !link2.subpath)
+              return 0;
+            return ((_a = link1.subpath) !== null && _a !== void 0 ? _a : "").localeCompare((_b = link2.subpath) !== null && _b !== void 0 ? _b : "");
+          case "date":
+            return wrap1.value < wrap2.value ? -1 : wrap1.value.equals(wrap2.value) ? 0 : 1;
+          case "duration":
+            return wrap1.value < wrap2.value ? -1 : wrap1.value.equals(wrap2.value) ? 0 : 1;
+          case "array":
+            let f1 = wrap1.value;
+            let f2 = wrap2.value;
+            for (let index2 = 0; index2 < Math.min(f1.length, f2.length); index2++) {
+              let comp = compareValue(f1[index2], f2[index2]);
+              if (comp != 0)
+                return comp;
+            }
+            return f1.length - f2.length;
+          case "object":
+            let o1 = wrap1.value;
+            let o2 = wrap2.value;
+            let k1 = Array.from(Object.keys(o1));
+            let k2 = Array.from(Object.keys(o2));
+            k1.sort();
+            k2.sort();
+            let keyCompare = compareValue(k1, k2);
+            if (keyCompare != 0)
+              return keyCompare;
+            for (let key of k1) {
+              let comp = compareValue(o1[key], o2[key]);
+              if (comp != 0)
+                return comp;
+            }
+            return 0;
+          case "widget":
+          case "html":
+          case "function":
+            return 0;
+        }
+      }
+      Values2.compareValue = compareValue;
+      function typeOf(val) {
+        var _a;
+        return (_a = wrapValue(val)) === null || _a === void 0 ? void 0 : _a.type;
+      }
+      Values2.typeOf = typeOf;
+      function isTruthy(field) {
+        let wrapped = wrapValue(field);
+        if (!wrapped)
+          return false;
+        switch (wrapped.type) {
+          case "number":
+            return wrapped.value != 0;
+          case "string":
+            return wrapped.value.length > 0;
+          case "boolean":
+            return wrapped.value;
+          case "link":
+            return !!wrapped.value.path;
+          case "date":
+            return wrapped.value.toMillis() != 0;
+          case "duration":
+            return wrapped.value.as("seconds") != 0;
+          case "object":
+            return Object.keys(wrapped.value).length > 0;
+          case "array":
+            return wrapped.value.length > 0;
+          case "null":
+            return false;
+          case "html":
+          case "widget":
+          case "function":
+            return true;
+        }
+      }
+      Values2.isTruthy = isTruthy;
+      function deepCopy(field) {
+        if (field === null || field === void 0)
+          return field;
+        if (Values2.isArray(field)) {
+          return [].concat(field.map((v2) => deepCopy(v2)));
+        } else if (Values2.isObject(field)) {
+          let result = {};
+          for (let [key, value] of Object.entries(field))
+            result[key] = deepCopy(value);
+          return result;
+        } else {
+          return field;
+        }
+      }
+      Values2.deepCopy = deepCopy;
+      function isString3(val) {
+        return typeof val == "string";
+      }
+      Values2.isString = isString3;
+      function isNumber3(val) {
+        return typeof val == "number";
+      }
+      Values2.isNumber = isNumber3;
+      function isDate4(val) {
+        return val instanceof DateTime_1;
+      }
+      Values2.isDate = isDate4;
+      function isDuration(val) {
+        return val instanceof Duration_1;
+      }
+      Values2.isDuration = isDuration;
+      function isNull(val) {
+        return val === null || val === void 0;
+      }
+      Values2.isNull = isNull;
+      function isArray(val) {
+        return Array.isArray(val);
+      }
+      Values2.isArray = isArray;
+      function isBoolean2(val) {
+        return typeof val === "boolean";
+      }
+      Values2.isBoolean = isBoolean2;
+      function isLink3(val) {
+        return val instanceof Link2;
+      }
+      Values2.isLink = isLink3;
+      function isWidget(val) {
+        return val instanceof Widget;
+      }
+      Values2.isWidget = isWidget;
+      function isHtml(val) {
+        if (typeof HTMLElement !== "undefined") {
+          return val instanceof HTMLElement;
+        } else {
+          return false;
+        }
+      }
+      Values2.isHtml = isHtml;
+      function isObject(val) {
+        return typeof val == "object" && !isHtml(val) && !isWidget(val) && !isArray(val) && !isDuration(val) && !isDate4(val) && !isLink3(val) && val !== void 0 && !isNull(val);
+      }
+      Values2.isObject = isObject;
+      function isFunction(val) {
+        return typeof val == "function";
+      }
+      Values2.isFunction = isFunction;
+    })(Values || (Values = {}));
+    var Groupings;
+    (function(Groupings2) {
+      function isElementGroup(entry) {
+        return Values.isObject(entry) && Object.keys(entry).length == 2 && "key" in entry && "rows" in entry;
+      }
+      Groupings2.isElementGroup = isElementGroup;
+      function isGrouping(entry) {
+        for (let element2 of entry)
+          if (!isElementGroup(element2))
+            return false;
+        return true;
+      }
+      Groupings2.isGrouping = isGrouping;
+      function count(elements) {
+        if (isGrouping(elements)) {
+          let result = 0;
+          for (let subgroup of elements)
+            result += count(subgroup.rows);
+          return result;
+        } else {
+          return elements.length;
+        }
+      }
+      Groupings2.count = count;
+    })(Groupings || (Groupings = {}));
+    var Link2 = class {
+      constructor(fields) {
+        Object.assign(this, fields);
+      }
+      static file(path3, embed = false, display) {
+        return new Link2({
+          path: path3,
+          embed,
+          display,
+          subpath: void 0,
+          type: "file"
+        });
+      }
+      static infer(linkpath, embed = false, display) {
+        if (linkpath.includes("#^")) {
+          let split = linkpath.split("#^");
+          return Link2.block(split[0], split[1], embed, display);
+        } else if (linkpath.includes("#")) {
+          let split = linkpath.split("#");
+          return Link2.header(split[0], split[1], embed, display);
+        } else
+          return Link2.file(linkpath, embed, display);
+      }
+      static header(path3, header, embed, display) {
+        return new Link2({
+          path: path3,
+          embed,
+          display,
+          subpath: normalizeHeaderForLink(header),
+          type: "header"
+        });
+      }
+      static block(path3, blockId, embed, display) {
+        return new Link2({
+          path: path3,
+          embed,
+          display,
+          subpath: blockId,
+          type: "block"
+        });
+      }
+      static fromObject(object) {
+        return new Link2(object);
+      }
+      equals(other) {
+        if (other == void 0 || other == null)
+          return false;
+        return this.path == other.path && this.type == other.type && this.subpath == other.subpath;
+      }
+      toString() {
+        return this.markdown();
+      }
+      toObject() {
+        return { path: this.path, type: this.type, subpath: this.subpath, display: this.display, embed: this.embed };
+      }
+      withPath(path3) {
+        return new Link2(Object.assign({}, this, { path: path3 }));
+      }
+      withDisplay(display) {
+        return new Link2(Object.assign({}, this, { display }));
+      }
+      withHeader(header) {
+        return Link2.header(this.path, header, this.embed, this.display);
+      }
+      toFile() {
+        return Link2.file(this.path, this.embed, this.display);
+      }
+      toEmbed() {
+        if (this.embed) {
+          return this;
+        } else {
+          let link = new Link2(this);
+          link.embed = true;
+          return link;
+        }
+      }
+      fromEmbed() {
+        if (!this.embed) {
+          return this;
+        } else {
+          let link = new Link2(this);
+          link.embed = false;
+          return link;
+        }
+      }
+      markdown() {
+        let result = (this.embed ? "!" : "") + "[[" + this.obsidianLink();
+        if (this.display) {
+          result += "|" + this.display;
+        } else {
+          result += "|" + getFileTitle(this.path);
+          if (this.type == "header" || this.type == "block")
+            result += " > " + this.subpath;
+        }
+        result += "]]";
+        return result;
+      }
+      obsidianLink() {
+        var _a, _b;
+        const escaped = this.path.replace("|", "\\|");
+        if (this.type == "header")
+          return escaped + "#" + ((_a = this.subpath) === null || _a === void 0 ? void 0 : _a.replace("|", "\\|"));
+        if (this.type == "block")
+          return escaped + "#^" + ((_b = this.subpath) === null || _b === void 0 ? void 0 : _b.replace("|", "\\|"));
+        else
+          return escaped;
+      }
+      fileName() {
+        return getFileTitle(this.path).replace(".md", "");
+      }
+    };
+    var Widget = class {
+      constructor($widget) {
+        this.$widget = $widget;
+      }
+    };
+    var ListPairWidget = class extends Widget {
+      constructor(key, value) {
+        super("dataview:list-pair");
+        this.key = key;
+        this.value = value;
+      }
+      markdown() {
+        return `${Values.toString(this.key)}: ${Values.toString(this.value)}`;
+      }
+    };
+    var ExternalLinkWidget = class extends Widget {
+      constructor(url, display) {
+        super("dataview:external-link");
+        this.url = url;
+        this.display = display;
+      }
+      markdown() {
+        var _a;
+        return `[${(_a = this.display) !== null && _a !== void 0 ? _a : this.url}](${this.url})`;
+      }
+    };
+    var Widgets;
+    (function(Widgets2) {
+      function listPair(key, value) {
+        return new ListPairWidget(key, value);
+      }
+      Widgets2.listPair = listPair;
+      function externalLink(url, display) {
+        return new ExternalLinkWidget(url, display);
+      }
+      Widgets2.externalLink = externalLink;
+      function isListPair(widget) {
+        return widget.$widget === "dataview:list-pair";
+      }
+      Widgets2.isListPair = isListPair;
+      function isExternalLink(widget) {
+        return widget.$widget === "dataview:external-link";
+      }
+      Widgets2.isExternalLink = isExternalLink;
+      function isBuiltin(widget) {
+        return isListPair(widget) || isExternalLink(widget);
+      }
+      Widgets2.isBuiltin = isBuiltin;
+    })(Widgets || (Widgets = {}));
+    var Fields;
+    (function(Fields2) {
+      function variable(name) {
+        return { type: "variable", name };
+      }
+      Fields2.variable = variable;
+      function literal(value) {
+        return { type: "literal", value };
+      }
+      Fields2.literal = literal;
+      function binaryOp(left2, op, right2) {
+        return { type: "binaryop", left: left2, op, right: right2 };
+      }
+      Fields2.binaryOp = binaryOp;
+      function index2(obj, index3) {
+        return { type: "index", object: obj, index: index3 };
+      }
+      Fields2.index = index2;
+      function indexVariable(name) {
+        let parts = name.split(".");
+        let result = Fields2.variable(parts[0]);
+        for (let index3 = 1; index3 < parts.length; index3++) {
+          result = Fields2.index(result, Fields2.literal(parts[index3]));
+        }
+        return result;
+      }
+      Fields2.indexVariable = indexVariable;
+      function lambda(args, value) {
+        return { type: "lambda", arguments: args, value };
+      }
+      Fields2.lambda = lambda;
+      function func7(func8, args) {
+        return { type: "function", func: func8, arguments: args };
+      }
+      Fields2.func = func7;
+      function list(values) {
+        return { type: "list", values };
+      }
+      Fields2.list = list;
+      function object(values) {
+        return { type: "object", values };
+      }
+      Fields2.object = object;
+      function negate(child) {
+        return { type: "negated", child };
+      }
+      Fields2.negate = negate;
+      function isCompareOp(op) {
+        return op == "<=" || op == "<" || op == ">" || op == ">=" || op == "!=" || op == "=";
+      }
+      Fields2.isCompareOp = isCompareOp;
+      Fields2.NULL = Fields2.literal(null);
+    })(Fields || (Fields = {}));
+    var Sources;
+    (function(Sources2) {
+      function tag(tag2) {
+        return { type: "tag", tag: tag2 };
+      }
+      Sources2.tag = tag;
+      function csv(path3) {
+        return { type: "csv", path: path3 };
+      }
+      Sources2.csv = csv;
+      function folder(prefix) {
+        return { type: "folder", folder: prefix };
+      }
+      Sources2.folder = folder;
+      function link(file, incoming) {
+        return { type: "link", file, direction: incoming ? "incoming" : "outgoing" };
+      }
+      Sources2.link = link;
+      function binaryOp(left2, op, right2) {
+        return { type: "binaryop", left: left2, op, right: right2 };
+      }
+      Sources2.binaryOp = binaryOp;
+      function and(left2, right2) {
+        return { type: "binaryop", left: left2, op: "&", right: right2 };
+      }
+      Sources2.and = and;
+      function or(left2, right2) {
+        return { type: "binaryop", left: left2, op: "|", right: right2 };
+      }
+      Sources2.or = or;
+      function negate(child) {
+        return { type: "negate", child };
+      }
+      Sources2.negate = negate;
+      function empty2() {
+        return { type: "empty" };
+      }
+      Sources2.empty = empty2;
+    })(Sources || (Sources = {}));
+    var EMOJI_REGEX = new RegExp(emojiRegex(), "");
+    var DURATION_TYPES = {
+      year: Duration_1.fromObject({ years: 1 }),
+      years: Duration_1.fromObject({ years: 1 }),
+      yr: Duration_1.fromObject({ years: 1 }),
+      yrs: Duration_1.fromObject({ years: 1 }),
+      month: Duration_1.fromObject({ months: 1 }),
+      months: Duration_1.fromObject({ months: 1 }),
+      mo: Duration_1.fromObject({ months: 1 }),
+      mos: Duration_1.fromObject({ months: 1 }),
+      week: Duration_1.fromObject({ weeks: 1 }),
+      weeks: Duration_1.fromObject({ weeks: 1 }),
+      wk: Duration_1.fromObject({ weeks: 1 }),
+      wks: Duration_1.fromObject({ weeks: 1 }),
+      w: Duration_1.fromObject({ weeks: 1 }),
+      day: Duration_1.fromObject({ days: 1 }),
+      days: Duration_1.fromObject({ days: 1 }),
+      d: Duration_1.fromObject({ days: 1 }),
+      hour: Duration_1.fromObject({ hours: 1 }),
+      hours: Duration_1.fromObject({ hours: 1 }),
+      hr: Duration_1.fromObject({ hours: 1 }),
+      hrs: Duration_1.fromObject({ hours: 1 }),
+      h: Duration_1.fromObject({ hours: 1 }),
+      minute: Duration_1.fromObject({ minutes: 1 }),
+      minutes: Duration_1.fromObject({ minutes: 1 }),
+      min: Duration_1.fromObject({ minutes: 1 }),
+      mins: Duration_1.fromObject({ minutes: 1 }),
+      m: Duration_1.fromObject({ minutes: 1 }),
+      second: Duration_1.fromObject({ seconds: 1 }),
+      seconds: Duration_1.fromObject({ seconds: 1 }),
+      sec: Duration_1.fromObject({ seconds: 1 }),
+      secs: Duration_1.fromObject({ seconds: 1 }),
+      s: Duration_1.fromObject({ seconds: 1 })
+    };
+    var DATE_SHORTHANDS = {
+      now: () => DateTime_1.local(),
+      today: () => DateTime_1.local().startOf("day"),
+      yesterday: () => DateTime_1.local().startOf("day").minus(Duration_1.fromObject({ days: 1 })),
+      tomorrow: () => DateTime_1.local().startOf("day").plus(Duration_1.fromObject({ days: 1 })),
+      sow: () => DateTime_1.local().startOf("week"),
+      "start-of-week": () => DateTime_1.local().startOf("week"),
+      eow: () => DateTime_1.local().endOf("week"),
+      "end-of-week": () => DateTime_1.local().endOf("week"),
+      soy: () => DateTime_1.local().startOf("year"),
+      "start-of-year": () => DateTime_1.local().startOf("year"),
+      eoy: () => DateTime_1.local().endOf("year"),
+      "end-of-year": () => DateTime_1.local().endOf("year"),
+      som: () => DateTime_1.local().startOf("month"),
+      "start-of-month": () => DateTime_1.local().startOf("month"),
+      eom: () => DateTime_1.local().endOf("month"),
+      "end-of-month": () => DateTime_1.local().endOf("month")
+    };
+    var KEYWORDS = ["FROM", "WHERE", "LIMIT", "GROUP", "FLATTEN"];
+    function splitOnUnescapedPipe(link) {
+      let pipe = -1;
+      while ((pipe = link.indexOf("|", pipe + 1)) >= 0) {
+        if (pipe > 0 && link[pipe - 1] == "\\")
+          continue;
+        return [link.substring(0, pipe).replace(/\\\|/g, "|"), link.substring(pipe + 1)];
+      }
+      return [link.replace(/\\\|/g, "|"), void 0];
+    }
+    function parseInnerLink(rawlink) {
+      let [link, display] = splitOnUnescapedPipe(rawlink);
+      return Link2.infer(link, false, display);
+    }
+    function createBinaryParser(child, sep, combine) {
+      return parsimmon_umd_min.exports.seqMap(child, parsimmon_umd_min.exports.seq(parsimmon_umd_min.exports.optWhitespace, sep, parsimmon_umd_min.exports.optWhitespace, child).many(), (first, rest) => {
+        if (rest.length == 0)
+          return first;
+        let node = combine(first, rest[0][1], rest[0][3]);
+        for (let index2 = 1; index2 < rest.length; index2++) {
+          node = combine(node, rest[index2][1], rest[index2][3]);
+        }
+        return node;
+      });
+    }
+    function chainOpt(base, ...funcs) {
+      return parsimmon_umd_min.exports.custom((success, failure) => {
+        return (input, i2) => {
+          let result = base._(input, i2);
+          if (!result.status)
+            return result;
+          for (let func7 of funcs) {
+            let next2 = func7(result.value)._(input, result.index);
+            if (!next2.status)
+              return result;
+            result = next2;
+          }
+          return result;
+        };
+      });
+    }
+    var EXPRESSION = parsimmon_umd_min.exports.createLanguage({
+      number: (q2) => parsimmon_umd_min.exports.regexp(/-?[0-9]+(\.[0-9]+)?/).map((str) => Number.parseFloat(str)).desc("number"),
+      string: (q2) => parsimmon_umd_min.exports.string('"').then(parsimmon_umd_min.exports.alt(q2.escapeCharacter, parsimmon_umd_min.exports.noneOf('"\\')).atLeast(0).map((chars2) => chars2.join(""))).skip(parsimmon_umd_min.exports.string('"')).desc("string"),
+      escapeCharacter: (_24) => parsimmon_umd_min.exports.string("\\").then(parsimmon_umd_min.exports.any).map((escaped) => {
+        if (escaped === '"')
+          return '"';
+        if (escaped === "\\")
+          return "\\";
+        else
+          return "\\" + escaped;
+      }),
+      bool: (_24) => parsimmon_umd_min.exports.regexp(/true|false|True|False/).map((str) => str.toLowerCase() == "true").desc("boolean ('true' or 'false')"),
+      tag: (_24) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("#"), parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/[\p{Letter}0-9_/-]/u).desc("text"), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")).many(), (start2, rest) => start2 + rest.join("")).desc("tag ('#hello/stuff')"),
+      identifier: (_24) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/\p{Letter}/u), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")), parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/[0-9\p{Letter}_-]/u), parsimmon_umd_min.exports.regexp(EMOJI_REGEX).desc("text")).many(), (first, rest) => first + rest.join("")).desc("variable identifier"),
+      link: (_24) => parsimmon_umd_min.exports.regexp(/\[\[([^\[\]]*?)\]\]/u, 1).map((linkInner) => parseInnerLink(linkInner)).desc("file link"),
+      embedLink: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("!").atMost(1), q2.link, (p2, l3) => {
+        if (p2.length > 0)
+          l3.embed = true;
+        return l3;
+      }).desc("file link"),
+      binaryPlusMinus: (_24) => parsimmon_umd_min.exports.regexp(/\+|-/).map((str) => str).desc("'+' or '-'"),
+      binaryMulDiv: (_24) => parsimmon_umd_min.exports.regexp(/\*|\/|%/).map((str) => str).desc("'*' or '/' or '%'"),
+      binaryCompareOp: (_24) => parsimmon_umd_min.exports.regexp(/>=|<=|!=|>|<|=/).map((str) => str).desc("'>=' or '<=' or '!=' or '=' or '>' or '<'"),
+      binaryBooleanOp: (_24) => parsimmon_umd_min.exports.regexp(/and|or|&|\|/i).map((str) => {
+        if (str.toLowerCase() == "and")
+          return "&";
+        else if (str.toLowerCase() == "or")
+          return "|";
+        else
+          return str;
+      }).desc("'and' or 'or'"),
+      rootDate: (_24) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/\d{4}/), parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.regexp(/\d{2}/), (year, _25, month) => {
+        return DateTime_1.fromObject({ year: Number.parseInt(year), month: Number.parseInt(month) });
+      }).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),
+      dateShorthand: (_24) => parsimmon_umd_min.exports.alt(...Object.keys(DATE_SHORTHANDS).sort((a2, b2) => b2.length - a2.length).map(parsimmon_umd_min.exports.string)),
+      date: (q2) => chainOpt(q2.rootDate, (ym) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_24, day) => ym.set({ day: Number.parseInt(day) })), (ymd) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("T"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_24, hour) => ymd.set({ hour: Number.parseInt(hour) })), (ymdh) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string(":"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_24, minute) => ymdh.set({ minute: Number.parseInt(minute) })), (ymdhm) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string(":"), parsimmon_umd_min.exports.regexp(/\d{2}/), (_24, second) => ymdhm.set({ second: Number.parseInt(second) })), (ymdhms) => parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("."), parsimmon_umd_min.exports.regexp(/\d{3}/), (_24, millisecond) => ymdhms.set({ millisecond: Number.parseInt(millisecond) })), parsimmon_umd_min.exports.succeed(ymdhms)), (dt) => parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("+").or(parsimmon_umd_min.exports.string("-")), parsimmon_umd_min.exports.regexp(/\d{1,2}(:\d{2})?/), (pm, hr) => dt.setZone("UTC" + pm + hr, { keepLocalTime: true })), parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("Z"), () => dt.setZone("utc", { keepLocalTime: true })), parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("["), parsimmon_umd_min.exports.regexp(/[0-9A-Za-z+-\/]+/u), parsimmon_umd_min.exports.string("]"), (_a, zone, _b) => dt.setZone(zone, { keepLocalTime: true })))).assert((dt) => dt.isValid, "valid date").desc("date in format YYYY-MM[-DDTHH-MM-SS.MS]"),
+      datePlus: (q2) => parsimmon_umd_min.exports.alt(q2.dateShorthand.map((d2) => DATE_SHORTHANDS[d2]()), q2.date).desc("date in format YYYY-MM[-DDTHH-MM-SS.MS] or in shorthand"),
+      durationType: (_24) => parsimmon_umd_min.exports.alt(...Object.keys(DURATION_TYPES).sort((a2, b2) => b2.length - a2.length).map(parsimmon_umd_min.exports.string)),
+      duration: (q2) => parsimmon_umd_min.exports.seqMap(q2.number, parsimmon_umd_min.exports.optWhitespace, q2.durationType, (count, _24, t3) => DURATION_TYPES[t3].mapUnits((x2) => x2 * count)).sepBy1(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace).or(parsimmon_umd_min.exports.optWhitespace)).map((durations) => durations.reduce((p2, c2) => p2.plus(c2))).desc("duration like 4hr2min"),
+      rawNull: (_24) => parsimmon_umd_min.exports.string("null"),
+      tagSource: (q2) => q2.tag.map((tag) => Sources.tag(tag)),
+      csvSource: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("csv(").skip(parsimmon_umd_min.exports.optWhitespace), q2.string, parsimmon_umd_min.exports.string(")"), (_1, path3, _24) => Sources.csv(path3)),
+      linkIncomingSource: (q2) => q2.link.map((link) => Sources.link(link.path, true)),
+      linkOutgoingSource: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("outgoing(").skip(parsimmon_umd_min.exports.optWhitespace), q2.link, parsimmon_umd_min.exports.string(")"), (_1, link, _24) => Sources.link(link.path, false)),
+      folderSource: (q2) => q2.string.map((str) => Sources.folder(str)),
+      parensSource: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q2.source, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_1, _24, field, _32, _42) => field),
+      negateSource: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.string("-"), parsimmon_umd_min.exports.string("!")), q2.atomSource, (_24, source) => Sources.negate(source)),
+      atomSource: (q2) => parsimmon_umd_min.exports.alt(q2.parensSource, q2.negateSource, q2.linkOutgoingSource, q2.linkIncomingSource, q2.folderSource, q2.tagSource, q2.csvSource),
+      binaryOpSource: (q2) => createBinaryParser(q2.atomSource, q2.binaryBooleanOp.map((s3) => s3), Sources.binaryOp),
+      source: (q2) => q2.binaryOpSource,
+      variableField: (q2) => q2.identifier.chain((r2) => {
+        if (KEYWORDS.includes(r2.toUpperCase())) {
+          return parsimmon_umd_min.exports.fail("Variable fields cannot be a keyword (" + KEYWORDS.join(" or ") + ")");
+        } else {
+          return parsimmon_umd_min.exports.succeed(Fields.variable(r2));
+        }
+      }).desc("variable"),
+      numberField: (q2) => q2.number.map((val) => Fields.literal(val)).desc("number"),
+      stringField: (q2) => q2.string.map((val) => Fields.literal(val)).desc("string"),
+      boolField: (q2) => q2.bool.map((val) => Fields.literal(val)).desc("boolean"),
+      dateField: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("date("), parsimmon_umd_min.exports.optWhitespace, q2.datePlus, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (prefix, _1, date, _24, postfix) => Fields.literal(date)).desc("date"),
+      durationField: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("dur("), parsimmon_umd_min.exports.optWhitespace, q2.duration, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (prefix, _1, dur, _24, postfix) => Fields.literal(dur)).desc("duration"),
+      nullField: (q2) => q2.rawNull.map((_24) => Fields.NULL),
+      linkField: (q2) => q2.link.map((f2) => Fields.literal(f2)),
+      listField: (q2) => q2.field.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)).wrap(parsimmon_umd_min.exports.string("[").skip(parsimmon_umd_min.exports.optWhitespace), parsimmon_umd_min.exports.optWhitespace.then(parsimmon_umd_min.exports.string("]"))).map((l3) => Fields.list(l3)).desc("list ('[1, 2, 3]')"),
+      objectField: (q2) => parsimmon_umd_min.exports.seqMap(q2.identifier.or(q2.string), parsimmon_umd_min.exports.string(":").trim(parsimmon_umd_min.exports.optWhitespace), q2.field, (name, _sep, value) => {
+        return { name, value };
+      }).sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)).wrap(parsimmon_umd_min.exports.string("{").skip(parsimmon_umd_min.exports.optWhitespace), parsimmon_umd_min.exports.optWhitespace.then(parsimmon_umd_min.exports.string("}"))).map((vals) => {
+        let res = {};
+        for (let entry of vals)
+          res[entry.name] = entry.value;
+        return Fields.object(res);
+      }).desc("object ('{ a: 1, b: 2 }')"),
+      atomInlineField: (q2) => parsimmon_umd_min.exports.alt(q2.date, q2.duration.map((d2) => normalizeDuration(d2)), q2.string, q2.tag, q2.embedLink, q2.bool, q2.number, q2.rawNull),
+      inlineFieldList: (q2) => q2.atomInlineField.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace).lookahead(q2.atomInlineField)),
+      inlineField: (q2) => parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.seqMap(q2.atomInlineField, parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace), q2.inlineFieldList, (f2, _s, l3) => [f2].concat(l3)), q2.atomInlineField),
+      atomField: (q2) => parsimmon_umd_min.exports.alt(q2.embedLink.map((l3) => Fields.literal(l3)), q2.negatedField, q2.linkField, q2.listField, q2.objectField, q2.lambdaField, q2.parensField, q2.boolField, q2.numberField, q2.stringField, q2.dateField, q2.durationField, q2.nullField, q2.variableField),
+      indexField: (q2) => parsimmon_umd_min.exports.seqMap(q2.atomField, parsimmon_umd_min.exports.alt(q2.dotPostfix, q2.indexPostfix, q2.functionPostfix).many(), (obj, postfixes) => {
+        let result = obj;
+        for (let post of postfixes) {
+          switch (post.type) {
+            case "dot":
+              result = Fields.index(result, Fields.literal(post.field));
+              break;
+            case "index":
+              result = Fields.index(result, post.field);
+              break;
+            case "function":
+              result = Fields.func(result, post.fields);
+              break;
+          }
+        }
+        return result;
+      }),
+      negatedField: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("!"), q2.indexField, (_24, field) => Fields.negate(field)).desc("negated field"),
+      parensField: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q2.field, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_1, _24, field, _32, _42) => field),
+      lambdaField: (q2) => parsimmon_umd_min.exports.seqMap(q2.identifier.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)).wrap(parsimmon_umd_min.exports.string("(").trim(parsimmon_umd_min.exports.optWhitespace), parsimmon_umd_min.exports.string(")").trim(parsimmon_umd_min.exports.optWhitespace)), parsimmon_umd_min.exports.string("=>").trim(parsimmon_umd_min.exports.optWhitespace), q2.field, (ident, _ignore, value) => {
+        return { type: "lambda", arguments: ident, value };
+      }),
+      dotPostfix: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("."), q2.identifier, (_24, field) => {
+        return { type: "dot", field };
+      }),
+      indexPostfix: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("["), parsimmon_umd_min.exports.optWhitespace, q2.field, parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string("]"), (_24, _25, field, _32, _42) => {
+        return { type: "index", field };
+      }),
+      functionPostfix: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.string("("), parsimmon_umd_min.exports.optWhitespace, q2.field.sepBy(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)), parsimmon_umd_min.exports.optWhitespace, parsimmon_umd_min.exports.string(")"), (_24, _1, fields, _25, _32) => {
+        return { type: "function", fields };
+      }),
+      binaryMulDivField: (q2) => createBinaryParser(q2.indexField, q2.binaryMulDiv, Fields.binaryOp),
+      binaryPlusMinusField: (q2) => createBinaryParser(q2.binaryMulDivField, q2.binaryPlusMinus, Fields.binaryOp),
+      binaryCompareField: (q2) => createBinaryParser(q2.binaryPlusMinusField, q2.binaryCompareOp, Fields.binaryOp),
+      binaryBooleanField: (q2) => createBinaryParser(q2.binaryCompareField, q2.binaryBooleanOp, Fields.binaryOp),
+      binaryOpField: (q2) => q2.binaryBooleanField,
+      field: (q2) => q2.binaryOpField
+    });
+    function parseField(text2) {
+      try {
+        return Result.success(EXPRESSION.field.tryParse(text2));
+      } catch (error2) {
+        return Result.failure("" + error2);
+      }
+    }
+    var QueryFields;
+    (function(QueryFields2) {
+      function named(name, field) {
+        return { name, field };
+      }
+      QueryFields2.named = named;
+      function sortBy(field, dir) {
+        return { field, direction: dir };
+      }
+      QueryFields2.sortBy = sortBy;
+    })(QueryFields || (QueryFields = {}));
+    function captureRaw(base) {
+      return parsimmon_umd_min.exports.custom((success, failure) => {
+        return (input, i2) => {
+          let result = base._(input, i2);
+          if (!result.status)
+            return result;
+          return Object.assign({}, result, { value: [result.value, input.substring(i2, result.index)] });
+        };
+      });
+    }
+    function stripNewlines(text2) {
+      return text2.split(/[\r\n]+/).map((t3) => t3.trim()).join("");
+    }
+    var QUERY_LANGUAGE = parsimmon_umd_min.exports.createLanguage({
+      queryType: (q2) => parsimmon_umd_min.exports.alt(parsimmon_umd_min.exports.regexp(/TABLE|LIST|TASK|CALENDAR/i)).map((str) => str.toLowerCase()).desc("query type ('TABLE', 'LIST', 'TASK', or 'CALENDAR')"),
+      explicitNamedField: (q2) => parsimmon_umd_min.exports.seqMap(EXPRESSION.field.skip(parsimmon_umd_min.exports.whitespace), parsimmon_umd_min.exports.regexp(/AS/i).skip(parsimmon_umd_min.exports.whitespace), EXPRESSION.identifier.or(EXPRESSION.string), (field, _as, ident) => QueryFields.named(ident, field)),
+      namedField: (q2) => parsimmon_umd_min.exports.alt(q2.explicitNamedField, captureRaw(EXPRESSION.field).map(([value, text2]) => QueryFields.named(stripNewlines(text2), value))),
+      sortField: (q2) => parsimmon_umd_min.exports.seqMap(EXPRESSION.field.skip(parsimmon_umd_min.exports.optWhitespace), parsimmon_umd_min.exports.regexp(/ASCENDING|DESCENDING|ASC|DESC/i).atMost(1), (field, dir) => {
+        let direction = dir.length == 0 ? "ascending" : dir[0].toLowerCase();
+        if (direction == "desc")
+          direction = "descending";
+        if (direction == "asc")
+          direction = "ascending";
+        return {
+          field,
+          direction
+        };
+      }),
+      headerClause: (q2) => q2.queryType.skip(parsimmon_umd_min.exports.whitespace).chain((qtype) => {
+        switch (qtype) {
+          case "table":
+            return parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/WITHOUT\s+ID/i).skip(parsimmon_umd_min.exports.optWhitespace).atMost(1), parsimmon_umd_min.exports.sepBy(q2.namedField, parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)), (withoutId, fields) => {
+              return { type: "table", fields, showId: withoutId.length == 0 };
+            });
+          case "list":
+            return parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/WITHOUT\s+ID/i).skip(parsimmon_umd_min.exports.optWhitespace).atMost(1), EXPRESSION.field.atMost(1), (withoutId, format2) => {
+              return {
+                type: "list",
+                format: format2.length == 1 ? format2[0] : void 0,
+                showId: withoutId.length == 0
+              };
+            });
+          case "task":
+            return parsimmon_umd_min.exports.succeed({ type: "task" });
+          case "calendar":
+            return parsimmon_umd_min.exports.seqMap(q2.namedField, (field) => {
+              return {
+                type: "calendar",
+                showId: true,
+                field
+              };
+            });
+          default:
+            return parsimmon_umd_min.exports.fail(`Unrecognized query type '${qtype}'`);
+        }
+      }).desc("TABLE or LIST or TASK or CALENDAR"),
+      fromClause: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/FROM/i), parsimmon_umd_min.exports.whitespace, EXPRESSION.source, (_1, _24, source) => source),
+      whereClause: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/WHERE/i), parsimmon_umd_min.exports.whitespace, EXPRESSION.field, (where, _24, field) => {
+        return { type: "where", clause: field };
+      }).desc("WHERE <expression>"),
+      sortByClause: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/SORT/i), parsimmon_umd_min.exports.whitespace, q2.sortField.sepBy1(parsimmon_umd_min.exports.string(",").trim(parsimmon_umd_min.exports.optWhitespace)), (sort2, _1, fields) => {
+        return { type: "sort", fields };
+      }).desc("SORT field [ASC/DESC]"),
+      limitClause: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/LIMIT/i), parsimmon_umd_min.exports.whitespace, EXPRESSION.field, (limit, _1, field) => {
+        return { type: "limit", amount: field };
+      }).desc("LIMIT <value>"),
+      flattenClause: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/FLATTEN/i).skip(parsimmon_umd_min.exports.whitespace), q2.namedField, (_24, field) => {
+        return { type: "flatten", field };
+      }).desc("FLATTEN <value> [AS <name>]"),
+      groupByClause: (q2) => parsimmon_umd_min.exports.seqMap(parsimmon_umd_min.exports.regexp(/GROUP BY/i).skip(parsimmon_umd_min.exports.whitespace), q2.namedField, (_24, field) => {
+        return { type: "group", field };
+      }).desc("GROUP BY <value> [AS <name>]"),
+      clause: (q2) => parsimmon_umd_min.exports.alt(q2.fromClause, q2.whereClause, q2.sortByClause, q2.limitClause, q2.groupByClause, q2.flattenClause),
+      query: (q2) => parsimmon_umd_min.exports.seqMap(q2.headerClause.trim(parsimmon_umd_min.exports.optWhitespace), q2.fromClause.trim(parsimmon_umd_min.exports.optWhitespace).atMost(1), q2.clause.trim(parsimmon_umd_min.exports.optWhitespace).many(), (header, from, clauses) => {
+        return {
+          header,
+          source: from.length == 0 ? Sources.folder("") : from[0],
+          operations: clauses,
+          settings: DEFAULT_QUERY_SETTINGS
+        };
+      })
+    });
     var getAPI2 = (app2) => {
       var _a;
       if (app2)
@@ -93,8 +6679,14 @@ var require_lib = __commonJS({
         return window.DataviewAPI;
     };
     var isPluginEnabled3 = (app2) => app2.plugins.enabledPlugins.has("dataview");
+    exports.DATE_SHORTHANDS = DATE_SHORTHANDS;
+    exports.DURATION_TYPES = DURATION_TYPES;
+    exports.EXPRESSION = EXPRESSION;
+    exports.KEYWORDS = KEYWORDS;
+    exports.QUERY_LANGUAGE = QUERY_LANGUAGE;
     exports.getAPI = getAPI2;
     exports.isPluginEnabled = isPluginEnabled3;
+    exports.parseField = parseField;
   }
 });
 
@@ -105,10 +6697,13 @@ var require_dayjs_min = __commonJS({
       typeof exports == "object" && typeof module2 != "undefined" ? module2.exports = e() : typeof define == "function" && define.amd ? define(e) : (t3 = typeof globalThis != "undefined" ? globalThis : t3 || self).dayjs = e();
     }(exports, function() {
       "use strict";
-      var t3 = 1e3, e = 6e4, n2 = 36e5, r2 = "millisecond", i2 = "second", s2 = "minute", u2 = "hour", a2 = "day", o2 = "week", f2 = "month", h2 = "quarter", c2 = "year", d2 = "date", $ = "Invalid Date", l2 = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y2 = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M2 = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_") }, m = function(t4, e2, n3) {
+      var t3 = 1e3, e = 6e4, n2 = 36e5, r2 = "millisecond", i2 = "second", s2 = "minute", u2 = "hour", a2 = "day", o2 = "week", f2 = "month", h2 = "quarter", c2 = "year", d2 = "date", l2 = "Invalid Date", $ = /^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[Tt\s]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?[.:]?(\d+)?$/, y2 = /\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g, M2 = { name: "en", weekdays: "Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"), months: "January_February_March_April_May_June_July_August_September_October_November_December".split("_"), ordinal: function(t4) {
+        var e2 = ["th", "st", "nd", "rd"], n3 = t4 % 100;
+        return "[" + t4 + (e2[(n3 - 20) % 10] || e2[n3] || e2[0]) + "]";
+      } }, m = function(t4, e2, n3) {
         var r3 = String(t4);
         return !r3 || r3.length >= e2 ? t4 : "" + Array(e2 + 1 - r3.length).join(n3) + t4;
-      }, g2 = { s: m, z: function(t4) {
+      }, v2 = { s: m, z: function(t4) {
         var e2 = -t4.utcOffset(), n3 = Math.abs(e2), r3 = Math.floor(n3 / 60), i3 = n3 % 60;
         return (e2 <= 0 ? "+" : "-") + m(r3, 2, "0") + ":" + m(i3, 2, "0");
       }, m: function t4(e2, n3) {
@@ -122,14 +6717,14 @@ var require_dayjs_min = __commonJS({
         return { M: f2, y: c2, w: o2, d: a2, D: d2, h: u2, m: s2, s: i2, ms: r2, Q: h2 }[t4] || String(t4 || "").toLowerCase().replace(/s$/, "");
       }, u: function(t4) {
         return t4 === void 0;
-      } }, v2 = "en", D2 = {};
-      D2[v2] = M2;
+      } }, g2 = "en", D2 = {};
+      D2[g2] = M2;
       var p2 = function(t4) {
         return t4 instanceof _24;
       }, S2 = function t4(e2, n3, r3) {
         var i3;
         if (!e2)
-          return v2;
+          return g2;
         if (typeof e2 == "string") {
           var s3 = e2.toLowerCase();
           D2[s3] && (i3 = s3), n3 && (D2[s3] = n3, i3 = s3);
@@ -140,13 +6735,13 @@ var require_dayjs_min = __commonJS({
           var a3 = e2.name;
           D2[a3] = e2, i3 = a3;
         }
-        return !r3 && i3 && (v2 = i3), i3 || !r3 && v2;
+        return !r3 && i3 && (g2 = i3), i3 || !r3 && g2;
       }, w2 = function(t4, e2) {
         if (p2(t4))
           return t4.clone();
         var n3 = typeof e2 == "object" ? e2 : {};
         return n3.date = t4, n3.args = arguments, new _24(n3);
-      }, O2 = g2;
+      }, O2 = v2;
       O2.l = S2, O2.i = p2, O2.w = function(t4, e2) {
         return w2(t4, { locale: e2.$L, utc: e2.$u, x: e2.$x, $offset: e2.$offset });
       };
@@ -165,7 +6760,7 @@ var require_dayjs_min = __commonJS({
             if (e2 instanceof Date)
               return new Date(e2);
             if (typeof e2 == "string" && !/Z$/i.test(e2)) {
-              var r3 = e2.match(l2);
+              var r3 = e2.match($);
               if (r3) {
                 var i3 = r3[2] - 1 || 0, s3 = (r3[7] || "0").substring(0, 3);
                 return n3 ? new Date(Date.UTC(r3[1], i3, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s3)) : new Date(r3[1], i3, r3[3] || 1, r3[4] || 0, r3[5] || 0, r3[6] || 0, s3);
@@ -179,7 +6774,7 @@ var require_dayjs_min = __commonJS({
         }, m2.$utils = function() {
           return O2;
         }, m2.isValid = function() {
-          return !(this.$d.toString() === $);
+          return !(this.$d.toString() === l2);
         }, m2.isSame = function(t4, e2) {
           var n3 = w2(t4);
           return this.startOf(e2) <= n3 && n3 <= this.endOf(e2);
@@ -194,69 +6789,69 @@ var require_dayjs_min = __commonJS({
         }, m2.valueOf = function() {
           return this.$d.getTime();
         }, m2.startOf = function(t4, e2) {
-          var n3 = this, r3 = !!O2.u(e2) || e2, h3 = O2.p(t4), $2 = function(t5, e3) {
+          var n3 = this, r3 = !!O2.u(e2) || e2, h3 = O2.p(t4), l3 = function(t5, e3) {
             var i3 = O2.w(n3.$u ? Date.UTC(n3.$y, e3, t5) : new Date(n3.$y, e3, t5), n3);
             return r3 ? i3 : i3.endOf(a2);
-          }, l3 = function(t5, e3) {
+          }, $2 = function(t5, e3) {
             return O2.w(n3.toDate()[t5].apply(n3.toDate("s"), (r3 ? [0, 0, 0, 0] : [23, 59, 59, 999]).slice(e3)), n3);
-          }, y3 = this.$W, M4 = this.$M, m3 = this.$D, g3 = "set" + (this.$u ? "UTC" : "");
+          }, y3 = this.$W, M4 = this.$M, m3 = this.$D, v3 = "set" + (this.$u ? "UTC" : "");
           switch (h3) {
             case c2:
-              return r3 ? $2(1, 0) : $2(31, 11);
+              return r3 ? l3(1, 0) : l3(31, 11);
             case f2:
-              return r3 ? $2(1, M4) : $2(0, M4 + 1);
+              return r3 ? l3(1, M4) : l3(0, M4 + 1);
             case o2:
-              var v3 = this.$locale().weekStart || 0, D3 = (y3 < v3 ? y3 + 7 : y3) - v3;
-              return $2(r3 ? m3 - D3 : m3 + (6 - D3), M4);
+              var g3 = this.$locale().weekStart || 0, D3 = (y3 < g3 ? y3 + 7 : y3) - g3;
+              return l3(r3 ? m3 - D3 : m3 + (6 - D3), M4);
             case a2:
             case d2:
-              return l3(g3 + "Hours", 0);
+              return $2(v3 + "Hours", 0);
             case u2:
-              return l3(g3 + "Minutes", 1);
+              return $2(v3 + "Minutes", 1);
             case s2:
-              return l3(g3 + "Seconds", 2);
+              return $2(v3 + "Seconds", 2);
             case i2:
-              return l3(g3 + "Milliseconds", 3);
+              return $2(v3 + "Milliseconds", 3);
             default:
               return this.clone();
           }
         }, m2.endOf = function(t4) {
           return this.startOf(t4, false);
         }, m2.$set = function(t4, e2) {
-          var n3, o3 = O2.p(t4), h3 = "set" + (this.$u ? "UTC" : ""), $2 = (n3 = {}, n3[a2] = h3 + "Date", n3[d2] = h3 + "Date", n3[f2] = h3 + "Month", n3[c2] = h3 + "FullYear", n3[u2] = h3 + "Hours", n3[s2] = h3 + "Minutes", n3[i2] = h3 + "Seconds", n3[r2] = h3 + "Milliseconds", n3)[o3], l3 = o3 === a2 ? this.$D + (e2 - this.$W) : e2;
+          var n3, o3 = O2.p(t4), h3 = "set" + (this.$u ? "UTC" : ""), l3 = (n3 = {}, n3[a2] = h3 + "Date", n3[d2] = h3 + "Date", n3[f2] = h3 + "Month", n3[c2] = h3 + "FullYear", n3[u2] = h3 + "Hours", n3[s2] = h3 + "Minutes", n3[i2] = h3 + "Seconds", n3[r2] = h3 + "Milliseconds", n3)[o3], $2 = o3 === a2 ? this.$D + (e2 - this.$W) : e2;
           if (o3 === f2 || o3 === c2) {
             var y3 = this.clone().set(d2, 1);
-            y3.$d[$2](l3), y3.init(), this.$d = y3.set(d2, Math.min(this.$D, y3.daysInMonth())).$d;
+            y3.$d[l3]($2), y3.init(), this.$d = y3.set(d2, Math.min(this.$D, y3.daysInMonth())).$d;
           } else
-            $2 && this.$d[$2](l3);
+            l3 && this.$d[l3]($2);
           return this.init(), this;
         }, m2.set = function(t4, e2) {
           return this.clone().$set(t4, e2);
         }, m2.get = function(t4) {
           return this[O2.p(t4)]();
         }, m2.add = function(r3, h3) {
-          var d3, $2 = this;
+          var d3, l3 = this;
           r3 = Number(r3);
-          var l3 = O2.p(h3), y3 = function(t4) {
-            var e2 = w2($2);
-            return O2.w(e2.date(e2.date() + Math.round(t4 * r3)), $2);
+          var $2 = O2.p(h3), y3 = function(t4) {
+            var e2 = w2(l3);
+            return O2.w(e2.date(e2.date() + Math.round(t4 * r3)), l3);
           };
-          if (l3 === f2)
+          if ($2 === f2)
             return this.set(f2, this.$M + r3);
-          if (l3 === c2)
+          if ($2 === c2)
             return this.set(c2, this.$y + r3);
-          if (l3 === a2)
+          if ($2 === a2)
             return y3(1);
-          if (l3 === o2)
+          if ($2 === o2)
             return y3(7);
-          var M4 = (d3 = {}, d3[s2] = e, d3[u2] = n2, d3[i2] = t3, d3)[l3] || 1, m3 = this.$d.getTime() + r3 * M4;
+          var M4 = (d3 = {}, d3[s2] = e, d3[u2] = n2, d3[i2] = t3, d3)[$2] || 1, m3 = this.$d.getTime() + r3 * M4;
           return O2.w(m3, this);
         }, m2.subtract = function(t4, e2) {
           return this.add(-1 * t4, e2);
         }, m2.format = function(t4) {
           var e2 = this, n3 = this.$locale();
           if (!this.isValid())
-            return n3.invalidDate || $;
+            return n3.invalidDate || l2;
           var r3 = t4 || "YYYY-MM-DDTHH:mm:ssZ", i3 = O2.z(this), s3 = this.$H, u3 = this.$m, a3 = this.$M, o3 = n3.weekdays, f3 = n3.months, h3 = function(t5, n4, i4, s4) {
             return t5 && (t5[n4] || t5(e2, r3)) || i4[n4].slice(0, s4);
           }, c3 = function(t5) {
@@ -264,15 +6859,15 @@ var require_dayjs_min = __commonJS({
           }, d3 = n3.meridiem || function(t5, e3, n4) {
             var r4 = t5 < 12 ? "AM" : "PM";
             return n4 ? r4.toLowerCase() : r4;
-          }, l3 = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: a3 + 1, MM: O2.s(a3 + 1, 2, "0"), MMM: h3(n3.monthsShort, a3, f3, 3), MMMM: h3(f3, a3), D: this.$D, DD: O2.s(this.$D, 2, "0"), d: String(this.$W), dd: h3(n3.weekdaysMin, this.$W, o3, 2), ddd: h3(n3.weekdaysShort, this.$W, o3, 3), dddd: o3[this.$W], H: String(s3), HH: O2.s(s3, 2, "0"), h: c3(1), hh: c3(2), a: d3(s3, u3, true), A: d3(s3, u3, false), m: String(u3), mm: O2.s(u3, 2, "0"), s: String(this.$s), ss: O2.s(this.$s, 2, "0"), SSS: O2.s(this.$ms, 3, "0"), Z: i3 };
+          }, $2 = { YY: String(this.$y).slice(-2), YYYY: this.$y, M: a3 + 1, MM: O2.s(a3 + 1, 2, "0"), MMM: h3(n3.monthsShort, a3, f3, 3), MMMM: h3(f3, a3), D: this.$D, DD: O2.s(this.$D, 2, "0"), d: String(this.$W), dd: h3(n3.weekdaysMin, this.$W, o3, 2), ddd: h3(n3.weekdaysShort, this.$W, o3, 3), dddd: o3[this.$W], H: String(s3), HH: O2.s(s3, 2, "0"), h: c3(1), hh: c3(2), a: d3(s3, u3, true), A: d3(s3, u3, false), m: String(u3), mm: O2.s(u3, 2, "0"), s: String(this.$s), ss: O2.s(this.$s, 2, "0"), SSS: O2.s(this.$ms, 3, "0"), Z: i3 };
           return r3.replace(y2, function(t5, e3) {
-            return e3 || l3[t5] || i3.replace(":", "");
+            return e3 || $2[t5] || i3.replace(":", "");
           });
         }, m2.utcOffset = function() {
           return 15 * -Math.round(this.$d.getTimezoneOffset() / 15);
-        }, m2.diff = function(r3, d3, $2) {
-          var l3, y3 = O2.p(d3), M4 = w2(r3), m3 = (M4.utcOffset() - this.utcOffset()) * e, g3 = this - M4, v3 = O2.m(this, M4);
-          return v3 = (l3 = {}, l3[c2] = v3 / 12, l3[f2] = v3, l3[h2] = v3 / 3, l3[o2] = (g3 - m3) / 6048e5, l3[a2] = (g3 - m3) / 864e5, l3[u2] = g3 / n2, l3[s2] = g3 / e, l3[i2] = g3 / t3, l3)[y3] || g3, $2 ? v3 : O2.a(v3);
+        }, m2.diff = function(r3, d3, l3) {
+          var $2, y3 = O2.p(d3), M4 = w2(r3), m3 = (M4.utcOffset() - this.utcOffset()) * e, v3 = this - M4, g3 = O2.m(this, M4);
+          return g3 = ($2 = {}, $2[c2] = g3 / 12, $2[f2] = g3, $2[h2] = g3 / 3, $2[o2] = (v3 - m3) / 6048e5, $2[a2] = (v3 - m3) / 864e5, $2[u2] = v3 / n2, $2[s2] = v3 / e, $2[i2] = v3 / t3, $2)[y3] || v3, l3 ? g3 : O2.a(g3);
         }, m2.daysInMonth = function() {
           return this.endOf(f2).$D;
         }, m2.$locale = function() {
@@ -302,7 +6897,7 @@ var require_dayjs_min = __commonJS({
         return t4.$i || (t4(e2, _24, w2), t4.$i = true), w2;
       }, w2.locale = S2, w2.isDayjs = p2, w2.unix = function(t4) {
         return w2(1e3 * t4);
-      }, w2.en = D2[v2], w2.Ls = D2, w2.p = {}, w2;
+      }, w2.en = D2[g2], w2.Ls = D2, w2.p = {}, w2;
     });
   }
 });
@@ -837,7 +7432,7 @@ var require_moment = __commonJS({
       function isNumber2(input) {
         return typeof input === "number" || Object.prototype.toString.call(input) === "[object Number]";
       }
-      function isDate2(input) {
+      function isDate3(input) {
         return input instanceof Date || Object.prototype.toString.call(input) === "[object Date]";
       }
       function map2(arr, fn3) {
@@ -1101,9 +7696,9 @@ var require_moment = __commonJS({
         lastWeek: "[Last] dddd [at] LT",
         sameElse: "L"
       };
-      function calendar(key, mom, now2) {
+      function calendar(key, mom, now3) {
         var output2 = this._calendar[key] || this._calendar["sameElse"];
-        return isFunction(output2) ? output2.call(mom, now2) : output2;
+        return isFunction(output2) ? output2.call(mom, now3) : output2;
       }
       function zeroFill(number, targetLength, forceSign) {
         var absNumber = "" + Math.abs(number), zerosToFill = targetLength - absNumber.length, sign2 = number >= 0;
@@ -2143,18 +8738,18 @@ var require_moment = __commonJS({
         return key ? key.toLowerCase().replace("_", "-") : key;
       }
       function chooseLocale(names) {
-        var i2 = 0, j2, next, locale2, split;
+        var i2 = 0, j2, next2, locale2, split;
         while (i2 < names.length) {
           split = normalizeLocale(names[i2]).split("-");
           j2 = split.length;
-          next = normalizeLocale(names[i2 + 1]);
-          next = next ? next.split("-") : null;
+          next2 = normalizeLocale(names[i2 + 1]);
+          next2 = next2 ? next2.split("-") : null;
           while (j2 > 0) {
             locale2 = loadLocale(split.slice(0, j2).join("-"));
             if (locale2) {
               return locale2;
             }
-            if (next && next.length >= j2 && commonPrefix(split, next) >= j2 - 1) {
+            if (next2 && next2.length >= j2 && commonPrefix(split, next2) >= j2 - 1) {
               break;
             }
             j2--;
@@ -2724,7 +9319,7 @@ var require_moment = __commonJS({
         }
         if (isMoment(input)) {
           return new Moment(checkOverflow(input));
-        } else if (isDate2(input)) {
+        } else if (isDate3(input)) {
           config._d = input;
         } else if (isArray(format3)) {
           configFromStringAndArray(config);
@@ -2742,7 +9337,7 @@ var require_moment = __commonJS({
         var input = config._i;
         if (isUndefined(input)) {
           config._d = new Date(hooks.now());
-        } else if (isDate2(input)) {
+        } else if (isDate3(input)) {
           config._d = new Date(input.valueOf());
         } else if (typeof input === "string") {
           configFromString(config);
@@ -2822,7 +9417,7 @@ var require_moment = __commonJS({
         var args = [].slice.call(arguments, 0);
         return pickBy("isAfter", args);
       }
-      var now = function() {
+      var now2 = function() {
         return Date.now ? Date.now() : +new Date();
       };
       var ordering = [
@@ -2923,7 +9518,7 @@ var require_moment = __commonJS({
         var res, diff2;
         if (model._isUTC) {
           res = model.clone();
-          diff2 = (isMoment(input) || isDate2(input) ? input.valueOf() : createLocal(input).valueOf()) - res.valueOf();
+          diff2 = (isMoment(input) || isDate3(input) ? input.valueOf() : createLocal(input).valueOf()) - res.valueOf();
           res._d.setTime(res._d.valueOf() + diff2);
           hooks.updateOffset(res, false);
           return res;
@@ -3165,7 +9760,7 @@ var require_moment = __commonJS({
         return typeof input === "string" || input instanceof String;
       }
       function isMomentInput(input) {
-        return isMoment(input) || isDate2(input) || isString2(input) || isNumber2(input) || isNumberOrStringArray(input) || isMomentInputObject(input) || input === null || input === void 0;
+        return isMoment(input) || isDate3(input) || isString2(input) || isNumber2(input) || isNumberOrStringArray(input) || isMomentInputObject(input) || input === null || input === void 0;
       }
       function isMomentInputObject(input) {
         var objectTest = isObject(input) && !isObjectEmpty(input), propertyTest = false, properties = [
@@ -3224,8 +9819,8 @@ var require_moment = __commonJS({
         }
         return objectTest && propertyTest;
       }
-      function getCalendarFormat(myMoment, now2) {
-        var diff2 = myMoment.diff(now2, "days", true);
+      function getCalendarFormat(myMoment, now3) {
+        var diff2 = myMoment.diff(now3, "days", true);
         return diff2 < -6 ? "sameElse" : diff2 < -1 ? "lastWeek" : diff2 < 0 ? "lastDay" : diff2 < 1 ? "sameDay" : diff2 < 2 ? "nextDay" : diff2 < 7 ? "nextWeek" : "sameElse";
       }
       function calendar$1(time, formats) {
@@ -3241,8 +9836,8 @@ var require_moment = __commonJS({
             time = void 0;
           }
         }
-        var now2 = time || createLocal(), sod = cloneWithOffset(now2, this).startOf("day"), format3 = hooks.calendarFormat(this, sod) || "sameElse", output2 = formats && (isFunction(formats[format3]) ? formats[format3].call(this, now2) : formats[format3]);
-        return this.format(output2 || this.localeData().calendar(format3, this, createLocal(now2)));
+        var now3 = time || createLocal(), sod = cloneWithOffset(now3, this).startOf("day"), format3 = hooks.calendarFormat(this, sod) || "sameElse", output2 = formats && (isFunction(formats[format3]) ? formats[format3].call(this, now3) : formats[format3]);
+        return this.format(output2 || this.localeData().calendar(format3, this, createLocal(now3)));
       }
       function clone2() {
         return new Moment(this);
@@ -3355,7 +9950,7 @@ var require_moment = __commonJS({
       }
       hooks.defaultFormat = "YYYY-MM-DDTHH:mm:ssZ";
       hooks.defaultFormatUtc = "YYYY-MM-DDTHH:mm:ss[Z]";
-      function toString() {
+      function toString2() {
         return this.clone().locale("en").format("ddd MMM DD YYYY HH:mm:ss [GMT]ZZ");
       }
       function toISOString(keepOffset) {
@@ -4002,7 +10597,7 @@ var require_moment = __commonJS({
         };
       }
       proto.toJSON = toJSON;
-      proto.toString = toString;
+      proto.toString = toString2;
       proto.unix = unix;
       proto.valueOf = valueOf;
       proto.creationData = creationData;
@@ -4454,11 +11049,11 @@ var require_moment = __commonJS({
       hooks.fn = proto;
       hooks.min = min2;
       hooks.max = max2;
-      hooks.now = now;
+      hooks.now = now2;
       hooks.utc = createUTC;
       hooks.unix = createUnix;
       hooks.months = listMonths;
-      hooks.isDate = isDate2;
+      hooks.isDate = isDate3;
       hooks.locale = getSetGlobalLocale;
       hooks.invalid = createInvalid;
       hooks.duration = createDuration;
@@ -4501,7 +11096,7 @@ var require_internal = __commonJS({
     Object.defineProperty(exports, "__esModule", { value: true });
     function noop3() {
     }
-    var identity = (x2) => x2;
+    var identity2 = (x2) => x2;
     function assign2(tar, src) {
       for (const k2 in src)
         tar[k2] = src[k2];
@@ -4654,9 +11249,9 @@ var require_internal = __commonJS({
     function action_destroyer2(action_result) {
       return action_result && is_function2(action_result.destroy) ? action_result.destroy : noop3;
     }
-    var is_client = typeof window !== "undefined";
-    exports.now = is_client ? () => window.performance.now() : () => Date.now();
-    exports.raf = is_client ? (cb) => requestAnimationFrame(cb) : noop3;
+    var is_client2 = typeof window !== "undefined";
+    exports.now = is_client2 ? () => window.performance.now() : () => Date.now();
+    exports.raf = is_client2 ? (cb) => requestAnimationFrame(cb) : noop3;
     function set_now(fn3) {
       exports.now = fn3;
     }
@@ -4664,23 +11259,23 @@ var require_internal = __commonJS({
       exports.raf = fn3;
     }
     var tasks2 = new Set();
-    function run_tasks(now) {
+    function run_tasks2(now2) {
       tasks2.forEach((task) => {
-        if (!task.c(now)) {
+        if (!task.c(now2)) {
           tasks2.delete(task);
           task.f();
         }
       });
       if (tasks2.size !== 0)
-        exports.raf(run_tasks);
+        exports.raf(run_tasks2);
     }
     function clear_loops() {
       tasks2.clear();
     }
-    function loop(callback) {
+    function loop3(callback) {
       let task;
       if (tasks2.size === 0)
-        exports.raf(run_tasks);
+        exports.raf(run_tasks2);
       return {
         promise: new Promise((fulfill) => {
           tasks2.add(task = { c: callback, f: fulfill });
@@ -4779,7 +11374,7 @@ var require_internal = __commonJS({
       }
       return node.ownerDocument;
     }
-    function append_empty_stylesheet(node) {
+    function append_empty_stylesheet2(node) {
       const style_element = element2("style");
       append_stylesheet2(get_root_for_style2(node), style_element);
       return style_element.sheet;
@@ -4819,7 +11414,9 @@ var require_internal = __commonJS({
       }
     }
     function detach2(node) {
-      node.parentNode.removeChild(node);
+      if (node.parentNode) {
+        node.parentNode.removeChild(node);
+      }
     }
     function destroy_each2(iterations, detaching) {
       for (let i2 = 0; i2 < iterations.length; i2 += 1) {
@@ -4909,7 +11506,12 @@ var require_internal = __commonJS({
         attr2(node, key, attributes[key]);
       }
     }
-    function set_custom_element_data(node, prop, value) {
+    function set_custom_element_data_map2(node, data_map) {
+      Object.keys(data_map).forEach((key) => {
+        set_custom_element_data2(node, key, data_map[key]);
+      });
+    }
+    function set_custom_element_data2(node, prop, value) {
       if (prop in node) {
         node[prop] = typeof node[prop] === "boolean" && value === "" ? true : value;
       } else {
@@ -5093,21 +11695,21 @@ var require_internal = __commonJS({
     function select_multiple_value(select) {
       return [].map.call(select.querySelectorAll(":checked"), (option2) => option2.__value);
     }
-    var crossorigin;
-    function is_crossorigin() {
-      if (crossorigin === void 0) {
-        crossorigin = false;
+    var crossorigin2;
+    function is_crossorigin2() {
+      if (crossorigin2 === void 0) {
+        crossorigin2 = false;
         try {
           if (typeof window !== "undefined" && window.parent) {
             void window.parent.document;
           }
         } catch (error2) {
-          crossorigin = true;
+          crossorigin2 = true;
         }
       }
-      return crossorigin;
+      return crossorigin2;
     }
-    function add_resize_listener(node, fn3) {
+    function add_resize_listener2(node, fn3) {
       const computed_style = getComputedStyle(node);
       if (computed_style.position === "static") {
         node.style.position = "relative";
@@ -5116,9 +11718,9 @@ var require_internal = __commonJS({
       iframe.setAttribute("style", "display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border: 0; opacity: 0; pointer-events: none; z-index: -1;");
       iframe.setAttribute("aria-hidden", "true");
       iframe.tabIndex = -1;
-      const crossorigin2 = is_crossorigin();
+      const crossorigin3 = is_crossorigin2();
       let unsubscribe;
-      if (crossorigin2) {
+      if (crossorigin3) {
         iframe.src = "data:text/html,<script>onresize=function(){parent.postMessage(0,'*')}<\/script>";
         unsubscribe = listen2(window, "message", (event) => {
           if (event.source === iframe.contentWindow)
@@ -5132,7 +11734,7 @@ var require_internal = __commonJS({
       }
       append2(node, iframe);
       return () => {
-        if (crossorigin2) {
+        if (crossorigin3) {
           unsubscribe();
         } else if (unsubscribe && iframe.contentWindow) {
           unsubscribe();
@@ -5150,6 +11752,25 @@ var require_internal = __commonJS({
     }
     function query_selector_all(selector, parent = document.body) {
       return Array.from(parent.querySelectorAll(selector));
+    }
+    function head_selector(nodeId, head) {
+      const result = [];
+      let started = 0;
+      for (const node of head.childNodes) {
+        if (node.nodeType === 8) {
+          const comment = node.textContent.trim();
+          if (comment === `HEAD_${nodeId}_END`) {
+            started -= 1;
+            result.push(node);
+          } else if (comment === `HEAD_${nodeId}_START`) {
+            started += 1;
+            result.push(node);
+          }
+        } else if (started > 0) {
+          result.push(node);
+        }
+      }
+      return result;
     }
     var HtmlTag = class {
       constructor(is_svg = false) {
@@ -5222,21 +11843,24 @@ var require_internal = __commonJS({
       });
       return result;
     }
+    function construct_svelte_component(component, props) {
+      return new component(props);
+    }
     var managed_styles2 = new Map();
-    var active = 0;
-    function hash3(str) {
-      let hash4 = 5381;
+    var active2 = 0;
+    function hash4(str) {
+      let hash5 = 5381;
       let i2 = str.length;
       while (i2--)
-        hash4 = (hash4 << 5) - hash4 ^ str.charCodeAt(i2);
-      return hash4 >>> 0;
+        hash5 = (hash5 << 5) - hash5 ^ str.charCodeAt(i2);
+      return hash5 >>> 0;
     }
-    function create_style_information(doc, node) {
-      const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
+    function create_style_information2(doc, node) {
+      const info = { stylesheet: append_empty_stylesheet2(node), rules: {} };
       managed_styles2.set(doc, info);
       return info;
     }
-    function create_rule(node, a2, b2, duration, delay, ease, fn3, uid = 0) {
+    function create_rule2(node, a2, b2, duration, delay, ease, fn3, uid = 0) {
       const step = 16.666 / duration;
       let keyframes = "{\n";
       for (let p2 = 0; p2 <= 1; p2 += step) {
@@ -5246,32 +11870,32 @@ var require_internal = __commonJS({
       }
       const rule = keyframes + `100% {${fn3(b2, 1 - b2)}}
 }`;
-      const name = `__svelte_${hash3(rule)}_${uid}`;
+      const name = `__svelte_${hash4(rule)}_${uid}`;
       const doc = get_root_for_style2(node);
-      const { stylesheet, rules } = managed_styles2.get(doc) || create_style_information(doc, node);
+      const { stylesheet, rules } = managed_styles2.get(doc) || create_style_information2(doc, node);
       if (!rules[name]) {
         rules[name] = true;
         stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
       }
       const animation = node.style.animation || "";
       node.style.animation = `${animation ? `${animation}, ` : ""}${name} ${duration}ms linear ${delay}ms 1 both`;
-      active += 1;
+      active2 += 1;
       return name;
     }
-    function delete_rule(node, name) {
+    function delete_rule2(node, name) {
       const previous = (node.style.animation || "").split(", ");
-      const next = previous.filter(name ? (anim) => anim.indexOf(name) < 0 : (anim) => anim.indexOf("__svelte") === -1);
-      const deleted = previous.length - next.length;
+      const next2 = previous.filter(name ? (anim) => anim.indexOf(name) < 0 : (anim) => anim.indexOf("__svelte") === -1);
+      const deleted = previous.length - next2.length;
       if (deleted) {
-        node.style.animation = next.join(", ");
-        active -= deleted;
-        if (!active)
-          clear_rules();
+        node.style.animation = next2.join(", ");
+        active2 -= deleted;
+        if (!active2)
+          clear_rules2();
       }
     }
-    function clear_rules() {
+    function clear_rules2() {
       exports.raf(() => {
-        if (active)
+        if (active2)
           return;
         managed_styles2.forEach((info) => {
           const { ownerNode } = info.stylesheet;
@@ -5281,7 +11905,7 @@ var require_internal = __commonJS({
         managed_styles2.clear();
       });
     }
-    function create_animation(node, from, fn3, params) {
+    function create_animation2(node, from, fn3, params) {
       if (!from)
         return noop3;
       const to = node.getBoundingClientRect();
@@ -5290,7 +11914,7 @@ var require_internal = __commonJS({
       const {
         delay = 0,
         duration = 300,
-        easing = identity,
+        easing = identity2,
         start: start_time = exports.now() + delay,
         end: end2 = start_time + duration,
         tick: tick3 = noop3,
@@ -5301,7 +11925,7 @@ var require_internal = __commonJS({
       let name;
       function start2() {
         if (css2) {
-          name = create_rule(node, 0, 1, duration, delay, easing, css2);
+          name = create_rule2(node, 0, 1, duration, delay, easing, css2);
         }
         if (!delay) {
           started = true;
@@ -5309,14 +11933,14 @@ var require_internal = __commonJS({
       }
       function stop() {
         if (css2)
-          delete_rule(node, name);
+          delete_rule2(node, name);
         running = false;
       }
-      loop((now) => {
-        if (!started && now >= start_time) {
+      loop3((now2) => {
+        if (!started && now2 >= start_time) {
           started = true;
         }
-        if (started && now >= end2) {
+        if (started && now2 >= end2) {
           tick3(1, 0);
           stop();
         }
@@ -5324,7 +11948,7 @@ var require_internal = __commonJS({
           return false;
         }
         if (started) {
-          const p2 = now - start_time;
+          const p2 = now2 - start_time;
           const t3 = 0 + 1 * easing(p2 / duration);
           tick3(t3, 1 - t3);
         }
@@ -5334,7 +11958,7 @@ var require_internal = __commonJS({
       tick3(0, 1);
       return stop;
     }
-    function fix_position(node) {
+    function fix_position2(node) {
       const style = getComputedStyle(node);
       if (style.position !== "absolute" && style.position !== "fixed") {
         const { width, height } = style;
@@ -5342,10 +11966,10 @@ var require_internal = __commonJS({
         node.style.position = "absolute";
         node.style.width = width;
         node.style.height = height;
-        add_transform(node, a2);
+        add_transform2(node, a2);
       }
     }
-    function add_transform(node, a2) {
+    function add_transform2(node, a2) {
       const b2 = node.getBoundingClientRect();
       if (a2.left !== b2.left || a2.top !== b2.top) {
         const style = getComputedStyle(node);
@@ -5532,12 +12156,12 @@ var require_internal = __commonJS({
       let uid = 0;
       function cleanup() {
         if (animation_name)
-          delete_rule(node, animation_name);
+          delete_rule2(node, animation_name);
       }
       function go() {
-        const { delay = 0, duration = 300, easing = identity, tick: tick3 = noop3, css: css2 } = config || null_transition;
+        const { delay = 0, duration = 300, easing = identity2, tick: tick3 = noop3, css: css2 } = config || null_transition;
         if (css2)
-          animation_name = create_rule(node, 0, 1, duration, delay, easing, css2, uid++);
+          animation_name = create_rule2(node, 0, 1, duration, delay, easing, css2, uid++);
         tick3(0, 1);
         const start_time = exports.now() + delay;
         const end_time = start_time + duration;
@@ -5545,16 +12169,16 @@ var require_internal = __commonJS({
           task.abort();
         running = true;
         add_render_callback2(() => dispatch(node, true, "start"));
-        task = loop((now) => {
+        task = loop3((now2) => {
           if (running) {
-            if (now >= end_time) {
+            if (now2 >= end_time) {
               tick3(1, 0);
               dispatch(node, true, "end");
               cleanup();
               return running = false;
             }
-            if (now >= start_time) {
-              const t3 = easing((now - start_time) / duration);
+            if (now2 >= start_time) {
+              const t3 = easing((now2 - start_time) / duration);
               tick3(t3, 1 - t3);
             }
           }
@@ -5567,7 +12191,7 @@ var require_internal = __commonJS({
           if (started)
             return;
           started = true;
-          delete_rule(node);
+          delete_rule2(node);
           if (is_function2(config)) {
             config = config();
             wait().then(go);
@@ -5593,15 +12217,15 @@ var require_internal = __commonJS({
       const group = outros2;
       group.r += 1;
       function go() {
-        const { delay = 0, duration = 300, easing = identity, tick: tick3 = noop3, css: css2 } = config || null_transition;
+        const { delay = 0, duration = 300, easing = identity2, tick: tick3 = noop3, css: css2 } = config || null_transition;
         if (css2)
-          animation_name = create_rule(node, 1, 0, duration, delay, easing, css2);
+          animation_name = create_rule2(node, 1, 0, duration, delay, easing, css2);
         const start_time = exports.now() + delay;
         const end_time = start_time + duration;
         add_render_callback2(() => dispatch(node, false, "start"));
-        loop((now) => {
+        loop3((now2) => {
           if (running) {
-            if (now >= end_time) {
+            if (now2 >= end_time) {
               tick3(0, 1);
               dispatch(node, false, "end");
               if (!--group.r) {
@@ -5609,8 +12233,8 @@ var require_internal = __commonJS({
               }
               return false;
             }
-            if (now >= start_time) {
-              const t3 = easing((now - start_time) / duration);
+            if (now2 >= start_time) {
+              const t3 = easing((now2 - start_time) / duration);
               tick3(1 - t3, t3);
             }
           }
@@ -5632,7 +12256,7 @@ var require_internal = __commonJS({
           }
           if (running) {
             if (animation_name)
-              delete_rule(node, animation_name);
+              delete_rule2(node, animation_name);
             running = false;
           }
         }
@@ -5646,7 +12270,7 @@ var require_internal = __commonJS({
       let animation_name = null;
       function clear_animation() {
         if (animation_name)
-          delete_rule(node, animation_name);
+          delete_rule2(node, animation_name);
       }
       function init4(program, duration) {
         const d2 = program.b - t3;
@@ -5662,7 +12286,7 @@ var require_internal = __commonJS({
         };
       }
       function go(b2) {
-        const { delay = 0, duration = 300, easing = identity, tick: tick3 = noop3, css: css2 } = config || null_transition;
+        const { delay = 0, duration = 300, easing = identity2, tick: tick3 = noop3, css: css2 } = config || null_transition;
         const program = {
           start: exports.now() + delay,
           b: b2
@@ -5676,24 +12300,24 @@ var require_internal = __commonJS({
         } else {
           if (css2) {
             clear_animation();
-            animation_name = create_rule(node, t3, b2, duration, delay, easing, css2);
+            animation_name = create_rule2(node, t3, b2, duration, delay, easing, css2);
           }
           if (b2)
             tick3(0, 1);
           running_program = init4(program, duration);
           add_render_callback2(() => dispatch(node, b2, "start"));
-          loop((now) => {
-            if (pending_program && now > pending_program.start) {
+          loop3((now2) => {
+            if (pending_program && now2 > pending_program.start) {
               running_program = init4(pending_program, duration);
               pending_program = null;
               dispatch(node, running_program.b, "start");
               if (css2) {
                 clear_animation();
-                animation_name = create_rule(node, t3, running_program.b, running_program.duration, 0, easing, config.css);
+                animation_name = create_rule2(node, t3, running_program.b, running_program.duration, 0, easing, config.css);
               }
             }
             if (running_program) {
-              if (now >= running_program.end) {
+              if (now2 >= running_program.end) {
                 tick3(t3 = running_program.b, 1 - t3);
                 dispatch(node, running_program.b, "end");
                 if (!pending_program) {
@@ -5705,8 +12329,8 @@ var require_internal = __commonJS({
                   }
                 }
                 running_program = null;
-              } else if (now >= running_program.start) {
-                const p2 = now - running_program.start;
+              } else if (now2 >= running_program.start) {
+                const p2 = now2 - running_program.start;
                 t3 = running_program.a + running_program.d * easing(p2 / running_program.duration);
                 tick3(t3, 1 - t3);
               }
@@ -5824,11 +12448,11 @@ var require_internal = __commonJS({
       block.f();
       destroy_block(block, lookup);
     }
-    function fix_and_outro_and_destroy_block(block, lookup) {
+    function fix_and_outro_and_destroy_block2(block, lookup) {
       block.f();
       outro_and_destroy_block2(block, lookup);
     }
-    function update_keyed_each2(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy2, create_each_block17, next, get_context2) {
+    function update_keyed_each2(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy2, create_each_block17, next2, get_context2) {
       let o2 = old_blocks.length;
       let n2 = list.length;
       let i2 = o2;
@@ -5857,9 +12481,9 @@ var require_internal = __commonJS({
       const did_move = new Set();
       function insert3(block) {
         transition_in2(block, 1);
-        block.m(node, next);
+        block.m(node, next2);
         lookup.set(block.key, block);
-        next = block.first;
+        next2 = block.first;
         n2--;
       }
       while (o2 && n2) {
@@ -5868,7 +12492,7 @@ var require_internal = __commonJS({
         const new_key = new_block.key;
         const old_key = old_block.key;
         if (new_block === old_block) {
-          next = new_block.first;
+          next2 = new_block.first;
           o2--;
           n2--;
         } else if (!new_lookup.has(old_key)) {
@@ -5953,7 +12577,9 @@ var require_internal = __commonJS({
       "disabled",
       "formnovalidate",
       "hidden",
+      "inert",
       "ismap",
+      "itemscope",
       "loop",
       "multiple",
       "muted",
@@ -6068,7 +12694,7 @@ var require_internal = __commonJS({
       if (!component || !component.$$render) {
         if (name === "svelte:component")
           name += " this={...}";
-        throw new Error(`<${name}> is not a valid SSR component. You may need to review your build config to ensure that dependencies are compiled, rather than imported as pre-compiled modules`);
+        throw new Error(`<${name}> is not a valid SSR component. You may need to review your build config to ensure that dependencies are compiled, rather than imported as pre-compiled modules. Otherwise you may need to fix a <${name}>.`);
       }
       return component;
     }
@@ -6142,13 +12768,13 @@ var require_internal = __commonJS({
       block && block.l(parent_nodes);
     }
     function mount_component2(component, target, anchor, customElement) {
-      const { fragment, on_mount, on_destroy: on_destroy2, after_update } = component.$$;
+      const { fragment, after_update } = component.$$;
       fragment && fragment.m(target, anchor);
       if (!customElement) {
         add_render_callback2(() => {
-          const new_on_destroy = on_mount.map(run2).filter(is_function2);
-          if (on_destroy2) {
-            on_destroy2.push(...new_on_destroy);
+          const new_on_destroy = component.$$.on_mount.map(run2).filter(is_function2);
+          if (component.$$.on_destroy) {
+            component.$$.on_destroy.push(...new_on_destroy);
           } else {
             run_all2(new_on_destroy);
           }
@@ -6174,12 +12800,12 @@ var require_internal = __commonJS({
       }
       component.$$.dirty[i2 / 31 | 0] |= 1 << i2 % 31;
     }
-    function init3(component, options, instance96, create_fragment96, not_equal3, props, append_styles3, dirty = [-1]) {
+    function init3(component, options, instance104, create_fragment104, not_equal3, props, append_styles3, dirty = [-1]) {
       const parent_component = exports.current_component;
       set_current_component2(component);
       const $$ = component.$$ = {
         fragment: null,
-        ctx: null,
+        ctx: [],
         props,
         update: noop3,
         not_equal: not_equal3,
@@ -6197,7 +12823,7 @@ var require_internal = __commonJS({
       };
       append_styles3 && append_styles3($$.root);
       let ready = false;
-      $$.ctx = instance96 ? instance96(component, options.props || {}, (i2, ret, ...rest) => {
+      $$.ctx = instance104 ? instance104(component, options.props || {}, (i2, ret, ...rest) => {
         const value = rest.length ? rest[0] : ret;
         if ($$.ctx && not_equal3($$.ctx[i2], $$.ctx[i2] = value)) {
           if (!$$.skip_bound && $$.bound[i2])
@@ -6210,7 +12836,7 @@ var require_internal = __commonJS({
       $$.update();
       ready = true;
       run_all2($$.before_update);
-      $$.fragment = create_fragment96 ? create_fragment96($$.ctx) : false;
+      $$.fragment = create_fragment104 ? create_fragment104($$.ctx) : false;
       if (options.target) {
         if (options.hydrate) {
           start_hydrating2();
@@ -6252,6 +12878,9 @@ var require_internal = __commonJS({
           this.$destroy = noop3;
         }
         $on(type, callback) {
+          if (!is_function2(callback)) {
+            return noop3;
+          }
           const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
           callbacks.push(callback);
           return () => {
@@ -6275,6 +12904,9 @@ var require_internal = __commonJS({
         this.$destroy = noop3;
       }
       $on(type, callback) {
+        if (!is_function2(callback)) {
+          return noop3;
+        }
         const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
         callbacks.push(callback);
         return () => {
@@ -6292,7 +12924,7 @@ var require_internal = __commonJS({
       }
     };
     function dispatch_dev(type, detail) {
-      document.dispatchEvent(custom_event2(type, Object.assign({ version: "3.50.1" }, detail), { bubbles: true }));
+      document.dispatchEvent(custom_event2(type, Object.assign({ version: "3.53.1" }, detail), { bubbles: true }));
     }
     function append_dev(target, node) {
       dispatch_dev("SvelteDOMInsert", { target, node });
@@ -6388,7 +13020,24 @@ var require_internal = __commonJS({
     }
     function validate_void_dynamic_element(tag) {
       if (tag && is_void(tag)) {
-        throw new Error(`<svelte:element this="${tag}"> is self-closing and cannot have content.`);
+        console.warn(`<svelte:element this="${tag}"> is self-closing and cannot have content.`);
+      }
+    }
+    function construct_svelte_component_dev(component, props) {
+      const error_message = "this={...} of <svelte:component> should specify a Svelte component.";
+      try {
+        const instance104 = new component(props);
+        if (!instance104.$$ || !instance104.$set || !instance104.$on || !instance104.$destroy) {
+          throw new Error(error_message);
+        }
+        return instance104;
+      } catch (err) {
+        const { message } = err;
+        if (typeof message === "string" && message.indexOf("is not a constructor") !== -1) {
+          throw new Error(error_message);
+        } else {
+          throw err;
+        }
       }
     }
     var SvelteComponentDev2 = class extends SvelteComponent2 {
@@ -6433,13 +13082,13 @@ var require_internal = __commonJS({
     exports.add_flush_callback = add_flush_callback2;
     exports.add_location = add_location;
     exports.add_render_callback = add_render_callback2;
-    exports.add_resize_listener = add_resize_listener;
+    exports.add_resize_listener = add_resize_listener2;
     exports.add_styles = add_styles;
-    exports.add_transform = add_transform;
+    exports.add_transform = add_transform2;
     exports.afterUpdate = afterUpdate2;
     exports.append = append2;
     exports.append_dev = append_dev;
-    exports.append_empty_stylesheet = append_empty_stylesheet;
+    exports.append_empty_stylesheet = append_empty_stylesheet2;
     exports.append_hydration = append_hydration;
     exports.append_hydration_dev = append_hydration_dev;
     exports.append_styles = append_styles2;
@@ -6464,8 +13113,10 @@ var require_internal = __commonJS({
     exports.component_subscribe = component_subscribe2;
     exports.compute_rest_props = compute_rest_props;
     exports.compute_slots = compute_slots2;
+    exports.construct_svelte_component = construct_svelte_component;
+    exports.construct_svelte_component_dev = construct_svelte_component_dev;
     exports.createEventDispatcher = createEventDispatcher2;
-    exports.create_animation = create_animation;
+    exports.create_animation = create_animation2;
     exports.create_bidirectional_transition = create_bidirectional_transition;
     exports.create_component = create_component2;
     exports.create_in_transition = create_in_transition;
@@ -6495,8 +13146,8 @@ var require_internal = __commonJS({
     exports.escape_object = escape_object;
     exports.exclude_internal_props = exclude_internal_props;
     exports.fix_and_destroy_block = fix_and_destroy_block;
-    exports.fix_and_outro_and_destroy_block = fix_and_outro_and_destroy_block;
-    exports.fix_position = fix_position;
+    exports.fix_and_outro_and_destroy_block = fix_and_outro_and_destroy_block2;
+    exports.fix_position = fix_position2;
     exports.flush = flush2;
     exports.getAllContexts = getAllContexts2;
     exports.getContext = getContext2;
@@ -6514,7 +13165,8 @@ var require_internal = __commonJS({
     exports.handle_promise = handle_promise2;
     exports.hasContext = hasContext2;
     exports.has_prop = has_prop;
-    exports.identity = identity;
+    exports.head_selector = head_selector;
+    exports.identity = identity2;
     exports.init = init3;
     exports.insert = insert2;
     exports.insert_dev = insert_dev;
@@ -6522,15 +13174,15 @@ var require_internal = __commonJS({
     exports.insert_hydration_dev = insert_hydration_dev;
     exports.intros = intros;
     exports.invalid_attribute_name_character = invalid_attribute_name_character;
-    exports.is_client = is_client;
-    exports.is_crossorigin = is_crossorigin;
+    exports.is_client = is_client2;
+    exports.is_crossorigin = is_crossorigin2;
     exports.is_empty = is_empty2;
     exports.is_function = is_function2;
     exports.is_promise = is_promise2;
     exports.is_void = is_void;
     exports.listen = listen2;
     exports.listen_dev = listen_dev;
-    exports.loop = loop;
+    exports.loop = loop3;
     exports.loop_guard = loop_guard;
     exports.merge_ssr_styles = merge_ssr_styles;
     exports.missing_component = missing_component;
@@ -6558,7 +13210,8 @@ var require_internal = __commonJS({
     exports.setContext = setContext2;
     exports.set_attributes = set_attributes2;
     exports.set_current_component = set_current_component2;
-    exports.set_custom_element_data = set_custom_element_data;
+    exports.set_custom_element_data = set_custom_element_data2;
+    exports.set_custom_element_data_map = set_custom_element_data_map2;
     exports.set_data = set_data2;
     exports.set_data_dev = set_data_dev;
     exports.set_input_type = set_input_type;
@@ -6796,6 +13449,7 @@ __export(exports, {
 // node_modules/svelte/internal/index.mjs
 function noop() {
 }
+var identity = (x2) => x2;
 function assign(tar, src) {
   for (const k2 in src)
     tar[k2] = src[k2];
@@ -6905,7 +13559,33 @@ function null_to_empty(value) {
 function action_destroyer(action_result) {
   return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
 }
+var is_client = typeof window !== "undefined";
+var now = is_client ? () => window.performance.now() : () => Date.now();
+var raf = is_client ? (cb) => requestAnimationFrame(cb) : noop;
 var tasks = new Set();
+function run_tasks(now2) {
+  tasks.forEach((task) => {
+    if (!task.c(now2)) {
+      tasks.delete(task);
+      task.f();
+    }
+  });
+  if (tasks.size !== 0)
+    raf(run_tasks);
+}
+function loop(callback) {
+  let task;
+  if (tasks.size === 0)
+    raf(run_tasks);
+  return {
+    promise: new Promise((fulfill) => {
+      tasks.add(task = { c: callback, f: fulfill });
+    }),
+    abort() {
+      tasks.delete(task);
+    }
+  };
+}
 var is_hydrating = false;
 function start_hydrating() {
   is_hydrating = true;
@@ -6934,6 +13614,11 @@ function get_root_for_style(node) {
   }
   return node.ownerDocument;
 }
+function append_empty_stylesheet(node) {
+  const style_element = element("style");
+  append_stylesheet(get_root_for_style(node), style_element);
+  return style_element.sheet;
+}
 function append_stylesheet(node, style) {
   append(node.head || node, style);
   return style.sheet;
@@ -6942,7 +13627,9 @@ function insert(target, node, anchor) {
   target.insertBefore(node, anchor || null);
 }
 function detach(node) {
-  node.parentNode.removeChild(node);
+  if (node.parentNode) {
+    node.parentNode.removeChild(node);
+  }
 }
 function destroy_each(iterations, detaching) {
   for (let i2 = 0; i2 < iterations.length; i2 += 1) {
@@ -6994,6 +13681,21 @@ function set_attributes(node, attributes) {
     }
   }
 }
+function set_custom_element_data_map(node, data_map) {
+  Object.keys(data_map).forEach((key) => {
+    set_custom_element_data(node, key, data_map[key]);
+  });
+}
+function set_custom_element_data(node, prop, value) {
+  if (prop in node) {
+    node[prop] = typeof node[prop] === "boolean" && value === "" ? true : value;
+  } else {
+    attr(node, prop, value);
+  }
+}
+function to_number(value) {
+  return value === "" ? null : +value;
+}
 function children(element2) {
   return Array.from(element2.childNodes);
 }
@@ -7022,6 +13724,53 @@ function select_option(select, value) {
   }
   select.selectedIndex = -1;
 }
+var crossorigin;
+function is_crossorigin() {
+  if (crossorigin === void 0) {
+    crossorigin = false;
+    try {
+      if (typeof window !== "undefined" && window.parent) {
+        void window.parent.document;
+      }
+    } catch (error2) {
+      crossorigin = true;
+    }
+  }
+  return crossorigin;
+}
+function add_resize_listener(node, fn3) {
+  const computed_style = getComputedStyle(node);
+  if (computed_style.position === "static") {
+    node.style.position = "relative";
+  }
+  const iframe = element("iframe");
+  iframe.setAttribute("style", "display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border: 0; opacity: 0; pointer-events: none; z-index: -1;");
+  iframe.setAttribute("aria-hidden", "true");
+  iframe.tabIndex = -1;
+  const crossorigin2 = is_crossorigin();
+  let unsubscribe;
+  if (crossorigin2) {
+    iframe.src = "data:text/html,<script>onresize=function(){parent.postMessage(0,'*')}<\/script>";
+    unsubscribe = listen(window, "message", (event) => {
+      if (event.source === iframe.contentWindow)
+        fn3();
+    });
+  } else {
+    iframe.src = "about:blank";
+    iframe.onload = () => {
+      unsubscribe = listen(iframe.contentWindow, "resize", fn3);
+    };
+  }
+  append(node, iframe);
+  return () => {
+    if (crossorigin2) {
+      unsubscribe();
+    } else if (unsubscribe && iframe.contentWindow) {
+      unsubscribe();
+    }
+    detach(iframe);
+  };
+}
 function toggle_class(element2, name, toggle) {
   element2.classList[toggle ? "add" : "remove"](name);
 }
@@ -7031,6 +13780,136 @@ function custom_event(type, detail, { bubbles = false, cancelable = false } = {}
   return e;
 }
 var managed_styles = new Map();
+var active = 0;
+function hash(str) {
+  let hash4 = 5381;
+  let i2 = str.length;
+  while (i2--)
+    hash4 = (hash4 << 5) - hash4 ^ str.charCodeAt(i2);
+  return hash4 >>> 0;
+}
+function create_style_information(doc, node) {
+  const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
+  managed_styles.set(doc, info);
+  return info;
+}
+function create_rule(node, a2, b2, duration, delay, ease, fn3, uid = 0) {
+  const step = 16.666 / duration;
+  let keyframes = "{\n";
+  for (let p2 = 0; p2 <= 1; p2 += step) {
+    const t3 = a2 + (b2 - a2) * ease(p2);
+    keyframes += p2 * 100 + `%{${fn3(t3, 1 - t3)}}
+`;
+  }
+  const rule = keyframes + `100% {${fn3(b2, 1 - b2)}}
+}`;
+  const name = `__svelte_${hash(rule)}_${uid}`;
+  const doc = get_root_for_style(node);
+  const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
+  if (!rules[name]) {
+    rules[name] = true;
+    stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+  }
+  const animation = node.style.animation || "";
+  node.style.animation = `${animation ? `${animation}, ` : ""}${name} ${duration}ms linear ${delay}ms 1 both`;
+  active += 1;
+  return name;
+}
+function delete_rule(node, name) {
+  const previous = (node.style.animation || "").split(", ");
+  const next2 = previous.filter(name ? (anim) => anim.indexOf(name) < 0 : (anim) => anim.indexOf("__svelte") === -1);
+  const deleted = previous.length - next2.length;
+  if (deleted) {
+    node.style.animation = next2.join(", ");
+    active -= deleted;
+    if (!active)
+      clear_rules();
+  }
+}
+function clear_rules() {
+  raf(() => {
+    if (active)
+      return;
+    managed_styles.forEach((info) => {
+      const { ownerNode } = info.stylesheet;
+      if (ownerNode)
+        detach(ownerNode);
+    });
+    managed_styles.clear();
+  });
+}
+function create_animation(node, from, fn3, params) {
+  if (!from)
+    return noop;
+  const to = node.getBoundingClientRect();
+  if (from.left === to.left && from.right === to.right && from.top === to.top && from.bottom === to.bottom)
+    return noop;
+  const {
+    delay = 0,
+    duration = 300,
+    easing = identity,
+    start: start_time = now() + delay,
+    end: end2 = start_time + duration,
+    tick: tick2 = noop,
+    css: css2
+  } = fn3(node, { from, to }, params);
+  let running = true;
+  let started = false;
+  let name;
+  function start2() {
+    if (css2) {
+      name = create_rule(node, 0, 1, duration, delay, easing, css2);
+    }
+    if (!delay) {
+      started = true;
+    }
+  }
+  function stop() {
+    if (css2)
+      delete_rule(node, name);
+    running = false;
+  }
+  loop((now2) => {
+    if (!started && now2 >= start_time) {
+      started = true;
+    }
+    if (started && now2 >= end2) {
+      tick2(1, 0);
+      stop();
+    }
+    if (!running) {
+      return false;
+    }
+    if (started) {
+      const p2 = now2 - start_time;
+      const t3 = 0 + 1 * easing(p2 / duration);
+      tick2(t3, 1 - t3);
+    }
+    return true;
+  });
+  start2();
+  tick2(0, 1);
+  return stop;
+}
+function fix_position(node) {
+  const style = getComputedStyle(node);
+  if (style.position !== "absolute" && style.position !== "fixed") {
+    const { width, height } = style;
+    const a2 = node.getBoundingClientRect();
+    node.style.position = "absolute";
+    node.style.width = width;
+    node.style.height = height;
+    add_transform(node, a2);
+  }
+}
+function add_transform(node, a2) {
+  const b2 = node.getBoundingClientRect();
+  if (a2.left !== b2.left || a2.top !== b2.top) {
+    const style = getComputedStyle(node);
+    const transform = style.transform === "none" ? "" : style.transform;
+    node.style.transform = `${transform} translate(${a2.left - b2.left}px, ${a2.top - b2.top}px)`;
+  }
+}
 var current_component;
 function set_current_component(component) {
   current_component = component;
@@ -7260,7 +14139,11 @@ function outro_and_destroy_block(block, lookup) {
     lookup.delete(block.key);
   });
 }
-function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy2, create_each_block17, next, get_context2) {
+function fix_and_outro_and_destroy_block(block, lookup) {
+  block.f();
+  outro_and_destroy_block(block, lookup);
+}
+function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup, node, destroy2, create_each_block17, next2, get_context2) {
   let o2 = old_blocks.length;
   let n2 = list.length;
   let i2 = o2;
@@ -7289,9 +14172,9 @@ function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, looku
   const did_move = new Set();
   function insert2(block) {
     transition_in(block, 1);
-    block.m(node, next);
+    block.m(node, next2);
     lookup.set(block.key, block);
-    next = block.first;
+    next2 = block.first;
     n2--;
   }
   while (o2 && n2) {
@@ -7300,7 +14183,7 @@ function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, looku
     const new_key = new_block.key;
     const old_key = old_block.key;
     if (new_block === old_block) {
-      next = new_block.first;
+      next2 = new_block.first;
       o2--;
       n2--;
     } else if (!new_lookup.has(old_key)) {
@@ -7372,7 +14255,9 @@ var boolean_attributes = new Set([
   "disabled",
   "formnovalidate",
   "hidden",
+  "inert",
   "ismap",
+  "itemscope",
   "loop",
   "multiple",
   "muted",
@@ -7396,13 +14281,13 @@ function create_component(block) {
   block && block.c();
 }
 function mount_component(component, target, anchor, customElement) {
-  const { fragment, on_mount, on_destroy, after_update } = component.$$;
+  const { fragment, after_update } = component.$$;
   fragment && fragment.m(target, anchor);
   if (!customElement) {
     add_render_callback(() => {
-      const new_on_destroy = on_mount.map(run).filter(is_function);
-      if (on_destroy) {
-        on_destroy.push(...new_on_destroy);
+      const new_on_destroy = component.$$.on_mount.map(run).filter(is_function);
+      if (component.$$.on_destroy) {
+        component.$$.on_destroy.push(...new_on_destroy);
       } else {
         run_all(new_on_destroy);
       }
@@ -7428,12 +14313,12 @@ function make_dirty(component, i2) {
   }
   component.$$.dirty[i2 / 31 | 0] |= 1 << i2 % 31;
 }
-function init(component, options, instance96, create_fragment96, not_equal2, props, append_styles2, dirty = [-1]) {
+function init(component, options, instance104, create_fragment104, not_equal2, props, append_styles2, dirty = [-1]) {
   const parent_component = current_component;
   set_current_component(component);
   const $$ = component.$$ = {
     fragment: null,
-    ctx: null,
+    ctx: [],
     props,
     update: noop,
     not_equal: not_equal2,
@@ -7451,7 +14336,7 @@ function init(component, options, instance96, create_fragment96, not_equal2, pro
   };
   append_styles2 && append_styles2($$.root);
   let ready = false;
-  $$.ctx = instance96 ? instance96(component, options.props || {}, (i2, ret, ...rest) => {
+  $$.ctx = instance104 ? instance104(component, options.props || {}, (i2, ret, ...rest) => {
     const value = rest.length ? rest[0] : ret;
     if ($$.ctx && not_equal2($$.ctx[i2], $$.ctx[i2] = value)) {
       if (!$$.skip_bound && $$.bound[i2])
@@ -7464,7 +14349,7 @@ function init(component, options, instance96, create_fragment96, not_equal2, pro
   $$.update();
   ready = true;
   run_all($$.before_update);
-  $$.fragment = create_fragment96 ? create_fragment96($$.ctx) : false;
+  $$.fragment = create_fragment104 ? create_fragment104($$.ctx) : false;
   if (options.target) {
     if (options.hydrate) {
       start_hydrating();
@@ -7507,6 +14392,9 @@ if (typeof HTMLElement === "function") {
       this.$destroy = noop;
     }
     $on(type, callback) {
+      if (!is_function(callback)) {
+        return noop;
+      }
       const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
       callbacks.push(callback);
       return () => {
@@ -7530,6 +14418,9 @@ var SvelteComponent = class {
     this.$destroy = noop;
   }
   $on(type, callback) {
+    if (!is_function(callback)) {
+      return noop;
+    }
     const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
     callbacks.push(callback);
     return () => {
@@ -7635,14 +14526,14 @@ function derived(stores, fn3, initial_value) {
 }
 
 // src/main.ts
-var import_obsidian50 = __toModule(require("obsidian"));
+var import_obsidian54 = __toModule(require("obsidian"));
 var import_obsidian_dataview4 = __toModule(require_lib());
-var import_dayjs10 = __toModule(require_dayjs_min());
+var import_dayjs9 = __toModule(require_dayjs_min());
 var import_isoWeek = __toModule(require_isoWeek());
 var import_localizedFormat = __toModule(require_localizedFormat());
 
 // src/view.ts
-var import_obsidian47 = __toModule(require("obsidian"));
+var import_obsidian51 = __toModule(require("obsidian"));
 
 // node_modules/tslib/modules/index.js
 var import_tslib = __toModule(require_tslib());
@@ -7889,13 +14780,13 @@ function contains(parent, child) {
   if (parent.contains(child)) {
     return true;
   } else if (rootNode && isShadowRoot(rootNode)) {
-    var next = child;
+    var next2 = child;
     do {
-      if (next && parent.isSameNode(next)) {
+      if (next2 && parent.isSameNode(next2)) {
         return true;
       }
-      next = next.parentNode || next.host;
-    } while (next);
+      next2 = next2.parentNode || next2.host;
+    } while (next2);
   }
   return false;
 }
@@ -8206,26 +15097,26 @@ var passive = {
   passive: true
 };
 function effect3(_ref) {
-  var state = _ref.state, instance96 = _ref.instance, options = _ref.options;
+  var state = _ref.state, instance104 = _ref.instance, options = _ref.options;
   var _options$scroll = options.scroll, scroll = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
   var window2 = getWindow(state.elements.popper);
   var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
   if (scroll) {
     scrollParents.forEach(function(scrollParent) {
-      scrollParent.addEventListener("scroll", instance96.update, passive);
+      scrollParent.addEventListener("scroll", instance104.update, passive);
     });
   }
   if (resize) {
-    window2.addEventListener("resize", instance96.update, passive);
+    window2.addEventListener("resize", instance104.update, passive);
   }
   return function() {
     if (scroll) {
       scrollParents.forEach(function(scrollParent) {
-        scrollParent.removeEventListener("scroll", instance96.update, passive);
+        scrollParent.removeEventListener("scroll", instance104.update, passive);
       });
     }
     if (resize) {
-      window2.removeEventListener("resize", instance96.update, passive);
+      window2.removeEventListener("resize", instance104.update, passive);
     }
   };
 }
@@ -8240,7 +15131,7 @@ var eventListeners_default = {
 };
 
 // node_modules/@popperjs/core/lib/utils/getOppositePlacement.js
-var hash = {
+var hash2 = {
   left: "right",
   right: "left",
   bottom: "top",
@@ -8248,18 +15139,18 @@ var hash = {
 };
 function getOppositePlacement(placement) {
   return placement.replace(/left|right|bottom|top/g, function(matched) {
-    return hash[matched];
+    return hash2[matched];
   });
 }
 
 // node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js
-var hash2 = {
+var hash3 = {
   start: "end",
   end: "start"
 };
 function getOppositeVariationPlacement(placement) {
   return placement.replace(/start|end/g, function(matched) {
-    return hash2[matched];
+    return hash3[matched];
   });
 }
 
@@ -9107,7 +15998,7 @@ function popperGenerator(generatorOptions) {
     };
     var effectCleanupFns = [];
     var isDestroyed = false;
-    var instance96 = {
+    var instance104 = {
       state,
       setOptions: function setOptions(setOptionsAction) {
         var options2 = typeof setOptionsAction === "function" ? setOptionsAction(state.options) : setOptionsAction;
@@ -9144,7 +16035,7 @@ function popperGenerator(generatorOptions) {
           }
         }
         runModifierEffects();
-        return instance96.update();
+        return instance104.update();
       },
       forceUpdate: function forceUpdate() {
         if (isDestroyed) {
@@ -9186,14 +16077,14 @@ function popperGenerator(generatorOptions) {
               state,
               options: _options,
               name,
-              instance: instance96
+              instance: instance104
             }) || state;
           }
         }
       },
       update: debounce(function() {
         return new Promise(function(resolve) {
-          instance96.forceUpdate();
+          instance104.forceUpdate();
           resolve(state);
         });
       }),
@@ -9206,9 +16097,9 @@ function popperGenerator(generatorOptions) {
       if (true) {
         console.error(INVALID_ELEMENT_ERROR);
       }
-      return instance96;
+      return instance104;
     }
-    instance96.setOptions(options).then(function(state2) {
+    instance104.setOptions(options).then(function(state2) {
       if (!isDestroyed && options.onFirstUpdate) {
         options.onFirstUpdate(state2);
       }
@@ -9220,7 +16111,7 @@ function popperGenerator(generatorOptions) {
           var cleanupFn = effect4({
             state,
             name,
-            instance: instance96,
+            instance: instance104,
             options: options2
           });
           var noopFn = function noopFn2() {
@@ -9235,7 +16126,7 @@ function popperGenerator(generatorOptions) {
       });
       effectCleanupFns = [];
     }
-    return instance96;
+    return instance104;
   };
 }
 
@@ -10000,7 +16891,7 @@ function create_fragment6(ctx) {
 function instance6($$self, $$props, $$invalidate) {
   let { icon } = $$props;
   let { size = "md" } = $$props;
-  let { active = false } = $$props;
+  let { active: active2 = false } = $$props;
   let { tooltip = "" } = $$props;
   let { nopadding = false } = $$props;
   function click_handler(event) {
@@ -10015,13 +16906,13 @@ function instance6($$self, $$props, $$invalidate) {
     if ("size" in $$props2)
       $$invalidate(1, size = $$props2.size);
     if ("active" in $$props2)
-      $$invalidate(2, active = $$props2.active);
+      $$invalidate(2, active2 = $$props2.active);
     if ("tooltip" in $$props2)
       $$invalidate(3, tooltip = $$props2.tooltip);
     if ("nopadding" in $$props2)
       $$invalidate(4, nopadding = $$props2.nopadding);
   };
-  return [icon, size, active, tooltip, nopadding, click_handler, keypress_handler];
+  return [icon, size, active2, tooltip, nopadding, click_handler, keypress_handler];
 }
 var IconButton = class extends SvelteComponent {
   constructor(options) {
@@ -11491,8 +18382,8 @@ function instance13($$self, $$props, $$invalidate) {
           event.stopPropagation();
           break;
         case "ArrowDown":
-          const next = selected + 1;
-          $$invalidate(8, selected = next > filteredOptions.length - 1 ? 0 : next);
+          const next2 = selected + 1;
+          $$invalidate(8, selected = next2 > filteredOptions.length - 1 ? 0 : next2);
           event.stopPropagation();
           break;
         case "Enter":
@@ -11978,8 +18869,72 @@ var Callout = class extends SvelteComponent {
 };
 var Callout_default = Callout;
 
-// node_modules/obsidian-svelte/Checkbox/Checkbox.svelte
+// node_modules/obsidian-svelte/Card/Card.svelte
+function add_css7(target) {
+  append_styles(target, "svelte-166bpw4", "div.svelte-166bpw4{margin-bottom:var(--size-4-2)}");
+}
 function create_fragment17(ctx) {
+  let div;
+  let current;
+  const default_slot_template = ctx[1].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[0], null);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      attr(div, "class", "card svelte-166bpw4");
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 1)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[0], !current ? get_all_dirty_from_scope(ctx2[0]) : get_slot_changes(default_slot_template, ctx2[0], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance17($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("$$scope" in $$props2)
+      $$invalidate(0, $$scope = $$props2.$$scope);
+  };
+  return [$$scope, slots];
+}
+var Card = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance17, create_fragment17, safe_not_equal, {}, add_css7);
+  }
+};
+var Card_default = Card;
+
+// node_modules/obsidian-svelte/Checkbox/Checkbox.svelte
+function create_fragment18(ctx) {
   let input;
   let mounted;
   let dispose;
@@ -12015,7 +18970,7 @@ function create_fragment17(ctx) {
     }
   };
 }
-function instance17($$self, $$props, $$invalidate) {
+function instance18($$self, $$props, $$invalidate) {
   let { checked } = $$props;
   const dispatch = createEventDispatcher();
   function handleChange(event) {
@@ -12044,17 +18999,80 @@ function instance17($$self, $$props, $$invalidate) {
 var Checkbox = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance17, create_fragment17, safe_not_equal, { checked: 0 });
+    init(this, options, instance18, create_fragment18, safe_not_equal, { checked: 0 });
   }
 };
 var Checkbox_default = Checkbox;
 
+// node_modules/obsidian-svelte/ColorInput/ColorInput.svelte
+function create_fragment19(ctx) {
+  let input;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      input = element("input");
+      attr(input, "type", "color");
+    },
+    m(target, anchor) {
+      insert(target, input, anchor);
+      set_input_value(input, ctx[0]);
+      if (!mounted) {
+        dispose = [
+          listen(input, "input", ctx[3]),
+          listen(input, "input", ctx[1]),
+          listen(input, "change", ctx[2])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 1) {
+        set_input_value(input, ctx2[0]);
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(input);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance19($$self, $$props, $$invalidate) {
+  let { value } = $$props;
+  function input_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function change_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function input_input_handler() {
+    value = this.value;
+    $$invalidate(0, value);
+  }
+  $$self.$$set = ($$props2) => {
+    if ("value" in $$props2)
+      $$invalidate(0, value = $$props2.value);
+  };
+  return [value, input_handler, change_handler, input_input_handler];
+}
+var ColorInput = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance19, create_fragment19, safe_not_equal, { value: 0 });
+  }
+};
+var ColorInput_default = ColorInput;
+
 // node_modules/obsidian-svelte/DateInput/DateInput.svelte
 var import_dayjs = __toModule(require_dayjs_min());
-function add_css7(target) {
+function add_css8(target) {
   append_styles(target, "svelte-2qn54x", "input.svelte-2qn54x{border-radius:9999px;border:0;background-color:var(--background-modifier-hover);font-family:var(--font-default);padding:0.1em 0.6em}.embed.svelte-2qn54x{margin:0 8px}");
 }
-function create_fragment18(ctx) {
+function create_fragment20(ctx) {
   let input;
   let input_value_value;
   let mounted;
@@ -12092,7 +19110,7 @@ function create_fragment18(ctx) {
     }
   };
 }
-function instance18($$self, $$props, $$invalidate) {
+function instance20($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { embed = false } = $$props;
   const dispatch = createEventDispatcher();
@@ -12112,16 +19130,16 @@ function instance18($$self, $$props, $$invalidate) {
 var DateInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance18, create_fragment18, safe_not_equal, { value: 0, embed: 1 }, add_css7);
+    init(this, options, instance20, create_fragment20, safe_not_equal, { value: 0, embed: 1 }, add_css8);
   }
 };
 var DateInput_default = DateInput;
 
 // node_modules/obsidian-svelte/Link/InternalLink.svelte
-function add_css8(target) {
+function add_css9(target) {
   append_styles(target, "svelte-u3bamg", ".is-unresolved.svelte-u3bamg{opacity:0.5}");
 }
-function create_fragment19(ctx) {
+function create_fragment21(ctx) {
   let a2;
   let a_class_value;
   let current;
@@ -12198,7 +19216,7 @@ function create_fragment19(ctx) {
     }
   };
 }
-function instance19($$self, $$props, $$invalidate) {
+function instance21($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { linkText } = $$props;
   let { sourcePath } = $$props;
@@ -12247,18 +19265,105 @@ function instance19($$self, $$props, $$invalidate) {
 var InternalLink = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance19, create_fragment19, safe_not_equal, {
+    init(this, options, instance21, create_fragment21, safe_not_equal, {
       linkText: 0,
       sourcePath: 1,
       tooltip: 5,
       resolved: 2
-    }, add_css8);
+    }, add_css9);
   }
 };
 var InternalLink_default = InternalLink;
 
+// node_modules/obsidian-svelte/Link/Link.svelte
+function create_fragment22(ctx) {
+  let a2;
+  let current;
+  const default_slot_template = ctx[3].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[2], null);
+  let a_levels = [
+    { href: ctx[0] },
+    { rel: "noopener" },
+    { target: "_blank" },
+    ctx[1]
+  ];
+  let a_data = {};
+  for (let i2 = 0; i2 < a_levels.length; i2 += 1) {
+    a_data = assign(a_data, a_levels[i2]);
+  }
+  return {
+    c() {
+      a2 = element("a");
+      if (default_slot)
+        default_slot.c();
+      set_attributes(a2, a_data);
+      toggle_class(a2, "external-link", externalPattern.test(ctx[0]));
+    },
+    m(target, anchor) {
+      insert(target, a2, anchor);
+      if (default_slot) {
+        default_slot.m(a2, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 4)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[2], !current ? get_all_dirty_from_scope(ctx2[2]) : get_slot_changes(default_slot_template, ctx2[2], dirty, null), null);
+        }
+      }
+      set_attributes(a2, a_data = get_spread_update(a_levels, [
+        (!current || dirty & 1) && { href: ctx2[0] },
+        { rel: "noopener" },
+        { target: "_blank" },
+        ctx2[1]
+      ]));
+      toggle_class(a2, "external-link", externalPattern.test(ctx2[0]));
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(a2);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+var externalPattern = /^[a-zA-Z]+\:\/\//;
+function instance22($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { href } = $$props;
+  const aria = {
+    "aria-label": href,
+    "aria-label-position": "top"
+  };
+  $$self.$$set = ($$props2) => {
+    if ("href" in $$props2)
+      $$invalidate(0, href = $$props2.href);
+    if ("$$scope" in $$props2)
+      $$invalidate(2, $$scope = $$props2.$$scope);
+  };
+  return [href, aria, $$scope, slots];
+}
+var Link = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance22, create_fragment22, safe_not_equal, { href: 0 });
+  }
+};
+var Link_default = Link;
+
 // node_modules/obsidian-svelte/Loading/Loading.svelte
-function create_fragment20(ctx) {
+function create_fragment23(ctx) {
   let div9;
   return {
     c() {
@@ -12289,13 +19394,13 @@ function create_fragment20(ctx) {
 var Loading = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, null, create_fragment20, safe_not_equal, {});
+    init(this, options, null, create_fragment23, safe_not_equal, {});
   }
 };
 var Loading_default = Loading;
 
 // node_modules/obsidian-svelte/Modal/ModalButtonGroup.svelte
-function create_fragment21(ctx) {
+function create_fragment24(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -12339,7 +19444,7 @@ function create_fragment21(ctx) {
     }
   };
 }
-function instance20($$self, $$props, $$invalidate) {
+function instance23($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -12350,13 +19455,13 @@ function instance20($$self, $$props, $$invalidate) {
 var ModalButtonGroup = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance20, create_fragment21, safe_not_equal, {});
+    init(this, options, instance23, create_fragment24, safe_not_equal, {});
   }
 };
 var ModalButtonGroup_default = ModalButtonGroup;
 
 // node_modules/obsidian-svelte/Modal/ModalContent.svelte
-function create_fragment22(ctx) {
+function create_fragment25(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -12400,7 +19505,7 @@ function create_fragment22(ctx) {
     }
   };
 }
-function instance21($$self, $$props, $$invalidate) {
+function instance24($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -12411,13 +19516,13 @@ function instance21($$self, $$props, $$invalidate) {
 var ModalContent = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance21, create_fragment22, safe_not_equal, {});
+    init(this, options, instance24, create_fragment25, safe_not_equal, {});
   }
 };
 var ModalContent_default = ModalContent;
 
 // node_modules/obsidian-svelte/Modal/ModalLayout.svelte
-function create_fragment23(ctx) {
+function create_fragment26(ctx) {
   let div;
   let t0;
   let t1;
@@ -12471,7 +19576,7 @@ function create_fragment23(ctx) {
     }
   };
 }
-function instance22($$self, $$props, $$invalidate) {
+function instance25($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { title } = $$props;
   $$self.$$set = ($$props2) => {
@@ -12485,13 +19590,13 @@ function instance22($$self, $$props, $$invalidate) {
 var ModalLayout = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance22, create_fragment23, safe_not_equal, { title: 0 });
+    init(this, options, instance25, create_fragment26, safe_not_equal, { title: 0 });
   }
 };
 var ModalLayout_default = ModalLayout;
 
 // node_modules/obsidian-svelte/Select/SelectItem.svelte
-function create_fragment24(ctx) {
+function create_fragment27(ctx) {
   let option2;
   let t_value = (ctx[0] || ctx[1]) + "";
   let t3;
@@ -12526,7 +19631,7 @@ function create_fragment24(ctx) {
     }
   };
 }
-function instance23($$self, $$props, $$invalidate) {
+function instance26($$self, $$props, $$invalidate) {
   let { text: text2 } = $$props;
   let { value } = $$props;
   let { disabled = false } = $$props;
@@ -12543,7 +19648,7 @@ function instance23($$self, $$props, $$invalidate) {
 var SelectItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance23, create_fragment24, safe_not_equal, { text: 0, value: 1, disabled: 2 });
+    init(this, options, instance26, create_fragment27, safe_not_equal, { text: 0, value: 1, disabled: 2 });
   }
 };
 var SelectItem_default = SelectItem;
@@ -12668,7 +19773,7 @@ function create_each_block2(ctx) {
     }
   };
 }
-function create_fragment25(ctx) {
+function create_fragment28(ctx) {
   let select;
   let if_block0_anchor;
   let if_block1_anchor;
@@ -12818,7 +19923,7 @@ function create_fragment25(ctx) {
     }
   };
 }
-function instance24($$self, $$props, $$invalidate) {
+function instance27($$self, $$props, $$invalidate) {
   let { options } = $$props;
   let { value } = $$props;
   let { placeholder = "" } = $$props;
@@ -12844,7 +19949,7 @@ function instance24($$self, $$props, $$invalidate) {
 var Select = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance24, create_fragment25, safe_not_equal, {
+    init(this, options, instance27, create_fragment28, safe_not_equal, {
       options: 0,
       value: 1,
       placeholder: 2,
@@ -12855,10 +19960,10 @@ var Select = class extends SvelteComponent {
 var Select_default = Select;
 
 // node_modules/obsidian-svelte/Setting/SettingItem.svelte
-function add_css9(target) {
+function add_css10(target) {
   append_styles(target, "svelte-17mpvkc", ".vertical.svelte-17mpvkc{flex-direction:column;align-items:flex-start;gap:var(--size-4-1)}.vertical-control.svelte-17mpvkc{flex-direction:column;align-items:flex-start;gap:var(--size-4-1);width:100%}");
 }
-function create_fragment26(ctx) {
+function create_fragment29(ctx) {
   var _a, _b;
   let div4;
   let div2;
@@ -12946,7 +20051,7 @@ function create_fragment26(ctx) {
     }
   };
 }
-function instance25($$self, $$props, $$invalidate) {
+function instance28($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { name = void 0 } = $$props;
   let { description = void 0 } = $$props;
@@ -12966,16 +20071,110 @@ function instance25($$self, $$props, $$invalidate) {
 var SettingItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance25, create_fragment26, safe_not_equal, { name: 0, description: 1, vertical: 2 }, add_css9);
+    init(this, options, instance28, create_fragment29, safe_not_equal, { name: 0, description: 1, vertical: 2 }, add_css10);
   }
 };
 var SettingItem_default = SettingItem;
 
+// node_modules/obsidian-svelte/Slider/Slider.svelte
+function create_fragment30(ctx) {
+  let input;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      input = element("input");
+      attr(input, "type", "range");
+      attr(input, "class", "slider");
+      attr(input, "min", ctx[1]);
+      attr(input, "max", ctx[2]);
+      attr(input, "step", ctx[3]);
+    },
+    m(target, anchor) {
+      insert(target, input, anchor);
+      set_input_value(input, ctx[0]);
+      if (!mounted) {
+        dispose = [
+          listen(input, "change", ctx[6]),
+          listen(input, "input", ctx[6]),
+          listen(input, "change", ctx[4]),
+          listen(input, "input", ctx[5])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, [dirty]) {
+      if (dirty & 2) {
+        attr(input, "min", ctx2[1]);
+      }
+      if (dirty & 4) {
+        attr(input, "max", ctx2[2]);
+      }
+      if (dirty & 8) {
+        attr(input, "step", ctx2[3]);
+      }
+      if (dirty & 1) {
+        set_input_value(input, ctx2[0]);
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if (detaching)
+        detach(input);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function instance29($$self, $$props, $$invalidate) {
+  let { value } = $$props;
+  let { min: min2 } = $$props;
+  let { max: max2 } = $$props;
+  let { step } = $$props;
+  function change_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function input_handler(event) {
+    bubble.call(this, $$self, event);
+  }
+  function input_change_input_handler() {
+    value = to_number(this.value);
+    $$invalidate(0, value);
+  }
+  $$self.$$set = ($$props2) => {
+    if ("value" in $$props2)
+      $$invalidate(0, value = $$props2.value);
+    if ("min" in $$props2)
+      $$invalidate(1, min2 = $$props2.min);
+    if ("max" in $$props2)
+      $$invalidate(2, max2 = $$props2.max);
+    if ("step" in $$props2)
+      $$invalidate(3, step = $$props2.step);
+  };
+  return [
+    value,
+    min2,
+    max2,
+    step,
+    change_handler,
+    input_handler,
+    input_change_input_handler
+  ];
+}
+var Slider = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance29, create_fragment30, safe_not_equal, { value: 0, min: 1, max: 2, step: 3 });
+  }
+};
+var Slider_default = Slider;
+
 // node_modules/obsidian-svelte/Tag/Tag.svelte
-function add_css10(target) {
+function add_css11(target) {
   append_styles(target, "svelte-ehq9e", "div.svelte-ehq9e{background-color:var(--tag-background);border:var(--tag-border-width) solid var(--tag-border-color);border-radius:var(--tag-radius);color:var(--tag-color);font-size:var(--tag-size);text-decoration:var(--tag-decoration);padding:var(--tag-padding-y) var(--tag-padding-x);line-height:1;display:inline-flex;align-items:center;gap:var(--size-4-1)}");
 }
-function create_fragment27(ctx) {
+function create_fragment31(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -13019,7 +20218,7 @@ function create_fragment27(ctx) {
     }
   };
 }
-function instance26($$self, $$props, $$invalidate) {
+function instance30($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -13030,16 +20229,16 @@ function instance26($$self, $$props, $$invalidate) {
 var Tag = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance26, create_fragment27, safe_not_equal, {}, add_css10);
+    init(this, options, instance30, create_fragment31, safe_not_equal, {}, add_css11);
   }
 };
 var Tag_default = Tag;
 
 // node_modules/obsidian-svelte/TextArea/TextArea.svelte
-function add_css11(target) {
+function add_css12(target) {
   append_styles(target, "svelte-1yhxf9x", "textarea.svelte-1yhxf9x{font-family:var(--font-monospace-default)}");
 }
-function create_fragment28(ctx) {
+function create_fragment32(ctx) {
   let textarea;
   let textarea_style_value;
   let mounted;
@@ -13084,7 +20283,7 @@ function create_fragment28(ctx) {
     }
   };
 }
-function instance27($$self, $$props, $$invalidate) {
+function instance31($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { rows } = $$props;
   let { width = "auto" } = $$props;
@@ -13115,18 +20314,18 @@ function instance27($$self, $$props, $$invalidate) {
 var TextArea = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance27, create_fragment28, safe_not_equal, {
+    init(this, options, instance31, create_fragment32, safe_not_equal, {
       value: 0,
       rows: 1,
       width: 2,
       placeholder: 3
-    }, add_css11);
+    }, add_css12);
   }
 };
 var TextArea_default = TextArea;
 
 // node_modules/obsidian-svelte/Typography/Typography.svelte
-function add_css12(target) {
+function add_css13(target) {
   append_styles(target, "svelte-1wyn8wx", ".nomargin.svelte-1wyn8wx{margin:0}");
 }
 function create_dynamic_element(ctx) {
@@ -13144,7 +20343,11 @@ function create_dynamic_element(ctx) {
       svelte_element = element(ctx[2][ctx[0]]);
       if (default_slot)
         default_slot.c();
-      set_attributes(svelte_element, svelte_element_data);
+      if (/-/.test(ctx[2][ctx[0]])) {
+        set_custom_element_data_map(svelte_element, svelte_element_data);
+      } else {
+        set_attributes(svelte_element, svelte_element_data);
+      }
       toggle_class(svelte_element, "nomargin", ctx[1]);
       toggle_class(svelte_element, "setting-item-name", ctx[0] === "label");
     },
@@ -13161,7 +20364,12 @@ function create_dynamic_element(ctx) {
           update_slot_base(default_slot, default_slot_template, ctx2, ctx2[3], !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(default_slot_template, ctx2[3], dirty, null), null);
         }
       }
-      set_attributes(svelte_element, svelte_element_data = get_spread_update(svelte_element_levels, [{ class: "svelte-1wyn8wx" }]));
+      svelte_element_data = get_spread_update(svelte_element_levels, [{ class: "svelte-1wyn8wx" }]);
+      if (/-/.test(ctx2[2][ctx2[0]])) {
+        set_custom_element_data_map(svelte_element, svelte_element_data);
+      } else {
+        set_attributes(svelte_element, svelte_element_data);
+      }
       toggle_class(svelte_element, "nomargin", ctx2[1]);
       toggle_class(svelte_element, "setting-item-name", ctx2[0] === "label");
     },
@@ -13183,7 +20391,7 @@ function create_dynamic_element(ctx) {
     }
   };
 }
-function create_fragment29(ctx) {
+function create_fragment33(ctx) {
   let previous_tag = ctx[2][ctx[0]];
   let svelte_element_anchor;
   let current;
@@ -13238,7 +20446,7 @@ function create_fragment29(ctx) {
     }
   };
 }
-function instance28($$self, $$props, $$invalidate) {
+function instance32($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { variant } = $$props;
   let { nomargin = false } = $$props;
@@ -13265,7 +20473,7 @@ function instance28($$self, $$props, $$invalidate) {
 var Typography = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance28, create_fragment29, safe_not_equal, { variant: 0, nomargin: 1 }, add_css12);
+    init(this, options, instance32, create_fragment33, safe_not_equal, { variant: 0, nomargin: 1 }, add_css13);
   }
 };
 var Typography_default = Typography;
@@ -13307,15 +20515,16 @@ function r(n2) {
   return !!n2 && !!n2[Q];
 }
 function t(n2) {
+  var r2;
   return !!n2 && (function(n3) {
     if (!n3 || typeof n3 != "object")
       return false;
-    var r2 = Object.getPrototypeOf(n3);
-    if (r2 === null)
+    var r3 = Object.getPrototypeOf(n3);
+    if (r3 === null)
       return true;
-    var t3 = Object.hasOwnProperty.call(r2, "constructor") && r2.constructor;
+    var t3 = Object.hasOwnProperty.call(r3, "constructor") && r3.constructor;
     return t3 === Object || typeof t3 == "function" && Function.toString.call(t3) === Z;
-  }(n2) || Array.isArray(n2) || !!n2[L] || !!n2.constructor[L] || s(n2) || v(n2));
+  }(n2) || Array.isArray(n2) || !!n2[L] || !!((r2 = n2.constructor) === null || r2 === void 0 ? void 0 : r2[L]) || s(n2) || v(n2));
 }
 function i(n2, r2, t3) {
   t3 === void 0 && (t3 = false), o(n2) === 0 ? (t3 ? Object.keys : nn)(n2).forEach(function(e) {
@@ -13744,8 +20953,8 @@ function _typeof(obj) {
 }
 
 // node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-function _classCallCheck(instance96, Constructor) {
-  if (!(instance96 instanceof Constructor)) {
+function _classCallCheck(instance104, Constructor) {
+  if (!(instance104 instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
@@ -14086,14 +21295,14 @@ function copy(a2, s2, t3) {
       t3[m] = s2[m];
   });
 }
-function getLastOfPath(object, path4, Empty) {
+function getLastOfPath(object, path3, Empty) {
   function cleanKey(key2) {
     return key2 && key2.indexOf("###") > -1 ? key2.replace(/###/g, ".") : key2;
   }
   function canNotTraverseDeeper() {
     return !object || typeof object === "string";
   }
-  var stack = typeof path4 !== "string" ? [].concat(path4) : path4.split(".");
+  var stack = typeof path3 !== "string" ? [].concat(path3) : path3.split(".");
   while (stack.length > 1) {
     if (canNotTraverseDeeper())
       return {};
@@ -14113,20 +21322,20 @@ function getLastOfPath(object, path4, Empty) {
     k: cleanKey(stack.shift())
   };
 }
-function setPath(object, path4, newValue) {
-  var _getLastOfPath = getLastOfPath(object, path4, Object), obj = _getLastOfPath.obj, k2 = _getLastOfPath.k;
+function setPath(object, path3, newValue) {
+  var _getLastOfPath = getLastOfPath(object, path3, Object), obj = _getLastOfPath.obj, k2 = _getLastOfPath.k;
   obj[k2] = newValue;
 }
-function pushPath(object, path4, newValue, concat) {
-  var _getLastOfPath2 = getLastOfPath(object, path4, Object), obj = _getLastOfPath2.obj, k2 = _getLastOfPath2.k;
+function pushPath(object, path3, newValue, concat) {
+  var _getLastOfPath2 = getLastOfPath(object, path3, Object), obj = _getLastOfPath2.obj, k2 = _getLastOfPath2.k;
   obj[k2] = obj[k2] || [];
   if (concat)
     obj[k2] = obj[k2].concat(newValue);
   if (!concat)
     obj[k2].push(newValue);
 }
-function getPath(object, path4) {
-  var _getLastOfPath3 = getLastOfPath(object, path4), obj = _getLastOfPath3.obj, k2 = _getLastOfPath3.k;
+function getPath(object, path3) {
+  var _getLastOfPath3 = getLastOfPath(object, path3), obj = _getLastOfPath3.obj, k2 = _getLastOfPath3.k;
   if (!obj)
     return void 0;
   return obj[k2];
@@ -14254,13 +21463,13 @@ function _isNativeReflectConstruct() {
     return false;
   }
 }
-function deepFind(obj, path4) {
+function deepFind(obj, path3) {
   var keySeparator = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : ".";
   if (!obj)
     return void 0;
-  if (obj[path4])
-    return obj[path4];
-  var paths = path4.split(keySeparator);
+  if (obj[path3])
+    return obj[path3];
+  var paths = path3.split(keySeparator);
   var current = obj;
   for (var i2 = 0; i2 < paths.length; ++i2) {
     if (!current)
@@ -14281,7 +21490,7 @@ function deepFind(obj, path4) {
         return void 0;
       if (mix === null)
         return null;
-      if (path4.endsWith(p2)) {
+      if (path3.endsWith(p2)) {
         if (typeof mix === "string")
           return mix;
         if (p2 && typeof mix[p2] === "string")
@@ -14341,15 +21550,15 @@ var ResourceStore = function(_EventEmitter) {
       var options = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : {};
       var keySeparator = options.keySeparator !== void 0 ? options.keySeparator : this.options.keySeparator;
       var ignoreJSONStructure = options.ignoreJSONStructure !== void 0 ? options.ignoreJSONStructure : this.options.ignoreJSONStructure;
-      var path4 = [lng, ns];
+      var path3 = [lng, ns];
       if (key && typeof key !== "string")
-        path4 = path4.concat(key);
+        path3 = path3.concat(key);
       if (key && typeof key === "string")
-        path4 = path4.concat(keySeparator ? key.split(keySeparator) : key);
+        path3 = path3.concat(keySeparator ? key.split(keySeparator) : key);
       if (lng.indexOf(".") > -1) {
-        path4 = lng.split(".");
+        path3 = lng.split(".");
       }
-      var result = getPath(this.data, path4);
+      var result = getPath(this.data, path3);
       if (result || !ignoreJSONStructure || typeof key !== "string")
         return result;
       return deepFind(this.data && this.data[lng] && this.data[lng][ns], key, keySeparator);
@@ -14363,16 +21572,16 @@ var ResourceStore = function(_EventEmitter) {
       var keySeparator = this.options.keySeparator;
       if (keySeparator === void 0)
         keySeparator = ".";
-      var path4 = [lng, ns];
+      var path3 = [lng, ns];
       if (key)
-        path4 = path4.concat(keySeparator ? key.split(keySeparator) : key);
+        path3 = path3.concat(keySeparator ? key.split(keySeparator) : key);
       if (lng.indexOf(".") > -1) {
-        path4 = lng.split(".");
+        path3 = lng.split(".");
         value = ns;
-        ns = path4[1];
+        ns = path3[1];
       }
       this.addNamespaces(ns);
-      setPath(this.data, path4, value);
+      setPath(this.data, path3, value);
       if (!options.silent)
         this.emit("added", lng, ns, key, value);
     }
@@ -14397,21 +21606,21 @@ var ResourceStore = function(_EventEmitter) {
       var options = arguments.length > 5 && arguments[5] !== void 0 ? arguments[5] : {
         silent: false
       };
-      var path4 = [lng, ns];
+      var path3 = [lng, ns];
       if (lng.indexOf(".") > -1) {
-        path4 = lng.split(".");
+        path3 = lng.split(".");
         deep = resources;
         resources = ns;
-        ns = path4[1];
+        ns = path3[1];
       }
       this.addNamespaces(ns);
-      var pack = getPath(this.data, path4) || {};
+      var pack = getPath(this.data, path3) || {};
       if (deep) {
         deepExtend(pack, resources, overwrite);
       } else {
         pack = _objectSpread$1(_objectSpread$1({}, pack), resources);
       }
-      setPath(this.data, path4, pack);
+      setPath(this.data, path3, pack);
       if (!options.silent)
         this.emit("added", lng, ns, resources);
     }
@@ -15469,10 +22678,10 @@ var Interpolator = function() {
       }
       var handleFormat = function handleFormat2(key) {
         if (key.indexOf(_this.formatSeparator) < 0) {
-          var path4 = getPathWithDefaults(data, defaultData, key);
-          return _this.alwaysFormat ? _this.format(path4, void 0, lng, _objectSpread$3(_objectSpread$3(_objectSpread$3({}, options), data), {}, {
+          var path3 = getPathWithDefaults(data, defaultData, key);
+          return _this.alwaysFormat ? _this.format(path3, void 0, lng, _objectSpread$3(_objectSpread$3(_objectSpread$3({}, options), data), {}, {
             interpolationkey: key
-          })) : path4;
+          })) : path3;
         }
         var p2 = key.split(_this.formatSeparator);
         var k2 = p2.shift().trim();
@@ -15667,6 +22876,18 @@ function parseFormatStr(formatStr) {
     formatOptions
   };
 }
+function createCachedFormatter(fn3) {
+  var cache = {};
+  return function invokeFormatter(val, lng, options) {
+    var key = lng + JSON.stringify(options);
+    var formatter = cache[key];
+    if (!formatter) {
+      formatter = fn3(lng, options);
+      cache[key] = formatter;
+    }
+    return formatter(val);
+  };
+}
 var Formatter = function() {
   function Formatter2() {
     var options = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : {};
@@ -15674,23 +22895,38 @@ var Formatter = function() {
     this.logger = baseLogger.create("formatter");
     this.options = options;
     this.formats = {
-      number: function number(val, lng, options2) {
-        return new Intl.NumberFormat(lng, options2).format(val);
-      },
-      currency: function currency(val, lng, options2) {
-        return new Intl.NumberFormat(lng, _objectSpread$4(_objectSpread$4({}, options2), {}, {
+      number: createCachedFormatter(function(lng, options2) {
+        var formatter = new Intl.NumberFormat(lng, options2);
+        return function(val) {
+          return formatter.format(val);
+        };
+      }),
+      currency: createCachedFormatter(function(lng, options2) {
+        var formatter = new Intl.NumberFormat(lng, _objectSpread$4(_objectSpread$4({}, options2), {}, {
           style: "currency"
-        })).format(val);
-      },
-      datetime: function datetime(val, lng, options2) {
-        return new Intl.DateTimeFormat(lng, _objectSpread$4({}, options2)).format(val);
-      },
-      relativetime: function relativetime(val, lng, options2) {
-        return new Intl.RelativeTimeFormat(lng, _objectSpread$4({}, options2)).format(val, options2.range || "day");
-      },
-      list: function list(val, lng, options2) {
-        return new Intl.ListFormat(lng, _objectSpread$4({}, options2)).format(val);
-      }
+        }));
+        return function(val) {
+          return formatter.format(val);
+        };
+      }),
+      datetime: createCachedFormatter(function(lng, options2) {
+        var formatter = new Intl.DateTimeFormat(lng, _objectSpread$4({}, options2));
+        return function(val) {
+          return formatter.format(val);
+        };
+      }),
+      relativetime: createCachedFormatter(function(lng, options2) {
+        var formatter = new Intl.RelativeTimeFormat(lng, _objectSpread$4({}, options2));
+        return function(val) {
+          return formatter.format(val, options2.range || "day");
+        };
+      }),
+      list: createCachedFormatter(function(lng, options2) {
+        var formatter = new Intl.ListFormat(lng, _objectSpread$4({}, options2));
+        return function(val) {
+          return formatter.format(val);
+        };
+      })
     };
     this.init(options);
   }
@@ -15707,6 +22943,11 @@ var Formatter = function() {
     key: "add",
     value: function add(name, fc) {
       this.formats[name.toLowerCase().trim()] = fc;
+    }
+  }, {
+    key: "addCached",
+    value: function addCached(name, fc) {
+      this.formats[name.toLowerCase().trim()] = createCachedFormatter(fc);
     }
   }, {
     key: "format",
@@ -15944,8 +23185,8 @@ var Connector = function(_EventEmitter) {
       return this.backend[fcName](lng, ns, function(err, data) {
         _this3.readingCalls--;
         if (_this3.waitingReads.length > 0) {
-          var next = _this3.waitingReads.shift();
-          _this3.read(next.lng, next.ns, next.fcName, next.tried, next.wait, next.callback);
+          var next2 = _this3.waitingReads.shift();
+          _this3.read(next2.lng, next2.ns, next2.fcName, next2.tried, next2.wait, next2.callback);
         }
         if (err && data && tried < _this3.maxRetries) {
           setTimeout(function() {
@@ -16707,22 +23948,22 @@ _defineProperty(I18n, "createInstance", function() {
   var callback = arguments.length > 1 ? arguments[1] : void 0;
   return new I18n(options, callback);
 });
-var instance29 = I18n.createInstance();
-instance29.createInstance = I18n.createInstance;
-var createInstance = instance29.createInstance;
-var init2 = instance29.init;
-var loadResources = instance29.loadResources;
-var reloadResources = instance29.reloadResources;
-var use = instance29.use;
-var changeLanguage = instance29.changeLanguage;
-var getFixedT = instance29.getFixedT;
-var t2 = instance29.t;
-var exists = instance29.exists;
-var setDefaultNamespace = instance29.setDefaultNamespace;
-var hasLoadedNamespace = instance29.hasLoadedNamespace;
-var loadNamespaces = instance29.loadNamespaces;
-var loadLanguages = instance29.loadLanguages;
-var i18next_default = instance29;
+var instance33 = I18n.createInstance();
+instance33.createInstance = I18n.createInstance;
+var createInstance = instance33.createInstance;
+var init2 = instance33.init;
+var loadResources = instance33.loadResources;
+var reloadResources = instance33.reloadResources;
+var use = instance33.use;
+var changeLanguage = instance33.changeLanguage;
+var getFixedT = instance33.getFixedT;
+var t2 = instance33.t;
+var exists = instance33.exists;
+var setDefaultNamespace = instance33.setDefaultNamespace;
+var hasLoadedNamespace = instance33.hasLoadedNamespace;
+var loadNamespaces = instance33.loadNamespaces;
+var loadLanguages = instance33.loadLanguages;
+var i18next_default = instance33;
 
 // src/lib/stores/i18n.ts
 var import_svelte_i18next = __toModule(require_svelte_i18next());
@@ -16773,6 +24014,9 @@ i18next_default.init({
               title: "Edit project",
               cta: "Save"
             },
+            duplicate: {
+              title: "Duplicate project"
+            },
             delete: {
               "short-title": "Delete project",
               title: "Delete project",
@@ -16806,6 +24050,10 @@ i18next_default.init({
             templates: {
               name: "Templates",
               description: "Templates to choose from when you create new notes."
+            },
+            exclude: {
+              name: "Excluded notes",
+              description: "Notes to exclude even if they would otherwise be part of the project."
             },
             defaultName: {
               name: "Default name",
@@ -16957,6 +24205,10 @@ i18next_default.init({
             sort: {
               asc: "Sort A \u2192 Z",
               desc: "Sort Z \u2192 A"
+            },
+            sortDate: {
+              asc: "Sort Old \u2192 New",
+              desc: "Sort New \u2192 Old"
             }
           }
         },
@@ -16996,6 +24248,9 @@ var plugin = writable();
 function notEmpty(value) {
   return value !== null && value !== void 0;
 }
+function notUndefined(value) {
+  return value !== void 0;
+}
 function uniquify(name, exists2) {
   if (!exists2(name)) {
     return name;
@@ -17006,9 +24261,9 @@ function uniquify(name, exists2) {
   }
   return name + " " + num;
 }
-function nextUniqueFileName(path4, name) {
+function nextUniqueFileName(path3, name) {
   return uniquify(name, (name2) => {
-    return get_store_value(app).vault.getAbstractFileByPath((0, import_obsidian2.normalizePath)(path4 + "/" + name2 + ".md")) instanceof import_obsidian2.TFile;
+    return get_store_value(app).vault.getAbstractFileByPath((0, import_obsidian2.normalizePath)(path3 + "/" + name2 + ".md")) instanceof import_obsidian2.TFile;
   });
 }
 function nextUniqueProjectName(projects, name) {
@@ -17046,6 +24301,20 @@ function createSettings() {
       update2((state) => immer_esm_default(state, (draft) => {
         draft.projects = draft.projects.map((w2) => w2.id === project.id ? project : w2);
       }));
+    },
+    duplicateProject(projectId) {
+      const newId = v4_default();
+      update2((state) => immer_esm_default(state, (draft) => {
+        const project = draft.projects.find((p2) => p2.id === projectId);
+        if (project) {
+          draft.projects.push(__spreadProps(__spreadValues({}, project), {
+            id: newId,
+            name: project.name + " Copy",
+            views: project.views.map((v2) => __spreadProps(__spreadValues({}, v2), { id: v4_default() }))
+          }));
+        }
+      }));
+      return newId;
     },
     deleteProject(projectId) {
       update2((state) => immer_esm_default(state, (draft) => {
@@ -17085,6 +24354,31 @@ function createSettings() {
           }
         }
       }));
+    },
+    duplicateView(projectId, viewId) {
+      const newId = v4_default();
+      update2((state) => immer_esm_default(state, (draft) => {
+        const idx = draft.projects.findIndex((ws) => ws.id === projectId);
+        if (idx >= 0) {
+          const p2 = draft.projects[idx];
+          if (p2) {
+            const view2 = p2.views.find((v2) => v2.id === viewId);
+            if (view2) {
+              draft.projects.splice(idx, 1, __spreadProps(__spreadValues({}, p2), {
+                views: [
+                  ...p2.views,
+                  __spreadProps(__spreadValues({}, view2), {
+                    id: newId,
+                    name: view2.name + " Copy"
+                  })
+                ]
+              }));
+            }
+          }
+        }
+        return draft;
+      }));
+      return newId;
     },
     deleteView(projectId, viewId) {
       update2((state) => immer_esm_default(state, (draft) => {
@@ -17190,6 +24484,9 @@ function isBoolean(value) {
 function isString(value) {
   return typeof value === "string";
 }
+function isList(value) {
+  return Array.isArray(value);
+}
 function isLink(value) {
   if (value && typeof value === "object") {
     return "linkText" in value && "sourcePath" in value;
@@ -17202,26 +24499,26 @@ function isNumber(value) {
 function isDate(value) {
   return value instanceof Date;
 }
+function isOptional(value) {
+  return value === null || value === void 0;
+}
 function isOptionalBoolean(value) {
-  return typeof value === "boolean" || value === void 0;
+  return isBoolean(value) || isOptional(value);
 }
 function isOptionalString(value) {
-  return typeof value === "string" || value === void 0;
+  return isString(value) || isOptional(value);
 }
 function isOptionalLink(value) {
-  if (typeof value === "object") {
-    return "linkText" in value && "sourcePath" in value;
-  }
-  return value === void 0;
+  return isLink(value) || isOptional(value);
 }
 function isOptionalList(value) {
-  return Array.isArray(value) || value === void 0;
+  return isList(value) || isOptional(value);
 }
 function isOptionalNumber(value) {
-  return typeof value === "number" || value === void 0;
+  return isNumber(value) || isOptional(value);
 }
 function isOptionalDate(value) {
-  return value instanceof Date || value === void 0;
+  return isDate(value) || isOptional(value);
 }
 function isStringLink(value) {
   if (isString(value)) {
@@ -17293,17 +24590,17 @@ function visit(node, visitor) {
 visit.BREAK = BREAK;
 visit.SKIP = SKIP;
 visit.REMOVE = REMOVE;
-function visit_(key, node, visitor, path4) {
-  const ctrl = callVisitor(key, node, visitor, path4);
+function visit_(key, node, visitor, path3) {
+  const ctrl = callVisitor(key, node, visitor, path3);
   if (isNode(ctrl) || isPair(ctrl)) {
-    replaceNode(key, path4, ctrl);
-    return visit_(key, ctrl, visitor, path4);
+    replaceNode(key, path3, ctrl);
+    return visit_(key, ctrl, visitor, path3);
   }
   if (typeof ctrl !== "symbol") {
     if (isCollection(node)) {
-      path4 = Object.freeze(path4.concat(node));
+      path3 = Object.freeze(path3.concat(node));
       for (let i2 = 0; i2 < node.items.length; ++i2) {
-        const ci = visit_(i2, node.items[i2], visitor, path4);
+        const ci = visit_(i2, node.items[i2], visitor, path3);
         if (typeof ci === "number")
           i2 = ci - 1;
         else if (ci === BREAK)
@@ -17314,13 +24611,13 @@ function visit_(key, node, visitor, path4) {
         }
       }
     } else if (isPair(node)) {
-      path4 = Object.freeze(path4.concat(node));
-      const ck = visit_("key", node.key, visitor, path4);
+      path3 = Object.freeze(path3.concat(node));
+      const ck = visit_("key", node.key, visitor, path3);
       if (ck === BREAK)
         return BREAK;
       else if (ck === REMOVE)
         node.key = null;
-      const cv = visit_("value", node.value, visitor, path4);
+      const cv = visit_("value", node.value, visitor, path3);
       if (cv === BREAK)
         return BREAK;
       else if (cv === REMOVE)
@@ -17343,18 +24640,18 @@ function visitAsync(node, visitor) {
 visitAsync.BREAK = BREAK;
 visitAsync.SKIP = SKIP;
 visitAsync.REMOVE = REMOVE;
-function visitAsync_(key, node, visitor, path4) {
+function visitAsync_(key, node, visitor, path3) {
   return __async(this, null, function* () {
-    const ctrl = yield callVisitor(key, node, visitor, path4);
+    const ctrl = yield callVisitor(key, node, visitor, path3);
     if (isNode(ctrl) || isPair(ctrl)) {
-      replaceNode(key, path4, ctrl);
-      return visitAsync_(key, ctrl, visitor, path4);
+      replaceNode(key, path3, ctrl);
+      return visitAsync_(key, ctrl, visitor, path3);
     }
     if (typeof ctrl !== "symbol") {
       if (isCollection(node)) {
-        path4 = Object.freeze(path4.concat(node));
+        path3 = Object.freeze(path3.concat(node));
         for (let i2 = 0; i2 < node.items.length; ++i2) {
-          const ci = yield visitAsync_(i2, node.items[i2], visitor, path4);
+          const ci = yield visitAsync_(i2, node.items[i2], visitor, path3);
           if (typeof ci === "number")
             i2 = ci - 1;
           else if (ci === BREAK)
@@ -17365,13 +24662,13 @@ function visitAsync_(key, node, visitor, path4) {
           }
         }
       } else if (isPair(node)) {
-        path4 = Object.freeze(path4.concat(node));
-        const ck = yield visitAsync_("key", node.key, visitor, path4);
+        path3 = Object.freeze(path3.concat(node));
+        const ck = yield visitAsync_("key", node.key, visitor, path3);
         if (ck === BREAK)
           return BREAK;
         else if (ck === REMOVE)
           node.key = null;
-        const cv = yield visitAsync_("value", node.value, visitor, path4);
+        const cv = yield visitAsync_("value", node.value, visitor, path3);
         if (cv === BREAK)
           return BREAK;
         else if (cv === REMOVE)
@@ -17399,24 +24696,24 @@ function initVisitor(visitor) {
   }
   return visitor;
 }
-function callVisitor(key, node, visitor, path4) {
+function callVisitor(key, node, visitor, path3) {
   var _a, _b, _c, _d, _e;
   if (typeof visitor === "function")
-    return visitor(key, node, path4);
+    return visitor(key, node, path3);
   if (isMap(node))
-    return (_a = visitor.Map) == null ? void 0 : _a.call(visitor, key, node, path4);
+    return (_a = visitor.Map) == null ? void 0 : _a.call(visitor, key, node, path3);
   if (isSeq(node))
-    return (_b = visitor.Seq) == null ? void 0 : _b.call(visitor, key, node, path4);
+    return (_b = visitor.Seq) == null ? void 0 : _b.call(visitor, key, node, path3);
   if (isPair(node))
-    return (_c = visitor.Pair) == null ? void 0 : _c.call(visitor, key, node, path4);
+    return (_c = visitor.Pair) == null ? void 0 : _c.call(visitor, key, node, path3);
   if (isScalar(node))
-    return (_d = visitor.Scalar) == null ? void 0 : _d.call(visitor, key, node, path4);
+    return (_d = visitor.Scalar) == null ? void 0 : _d.call(visitor, key, node, path3);
   if (isAlias(node))
-    return (_e = visitor.Alias) == null ? void 0 : _e.call(visitor, key, node, path4);
+    return (_e = visitor.Alias) == null ? void 0 : _e.call(visitor, key, node, path3);
   return void 0;
 }
-function replaceNode(key, path4, node) {
-  const parent = path4[path4.length - 1];
+function replaceNode(key, path3, node) {
+  const parent = path3[path3.length - 1];
   if (isCollection(parent)) {
     parent.items[key] = node;
   } else if (isPair(parent)) {
@@ -17823,10 +25120,10 @@ function createNode(value, tagName, ctx) {
 }
 
 // node_modules/yaml/browser/dist/nodes/Collection.js
-function collectionFromPath(schema4, path4, value) {
+function collectionFromPath(schema4, path3, value) {
   let v2 = value;
-  for (let i2 = path4.length - 1; i2 >= 0; --i2) {
-    const k2 = path4[i2];
+  for (let i2 = path3.length - 1; i2 >= 0; --i2) {
+    const k2 = path3[i2];
     if (typeof k2 === "number" && Number.isInteger(k2) && k2 >= 0) {
       const a2 = [];
       a2[k2] = v2;
@@ -17845,7 +25142,7 @@ function collectionFromPath(schema4, path4, value) {
     sourceObjects: new Map()
   });
 }
-var isEmptyPath = (path4) => path4 == null || typeof path4 === "object" && !!path4[Symbol.iterator]().next().done;
+var isEmptyPath = (path3) => path3 == null || typeof path3 === "object" && !!path3[Symbol.iterator]().next().done;
 var Collection = class extends NodeBase {
   constructor(type, schema4) {
     super(type);
@@ -17865,11 +25162,11 @@ var Collection = class extends NodeBase {
       copy2.range = this.range.slice();
     return copy2;
   }
-  addIn(path4, value) {
-    if (isEmptyPath(path4))
+  addIn(path3, value) {
+    if (isEmptyPath(path3))
       this.add(value);
     else {
-      const [key, ...rest] = path4;
+      const [key, ...rest] = path3;
       const node = this.get(key, true);
       if (isCollection(node))
         node.addIn(rest, value);
@@ -17879,8 +25176,8 @@ var Collection = class extends NodeBase {
         throw new Error(`Expected YAML collection at ${key}. Remaining path: ${rest}`);
     }
   }
-  deleteIn(path4) {
-    const [key, ...rest] = path4;
+  deleteIn(path3) {
+    const [key, ...rest] = path3;
     if (rest.length === 0)
       return this.delete(key);
     const node = this.get(key, true);
@@ -17889,8 +25186,8 @@ var Collection = class extends NodeBase {
     else
       throw new Error(`Expected YAML collection at ${key}. Remaining path: ${rest}`);
   }
-  getIn(path4, keepScalar) {
-    const [key, ...rest] = path4;
+  getIn(path3, keepScalar) {
+    const [key, ...rest] = path3;
     const node = this.get(key, true);
     if (rest.length === 0)
       return !keepScalar && isScalar(node) ? node.value : node;
@@ -17905,15 +25202,15 @@ var Collection = class extends NodeBase {
       return n2 == null || allowScalar && isScalar(n2) && n2.value == null && !n2.commentBefore && !n2.comment && !n2.tag;
     });
   }
-  hasIn(path4) {
-    const [key, ...rest] = path4;
+  hasIn(path3) {
+    const [key, ...rest] = path3;
     if (rest.length === 0)
       return this.has(key);
     const node = this.get(key, true);
     return isCollection(node) ? node.hasIn(rest) : false;
   }
-  setIn(path4, value) {
-    const [key, ...rest] = path4;
+  setIn(path3, value) {
+    const [key, ...rest] = path3;
     if (rest.length === 0) {
       this.set(key, value);
     } else {
@@ -17993,8 +25290,8 @@ function foldFlowLines(text2, indent, mode = "flow", { indentAtStart, lineWidth 
       split = void 0;
     } else {
       if (ch === " " && prev && prev !== " " && prev !== "\n" && prev !== "	") {
-        const next = text2[i2 + 1];
-        if (next && next !== " " && next !== "\n" && next !== "	")
+        const next2 = text2[i2 + 1];
+        if (next2 && next2 !== " " && next2 !== "\n" && next2 !== "	")
           split = i2;
       }
       if (i2 >= end2) {
@@ -19967,9 +27264,9 @@ var Document = class {
     if (assertCollection(this.contents))
       this.contents.add(value);
   }
-  addIn(path4, value) {
+  addIn(path3, value) {
     if (assertCollection(this.contents))
-      this.contents.addIn(path4, value);
+      this.contents.addIn(path3, value);
   }
   createAlias(node, name) {
     if (!node.anchor) {
@@ -20018,30 +27315,30 @@ var Document = class {
   delete(key) {
     return assertCollection(this.contents) ? this.contents.delete(key) : false;
   }
-  deleteIn(path4) {
-    if (isEmptyPath(path4)) {
+  deleteIn(path3) {
+    if (isEmptyPath(path3)) {
       if (this.contents == null)
         return false;
       this.contents = null;
       return true;
     }
-    return assertCollection(this.contents) ? this.contents.deleteIn(path4) : false;
+    return assertCollection(this.contents) ? this.contents.deleteIn(path3) : false;
   }
   get(key, keepScalar) {
     return isCollection(this.contents) ? this.contents.get(key, keepScalar) : void 0;
   }
-  getIn(path4, keepScalar) {
-    if (isEmptyPath(path4))
+  getIn(path3, keepScalar) {
+    if (isEmptyPath(path3))
       return !keepScalar && isScalar(this.contents) ? this.contents.value : this.contents;
-    return isCollection(this.contents) ? this.contents.getIn(path4, keepScalar) : void 0;
+    return isCollection(this.contents) ? this.contents.getIn(path3, keepScalar) : void 0;
   }
   has(key) {
     return isCollection(this.contents) ? this.contents.has(key) : false;
   }
-  hasIn(path4) {
-    if (isEmptyPath(path4))
+  hasIn(path3) {
+    if (isEmptyPath(path3))
       return this.contents !== void 0;
-    return isCollection(this.contents) ? this.contents.hasIn(path4) : false;
+    return isCollection(this.contents) ? this.contents.hasIn(path3) : false;
   }
   set(key, value) {
     if (this.contents == null) {
@@ -20050,13 +27347,13 @@ var Document = class {
       this.contents.set(key, value);
     }
   }
-  setIn(path4, value) {
-    if (isEmptyPath(path4))
+  setIn(path3, value) {
+    if (isEmptyPath(path3))
       this.contents = value;
     else if (this.contents == null) {
-      this.contents = collectionFromPath(this.schema, Array.from(path4), value);
+      this.contents = collectionFromPath(this.schema, Array.from(path3), value);
     } else if (assertCollection(this.contents)) {
-      this.contents.setIn(path4, value);
+      this.contents.setIn(path3, value);
     }
   }
   setSchema(version2, options = {}) {
@@ -20188,7 +27485,7 @@ ${pointer}
 };
 
 // node_modules/yaml/browser/dist/compose/resolve-props.js
-function resolveProps(tokens, { flow, indicator, next, offset: offset2, onError, startOnNewline }) {
+function resolveProps(tokens, { flow, indicator, next: next2, offset: offset2, onError, startOnNewline }) {
   let spaceBefore = false;
   let atNewline = startOnNewline;
   let hasSpace = startOnNewline;
@@ -20289,8 +27586,8 @@ function resolveProps(tokens, { flow, indicator, next, offset: offset2, onError,
   }
   const last = tokens[tokens.length - 1];
   const end2 = last ? last.offset + last.source.length : offset2;
-  if (reqSpace && next && next.type !== "space" && next.type !== "newline" && next.type !== "comma" && (next.type !== "scalar" || next.source !== ""))
-    onError(next.offset, "MISSING_CHAR", "Tags and anchors must be separated from the next token by white space");
+  if (reqSpace && next2 && next2.type !== "space" && next2.type !== "newline" && next2.type !== "comma" && (next2.type !== "scalar" || next2.source !== ""))
+    onError(next2.offset, "MISSING_CHAR", "Tags and anchors must be separated from the next token by white space");
   return {
     comma,
     found,
@@ -21029,20 +28326,20 @@ function doubleQuotedValue(source, onError) {
       res += fold;
       i2 = offset2;
     } else if (ch === "\\") {
-      let next = source[++i2];
-      const cc = escapeCodes[next];
+      let next2 = source[++i2];
+      const cc = escapeCodes[next2];
       if (cc)
         res += cc;
-      else if (next === "\n") {
-        next = source[i2 + 1];
-        while (next === " " || next === "	")
-          next = source[++i2 + 1];
-      } else if (next === "\r" && source[i2 + 1] === "\n") {
-        next = source[++i2 + 1];
-        while (next === " " || next === "	")
-          next = source[++i2 + 1];
-      } else if (next === "x" || next === "u" || next === "U") {
-        const length = { x: 2, u: 4, U: 8 }[next];
+      else if (next2 === "\n") {
+        next2 = source[i2 + 1];
+        while (next2 === " " || next2 === "	")
+          next2 = source[++i2 + 1];
+      } else if (next2 === "\r" && source[i2 + 1] === "\n") {
+        next2 = source[++i2 + 1];
+        while (next2 === " " || next2 === "	")
+          next2 = source[++i2 + 1];
+      } else if (next2 === "x" || next2 === "u" || next2 === "U") {
+        const length = { x: 2, u: 4, U: 8 }[next2];
         res += parseCharCode(source, i2 + 1, length, onError);
         i2 += length;
       } else {
@@ -21052,10 +28349,10 @@ function doubleQuotedValue(source, onError) {
       }
     } else if (ch === " " || ch === "	") {
       const wsStart = i2;
-      let next = source[i2 + 1];
-      while (next === " " || next === "	")
-        next = source[++i2 + 1];
-      if (next !== "\n" && !(next === "\r" && source[i2 + 2] === "\n"))
+      let next2 = source[i2 + 1];
+      while (next2 === " " || next2 === "	")
+        next2 = source[++i2 + 1];
+      if (next2 !== "\n" && !(next2 === "\r" && source[i2 + 2] === "\n"))
         res += i2 > wsStart ? source.slice(wsStart, i2 + 1) : ch;
     } else {
       res += ch;
@@ -21508,9 +28805,9 @@ function visit2(cst, visitor) {
 visit2.BREAK = BREAK2;
 visit2.SKIP = SKIP2;
 visit2.REMOVE = REMOVE2;
-visit2.itemAtPath = (cst, path4) => {
+visit2.itemAtPath = (cst, path3) => {
   let item = cst;
-  for (const [field, index2] of path4) {
+  for (const [field, index2] of path3) {
     const tok = item == null ? void 0 : item[field];
     if (tok && "items" in tok) {
       item = tok.items[index2];
@@ -21519,23 +28816,23 @@ visit2.itemAtPath = (cst, path4) => {
   }
   return item;
 };
-visit2.parentCollection = (cst, path4) => {
-  const parent = visit2.itemAtPath(cst, path4.slice(0, -1));
-  const field = path4[path4.length - 1][0];
+visit2.parentCollection = (cst, path3) => {
+  const parent = visit2.itemAtPath(cst, path3.slice(0, -1));
+  const field = path3[path3.length - 1][0];
   const coll = parent == null ? void 0 : parent[field];
   if (coll && "items" in coll)
     return coll;
   throw new Error("Parent collection not found");
 };
-function _visit(path4, item, visitor) {
-  let ctrl = visitor(item, path4);
+function _visit(path3, item, visitor) {
+  let ctrl = visitor(item, path3);
   if (typeof ctrl === "symbol")
     return ctrl;
   for (const field of ["key", "value"]) {
     const token = item[field];
     if (token && "items" in token) {
       for (let i2 = 0; i2 < token.items.length; ++i2) {
-        const ci = _visit(Object.freeze(path4.concat([[field, i2]])), token.items[i2], visitor);
+        const ci = _visit(Object.freeze(path3.concat([[field, i2]])), token.items[i2], visitor);
         if (typeof ci === "number")
           i2 = ci - 1;
         else if (ci === BREAK2)
@@ -21546,10 +28843,10 @@ function _visit(path4, item, visitor) {
         }
       }
       if (typeof ctrl === "function" && field === "key")
-        ctrl = ctrl(item, path4);
+        ctrl = ctrl(item, path3);
     }
   }
-  return typeof ctrl === "function" ? ctrl(item, path4) : ctrl;
+  return typeof ctrl === "function" ? ctrl(item, path3) : ctrl;
 }
 
 // node_modules/yaml/browser/dist/parse/cst.js
@@ -21656,9 +28953,9 @@ var Lexer = class {
       this.lineEndPos = null;
     }
     this.atEnd = !incomplete;
-    let next = (_a = this.next) != null ? _a : "stream";
-    while (next && (incomplete || this.hasChars(1)))
-      next = yield* this.parseNext(next);
+    let next2 = (_a = this.next) != null ? _a : "stream";
+    while (next2 && (incomplete || this.hasChars(1)))
+      next2 = yield* this.parseNext(next2);
   }
   atLineEnd() {
     let i2 = this.pos;
@@ -21681,8 +28978,8 @@ var Lexer = class {
       while (ch === " ")
         ch = this.buffer[++indent + offset2];
       if (ch === "\r") {
-        const next = this.buffer[indent + offset2 + 1];
-        if (next === "\n" || !next && !this.atEnd)
+        const next2 = this.buffer[indent + offset2 + 1];
+        if (next2 === "\n" || !next2 && !this.atEnd)
           return offset2 + indent + 1;
       }
       return ch === "\n" || indent >= this.indentNext || !ch && !this.atEnd ? offset2 + indent : -1;
@@ -21719,8 +29016,8 @@ var Lexer = class {
   peek(n2) {
     return this.buffer.substr(this.pos, n2);
   }
-  *parseNext(next) {
-    switch (next) {
+  *parseNext(next2) {
+    switch (next2) {
       case "stream":
         return yield* this.parseStream();
       case "line-start":
@@ -21907,8 +29204,8 @@ var Lexer = class {
         this.flowKey = true;
         return yield* this.parseQuotedScalar();
       case ":": {
-        const next = this.charAt(1);
-        if (this.flowKey || isEmpty(next) || next === ",") {
+        const next2 = this.charAt(1);
+        if (this.flowKey || isEmpty(next2) || next2 === ",") {
           this.flowKey = false;
           yield* this.pushCount(1);
           yield* this.pushSpaces(true);
@@ -21987,10 +29284,10 @@ var Lexer = class {
             indent = 0;
             break;
           case "\r": {
-            const next = this.buffer[i2 + 1];
-            if (!next && !this.atEnd)
+            const next2 = this.buffer[i2 + 1];
+            if (!next2 && !this.atEnd)
               return this.setNext("block-scalar");
-            if (next === "\n")
+            if (next2 === "\n")
               break;
           }
           default:
@@ -22042,21 +29339,21 @@ var Lexer = class {
     let ch;
     while (ch = this.buffer[++i2]) {
       if (ch === ":") {
-        const next = this.buffer[i2 + 1];
-        if (isEmpty(next) || inFlow && next === ",")
+        const next2 = this.buffer[i2 + 1];
+        if (isEmpty(next2) || inFlow && next2 === ",")
           break;
         end2 = i2;
       } else if (isEmpty(ch)) {
-        let next = this.buffer[i2 + 1];
+        let next2 = this.buffer[i2 + 1];
         if (ch === "\r") {
-          if (next === "\n") {
+          if (next2 === "\n") {
             i2 += 1;
             ch = "\n";
-            next = this.buffer[i2 + 1];
+            next2 = this.buffer[i2 + 1];
           } else
             end2 = i2;
         }
-        if (next === "#" || inFlow && invalidFlowScalarChars.includes(next))
+        if (next2 === "#" || inFlow && invalidFlowScalarChars.includes(next2))
           break;
         if (ch === "\n") {
           const cs = this.continueScalar(i2 + 1);
@@ -23087,26 +30384,6 @@ function stringify4(value, replacer, options) {
   return new Document(value, _replacer, options).toString(options);
 }
 
-// src/lib/metadata/encode.ts
-function encodeFrontMatter(data, frontmatter) {
-  const delim = "---";
-  const startPosition = data.indexOf(delim) + delim.length;
-  const endPosition = data.slice(startPosition).indexOf(delim) + startPosition;
-  const isStart = data.slice(0, startPosition).trim() === delim;
-  const hasFrontMatter = isStart && endPosition > startPosition;
-  if (Object.entries(frontmatter).length) {
-    return hasFrontMatter ? data.slice(0, startPosition + 1) + stringifyYaml(frontmatter) + data.slice(endPosition) : delim + "\n" + stringifyYaml(frontmatter) + delim + "\n\n" + data;
-  }
-  return hasFrontMatter ? data.slice(0, startPosition - delim.length) + data.slice(endPosition + delim.length + 1) : data;
-}
-function stringifyYaml(value) {
-  return postprocessYaml(stringify4(value, { lineWidth: 0 }));
-}
-function postprocessYaml(value) {
-  const quotedProperties = /^(.*):\s*"(.*)"$/gm;
-  return value.replace(quotedProperties, (_match, p1, p2) => p1 + ": " + p2);
-}
-
 // src/lib/metadata/decode.ts
 function decodeFrontMatter(data) {
   const delim = "---";
@@ -23122,15 +30399,43 @@ function parseYaml(data) {
       return unquoteInternalLinks(value);
     }
     return value;
-  });
+  }) || {};
 }
 function preprocessYaml(data) {
-  const nonQuotedInternalLinks = /(?<!\")(\[\[.*\]\])(?!\")/g;
+  const nonQuotedInternalLinks = /(?<!\")(\[\[.*\]\])(?!\")$/g;
   const quoteInternalLinks = (line) => line.replace(nonQuotedInternalLinks, (_match, p1) => '"' + p1 + '"');
   return data.split("\n").map(quoteInternalLinks).join("\n");
 }
 function unquoteInternalLinks(value) {
   return value.replace(/\"(\[\[.*\]\])\"/g, (_match, p1) => p1);
+}
+
+// src/lib/metadata/encode.ts
+function encodeFrontMatter(data, frontmatter) {
+  const delim = "---";
+  const startPosition = data.indexOf(delim) + delim.length;
+  const endPosition = data.slice(startPosition).indexOf(delim) + startPosition;
+  const isStart = data.slice(0, startPosition).trim() === delim;
+  const hasFrontMatter = isStart && endPosition > startPosition;
+  const existing = parseYaml(data.slice(startPosition, endPosition));
+  const fm = Object.assign({}, existing, frontmatter);
+  if (Object.entries(fm).length) {
+    return hasFrontMatter ? data.slice(0, startPosition + 1) + stringifyYaml(fm) + data.slice(endPosition) : delim + "\n" + stringifyYaml(fm) + delim + "\n\n" + data;
+  }
+  return hasFrontMatter ? data.slice(0, startPosition - delim.length) + data.slice(endPosition + delim.length + 1) : data;
+}
+function stringifyYaml(value) {
+  return postprocessYaml(stringify4(value, { lineWidth: 0, nullStr: "" }));
+}
+function postprocessYaml(value) {
+  const illegalCharacters = /[:|\-]\s/;
+  const quotedProperties = /^(.*):\s*"(.*)"$/gm;
+  return value.replace(quotedProperties, (_match, key, value2) => {
+    if (illegalCharacters.test(value2)) {
+      return `${key}: "${value2}"`;
+    }
+    return `${key}: ${value2}`;
+  });
 }
 
 // src/lib/data-api.ts
@@ -23188,9 +30493,9 @@ var DataApi = class {
       yield this.app.vault.modify(file, cb(data));
     });
   }
-  deleteRecord(path4) {
+  deleteRecord(path3) {
     return __async(this, null, function* () {
-      const file = this.app.vault.getAbstractFileByPath(path4);
+      const file = this.app.vault.getAbstractFileByPath(path3);
       if (file) {
         this.app.vault.trash(file, true);
       }
@@ -23203,21 +30508,19 @@ function doUpdateRecord(data, fields, record) {
     draft[1] = (0, import_dayjs2.default)(entry[1]).format("YYYY-MM-DD");
   }) : entry).map((entry) => isLink(entry[1]) ? immer_esm_default(entry, (draft) => {
     draft[1] = `[[${draft[1].linkText}]]`;
-  }) : entry).filter((entry) => !fields.find((field) => field.name === entry[0] && field.derived)).filter((entry) => entry[1] !== void 0).filter((entry) => entry[1] !== null));
+  }) : entry).filter((entry) => !fields.find((field) => field.name === entry[0] && field.derived)));
   return encodeFrontMatter(data, updated);
 }
 function doDeleteField(data, field) {
   const frontmatter = decodeFrontMatter(data);
-  frontmatter[field] = null;
-  const updated = Object.fromEntries(Object.entries(frontmatter).filter((entry) => entry[1] !== void 0).filter((entry) => entry[1] !== null));
-  return encodeFrontMatter(data, updated);
+  frontmatter[field] = void 0;
+  return encodeFrontMatter(data, frontmatter);
 }
 function doRenameField(data, from, to) {
   const frontmatter = decodeFrontMatter(data);
   frontmatter[to] = frontmatter[from];
-  frontmatter[from] = null;
-  const updated = Object.fromEntries(Object.entries(frontmatter).filter((entry) => entry[1] !== void 0).filter((entry) => entry[1] !== null));
-  return encodeFrontMatter(data, updated);
+  frontmatter[from] = void 0;
+  return encodeFrontMatter(data, frontmatter);
 }
 function createProject() {
   return {
@@ -23331,8 +30634,8 @@ function isTFile(value) {
   return value instanceof import_obsidian7.TFile;
 }
 function filesFromRecords(app2, records) {
-  return records.map((record) => record.id).map((path4) => {
-    return app2.vault.getAbstractFileByPath(path4);
+  return records.map((record) => record.id).map((path3) => {
+    return app2.vault.getAbstractFileByPath(path3);
   }).filter(isTFile);
 }
 function getFilesInFolder(folder) {
@@ -23356,7 +30659,7 @@ function getFoldersInFolder(folder) {
   });
   return result;
 }
-function isValidPath(path4) {
+function isValidPath(path3) {
   const illegalCharacters = {
     darwin: /[\\\/\|\#\^\[\]]/,
     win32: /[\\\/\|\:\<\>\*\"\?]/
@@ -23365,17 +30668,17 @@ function isValidPath(path4) {
   if (!expr) {
     return true;
   }
-  return !expr.test(path4);
+  return !expr.test(path3);
 }
 
 // src/components/FileListInput/FileListInput.svelte
-function add_css13(target) {
+function add_css14(target) {
   append_styles(target, "svelte-biiywl", "div.svelte-biiywl{display:flex;align-items:center;justify-content:space-between;gap:4px;padding-bottom:4px;width:100%}div.svelte-biiywl:first-child{flex:1}");
 }
 function get_each_context3(ctx, list, i2) {
   const child_ctx = ctx.slice();
-  child_ctx[6] = list[i2];
-  child_ctx[8] = i2;
+  child_ctx[7] = list[i2];
+  child_ctx[9] = i2;
   return child_ctx;
 }
 function create_each_block3(ctx) {
@@ -23385,19 +30688,19 @@ function create_each_block3(ctx) {
   let iconbutton;
   let current;
   function change_handler(...args) {
-    return ctx[3](ctx[8], ...args);
+    return ctx[4](ctx[9], ...args);
   }
   fileautocomplete = new FileAutocomplete_default({
     props: {
-      value: ctx[6],
-      files: getFilesInFolder(ctx[2].vault.getRoot()),
+      value: ctx[7],
+      files: getFilesInFolder(ctx[3].vault.getRoot()),
       getLabel: func,
       width: "100%"
     }
   });
   fileautocomplete.$on("change", change_handler);
   function click_handler() {
-    return ctx[4](ctx[8]);
+    return ctx[5](ctx[9]);
   }
   iconbutton = new IconButton_default({ props: { icon: "x" } });
   iconbutton.$on("click", click_handler);
@@ -23420,9 +30723,9 @@ function create_each_block3(ctx) {
       ctx = new_ctx;
       const fileautocomplete_changes = {};
       if (dirty & 1)
-        fileautocomplete_changes.value = ctx[6];
-      if (dirty & 4)
-        fileautocomplete_changes.files = getFilesInFolder(ctx[2].vault.getRoot());
+        fileautocomplete_changes.value = ctx[7];
+      if (dirty & 8)
+        fileautocomplete_changes.files = getFilesInFolder(ctx[3].vault.getRoot());
       fileautocomplete.$set(fileautocomplete_changes);
     },
     i(local) {
@@ -23449,10 +30752,14 @@ function create_default_slot5(ctx) {
   let t3;
   return {
     c() {
-      t3 = text("Add template");
+      t3 = text(ctx[2]);
     },
     m(target, anchor) {
       insert(target, t3, anchor);
+    },
+    p(ctx2, dirty) {
+      if (dirty & 4)
+        set_data(t3, ctx2[2]);
     },
     d(detaching) {
       if (detaching)
@@ -23460,7 +30767,7 @@ function create_default_slot5(ctx) {
     }
   };
 }
-function create_fragment30(ctx) {
+function create_fragment34(ctx) {
   let t3;
   let button;
   let current;
@@ -23478,7 +30785,7 @@ function create_fragment30(ctx) {
       $$scope: { ctx }
     }
   });
-  button.$on("click", ctx[5]);
+  button.$on("click", ctx[6]);
   return {
     c() {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
@@ -23496,7 +30803,7 @@ function create_fragment30(ctx) {
       current = true;
     },
     p(ctx2, [dirty]) {
-      if (dirty & 7) {
+      if (dirty & 11) {
         each_value = ctx2[0];
         let i2;
         for (i2 = 0; i2 < each_value.length; i2 += 1) {
@@ -23518,7 +30825,7 @@ function create_fragment30(ctx) {
         check_outros();
       }
       const button_changes = {};
-      if (dirty & 512) {
+      if (dirty & 1028) {
         button_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button.$set(button_changes);
@@ -23549,11 +30856,12 @@ function create_fragment30(ctx) {
   };
 }
 var func = (file) => file.path;
-function instance30($$self, $$props, $$invalidate) {
+function instance34($$self, $$props, $$invalidate) {
   let $app;
-  component_subscribe($$self, app, ($$value) => $$invalidate(2, $app = $$value));
+  component_subscribe($$self, app, ($$value) => $$invalidate(3, $app = $$value));
   let { paths } = $$props;
   let { onPathsChange } = $$props;
+  let { buttonText } = $$props;
   const change_handler = (i2, { detail: value }) => {
     onPathsChange(immer_esm_default(paths, (draft) => {
       draft[i2] = value;
@@ -23571,22 +30879,36 @@ function instance30($$self, $$props, $$invalidate) {
       $$invalidate(0, paths = $$props2.paths);
     if ("onPathsChange" in $$props2)
       $$invalidate(1, onPathsChange = $$props2.onPathsChange);
+    if ("buttonText" in $$props2)
+      $$invalidate(2, buttonText = $$props2.buttonText);
   };
-  return [paths, onPathsChange, $app, change_handler, click_handler, click_handler_1];
+  return [
+    paths,
+    onPathsChange,
+    buttonText,
+    $app,
+    change_handler,
+    click_handler,
+    click_handler_1
+  ];
 }
 var FileListInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance30, create_fragment30, safe_not_equal, { paths: 0, onPathsChange: 1 }, add_css13);
+    init(this, options, instance34, create_fragment34, safe_not_equal, {
+      paths: 0,
+      onPathsChange: 1,
+      buttonText: 2
+    }, add_css14);
   }
 };
 var FileListInput_default = FileListInput;
 
 // src/modals/components/CreateProject.svelte
-function add_css14(target) {
+function add_css15(target) {
   append_styles(target, "svelte-6mkdkz", "small.svelte-6mkdkz{font-size:var(--font-ui-smaller);color:var(--text-accent);font-weight:var(--font-semibold)}.error.svelte-6mkdkz{color:var(--text-error)}");
 }
-function create_default_slot_11(ctx) {
+function create_default_slot_12(ctx) {
   let textinput;
   let current;
   textinput = new TextInput_default({
@@ -23639,7 +30961,7 @@ function create_if_block_3(ctx) {
     props: {
       name: ctx[6].t("modals.project.dataview.name"),
       description: (_a = ctx[6].t("modals.project.dataview.description")) != null ? _a : "",
-      $$slots: { default: [create_default_slot_10] },
+      $$slots: { default: [create_default_slot_11] },
       $$scope: { ctx }
     }
   });
@@ -23658,7 +30980,7 @@ function create_if_block_3(ctx) {
         settingitem_changes.name = ctx2[6].t("modals.project.dataview.name");
       if (dirty & 64)
         settingitem_changes.description = (_a2 = ctx2[6].t("modals.project.dataview.description")) != null ? _a2 : "";
-      if (dirty & 8388609) {
+      if (dirty & 16777217) {
         settingitem_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem.$set(settingitem_changes);
@@ -23678,7 +31000,7 @@ function create_if_block_3(ctx) {
     }
   };
 }
-function create_default_slot_10(ctx) {
+function create_default_slot_11(ctx) {
   let switch_1;
   let current;
   switch_1 = new Switch_default({
@@ -23722,7 +31044,7 @@ function create_if_block_2(ctx) {
       title: ctx[6].t("modals.project.dataview.error.title"),
       icon: "zap",
       variant: "danger",
-      $$slots: { default: [create_default_slot_9] },
+      $$slots: { default: [create_default_slot_10] },
       $$scope: { ctx }
     }
   });
@@ -23738,7 +31060,7 @@ function create_if_block_2(ctx) {
       const callout_changes = {};
       if (dirty & 64)
         callout_changes.title = ctx2[6].t("modals.project.dataview.error.title");
-      if (dirty & 8388672) {
+      if (dirty & 16777280) {
         callout_changes.$$scope = { dirty, ctx: ctx2 };
       }
       callout.$set(callout_changes);
@@ -23758,7 +31080,7 @@ function create_if_block_2(ctx) {
     }
   };
 }
-function create_default_slot_9(ctx) {
+function create_default_slot_10(ctx) {
   let t_value = ctx[6].t("modals.project.dataview.error.message") + "";
   let t3;
   return {
@@ -23789,7 +31111,7 @@ function create_else_block(ctx) {
       name: ctx[6].t("modals.project.path.name"),
       description: (_a = ctx[6].t("modals.project.path.description")) != null ? _a : "",
       vertical: true,
-      $$slots: { default: [create_default_slot_8] },
+      $$slots: { default: [create_default_slot_9] },
       $$scope: { ctx }
     }
   });
@@ -23797,7 +31119,7 @@ function create_else_block(ctx) {
     props: {
       name: ctx[6].t("modals.project.recursive.name"),
       description: (_b = ctx[6].t("modals.project.recursive.description")) != null ? _b : "",
-      $$slots: { default: [create_default_slot_7] },
+      $$slots: { default: [create_default_slot_8] },
       $$scope: { ctx }
     }
   });
@@ -23820,7 +31142,7 @@ function create_else_block(ctx) {
         settingitem0_changes.name = ctx2[6].t("modals.project.path.name");
       if (dirty & 64)
         settingitem0_changes.description = (_a2 = ctx2[6].t("modals.project.path.description")) != null ? _a2 : "";
-      if (dirty & 8388865) {
+      if (dirty & 16777473) {
         settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem0.$set(settingitem0_changes);
@@ -23829,7 +31151,7 @@ function create_else_block(ctx) {
         settingitem1_changes.name = ctx2[6].t("modals.project.recursive.name");
       if (dirty & 64)
         settingitem1_changes.description = (_b2 = ctx2[6].t("modals.project.recursive.description")) != null ? _b2 : "";
-      if (dirty & 8388609) {
+      if (dirty & 16777217) {
         settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem1.$set(settingitem1_changes);
@@ -23863,7 +31185,7 @@ function create_if_block_13(ctx) {
       name: ctx[6].t("modals.project.query.name"),
       description: (_a = ctx[6].t("modals.project.query.description")) != null ? _a : "",
       vertical: true,
-      $$slots: { default: [create_default_slot_6] },
+      $$slots: { default: [create_default_slot_7] },
       $$scope: { ctx }
     }
   });
@@ -23882,7 +31204,7 @@ function create_if_block_13(ctx) {
         settingitem_changes.name = ctx2[6].t("modals.project.query.name");
       if (dirty & 64)
         settingitem_changes.description = (_a2 = ctx2[6].t("modals.project.query.description")) != null ? _a2 : "";
-      if (dirty & 8388609) {
+      if (dirty & 16777217) {
         settingitem_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem.$set(settingitem_changes);
@@ -23902,7 +31224,7 @@ function create_if_block_13(ctx) {
     }
   };
 }
-function create_default_slot_8(ctx) {
+function create_default_slot_9(ctx) {
   let fileautocomplete;
   let current;
   fileautocomplete = new FileAutocomplete_default({
@@ -23945,7 +31267,7 @@ function create_default_slot_8(ctx) {
     }
   };
 }
-function create_default_slot_7(ctx) {
+function create_default_slot_8(ctx) {
   let switch_1;
   let current;
   switch_1 = new Switch_default({
@@ -23981,7 +31303,7 @@ function create_default_slot_7(ctx) {
     }
   };
 }
-function create_default_slot_6(ctx) {
+function create_default_slot_7(ctx) {
   var _a;
   let textarea;
   let current;
@@ -24048,7 +31370,7 @@ function create_if_block6(ctx) {
     }
   };
 }
-function create_default_slot_5(ctx) {
+function create_default_slot_6(ctx) {
   var _a;
   let textinput;
   let t0;
@@ -24137,12 +31459,13 @@ function create_default_slot_5(ctx) {
     }
   };
 }
-function create_default_slot_4(ctx) {
+function create_default_slot_5(ctx) {
   var _a;
   let filelistinput;
   let current;
   filelistinput = new FileListInput_default({
     props: {
+      buttonText: "Add template",
       paths: (_a = ctx[0].templates) != null ? _a : [],
       onPathsChange: ctx[18]
     }
@@ -24179,8 +31502,51 @@ function create_default_slot_4(ctx) {
     }
   };
 }
+function create_default_slot_4(ctx) {
+  var _a;
+  let filelistinput;
+  let current;
+  filelistinput = new FileListInput_default({
+    props: {
+      buttonText: "Add note",
+      paths: (_a = ctx[0].excludedNotes) != null ? _a : [],
+      onPathsChange: ctx[19]
+    }
+  });
+  return {
+    c() {
+      create_component(filelistinput.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(filelistinput, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      var _a2;
+      const filelistinput_changes = {};
+      if (dirty & 1)
+        filelistinput_changes.paths = (_a2 = ctx2[0].excludedNotes) != null ? _a2 : [];
+      if (dirty & 1)
+        filelistinput_changes.onPathsChange = ctx2[19];
+      filelistinput.$set(filelistinput_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(filelistinput.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(filelistinput.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(filelistinput, detaching);
+    }
+  };
+}
 function create_default_slot_3(ctx) {
-  var _a, _b, _c;
+  var _a, _b, _c, _d;
   let settingitem0;
   let t0;
   let t1;
@@ -24191,12 +31557,14 @@ function create_default_slot_3(ctx) {
   let settingitem1;
   let t4;
   let settingitem2;
+  let t5;
+  let settingitem3;
   let current;
   settingitem0 = new SettingItem_default({
     props: {
       name: ctx[6].t("modals.project.name.name"),
       description: (_a = ctx[6].t("modals.project.name.description")) != null ? _a : "",
-      $$slots: { default: [create_default_slot_11] },
+      $$slots: { default: [create_default_slot_12] },
       $$scope: { ctx }
     }
   });
@@ -24216,7 +31584,7 @@ function create_default_slot_3(ctx) {
       name: ctx[6].t("modals.project.defaultName.name"),
       description: (_b = ctx[6].t("modals.project.defaultName.description")) != null ? _b : "",
       vertical: true,
-      $$slots: { default: [create_default_slot_5] },
+      $$slots: { default: [create_default_slot_6] },
       $$scope: { ctx }
     }
   });
@@ -24224,6 +31592,15 @@ function create_default_slot_3(ctx) {
     props: {
       name: ctx[6].t("modals.project.templates.name"),
       description: (_c = ctx[6].t("modals.project.templates.description")) != null ? _c : "",
+      vertical: true,
+      $$slots: { default: [create_default_slot_5] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem3 = new SettingItem_default({
+    props: {
+      name: ctx[6].t("modals.project.exclude.name"),
+      description: (_d = ctx[6].t("modals.project.exclude.description")) != null ? _d : "",
       vertical: true,
       $$slots: { default: [create_default_slot_4] },
       $$scope: { ctx }
@@ -24244,6 +31621,8 @@ function create_default_slot_3(ctx) {
       create_component(settingitem1.$$.fragment);
       t4 = space();
       create_component(settingitem2.$$.fragment);
+      t5 = space();
+      create_component(settingitem3.$$.fragment);
     },
     m(target, anchor) {
       mount_component(settingitem0, target, anchor);
@@ -24259,16 +31638,18 @@ function create_default_slot_3(ctx) {
       mount_component(settingitem1, target, anchor);
       insert(target, t4, anchor);
       mount_component(settingitem2, target, anchor);
+      insert(target, t5, anchor);
+      mount_component(settingitem3, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      var _a2, _b2, _c2;
+      var _a2, _b2, _c2, _d2;
       const settingitem0_changes = {};
       if (dirty & 64)
         settingitem0_changes.name = ctx2[6].t("modals.project.name.name");
       if (dirty & 64)
         settingitem0_changes.description = (_a2 = ctx2[6].t("modals.project.name.description")) != null ? _a2 : "";
-      if (dirty & 8388625) {
+      if (dirty & 16777233) {
         settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem0.$set(settingitem0_changes);
@@ -24335,7 +31716,7 @@ function create_default_slot_3(ctx) {
         settingitem1_changes.name = ctx2[6].t("modals.project.defaultName.name");
       if (dirty & 64)
         settingitem1_changes.description = (_b2 = ctx2[6].t("modals.project.defaultName.description")) != null ? _b2 : "";
-      if (dirty & 8388705) {
+      if (dirty & 16777313) {
         settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem1.$set(settingitem1_changes);
@@ -24344,10 +31725,19 @@ function create_default_slot_3(ctx) {
         settingitem2_changes.name = ctx2[6].t("modals.project.templates.name");
       if (dirty & 64)
         settingitem2_changes.description = (_c2 = ctx2[6].t("modals.project.templates.description")) != null ? _c2 : "";
-      if (dirty & 8388609) {
+      if (dirty & 16777217) {
         settingitem2_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem2.$set(settingitem2_changes);
+      const settingitem3_changes = {};
+      if (dirty & 64)
+        settingitem3_changes.name = ctx2[6].t("modals.project.exclude.name");
+      if (dirty & 64)
+        settingitem3_changes.description = (_d2 = ctx2[6].t("modals.project.exclude.description")) != null ? _d2 : "";
+      if (dirty & 16777217) {
+        settingitem3_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem3.$set(settingitem3_changes);
     },
     i(local) {
       if (current)
@@ -24358,6 +31748,7 @@ function create_default_slot_3(ctx) {
       transition_in(if_block2);
       transition_in(settingitem1.$$.fragment, local);
       transition_in(settingitem2.$$.fragment, local);
+      transition_in(settingitem3.$$.fragment, local);
       current = true;
     },
     o(local) {
@@ -24367,6 +31758,7 @@ function create_default_slot_3(ctx) {
       transition_out(if_block2);
       transition_out(settingitem1.$$.fragment, local);
       transition_out(settingitem2.$$.fragment, local);
+      transition_out(settingitem3.$$.fragment, local);
       current = false;
     },
     d(detaching) {
@@ -24388,6 +31780,9 @@ function create_default_slot_3(ctx) {
       if (detaching)
         detach(t4);
       destroy_component(settingitem2, detaching);
+      if (detaching)
+        detach(t5);
+      destroy_component(settingitem3, detaching);
     }
   };
 }
@@ -24421,7 +31816,7 @@ function create_default_slot_1(ctx) {
       $$scope: { ctx }
     }
   });
-  button.$on("click", ctx[19]);
+  button.$on("click", ctx[20]);
   return {
     c() {
       create_component(button.$$.fragment);
@@ -24434,7 +31829,7 @@ function create_default_slot_1(ctx) {
       const button_changes = {};
       if (dirty & 16)
         button_changes.disabled = !!ctx2[4];
-      if (dirty & 8388612) {
+      if (dirty & 16777220) {
         button_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button.$set(button_changes);
@@ -24485,12 +31880,12 @@ function create_default_slot6(ctx) {
     },
     p(ctx2, dirty) {
       const modalcontent_changes = {};
-      if (dirty & 8389105) {
+      if (dirty & 16777713) {
         modalcontent_changes.$$scope = { dirty, ctx: ctx2 };
       }
       modalcontent.$set(modalcontent_changes);
       const modalbuttongroup_changes = {};
-      if (dirty & 8388637) {
+      if (dirty & 16777245) {
         modalbuttongroup_changes.$$scope = { dirty, ctx: ctx2 };
       }
       modalbuttongroup.$set(modalbuttongroup_changes);
@@ -24515,7 +31910,7 @@ function create_default_slot6(ctx) {
     }
   };
 }
-function create_fragment31(ctx) {
+function create_fragment35(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
@@ -24537,7 +31932,7 @@ function create_fragment31(ctx) {
       const modallayout_changes = {};
       if (dirty & 2)
         modallayout_changes.title = ctx2[1];
-      if (dirty & 8389117) {
+      if (dirty & 16777725) {
         modallayout_changes.$$scope = { dirty, ctx: ctx2 };
       }
       modallayout.$set(modallayout_changes);
@@ -24558,7 +31953,7 @@ function create_fragment31(ctx) {
   };
 }
 var func2 = (file) => file.path;
-function instance31($$self, $$props, $$invalidate) {
+function instance35($$self, $$props, $$invalidate) {
   let projects;
   let defaultName;
   let name;
@@ -24592,10 +31987,11 @@ function instance31($$self, $$props, $$invalidate) {
   const input_handler = ({ detail: name2 }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { name: name2 }));
   const check_handler = ({ detail: dataview }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { dataview }));
   const input_handler_1 = ({ detail: query }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { query }));
-  const change_handler = ({ detail: path4 }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { path: path4 }));
+  const change_handler = ({ detail: path3 }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { path: path3 }));
   const check_handler_1 = ({ detail: recursive }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { recursive }));
   const input_handler_2 = ({ detail: defaultName2 }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { defaultName: defaultName2 }));
-  const func_13 = (templates) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { templates }));
+  const func_14 = (templates) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { templates }));
+  const func_22 = (excludedNotes) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { excludedNotes }));
   const click_handler = () => {
     var _a2, _b;
     onSave(__spreadProps(__spreadValues({}, project), {
@@ -24652,14 +32048,15 @@ function instance31($$self, $$props, $$invalidate) {
     change_handler,
     check_handler_1,
     input_handler_2,
-    func_13,
+    func_14,
+    func_22,
     click_handler
   ];
 }
 var CreateProject = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance31, create_fragment31, safe_not_equal, { title: 1, cta: 2, onSave: 3, project: 0 }, add_css14);
+    init(this, options, instance35, create_fragment35, safe_not_equal, { title: 1, cta: 2, onSave: 3, project: 0 }, add_css15);
   }
 };
 var CreateProject_default = CreateProject;
@@ -24798,7 +32195,7 @@ function createDemoProject(vault) {
 var import_obsidian14 = __toModule(require("obsidian"));
 
 // src/app/onboarding/TabContainer.svelte
-function add_css15(target) {
+function add_css16(target) {
   append_styles(target, "svelte-1es105s", ".nomargin.svelte-1es105s{margin:0;padding:8px}.header.svelte-1es105s{display:flex;gap:4px;margin-bottom:4px}");
 }
 var get_default_slot_changes = (dirty) => ({ selected: dirty & 2 });
@@ -24851,7 +32248,7 @@ function create_each_block4(ctx) {
     }
   };
 }
-function create_fragment32(ctx) {
+function create_fragment36(ctx) {
   let div2;
   let div0;
   let t3;
@@ -24935,7 +32332,7 @@ function create_fragment32(ctx) {
     }
   };
 }
-function instance32($$self, $$props, $$invalidate) {
+function instance36($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   var _a;
   let { options } = $$props;
@@ -24954,13 +32351,13 @@ function instance32($$self, $$props, $$invalidate) {
 var TabContainer = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance32, create_fragment32, safe_not_equal, { options: 0 }, add_css15);
+    init(this, options, instance36, create_fragment36, safe_not_equal, { options: 0 }, add_css16);
   }
 };
 var TabContainer_default = TabContainer;
 
 // src/app/onboarding/Onboarding.svelte
-function add_css16(target) {
+function add_css17(target) {
   append_styles(target, "svelte-a9juqy", "pre.svelte-a9juqy{background-color:var(--background-secondary);border-radius:var(--radius-s);padding:8px}ol.svelte-a9juqy{margin:0;padding:0 22px}");
 }
 function create_default_slot_62(ctx) {
@@ -25051,7 +32448,7 @@ function create_default_slot_22(ctx) {
     }
   };
 }
-function create_default_slot_12(ctx) {
+function create_default_slot_13(ctx) {
   let button0;
   let t3;
   let button1;
@@ -25211,7 +32608,7 @@ function create_default_slot7(ctx) {
     }
   };
 }
-function create_fragment33(ctx) {
+function create_fragment37(ctx) {
   let div;
   let typography0;
   let t0;
@@ -25251,7 +32648,7 @@ function create_fragment33(ctx) {
   });
   modalbuttongroup = new ModalButtonGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_12] },
+      $$slots: { default: [create_default_slot_13] },
       $$scope: { ctx }
     }
   });
@@ -25370,7 +32767,7 @@ published: false
     }
   };
 }
-function instance33($$self, $$props, $$invalidate) {
+function instance37($$self, $$props, $$invalidate) {
   let { onCreate } = $$props;
   let { onTry } = $$props;
   const click_handler = () => onCreate();
@@ -25386,7 +32783,7 @@ function instance33($$self, $$props, $$invalidate) {
 var Onboarding = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance33, create_fragment33, safe_not_equal, { onCreate: 0, onTry: 1 }, add_css16);
+    init(this, options, instance37, create_fragment37, safe_not_equal, { onCreate: 0, onTry: 1 }, add_css17);
   }
 };
 var Onboarding_default = Onboarding;
@@ -25548,6 +32945,9 @@ function detectFields(records) {
 }
 function typeFromValues(values) {
   const types = values.map((value) => detectCellType(value));
+  if (types.every((t3) => t3 === DataFieldType.Unknown)) {
+    return DataFieldType.String;
+  }
   const result = {};
   for (const type of types) {
     if (!result[type]) {
@@ -25579,6 +32979,9 @@ function detectCellType(value) {
     return DataFieldType.Link;
   } else if (Array.isArray(value)) {
     return DataFieldType.List;
+  }
+  if (value === null) {
+    return DataFieldType.Unknown;
   }
   return DataFieldType.Unknown;
 }
@@ -25640,8 +33043,9 @@ var DataviewDataSource = class extends DataSource {
       return { fields, records };
     });
   }
-  includes(_24) {
-    return true;
+  includes(path3) {
+    var _a;
+    return !((_a = this.project.excludedNotes) == null ? void 0 : _a.includes(path3));
   }
   readonly() {
     return true;
@@ -25724,22 +33128,26 @@ var FrontMatterDataSource = class extends DataSource {
   }
   queryFiles(files, predefinedFields) {
     return __async(this, null, function* () {
-      const standardizedRecords = standardizeRecords(files, this.app.vault);
-      let fields = detectSchema2(yield standardizedRecords);
+      const standardizedRecords = yield standardizeRecords(files, this.app.vault);
+      let fields = detectSchema2(standardizedRecords);
       for (const predefinedField of predefinedFields != null ? predefinedFields : []) {
         fields = fields.map((field) => field.name !== predefinedField.name ? field : __spreadProps(__spreadValues({}, field), { type: predefinedField.type }));
       }
-      const records = parseRecords(yield standardizedRecords, fields);
+      const records = parseRecords(standardizedRecords, fields);
       return { fields, records };
     });
   }
-  includes(path4) {
+  includes(path3) {
+    var _a;
+    if ((_a = this.project.excludedNotes) == null ? void 0 : _a.includes(path3)) {
+      return false;
+    }
     const trimmedPath = this.project.path.startsWith("/") ? this.project.path.slice(1) : this.project.path;
-    if (!path4.startsWith(trimmedPath)) {
+    if (!path3.startsWith(trimmedPath)) {
       return false;
     }
     if (!this.project.recursive) {
-      const pathElements = path4.split("/").slice(0, -1);
+      const pathElements = path3.split("/").slice(0, -1);
       const projectPathElements = trimmedPath.split("/").filter((el) => el);
       return pathElements.join("/") === projectPathElements.join("/");
     }
@@ -25750,7 +33158,7 @@ function standardizeRecords(files, vault) {
   return __async(this, null, function* () {
     return Promise.all(files.map((file) => __async(this, null, function* () {
       const values = decodeFrontMatter(yield vault.read(file));
-      const filteredValues = Object.fromEntries(Object.entries(values).filter(([_key, value]) => notEmpty(value)));
+      const filteredValues = Object.fromEntries(Object.entries(values).filter(([_key, value]) => notUndefined(value)));
       filteredValues["path"] = file.path;
       filteredValues["name"] = file.basename;
       return standardizeRecord(file.path, filteredValues);
@@ -25762,7 +33170,7 @@ function detectSchema2(records) {
 }
 
 // src/app/toolbar/Toolbar.svelte
-var import_obsidian25 = __toModule(require("obsidian"));
+var import_obsidian26 = __toModule(require("obsidian"));
 
 // src/modals/add-view-modal.ts
 var import_obsidian17 = __toModule(require("obsidian"));
@@ -26023,7 +33431,7 @@ function create_default_slot_23(ctx) {
     }
   };
 }
-function create_default_slot_13(ctx) {
+function create_default_slot_14(ctx) {
   let button;
   let current;
   button = new Button_default({
@@ -26077,7 +33485,7 @@ function create_default_slot8(ctx) {
   });
   modalbuttongroup = new ModalButtonGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_13] },
+      $$slots: { default: [create_default_slot_14] },
       $$scope: { ctx }
     }
   });
@@ -26125,7 +33533,7 @@ function create_default_slot8(ctx) {
     }
   };
 }
-function create_fragment34(ctx) {
+function create_fragment38(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
@@ -26168,7 +33576,7 @@ function create_fragment34(ctx) {
   };
 }
 var func3 = (project) => ({ label: project.name, value: project.id });
-function instance34($$self, $$props, $$invalidate) {
+function instance38($$self, $$props, $$invalidate) {
   let selectedOption;
   let nameError;
   let $i18n;
@@ -26247,7 +33655,7 @@ function instance34($$self, $$props, $$invalidate) {
 var AddView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance34, create_fragment34, safe_not_equal, { onSave: 1, project: 0 });
+    init(this, options, instance38, create_fragment38, safe_not_equal, { onSave: 1, project: 0 });
   }
 };
 var AddView_default = AddView;
@@ -26694,7 +34102,7 @@ function create_default_slot_24(ctx) {
     }
   };
 }
-function create_default_slot_14(ctx) {
+function create_default_slot_15(ctx) {
   let button;
   let current;
   button = new Button_default({
@@ -26751,7 +34159,7 @@ function create_default_slot9(ctx) {
   });
   modalbuttongroup = new ModalButtonGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_14] },
+      $$slots: { default: [create_default_slot_15] },
       $$scope: { ctx }
     }
   });
@@ -26799,7 +34207,7 @@ function create_default_slot9(ctx) {
     }
   };
 }
-function create_fragment35(ctx) {
+function create_fragment39(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
@@ -26842,8 +34250,8 @@ function create_fragment35(ctx) {
   };
 }
 var func4 = (project) => ({ label: project.name, value: project.id });
-var func_1 = (path4) => ({ label: path4, value: path4 });
-function instance35($$self, $$props, $$invalidate) {
+var func_1 = (path3) => ({ label: path3, value: path3 });
+function instance39($$self, $$props, $$invalidate) {
   let nameError;
   let $i18n;
   let $app;
@@ -26910,7 +34318,7 @@ function instance35($$self, $$props, $$invalidate) {
 var CreateNote = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance35, create_fragment35, safe_not_equal, { name: 0, project: 1, onSave: 2 });
+    init(this, options, instance39, create_fragment39, safe_not_equal, { name: 0, project: 1, onSave: 2 });
   }
 };
 var CreateNote_default = CreateNote;
@@ -27048,7 +34456,7 @@ function create_default_slot_25(ctx) {
     }
   };
 }
-function create_default_slot_15(ctx) {
+function create_default_slot_16(ctx) {
   let button0;
   let t3;
   let button1;
@@ -27127,7 +34535,7 @@ function create_default_slot10(ctx) {
   });
   modalbuttongroup = new ModalButtonGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_15] },
+      $$slots: { default: [create_default_slot_16] },
       $$scope: { ctx }
     }
   });
@@ -27175,7 +34583,7 @@ function create_default_slot10(ctx) {
     }
   };
 }
-function create_fragment36(ctx) {
+function create_fragment40(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
@@ -27217,7 +34625,7 @@ function create_fragment36(ctx) {
     }
   };
 }
-function instance36($$self, $$props, $$invalidate) {
+function instance40($$self, $$props, $$invalidate) {
   let $i18n;
   component_subscribe($$self, i18n, ($$value) => $$invalidate(5, $i18n = $$value));
   let { title } = $$props;
@@ -27257,7 +34665,7 @@ function instance36($$self, $$props, $$invalidate) {
 var ConfirmDialog = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance36, create_fragment36, safe_not_equal, {
+    init(this, options, instance40, create_fragment40, safe_not_equal, {
       title: 0,
       message: 1,
       cta: 2,
@@ -27303,7 +34711,7 @@ var ConfirmDialogModal = class extends import_obsidian22.Modal {
 
 // src/app/toolbar/ProjectSelect.svelte
 var import_obsidian23 = __toModule(require("obsidian"));
-function add_css17(target) {
+function add_css18(target) {
   append_styles(target, "svelte-h4e1e6", "span.svelte-h4e1e6{display:flex;align-items:center;gap:4px}");
 }
 function create_if_block9(ctx) {
@@ -27337,7 +34745,7 @@ function create_if_block9(ctx) {
     }
   };
 }
-function create_fragment37(ctx) {
+function create_fragment41(ctx) {
   var _a, _b;
   let span;
   let select;
@@ -27421,7 +34829,7 @@ function create_fragment37(ctx) {
   };
 }
 var func5 = (project) => ({ label: project.name, value: project.id });
-function instance37($$self, $$props, $$invalidate) {
+function instance41($$self, $$props, $$invalidate) {
   let project;
   let $i18n;
   let $app;
@@ -27437,6 +34845,14 @@ function instance37($$self, $$props, $$invalidate) {
       item.setTitle($i18n.t("modals.project.edit.short-title")).setIcon("edit").onClick(() => {
         if (project) {
           new CreateProjectModal($app, $i18n.t("modals.project.edit.title"), $i18n.t("modals.project.edit.cta"), settings.updateProject, project).open();
+        }
+      });
+    });
+    menu.addItem((item) => {
+      item.setTitle($i18n.t("modals.project.duplicate.title")).setIcon("copy").onClick(() => {
+        if (projectId) {
+          const id = settings.duplicateProject(projectId);
+          onProjectChange(id);
         }
       });
     });
@@ -27479,11 +34895,11 @@ function instance37($$self, $$props, $$invalidate) {
 var ProjectSelect = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance37, create_fragment37, safe_not_equal, {
+    init(this, options, instance41, create_fragment41, safe_not_equal, {
       projectId: 0,
       projects: 1,
       onProjectChange: 2
-    }, add_css17);
+    }, add_css18);
   }
 };
 var ProjectSelect_default = ProjectSelect;
@@ -29668,10 +37084,10 @@ Sortable.mount(Remove, Revert);
 var sortable_esm_default = Sortable;
 
 // src/app/toolbar/ViewItemList.svelte
-function add_css18(target) {
-  append_styles(target, "svelte-1ow449f", "div.svelte-1ow449f{display:flex;justify-content:center;gap:var(--size-4-1);min-width:min-content}section.svelte-1ow449f{flex:1;overflow-x:auto}section.svelte-1ow449f::-webkit-scrollbar{display:none}");
+function add_css19(target) {
+  append_styles(target, "svelte-1msv9tc", "div.svelte-1msv9tc{display:flex;justify-content:center;gap:var(--size-4-1);min-width:min-content}section.svelte-1msv9tc{overflow-x:auto}section.svelte-1msv9tc::-webkit-scrollbar{display:none}");
 }
-function create_fragment38(ctx) {
+function create_fragment42(ctx) {
   let section;
   let div;
   let current;
@@ -29683,8 +37099,8 @@ function create_fragment38(ctx) {
       div = element("div");
       if (default_slot)
         default_slot.c();
-      attr(div, "class", "svelte-1ow449f");
-      attr(section, "class", "svelte-1ow449f");
+      attr(div, "class", "svelte-1msv9tc");
+      attr(section, "class", "svelte-1msv9tc");
     },
     m(target, anchor) {
       insert(target, section, anchor);
@@ -29721,7 +37137,7 @@ function create_fragment38(ctx) {
     }
   };
 }
-function instance38($$self, $$props, $$invalidate) {
+function instance42($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { onSort } = $$props;
   let ref;
@@ -29731,6 +37147,7 @@ function instance38($$self, $$props, $$invalidate) {
       direction: () => "horizontal",
       animation: 100,
       dataIdAttr: "data-id",
+      forceFallback: true,
       onSort: () => onSort(sortable.toArray())
     });
   });
@@ -29754,13 +37171,14 @@ function instance38($$self, $$props, $$invalidate) {
 var ViewItemList = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance38, create_fragment38, safe_not_equal, { onSort: 1 }, add_css18);
+    init(this, options, instance42, create_fragment42, safe_not_equal, { onSort: 1 }, add_css19);
   }
 };
 var ViewItemList_default = ViewItemList;
 
 // src/app/toolbar/ViewItem.svelte
-function add_css19(target) {
+var import_obsidian25 = __toModule(require("obsidian"));
+function add_css20(target) {
   append_styles(target, "svelte-3t9vh7", "div.svelte-3t9vh7{display:inline-flex;align-items:center;gap:4px;height:1.8rem;padding:0 8px;min-width:min-content;font-size:var(--font-ui-small);border-radius:var(--radius-s);overflow:hidden;white-space:nowrap;text-overflow:ellipsis;border:1px solid transparent}div.svelte-3t9vh7:hover{background-color:var(--background-modifier-hover)}.active.svelte-3t9vh7{background-color:var(--background-modifier-hover)}.error.svelte-3t9vh7{border:1px solid var(--background-modifier-error)}");
 }
 function create_if_block_22(ctx) {
@@ -29823,10 +37241,10 @@ function create_if_block_16(ctx) {
   let updating_value;
   let current;
   function textinput_ref_binding(value) {
-    ctx[13](value);
+    ctx[12](value);
   }
   function textinput_value_binding(value) {
-    ctx[14](value);
+    ctx[13](value);
   }
   let textinput_props = {
     noPadding: true,
@@ -29842,7 +37260,7 @@ function create_if_block_16(ctx) {
   textinput = new TextInput_default({ props: textinput_props });
   binding_callbacks.push(() => bind(textinput, "ref", textinput_ref_binding));
   binding_callbacks.push(() => bind(textinput, "value", textinput_value_binding));
-  textinput.$on("keydown", ctx[15]);
+  textinput.$on("keydown", ctx[14]);
   return {
     c() {
       create_component(textinput.$$.fragment);
@@ -29887,12 +37305,12 @@ function create_if_block10(ctx) {
   let current;
   iconbutton = new IconButton_default({
     props: {
-      icon: "cross",
+      icon: "chevron-down",
       size: "sm",
       nopadding: true
     }
   });
-  iconbutton.$on("click", ctx[16]);
+  iconbutton.$on("click", ctx[15]);
   return {
     c() {
       create_component(iconbutton.$$.fragment);
@@ -29917,7 +37335,7 @@ function create_if_block10(ctx) {
     }
   };
 }
-function create_fragment39(ctx) {
+function create_fragment43(ctx) {
   let div;
   let t0;
   let current_block_type_index;
@@ -29937,7 +37355,7 @@ function create_fragment39(ctx) {
   }
   current_block_type_index = select_block_type(ctx, -1);
   if_block1 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-  let if_block2 = ctx[7] && ctx[2] && create_if_block10(ctx);
+  let if_block2 = ctx[2] && create_if_block10(ctx);
   return {
     c() {
       div = element("div");
@@ -29951,7 +37369,7 @@ function create_fragment39(ctx) {
       attr(div, "data-id", ctx[1]);
       attr(div, "class", "svelte-3t9vh7");
       toggle_class(div, "active", ctx[2]);
-      toggle_class(div, "error", ctx[8]);
+      toggle_class(div, "error", ctx[7]);
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -29965,13 +37383,10 @@ function create_fragment39(ctx) {
       current = true;
       if (!mounted) {
         dispose = [
-          listen(div, "mouseenter", ctx[17]),
-          listen(div, "mouseleave", ctx[18]),
-          listen(div, "focus", ctx[19]),
-          listen(div, "blur", ctx[20]),
-          listen(div, "dblclick", ctx[21]),
-          listen(div, "mousedown", ctx[12]),
-          action_destroyer(useClickOutside_action = useClickOutside2.call(null, div, ctx[22]))
+          listen(div, "blur", ctx[16]),
+          listen(div, "dblclick", ctx[17]),
+          listen(div, "mousedown", ctx[11]),
+          action_destroyer(useClickOutside_action = useClickOutside2.call(null, div, ctx[18]))
         ];
         mounted = true;
       }
@@ -30016,10 +37431,10 @@ function create_fragment39(ctx) {
         transition_in(if_block1, 1);
         if_block1.m(div, t1);
       }
-      if (ctx2[7] && ctx2[2]) {
+      if (ctx2[2]) {
         if (if_block2) {
           if_block2.p(ctx2, dirty);
-          if (dirty & 132) {
+          if (dirty & 4) {
             transition_in(if_block2, 1);
           }
         } else {
@@ -30039,12 +37454,12 @@ function create_fragment39(ctx) {
         attr(div, "data-id", ctx2[1]);
       }
       if (useClickOutside_action && is_function(useClickOutside_action.update) && dirty & 16)
-        useClickOutside_action.update.call(null, ctx2[22]);
+        useClickOutside_action.update.call(null, ctx2[18]);
       if (!current || dirty & 4) {
         toggle_class(div, "active", ctx2[2]);
       }
-      if (!current || dirty & 256) {
-        toggle_class(div, "error", ctx2[8]);
+      if (!current || dirty & 128) {
+        toggle_class(div, "error", ctx2[7]);
       }
     },
     i(local) {
@@ -30074,18 +37489,17 @@ function create_fragment39(ctx) {
     }
   };
 }
-function instance39($$self, $$props, $$invalidate) {
+function instance43($$self, $$props, $$invalidate) {
   let error2;
   let { label } = $$props;
   let { id } = $$props;
-  let { active = false } = $$props;
+  let { active: active2 = false } = $$props;
   let { icon = "" } = $$props;
   let { onValidate } = $$props;
   let fallback = label;
   function rollback() {
     $$invalidate(0, label = fallback);
   }
-  let hovering = false;
   let editing = false;
   let inputRef;
   const dispatch = createEventDispatcher();
@@ -30111,12 +37525,25 @@ function instance39($$self, $$props, $$invalidate) {
       }
     }
   };
-  const click_handler = () => dispatch("delete");
-  const mouseenter_handler = () => $$invalidate(7, hovering = true);
-  const mouseleave_handler = () => $$invalidate(7, hovering = false);
-  const focus_handler = () => $$invalidate(7, hovering = true);
+  const click_handler = (event) => {
+    const menu = new import_obsidian25.Menu();
+    menu.addItem((item) => {
+      item.setTitle("Duplicate view");
+      item.setIcon("copy");
+      item.onClick(() => {
+        dispatch("duplicate");
+      });
+    });
+    menu.addItem((item) => {
+      item.setTitle("Delete view");
+      item.setIcon("trash");
+      item.onClick(() => {
+        dispatch("delete");
+      });
+    });
+    menu.showAtMouseEvent(event);
+  };
   const blur_handler = () => {
-    $$invalidate(7, hovering = false);
     $$invalidate(4, editing = false);
     rollback();
   };
@@ -30131,11 +37558,11 @@ function instance39($$self, $$props, $$invalidate) {
     if ("id" in $$props2)
       $$invalidate(1, id = $$props2.id);
     if ("active" in $$props2)
-      $$invalidate(2, active = $$props2.active);
+      $$invalidate(2, active2 = $$props2.active);
     if ("icon" in $$props2)
       $$invalidate(3, icon = $$props2.icon);
     if ("onValidate" in $$props2)
-      $$invalidate(11, onValidate = $$props2.onValidate);
+      $$invalidate(10, onValidate = $$props2.onValidate);
   };
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 48) {
@@ -30145,20 +37572,19 @@ function instance39($$self, $$props, $$invalidate) {
           inputRef.select();
         }
     }
-    if ($$self.$$.dirty & 2049) {
+    if ($$self.$$.dirty & 1025) {
       $:
-        $$invalidate(8, error2 = !onValidate(label));
+        $$invalidate(7, error2 = !onValidate(label));
     }
   };
   return [
     label,
     id,
-    active,
+    active2,
     icon,
     editing,
     inputRef,
     fallback,
-    hovering,
     error2,
     rollback,
     dispatch,
@@ -30168,9 +37594,6 @@ function instance39($$self, $$props, $$invalidate) {
     textinput_value_binding,
     keydown_handler,
     click_handler,
-    mouseenter_handler,
-    mouseleave_handler,
-    focus_handler,
     blur_handler,
     dblclick_handler,
     useClickOutside_function
@@ -30179,13 +37602,13 @@ function instance39($$self, $$props, $$invalidate) {
 var ViewItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance39, create_fragment39, safe_not_equal, {
+    init(this, options, instance43, create_fragment43, safe_not_equal, {
       label: 0,
       id: 1,
       active: 2,
       icon: 3,
-      onValidate: 11
-    }, add_css19);
+      onValidate: 10
+    }, add_css20);
   }
 };
 var ViewItem_default = ViewItem;
@@ -30193,36 +37616,40 @@ var ViewItem_default = ViewItem;
 // src/app/toolbar/ViewSelect.svelte
 function get_each_context5(ctx, list, i2) {
   const child_ctx = ctx.slice();
-  child_ctx[13] = list[i2];
+  child_ctx[15] = list[i2];
   return child_ctx;
 }
 function create_each_block5(ctx) {
   let viewitem;
   let current;
   function func7(...args) {
-    return ctx[8](ctx[13], ...args);
+    return ctx[9](ctx[15], ...args);
   }
   function mousedown_handler() {
-    return ctx[9](ctx[13]);
+    return ctx[10](ctx[15]);
   }
   function rename_handler(...args) {
-    return ctx[10](ctx[13], ...args);
+    return ctx[11](ctx[15], ...args);
   }
   function delete_handler() {
-    return ctx[11](ctx[13]);
+    return ctx[12](ctx[15]);
+  }
+  function duplicate_handler() {
+    return ctx[13](ctx[15]);
   }
   viewitem = new ViewItem_default({
     props: {
-      id: ctx[13].id,
-      active: ctx[0] === ctx[13].id,
-      label: ctx[13].name,
-      icon: ctx[7](ctx[13].type),
+      id: ctx[15].id,
+      active: ctx[0] === ctx[15].id,
+      label: ctx[15].name,
+      icon: ctx[8](ctx[15].type),
       onValidate: func7
     }
   });
   viewitem.$on("mousedown", mousedown_handler);
   viewitem.$on("rename", rename_handler);
   viewitem.$on("delete", delete_handler);
+  viewitem.$on("duplicate", duplicate_handler);
   return {
     c() {
       create_component(viewitem.$$.fragment);
@@ -30235,14 +37662,14 @@ function create_each_block5(ctx) {
       ctx = new_ctx;
       const viewitem_changes = {};
       if (dirty & 2)
-        viewitem_changes.id = ctx[13].id;
+        viewitem_changes.id = ctx[15].id;
       if (dirty & 3)
-        viewitem_changes.active = ctx[0] === ctx[13].id;
+        viewitem_changes.active = ctx[0] === ctx[15].id;
       if (dirty & 2)
-        viewitem_changes.label = ctx[13].name;
+        viewitem_changes.label = ctx[15].name;
       if (dirty & 2)
-        viewitem_changes.icon = ctx[7](ctx[13].type);
-      if (dirty & 66)
+        viewitem_changes.icon = ctx[8](ctx[15].type);
+      if (dirty & 130)
         viewitem_changes.onValidate = func7;
       viewitem.$set(viewitem_changes);
     },
@@ -30287,7 +37714,7 @@ function create_key_block(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if (dirty & 223) {
+      if (dirty & 447) {
         each_value = ctx2[1];
         let i2;
         for (i2 = 0; i2 < each_value.length; i2 += 1) {
@@ -30376,12 +37803,12 @@ function create_default_slot11(ctx) {
     }
   };
 }
-function create_fragment40(ctx) {
+function create_fragment44(ctx) {
   let viewitemlist;
   let current;
   viewitemlist = new ViewItemList_default({
     props: {
-      onSort: ctx[5],
+      onSort: ctx[6],
       $$slots: { default: [create_default_slot11] },
       $$scope: { ctx }
     }
@@ -30396,9 +37823,9 @@ function create_fragment40(ctx) {
     },
     p(ctx2, [dirty]) {
       const viewitemlist_changes = {};
-      if (dirty & 32)
-        viewitemlist_changes.onSort = ctx2[5];
-      if (dirty & 65631) {
+      if (dirty & 64)
+        viewitemlist_changes.onSort = ctx2[6];
+      if (dirty & 262335) {
         viewitemlist_changes.$$scope = { dirty, ctx: ctx2 };
       }
       viewitemlist.$set(viewitemlist_changes);
@@ -30418,13 +37845,14 @@ function create_fragment40(ctx) {
     }
   };
 }
-function instance40($$self, $$props, $$invalidate) {
+function instance44($$self, $$props, $$invalidate) {
   let $customViews;
-  component_subscribe($$self, customViews, ($$value) => $$invalidate(12, $customViews = $$value));
+  component_subscribe($$self, customViews, ($$value) => $$invalidate(14, $customViews = $$value));
   let { viewId } = $$props;
   let { views } = $$props;
   let { onViewChange } = $$props;
   let { onViewDelete } = $$props;
+  let { onViewDuplicate } = $$props;
   let { onViewRename } = $$props;
   let { onViewSort } = $$props;
   let { viewExists } = $$props;
@@ -30445,6 +37873,9 @@ function instance40($$self, $$props, $$invalidate) {
   const delete_handler = (v2) => {
     onViewDelete(v2.id);
   };
+  const duplicate_handler = (v2) => {
+    onViewDuplicate(v2.id);
+  };
   $$self.$$set = ($$props2) => {
     if ("viewId" in $$props2)
       $$invalidate(0, viewId = $$props2.viewId);
@@ -30454,18 +37885,21 @@ function instance40($$self, $$props, $$invalidate) {
       $$invalidate(2, onViewChange = $$props2.onViewChange);
     if ("onViewDelete" in $$props2)
       $$invalidate(3, onViewDelete = $$props2.onViewDelete);
+    if ("onViewDuplicate" in $$props2)
+      $$invalidate(4, onViewDuplicate = $$props2.onViewDuplicate);
     if ("onViewRename" in $$props2)
-      $$invalidate(4, onViewRename = $$props2.onViewRename);
+      $$invalidate(5, onViewRename = $$props2.onViewRename);
     if ("onViewSort" in $$props2)
-      $$invalidate(5, onViewSort = $$props2.onViewSort);
+      $$invalidate(6, onViewSort = $$props2.onViewSort);
     if ("viewExists" in $$props2)
-      $$invalidate(6, viewExists = $$props2.viewExists);
+      $$invalidate(7, viewExists = $$props2.viewExists);
   };
   return [
     viewId,
     views,
     onViewChange,
     onViewDelete,
+    onViewDuplicate,
     onViewRename,
     onViewSort,
     viewExists,
@@ -30473,28 +37907,222 @@ function instance40($$self, $$props, $$invalidate) {
     func7,
     mousedown_handler,
     rename_handler,
-    delete_handler
+    delete_handler,
+    duplicate_handler
   ];
 }
 var ViewSelect = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance40, create_fragment40, safe_not_equal, {
+    init(this, options, instance44, create_fragment44, safe_not_equal, {
       viewId: 0,
       views: 1,
       onViewChange: 2,
       onViewDelete: 3,
-      onViewRename: 4,
-      onViewSort: 5,
-      viewExists: 6
+      onViewDuplicate: 4,
+      onViewRename: 5,
+      onViewSort: 6,
+      viewExists: 7
     });
   }
 };
 var ViewSelect_default = ViewSelect;
 
+// src/components/Layout/ViewToolbar.svelte
+function add_css21(target) {
+  append_styles(target, "svelte-1n16ix8", ".container.svelte-1n16ix8.svelte-1n16ix8{display:flex;justify-content:space-between;padding:var(--size-4-2);gap:var(--size-4-2);border-bottom:1px solid var(--background-modifier-border);align-items:center}.middle.svelte-1n16ix8.svelte-1n16ix8{flex:1;overflow-x:auto;text-align:center;min-width:200px}.right.svelte-1n16ix8.svelte-1n16ix8{display:flex;align-items:center;gap:var(--size-4-2);flex-wrap:wrap}.isMobile.svelte-1n16ix8.svelte-1n16ix8{flex-direction:column;align-items:stretch}.isMobile.svelte-1n16ix8 .right.svelte-1n16ix8{align-items:stretch}.primary.svelte-1n16ix8.svelte-1n16ix8{background-color:var(--tab-background-active)}.secondary.svelte-1n16ix8.svelte-1n16ix8{background-color:var(--background-secondary)}");
+}
+var get_right_slot_changes = (dirty) => ({});
+var get_right_slot_context = (ctx) => ({});
+var get_middle_slot_changes = (dirty) => ({});
+var get_middle_slot_context = (ctx) => ({});
+var get_left_slot_changes = (dirty) => ({});
+var get_left_slot_context = (ctx) => ({});
+function create_fragment45(ctx) {
+  let div3;
+  let div0;
+  let t0;
+  let div1;
+  let t1;
+  let div2;
+  let div3_resize_listener;
+  let current;
+  const left_slot_template = ctx[4].left;
+  const left_slot = create_slot(left_slot_template, ctx, ctx[3], get_left_slot_context);
+  const middle_slot_template = ctx[4].middle;
+  const middle_slot = create_slot(middle_slot_template, ctx, ctx[3], get_middle_slot_context);
+  const right_slot_template = ctx[4].right;
+  const right_slot = create_slot(right_slot_template, ctx, ctx[3], get_right_slot_context);
+  return {
+    c() {
+      div3 = element("div");
+      div0 = element("div");
+      if (left_slot)
+        left_slot.c();
+      t0 = space();
+      div1 = element("div");
+      if (middle_slot)
+        middle_slot.c();
+      t1 = space();
+      div2 = element("div");
+      if (right_slot)
+        right_slot.c();
+      attr(div0, "class", "left");
+      attr(div1, "class", "middle svelte-1n16ix8");
+      attr(div2, "class", "right svelte-1n16ix8");
+      attr(div3, "class", "container svelte-1n16ix8");
+      add_render_callback(() => ctx[5].call(div3));
+      toggle_class(div3, "primary", ctx[0] === "primary");
+      toggle_class(div3, "secondary", ctx[0] === "secondary");
+      toggle_class(div3, "isMobile", ctx[2]);
+    },
+    m(target, anchor) {
+      insert(target, div3, anchor);
+      append(div3, div0);
+      if (left_slot) {
+        left_slot.m(div0, null);
+      }
+      append(div3, t0);
+      append(div3, div1);
+      if (middle_slot) {
+        middle_slot.m(div1, null);
+      }
+      append(div3, t1);
+      append(div3, div2);
+      if (right_slot) {
+        right_slot.m(div2, null);
+      }
+      div3_resize_listener = add_resize_listener(div3, ctx[5].bind(div3));
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (left_slot) {
+        if (left_slot.p && (!current || dirty & 8)) {
+          update_slot_base(left_slot, left_slot_template, ctx2, ctx2[3], !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(left_slot_template, ctx2[3], dirty, get_left_slot_changes), get_left_slot_context);
+        }
+      }
+      if (middle_slot) {
+        if (middle_slot.p && (!current || dirty & 8)) {
+          update_slot_base(middle_slot, middle_slot_template, ctx2, ctx2[3], !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(middle_slot_template, ctx2[3], dirty, get_middle_slot_changes), get_middle_slot_context);
+        }
+      }
+      if (right_slot) {
+        if (right_slot.p && (!current || dirty & 8)) {
+          update_slot_base(right_slot, right_slot_template, ctx2, ctx2[3], !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(right_slot_template, ctx2[3], dirty, get_right_slot_changes), get_right_slot_context);
+        }
+      }
+      if (!current || dirty & 1) {
+        toggle_class(div3, "primary", ctx2[0] === "primary");
+      }
+      if (!current || dirty & 1) {
+        toggle_class(div3, "secondary", ctx2[0] === "secondary");
+      }
+      if (!current || dirty & 4) {
+        toggle_class(div3, "isMobile", ctx2[2]);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(left_slot, local);
+      transition_in(middle_slot, local);
+      transition_in(right_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(left_slot, local);
+      transition_out(middle_slot, local);
+      transition_out(right_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div3);
+      if (left_slot)
+        left_slot.d(detaching);
+      if (middle_slot)
+        middle_slot.d(detaching);
+      if (right_slot)
+        right_slot.d(detaching);
+      div3_resize_listener();
+    }
+  };
+}
+function instance45($$self, $$props, $$invalidate) {
+  let isMobile;
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { variant } = $$props;
+  let clientWidth;
+  function div3_elementresize_handler() {
+    clientWidth = this.clientWidth;
+    $$invalidate(1, clientWidth);
+  }
+  $$self.$$set = ($$props2) => {
+    if ("variant" in $$props2)
+      $$invalidate(0, variant = $$props2.variant);
+    if ("$$scope" in $$props2)
+      $$invalidate(3, $$scope = $$props2.$$scope);
+  };
+  $$self.$$.update = () => {
+    if ($$self.$$.dirty & 2) {
+      $:
+        $$invalidate(2, isMobile = clientWidth < 480);
+    }
+  };
+  return [variant, clientWidth, isMobile, $$scope, slots, div3_elementresize_handler];
+}
+var ViewToolbar = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance45, create_fragment45, safe_not_equal, { variant: 0 }, add_css21);
+  }
+};
+var ViewToolbar_default = ViewToolbar;
+
 // src/app/toolbar/Toolbar.svelte
-function add_css20(target) {
-  append_styles(target, "svelte-odv2ec", "div.svelte-odv2ec{background-color:var(--tab-background-active);display:flex;align-items:center;padding:var(--size-4-2);gap:8px;border-bottom:1px solid var(--background-modifier-border);justify-content:space-between}");
+function create_left_slot(ctx) {
+  let projectselect;
+  let current;
+  projectselect = new ProjectSelect_default({
+    props: {
+      slot: "left",
+      projectId: ctx[1],
+      projects: ctx[0],
+      onProjectChange: ctx[2]
+    }
+  });
+  return {
+    c() {
+      create_component(projectselect.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(projectselect, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const projectselect_changes = {};
+      if (dirty & 2)
+        projectselect_changes.projectId = ctx2[1];
+      if (dirty & 1)
+        projectselect_changes.projects = ctx2[0];
+      if (dirty & 4)
+        projectselect_changes.onProjectChange = ctx2[2];
+      projectselect.$set(projectselect_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(projectselect.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(projectselect.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(projectselect, detaching);
+    }
+  };
 }
 function create_if_block11(ctx) {
   let viewselect;
@@ -30503,11 +38131,12 @@ function create_if_block11(ctx) {
     props: {
       viewId: ctx[3],
       views: ctx[6],
-      viewExists: ctx[11],
-      onViewSort: ctx[12],
-      onViewRename: ctx[13],
+      viewExists: ctx[12],
+      onViewSort: ctx[13],
+      onViewRename: ctx[14],
       onViewChange: ctx[4],
-      onViewDelete: ctx[14]
+      onViewDuplicate: ctx[15],
+      onViewDelete: ctx[16]
     }
   });
   return {
@@ -30525,15 +38154,17 @@ function create_if_block11(ctx) {
       if (dirty & 64)
         viewselect_changes.views = ctx2[6];
       if (dirty & 32)
-        viewselect_changes.viewExists = ctx2[11];
+        viewselect_changes.viewExists = ctx2[12];
       if (dirty & 2)
-        viewselect_changes.onViewSort = ctx2[12];
+        viewselect_changes.onViewSort = ctx2[13];
       if (dirty & 2)
-        viewselect_changes.onViewRename = ctx2[13];
+        viewselect_changes.onViewRename = ctx2[14];
       if (dirty & 16)
         viewselect_changes.onViewChange = ctx2[4];
+      if (dirty & 18)
+        viewselect_changes.onViewDuplicate = ctx2[15];
       if (dirty & 386)
-        viewselect_changes.onViewDelete = ctx2[14];
+        viewselect_changes.onViewDelete = ctx2[16];
       viewselect.$set(viewselect_changes);
     },
     i(local) {
@@ -30551,8 +38182,64 @@ function create_if_block11(ctx) {
     }
   };
 }
+function create_middle_slot(ctx) {
+  let div;
+  let current;
+  let if_block = ctx[5] && create_if_block11(ctx);
+  return {
+    c() {
+      div = element("div");
+      if (if_block)
+        if_block.c();
+      attr(div, "slot", "middle");
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      if (if_block)
+        if_block.m(div, null);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      if (ctx2[5]) {
+        if (if_block) {
+          if_block.p(ctx2, dirty);
+          if (dirty & 32) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block11(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(div, null);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(if_block);
+      current = true;
+    },
+    o(local) {
+      transition_out(if_block);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (if_block)
+        if_block.d();
+    }
+  };
+}
 function create_default_slot12(ctx) {
-  let t0_value = ctx[8].t("toolbar.new") + "";
+  let t0_value = ctx[7].t("toolbar.new") + "";
   let t0;
   let t1;
   let icon;
@@ -30573,7 +38260,7 @@ function create_default_slot12(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if ((!current || dirty & 256) && t0_value !== (t0_value = ctx2[8].t("toolbar.new") + ""))
+      if ((!current || dirty & 128) && t0_value !== (t0_value = ctx2[7].t("toolbar.new") + ""))
         set_data(t0, t0_value);
     },
     i(local) {
@@ -30595,80 +38282,29 @@ function create_default_slot12(ctx) {
     }
   };
 }
-function create_fragment41(ctx) {
-  let div;
-  let projectselect;
-  let t0;
-  let t1;
+function create_right_slot(ctx) {
   let button;
   let current;
-  projectselect = new ProjectSelect_default({
-    props: {
-      projectId: ctx[1],
-      projects: ctx[0],
-      onProjectChange: ctx[2]
-    }
-  });
-  let if_block = ctx[5] && create_if_block11(ctx);
   button = new Button_default({
     props: {
+      slot: "right",
       variant: "primary",
       $$slots: { default: [create_default_slot12] },
       $$scope: { ctx }
     }
   });
-  button.$on("click", ctx[15]);
+  button.$on("click", ctx[11]);
   return {
     c() {
-      div = element("div");
-      create_component(projectselect.$$.fragment);
-      t0 = space();
-      if (if_block)
-        if_block.c();
-      t1 = space();
       create_component(button.$$.fragment);
-      attr(div, "class", "svelte-odv2ec");
     },
     m(target, anchor) {
-      insert(target, div, anchor);
-      mount_component(projectselect, div, null);
-      append(div, t0);
-      if (if_block)
-        if_block.m(div, null);
-      append(div, t1);
-      mount_component(button, div, null);
+      mount_component(button, target, anchor);
       current = true;
     },
-    p(ctx2, [dirty]) {
-      const projectselect_changes = {};
-      if (dirty & 2)
-        projectselect_changes.projectId = ctx2[1];
-      if (dirty & 1)
-        projectselect_changes.projects = ctx2[0];
-      if (dirty & 4)
-        projectselect_changes.onProjectChange = ctx2[2];
-      projectselect.$set(projectselect_changes);
-      if (ctx2[5]) {
-        if (if_block) {
-          if_block.p(ctx2, dirty);
-          if (dirty & 32) {
-            transition_in(if_block, 1);
-          }
-        } else {
-          if_block = create_if_block11(ctx2);
-          if_block.c();
-          transition_in(if_block, 1);
-          if_block.m(div, t1);
-        }
-      } else if (if_block) {
-        group_outros();
-        transition_out(if_block, 1, 1, () => {
-          if_block = null;
-        });
-        check_outros();
-      }
+    p(ctx2, dirty) {
       const button_changes = {};
-      if (dirty & 65792) {
+      if (dirty & 131200) {
         button_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button.$set(button_changes);
@@ -30676,35 +38312,70 @@ function create_fragment41(ctx) {
     i(local) {
       if (current)
         return;
-      transition_in(projectselect.$$.fragment, local);
-      transition_in(if_block);
       transition_in(button.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(projectselect.$$.fragment, local);
-      transition_out(if_block);
       transition_out(button.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      if (detaching)
-        detach(div);
-      destroy_component(projectselect);
-      if (if_block)
-        if_block.d();
-      destroy_component(button);
+      destroy_component(button, detaching);
     }
   };
 }
-function instance41($$self, $$props, $$invalidate) {
+function create_fragment46(ctx) {
+  let viewtoolbar;
+  let current;
+  viewtoolbar = new ViewToolbar_default({
+    props: {
+      variant: "primary",
+      $$slots: {
+        right: [create_right_slot],
+        middle: [create_middle_slot],
+        left: [create_left_slot]
+      },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewtoolbar.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewtoolbar, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const viewtoolbar_changes = {};
+      if (dirty & 132095) {
+        viewtoolbar_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewtoolbar.$set(viewtoolbar_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewtoolbar.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewtoolbar.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewtoolbar, detaching);
+    }
+  };
+}
+function instance46($$self, $$props, $$invalidate) {
   let project;
   let views;
-  let $app;
   let $i18n;
+  let $app;
   let $api;
-  component_subscribe($$self, app, ($$value) => $$invalidate(7, $app = $$value));
-  component_subscribe($$self, i18n, ($$value) => $$invalidate(8, $i18n = $$value));
+  component_subscribe($$self, i18n, ($$value) => $$invalidate(7, $i18n = $$value));
+  component_subscribe($$self, app, ($$value) => $$invalidate(8, $app = $$value));
   component_subscribe($$self, api, ($$value) => $$invalidate(9, $api = $$value));
   var _a;
   let { projects } = $$props;
@@ -30712,26 +38383,8 @@ function instance41($$self, $$props, $$invalidate) {
   let { onProjectChange } = $$props;
   let { viewId } = $$props;
   let { onViewChange } = $$props;
-  const func7 = (name) => !!(project == null ? void 0 : project.views.find((view2) => view2.name === name));
-  const func_13 = (viewIds) => {
-    if (projectId) {
-      settings.sortViews(projectId, viewIds);
-    }
-  };
-  const func_2 = (viewId2, name) => {
-    if (projectId) {
-      settings.renameView(projectId, viewId2, name);
-    }
-  };
-  const func_3 = (viewId2) => {
-    new ConfirmDialogModal($app, $i18n.t("modals.view.delete.title"), $i18n.t("modals.view.delete.message"), $i18n.t("modals.view.delete.cta"), () => {
-      if (projectId) {
-        settings.deleteView(projectId, viewId2);
-      }
-    }).open();
-  };
   const click_handler = (event) => {
-    const menu = new import_obsidian25.Menu();
+    const menu = new import_obsidian26.Menu();
     menu.addItem((item) => {
       item.setTitle($i18n.t("modals.project.create.short-title")).setIcon("folder").onClick(() => {
         new CreateProjectModal($app, $i18n.t("modals.project.create.title"), $i18n.t("modals.project.create.cta"), (project2) => {
@@ -30763,6 +38416,30 @@ function instance41($$self, $$props, $$invalidate) {
     }
     menu.showAtMouseEvent(event);
   };
+  const func7 = (name) => !!(project == null ? void 0 : project.views.find((view2) => view2.name === name));
+  const func_14 = (viewIds) => {
+    if (projectId) {
+      settings.sortViews(projectId, viewIds);
+    }
+  };
+  const func_22 = (viewId2, name) => {
+    if (projectId) {
+      settings.renameView(projectId, viewId2, name);
+    }
+  };
+  const func_3 = (viewId2) => {
+    if (projectId) {
+      const id = settings.duplicateView(projectId, viewId2);
+      onViewChange(id);
+    }
+  };
+  const func_4 = (viewId2) => {
+    new ConfirmDialogModal($app, $i18n.t("modals.view.delete.title"), $i18n.t("modals.view.delete.message"), $i18n.t("modals.view.delete.cta"), () => {
+      if (projectId) {
+        settings.deleteView(projectId, viewId2);
+      }
+    }).open();
+  };
   $$self.$$set = ($$props2) => {
     if ("projects" in $$props2)
       $$invalidate(0, projects = $$props2.projects);
@@ -30793,33 +38470,34 @@ function instance41($$self, $$props, $$invalidate) {
     onViewChange,
     project,
     views,
-    $app,
     $i18n,
+    $app,
     $api,
     _a,
+    click_handler,
     func7,
-    func_13,
-    func_2,
+    func_14,
+    func_22,
     func_3,
-    click_handler
+    func_4
   ];
 }
 var Toolbar = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance41, create_fragment41, safe_not_equal, {
+    init(this, options, instance46, create_fragment46, safe_not_equal, {
       projects: 0,
       projectId: 1,
       onProjectChange: 2,
       viewId: 3,
       onViewChange: 4
-    }, add_css20);
+    });
   }
 };
 var Toolbar_default = Toolbar;
 
 // src/app/AppContainer.svelte
-function add_css21(target) {
+function add_css22(target) {
   append_styles(target, "svelte-gr1f73", ".projects-container.svelte-gr1f73{display:flex;flex-direction:column;height:100%}.projects-main.svelte-gr1f73{flex:1;display:flex;flex-direction:column;min-height:0}");
 }
 var get_default_slot_changes2 = (dirty) => ({
@@ -30830,7 +38508,7 @@ var get_default_slot_context2 = (ctx) => ({
   project: ctx[3],
   view: ctx[4]
 });
-function create_fragment42(ctx) {
+function create_fragment47(ctx) {
   var _a, _b;
   let div1;
   let toolbar;
@@ -30910,7 +38588,7 @@ function create_fragment42(ctx) {
     }
   };
 }
-function instance42($$self, $$props, $$invalidate) {
+function instance47($$self, $$props, $$invalidate) {
   let selectedProject;
   let views;
   let selectedView;
@@ -30924,7 +38602,7 @@ function instance42($$self, $$props, $$invalidate) {
     return project.dataview ? new DataviewDataSource(app2, project) : new FrontMatterDataSource(app2, project);
   }
   const func7 = (id) => $$invalidate(0, projectId = id);
-  const func_13 = (id) => $$invalidate(1, viewId = id);
+  const func_14 = (id) => $$invalidate(1, viewId = id);
   $$self.$$set = ($$props2) => {
     if ("projects" in $$props2)
       $$invalidate(2, projects = $$props2.projects);
@@ -30967,22 +38645,22 @@ function instance42($$self, $$props, $$invalidate) {
     $$scope,
     slots,
     func7,
-    func_13
+    func_14
   ];
 }
 var AppContainer = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance42, create_fragment42, safe_not_equal, { projects: 2, projectId: 0, viewId: 1 }, add_css21);
+    init(this, options, instance47, create_fragment47, safe_not_equal, { projects: 2, projectId: 0, viewId: 1 }, add_css22);
   }
 };
 var AppContainer_default = AppContainer;
 
 // src/views/Custom/CustomView.svelte
-function add_css22(target) {
+function add_css23(target) {
   append_styles(target, "svelte-9xlp1d", "div.svelte-9xlp1d{width:100%;height:100%;overflow:auto}");
 }
-function create_fragment43(ctx) {
+function create_fragment48(ctx) {
   let div;
   let useView_action;
   let mounted;
@@ -31029,7 +38707,7 @@ function create_fragment43(ctx) {
     }
   };
 }
-function instance43($$self, $$props, $$invalidate) {
+function instance48($$self, $$props, $$invalidate) {
   let $customViews;
   component_subscribe($$self, customViews, ($$value) => $$invalidate(8, $customViews = $$value));
   let { view: view2 } = $$props;
@@ -31105,7 +38783,7 @@ function instance43($$self, $$props, $$invalidate) {
 var CustomView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance43, create_fragment43, not_equal, {
+    init(this, options, instance48, create_fragment48, not_equal, {
       view: 0,
       api: 1,
       config: 2,
@@ -31113,13 +38791,13 @@ var CustomView = class extends SvelteComponent {
       frame: 4,
       project: 5,
       readonly: 6
-    }, add_css22);
+    }, add_css23);
   }
 };
 var CustomView_default = CustomView;
 
 // src/views/View/View.svelte
-function create_fragment44(ctx) {
+function create_fragment49(ctx) {
   let customview;
   let current;
   customview = new CustomView_default({
@@ -31172,7 +38850,7 @@ function create_fragment44(ctx) {
     }
   };
 }
-function instance44($$self, $$props, $$invalidate) {
+function instance49($$self, $$props, $$invalidate) {
   let { project } = $$props;
   let { view: view2 } = $$props;
   let { frame } = $$props;
@@ -31201,7 +38879,7 @@ function instance44($$self, $$props, $$invalidate) {
 var View = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance44, create_fragment44, safe_not_equal, {
+    init(this, options, instance49, create_fragment49, safe_not_equal, {
       project: 0,
       view: 1,
       frame: 2,
@@ -31214,16 +38892,16 @@ var View = class extends SvelteComponent {
 var View_default = View;
 
 // src/app/App.svelte
-function create_catch_block(ctx) {
+function create_catch_block_1(ctx) {
   let div;
   let callout;
   let current;
   callout = new Callout_default({
     props: {
-      title: ctx[14].name,
+      title: ctx[15].name,
       icon: "zap",
       variant: "danger",
-      $$slots: { default: [create_default_slot_16] },
+      $$slots: { default: [create_default_slot_17] },
       $$scope: { ctx }
     }
   });
@@ -31241,8 +38919,8 @@ function create_catch_block(ctx) {
     p(ctx2, dirty) {
       const callout_changes = {};
       if (dirty & 8)
-        callout_changes.title = ctx2[14].name;
-      if (dirty & 32776) {
+        callout_changes.title = ctx2[15].name;
+      if (dirty & 65544) {
         callout_changes.$$scope = { dirty, ctx: ctx2 };
       }
       callout.$set(callout_changes);
@@ -31265,7 +38943,7 @@ function create_catch_block(ctx) {
   };
 }
 function create_default_slot_26(ctx) {
-  let t_value = ctx[14].message + "";
+  let t_value = ctx[15].message + "";
   let t3;
   return {
     c() {
@@ -31275,7 +38953,7 @@ function create_default_slot_26(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty & 8 && t_value !== (t_value = ctx2[14].message + ""))
+      if (dirty & 8 && t_value !== (t_value = ctx2[15].message + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -31284,7 +38962,7 @@ function create_default_slot_26(ctx) {
     }
   };
 }
-function create_default_slot_16(ctx) {
+function create_default_slot_17(ctx) {
   let typography;
   let current;
   typography = new Typography_default({
@@ -31304,7 +38982,7 @@ function create_default_slot_16(ctx) {
     },
     p(ctx2, dirty) {
       const typography_changes = {};
-      if (dirty & 32776) {
+      if (dirty & 65544) {
         typography_changes.$$scope = { dirty, ctx: ctx2 };
       }
       typography.$set(typography_changes);
@@ -31324,10 +39002,10 @@ function create_default_slot_16(ctx) {
     }
   };
 }
-function create_then_block(ctx) {
+function create_then_block_1(ctx) {
   let if_block_anchor;
   let current;
-  let if_block = ctx[12] && ctx[13] && ctx[0] && create_if_block12(ctx);
+  let if_block = ctx[13] && ctx[14] && ctx[0] && create_if_block12(ctx);
   return {
     c() {
       if (if_block)
@@ -31341,10 +39019,10 @@ function create_then_block(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if (ctx2[12] && ctx2[13] && ctx2[0]) {
+      if (ctx2[13] && ctx2[14] && ctx2[0]) {
         if (if_block) {
           if_block.p(ctx2, dirty);
-          if (dirty & 12289) {
+          if (dirty & 24577) {
             transition_in(if_block, 1);
           }
         } else {
@@ -31384,8 +39062,8 @@ function create_if_block12(ctx) {
   let current;
   view2 = new View_default({
     props: {
-      project: ctx[12],
-      view: ctx[13],
+      project: ctx[13],
+      view: ctx[14],
       readonly: ctx[0].readonly(),
       api: new ViewApi(ctx[5], ctx[0], ctx[6]),
       onConfigChange: settings.updateViewConfig,
@@ -31402,10 +39080,10 @@ function create_if_block12(ctx) {
     },
     p(ctx2, dirty) {
       const view_changes = {};
-      if (dirty & 4096)
-        view_changes.project = ctx2[12];
       if (dirty & 8192)
-        view_changes.view = ctx2[13];
+        view_changes.project = ctx2[13];
+      if (dirty & 16384)
+        view_changes.view = ctx2[14];
       if (dirty & 1)
         view_changes.readonly = ctx2[0].readonly();
       if (dirty & 97)
@@ -31430,6 +39108,67 @@ function create_if_block12(ctx) {
   };
 }
 function create_pending_block(ctx) {
+  let await_block_anchor;
+  let promise;
+  let current;
+  let info = {
+    ctx,
+    current: null,
+    token: null,
+    hasCatch: false,
+    pending: create_pending_block_1,
+    then: create_then_block,
+    catch: create_catch_block,
+    blocks: [, , ,]
+  };
+  handle_promise(promise = ctx[8](), info);
+  return {
+    c() {
+      await_block_anchor = empty();
+      info.block.c();
+    },
+    m(target, anchor) {
+      insert(target, await_block_anchor, anchor);
+      info.block.m(target, info.anchor = anchor);
+      info.mount = () => await_block_anchor.parentNode;
+      info.anchor = await_block_anchor;
+      current = true;
+    },
+    p(new_ctx, dirty) {
+      ctx = new_ctx;
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(info.block);
+      current = true;
+    },
+    o(local) {
+      for (let i2 = 0; i2 < 3; i2 += 1) {
+        const block = info.blocks[i2];
+        transition_out(block);
+      }
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(await_block_anchor);
+      info.block.d(detaching);
+      info.token = null;
+      info = null;
+    }
+  };
+}
+function create_catch_block(ctx) {
+  return {
+    c: noop,
+    m: noop,
+    i: noop,
+    o: noop,
+    d: noop
+  };
+}
+function create_then_block(ctx) {
   let loading;
   let current;
   loading = new Loading_default({});
@@ -31441,7 +39180,6 @@ function create_pending_block(ctx) {
       mount_component(loading, target, anchor);
       current = true;
     },
-    p: noop,
     i(local) {
       if (current)
         return;
@@ -31457,6 +39195,15 @@ function create_pending_block(ctx) {
     }
   };
 }
+function create_pending_block_1(ctx) {
+  return {
+    c: noop,
+    m: noop,
+    i: noop,
+    o: noop,
+    d: noop
+  };
+}
 function create_default_slot13(ctx) {
   let await_block_anchor;
   let promise;
@@ -31467,9 +39214,9 @@ function create_default_slot13(ctx) {
     token: null,
     hasCatch: true,
     pending: create_pending_block,
-    then: create_then_block,
-    catch: create_catch_block,
-    error: 14,
+    then: create_then_block_1,
+    catch: create_catch_block_1,
+    error: 15,
     blocks: [, , ,]
   };
   handle_promise(promise = ctx[3], info);
@@ -31515,24 +39262,24 @@ function create_default_slot13(ctx) {
     }
   };
 }
-function create_fragment45(ctx) {
+function create_fragment50(ctx) {
   let appcontainer;
   let updating_projectId;
   let updating_viewId;
   let current;
   function appcontainer_projectId_binding(value) {
-    ctx[9](value);
+    ctx[10](value);
   }
   function appcontainer_viewId_binding(value) {
-    ctx[10](value);
+    ctx[11](value);
   }
   let appcontainer_props = {
     projects: ctx[4],
     $$slots: {
       default: [
         create_default_slot13,
-        ({ project, view: view2 }) => ({ 12: project, 13: view2 }),
-        ({ project, view: view2 }) => (project ? 4096 : 0) | (view2 ? 8192 : 0)
+        ({ project, view: view2 }) => ({ 13: project, 14: view2 }),
+        ({ project, view: view2 }) => (project ? 8192 : 0) | (view2 ? 16384 : 0)
       ]
     },
     $$scope: { ctx }
@@ -31558,7 +39305,7 @@ function create_fragment45(ctx) {
       const appcontainer_changes = {};
       if (dirty & 16)
         appcontainer_changes.projects = ctx2[4];
-      if (dirty & 45289) {
+      if (dirty & 90345) {
         appcontainer_changes.$$scope = { dirty, ctx: ctx2 };
       }
       if (!updating_projectId && dirty & 2) {
@@ -31588,7 +39335,7 @@ function create_fragment45(ctx) {
     }
   };
 }
-function instance45($$self, $$props, $$invalidate) {
+function instance50($$self, $$props, $$invalidate) {
   let projects;
   let $app;
   let $i18n;
@@ -31597,9 +39344,9 @@ function instance45($$self, $$props, $$invalidate) {
   let $api;
   let $dataFrame;
   component_subscribe($$self, app, ($$value) => $$invalidate(5, $app = $$value));
-  component_subscribe($$self, i18n, ($$value) => $$invalidate(11, $i18n = $$value));
+  component_subscribe($$self, i18n, ($$value) => $$invalidate(12, $i18n = $$value));
   component_subscribe($$self, dataSource, ($$value) => $$invalidate(0, $dataSource = $$value));
-  component_subscribe($$self, settings, ($$value) => $$invalidate(8, $settings = $$value));
+  component_subscribe($$self, settings, ($$value) => $$invalidate(9, $settings = $$value));
   component_subscribe($$self, api, ($$value) => $$invalidate(6, $api = $$value));
   component_subscribe($$self, dataFrame, ($$value) => $$invalidate(7, $dataFrame = $$value));
   let projectId;
@@ -31614,6 +39361,7 @@ function instance45($$self, $$props, $$invalidate) {
       }).open();
     }
   });
+  const wait = () => new Promise((res) => setTimeout(res, 500));
   function appcontainer_projectId_binding(value) {
     projectId = value;
     $$invalidate(1, projectId);
@@ -31623,7 +39371,7 @@ function instance45($$self, $$props, $$invalidate) {
     $$invalidate(2, viewId);
   }
   $$self.$$.update = () => {
-    if ($$self.$$.dirty & 256) {
+    if ($$self.$$.dirty & 512) {
       $:
         $$invalidate(4, { projects } = $settings, projects);
     }
@@ -31646,6 +39394,7 @@ function instance45($$self, $$props, $$invalidate) {
     $app,
     $api,
     $dataFrame,
+    wait,
     $settings,
     appcontainer_projectId_binding,
     appcontainer_viewId_binding
@@ -31654,7 +39403,7 @@ function instance45($$self, $$props, $$invalidate) {
 var App8 = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance45, create_fragment45, safe_not_equal, {});
+    init(this, options, instance50, create_fragment50, safe_not_equal, {});
   }
 };
 var App_default = App8;
@@ -31679,7 +39428,7 @@ var ProjectView = class {
 var import_path = __toModule(require("path"));
 
 // src/components/Field/Field.svelte
-function add_css23(target) {
+function add_css24(target) {
   append_styles(target, "svelte-gtpy0j", "div.svelte-gtpy0j{display:flex;align-items:center;justify-content:flex-end;gap:8px}");
 }
 function create_default_slot14(ctx) {
@@ -31701,7 +39450,7 @@ function create_default_slot14(ctx) {
     }
   };
 }
-function create_fragment46(ctx) {
+function create_fragment51(ctx) {
   let div;
   let typography;
   let t3;
@@ -31767,7 +39516,7 @@ function create_fragment46(ctx) {
     }
   };
 }
-function instance46($$self, $$props, $$invalidate) {
+function instance51($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { name } = $$props;
   $$self.$$set = ($$props2) => {
@@ -31781,102 +39530,16 @@ function instance46($$self, $$props, $$invalidate) {
 var Field = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance46, create_fragment46, safe_not_equal, { name: 0 }, add_css23);
+    init(this, options, instance51, create_fragment51, safe_not_equal, { name: 0 }, add_css24);
   }
 };
 var Field_default = Field;
 
-// src/components/HorizontalGroup/HorizontalGroup.svelte
-function add_css24(target) {
-  append_styles(target, "svelte-j9o14g", "div.svelte-j9o14g{display:flex;gap:8px}.padding.svelte-j9o14g{padding:8px}.fullWidth.svelte-j9o14g{width:100%;justify-content:space-between}");
-}
-function create_fragment47(ctx) {
-  let div;
-  let div_style_value;
-  let current;
-  const default_slot_template = ctx[4].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[3], null);
-  return {
-    c() {
-      div = element("div");
-      if (default_slot)
-        default_slot.c();
-      attr(div, "style", div_style_value = `align-items: ${ctx[1]}`);
-      attr(div, "class", "svelte-j9o14g");
-      toggle_class(div, "padding", ctx[2]);
-      toggle_class(div, "fullWidth", ctx[0]);
-    },
-    m(target, anchor) {
-      insert(target, div, anchor);
-      if (default_slot) {
-        default_slot.m(div, null);
-      }
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & 8)) {
-          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[3], !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(default_slot_template, ctx2[3], dirty, null), null);
-        }
-      }
-      if (!current || dirty & 2 && div_style_value !== (div_style_value = `align-items: ${ctx2[1]}`)) {
-        attr(div, "style", div_style_value);
-      }
-      if (!current || dirty & 4) {
-        toggle_class(div, "padding", ctx2[2]);
-      }
-      if (!current || dirty & 1) {
-        toggle_class(div, "fullWidth", ctx2[0]);
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(default_slot, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(default_slot, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(div);
-      if (default_slot)
-        default_slot.d(detaching);
-    }
-  };
-}
-function instance47($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  let { fullWidth = false } = $$props;
-  let { alignItems = "center" } = $$props;
-  let { padding = false } = $$props;
-  $$self.$$set = ($$props2) => {
-    if ("fullWidth" in $$props2)
-      $$invalidate(0, fullWidth = $$props2.fullWidth);
-    if ("alignItems" in $$props2)
-      $$invalidate(1, alignItems = $$props2.alignItems);
-    if ("padding" in $$props2)
-      $$invalidate(2, padding = $$props2.padding);
-    if ("$$scope" in $$props2)
-      $$invalidate(3, $$scope = $$props2.$$scope);
-  };
-  return [fullWidth, alignItems, padding, $$scope, slots];
-}
-var HorizontalGroup = class extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance47, create_fragment47, safe_not_equal, { fullWidth: 0, alignItems: 1, padding: 2 }, add_css24);
-  }
-};
-var HorizontalGroup_default = HorizontalGroup;
-
-// src/components/ToolBar/ToolBar.svelte
+// src/components/Layout/ViewContent.svelte
 function add_css25(target) {
-  append_styles(target, "svelte-xm9s5o", "div.svelte-xm9s5o{display:flex;align-items:center;padding:8px;background-color:var(--background-secondary);border-bottom:1px solid var(--background-modifier-border);justify-content:space-between}");
+  append_styles(target, "svelte-ldfkf", "div.svelte-ldfkf{flex:1;overflow:auto}");
 }
-function create_fragment48(ctx) {
+function create_fragment52(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -31886,7 +39549,7 @@ function create_fragment48(ctx) {
       div = element("div");
       if (default_slot)
         default_slot.c();
-      attr(div, "class", "svelte-xm9s5o");
+      attr(div, "class", "svelte-ldfkf");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -31920,7 +39583,7 @@ function create_fragment48(ctx) {
     }
   };
 }
-function instance48($$self, $$props, $$invalidate) {
+function instance52($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -31928,19 +39591,143 @@ function instance48($$self, $$props, $$invalidate) {
   };
   return [$$scope, slots];
 }
-var ToolBar = class extends SvelteComponent {
+var ViewContent = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance48, create_fragment48, safe_not_equal, {}, add_css25);
+    init(this, options, instance52, create_fragment52, safe_not_equal, {}, add_css25);
   }
 };
-var ToolBar_default = ToolBar;
+var ViewContent_default = ViewContent;
+
+// src/components/Layout/ViewHeader.svelte
+function create_fragment53(ctx) {
+  let div;
+  let current;
+  const default_slot_template = ctx[1].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[0], null);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 1)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[0], !current ? get_all_dirty_from_scope(ctx2[0]) : get_slot_changes(default_slot_template, ctx2[0], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance53($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("$$scope" in $$props2)
+      $$invalidate(0, $$scope = $$props2.$$scope);
+  };
+  return [$$scope, slots];
+}
+var ViewHeader = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance53, create_fragment53, safe_not_equal, {});
+  }
+};
+var ViewHeader_default = ViewHeader;
+
+// src/components/Layout/ViewLayout.svelte
+function add_css26(target) {
+  append_styles(target, "svelte-vsdhnm", "div.svelte-vsdhnm{height:100%;display:flex;flex-direction:column}");
+}
+function create_fragment54(ctx) {
+  let div;
+  let current;
+  const default_slot_template = ctx[1].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[0], null);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      attr(div, "class", "svelte-vsdhnm");
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 1)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[0], !current ? get_all_dirty_from_scope(ctx2[0]) : get_slot_changes(default_slot_template, ctx2[0], dirty, null), null);
+        }
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance54($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("$$scope" in $$props2)
+      $$invalidate(0, $$scope = $$props2.$$scope);
+  };
+  return [$$scope, slots];
+}
+var ViewLayout = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance54, create_fragment54, safe_not_equal, {}, add_css26);
+  }
+};
+var ViewLayout_default = ViewLayout;
 
 // src/modals/components/CenterBox.svelte
-function add_css26(target) {
+function add_css27(target) {
   append_styles(target, "svelte-8ezeao", "div.svelte-8ezeao{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex:1}");
 }
-function create_fragment49(ctx) {
+function create_fragment55(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -31984,7 +39771,7 @@ function create_fragment49(ctx) {
     }
   };
 }
-function instance49($$self, $$props, $$invalidate) {
+function instance55($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -31995,19 +39782,19 @@ function instance49($$self, $$props, $$invalidate) {
 var CenterBox = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance49, create_fragment49, safe_not_equal, {}, add_css26);
+    init(this, options, instance55, create_fragment55, safe_not_equal, {}, add_css27);
   }
 };
 var CenterBox_default = CenterBox;
 
 // src/modals/edit-note-modal.ts
-var import_obsidian31 = __toModule(require("obsidian"));
+var import_obsidian32 = __toModule(require("obsidian"));
 
 // src/modals/input-dialog.ts
-var import_obsidian29 = __toModule(require("obsidian"));
+var import_obsidian30 = __toModule(require("obsidian"));
 
 // src/modals/components/InputDialog.svelte
-function add_css27(target) {
+function add_css28(target) {
   append_styles(target, "svelte-gwqplq", "input.svelte-gwqplq{width:100%}");
 }
 function create_default_slot_46(ctx) {
@@ -32085,7 +39872,7 @@ function create_default_slot_27(ctx) {
     }
   };
 }
-function create_default_slot_17(ctx) {
+function create_default_slot_18(ctx) {
   let button0;
   let t3;
   let button1;
@@ -32162,7 +39949,7 @@ function create_default_slot15(ctx) {
   });
   modalbuttongroup = new ModalButtonGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_17] },
+      $$slots: { default: [create_default_slot_18] },
       $$scope: { ctx }
     }
   });
@@ -32210,7 +39997,7 @@ function create_default_slot15(ctx) {
     }
   };
 }
-function create_fragment50(ctx) {
+function create_fragment56(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
@@ -32252,7 +40039,7 @@ function create_fragment50(ctx) {
     }
   };
 }
-function instance50($$self, $$props, $$invalidate) {
+function instance56($$self, $$props, $$invalidate) {
   let $i18n;
   component_subscribe($$self, i18n, ($$value) => $$invalidate(6, $i18n = $$value));
   let { value } = $$props;
@@ -32308,19 +40095,19 @@ function instance50($$self, $$props, $$invalidate) {
 var InputDialog = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance50, create_fragment50, safe_not_equal, {
+    init(this, options, instance56, create_fragment56, safe_not_equal, {
       value: 0,
       message: 1,
       cta: 2,
       onSubmit: 3,
       onCancel: 4
-    }, add_css27);
+    }, add_css28);
   }
 };
 var InputDialog_default = InputDialog;
 
 // src/modals/input-dialog.ts
-var InputDialogModal = class extends import_obsidian29.Modal {
+var InputDialogModal = class extends import_obsidian30.Modal {
   constructor(app2, message, cta, onSubmit, value) {
     super(app2);
     this.message = message;
@@ -32354,7 +40141,7 @@ var InputDialogModal = class extends import_obsidian29.Modal {
 };
 
 // src/components/TagList/TagList.svelte
-function add_css28(target) {
+function add_css29(target) {
   append_styles(target, "svelte-8h9y9", "div.svelte-8h9y9{display:flex;align-items:center;gap:4px;overflow:hidden;padding:4px}.edit.svelte-8h9y9{flex-wrap:wrap}");
 }
 function get_each_context_1(ctx, list, i2) {
@@ -32516,7 +40303,7 @@ function create_if_block13(ctx) {
     }
   };
 }
-function create_default_slot_18(ctx) {
+function create_default_slot_19(ctx) {
   let t_value = ctx[6] + "";
   let t3;
   return {
@@ -32541,7 +40328,7 @@ function create_each_block_1(ctx) {
   let current;
   tag = new Tag_default({
     props: {
-      $$slots: { default: [create_default_slot_18] },
+      $$slots: { default: [create_default_slot_19] },
       $$scope: { ctx }
     }
   });
@@ -32667,7 +40454,7 @@ function create_each_block6(ctx) {
     }
   };
 }
-function create_fragment51(ctx) {
+function create_fragment57(ctx) {
   let div;
   let current_block_type_index;
   let if_block;
@@ -32735,7 +40522,7 @@ function create_fragment51(ctx) {
     }
   };
 }
-function instance51($$self, $$props, $$invalidate) {
+function instance57($$self, $$props, $$invalidate) {
   let $app;
   component_subscribe($$self, app, ($$value) => $$invalidate(3, $app = $$value));
   let { values } = $$props;
@@ -32763,7 +40550,7 @@ function instance51($$self, $$props, $$invalidate) {
 var TagList = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance51, create_fragment51, safe_not_equal, { values: 0, edit: 1, onChange: 2 }, add_css28);
+    init(this, options, instance57, create_fragment57, safe_not_equal, { values: 0, edit: 1, onChange: 2 }, add_css29);
   }
 };
 var TagList_default = TagList;
@@ -33005,7 +40792,7 @@ function create_if_block14(ctx) {
     }
   };
 }
-function create_fragment52(ctx) {
+function create_fragment58(ctx) {
   let show_if;
   let current_block_type_index;
   let if_block;
@@ -33104,7 +40891,7 @@ function create_fragment52(ctx) {
     }
   };
 }
-function instance52($$self, $$props, $$invalidate) {
+function instance58($$self, $$props, $$invalidate) {
   let { type } = $$props;
   let { value } = $$props;
   let { onChange } = $$props;
@@ -33143,7 +40930,7 @@ function instance52($$self, $$props, $$invalidate) {
 var FieldControl = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance52, create_fragment52, safe_not_equal, {
+    init(this, options, instance58, create_fragment58, safe_not_equal, {
       type: 0,
       value: 1,
       onChange: 2,
@@ -33440,7 +41227,7 @@ function create_default_slot_28(ctx) {
     }
   };
 }
-function create_default_slot_19(ctx) {
+function create_default_slot_110(ctx) {
   let button;
   let current;
   button = new Button_default({
@@ -33494,7 +41281,7 @@ function create_default_slot17(ctx) {
   });
   modalbuttongroup = new ModalButtonGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_19] },
+      $$slots: { default: [create_default_slot_110] },
       $$scope: { ctx }
     }
   });
@@ -33542,7 +41329,7 @@ function create_default_slot17(ctx) {
     }
   };
 }
-function create_fragment53(ctx) {
+function create_fragment59(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
@@ -33584,7 +41371,7 @@ function create_fragment53(ctx) {
     }
   };
 }
-function instance53($$self, $$props, $$invalidate) {
+function instance59($$self, $$props, $$invalidate) {
   let editableFields;
   let $i18n;
   component_subscribe($$self, i18n, ($$value) => $$invalidate(3, $i18n = $$value));
@@ -33618,13 +41405,13 @@ function instance53($$self, $$props, $$invalidate) {
 var EditNote = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance53, create_fragment53, safe_not_equal, { fields: 4, record: 0, onSave: 1 });
+    init(this, options, instance59, create_fragment59, safe_not_equal, { fields: 4, record: 0, onSave: 1 });
   }
 };
 var EditNote_default = EditNote;
 
 // src/modals/edit-note-modal.ts
-var EditNoteModal = class extends import_obsidian31.Modal {
+var EditNoteModal = class extends import_obsidian32.Modal {
   constructor(app2, fields, onSave, defaults2) {
     super(app2);
     this.fields = fields;
@@ -33660,10 +41447,10 @@ function fieldToSelectableValue(field) {
 }
 
 // src/views/Gallery/components/Card/Card.svelte
-function add_css29(target) {
+function add_css30(target) {
   append_styles(target, "svelte-xq218h", "div.svelte-xq218h{background-color:var(--background-secondary);border-radius:var(--radius-s);border:1px solid var(--background-modifier-border);padding:0;margin:0}div.svelte-xq218h:hover{border:1px solid var(--background-modifier-border-hover)}");
 }
-function create_fragment54(ctx) {
+function create_fragment60(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -33707,7 +41494,7 @@ function create_fragment54(ctx) {
     }
   };
 }
-function instance54($$self, $$props, $$invalidate) {
+function instance60($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -33715,19 +41502,19 @@ function instance54($$self, $$props, $$invalidate) {
   };
   return [$$scope, slots];
 }
-var Card = class extends SvelteComponent {
+var Card2 = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance54, create_fragment54, safe_not_equal, {}, add_css29);
+    init(this, options, instance60, create_fragment60, safe_not_equal, {}, add_css30);
   }
 };
-var Card_default2 = Card;
+var Card_default2 = Card2;
 
 // src/views/Gallery/components/Card/CardContent.svelte
-function add_css30(target) {
+function add_css31(target) {
   append_styles(target, "svelte-1rhoaa0", "div.svelte-1rhoaa0{padding:8px}");
 }
-function create_fragment55(ctx) {
+function create_fragment61(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -33771,7 +41558,7 @@ function create_fragment55(ctx) {
     }
   };
 }
-function instance55($$self, $$props, $$invalidate) {
+function instance61($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -33782,16 +41569,16 @@ function instance55($$self, $$props, $$invalidate) {
 var CardContent = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance55, create_fragment55, safe_not_equal, {}, add_css30);
+    init(this, options, instance61, create_fragment61, safe_not_equal, {}, add_css31);
   }
 };
 var CardContent_default = CardContent;
 
 // src/views/Gallery/components/Card/CardMedia.svelte
-function add_css31(target) {
+function add_css32(target) {
   append_styles(target, "svelte-1ur9trs", "div.svelte-1ur9trs{height:180px;border-top-left-radius:4px;border-top-right-radius:4px;display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--background-modifier-border)}");
 }
-function create_fragment56(ctx) {
+function create_fragment62(ctx) {
   let div;
   let current;
   let mounted;
@@ -33843,7 +41630,7 @@ function create_fragment56(ctx) {
     }
   };
 }
-function instance56($$self, $$props, $$invalidate) {
+function instance62($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   function click_handler(event) {
     bubble.call(this, $$self, event);
@@ -33857,16 +41644,16 @@ function instance56($$self, $$props, $$invalidate) {
 var CardMedia = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance56, create_fragment56, safe_not_equal, {}, add_css31);
+    init(this, options, instance62, create_fragment62, safe_not_equal, {}, add_css32);
   }
 };
 var CardMedia_default = CardMedia;
 
 // src/views/Gallery/components/Grid/Grid.svelte
-function add_css32(target) {
+function add_css33(target) {
   append_styles(target, "svelte-29f12s", "div.svelte-29f12s{display:grid;gap:24px;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr))}");
 }
-function create_fragment57(ctx) {
+function create_fragment63(ctx) {
   let div;
   let current;
   const default_slot_template = ctx[1].default;
@@ -33910,7 +41697,7 @@ function create_fragment57(ctx) {
     }
   };
 }
-function instance57($$self, $$props, $$invalidate) {
+function instance63($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -33921,16 +41708,16 @@ function instance57($$self, $$props, $$invalidate) {
 var Grid = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance57, create_fragment57, safe_not_equal, {}, add_css32);
+    init(this, options, instance63, create_fragment63, safe_not_equal, {}, add_css33);
   }
 };
 var Grid_default = Grid;
 
 // src/views/Gallery/components/Image/Image.svelte
-function add_css33(target) {
+function add_css34(target) {
   append_styles(target, "svelte-ol6m5s", "img.svelte-ol6m5s{width:100%;height:100%;border-top-left-radius:4px;border-top-right-radius:4px}");
 }
-function create_fragment58(ctx) {
+function create_fragment64(ctx) {
   let img;
   let img_src_value;
   return {
@@ -33940,7 +41727,7 @@ function create_fragment58(ctx) {
       if (!src_url_equal(img.src, img_src_value = ctx[1]))
         attr(img, "src", img_src_value);
       attr(img, "class", "svelte-ol6m5s");
-      set_style(img, "object-fit", ctx[2], false);
+      set_style(img, "object-fit", ctx[2]);
     },
     m(target, anchor) {
       insert(target, img, anchor);
@@ -33953,7 +41740,7 @@ function create_fragment58(ctx) {
         attr(img, "src", img_src_value);
       }
       if (dirty & 4) {
-        set_style(img, "object-fit", ctx2[2], false);
+        set_style(img, "object-fit", ctx2[2]);
       }
     },
     i: noop,
@@ -33964,7 +41751,7 @@ function create_fragment58(ctx) {
     }
   };
 }
-function instance58($$self, $$props, $$invalidate) {
+function instance64($$self, $$props, $$invalidate) {
   let { alt } = $$props;
   let { src } = $$props;
   let { fit } = $$props;
@@ -33981,14 +41768,14 @@ function instance58($$self, $$props, $$invalidate) {
 var Image = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance58, create_fragment58, safe_not_equal, { alt: 0, src: 1, fit: 2 }, add_css33);
+    init(this, options, instance64, create_fragment64, safe_not_equal, { alt: 0, src: 1, fit: 2 }, add_css34);
   }
 };
 var Image_default = Image;
 
 // src/views/Gallery/GalleryView.svelte
-function add_css34(target) {
-  append_styles(target, "svelte-kexq1g", "div.svelte-kexq1g{height:100%;padding:24px;overflow:auto}");
+function add_css35(target) {
+  append_styles(target, "svelte-3pi9m0", "div.svelte-3pi9m0{padding:24px}");
 }
 function get_each_context8(ctx, list, i2) {
   const child_ctx = ctx.slice();
@@ -33999,7 +41786,7 @@ function get_context(ctx) {
   const constants_0 = ctx[5](ctx[18]);
   ctx[21] = constants_0;
 }
-function create_default_slot_92(ctx) {
+function create_default_slot_102(ctx) {
   var _a, _b, _c;
   let select;
   let current;
@@ -34046,13 +41833,13 @@ function create_default_slot_92(ctx) {
     }
   };
 }
-function create_default_slot_82(ctx) {
+function create_right_slot2(ctx) {
   let field;
   let current;
   field = new Field_default({
     props: {
       name: ctx[4].t("views.gallery.fields.cover"),
-      $$slots: { default: [create_default_slot_92] },
+      $$slots: { default: [create_default_slot_102] },
       $$scope: { ctx }
     }
   });
@@ -34088,52 +41875,43 @@ function create_default_slot_82(ctx) {
     }
   };
 }
-function create_default_slot_73(ctx) {
-  let p2;
-  let t3;
-  let horizontalgroup;
+function create_default_slot_92(ctx) {
+  let viewtoolbar;
   let current;
-  horizontalgroup = new HorizontalGroup_default({
+  viewtoolbar = new ViewToolbar_default({
     props: {
-      $$slots: { default: [create_default_slot_82] },
+      variant: "secondary",
+      $$slots: { right: [create_right_slot2] },
       $$scope: { ctx }
     }
   });
   return {
     c() {
-      p2 = element("p");
-      t3 = space();
-      create_component(horizontalgroup.$$.fragment);
+      create_component(viewtoolbar.$$.fragment);
     },
     m(target, anchor) {
-      insert(target, p2, anchor);
-      insert(target, t3, anchor);
-      mount_component(horizontalgroup, target, anchor);
+      mount_component(viewtoolbar, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const horizontalgroup_changes = {};
+      const viewtoolbar_changes = {};
       if (dirty & 4194323) {
-        horizontalgroup_changes.$$scope = { dirty, ctx: ctx2 };
+        viewtoolbar_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      horizontalgroup.$set(horizontalgroup_changes);
+      viewtoolbar.$set(viewtoolbar_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(horizontalgroup.$$.fragment, local);
+      transition_in(viewtoolbar.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(horizontalgroup.$$.fragment, local);
+      transition_out(viewtoolbar.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      if (detaching)
-        detach(p2);
-      if (detaching)
-        detach(t3);
-      destroy_component(horizontalgroup, detaching);
+      destroy_component(viewtoolbar, detaching);
     }
   };
 }
@@ -34142,7 +41920,7 @@ function create_else_block_1(ctx) {
   let current;
   centerbox = new CenterBox_default({
     props: {
-      $$slots: { default: [create_default_slot_57] },
+      $$slots: { default: [create_default_slot_73] },
       $$scope: { ctx }
     }
   });
@@ -34182,7 +41960,7 @@ function create_if_block16(ctx) {
   let current;
   grid = new Grid_default({
     props: {
-      $$slots: { default: [create_default_slot18] },
+      $$slots: { default: [create_default_slot_29] },
       $$scope: { ctx }
     }
   });
@@ -34190,7 +41968,7 @@ function create_if_block16(ctx) {
     c() {
       div = element("div");
       create_component(grid.$$.fragment);
-      attr(div, "class", "svelte-kexq1g");
+      attr(div, "class", "svelte-3pi9m0");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -34221,7 +41999,7 @@ function create_if_block16(ctx) {
     }
   };
 }
-function create_default_slot_65(ctx) {
+function create_default_slot_82(ctx) {
   let t_value = ctx[4].t("views.gallery.empty") + "";
   let t3;
   return {
@@ -34241,13 +42019,13 @@ function create_default_slot_65(ctx) {
     }
   };
 }
-function create_default_slot_57(ctx) {
+function create_default_slot_73(ctx) {
   let typography;
   let current;
   typography = new Typography_default({
     props: {
       variant: "h5",
-      $$slots: { default: [create_default_slot_65] },
+      $$slots: { default: [create_default_slot_82] },
       $$scope: { ctx }
     }
   });
@@ -34348,7 +42126,7 @@ function create_if_block_18(ctx) {
     }
   };
 }
-function create_default_slot_48(ctx) {
+function create_default_slot_65(ctx) {
   get_context(ctx);
   let current_block_type_index;
   let if_block;
@@ -34413,7 +42191,7 @@ function create_default_slot_48(ctx) {
     }
   };
 }
-function create_default_slot_38(ctx) {
+function create_default_slot_57(ctx) {
   let t_value = ctx[6](ctx[18]) + "";
   let t3;
   return {
@@ -34433,7 +42211,7 @@ function create_default_slot_38(ctx) {
     }
   };
 }
-function create_default_slot_29(ctx) {
+function create_default_slot_48(ctx) {
   let internallink;
   let current;
   function open_handler(...args) {
@@ -34444,7 +42222,7 @@ function create_default_slot_29(ctx) {
       linkText: ctx[18].id,
       sourcePath: "",
       resolved: true,
-      $$slots: { default: [create_default_slot_38] },
+      $$slots: { default: [create_default_slot_57] },
       $$scope: { ctx }
     }
   });
@@ -34482,7 +42260,7 @@ function create_default_slot_29(ctx) {
     }
   };
 }
-function create_default_slot_110(ctx) {
+function create_default_slot_38(ctx) {
   let cardmedia;
   let t0;
   let cardcontent;
@@ -34493,14 +42271,14 @@ function create_default_slot_110(ctx) {
   }
   cardmedia = new CardMedia_default({
     props: {
-      $$slots: { default: [create_default_slot_48] },
+      $$slots: { default: [create_default_slot_65] },
       $$scope: { ctx }
     }
   });
   cardmedia.$on("click", click_handler);
   cardcontent = new CardContent_default({
     props: {
-      $$slots: { default: [create_default_slot_29] },
+      $$slots: { default: [create_default_slot_48] },
       $$scope: { ctx }
     }
   });
@@ -34558,7 +42336,7 @@ function create_each_block8(ctx) {
   let current;
   card = new Card_default2({
     props: {
-      $$slots: { default: [create_default_slot_110] },
+      $$slots: { default: [create_default_slot_38] },
       $$scope: { ctx }
     }
   });
@@ -34592,7 +42370,7 @@ function create_each_block8(ctx) {
     }
   };
 }
-function create_default_slot18(ctx) {
+function create_default_slot_29(ctx) {
   let each_1_anchor;
   let current;
   let each_value = ctx[2];
@@ -34662,19 +42440,11 @@ function create_default_slot18(ctx) {
     }
   };
 }
-function create_fragment59(ctx) {
-  let toolbar;
-  let t3;
+function create_default_slot_111(ctx) {
   let current_block_type_index;
   let if_block;
   let if_block_anchor;
   let current;
-  toolbar = new ToolBar_default({
-    props: {
-      $$slots: { default: [create_default_slot_73] },
-      $$scope: { ctx }
-    }
-  });
   const if_block_creators = [create_if_block16, create_else_block_1];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
@@ -34686,24 +42456,15 @@ function create_fragment59(ctx) {
   if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
   return {
     c() {
-      create_component(toolbar.$$.fragment);
-      t3 = space();
       if_block.c();
       if_block_anchor = empty();
     },
     m(target, anchor) {
-      mount_component(toolbar, target, anchor);
-      insert(target, t3, anchor);
       if_blocks[current_block_type_index].m(target, anchor);
       insert(target, if_block_anchor, anchor);
       current = true;
     },
-    p(ctx2, [dirty]) {
-      const toolbar_changes = {};
-      if (dirty & 4194323) {
-        toolbar_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      toolbar.$set(toolbar_changes);
+    p(ctx2, dirty) {
       let previous_block_index = current_block_type_index;
       current_block_type_index = select_block_type(ctx2, dirty);
       if (current_block_type_index === previous_block_index) {
@@ -34728,26 +42489,121 @@ function create_fragment59(ctx) {
     i(local) {
       if (current)
         return;
-      transition_in(toolbar.$$.fragment, local);
       transition_in(if_block);
       current = true;
     },
     o(local) {
-      transition_out(toolbar.$$.fragment, local);
       transition_out(if_block);
       current = false;
     },
     d(detaching) {
-      destroy_component(toolbar, detaching);
-      if (detaching)
-        detach(t3);
       if_blocks[current_block_type_index].d(detaching);
       if (detaching)
         detach(if_block_anchor);
     }
   };
 }
-function instance59($$self, $$props, $$invalidate) {
+function create_default_slot18(ctx) {
+  let viewheader;
+  let t3;
+  let viewcontent;
+  let current;
+  viewheader = new ViewHeader_default({
+    props: {
+      $$slots: { default: [create_default_slot_92] },
+      $$scope: { ctx }
+    }
+  });
+  viewcontent = new ViewContent_default({
+    props: {
+      $$slots: { default: [create_default_slot_111] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewheader.$$.fragment);
+      t3 = space();
+      create_component(viewcontent.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewheader, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(viewcontent, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const viewheader_changes = {};
+      if (dirty & 4194323) {
+        viewheader_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewheader.$set(viewheader_changes);
+      const viewcontent_changes = {};
+      if (dirty & 4194332) {
+        viewcontent_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewcontent.$set(viewcontent_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewheader.$$.fragment, local);
+      transition_in(viewcontent.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewheader.$$.fragment, local);
+      transition_out(viewcontent.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewheader, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(viewcontent, detaching);
+    }
+  };
+}
+function create_fragment65(ctx) {
+  let viewlayout;
+  let current;
+  viewlayout = new ViewLayout_default({
+    props: {
+      $$slots: { default: [create_default_slot18] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewlayout.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewlayout, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const viewlayout_changes = {};
+      if (dirty & 4194335) {
+        viewlayout_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewlayout.$set(viewlayout_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewlayout.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewlayout.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewlayout, detaching);
+    }
+  };
+}
+function instance65($$self, $$props, $$invalidate) {
   let fields;
   let records;
   let textFields;
@@ -34788,7 +42644,7 @@ function instance59($$self, $$props, $$invalidate) {
     }
     return null;
   }
-  function getDisplayName(record) {
+  function getDisplayName2(record) {
     const basename = import_path.default.basename(record.id);
     return basename.slice(0, basename.lastIndexOf("."));
   }
@@ -34844,7 +42700,7 @@ function instance59($$self, $$props, $$invalidate) {
     $app,
     $i18n,
     getCoverRealPath,
-    getDisplayName,
+    getDisplayName2,
     handleCoverFieldChange,
     handleRecordClick,
     frame,
@@ -34860,12 +42716,12 @@ function instance59($$self, $$props, $$invalidate) {
 var GalleryView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance59, create_fragment59, safe_not_equal, {
+    init(this, options, instance65, create_fragment65, safe_not_equal, {
       frame: 9,
       config: 10,
       onConfigChange: 11,
       api: 12
-    }, add_css34);
+    }, add_css35);
   }
 };
 var GalleryView_default = GalleryView;
@@ -34911,18 +42767,2801 @@ var GalleryView2 = class extends ProjectView {
   }
 };
 
+// src/views/Developer/DeveloperView.svelte
+var import_obsidian34 = __toModule(require("obsidian"));
+
+// src/components/HorizontalGroup/HorizontalGroup.svelte
+function add_css36(target) {
+  append_styles(target, "svelte-j9o14g", "div.svelte-j9o14g{display:flex;gap:8px}.padding.svelte-j9o14g{padding:8px}.fullWidth.svelte-j9o14g{width:100%;justify-content:space-between}");
+}
+function create_fragment66(ctx) {
+  let div;
+  let div_style_value;
+  let current;
+  const default_slot_template = ctx[4].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[3], null);
+  return {
+    c() {
+      div = element("div");
+      if (default_slot)
+        default_slot.c();
+      attr(div, "style", div_style_value = `align-items: ${ctx[1]}`);
+      attr(div, "class", "svelte-j9o14g");
+      toggle_class(div, "padding", ctx[2]);
+      toggle_class(div, "fullWidth", ctx[0]);
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      if (default_slot) {
+        default_slot.m(div, null);
+      }
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      if (default_slot) {
+        if (default_slot.p && (!current || dirty & 8)) {
+          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[3], !current ? get_all_dirty_from_scope(ctx2[3]) : get_slot_changes(default_slot_template, ctx2[3], dirty, null), null);
+        }
+      }
+      if (!current || dirty & 2 && div_style_value !== (div_style_value = `align-items: ${ctx2[1]}`)) {
+        attr(div, "style", div_style_value);
+      }
+      if (!current || dirty & 4) {
+        toggle_class(div, "padding", ctx2[2]);
+      }
+      if (!current || dirty & 1) {
+        toggle_class(div, "fullWidth", ctx2[0]);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(default_slot, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(default_slot, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      if (default_slot)
+        default_slot.d(detaching);
+    }
+  };
+}
+function instance66($$self, $$props, $$invalidate) {
+  let { $$slots: slots = {}, $$scope } = $$props;
+  let { fullWidth = false } = $$props;
+  let { alignItems = "center" } = $$props;
+  let { padding = false } = $$props;
+  $$self.$$set = ($$props2) => {
+    if ("fullWidth" in $$props2)
+      $$invalidate(0, fullWidth = $$props2.fullWidth);
+    if ("alignItems" in $$props2)
+      $$invalidate(1, alignItems = $$props2.alignItems);
+    if ("padding" in $$props2)
+      $$invalidate(2, padding = $$props2.padding);
+    if ("$$scope" in $$props2)
+      $$invalidate(3, $$scope = $$props2.$$scope);
+  };
+  return [fullWidth, alignItems, padding, $$scope, slots];
+}
+var HorizontalGroup = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance66, create_fragment66, safe_not_equal, { fullWidth: 0, alignItems: 1, padding: 2 }, add_css36);
+  }
+};
+var HorizontalGroup_default = HorizontalGroup;
+
+// src/views/Developer/DeveloperView.svelte
+function add_css37(target) {
+  append_styles(target, "svelte-1bm8s2l", "button.svelte-1bm8s2l{display:inline;width:auto}");
+}
+function create_default_slot_532(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Inputs");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_522(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Buttons");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_51(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Default");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_50(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Primary");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_49(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Destructive");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_482(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Plain");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_472(ctx) {
+  let typography;
+  let t0;
+  let div;
+  let button0;
+  let t1;
+  let button1;
+  let t22;
+  let button2;
+  let t3;
+  let button3;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_522] },
+      $$scope: { ctx }
+    }
+  });
+  button0 = new Button_default({
+    props: {
+      $$slots: { default: [create_default_slot_51] },
+      $$scope: { ctx }
+    }
+  });
+  button1 = new Button_default({
+    props: {
+      variant: "primary",
+      $$slots: { default: [create_default_slot_50] },
+      $$scope: { ctx }
+    }
+  });
+  button2 = new Button_default({
+    props: {
+      variant: "destructive",
+      $$slots: { default: [create_default_slot_49] },
+      $$scope: { ctx }
+    }
+  });
+  button3 = new Button_default({
+    props: {
+      variant: "plain",
+      $$slots: { default: [create_default_slot_482] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t0 = space();
+      div = element("div");
+      create_component(button0.$$.fragment);
+      t1 = space();
+      create_component(button1.$$.fragment);
+      t22 = space();
+      create_component(button2.$$.fragment);
+      t3 = space();
+      create_component(button3.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t0, anchor);
+      insert(target, div, anchor);
+      mount_component(button0, div, null);
+      append(div, t1);
+      mount_component(button1, div, null);
+      append(div, t22);
+      mount_component(button2, div, null);
+      append(div, t3);
+      mount_component(button3, div, null);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const button0_changes = {};
+      if (dirty & 4194304) {
+        button0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      button0.$set(button0_changes);
+      const button1_changes = {};
+      if (dirty & 4194304) {
+        button1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      button1.$set(button1_changes);
+      const button2_changes = {};
+      if (dirty & 4194304) {
+        button2_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      button2.$set(button2_changes);
+      const button3_changes = {};
+      if (dirty & 4194304) {
+        button3_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      button3.$set(button3_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(button0.$$.fragment, local);
+      transition_in(button1.$$.fragment, local);
+      transition_in(button2.$$.fragment, local);
+      transition_in(button3.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(button0.$$.fragment, local);
+      transition_out(button1.$$.fragment, local);
+      transition_out(button2.$$.fragment, local);
+      transition_out(button3.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t0);
+      if (detaching)
+        detach(div);
+      destroy_component(button0);
+      destroy_component(button1);
+      destroy_component(button2);
+      destroy_component(button3);
+    }
+  };
+}
+function create_default_slot_462(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Toggles");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_452(ctx) {
+  let switch_1;
+  let current;
+  switch_1 = new Switch_default({ props: { checked: false } });
+  return {
+    c() {
+      create_component(switch_1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(switch_1, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(switch_1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(switch_1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(switch_1, detaching);
+    }
+  };
+}
+function create_default_slot_442(ctx) {
+  let checkbox;
+  let current;
+  checkbox = new Checkbox_default({ props: { checked: false } });
+  return {
+    c() {
+      create_component(checkbox.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(checkbox, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(checkbox.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(checkbox.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(checkbox, detaching);
+    }
+  };
+}
+function create_default_slot_432(ctx) {
+  let typography;
+  let t0;
+  let settingitem0;
+  let t1;
+  let settingitem1;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_462] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem0 = new SettingItem_default({
+    props: {
+      name: "Switch",
+      $$slots: { default: [create_default_slot_452] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem1 = new SettingItem_default({
+    props: {
+      name: "Checkbox",
+      $$slots: { default: [create_default_slot_442] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t0 = space();
+      create_component(settingitem0.$$.fragment);
+      t1 = space();
+      create_component(settingitem1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(settingitem0, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(settingitem1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const settingitem0_changes = {};
+      if (dirty & 4194304) {
+        settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem0.$set(settingitem0_changes);
+      const settingitem1_changes = {};
+      if (dirty & 4194304) {
+        settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem1.$set(settingitem1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(settingitem0.$$.fragment, local);
+      transition_in(settingitem1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(settingitem0.$$.fragment, local);
+      transition_out(settingitem1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(settingitem0, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(settingitem1, detaching);
+    }
+  };
+}
+function create_default_slot_422(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Input");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_41(ctx) {
+  let textinput;
+  let updating_value;
+  let current;
+  function textinput_value_binding(value) {
+    ctx[9](value);
+  }
+  let textinput_props = { helperText: ctx[6] };
+  if (ctx[6] !== void 0) {
+    textinput_props.value = ctx[6];
+  }
+  textinput = new TextInput_default({ props: textinput_props });
+  binding_callbacks.push(() => bind(textinput, "value", textinput_value_binding));
+  return {
+    c() {
+      create_component(textinput.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(textinput, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const textinput_changes = {};
+      if (dirty & 64)
+        textinput_changes.helperText = ctx2[6];
+      if (!updating_value && dirty & 64) {
+        updating_value = true;
+        textinput_changes.value = ctx2[6];
+        add_flush_callback(() => updating_value = false);
+      }
+      textinput.$set(textinput_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(textinput.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(textinput.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(textinput, detaching);
+    }
+  };
+}
+function create_default_slot_40(ctx) {
+  let numberinput;
+  let updating_value;
+  let current;
+  function numberinput_value_binding(value) {
+    ctx[10](value);
+  }
+  let numberinput_props = {
+    helperText: ctx[6],
+    error: true
+  };
+  if (ctx[7] !== void 0) {
+    numberinput_props.value = ctx[7];
+  }
+  numberinput = new NumberInput_default({ props: numberinput_props });
+  binding_callbacks.push(() => bind(numberinput, "value", numberinput_value_binding));
+  return {
+    c() {
+      create_component(numberinput.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(numberinput, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const numberinput_changes = {};
+      if (dirty & 64)
+        numberinput_changes.helperText = ctx2[6];
+      if (!updating_value && dirty & 128) {
+        updating_value = true;
+        numberinput_changes.value = ctx2[7];
+        add_flush_callback(() => updating_value = false);
+      }
+      numberinput.$set(numberinput_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(numberinput.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(numberinput.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(numberinput, detaching);
+    }
+  };
+}
+function create_default_slot_39(ctx) {
+  let dateinput;
+  let current;
+  dateinput = new DateInput_default({ props: { value: new Date() } });
+  return {
+    c() {
+      create_component(dateinput.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(dateinput, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(dateinput.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(dateinput.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(dateinput, detaching);
+    }
+  };
+}
+function create_default_slot_382(ctx) {
+  let select;
+  let current;
+  select = new Select_default({
+    props: {
+      value: "bar",
+      options: [
+        { label: "Foo", value: "foo" },
+        { label: "Bar", value: "bar" },
+        { label: "Baz", value: "baz" }
+      ]
+    }
+  });
+  return {
+    c() {
+      create_component(select.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(select, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(select.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(select.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(select, detaching);
+    }
+  };
+}
+function create_default_slot_372(ctx) {
+  let typography;
+  let t0;
+  let settingitem0;
+  let t1;
+  let settingitem1;
+  let t22;
+  let settingitem2;
+  let t3;
+  let settingitem3;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_422] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem0 = new SettingItem_default({
+    props: {
+      name: "TextInput",
+      $$slots: { default: [create_default_slot_41] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem1 = new SettingItem_default({
+    props: {
+      name: "NumberInput",
+      $$slots: { default: [create_default_slot_40] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem2 = new SettingItem_default({
+    props: {
+      name: "DateInput",
+      $$slots: { default: [create_default_slot_39] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem3 = new SettingItem_default({
+    props: {
+      name: "Select",
+      $$slots: { default: [create_default_slot_382] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t0 = space();
+      create_component(settingitem0.$$.fragment);
+      t1 = space();
+      create_component(settingitem1.$$.fragment);
+      t22 = space();
+      create_component(settingitem2.$$.fragment);
+      t3 = space();
+      create_component(settingitem3.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(settingitem0, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(settingitem1, target, anchor);
+      insert(target, t22, anchor);
+      mount_component(settingitem2, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(settingitem3, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const settingitem0_changes = {};
+      if (dirty & 4194368) {
+        settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem0.$set(settingitem0_changes);
+      const settingitem1_changes = {};
+      if (dirty & 4194496) {
+        settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem1.$set(settingitem1_changes);
+      const settingitem2_changes = {};
+      if (dirty & 4194304) {
+        settingitem2_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem2.$set(settingitem2_changes);
+      const settingitem3_changes = {};
+      if (dirty & 4194304) {
+        settingitem3_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem3.$set(settingitem3_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(settingitem0.$$.fragment, local);
+      transition_in(settingitem1.$$.fragment, local);
+      transition_in(settingitem2.$$.fragment, local);
+      transition_in(settingitem3.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(settingitem0.$$.fragment, local);
+      transition_out(settingitem1.$$.fragment, local);
+      transition_out(settingitem2.$$.fragment, local);
+      transition_out(settingitem3.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(settingitem0, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(settingitem1, detaching);
+      if (detaching)
+        detach(t22);
+      destroy_component(settingitem2, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(settingitem3, detaching);
+    }
+  };
+}
+function create_default_slot_362(ctx) {
+  let colorinput;
+  let current;
+  colorinput = new ColorInput_default({ props: { value: "#ff0000" } });
+  return {
+    c() {
+      create_component(colorinput.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(colorinput, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(colorinput.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(colorinput.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(colorinput, detaching);
+    }
+  };
+}
+function create_default_slot_352(ctx) {
+  let slider;
+  let current;
+  slider = new Slider_default({
+    props: { value: 3, min: 1, max: 30, step: 1 }
+  });
+  return {
+    c() {
+      create_component(slider.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(slider, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(slider.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(slider.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(slider, detaching);
+    }
+  };
+}
+function create_default_slot_342(ctx) {
+  let settingitem0;
+  let t3;
+  let settingitem1;
+  let current;
+  settingitem0 = new SettingItem_default({
+    props: {
+      name: "Color",
+      $$slots: { default: [create_default_slot_362] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem1 = new SettingItem_default({
+    props: {
+      name: "Slider",
+      $$slots: { default: [create_default_slot_352] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(settingitem0.$$.fragment);
+      t3 = space();
+      create_component(settingitem1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(settingitem0, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(settingitem1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const settingitem0_changes = {};
+      if (dirty & 4194304) {
+        settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem0.$set(settingitem0_changes);
+      const settingitem1_changes = {};
+      if (dirty & 4194304) {
+        settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem1.$set(settingitem1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(settingitem0.$$.fragment, local);
+      transition_in(settingitem1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(settingitem0.$$.fragment, local);
+      transition_out(settingitem1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(settingitem0, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(settingitem1, detaching);
+    }
+  };
+}
+function create_default_slot_332(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Autocomplete");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_322(ctx) {
+  let autocomplete;
+  let current;
+  autocomplete = new Autocomplete_default({
+    props: {
+      value: "",
+      options: [{ label: "Foo", description: "Description" }]
+    }
+  });
+  autocomplete.$on("change", ctx[11]);
+  return {
+    c() {
+      create_component(autocomplete.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(autocomplete, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(autocomplete.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(autocomplete.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(autocomplete, detaching);
+    }
+  };
+}
+function create_default_slot_31(ctx) {
+  let fileautocomplete;
+  let current;
+  fileautocomplete = new FileAutocomplete_default({
+    props: {
+      value: "",
+      files: getNotesInFolder(ctx[8].vault.getRoot()),
+      getLabel: ctx[12],
+      getDescription: func_12
+    }
+  });
+  fileautocomplete.$on("change", ctx[13]);
+  return {
+    c() {
+      create_component(fileautocomplete.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(fileautocomplete, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const fileautocomplete_changes = {};
+      if (dirty & 256)
+        fileautocomplete_changes.files = getNotesInFolder(ctx2[8].vault.getRoot());
+      fileautocomplete.$set(fileautocomplete_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(fileautocomplete.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(fileautocomplete.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(fileautocomplete, detaching);
+    }
+  };
+}
+function create_default_slot_30(ctx) {
+  let typography;
+  let t0;
+  let settingitem0;
+  let t1;
+  let settingitem1;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_332] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem0 = new SettingItem_default({
+    props: {
+      name: "Autocomplete",
+      $$slots: { default: [create_default_slot_322] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem1 = new SettingItem_default({
+    props: {
+      name: "FileAutocomplete",
+      $$slots: { default: [create_default_slot_31] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t0 = space();
+      create_component(settingitem0.$$.fragment);
+      t1 = space();
+      create_component(settingitem1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(settingitem0, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(settingitem1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const settingitem0_changes = {};
+      if (dirty & 4194304) {
+        settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem0.$set(settingitem0_changes);
+      const settingitem1_changes = {};
+      if (dirty & 4194560) {
+        settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem1.$set(settingitem1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(settingitem0.$$.fragment, local);
+      transition_in(settingitem1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(settingitem0.$$.fragment, local);
+      transition_out(settingitem1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(settingitem0, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(settingitem1, detaching);
+    }
+  };
+}
+function create_default_slot_292(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Data display");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_282(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("#tag");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_272(ctx) {
+  let tag;
+  let current;
+  tag = new Tag_default({
+    props: {
+      $$slots: { default: [create_default_slot_282] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(tag.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(tag, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const tag_changes = {};
+      if (dirty & 4194304) {
+        tag_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      tag.$set(tag_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(tag.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(tag.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(tag, detaching);
+    }
+  };
+}
+function create_default_slot_262(ctx) {
+  let settingitem;
+  let current;
+  settingitem = new SettingItem_default({
+    props: {
+      name: "Tag",
+      $$slots: { default: [create_default_slot_272] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(settingitem.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(settingitem, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const settingitem_changes = {};
+      if (dirty & 4194304) {
+        settingitem_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem.$set(settingitem_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(settingitem.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(settingitem.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(settingitem, detaching);
+    }
+  };
+}
+function create_default_slot_252(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Popover");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_242(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Click me");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_232(ctx) {
+  let button;
+  let current;
+  button = new Button_default({
+    props: {
+      variant: "primary",
+      $$slots: { default: [create_default_slot_242] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(button.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(button, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const button_changes = {};
+      if (dirty & 4194304) {
+        button_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      button.$set(button_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(button.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(button.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(button, detaching);
+    }
+  };
+}
+function create_default_slot_222(ctx) {
+  let menuitem0;
+  let t0;
+  let menuitem1;
+  let t1;
+  let menuitem2;
+  let current;
+  menuitem0 = new MenuItem_default({ props: { label: "Item 1", icon: "eye" } });
+  menuitem1 = new MenuItem_default({
+    props: {
+      label: "Item 2",
+      icon: "eye",
+      checked: true
+    }
+  });
+  menuitem2 = new MenuItem_default({
+    props: { label: "Item 3", checked: false }
+  });
+  return {
+    c() {
+      create_component(menuitem0.$$.fragment);
+      t0 = space();
+      create_component(menuitem1.$$.fragment);
+      t1 = space();
+      create_component(menuitem2.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(menuitem0, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(menuitem1, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(menuitem2, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(menuitem0.$$.fragment, local);
+      transition_in(menuitem1.$$.fragment, local);
+      transition_in(menuitem2.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(menuitem0.$$.fragment, local);
+      transition_out(menuitem1.$$.fragment, local);
+      transition_out(menuitem2.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(menuitem0, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(menuitem1, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(menuitem2, detaching);
+    }
+  };
+}
+function create_default_slot_21(ctx) {
+  let suggestionitem0;
+  let t0;
+  let suggestionitem1;
+  let t1;
+  let suggestionitem2;
+  let current;
+  suggestionitem0 = new SuggestionItem_default({
+    props: {
+      label: "Item 1",
+      description: "A pretty long description",
+      selected: true
+    }
+  });
+  suggestionitem1 = new SuggestionItem_default({
+    props: { label: "Item 2", description: "Short" }
+  });
+  suggestionitem2 = new SuggestionItem_default({ props: { label: "Item 3" } });
+  return {
+    c() {
+      create_component(suggestionitem0.$$.fragment);
+      t0 = space();
+      create_component(suggestionitem1.$$.fragment);
+      t1 = space();
+      create_component(suggestionitem2.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(suggestionitem0, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(suggestionitem1, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(suggestionitem2, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(suggestionitem0.$$.fragment, local);
+      transition_in(suggestionitem1.$$.fragment, local);
+      transition_in(suggestionitem2.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(suggestionitem0.$$.fragment, local);
+      transition_out(suggestionitem1.$$.fragment, local);
+      transition_out(suggestionitem2.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(suggestionitem0, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(suggestionitem1, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(suggestionitem2, detaching);
+    }
+  };
+}
+function create_default_slot_20(ctx) {
+  let button0;
+  let t1;
+  let popover;
+  let t22;
+  let button1;
+  let t4;
+  let menu;
+  let t5;
+  let button2;
+  let t7;
+  let suggestion;
+  let current;
+  let mounted;
+  let dispose;
+  popover = new Popover_default({
+    props: {
+      anchorEl: ctx[0],
+      open: ctx[1],
+      placement: "auto",
+      onClose: func_2,
+      $$slots: { default: [create_default_slot_232] },
+      $$scope: { ctx }
+    }
+  });
+  menu = new Menu_default({
+    props: {
+      anchorEl: ctx[2],
+      open: ctx[3],
+      placement: "auto",
+      $$slots: { default: [create_default_slot_222] },
+      $$scope: { ctx }
+    }
+  });
+  suggestion = new Suggestion_default({
+    props: {
+      anchorEl: ctx[4],
+      open: ctx[5],
+      placement: "auto",
+      $$slots: { default: [create_default_slot_21] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      button0 = element("button");
+      button0.textContent = "Popover";
+      t1 = space();
+      create_component(popover.$$.fragment);
+      t22 = space();
+      button1 = element("button");
+      button1.textContent = "Menu";
+      t4 = space();
+      create_component(menu.$$.fragment);
+      t5 = space();
+      button2 = element("button");
+      button2.textContent = "Suggestions";
+      t7 = space();
+      create_component(suggestion.$$.fragment);
+      attr(button0, "class", "svelte-1bm8s2l");
+      attr(button1, "class", "svelte-1bm8s2l");
+      attr(button2, "class", "svelte-1bm8s2l");
+    },
+    m(target, anchor) {
+      insert(target, button0, anchor);
+      ctx[14](button0);
+      insert(target, t1, anchor);
+      mount_component(popover, target, anchor);
+      insert(target, t22, anchor);
+      insert(target, button1, anchor);
+      ctx[16](button1);
+      insert(target, t4, anchor);
+      mount_component(menu, target, anchor);
+      insert(target, t5, anchor);
+      insert(target, button2, anchor);
+      ctx[18](button2);
+      insert(target, t7, anchor);
+      mount_component(suggestion, target, anchor);
+      current = true;
+      if (!mounted) {
+        dispose = [
+          listen(button0, "click", ctx[15]),
+          listen(button1, "click", ctx[17]),
+          listen(button2, "click", ctx[19])
+        ];
+        mounted = true;
+      }
+    },
+    p(ctx2, dirty) {
+      const popover_changes = {};
+      if (dirty & 1)
+        popover_changes.anchorEl = ctx2[0];
+      if (dirty & 2)
+        popover_changes.open = ctx2[1];
+      if (dirty & 4194304) {
+        popover_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      popover.$set(popover_changes);
+      const menu_changes = {};
+      if (dirty & 4)
+        menu_changes.anchorEl = ctx2[2];
+      if (dirty & 8)
+        menu_changes.open = ctx2[3];
+      if (dirty & 4194304) {
+        menu_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      menu.$set(menu_changes);
+      const suggestion_changes = {};
+      if (dirty & 16)
+        suggestion_changes.anchorEl = ctx2[4];
+      if (dirty & 32)
+        suggestion_changes.open = ctx2[5];
+      if (dirty & 4194304) {
+        suggestion_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      suggestion.$set(suggestion_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(popover.$$.fragment, local);
+      transition_in(menu.$$.fragment, local);
+      transition_in(suggestion.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(popover.$$.fragment, local);
+      transition_out(menu.$$.fragment, local);
+      transition_out(suggestion.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(button0);
+      ctx[14](null);
+      if (detaching)
+        detach(t1);
+      destroy_component(popover, detaching);
+      if (detaching)
+        detach(t22);
+      if (detaching)
+        detach(button1);
+      ctx[16](null);
+      if (detaching)
+        detach(t4);
+      destroy_component(menu, detaching);
+      if (detaching)
+        detach(t5);
+      if (detaching)
+        detach(button2);
+      ctx[18](null);
+      if (detaching)
+        detach(t7);
+      destroy_component(suggestion, detaching);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function create_default_slot_192(ctx) {
+  let typography;
+  let t3;
+  let horizontalgroup;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_252] },
+      $$scope: { ctx }
+    }
+  });
+  horizontalgroup = new HorizontalGroup_default({
+    props: {
+      $$slots: { default: [create_default_slot_20] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t3 = space();
+      create_component(horizontalgroup.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(horizontalgroup, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const horizontalgroup_changes = {};
+      if (dirty & 4194367) {
+        horizontalgroup_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      horizontalgroup.$set(horizontalgroup_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(horizontalgroup.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(horizontalgroup.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(horizontalgroup, detaching);
+    }
+  };
+}
+function create_default_slot_182(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Icons");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_172(ctx) {
+  let icon0;
+  let t0;
+  let icon1;
+  let t1;
+  let icon2;
+  let t22;
+  let icon3;
+  let current;
+  icon0 = new Icon_default({ props: { name: "heart", size: "xs" } });
+  icon1 = new Icon_default({ props: { name: "heart", size: "sm" } });
+  icon2 = new Icon_default({ props: { name: "heart", size: "md" } });
+  icon3 = new Icon_default({ props: { name: "heart", size: "lg" } });
+  return {
+    c() {
+      create_component(icon0.$$.fragment);
+      t0 = space();
+      create_component(icon1.$$.fragment);
+      t1 = space();
+      create_component(icon2.$$.fragment);
+      t22 = space();
+      create_component(icon3.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(icon0, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(icon1, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(icon2, target, anchor);
+      insert(target, t22, anchor);
+      mount_component(icon3, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(icon0.$$.fragment, local);
+      transition_in(icon1.$$.fragment, local);
+      transition_in(icon2.$$.fragment, local);
+      transition_in(icon3.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(icon0.$$.fragment, local);
+      transition_out(icon1.$$.fragment, local);
+      transition_out(icon2.$$.fragment, local);
+      transition_out(icon3.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(icon0, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(icon1, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(icon2, detaching);
+      if (detaching)
+        detach(t22);
+      destroy_component(icon3, detaching);
+    }
+  };
+}
+function create_default_slot_162(ctx) {
+  let iconbutton0;
+  let t0;
+  let iconbutton1;
+  let t1;
+  let iconbutton2;
+  let t22;
+  let iconbutton3;
+  let current;
+  iconbutton0 = new IconButton_default({ props: { icon: "heart", size: "xs" } });
+  iconbutton1 = new IconButton_default({ props: { icon: "heart", size: "sm" } });
+  iconbutton2 = new IconButton_default({
+    props: { icon: "heart", size: "md", active: true }
+  });
+  iconbutton3 = new IconButton_default({ props: { icon: "heart", size: "lg" } });
+  return {
+    c() {
+      create_component(iconbutton0.$$.fragment);
+      t0 = space();
+      create_component(iconbutton1.$$.fragment);
+      t1 = space();
+      create_component(iconbutton2.$$.fragment);
+      t22 = space();
+      create_component(iconbutton3.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(iconbutton0, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(iconbutton1, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(iconbutton2, target, anchor);
+      insert(target, t22, anchor);
+      mount_component(iconbutton3, target, anchor);
+      current = true;
+    },
+    p: noop,
+    i(local) {
+      if (current)
+        return;
+      transition_in(iconbutton0.$$.fragment, local);
+      transition_in(iconbutton1.$$.fragment, local);
+      transition_in(iconbutton2.$$.fragment, local);
+      transition_in(iconbutton3.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(iconbutton0.$$.fragment, local);
+      transition_out(iconbutton1.$$.fragment, local);
+      transition_out(iconbutton2.$$.fragment, local);
+      transition_out(iconbutton3.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(iconbutton0, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(iconbutton1, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(iconbutton2, detaching);
+      if (detaching)
+        detach(t22);
+      destroy_component(iconbutton3, detaching);
+    }
+  };
+}
+function create_default_slot_152(ctx) {
+  let typography;
+  let t0;
+  let horizontalgroup0;
+  let t1;
+  let horizontalgroup1;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_182] },
+      $$scope: { ctx }
+    }
+  });
+  horizontalgroup0 = new HorizontalGroup_default({
+    props: {
+      $$slots: { default: [create_default_slot_172] },
+      $$scope: { ctx }
+    }
+  });
+  horizontalgroup1 = new HorizontalGroup_default({
+    props: {
+      $$slots: { default: [create_default_slot_162] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t0 = space();
+      create_component(horizontalgroup0.$$.fragment);
+      t1 = space();
+      create_component(horizontalgroup1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(horizontalgroup0, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(horizontalgroup1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const horizontalgroup0_changes = {};
+      if (dirty & 4194304) {
+        horizontalgroup0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      horizontalgroup0.$set(horizontalgroup0_changes);
+      const horizontalgroup1_changes = {};
+      if (dirty & 4194304) {
+        horizontalgroup1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      horizontalgroup1.$set(horizontalgroup1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(horizontalgroup0.$$.fragment, local);
+      transition_in(horizontalgroup1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(horizontalgroup0.$$.fragment, local);
+      transition_out(horizontalgroup1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(horizontalgroup0, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(horizontalgroup1, detaching);
+    }
+  };
+}
+function create_default_slot_142(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Links");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_132(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Image");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_122(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Google");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_112(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Resolved internal link");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_103(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Unresolved internal link");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_93(ctx) {
+  let typography;
+  let t0;
+  let ul;
+  let li0;
+  let link0;
+  let t1;
+  let li1;
+  let link1;
+  let t22;
+  let li2;
+  let internallink0;
+  let t3;
+  let li3;
+  let internallink1;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_142] },
+      $$scope: { ctx }
+    }
+  });
+  link0 = new Link_default({
+    props: {
+      href: "image.png",
+      $$slots: { default: [create_default_slot_132] },
+      $$scope: { ctx }
+    }
+  });
+  link1 = new Link_default({
+    props: {
+      href: "https://google.com",
+      $$slots: { default: [create_default_slot_122] },
+      $$scope: { ctx }
+    }
+  });
+  internallink0 = new InternalLink_default({
+    props: {
+      linkText: "Untitled 1",
+      sourcePath: "Untitled.md",
+      resolved: true,
+      $$slots: { default: [create_default_slot_112] },
+      $$scope: { ctx }
+    }
+  });
+  internallink0.$on("open", ctx[20]);
+  internallink1 = new InternalLink_default({
+    props: {
+      linkText: "Untitled 1",
+      sourcePath: "Untitled.md",
+      resolved: false,
+      $$slots: { default: [create_default_slot_103] },
+      $$scope: { ctx }
+    }
+  });
+  internallink1.$on("open", ctx[21]);
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t0 = space();
+      ul = element("ul");
+      li0 = element("li");
+      create_component(link0.$$.fragment);
+      t1 = space();
+      li1 = element("li");
+      create_component(link1.$$.fragment);
+      t22 = space();
+      li2 = element("li");
+      create_component(internallink0.$$.fragment);
+      t3 = space();
+      li3 = element("li");
+      create_component(internallink1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t0, anchor);
+      insert(target, ul, anchor);
+      append(ul, li0);
+      mount_component(link0, li0, null);
+      append(ul, t1);
+      append(ul, li1);
+      mount_component(link1, li1, null);
+      append(ul, t22);
+      append(ul, li2);
+      mount_component(internallink0, li2, null);
+      append(ul, t3);
+      append(ul, li3);
+      mount_component(internallink1, li3, null);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const link0_changes = {};
+      if (dirty & 4194304) {
+        link0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      link0.$set(link0_changes);
+      const link1_changes = {};
+      if (dirty & 4194304) {
+        link1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      link1.$set(link1_changes);
+      const internallink0_changes = {};
+      if (dirty & 4194304) {
+        internallink0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      internallink0.$set(internallink0_changes);
+      const internallink1_changes = {};
+      if (dirty & 4194304) {
+        internallink1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      internallink1.$set(internallink1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(link0.$$.fragment, local);
+      transition_in(link1.$$.fragment, local);
+      transition_in(internallink0.$$.fragment, local);
+      transition_in(internallink1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(link0.$$.fragment, local);
+      transition_out(link1.$$.fragment, local);
+      transition_out(internallink0.$$.fragment, local);
+      transition_out(internallink1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t0);
+      if (detaching)
+        detach(ul);
+      destroy_component(link0);
+      destroy_component(link1);
+      destroy_component(internallink0);
+      destroy_component(internallink1);
+    }
+  };
+}
+function create_default_slot_83(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Feedback");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_74(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Loading");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_66(ctx) {
+  let typography;
+  let t3;
+  let loading;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_74] },
+      $$scope: { ctx }
+    }
+  });
+  loading = new Loading_default({});
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t3 = space();
+      create_component(loading.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(loading, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(loading.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(loading.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(loading, detaching);
+    }
+  };
+}
+function create_default_slot_58(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Callout");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_410(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Lorem ipsum");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_310(ctx) {
+  let t3;
+  return {
+    c() {
+      t3 = text("Lorem ipsum");
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_default_slot_210(ctx) {
+  let typography;
+  let t0;
+  let callout0;
+  let t1;
+  let callout1;
+  let current;
+  typography = new Typography_default({
+    props: {
+      variant: "h3",
+      $$slots: { default: [create_default_slot_58] },
+      $$scope: { ctx }
+    }
+  });
+  callout0 = new Callout_default({
+    props: {
+      title: "Info",
+      icon: "star",
+      variant: "info",
+      $$slots: { default: [create_default_slot_410] },
+      $$scope: { ctx }
+    }
+  });
+  callout1 = new Callout_default({
+    props: {
+      title: "Danger",
+      icon: "alert-circle",
+      variant: "danger",
+      $$slots: { default: [create_default_slot_310] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+      t0 = space();
+      create_component(callout0.$$.fragment);
+      t1 = space();
+      create_component(callout1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(callout0, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(callout1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty & 4194304) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+      const callout0_changes = {};
+      if (dirty & 4194304) {
+        callout0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      callout0.$set(callout0_changes);
+      const callout1_changes = {};
+      if (dirty & 4194304) {
+        callout1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      callout1.$set(callout1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      transition_in(callout0.$$.fragment, local);
+      transition_in(callout1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      transition_out(callout0.$$.fragment, local);
+      transition_out(callout1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(callout0, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(callout1, detaching);
+    }
+  };
+}
+function create_default_slot_113(ctx) {
+  let typography0;
+  let t0;
+  let card0;
+  let t1;
+  let card1;
+  let t22;
+  let card2;
+  let t3;
+  let card3;
+  let t4;
+  let card4;
+  let t5;
+  let typography1;
+  let t6;
+  let card5;
+  let t7;
+  let card6;
+  let t8;
+  let card7;
+  let t9;
+  let card8;
+  let t10;
+  let typography2;
+  let t11;
+  let card9;
+  let t12;
+  let card10;
+  let current;
+  typography0 = new Typography_default({
+    props: {
+      variant: "h2",
+      $$slots: { default: [create_default_slot_532] },
+      $$scope: { ctx }
+    }
+  });
+  card0 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_472] },
+      $$scope: { ctx }
+    }
+  });
+  card1 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_432] },
+      $$scope: { ctx }
+    }
+  });
+  card2 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_372] },
+      $$scope: { ctx }
+    }
+  });
+  card3 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_342] },
+      $$scope: { ctx }
+    }
+  });
+  card4 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_30] },
+      $$scope: { ctx }
+    }
+  });
+  typography1 = new Typography_default({
+    props: {
+      variant: "h2",
+      $$slots: { default: [create_default_slot_292] },
+      $$scope: { ctx }
+    }
+  });
+  card5 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_262] },
+      $$scope: { ctx }
+    }
+  });
+  card6 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_192] },
+      $$scope: { ctx }
+    }
+  });
+  card7 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_152] },
+      $$scope: { ctx }
+    }
+  });
+  card8 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_93] },
+      $$scope: { ctx }
+    }
+  });
+  typography2 = new Typography_default({
+    props: {
+      variant: "h2",
+      $$slots: { default: [create_default_slot_83] },
+      $$scope: { ctx }
+    }
+  });
+  card9 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_66] },
+      $$scope: { ctx }
+    }
+  });
+  card10 = new Card_default({
+    props: {
+      $$slots: { default: [create_default_slot_210] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography0.$$.fragment);
+      t0 = space();
+      create_component(card0.$$.fragment);
+      t1 = space();
+      create_component(card1.$$.fragment);
+      t22 = space();
+      create_component(card2.$$.fragment);
+      t3 = space();
+      create_component(card3.$$.fragment);
+      t4 = space();
+      create_component(card4.$$.fragment);
+      t5 = space();
+      create_component(typography1.$$.fragment);
+      t6 = space();
+      create_component(card5.$$.fragment);
+      t7 = space();
+      create_component(card6.$$.fragment);
+      t8 = space();
+      create_component(card7.$$.fragment);
+      t9 = space();
+      create_component(card8.$$.fragment);
+      t10 = space();
+      create_component(typography2.$$.fragment);
+      t11 = space();
+      create_component(card9.$$.fragment);
+      t12 = space();
+      create_component(card10.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography0, target, anchor);
+      insert(target, t0, anchor);
+      mount_component(card0, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(card1, target, anchor);
+      insert(target, t22, anchor);
+      mount_component(card2, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(card3, target, anchor);
+      insert(target, t4, anchor);
+      mount_component(card4, target, anchor);
+      insert(target, t5, anchor);
+      mount_component(typography1, target, anchor);
+      insert(target, t6, anchor);
+      mount_component(card5, target, anchor);
+      insert(target, t7, anchor);
+      mount_component(card6, target, anchor);
+      insert(target, t8, anchor);
+      mount_component(card7, target, anchor);
+      insert(target, t9, anchor);
+      mount_component(card8, target, anchor);
+      insert(target, t10, anchor);
+      mount_component(typography2, target, anchor);
+      insert(target, t11, anchor);
+      mount_component(card9, target, anchor);
+      insert(target, t12, anchor);
+      mount_component(card10, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography0_changes = {};
+      if (dirty & 4194304) {
+        typography0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography0.$set(typography0_changes);
+      const card0_changes = {};
+      if (dirty & 4194304) {
+        card0_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card0.$set(card0_changes);
+      const card1_changes = {};
+      if (dirty & 4194304) {
+        card1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card1.$set(card1_changes);
+      const card2_changes = {};
+      if (dirty & 4194496) {
+        card2_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card2.$set(card2_changes);
+      const card3_changes = {};
+      if (dirty & 4194304) {
+        card3_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card3.$set(card3_changes);
+      const card4_changes = {};
+      if (dirty & 4194560) {
+        card4_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card4.$set(card4_changes);
+      const typography1_changes = {};
+      if (dirty & 4194304) {
+        typography1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography1.$set(typography1_changes);
+      const card5_changes = {};
+      if (dirty & 4194304) {
+        card5_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card5.$set(card5_changes);
+      const card6_changes = {};
+      if (dirty & 4194367) {
+        card6_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card6.$set(card6_changes);
+      const card7_changes = {};
+      if (dirty & 4194304) {
+        card7_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card7.$set(card7_changes);
+      const card8_changes = {};
+      if (dirty & 4194560) {
+        card8_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card8.$set(card8_changes);
+      const typography2_changes = {};
+      if (dirty & 4194304) {
+        typography2_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography2.$set(typography2_changes);
+      const card9_changes = {};
+      if (dirty & 4194304) {
+        card9_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card9.$set(card9_changes);
+      const card10_changes = {};
+      if (dirty & 4194304) {
+        card10_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      card10.$set(card10_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography0.$$.fragment, local);
+      transition_in(card0.$$.fragment, local);
+      transition_in(card1.$$.fragment, local);
+      transition_in(card2.$$.fragment, local);
+      transition_in(card3.$$.fragment, local);
+      transition_in(card4.$$.fragment, local);
+      transition_in(typography1.$$.fragment, local);
+      transition_in(card5.$$.fragment, local);
+      transition_in(card6.$$.fragment, local);
+      transition_in(card7.$$.fragment, local);
+      transition_in(card8.$$.fragment, local);
+      transition_in(typography2.$$.fragment, local);
+      transition_in(card9.$$.fragment, local);
+      transition_in(card10.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography0.$$.fragment, local);
+      transition_out(card0.$$.fragment, local);
+      transition_out(card1.$$.fragment, local);
+      transition_out(card2.$$.fragment, local);
+      transition_out(card3.$$.fragment, local);
+      transition_out(card4.$$.fragment, local);
+      transition_out(typography1.$$.fragment, local);
+      transition_out(card5.$$.fragment, local);
+      transition_out(card6.$$.fragment, local);
+      transition_out(card7.$$.fragment, local);
+      transition_out(card8.$$.fragment, local);
+      transition_out(typography2.$$.fragment, local);
+      transition_out(card9.$$.fragment, local);
+      transition_out(card10.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography0, detaching);
+      if (detaching)
+        detach(t0);
+      destroy_component(card0, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(card1, detaching);
+      if (detaching)
+        detach(t22);
+      destroy_component(card2, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(card3, detaching);
+      if (detaching)
+        detach(t4);
+      destroy_component(card4, detaching);
+      if (detaching)
+        detach(t5);
+      destroy_component(typography1, detaching);
+      if (detaching)
+        detach(t6);
+      destroy_component(card5, detaching);
+      if (detaching)
+        detach(t7);
+      destroy_component(card6, detaching);
+      if (detaching)
+        detach(t8);
+      destroy_component(card7, detaching);
+      if (detaching)
+        detach(t9);
+      destroy_component(card8, detaching);
+      if (detaching)
+        detach(t10);
+      destroy_component(typography2, detaching);
+      if (detaching)
+        detach(t11);
+      destroy_component(card9, detaching);
+      if (detaching)
+        detach(t12);
+      destroy_component(card10, detaching);
+    }
+  };
+}
+function create_default_slot19(ctx) {
+  let viewcontent;
+  let current;
+  viewcontent = new ViewContent_default({
+    props: {
+      $$slots: { default: [create_default_slot_113] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewcontent.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewcontent, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const viewcontent_changes = {};
+      if (dirty & 4194815) {
+        viewcontent_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewcontent.$set(viewcontent_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewcontent.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewcontent.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewcontent, detaching);
+    }
+  };
+}
+function create_fragment67(ctx) {
+  let viewlayout;
+  let current;
+  viewlayout = new ViewLayout_default({
+    props: {
+      $$slots: { default: [create_default_slot19] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewlayout.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewlayout, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const viewlayout_changes = {};
+      if (dirty & 4194815) {
+        viewlayout_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewlayout.$set(viewlayout_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewlayout.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewlayout.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewlayout, detaching);
+    }
+  };
+}
+var func_12 = (file) => file.path.split("/").slice(0, -1).join("/");
+var func_2 = () => {
+};
+function instance67($$self, $$props, $$invalidate) {
+  let $app;
+  component_subscribe($$self, app, ($$value) => $$invalidate(8, $app = $$value));
+  let btn1;
+  let btn1Open = false;
+  let btn2;
+  let btn2Open = false;
+  let btn3;
+  let btn3Open = false;
+  let textValue = "Text";
+  let numberValue = 10;
+  function textinput_value_binding(value) {
+    textValue = value;
+    $$invalidate(6, textValue);
+  }
+  function numberinput_value_binding(value) {
+    numberValue = value;
+    $$invalidate(7, numberValue);
+  }
+  const change_handler = ({ detail }) => new import_obsidian34.Notice(`Autocomplete changed: ${detail}`);
+  const func7 = (file) => file instanceof import_obsidian34.TFile ? file.basename : file.name;
+  const change_handler_1 = ({ detail }) => new import_obsidian34.Notice(`FileAutocomplete changed: ${detail}`);
+  function button0_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      btn1 = $$value;
+      $$invalidate(0, btn1);
+    });
+  }
+  const click_handler = () => $$invalidate(1, btn1Open = !btn1Open);
+  function button1_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      btn2 = $$value;
+      $$invalidate(2, btn2);
+    });
+  }
+  const click_handler_1 = () => $$invalidate(3, btn2Open = !btn2Open);
+  function button2_binding($$value) {
+    binding_callbacks[$$value ? "unshift" : "push"](() => {
+      btn3 = $$value;
+      $$invalidate(4, btn3);
+    });
+  }
+  const click_handler_2 = () => $$invalidate(5, btn3Open = !btn3Open);
+  const open_handler = ({ detail: { linkText, sourcePath, newLeaf } }) => {
+    $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
+  };
+  const open_handler_1 = ({ detail: { linkText, sourcePath, newLeaf } }) => {
+    $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
+  };
+  return [
+    btn1,
+    btn1Open,
+    btn2,
+    btn2Open,
+    btn3,
+    btn3Open,
+    textValue,
+    numberValue,
+    $app,
+    textinput_value_binding,
+    numberinput_value_binding,
+    change_handler,
+    func7,
+    change_handler_1,
+    button0_binding,
+    click_handler,
+    button1_binding,
+    click_handler_1,
+    button2_binding,
+    click_handler_2,
+    open_handler,
+    open_handler_1
+  ];
+}
+var DeveloperView = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance67, create_fragment67, safe_not_equal, {}, add_css37);
+  }
+};
+var DeveloperView_default = DeveloperView;
+
+// src/views/Developer/developer-view.ts
+var DeveloperView2 = class extends ProjectView {
+  getViewType() {
+    return "developer";
+  }
+  getDisplayName() {
+    return "Developer";
+  }
+  getIcon() {
+    return "wrench";
+  }
+  onOpen(_0) {
+    return __async(this, arguments, function* ({ contentEl }) {
+      this.view = new DeveloperView_default({
+        target: contentEl
+      });
+    });
+  }
+  onClose() {
+    return __async(this, null, function* () {
+      var _a;
+      (_a = this.view) == null ? void 0 : _a.$destroy();
+      this.view = null;
+    });
+  }
+};
+
 // src/views/Calendar/CalendarView.svelte
 var import_dayjs8 = __toModule(require_dayjs_min());
 
 // src/views/Calendar/components/CalendarDay/CalendarDay.svelte
-var import_path2 = __toModule(require("path"));
-var import_obsidian33 = __toModule(require("obsidian"));
+var import_obsidian38 = __toModule(require("obsidian"));
 
 // src/views/Calendar/components/Table/Table.svelte
-function add_css35(target) {
+function add_css38(target) {
   append_styles(target, "svelte-dafndf", "table.svelte-dafndf{border-collapse:collapse;border-spacing:0;table-layout:fixed;overflow:auto}.grow.svelte-dafndf{height:100%}");
 }
-function create_fragment60(ctx) {
+function create_fragment68(ctx) {
   let table;
   let current;
   const default_slot_template = ctx[2].default;
@@ -34970,7 +45609,7 @@ function create_fragment60(ctx) {
     }
   };
 }
-function instance60($$self, $$props, $$invalidate) {
+function instance68($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { grow = false } = $$props;
   $$self.$$set = ($$props2) => {
@@ -34984,13 +45623,13 @@ function instance60($$self, $$props, $$invalidate) {
 var Table = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance60, create_fragment60, safe_not_equal, { grow: 0 }, add_css35);
+    init(this, options, instance68, create_fragment68, safe_not_equal, { grow: 0 }, add_css38);
   }
 };
 var Table_default = Table;
 
 // src/views/Calendar/components/Table/TableBody.svelte
-function create_fragment61(ctx) {
+function create_fragment69(ctx) {
   let tbody;
   let current;
   const default_slot_template = ctx[1].default;
@@ -35033,7 +45672,7 @@ function create_fragment61(ctx) {
     }
   };
 }
-function instance61($$self, $$props, $$invalidate) {
+function instance69($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -35044,16 +45683,16 @@ function instance61($$self, $$props, $$invalidate) {
 var TableBody = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance61, create_fragment61, safe_not_equal, {});
+    init(this, options, instance69, create_fragment69, safe_not_equal, {});
   }
 };
 var TableBody_default = TableBody;
 
 // src/views/Calendar/components/Table/TableCell.svelte
-function add_css36(target) {
+function add_css39(target) {
   append_styles(target, "svelte-1u8ro2d", "td.svelte-1u8ro2d{vertical-align:top;box-sizing:border-box;padding:0;border:1px solid var(--background-modifier-border);height:calc(100% / 5)}td.svelte-1u8ro2d:first-of-type{border-left:1px solid var(--background-modifier-border)}td.svelte-1u8ro2d:last-of-type{border-right:1px solid var(--background-modifier-border)}");
 }
-function create_fragment62(ctx) {
+function create_fragment70(ctx) {
   let td;
   let td_style_value;
   let current;
@@ -35117,7 +45756,7 @@ function create_fragment62(ctx) {
     }
   };
 }
-function instance62($$self, $$props, $$invalidate) {
+function instance70($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { colspan = null } = $$props;
   let { width } = $$props;
@@ -35140,16 +45779,16 @@ function instance62($$self, $$props, $$invalidate) {
 var TableCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance62, create_fragment62, safe_not_equal, { colspan: 0, width: 1 }, add_css36);
+    init(this, options, instance70, create_fragment70, safe_not_equal, { colspan: 0, width: 1 }, add_css39);
   }
 };
 var TableCell_default = TableCell;
 
 // src/views/Calendar/components/Table/TableColumnHeaderCell.svelte
-function add_css37(target) {
+function add_css40(target) {
   append_styles(target, "svelte-fwcz0t", "div.svelte-fwcz0t{display:flex;align-items:center;width:100%;justify-content:space-between;gap:1rem}th.svelte-fwcz0t{background:var(--background-secondary);border:1px solid var(--background-modifier-border);border-top:0;border-left:0;text-align:center;font-weight:500;min-width:100px;vertical-align:top;position:sticky !important;top:0;padding:0.3em}th.svelte-fwcz0t:first-child{min-width:5ch}.nopadding.svelte-fwcz0t{padding:0}");
 }
-function create_fragment63(ctx) {
+function create_fragment71(ctx) {
   let th;
   let div;
   let current;
@@ -35210,7 +45849,7 @@ function create_fragment63(ctx) {
     }
   };
 }
-function instance63($$self, $$props, $$invalidate) {
+function instance71($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { nopadding = false } = $$props;
   function mousedown_handler(event) {
@@ -35227,13 +45866,13 @@ function instance63($$self, $$props, $$invalidate) {
 var TableColumnHeaderCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance63, create_fragment63, safe_not_equal, { nopadding: 0 }, add_css37);
+    init(this, options, instance71, create_fragment71, safe_not_equal, { nopadding: 0 }, add_css40);
   }
 };
 var TableColumnHeaderCell_default = TableColumnHeaderCell;
 
 // src/views/Calendar/components/Table/TableHead.svelte
-function create_fragment64(ctx) {
+function create_fragment72(ctx) {
   let thead;
   let current;
   const default_slot_template = ctx[1].default;
@@ -35276,7 +45915,7 @@ function create_fragment64(ctx) {
     }
   };
 }
-function instance64($$self, $$props, $$invalidate) {
+function instance72($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -35287,13 +45926,13 @@ function instance64($$self, $$props, $$invalidate) {
 var TableHead = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance64, create_fragment64, safe_not_equal, {});
+    init(this, options, instance72, create_fragment72, safe_not_equal, {});
   }
 };
 var TableHead_default = TableHead;
 
 // src/views/Calendar/components/Table/TableRow.svelte
-function create_fragment65(ctx) {
+function create_fragment73(ctx) {
   let tr;
   let current;
   const default_slot_template = ctx[1].default;
@@ -35336,7 +45975,7 @@ function create_fragment65(ctx) {
     }
   };
 }
-function instance65($$self, $$props, $$invalidate) {
+function instance73($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   $$self.$$set = ($$props2) => {
     if ("$$scope" in $$props2)
@@ -35347,17 +45986,17 @@ function instance65($$self, $$props, $$invalidate) {
 var TableRow = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance65, create_fragment65, safe_not_equal, {});
+    init(this, options, instance73, create_fragment73, safe_not_equal, {});
   }
 };
 var TableRow_default = TableRow;
 
 // src/views/Calendar/components/CalendarDay/CalendarDate.svelte
 var import_dayjs6 = __toModule(require_dayjs_min());
-function add_css38(target) {
+function add_css41(target) {
   append_styles(target, "svelte-vn6kio", "span.svelte-vn6kio{padding:0.2em 0.4em;border-radius:4px}.today.svelte-vn6kio{background:var(--interactive-accent);display:inline-block;color:var(--text-on-accent)}");
 }
-function create_fragment66(ctx) {
+function create_fragment74(ctx) {
   let span;
   let t_value = ctx[0].date() + "";
   let t3;
@@ -35387,7 +46026,7 @@ function create_fragment66(ctx) {
     }
   };
 }
-function instance66($$self, $$props, $$invalidate) {
+function instance74($$self, $$props, $$invalidate) {
   let today;
   let { date } = $$props;
   $$self.$$set = ($$props2) => {
@@ -35405,13 +46044,66 @@ function instance66($$self, $$props, $$invalidate) {
 var CalendarDate = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance66, create_fragment66, safe_not_equal, { date: 0 }, add_css38);
+    init(this, options, instance74, create_fragment74, safe_not_equal, { date: 0 }, add_css41);
   }
 };
 var CalendarDate_default = CalendarDate;
 
+// src/views/Board/components/Board/board-helpers.ts
+var import_path2 = __toModule(require("path"));
+function getPrioritizedRecords(records, groupByPriority) {
+  const res = records.filter((record) => {
+    if (!groupByPriority) {
+      return false;
+    }
+    return isNumber(record.values[groupByPriority]) || isDate(record.values[groupByPriority]);
+  });
+  res.sort((a2, b2) => {
+    if (groupByPriority) {
+      const aval = a2.values[groupByPriority];
+      const bval = b2.values[groupByPriority];
+      if (isNumber(aval) && isNumber(bval)) {
+        const value = aval - bval;
+        if (value) {
+          return value;
+        }
+      }
+      if (isDate(aval) && isDate(bval)) {
+        const value = aval.getTime() - bval.getTime();
+        if (value) {
+          return value;
+        }
+      }
+      return a2.id.localeCompare(b2.id);
+    }
+    return 0;
+  });
+  return res;
+}
+function getUnprioritizedRecords(records, groupByPriority) {
+  const res = records.filter((record) => {
+    if (!groupByPriority) {
+      return false;
+    }
+    return !(isNumber(record.values[groupByPriority]) || isDate(record.values[groupByPriority]));
+  });
+  res.sort((a2, b2) => {
+    if (groupByPriority) {
+      const aval = a2.id;
+      const bval = b2.id;
+      return aval.localeCompare(bval);
+    }
+    return 0;
+  });
+  return res;
+}
+function getDisplayName(record) {
+  const basename = import_path2.default.basename(record.id);
+  return basename.slice(0, basename.lastIndexOf("."));
+}
+
 // src/views/Calendar/components/CalendarDay/CalendarEntry.svelte
-function add_css39(target) {
+function add_css42(target) {
   append_styles(target, "svelte-1x9h6ni", "div.svelte-1x9h6ni{border-radius:2px;background-color:hsla(var(--interactive-accent-hsl), 0.1);padding:0.2em 0.4em;font-size:var(--font-ui-smaller);width:100%;display:grid;grid-template-columns:auto 1fr;border-left:3px solid hsla(var(--interactive-accent-hsl), 0.5)}span.svelte-1x9h6ni{overflow:hidden;white-space:nowrap;text-overflow:ellipsis}");
 }
 function create_if_block_19(ctx) {
@@ -35489,7 +46181,7 @@ function create_if_block17(ctx) {
     }
   };
 }
-function create_fragment67(ctx) {
+function create_fragment75(ctx) {
   let div;
   let current_block_type_index;
   let if_block;
@@ -35604,7 +46296,7 @@ function create_fragment67(ctx) {
     }
   };
 }
-function instance67($$self, $$props, $$invalidate) {
+function instance75($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { checked = void 0 } = $$props;
   let hover = false;
@@ -35645,33 +46337,1953 @@ function instance67($$self, $$props, $$invalidate) {
 var CalendarEntry = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance67, create_fragment67, safe_not_equal, { checked: 0 }, add_css39);
+    init(this, options, instance75, create_fragment75, safe_not_equal, { checked: 0 }, add_css42);
   }
 };
 var CalendarEntry_default = CalendarEntry;
 
-// src/views/Calendar/components/CalendarDay/CalendarDay.svelte
-function add_css40(target) {
-  append_styles(target, "svelte-187yww1", "div.svelte-187yww1{padding:4px;height:100%;display:flex;flex-direction:column;gap:2px;align-items:start;overflow:scroll}.weekend.svelte-187yww1{background-color:var(--background-secondary)}");
+// node_modules/svelte-dnd-action/dist/index.mjs
+function ownKeys3(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function(sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread22(target) {
+  for (var i2 = 1; i2 < arguments.length; i2++) {
+    var source = arguments[i2] != null ? arguments[i2] : {};
+    i2 % 2 ? ownKeys3(Object(source), true).forEach(function(key) {
+      _defineProperty3(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys3(Object(source)).forEach(function(key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
+function _typeof3(obj) {
+  "@babel/helpers - typeof";
+  return _typeof3 = typeof Symbol == "function" && typeof Symbol.iterator == "symbol" ? function(obj2) {
+    return typeof obj2;
+  } : function(obj2) {
+    return obj2 && typeof Symbol == "function" && obj2.constructor === Symbol && obj2 !== Symbol.prototype ? "symbol" : typeof obj2;
+  }, _typeof3(obj);
+}
+function _defineProperty3(obj, key, value) {
+  if (key in obj) {
+    Object.defineProperty(obj, key, {
+      value,
+      enumerable: true,
+      configurable: true,
+      writable: true
+    });
+  } else {
+    obj[key] = value;
+  }
+  return obj;
+}
+function _objectWithoutPropertiesLoose2(source, excluded) {
+  if (source == null)
+    return {};
+  var target = {};
+  var sourceKeys = Object.keys(source);
+  var key, i2;
+  for (i2 = 0; i2 < sourceKeys.length; i2++) {
+    key = sourceKeys[i2];
+    if (excluded.indexOf(key) >= 0)
+      continue;
+    target[key] = source[key];
+  }
+  return target;
+}
+function _objectWithoutProperties2(source, excluded) {
+  if (source == null)
+    return {};
+  var target = _objectWithoutPropertiesLoose2(source, excluded);
+  var key, i2;
+  if (Object.getOwnPropertySymbols) {
+    var sourceSymbolKeys = Object.getOwnPropertySymbols(source);
+    for (i2 = 0; i2 < sourceSymbolKeys.length; i2++) {
+      key = sourceSymbolKeys[i2];
+      if (excluded.indexOf(key) >= 0)
+        continue;
+      if (!Object.prototype.propertyIsEnumerable.call(source, key))
+        continue;
+      target[key] = source[key];
+    }
+  }
+  return target;
+}
+function _slicedToArray(arr, i2) {
+  return _arrayWithHoles2(arr) || _iterableToArrayLimit(arr, i2) || _unsupportedIterableToArray2(arr, i2) || _nonIterableRest2();
+}
+function _toConsumableArray(arr) {
+  return _arrayWithoutHoles(arr) || _iterableToArray2(arr) || _unsupportedIterableToArray2(arr) || _nonIterableSpread();
+}
+function _arrayWithoutHoles(arr) {
+  if (Array.isArray(arr))
+    return _arrayLikeToArray2(arr);
+}
+function _arrayWithHoles2(arr) {
+  if (Array.isArray(arr))
+    return arr;
+}
+function _iterableToArray2(iter) {
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null)
+    return Array.from(iter);
+}
+function _iterableToArrayLimit(arr, i2) {
+  var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"];
+  if (_i == null)
+    return;
+  var _arr = [];
+  var _n = true;
+  var _d = false;
+  var _s, _e;
+  try {
+    for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) {
+      _arr.push(_s.value);
+      if (i2 && _arr.length === i2)
+        break;
+    }
+  } catch (err) {
+    _d = true;
+    _e = err;
+  } finally {
+    try {
+      if (!_n && _i["return"] != null)
+        _i["return"]();
+    } finally {
+      if (_d)
+        throw _e;
+    }
+  }
+  return _arr;
+}
+function _unsupportedIterableToArray2(o2, minLen) {
+  if (!o2)
+    return;
+  if (typeof o2 === "string")
+    return _arrayLikeToArray2(o2, minLen);
+  var n2 = Object.prototype.toString.call(o2).slice(8, -1);
+  if (n2 === "Object" && o2.constructor)
+    n2 = o2.constructor.name;
+  if (n2 === "Map" || n2 === "Set")
+    return Array.from(o2);
+  if (n2 === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n2))
+    return _arrayLikeToArray2(o2, minLen);
+}
+function _arrayLikeToArray2(arr, len) {
+  if (len == null || len > arr.length)
+    len = arr.length;
+  for (var i2 = 0, arr2 = new Array(len); i2 < len; i2++)
+    arr2[i2] = arr[i2];
+  return arr2;
+}
+function _nonIterableSpread() {
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _nonIterableRest2() {
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+}
+function _createForOfIteratorHelper(o2, allowArrayLike) {
+  var it = typeof Symbol !== "undefined" && o2[Symbol.iterator] || o2["@@iterator"];
+  if (!it) {
+    if (Array.isArray(o2) || (it = _unsupportedIterableToArray2(o2)) || allowArrayLike && o2 && typeof o2.length === "number") {
+      if (it)
+        o2 = it;
+      var i2 = 0;
+      var F2 = function() {
+      };
+      return {
+        s: F2,
+        n: function() {
+          if (i2 >= o2.length)
+            return {
+              done: true
+            };
+          return {
+            done: false,
+            value: o2[i2++]
+          };
+        },
+        e: function(e) {
+          throw e;
+        },
+        f: F2
+      };
+    }
+    throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+  }
+  var normalCompletion = true, didErr = false, err;
+  return {
+    s: function() {
+      it = it.call(o2);
+    },
+    n: function() {
+      var step = it.next();
+      normalCompletion = step.done;
+      return step;
+    },
+    e: function(e) {
+      didErr = true;
+      err = e;
+    },
+    f: function() {
+      try {
+        if (!normalCompletion && it.return != null)
+          it.return();
+      } finally {
+        if (didErr)
+          throw err;
+      }
+    }
+  };
+}
+var FINALIZE_EVENT_NAME = "finalize";
+var CONSIDER_EVENT_NAME = "consider";
+function dispatchFinalizeEvent(el, items, info) {
+  el.dispatchEvent(new CustomEvent(FINALIZE_EVENT_NAME, {
+    detail: {
+      items,
+      info
+    }
+  }));
+}
+function dispatchConsiderEvent(el, items, info) {
+  el.dispatchEvent(new CustomEvent(CONSIDER_EVENT_NAME, {
+    detail: {
+      items,
+      info
+    }
+  }));
+}
+var DRAGGED_ENTERED_EVENT_NAME = "draggedEntered";
+var DRAGGED_LEFT_EVENT_NAME = "draggedLeft";
+var DRAGGED_OVER_INDEX_EVENT_NAME = "draggedOverIndex";
+var DRAGGED_LEFT_DOCUMENT_EVENT_NAME = "draggedLeftDocument";
+var DRAGGED_LEFT_TYPES = {
+  LEFT_FOR_ANOTHER: "leftForAnother",
+  OUTSIDE_OF_ANY: "outsideOfAny"
+};
+function dispatchDraggedElementEnteredContainer(containerEl, indexObj, draggedEl2) {
+  containerEl.dispatchEvent(new CustomEvent(DRAGGED_ENTERED_EVENT_NAME, {
+    detail: {
+      indexObj,
+      draggedEl: draggedEl2
+    }
+  }));
+}
+function dispatchDraggedElementLeftContainerForAnother(containerEl, draggedEl2, theOtherDz) {
+  containerEl.dispatchEvent(new CustomEvent(DRAGGED_LEFT_EVENT_NAME, {
+    detail: {
+      draggedEl: draggedEl2,
+      type: DRAGGED_LEFT_TYPES.LEFT_FOR_ANOTHER,
+      theOtherDz
+    }
+  }));
+}
+function dispatchDraggedElementLeftContainerForNone(containerEl, draggedEl2) {
+  containerEl.dispatchEvent(new CustomEvent(DRAGGED_LEFT_EVENT_NAME, {
+    detail: {
+      draggedEl: draggedEl2,
+      type: DRAGGED_LEFT_TYPES.OUTSIDE_OF_ANY
+    }
+  }));
+}
+function dispatchDraggedElementIsOverIndex(containerEl, indexObj, draggedEl2) {
+  containerEl.dispatchEvent(new CustomEvent(DRAGGED_OVER_INDEX_EVENT_NAME, {
+    detail: {
+      indexObj,
+      draggedEl: draggedEl2
+    }
+  }));
+}
+function dispatchDraggedLeftDocument(draggedEl2) {
+  window.dispatchEvent(new CustomEvent(DRAGGED_LEFT_DOCUMENT_EVENT_NAME, {
+    detail: {
+      draggedEl: draggedEl2
+    }
+  }));
+}
+var TRIGGERS = {
+  DRAG_STARTED: "dragStarted",
+  DRAGGED_ENTERED: DRAGGED_ENTERED_EVENT_NAME,
+  DRAGGED_ENTERED_ANOTHER: "dragEnteredAnother",
+  DRAGGED_OVER_INDEX: DRAGGED_OVER_INDEX_EVENT_NAME,
+  DRAGGED_LEFT: DRAGGED_LEFT_EVENT_NAME,
+  DRAGGED_LEFT_ALL: "draggedLeftAll",
+  DROPPED_INTO_ZONE: "droppedIntoZone",
+  DROPPED_INTO_ANOTHER: "droppedIntoAnother",
+  DROPPED_OUTSIDE_OF_ANY: "droppedOutsideOfAny",
+  DRAG_STOPPED: "dragStopped"
+};
+var SOURCES = {
+  POINTER: "pointer",
+  KEYBOARD: "keyboard"
+};
+var SHADOW_ITEM_MARKER_PROPERTY_NAME = "isDndShadowItem";
+var SHADOW_ELEMENT_ATTRIBUTE_NAME = "data-is-dnd-shadow-item";
+var SHADOW_PLACEHOLDER_ITEM_ID = "id:dnd-shadow-placeholder-0000";
+var DRAGGED_ELEMENT_ID = "dnd-action-dragged-el";
+var ITEM_ID_KEY = "id";
+var activeDndZoneCount = 0;
+function incrementActiveDropZoneCount() {
+  activeDndZoneCount++;
+}
+function decrementActiveDropZoneCount() {
+  if (activeDndZoneCount === 0) {
+    throw new Error("Bug! trying to decrement when there are no dropzones");
+  }
+  activeDndZoneCount--;
+}
+var isOnServer = typeof window === "undefined";
+var printDebug = function printDebug2() {
+};
+function getBoundingRectNoTransforms(el) {
+  var ta;
+  var rect = el.getBoundingClientRect();
+  var style = getComputedStyle(el);
+  var tx = style.transform;
+  if (tx) {
+    var sx, sy, dx, dy;
+    if (tx.startsWith("matrix3d(")) {
+      ta = tx.slice(9, -1).split(/, /);
+      sx = +ta[0];
+      sy = +ta[5];
+      dx = +ta[12];
+      dy = +ta[13];
+    } else if (tx.startsWith("matrix(")) {
+      ta = tx.slice(7, -1).split(/, /);
+      sx = +ta[0];
+      sy = +ta[3];
+      dx = +ta[4];
+      dy = +ta[5];
+    } else {
+      return rect;
+    }
+    var to = style.transformOrigin;
+    var x2 = rect.x - dx - (1 - sx) * parseFloat(to);
+    var y2 = rect.y - dy - (1 - sy) * parseFloat(to.slice(to.indexOf(" ") + 1));
+    var w2 = sx ? rect.width / sx : el.offsetWidth;
+    var h2 = sy ? rect.height / sy : el.offsetHeight;
+    return {
+      x: x2,
+      y: y2,
+      width: w2,
+      height: h2,
+      top: y2,
+      right: x2 + w2,
+      bottom: y2 + h2,
+      left: x2
+    };
+  } else {
+    return rect;
+  }
+}
+function getAbsoluteRectNoTransforms(el) {
+  var rect = getBoundingRectNoTransforms(el);
+  return {
+    top: rect.top + window.scrollY,
+    bottom: rect.bottom + window.scrollY,
+    left: rect.left + window.scrollX,
+    right: rect.right + window.scrollX
+  };
+}
+function getAbsoluteRect(el) {
+  var rect = el.getBoundingClientRect();
+  return {
+    top: rect.top + window.scrollY,
+    bottom: rect.bottom + window.scrollY,
+    left: rect.left + window.scrollX,
+    right: rect.right + window.scrollX
+  };
+}
+function findCenter(rect) {
+  return {
+    x: (rect.left + rect.right) / 2,
+    y: (rect.top + rect.bottom) / 2
+  };
+}
+function calcDistance(pointA, pointB) {
+  return Math.sqrt(Math.pow(pointA.x - pointB.x, 2) + Math.pow(pointA.y - pointB.y, 2));
+}
+function isPointInsideRect(point, rect) {
+  return point.y <= rect.bottom && point.y >= rect.top && point.x >= rect.left && point.x <= rect.right;
+}
+function findCenterOfElement(el) {
+  return findCenter(getAbsoluteRect(el));
+}
+function isCenterOfAInsideB(elA, elB) {
+  var centerOfA = findCenterOfElement(elA);
+  var rectOfB = getAbsoluteRectNoTransforms(elB);
+  return isPointInsideRect(centerOfA, rectOfB);
+}
+function calcDistanceBetweenCenters(elA, elB) {
+  var centerOfA = findCenterOfElement(elA);
+  var centerOfB = findCenterOfElement(elB);
+  return calcDistance(centerOfA, centerOfB);
+}
+function isElementOffDocument(el) {
+  var rect = getAbsoluteRect(el);
+  return rect.right < 0 || rect.left > document.documentElement.scrollWidth || rect.bottom < 0 || rect.top > document.documentElement.scrollHeight;
+}
+function calcInnerDistancesBetweenPointAndSidesOfElement(point, el) {
+  var rect = getAbsoluteRect(el);
+  if (!isPointInsideRect(point, rect)) {
+    return null;
+  }
+  return {
+    top: point.y - rect.top,
+    bottom: rect.bottom - point.y,
+    left: point.x - rect.left,
+    right: Math.min(rect.right, document.documentElement.clientWidth) - point.x
+  };
+}
+var dzToShadowIndexToRect;
+function resetIndexesCache() {
+  printDebug(function() {
+    return "resetting indexes cache";
+  });
+  dzToShadowIndexToRect = new Map();
+}
+resetIndexesCache();
+function resetIndexesCacheForDz(dz) {
+  printDebug(function() {
+    return "resetting indexes cache for dz";
+  });
+  dzToShadowIndexToRect["delete"](dz);
+}
+function cacheShadowRect(dz) {
+  var shadowElIndex = Array.from(dz.children).findIndex(function(child) {
+    return child.getAttribute(SHADOW_ELEMENT_ATTRIBUTE_NAME);
+  });
+  if (shadowElIndex >= 0) {
+    if (!dzToShadowIndexToRect.has(dz)) {
+      dzToShadowIndexToRect.set(dz, new Map());
+    }
+    dzToShadowIndexToRect.get(dz).set(shadowElIndex, getAbsoluteRectNoTransforms(dz.children[shadowElIndex]));
+    return shadowElIndex;
+  }
+  return void 0;
+}
+function findWouldBeIndex(floatingAboveEl, collectionBelowEl) {
+  if (!isCenterOfAInsideB(floatingAboveEl, collectionBelowEl)) {
+    return null;
+  }
+  var children2 = collectionBelowEl.children;
+  if (children2.length === 0) {
+    return {
+      index: 0,
+      isProximityBased: true
+    };
+  }
+  var shadowElIndex = cacheShadowRect(collectionBelowEl);
+  for (var i2 = 0; i2 < children2.length; i2++) {
+    if (isCenterOfAInsideB(floatingAboveEl, children2[i2])) {
+      var cachedShadowRect = dzToShadowIndexToRect.has(collectionBelowEl) && dzToShadowIndexToRect.get(collectionBelowEl).get(i2);
+      if (cachedShadowRect) {
+        if (!isPointInsideRect(findCenterOfElement(floatingAboveEl), cachedShadowRect)) {
+          return {
+            index: shadowElIndex,
+            isProximityBased: false
+          };
+        }
+      }
+      return {
+        index: i2,
+        isProximityBased: false
+      };
+    }
+  }
+  var minDistanceSoFar = Number.MAX_VALUE;
+  var indexOfMin = void 0;
+  for (var _i = 0; _i < children2.length; _i++) {
+    var distance = calcDistanceBetweenCenters(floatingAboveEl, children2[_i]);
+    if (distance < minDistanceSoFar) {
+      minDistanceSoFar = distance;
+      indexOfMin = _i;
+    }
+  }
+  return {
+    index: indexOfMin,
+    isProximityBased: true
+  };
+}
+var SCROLL_ZONE_PX = 25;
+function makeScroller() {
+  var scrollingInfo;
+  function resetScrolling2() {
+    scrollingInfo = {
+      directionObj: void 0,
+      stepPx: 0
+    };
+  }
+  resetScrolling2();
+  function scrollContainer(containerEl) {
+    var _scrollingInfo = scrollingInfo, directionObj = _scrollingInfo.directionObj, stepPx = _scrollingInfo.stepPx;
+    if (directionObj) {
+      containerEl.scrollBy(directionObj.x * stepPx, directionObj.y * stepPx);
+      window.requestAnimationFrame(function() {
+        return scrollContainer(containerEl);
+      });
+    }
+  }
+  function calcScrollStepPx(distancePx) {
+    return SCROLL_ZONE_PX - distancePx;
+  }
+  function scrollIfNeeded2(pointer, elementToScroll) {
+    if (!elementToScroll) {
+      return false;
+    }
+    var distances = calcInnerDistancesBetweenPointAndSidesOfElement(pointer, elementToScroll);
+    if (distances === null) {
+      resetScrolling2();
+      return false;
+    }
+    var isAlreadyScrolling = !!scrollingInfo.directionObj;
+    var scrollingVertically = false, scrollingHorizontally = false;
+    if (elementToScroll.scrollHeight > elementToScroll.clientHeight) {
+      if (distances.bottom < SCROLL_ZONE_PX) {
+        scrollingVertically = true;
+        scrollingInfo.directionObj = {
+          x: 0,
+          y: 1
+        };
+        scrollingInfo.stepPx = calcScrollStepPx(distances.bottom);
+      } else if (distances.top < SCROLL_ZONE_PX) {
+        scrollingVertically = true;
+        scrollingInfo.directionObj = {
+          x: 0,
+          y: -1
+        };
+        scrollingInfo.stepPx = calcScrollStepPx(distances.top);
+      }
+      if (!isAlreadyScrolling && scrollingVertically) {
+        scrollContainer(elementToScroll);
+        return true;
+      }
+    }
+    if (elementToScroll.scrollWidth > elementToScroll.clientWidth) {
+      if (distances.right < SCROLL_ZONE_PX) {
+        scrollingHorizontally = true;
+        scrollingInfo.directionObj = {
+          x: 1,
+          y: 0
+        };
+        scrollingInfo.stepPx = calcScrollStepPx(distances.right);
+      } else if (distances.left < SCROLL_ZONE_PX) {
+        scrollingHorizontally = true;
+        scrollingInfo.directionObj = {
+          x: -1,
+          y: 0
+        };
+        scrollingInfo.stepPx = calcScrollStepPx(distances.left);
+      }
+      if (!isAlreadyScrolling && scrollingHorizontally) {
+        scrollContainer(elementToScroll);
+        return true;
+      }
+    }
+    resetScrolling2();
+    return false;
+  }
+  return {
+    scrollIfNeeded: scrollIfNeeded2,
+    resetScrolling: resetScrolling2
+  };
+}
+function toString(object) {
+  return JSON.stringify(object, null, 2);
+}
+function getDepth(node) {
+  if (!node) {
+    throw new Error("cannot get depth of a falsy node");
+  }
+  return _getDepth(node, 0);
+}
+function _getDepth(node) {
+  var countSoFar = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+  if (!node.parentElement) {
+    return countSoFar - 1;
+  }
+  return _getDepth(node.parentElement, countSoFar + 1);
+}
+function areObjectsShallowEqual(objA, objB) {
+  if (Object.keys(objA).length !== Object.keys(objB).length) {
+    return false;
+  }
+  for (var keyA in objA) {
+    if (!{}.hasOwnProperty.call(objB, keyA) || objB[keyA] !== objA[keyA]) {
+      return false;
+    }
+  }
+  return true;
+}
+function areArraysShallowEqualSameOrder(arrA, arrB) {
+  if (arrA.length !== arrB.length) {
+    return false;
+  }
+  for (var i2 = 0; i2 < arrA.length; i2++) {
+    if (arrA[i2] !== arrB[i2]) {
+      return false;
+    }
+  }
+  return true;
+}
+var INTERVAL_MS = 200;
+var TOLERANCE_PX = 10;
+var _makeScroller = makeScroller();
+var scrollIfNeeded = _makeScroller.scrollIfNeeded;
+var resetScrolling = _makeScroller.resetScrolling;
+var next;
+function observe(draggedEl2, dropZones) {
+  var intervalMs = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : INTERVAL_MS;
+  var lastDropZoneFound;
+  var lastIndexFound;
+  var lastIsDraggedInADropZone = false;
+  var lastCentrePositionOfDragged;
+  var dropZonesFromDeepToShallow = Array.from(dropZones).sort(function(dz1, dz2) {
+    return getDepth(dz2) - getDepth(dz1);
+  });
+  function andNow() {
+    var currentCenterOfDragged = findCenterOfElement(draggedEl2);
+    var scrolled = scrollIfNeeded(currentCenterOfDragged, lastDropZoneFound);
+    if (!scrolled && lastCentrePositionOfDragged && Math.abs(lastCentrePositionOfDragged.x - currentCenterOfDragged.x) < TOLERANCE_PX && Math.abs(lastCentrePositionOfDragged.y - currentCenterOfDragged.y) < TOLERANCE_PX) {
+      next = window.setTimeout(andNow, intervalMs);
+      return;
+    }
+    if (isElementOffDocument(draggedEl2)) {
+      printDebug(function() {
+        return "off document";
+      });
+      dispatchDraggedLeftDocument(draggedEl2);
+      return;
+    }
+    lastCentrePositionOfDragged = currentCenterOfDragged;
+    var isDraggedInADropZone = false;
+    var _iterator = _createForOfIteratorHelper(dropZonesFromDeepToShallow), _step;
+    try {
+      for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+        var dz = _step.value;
+        if (scrolled)
+          resetIndexesCacheForDz(lastDropZoneFound);
+        var indexObj = findWouldBeIndex(draggedEl2, dz);
+        if (indexObj === null) {
+          continue;
+        }
+        var index2 = indexObj.index;
+        isDraggedInADropZone = true;
+        if (dz !== lastDropZoneFound) {
+          lastDropZoneFound && dispatchDraggedElementLeftContainerForAnother(lastDropZoneFound, draggedEl2, dz);
+          dispatchDraggedElementEnteredContainer(dz, indexObj, draggedEl2);
+          lastDropZoneFound = dz;
+        } else if (index2 !== lastIndexFound) {
+          dispatchDraggedElementIsOverIndex(dz, indexObj, draggedEl2);
+          lastIndexFound = index2;
+        }
+        break;
+      }
+    } catch (err) {
+      _iterator.e(err);
+    } finally {
+      _iterator.f();
+    }
+    if (!isDraggedInADropZone && lastIsDraggedInADropZone && lastDropZoneFound) {
+      dispatchDraggedElementLeftContainerForNone(lastDropZoneFound, draggedEl2);
+      lastDropZoneFound = void 0;
+      lastIndexFound = void 0;
+      lastIsDraggedInADropZone = false;
+    } else {
+      lastIsDraggedInADropZone = true;
+    }
+    next = window.setTimeout(andNow, intervalMs);
+  }
+  andNow();
+}
+function unobserve() {
+  printDebug(function() {
+    return "unobserving";
+  });
+  clearTimeout(next);
+  resetScrolling();
+  resetIndexesCache();
+}
+var INTERVAL_MS$1 = 300;
+var mousePosition;
+function updateMousePosition(e) {
+  var c2 = e.touches ? e.touches[0] : e;
+  mousePosition = {
+    x: c2.clientX,
+    y: c2.clientY
+  };
+}
+var _makeScroller$1 = makeScroller();
+var scrollIfNeeded$1 = _makeScroller$1.scrollIfNeeded;
+var resetScrolling$1 = _makeScroller$1.resetScrolling;
+var next$1;
+function loop2() {
+  if (mousePosition) {
+    var scrolled = scrollIfNeeded$1(mousePosition, document.documentElement);
+    if (scrolled)
+      resetIndexesCache();
+  }
+  next$1 = window.setTimeout(loop2, INTERVAL_MS$1);
+}
+function armWindowScroller() {
+  printDebug(function() {
+    return "arming window scroller";
+  });
+  window.addEventListener("mousemove", updateMousePosition);
+  window.addEventListener("touchmove", updateMousePosition);
+  loop2();
+}
+function disarmWindowScroller() {
+  printDebug(function() {
+    return "disarming window scroller";
+  });
+  window.removeEventListener("mousemove", updateMousePosition);
+  window.removeEventListener("touchmove", updateMousePosition);
+  mousePosition = void 0;
+  window.clearTimeout(next$1);
+  resetScrolling$1();
+}
+function svelteNodeClone(el) {
+  var cloned = el.cloneNode(true);
+  var values = [];
+  var elIsSelect = el.tagName === "SELECT";
+  var selects = elIsSelect ? [el] : _toConsumableArray(el.querySelectorAll("select"));
+  var _iterator = _createForOfIteratorHelper(selects), _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+      var _select = _step.value;
+      values.push(_select.value);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  if (selects.length <= 0) {
+    return cloned;
+  }
+  var clonedSelects = elIsSelect ? [cloned] : _toConsumableArray(cloned.querySelectorAll("select"));
+  for (var i2 = 0; i2 < clonedSelects.length; i2++) {
+    var select = clonedSelects[i2];
+    var value = values[i2];
+    var optionEl = select.querySelector('option[value="'.concat(value, '"'));
+    if (optionEl) {
+      optionEl.setAttribute("selected", true);
+    }
+  }
+  return cloned;
+}
+var TRANSITION_DURATION_SECONDS = 0.2;
+function trs(property) {
+  return "".concat(property, " ").concat(TRANSITION_DURATION_SECONDS, "s ease");
+}
+function createDraggedElementFrom(originalElement, positionCenterOnXY) {
+  var rect = originalElement.getBoundingClientRect();
+  var draggedEl2 = svelteNodeClone(originalElement);
+  copyStylesFromTo(originalElement, draggedEl2);
+  draggedEl2.id = DRAGGED_ELEMENT_ID;
+  draggedEl2.style.position = "fixed";
+  var elTopPx = rect.top;
+  var elLeftPx = rect.left;
+  draggedEl2.style.top = "".concat(elTopPx, "px");
+  draggedEl2.style.left = "".concat(elLeftPx, "px");
+  if (positionCenterOnXY) {
+    var center = findCenter(rect);
+    elTopPx -= center.y - positionCenterOnXY.y;
+    elLeftPx -= center.x - positionCenterOnXY.x;
+    window.setTimeout(function() {
+      draggedEl2.style.top = "".concat(elTopPx, "px");
+      draggedEl2.style.left = "".concat(elLeftPx, "px");
+    }, 0);
+  }
+  draggedEl2.style.margin = "0";
+  draggedEl2.style.boxSizing = "border-box";
+  draggedEl2.style.height = "".concat(rect.height, "px");
+  draggedEl2.style.width = "".concat(rect.width, "px");
+  draggedEl2.style.transition = "".concat(trs("top"), ", ").concat(trs("left"), ", ").concat(trs("background-color"), ", ").concat(trs("opacity"), ", ").concat(trs("color"), " ");
+  window.setTimeout(function() {
+    return draggedEl2.style.transition += ", ".concat(trs("width"), ", ").concat(trs("height"));
+  }, 0);
+  draggedEl2.style.zIndex = "9999";
+  draggedEl2.style.cursor = "grabbing";
+  return draggedEl2;
+}
+function moveDraggedElementToWasDroppedState(draggedEl2) {
+  draggedEl2.style.cursor = "grab";
+}
+function morphDraggedElementToBeLike(draggedEl2, copyFromEl, currentMouseX, currentMouseY) {
+  copyStylesFromTo(copyFromEl, draggedEl2);
+  var newRect = copyFromEl.getBoundingClientRect();
+  var draggedElRect = draggedEl2.getBoundingClientRect();
+  var widthChange = newRect.width - draggedElRect.width;
+  var heightChange = newRect.height - draggedElRect.height;
+  if (widthChange || heightChange) {
+    var relativeDistanceOfMousePointerFromDraggedSides = {
+      left: (currentMouseX - draggedElRect.left) / draggedElRect.width,
+      top: (currentMouseY - draggedElRect.top) / draggedElRect.height
+    };
+    draggedEl2.style.height = "".concat(newRect.height, "px");
+    draggedEl2.style.width = "".concat(newRect.width, "px");
+    draggedEl2.style.left = "".concat(parseFloat(draggedEl2.style.left) - relativeDistanceOfMousePointerFromDraggedSides.left * widthChange, "px");
+    draggedEl2.style.top = "".concat(parseFloat(draggedEl2.style.top) - relativeDistanceOfMousePointerFromDraggedSides.top * heightChange, "px");
+  }
+}
+function copyStylesFromTo(copyFromEl, copyToEl) {
+  var computedStyle = window.getComputedStyle(copyFromEl);
+  Array.from(computedStyle).filter(function(s2) {
+    return s2.startsWith("background") || s2.startsWith("padding") || s2.startsWith("font") || s2.startsWith("text") || s2.startsWith("align") || s2.startsWith("justify") || s2.startsWith("display") || s2.startsWith("flex") || s2.startsWith("border") || s2 === "opacity" || s2 === "color" || s2 === "list-style-type";
+  }).forEach(function(s2) {
+    return copyToEl.style.setProperty(s2, computedStyle.getPropertyValue(s2), computedStyle.getPropertyPriority(s2));
+  });
+}
+function styleDraggable(draggableEl, dragDisabled) {
+  draggableEl.draggable = false;
+  draggableEl.ondragstart = function() {
+    return false;
+  };
+  if (!dragDisabled) {
+    draggableEl.style.userSelect = "none";
+    draggableEl.style.WebkitUserSelect = "none";
+    draggableEl.style.cursor = "grab";
+  } else {
+    draggableEl.style.userSelect = "";
+    draggableEl.style.WebkitUserSelect = "";
+    draggableEl.style.cursor = "";
+  }
+}
+function hideElement(dragTarget) {
+  dragTarget.style.display = "none";
+  dragTarget.style.position = "fixed";
+  dragTarget.style.zIndex = "-5";
+}
+function decorateShadowEl(shadowEl) {
+  shadowEl.style.visibility = "hidden";
+  shadowEl.setAttribute(SHADOW_ELEMENT_ATTRIBUTE_NAME, "true");
+}
+function unDecorateShadowElement(shadowEl) {
+  shadowEl.style.visibility = "";
+  shadowEl.removeAttribute(SHADOW_ELEMENT_ATTRIBUTE_NAME);
+}
+function styleActiveDropZones(dropZones) {
+  var getStyles = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : function() {
+  };
+  var getClasses = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : function() {
+    return [];
+  };
+  dropZones.forEach(function(dz) {
+    var styles = getStyles(dz);
+    Object.keys(styles).forEach(function(style) {
+      dz.style[style] = styles[style];
+    });
+    getClasses(dz).forEach(function(c2) {
+      return dz.classList.add(c2);
+    });
+  });
+}
+function styleInactiveDropZones(dropZones) {
+  var getStyles = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : function() {
+  };
+  var getClasses = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : function() {
+    return [];
+  };
+  dropZones.forEach(function(dz) {
+    var styles = getStyles(dz);
+    Object.keys(styles).forEach(function(style) {
+      dz.style[style] = "";
+    });
+    getClasses(dz).forEach(function(c2) {
+      return dz.classList.contains(c2) && dz.classList.remove(c2);
+    });
+  });
+}
+function preventShrinking(el) {
+  var originalMinHeight = el.style.minHeight;
+  el.style.minHeight = window.getComputedStyle(el).getPropertyValue("height");
+  var originalMinWidth = el.style.minWidth;
+  el.style.minWidth = window.getComputedStyle(el).getPropertyValue("width");
+  return function undo() {
+    el.style.minHeight = originalMinHeight;
+    el.style.minWidth = originalMinWidth;
+  };
+}
+var DEFAULT_DROP_ZONE_TYPE = "--any--";
+var MIN_OBSERVATION_INTERVAL_MS = 100;
+var MIN_MOVEMENT_BEFORE_DRAG_START_PX = 3;
+var DEFAULT_DROP_TARGET_STYLE = {
+  outline: "rgba(255, 255, 102, 0.7) solid 2px"
+};
+var originalDragTarget;
+var draggedEl;
+var draggedElData;
+var draggedElType;
+var originDropZone;
+var originIndex;
+var shadowElData;
+var shadowElDropZone;
+var dragStartMousePosition;
+var currentMousePosition;
+var isWorkingOnPreviousDrag = false;
+var finalizingPreviousDrag = false;
+var unlockOriginDzMinDimensions;
+var isDraggedOutsideOfAnyDz = false;
+var scheduledForRemovalAfterDrop = [];
+var typeToDropZones = new Map();
+var dzToConfig = new Map();
+var elToMouseDownListener = new WeakMap();
+function registerDropZone(dropZoneEl, type) {
+  printDebug(function() {
+    return "registering drop-zone if absent";
+  });
+  if (!typeToDropZones.has(type)) {
+    typeToDropZones.set(type, new Set());
+  }
+  if (!typeToDropZones.get(type).has(dropZoneEl)) {
+    typeToDropZones.get(type).add(dropZoneEl);
+    incrementActiveDropZoneCount();
+  }
+}
+function unregisterDropZone(dropZoneEl, type) {
+  typeToDropZones.get(type)["delete"](dropZoneEl);
+  decrementActiveDropZoneCount();
+  if (typeToDropZones.get(type).size === 0) {
+    typeToDropZones["delete"](type);
+  }
+}
+function watchDraggedElement() {
+  printDebug(function() {
+    return "watching dragged element";
+  });
+  armWindowScroller();
+  var dropZones = typeToDropZones.get(draggedElType);
+  var _iterator = _createForOfIteratorHelper(dropZones), _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done; ) {
+      var dz = _step.value;
+      dz.addEventListener(DRAGGED_ENTERED_EVENT_NAME, handleDraggedEntered);
+      dz.addEventListener(DRAGGED_LEFT_EVENT_NAME, handleDraggedLeft);
+      dz.addEventListener(DRAGGED_OVER_INDEX_EVENT_NAME, handleDraggedIsOverIndex);
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  window.addEventListener(DRAGGED_LEFT_DOCUMENT_EVENT_NAME, handleDrop);
+  var observationIntervalMs = Math.max.apply(Math, [MIN_OBSERVATION_INTERVAL_MS].concat(_toConsumableArray(Array.from(dropZones.keys()).map(function(dz2) {
+    return dzToConfig.get(dz2).dropAnimationDurationMs;
+  }))));
+  observe(draggedEl, dropZones, observationIntervalMs * 1.07);
+}
+function unWatchDraggedElement() {
+  printDebug(function() {
+    return "unwatching dragged element";
+  });
+  disarmWindowScroller();
+  var dropZones = typeToDropZones.get(draggedElType);
+  var _iterator2 = _createForOfIteratorHelper(dropZones), _step2;
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done; ) {
+      var dz = _step2.value;
+      dz.removeEventListener(DRAGGED_ENTERED_EVENT_NAME, handleDraggedEntered);
+      dz.removeEventListener(DRAGGED_LEFT_EVENT_NAME, handleDraggedLeft);
+      dz.removeEventListener(DRAGGED_OVER_INDEX_EVENT_NAME, handleDraggedIsOverIndex);
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+  window.removeEventListener(DRAGGED_LEFT_DOCUMENT_EVENT_NAME, handleDrop);
+  unobserve();
+}
+function findShadowPlaceHolderIdx(items) {
+  return items.findIndex(function(item) {
+    return item[ITEM_ID_KEY] === SHADOW_PLACEHOLDER_ITEM_ID;
+  });
+}
+function findShadowElementIdx(items) {
+  return items.findIndex(function(item) {
+    return !!item[SHADOW_ITEM_MARKER_PROPERTY_NAME] && item[ITEM_ID_KEY] !== SHADOW_PLACEHOLDER_ITEM_ID;
+  });
+}
+function handleDraggedEntered(e) {
+  printDebug(function() {
+    return ["dragged entered", e.currentTarget, e.detail];
+  });
+  var _dzToConfig$get = dzToConfig.get(e.currentTarget), items = _dzToConfig$get.items, dropFromOthersDisabled = _dzToConfig$get.dropFromOthersDisabled;
+  if (dropFromOthersDisabled && e.currentTarget !== originDropZone) {
+    printDebug(function() {
+      return "ignoring dragged entered because drop is currently disabled";
+    });
+    return;
+  }
+  isDraggedOutsideOfAnyDz = false;
+  items = items.filter(function(item) {
+    return item[ITEM_ID_KEY] !== shadowElData[ITEM_ID_KEY];
+  });
+  printDebug(function() {
+    return "dragged entered items ".concat(toString(items));
+  });
+  if (originDropZone !== e.currentTarget) {
+    var originZoneItems = dzToConfig.get(originDropZone).items;
+    var newOriginZoneItems = originZoneItems.filter(function(item) {
+      return !item[SHADOW_ITEM_MARKER_PROPERTY_NAME];
+    });
+    dispatchConsiderEvent(originDropZone, newOriginZoneItems, {
+      trigger: TRIGGERS.DRAGGED_ENTERED_ANOTHER,
+      id: draggedElData[ITEM_ID_KEY],
+      source: SOURCES.POINTER
+    });
+  } else {
+    var shadowPlaceHolderIdx = findShadowPlaceHolderIdx(items);
+    if (shadowPlaceHolderIdx !== -1) {
+      printDebug(function() {
+        return "removing placeholder item from origin dz";
+      });
+      items.splice(shadowPlaceHolderIdx, 1);
+    }
+  }
+  var _e$detail$indexObj = e.detail.indexObj, index2 = _e$detail$indexObj.index, isProximityBased = _e$detail$indexObj.isProximityBased;
+  var shadowElIdx = isProximityBased && index2 === e.currentTarget.children.length - 1 ? index2 + 1 : index2;
+  shadowElDropZone = e.currentTarget;
+  items.splice(shadowElIdx, 0, shadowElData);
+  dispatchConsiderEvent(e.currentTarget, items, {
+    trigger: TRIGGERS.DRAGGED_ENTERED,
+    id: draggedElData[ITEM_ID_KEY],
+    source: SOURCES.POINTER
+  });
+}
+function handleDraggedLeft(e) {
+  if (!isWorkingOnPreviousDrag)
+    return;
+  printDebug(function() {
+    return ["dragged left", e.currentTarget, e.detail];
+  });
+  var _dzToConfig$get2 = dzToConfig.get(e.currentTarget), items = _dzToConfig$get2.items, dropFromOthersDisabled = _dzToConfig$get2.dropFromOthersDisabled;
+  if (dropFromOthersDisabled && e.currentTarget !== originDropZone && e.currentTarget !== shadowElDropZone) {
+    printDebug(function() {
+      return "drop is currently disabled";
+    });
+    return;
+  }
+  var shadowElIdx = findShadowElementIdx(items);
+  var shadowItem = items.splice(shadowElIdx, 1)[0];
+  shadowElDropZone = void 0;
+  var _e$detail = e.detail, type = _e$detail.type, theOtherDz = _e$detail.theOtherDz;
+  if (type === DRAGGED_LEFT_TYPES.OUTSIDE_OF_ANY || type === DRAGGED_LEFT_TYPES.LEFT_FOR_ANOTHER && theOtherDz !== originDropZone && dzToConfig.get(theOtherDz).dropFromOthersDisabled) {
+    printDebug(function() {
+      return "dragged left all, putting shadow element back in the origin dz";
+    });
+    isDraggedOutsideOfAnyDz = true;
+    shadowElDropZone = originDropZone;
+    var originZoneItems = dzToConfig.get(originDropZone).items;
+    originZoneItems.splice(originIndex, 0, shadowItem);
+    dispatchConsiderEvent(originDropZone, originZoneItems, {
+      trigger: TRIGGERS.DRAGGED_LEFT_ALL,
+      id: draggedElData[ITEM_ID_KEY],
+      source: SOURCES.POINTER
+    });
+  }
+  dispatchConsiderEvent(e.currentTarget, items, {
+    trigger: TRIGGERS.DRAGGED_LEFT,
+    id: draggedElData[ITEM_ID_KEY],
+    source: SOURCES.POINTER
+  });
+}
+function handleDraggedIsOverIndex(e) {
+  printDebug(function() {
+    return ["dragged is over index", e.currentTarget, e.detail];
+  });
+  var _dzToConfig$get3 = dzToConfig.get(e.currentTarget), items = _dzToConfig$get3.items, dropFromOthersDisabled = _dzToConfig$get3.dropFromOthersDisabled;
+  if (dropFromOthersDisabled && e.currentTarget !== originDropZone) {
+    printDebug(function() {
+      return "drop is currently disabled";
+    });
+    return;
+  }
+  isDraggedOutsideOfAnyDz = false;
+  var index2 = e.detail.indexObj.index;
+  var shadowElIdx = findShadowElementIdx(items);
+  items.splice(shadowElIdx, 1);
+  items.splice(index2, 0, shadowElData);
+  dispatchConsiderEvent(e.currentTarget, items, {
+    trigger: TRIGGERS.DRAGGED_OVER_INDEX,
+    id: draggedElData[ITEM_ID_KEY],
+    source: SOURCES.POINTER
+  });
+}
+function handleMouseMove(e) {
+  e.preventDefault();
+  var c2 = e.touches ? e.touches[0] : e;
+  currentMousePosition = {
+    x: c2.clientX,
+    y: c2.clientY
+  };
+  draggedEl.style.transform = "translate3d(".concat(currentMousePosition.x - dragStartMousePosition.x, "px, ").concat(currentMousePosition.y - dragStartMousePosition.y, "px, 0)");
+}
+function handleDrop() {
+  printDebug(function() {
+    return "dropped";
+  });
+  finalizingPreviousDrag = true;
+  window.removeEventListener("mousemove", handleMouseMove);
+  window.removeEventListener("touchmove", handleMouseMove);
+  window.removeEventListener("mouseup", handleDrop);
+  window.removeEventListener("touchend", handleDrop);
+  unWatchDraggedElement();
+  moveDraggedElementToWasDroppedState(draggedEl);
+  if (!shadowElDropZone) {
+    printDebug(function() {
+      return "element was dropped right after it left origin but before entering somewhere else";
+    });
+    shadowElDropZone = originDropZone;
+  }
+  printDebug(function() {
+    return ["dropped in dz", shadowElDropZone];
+  });
+  var _dzToConfig$get4 = dzToConfig.get(shadowElDropZone), items = _dzToConfig$get4.items, type = _dzToConfig$get4.type;
+  styleInactiveDropZones(typeToDropZones.get(type), function(dz) {
+    return dzToConfig.get(dz).dropTargetStyle;
+  }, function(dz) {
+    return dzToConfig.get(dz).dropTargetClasses;
+  });
+  var shadowElIdx = findShadowElementIdx(items);
+  if (shadowElIdx === -1)
+    shadowElIdx = originIndex;
+  items = items.map(function(item) {
+    return item[SHADOW_ITEM_MARKER_PROPERTY_NAME] ? draggedElData : item;
+  });
+  function finalizeWithinZone() {
+    unlockOriginDzMinDimensions();
+    dispatchFinalizeEvent(shadowElDropZone, items, {
+      trigger: isDraggedOutsideOfAnyDz ? TRIGGERS.DROPPED_OUTSIDE_OF_ANY : TRIGGERS.DROPPED_INTO_ZONE,
+      id: draggedElData[ITEM_ID_KEY],
+      source: SOURCES.POINTER
+    });
+    if (shadowElDropZone !== originDropZone) {
+      dispatchFinalizeEvent(originDropZone, dzToConfig.get(originDropZone).items, {
+        trigger: TRIGGERS.DROPPED_INTO_ANOTHER,
+        id: draggedElData[ITEM_ID_KEY],
+        source: SOURCES.POINTER
+      });
+    }
+    unDecorateShadowElement(shadowElDropZone.children[shadowElIdx]);
+    cleanupPostDrop();
+  }
+  animateDraggedToFinalPosition(shadowElIdx, finalizeWithinZone);
+}
+function animateDraggedToFinalPosition(shadowElIdx, callback) {
+  var shadowElRect = getBoundingRectNoTransforms(shadowElDropZone.children[shadowElIdx]);
+  var newTransform = {
+    x: shadowElRect.left - parseFloat(draggedEl.style.left),
+    y: shadowElRect.top - parseFloat(draggedEl.style.top)
+  };
+  var _dzToConfig$get5 = dzToConfig.get(shadowElDropZone), dropAnimationDurationMs = _dzToConfig$get5.dropAnimationDurationMs;
+  var transition = "transform ".concat(dropAnimationDurationMs, "ms ease");
+  draggedEl.style.transition = draggedEl.style.transition ? draggedEl.style.transition + "," + transition : transition;
+  draggedEl.style.transform = "translate3d(".concat(newTransform.x, "px, ").concat(newTransform.y, "px, 0)");
+  window.setTimeout(callback, dropAnimationDurationMs);
+}
+function scheduleDZForRemovalAfterDrop(dz, destroy2) {
+  scheduledForRemovalAfterDrop.push({
+    dz,
+    destroy: destroy2
+  });
+  window.requestAnimationFrame(function() {
+    hideElement(dz);
+    document.body.appendChild(dz);
+  });
+}
+function cleanupPostDrop() {
+  draggedEl.remove();
+  originalDragTarget.remove();
+  if (scheduledForRemovalAfterDrop.length) {
+    printDebug(function() {
+      return ["will destroy zones that were removed during drag", scheduledForRemovalAfterDrop];
+    });
+    scheduledForRemovalAfterDrop.forEach(function(_ref) {
+      var dz = _ref.dz, destroy2 = _ref.destroy;
+      destroy2();
+      dz.remove();
+    });
+    scheduledForRemovalAfterDrop = [];
+  }
+  draggedEl = void 0;
+  originalDragTarget = void 0;
+  draggedElData = void 0;
+  draggedElType = void 0;
+  originDropZone = void 0;
+  originIndex = void 0;
+  shadowElData = void 0;
+  shadowElDropZone = void 0;
+  dragStartMousePosition = void 0;
+  currentMousePosition = void 0;
+  isWorkingOnPreviousDrag = false;
+  finalizingPreviousDrag = false;
+  unlockOriginDzMinDimensions = void 0;
+  isDraggedOutsideOfAnyDz = false;
+}
+function dndzone(node, options) {
+  var initialized = false;
+  var config = {
+    items: void 0,
+    type: void 0,
+    flipDurationMs: 0,
+    dragDisabled: false,
+    morphDisabled: false,
+    dropFromOthersDisabled: false,
+    dropTargetStyle: DEFAULT_DROP_TARGET_STYLE,
+    dropTargetClasses: [],
+    transformDraggedElement: function transformDraggedElement() {
+    },
+    centreDraggedOnCursor: false
+  };
+  printDebug(function() {
+    return ["dndzone good to go options: ".concat(toString(options), ", config: ").concat(toString(config)), {
+      node
+    }];
+  });
+  var elToIdx = new Map();
+  function addMaybeListeners() {
+    window.addEventListener("mousemove", handleMouseMoveMaybeDragStart, {
+      passive: false
+    });
+    window.addEventListener("touchmove", handleMouseMoveMaybeDragStart, {
+      passive: false,
+      capture: false
+    });
+    window.addEventListener("mouseup", handleFalseAlarm, {
+      passive: false
+    });
+    window.addEventListener("touchend", handleFalseAlarm, {
+      passive: false
+    });
+  }
+  function removeMaybeListeners() {
+    window.removeEventListener("mousemove", handleMouseMoveMaybeDragStart);
+    window.removeEventListener("touchmove", handleMouseMoveMaybeDragStart);
+    window.removeEventListener("mouseup", handleFalseAlarm);
+    window.removeEventListener("touchend", handleFalseAlarm);
+  }
+  function handleFalseAlarm() {
+    removeMaybeListeners();
+    originalDragTarget = void 0;
+    dragStartMousePosition = void 0;
+    currentMousePosition = void 0;
+  }
+  function handleMouseMoveMaybeDragStart(e) {
+    e.preventDefault();
+    var c2 = e.touches ? e.touches[0] : e;
+    currentMousePosition = {
+      x: c2.clientX,
+      y: c2.clientY
+    };
+    if (Math.abs(currentMousePosition.x - dragStartMousePosition.x) >= MIN_MOVEMENT_BEFORE_DRAG_START_PX || Math.abs(currentMousePosition.y - dragStartMousePosition.y) >= MIN_MOVEMENT_BEFORE_DRAG_START_PX) {
+      removeMaybeListeners();
+      handleDragStart();
+    }
+  }
+  function handleMouseDown(e) {
+    if (e.target !== e.currentTarget && (e.target.value !== void 0 || e.target.isContentEditable)) {
+      printDebug(function() {
+        return "won't initiate drag on a nested input element";
+      });
+      return;
+    }
+    if (e.button) {
+      printDebug(function() {
+        return "ignoring none left click button: ".concat(e.button);
+      });
+      return;
+    }
+    if (isWorkingOnPreviousDrag) {
+      printDebug(function() {
+        return "cannot start a new drag before finalizing previous one";
+      });
+      return;
+    }
+    e.stopPropagation();
+    var c2 = e.touches ? e.touches[0] : e;
+    dragStartMousePosition = {
+      x: c2.clientX,
+      y: c2.clientY
+    };
+    currentMousePosition = _objectSpread22({}, dragStartMousePosition);
+    originalDragTarget = e.currentTarget;
+    addMaybeListeners();
+  }
+  function handleDragStart() {
+    printDebug(function() {
+      return ["drag start config: ".concat(toString(config)), originalDragTarget];
+    });
+    isWorkingOnPreviousDrag = true;
+    var currentIdx = elToIdx.get(originalDragTarget);
+    originIndex = currentIdx;
+    originDropZone = originalDragTarget.parentElement;
+    var rootNode = originDropZone.getRootNode();
+    var originDropZoneRoot = rootNode.body || rootNode;
+    var items = config.items, type = config.type, centreDraggedOnCursor = config.centreDraggedOnCursor;
+    draggedElData = _objectSpread22({}, items[currentIdx]);
+    draggedElType = type;
+    shadowElData = _objectSpread22(_objectSpread22({}, draggedElData), {}, _defineProperty3({}, SHADOW_ITEM_MARKER_PROPERTY_NAME, true));
+    var placeHolderElData = _objectSpread22(_objectSpread22({}, shadowElData), {}, _defineProperty3({}, ITEM_ID_KEY, SHADOW_PLACEHOLDER_ITEM_ID));
+    draggedEl = createDraggedElementFrom(originalDragTarget, centreDraggedOnCursor && currentMousePosition);
+    function keepOriginalElementInDom() {
+      if (!draggedEl.parentElement) {
+        originDropZoneRoot.appendChild(draggedEl);
+        draggedEl.focus();
+        watchDraggedElement();
+        hideElement(originalDragTarget);
+        originDropZoneRoot.appendChild(originalDragTarget);
+      } else {
+        window.requestAnimationFrame(keepOriginalElementInDom);
+      }
+    }
+    window.requestAnimationFrame(keepOriginalElementInDom);
+    styleActiveDropZones(Array.from(typeToDropZones.get(config.type)).filter(function(dz) {
+      return dz === originDropZone || !dzToConfig.get(dz).dropFromOthersDisabled;
+    }), function(dz) {
+      return dzToConfig.get(dz).dropTargetStyle;
+    }, function(dz) {
+      return dzToConfig.get(dz).dropTargetClasses;
+    });
+    items.splice(currentIdx, 1, placeHolderElData);
+    unlockOriginDzMinDimensions = preventShrinking(originDropZone);
+    dispatchConsiderEvent(originDropZone, items, {
+      trigger: TRIGGERS.DRAG_STARTED,
+      id: draggedElData[ITEM_ID_KEY],
+      source: SOURCES.POINTER
+    });
+    window.addEventListener("mousemove", handleMouseMove, {
+      passive: false
+    });
+    window.addEventListener("touchmove", handleMouseMove, {
+      passive: false,
+      capture: false
+    });
+    window.addEventListener("mouseup", handleDrop, {
+      passive: false
+    });
+    window.addEventListener("touchend", handleDrop, {
+      passive: false
+    });
+  }
+  function configure(_ref2) {
+    var _ref2$items = _ref2.items, items = _ref2$items === void 0 ? void 0 : _ref2$items, _ref2$flipDurationMs = _ref2.flipDurationMs, dropAnimationDurationMs = _ref2$flipDurationMs === void 0 ? 0 : _ref2$flipDurationMs, _ref2$type = _ref2.type, newType = _ref2$type === void 0 ? DEFAULT_DROP_ZONE_TYPE : _ref2$type, _ref2$dragDisabled = _ref2.dragDisabled, dragDisabled = _ref2$dragDisabled === void 0 ? false : _ref2$dragDisabled, _ref2$morphDisabled = _ref2.morphDisabled, morphDisabled = _ref2$morphDisabled === void 0 ? false : _ref2$morphDisabled, _ref2$dropFromOthersD = _ref2.dropFromOthersDisabled, dropFromOthersDisabled = _ref2$dropFromOthersD === void 0 ? false : _ref2$dropFromOthersD, _ref2$dropTargetStyle = _ref2.dropTargetStyle, dropTargetStyle = _ref2$dropTargetStyle === void 0 ? DEFAULT_DROP_TARGET_STYLE : _ref2$dropTargetStyle, _ref2$dropTargetClass = _ref2.dropTargetClasses, dropTargetClasses = _ref2$dropTargetClass === void 0 ? [] : _ref2$dropTargetClass, _ref2$transformDragge = _ref2.transformDraggedElement, transformDraggedElement = _ref2$transformDragge === void 0 ? function() {
+    } : _ref2$transformDragge, _ref2$centreDraggedOn = _ref2.centreDraggedOnCursor, centreDraggedOnCursor = _ref2$centreDraggedOn === void 0 ? false : _ref2$centreDraggedOn;
+    config.dropAnimationDurationMs = dropAnimationDurationMs;
+    if (config.type && newType !== config.type) {
+      unregisterDropZone(node, config.type);
+    }
+    config.type = newType;
+    registerDropZone(node, newType);
+    config.items = _toConsumableArray(items);
+    config.dragDisabled = dragDisabled;
+    config.morphDisabled = morphDisabled;
+    config.transformDraggedElement = transformDraggedElement;
+    config.centreDraggedOnCursor = centreDraggedOnCursor;
+    if (initialized && isWorkingOnPreviousDrag && !finalizingPreviousDrag && (!areObjectsShallowEqual(dropTargetStyle, config.dropTargetStyle) || !areArraysShallowEqualSameOrder(dropTargetClasses, config.dropTargetClasses))) {
+      styleInactiveDropZones([node], function() {
+        return config.dropTargetStyle;
+      }, function() {
+        return dropTargetClasses;
+      });
+      styleActiveDropZones([node], function() {
+        return dropTargetStyle;
+      }, function() {
+        return dropTargetClasses;
+      });
+    }
+    config.dropTargetStyle = dropTargetStyle;
+    config.dropTargetClasses = _toConsumableArray(dropTargetClasses);
+    function getConfigProp(dz, propName) {
+      return dzToConfig.get(dz) ? dzToConfig.get(dz)[propName] : config[propName];
+    }
+    if (initialized && isWorkingOnPreviousDrag && config.dropFromOthersDisabled !== dropFromOthersDisabled) {
+      if (dropFromOthersDisabled) {
+        styleInactiveDropZones([node], function(dz) {
+          return getConfigProp(dz, "dropTargetStyle");
+        }, function(dz) {
+          return getConfigProp(dz, "dropTargetClasses");
+        });
+      } else {
+        styleActiveDropZones([node], function(dz) {
+          return getConfigProp(dz, "dropTargetStyle");
+        }, function(dz) {
+          return getConfigProp(dz, "dropTargetClasses");
+        });
+      }
+    }
+    config.dropFromOthersDisabled = dropFromOthersDisabled;
+    dzToConfig.set(node, config);
+    var shadowElIdx = findShadowElementIdx(config.items);
+    for (var idx = 0; idx < node.children.length; idx++) {
+      var draggableEl = node.children[idx];
+      styleDraggable(draggableEl, dragDisabled);
+      if (idx === shadowElIdx) {
+        config.transformDraggedElement(draggedEl, draggedElData, idx);
+        if (!morphDisabled) {
+          morphDraggedElementToBeLike(draggedEl, draggableEl, currentMousePosition.x, currentMousePosition.y);
+        }
+        decorateShadowEl(draggableEl);
+        continue;
+      }
+      draggableEl.removeEventListener("mousedown", elToMouseDownListener.get(draggableEl));
+      draggableEl.removeEventListener("touchstart", elToMouseDownListener.get(draggableEl));
+      if (!dragDisabled) {
+        draggableEl.addEventListener("mousedown", handleMouseDown);
+        draggableEl.addEventListener("touchstart", handleMouseDown);
+        elToMouseDownListener.set(draggableEl, handleMouseDown);
+      }
+      elToIdx.set(draggableEl, idx);
+      if (!initialized) {
+        initialized = true;
+      }
+    }
+  }
+  configure(options);
+  return {
+    update: function update2(newOptions) {
+      printDebug(function() {
+        return "pointer dndzone will update newOptions: ".concat(toString(newOptions));
+      });
+      configure(newOptions);
+    },
+    destroy: function destroy2() {
+      function destroyDz() {
+        printDebug(function() {
+          return "pointer dndzone will destroy";
+        });
+        unregisterDropZone(node, dzToConfig.get(node).type);
+        dzToConfig["delete"](node);
+      }
+      if (isWorkingOnPreviousDrag) {
+        printDebug(function() {
+          return "pointer dndzone will be scheduled for destruction";
+        });
+        scheduleDZForRemovalAfterDrop(node, destroyDz);
+      } else {
+        destroyDz();
+      }
+    }
+  };
+}
+var _ID_TO_INSTRUCTION;
+var INSTRUCTION_IDs = {
+  DND_ZONE_ACTIVE: "dnd-zone-active",
+  DND_ZONE_DRAG_DISABLED: "dnd-zone-drag-disabled"
+};
+var ID_TO_INSTRUCTION = (_ID_TO_INSTRUCTION = {}, _defineProperty3(_ID_TO_INSTRUCTION, INSTRUCTION_IDs.DND_ZONE_ACTIVE, "Tab to one the items and press space-bar or enter to start dragging it"), _defineProperty3(_ID_TO_INSTRUCTION, INSTRUCTION_IDs.DND_ZONE_DRAG_DISABLED, "This is a disabled drag and drop list"), _ID_TO_INSTRUCTION);
+var ALERT_DIV_ID = "dnd-action-aria-alert";
+var alertsDiv;
+function initAriaOnBrowser() {
+  if (alertsDiv) {
+    return;
+  }
+  alertsDiv = document.createElement("div");
+  (function initAlertsDiv() {
+    alertsDiv.id = ALERT_DIV_ID;
+    alertsDiv.style.position = "fixed";
+    alertsDiv.style.bottom = "0";
+    alertsDiv.style.left = "0";
+    alertsDiv.style.zIndex = "-5";
+    alertsDiv.style.opacity = "0";
+    alertsDiv.style.height = "0";
+    alertsDiv.style.width = "0";
+    alertsDiv.setAttribute("role", "alert");
+  })();
+  document.body.prepend(alertsDiv);
+  Object.entries(ID_TO_INSTRUCTION).forEach(function(_ref) {
+    var _ref2 = _slicedToArray(_ref, 2), id = _ref2[0], txt = _ref2[1];
+    return document.body.prepend(instructionToHiddenDiv(id, txt));
+  });
+}
+function initAria() {
+  if (isOnServer)
+    return null;
+  if (document.readyState === "complete") {
+    initAriaOnBrowser();
+  } else {
+    window.addEventListener("DOMContentLoaded", initAriaOnBrowser);
+  }
+  return _objectSpread22({}, INSTRUCTION_IDs);
+}
+function destroyAria() {
+  if (isOnServer || !alertsDiv)
+    return;
+  Object.keys(ID_TO_INSTRUCTION).forEach(function(id) {
+    var _document$getElementB;
+    return (_document$getElementB = document.getElementById(id)) === null || _document$getElementB === void 0 ? void 0 : _document$getElementB.remove();
+  });
+  alertsDiv.remove();
+  alertsDiv = void 0;
+}
+function instructionToHiddenDiv(id, txt) {
+  var div = document.createElement("div");
+  div.id = id;
+  div.innerHTML = "<p>".concat(txt, "</p>");
+  div.style.display = "none";
+  div.style.position = "fixed";
+  div.style.zIndex = "-5";
+  return div;
+}
+function alertToScreenReader(txt) {
+  if (isOnServer)
+    return;
+  if (!alertsDiv) {
+    initAriaOnBrowser();
+  }
+  alertsDiv.innerHTML = "";
+  var alertText = document.createTextNode(txt);
+  alertsDiv.appendChild(alertText);
+  alertsDiv.style.display = "none";
+  alertsDiv.style.display = "inline";
+}
+var DEFAULT_DROP_ZONE_TYPE$1 = "--any--";
+var DEFAULT_DROP_TARGET_STYLE$1 = {
+  outline: "rgba(255, 255, 102, 0.7) solid 2px"
+};
+var isDragging = false;
+var draggedItemType;
+var focusedDz;
+var focusedDzLabel = "";
+var focusedItem;
+var focusedItemId;
+var focusedItemLabel = "";
+var allDragTargets = new WeakSet();
+var elToKeyDownListeners = new WeakMap();
+var elToFocusListeners = new WeakMap();
+var dzToHandles = new Map();
+var dzToConfig$1 = new Map();
+var typeToDropZones$1 = new Map();
+var INSTRUCTION_IDs$1;
+function registerDropZone$1(dropZoneEl, type) {
+  printDebug(function() {
+    return "registering drop-zone if absent";
+  });
+  if (typeToDropZones$1.size === 0) {
+    printDebug(function() {
+      return "adding global keydown and click handlers";
+    });
+    INSTRUCTION_IDs$1 = initAria();
+    window.addEventListener("keydown", globalKeyDownHandler);
+    window.addEventListener("click", globalClickHandler);
+  }
+  if (!typeToDropZones$1.has(type)) {
+    typeToDropZones$1.set(type, new Set());
+  }
+  if (!typeToDropZones$1.get(type).has(dropZoneEl)) {
+    typeToDropZones$1.get(type).add(dropZoneEl);
+    incrementActiveDropZoneCount();
+  }
+}
+function unregisterDropZone$1(dropZoneEl, type) {
+  printDebug(function() {
+    return "unregistering drop-zone";
+  });
+  if (focusedDz === dropZoneEl) {
+    handleDrop$1();
+  }
+  typeToDropZones$1.get(type)["delete"](dropZoneEl);
+  decrementActiveDropZoneCount();
+  if (typeToDropZones$1.get(type).size === 0) {
+    typeToDropZones$1["delete"](type);
+  }
+  if (typeToDropZones$1.size === 0) {
+    printDebug(function() {
+      return "removing global keydown and click handlers";
+    });
+    window.removeEventListener("keydown", globalKeyDownHandler);
+    window.removeEventListener("click", globalClickHandler);
+    INSTRUCTION_IDs$1 = void 0;
+    destroyAria();
+  }
+}
+function globalKeyDownHandler(e) {
+  if (!isDragging)
+    return;
+  switch (e.key) {
+    case "Escape": {
+      handleDrop$1();
+      break;
+    }
+  }
+}
+function globalClickHandler() {
+  if (!isDragging)
+    return;
+  if (!allDragTargets.has(document.activeElement)) {
+    printDebug(function() {
+      return "clicked outside of any draggable";
+    });
+    handleDrop$1();
+  }
+}
+function handleZoneFocus(e) {
+  printDebug(function() {
+    return "zone focus";
+  });
+  if (!isDragging)
+    return;
+  var newlyFocusedDz = e.currentTarget;
+  if (newlyFocusedDz === focusedDz)
+    return;
+  focusedDzLabel = newlyFocusedDz.getAttribute("aria-label") || "";
+  var _dzToConfig$get = dzToConfig$1.get(focusedDz), originItems = _dzToConfig$get.items;
+  var originItem = originItems.find(function(item) {
+    return item[ITEM_ID_KEY] === focusedItemId;
+  });
+  var originIdx = originItems.indexOf(originItem);
+  var itemToMove = originItems.splice(originIdx, 1)[0];
+  var _dzToConfig$get2 = dzToConfig$1.get(newlyFocusedDz), targetItems = _dzToConfig$get2.items, autoAriaDisabled = _dzToConfig$get2.autoAriaDisabled;
+  if (newlyFocusedDz.getBoundingClientRect().top < focusedDz.getBoundingClientRect().top || newlyFocusedDz.getBoundingClientRect().left < focusedDz.getBoundingClientRect().left) {
+    targetItems.push(itemToMove);
+    if (!autoAriaDisabled) {
+      alertToScreenReader("Moved item ".concat(focusedItemLabel, " to the end of the list ").concat(focusedDzLabel));
+    }
+  } else {
+    targetItems.unshift(itemToMove);
+    if (!autoAriaDisabled) {
+      alertToScreenReader("Moved item ".concat(focusedItemLabel, " to the beginning of the list ").concat(focusedDzLabel));
+    }
+  }
+  var dzFrom = focusedDz;
+  dispatchFinalizeEvent(dzFrom, originItems, {
+    trigger: TRIGGERS.DROPPED_INTO_ANOTHER,
+    id: focusedItemId,
+    source: SOURCES.KEYBOARD
+  });
+  dispatchFinalizeEvent(newlyFocusedDz, targetItems, {
+    trigger: TRIGGERS.DROPPED_INTO_ZONE,
+    id: focusedItemId,
+    source: SOURCES.KEYBOARD
+  });
+  focusedDz = newlyFocusedDz;
+}
+function triggerAllDzsUpdate() {
+  dzToHandles.forEach(function(_ref, dz) {
+    var update2 = _ref.update;
+    return update2(dzToConfig$1.get(dz));
+  });
+}
+function handleDrop$1() {
+  var dispatchConsider = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : true;
+  printDebug(function() {
+    return "drop";
+  });
+  if (!dzToConfig$1.get(focusedDz).autoAriaDisabled) {
+    alertToScreenReader("Stopped dragging item ".concat(focusedItemLabel));
+  }
+  if (allDragTargets.has(document.activeElement)) {
+    document.activeElement.blur();
+  }
+  if (dispatchConsider) {
+    dispatchConsiderEvent(focusedDz, dzToConfig$1.get(focusedDz).items, {
+      trigger: TRIGGERS.DRAG_STOPPED,
+      id: focusedItemId,
+      source: SOURCES.KEYBOARD
+    });
+  }
+  styleInactiveDropZones(typeToDropZones$1.get(draggedItemType), function(dz) {
+    return dzToConfig$1.get(dz).dropTargetStyle;
+  }, function(dz) {
+    return dzToConfig$1.get(dz).dropTargetClasses;
+  });
+  focusedItem = null;
+  focusedItemId = null;
+  focusedItemLabel = "";
+  draggedItemType = null;
+  focusedDz = null;
+  focusedDzLabel = "";
+  isDragging = false;
+  triggerAllDzsUpdate();
+}
+function dndzone$1(node, options) {
+  var config = {
+    items: void 0,
+    type: void 0,
+    dragDisabled: false,
+    zoneTabIndex: 0,
+    dropFromOthersDisabled: false,
+    dropTargetStyle: DEFAULT_DROP_TARGET_STYLE$1,
+    dropTargetClasses: [],
+    autoAriaDisabled: false
+  };
+  function swap(arr, i2, j2) {
+    if (arr.length <= 1)
+      return;
+    arr.splice(j2, 1, arr.splice(i2, 1, arr[j2])[0]);
+  }
+  function handleKeyDown(e) {
+    printDebug(function() {
+      return ["handling key down", e.key];
+    });
+    switch (e.key) {
+      case "Enter":
+      case " ": {
+        if ((e.target.disabled !== void 0 || e.target.href || e.target.isContentEditable) && !allDragTargets.has(e.target)) {
+          return;
+        }
+        e.preventDefault();
+        e.stopPropagation();
+        if (isDragging) {
+          handleDrop$1();
+        } else {
+          handleDragStart(e);
+        }
+        break;
+      }
+      case "ArrowDown":
+      case "ArrowRight": {
+        if (!isDragging)
+          return;
+        e.preventDefault();
+        e.stopPropagation();
+        var _dzToConfig$get3 = dzToConfig$1.get(node), items = _dzToConfig$get3.items;
+        var children2 = Array.from(node.children);
+        var idx = children2.indexOf(e.currentTarget);
+        printDebug(function() {
+          return ["arrow down", idx];
+        });
+        if (idx < children2.length - 1) {
+          if (!config.autoAriaDisabled) {
+            alertToScreenReader("Moved item ".concat(focusedItemLabel, " to position ").concat(idx + 2, " in the list ").concat(focusedDzLabel));
+          }
+          swap(items, idx, idx + 1);
+          dispatchFinalizeEvent(node, items, {
+            trigger: TRIGGERS.DROPPED_INTO_ZONE,
+            id: focusedItemId,
+            source: SOURCES.KEYBOARD
+          });
+        }
+        break;
+      }
+      case "ArrowUp":
+      case "ArrowLeft": {
+        if (!isDragging)
+          return;
+        e.preventDefault();
+        e.stopPropagation();
+        var _dzToConfig$get4 = dzToConfig$1.get(node), _items = _dzToConfig$get4.items;
+        var _children = Array.from(node.children);
+        var _idx = _children.indexOf(e.currentTarget);
+        printDebug(function() {
+          return ["arrow up", _idx];
+        });
+        if (_idx > 0) {
+          if (!config.autoAriaDisabled) {
+            alertToScreenReader("Moved item ".concat(focusedItemLabel, " to position ").concat(_idx, " in the list ").concat(focusedDzLabel));
+          }
+          swap(_items, _idx, _idx - 1);
+          dispatchFinalizeEvent(node, _items, {
+            trigger: TRIGGERS.DROPPED_INTO_ZONE,
+            id: focusedItemId,
+            source: SOURCES.KEYBOARD
+          });
+        }
+        break;
+      }
+    }
+  }
+  function handleDragStart(e) {
+    printDebug(function() {
+      return "drag start";
+    });
+    setCurrentFocusedItem(e.currentTarget);
+    focusedDz = node;
+    draggedItemType = config.type;
+    isDragging = true;
+    var dropTargets = Array.from(typeToDropZones$1.get(config.type)).filter(function(dz) {
+      return dz === focusedDz || !dzToConfig$1.get(dz).dropFromOthersDisabled;
+    });
+    styleActiveDropZones(dropTargets, function(dz) {
+      return dzToConfig$1.get(dz).dropTargetStyle;
+    }, function(dz) {
+      return dzToConfig$1.get(dz).dropTargetClasses;
+    });
+    if (!config.autoAriaDisabled) {
+      var msg = "Started dragging item ".concat(focusedItemLabel, ". Use the arrow keys to move it within its list ").concat(focusedDzLabel);
+      if (dropTargets.length > 1) {
+        msg += ", or tab to another list in order to move the item into it";
+      }
+      alertToScreenReader(msg);
+    }
+    dispatchConsiderEvent(node, dzToConfig$1.get(node).items, {
+      trigger: TRIGGERS.DRAG_STARTED,
+      id: focusedItemId,
+      source: SOURCES.KEYBOARD
+    });
+    triggerAllDzsUpdate();
+  }
+  function handleClick(e) {
+    if (!isDragging)
+      return;
+    if (e.currentTarget === focusedItem)
+      return;
+    e.stopPropagation();
+    handleDrop$1(false);
+    handleDragStart(e);
+  }
+  function setCurrentFocusedItem(draggableEl) {
+    var _dzToConfig$get5 = dzToConfig$1.get(node), items = _dzToConfig$get5.items;
+    var children2 = Array.from(node.children);
+    var focusedItemIdx = children2.indexOf(draggableEl);
+    focusedItem = draggableEl;
+    focusedItem.tabIndex = 0;
+    focusedItemId = items[focusedItemIdx][ITEM_ID_KEY];
+    focusedItemLabel = children2[focusedItemIdx].getAttribute("aria-label") || "";
+  }
+  function configure(_ref2) {
+    var _ref2$items = _ref2.items, items = _ref2$items === void 0 ? [] : _ref2$items, _ref2$type = _ref2.type, newType = _ref2$type === void 0 ? DEFAULT_DROP_ZONE_TYPE$1 : _ref2$type, _ref2$dragDisabled = _ref2.dragDisabled, dragDisabled = _ref2$dragDisabled === void 0 ? false : _ref2$dragDisabled, _ref2$zoneTabIndex = _ref2.zoneTabIndex, zoneTabIndex = _ref2$zoneTabIndex === void 0 ? 0 : _ref2$zoneTabIndex, _ref2$dropFromOthersD = _ref2.dropFromOthersDisabled, dropFromOthersDisabled = _ref2$dropFromOthersD === void 0 ? false : _ref2$dropFromOthersD, _ref2$dropTargetStyle = _ref2.dropTargetStyle, dropTargetStyle = _ref2$dropTargetStyle === void 0 ? DEFAULT_DROP_TARGET_STYLE$1 : _ref2$dropTargetStyle, _ref2$dropTargetClass = _ref2.dropTargetClasses, dropTargetClasses = _ref2$dropTargetClass === void 0 ? [] : _ref2$dropTargetClass, _ref2$autoAriaDisable = _ref2.autoAriaDisabled, autoAriaDisabled = _ref2$autoAriaDisable === void 0 ? false : _ref2$autoAriaDisable;
+    config.items = _toConsumableArray(items);
+    config.dragDisabled = dragDisabled;
+    config.dropFromOthersDisabled = dropFromOthersDisabled;
+    config.zoneTabIndex = zoneTabIndex;
+    config.dropTargetStyle = dropTargetStyle;
+    config.dropTargetClasses = dropTargetClasses;
+    config.autoAriaDisabled = autoAriaDisabled;
+    if (config.type && newType !== config.type) {
+      unregisterDropZone$1(node, config.type);
+    }
+    config.type = newType;
+    registerDropZone$1(node, newType);
+    if (!autoAriaDisabled) {
+      node.setAttribute("aria-disabled", dragDisabled);
+      node.setAttribute("role", "list");
+      node.setAttribute("aria-describedby", dragDisabled ? INSTRUCTION_IDs$1.DND_ZONE_DRAG_DISABLED : INSTRUCTION_IDs$1.DND_ZONE_ACTIVE);
+    }
+    dzToConfig$1.set(node, config);
+    if (isDragging) {
+      node.tabIndex = node === focusedDz || focusedItem.contains(node) || config.dropFromOthersDisabled || focusedDz && config.type !== dzToConfig$1.get(focusedDz).type ? -1 : 0;
+    } else {
+      node.tabIndex = config.zoneTabIndex;
+    }
+    node.addEventListener("focus", handleZoneFocus);
+    var _loop = function _loop2(i3) {
+      var draggableEl = node.children[i3];
+      allDragTargets.add(draggableEl);
+      draggableEl.tabIndex = isDragging ? -1 : 0;
+      if (!autoAriaDisabled) {
+        draggableEl.setAttribute("role", "listitem");
+      }
+      draggableEl.removeEventListener("keydown", elToKeyDownListeners.get(draggableEl));
+      draggableEl.removeEventListener("click", elToFocusListeners.get(draggableEl));
+      if (!dragDisabled) {
+        draggableEl.addEventListener("keydown", handleKeyDown);
+        elToKeyDownListeners.set(draggableEl, handleKeyDown);
+        draggableEl.addEventListener("click", handleClick);
+        elToFocusListeners.set(draggableEl, handleClick);
+      }
+      if (isDragging && config.items[i3][ITEM_ID_KEY] === focusedItemId) {
+        printDebug(function() {
+          return ["focusing on", {
+            i: i3,
+            focusedItemId
+          }];
+        });
+        focusedItem = draggableEl;
+        focusedItem.tabIndex = 0;
+        draggableEl.focus();
+      }
+    };
+    for (var i2 = 0; i2 < node.children.length; i2++) {
+      _loop(i2);
+    }
+  }
+  configure(options);
+  var handles = {
+    update: function update2(newOptions) {
+      printDebug(function() {
+        return "keyboard dndzone will update newOptions: ".concat(toString(newOptions));
+      });
+      configure(newOptions);
+    },
+    destroy: function destroy2() {
+      printDebug(function() {
+        return "keyboard dndzone will destroy";
+      });
+      unregisterDropZone$1(node, config.type);
+      dzToConfig$1["delete"](node);
+      dzToHandles["delete"](node);
+    }
+  };
+  dzToHandles.set(node, handles);
+  return handles;
+}
+var _excluded2 = ["items", "flipDurationMs", "type", "dragDisabled", "morphDisabled", "dropFromOthersDisabled", "zoneTabIndex", "dropTargetStyle", "dropTargetClasses", "transformDraggedElement", "autoAriaDisabled", "centreDraggedOnCursor"];
+function dndzone$2(node, options) {
+  validateOptions(options);
+  var pointerZone = dndzone(node, options);
+  var keyboardZone = dndzone$1(node, options);
+  return {
+    update: function update2(newOptions) {
+      validateOptions(newOptions);
+      pointerZone.update(newOptions);
+      keyboardZone.update(newOptions);
+    },
+    destroy: function destroy2() {
+      pointerZone.destroy();
+      keyboardZone.destroy();
+    }
+  };
+}
+function validateOptions(options) {
+  var items = options.items, flipDurationMs4 = options.flipDurationMs, type = options.type, dragDisabled = options.dragDisabled, morphDisabled = options.morphDisabled, dropFromOthersDisabled = options.dropFromOthersDisabled, zoneTabIndex = options.zoneTabIndex, dropTargetStyle = options.dropTargetStyle, dropTargetClasses = options.dropTargetClasses, transformDraggedElement = options.transformDraggedElement, autoAriaDisabled = options.autoAriaDisabled, centreDraggedOnCursor = options.centreDraggedOnCursor, rest = _objectWithoutProperties2(options, _excluded2);
+  if (Object.keys(rest).length > 0) {
+    console.warn("dndzone will ignore unknown options", rest);
+  }
+  if (!items) {
+    throw new Error("no 'items' key provided to dndzone");
+  }
+  var itemWithMissingId = items.find(function(item) {
+    return !{}.hasOwnProperty.call(item, ITEM_ID_KEY);
+  });
+  if (itemWithMissingId) {
+    throw new Error("missing '".concat(ITEM_ID_KEY, "' property for item ").concat(toString(itemWithMissingId)));
+  }
+  if (dropTargetClasses && !Array.isArray(dropTargetClasses)) {
+    throw new Error("dropTargetClasses should be an array but instead it is a ".concat(_typeof3(dropTargetClasses), ", ").concat(toString(dropTargetClasses)));
+  }
+  if (zoneTabIndex && !isInt(zoneTabIndex)) {
+    throw new Error("zoneTabIndex should be a number but instead it is a ".concat(_typeof3(zoneTabIndex), ", ").concat(toString(zoneTabIndex)));
+  }
+}
+function isInt(value) {
+  return !isNaN(value) && function(x2) {
+    return (x2 | 0) === x2;
+  }(parseFloat(value));
+}
+
+// src/views/Calendar/components/CalendarDay/CalendarEntryList.svelte
+function add_css43(target) {
+  append_styles(target, "svelte-1aboi1f", "div.svelte-1aboi1f{height:100%;width:100%}");
 }
 function get_each_context9(ctx, list, i2) {
   const child_ctx = ctx.slice();
-  child_ctx[14] = list[i2];
+  child_ctx[10] = list[i2];
   return child_ctx;
 }
 function create_if_block18(ctx) {
   let calendarentry;
   let current;
   function check_handler(...args) {
-    return ctx[10](ctx[14], ...args);
+    return ctx[8](ctx[10], ...args);
   }
   function click_handler() {
-    return ctx[11](ctx[14]);
+    return ctx[9](ctx[10]);
   }
   calendarentry = new CalendarEntry_default({
     props: {
-      checked: ctx[2] !== void 0 ? asOptionalBoolean(ctx[14][1].values[ctx[2]]) : void 0,
-      $$slots: { default: [create_default_slot_111] },
+      checked: ctx[1] !== void 0 ? asOptionalBoolean(ctx[10].values[ctx[1]]) : void 0,
+      $$slots: { default: [create_default_slot20] },
       $$scope: { ctx }
     }
   });
@@ -35688,9 +48300,9 @@ function create_if_block18(ctx) {
     p(new_ctx, dirty) {
       ctx = new_ctx;
       const calendarentry_changes = {};
-      if (dirty & 6)
-        calendarentry_changes.checked = ctx[2] !== void 0 ? asOptionalBoolean(ctx[14][1].values[ctx[2]]) : void 0;
-      if (dirty & 131210) {
+      if (dirty & 3)
+        calendarentry_changes.checked = ctx[1] !== void 0 ? asOptionalBoolean(ctx[10].values[ctx[1]]) : void 0;
+      if (dirty & 8213) {
         calendarentry_changes.$$scope = { dirty, ctx };
       }
       calendarentry.$set(calendarentry_changes);
@@ -35710,8 +48322,8 @@ function create_if_block18(ctx) {
     }
   };
 }
-function create_default_slot_210(ctx) {
-  let t_value = ctx[8](ctx[14][1]) + "";
+function create_default_slot_114(ctx) {
+  let t_value = getDisplayName(ctx[10]) + "";
   let t3;
   return {
     c() {
@@ -35721,7 +48333,7 @@ function create_default_slot_210(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty & 2 && t_value !== (t_value = ctx2[8](ctx2[14][1]) + ""))
+      if (dirty & 1 && t_value !== (t_value = getDisplayName(ctx2[10]) + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -35730,20 +48342,20 @@ function create_default_slot_210(ctx) {
     }
   };
 }
-function create_default_slot_111(ctx) {
+function create_default_slot20(ctx) {
   let internallink;
   let t3;
   let current;
   function open_handler(...args) {
-    return ctx[9](ctx[14], ...args);
+    return ctx[7](ctx[10], ...args);
   }
   internallink = new InternalLink_default({
     props: {
-      linkText: ctx[14][1].id,
+      linkText: ctx[10].id,
       sourcePath: "",
       resolved: true,
-      tooltip: ctx[8](ctx[14][1]),
-      $$slots: { default: [create_default_slot_210] },
+      tooltip: getDisplayName(ctx[10]),
+      $$slots: { default: [create_default_slot_114] },
       $$scope: { ctx }
     }
   });
@@ -35761,11 +48373,11 @@ function create_default_slot_111(ctx) {
     p(new_ctx, dirty) {
       ctx = new_ctx;
       const internallink_changes = {};
-      if (dirty & 2)
-        internallink_changes.linkText = ctx[14][1].id;
-      if (dirty & 2)
-        internallink_changes.tooltip = ctx[8](ctx[14][1]);
-      if (dirty & 131074) {
+      if (dirty & 1)
+        internallink_changes.linkText = ctx[10].id;
+      if (dirty & 1)
+        internallink_changes.tooltip = getDisplayName(ctx[10]);
+      if (dirty & 8193) {
         internallink_changes.$$scope = { dirty, ctx };
       }
       internallink.$set(internallink_changes);
@@ -35787,34 +48399,41 @@ function create_default_slot_111(ctx) {
     }
   };
 }
-function create_each_block9(ctx) {
-  let show_if = ctx[8](ctx[14][1]);
+function create_each_block9(key_1, ctx) {
+  let first;
+  let show_if = getDisplayName(ctx[10]);
   let if_block_anchor;
   let current;
   let if_block = show_if && create_if_block18(ctx);
   return {
+    key: key_1,
+    first: null,
     c() {
+      first = empty();
       if (if_block)
         if_block.c();
       if_block_anchor = empty();
+      this.first = first;
     },
     m(target, anchor) {
+      insert(target, first, anchor);
       if (if_block)
         if_block.m(target, anchor);
       insert(target, if_block_anchor, anchor);
       current = true;
     },
-    p(ctx2, dirty) {
-      if (dirty & 2)
-        show_if = ctx2[8](ctx2[14][1]);
+    p(new_ctx, dirty) {
+      ctx = new_ctx;
+      if (dirty & 1)
+        show_if = getDisplayName(ctx[10]);
       if (show_if) {
         if (if_block) {
-          if_block.p(ctx2, dirty);
-          if (dirty & 2) {
+          if_block.p(ctx, dirty);
+          if (dirty & 1) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block18(ctx2);
+          if_block = create_if_block18(ctx);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -35838,6 +48457,8 @@ function create_each_block9(ctx) {
       current = false;
     },
     d(detaching) {
+      if (detaching)
+        detach(first);
       if (if_block)
         if_block.d(detaching);
       if (detaching)
@@ -35845,82 +48466,81 @@ function create_each_block9(ctx) {
     }
   };
 }
-function create_default_slot19(ctx) {
+function create_fragment76(ctx) {
   let div;
-  let calendardate;
-  let t3;
-  let current;
-  calendardate = new CalendarDate_default({ props: { date: ctx[0] } });
-  let each_value = ctx[1];
   let each_blocks = [];
+  let each_1_lookup = new Map();
+  let dndzone_action;
+  let current;
+  let mounted;
+  let dispose;
+  let each_value = ctx[0];
+  const get_key = (ctx2) => ctx2[10].id;
   for (let i2 = 0; i2 < each_value.length; i2 += 1) {
-    each_blocks[i2] = create_each_block9(get_each_context9(ctx, each_value, i2));
+    let child_ctx = get_each_context9(ctx, each_value, i2);
+    let key = get_key(child_ctx);
+    each_1_lookup.set(key, each_blocks[i2] = create_each_block9(key, child_ctx));
   }
-  const out = (i2) => transition_out(each_blocks[i2], 1, 1, () => {
-    each_blocks[i2] = null;
-  });
   return {
     c() {
       div = element("div");
-      create_component(calendardate.$$.fragment);
-      t3 = space();
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      attr(div, "class", "svelte-187yww1");
-      toggle_class(div, "weekend", ctx[0].day() === 0 || ctx[0].day() === 6);
+      attr(div, "class", "svelte-1aboi1f");
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      mount_component(calendardate, div, null);
-      append(div, t3);
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(div, null);
       }
       current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(dndzone_action = dndzone$2.call(null, div, {
+            type: "entries",
+            items: ctx[0],
+            flipDurationMs,
+            dropTargetStyle: {
+              outline: "none",
+              borderRadius: "5px",
+              background: "hsla(var(--interactive-accent-hsl), 0.3)"
+            }
+          })),
+          listen(div, "consider", ctx[5]),
+          listen(div, "finalize", ctx[6])
+        ];
+        mounted = true;
+      }
     },
-    p(ctx2, dirty) {
-      const calendardate_changes = {};
-      if (dirty & 1)
-        calendardate_changes.date = ctx2[0];
-      calendardate.$set(calendardate_changes);
-      if (dirty & 430) {
-        each_value = ctx2[1];
-        let i2;
-        for (i2 = 0; i2 < each_value.length; i2 += 1) {
-          const child_ctx = get_each_context9(ctx2, each_value, i2);
-          if (each_blocks[i2]) {
-            each_blocks[i2].p(child_ctx, dirty);
-            transition_in(each_blocks[i2], 1);
-          } else {
-            each_blocks[i2] = create_each_block9(child_ctx);
-            each_blocks[i2].c();
-            transition_in(each_blocks[i2], 1);
-            each_blocks[i2].m(div, null);
-          }
-        }
+    p(ctx2, [dirty]) {
+      if (dirty & 31) {
+        each_value = ctx2[0];
         group_outros();
-        for (i2 = each_value.length; i2 < each_blocks.length; i2 += 1) {
-          out(i2);
-        }
+        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value, each_1_lookup, div, outro_and_destroy_block, create_each_block9, null, get_each_context9);
         check_outros();
       }
-      if (!current || dirty & 1) {
-        toggle_class(div, "weekend", ctx2[0].day() === 0 || ctx2[0].day() === 6);
-      }
+      if (dndzone_action && is_function(dndzone_action.update) && dirty & 1)
+        dndzone_action.update.call(null, {
+          type: "entries",
+          items: ctx2[0],
+          flipDurationMs,
+          dropTargetStyle: {
+            outline: "none",
+            borderRadius: "5px",
+            background: "hsla(var(--interactive-accent-hsl), 0.3)"
+          }
+        });
     },
     i(local) {
       if (current)
         return;
-      transition_in(calendardate.$$.fragment, local);
       for (let i2 = 0; i2 < each_value.length; i2 += 1) {
         transition_in(each_blocks[i2]);
       }
       current = true;
     },
     o(local) {
-      transition_out(calendardate.$$.fragment, local);
-      each_blocks = each_blocks.filter(Boolean);
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         transition_out(each_blocks[i2]);
       }
@@ -35929,23 +48549,174 @@ function create_default_slot19(ctx) {
     d(detaching) {
       if (detaching)
         detach(div);
-      destroy_component(calendardate);
-      destroy_each(each_blocks, detaching);
+      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
+        each_blocks[i2].d();
+      }
+      mounted = false;
+      run_all(dispose);
     }
   };
 }
-function create_fragment68(ctx) {
+var flipDurationMs = 200;
+function asOptionalBoolean(value) {
+  if (typeof value === "boolean") {
+    return value;
+  }
+  return null;
+}
+function instance76($$self, $$props, $$invalidate) {
+  let $app;
+  component_subscribe($$self, app, ($$value) => $$invalidate(4, $app = $$value));
+  let { records } = $$props;
+  let { checkField } = $$props;
+  let { onEntryClick } = $$props;
+  let { onRecordUpdate } = $$props;
+  function handleDndConsider(e) {
+    $$invalidate(0, records = e.detail.items);
+  }
+  function handleDndFinalize(e) {
+    $$invalidate(0, records = e.detail.items);
+    records.forEach((item) => onRecordUpdate(item));
+  }
+  const open_handler = (record, { detail: { linkText, sourcePath, newLeaf } }) => {
+    if (newLeaf) {
+      $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
+    } else {
+      onEntryClick(record);
+    }
+  };
+  const check_handler = (record, { detail: checked }) => {
+    if (checkField) {
+      onRecordUpdate(__spreadProps(__spreadValues({}, record), {
+        values: __spreadProps(__spreadValues({}, record.values), { [checkField]: checked })
+      }));
+    }
+  };
+  const click_handler = (record) => {
+    onEntryClick(record);
+  };
+  $$self.$$set = ($$props2) => {
+    if ("records" in $$props2)
+      $$invalidate(0, records = $$props2.records);
+    if ("checkField" in $$props2)
+      $$invalidate(1, checkField = $$props2.checkField);
+    if ("onEntryClick" in $$props2)
+      $$invalidate(2, onEntryClick = $$props2.onEntryClick);
+    if ("onRecordUpdate" in $$props2)
+      $$invalidate(3, onRecordUpdate = $$props2.onRecordUpdate);
+  };
+  return [
+    records,
+    checkField,
+    onEntryClick,
+    onRecordUpdate,
+    $app,
+    handleDndConsider,
+    handleDndFinalize,
+    open_handler,
+    check_handler,
+    click_handler
+  ];
+}
+var CalendarEntryList = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init(this, options, instance76, create_fragment76, safe_not_equal, {
+      records: 0,
+      checkField: 1,
+      onEntryClick: 2,
+      onRecordUpdate: 3
+    }, add_css43);
+  }
+};
+var CalendarEntryList_default = CalendarEntryList;
+
+// src/views/Calendar/components/CalendarDay/CalendarDay.svelte
+function add_css44(target) {
+  append_styles(target, "svelte-pe597k", "div.svelte-pe597k{padding:4px;height:100%;display:flex;flex-direction:column;gap:2px;align-items:start;overflow:scroll;min-height:6rem}.weekend.svelte-pe597k{background-color:var(--background-secondary)}");
+}
+function create_default_slot21(ctx) {
+  let div;
+  let calendardate;
+  let t3;
+  let calendarentrylist;
+  let current;
+  calendardate = new CalendarDate_default({ props: { date: ctx[0] } });
+  calendarentrylist = new CalendarEntryList_default({
+    props: {
+      records: ctx[1],
+      onEntryClick: ctx[4],
+      onRecordUpdate: ctx[7],
+      checkField: ctx[2]
+    }
+  });
+  return {
+    c() {
+      div = element("div");
+      create_component(calendardate.$$.fragment);
+      t3 = space();
+      create_component(calendarentrylist.$$.fragment);
+      attr(div, "class", "svelte-pe597k");
+      toggle_class(div, "weekend", ctx[0].day() === 0 || ctx[0].day() === 6);
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      mount_component(calendardate, div, null);
+      append(div, t3);
+      mount_component(calendarentrylist, div, null);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const calendardate_changes = {};
+      if (dirty & 1)
+        calendardate_changes.date = ctx2[0];
+      calendardate.$set(calendardate_changes);
+      const calendarentrylist_changes = {};
+      if (dirty & 2)
+        calendarentrylist_changes.records = ctx2[1];
+      if (dirty & 16)
+        calendarentrylist_changes.onEntryClick = ctx2[4];
+      if (dirty & 33)
+        calendarentrylist_changes.onRecordUpdate = ctx2[7];
+      if (dirty & 4)
+        calendarentrylist_changes.checkField = ctx2[2];
+      calendarentrylist.$set(calendarentrylist_changes);
+      if (!current || dirty & 1) {
+        toggle_class(div, "weekend", ctx2[0].day() === 0 || ctx2[0].day() === 6);
+      }
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(calendardate.$$.fragment, local);
+      transition_in(calendarentrylist.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(calendardate.$$.fragment, local);
+      transition_out(calendarentrylist.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      destroy_component(calendardate);
+      destroy_component(calendarentrylist);
+    }
+  };
+}
+function create_fragment77(ctx) {
   let tablecell;
   let current;
   tablecell = new TableCell_default({
     props: {
       width: "calc(100% / 7)",
-      $$slots: { default: [create_default_slot19] },
+      $$slots: { default: [create_default_slot21] },
       $$scope: { ctx }
     }
   });
-  tablecell.$on("dblclick", ctx[12]);
-  tablecell.$on("mousedown", ctx[13]);
+  tablecell.$on("dblclick", ctx[8]);
+  tablecell.$on("mousedown", ctx[9]);
   return {
     c() {
       create_component(tablecell.$$.fragment);
@@ -35956,7 +48727,7 @@ function create_fragment68(ctx) {
     },
     p(ctx2, [dirty]) {
       const tablecell_changes = {};
-      if (dirty & 131247) {
+      if (dirty & 1079) {
         tablecell_changes.$$scope = { dirty, ctx: ctx2 };
       }
       tablecell.$set(tablecell_changes);
@@ -35976,50 +48747,22 @@ function create_fragment68(ctx) {
     }
   };
 }
-function asOptionalBoolean(value) {
-  if (typeof value === "boolean") {
-    return value;
-  }
-  return null;
-}
-function instance68($$self, $$props, $$invalidate) {
+function instance77($$self, $$props, $$invalidate) {
   let $i18n;
-  let $app;
   component_subscribe($$self, i18n, ($$value) => $$invalidate(6, $i18n = $$value));
-  component_subscribe($$self, app, ($$value) => $$invalidate(7, $app = $$value));
   let { date } = $$props;
   let { records } = $$props;
   let { checkField } = $$props;
-  let { onEntryClick } = $$props;
   let { onEntryAdd } = $$props;
+  let { onEntryClick } = $$props;
   let { onRecordUpdate } = $$props;
-  function getDisplayName(record) {
-    const basename = import_path2.default.basename(record.id);
-    return basename.slice(0, basename.lastIndexOf("."));
-  }
-  const open_handler = (recordPair, { detail: { linkText, sourcePath, newLeaf } }) => {
-    if (newLeaf) {
-      $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
-    } else {
-      onEntryClick(recordPair[0]);
-    }
-  };
-  const check_handler = (recordPair, { detail: checked }) => {
-    if (checkField) {
-      onRecordUpdate(__spreadProps(__spreadValues({}, recordPair[1]), {
-        values: __spreadProps(__spreadValues({}, recordPair[1].values), {
-          [checkField]: checked
-        })
-      }));
-    }
-  };
-  const click_handler = (recordPair) => {
-    onEntryClick(recordPair[0]);
+  const func7 = (record) => {
+    onRecordUpdate(date, record);
   };
   const dblclick_handler = () => onEntryAdd();
   const mousedown_handler = (event) => {
     if (event.button === 2) {
-      const menu = new import_obsidian33.Menu();
+      const menu = new import_obsidian38.Menu();
       menu.addItem((item) => {
         item.setTitle($i18n.t("views.calendar.new-note")).setIcon("file").onClick(onEntryAdd);
       });
@@ -36033,10 +48776,10 @@ function instance68($$self, $$props, $$invalidate) {
       $$invalidate(1, records = $$props2.records);
     if ("checkField" in $$props2)
       $$invalidate(2, checkField = $$props2.checkField);
-    if ("onEntryClick" in $$props2)
-      $$invalidate(3, onEntryClick = $$props2.onEntryClick);
     if ("onEntryAdd" in $$props2)
-      $$invalidate(4, onEntryAdd = $$props2.onEntryAdd);
+      $$invalidate(3, onEntryAdd = $$props2.onEntryAdd);
+    if ("onEntryClick" in $$props2)
+      $$invalidate(4, onEntryClick = $$props2.onEntryClick);
     if ("onRecordUpdate" in $$props2)
       $$invalidate(5, onRecordUpdate = $$props2.onRecordUpdate);
   };
@@ -36044,15 +48787,11 @@ function instance68($$self, $$props, $$invalidate) {
     date,
     records,
     checkField,
-    onEntryClick,
     onEntryAdd,
+    onEntryClick,
     onRecordUpdate,
     $i18n,
-    $app,
-    getDisplayName,
-    open_handler,
-    check_handler,
-    click_handler,
+    func7,
     dblclick_handler,
     mousedown_handler
   ];
@@ -36060,23 +48799,23 @@ function instance68($$self, $$props, $$invalidate) {
 var CalendarDay = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance68, create_fragment68, safe_not_equal, {
+    init(this, options, instance77, create_fragment77, safe_not_equal, {
       date: 0,
       records: 1,
       checkField: 2,
-      onEntryClick: 3,
-      onEntryAdd: 4,
+      onEntryAdd: 3,
+      onEntryClick: 4,
       onRecordUpdate: 5
-    }, add_css40);
+    }, add_css44);
   }
 };
 var CalendarDay_default = CalendarDay;
 
 // src/views/Calendar/components/Navigation/Navigation.svelte
-function add_css41(target) {
+function add_css45(target) {
   append_styles(target, "svelte-1u5a4vj", "div.svelte-1u5a4vj{display:flex;gap:4px;align-items:center}");
 }
-function create_default_slot20(ctx) {
+function create_default_slot22(ctx) {
   let t_value = ctx[3].t("views.calendar.today") + "";
   let t3;
   return {
@@ -36096,7 +48835,7 @@ function create_default_slot20(ctx) {
     }
   };
 }
-function create_fragment69(ctx) {
+function create_fragment78(ctx) {
   let div;
   let iconbutton0;
   let t0;
@@ -36111,7 +48850,7 @@ function create_fragment69(ctx) {
   });
   button = new Button_default({
     props: {
-      $$slots: { default: [create_default_slot20] },
+      $$slots: { default: [create_default_slot22] },
       $$scope: { ctx }
     }
   });
@@ -36174,7 +48913,7 @@ function create_fragment69(ctx) {
     }
   };
 }
-function instance69($$self, $$props, $$invalidate) {
+function instance78($$self, $$props, $$invalidate) {
   let $i18n;
   component_subscribe($$self, i18n, ($$value) => $$invalidate(3, $i18n = $$value));
   let { onNext } = $$props;
@@ -36193,7 +48932,7 @@ function instance69($$self, $$props, $$invalidate) {
 var Navigation = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance69, create_fragment69, safe_not_equal, { onNext: 0, onPrevious: 1, onToday: 2 }, add_css41);
+    init(this, options, instance78, create_fragment78, safe_not_equal, { onNext: 0, onPrevious: 1, onToday: 2 }, add_css45);
   }
 };
 var Navigation_default = Navigation;
@@ -36242,7 +48981,7 @@ function subtractInterval(date, interval) {
 }
 function groupRecordsByField(records, field) {
   const res = {};
-  records.forEach((record, i2) => {
+  records.forEach((record) => {
     var _a;
     const dateValue = record.values[field];
     const start2 = dateValue ? isDate(dateValue) ? (0, import_dayjs7.default)(dateValue) : null : null;
@@ -36251,7 +48990,7 @@ function groupRecordsByField(records, field) {
       if (!(dateStr in res)) {
         res[dateStr] = [];
       }
-      (_a = res[dateStr]) == null ? void 0 : _a.push([i2, record]);
+      (_a = res[dateStr]) == null ? void 0 : _a.push(record);
     }
   });
   return res;
@@ -36324,9 +49063,6 @@ function take(arr, num) {
 }
 
 // src/views/Calendar/CalendarView.svelte
-function add_css42(target) {
-  append_styles(target, "svelte-1frn4ka", "div.svelte-1frn4ka{display:flex;flex-direction:column;height:100%}div.svelte-1frn4ka:last-child{flex:2}");
-}
 function get_each_context10(ctx, list, i2) {
   const child_ctx = ctx.slice();
   child_ctx[37] = list[i2];
@@ -36342,18 +49078,62 @@ function get_each_context_2(ctx, list, i2) {
   child_ctx[43] = list[i2];
   return child_ctx;
 }
-function create_default_slot_102(ctx) {
+function create_left_slot2(ctx) {
+  let navigation;
+  let current;
+  navigation = new Navigation_default({
+    props: {
+      slot: "left",
+      onNext: ctx[31],
+      onPrevious: ctx[32],
+      onToday: ctx[33]
+    }
+  });
+  return {
+    c() {
+      create_component(navigation.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(navigation, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const navigation_changes = {};
+      if (dirty[0] & 80)
+        navigation_changes.onNext = ctx2[31];
+      if (dirty[0] & 80)
+        navigation_changes.onPrevious = ctx2[32];
+      if (dirty[0] & 16)
+        navigation_changes.onToday = ctx2[33];
+      navigation.$set(navigation_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(navigation.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(navigation.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(navigation, detaching);
+    }
+  };
+}
+function create_default_slot_115(ctx) {
   let t3;
   return {
     c() {
-      t3 = text(ctx[13]);
+      t3 = text(ctx[12]);
     },
     m(target, anchor) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty[0] & 8192)
-        set_data(t3, ctx2[13]);
+      if (dirty[0] & 4096)
+        set_data(t3, ctx2[12]);
     },
     d(detaching) {
       if (detaching)
@@ -36361,18 +49141,60 @@ function create_default_slot_102(ctx) {
     }
   };
 }
-function create_default_slot_93(ctx) {
+function create_middle_slot2(ctx) {
+  let typography;
+  let current;
+  typography = new Typography_default({
+    props: {
+      slot: "middle",
+      variant: "h2",
+      nomargin: true,
+      $$slots: { default: [create_default_slot_115] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(typography.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(typography, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const typography_changes = {};
+      if (dirty[0] & 4096 | dirty[1] & 32768) {
+        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      typography.$set(typography_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(typography.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(typography.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(typography, detaching);
+    }
+  };
+}
+function create_default_slot_104(ctx) {
   var _a, _b, _c;
   let select;
   let current;
   select = new Select_default({
     props: {
       value: (_b = (_a = ctx[5]) == null ? void 0 : _a.name) != null ? _b : "",
-      options: ctx[9].map(fieldToSelectableValue),
-      placeholder: (_c = ctx[10].t("views.calendar.fields.none")) != null ? _c : ""
+      options: ctx[8].map(fieldToSelectableValue),
+      placeholder: (_c = ctx[9].t("views.calendar.fields.none")) != null ? _c : ""
     }
   });
-  select.$on("change", ctx[31]);
+  select.$on("change", ctx[28]);
   return {
     c() {
       create_component(select.$$.fragment);
@@ -36386,10 +49208,10 @@ function create_default_slot_93(ctx) {
       const select_changes = {};
       if (dirty[0] & 32)
         select_changes.value = (_b2 = (_a2 = ctx2[5]) == null ? void 0 : _a2.name) != null ? _b2 : "";
+      if (dirty[0] & 256)
+        select_changes.options = ctx2[8].map(fieldToSelectableValue);
       if (dirty[0] & 512)
-        select_changes.options = ctx2[9].map(fieldToSelectableValue);
-      if (dirty[0] & 1024)
-        select_changes.placeholder = (_c2 = ctx2[10].t("views.calendar.fields.none")) != null ? _c2 : "";
+        select_changes.placeholder = (_c2 = ctx2[9].t("views.calendar.fields.none")) != null ? _c2 : "";
       select.$set(select_changes);
     },
     i(local) {
@@ -36407,19 +49229,19 @@ function create_default_slot_93(ctx) {
     }
   };
 }
-function create_default_slot_83(ctx) {
+function create_default_slot_94(ctx) {
   var _a, _b, _c;
   let select;
   let current;
   select = new Select_default({
     props: {
       allowEmpty: true,
-      value: (_b = (_a = ctx[15]) == null ? void 0 : _a.name) != null ? _b : "",
-      options: ctx[16].map(fieldToSelectableValue),
-      placeholder: (_c = ctx[10].t("views.calendar.fields.none")) != null ? _c : ""
+      value: (_b = (_a = ctx[14]) == null ? void 0 : _a.name) != null ? _b : "",
+      options: ctx[15].map(fieldToSelectableValue),
+      placeholder: (_c = ctx[9].t("views.calendar.fields.none")) != null ? _c : ""
     }
   });
-  select.$on("change", ctx[32]);
+  select.$on("change", ctx[29]);
   return {
     c() {
       create_component(select.$$.fragment);
@@ -36431,12 +49253,12 @@ function create_default_slot_83(ctx) {
     p(ctx2, dirty) {
       var _a2, _b2, _c2;
       const select_changes = {};
+      if (dirty[0] & 16384)
+        select_changes.value = (_b2 = (_a2 = ctx2[14]) == null ? void 0 : _a2.name) != null ? _b2 : "";
       if (dirty[0] & 32768)
-        select_changes.value = (_b2 = (_a2 = ctx2[15]) == null ? void 0 : _a2.name) != null ? _b2 : "";
-      if (dirty[0] & 65536)
-        select_changes.options = ctx2[16].map(fieldToSelectableValue);
-      if (dirty[0] & 1024)
-        select_changes.placeholder = (_c2 = ctx2[10].t("views.calendar.fields.none")) != null ? _c2 : "";
+        select_changes.options = ctx2[15].map(fieldToSelectableValue);
+      if (dirty[0] & 512)
+        select_changes.placeholder = (_c2 = ctx2[9].t("views.calendar.fields.none")) != null ? _c2 : "";
       select.$set(select_changes);
     },
     i(local) {
@@ -36454,7 +49276,7 @@ function create_default_slot_83(ctx) {
     }
   };
 }
-function create_default_slot_74(ctx) {
+function create_right_slot3(ctx) {
   var _a, _b;
   let field0;
   let t0;
@@ -36464,15 +49286,15 @@ function create_default_slot_74(ctx) {
   let current;
   field0 = new Field_default({
     props: {
-      name: ctx[10].t("views.calendar.fields.date"),
-      $$slots: { default: [create_default_slot_93] },
+      name: ctx[9].t("views.calendar.fields.date"),
+      $$slots: { default: [create_default_slot_104] },
       $$scope: { ctx }
     }
   });
   field1 = new Field_default({
     props: {
-      name: ctx[10].t("views.calendar.fields.check"),
-      $$slots: { default: [create_default_slot_83] },
+      name: ctx[9].t("views.calendar.fields.check"),
+      $$slots: { default: [create_default_slot_94] },
       $$scope: { ctx }
     }
   });
@@ -36481,29 +49303,29 @@ function create_default_slot_74(ctx) {
       value: (_b = (_a = ctx[3]) == null ? void 0 : _a.interval) != null ? _b : "week",
       options: [
         {
-          label: ctx[10].t("views.calendar.intervals.month", { count: 1 }),
+          label: ctx[9].t("views.calendar.intervals.month", { count: 1 }),
           value: "month"
         },
         {
-          label: ctx[10].t("views.calendar.intervals.weekWithCount", { count: 2 }),
+          label: ctx[9].t("views.calendar.intervals.weekWithCount", { count: 2 }),
           value: "2weeks"
         },
         {
-          label: ctx[10].t("views.calendar.intervals.week", { count: 1 }),
+          label: ctx[9].t("views.calendar.intervals.week", { count: 1 }),
           value: "week"
         },
         {
-          label: ctx[10].t("views.calendar.intervals.dayWithCount", { count: 3 }),
+          label: ctx[9].t("views.calendar.intervals.dayWithCount", { count: 3 }),
           value: "3days"
         },
         {
-          label: ctx[10].t("views.calendar.intervals.day", { count: 1 }),
+          label: ctx[9].t("views.calendar.intervals.day", { count: 1 }),
           value: "day"
         }
       ]
     }
   });
-  select.$on("change", ctx[33]);
+  select.$on("change", ctx[30]);
   return {
     c() {
       create_component(field0.$$.fragment);
@@ -36523,42 +49345,42 @@ function create_default_slot_74(ctx) {
     p(ctx2, dirty) {
       var _a2, _b2;
       const field0_changes = {};
-      if (dirty[0] & 1024)
-        field0_changes.name = ctx2[10].t("views.calendar.fields.date");
-      if (dirty[0] & 1568 | dirty[1] & 32768) {
+      if (dirty[0] & 512)
+        field0_changes.name = ctx2[9].t("views.calendar.fields.date");
+      if (dirty[0] & 800 | dirty[1] & 32768) {
         field0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       field0.$set(field0_changes);
       const field1_changes = {};
-      if (dirty[0] & 1024)
-        field1_changes.name = ctx2[10].t("views.calendar.fields.check");
-      if (dirty[0] & 99328 | dirty[1] & 32768) {
+      if (dirty[0] & 512)
+        field1_changes.name = ctx2[9].t("views.calendar.fields.check");
+      if (dirty[0] & 49664 | dirty[1] & 32768) {
         field1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       field1.$set(field1_changes);
       const select_changes = {};
       if (dirty[0] & 8)
         select_changes.value = (_b2 = (_a2 = ctx2[3]) == null ? void 0 : _a2.interval) != null ? _b2 : "week";
-      if (dirty[0] & 1024)
+      if (dirty[0] & 512)
         select_changes.options = [
           {
-            label: ctx2[10].t("views.calendar.intervals.month", { count: 1 }),
+            label: ctx2[9].t("views.calendar.intervals.month", { count: 1 }),
             value: "month"
           },
           {
-            label: ctx2[10].t("views.calendar.intervals.weekWithCount", { count: 2 }),
+            label: ctx2[9].t("views.calendar.intervals.weekWithCount", { count: 2 }),
             value: "2weeks"
           },
           {
-            label: ctx2[10].t("views.calendar.intervals.week", { count: 1 }),
+            label: ctx2[9].t("views.calendar.intervals.week", { count: 1 }),
             value: "week"
           },
           {
-            label: ctx2[10].t("views.calendar.intervals.dayWithCount", { count: 3 }),
+            label: ctx2[9].t("views.calendar.intervals.dayWithCount", { count: 3 }),
             value: "3days"
           },
           {
-            label: ctx2[10].t("views.calendar.intervals.day", { count: 1 }),
+            label: ctx2[9].t("views.calendar.intervals.day", { count: 1 }),
             value: "day"
           }
         ];
@@ -36589,96 +49411,51 @@ function create_default_slot_74(ctx) {
     }
   };
 }
-function create_default_slot_66(ctx) {
-  let navigation;
-  let t0;
-  let typography;
-  let t1;
-  let horizontalgroup;
+function create_default_slot_84(ctx) {
+  let viewtoolbar;
   let current;
-  navigation = new Navigation_default({
+  viewtoolbar = new ViewToolbar_default({
     props: {
-      onNext: ctx[28],
-      onPrevious: ctx[29],
-      onToday: ctx[30]
-    }
-  });
-  typography = new Typography_default({
-    props: {
-      variant: "h2",
-      nomargin: true,
-      $$slots: { default: [create_default_slot_102] },
-      $$scope: { ctx }
-    }
-  });
-  horizontalgroup = new HorizontalGroup_default({
-    props: {
-      $$slots: { default: [create_default_slot_74] },
+      variant: "secondary",
+      $$slots: {
+        right: [create_right_slot3],
+        middle: [create_middle_slot2],
+        left: [create_left_slot2]
+      },
       $$scope: { ctx }
     }
   });
   return {
     c() {
-      create_component(navigation.$$.fragment);
-      t0 = space();
-      create_component(typography.$$.fragment);
-      t1 = space();
-      create_component(horizontalgroup.$$.fragment);
+      create_component(viewtoolbar.$$.fragment);
     },
     m(target, anchor) {
-      mount_component(navigation, target, anchor);
-      insert(target, t0, anchor);
-      mount_component(typography, target, anchor);
-      insert(target, t1, anchor);
-      mount_component(horizontalgroup, target, anchor);
+      mount_component(viewtoolbar, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const navigation_changes = {};
-      if (dirty[0] & 144)
-        navigation_changes.onNext = ctx2[28];
-      if (dirty[0] & 144)
-        navigation_changes.onPrevious = ctx2[29];
-      if (dirty[0] & 16)
-        navigation_changes.onToday = ctx2[30];
-      navigation.$set(navigation_changes);
-      const typography_changes = {};
-      if (dirty[0] & 8192 | dirty[1] & 32768) {
-        typography_changes.$$scope = { dirty, ctx: ctx2 };
+      const viewtoolbar_changes = {};
+      if (dirty[0] & 54136 | dirty[1] & 32768) {
+        viewtoolbar_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      typography.$set(typography_changes);
-      const horizontalgroup_changes = {};
-      if (dirty[0] & 99880 | dirty[1] & 32768) {
-        horizontalgroup_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      horizontalgroup.$set(horizontalgroup_changes);
+      viewtoolbar.$set(viewtoolbar_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(navigation.$$.fragment, local);
-      transition_in(typography.$$.fragment, local);
-      transition_in(horizontalgroup.$$.fragment, local);
+      transition_in(viewtoolbar.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(navigation.$$.fragment, local);
-      transition_out(typography.$$.fragment, local);
-      transition_out(horizontalgroup.$$.fragment, local);
+      transition_out(viewtoolbar.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(navigation, detaching);
-      if (detaching)
-        detach(t0);
-      destroy_component(typography, detaching);
-      if (detaching)
-        detach(t1);
-      destroy_component(horizontalgroup, detaching);
+      destroy_component(viewtoolbar, detaching);
     }
   };
 }
-function create_default_slot_58(ctx) {
+function create_default_slot_75(ctx) {
   let t_value = ctx[43] + "";
   let t3;
   return {
@@ -36689,7 +49466,7 @@ function create_default_slot_58(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty[0] & 2048 && t_value !== (t_value = ctx2[43] + ""))
+      if (dirty[0] & 1024 && t_value !== (t_value = ctx2[43] + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -36703,7 +49480,7 @@ function create_each_block_2(ctx) {
   let current;
   tablecolumnheadercell = new TableColumnHeaderCell_default({
     props: {
-      $$slots: { default: [create_default_slot_58] },
+      $$slots: { default: [create_default_slot_75] },
       $$scope: { ctx }
     }
   });
@@ -36717,7 +49494,7 @@ function create_each_block_2(ctx) {
     },
     p(ctx2, dirty) {
       const tablecolumnheadercell_changes = {};
-      if (dirty[0] & 2048 | dirty[1] & 32768) {
+      if (dirty[0] & 1024 | dirty[1] & 32768) {
         tablecolumnheadercell_changes.$$scope = { dirty, ctx: ctx2 };
       }
       tablecolumnheadercell.$set(tablecolumnheadercell_changes);
@@ -36737,10 +49514,10 @@ function create_each_block_2(ctx) {
     }
   };
 }
-function create_default_slot_49(ctx) {
+function create_default_slot_67(ctx) {
   let each_1_anchor;
   let current;
-  let each_value_2 = ctx[11];
+  let each_value_2 = ctx[10];
   let each_blocks = [];
   for (let i2 = 0; i2 < each_value_2.length; i2 += 1) {
     each_blocks[i2] = create_each_block_2(get_each_context_2(ctx, each_value_2, i2));
@@ -36763,8 +49540,8 @@ function create_default_slot_49(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if (dirty[0] & 2048) {
-        each_value_2 = ctx2[11];
+      if (dirty[0] & 1024) {
+        each_value_2 = ctx2[10];
         let i2;
         for (i2 = 0; i2 < each_value_2.length; i2 += 1) {
           const child_ctx = get_each_context_2(ctx2, each_value_2, i2);
@@ -36807,12 +49584,12 @@ function create_default_slot_49(ctx) {
     }
   };
 }
-function create_default_slot_39(ctx) {
+function create_default_slot_59(ctx) {
   let tablerow;
   let current;
   tablerow = new TableRow_default({
     props: {
-      $$slots: { default: [create_default_slot_49] },
+      $$slots: { default: [create_default_slot_67] },
       $$scope: { ctx }
     }
   });
@@ -36826,7 +49603,7 @@ function create_default_slot_39(ctx) {
     },
     p(ctx2, dirty) {
       const tablerow_changes = {};
-      if (dirty[0] & 2048 | dirty[1] & 32768) {
+      if (dirty[0] & 1024 | dirty[1] & 32768) {
         tablerow_changes.$$scope = { dirty, ctx: ctx2 };
       }
       tablerow.$set(tablerow_changes);
@@ -36856,9 +49633,9 @@ function create_each_block_12(ctx) {
   calendarday = new CalendarDay_default({
     props: {
       date: ctx[40],
-      checkField: (_a = ctx[15]) == null ? void 0 : _a.name,
+      checkField: (_a = ctx[14]) == null ? void 0 : _a.name,
       onRecordUpdate: ctx[34],
-      records: ctx[14][ctx[40].format("YYYY-MM-DD")] || [],
+      records: ctx[13][ctx[40].format("YYYY-MM-DD")] || [],
       onEntryClick: ctx[35],
       onEntryAdd: func_5
     }
@@ -36875,17 +49652,17 @@ function create_each_block_12(ctx) {
       var _a2;
       ctx = new_ctx;
       const calendarday_changes = {};
-      if (dirty[0] & 4096)
+      if (dirty[0] & 2048)
         calendarday_changes.date = ctx[40];
-      if (dirty[0] & 32768)
-        calendarday_changes.checkField = (_a2 = ctx[15]) == null ? void 0 : _a2.name;
-      if (dirty[0] & 260)
+      if (dirty[0] & 16384)
+        calendarday_changes.checkField = (_a2 = ctx[14]) == null ? void 0 : _a2.name;
+      if (dirty[0] & 164)
         calendarday_changes.onRecordUpdate = ctx[34];
-      if (dirty[0] & 20480)
-        calendarday_changes.records = ctx[14][ctx[40].format("YYYY-MM-DD")] || [];
-      if (dirty[0] & 324)
+      if (dirty[0] & 10240)
+        calendarday_changes.records = ctx[13][ctx[40].format("YYYY-MM-DD")] || [];
+      if (dirty[0] & 132)
         calendarday_changes.onEntryClick = ctx[35];
-      if (dirty[0] & 135207)
+      if (dirty[0] & 67623)
         calendarday_changes.onEntryAdd = func_5;
       calendarday.$set(calendarday_changes);
     },
@@ -36904,7 +49681,7 @@ function create_each_block_12(ctx) {
     }
   };
 }
-function create_default_slot_211(ctx) {
+function create_default_slot_411(ctx) {
   let t3;
   let current;
   let each_value_1 = ctx[37];
@@ -36930,7 +49707,7 @@ function create_default_slot_211(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if (dirty[0] & 184679) {
+      if (dirty[0] & 92327) {
         each_value_1 = ctx2[37];
         let i2;
         for (i2 = 0; i2 < each_value_1.length; i2 += 1) {
@@ -36979,7 +49756,7 @@ function create_each_block10(ctx) {
   let current;
   tablerow = new TableRow_default({
     props: {
-      $$slots: { default: [create_default_slot_211] },
+      $$slots: { default: [create_default_slot_411] },
       $$scope: { ctx }
     }
   });
@@ -36993,7 +49770,7 @@ function create_each_block10(ctx) {
     },
     p(ctx2, dirty) {
       const tablerow_changes = {};
-      if (dirty[0] & 184679 | dirty[1] & 32768) {
+      if (dirty[0] & 92327 | dirty[1] & 32768) {
         tablerow_changes.$$scope = { dirty, ctx: ctx2 };
       }
       tablerow.$set(tablerow_changes);
@@ -37013,10 +49790,10 @@ function create_each_block10(ctx) {
     }
   };
 }
-function create_default_slot_112(ctx) {
+function create_default_slot_311(ctx) {
   let each_1_anchor;
   let current;
-  let each_value = ctx[12];
+  let each_value = ctx[11];
   let each_blocks = [];
   for (let i2 = 0; i2 < each_value.length; i2 += 1) {
     each_blocks[i2] = create_each_block10(get_each_context10(ctx, each_value, i2));
@@ -37039,8 +49816,8 @@ function create_default_slot_112(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if (dirty[0] & 184679) {
-        each_value = ctx2[12];
+      if (dirty[0] & 92327) {
+        each_value = ctx2[11];
         let i2;
         for (i2 = 0; i2 < each_value.length; i2 += 1) {
           const child_ctx = get_each_context10(ctx2, each_value, i2);
@@ -37083,20 +49860,20 @@ function create_default_slot_112(ctx) {
     }
   };
 }
-function create_default_slot21(ctx) {
+function create_default_slot_211(ctx) {
   let tablehead;
   let t3;
   let tablebody;
   let current;
   tablehead = new TableHead_default({
     props: {
-      $$slots: { default: [create_default_slot_39] },
+      $$slots: { default: [create_default_slot_59] },
       $$scope: { ctx }
     }
   });
   tablebody = new TableBody_default({
     props: {
-      $$slots: { default: [create_default_slot_112] },
+      $$slots: { default: [create_default_slot_311] },
       $$scope: { ctx }
     }
   });
@@ -37114,12 +49891,12 @@ function create_default_slot21(ctx) {
     },
     p(ctx2, dirty) {
       const tablehead_changes = {};
-      if (dirty[0] & 2048 | dirty[1] & 32768) {
+      if (dirty[0] & 1024 | dirty[1] & 32768) {
         tablehead_changes.$$scope = { dirty, ctx: ctx2 };
       }
       tablehead.$set(tablehead_changes);
       const tablebody_changes = {};
-      if (dirty[0] & 184679 | dirty[1] & 32768) {
+      if (dirty[0] & 92327 | dirty[1] & 32768) {
         tablebody_changes.$$scope = { dirty, ctx: ctx2 };
       }
       tablebody.$set(tablebody_changes);
@@ -37144,48 +49921,27 @@ function create_default_slot21(ctx) {
     }
   };
 }
-function create_fragment70(ctx) {
-  let div;
-  let toolbar;
-  let t3;
+function create_default_slot_116(ctx) {
   let table;
   let current;
-  toolbar = new ToolBar_default({
-    props: {
-      $$slots: { default: [create_default_slot_66] },
-      $$scope: { ctx }
-    }
-  });
   table = new Table_default({
     props: {
       grow: true,
-      $$slots: { default: [create_default_slot21] },
+      $$slots: { default: [create_default_slot_211] },
       $$scope: { ctx }
     }
   });
   return {
     c() {
-      div = element("div");
-      create_component(toolbar.$$.fragment);
-      t3 = space();
       create_component(table.$$.fragment);
-      attr(div, "class", "svelte-1frn4ka");
     },
     m(target, anchor) {
-      insert(target, div, anchor);
-      mount_component(toolbar, div, null);
-      append(div, t3);
-      mount_component(table, div, null);
+      mount_component(table, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const toolbar_changes = {};
-      if (dirty[0] & 108216 | dirty[1] & 32768) {
-        toolbar_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      toolbar.$set(toolbar_changes);
       const table_changes = {};
-      if (dirty[0] & 186727 | dirty[1] & 32768) {
+      if (dirty[0] & 93351 | dirty[1] & 32768) {
         table_changes.$$scope = { dirty, ctx: ctx2 };
       }
       table.$set(table_changes);
@@ -37193,24 +49949,119 @@ function create_fragment70(ctx) {
     i(local) {
       if (current)
         return;
-      transition_in(toolbar.$$.fragment, local);
       transition_in(table.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(toolbar.$$.fragment, local);
       transition_out(table.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      if (detaching)
-        detach(div);
-      destroy_component(toolbar);
-      destroy_component(table);
+      destroy_component(table, detaching);
     }
   };
 }
-function instance70($$self, $$props, $$invalidate) {
+function create_default_slot23(ctx) {
+  let viewheader;
+  let t3;
+  let viewcontent;
+  let current;
+  viewheader = new ViewHeader_default({
+    props: {
+      $$slots: { default: [create_default_slot_84] },
+      $$scope: { ctx }
+    }
+  });
+  viewcontent = new ViewContent_default({
+    props: {
+      $$slots: { default: [create_default_slot_116] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewheader.$$.fragment);
+      t3 = space();
+      create_component(viewcontent.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewheader, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(viewcontent, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const viewheader_changes = {};
+      if (dirty[0] & 54136 | dirty[1] & 32768) {
+        viewheader_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewheader.$set(viewheader_changes);
+      const viewcontent_changes = {};
+      if (dirty[0] & 93351 | dirty[1] & 32768) {
+        viewcontent_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewcontent.$set(viewcontent_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewheader.$$.fragment, local);
+      transition_in(viewcontent.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewheader.$$.fragment, local);
+      transition_out(viewcontent.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewheader, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(viewcontent, detaching);
+    }
+  };
+}
+function create_fragment79(ctx) {
+  let viewlayout;
+  let current;
+  viewlayout = new ViewLayout_default({
+    props: {
+      $$slots: { default: [create_default_slot23] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewlayout.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewlayout, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const viewlayout_changes = {};
+      if (dirty[0] & 131071 | dirty[1] & 32768) {
+        viewlayout_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewlayout.$set(viewlayout_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewlayout.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewlayout.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewlayout, detaching);
+    }
+  };
+}
+function instance79($$self, $$props, $$invalidate) {
   let fields;
   let records;
   let dateFields;
@@ -37227,8 +50078,8 @@ function instance70($$self, $$props, $$invalidate) {
   let weekDays;
   let $i18n;
   let $app;
-  component_subscribe($$self, i18n, ($$value) => $$invalidate(10, $i18n = $$value));
-  component_subscribe($$self, app, ($$value) => $$invalidate(17, $app = $$value));
+  component_subscribe($$self, i18n, ($$value) => $$invalidate(9, $i18n = $$value));
+  component_subscribe($$self, app, ($$value) => $$invalidate(16, $app = $$value));
   var _a, _b;
   let { project } = $$props;
   let { frame } = $$props;
@@ -37248,21 +50099,26 @@ function instance70($$self, $$props, $$invalidate) {
   function handleCheckFieldChange(checkField) {
     onConfigChange(Object.assign(Object.assign({}, config), { checkField }));
   }
-  const func7 = () => $$invalidate(4, anchorDate = addInterval(anchorDate, interval));
-  const func_13 = () => $$invalidate(4, anchorDate = subtractInterval(anchorDate, interval));
-  const func_2 = () => $$invalidate(4, anchorDate = (0, import_dayjs8.default)());
   const change_handler = ({ detail }) => handleDateFieldChange(detail);
   const change_handler_1 = ({ detail }) => handleCheckFieldChange(detail);
   const change_handler_2 = ({ detail }) => handleIntervalChange(detail);
-  const func_3 = (record) => {
-    api2.updateRecord(record, fields);
+  const func7 = () => $$invalidate(4, anchorDate = addInterval(anchorDate, interval));
+  const func_14 = () => $$invalidate(4, anchorDate = subtractInterval(anchorDate, interval));
+  const func_22 = () => $$invalidate(4, anchorDate = (0, import_dayjs8.default)());
+  const func_3 = (date, record) => {
+    if (dateField) {
+      api2.updateRecord(__spreadProps(__spreadValues({}, record), {
+        values: __spreadProps(__spreadValues({}, record.values), {
+          [dateField.name]: date.format("YYYY-MM-DD")
+        })
+      }), fields);
+    }
   };
-  const func_4 = (id) => {
-    const rec = records[id];
-    if (rec) {
+  const func_4 = (entry) => {
+    if (entry) {
       new EditNoteModal(get_store_value(app), fields, (record) => {
         api2.updateRecord(record, fields);
-      }, rec).open();
+      }, entry).open();
     }
   };
   const func_5 = (date) => {
@@ -37278,7 +50134,7 @@ function instance70($$self, $$props, $$invalidate) {
     if ("project" in $$props2)
       $$invalidate(0, project = $$props2.project);
     if ("frame" in $$props2)
-      $$invalidate(21, frame = $$props2.frame);
+      $$invalidate(20, frame = $$props2.frame);
     if ("readonly" in $$props2)
       $$invalidate(1, readonly = $$props2.readonly);
     if ("api" in $$props2)
@@ -37286,60 +50142,60 @@ function instance70($$self, $$props, $$invalidate) {
     if ("config" in $$props2)
       $$invalidate(3, config = $$props2.config);
     if ("onConfigChange" in $$props2)
-      $$invalidate(22, onConfigChange = $$props2.onConfigChange);
+      $$invalidate(21, onConfigChange = $$props2.onConfigChange);
   };
   $$self.$$.update = () => {
-    if ($$self.$$.dirty[0] & 2097152) {
+    if ($$self.$$.dirty[0] & 1048576) {
       $:
-        $$invalidate(8, { fields, records } = frame, fields, ($$invalidate(6, records), $$invalidate(21, frame)));
+        $$invalidate(7, { fields, records } = frame, fields, ($$invalidate(27, records), $$invalidate(20, frame)));
     }
-    if ($$self.$$.dirty[0] & 256) {
+    if ($$self.$$.dirty[0] & 128) {
       $:
-        $$invalidate(9, dateFields = fields.filter((field) => field.type === DataFieldType.Date));
+        $$invalidate(8, dateFields = fields.filter((field) => field.type === DataFieldType.Date));
     }
-    if ($$self.$$.dirty[0] & 8389128) {
+    if ($$self.$$.dirty[0] & 4194568) {
       $:
-        $$invalidate(5, dateField = $$invalidate(23, _a = dateFields.find((field) => (config === null || config === void 0 ? void 0 : config.dateField) === field.name)) !== null && _a !== void 0 ? _a : dateFields[0]);
+        $$invalidate(5, dateField = $$invalidate(22, _a = dateFields.find((field) => (config === null || config === void 0 ? void 0 : config.dateField) === field.name)) !== null && _a !== void 0 ? _a : dateFields[0]);
     }
-    if ($$self.$$.dirty[0] & 256) {
+    if ($$self.$$.dirty[0] & 128) {
       $:
-        $$invalidate(16, booleanFields = fields.filter((field) => field.type === DataFieldType.Boolean));
+        $$invalidate(15, booleanFields = fields.filter((field) => field.type === DataFieldType.Boolean));
     }
-    if ($$self.$$.dirty[0] & 264) {
+    if ($$self.$$.dirty[0] & 136) {
       $:
-        $$invalidate(15, booleanField = fields.find((field) => (config === null || config === void 0 ? void 0 : config.checkField) === field.name));
+        $$invalidate(14, booleanField = fields.find((field) => (config === null || config === void 0 ? void 0 : config.checkField) === field.name));
     }
-    if ($$self.$$.dirty[0] & 16777224) {
+    if ($$self.$$.dirty[0] & 8388616) {
       $:
-        $$invalidate(7, interval = $$invalidate(24, _b = config === null || config === void 0 ? void 0 : config.interval) !== null && _b !== void 0 ? _b : "week");
+        $$invalidate(6, interval = $$invalidate(23, _b = config === null || config === void 0 ? void 0 : config.interval) !== null && _b !== void 0 ? _b : "week");
     }
-    if ($$self.$$.dirty[0] & 144) {
+    if ($$self.$$.dirty[0] & 80) {
       $:
-        $$invalidate(27, dateInterval = computeDateInterval(anchorDate, interval));
+        $$invalidate(26, dateInterval = computeDateInterval(anchorDate, interval));
     }
-    if ($$self.$$.dirty[0] & 96) {
+    if ($$self.$$.dirty[0] & 134217760) {
       $:
-        $$invalidate(14, groupedRecords = dateField ? groupRecordsByField(records, dateField.name) : {});
-    }
-    if ($$self.$$.dirty[0] & 134217728) {
-      $:
-        $$invalidate(13, title = dateInterval ? generateTitle(dateInterval) : "");
-    }
-    if ($$self.$$.dirty[0] & 134217728) {
-      $:
-        $$invalidate(26, dates = dateInterval ? generateDates(dateInterval) : []);
+        $$invalidate(13, groupedRecords = dateField ? groupRecordsByField(records, dateField.name) : {});
     }
     if ($$self.$$.dirty[0] & 67108864) {
       $:
-        $$invalidate(25, numColumns = Math.min(dates.length, 7));
+        $$invalidate(12, title = dateInterval ? generateTitle(dateInterval) : "");
     }
-    if ($$self.$$.dirty[0] & 100663296) {
+    if ($$self.$$.dirty[0] & 67108864) {
       $:
-        $$invalidate(12, weeks = chunkDates(dates, numColumns));
+        $$invalidate(25, dates = dateInterval ? generateDates(dateInterval) : []);
     }
-    if ($$self.$$.dirty[0] & 100664320) {
+    if ($$self.$$.dirty[0] & 33554432) {
       $:
-        $$invalidate(11, weekDays = dates.slice(0, numColumns).map((date) => $i18n.t("views.calendar.weekday", {
+        $$invalidate(24, numColumns = Math.min(dates.length, 7));
+    }
+    if ($$self.$$.dirty[0] & 50331648) {
+      $:
+        $$invalidate(11, weeks = chunkDates(dates, numColumns));
+    }
+    if ($$self.$$.dirty[0] & 50332160) {
+      $:
+        $$invalidate(10, weekDays = dates.slice(0, numColumns).map((date) => $i18n.t("views.calendar.weekday", {
           value: date.toDate(),
           formatParams: { value: { weekday: "short" } }
         })));
@@ -37352,7 +50208,6 @@ function instance70($$self, $$props, $$invalidate) {
     config,
     anchorDate,
     dateField,
-    records,
     interval,
     fields,
     dateFields,
@@ -37374,12 +50229,13 @@ function instance70($$self, $$props, $$invalidate) {
     numColumns,
     dates,
     dateInterval,
-    func7,
-    func_13,
-    func_2,
+    records,
     change_handler,
     change_handler_1,
     change_handler_2,
+    func7,
+    func_14,
+    func_22,
     func_3,
     func_4,
     func_5
@@ -37388,14 +50244,14 @@ function instance70($$self, $$props, $$invalidate) {
 var CalendarView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance70, create_fragment70, safe_not_equal, {
+    init(this, options, instance79, create_fragment79, safe_not_equal, {
       project: 0,
-      frame: 21,
+      frame: 20,
       readonly: 1,
       api: 2,
       config: 3,
-      onConfigChange: 22
-    }, add_css42, [-1, -1]);
+      onConfigChange: 21
+    }, null, [-1, -1]);
   }
 };
 var CalendarView_default = CalendarView;
@@ -37443,7 +50299,7 @@ var CalendarView2 = class extends ProjectView {
 
 // src/views/Board/board.ts
 function unique(records, fieldName) {
-  const keys = records.map((record) => record.values[fieldName]).map((value) => value && isString(value) ? value : null).filter(notEmpty);
+  const keys = records.map((record) => record.values[fieldName]).map((value) => value && isNumber(value) ? value.toLocaleString() : value).map((value) => value && isString(value) ? value : null).filter(notEmpty);
   const set2 = new Set(keys);
   return [...set2];
 }
@@ -37461,12 +50317,14 @@ function groupRecordsByField2(records, fieldName) {
     res[key] = [];
   }
   records.forEach((record) => {
-    var _a2, _b;
+    var _a2, _b, _c;
     const value = record.values[fieldName];
     if (value && isString(value)) {
       (_a2 = res[value]) == null ? void 0 : _a2.push(record);
+    } else if (value && isNumber(value)) {
+      (_b = res[value.toLocaleString()]) == null ? void 0 : _b.push(record);
     } else {
-      (_b = res[noStatus]) == null ? void 0 : _b.push(record);
+      (_c = res[noStatus]) == null ? void 0 : _c.push(record);
     }
   });
   if (!((_a = res[noStatus]) == null ? void 0 : _a.length)) {
@@ -37476,7 +50334,7 @@ function groupRecordsByField2(records, fieldName) {
 }
 
 // src/views/Board/settings/settings-modal.ts
-var import_obsidian36 = __toModule(require("obsidian"));
+var import_obsidian40 = __toModule(require("obsidian"));
 
 // src/views/Board/settings/BoardSettings.svelte
 function create_default_slot_212(ctx) {
@@ -37525,7 +50383,7 @@ function create_default_slot_212(ctx) {
     }
   };
 }
-function create_default_slot_113(ctx) {
+function create_default_slot_117(ctx) {
   let settingitem;
   let current;
   settingitem = new SettingItem_default({
@@ -37566,12 +50424,12 @@ function create_default_slot_113(ctx) {
     }
   };
 }
-function create_default_slot22(ctx) {
+function create_default_slot24(ctx) {
   let modalcontent;
   let current;
   modalcontent = new ModalContent_default({
     props: {
-      $$slots: { default: [create_default_slot_113] },
+      $$slots: { default: [create_default_slot_117] },
       $$scope: { ctx }
     }
   });
@@ -37605,13 +50463,13 @@ function create_default_slot22(ctx) {
     }
   };
 }
-function create_fragment71(ctx) {
+function create_fragment80(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
     props: {
       title: "Board settings",
-      $$slots: { default: [create_default_slot22] },
+      $$slots: { default: [create_default_slot24] },
       $$scope: { ctx }
     }
   });
@@ -37645,7 +50503,7 @@ function create_fragment71(ctx) {
     }
   };
 }
-function instance71($$self, $$props, $$invalidate) {
+function instance80($$self, $$props, $$invalidate) {
   var _a;
   let { config } = $$props;
   let { onSave } = $$props;
@@ -37672,13 +50530,13 @@ function instance71($$self, $$props, $$invalidate) {
 var BoardSettings = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance71, create_fragment71, safe_not_equal, { config: 0, onSave: 1 });
+    init(this, options, instance80, create_fragment80, safe_not_equal, { config: 0, onSave: 1 });
   }
 };
 var BoardSettings_default = BoardSettings;
 
 // src/views/Board/settings/settings-modal.ts
-var BoardSettingsModal = class extends import_obsidian36.Modal {
+var BoardSettingsModal = class extends import_obsidian40.Modal {
   constructor(app2, config, onSave) {
     super(app2);
     this.config = config;
@@ -37703,168 +50561,311 @@ var BoardSettingsModal = class extends import_obsidian36.Modal {
   }
 };
 
-// src/views/Board/components/Board/BoardColumn.svelte
-var import_path3 = __toModule(require("path"));
-
-// src/views/Board/components/Card/Card.svelte
-function add_css43(target) {
-  append_styles(target, "svelte-aji0dr", "div.svelte-aji0dr{background-color:var(--background-primary);border-radius:var(--radius-s);border:1px solid var(--background-modifier-border);padding:var(--size-4-2)}div.svelte-aji0dr:hover{border:1px solid var(--background-modifier-border-hover)}");
+// node_modules/svelte/easing/index.mjs
+function cubicOut(t3) {
+  const f2 = t3 - 1;
+  return f2 * f2 * f2 + 1;
 }
-function create_fragment72(ctx) {
+
+// node_modules/svelte/animate/index.mjs
+function flip2(node, { from, to }, params = {}) {
+  const style = getComputedStyle(node);
+  const transform = style.transform === "none" ? "" : style.transform;
+  const [ox, oy] = style.transformOrigin.split(" ").map(parseFloat);
+  const dx = from.left + from.width * ox / to.width - (to.left + ox);
+  const dy = from.top + from.height * oy / to.height - (to.top + oy);
+  const { delay = 0, duration = (d2) => Math.sqrt(d2) * 120, easing = cubicOut } = params;
+  return {
+    delay,
+    duration: is_function(duration) ? duration(Math.sqrt(dx * dx + dy * dy)) : duration,
+    easing,
+    css: (t3, u2) => {
+      const x2 = u2 * dx;
+      const y2 = u2 * dy;
+      const sx = t3 + u2 * from.width / to.width;
+      const sy = t3 + u2 * from.height / to.height;
+      return `transform: ${transform} translate(${x2}px, ${y2}px) scale(${sx}, ${sy});`;
+    }
+  };
+}
+
+// src/views/Board/components/Board/CardGroup.svelte
+function add_css46(target) {
+  append_styles(target, "svelte-1oa4ncb", ".lst.svelte-1oa4ncb{display:flex;flex-direction:column;gap:var(--size-4-2);min-height:35px}.crd.svelte-1oa4ncb{background-color:var(--background-primary);border-radius:var(--radius-s);border:1px solid var(--background-modifier-border);padding:var(--size-4-2)}.crd.svelte-1oa4ncb:hover{border:1px solid var(--background-modifier-border-hover)}");
+}
+function get_each_context11(ctx, list, i2) {
+  const child_ctx = ctx.slice();
+  child_ctx[9] = list[i2];
+  return child_ctx;
+}
+function create_default_slot25(ctx) {
+  let t_value = getDisplayName(ctx[9]) + "";
+  let t3;
+  return {
+    c() {
+      t3 = text(t_value);
+    },
+    m(target, anchor) {
+      insert(target, t3, anchor);
+    },
+    p(ctx2, dirty) {
+      if (dirty & 1 && t_value !== (t_value = getDisplayName(ctx2[9]) + ""))
+        set_data(t3, t_value);
+    },
+    d(detaching) {
+      if (detaching)
+        detach(t3);
+    }
+  };
+}
+function create_each_block11(key_1, ctx) {
   let div;
+  let internallink;
+  let t3;
+  let rect;
+  let stop_animation = noop;
   let current;
   let mounted;
   let dispose;
-  const default_slot_template = ctx[1].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[0], null);
+  function open_handler(...args) {
+    return ctx[7](ctx[9], ...args);
+  }
+  internallink = new InternalLink_default({
+    props: {
+      linkText: ctx[9].id,
+      sourcePath: "",
+      resolved: true,
+      $$slots: { default: [create_default_slot25] },
+      $$scope: { ctx }
+    }
+  });
+  internallink.$on("open", open_handler);
+  function click_handler() {
+    return ctx[8](ctx[9]);
+  }
   return {
+    key: key_1,
+    first: null,
     c() {
       div = element("div");
-      if (default_slot)
-        default_slot.c();
-      attr(div, "class", "svelte-aji0dr");
+      create_component(internallink.$$.fragment);
+      t3 = space();
+      attr(div, "class", "crd svelte-1oa4ncb");
+      this.first = div;
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      if (default_slot) {
-        default_slot.m(div, null);
-      }
+      mount_component(internallink, div, null);
+      append(div, t3);
       current = true;
       if (!mounted) {
-        dispose = listen(div, "click", ctx[2]);
+        dispose = listen(div, "click", click_handler);
         mounted = true;
       }
     },
-    p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & 1)) {
-          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[0], !current ? get_all_dirty_from_scope(ctx2[0]) : get_slot_changes(default_slot_template, ctx2[0], dirty, null), null);
-        }
+    p(new_ctx, dirty) {
+      ctx = new_ctx;
+      const internallink_changes = {};
+      if (dirty & 1)
+        internallink_changes.linkText = ctx[9].id;
+      if (dirty & 4097) {
+        internallink_changes.$$scope = { dirty, ctx };
       }
+      internallink.$set(internallink_changes);
+    },
+    r() {
+      rect = div.getBoundingClientRect();
+    },
+    f() {
+      fix_position(div);
+      stop_animation();
+    },
+    a() {
+      stop_animation();
+      stop_animation = create_animation(div, rect, flip2, { duration: flipDurationMs2 });
     },
     i(local) {
       if (current)
         return;
-      transition_in(default_slot, local);
+      transition_in(internallink.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(default_slot, local);
+      transition_out(internallink.$$.fragment, local);
       current = false;
     },
     d(detaching) {
       if (detaching)
         detach(div);
-      if (default_slot)
-        default_slot.d(detaching);
+      destroy_component(internallink);
       mounted = false;
       dispose();
     }
   };
 }
-function instance72($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  function click_handler(event) {
-    bubble.call(this, $$self, event);
-  }
-  $$self.$$set = ($$props2) => {
-    if ("$$scope" in $$props2)
-      $$invalidate(0, $$scope = $$props2.$$scope);
-  };
-  return [$$scope, slots, click_handler];
-}
-var Card2 = class extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance72, create_fragment72, safe_not_equal, {}, add_css43);
-  }
-};
-var Card_default3 = Card2;
-
-// src/views/Board/components/Card/CardList.svelte
-function add_css44(target) {
-  append_styles(target, "svelte-2czsfa", "div.svelte-2czsfa{display:flex;flex-direction:column;gap:var(--size-4-2)}");
-}
-function create_fragment73(ctx) {
+function create_fragment81(ctx) {
   let div;
+  let each_blocks = [];
+  let each_1_lookup = new Map();
+  let dndzone_action;
   let current;
-  const default_slot_template = ctx[1].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[0], null);
+  let mounted;
+  let dispose;
+  let each_value = ctx[0];
+  const get_key = (ctx2) => ctx2[9].id;
+  for (let i2 = 0; i2 < each_value.length; i2 += 1) {
+    let child_ctx = get_each_context11(ctx, each_value, i2);
+    let key = get_key(child_ctx);
+    each_1_lookup.set(key, each_blocks[i2] = create_each_block11(key, child_ctx));
+  }
   return {
     c() {
       div = element("div");
-      if (default_slot)
-        default_slot.c();
-      attr(div, "class", "svelte-2czsfa");
+      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
+        each_blocks[i2].c();
+      }
+      attr(div, "class", "lst svelte-1oa4ncb");
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      if (default_slot) {
-        default_slot.m(div, null);
+      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
+        each_blocks[i2].m(div, null);
       }
       current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(dndzone_action = dndzone$2.call(null, div, {
+            type: "card",
+            items: ctx[0],
+            flipDurationMs: flipDurationMs2,
+            dropTargetStyle: {
+              outline: "none",
+              borderRadius: "5px",
+              background: "hsla(var(--interactive-accent-hsl), 0.3)"
+            },
+            dragDisabled: ctx[2]
+          })),
+          listen(div, "consider", ctx[4]),
+          listen(div, "finalize", ctx[5])
+        ];
+        mounted = true;
+      }
     },
     p(ctx2, [dirty]) {
-      if (default_slot) {
-        if (default_slot.p && (!current || dirty & 1)) {
-          update_slot_base(default_slot, default_slot_template, ctx2, ctx2[0], !current ? get_all_dirty_from_scope(ctx2[0]) : get_slot_changes(default_slot_template, ctx2[0], dirty, null), null);
-        }
+      if (dirty & 11) {
+        each_value = ctx2[0];
+        group_outros();
+        for (let i2 = 0; i2 < each_blocks.length; i2 += 1)
+          each_blocks[i2].r();
+        each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value, each_1_lookup, div, fix_and_outro_and_destroy_block, create_each_block11, null, get_each_context11);
+        for (let i2 = 0; i2 < each_blocks.length; i2 += 1)
+          each_blocks[i2].a();
+        check_outros();
       }
+      if (dndzone_action && is_function(dndzone_action.update) && dirty & 5)
+        dndzone_action.update.call(null, {
+          type: "card",
+          items: ctx2[0],
+          flipDurationMs: flipDurationMs2,
+          dropTargetStyle: {
+            outline: "none",
+            borderRadius: "5px",
+            background: "hsla(var(--interactive-accent-hsl), 0.3)"
+          },
+          dragDisabled: ctx2[2]
+        });
     },
     i(local) {
       if (current)
         return;
-      transition_in(default_slot, local);
+      for (let i2 = 0; i2 < each_value.length; i2 += 1) {
+        transition_in(each_blocks[i2]);
+      }
       current = true;
     },
     o(local) {
-      transition_out(default_slot, local);
+      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
+        transition_out(each_blocks[i2]);
+      }
       current = false;
     },
     d(detaching) {
       if (detaching)
         detach(div);
-      if (default_slot)
-        default_slot.d(detaching);
+      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
+        each_blocks[i2].d();
+      }
+      mounted = false;
+      run_all(dispose);
     }
   };
 }
-function instance73($$self, $$props, $$invalidate) {
-  let { $$slots: slots = {}, $$scope } = $$props;
-  $$self.$$set = ($$props2) => {
-    if ("$$scope" in $$props2)
-      $$invalidate(0, $$scope = $$props2.$$scope);
+var flipDurationMs2 = 200;
+function instance81($$self, $$props, $$invalidate) {
+  let $app;
+  component_subscribe($$self, app, ($$value) => $$invalidate(3, $app = $$value));
+  let { items } = $$props;
+  let { onRecordClick } = $$props;
+  let { onDrop = () => {
+  } } = $$props;
+  let { dragDisabled = false } = $$props;
+  function handleDndConsider(e) {
+    $$invalidate(0, items = e.detail.items);
+  }
+  function handleDndFinalize(e) {
+    $$invalidate(0, items = e.detail.items);
+    if (onDrop) {
+      onDrop(e.detail.items);
+    }
+  }
+  const open_handler = (item, { detail: { linkText, sourcePath, newLeaf } }) => {
+    if (newLeaf) {
+      $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
+    } else {
+      onRecordClick(item);
+    }
   };
-  return [$$scope, slots];
+  const click_handler = (item) => onRecordClick(item);
+  $$self.$$set = ($$props2) => {
+    if ("items" in $$props2)
+      $$invalidate(0, items = $$props2.items);
+    if ("onRecordClick" in $$props2)
+      $$invalidate(1, onRecordClick = $$props2.onRecordClick);
+    if ("onDrop" in $$props2)
+      $$invalidate(6, onDrop = $$props2.onDrop);
+    if ("dragDisabled" in $$props2)
+      $$invalidate(2, dragDisabled = $$props2.dragDisabled);
+  };
+  return [
+    items,
+    onRecordClick,
+    dragDisabled,
+    $app,
+    handleDndConsider,
+    handleDndFinalize,
+    onDrop,
+    open_handler,
+    click_handler
+  ];
 }
-var CardList = class extends SvelteComponent {
+var CardGroup = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance73, create_fragment73, safe_not_equal, {}, add_css44);
+    init(this, options, instance81, create_fragment81, safe_not_equal, {
+      items: 0,
+      onRecordClick: 1,
+      onDrop: 6,
+      dragDisabled: 2
+    }, add_css46);
   }
 };
-var CardList_default = CardList;
+var CardGroup_default = CardGroup;
 
 // src/views/Board/components/Board/BoardColumn.svelte
-function add_css45(target) {
+function add_css47(target) {
   append_styles(target, "svelte-epk499", ".column.svelte-epk499{border:1px solid var(--background-modifier-border);border-radius:var(--radius-m);background-color:var(--background-secondary);display:flex;flex-direction:column}.column-section.svelte-epk499{padding:var(--size-4-2);display:flex;flex-direction:column}.unprio.svelte-epk499{border-top:1px solid var(--background-modifier-border)}p.svelte-epk499{font-weight:500;margin:0;margin-bottom:4px;color:var(--text-faint);font-size:var(--font-smaller)}");
 }
-function get_each_context_22(ctx, list, i2) {
-  const child_ctx = ctx.slice();
-  child_ctx[20] = list[i2];
-  return child_ctx;
-}
-function get_each_context11(ctx, list, i2) {
-  const child_ctx = ctx.slice();
-  child_ctx[20] = list[i2];
-  return child_ctx;
-}
-function get_each_context_13(ctx, list, i2) {
-  const child_ctx = ctx.slice();
-  child_ctx[20] = list[i2];
-  return child_ctx;
-}
-function create_default_slot_103(ctx) {
+function create_default_slot_118(ctx) {
   let t3;
   return {
     c() {
@@ -37885,801 +50886,144 @@ function create_default_slot_103(ctx) {
 }
 function create_else_block6(ctx) {
   let div;
-  let cardlist;
+  let cardgroup;
   let current;
-  cardlist = new CardList_default({
+  cardgroup = new CardGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_75] },
-      $$scope: { ctx }
+      items: ctx[1],
+      onRecordClick: ctx[5],
+      dragDisabled: true
     }
   });
   return {
     c() {
       div = element("div");
-      create_component(cardlist.$$.fragment);
+      create_component(cardgroup.$$.fragment);
       attr(div, "class", "column-section svelte-epk499");
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      mount_component(cardlist, div, null);
+      mount_component(cardgroup, div, null);
       current = true;
     },
     p(ctx2, dirty) {
-      const cardlist_changes = {};
-      if (dirty & 134218002) {
-        cardlist_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      cardlist.$set(cardlist_changes);
+      const cardgroup_changes = {};
+      if (dirty & 2)
+        cardgroup_changes.items = ctx2[1];
+      if (dirty & 32)
+        cardgroup_changes.onRecordClick = ctx2[5];
+      cardgroup.$set(cardgroup_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(cardlist.$$.fragment, local);
+      transition_in(cardgroup.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(cardlist.$$.fragment, local);
+      transition_out(cardgroup.$$.fragment, local);
       current = false;
     },
     d(detaching) {
       if (detaching)
         detach(div);
-      destroy_component(cardlist);
+      destroy_component(cardgroup);
     }
   };
 }
 function create_if_block_110(ctx) {
-  let t3;
-  let if_block1_anchor;
-  let current;
-  let if_block0 = ctx[7].length && create_if_block_33(ctx);
-  let if_block1 = ctx[6].length && create_if_block_24(ctx);
-  return {
-    c() {
-      if (if_block0)
-        if_block0.c();
-      t3 = space();
-      if (if_block1)
-        if_block1.c();
-      if_block1_anchor = empty();
-    },
-    m(target, anchor) {
-      if (if_block0)
-        if_block0.m(target, anchor);
-      insert(target, t3, anchor);
-      if (if_block1)
-        if_block1.m(target, anchor);
-      insert(target, if_block1_anchor, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (ctx2[7].length) {
-        if (if_block0) {
-          if_block0.p(ctx2, dirty);
-          if (dirty & 128) {
-            transition_in(if_block0, 1);
-          }
-        } else {
-          if_block0 = create_if_block_33(ctx2);
-          if_block0.c();
-          transition_in(if_block0, 1);
-          if_block0.m(t3.parentNode, t3);
-        }
-      } else if (if_block0) {
-        group_outros();
-        transition_out(if_block0, 1, 1, () => {
-          if_block0 = null;
-        });
-        check_outros();
-      }
-      if (ctx2[6].length) {
-        if (if_block1) {
-          if_block1.p(ctx2, dirty);
-          if (dirty & 64) {
-            transition_in(if_block1, 1);
-          }
-        } else {
-          if_block1 = create_if_block_24(ctx2);
-          if_block1.c();
-          transition_in(if_block1, 1);
-          if_block1.m(if_block1_anchor.parentNode, if_block1_anchor);
-        }
-      } else if (if_block1) {
-        group_outros();
-        transition_out(if_block1, 1, 1, () => {
-          if_block1 = null;
-        });
-        check_outros();
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(if_block0);
-      transition_in(if_block1);
-      current = true;
-    },
-    o(local) {
-      transition_out(if_block0);
-      transition_out(if_block1);
-      current = false;
-    },
-    d(detaching) {
-      if (if_block0)
-        if_block0.d(detaching);
-      if (detaching)
-        detach(t3);
-      if (if_block1)
-        if_block1.d(detaching);
-      if (detaching)
-        detach(if_block1_anchor);
-    }
-  };
-}
-function create_default_slot_94(ctx) {
-  let t_value = ctx[10](ctx[20]) + "";
-  let t3;
-  return {
-    c() {
-      t3 = text(t_value);
-    },
-    m(target, anchor) {
-      insert(target, t3, anchor);
-    },
-    p(ctx2, dirty) {
-      if (dirty & 2 && t_value !== (t_value = ctx2[10](ctx2[20]) + ""))
-        set_data(t3, t_value);
-    },
-    d(detaching) {
-      if (detaching)
-        detach(t3);
-    }
-  };
-}
-function create_default_slot_84(ctx) {
-  let internallink;
-  let t3;
-  let current;
-  function open_handler_2(...args) {
-    return ctx[15](ctx[20], ...args);
-  }
-  internallink = new InternalLink_default({
-    props: {
-      linkText: ctx[20].id,
-      sourcePath: "",
-      resolved: true,
-      $$slots: { default: [create_default_slot_94] },
-      $$scope: { ctx }
-    }
-  });
-  internallink.$on("open", open_handler_2);
-  return {
-    c() {
-      create_component(internallink.$$.fragment);
-      t3 = space();
-    },
-    m(target, anchor) {
-      mount_component(internallink, target, anchor);
-      insert(target, t3, anchor);
-      current = true;
-    },
-    p(new_ctx, dirty) {
-      ctx = new_ctx;
-      const internallink_changes = {};
-      if (dirty & 2)
-        internallink_changes.linkText = ctx[20].id;
-      if (dirty & 134217730) {
-        internallink_changes.$$scope = { dirty, ctx };
-      }
-      internallink.$set(internallink_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(internallink.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(internallink.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(internallink, detaching);
-      if (detaching)
-        detach(t3);
-    }
-  };
-}
-function create_each_block_22(ctx) {
-  let card;
-  let current;
-  function click_handler_2() {
-    return ctx[16](ctx[20]);
-  }
-  card = new Card_default3({
-    props: {
-      $$slots: { default: [create_default_slot_84] },
-      $$scope: { ctx }
-    }
-  });
-  card.$on("click", click_handler_2);
-  return {
-    c() {
-      create_component(card.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(card, target, anchor);
-      current = true;
-    },
-    p(new_ctx, dirty) {
-      ctx = new_ctx;
-      const card_changes = {};
-      if (dirty & 134218002) {
-        card_changes.$$scope = { dirty, ctx };
-      }
-      card.$set(card_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(card.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(card.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(card, detaching);
-    }
-  };
-}
-function create_default_slot_75(ctx) {
-  let each_1_anchor;
-  let current;
-  let each_value_2 = ctx[1];
-  let each_blocks = [];
-  for (let i2 = 0; i2 < each_value_2.length; i2 += 1) {
-    each_blocks[i2] = create_each_block_22(get_each_context_22(ctx, each_value_2, i2));
-  }
-  const out = (i2) => transition_out(each_blocks[i2], 1, 1, () => {
-    each_blocks[i2] = null;
-  });
-  return {
-    c() {
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        each_blocks[i2].c();
-      }
-      each_1_anchor = empty();
-    },
-    m(target, anchor) {
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        each_blocks[i2].m(target, anchor);
-      }
-      insert(target, each_1_anchor, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (dirty & 1298) {
-        each_value_2 = ctx2[1];
-        let i2;
-        for (i2 = 0; i2 < each_value_2.length; i2 += 1) {
-          const child_ctx = get_each_context_22(ctx2, each_value_2, i2);
-          if (each_blocks[i2]) {
-            each_blocks[i2].p(child_ctx, dirty);
-            transition_in(each_blocks[i2], 1);
-          } else {
-            each_blocks[i2] = create_each_block_22(child_ctx);
-            each_blocks[i2].c();
-            transition_in(each_blocks[i2], 1);
-            each_blocks[i2].m(each_1_anchor.parentNode, each_1_anchor);
-          }
-        }
-        group_outros();
-        for (i2 = each_value_2.length; i2 < each_blocks.length; i2 += 1) {
-          out(i2);
-        }
-        check_outros();
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      for (let i2 = 0; i2 < each_value_2.length; i2 += 1) {
-        transition_in(each_blocks[i2]);
-      }
-      current = true;
-    },
-    o(local) {
-      each_blocks = each_blocks.filter(Boolean);
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        transition_out(each_blocks[i2]);
-      }
-      current = false;
-    },
-    d(detaching) {
-      destroy_each(each_blocks, detaching);
-      if (detaching)
-        detach(each_1_anchor);
-    }
-  };
-}
-function create_if_block_33(ctx) {
-  let div;
-  let cardlist;
-  let current;
-  cardlist = new CardList_default({
-    props: {
-      $$slots: { default: [create_default_slot_410] },
-      $$scope: { ctx }
-    }
-  });
-  return {
-    c() {
-      div = element("div");
-      create_component(cardlist.$$.fragment);
-      attr(div, "class", "column-section svelte-epk499");
-    },
-    m(target, anchor) {
-      insert(target, div, anchor);
-      mount_component(cardlist, div, null);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      const cardlist_changes = {};
-      if (dirty & 134218128) {
-        cardlist_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      cardlist.$set(cardlist_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(cardlist.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(cardlist.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(div);
-      destroy_component(cardlist);
-    }
-  };
-}
-function create_default_slot_67(ctx) {
-  let t_value = ctx[10](ctx[20]) + "";
-  let t3;
-  return {
-    c() {
-      t3 = text(t_value);
-    },
-    m(target, anchor) {
-      insert(target, t3, anchor);
-    },
-    p(ctx2, dirty) {
-      if (dirty & 128 && t_value !== (t_value = ctx2[10](ctx2[20]) + ""))
-        set_data(t3, t_value);
-    },
-    d(detaching) {
-      if (detaching)
-        detach(t3);
-    }
-  };
-}
-function create_default_slot_59(ctx) {
-  let internallink;
-  let t3;
-  let current;
-  function open_handler(...args) {
-    return ctx[11](ctx[20], ...args);
-  }
-  internallink = new InternalLink_default({
-    props: {
-      linkText: ctx[20].id,
-      sourcePath: "",
-      resolved: true,
-      $$slots: { default: [create_default_slot_67] },
-      $$scope: { ctx }
-    }
-  });
-  internallink.$on("open", open_handler);
-  return {
-    c() {
-      create_component(internallink.$$.fragment);
-      t3 = space();
-    },
-    m(target, anchor) {
-      mount_component(internallink, target, anchor);
-      insert(target, t3, anchor);
-      current = true;
-    },
-    p(new_ctx, dirty) {
-      ctx = new_ctx;
-      const internallink_changes = {};
-      if (dirty & 128)
-        internallink_changes.linkText = ctx[20].id;
-      if (dirty & 134217856) {
-        internallink_changes.$$scope = { dirty, ctx };
-      }
-      internallink.$set(internallink_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(internallink.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(internallink.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(internallink, detaching);
-      if (detaching)
-        detach(t3);
-    }
-  };
-}
-function create_each_block_13(ctx) {
-  let card;
-  let current;
-  function click_handler() {
-    return ctx[12](ctx[20]);
-  }
-  card = new Card_default3({
-    props: {
-      $$slots: { default: [create_default_slot_59] },
-      $$scope: { ctx }
-    }
-  });
-  card.$on("click", click_handler);
-  return {
-    c() {
-      create_component(card.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(card, target, anchor);
-      current = true;
-    },
-    p(new_ctx, dirty) {
-      ctx = new_ctx;
-      const card_changes = {};
-      if (dirty & 134218128) {
-        card_changes.$$scope = { dirty, ctx };
-      }
-      card.$set(card_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(card.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(card.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(card, detaching);
-    }
-  };
-}
-function create_default_slot_410(ctx) {
-  let each_1_anchor;
-  let current;
-  let each_value_1 = ctx[7];
-  let each_blocks = [];
-  for (let i2 = 0; i2 < each_value_1.length; i2 += 1) {
-    each_blocks[i2] = create_each_block_13(get_each_context_13(ctx, each_value_1, i2));
-  }
-  const out = (i2) => transition_out(each_blocks[i2], 1, 1, () => {
-    each_blocks[i2] = null;
-  });
-  return {
-    c() {
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        each_blocks[i2].c();
-      }
-      each_1_anchor = empty();
-    },
-    m(target, anchor) {
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        each_blocks[i2].m(target, anchor);
-      }
-      insert(target, each_1_anchor, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (dirty & 1424) {
-        each_value_1 = ctx2[7];
-        let i2;
-        for (i2 = 0; i2 < each_value_1.length; i2 += 1) {
-          const child_ctx = get_each_context_13(ctx2, each_value_1, i2);
-          if (each_blocks[i2]) {
-            each_blocks[i2].p(child_ctx, dirty);
-            transition_in(each_blocks[i2], 1);
-          } else {
-            each_blocks[i2] = create_each_block_13(child_ctx);
-            each_blocks[i2].c();
-            transition_in(each_blocks[i2], 1);
-            each_blocks[i2].m(each_1_anchor.parentNode, each_1_anchor);
-          }
-        }
-        group_outros();
-        for (i2 = each_value_1.length; i2 < each_blocks.length; i2 += 1) {
-          out(i2);
-        }
-        check_outros();
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      for (let i2 = 0; i2 < each_value_1.length; i2 += 1) {
-        transition_in(each_blocks[i2]);
-      }
-      current = true;
-    },
-    o(local) {
-      each_blocks = each_blocks.filter(Boolean);
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        transition_out(each_blocks[i2]);
-      }
-      current = false;
-    },
-    d(detaching) {
-      destroy_each(each_blocks, detaching);
-      if (detaching)
-        detach(each_1_anchor);
-    }
-  };
-}
-function create_if_block_24(ctx) {
-  let div;
-  let p2;
-  let t0_value = ctx[9].t("views.board.unprioritized") + "";
+  let div0;
+  let cardgroup0;
   let t0;
+  let div1;
+  let p2;
+  let t1_value = ctx[9].t("views.board.unprioritized") + "";
   let t1;
-  let cardlist;
+  let t22;
+  let cardgroup1;
   let current;
-  cardlist = new CardList_default({
+  cardgroup0 = new CardGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_114] },
-      $$scope: { ctx }
+      items: ctx[8],
+      onRecordClick: ctx[5],
+      onDrop: ctx[10],
+      dragDisabled: ctx[4]
+    }
+  });
+  cardgroup1 = new CardGroup_default({
+    props: {
+      items: ctx[7],
+      onRecordClick: ctx[5],
+      onDrop: ctx[11],
+      dragDisabled: ctx[4]
     }
   });
   return {
     c() {
-      div = element("div");
+      div0 = element("div");
+      create_component(cardgroup0.$$.fragment);
+      t0 = space();
+      div1 = element("div");
       p2 = element("p");
-      t0 = text(t0_value);
-      t1 = space();
-      create_component(cardlist.$$.fragment);
+      t1 = text(t1_value);
+      t22 = space();
+      create_component(cardgroup1.$$.fragment);
+      attr(div0, "class", "column-section svelte-epk499");
       attr(p2, "class", "svelte-epk499");
-      attr(div, "class", "column-section unprio svelte-epk499");
+      attr(div1, "class", "column-section unprio svelte-epk499");
     },
     m(target, anchor) {
-      insert(target, div, anchor);
-      append(div, p2);
-      append(p2, t0);
-      append(div, t1);
-      mount_component(cardlist, div, null);
+      insert(target, div0, anchor);
+      mount_component(cardgroup0, div0, null);
+      insert(target, t0, anchor);
+      insert(target, div1, anchor);
+      append(div1, p2);
+      append(p2, t1);
+      append(div1, t22);
+      mount_component(cardgroup1, div1, null);
       current = true;
     },
     p(ctx2, dirty) {
-      if ((!current || dirty & 512) && t0_value !== (t0_value = ctx2[9].t("views.board.unprioritized") + ""))
-        set_data(t0, t0_value);
-      const cardlist_changes = {};
-      if (dirty & 134218064) {
-        cardlist_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      cardlist.$set(cardlist_changes);
+      const cardgroup0_changes = {};
+      if (dirty & 256)
+        cardgroup0_changes.items = ctx2[8];
+      if (dirty & 32)
+        cardgroup0_changes.onRecordClick = ctx2[5];
+      if (dirty & 16)
+        cardgroup0_changes.dragDisabled = ctx2[4];
+      cardgroup0.$set(cardgroup0_changes);
+      if ((!current || dirty & 512) && t1_value !== (t1_value = ctx2[9].t("views.board.unprioritized") + ""))
+        set_data(t1, t1_value);
+      const cardgroup1_changes = {};
+      if (dirty & 128)
+        cardgroup1_changes.items = ctx2[7];
+      if (dirty & 32)
+        cardgroup1_changes.onRecordClick = ctx2[5];
+      if (dirty & 16)
+        cardgroup1_changes.dragDisabled = ctx2[4];
+      cardgroup1.$set(cardgroup1_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(cardlist.$$.fragment, local);
+      transition_in(cardgroup0.$$.fragment, local);
+      transition_in(cardgroup1.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(cardlist.$$.fragment, local);
+      transition_out(cardgroup0.$$.fragment, local);
+      transition_out(cardgroup1.$$.fragment, local);
       current = false;
     },
     d(detaching) {
       if (detaching)
-        detach(div);
-      destroy_component(cardlist);
-    }
-  };
-}
-function create_default_slot_310(ctx) {
-  let t_value = ctx[10](ctx[20]) + "";
-  let t3;
-  return {
-    c() {
-      t3 = text(t_value);
-    },
-    m(target, anchor) {
-      insert(target, t3, anchor);
-    },
-    p(ctx2, dirty) {
-      if (dirty & 64 && t_value !== (t_value = ctx2[10](ctx2[20]) + ""))
-        set_data(t3, t_value);
-    },
-    d(detaching) {
+        detach(div0);
+      destroy_component(cardgroup0);
       if (detaching)
-        detach(t3);
-    }
-  };
-}
-function create_default_slot_213(ctx) {
-  let internallink;
-  let t3;
-  let current;
-  function open_handler_1(...args) {
-    return ctx[13](ctx[20], ...args);
-  }
-  internallink = new InternalLink_default({
-    props: {
-      linkText: ctx[20].id,
-      sourcePath: "",
-      resolved: true,
-      $$slots: { default: [create_default_slot_310] },
-      $$scope: { ctx }
-    }
-  });
-  internallink.$on("open", open_handler_1);
-  return {
-    c() {
-      create_component(internallink.$$.fragment);
-      t3 = space();
-    },
-    m(target, anchor) {
-      mount_component(internallink, target, anchor);
-      insert(target, t3, anchor);
-      current = true;
-    },
-    p(new_ctx, dirty) {
-      ctx = new_ctx;
-      const internallink_changes = {};
-      if (dirty & 64)
-        internallink_changes.linkText = ctx[20].id;
-      if (dirty & 134217792) {
-        internallink_changes.$$scope = { dirty, ctx };
-      }
-      internallink.$set(internallink_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(internallink.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(internallink.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(internallink, detaching);
+        detach(t0);
       if (detaching)
-        detach(t3);
-    }
-  };
-}
-function create_each_block11(ctx) {
-  let card;
-  let current;
-  function click_handler_1() {
-    return ctx[14](ctx[20]);
-  }
-  card = new Card_default3({
-    props: {
-      $$slots: { default: [create_default_slot_213] },
-      $$scope: { ctx }
-    }
-  });
-  card.$on("click", click_handler_1);
-  return {
-    c() {
-      create_component(card.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(card, target, anchor);
-      current = true;
-    },
-    p(new_ctx, dirty) {
-      ctx = new_ctx;
-      const card_changes = {};
-      if (dirty & 134218064) {
-        card_changes.$$scope = { dirty, ctx };
-      }
-      card.$set(card_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(card.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(card.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(card, detaching);
-    }
-  };
-}
-function create_default_slot_114(ctx) {
-  let each_1_anchor;
-  let current;
-  let each_value = ctx[6];
-  let each_blocks = [];
-  for (let i2 = 0; i2 < each_value.length; i2 += 1) {
-    each_blocks[i2] = create_each_block11(get_each_context11(ctx, each_value, i2));
-  }
-  const out = (i2) => transition_out(each_blocks[i2], 1, 1, () => {
-    each_blocks[i2] = null;
-  });
-  return {
-    c() {
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        each_blocks[i2].c();
-      }
-      each_1_anchor = empty();
-    },
-    m(target, anchor) {
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        each_blocks[i2].m(target, anchor);
-      }
-      insert(target, each_1_anchor, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (dirty & 1360) {
-        each_value = ctx2[6];
-        let i2;
-        for (i2 = 0; i2 < each_value.length; i2 += 1) {
-          const child_ctx = get_each_context11(ctx2, each_value, i2);
-          if (each_blocks[i2]) {
-            each_blocks[i2].p(child_ctx, dirty);
-            transition_in(each_blocks[i2], 1);
-          } else {
-            each_blocks[i2] = create_each_block11(child_ctx);
-            each_blocks[i2].c();
-            transition_in(each_blocks[i2], 1);
-            each_blocks[i2].m(each_1_anchor.parentNode, each_1_anchor);
-          }
-        }
-        group_outros();
-        for (i2 = each_value.length; i2 < each_blocks.length; i2 += 1) {
-          out(i2);
-        }
-        check_outros();
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      for (let i2 = 0; i2 < each_value.length; i2 += 1) {
-        transition_in(each_blocks[i2]);
-      }
-      current = true;
-    },
-    o(local) {
-      each_blocks = each_blocks.filter(Boolean);
-      for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
-        transition_out(each_blocks[i2]);
-      }
-      current = false;
-    },
-    d(detaching) {
-      destroy_each(each_blocks, detaching);
-      if (detaching)
-        detach(each_1_anchor);
+        detach(div1);
+      destroy_component(cardgroup1);
     }
   };
 }
@@ -38690,11 +51034,11 @@ function create_if_block19(ctx) {
   button = new Button_default({
     props: {
       variant: "plain",
-      $$slots: { default: [create_default_slot23] },
+      $$slots: { default: [create_default_slot26] },
       $$scope: { ctx }
     }
   });
-  button.$on("click", ctx[17]);
+  button.$on("click", ctx[13]);
   return {
     c() {
       div = element("div");
@@ -38708,7 +51052,7 @@ function create_if_block19(ctx) {
     },
     p(ctx2, dirty) {
       const button_changes = {};
-      if (dirty & 134218240) {
+      if (dirty & 16896) {
         button_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button.$set(button_changes);
@@ -38730,7 +51074,7 @@ function create_if_block19(ctx) {
     }
   };
 }
-function create_default_slot23(ctx) {
+function create_default_slot26(ctx) {
   let t_value = ctx[9].t("views.board.note.add") + "";
   let t3;
   return {
@@ -38750,7 +51094,7 @@ function create_default_slot23(ctx) {
     }
   };
 }
-function create_fragment74(ctx) {
+function create_fragment82(ctx) {
   let div1;
   let div0;
   let typography;
@@ -38763,7 +51107,7 @@ function create_fragment74(ctx) {
     props: {
       variant: "label",
       nomargin: true,
-      $$slots: { default: [create_default_slot_103] },
+      $$slots: { default: [create_default_slot_118] },
       $$scope: { ctx }
     }
   });
@@ -38804,7 +51148,7 @@ function create_fragment74(ctx) {
     },
     p(ctx2, [dirty]) {
       const typography_changes = {};
-      if (dirty & 134217729) {
+      if (dirty & 16385) {
         typography_changes.$$scope = { dirty, ctx: ctx2 };
       }
       typography.$set(typography_changes);
@@ -38875,60 +51219,38 @@ function create_fragment74(ctx) {
     }
   };
 }
-function instance74($$self, $$props, $$invalidate) {
+function instance82($$self, $$props, $$invalidate) {
   let prioritized;
   let unprioritized;
-  let $app;
   let $i18n;
-  component_subscribe($$self, app, ($$value) => $$invalidate(8, $app = $$value));
   component_subscribe($$self, i18n, ($$value) => $$invalidate(9, $i18n = $$value));
   let { name } = $$props;
   let { records } = $$props;
   let { groupByPriority } = $$props;
   let { readonly } = $$props;
+  let { dragDisabled = false } = $$props;
+  let { onRecordUpdate } = $$props;
   let { onRecordClick } = $$props;
   let { onRecordAdd } = $$props;
-  function getPrioritizedRecords(records2) {
-    return records2.filter((record) => {
-      return groupByPriority && isNumber(record.values[groupByPriority]);
+  function handleDropPrioritized(items) {
+    items.forEach((item, i2) => {
+      if (groupByPriority) {
+        onRecordUpdate(Object.assign(Object.assign({}, item), {
+          values: Object.assign(Object.assign({}, item.values), { [groupByPriority]: i2 + 1 })
+        }));
+      }
     });
   }
-  function getUnprioritizedRecords(records2) {
-    return records2.filter((record) => {
-      return groupByPriority && !isNumber(record.values[groupByPriority]);
+  function handleDropUnprioritized(items) {
+    items.forEach((item) => {
+      if (groupByPriority) {
+        onRecordUpdate(Object.assign(Object.assign({}, item), {
+          values: Object.assign(Object.assign({}, item.values), { [groupByPriority]: void 0 })
+        }));
+      }
     });
   }
-  function getDisplayName(record) {
-    const basename = import_path3.default.basename(record.id);
-    return basename.slice(0, basename.lastIndexOf("."));
-  }
-  const open_handler = (record, { detail: { linkText, sourcePath, newLeaf } }) => {
-    if (newLeaf) {
-      $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
-    } else {
-      onRecordClick(record);
-    }
-  };
-  const click_handler = (record) => onRecordClick(record);
-  const open_handler_1 = (record, { detail: { linkText, sourcePath, newLeaf } }) => {
-    if (newLeaf) {
-      $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
-    } else {
-      onRecordClick(record);
-    }
-  };
-  const click_handler_1 = (record) => onRecordClick(record);
-  const open_handler_2 = (record, { detail: { linkText, sourcePath, newLeaf } }) => {
-    if (newLeaf) {
-      $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
-    } else {
-      onRecordClick(record);
-    }
-  };
-  const click_handler_2 = (record) => onRecordClick(record);
-  const click_handler_3 = () => {
-    onRecordAdd();
-  };
+  const click_handler = () => onRecordAdd();
   $$self.$$set = ($$props2) => {
     if ("name" in $$props2)
       $$invalidate(0, name = $$props2.name);
@@ -38938,19 +51260,23 @@ function instance74($$self, $$props, $$invalidate) {
       $$invalidate(2, groupByPriority = $$props2.groupByPriority);
     if ("readonly" in $$props2)
       $$invalidate(3, readonly = $$props2.readonly);
+    if ("dragDisabled" in $$props2)
+      $$invalidate(4, dragDisabled = $$props2.dragDisabled);
+    if ("onRecordUpdate" in $$props2)
+      $$invalidate(12, onRecordUpdate = $$props2.onRecordUpdate);
     if ("onRecordClick" in $$props2)
-      $$invalidate(4, onRecordClick = $$props2.onRecordClick);
+      $$invalidate(5, onRecordClick = $$props2.onRecordClick);
     if ("onRecordAdd" in $$props2)
-      $$invalidate(5, onRecordAdd = $$props2.onRecordAdd);
+      $$invalidate(6, onRecordAdd = $$props2.onRecordAdd);
   };
   $$self.$$.update = () => {
-    if ($$self.$$.dirty & 2) {
+    if ($$self.$$.dirty & 6) {
       $:
-        $$invalidate(7, prioritized = getPrioritizedRecords(records));
+        $$invalidate(8, prioritized = getPrioritizedRecords(records, groupByPriority));
     }
-    if ($$self.$$.dirty & 2) {
+    if ($$self.$$.dirty & 6) {
       $:
-        $$invalidate(6, unprioritized = getUnprioritizedRecords(records));
+        $$invalidate(7, unprioritized = getUnprioritizedRecords(records, groupByPriority));
     }
   };
   return [
@@ -38958,44 +51284,42 @@ function instance74($$self, $$props, $$invalidate) {
     records,
     groupByPriority,
     readonly,
+    dragDisabled,
     onRecordClick,
     onRecordAdd,
     unprioritized,
     prioritized,
-    $app,
     $i18n,
-    getDisplayName,
-    open_handler,
-    click_handler,
-    open_handler_1,
-    click_handler_1,
-    open_handler_2,
-    click_handler_2,
-    click_handler_3
+    handleDropPrioritized,
+    handleDropUnprioritized,
+    onRecordUpdate,
+    click_handler
   ];
 }
 var BoardColumn = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance74, create_fragment74, safe_not_equal, {
+    init(this, options, instance82, create_fragment82, safe_not_equal, {
       name: 0,
       records: 1,
       groupByPriority: 2,
       readonly: 3,
-      onRecordClick: 4,
-      onRecordAdd: 5
-    }, add_css45);
+      dragDisabled: 4,
+      onRecordUpdate: 12,
+      onRecordClick: 5,
+      onRecordAdd: 6
+    }, add_css47);
   }
 };
 var BoardColumn_default = BoardColumn;
 
 // src/views/Board/components/Board/Board.svelte
-function add_css46(target) {
+function add_css48(target) {
   append_styles(target, "svelte-pei0r2", "div.svelte-pei0r2{display:grid;column-gap:8px;align-items:flex-start}");
 }
 function get_each_context12(ctx, list, i2) {
   const child_ctx = ctx.slice();
-  child_ctx[11] = list[i2];
+  child_ctx[13] = list[i2];
   return child_ctx;
 }
 function create_each_block12(key_1, ctx) {
@@ -39003,16 +51327,21 @@ function create_each_block12(key_1, ctx) {
   let boardcolumn;
   let current;
   function func7() {
-    return ctx[8](ctx[11]);
+    return ctx[11](ctx[13]);
+  }
+  function func_14(...args) {
+    return ctx[12](ctx[13], ...args);
   }
   boardcolumn = new BoardColumn_default({
     props: {
       readonly: ctx[2],
-      name: ctx[11].name,
-      records: ctx[11].records,
+      name: ctx[13].id,
+      records: ctx[13].records,
       groupByPriority: ctx[1],
       onRecordClick: ctx[3],
-      onRecordAdd: func7
+      onRecordAdd: func7,
+      dragDisabled: ctx[7],
+      onRecordUpdate: func_14
     }
   });
   return {
@@ -39034,15 +51363,19 @@ function create_each_block12(key_1, ctx) {
       if (dirty & 4)
         boardcolumn_changes.readonly = ctx[2];
       if (dirty & 1)
-        boardcolumn_changes.name = ctx[11].name;
+        boardcolumn_changes.name = ctx[13].id;
       if (dirty & 1)
-        boardcolumn_changes.records = ctx[11].records;
+        boardcolumn_changes.records = ctx[13].records;
       if (dirty & 2)
         boardcolumn_changes.groupByPriority = ctx[1];
       if (dirty & 8)
         boardcolumn_changes.onRecordClick = ctx[3];
-      if (dirty & 17)
+      if (dirty & 33)
         boardcolumn_changes.onRecordAdd = func7;
+      if (dirty & 128)
+        boardcolumn_changes.dragDisabled = ctx[7];
+      if (dirty & 17)
+        boardcolumn_changes.onRecordUpdate = func_14;
       boardcolumn.$set(boardcolumn_changes);
     },
     i(local) {
@@ -39062,14 +51395,17 @@ function create_each_block12(key_1, ctx) {
     }
   };
 }
-function create_fragment75(ctx) {
+function create_fragment83(ctx) {
   let div;
   let each_blocks = [];
   let each_1_lookup = new Map();
   let div_style_value;
+  let dndzone_action;
   let current;
+  let mounted;
+  let dispose;
   let each_value = ctx[0];
-  const get_key = (ctx2) => ctx2[11].name;
+  const get_key = (ctx2) => ctx2[13].id;
   for (let i2 = 0; i2 < each_value.length; i2 += 1) {
     let child_ctx = get_each_context12(ctx, each_value, i2);
     let key = get_key(child_ctx);
@@ -39081,7 +51417,7 @@ function create_fragment75(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      attr(div, "style", div_style_value = `grid-template-columns: repeat(${ctx[0].length}, ${ctx[5]}px);`);
+      attr(div, "style", div_style_value = `grid-template-columns: repeat(${ctx[0].length}, ${ctx[6]}px);`);
       attr(div, "class", "svelte-pei0r2");
     },
     m(target, anchor) {
@@ -39089,19 +51425,38 @@ function create_fragment75(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(div, null);
       }
-      ctx[9](div);
       current = true;
+      if (!mounted) {
+        dispose = [
+          action_destroyer(dndzone_action = dndzone$2.call(null, div, {
+            type: "columns",
+            items: ctx[0],
+            flipDurationMs: flipDurationMs3,
+            dropTargetStyle: { outline: "none" }
+          })),
+          listen(div, "consider", ctx[8]),
+          listen(div, "finalize", ctx[9])
+        ];
+        mounted = true;
+      }
     },
     p(ctx2, [dirty]) {
-      if (dirty & 31) {
+      if (dirty & 191) {
         each_value = ctx2[0];
         group_outros();
         each_blocks = update_keyed_each(each_blocks, dirty, get_key, 1, ctx2, each_value, each_1_lookup, div, outro_and_destroy_block, create_each_block12, null, get_each_context12);
         check_outros();
       }
-      if (!current || dirty & 33 && div_style_value !== (div_style_value = `grid-template-columns: repeat(${ctx2[0].length}, ${ctx2[5]}px);`)) {
+      if (!current || dirty & 65 && div_style_value !== (div_style_value = `grid-template-columns: repeat(${ctx2[0].length}, ${ctx2[6]}px);`)) {
         attr(div, "style", div_style_value);
       }
+      if (dndzone_action && is_function(dndzone_action.update) && dirty & 1)
+        dndzone_action.update.call(null, {
+          type: "columns",
+          items: ctx2[0],
+          flipDurationMs: flipDurationMs3,
+          dropTargetStyle: { outline: "none" }
+        });
     },
     i(local) {
       if (current)
@@ -39123,45 +51478,31 @@ function create_fragment75(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].d();
       }
-      ctx[9](null);
+      mounted = false;
+      run_all(dispose);
     }
   };
 }
-function instance75($$self, $$props, $$invalidate) {
+var flipDurationMs3 = 200;
+function instance83($$self, $$props, $$invalidate) {
   let { columns } = $$props;
   let { groupByPriority } = $$props;
   let { readonly } = $$props;
   let { onRecordClick } = $$props;
+  let { onRecordUpdate } = $$props;
   let { onRecordAdd } = $$props;
   let { columnWidth } = $$props;
   let { onSortColumns } = $$props;
-  let ref;
-  let sortable;
-  onMount(() => {
-    sortable = sortable_esm_default.create(ref, {
-      animation: 150,
-      direction: "horizontal",
-      dataIdAttr: "data-id",
-      store: {
-        get() {
-          return columns.map((column) => column.id);
-        },
-        set(sortable2) {
-          onSortColumns(sortable2.toArray());
-        }
-      }
-    });
-  });
-  onDestroy(() => {
-    sortable.destroy();
-  });
-  const func7 = (column) => onRecordAdd(column.name);
-  function div_binding($$value) {
-    binding_callbacks[$$value ? "unshift" : "push"](() => {
-      ref = $$value;
-      $$invalidate(6, ref);
-    });
+  let { dragDisabled } = $$props;
+  function handleDndConsider(e) {
+    $$invalidate(0, columns = e.detail.items);
   }
+  function handleDndFinalize(e) {
+    $$invalidate(0, columns = e.detail.items);
+    onSortColumns(columns.map((col) => col.id));
+  }
+  const func7 = (column) => onRecordAdd(column.id);
+  const func_14 = (column, record) => onRecordUpdate(column.id, record);
   $$self.$$set = ($$props2) => {
     if ("columns" in $$props2)
       $$invalidate(0, columns = $$props2.columns);
@@ -39171,47 +51512,56 @@ function instance75($$self, $$props, $$invalidate) {
       $$invalidate(2, readonly = $$props2.readonly);
     if ("onRecordClick" in $$props2)
       $$invalidate(3, onRecordClick = $$props2.onRecordClick);
+    if ("onRecordUpdate" in $$props2)
+      $$invalidate(4, onRecordUpdate = $$props2.onRecordUpdate);
     if ("onRecordAdd" in $$props2)
-      $$invalidate(4, onRecordAdd = $$props2.onRecordAdd);
+      $$invalidate(5, onRecordAdd = $$props2.onRecordAdd);
     if ("columnWidth" in $$props2)
-      $$invalidate(5, columnWidth = $$props2.columnWidth);
+      $$invalidate(6, columnWidth = $$props2.columnWidth);
     if ("onSortColumns" in $$props2)
-      $$invalidate(7, onSortColumns = $$props2.onSortColumns);
+      $$invalidate(10, onSortColumns = $$props2.onSortColumns);
+    if ("dragDisabled" in $$props2)
+      $$invalidate(7, dragDisabled = $$props2.dragDisabled);
   };
   return [
     columns,
     groupByPriority,
     readonly,
     onRecordClick,
+    onRecordUpdate,
     onRecordAdd,
     columnWidth,
-    ref,
+    dragDisabled,
+    handleDndConsider,
+    handleDndFinalize,
     onSortColumns,
     func7,
-    div_binding
+    func_14
   ];
 }
 var Board = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance75, create_fragment75, safe_not_equal, {
+    init(this, options, instance83, create_fragment83, safe_not_equal, {
       columns: 0,
       groupByPriority: 1,
       readonly: 2,
       onRecordClick: 3,
-      onRecordAdd: 4,
-      columnWidth: 5,
-      onSortColumns: 7
-    }, add_css46);
+      onRecordUpdate: 4,
+      onRecordAdd: 5,
+      columnWidth: 6,
+      onSortColumns: 10,
+      dragDisabled: 7
+    }, add_css48);
   }
 };
 var Board_default = Board;
 
 // src/views/Board/BoardView.svelte
-function add_css47(target) {
-  append_styles(target, "svelte-17wav3a", "div.svelte-17wav3a{background-color:var(--background-primary);overflow:auto;padding:8px}");
+function add_css49(target) {
+  append_styles(target, "svelte-kq39qk", "div.svelte-kq39qk{background-color:var(--background-primary);padding:8px}");
 }
-function create_default_slot_311(ctx) {
+function create_default_slot_412(ctx) {
   var _a, _b, _c;
   let select;
   let current;
@@ -39223,7 +51573,7 @@ function create_default_slot_311(ctx) {
       allowEmpty: true
     }
   });
-  select.$on("change", ctx[18]);
+  select.$on("change", ctx[19]);
   return {
     c() {
       create_component(select.$$.fragment);
@@ -39258,7 +51608,7 @@ function create_default_slot_311(ctx) {
     }
   };
 }
-function create_default_slot_214(ctx) {
+function create_default_slot_312(ctx) {
   var _a, _b, _c;
   let select;
   let current;
@@ -39270,7 +51620,7 @@ function create_default_slot_214(ctx) {
       allowEmpty: true
     }
   });
-  select.$on("change", ctx[19]);
+  select.$on("change", ctx[20]);
   return {
     c() {
       create_component(select.$$.fragment);
@@ -39305,35 +51655,73 @@ function create_default_slot_214(ctx) {
     }
   };
 }
-function create_default_slot_115(ctx) {
+function create_if_block20(ctx) {
+  let icon;
+  let current;
+  icon = new Icon_default({
+    props: {
+      name: "info",
+      tooltip: "Date fields can't be reprioritized using drag and drop."
+    }
+  });
+  return {
+    c() {
+      create_component(icon.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(icon, target, anchor);
+      current = true;
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(icon.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(icon.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(icon, detaching);
+    }
+  };
+}
+function create_right_slot4(ctx) {
+  var _a;
   let field0;
   let t0;
   let field1;
   let t1;
+  let t22;
   let iconbutton;
   let current;
   field0 = new Field_default({
     props: {
       name: ctx[9].t("views.board.fields.status"),
-      $$slots: { default: [create_default_slot_311] },
+      $$slots: { default: [create_default_slot_412] },
       $$scope: { ctx }
     }
   });
   field1 = new Field_default({
     props: {
       name: ctx[9].t("views.board.fields.priority"),
-      $$slots: { default: [create_default_slot_214] },
+      $$slots: { default: [create_default_slot_312] },
       $$scope: { ctx }
     }
   });
+  let if_block = ((_a = ctx[6]) == null ? void 0 : _a.type) === DataFieldType.Date && create_if_block20(ctx);
   iconbutton = new IconButton_default({ props: { icon: "settings" } });
-  iconbutton.$on("click", ctx[20]);
+  iconbutton.$on("click", ctx[21]);
   return {
     c() {
       create_component(field0.$$.fragment);
       t0 = space();
       create_component(field1.$$.fragment);
       t1 = space();
+      if (if_block)
+        if_block.c();
+      t22 = space();
       create_component(iconbutton.$$.fragment);
     },
     m(target, anchor) {
@@ -39341,36 +51729,60 @@ function create_default_slot_115(ctx) {
       insert(target, t0, anchor);
       mount_component(field1, target, anchor);
       insert(target, t1, anchor);
+      if (if_block)
+        if_block.m(target, anchor);
+      insert(target, t22, anchor);
       mount_component(iconbutton, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
+      var _a2;
       const field0_changes = {};
       if (dirty & 512)
         field0_changes.name = ctx2[9].t("views.board.fields.status");
-      if (dirty & 16777997) {
+      if (dirty & 33555213) {
         field0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       field0.$set(field0_changes);
       const field1_changes = {};
       if (dirty & 512)
         field1_changes.name = ctx2[9].t("views.board.fields.priority");
-      if (dirty & 16777925) {
+      if (dirty & 33555141) {
         field1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       field1.$set(field1_changes);
+      if (((_a2 = ctx2[6]) == null ? void 0 : _a2.type) === DataFieldType.Date) {
+        if (if_block) {
+          if (dirty & 64) {
+            transition_in(if_block, 1);
+          }
+        } else {
+          if_block = create_if_block20(ctx2);
+          if_block.c();
+          transition_in(if_block, 1);
+          if_block.m(t22.parentNode, t22);
+        }
+      } else if (if_block) {
+        group_outros();
+        transition_out(if_block, 1, 1, () => {
+          if_block = null;
+        });
+        check_outros();
+      }
     },
     i(local) {
       if (current)
         return;
       transition_in(field0.$$.fragment, local);
       transition_in(field1.$$.fragment, local);
+      transition_in(if_block);
       transition_in(iconbutton.$$.fragment, local);
       current = true;
     },
     o(local) {
       transition_out(field0.$$.fragment, local);
       transition_out(field1.$$.fragment, local);
+      transition_out(if_block);
       transition_out(iconbutton.$$.fragment, local);
       current = false;
     },
@@ -39381,146 +51793,223 @@ function create_default_slot_115(ctx) {
       destroy_component(field1, detaching);
       if (detaching)
         detach(t1);
+      if (if_block)
+        if_block.d(detaching);
+      if (detaching)
+        detach(t22);
       destroy_component(iconbutton, detaching);
     }
   };
 }
-function create_default_slot24(ctx) {
-  let p2;
-  let t3;
-  let horizontalgroup;
+function create_default_slot_213(ctx) {
+  let viewtoolbar;
   let current;
-  horizontalgroup = new HorizontalGroup_default({
+  viewtoolbar = new ViewToolbar_default({
     props: {
-      $$slots: { default: [create_default_slot_115] },
+      variant: "secondary",
+      $$slots: { right: [create_right_slot4] },
       $$scope: { ctx }
     }
   });
   return {
     c() {
-      p2 = element("p");
-      t3 = space();
-      create_component(horizontalgroup.$$.fragment);
+      create_component(viewtoolbar.$$.fragment);
     },
     m(target, anchor) {
-      insert(target, p2, anchor);
-      insert(target, t3, anchor);
-      mount_component(horizontalgroup, target, anchor);
+      mount_component(viewtoolbar, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const horizontalgroup_changes = {};
-      if (dirty & 16779213) {
-        horizontalgroup_changes.$$scope = { dirty, ctx: ctx2 };
+      const viewtoolbar_changes = {};
+      if (dirty & 33556429) {
+        viewtoolbar_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      horizontalgroup.$set(horizontalgroup_changes);
+      viewtoolbar.$set(viewtoolbar_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(horizontalgroup.$$.fragment, local);
+      transition_in(viewtoolbar.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(horizontalgroup.$$.fragment, local);
+      transition_out(viewtoolbar.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      if (detaching)
-        detach(p2);
-      if (detaching)
-        detach(t3);
-      destroy_component(horizontalgroup, detaching);
+      destroy_component(viewtoolbar, detaching);
     }
   };
 }
-function create_fragment76(ctx) {
-  var _a, _b, _c;
-  let toolbar;
-  let t3;
+function create_default_slot_119(ctx) {
+  var _a, _b, _c, _d;
   let div;
   let board;
   let current;
-  toolbar = new ToolBar_default({
-    props: {
-      $$slots: { default: [create_default_slot24] },
-      $$scope: { ctx }
-    }
-  });
   board = new Board_default({
     props: {
-      onSortColumns: ctx[21],
+      onRecordUpdate: ctx[12],
+      dragDisabled: ((_a = ctx[6]) == null ? void 0 : _a.type) !== DataFieldType.Number,
+      onSortColumns: ctx[22],
       readonly: ctx[1],
-      columns: ctx[5].sort(ctx[22]).map(ctx[23]),
-      groupByPriority: (_a = ctx[6]) == null ? void 0 : _a.name,
+      columns: ctx[5].sort(ctx[23]).map(ctx[24]),
+      groupByPriority: (_b = ctx[6]) == null ? void 0 : _b.name,
       onRecordClick: ctx[11],
-      onRecordAdd: ctx[12],
-      columnWidth: (_c = (_b = ctx[0]) == null ? void 0 : _b.columnWidth) != null ? _c : 270
+      onRecordAdd: ctx[13],
+      columnWidth: (_d = (_c = ctx[0]) == null ? void 0 : _c.columnWidth) != null ? _d : 270
     }
   });
   return {
     c() {
-      create_component(toolbar.$$.fragment);
-      t3 = space();
       div = element("div");
       create_component(board.$$.fragment);
-      attr(div, "class", "svelte-17wav3a");
+      attr(div, "class", "svelte-kq39qk");
     },
     m(target, anchor) {
-      mount_component(toolbar, target, anchor);
-      insert(target, t3, anchor);
       insert(target, div, anchor);
       mount_component(board, div, null);
       current = true;
     },
-    p(ctx2, [dirty]) {
-      var _a2, _b2, _c2;
-      const toolbar_changes = {};
-      if (dirty & 16779213) {
-        toolbar_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      toolbar.$set(toolbar_changes);
+    p(ctx2, dirty) {
+      var _a2, _b2, _c2, _d2;
       const board_changes = {};
+      if (dirty & 64)
+        board_changes.dragDisabled = ((_a2 = ctx2[6]) == null ? void 0 : _a2.type) !== DataFieldType.Number;
       if (dirty & 5)
-        board_changes.onSortColumns = ctx2[21];
+        board_changes.onSortColumns = ctx2[22];
       if (dirty & 2)
         board_changes.readonly = ctx2[1];
       if (dirty & 49)
-        board_changes.columns = ctx2[5].sort(ctx2[22]).map(ctx2[23]);
+        board_changes.columns = ctx2[5].sort(ctx2[23]).map(ctx2[24]);
       if (dirty & 64)
-        board_changes.groupByPriority = (_a2 = ctx2[6]) == null ? void 0 : _a2.name;
+        board_changes.groupByPriority = (_b2 = ctx2[6]) == null ? void 0 : _b2.name;
       if (dirty & 1)
-        board_changes.columnWidth = (_c2 = (_b2 = ctx2[0]) == null ? void 0 : _b2.columnWidth) != null ? _c2 : 270;
+        board_changes.columnWidth = (_d2 = (_c2 = ctx2[0]) == null ? void 0 : _c2.columnWidth) != null ? _d2 : 270;
       board.$set(board_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(toolbar.$$.fragment, local);
       transition_in(board.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(toolbar.$$.fragment, local);
       transition_out(board.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(toolbar, detaching);
-      if (detaching)
-        detach(t3);
       if (detaching)
         detach(div);
       destroy_component(board);
     }
   };
 }
-function instance76($$self, $$props, $$invalidate) {
+function create_default_slot27(ctx) {
+  let viewheader;
+  let t3;
+  let viewcontent;
+  let current;
+  viewheader = new ViewHeader_default({
+    props: {
+      $$slots: { default: [create_default_slot_213] },
+      $$scope: { ctx }
+    }
+  });
+  viewcontent = new ViewContent_default({
+    props: {
+      $$slots: { default: [create_default_slot_119] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewheader.$$.fragment);
+      t3 = space();
+      create_component(viewcontent.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewheader, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(viewcontent, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const viewheader_changes = {};
+      if (dirty & 33556429) {
+        viewheader_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewheader.$set(viewheader_changes);
+      const viewcontent_changes = {};
+      if (dirty & 33554551) {
+        viewcontent_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewcontent.$set(viewcontent_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewheader.$$.fragment, local);
+      transition_in(viewcontent.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewheader.$$.fragment, local);
+      transition_out(viewcontent.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewheader, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(viewcontent, detaching);
+    }
+  };
+}
+function create_fragment84(ctx) {
+  let viewlayout;
+  let current;
+  viewlayout = new ViewLayout_default({
+    props: {
+      $$slots: { default: [create_default_slot27] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewlayout.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewlayout, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const viewlayout_changes = {};
+      if (dirty & 33556479) {
+        viewlayout_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewlayout.$set(viewlayout_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewlayout.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewlayout.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewlayout, detaching);
+    }
+  };
+}
+function instance84($$self, $$props, $$invalidate) {
   let fields;
   let records;
   let textFields;
   let groupByField;
-  let numberFields;
+  let priorityFields;
   let priorityField;
   let groupedRecords;
   let columns;
@@ -39536,6 +52025,13 @@ function instance76($$self, $$props, $$invalidate) {
   let { onConfigChange } = $$props;
   function handleRecordClick(record) {
     new EditNoteModal($app, fields, (record2) => api2.updateRecord(record2, fields), record).open();
+  }
+  function handleRecordUpdate(column, record) {
+    if (groupByField) {
+      api2.updateRecord(Object.assign(Object.assign({}, record), {
+        values: Object.assign(Object.assign({}, record.values), { [groupByField.name]: column })
+      }), fields);
+    }
   }
   function handleRecordAdd(column) {
     new CreateNoteModal($app, project, (name, templatePath) => {
@@ -39563,7 +52059,7 @@ function instance76($$self, $$props, $$invalidate) {
       }))
     }));
   };
-  const func_13 = (a2, b2) => {
+  const func_14 = (a2, b2) => {
     var _a, _b, _c, _d, _e, _f;
     const aweight = (_c = (_b = (_a = config == null ? void 0 : config.columns) == null ? void 0 : _a[a2]) == null ? void 0 : _b.weight) != null ? _c : 0;
     const bweight = (_f = (_e = (_d = config == null ? void 0 : config.columns) == null ? void 0 : _d[b2]) == null ? void 0 : _e.weight) != null ? _f : 0;
@@ -39575,50 +52071,49 @@ function instance76($$self, $$props, $$invalidate) {
       return 0;
     }
   };
-  const func_2 = (column) => {
+  const func_22 = (column) => {
     var _a;
     return {
       id: column,
-      name: column,
       records: (_a = groupedRecords[column]) != null ? _a : []
     };
   };
   $$self.$$set = ($$props2) => {
     if ("project" in $$props2)
-      $$invalidate(13, project = $$props2.project);
+      $$invalidate(14, project = $$props2.project);
     if ("frame" in $$props2)
-      $$invalidate(14, frame = $$props2.frame);
+      $$invalidate(15, frame = $$props2.frame);
     if ("readonly" in $$props2)
       $$invalidate(1, readonly = $$props2.readonly);
     if ("api" in $$props2)
-      $$invalidate(15, api2 = $$props2.api);
+      $$invalidate(16, api2 = $$props2.api);
     if ("config" in $$props2)
       $$invalidate(0, config = $$props2.config);
     if ("onConfigChange" in $$props2)
       $$invalidate(2, onConfigChange = $$props2.onConfigChange);
   };
   $$self.$$.update = () => {
-    if ($$self.$$.dirty & 16384) {
+    if ($$self.$$.dirty & 32768) {
       $:
-        $$invalidate(16, { fields, records } = frame, fields, ($$invalidate(17, records), $$invalidate(14, frame)));
+        $$invalidate(17, { fields, records } = frame, fields, ($$invalidate(18, records), $$invalidate(15, frame)));
     }
-    if ($$self.$$.dirty & 65536) {
+    if ($$self.$$.dirty & 131072) {
       $:
-        $$invalidate(8, textFields = fields.filter((field) => field.type === DataFieldType.String));
+        $$invalidate(8, textFields = fields.filter((field) => field.type === DataFieldType.String || field.type === DataFieldType.Number));
     }
-    if ($$self.$$.dirty & 65537) {
+    if ($$self.$$.dirty & 131073) {
       $:
         $$invalidate(3, groupByField = fields.find((field) => (config === null || config === void 0 ? void 0 : config.groupByField) === field.name));
     }
-    if ($$self.$$.dirty & 65536) {
+    if ($$self.$$.dirty & 131072) {
       $:
-        $$invalidate(7, numberFields = fields.filter((field) => field.type === DataFieldType.Number));
+        $$invalidate(7, priorityFields = fields.filter((field) => field.type === DataFieldType.Number || field.type === DataFieldType.Date));
     }
-    if ($$self.$$.dirty & 65537) {
+    if ($$self.$$.dirty & 131073) {
       $:
         $$invalidate(6, priorityField = fields.find((field) => (config === null || config === void 0 ? void 0 : config.priorityField) === field.name));
     }
-    if ($$self.$$.dirty & 131080) {
+    if ($$self.$$.dirty & 262152) {
       $:
         $$invalidate(4, groupedRecords = groupRecordsByField2(records, groupByField === null || groupByField === void 0 ? void 0 : groupByField.name));
     }
@@ -39635,11 +52130,12 @@ function instance76($$self, $$props, $$invalidate) {
     groupedRecords,
     columns,
     priorityField,
-    numberFields,
+    priorityFields,
     textFields,
     $i18n,
     $app,
     handleRecordClick,
+    handleRecordUpdate,
     handleRecordAdd,
     project,
     frame,
@@ -39650,21 +52146,21 @@ function instance76($$self, $$props, $$invalidate) {
     change_handler_1,
     click_handler,
     func7,
-    func_13,
-    func_2
+    func_14,
+    func_22
   ];
 }
 var BoardView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance76, create_fragment76, safe_not_equal, {
-      project: 13,
-      frame: 14,
+    init(this, options, instance84, create_fragment84, safe_not_equal, {
+      project: 14,
+      frame: 15,
       readonly: 1,
-      api: 15,
+      api: 16,
       config: 0,
       onConfigChange: 2
-    }, add_css47);
+    }, add_css49);
   }
 };
 var BoardView_default = BoardView;
@@ -39711,10 +52207,10 @@ var BoardView2 = class extends ProjectView {
 };
 
 // src/views/Table/components/DataGrid/DataGrid.svelte
-var import_obsidian45 = __toModule(require("obsidian"));
+var import_obsidian49 = __toModule(require("obsidian"));
 
 // src/views/Table/components/DataGrid/GridCell/Resizer.svelte
-function add_css48(target) {
+function add_css50(target) {
   append_styles(target, "svelte-ke01nl", ".handle.svelte-ke01nl{position:relative;left:7.5px;width:6px;min-width:6px;height:100%;border-radius:1px}.handle.svelte-ke01nl:hover{background-color:var(--interactive-accent);cursor:ew-resize}.visible.svelte-ke01nl{background-color:var(--interactive-accent);cursor:ew-resize}");
 }
 function create_else_block7(ctx) {
@@ -39742,7 +52238,7 @@ function create_else_block7(ctx) {
     }
   };
 }
-function create_if_block20(ctx) {
+function create_if_block21(ctx) {
   let span;
   let mounted;
   let dispose;
@@ -39767,13 +52263,13 @@ function create_if_block20(ctx) {
     }
   };
 }
-function create_fragment77(ctx) {
+function create_fragment85(ctx) {
   let if_block_anchor;
   let mounted;
   let dispose;
   function select_block_type(ctx2, dirty) {
     if (ctx2[0])
-      return create_if_block20;
+      return create_if_block21;
     return create_else_block7;
   }
   let current_block_type = select_block_type(ctx, -1);
@@ -39817,7 +52313,7 @@ function create_fragment77(ctx) {
     }
   };
 }
-function instance77($$self, $$props, $$invalidate) {
+function instance85($$self, $$props, $$invalidate) {
   let { width } = $$props;
   let { onChange } = $$props;
   let { onFinalize } = $$props;
@@ -39863,18 +52359,18 @@ function instance77($$self, $$props, $$invalidate) {
 var Resizer = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance77, create_fragment77, safe_not_equal, {
+    init(this, options, instance85, create_fragment85, safe_not_equal, {
       width: 4,
       onChange: 5,
       onFinalize: 6,
       min: 7
-    }, add_css48);
+    }, add_css50);
   }
 };
 var Resizer_default = Resizer;
 
 // src/views/Table/components/DataGrid/GridCell/GridCell.svelte
-function add_css49(target) {
+function add_css51(target) {
   append_styles(target, "svelte-njsjbi", "div.svelte-njsjbi{display:flex;flex-direction:row;align-items:center;justify-content:center;background-color:var(--background-primary);border-right:1px solid var(--background-modifier-border);border-left-color:var(--background-modifier-border);border-bottom:1px solid var(--background-modifier-border);box-sizing:border-box;vertical-align:middle;width:100%;min-height:30px}.selected.svelte-njsjbi{box-shadow:0 0 0 3px var(--interactive-accent);z-index:4;padding:0}.columnHeader.svelte-njsjbi{background-color:var(--background-secondary);font-weight:500;text-align:center;justify-content:space-between;padding:0 4px}.header.svelte-njsjbi{background-color:var(--background-secondary);position:sticky;left:60px}.rowHeader.svelte-njsjbi{left:0px;justify-content:center;z-index:5;background-color:var(--background-secondary);font-weight:500;text-align:center;padding:0 4px}");
 }
 var get_read_slot_changes_1 = (dirty) => ({});
@@ -39963,7 +52459,7 @@ function create_if_block_42(ctx) {
     }
   };
 }
-function create_if_block_34(ctx) {
+function create_if_block_33(ctx) {
   let current;
   const selected_slot_template = ctx[23].selected;
   const selected_slot = create_slot(selected_slot_template, ctx, ctx[22], get_selected_slot_context);
@@ -40006,7 +52502,7 @@ function create_if_block_111(ctx) {
   let if_block;
   let if_block_anchor;
   let current;
-  const if_block_creators = [create_if_block_25, create_else_block8];
+  const if_block_creators = [create_if_block_24, create_else_block8];
   const if_blocks = [];
   function select_block_type_1(ctx2, dirty) {
     if (ctx2[5].editable)
@@ -40102,7 +52598,7 @@ function create_else_block8(ctx) {
     }
   };
 }
-function create_if_block_25(ctx) {
+function create_if_block_24(ctx) {
   let current;
   const edit_slot_template = ctx[23].edit;
   const edit_slot = create_slot(edit_slot_template, ctx, ctx[22], get_edit_slot_context);
@@ -40140,7 +52636,7 @@ function create_if_block_25(ctx) {
     }
   };
 }
-function create_if_block21(ctx) {
+function create_if_block22(ctx) {
   var _a;
   let resizer;
   let current;
@@ -40186,7 +52682,7 @@ function create_if_block21(ctx) {
     }
   };
 }
-function create_fragment78(ctx) {
+function create_fragment86(ctx) {
   let div;
   let current_block_type_index;
   let if_block0;
@@ -40199,7 +52695,7 @@ function create_fragment78(ctx) {
   let current;
   let mounted;
   let dispose;
-  const if_block_creators = [create_if_block_111, create_if_block_34, create_if_block_42, create_else_block_12];
+  const if_block_creators = [create_if_block_111, create_if_block_33, create_if_block_42, create_else_block_12];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
     if (ctx2[17].edit && ctx2[1])
@@ -40212,7 +52708,7 @@ function create_fragment78(ctx) {
   }
   current_block_type_index = select_block_type(ctx, -1);
   if_block0 = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
-  let if_block1 = ctx[2] && create_if_block21(ctx);
+  let if_block1 = ctx[2] && create_if_block22(ctx);
   return {
     c() {
       div = element("div");
@@ -40282,7 +52778,7 @@ function create_fragment78(ctx) {
             transition_in(if_block1, 1);
           }
         } else {
-          if_block1 = create_if_block21(ctx2);
+          if_block1 = create_if_block22(ctx2);
           if_block1.c();
           transition_in(if_block1, 1);
           if_block1.m(div, null);
@@ -40345,7 +52841,7 @@ function create_fragment78(ctx) {
     }
   };
 }
-function instance78($$self, $$props, $$invalidate) {
+function instance86($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   const $$slots = compute_slots(slots);
   let { selected = false } = $$props;
@@ -40547,7 +53043,7 @@ function instance78($$self, $$props, $$invalidate) {
 var GridCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance78, create_fragment78, safe_not_equal, {
+    init(this, options, instance86, create_fragment86, safe_not_equal, {
       selected: 0,
       edit: 1,
       resizable: 2,
@@ -40562,13 +53058,13 @@ var GridCell = class extends SvelteComponent {
       onCopy: 19,
       onCut: 20,
       onPaste: 21
-    }, add_css49);
+    }, add_css51);
   }
 };
 var GridCell_default = GridCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridBooleanCell/GridBooleanCell.svelte
-function create_if_block22(ctx) {
+function create_if_block23(ctx) {
   let switch_1;
   let current;
   switch_1 = new Switch_default({
@@ -40613,7 +53109,7 @@ function create_read_slot(ctx) {
   let show_if = isBoolean(ctx[0]);
   let if_block_anchor;
   let current;
-  let if_block = show_if && create_if_block22(ctx);
+  let if_block = show_if && create_if_block23(ctx);
   return {
     c() {
       if (if_block)
@@ -40636,7 +53132,7 @@ function create_read_slot(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block22(ctx2);
+          if_block = create_if_block23(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -40708,7 +53204,7 @@ function create_edit_slot(ctx) {
     }
   };
 }
-function create_fragment79(ctx) {
+function create_fragment87(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -40764,7 +53260,7 @@ function create_fragment79(ctx) {
     }
   };
 }
-function instance79($$self, $$props, $$invalidate) {
+function instance87($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -40809,7 +53305,7 @@ function instance79($$self, $$props, $$invalidate) {
 var GridBooleanCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance79, create_fragment79, safe_not_equal, {
+    init(this, options, instance87, create_fragment87, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -40822,13 +53318,12 @@ var GridBooleanCell = class extends SvelteComponent {
 var GridBooleanCell_default = GridBooleanCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridDateCell/GridDateCell.svelte
-var import_dayjs9 = __toModule(require_dayjs_min());
-function create_if_block23(ctx) {
+function create_if_block24(ctx) {
   let textlabel;
   let current;
   textlabel = new TextLabel_default({
     props: {
-      value: (0, import_dayjs9.default)(ctx[0]).format("L")
+      value: new Intl.DateTimeFormat().format(ctx[0])
     }
   });
   return {
@@ -40842,7 +53337,7 @@ function create_if_block23(ctx) {
     p(ctx2, dirty) {
       const textlabel_changes = {};
       if (dirty & 1)
-        textlabel_changes.value = (0, import_dayjs9.default)(ctx2[0]).format("L");
+        textlabel_changes.value = new Intl.DateTimeFormat().format(ctx2[0]);
       textlabel.$set(textlabel_changes);
     },
     i(local) {
@@ -40863,7 +53358,7 @@ function create_if_block23(ctx) {
 function create_read_slot2(ctx) {
   let if_block_anchor;
   let current;
-  let if_block = ctx[0] && create_if_block23(ctx);
+  let if_block = ctx[0] && create_if_block24(ctx);
   return {
     c() {
       if (if_block)
@@ -40884,7 +53379,7 @@ function create_read_slot2(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block23(ctx2);
+          if_block = create_if_block24(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -40954,7 +53449,7 @@ function create_edit_slot2(ctx) {
     }
   };
 }
-function create_fragment80(ctx) {
+function create_fragment88(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -41019,7 +53514,7 @@ function create_fragment80(ctx) {
     }
   };
 }
-function instance80($$self, $$props, $$invalidate) {
+function instance88($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -41034,9 +53529,9 @@ function instance80($$self, $$props, $$invalidate) {
   const func7 = (mode) => {
     $$invalidate(6, edit = mode);
   };
-  const func_13 = () => {
+  const func_14 = () => {
     if (value) {
-      navigator.clipboard.writeText((0, import_dayjs9.default)(value).format("L"));
+      navigator.clipboard.writeText(new Intl.DateTimeFormat().format(value));
     }
   };
   function mousedown_handler(event) {
@@ -41069,7 +53564,7 @@ function instance80($$self, $$props, $$invalidate) {
     edit,
     change_handler,
     func7,
-    func_13,
+    func_14,
     mousedown_handler,
     navigate_handler
   ];
@@ -41077,7 +53572,7 @@ function instance80($$self, $$props, $$invalidate) {
 var GridDateCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance80, create_fragment80, safe_not_equal, {
+    init(this, options, instance88, create_fragment88, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -41090,10 +53585,10 @@ var GridDateCell = class extends SvelteComponent {
 var GridDateCell_default = GridDateCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridNumberCell/NumberLabel.svelte
-function add_css50(target) {
+function add_css52(target) {
   append_styles(target, "svelte-1636x3v", "div.svelte-1636x3v{width:100%;padding:6px;text-align:right}");
 }
-function create_fragment81(ctx) {
+function create_fragment89(ctx) {
   let div;
   let t_value = new Intl.NumberFormat().format(ctx[0]) + "";
   let t3;
@@ -41119,7 +53614,7 @@ function create_fragment81(ctx) {
     }
   };
 }
-function instance81($$self, $$props, $$invalidate) {
+function instance89($$self, $$props, $$invalidate) {
   let { value } = $$props;
   $$self.$$set = ($$props2) => {
     if ("value" in $$props2)
@@ -41130,16 +53625,16 @@ function instance81($$self, $$props, $$invalidate) {
 var NumberLabel = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance81, create_fragment81, safe_not_equal, { value: 0 }, add_css50);
+    init(this, options, instance89, create_fragment89, safe_not_equal, { value: 0 }, add_css52);
   }
 };
 var NumberLabel_default = NumberLabel;
 
 // src/views/Table/components/DataGrid/GridCell/GridNumberCell/NumberInput.svelte
-function add_css51(target) {
+function add_css53(target) {
   append_styles(target, "svelte-1uq2i75", "input.svelte-1uq2i75{all:unset;background-color:var(--background-primary);box-sizing:border-box;width:100%;padding:6px;font-weight:400;font-family:var(--font-default);color:var(--text-normal);text-align:right}input.svelte-1uq2i75:focus{box-shadow:none !important}input.svelte-1uq2i75:hover{background-color:transparent}");
 }
-function create_fragment82(ctx) {
+function create_fragment90(ctx) {
   let input;
   let input_tabindex_value;
   let mounted;
@@ -41157,7 +53652,7 @@ function create_fragment82(ctx) {
       ctx[6](input);
       if (!mounted) {
         dispose = [
-          listen(input, "input", ctx[2]),
+          listen(input, "change", ctx[2]),
           listen(input, "keypress", ctx[3]),
           listen(input, "blur", ctx[5])
         ];
@@ -41180,7 +53675,7 @@ function create_fragment82(ctx) {
     }
   };
 }
-function instance82($$self, $$props, $$invalidate) {
+function instance90($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let ref;
@@ -41218,13 +53713,13 @@ function instance82($$self, $$props, $$invalidate) {
 var NumberInput2 = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance82, create_fragment82, safe_not_equal, { value: 0, onChange: 4 }, add_css51);
+    init(this, options, instance90, create_fragment90, safe_not_equal, { value: 0, onChange: 4 }, add_css53);
   }
 };
 var NumberInput_default2 = NumberInput2;
 
 // src/views/Table/components/DataGrid/GridCell/GridNumberCell/GridNumberCell.svelte
-function create_if_block24(ctx) {
+function create_if_block25(ctx) {
   let numberlabel;
   let current;
   numberlabel = new NumberLabel_default({ props: { value: ctx[1] } });
@@ -41261,7 +53756,7 @@ function create_read_slot3(ctx) {
   let show_if = isNumber(ctx[1]);
   let if_block_anchor;
   let current;
-  let if_block = show_if && create_if_block24(ctx);
+  let if_block = show_if && create_if_block25(ctx);
   return {
     c() {
       if (if_block)
@@ -41284,7 +53779,7 @@ function create_read_slot3(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block24(ctx2);
+          if_block = create_if_block25(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -41359,7 +53854,7 @@ function create_edit_slot3(ctx) {
     }
   };
 }
-function create_fragment83(ctx) {
+function create_fragment91(ctx) {
   let gridcell;
   let updating_edit;
   let updating_selected;
@@ -41446,7 +53941,7 @@ function create_fragment83(ctx) {
     }
   };
 }
-function instance83($$self, $$props, $$invalidate) {
+function instance91($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -41463,13 +53958,11 @@ function instance83($$self, $$props, $$invalidate) {
       $$invalidate(6, edit = false);
     }
   };
-  const func_13 = () => {
-    var _a;
-    navigator.clipboard.writeText((_a = value == null ? void 0 : value.toString()) != null ? _a : "");
+  const func_14 = () => {
+    navigator.clipboard.writeText((value == null ? void 0 : value.toString()) || "");
   };
-  const func_2 = () => {
-    var _a;
-    navigator.clipboard.writeText((_a = value == null ? void 0 : value.toString()) != null ? _a : "");
+  const func_22 = () => {
+    navigator.clipboard.writeText((value == null ? void 0 : value.toString()) || "");
     onChange(void 0);
   };
   const func_3 = () => __async(this, null, function* () {
@@ -41513,8 +54006,8 @@ function instance83($$self, $$props, $$invalidate) {
     edit,
     func7,
     blur_handler,
-    func_13,
-    func_2,
+    func_14,
+    func_22,
     func_3,
     gridcell_edit_binding,
     gridcell_selected_binding,
@@ -41525,7 +54018,7 @@ function instance83($$self, $$props, $$invalidate) {
 var GridNumberCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance83, create_fragment83, safe_not_equal, {
+    init(this, options, instance91, create_fragment91, safe_not_equal, {
       value: 1,
       onChange: 2,
       column: 3,
@@ -41538,10 +54031,10 @@ var GridNumberCell = class extends SvelteComponent {
 var GridNumberCell_default = GridNumberCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridTextCell/TextLabel.svelte
-function add_css52(target) {
+function add_css54(target) {
   append_styles(target, "svelte-q1s3im", "div.svelte-q1s3im{padding:6px;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}");
 }
-function create_fragment84(ctx) {
+function create_fragment92(ctx) {
   let div;
   let t3;
   return {
@@ -41566,7 +54059,7 @@ function create_fragment84(ctx) {
     }
   };
 }
-function instance84($$self, $$props, $$invalidate) {
+function instance92($$self, $$props, $$invalidate) {
   let { value } = $$props;
   $$self.$$set = ($$props2) => {
     if ("value" in $$props2)
@@ -41577,7 +54070,7 @@ function instance84($$self, $$props, $$invalidate) {
 var TextLabel = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance84, create_fragment84, safe_not_equal, { value: 0 }, add_css52);
+    init(this, options, instance92, create_fragment92, safe_not_equal, { value: 0 }, add_css54);
   }
 };
 var TextLabel_default = TextLabel;
@@ -41664,7 +54157,7 @@ function create_edit_slot4(ctx) {
     }
   };
 }
-function create_fragment85(ctx) {
+function create_fragment93(ctx) {
   let gridcell;
   let updating_edit;
   let updating_selected;
@@ -41751,7 +54244,7 @@ function create_fragment85(ctx) {
     }
   };
 }
-function instance85($$self, $$props, $$invalidate) {
+function instance93($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -41768,15 +54261,13 @@ function instance85($$self, $$props, $$invalidate) {
     onChange(value);
   };
   const func7 = () => {
-    var _a;
-    navigator.clipboard.writeText((_a = value == null ? void 0 : value.toString()) != null ? _a : "");
+    navigator.clipboard.writeText((value == null ? void 0 : value.toString()) || "");
   };
-  const func_13 = () => {
-    var _a;
-    navigator.clipboard.writeText((_a = value == null ? void 0 : value.toString()) != null ? _a : "");
+  const func_14 = () => {
+    navigator.clipboard.writeText((value == null ? void 0 : value.toString()) || "");
     onChange(void 0);
   };
-  const func_2 = () => __async(this, null, function* () {
+  const func_22 = () => __async(this, null, function* () {
     onChange(yield navigator.clipboard.readText());
   });
   function gridcell_edit_binding(value2) {
@@ -41818,8 +54309,8 @@ function instance85($$self, $$props, $$invalidate) {
     input_handler,
     blur_handler,
     func7,
-    func_13,
-    func_2,
+    func_14,
+    func_22,
     gridcell_edit_binding,
     gridcell_selected_binding,
     mousedown_handler,
@@ -41829,7 +54320,7 @@ function instance85($$self, $$props, $$invalidate) {
 var GridTextCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance85, create_fragment85, safe_not_equal, {
+    init(this, options, instance93, create_fragment93, safe_not_equal, {
       value: 0,
       onChange: 2,
       column: 3,
@@ -41842,13 +54333,13 @@ var GridTextCell = class extends SvelteComponent {
 var GridTextCell_default = GridTextCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridLinkCell/GridLinkCell.svelte
-var import_obsidian40 = __toModule(require("obsidian"));
+var import_obsidian44 = __toModule(require("obsidian"));
 
 // src/views/Table/components/DataGrid/GridCell/GridLinkCell/LinkLabel.svelte
-function add_css53(target) {
+function add_css55(target) {
   append_styles(target, "svelte-1ip22jj", "div.svelte-1ip22jj{padding:6px;width:100%}");
 }
-function create_if_block25(ctx) {
+function create_if_block26(ctx) {
   let internallink;
   let current;
   internallink = new InternalLink_default({
@@ -41856,7 +54347,7 @@ function create_if_block25(ctx) {
       linkText: ctx[0].linkText,
       sourcePath: ctx[0].sourcePath,
       resolved: !!ctx[1].metadataCache.getFirstLinkpathDest(ctx[0].linkText, ctx[0].sourcePath),
-      $$slots: { default: [create_default_slot25] },
+      $$slots: { default: [create_default_slot28] },
       $$scope: { ctx }
     }
   });
@@ -41897,7 +54388,7 @@ function create_if_block25(ctx) {
     }
   };
 }
-function create_default_slot25(ctx) {
+function create_default_slot28(ctx) {
   var _a;
   let t_value = ((_a = ctx[0].displayName) != null ? _a : ctx[0].linkText) + "";
   let t3;
@@ -41919,10 +54410,10 @@ function create_default_slot25(ctx) {
     }
   };
 }
-function create_fragment86(ctx) {
+function create_fragment94(ctx) {
   let div;
   let current;
-  let if_block = ctx[0] && create_if_block25(ctx);
+  let if_block = ctx[0] && create_if_block26(ctx);
   return {
     c() {
       div = element("div");
@@ -41944,7 +54435,7 @@ function create_fragment86(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block25(ctx2);
+          if_block = create_if_block26(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(div, null);
@@ -41975,7 +54466,7 @@ function create_fragment86(ctx) {
     }
   };
 }
-function instance86($$self, $$props, $$invalidate) {
+function instance94($$self, $$props, $$invalidate) {
   let $app;
   component_subscribe($$self, app, ($$value) => $$invalidate(1, $app = $$value));
   let { value } = $$props;
@@ -41991,7 +54482,7 @@ function instance86($$self, $$props, $$invalidate) {
 var LinkLabel = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance86, create_fragment86, safe_not_equal, { value: 0 }, add_css53);
+    init(this, options, instance94, create_fragment94, safe_not_equal, { value: 0 }, add_css55);
   }
 };
 var LinkLabel_default = LinkLabel;
@@ -42088,7 +54579,7 @@ function create_read_slot5(ctx) {
     }
   };
 }
-function create_if_block26(ctx) {
+function create_if_block27(ctx) {
   var _a, _b;
   let fileautocomplete;
   let current;
@@ -42100,7 +54591,7 @@ function create_if_block26(ctx) {
       autoFocus: true,
       width: "100%",
       getLabel: ctx[9],
-      getDescription: func_12
+      getDescription: func_13
     }
   });
   fileautocomplete.$on("blur", ctx[10]);
@@ -42141,7 +54632,7 @@ function create_edit_slot5(ctx) {
   let show_if = isOptionalLink(ctx[0]);
   let if_block_anchor;
   let current;
-  let if_block = show_if && create_if_block26(ctx);
+  let if_block = show_if && create_if_block27(ctx);
   return {
     c() {
       if (if_block)
@@ -42164,7 +54655,7 @@ function create_edit_slot5(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block26(ctx2);
+          if_block = create_if_block27(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -42195,7 +54686,7 @@ function create_edit_slot5(ctx) {
     }
   };
 }
-function create_fragment87(ctx) {
+function create_fragment95(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -42257,8 +54748,8 @@ function create_fragment87(ctx) {
     }
   };
 }
-var func_12 = (file) => file.path.split("/").slice(0, -1).join("/");
-function instance87($$self, $$props, $$invalidate) {
+var func_13 = (file) => file.path.split("/").slice(0, -1).join("/");
+function instance95($$self, $$props, $$invalidate) {
   let $app;
   component_subscribe($$self, app, ($$value) => $$invalidate(7, $app = $$value));
   let { value } = $$props;
@@ -42269,14 +54760,14 @@ function instance87($$self, $$props, $$invalidate) {
   let { selected } = $$props;
   const sourcePath = getContext("sourcePath");
   let edit = false;
-  const func7 = (file) => file instanceof import_obsidian40.TFile ? file.basename : "";
+  const func7 = (file) => file instanceof import_obsidian44.TFile ? file.basename : "";
   const blur_handler = () => {
     $$invalidate(6, edit = false);
   };
   const change_handler = ({ detail: linkText }) => {
     onChange(linkText ? { linkText, sourcePath } : void 0);
   };
-  const func_2 = (value2) => $$invalidate(6, edit = value2);
+  const func_22 = (value2) => $$invalidate(6, edit = value2);
   function mousedown_handler(event) {
     bubble.call(this, $$self, event);
   }
@@ -42310,7 +54801,7 @@ function instance87($$self, $$props, $$invalidate) {
     func7,
     blur_handler,
     change_handler,
-    func_2,
+    func_22,
     mousedown_handler,
     navigate_handler
   ];
@@ -42318,7 +54809,7 @@ function instance87($$self, $$props, $$invalidate) {
 var GridLinkCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance87, create_fragment87, safe_not_equal, {
+    init(this, options, instance95, create_fragment95, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -42332,14 +54823,13 @@ var GridLinkCell_default = GridLinkCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridListCell/GridListCell.svelte
 function create_read_slot6(ctx) {
-  var _a;
   let taglist;
   let current;
   taglist = new TagList_default({
     props: {
       slot: "read",
       edit: false,
-      values: (_a = ctx[0]) != null ? _a : []
+      values: ctx[0] || []
     }
   });
   return {
@@ -42351,10 +54841,9 @@ function create_read_slot6(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      var _a2;
       const taglist_changes = {};
       if (dirty & 1)
-        taglist_changes.values = (_a2 = ctx2[0]) != null ? _a2 : [];
+        taglist_changes.values = ctx2[0] || [];
       taglist.$set(taglist_changes);
     },
     i(local) {
@@ -42373,14 +54862,13 @@ function create_read_slot6(ctx) {
   };
 }
 function create_edit_slot6(ctx) {
-  var _a;
   let taglist;
   let current;
   taglist = new TagList_default({
     props: {
       slot: "edit",
       edit: true,
-      values: (_a = ctx[0]) != null ? _a : [],
+      values: ctx[0] || [],
       onChange: ctx[1]
     }
   });
@@ -42393,10 +54881,9 @@ function create_edit_slot6(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      var _a2;
       const taglist_changes = {};
       if (dirty & 1)
-        taglist_changes.values = (_a2 = ctx2[0]) != null ? _a2 : [];
+        taglist_changes.values = ctx2[0] || [];
       if (dirty & 2)
         taglist_changes.onChange = ctx2[1];
       taglist.$set(taglist_changes);
@@ -42416,7 +54903,7 @@ function create_edit_slot6(ctx) {
     }
   };
 }
-function create_fragment88(ctx) {
+function create_fragment96(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -42472,7 +54959,7 @@ function create_fragment88(ctx) {
     }
   };
 }
-function instance88($$self, $$props, $$invalidate) {
+function instance96($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -42513,7 +55000,7 @@ function instance88($$self, $$props, $$invalidate) {
 var GridListCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance88, create_fragment88, safe_not_equal, {
+    init(this, options, instance96, create_fragment96, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -42682,7 +55169,7 @@ function create_if_block_43(ctx) {
     }
   };
 }
-function create_if_block_35(ctx) {
+function create_if_block_34(ctx) {
   let griddatecell;
   let current;
   griddatecell = new GridDateCell_default({
@@ -42736,7 +55223,7 @@ function create_if_block_35(ctx) {
     }
   };
 }
-function create_if_block_26(ctx) {
+function create_if_block_25(ctx) {
   let gridnumbercell;
   let current;
   gridnumbercell = new GridNumberCell_default({
@@ -42844,7 +55331,7 @@ function create_if_block_113(ctx) {
     }
   };
 }
-function create_if_block27(ctx) {
+function create_if_block28(ctx) {
   let gridtextcell;
   let current;
   gridtextcell = new GridTextCell_default({
@@ -42898,7 +55385,7 @@ function create_if_block27(ctx) {
     }
   };
 }
-function create_fragment89(ctx) {
+function create_fragment97(ctx) {
   let show_if;
   let show_if_1;
   let show_if_2;
@@ -42910,10 +55397,10 @@ function create_fragment89(ctx) {
   let if_block_anchor;
   let current;
   const if_block_creators = [
-    create_if_block27,
+    create_if_block28,
     create_if_block_113,
-    create_if_block_26,
-    create_if_block_35,
+    create_if_block_25,
+    create_if_block_34,
     create_if_block_43,
     create_if_block_52,
     create_else_block9
@@ -43009,7 +55496,7 @@ function create_fragment89(ctx) {
     }
   };
 }
-function instance89($$self, $$props, $$invalidate) {
+function instance97($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -43098,7 +55585,7 @@ function instance89($$self, $$props, $$invalidate) {
 var GridTypedCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance89, create_fragment89, safe_not_equal, {
+    init(this, options, instance97, create_fragment97, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -43111,6 +55598,7 @@ var GridTypedCell = class extends SvelteComponent {
 var GridTypedCell_default = GridTypedCell;
 
 // src/views/Table/components/DataGrid/data-grid.ts
+var import_types = __toModule(require("util/types"));
 function fieldIcon(field) {
   switch (field) {
     case DataFieldType.String:
@@ -43148,6 +55636,13 @@ function sortRows(rows, sortModel) {
         return 0;
       }
     }
+    if ((0, import_types.isDate)(aval) && (0, import_types.isDate)(bval)) {
+      if (aval.getTime() < bval.getTime())
+        return isAsc ? -1 : 1;
+      if (aval.getTime() > bval.getTime())
+        return isAsc ? 1 : -1;
+      return 0;
+    }
     aval = aval.toString().toLocaleLowerCase();
     bval = bval.toString().toLocaleLowerCase();
     if (aval < bval) {
@@ -43184,10 +55679,10 @@ function menuOnContextMenu(event, menu) {
 }
 
 // src/views/Table/components/DataGrid/GridCellGroup.svelte
-function add_css54(target) {
+function add_css56(target) {
   append_styles(target, "svelte-1jrmech", "div.svelte-1jrmech{display:flex}.header.svelte-1jrmech{position:sticky;top:0;z-index:10}");
 }
-function create_fragment90(ctx) {
+function create_fragment98(ctx) {
   let div;
   let current;
   let mounted;
@@ -43251,7 +55746,7 @@ function create_fragment90(ctx) {
     }
   };
 }
-function instance90($$self, $$props, $$invalidate) {
+function instance98($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { index: index2 } = $$props;
   let { header = false } = $$props;
@@ -43274,7 +55769,7 @@ function instance90($$self, $$props, $$invalidate) {
 var GridCellGroup = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance90, create_fragment90, safe_not_equal, { index: 0, header: 1 }, add_css54);
+    init(this, options, instance98, create_fragment98, safe_not_equal, { index: 0, header: 1 }, add_css56);
   }
 };
 var GridCellGroup_default = GridCellGroup;
@@ -43376,7 +55871,7 @@ function create_each_block13(ctx) {
   function func7(...args) {
     return ctx[6](ctx[8], ...args);
   }
-  function func_13(...args) {
+  function func_14(...args) {
     return ctx[7](ctx[8], ...args);
   }
   gridcell = new GridCell_default({
@@ -43386,7 +55881,7 @@ function create_each_block13(ctx) {
       column: ctx[8],
       resizable: true,
       onResize: func7,
-      onFinalizeResize: func_13,
+      onFinalizeResize: func_14,
       columnHeader: true,
       $$slots: { read: [create_read_slot7] },
       $$scope: { ctx }
@@ -43412,7 +55907,7 @@ function create_each_block13(ctx) {
       if (dirty & 3)
         gridcell_changes.onResize = func7;
       if (dirty & 5)
-        gridcell_changes.onFinalizeResize = func_13;
+        gridcell_changes.onFinalizeResize = func_14;
       if (dirty & 2049) {
         gridcell_changes.$$scope = { dirty, ctx };
       }
@@ -43433,7 +55928,7 @@ function create_each_block13(ctx) {
     }
   };
 }
-function create_default_slot26(ctx) {
+function create_default_slot29(ctx) {
   let gridcell;
   let t3;
   let each_1_anchor;
@@ -43528,14 +56023,14 @@ function create_default_slot26(ctx) {
     }
   };
 }
-function create_fragment91(ctx) {
+function create_fragment99(ctx) {
   let gridcellgroup;
   let current;
   gridcellgroup = new GridCellGroup_default({
     props: {
       index: 1,
       header: true,
-      $$slots: { default: [create_default_slot26] },
+      $$slots: { default: [create_default_slot29] },
       $$scope: { ctx }
     }
   });
@@ -43569,7 +56064,7 @@ function create_fragment91(ctx) {
     }
   };
 }
-function instance91($$self, $$props, $$invalidate) {
+function instance99($$self, $$props, $$invalidate) {
   let { columns } = $$props;
   let { onResize } = $$props;
   let { onFinalizeResize } = $$props;
@@ -43589,7 +56084,7 @@ function instance91($$self, $$props, $$invalidate) {
   const func7 = (column, width) => {
     onResize(column.field, width);
   };
-  const func_13 = (column, width) => {
+  const func_14 = (column, width) => {
     onFinalizeResize(column.field, width);
   };
   $$self.$$set = ($$props2) => {
@@ -43610,13 +56105,13 @@ function instance91($$self, $$props, $$invalidate) {
     handleFieldClick,
     onColumnMenu,
     func7,
-    func_13
+    func_14
   ];
 }
 var GridHeader = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance91, create_fragment91, safe_not_equal, {
+    init(this, options, instance99, create_fragment99, safe_not_equal, {
       columns: 0,
       onResize: 1,
       onFinalizeResize: 2,
@@ -43627,7 +56122,7 @@ var GridHeader = class extends SvelteComponent {
 var GridHeader_default = GridHeader;
 
 // src/views/Table/components/DataGrid/GridRow.svelte
-var import_obsidian43 = __toModule(require("obsidian"));
+var import_obsidian47 = __toModule(require("obsidian"));
 function get_each_context14(ctx, list, i2) {
   const child_ctx = ctx.slice();
   child_ctx[15] = list[i2];
@@ -43767,7 +56262,7 @@ function create_each_block14(ctx) {
     }
   };
 }
-function create_default_slot27(ctx) {
+function create_default_slot30(ctx) {
   let gridcell;
   let t3;
   let each_1_anchor;
@@ -43872,13 +56367,13 @@ function create_default_slot27(ctx) {
     }
   };
 }
-function create_fragment92(ctx) {
+function create_fragment100(ctx) {
   let gridcellgroup;
   let current;
   gridcellgroup = new GridCellGroup_default({
     props: {
       index: ctx[1],
-      $$slots: { default: [create_default_slot27] },
+      $$slots: { default: [create_default_slot30] },
       $$scope: { ctx }
     }
   });
@@ -43915,7 +56410,7 @@ function create_fragment92(ctx) {
     }
   };
 }
-function instance92($$self, $$props, $$invalidate) {
+function instance100($$self, $$props, $$invalidate) {
   let $app;
   component_subscribe($$self, app, ($$value) => $$invalidate(14, $app = $$value));
   let { rowId } = $$props;
@@ -43955,7 +56450,7 @@ function instance92($$self, $$props, $$invalidate) {
     const targetEl = event.target;
     if (targetEl instanceof HTMLDivElement) {
       const file = $app.vault.getAbstractFileByPath(rowId);
-      if (file instanceof import_obsidian43.TFile) {
+      if (file instanceof import_obsidian47.TFile) {
         $app.workspace.trigger("hover-link", {
           event,
           source: "obsidian-projects-table-view",
@@ -44016,7 +56511,7 @@ function instance92($$self, $$props, $$invalidate) {
 var GridRow = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance92, create_fragment92, safe_not_equal, {
+    init(this, options, instance100, create_fragment100, safe_not_equal, {
       rowId: 0,
       index: 1,
       row: 2,
@@ -44032,7 +56527,7 @@ var GridRow = class extends SvelteComponent {
 var GridRow_default = GridRow;
 
 // src/views/Table/components/DataGrid/DataGrid.svelte
-function add_css55(target) {
+function add_css57(target) {
   append_styles(target, "svelte-8irtc3", "div.svelte-8irtc3{display:inline-block}span.svelte-8irtc3{padding:4px;position:sticky;left:0}");
 }
 function get_each_context15(ctx, list, i2) {
@@ -44107,13 +56602,13 @@ function create_each_block15(ctx) {
     }
   };
 }
-function create_if_block28(ctx) {
+function create_if_block29(ctx) {
   let button;
   let current;
   button = new Button_default({
     props: {
       variant: "plain",
-      $$slots: { default: [create_default_slot_116] },
+      $$slots: { default: [create_default_slot_120] },
       $$scope: { ctx }
     }
   });
@@ -44148,7 +56643,7 @@ function create_if_block28(ctx) {
     }
   };
 }
-function create_default_slot_116(ctx) {
+function create_default_slot_120(ctx) {
   let icon;
   let t0;
   let t1_value = ctx[7]("components.data-grid.row.add") + "";
@@ -44190,11 +56685,11 @@ function create_default_slot_116(ctx) {
     }
   };
 }
-function create_default_slot28(ctx) {
+function create_default_slot31(ctx) {
   let span;
   let span_style_value;
   let current;
-  let if_block = !ctx[1] && create_if_block28(ctx);
+  let if_block = !ctx[1] && create_if_block29(ctx);
   return {
     c() {
       var _a, _b;
@@ -44219,7 +56714,7 @@ function create_default_slot28(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block28(ctx2);
+          if_block = create_if_block29(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(span, null);
@@ -44253,7 +56748,7 @@ function create_default_slot28(ctx) {
     }
   };
 }
-function create_fragment93(ctx) {
+function create_fragment101(ctx) {
   let div;
   let gridheader;
   let t0;
@@ -44281,7 +56776,7 @@ function create_fragment93(ctx) {
   gridcellgroup = new GridCellGroup_default({
     props: {
       index: ctx[8].length + 2,
-      $$slots: { default: [create_default_slot28] },
+      $$slots: { default: [create_default_slot31] },
       $$scope: { ctx }
     }
   });
@@ -44383,7 +56878,7 @@ function create_fragment93(ctx) {
     }
   };
 }
-function instance93($$self, $$props, $$invalidate) {
+function instance101($$self, $$props, $$invalidate) {
   let t3;
   let visibleColumns;
   let sortedColumns;
@@ -44406,7 +56901,7 @@ function instance93($$self, $$props, $$invalidate) {
   let { onRowEdit } = $$props;
   let activeCell = [3, 3];
   function createColumnMenu(column) {
-    const menu = new import_obsidian45.Menu();
+    const menu = new import_obsidian49.Menu();
     if (column.editable && !readonly) {
       menu.addItem((item) => {
         item.setTitle(t3("components.data-grid.column.rename")).setIcon("edit").onClick(() => onColumnRename(column.field));
@@ -44416,11 +56911,12 @@ function instance93($$self, $$props, $$invalidate) {
       });
       menu.addSeparator();
     }
+    let isDateCol = column.type === DataFieldType.Date;
     menu.addItem((item) => {
-      item.setTitle(t3("components.data-grid.sort.asc")).setIcon("sort-asc").onClick(() => onSortModelChange(column.field, "asc"));
+      item.setTitle(t3(isDateCol ? "components.data-grid.sortDate.asc" : "components.data-grid.sort.asc")).setIcon("sort-asc").onClick(() => onSortModelChange(column.field, "asc"));
     });
     menu.addItem((item) => {
-      item.setTitle(t3("components.data-grid.sort.desc")).setIcon("sort-desc").onClick(() => onSortModelChange(column.field, "desc"));
+      item.setTitle(t3(isDateCol ? "components.data-grid.sortDate.desc" : "components.data-grid.sort.desc")).setIcon("sort-desc").onClick(() => onSortModelChange(column.field, "desc"));
     });
     menu.addSeparator();
     menu.addItem((item) => {
@@ -44431,7 +56927,7 @@ function instance93($$self, $$props, $$invalidate) {
     return menu;
   }
   function createRowMenu(rowId, row) {
-    const menu = new import_obsidian45.Menu();
+    const menu = new import_obsidian49.Menu();
     menu.addItem((item) => {
       item.setTitle(t3("components.data-grid.row.edit")).setIcon("edit").onClick(() => onRowEdit(rowId, row));
     });
@@ -44444,7 +56940,7 @@ function instance93($$self, $$props, $$invalidate) {
     return menu;
   }
   function createCellMenu(rowId, row, column) {
-    const menu = new import_obsidian45.Menu();
+    const menu = new import_obsidian49.Menu();
     if (column.editable) {
       menu.addItem((item) => {
         item.setTitle(t3("components.data-grid.cell.clear")).setIcon("x").onClick(() => {
@@ -44461,10 +56957,10 @@ function instance93($$self, $$props, $$invalidate) {
   const func7 = (name, width) => {
     $$invalidate(0, columns = columns.map((column) => column.field === name ? __spreadProps(__spreadValues({}, column), { width }) : column));
   };
-  const func_13 = (name, width) => {
+  const func_14 = (name, width) => {
     onColumnResize(name, width);
   };
-  const func_2 = (field) => createColumnMenu(field);
+  const func_22 = (field) => createColumnMenu(field);
   const func_3 = (rowId, row) => createRowMenu(rowId, row);
   const func_4 = (row, rowId, column) => createCellMenu(rowId, row, column);
   const func_5 = (rowId, event) => onRowNavigate(rowId, event.ctrlKey || event.metaKey);
@@ -44549,8 +57045,8 @@ function instance93($$self, $$props, $$invalidate) {
     visibleColumns,
     $i18n,
     func7,
-    func_13,
-    func_2,
+    func_14,
+    func_22,
     func_3,
     func_4,
     func_5,
@@ -44561,7 +57057,7 @@ function instance93($$self, $$props, $$invalidate) {
 var DataGrid = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance93, create_fragment93, safe_not_equal, {
+    init(this, options, instance101, create_fragment101, safe_not_equal, {
       columns: 0,
       rows: 14,
       sortModel: 15,
@@ -44576,13 +57072,13 @@ var DataGrid = class extends SvelteComponent {
       onColumnHide: 19,
       onRowDelete: 20,
       onRowEdit: 21
-    }, add_css55, [-1, -1]);
+    }, add_css57, [-1, -1]);
   }
 };
 var DataGrid_default = DataGrid;
 
 // src/views/Table/components/SwitchSelect/SwitchSelect.svelte
-function add_css56(target) {
+function add_css58(target) {
   append_styles(target, "svelte-zdcf2i", "div.svelte-zdcf2i{align-items:center;display:inline-flex;text-align:start}");
 }
 function get_each_context16(ctx, list, i2) {
@@ -44637,7 +57133,7 @@ function create_each_block16(ctx) {
     }
   };
 }
-function create_default_slot29(ctx) {
+function create_default_slot32(ctx) {
   let each_1_anchor;
   let current;
   let each_value = ctx[0];
@@ -44707,7 +57203,7 @@ function create_default_slot29(ctx) {
     }
   };
 }
-function create_fragment94(ctx) {
+function create_fragment102(ctx) {
   let div;
   let t0;
   let t1;
@@ -44720,7 +57216,7 @@ function create_fragment94(ctx) {
       anchorEl: ctx[3],
       open: ctx[4],
       onClose: ctx[8],
-      $$slots: { default: [create_default_slot29] },
+      $$slots: { default: [create_default_slot32] },
       $$scope: { ctx }
     }
   });
@@ -44781,7 +57277,7 @@ function create_fragment94(ctx) {
     }
   };
 }
-function instance94($$self, $$props, $$invalidate) {
+function instance102($$self, $$props, $$invalidate) {
   let { items } = $$props;
   let { label } = $$props;
   let { onChange } = $$props;
@@ -44819,16 +57315,13 @@ function instance94($$self, $$props, $$invalidate) {
 var SwitchSelect = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance94, create_fragment94, safe_not_equal, { items: 0, label: 2, onChange: 1 }, add_css56);
+    init(this, options, instance102, create_fragment102, safe_not_equal, { items: 0, label: 2, onChange: 1 }, add_css58);
   }
 };
 var SwitchSelect_default = SwitchSelect;
 
 // src/views/Table/TableView.svelte
-function add_css57(target) {
-  append_styles(target, "svelte-15cnmpm", "div.svelte-15cnmpm{overflow:auto}");
-}
-function create_default_slot_117(ctx) {
+function create_right_slot5(ctx) {
   let switchselect;
   let current;
   switchselect = new SwitchSelect_default({
@@ -44869,68 +57362,50 @@ function create_default_slot_117(ctx) {
     }
   };
 }
-function create_default_slot30(ctx) {
-  let p2;
-  let t3;
-  let horizontalgroup;
+function create_default_slot_214(ctx) {
+  let viewtoolbar;
   let current;
-  horizontalgroup = new HorizontalGroup_default({
+  viewtoolbar = new ViewToolbar_default({
     props: {
-      $$slots: { default: [create_default_slot_117] },
+      variant: "secondary",
+      $$slots: { right: [create_right_slot5] },
       $$scope: { ctx }
     }
   });
   return {
     c() {
-      p2 = element("p");
-      t3 = space();
-      create_component(horizontalgroup.$$.fragment);
+      create_component(viewtoolbar.$$.fragment);
     },
     m(target, anchor) {
-      insert(target, p2, anchor);
-      insert(target, t3, anchor);
-      mount_component(horizontalgroup, target, anchor);
+      mount_component(viewtoolbar, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const horizontalgroup_changes = {};
+      const viewtoolbar_changes = {};
       if (dirty & 33554816) {
-        horizontalgroup_changes.$$scope = { dirty, ctx: ctx2 };
+        viewtoolbar_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      horizontalgroup.$set(horizontalgroup_changes);
+      viewtoolbar.$set(viewtoolbar_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(horizontalgroup.$$.fragment, local);
+      transition_in(viewtoolbar.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(horizontalgroup.$$.fragment, local);
+      transition_out(viewtoolbar.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      if (detaching)
-        detach(p2);
-      if (detaching)
-        detach(t3);
-      destroy_component(horizontalgroup, detaching);
+      destroy_component(viewtoolbar, detaching);
     }
   };
 }
-function create_fragment95(ctx) {
+function create_default_slot_121(ctx) {
   var _a, _b, _c;
-  let toolbar;
-  let t3;
-  let div;
   let datagrid;
   let current;
-  toolbar = new ToolBar_default({
-    props: {
-      $$slots: { default: [create_default_slot30] },
-      $$scope: { ctx }
-    }
-  });
   datagrid = new DataGrid_default({
     props: {
       columns: ctx[7],
@@ -44954,26 +57429,14 @@ function create_fragment95(ctx) {
   });
   return {
     c() {
-      create_component(toolbar.$$.fragment);
-      t3 = space();
-      div = element("div");
       create_component(datagrid.$$.fragment);
-      attr(div, "class", "svelte-15cnmpm");
     },
     m(target, anchor) {
-      mount_component(toolbar, target, anchor);
-      insert(target, t3, anchor);
-      insert(target, div, anchor);
-      mount_component(datagrid, div, null);
+      mount_component(datagrid, target, anchor);
       current = true;
     },
-    p(ctx2, [dirty]) {
+    p(ctx2, dirty) {
       var _a2, _b2, _c2;
-      const toolbar_changes = {};
-      if (dirty & 33554816) {
-        toolbar_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      toolbar.$set(toolbar_changes);
       const datagrid_changes = {};
       if (dirty & 128)
         datagrid_changes.columns = ctx2[7];
@@ -45007,22 +57470,115 @@ function create_fragment95(ctx) {
     i(local) {
       if (current)
         return;
-      transition_in(toolbar.$$.fragment, local);
       transition_in(datagrid.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(toolbar.$$.fragment, local);
       transition_out(datagrid.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(toolbar, detaching);
+      destroy_component(datagrid, detaching);
+    }
+  };
+}
+function create_default_slot33(ctx) {
+  let viewheader;
+  let t3;
+  let viewcontent;
+  let current;
+  viewheader = new ViewHeader_default({
+    props: {
+      $$slots: { default: [create_default_slot_214] },
+      $$scope: { ctx }
+    }
+  });
+  viewcontent = new ViewContent_default({
+    props: {
+      $$slots: { default: [create_default_slot_121] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewheader.$$.fragment);
+      t3 = space();
+      create_component(viewcontent.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewheader, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(viewcontent, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const viewheader_changes = {};
+      if (dirty & 33554816) {
+        viewheader_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewheader.$set(viewheader_changes);
+      const viewcontent_changes = {};
+      if (dirty & 33555455) {
+        viewcontent_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewcontent.$set(viewcontent_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewheader.$$.fragment, local);
+      transition_in(viewcontent.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewheader.$$.fragment, local);
+      transition_out(viewcontent.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewheader, detaching);
       if (detaching)
         detach(t3);
-      if (detaching)
-        detach(div);
-      destroy_component(datagrid);
+      destroy_component(viewcontent, detaching);
+    }
+  };
+}
+function create_fragment103(ctx) {
+  let viewlayout;
+  let current;
+  viewlayout = new ViewLayout_default({
+    props: {
+      $$slots: { default: [create_default_slot33] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(viewlayout.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(viewlayout, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const viewlayout_changes = {};
+      if (dirty & 33555455) {
+        viewlayout_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      viewlayout.$set(viewlayout_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(viewlayout.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(viewlayout.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(viewlayout, detaching);
     }
   };
 }
@@ -45043,7 +57599,7 @@ var func6 = (column) => ({
   value: column.field,
   enabled: !column.hide
 });
-function instance95($$self, $$props, $$invalidate) {
+function instance103($$self, $$props, $$invalidate) {
   let fields;
   let records;
   let fieldConfig;
@@ -45076,12 +57632,12 @@ function instance95($$self, $$props, $$invalidate) {
     }));
     onConfigChange(config);
   }
-  const func_13 = () => {
+  const func_14 = () => {
     new CreateNoteModal($app, project, (name, templatePath, project2) => {
       api2.addRecord(createDataRecord(name, project2), templatePath);
     }).open();
   };
-  const func_2 = (id, values) => {
+  const func_22 = (id, values) => {
     new EditNoteModal($app, fields, (record) => {
       api2.updateRecord(record, fields);
     }, { id, values }).open();
@@ -45164,8 +57720,8 @@ function instance95($$self, $$props, $$invalidate) {
     _a,
     fieldConfig,
     records,
-    func_13,
-    func_2,
+    func_14,
+    func_22,
     func_3,
     func_4,
     func_5,
@@ -45178,14 +57734,14 @@ function instance95($$self, $$props, $$invalidate) {
 var TableView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance95, create_fragment95, safe_not_equal, {
+    init(this, options, instance103, create_fragment103, safe_not_equal, {
       project: 1,
       frame: 12,
       readonly: 2,
       api: 3,
       config: 0,
       onConfigChange: 4
-    }, add_css57);
+    });
   }
 };
 var TableView_default = TableView;
@@ -45233,7 +57789,7 @@ var TableView2 = class extends ProjectView {
 
 // src/view.ts
 var VIEW_TYPE_PROJECTS = "obsidian-projects";
-var ProjectsView = class extends import_obsidian47.ItemView {
+var ProjectsView = class extends import_obsidian51.ItemView {
   constructor(leaf, plugin2) {
     super(leaf);
     this.plugin = plugin2;
@@ -45277,8 +57833,8 @@ var ProjectsView = class extends import_obsidian47.ItemView {
         const registerView = plugin2 == null ? void 0 : plugin2.onRegisterProjectView;
         if (registerView) {
           const create = registerView.bind(plugin2);
-          const instance96 = create();
-          views[instance96.getViewType()] = instance96;
+          const instance104 = create();
+          views[instance104.getViewType()] = instance104;
         }
       }
     }
@@ -45286,17 +57842,18 @@ var ProjectsView = class extends import_obsidian47.ItemView {
     views["board"] = new BoardView2();
     views["calendar"] = new CalendarView2();
     views["gallery"] = new GalleryView2();
+    views["developer"] = new DeveloperView2();
     return views;
   }
 };
 
 // src/events.ts
-var import_obsidian49 = __toModule(require("obsidian"));
+var import_obsidian53 = __toModule(require("obsidian"));
 var import_obsidian_dataview3 = __toModule(require_lib());
 function registerFileEvents(plugin2) {
   if (get_store_value(capabilities).dataview) {
     plugin2.registerEvent(plugin2.app.metadataCache.on("dataview:metadata-change", (type, file, oldPath) => __async(this, null, function* () {
-      if (file instanceof import_obsidian49.TFile) {
+      if (file instanceof import_obsidian53.TFile) {
         const source = get_store_value(dataSource);
         if (source == null ? void 0 : source.includes(file.path)) {
           switch (type) {
@@ -45316,7 +57873,7 @@ function registerFileEvents(plugin2) {
     })));
   } else {
     plugin2.registerEvent(plugin2.app.vault.on("create", (file) => __async(this, null, function* () {
-      if (file instanceof import_obsidian49.TFile) {
+      if (file instanceof import_obsidian53.TFile) {
         const source = get_store_value(dataSource);
         if (source == null ? void 0 : source.includes(file.path)) {
           dataFrame.merge(yield source.queryOne(file, get_store_value(dataFrame).fields));
@@ -45324,7 +57881,7 @@ function registerFileEvents(plugin2) {
       }
     })));
     plugin2.registerEvent(plugin2.app.vault.on("rename", (file, oldPath) => __async(this, null, function* () {
-      if (file instanceof import_obsidian49.TFile) {
+      if (file instanceof import_obsidian53.TFile) {
         const source = get_store_value(dataSource);
         if (source == null ? void 0 : source.includes(file.path)) {
           dataFrame.deleteRecord(oldPath);
@@ -45333,7 +57890,7 @@ function registerFileEvents(plugin2) {
       }
     })));
     plugin2.registerEvent(plugin2.app.vault.on("delete", (file) => {
-      if (file instanceof import_obsidian49.TFile) {
+      if (file instanceof import_obsidian53.TFile) {
         const source = get_store_value(dataSource);
         if (source == null ? void 0 : source.includes(file.path)) {
           dataFrame.deleteRecord(file.path);
@@ -45341,7 +57898,7 @@ function registerFileEvents(plugin2) {
       }
     }));
     plugin2.registerEvent(plugin2.app.metadataCache.on("changed", (file) => __async(this, null, function* () {
-      if (file instanceof import_obsidian49.TFile) {
+      if (file instanceof import_obsidian53.TFile) {
         const source = get_store_value(dataSource);
         if (source == null ? void 0 : source.includes(file.path)) {
           dataFrame.merge(yield source.queryOne(file, get_store_value(dataFrame).fields));
@@ -45352,18 +57909,18 @@ function registerFileEvents(plugin2) {
 }
 
 // src/main.ts
-import_dayjs10.default.extend(import_isoWeek.default);
-import_dayjs10.default.extend(import_localizedFormat.default);
+import_dayjs9.default.extend(import_isoWeek.default);
+import_dayjs9.default.extend(import_localizedFormat.default);
 var DEFAULT_SETTINGS = {
   projects: []
 };
-var ProjectsPlugin = class extends import_obsidian50.Plugin {
+var ProjectsPlugin = class extends import_obsidian54.Plugin {
   onload() {
     return __async(this, null, function* () {
       const t3 = get_store_value(i18n).t;
       this.registerView(VIEW_TYPE_PROJECTS, (leaf) => new ProjectsView(leaf, this));
       this.registerEvent(this.app.workspace.on("file-menu", (menu, file) => {
-        if (file instanceof import_obsidian50.TFolder) {
+        if (file instanceof import_obsidian54.TFolder) {
           menu.addItem((item) => {
             item.setTitle(t3("menus.project.create.title")).setIcon("folder-plus").onClick(() => __async(this, null, function* () {
               const project = createProject();
@@ -45409,7 +57966,7 @@ var ProjectsPlugin = class extends import_obsidian50.Plugin {
       this.addRibbonIcon("layout", "Open projects", () => {
         this.activateView();
       });
-      (0, import_obsidian50.addIcon)("text", `<g transform="matrix(1,0,0,1,2,2)"><path d="M20,32L28,32L28,24L41.008,24L30.72,72L20,72L20,80L52,80L52,72L42.992,72L53.28,24L68,24L68,32L76,32L76,16L20,16L20,32Z" /></g>`);
+      (0, import_obsidian54.addIcon)("text", `<g transform="matrix(1,0,0,1,2,2)"><path d="M20,32L28,32L28,24L41.008,24L30.72,72L20,72L20,80L52,80L52,72L42.992,72L53.28,24L68,24L68,32L76,32L76,16L20,16L20,32Z" /></g>`);
       app.set(this.app);
       plugin.set(this);
       settings.set(migrateAny(yield this.loadData()));

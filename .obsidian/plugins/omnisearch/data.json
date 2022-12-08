@@ -9,6 +9,7 @@
   "showExcerpt": true,
   "renderLineReturnInExcerpts": true,
   "showCreateButton": false,
+  "hightlight": true,
   "showPreviousQueryResults": true,
   "simpleSearch": false,
   "weightBasename": 2,

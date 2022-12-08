@@ -6,17 +6,23 @@
         "type": "split",
         "children": [
           {
-            "id": "80430a4f104c0c57",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "88-Template/home.md",
-                "mode": "preview",
-                "backlinks": false,
-                "source": true
+            "id": "5e5c5fb86575c747",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "80430a4f104c0c57",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "88-Template/home.md",
+                    "mode": "preview",
+                    "backlinks": false,
+                    "source": true
+                  }
+                }
               }
-            }
+            ]
           }
         ],
         "direction": "vertical"
@@ -35,7 +41,9 @@
                 "type": "leaf",
                 "state": {
                   "type": "file-explorer",
-                  "state": {}
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
                 }
               },
               {
@@ -69,8 +77,7 @@
                   "state": {}
                 }
               }
-            ],
-            "currentTab": 3
+            ]
           },
           {
             "id": "d877e8285f98a38a",
@@ -82,14 +89,6 @@
                 "type": "leaf",
                 "state": {
                   "type": "recent-files",
-                  "state": {}
-                }
-              },
-              {
-                "id": "5ee52b332527fc75",
-                "type": "leaf",
-                "state": {
-                  "type": "memos_view",
                   "state": {}
                 }
               }
@@ -209,7 +208,15 @@
         "direction": "horizontal",
         "width": 265
       },
-      "active": "80430a4f104c0c57"
+      "active": "80430a4f104c0c57",
+      "workspaces-plus:settings-v1": {
+        "mode": null,
+        "explorerFoldState": [
+          "/",
+          "77-Example",
+          "88-Template"
+        ]
+      }
     },
     "kanban": {
       "main": {
@@ -401,7 +408,8 @@
         "direction": "horizontal",
         "width": 273
       },
-      "active": "528a5dbf77ea4243"
+      "active": "528a5dbf77ea4243",
+      "workspaces-plus:settings-v1": {}
     },
     "temp": {
       "main": {
@@ -591,7 +599,10 @@
       "ribbon": {
         "mostRecentAction": ""
       },
-      "active": "cec580fe14c81046"
+      "active": "cec580fe14c81046",
+      "workspaces-plus:settings-v1": {
+        "mode": null
+      }
     },
     "Simple": {
       "main": {
@@ -723,7 +734,10 @@
       "ribbon": {
         "mostRecentAction": ""
       },
-      "active": "340969ccd24905e8"
+      "active": "340969ccd24905e8",
+      "workspaces-plus:settings-v1": {
+        "mode": null
+      }
     }
   },
   "active": "Home"

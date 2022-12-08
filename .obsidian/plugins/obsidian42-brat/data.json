@@ -1,14 +1,13 @@
 {
   "pluginList": [
-    "Quorafind/Obsidian-Daily-Notes-Editor",
+    "Quorafind/Obsidian-Tab-Switcher",
+    "dragonwocky/obsidian-tray",
+    "Quorafind/Obsidian-Surfing",
+    "make-md/makemd",
     "mvdkwast/obsidian-copy-as-html",
-    "zhouhua/obsidian-export-image",
-    "Trikzon/obsidian-web-browser/",
-    "marcusolsson/obsidian-projects",
     "Quorafind/Obsidian-Virtual-Hotkey-Keyboard",
     "Stardusten/ob-table-enhancer",
     "nothingislost/obsidian-query-control",
-    "cumany/obsidian-echarts",
     "zhaohongxuan/obsidian-weread-plugin",
     "scambier/obsidian-omnisearch",
     "obsidian-canzi/Enhanced-editing/",

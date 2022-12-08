@@ -1,0 +1,62 @@
+/*
+
+This CSS file will be included with your plugin, and
+available in the app when your plugin is enabled.
+
+If your plugin does not need CSS, delete this file.
+
+*/
+
+
+.search-leaf-item {
+	display: flex;
+	align-items: center;
+	padding: var(--size-4-2);
+	justify-content: space-between;
+	border-radius: var(--radius-s);
+}
+
+.search-leaf-item:hover {
+	background-color: var(--background-modifier-hover);
+}
+
+.search-leaf-item-text {
+	margin-left: var(--size-2-3);
+}
+
+.search-leaf-item-icon {
+	display: flex;
+}
+
+.tab-switcher-modal-content {
+	display: flex;
+	align-items: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+
+.search-leaf-item-path {
+	display: flex;
+	align-items: center;
+}
+
+.search-leaf-item-hotkey {
+	font-size: var(--font-ui-smaller);
+	opacity: 0.4;
+}
+
+.tab-switcher-modal .modal {
+	width: 360px;
+}
+
+.search-leaf-item-tips {
+	text-align: center;
+	margin-top: -6px;
+	margin-bottom: var(--size-2-2);
+	font-size: var(--font-ui-smaller);
+}
+
+.tab-switcher-modal .modal-close-button {
+	display: none;
+}

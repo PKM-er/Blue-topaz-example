@@ -1,7 +1,7 @@
 {
 	"id": "cmdr",
 	"name": "Commander",
-	"version": "0.3.0",
+	"version": "0.4.1",
 	"minAppVersion": "0.16.0",
 	"description": "Customize your workspace by adding commands everywhere, create Macros and supercharge your mobile toolbar.",
 	"author": "jsmorabito & phibr0",

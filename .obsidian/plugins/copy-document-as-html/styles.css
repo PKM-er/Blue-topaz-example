@@ -1,0 +1,13 @@
+.custom-css-setting {
+	height: 70%;
+}
+
+.custom-css-setting > * {
+	height: 100%;
+	width: 60em;
+}
+
+.custom-css-setting > * > textarea{
+	width:40em;
+	height: 100%;
+}

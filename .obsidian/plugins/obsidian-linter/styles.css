@@ -128,17 +128,16 @@
 /** Hide linter element css 
  * Based on https://zellwk.com/blog/hide-content-accessibly/
  */
-
 .linter-navigation-item:not(.linter-navigation-item-selected) > span:nth-child(2),
 .linter-visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
   clip-path: rect(0 0 0 0);
-  height: auto; /* new - was 1px */
-  margin: 0; /* new - was -1px */
+  height: auto;
+  margin: 0;
   overflow: hidden;
   padding: 0;
   position: absolute;
   width: 1px;
-  white-space: nowrap; /* 1 */
+  white-space: nowrap;
 }

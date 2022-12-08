@@ -42,11 +42,203 @@ function allWithProgress(promises, callback) {
 async function delay(milliseconds) {
   return new Promise((resolve) => setTimeout(resolve, milliseconds));
 }
+var DEFAULT_STYLESHEET = `body,input {
+  font-family: "Roboto","Helvetica Neue",Helvetica,Arial,sans-serif
+}
+
+code, kbd, pre {
+  font-family: "Roboto Mono", "Courier New", Courier, monospace;
+  background-color: #f5f5f5;
+}
+
+pre {
+  padding: 1em 0.5em;
+}
+
+table {
+  background: white;
+  border: 1px solid #666;
+  border-collapse: collapse;
+  padding: 0.5em;
+}
+
+table thead th,
+table tfoot th {
+  text-align: left;
+  background-color: #eaeaea;
+  color: black;
+}
+
+table th, table td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+}
+
+table td {
+  color: #222222;
+}
+
+.callout[data-callout="abstract"] .callout-title,
+.callout[data-callout="summary"] .callout-title,
+.callout[data-callout="tldr"]  .callout-title,
+.callout[data-callout="faq"] .callout-title,
+.callout[data-callout="info"] .callout-title,
+.callout[data-callout="help"] .callout-title {
+  background-color: #828ee7;
+}
+.callout[data-callout="tip"] .callout-title,
+.callout[data-callout="hint"] .callout-title,
+.callout[data-callout="important"] .callout-title {
+  background-color: #34bbe6;
+}
+.callout[data-callout="success"] .callout-title,
+.callout[data-callout="check"] .callout-title,
+.callout[data-callout="done"] .callout-title {
+  background-color: #a3e048;
+}
+.callout[data-callout="question"] .callout-title,
+.callout[data-callout="todo"] .callout-title {
+  background-color: #49da9a;
+}
+.callout[data-callout="caution"] .callout-title,
+.callout[data-callout="attention"] .callout-title {
+  background-color: #f7d038;
+}
+.callout[data-callout="warning"] .callout-title,
+.callout[data-callout="missing"] .callout-title,
+.callout[data-callout="bug"] .callout-title {
+  background-color: #eb7532;
+}
+.callout[data-callout="failure"] .callout-title,
+.callout[data-callout="fail"] .callout-title,
+.callout[data-callout="danger"] .callout-title,
+.callout[data-callout="error"] .callout-title {
+  background-color: #e6261f;
+}
+.callout[data-callout="example"] .callout-title {
+  background-color: #d23be7;
+}
+.callout[data-callout="quote"] .callout-title,
+.callout[data-callout="cite"] .callout-title {
+  background-color: #aaaaaa;
+}
+
+.callout-icon {
+  flex: 0 0 auto;
+  display: flex;
+  align-self: center;
+}
+
+svg.svg-icon {
+  height: 18px;
+  width: 18px;
+  stroke-width: 1.75px;
+}
+
+.callout {
+  overflow: hidden;
+  margin: 1em 0;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.callout-title {
+  padding: .5em;
+  display: flex;
+  gap: 8px;
+  font-size: inherit;
+  color: black;
+  line-height: 1.3em;
+}
+
+.callout-title-inner {
+  font-weight: bold;
+  color: black;
+}
+
+.callout-content {
+  overflow-x: auto;
+  padding: 0.25em .5em;
+  color: #222222;
+  background-color: white !important;
+}
+
+ul.contains-task-list {
+  padding-left: 0;
+  list-style: none;
+}
+
+ul.contains-task-list ul.contains-task-list {
+  padding-left: 2em;
+}
+
+ul.contains-task-list li input[type="checkbox"] {
+  margin-right: .5em;
+}
+
+.callout-table,
+.callout-table tr,
+.callout-table p {
+  width: 100%;
+  padding: 0;
+}
+
+.callout-table td {
+  width: 100%;
+  padding: 0 1em;
+}
+
+.callout-table p {
+  padding-bottom: 0.5em;
+}
+
+.source-table {
+  width: 100%;
+  background-color: #f5f5f5;
+}
+`;
+var MERMAID_STYLESHEET = `
+:root {
+  --default-font: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
+  --font-monospace: 'Source Code Pro', monospace;
+  --background-primary: #ffffff;
+  --background-modifier-border: #ddd;
+  --text-accent: #705dcf;
+  --text-accent-hover: #7a6ae6;
+  --text-normal: #2e3338;
+  --background-secondary: #f2f3f5;
+  --background-secondary-alt: #e3e5e8;
+  --text-muted: #888888;
+  --font-mermaid: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Microsoft YaHei Light", sans-serif;
+  --text-error: #E4374B;
+  --background-primary-alt: '#fafafa';
+  --background-accent: '';
+  --interactive-accent: hsl( 254,  80%, calc( 68% + 2.5%));
+  --background-modifier-error: #E4374B;
+}
+`;
+var htmlTemplate = (stylesheet, body, title) => `<html>
+<head>
+  <title>${title}</title>
+  <style>
+    ${MERMAID_STYLESHEET}
+    ${stylesheet}
+  </style>
+</head>
+<body>
+${body}
+</body>
+</html>`;
 var copyIsRunning = false;
 var ppIsProcessing = false;
 var ppLastBlockDate = Date.now();
+var documentRendererDefaults = {
+  convertSvgToBitmap: true,
+  removeFrontMatter: true,
+  formatAsTables: false
+};
 var DocumentRenderer = class {
-  constructor(view, app, options = { convertSvgToBitmap: true }) {
+  constructor(view, app, options = documentRendererDefaults) {
     this.view = view;
     this.app = app;
     this.options = options;
@@ -135,18 +327,67 @@ var DocumentRenderer = class {
   }
   async transformHTML(element) {
     const node = element.cloneNode(true);
-    node.style.paddingBottom = "0";
-    node.style.minHeight = "0";
+    node.removeAttribute("style");
+    if (this.options.removeFrontMatter) {
+      this.removeFrontMatter(node);
+    }
+    this.makeCheckboxesReadOnly(node);
     this.removeCollapseIndicators(node);
     this.removeButtons(node);
+    if (this.options.formatAsTables) {
+      this.transformCodeToTables(node);
+      this.transformCalloutsToTables(node);
+    }
     await this.embedImages(node);
+    await this.renderSvg(node);
     return node;
+  }
+  removeFrontMatter(node) {
+    node.querySelectorAll(".frontmatter, .frontmatter-container").forEach((node2) => node2.remove());
+  }
+  makeCheckboxesReadOnly(node) {
+    node.querySelectorAll('input[type="checkbox"]').forEach((node2) => node2.setAttribute("disabled", "disabled"));
   }
   removeCollapseIndicators(node) {
     node.querySelectorAll(".collapse-indicator").forEach((node2) => node2.remove());
   }
   removeButtons(node) {
     node.querySelectorAll("button").forEach((node2) => node2.remove());
+  }
+  transformCodeToTables(node) {
+    node.querySelectorAll("pre").forEach((node2) => {
+      const codeEl = node2.querySelector("code");
+      if (codeEl) {
+        const code = codeEl.innerHTML.replace(/\n*$/, "");
+        const table = node2.parentElement.createEl("table");
+        table.className = "source-table";
+        table.innerHTML = `<tr><td><pre>${code}</pre></td></tr>`;
+        node2.parentElement.replaceChild(table, node2);
+      }
+    });
+  }
+  transformCalloutsToTables(node) {
+    node.querySelectorAll(".callout").forEach((node2) => {
+      var _a;
+      const callout = node2.parentElement.createEl("table");
+      callout.addClass("callout-table", "callout");
+      callout.setAttribute("data-callout", (_a = node2.getAttribute("data-callout")) != null ? _a : "quote");
+      const headRow = callout.createEl("tr");
+      const headColumn = headRow.createEl("td");
+      headColumn.addClass("callout-title");
+      const title = node2.querySelector(".callout-title-inner");
+      if (title) {
+        const span = headColumn.createEl("span");
+        span.innerHTML = title.innerHTML;
+      }
+      const originalContent = node2.querySelector(".callout-content");
+      if (originalContent) {
+        const row = callout.createEl("tr");
+        const column = row.createEl("td");
+        column.innerHTML = originalContent.innerHTML;
+      }
+      node2.remove();
+    });
   }
   async embedImages(node) {
     const promises = [];
@@ -160,6 +401,30 @@ var DocumentRenderer = class {
       }
     });
     this.modal.progress.max = 100;
+    await allWithProgress(promises, (percentCompleted) => this.modal.progress.value = percentCompleted);
+    return node;
+  }
+  async renderSvg(node) {
+    const xmlSerializer = new XMLSerializer();
+    if (!this.options.convertSvgToBitmap) {
+      return node;
+    }
+    const promises = [];
+    const replaceSvg = async (svg) => {
+      let style = svg.querySelector("style") || svg.appendChild(document.createElement("style"));
+      style.innerHTML += MERMAID_STYLESHEET;
+      const svgAsString = xmlSerializer.serializeToString(svg);
+      const svgData = `data:image/svg+xml;base64,` + Buffer.from(svgAsString).toString("base64");
+      const dataUri = await this.imageToDataUri(svgData);
+      const img = svg.createEl("img");
+      img.style.cssText = svg.style.cssText;
+      img.src = dataUri;
+      svg.parentElement.replaceChild(img, svg);
+    };
+    node.querySelectorAll("svg").forEach((svg) => {
+      promises.push(replaceSvg(svg));
+    });
+    this.modal.progress.max = 0;
     await allWithProgress(promises, (percentCompleted) => this.modal.progress.value = percentCompleted);
     return node;
   }
@@ -197,6 +462,10 @@ var DocumentRenderer = class {
           resolve(url);
         }
         canvas.remove();
+      };
+      image.onerror = (err) => {
+        console.log("could not load data uri");
+        resolve(url);
       };
     });
     image.src = url;
@@ -247,14 +516,42 @@ var CopyDocumentAsHTMLSettingsTab = class extends import_obsidian.PluginSettingT
     const { containerEl } = this;
     containerEl.empty();
     containerEl.createEl("h2", { text: "Copy document as HTML - Settings" });
-    new import_obsidian.Setting(containerEl).setName("Convert SVG files to bitmap").setDesc("If checked SVG files are converted to bitmap. This makes the copied documents heavier but improves compatibility (eg. with gmail).").addToggle((toggle) => toggle.setValue(this.plugin.settings.convertSvgToBitmap).onChange(async (value) => {
+    new import_obsidian.Setting(containerEl).setName("Remove front-matter sections").setDesc("If checked, the YAML content between --- lines at the front of the document are removed. If you don't know what this means, leave it on.").addToggle((toggle) => toggle.setValue(this.plugin.settings.removeFrontMatter).onChange(async (value) => {
+      this.plugin.settings.removeFrontMatter = value;
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian.Setting(containerEl).setName("Convert SVG files to bitmap").setDesc("If checked, SVG files are converted to bitmap. This makes the copied documents heavier but improves compatibility (eg. with gmail).").addToggle((toggle) => toggle.setValue(this.plugin.settings.convertSvgToBitmap).onChange(async (value) => {
       this.plugin.settings.convertSvgToBitmap = value;
       await this.plugin.saveSettings();
     }));
+    new import_obsidian.Setting(containerEl).setName("Render some elements as tables").setDesc("If checked code blocks and callouts are rendered as tables, which makes pasting into Google docs somewhat prettier.").addToggle((toggle) => toggle.setValue(this.plugin.settings.formatAsTables).onChange(async (value) => {
+      this.plugin.settings.formatAsTables = value;
+      await this.plugin.saveSettings();
+    }));
+    const useCustomStylesheetSetting = new import_obsidian.Setting(containerEl).setName("Provide a custom stylesheet").setDesc("The default stylesheet provides minimalistic theming. You may want to customize it for better looks.");
+    const customStylesheetSetting = new import_obsidian.Setting(containerEl).setName("Custom stylesheet").setDesc("Disabling the setting above will replace the custom stylesheet with the default.").setClass("custom-css-setting").addTextArea((textArea) => textArea.setValue(this.plugin.settings.styleSheet).onChange(async (value) => {
+      this.plugin.settings.styleSheet = value;
+      await this.plugin.saveSettings();
+    }));
+    useCustomStylesheetSetting.addToggle((toggle) => {
+      customStylesheetSetting.settingEl.toggle(this.plugin.settings.useCustomStylesheet);
+      toggle.setValue(this.plugin.settings.useCustomStylesheet).onChange(async (value) => {
+        this.plugin.settings.useCustomStylesheet = value;
+        customStylesheetSetting.settingEl.toggle(this.plugin.settings.useCustomStylesheet);
+        if (!value) {
+          this.plugin.settings.styleSheet = DEFAULT_STYLESHEET;
+        }
+        await this.plugin.saveSettings();
+      });
+    });
   }
 };
 var DEFAULT_SETTINGS = {
-  convertSvgToBitmap: true
+  removeFrontMatter: true,
+  convertSvgToBitmap: true,
+  useCustomStylesheet: false,
+  formatAsTables: false,
+  styleSheet: DEFAULT_STYLESHEET
 };
 var CopyDocumentAsHTMLPlugin = class extends import_obsidian.Plugin {
   async onload() {
@@ -288,26 +585,31 @@ var CopyDocumentAsHTMLPlugin = class extends import_obsidian.Plugin {
     });
     afterAllPostProcessor.sortOrder = 1e4;
     this.addSettingTab(new CopyDocumentAsHTMLSettingsTab(this.app, this));
+    this.setupEditorMenuEntry();
   }
   async loadSettings() {
     this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+    if (!this.settings.useCustomStylesheet) {
+      this.settings.styleSheet = DEFAULT_STYLESHEET;
+    }
   }
   async saveSettings() {
     await this.saveData(this.settings);
   }
   async doCopy(activeView) {
     console.log(`Copying "${activeView.file.path}" to clipboard...`);
-    const copier = new DocumentRenderer(activeView, this.app, { convertSvgToBitmap: this.settings.convertSvgToBitmap });
+    const copier = new DocumentRenderer(activeView, this.app, this.settings);
     try {
       copyIsRunning = true;
       ppLastBlockDate = Date.now();
       ppIsProcessing = true;
-      const document2 = await copier.renderDocument();
+      const htmlBody = await copier.renderDocument();
+      const htmlDocument = htmlTemplate(this.settings.styleSheet, htmlBody.outerHTML, activeView.file.name);
       const data = new ClipboardItem({
-        "text/html": new Blob([document2.outerHTML], {
+        "text/html": new Blob([htmlDocument], {
           type: ["text/html", "text/plain"]
         }),
-        "text/plain": new Blob([document2.outerHTML], {
+        "text/plain": new Blob([htmlDocument], {
           type: "text/plain"
         })
       });
@@ -320,5 +622,14 @@ var CopyDocumentAsHTMLPlugin = class extends import_obsidian.Plugin {
     } finally {
       copyIsRunning = false;
     }
+  }
+  setupEditorMenuEntry() {
+    this.registerEvent(this.app.workspace.on("file-menu", (menu, file, view) => {
+      menu.addItem((item) => {
+        item.setTitle("Copy as HTML").setIcon("clipboard-copy").onClick(async () => {
+          this.app.commands.executeCommandById("copy-document-as-html:copy-as-html");
+        });
+      });
+    }));
   }
 };

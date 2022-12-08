@@ -3,14 +3,15 @@ aliases: Demo Note
 tags: 
 cssclass:
 source:
-created: 2022-10-25 11:10:42
-updated: 2022-10-25 11:35:25
+created: "2022-10-25 10:35"
+updated: "2022-12-07 21:02"
 ---
 
 # Demo Note
  
  #bluetopaz #demo  #tag1 #tag2 #tag3 #tag4 #tag5 #tag6
 ## Column and md syntax 
+
 ```ad-flex
 > [!example]  In the notes, it is unavoidable to some emphasis ways, such as bold, highlighting, etc. 
 > *italic*
@@ -55,26 +56,27 @@ _Type any words here to replace these text between the first * and the last * . 
 
 
 ## Table & Highlight Text & Callout
->[!infobox|noicon|right 40%]+ ####  **Karl Marx**
+>[!infobox|noicon|right 40%]+ #### **Karl Marx**
 >
 ![Karl Marx 001.jpg|100](https://bkimg.cdn.bcebos.com/pic/a044ad345982b2b795c22d8438adcbef76099b14?x-bce-process=image/resize,m_lfit,w_440,limit_1/format,f_auto)<center><small> 5 May 1818 – 14 March 1883</small></center>
 >
-|     What you got     |         What you typed         |
-|:--------------------:|:------------------------------:|
-|    ==your words==    |       \=\=your words\=\=       |
-|   *==your words==*   |     \*\=\=your words\=\=\*     |
-|  ==**your words**==  |   \=\=\*\*your words\*\*\=\=   |
-| ==***your words***== | \=\=\*\*\*your words\*\*\*\=\= |
-|  **==your words==**  |   \*\*\=\=your words\=\=\*\*   |
-| ***==your words==*** | \*\*\*\=\=your words\=\=\*\*\* |
+|         What you typed         |     What you got     |
+|:------------------------------:|:--------------------:|
+|       \=\=your words\=\=       |    ==your words==    |
+|     \*\=\=your words\=\=\*     |   *==your words==*   |
+|   \=\=\*\*your words\*\*\=\=   |  ==**your words**==  |
+| \=\=\*\*\*your words\*\*\*\=\= | ==***your words***== |
+|   \*\*\=\=your words\=\=\*\*   |  **==your words==**  |
+| \*\*\*\=\=your words\=\=\*\*\* | ***==your words==*** |
 
 ### Embed images
 You can embed markdown images in your notes. Use the `![title](XX.jpg)` syntax like so:
 ![Engelbart.jpg|190](https://images.computerhistory.org/tdih/30january-1.jpg?w=600)[img-caption:: Figure 1. Doug Engelbart]
+Doug Engelbart was a American computer scientist and inventor, best known for his work on the development of the computer mouse and the development of hypertext and networked computers. 
 
 ---
  #bluetopaz #demo  #tag1 #tag2 #tag3 #tag4 #tag5 #tag6
- _italic_  **bolded**  **_bolded italic_**
+ _italic_ **bolded** **_bolded italic_**
 
 > [!blank|left 40%]
 > 
@@ -127,14 +129,20 @@ You can embed markdown images in your notes. Use the `![title](XX.jpg)` syntax
 ### Title of Images
 ![[obsidian_image.png#right|Figure 2. No, it is not an egg!|140]]
 Put `#centre` / `#center`,`#right` or `#left` after `ImageFileName`, like `![[xxx.png#position|captions|size]]`
-Egg or not? Egg? Yes! No! Egg? No! Yes! Egg? Yes, It is an egg! No, it is NOT an egg! Egg? Yes, It is an egg! It is a GOOD egg! No, it is NOT an egg! It is 😒😒😒！Egg or not? Egg? Yes! No! Egg? No! Yes! Egg? Yes, It is an egg! No, it is NOT an egg! Egg? Yes, It is an egg! It is a GOOD egg! No, it is NOT an egg! It is 😒😒😒！Egg or not? Egg? Yes! No! Egg? No! Yes! Egg? Yes, It is an egg! No, it is NOT an egg! Egg? Yes, It is an egg! It is a GOOD egg! No, it is NOT an egg! It is 😒😒😒！Egg or not? Egg? Yes! No! Egg? No! Yes! Egg? Yes, It is an egg! No, it is NOT an egg! Egg? Yes, It is an egg! It is a GOOD egg! No, it is NOT an egg! It is 😒😒😒！
+Why was the obsidian egg in the forest?
+Because it was a black-shelled egg-stract!
+Why was the egg sad?
+Because it was feeling shell-shocked.
+But then it saw a piece of obsidian and felt better, because it knew that at least it wasn't as hard as that.
+
 It shows below! You may need to maximum widen your screen to see what is looks like.
-![[obsidian_image.png#inl|Figure 1. This is an egg!|170]]![[obsidian_image.png#inl|Figure 2. This is NOT an egg!|100]]![[obsidian_image.png#inl|Figure 3. Is this an egg?|130]]![[obsidian_image.png#inl|Figure 4.  Obsidian.|100]]
+![[obsidian_image.png#inl|Figure 1. This is an egg!|170]]![[obsidian_image.png#inl|Figure 2. This is NOT an egg!|100]]![[obsidian_image.png#inl|Figure 3. Is this an egg?|130]]![[obsidian_image.png#inl|Figure 4. Obsidian.|100]]
 
 ---
 
 
 ## Pseudo-Kanban & Checkbox
+
 ```ad-kanban
 - [ ] Unchecked `- [ ]`
 - [x] Checked `- [x]`
@@ -193,3 +201,27 @@ It shows below! You may need to maximum widen your screen to see what is looks l
 >Right column contents again
 >More contents in right column
 >for more completed **markdown** syntax support example, refer below example in Chinese
+
+### Codebox 
+```java TI:"测试"
+public class HelloWorld {
+  public static void main(String[] args) {
+    System.out.println("Hello, world!");
+  }
+}
+```
+
+### Footnote 
+要在您的项目中配置 stylelint，您需要在项目根目录下创建一个名为 `.stylelintrc` 的文件。此文件可以包含您的项目的 stylelint 规则[^1]。要了解更多信息，请访问 [https://stylelint.io/。](https://stylelint.io/%E3%80%82)
+### Math
+$$
+\begin{aligned}
+\frac{\partial f}{\partial x} =0 \\
+\frac{\partial f}{\partial y} =0
+\end{aligned}
+$$
+
+[^1]: stylelint 是一种用于检查 CSS 代码风格的工具。它可以帮助开发人员检查 CSS 代码是否符合特定的代码规范，并提供指导意见来改进代码质量。stylelint 可以通过命令行或插件集成到常用的文本编辑器中，以便在写代码时实时检查代码质量。
+
+
+

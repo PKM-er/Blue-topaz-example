@@ -32,5 +32,6 @@
   ],
   "trashOption": "system",
   "vimMode": false,
-  "showInlineTitle": false
+  "showInlineTitle": false,
+  "mobilePullAction": "command-palette:open"
 }

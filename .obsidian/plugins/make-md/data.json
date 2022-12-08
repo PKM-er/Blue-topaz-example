@@ -1,0 +1,2384 @@
+{
+  "filePreviewOnHover": false,
+  "markSans": true,
+  "makeMenuPlaceholder": true,
+  "mobileMakeBar": true,
+  "inlineStyler": true,
+  "inlineStylerColors": true,
+  "editorFlow": true,
+  "editorFlowStyle": "seamless",
+  "spacesEnabled": true,
+  "spacesPerformance": false,
+  "spacesStickers": true,
+  "spacesDisablePatch": false,
+  "sidebarRibbon": false,
+  "sidebarTabs": true,
+  "deleteFileOption": "trash",
+  "folderRank": {
+    "node": "",
+    "children": [
+      {
+        "node": "00-Tips",
+        "children": [
+          {
+            "node": "00-Tips.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Obsidian 库中库玩法.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "fastgithub 加速访问Ob社区.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "如何在dataview查询使用本地图片.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Obsidian 一键开启悬浮.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "如何在Obsidian中添加图书卡片.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "如何在Obsidian中添加电影卡片.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "如何导出dataview表格 或者普通表格成csv格式？.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "如何快速停用或者启动插件？.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "如何快速生成MOC(文件夹的文件目录列表)？.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "如何提高Obsidian的启动速度？.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "插件介绍",
+            "children": [
+              {
+                "node": "booknote插件-更好的pdf office文档阅读和标注神器.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "floating toc.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "Obsidian Editing Toolbar Plugin.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "Obsidian 插件之 Obsidian Projects .html",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "插件介绍.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "表格增强插件.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "示例库移植说明",
+            "children": [
+              {
+                "node": "如何全功能移植Blue Topaz 示例库到自己的库中.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "如何在OB里添加多彩时钟和音乐播放器.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "如何把示例库移植到你现有的库中？.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "如何移植主页的各个元素？.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "示例库移植说明.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "配色分享monokai pro 配色.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "魔方配色设置说明.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "🥑Blue Topaz Themes Tips.md",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "10-Help",
+        "children": [
+          {
+            "node": "10-Help.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "css基础教学.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "css基础教学.pdf",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Dataview系列教程",
+            "children": [
+              {
+                "node": "Dataview入门库",
+                "children": [],
+                "isFolder": true
+              },
+              {
+                "node": "Dataview系列教程.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "入门到退坑系列",
+                "children": [
+                  {
+                    "node": "All Files that only Link to MOC tagged files.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Cross File TOC.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Current File Link Siblings.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Custom Sorting Index.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Dataview Learnings.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 01.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 02.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 03.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 04.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 05.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 06.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 07.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "DataviewJS - 从入门到退坑 番外.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Embed All From Source.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Embeds in File.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Fetch Upcoming Games using rawg.io.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "First Header List.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Get current location.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Global tag list.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Global Tags and Tagged Files.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Notes by Time.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Recent Notes.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Reference Arbitrary file relatively with File URL.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Section Pseudo-Embed.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Tag Context.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Tags by numeric order.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Tags by Top Level Directories.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Today in the past.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Today's Notes.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "TODOs with text-based Countdown.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "入门到退坑系列.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "常用Dataview片段.md",
+                    "children": [],
+                    "isFolder": false
+                  }
+                ],
+                "isFolder": true
+              },
+              {
+                "node": "🔑Dataview教程.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "Johnny学OB 资料汇总.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Lillian Who Obsidian新手入门教程.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "MarkDown教程 Obsidian版 2022.4.22.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Mermaid从入门到入土.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Obsidian 快捷键一览表.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "【Html】Blue topaz--style setting 插件设置内容 简介.html",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "【md】Blue topaz--style setting 插件设置内容 简介.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "回归 Obsidian 的纯与真，写给普通人的入门指南.html",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "每日一句接口说明.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "获取插件列表.md",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "20-Diary",
+        "children": [
+          {
+            "node": "20-Diary.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2021-12-30.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2021年12月规划.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-01-09.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-01-10.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-01-25.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-04-07.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-04-08.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-04-13.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-04-16.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-04-18.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-01.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-06.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-09.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-10.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-13.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-17.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-19.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-08-22.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-09-08.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-09-15.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-09-20.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-09-23.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-10-09.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-10-11.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-10-14.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-10-24.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-11-03.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-11-04.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-W10.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "delete.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "memos模板.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "query.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "任务看板.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "当月笔记串联.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "日记统计.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "案例进展情况.md",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "30-Reading",
+        "children": [
+          {
+            "node": "30-Reading.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "⭐️",
+            "children": [
+              {
+                "node": "扎克·施奈德版正义联盟 Zack Snyder's Justice League.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "《Fundamentals of Computer Graphics 5th Edition》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《Rust for Rustaceans_ Idiomatic Programming for Experienced Developers》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《世界是如何思考的》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《从零开始的女性主义》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《大话数据结构》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《如何阅读尼采》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《微习惯》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《熊会滑雪吗？》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《理解海德格尔》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《知识生产与传播》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《笔醒山河》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《苏联解体亲历记》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "《镰刀与城市》.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "三体（全集）.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "你好，李焕英.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "假面骑士：超越世代 仮面ライダー ビヨンド・ジェネレーションズ.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "困在时间里的父亲 The Father.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "孤味.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "心灵奇旅 Soul.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "悬崖之上.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "新·福音战士剧场版：终 シン・エヴァンゲリオン劇場版.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "星际穿越 Interstellar.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "白蛇传·情.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "芬奇 Finch.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "花束般的恋爱 花束みたいな恋をした.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "认知觉醒：开启自我改变的原动力.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "让子弹飞（本地封面图片测试）.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "雄狮少年.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "霸王别姬.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "🎶影音数据库.md",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "40-Booknote",
+        "children": [
+          {
+            "node": "40-Booknote.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "books-data",
+            "children": [
+              {
+                "node": "books-data.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "77-Example",
+        "children": [
+          {
+            "node": "50-Inbox",
+            "children": [
+              {
+                "node": "50-Inbox.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "Logs",
+                "children": [],
+                "isFolder": true
+              },
+              {
+                "node": "Other",
+                "children": [],
+                "isFolder": true
+              },
+              {
+                "node": "People",
+                "children": [
+                  {
+                    "node": "李四.md",
+                    "children": [],
+                    "isFolder": false
+                  }
+                ],
+                "isFolder": true
+              },
+              {
+                "node": "Study",
+                "children": [],
+                "isFolder": true
+              },
+              {
+                "node": "Website",
+                "children": [
+                  {
+                    "node": "carbon 代码高亮分享.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Cubox.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "vika.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "Website.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "历史上的今天.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "文本处理-textce.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "正则表达式验证.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "表格转换-tableconvert.md",
+                    "children": [],
+                    "isFolder": false
+                  }
+                ],
+                "isFolder": true
+              },
+              {
+                "node": "Work",
+                "children": [],
+                "isFolder": true
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "77-Example.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "callout 便签效果.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Callout环绕布局、缩进效果示例.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "example database.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "MD表格悬浮编辑测试.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "obsidian Roundup Newsletter.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "ob提示框(callout)样式展示.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "timeline callout效果.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "◾ Cssclass声明样式举例",
+            "children": [
+              {
+                "node": "code-wrap【代码块自动换行】.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "Image-grid【图片自适应】.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "inline-list【行内列表】.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "◾ Cssclass声明样式举例.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "伪看板-yaml声明.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "全宽显示-表格测试.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "四象限表格.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "图书阅读清单(dv).md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "图书阅读清单-状态控制(dvjs).md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "预览隐藏frontmatter.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "首行缩进--以2022政府工作报告为例.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "◾ Dataview相关实例",
+            "children": [
+              {
+                "node": "dataview 生成关系图-可视化.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "dataview 生成关系图.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "dataview实现任务查询（替代tasks插件）.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tasks任务以日历视图汇总.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "◾ Dataview相关实例.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "列出包含摘要和缩略图的笔记列表.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "列出含有指定关键词的出链.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "列出已链接但未创建的笔记和孤岛笔记.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "卡片视图 展示笔记.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "可以编辑的dv表格.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "带进度条的任务列表.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "当前页面的隐藏dv字段.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "当月笔记统计并显示.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "微信读书清单.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "按小标题汇总内容.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "插件信息展示.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "文件夹所有标签.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "文章预览模式下自动添加标题.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "电影看板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "电影观看清单-状态控制（dvjs）.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "电影观看清单（dv）.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "索引指定任务标记的任务.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "统计yaml 字段出现的次数.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "统计已安装插件信息.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "获取任务优先级并进行颜色标注.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "获取当前文件夹下的文件并表格展示.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "获取当前文章的小标题内容的关键词并形成表格.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "获取当天过生日的人.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "获取指定标签的文件内容并形成表格.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "获取最近打开的文件列表.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "通过metadata-menu 创建可修改的dataview.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "通过下拉框检索文件示例.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "通过按钮快速筛选笔记.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "随机展示笔记.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "随机显示文档中的图片和文字.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "项目追踪（完成的字数和任务）.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "◾ Echarts",
+            "children": [
+              {
+                "node": "chinese_stopwords.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echart-获取当前文章热词.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts 示例教程.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-drawing.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-treemap.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-扇形图.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-日历.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-柱形图.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-热力图.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-笔记动态显示-分布.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-西游记人物关系.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "echarts-词云.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "◾ Echarts.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "◾ TableExample",
+            "children": [
+              {
+                "node": "01 - Default Table.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "02 - PurpleRed.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "03 - FlatBlue.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "04 - Latex like.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "05 - White red rounded.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "05 - White red.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "06 - Yellow cab.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "07 - Center Table.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "◾ TableExample.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "以橱窗的方式浏览文件夹下的图片.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "任务卡片-dataview 任务查询举例.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "伪看板-ad,callout声明.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "全宽表格示例.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "分栏效果示例.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "利用动态高亮插件实现多彩文本块.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "单独定制笔记背景.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "各类列表和彩虹大纲线.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "各级标题示例.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "图形化展示笔记.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "图片横排布局以及添加标题.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "多彩高亮（三种语法）.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "对话形式笔记.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "提取指定标题下的笔记.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "最近天气查询.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "涂黑和挖空效果（三种语法）.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "真Kanban.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "表格自定义样式.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "进度条样式片段.md",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "88-Template",
+        "children": [
+          {
+            "node": "88-Template.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "button.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Calendar2021-2022.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "chinese_stopwords.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "EnablepluginList",
+            "children": [
+              {
+                "node": "Edit+.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "EnablepluginList.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "Required+.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "Table+.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "View+.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "FastStart-GenerateListOfInstalledPlugins.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "FastStart-Plugins-LongDelay.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "FastStart-Plugins-ShortDelay.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "FastStart-Plugins-simple.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "FastStart-StartupScript.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "home.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "ReactJS",
+            "children": [
+              {
+                "node": "ColorfulClock.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "moc.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "ReactJS.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "react_buttons.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "react_cat.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "react_music.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "react_weather.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "slidegallery.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "返回当前活动笔记的所有反向链接.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "script",
+            "children": [
+              {
+                "node": "bookfromdouban.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "changeSticky.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "colorclock.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "dv_getWordCloud.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "dv_getwordcoutView.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "dv_project_tracking.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "dv_weatherSvg.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "dv_weatherView.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "fetchhomepage.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "moviefromdouban.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "movies.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "notesList",
+                "children": [
+                  {
+                    "node": "README.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "view.css",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "view.js",
+                    "children": [],
+                    "isFolder": false
+                  }
+                ],
+                "isFolder": true
+              },
+              {
+                "node": "notice.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "openOb.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "refreshhomepage.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "SwitchViews.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "SwitcLightdark.js",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tasksCalendar",
+                "children": [
+                  {
+                    "node": "README.md",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "view.css",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "view.js",
+                    "children": [],
+                    "isFolder": false
+                  }
+                ],
+                "isFolder": true
+              },
+              {
+                "node": "template",
+                "children": [
+                  {
+                    "node": "getrandomImage.js",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "getTitleSnippet.js",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "getweather.js",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "taskprogress.js",
+                    "children": [],
+                    "isFolder": false
+                  },
+                  {
+                    "node": "template.md",
+                    "children": [],
+                    "isFolder": false
+                  }
+                ],
+                "isFolder": true
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "tp",
+            "children": [
+              {
+                "node": "tp-book-callout.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-movie-douban.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-movie.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-人物模板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-插件启停模板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-日记模板-心情.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-日记模板-日历.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-流水账模板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-笔记分类模板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-笔记收集箱.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-自动选择模板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-通用模板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp-默认笔记模板.md",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "tp_foldermoc-Include-subfolders.md",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "便签.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "常用工具.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "常用工具react.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "彩色时钟.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "打开文档的第一个外链接.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "示例库内置的插件列表.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "🎵Music.md",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "98-字体--已安装过的文件夹可以直接删",
+        "children": [
+          {
+            "node": "JetBrainsMono-Regular.ttf",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "LXGWWenKai-Light.ttf",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "LXGWWenKai-Regular.ttf",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "LXGWWenKaiScreenR.ttf",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "说明.txt",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "99-Attachment",
+        "children": [
+          {
+            "node": "0273426E.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "0E8D6A6B.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "11.excalidraw.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "202111162123352.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-06-09_234048.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-06-09_235013.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-06-09_235926.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "2022-06-10_000838.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "8P9UXT(}@5HDOD_R1DV3U[J.jpg",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "99-Attachment.md",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "banner",
+            "children": [
+              {
+                "node": "33.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "400125707渐变抽象背景.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "400137665渐变旋转.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "400141668创意抽象背景.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "400143108渐变抽象背景.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "400153405光效渐变抽象背景.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "400161531创意渐变场景.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "400169672渐变banner背景.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "40064.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "58b8a8d6e5e24648bc40e0c3180bfb37.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "66.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "baner0.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "baner6.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "banner2.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "banner3.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "banner4.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "banner5.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "book.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "thumb-1920-1200477.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "todaybing-hd-VmXsMGUz-2016-02-25.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "true.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "v2-4b004937cb577df39e424172ee476d1b_r.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "wallhaven-0po71e.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "wallhaven-kw96x7.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "wallhaven-zx89ew.jpg",
+                "children": [],
+                "isFolder": false
+              },
+              {
+                "node": "蓝山背景.jpg",
+                "children": [],
+                "isFolder": false
+              }
+            ],
+            "isFolder": true
+          },
+          {
+            "node": "BIO9D_NN80~E27SQ2TGEQDA.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "cat.gif",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "cmenu-demo.gif",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "GEDT@XSPLU13)O2LL`[5)MM.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "memos.url",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "obsidian_image.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211215202628.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211227101411.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211227101950.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211227102847.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211227102855.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211227102956.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211227103037.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211229171215.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20211231223826.jpg",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220104230309.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted Image 20220109230243.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220119151051.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220119152758.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220126210309.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220127235903.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220128114026.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220210105008.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220214164438.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220309145757.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220315144725.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220315145116.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220325111426.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220331161219.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220401112454.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220408145420.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220421112944.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220424110353.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220424110626.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220424111837.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220424112941.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220429154332.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220518090553.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220518220735.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220523110336.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220531101243.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20220608162248.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20221024173512.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20221024173558.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20221024173649.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20221024173836.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20221024174100.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20221103184848.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "Pasted image 20221103192124.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "YX2S5G0%`W6B~NOTIV_0X~D.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "}FP`%@6]P61LO)Y$`C11HBP.png",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "表格编辑.gif",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "让子弹飞海报.jpg",
+            "children": [],
+            "isFolder": false
+          },
+          {
+            "node": "豆瓣添加图书.gif",
+            "children": [],
+            "isFolder": false
+          }
+        ],
+        "isFolder": true
+      },
+      {
+        "node": "cedict_ts.u8",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "Changlog.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "Demo Note.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "README.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "tyest.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "主题截图分享.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "从这开始.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "20221121134056.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "20221121134102.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "test.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "书签.md",
+        "children": [],
+        "isFolder": false
+      },
+      {
+        "node": "用户体验与可用性测试 (豆瓣).md",
+        "children": [],
+        "isFolder": false
+      }
+    ],
+    "isFolder": true
+  },
+  "openFolders": [
+    "//00-Tips"
+  ],
+  "fileIcons": [],
+  "spaces": [
+    {
+      "section": "test",
+      "children": [
+        "20221121134102.md"
+      ],
+      "collapsed": false
+    }
+  ],
+  "vaultCollapsed": false,
+  "menuTriggerChar": "/",
+  "emojiTriggerChar": ":"
+}

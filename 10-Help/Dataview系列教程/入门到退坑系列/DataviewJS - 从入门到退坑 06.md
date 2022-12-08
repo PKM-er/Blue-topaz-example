@@ -1,7 +1,7 @@
 ---
 source: "https://publish.obsidian.md/napkinium/Ideas/Dataview/Learnings/Dataview+Learnings"
 ---
-````dialogue
+````chat
 left: 😯
 right: 🤣
 titleMode: all
@@ -22,16 +22,7 @@ titleMode: all
 
 < 不过确实是不好使。  
 > 怎么个不好使法？  
-< 我把我写的码给你看看。
-
-```
-dv.table(
-  ["File", "Score", "Author", "Status"],
-  dv.pages('"Test"').filter(p => (Date.now() - p.file.cday) < 10).sort(p => p.status, 'desc').sort(p => p.score, 'desc')
-  .map(p => [p.file.link, p.score, p.author, p.status])
-)
-```
-
+< 我把我写的码给你看看。<br>`dv.table(["File", "Score", "Author", "Status"],dv.pages('"Test"').filter(p => (Date.now() - p.file.cday) < 10).sort(p => p.status, 'desc').sort(p => p.score, 'desc').map(p => [p.file.link, p.score, p.author, p.status]))`
 > 这个……你是想要筛掉创建在十天或者以前的文件。  
 < 对吧，你能看明白吧？那为什么跑不起来呢？哦也不是跑不起来，而是根本什么都没剩下。  
 > 能看明白和实现得没问题还是有一定区别的。你觉得问题出在哪里？  

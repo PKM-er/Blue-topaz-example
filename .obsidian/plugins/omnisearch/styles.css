@@ -30,6 +30,11 @@
 .omnisearch-highlight {
 }
 
+.omnisearch-default-highlight {
+  color: var(--text-normal);
+  background-color: var(--text-highlight-bg);
+}
+
 .omnisearch-input-container {
   display: flex;
   flex-direction: row;

@@ -1,36 +1,35 @@
 :root {
     --opacity: 0.6;
-    --line-height: 1.8;
-    --line-height-minimal: 1.6;
+    --line-height: 1.6;
 }
 
-div.chat-view-bubble-mode-default>h2.chat-view-header,
-div.chat-view-bubble-mode-default>h3.chat-view-header,
-div.chat-view-bubble-mode-default>h4.chat-view-header,
-div.chat-view-bubble-mode-default>h5.chat-view-header,
-div.chat-view-bubble-mode-default>h6.chat-view-header {
+div.chat-view-bubble-mode-default > h2.chat-view-header,
+div.chat-view-bubble-mode-default > h3.chat-view-header,
+div.chat-view-bubble-mode-default > h4.chat-view-header,
+div.chat-view-bubble-mode-default > h5.chat-view-header,
+div.chat-view-bubble-mode-default > h6.chat-view-header {
     margin: 0;
     margin-bottom: 8px;
 }
 
-div.chat-view-bubble-mode-minimal>h2.chat-view-header,
-div.chat-view-bubble-mode-minimal>h3.chat-view-header,
-div.chat-view-bubble-mode-minimal>h4.chat-view-header,
-div.chat-view-bubble-mode-minimal>h5.chat-view-header,
-div.chat-view-bubble-mode-minimal>h6.chat-view-header {
+div.chat-view-bubble-mode-minimal > h2.chat-view-header,
+div.chat-view-bubble-mode-minimal > h3.chat-view-header,
+div.chat-view-bubble-mode-minimal > h4.chat-view-header,
+div.chat-view-bubble-mode-minimal > h5.chat-view-header,
+div.chat-view-bubble-mode-minimal > h6.chat-view-header {
     margin: 0;
     margin-bottom: 4px;
 }
 
-div.chat-view-bubble-mode-default>p.chat-view-message {
+div.chat-view-bubble-mode-default > p.chat-view-message {
     margin: 0;
-    margin-bottom: 2px;
+    margin-bottom: 4px;
     line-height: var(--line-height);
 }
 
-div.chat-view-bubble-mode-minimal>p.chat-view-message {
+div.chat-view-bubble-mode-minimal > p.chat-view-message {
     margin: 0;
-    line-height: var(--line-height-minimal);
+    line-height: var(--line-height);
 }
 
 sub.chat-view-subtext {
@@ -147,31 +146,31 @@ div.delimiter div.dot {
     opacity: var(--opacity);
 }
 
-div.chat-view-blue>.chat-view-header {
+div.chat-view-blue > .chat-view-header {
     color: #08F;
 }
 
-div.chat-view-green>.chat-view-header {
+div.chat-view-green > .chat-view-header {
     color: #2B5;
 }
 
-div.chat-view-yellow>.chat-view-header {
+div.chat-view-yellow > .chat-view-header {
     color: #ED0;
 }
 
-div.chat-view-orange>.chat-view-header {
+div.chat-view-orange > .chat-view-header {
     color: #F80;
 }
 
-div.chat-view-red>.chat-view-header {
+div.chat-view-red > .chat-view-header {
     color: #F33;
 }
 
-div.chat-view-purple>.chat-view-header {
+div.chat-view-purple > .chat-view-header {
     color: #B2C;
 }
 
-div.chat-view-grey>.chat-view-header {
+div.chat-view-grey > .chat-view-header {
     color: #999;
 }
 
@@ -197,4 +196,9 @@ div.chat-view-slate .chat-view-header {
 
 div.chat-view-wood .chat-view-header {
     color: #EE6a44;
+}
+
+img {
+    margin-top: 8px;
+    margin-bottom: 2px;
 }

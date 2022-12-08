@@ -207,6 +207,19 @@
     padding-right: 0.5rem;
 }
 
+.another-quick-switcher__item__metas {
+    padding-top: 0.5rem
+}
+.another-quick-switcher__item__meta {
+    font-size: 0.75em;
+    display: inline-block;
+}
+.another-quick-switcher__item__meta__front_matter {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 5px;
+}
+
 .another-quick-switcher__item__descriptions {
     padding-top: 0.5rem
 }
@@ -251,6 +264,10 @@
     opacity: 0.5;
 }
 
+.another-quick-switcher__settings__exclude_front_matter_keys {
+    height: 120px;
+    width: 300px;
+}
 .another-quick-switcher__settings__ignore_path_patterns {
     height: 120px;
     width: 300px;

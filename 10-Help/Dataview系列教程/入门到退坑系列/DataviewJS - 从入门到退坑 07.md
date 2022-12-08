@@ -1,7 +1,7 @@
 ---
 source: "https://publish.obsidian.md/napkinium/Ideas/Dataview/Learnings/Dataview+Learnings"
 ---
-````dialogue
+````chat
 left: 😯
 right: 🤣
 titleMode: all

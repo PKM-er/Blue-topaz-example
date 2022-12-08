@@ -100,8 +100,10 @@ body.blockquote-style-quotation-mark.is-mobile
 .myhome.markdown-preview-view .markdown-preview-section {
   padding-bottom: 2em !important;
 }
-.admonition-kanban li {
-  font-size: 13.33px;
+.admonition-kanban li,
+.kanban li
+{
+  font-size: calc(var(--font-text-size)*0.9);
 }
 .tasks progress {
   background: #f0ec05;
@@ -1081,4 +1083,5 @@ dvjs ~ :is(p, b, bold) > :is(select) {
   color: var(--text-faint);
 }
 
- 
+
+

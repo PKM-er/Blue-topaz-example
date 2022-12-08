@@ -4,19 +4,58 @@
     "type": "split",
     "children": [
       {
-        "id": "6e61241820a4828d",
+        "id": "5e5c5fb86575c747",
         "type": "tabs",
         "children": [
           {
-            "id": "80430a4f104c0c57",
+            "id": "a32319fdc915a683",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "Changlog.md",
-                "mode": "preview",
+                "mode": "source",
                 "backlinks": false,
                 "source": true
+              }
+            }
+          },
+          {
+            "id": "1bea40d761d074fe",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "77-Example/各级标题示例.md",
+                "mode": "source",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "31c7b214be26aa0a",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "77-Example/分栏效果示例.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "0ea225e190fe3649",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "77-Example/各类列表和彩虹大纲线.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": false
               }
             }
           }
@@ -75,8 +114,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 3
+        ]
       },
       {
         "id": "d877e8285f98a38a",
@@ -88,14 +126,6 @@
             "type": "leaf",
             "state": {
               "type": "recent-files",
-              "state": {}
-            }
-          },
-          {
-            "id": "5ee52b332527fc75",
-            "type": "leaf",
-            "state": {
-              "type": "memos_view",
               "state": {}
             }
           }
@@ -213,19 +243,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265
+    "width": 265,
+    "collapsed": true
   },
-  "active": "80430a4f104c0c57",
+  "active": "a32319fdc915a683",
   "lastOpenFiles": [
-    "88-Template/home.md",
-    "Changlog.md",
-    "77-Example/◾ Dataview相关实例/列出包含摘要和缩略图的笔记列表.md",
-    "77-Example/◾ Dataview相关实例/◾ Dataview相关实例.md",
-    "00-Tips/00-Tips.md",
+    "50-Inbox/50-Inbox.md",
+    "50-Inbox/Website/书签.md",
+    "50-Inbox/Website/历史上的今天.md",
+    "50-Inbox/Website/Website.md",
     "77-Example/77-Example.md",
-    "88-Template/88-Template.md",
-    "20-Diary/20-Diary.md",
+    "Changlog.md",
     "README.md",
+    "40-Booknote/40-Booknote.md",
+    "88-Template/home.md",
     "Demo Note.md"
   ]
 }

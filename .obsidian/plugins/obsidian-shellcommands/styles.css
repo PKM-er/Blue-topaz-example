@@ -157,6 +157,15 @@ div.setting-item.SC-custom-variable-name-setting div.setting-item-control::after
 
 
 /*
+ * MODALS (generic rules to all of the plugin's modals)
+ */
+
+div.SC-modal {
+    width: max-content; /* Widen the width as much as is reasonable. Obsidian 0.16.0 made modals narrower, this aims to revert it. */
+}
+
+
+/*
  * PROMPT MODALS
  */
 
@@ -182,13 +191,13 @@ p.SC-prompt-dry-run-notice {
 /* Style the tab */
 .SC-tab-header {
     border-bottom: 2px solid var(--background-modifier-border);
-    background-color: var(--background-secondary);
 }
 
 /* Style the buttons that are used to open the tab content */
-.SC-tab-header-button {
-    background-color: unset !important;
+button.SC-tab-header-button {
+    background-color: unset;
     border: none;
+    box-shadow: none; /* Remove a "border" that came via Obsidian 0.16.0. */
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
@@ -197,9 +206,9 @@ p.SC-prompt-dry-run-notice {
 }
 
 /* Create an active/current tablink class */
-.SC-tab-header-button.SC-tab-active,
-.SC-tab-header-button:hover {
-    background-color: var(--background-modifier-border) !important;
+button.SC-tab-header-button.SC-tab-active,
+button.SC-tab-header-button:hover {
+    background-color: var(--background-modifier-border);
 }
 
 .SC-tab-header-button svg {
@@ -277,4 +286,25 @@ div.SC-output-channel-modal-redirection-buttons-container div.setting-item-contr
 div.SC-output-channel-modal-redirection-buttons-container div.setting-item-control button {
     margin: 0;
     flex-grow: 1;
+}
+
+/*
+ * 'REQUEST TO TERMINATE THE PROCESS' ICON BUTTON
+ */
+a.SC-icon-terminate-process { /* Generic for all terminator icons. */
+    color: inherit; /* Don't use accent color. */
+}
+
+a.SC-icon-terminate-process svg {
+    height: 1em;
+    vertical-align: middle; /* Not middle but close enough. */
+}
+
+.notice a.SC-icon-terminate-process { /* For terminator icons in Notice balloons. */
+    margin-left: 5px; /* Add space between the icon and notification text. */
+    float: right; /* Position the icon to the (top) right corner. */
+}
+
+div.SC-modal-output a.SC-icon-terminate-process { /* For terminator icons in OutputChannel_Modal. */
+    margin-right: 5px; /* Add space between the icon and "Executing..." text.*/
 }

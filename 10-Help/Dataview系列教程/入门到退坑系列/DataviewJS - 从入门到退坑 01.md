@@ -3,7 +3,7 @@ source: "https://publish.obsidian.md/napkinium/Ideas/Dataview/Learnings/Dataview
 ---
 >本篇内容：`dv.list`，`dv.pages`
 
-````dialogue
+````chat
 left: 😯
 right: 🤣
 titleMode: all
@@ -11,7 +11,7 @@ titleMode: all
 > dv.list(dv.pages("").file.name)
 
 < 这是为啥子？  
-> `dv`是dvjs里用来进行对dv的系统的查询和命令所使用的的入口。`dv.pages`的功能是，你给它一个搜索字段，它就会把所有符合要求的文件都给你列出来。而外面的`dv.list()`则会把这些内容以列表的形式实际显示出来。
+> `dv`是dvjs里用来进行对dv的系统的查询和命令所使用的的入口。<br>`dv.pages`的功能是，你给它一个搜索字段，它就会把所有符合要求的文件都给你列出来。而外面的`dv.list()`则会把这些内容以列表的形式实际显示出来。
 
 < 哦 (⊙o⊙)…  
 > ……

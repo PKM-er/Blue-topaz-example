@@ -29,7 +29,7 @@
 }
 
 /* Mobile */
-@media screen and (max-width: 540px){
+@media screen and (max-width: 540px) {
     .macroContainer1 {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -71,7 +71,7 @@
 }
 
 /* Everything else */
-@media screen and (min-width: 781px){
+@media screen and (min-width: 781px) {
     .macroContainer1 {
         grid-template-columns: repeat(1, 1fr);
     }
@@ -81,7 +81,7 @@
     }
 
     .macroContainer3 {
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(2, 1fr);
     }
 
     .wideInputPromptInputEl {
