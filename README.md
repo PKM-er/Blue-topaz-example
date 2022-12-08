@@ -6,7 +6,7 @@ source:
 obsidianUIMode: preview
 progress: 正在进行
 title: README
-updated: "2022-11-13 00:06"
+updated: "2022-12-08 20:34"
 created: "2022-09-01 09:56"
 ---
 ![](https://user-images.githubusercontent.com/42957010/184872220-f9b52079-8695-46a7-b517-0588426aa7b5.jpg)
@@ -25,7 +25,7 @@ Recommend downloading the Lite version of the example vault to delete a large nu
 https://github.com/cumany/Blue-topaz-examples/releases/tag/20220816-lite
 ---
 注意：本示例库包含大量插件目前有七十多个，很多插件都是辅助类插件，可以根据需要删除或者关闭，为了方便初学者，特推出一个简化版示例库删减了大量不必要的插件下载链接
-[Release Blue Topaz Examples Lite 精简版 · cumany/Blue-topaz-examples (github.com)](https://github.com/cumany/Blue-topaz-examples/releases/tag/20220816-lite)
+[Release 20221208 lite 精简版 · cumany/Blue-topaz-examples (github.com)](https://github.com/cumany/Blue-topaz-examples/releases/tag/20221208-lite)
 
 本 [Examples库](https://github.com/cumany/Blue-topaz-examples) 由 Cuman 建立，Tips 教程由 [BT主题](https://github.com/whyt-byte/Blue-Topaz_Obsidian-css) 作者 3F 撰写。
 本库是一个包含 Obsidian 基本功能的入门库，并内置了 Obsidian 的常用插件。

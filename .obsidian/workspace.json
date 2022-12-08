@@ -13,8 +13,8 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "88-Template/home.md",
-                "mode": "preview",
+                "file": "README.md",
+                "mode": "source",
                 "backlinks": false,
                 "source": true
               }
@@ -119,7 +119,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "88-Template/home.md"
+                "file": "README.md"
               }
             }
           },
@@ -150,7 +150,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "README.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -167,7 +167,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "88-Template/home.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -208,10 +208,10 @@
   },
   "active": "80430a4f104c0c57",
   "lastOpenFiles": [
+    "88-Template/home.md",
     "88-Template/彩色时钟.md",
     "88-Template/ReactJS/ReactJS.md",
     "30-Reading/30-Reading.md",
-    "88-Template/home.md",
     "77-Example/图片横排布局以及添加标题.md",
     "77-Example/◾ Dataview相关实例/插件信息展示.md",
     "Demo Note.md",
