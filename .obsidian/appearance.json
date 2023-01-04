@@ -1,6 +1,6 @@
 {
-  "baseFontSize": 16,
-  "theme": "moonstone",
+  "baseFontSize": 13,
+  "theme": "obsidian",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
     "【图标】预览网址加图标 - External Link Icons",
@@ -29,9 +29,15 @@
     "【图标】checkbox from minimal Theme Modified",
     "【图标】checkbox",
     "【卡片视图】zettelkasten",
+    "ob列表转换表格",
+    "【列表】ob列表转换表格",
+    "【图标】iconfont",
+    "【字体】",
+    "【背景】默认笔记背景",
+    "【FONT】Consolas-Bookerly",
     "【自定义】myhome 样式",
-    "extended-colorschemes",
-    "【图标】iconfont"
+    "【自定义】数字时钟",
+    "【特效】fireworks"
   ],
   "translucency": false,
   "textFontFamily": "",

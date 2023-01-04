@@ -62,11 +62,17 @@ var themeDesignUtilities = class extends import_obsidian.Plugin {
         id: "freeze-obsidian",
         name: "Freeze Obsidian (with " + freezeDelaySecs.toString() + "s delay)",
         callback: () => {
-          new import_obsidian.Notice("Will freeze Obsidian in " + freezeDelaySecs.toString() + "s \n(if the console is open.)", (freezeDelaySecs - 1) * 1e3);
+          new import_obsidian.Notice("Will freeze Obsidian in " + freezeDelaySecs.toString() + "s", (freezeDelaySecs - 1) * 1e3);
+          electronWindow.openDevTools();
           setTimeout(() => {
             debugger;
           }, freezeDelaySecs * 1e3);
         }
+      });
+      this.addCommand({
+        id: "toggle-devtools",
+        name: "Toggle Devtools",
+        callback: () => electronWindow.toggleDevTools()
       });
       this.addCommand({
         id: "test-notice",
@@ -140,10 +146,7 @@ Electron Version: ${electronVersion}`, versionInfoNoticeDuration * 1e3);
   }
   cycleThemes() {
     const currentTheme = this.app.customCss.theme;
-    const installedThemes = [
-      ...Object.keys(this.app.customCss.themes),
-      ...this.app.customCss.oldThemes
-    ];
+    const installedThemes = [...Object.keys(this.app.customCss.themes), ...this.app.customCss.oldThemes];
     if (installedThemes.length === 0) {
       new import_obsidian.Notice("Cannot cycle themes since no community theme is installed.");
       return;

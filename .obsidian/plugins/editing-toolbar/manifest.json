@@ -1,7 +1,7 @@
 {
 	"id": "editing-toolbar",
 	"name": "Editing Toolbar",
-	"version": "2.2.2",
+	"version": "2.2.3",
 	"minAppVersion": "0.14.0",
 	"description": "The Obsidian Editing Toolbar is modified from cmenu, which provides more powerful customization settings and has many built-in editing commands to be a MS Word-like toolbar editing experience.",
 	"author": "Cuman",

@@ -1,0 +1,83 @@
+:root {
+    --mm-color-text: #fff;
+    --mm-line-height: 1em;
+}
+
+#markmap {
+    width: 100%;
+    height: 100%;
+}
+
+#markmap div {
+    line-height: var(--mm-line-height, 1em);
+}
+
+.mm-ng-checkbox {
+    font-weight: bold;
+}
+
+.mm-ng-checkbox-checked {
+    color: green;
+}
+
+.mm-ng-checkbox-unchecked {
+    color: red;
+}
+
+.markmap-inline-container_boxed {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    border-width: 2px;
+    border-style: solid;
+    padding: 7px;
+}
+
+
+.markmap-inline-container_unboxed {
+    background-color: transparent;
+    border-color: transparent;
+    border-radius: 0px;
+    border-width: 0px;
+    border-style: none;
+    padding: 0px;
+}
+
+.markmap-inline-svg {
+    width: 100%;
+}
+
+.markmap-inline-svg div {
+    line-height: var(--mm-line-height, 1em);
+}
+
+
+.markmap-toolbar-container .mm-toolbar {
+position: absolute;
+bottom: 2rem;
+right: 1rem;
+background-color: white;
+border-radius: 0.5rem;
+padding: 0.2rem;
+box-shadow: 0 0 0.4rem 0 white;
+z-index: 1;
+border: 1px solid #ccc;
+display: flex;
+flex-direction: row;
+align-items: center;
+justify-content: space-between;
+}
+
+.markmap-toolbar-container .mm-toolbar .mm-toolbar-brand {
+display: none;
+}
+
+.markmap-toolbar-container .mm-toolbar .mm-toolbar-item {
+height: 20px;
+color: black;
+}
+
+.markmap-toolbar-container .mm-toolbar .mm-toolbar-item.active,
+.markmap-toolbar-container .mm-toolbar .mm-toolbar-item:hover {
+color: brown;
+}

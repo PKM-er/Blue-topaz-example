@@ -267,6 +267,13 @@
       },
       "openFile": false,
       "openFileInMode": "default"
+    },
+    {
+      "id": "6390d2e2-2185-4081-ba1f-43c4889eb88e",
+      "name": "复制canvas节点文本",
+      "type": "Macro",
+      "command": true,
+      "macroId": "67c18955-6f61-4704-b934-50f6464e4699"
     }
   ],
   "macros": [
@@ -328,7 +335,7 @@
           "name": "Wait",
           "type": "Wait",
           "id": "fc377b74-ed4a-4289-b365-298855ece976",
-          "time": 500
+          "time": 200
         },
         {
           "name": "fetchhomepage",
@@ -350,7 +357,7 @@
         {
           "name": "Homepage: Open homepage",
           "type": "Obsidian",
-          "id": "e1e66c39-8248-431e-b3dc-83430e1f6283",
+          "id": "881986bd-0ddf-4721-a178-ad1f66c4bc15",
           "commandId": "homepage:open-homepage"
         }
       ],
@@ -936,6 +943,20 @@
           "type": "UserScript",
           "id": "335ba083-4e89-4562-b748-5a579cfe9d7b",
           "path": "88-Template/script/changeInlineToYaml.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
+    },
+    {
+      "name": "复制白板节点文本",
+      "id": "67c18955-6f61-4704-b934-50f6464e4699",
+      "commands": [
+        {
+          "name": "copy_canvas_node_text",
+          "type": "UserScript",
+          "id": "82d0a0df-f059-418a-a965-4dd039db0595",
+          "path": "88-Template/script/copy_canvas_node_text.js",
           "settings": {}
         }
       ],

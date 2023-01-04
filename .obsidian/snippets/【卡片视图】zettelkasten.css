@@ -57,7 +57,7 @@ box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0p
 /* minimal原本设置 */
 /* minimal original settings */
 
-:root {
+body {
 	--zettelkasten-min-width: 180px;
 	--zettelkasten-max-width: 1fr;
 	--zettelkasten-mobile-width: 120px;
@@ -71,7 +71,7 @@ box-shadow: rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0p
 }
 
 @media (max-width:400pt) {
-	:root {
+	body  {
 		--zettelkasten-min-width: var(--zettelkasten-mobile-width)
 	}
 }

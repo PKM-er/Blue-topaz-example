@@ -1,7 +1,8 @@
 {
   "ignoreTopHeader": false,
-  "positionStyle": "left",
+  "positionStyle": "both",
   "isLoadOnMobile": true,
-  "isLeft": false,
-  "isDefaultPin": false
+  "isLeft": true,
+  "isDefaultPin": false,
+  "isTooltip": true
 }

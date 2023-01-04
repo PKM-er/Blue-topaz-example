@@ -12,6 +12,80 @@ settings:
         level: 2
         collapsed: true
     - 
+        id: floating-toc-header-settings
+        title: Headers
+        title.zh: 大纲标题（H1-H6）
+        type: heading
+        level: 3
+        collapsed: true
+    -
+        id: floating-toc-remove-heading-indicator
+        title: Remove H1-H6 Indicators after Headings 
+        title.zh: 移除标题后的H1-H6
+        type: class-toggle
+        default: false
+    -
+        id: toggle-floating-toc-header-color 
+        title: toggle header color 
+        title.zh: 是否开启标题颜色
+        type: class-toggle
+        default: false
+    -
+        id: floating-toc-color-h1
+        title: Header 1
+        type: variable-themed-color
+        opacity: true
+        format: hex
+        default-light: '#'
+        default-dark: '#'
+    -
+        id: floating-toc-color-h2
+        title: Header 2
+        type: variable-themed-color
+        opacity: true
+        format: hex
+        default-light: '#'
+        default-dark: '#'
+    -
+        id: floating-toc-color-h3
+        title: Header 3
+        type: variable-themed-color
+        opacity: true
+        format: hex
+        default-light: '#'
+        default-dark: '#'
+    -
+        id: floating-toc-color-h4
+        title: Header 4
+        type: variable-themed-color
+        opacity: true
+        format: hex
+        default-light: '#'
+        default-dark: '#'
+    -
+      id: floating-toc-color-h5
+      title: Header 5
+      type: variable-themed-color
+      opacity: true
+      format: hex
+      default-light: '#'
+      default-dark: '#'
+    -
+      id: floating-toc-color-h6
+      title: Header 6
+      type: variable-themed-color
+      opacity: true
+      format: hex
+      default-light: '#'
+      default-dark: '#'
+    -
+        id: floating-toc-settings
+        title:  Other color settings
+        title.zh: 其他颜色设置
+        type: heading
+        level: 3
+        collapsed: true
+    -
         id: floating-toc-font-color
         title: font color
         title.zh: 目录字体颜色
@@ -100,22 +174,55 @@ settings:
         default: 1.5
     -
         id: floating-toc-position
-        title: Position relative to the edge
-        title.zh: 距离边界的相对位置
+        title: TOC Position relative to the edge
+        title.zh: TOC距离边界的相对位置
         type: variable-number-slider
         default: 0
         format: px
-        min: 0
+        min: -100
         max: 100
         step: 1
-    - 
+    -
+        id: indicator-bar-position
+        title: Indicator bar position relative to the edge
+        title.zh: 指示条的相对位置
+        type: variable-number-slider
+        default: 0
+        format: em
+        min: -3
+        max: 3
+        step: 0.1
+    -  
         id: floating-toc-appearance-header
         title:  Appearance settings
         title.zh: 外观设置
         type: heading
         level: 2
         collapsed: true
+    -
+        id: enable-outline-style
+        title: enable outline style
+        title.zh: 显示层级线
+        type: class-select
+        allowEmpty: false
+        default: default-outline-style
+        options:
+          - 
+            label: Default
+            value: default-outline-style
+          - 
+            label: curves
+            value: float-curves-outline-style
+          - 
+            label: line
+            value: float-outline-style
     -  
+        id: enable-bar-icon
+        title:  Replace the indicator bar with an icon
+        title.zh: 用图标代替指示条
+        type: class-toggle
+        default: false
+    -
         id: enable-bar-heading-text
         title:  Show heading text next to indicator bar (including parent)
         title.zh: 在指示条旁边显示标题上下级
@@ -155,7 +262,7 @@ settings:
     - 
         id: enable-background-blur-dept
         title:  Activate Blurred background 
-        title.zh: 是否开启触发目录后笔记背景模糊效果
+        title.zh: 开启触发目录后笔记背景模糊效果
         type: class-toggle
         default: false
     - 
@@ -170,7 +277,7 @@ settings:
         min: 0
         max: 30
         step: 1
-    -  
+    -
         id: floating-toc
         title: If you have ideas or feedback,  welcome to commit issues on github 😁
         title.zh:  有任何想法可以跟我交流😁，欢迎来访，QQ群:908688452
@@ -339,6 +446,21 @@ body.enable-heading-nowrap .heading-list-item .text-wrap .text {
   opacity: 1;
   pointer-events: all;
 }
+.heading-list-item[data-level="2"] .text-wrap {
+  margin-left: 0.5rem;
+}
+.heading-list-item[data-level="3"] .text-wrap {
+  margin-left: 1rem;
+}
+.heading-list-item[data-level="4"] .text-wrap {
+  margin-left: 1.5rem;
+}
+.heading-list-item[data-level="5"] .text-wrap {
+  margin-left: 2rem;
+}
+.heading-list-item[data-level="6"] .text-wrap {
+  margin-left: 2.5rem;
+}
 
 .heading-list-item[data-level="1"] {
   padding-left: 0rem;
@@ -369,9 +491,6 @@ body.enable-heading-nowrap .heading-list-item .text-wrap .text {
 .heading-list-item[data-level="3"] {
   padding-left: 0.8rem;
 }
-.heading-list-item[data-level="3"] .text-wrap {
-  padding-left: 0.2rem;
-}
 
 .heading-list-item[data-level="3"] .text::after {
   content: "H3";
@@ -384,9 +503,6 @@ body.enable-heading-nowrap .heading-list-item .text-wrap .text {
 
 .heading-list-item[data-level="4"] {
   padding-left: 1.1rem;
-}
-.heading-list-item[data-level="4"] .text-wrap {
-  padding-left: 0.4rem;
 }
 
 .heading-list-item[data-level="4"] .text::after {
@@ -401,9 +517,7 @@ body.enable-heading-nowrap .heading-list-item .text-wrap .text {
 .heading-list-item[data-level="5"] {
   padding-left: 1.4rem;
 }
-.heading-list-item[data-level="5"] .text-wrap {
-  padding-left: 0.6rem;
-}
+
 .heading-list-item[data-level="5"] .text::after {
   content: "H5";
   font-size: 6px;
@@ -416,9 +530,7 @@ body.enable-heading-nowrap .heading-list-item .text-wrap .text {
 .heading-list-item[data-level="6"] {
   padding-left: 1.6rem;
 }
-.heading-list-item[data-level="6"] .text-wrap {
-  padding-left: 0.9rem;
-}
+
 .heading-list-item[data-level="6"] .text::after {
   content: "H6";
   font-size: 6px;
@@ -705,20 +817,20 @@ text-align: left;
 
 
 .floating-right.alignLeft .heading-list-item[data-level="2"] .text-wrap {
-  padding-left: 0.5rem;
-}
-.floating-right.alignLeft .heading-list-item[data-level="3"] .text-wrap {
   padding-left: 1rem;
 }
+.floating-right.alignLeft .heading-list-item[data-level="3"] .text-wrap {
+  padding-left: 2rem;
+}
 .floating-right.alignLeft .heading-list-item[data-level="4"] .text-wrap {
-  padding-left: 1.5rem;
+  padding-left: 3rem;
 }
 
 .floating-right.alignLeft .heading-list-item[data-level="5"] .text-wrap {
-  padding-left: 1.8rem;
+  padding-left: 3.5rem;
 }
 .floating-right.alignLeft .heading-list-item[data-level="6"] .text-wrap {
-  padding-left: 2.1rem;
+  padding-left: 4rem;
 }
 
 .heading-list-item.located  .text::before
@@ -735,6 +847,7 @@ text-align: left;
 {
   width: 2rem;
   overflow: hidden;
+  margin-left: var(--indicator-bar-position);
 }
 .floating-toc-div:hover .heading-list-item
 {
@@ -786,3 +899,624 @@ margin-left: 0.2rem;
 {
   opacity: 0;
 }
+
+/******/
+
+
+/**第二个tabs右侧*/
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both~.markdown-reading-view .markdown-preview-view {
+  padding-right: 2rem;
+  
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space .floating-toc-div.floating-both:not(.alignLeft) .heading-list-item[data-level] .text-wrap::before
+{
+  display: none;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .floating-toc {
+  right: calc(0.5rem + var(--floating-toc-position));
+  align-items: flex-end;
+  left: unset;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item {
+  text-align: right;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item .line-wrap {
+  right: 0.5rem;
+}
+
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item[data-level="1"] .line-wrap {
+  padding-left: 0.5rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item[data-level="2"] .line-wrap {
+  padding-left: 0.7rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item[data-level="3"] .line-wrap {
+  padding-left: 0.9rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item[data-level="4"] .line-wrap {
+  padding-left: 1.1rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item[data-level="5"] .line-wrap {
+  padding-left: 1.3rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .heading-list-item[data-level="6"] .line-wrap {
+  padding-left: 1.5rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.pin .floating-toc .heading-list-item>.text-wrap,
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both .floating-toc:hover .heading-list-item>.text-wrap {
+  justify-content: flex-end;
+  text-align: right;
+  display: inline-flex;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-tabs 
+.floating-toc-div.floating-both~.markdown-reading-view .markdown-preview-view {
+  padding-right: 2rem;
+  
+}
+/**垂直分割后第二个tabs*/
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs 
+.floating-toc-div.floating-both:not(.alignLeft) .heading-list-item[data-level] .text-wrap::before
+{
+  display: none;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs 
+ .floating-toc-div.floating-both .floating-toc {
+  right: calc(0.5rem + var(--floating-toc-position));
+  align-items: flex-end;
+  left: unset;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item {
+  text-align: right;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item .line-wrap {
+  right: 0.5rem;
+}
+
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="1"] .line-wrap {
+  padding-left: 0.5rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="2"] .line-wrap {
+  padding-left: 0.7rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="3"] .line-wrap {
+  padding-left: 0.9rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="4"] .line-wrap {
+  padding-left: 1.1rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="5"] .line-wrap {
+  padding-left: 1.3rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item[data-level="6"] .line-wrap {
+  padding-left: 1.5rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs  
+.floating-toc-div.floating-both.pin .floating-toc .heading-list-item>.text-wrap,
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs 
+ .floating-toc-div.floating-both .floating-toc:hover .heading-list-item>.text-wrap {
+  justify-content: flex-end;
+  text-align: right;
+  display: inline-flex;
+}
+
+
+/**垂直分割 然后水平分割的tabs*/
+
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs 
+.floating-toc-div.floating-both:not(.alignLeft) .heading-list-item[data-level] .text-wrap::before
+{
+  display: none;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .floating-toc {
+  right: calc(0.5rem + var(--floating-toc-position));
+  align-items: flex-end;
+  left: unset;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item {
+  text-align: right;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item .line-wrap {
+  right: 0.5rem;
+}
+
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="1"] .line-wrap {
+  padding-left: 0.5rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="2"] .line-wrap {
+  padding-left: 0.7rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="3"] .line-wrap {
+  padding-left: 0.9rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="4"] .line-wrap {
+  padding-left: 1.1rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="5"] .line-wrap {
+  padding-left: 1.3rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item[data-level="6"] .line-wrap {
+  padding-left: 1.5rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both.pin .floating-toc .heading-list-item>.text-wrap,
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .floating-toc:hover .heading-list-item>.text-wrap {
+  justify-content: flex-end;
+  text-align: right;
+  display: inline-flex;
+}
+/***/
+
+/**两个垂直分割 水平分割的tabs*/
+.workspace-split.mod-horizontal  ~.workspace-split.mod-horizontal>.workspace-tabs 
+.floating-toc-div.floating-both:not(.alignLeft) .heading-list-item[data-level] .text-wrap::before
+{
+  display: none;
+}
+
+.workspace-split.mod-horizontal  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .floating-toc {
+  right: calc(0.5rem + var(--floating-toc-position));
+  align-items: flex-end;
+  left: unset;
+}
+.workspace-split.mod-horizontal  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both:is(.pin,.hover) .floating-toc {
+  right: calc(-2.5rem + var(--floating-toc-position));
+  align-items: unset;
+  left: unset;
+}
+.workspace-split.mod-vertical   ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item {
+  text-align: right;
+}
+
+.workspace-split.mod-vertical  ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item .line-wrap {
+  right: 0.5rem;
+}
+
+
+.workspace-split.mod-vertical   ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="1"] .line-wrap {
+  padding-left: 0.5rem;
+}
+
+.workspace-split.mod-vertical    ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="2"] .line-wrap {
+  padding-left: 0.7rem;
+}
+
+.workspace-split.mod-vertical    ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="3"] .line-wrap {
+  padding-left: 0.9rem;
+}
+
+.workspace-split.mod-vertical    ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="4"] .line-wrap {
+  padding-left: 1.1rem;
+}
+
+.workspace-split.mod-vertical    ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both .heading-list-item[data-level="5"] .line-wrap {
+  padding-left: 1.3rem;
+}
+
+.workspace-split.mod-vertical    ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .heading-list-item[data-level="6"] .line-wrap {
+  padding-left: 1.5rem;
+}
+
+.workspace-split.mod-vertical    ~.workspace-split.mod-horizontal>.workspace-tabs  
+.floating-toc-div.floating-both.pin .floating-toc .heading-list-item>.text-wrap,
+.workspace-split.mod-vertical    ~.workspace-split.mod-horizontal>.workspace-tabs 
+ .floating-toc-div.floating-both .floating-toc:hover .heading-list-item>.text-wrap {
+  justify-content: flex-end;
+  text-align: right;
+  display: inline-flex;
+}
+
+
+/***/
+
+/**第二个tabs右侧*/
+
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft .toolbar.pin {
+  right: 4rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft.pin .floating-toc .heading-list-item>.text-wrap, 
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft .floating-toc:hover .heading-list-item>.text-wrap
+{
+   max-width: 12rem;
+    text-overflow: ellipsis;
+justify-content: flex-start;
+text-align: left;
+}
+
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="2"] .text-wrap {
+  padding-left: 1rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="3"] .text-wrap {
+  padding-left: 2rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="4"] .text-wrap {
+  padding-left: 3rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="5"] .text-wrap {
+  padding-left: 3.5rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="6"] .text-wrap {
+  padding-left: 4rem;
+}
+
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='2'] + .heading-list-item[data-level='2']  .text-wrap::before
+{
+  left: 0.6rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='3'] + .heading-list-item[data-level='3']  .text-wrap::before 
+{
+  left: 1.6rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='4'] + .heading-list-item[data-level='4']  .text-wrap::before 
+{
+  left: 2.6rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft 
+ .heading-list-item[data-level='5'] + .heading-list-item[data-level='5']  .text-wrap::before 
+ {
+  left: 3.1rem;
+}
+.workspace-tabs~.workspace-tabs.mod-top-right-space  .floating-toc-div.floating-both.alignLeft 
+ .heading-list-item[data-level='6'] + .heading-list-item[data-level='6']  .text-wrap::before 
+ {
+    left: 3.6rem;
+}
+
+/**垂直分割 然后水平分割的tabs*/
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft .toolbar.pin {
+  right: 4rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft.pin .floating-toc .heading-list-item>.text-wrap, 
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft .floating-toc:hover .heading-list-item>.text-wrap
+{
+   max-width: 12rem;
+    text-overflow: ellipsis;
+justify-content: flex-start;
+text-align: left;
+}
+
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="2"] .text-wrap {
+  padding-left: 1rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="3"] .text-wrap {
+  padding-left: 2rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="4"] .text-wrap {
+  padding-left: 3rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="5"] .text-wrap {
+  padding-left: 3.5rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="6"] .text-wrap {
+  padding-left: 4rem;
+}
+
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='2'] + .heading-list-item[data-level='2']  .text-wrap::before
+{
+  left: 0.6rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='3'] + .heading-list-item[data-level='3']  .text-wrap::before 
+{
+  left: 1.6rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='4'] + .heading-list-item[data-level='4']  .text-wrap::before 
+{
+  left: 2.6rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft 
+ .heading-list-item[data-level='5'] + .heading-list-item[data-level='5']  .text-wrap::before 
+ {
+  left: 3.1rem;
+}
+.workspace-split.mod-vertical  .workspace-tabs  ~.workspace-split.mod-horizontal>.workspace-tabs  .floating-toc-div.floating-both.alignLeft 
+ .heading-list-item[data-level='6'] + .heading-list-item[data-level='6']  .text-wrap::before 
+ {
+    left: 3.6rem;
+}
+
+/***floating-both.alignLeft***/
+
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft .toolbar.pin {
+  right: 4rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft.pin .floating-toc .heading-list-item>.text-wrap, 
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft .floating-toc:hover .heading-list-item>.text-wrap
+{
+   max-width: 12rem;
+    text-overflow: ellipsis;
+justify-content: flex-start;
+text-align: left;
+}
+
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="2"] .text-wrap {
+  padding-left: 1rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="3"] .text-wrap {
+  padding-left: 2rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="4"] .text-wrap {
+  padding-left: 3rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="5"] .text-wrap {
+  padding-left: 3.5rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft .heading-list-item[data-level="6"] .text-wrap {
+  padding-left: 4rem;
+}
+
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='2'] + .heading-list-item[data-level='2']  .text-wrap::before
+{
+  left: 0.6rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='3'] + .heading-list-item[data-level='3']  .text-wrap::before 
+{
+  left: 1.6rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft 
+.heading-list-item[data-level='4'] + .heading-list-item[data-level='4']  .text-wrap::before 
+{
+  left: 2.6rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft 
+ .heading-list-item[data-level='5'] + .heading-list-item[data-level='5']  .text-wrap::before 
+ {
+  left: 3.1rem;
+}
+.workspace-split.mod-vertical > .workspace-tabs  ~.workspace-tabs .floating-toc-div.floating-both.alignLeft 
+ .heading-list-item[data-level='6'] + .heading-list-item[data-level='6']  .text-wrap::before 
+ {
+    left: 3.6rem;
+}
+
+
+
+ 
+
+/*****/
+.setting-item-heading.float-cta:after {
+  content: "";
+  position: absolute;
+  top: -10%;
+  width: 104%;
+  left: -2%;
+  height: 120%;
+  outline: 2px solid var(--text-accent);
+  border-radius: 1em;
+  pointer-events: none;
+}
+.setting-item-heading.float-cta {
+  position: relative;
+}
+ 
+
+.floating-toc-remove-heading-indicator .heading-list-item[data-level] .text::after {
+  display: none;
+}
+
+body:not(.toggle-floating-toc-header-color) .setting-item[data-id^="floating-toc-color-"]
+{
+  display: none;
+}
+
+body.toggle-floating-toc-header-color .floating-toc-div .floating-toc 
+.heading-list-item[data-level="1"] a.text
+{
+ color:var(--floating-toc-color-h1,var(--h1-color));
+}
+body.toggle-floating-toc-header-color .floating-toc-div .floating-toc 
+.heading-list-item[data-level="2"] a.text
+{
+  color:var(--floating-toc-color-h2,var(--h2-color));
+}
+body.toggle-floating-toc-header-color .floating-toc-div .floating-toc 
+.heading-list-item[data-level="3"] a.text
+{
+  color:var(--floating-toc-color-h3,var(--h3-color));
+}
+body.toggle-floating-toc-header-color .floating-toc-div .floating-toc 
+.heading-list-item[data-level="4"] a.text
+{
+  color:var(--floating-toc-color-h4,var(--h4-color));
+}
+body.toggle-floating-toc-header-color .floating-toc-div .floating-toc 
+.heading-list-item[data-level="5"] a.text
+{
+  color:var(--floating-toc-color-h5,var(--h5-color));
+}
+body.toggle-floating-toc-header-color .floating-toc-div .floating-toc 
+.heading-list-item[data-level="6"] a.text
+{
+  color:var(--floating-toc-color-h6,var(--h6-color));
+}
+
+/**************/
+
+.enable-bar-icon .floating-toc-div:not(.hover)  .floating-toc:before {
+  content: '';
+  height: 12px;
+  z-index: 10;
+  background-repeat: no-repeat;
+  cursor: var(--cursor);
+  text-align: right;
+  padding: 4px 20px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: var(--font-adaptive-small);
+}
+.enable-bar-icon .floating-toc-div:not(.hover) .floating-toc:before {
+  opacity: .35;
+  background-position: center center;
+  background-size: 18px;
+  background-image: url("data:image/svg+xml,%3Csvg t='1671519666455' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='11772' width='16' height='16'%3E%3Cpath d='M887.212102 264.644379 320.083527 264.644379c-29.826306 0-54.012148-23.896246-54.012148-53.723575s24.185842-53.723575 54.012148-53.723575l567.127552 0c29.827329 0 54.012148 23.896246 54.012148 53.723575S917.039431 264.644379 887.212102 264.644379zM887.212102 562.426483 320.083527 562.426483c-29.826306 0-54.012148-24.408923-54.012148-54.235229 0-29.828352 24.185842-54.235229 54.012148-54.235229l567.127552 0c29.827329 0 54.012148 24.406876 54.012148 54.235229C941.22425 538.018583 917.039431 562.426483 887.212102 562.426483zM887.212102 859.18528 320.083527 859.18528c-29.826306 0-54.012148-24.407899-54.012148-54.235229s24.185842-54.235229 54.012148-54.235229l567.127552 0c29.827329 0 54.012148 24.407899 54.012148 54.235229S917.039431 859.18528 887.212102 859.18528zM153.565003 257.94377l-47.261397 0c-13.05534 0-23.630187-10.601452-23.630187-23.655769l0-47.234791c0-13.080923 10.574846-23.630187 23.630187-23.630187l47.261397 0c13.054317 0 23.630187 10.549264 23.630187 23.630187l0 47.234791C177.19519 247.341295 166.61932 257.94377 153.565003 257.94377L153.565003 257.94377zM153.565003 852.076372l-47.261397 0c-13.05534 0-23.630187-10.600429-23.630187-23.655769l0-47.233768c0-13.080923 10.574846-23.63121 23.630187-23.63121l47.261397 0c13.054317 0 23.630187 10.550287 23.630187 23.63121l0 47.233768C177.19519 841.475943 166.61932 852.076372 153.565003 852.076372L153.565003 852.076372zM153.565003 541.507034l-47.261397 0c-13.05534 0-23.630187-10.601452-23.630187-23.655769l0-47.234791c0-13.080923 10.574846-23.630187 23.630187-23.630187l47.261397 0c13.054317 0 23.630187 10.549264 23.630187 23.630187l0 47.234791C177.19519 530.905582 166.61932 541.507034 153.565003 541.507034L153.565003 541.507034z' fill='white' p-id='11773'%3E%3C/path%3E%3C/svg%3E");
+}
+.theme-light.enable-bar-icon  .floating-toc-div:not(.hover) .floating-toc:before {
+    background-image: url("data:image/svg+xml,%3Csvg t='1671519666455' class='icon' viewBox='0 0 1024 1024' version='1.1' xmlns='http://www.w3.org/2000/svg' p-id='11772' width='16' height='16'%3E%3Cpath d='M887.212102 264.644379 320.083527 264.644379c-29.826306 0-54.012148-23.896246-54.012148-53.723575s24.185842-53.723575 54.012148-53.723575l567.127552 0c29.827329 0 54.012148 23.896246 54.012148 53.723575S917.039431 264.644379 887.212102 264.644379zM887.212102 562.426483 320.083527 562.426483c-29.826306 0-54.012148-24.408923-54.012148-54.235229 0-29.828352 24.185842-54.235229 54.012148-54.235229l567.127552 0c29.827329 0 54.012148 24.406876 54.012148 54.235229C941.22425 538.018583 917.039431 562.426483 887.212102 562.426483zM887.212102 859.18528 320.083527 859.18528c-29.826306 0-54.012148-24.407899-54.012148-54.235229s24.185842-54.235229 54.012148-54.235229l567.127552 0c29.827329 0 54.012148 24.407899 54.012148 54.235229S917.039431 859.18528 887.212102 859.18528zM153.565003 257.94377l-47.261397 0c-13.05534 0-23.630187-10.601452-23.630187-23.655769l0-47.234791c0-13.080923 10.574846-23.630187 23.630187-23.630187l47.261397 0c13.054317 0 23.630187 10.549264 23.630187 23.630187l0 47.234791C177.19519 247.341295 166.61932 257.94377 153.565003 257.94377L153.565003 257.94377zM153.565003 852.076372l-47.261397 0c-13.05534 0-23.630187-10.600429-23.630187-23.655769l0-47.233768c0-13.080923 10.574846-23.63121 23.630187-23.63121l47.261397 0c13.054317 0 23.630187 10.550287 23.630187 23.63121l0 47.233768C177.19519 841.475943 166.61932 852.076372 153.565003 852.076372L153.565003 852.076372zM153.565003 541.507034l-47.261397 0c-13.05534 0-23.630187-10.601452-23.630187-23.655769l0-47.234791c0-13.080923 10.574846-23.630187 23.630187-23.630187l47.261397 0c13.054317 0 23.630187 10.549264 23.630187 23.630187l0 47.234791C177.19519 530.905582 166.61932 541.507034 153.565003 541.507034L153.565003 541.507034z' fill='%23272636' p-id='11773'%3E%3C/path%3E%3C/svg%3E");
+  }
+  .enable-bar-icon  .floating-toc-div:not(.pin)  .floating-toc:not(:hover) li
+ {
+  display: none;
+ }
+ .enable-bar-icon  .floating-toc-div.pin  .floating-toc:before 
+ {
+  display: none;
+ }
+
+/******/
+
+
+.floating-toc-div.floating-right:not(.alignLeft) .heading-list-item[data-level] .text-wrap::before
+{
+  display: none;
+}
+.floating-toc-div.floating-right 
+.heading-list-item[data-level='2'] + .heading-list-item[data-level='2']  .text-wrap::before
+{
+  left: 0.6rem;
+}
+.floating-toc-div.floating-right 
+.heading-list-item[data-level='3'] + .heading-list-item[data-level='3']  .text-wrap::before 
+{
+  left: 1.6rem;
+}
+.floating-toc-div.floating-right 
+.heading-list-item[data-level='4'] + .heading-list-item[data-level='4']  .text-wrap::before 
+{
+  left: 2.6rem;
+}
+.floating-toc-div.floating-right 
+ .heading-list-item[data-level='5'] + .heading-list-item[data-level='5']  .text-wrap::before 
+ {
+  left: 3.1rem;
+}
+ .floating-toc-div.floating-right 
+ .heading-list-item[data-level='6'] + .heading-list-item[data-level='6']  .text-wrap::before 
+ {
+    left: 3.6rem;
+}
+
+body.float-curves-outline-style 
+.heading-list-item[data-level='2'] + .heading-list-item[data-level='2']  .text-wrap::before, 
+body.float-curves-outline-style 
+.heading-list-item[data-level='3'] + .heading-list-item[data-level='3']  .text-wrap::before ,
+body.float-curves-outline-style 
+.heading-list-item[data-level='4'] + .heading-list-item[data-level='4']  .text-wrap::before ,
+body.float-curves-outline-style 
+ .heading-list-item[data-level='5'] + .heading-list-item[data-level='5']  .text-wrap::before ,
+ body.float-curves-outline-style 
+ .heading-list-item[data-level='6'] + .heading-list-item[data-level='6']  .text-wrap::before 
+ {
+    content: " ";
+    position: absolute;
+    top: calc(calc(var(--nav-item-size) * 1.8) / 2 * -1.5);
+    left: -10px;
+    bottom: calc(100% - (calc(var(--nav-item-size) * 1.8) + 8px) / 2 - 1px);
+    width: 16px;
+    border-bottom-left-radius: var(--radius-m);
+    border-bottom: 1.5px solid hsla(var(--color-accent-hsl), 0.9);
+    border-left: 2px solid hsla(var(--color-accent-hsl), 0.9);
+}
+
+body.float-outline-style 
+.heading-list-item[data-level='2'] + .heading-list-item[data-level='2']  .text-wrap::before, 
+body.float-outline-style 
+.heading-list-item[data-level='3'] + .heading-list-item[data-level='3']  .text-wrap::before ,
+body.float-outline-style 
+.heading-list-item[data-level='4'] + .heading-list-item[data-level='4']  .text-wrap::before ,
+body.float-outline-style 
+ .heading-list-item[data-level='5'] + .heading-list-item[data-level='5']  .text-wrap::before ,
+ body.float-outline-style 
+ .heading-list-item[data-level='6'] + .heading-list-item[data-level='6']  .text-wrap::before 
+ {
+    content: " ";
+      position: absolute;
+      display: block;
+      left: -4px;
+      top: -1.3em;
+      bottom: 1em;
+      border-right: 1px solid var(--text-muted);
+   
+ }
+ /*********/
+
+
+ .floating-toc-div.hide
+ {
+  display:none;
+ }

@@ -1,0 +1,280 @@
+.taskido {
+	cursor: default;
+	user-select: none;
+}
+.taskido a {
+	text-decoration: none !important;
+	color: inherit !important;
+}
+.taskido span {
+	display: contents;
+}
+.taskido .year {
+	font-size: 30px;
+	font-weight: bold;
+	margin: 20px 0;
+	color: var(--text-normal);
+	text-align: center;
+}
+.taskido .details {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	width: 100%;
+	height: auto;
+}
+.taskido .todayHeader {
+	font-size: 24px;
+	font-weight: bold;
+	text-align: center;
+	margin: 10px 0;
+	cursor: pointer;
+}
+.taskido .details.today {
+	padding: 60px 0;
+}
+.taskido .counters {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-content: center;
+	margin: 20px 0;
+}
+.taskido .counter {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+	background: var(--background-secondary-alt);
+	color: var(--text-normal);
+	border-radius: 10px;
+	padding: 5px;
+	text-align: center;
+	flex: 1 1 0;
+	box-shadow: 0 0 5px 0 rgba(0,0,0,0.1);
+	margin: 0 5px;
+	min-width: 70px;
+	max-width: 150px;
+	overflow: hidden;
+	cursor: pointer;
+}
+.taskido .count {
+	font-size: 18px;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.taskido .counter .label {
+	font-size: 12px;
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.taskido .motivation {
+	margin: 20px 5px;
+	text-align: center;
+	font-size: 12px;
+	color: var(--text-faint);
+}
+.taskido .dateLine {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: space-between;
+	align-items: center;
+	margin: 10px 0;
+}
+.taskido .date {
+	color: var(--text-normal);
+	font-size: 16px;
+	font-weight: bold;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.taskido .relative {
+	color: var(--text-faint);
+	font-weight: normal;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.taskido .task {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	border-radius: 10px;
+	padding: 2.5px;
+	margin: 2.5px 0;
+}
+.taskido .timeline,
+.taskido .lines {
+	display: flex;
+	flex-direction: column;
+	flex-wrap: nowrap;
+}
+.taskido .timeline {
+	width: 50px;
+	flex-shrink: 0;
+	flex-grow: 0;
+}
+.taskido .lines {
+	flex-shrink: 1;
+	flex-grow: 1;
+	overflow: hidden;
+}
+.taskido .stripe {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 1;
+	flex-grow: 1;
+	margin-top: 7.5px;
+}
+.taskido .stripe:after {
+	content: "";
+	height: 100%;
+	width: 1px;
+	background: var(--icon-color-active);
+	margin: 5px 0;
+}
+.taskido .task.done .file {
+	color: var(--text-faint);
+	font-weight: normal;
+}
+.taskido .task.done .tag,
+.taskido .task.done .repeat,
+.taskido .task.done .priority {
+	color: var(--text-faint);
+}
+.taskido .task.done .content {
+	text-decoration: line-through;
+	color: var(--text-faint);
+}
+.taskido .line {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	height: 22px;
+	align-items: center;
+}
+.taskido .line:empty {
+	display: none;
+}
+.taskido .icon {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-shrink: 0;
+	flex-grow: 0;
+	text-align: center;
+}
+.taskido .timeline .icon {
+	text-align: center;
+	color: var(--icon-color-active);
+}
+.taskido .timeline .icon svg {
+	height: 18px;
+	width: 18px;
+	stroke-width: 1.75px;
+	height: 22px;
+}
+.taskido .task .file {
+	font-size: 15px;
+	font-weight: bold;
+	color: var(--task-color);
+	/*color: var(--text-normal);*/
+	height: 18px;
+	line-height: 18px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+.taskido .task .content {
+	display: block;
+	white-space: break-word;
+	font-size: 15px;
+	font-weight: normal;
+	color: var(--text-normal);
+}
+.taskido .tag {
+	color: var(--tag-color) !important;
+	background: var(--tag-background) !important;
+	/*border: 0.5px solid var(--tag-color) !important;*/
+	padding: 0px 5px;
+}
+.taskido .repeat,
+.taskido .priority {
+	color: var(--text-normal);
+	padding: 0px;
+}
+.taskido .tag,
+.taskido .repeat,
+.taskido .priority {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-items: center;
+	width: auto;
+	font-size: 9px;
+	border-radius: 5px;
+	margin: 2px 5px 2px 0;
+}
+.taskido .tag .icon,
+.taskido .repeat .icon,
+.taskido .priority .icon {
+	text-align: center;
+	height: 18px;
+}
+.taskido .tag .label,
+.taskido .repeat .label,
+.taskido .priority .label {
+	margin-left: 2px;
+}
+.taskido .tag svg,
+.taskido .repeat svg,
+.taskido .priority svg {
+	height: 12px;
+	width: 12px;
+	stroke-width: 1.75px;
+}
+.taskido .task.overdue .content {
+	color: #ff375f !important;
+	font-style: italic;
+}
+.taskido .overdue .timeline svg {
+	stroke: #ff375f;
+}
+.taskido .overdue .stripe:after {
+	background: #ff375f;
+}
+.taskido .add .timeline svg {
+	stroke: var(--text-faint);
+}
+.taskido .add .file {
+	color: var(--text-faint) !important;
+}
+/* Classes */
+.taskido.todayFocus .todayHeader,
+.taskido.todoFocus .counter#todo,
+.taskido.overdueFocus .counter#overdue,
+.taskido.processFocus .counter#process {
+	color: var(--icon-color-active);
+}
+.taskido.noMotivation .motivation,
+.taskido.noRepeat .repeat,
+.taskido.noTag .tag,
+.taskido.noPriority .priority,
+.taskido.noAdd .add,
+.taskido.noRelative .relative { display: none !important; }
+/* Focus */
+.taskido.todayFocus .details:not(.today),
+.taskido.todayFocus .year { display: none !important; }
+.taskido.todayFocus .details.today { padding: 0; }
+.taskido.todoFocus .details.today .task.due,
+.taskido.todoFocus .details.today .task.scheduled,
+.taskido.todoFocus .details.today .task.dailytask,
+.taskido.overdueFocus .task.overdue,
+.taskido.processFocus .task.process { background: var(--background-modifier-active-hover); }

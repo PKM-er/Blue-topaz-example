@@ -1,0 +1,11 @@
+{
+	"id": "ob-table-enhancer",
+	"name": "Table Enhancer",
+	"version": "0.3.3",
+	"minAppVersion": "0.15.0",
+	"description": "Manipulate tables in Obsidian without touching source code",
+	"author": "Stardust",
+	"authorUrl": "https://obsidian.md",
+	"fundingUrl": "https://github.com/Stardusten/ob-table-enhancer",
+	"isDesktopOnly": false
+}

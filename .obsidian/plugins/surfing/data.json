@@ -1,19 +1,35 @@
 {
   "defaultSearchEngine": "bing",
-  "customSearchEngine": [
-    {
-      "name": "豆瓣读书",
-      "url": "https://search.douban.com/book/subject_search?search_text="
-    }
-  ],
-  "alwaysShowCustomSearch": true,
+  "customSearchEngine": [],
+  "alwaysShowCustomSearch": false,
   "showOtherSearchEngines": true,
-  "showSearchBarInPage": true,
+  "showSearchBarInPage": false,
   "markdownPath": "/",
-  "customHighlightFormat": true,
+  "customHighlightFormat": false,
   "highlightFormat": "[{CONTENT}]({URL})",
-  "highlightInSameTab": true,
+  "highlightInSameTab": false,
   "openInSameTab": false,
-  "openInObsidianWeb": true,
-  "useCustomIcons": false
+  "showRefreshButton": true,
+  "openInObsidianWeb": false,
+  "useCustomIcons": false,
+  "useWebview": false,
+  "useIconList": true,
+  "darkMode": false,
+  "bookmarkManager": {
+    "openBookMark": true,
+    "saveBookMark": true,
+    "pagination": "12",
+    "category": "- Obsidian\n- CSS\n- 娱乐",
+    "defaultColumnList": [
+      "name",
+      "description",
+      "url",
+      "category",
+      "tags",
+      "created",
+      "modified",
+      "action"
+    ],
+    "defaultFilterType": "tree"
+  }
 }

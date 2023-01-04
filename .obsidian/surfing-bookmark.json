@@ -1,0 +1,39 @@
+{
+  "bookmarks": [
+    {
+      "id": "-94696060",
+      "name": "Obsidian",
+      "url": "https://www.obsidian.md",
+      "description": "",
+      "category": [
+        "Obsidian"
+      ],
+      "tags": "",
+      "created": 1672824540000,
+      "modified": 1672825860000
+    }
+  ],
+  "categories": [
+    {
+      "value": "ROOT",
+      "text": "ROOT",
+      "label": "ROOT",
+      "children": []
+    },
+    {
+      "value": "Obsidian",
+      "text": "Obsidian",
+      "label": "Obsidian"
+    },
+    {
+      "value": "CSS",
+      "text": "CSS",
+      "label": "CSS"
+    },
+    {
+      "value": "娱乐",
+      "text": "娱乐",
+      "label": "娱乐"
+    }
+  ]
+}

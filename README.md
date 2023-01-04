@@ -119,40 +119,30 @@ path: 77-Example usage:
 ^|---|---|	---|
 |[[$filename]]|$frontmatter:cssclass|$frontmatter:usage|
 ```
-
 |文件名称|cssclass|用法|
 |---|---|	---|
-|[[电影观看清单-状态控制（dvjs）]]|cards|对 dataview 表格渲染成卡片视图|
-|[[电影观看清单（dv）]]|cards|对 dataview 表格渲染成卡片视图|
+|[[电影观看清单-状态控制（dvjs）]]|cards|对dataview表格渲染成卡片视图|
+|[[电影观看清单（dv）]]|cards|对dataview表格渲染成卡片视图|
 |[[多彩高亮（三种语法）]]|colorful-highlight|实时预览模式下正确显示多彩高亮|
 |[[各类列表和彩虹大纲线]]|noscroll|隐藏当前页面滚动条|
+|[[卡片视图 展示笔记]]|zettelkasten|把dv表格渲染成卡片样式|
 |[[全宽显示-表格测试]]|fullwidth|缩减栏宽开启下，控制页面全宽显示|
+|[[首行缩进--以2022政府工作报告为例]]|indent|实现单篇笔记首行缩进效果|
 |[[四象限表格]]|matrix|四象限表格样式|
-|[[图书阅读清单-状态控制(dvjs)]]|cards|对 dataview 表格渲染成卡片视图|
-|[[图书阅读清单(dv)]]|cards|对 dataview 表格渲染成卡片视图|
+|[[图书阅读清单-状态控制(dvjs)]]|cards|对dataview表格渲染成卡片视图|
+|[[图书阅读清单(dv)]]|cards|对dataview表格渲染成卡片视图|
 |[[涂黑和挖空效果（三种语法）]]|cloze|实时预览模式下正确显示涂黑和挖空效果|
 |[[伪看板-yaml声明]]|kanban|伪看板的样式，无序列表四分栏|
-|[[预览隐藏frontmatter]]|noyaml|预览状态不显示 frontmatter 区域|
-|[[Callout环绕布局、缩进效果示例]]|fullwidth|callout 实现文章环绕，全文缩进效果|
+|[[无序列表分栏]]|gridlist|无序列表分两栏排布，可以配合伪看板(kanban)一起使用|
+|[[预览隐藏frontmatter]]|noyaml|预览状态不显示frontmatter区域|
+|[[Callout环绕布局、缩进效果示例]]|fullwidth|callout实现文章环绕，全文缩进效果|
 |[[code-wrap【代码块自动换行】]]|code-wrap|代码块自动换行|
+|[[example database]]|||
 |[[Image-grid【图片自适应】]]|img-grid|图片自适应分布|
 |[[inline-list【行内列表】]]|inline-list|图片和列表混排|
-
- 
 <-->
 
-| cssclass    | role                                                               |
-| ----------- | ------------------------------------------------------------------ |
-| code-wrap   | code-block-auto-wrap                                               |
-| img-grid    | image adaptive distribution                                        |
-| inline-list | images and lists mixed                                             |
-| kanban      | pseudo-kanban style, unordered list of four columns                |
-| fullwidth   | reduce column width on, control the full width of the page display |
-| noscroll    | hide the current page scrollbar                                    |
-| matrix      | four-quadrant table style                                          |
-| cards       | rendering-dataview-tables-to-cards-view                            |
-| cards       | rendering-dataview-tables-to-cards-view                            |
-| noyaml      | preview state does not show the frontmatter area                   |
+
 
 ## 主题内置的 ad 样式表
 ad 样式使用方法参考

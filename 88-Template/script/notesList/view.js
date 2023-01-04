@@ -1,19 +1,8 @@
-//From https://github.com/702573N/Obsidian-Notes-List
 let {pages, view} = input;
 
 // Get Notes And Sort
-if (pages=="") {
-	var notes = dv.pages();
-} else {
-	if (pages.startsWith("dv.pages")) {
-		var notes = eval(pages);
-	} else {
-		var notes = dv.pages('"'+pages+'"');
-	};
-};
-
-//var notes = pages ? dv.pages() : dv.pages('"'+pages+'"');
-notes = notes.sort(n => n.file.mtime, "desc");
+if (pages=="") { pages = dv.pages() } else { if (pages.startsWith("dv.")) { pages = eval(pages) } else { pages = dv.pages(pages) } };
+pages = pages.sort(n => n.file.mtime, "desc");
 
 // Set Variables
 var imgExtensions = ['.jpg','.jpeg','.png','.bmp','.tif','.gif'];
@@ -24,14 +13,14 @@ var attachmentTemplate = "<div class='file'><div class='fileExtension'>{{fileExt
 const rootNode = dv.el("div", "", {cls: "NotesList", attr: {view: view}});
 
 // Loop Notes To Build ListView
-notes.forEach(function(note) {
+pages.forEach(function(page) {
 		
 		// Get File Meta
-		var fileName = note.file.name;
-		var fileDate = moment(note.file.mtime.toString()).fromNow();
-		var filePath = app.vault.getAbstractFileByPath(note.file.path);
+		var fileName = page.file.name;
+		var fileDate = moment(page.file.mtime.toString()).fromNow();
+		var filePath = app.vault.getAbstractFileByPath(page.file.path);
 		var filePathName = filePath.name;
-		var fileOutlinks = note.file.outlinks;
+		var fileOutlinks = page.file.outlinks;
 		var fileAttachments = "";
 		var fileAttachmentsCounter = fileOutlinks.length;
 	

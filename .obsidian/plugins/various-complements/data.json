@@ -1,5 +1,6 @@
 {
   "strategy": "chinese",
+  "cedictPath": ".obsidian/cedict_ts.u8",
   "matchStrategy": "prefix",
   "maxNumberOfSuggestions": 5,
   "maxNumberOfWordsAsPhrase": 3,
@@ -10,12 +11,17 @@
   "disableSuggestionsDuringImeOn": true,
   "insertAfterCompletion": false,
   "firstCharactersDisableSuggestions": "-#:/^@",
+  "useCommonPrefixCompletionOfSuggestion": false,
+  "patternsToSuppressTrigger": [
+    "^~~~.*",
+    "^```.*"
+  ],
   "showMatchStrategy": false,
   "showComplementAutomatically": false,
   "showIndexingStatus": false,
   "descriptionOnSuggestion": "Short",
-  "selectSuggestionKeys": "Backquote",
-  "additionalCycleThroughSuggestionsKeys": "Tab, Shift+Tab",
+  "selectSuggestionKeys": "Tab",
+  "additionalCycleThroughSuggestionsKeys": "None",
   "disableUpDownKeysForCycleThroughSuggestionsKeys": false,
   "openSourceFileKey": "Shift+Enter",
   "propagateEsc": true,
@@ -25,7 +31,7 @@
   "enableCurrentVaultComplement": true,
   "currentVaultMinNumberOfCharacters": 0,
   "includeCurrentVaultPathPrefixPatterns": "",
-  "excludeCurrentVaultPathPrefixPatterns": "",
+  "excludeCurrentVaultPathPrefixPatterns": "Template",
   "includeCurrentVaultOnlyFilesUnderCurrentDirectory": false,
   "enableCustomDictionaryComplement": false,
   "customDictionaryPaths": "https://raw.githubusercontent.com/first20hours/google-10000-english/master/google-10000-english-no-swears.txt",
@@ -47,115 +53,171 @@
   },
   "showLogAboutPerformanceInConsole": false,
   "selectionHistoryTree": {
-    "3333": {
-      "3333": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1667126748761
-        }
-      }
-    },
-    "console": {
-      "console": {
-        "currentVault": {
-          "count": 29,
-          "lastUpdated": 1666430905623
-        }
-      }
-    },
-    "想看": {
-      "想看": {
+    "fixedFc": {
+      "fixedFc": {
         "frontMatter": {
           "count": 1,
-          "lastUpdated": 1666394455982
+          "lastUpdated": 1670774229506
         }
       }
     },
-    "进行中": {
-      "进行中": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1666394470237
-        }
-      }
-    },
-    "已完成": {
-      "已完成": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1666394472805
-        }
-      }
-    },
-    "Object": {
-      "Object": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1666430693334
-        }
-      }
-    },
-    "Tempor": {
-      "Tempor": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1666440247057
-        }
-      }
-    },
-    "Highlig": {
-      "Highlig": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1666710428699
-        }
-      }
-    },
-    "Highlight": {
-      "Highlight": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1666710431239
-        }
-      }
-    },
-    "公式": {
-      "公式": {
-        "currentFile": {
-          "count": 1,
-          "lastUpdated": 1667060860272
-        }
-      }
-    },
-    "comment": {
-      "comment": {
-        "currentVault": {
-          "count": 1,
-          "lastUpdated": 1667476307225
-        }
-      }
-    },
-    "code-wrap": {
-      "code-wrap": {
-        "frontMatter": {
-          "count": 1,
-          "lastUpdated": 1667575345610
-        }
-      }
-    },
-    "collapse": {
-      "collapse": {
+    "内容": {
+      "内容": {
         "currentVault": {
           "count": 2,
-          "lastUpdated": 1668834584861
+          "lastUpdated": 1671873890509
         }
       }
     },
-    "😀": {
-      "😀": {
+    "笔记": {
+      "笔记": {
+        "currentVault": {
+          "count": 12,
+          "lastUpdated": 1671160370533
+        }
+      }
+    },
+    "列表转笔记测试": {
+      "列表转笔记测试": {
+        "internalLink": {
+          "count": 2,
+          "lastUpdated": 1671160296571
+        }
+      }
+    },
+    "列表": {
+      "列表": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1671160299056
+        }
+      }
+    },
+    "88-Template": {
+      "88-Template": {
+        "internalLink": {
+          "count": 2,
+          "lastUpdated": 1671160584294
+        }
+      }
+    },
+    "一级": {
+      "一级": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1671281465877
+        }
+      }
+    },
+    "img-grid": {
+      "img-grid": {
         "frontMatter": {
           "count": 1,
-          "lastUpdated": 1668262773143
+          "lastUpdated": 1671426746162
+        }
+      }
+    },
+    "测试": {
+      "测试": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1671549864022
+        }
+      }
+    },
+    "表格": {
+      "表格": {
+        "frontMatter": {
+          "count": 2,
+          "lastUpdated": 1672400648100
+        }
+      }
+    },
+    "测试dataview 长表格": {
+      "测试dataview 长表格": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1672060407479
+        }
+      }
+    },
+    "background": {
+      "background": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1672452778279
+        }
+      }
+    },
+    "daily": {
+      "daily": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1672482140467
+        }
+      }
+    },
+    "99-Attachment": {
+      "99-Attachment": {
+        "internalLink": {
+          "count": 1,
+          "lastUpdated": 1672504954347
+        }
+      }
+    },
+    "color-1": {
+      "color-1": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1672544394815
+        }
+      }
+    },
+    "隐藏": {
+      "隐藏": {
+        "currentFile": {
+          "count": 3,
+          "lastUpdated": 1672544465795
+        }
+      }
+    },
+    "触发": {
+      "触发": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1672544415934
+        }
+      }
+    },
+    "color-2": {
+      "color-2": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1672544422672
+        }
+      }
+    },
+    "显示": {
+      "显示": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1672544429521
+        }
+      }
+    },
+    "custom": {
+      "custom": {
+        "currentFile": {
+          "count": 1,
+          "lastUpdated": 1672544451543
+        }
+      }
+    },
+    "二级": {
+      "二级": {
+        "currentVault": {
+          "count": 1,
+          "lastUpdated": 1672558110696
         }
       }
     }

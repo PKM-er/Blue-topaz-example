@@ -61,6 +61,7 @@ var DEFAULT_SETTINGS = {
   waypointFlag: "%% Waypoint %%",
   stopScanAtFolderNotes: false,
   showFolderNotes: false,
+  showNonMarkdownFiles: false,
   debugLogging: false,
   useWikiLinks: true,
   showEnclosingNote: false,
@@ -223,11 +224,18 @@ ${_Waypoint.END_WAYPOINT}`;
     return __async(this, null, function* () {
       const bullet = "	".repeat(indentLevel) + "-";
       if (node instanceof import_obsidian.TFile) {
-        if (node.path.endsWith(".md")) {
+        console.log(node);
+        if (node.extension == "md") {
           if (this.settings.useWikiLinks) {
             return `${bullet} [[${node.basename}]]`;
           } else {
             return `${bullet} [${node.basename}](${this.getEncodedUri(rootNode, node)})`;
+          }
+        } else if (this.settings.showNonMarkdownFiles) {
+          if (this.settings.useWikiLinks) {
+            return `${bullet} [[${node.name}]]`;
+          } else {
+            return `${bullet} [${node.name}](${this.getEncodedUri(rootNode, node)})`;
           }
         }
         return null;
@@ -366,6 +374,10 @@ var WaypointSettingsTab = class extends import_obsidian.PluginSettingTab {
     })));
     new import_obsidian.Setting(containerEl).setName("Show Folder Notes").setDesc("If enabled, folder notes will be listed alongside other notes in the generated waypoints.").addToggle((toggle) => toggle.setValue(this.plugin.settings.showFolderNotes).onChange((value) => __async(this, null, function* () {
       this.plugin.settings.showFolderNotes = value;
+      yield this.plugin.saveSettings();
+    })));
+    new import_obsidian.Setting(containerEl).setName("Show Non-Markdown Files").setDesc("If enabled, non-Markdown files will be listed alongside other notes in the generated waypoints.").addToggle((toggle) => toggle.setValue(this.plugin.settings.showNonMarkdownFiles).onChange((value) => __async(this, null, function* () {
+      this.plugin.settings.showNonMarkdownFiles = value;
       yield this.plugin.saveSettings();
     })));
     new import_obsidian.Setting(containerEl).setName("Show Enclosing Note").setDesc("If enabled, the name of the folder note containing the waypoint will be listed at the top of the generated waypoints.").addToggle((toggle) => toggle.setValue(this.plugin.settings.showEnclosingNote).onChange((value) => __async(this, null, function* () {

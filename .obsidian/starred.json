@@ -39,6 +39,11 @@
       "type": "file",
       "title": "🥑Blue Topaz Themes Tips",
       "path": "00-Tips/🥑Blue Topaz Themes Tips.md"
+    },
+    {
+      "type": "file",
+      "title": "ob提示框(callout)样式展示",
+      "path": "77-Example/ob提示框(callout)样式展示.md"
     }
   ]
 }

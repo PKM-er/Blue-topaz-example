@@ -6,7 +6,9 @@
   margin: 0;
   border-radius: var(--he-popover-border-radius);
   overflow: hidden;
-  height: 100%;
+}
+.mk-floweditor.hover-editor .popover-content .workspace-split {
+  display: none;
 }
 .mk-floweditor.hover-editor .workspace-leaf,
 .mk-floweditor.hover-editor .workspace-split {
@@ -15,6 +17,9 @@
 }
 .mk-floweditor .markdown-source-view.mod-cm6 .cm-editor {
   min-height: auto;
+}
+.mk-floweditor .workspace-leaf-content[data-type=canvas] .view-content {
+  height: 600px;
 }
 .mk-floweditor .cm-content {
   padding: 0 !important;
@@ -101,27 +106,36 @@
   border-left: var(--embed-border-left);
   padding: var(--embed-padding);
 }
-.mk-flow-seamless .markdown-embed {
+.mk-flow-seamless .internal-embed > .markdown-embed,
+.mk-flow-seamless .internal-embed.markdown-embed {
   padding: 8px;
   border-radius: 4px;
   border: thin solid var(--color-base-20);
   margin-top: 4px;
 }
-.mk-flow-classic .markdown-embed {
+.mk-flow-classic .internal-embed > .markdown-embed,
+.mk-flow-classic .internal-embed.markdown-embed {
   margin-top: 24px;
 }
-.markdown-embed .markdown-rendered h1,
-.markdown-embed .markdown-rendered h2,
-.markdown-embed .markdown-rendered h3,
-.markdown-embed .markdown-rendered h4,
-.markdown-embed .markdown-rendered h5,
-.markdown-embed .markdown-rendered h6 {
+.internal-embed > .markdown-embed .markdown-rendered h1,
+.internal-embed > .markdown-embed .markdown-rendered h2,
+.internal-embed > .markdown-embed .markdown-rendered h3,
+.internal-embed > .markdown-embed .markdown-rendered h4,
+.internal-embed > .markdown-embed .markdown-rendered h5,
+.internal-embed > .markdown-embed .markdown-rendered h6,
+.internal-embed.markdown-embed .markdown-rendered h1,
+.internal-embed.markdown-embed .markdown-rendered h2,
+.internal-embed.markdown-embed .markdown-rendered h3,
+.internal-embed.markdown-embed .markdown-rendered h4,
+.internal-embed.markdown-embed .markdown-rendered h5,
+.internal-embed.markdown-embed .markdown-rendered h6 {
   margin: 0;
 }
 .markdown-embed p {
   margin-bottom: 24px;
 }
-.mk-flow-seamless .markdown-embed {
+.mk-flow-seamless .internal-embed > .markdown-embed,
+.mk-flow-seamless .internal-embed.markdown-embed {
   margin-top: 24px;
 }
 .mk-floweditor-container:not(.mk-floweditor-fix) > .mk-floweditor:hover {
@@ -151,13 +165,16 @@
 .cm-line:hover > .mk-floweditor-selector {
   visibility: visible;
 }
-.markdown-embed:hover .mk-floweditor-selector {
+.internal-embed.markdown-embed:hover .mk-floweditor-selector,
+.internal-embed > .markdown-embed:hover .mk-floweditor-selector {
   visibility: visible;
 }
-.mk-flow-classic .markdown-embed > .mk-floweditor-selector {
+.mk-flow-classic .internal-embed > .markdown-embed > .mk-floweditor-selector,
+.mk-flow-classic .internal-embed.markdown-embed > .mk-floweditor-selector {
   top: 5px !important;
 }
-.mk-flow-seamless .markdown-embed > .mk-floweditor-selector {
+.mk-flow-seamless .internal-embed > .markdown-embed > .mk-floweditor-selector,
+.mk-flow-seamless .internal-embed.markdown-embed > .mk-floweditor-selector {
   top: -22px !important;
   right: 4px;
 }
@@ -557,30 +574,11 @@ body:not(.is-mobile) .mk-section:hover .mk-collapse {
 }
 
 /* src/css/FileTree.css */
-.mk-hide-ribbon.mod-macos.is-hidden-frameless:not(.is-fullscreen):not(.is-popout-window):not(.is-mobile) .workspace-tabs.mod-top-left-space .workspace-tab-header-container {
-  padding-left: calc(var(--frame-left-space) + var(--ribbon-width));
-}
-.mk-hide-ribbon:not(.is-mobile) .workspace-ribbon.mod-left {
-  display: none;
-}
-.mk-hide-ribbon:not(.is-mobile) .workspace-ribbon.mod-right {
-  visibility: hidden;
-  position: absolute;
-}
-.mk-hide-ribbon:not(.is-mobile) .workspace-split.mod-right-split {
-  margin-right: 0;
-}
 .mk-hide-tabs .mod-left-split .mod-top-left-space .workspace-tab-header-container-inner {
   visibility: hidden;
 }
-.mk-hide-ribbon.is-mobile .workspace-drawer.mod-left .workspace-drawer-inner {
-  padding-left: 0 !important;
-}
 .is-mobile .workspace-drawer.mod-left .workspace-drawer-inner .workspace-drawer-header {
   padding-left: 0 !important;
-}
-.mk-hide-ribbon.is-mobile .workspace-drawer.mod-left .workspace-drawer-ribbon {
-  display: none;
 }
 .is-mobile .workspace-drawer.mod-left .workspace-drawer-active-tab-header {
   display: none;

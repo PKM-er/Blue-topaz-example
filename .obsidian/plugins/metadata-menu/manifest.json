@@ -1,8 +1,8 @@
 {
 	"id": "metadata-menu",
 	"name": "Metadata Menu",
-	"version": "0.3.9",
-	"minAppVersion": "0.15.3",
+	"version": "0.4.6",
+	"minAppVersion": "1.1.9",
 	"description": "For data quality enthousiasts (and dataview lovers): manage the metadata of your notes.",
 	"author": "mdelobelle",
 	"authorUrl": "https://github.com/mdelobelle",

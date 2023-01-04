@@ -764,7 +764,7 @@ button.main-bar img {
 }
 /***移除笔记面板前的md图标***/
 body:not(.remove-custom-svg-icons)
-  .workspace-leaf-content[data-type="markdown"]
+  body.logseq-outline-style .workspace-leaf-content[data-type="markdown"]
   .view-header-icon
   svg.document {
   display: none;
@@ -946,7 +946,6 @@ dvjs ~ :is(p, b, bold) > select option {
   tr
   :is(td, th):empty {
   height: 2em !important;
-  border: 0.5px solid var(--background-modifier-border);
 }
 :is(.markdown-preview-view, .markdown-rendered)
   .ob-table-enhancer
@@ -1085,3 +1084,106 @@ dvjs ~ :is(p, b, bold) > :is(select) {
 
 
 
+svg.markmap {
+  font: 300 14px / 20px sans-serif;
+}
+
+ button.white
+ {
+  color: white;
+ }
+ /**************home canvas************/
+.canvas-node:has(img[src*="board"]),
+.canvas-node:has(img[src*="home"])
+{
+ z-index: 1 !important;
+ 
+ pointer-events:none; 
+ 
+}
+ 
+body[data-canvas-path*="Home"]  .canvas-selection.mod-group-selection
+{
+  pointer-events:none; 
+}
+
+body[data-canvas-path*="Home"]   .canvas-node.is-themed:is(.mod-canvas-color-1,.mod-canvas-color-custom) .canvas-node-label
+{
+display: none;
+}
+
+body[data-canvas-path*="Home"]  .canvas-node.is-themed:is(.mod-canvas-color-1,.mod-canvas-color-2,.mod-canvas-color-custom) .canvas-node-resizer
+{
+  display: none;
+}
+
+body[data-canvas-path*="Home"]  .canvas-node.is-themed:is(.mod-canvas-color-2,.mod-canvas-color-custom)
+{
+  pointer-events:none; 
+}
+body[data-canvas-path*="Home"] .canvas-wrapper .canvas{
+/*  
+  transform: translate3d(45%, 50%, 0px) scale(1) translate3d(8550px, 8262.57px, 0px) !important;  */
+}
+
+body[data-canvas-path*="Home"] .canvas-node-content .markdown-embed > .markdown-embed-content > .markdown-preview-view,
+body[data-canvas-path*="Home"]  .canvas-node-content .markdown-embed > .markdown-embed-content > .markdown-preview-view .markdown-preview-sizer
+{
+ 
+  padding: 0px;
+}
+body[data-canvas-path*="Home"]  .canvas-node-content  .markdown-preview-sizer:has([data-block-language="dataviewjs"])
+{
+  margin-top: -1em;
+}
+ 
+
+body[data-canvas-path*="Home"]  .canvas-node-content  .markdown-preview-sizer .callout
+{
+  --callout-title-color:var(--canvas-color);
+  --callout-color:var(--canvas-color);
+}
+body[data-canvas-path*="Home"]  .canvas-node-content.markdown-embed.is-loaded,
+body[data-canvas-path*="Home"]  .canvas-node-container,
+body[data-canvas-path*="Home"]  .canvas-node-content .callout-title
+{
+  border: unset!important;
+  box-shadow: none !important;
+  background-color: transparent !important;
+  text-align: center;
+  padding-left: 0px;
+ 
+}
+body[data-canvas-path*="Home"]  .canvas-node-content :is(.markdown-preview-view,.markdown-rendered) h2,
+body[data-canvas-path*="Home"]  .canvas-node-content :is(.markdown-preview-view,.markdown-rendered) a
+{
+  text-align: center; 
+color: white!important;
+}
+body[data-canvas-path*="_middle"] .canvas-node-container .canvas-node-content.markdown-embed:not(.is-loaded)
+{
+text-align: center;
+}
+
+body[data-canvas-path*="Home"]  .canvas-node .callout-title
+{
+  padding: 10px 0 10px 0;
+
+  
+}
+body[data-canvas-path*="Home"]  .canvas-node .callout:not(.admonition).drop-shadow {
+  box-shadow: unset;
+}
+body[data-canvas-path*="Home"]  .canvas-node .callout {
+border: none;
+}
+
+
+/**************************/
+
+body.canvas-file .cm-gutters
+{
+  display: none;
+}
+ 
+ 

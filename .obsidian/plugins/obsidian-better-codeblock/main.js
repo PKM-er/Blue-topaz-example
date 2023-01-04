@@ -161,6 +161,7 @@ function BetterCodeBlocks(el, context, plugin) {
     let codeBlockFirstLine = "";
     if (codeBlock) {
       let view = app.workspace.getActiveViewOfType(import_obsidian.MarkdownView);
+	  if(view)
       codeBlockFirstLine = view.editor.getLine(codeBlock.lineStart);
     } else {
       let file = app.vault.getAbstractFileByPath(context.sourcePath);

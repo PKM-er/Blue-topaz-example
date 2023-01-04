@@ -1,8 +1,8 @@
 {
   "ruleConfigs": {
     "Escape YAML Special Characters": {
-      "Escapes colons with a space after them (: ), single quotes ('), and double quotes (\") in YAML.": false,
-      "Try to Escape Single Line Arrays": false
+      "Escapes colons with a space after them (: ), single quotes ('), and double quotes (\") in YAML.": true,
+      "Try to Escape Single Line Arrays": true
     },
     "Format Tags in YAML": {
       "Remove Hashtags from tags in the YAML frontmatter, as they make the tags there invalid.": true
@@ -18,7 +18,7 @@
     },
     "Insert YAML attributes": {
       "Inserts the given YAML attributes into the YAML frontmatter. Put each attribute on a single line.": true,
-      "Text to insert": "aliases: \ntags: \ncssclass:\nsource:"
+      "Text to insert": "aliases:\ntags: \ncssclass:\nsource:"
     },
     "Move Tags to Yaml": {
       "Move all tags to Yaml frontmatter of the document.": false,
@@ -46,12 +46,12 @@
     },
     "YAML Title": {
       "Inserts the title of the file into the YAML frontmatter. Gets the title from the first H1 or filename if there is no H1.": false,
-      "Title Key": "aliases"
+      "Title Key": ""
     },
     "YAML Title Alias": {
       "Inserts the title of the file into the YAML frontmatter's aliases section. Gets the title from the first H1 or filename.": true,
       "Preserve existing aliases section style": true,
-      "Keep alias that matches the filename": true,
+      "Keep alias that matches the filename": false,
       "Use the YAML key `linter-yaml-title-alias` to help with filename and heading changes": false
     },
     "Capitalize Headings": {
@@ -166,8 +166,8 @@
       "Two Space Linebreak": false
     },
     "Force YAML Escape": {
-      "Escapes the values for the specified YAML keys.": false,
-      "Force YAML Escape on Keys": ""
+      "Escapes the values for the specified YAML keys.": true,
+      "Force YAML Escape on Keys": "aliases"
     },
     "Empty Line Around Math Blocks": {
       "Ensures that there is an empty line around math blocks using `Number of Dollar Signs to Indicate a Math Block` to determine how many dollar signs indicates a math block for single-line math.": false
@@ -201,9 +201,28 @@
     },
     "Space between Chinese Japanese or Korean and English or numbers": {
       "Ensures that Chinese, Japanese, or Korean and English or numbers are separated by a single space. Follows these [guidelines](https://github.com/sparanoid/chinese-copywriting-guidelines)": false
+    },
+    "Headings Start Line": {
+      "Headings that do not start a line will have their preceding whitespace removed to make sure they get recognized as headers.": false
+    },
+    "Remove Trailing Punctuation in Heading": {
+      "Removes the specified punctuation from the end of headings making sure to ignore the semicolon at the end of [HTML entity references](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references).": false,
+      "Trailing Punctuation": ".,;:!。，；：！"
+    },
+    "Auto-correct Common Misspellings": {
+      "Uses a dictionary of common misspellings to automatically convert them to their proper spellings. See [auto-correct map](https://github.com/platers/obsidian-linter/tree/master/src/utils/auto-correct-misspellings.ts) for the full list of auto-corrected words.": false,
+      "Ignore Words": ""
+    },
+    "Remove Space around Characters": {
+      "Ensures that certain characters are not surrounded by whitespace (either single spaces or a tab). Note that this may causes issues with markdown format in some cases.": false,
+      "Include Fullwidth Forms": true,
+      "Include CJK Symbols and Punctuation": true,
+      "Include Dashes": true,
+      "Other symbols": ""
     }
   },
   "lintOnSave": true,
+  "recordLintOnSaveLogs": false,
   "displayChanged": true,
   "foldersToIgnore": [
     "88-Template"
@@ -211,9 +230,15 @@
   "linterLocale": "system-default",
   "logLevel": 4,
   "lintCommands": [],
-  "customRegexes": [],
+  "customRegexes": [
+    {
+      "find": "",
+      "replace": "",
+      "flags": "gm"
+    }
+  ],
   "commonStyles": {
-    "aliasArrayStyle": "single string to multi-line",
+    "aliasArrayStyle": "single string comma delimited",
     "tagArrayStyle": "single string to multi-line",
     "minimumNumberOfDollarSignsToBeAMathBlock": 2,
     "escapeCharacter": "'"

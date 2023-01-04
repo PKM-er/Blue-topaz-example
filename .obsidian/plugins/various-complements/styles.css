@@ -14,6 +14,10 @@
     text-align: right;
 }
 
+.various-complements__settings__nested {
+    padding-left: 30px;
+}
+
 .various-complements__settings__header {
     position: relative;
     padding-left: 25px;

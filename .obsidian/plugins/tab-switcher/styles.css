@@ -22,7 +22,13 @@ If your plugin does not need CSS, delete this file.
 
 .search-leaf-item-text {
 	margin-left: var(--size-2-3);
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 280px;
 }
+
+
 
 .search-leaf-item-icon {
 	display: flex;
@@ -47,7 +53,11 @@ If your plugin does not need CSS, delete this file.
 }
 
 .tab-switcher-modal .modal {
-	width: 360px;
+	position: absolute;
+	width: 420px;
+	top: 20%;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .search-leaf-item-tips {
@@ -59,4 +69,8 @@ If your plugin does not need CSS, delete this file.
 
 .tab-switcher-modal .modal-close-button {
 	display: none;
+}
+
+.show-all .search-leaf-item-text {
+	white-space: unset;
 }

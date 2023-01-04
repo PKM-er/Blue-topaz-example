@@ -11,6 +11,7 @@ obsidianUIMode: preview
 	- **People**
 		- [[李四]]
 	- **Study**
+		- [[20221231235546]]
 	- **[[Website]]**
 	- **Work**
 

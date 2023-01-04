@@ -235,7 +235,8 @@ var ppLastBlockDate = Date.now();
 var documentRendererDefaults = {
   convertSvgToBitmap: true,
   removeFrontMatter: true,
-  formatAsTables: false
+  formatAsTables: false,
+  embedExternalLinks: false
 };
 var DocumentRenderer = class {
   constructor(view, app, options = documentRendererDefaults) {
@@ -248,6 +249,7 @@ var DocumentRenderer = class {
       ["jpg", "image/jpeg"]
     ]);
     this.imageExtensions = ["gif", "png", "jpg", "jpeg", "bmp", "png", "webp", "tiff", "svg"];
+    this.externalSchemes = ["http", "https"];
     this.vaultPath = this.app.vault.getRoot().vault.adapter.getBasePath().replace(/\\/g, "/");
     this.vaultUriPrefix = `app://local/${this.vaultPath}`;
   }
@@ -395,8 +397,18 @@ var DocumentRenderer = class {
       if (img.src) {
         if (img.src.startsWith("data:image/svg+xml") && this.options.convertSvgToBitmap) {
           promises.push(this.replaceImageSource(img));
-        } else if (!img.src.startsWith("data:")) {
+          return;
+        }
+        if (!this.options.embedExternalLinks) {
+          const [scheme] = img.src.split(":", 1);
+          if (this.externalSchemes.includes(scheme.toLowerCase())) {
+            return;
+          } else {
+          }
+        }
+        if (!img.src.startsWith("data:")) {
           promises.push(this.replaceImageSource(img));
+          return;
         }
       }
     });
@@ -524,6 +536,10 @@ var CopyDocumentAsHTMLSettingsTab = class extends import_obsidian.PluginSettingT
       this.plugin.settings.convertSvgToBitmap = value;
       await this.plugin.saveSettings();
     }));
+    new import_obsidian.Setting(containerEl).setName("Embed external images").setDesc("If checked, external images are downloaded and embedded. If unchecked, the resulting document may contain links to external resources").addToggle((toggle) => toggle.setValue(this.plugin.settings.embedExternalLinks).onChange(async (value) => {
+      this.plugin.settings.embedExternalLinks = value;
+      await this.plugin.saveSettings();
+    }));
     new import_obsidian.Setting(containerEl).setName("Render some elements as tables").setDesc("If checked code blocks and callouts are rendered as tables, which makes pasting into Google docs somewhat prettier.").addToggle((toggle) => toggle.setValue(this.plugin.settings.formatAsTables).onChange(async (value) => {
       this.plugin.settings.formatAsTables = value;
       await this.plugin.saveSettings();
@@ -550,6 +566,7 @@ var DEFAULT_SETTINGS = {
   removeFrontMatter: true,
   convertSvgToBitmap: true,
   useCustomStylesheet: false,
+  embedExternalLinks: false,
   formatAsTables: false,
   styleSheet: DEFAULT_STYLESHEET
 };

@@ -1,5 +1,3 @@
----
----
 ```dataviewjs
  let pages= dv.pages()
            .groupBy(p => p.file.cday.toFormat("yyyy-MM"))
@@ -175,7 +173,6 @@ let option = {
       },
       data: wordscout,
     },
-
     {
       name: "笔记数量",
       type: "bar",
@@ -195,6 +192,7 @@ let option = {
       },
       data: yData,
     },
+
     {
       name: "总数",
       type: "line",

@@ -2,6 +2,11 @@
   --advanced-tables-helper-size: 28px;
 }
 
+.HyperMD-table-row span.cm-inline-code {
+  font-size: 100%;
+  padding: 0px;
+}
+
 .advanced-tables-buttons>div>.title {
   font-weight: var(--font-medium);
   font-size: var(--nav-item-size);

@@ -1,10 +1,12 @@
 ---
-created: 2021-12-18
+aliases: '卡尔·马克思'
+created: "2022-08-13 00:45"
 tags: 
 source: "https://zh.wikipedia.wikimirror.org/wiki/%E5%8D%A1%E5%B0%94%C2%B7%E9%A9%AC%E5%85%8B%E6%80%9D"
 author: 
-usage: "callout实现文章环绕，全文缩进效果"
-cssclass: "fullwidth"
+usage: "callout实现文章环绕，全文缩进效果，两端对齐"
+cssclass: fullwidth
+updated: "2022-12-30 20:45"
 ---
 # 卡尔·马克思
 
@@ -29,9 +31,13 @@ cssclass: "fullwidth"
 |主要领域|政治学、经济学、哲学、社会学、劳动关系、历史学、阶级斗争、伦理学、自然科学|
 |著名思想|剩余价值、劳动价值理论、阶级斗争、异化理论、历史唯物主义|
 
-> [!blank indent]
+> [!blank indent justify]
 > 
 **卡尔·马克思**（德语：Karl Marx；1818年5月5日－1883年3月14日），早期在中国被译为**麦喀士**，是犹太裔德国哲学家、经济学家、社会学家、政治学家、革命理论家、新闻从业员、历史学者、革命社会主义者。马克思在经济学上的工作是解释工人和资本家间的关系是什么，并且这一工作为后来诸多经济思想奠定了基础。马克思亦是社会学与社会科学的鼻祖之一。卡尔·马克思一生出版过大量理论著作，包括1848年发表的《共产党宣言》和1867年至1894年出版的《资本论》。
+Karl Marx was a German philosopher, economist, historian, sociologist, political theorist, journalist, and revolutionary socialist. He is one of the most influential figures in human history, and his work has had a profound impact on the development of modern social, economic, and political thought.
+Marx was born in Prussia (now Germany) in 1818 and studied law, philosophy, and history at the universities of Bonn and Berlin. He became interested in radical politics and eventually joined the Communist League, a group of radical communists. In 1848, Marx and his colleague Friedrich Engels published "The Communist Manifesto," which outlined their vision for a society in which the working class would overthrow the capitalist class and establish a socialist system.
+Marx's most famous work is "Das Kapital," a multi-volume analysis of capitalism and its contradictions. In this work, Marx argued that capitalism is inherently exploitative and that the exploitation of the working class is necessary for the profit and accumulation of capital. He also argued that capitalism is inherently unstable and that it will eventually be replaced by socialism, in which the means of production are owned and controlled by the workers themselves.
+Marx's ideas have had a significant impact on the development of socialist and communist movements around the world, and his work continues to be studied and debated by scholars and activists today.
 1818年5月5日，马克思出生在普鲁士特里尔，一个相对富裕的中产阶级家庭。1835年10月就读于德国波恩大学和柏林洪堡大学期间的马克思，开始对青年黑格尔派的哲学观点产生兴趣。大学毕业以后，马克思为科隆地区的一家持有激进观点的报纸供稿，与此同时，其自身的历史唯物主义理论思想萌芽，开始渐渐成形。1843年时马克思移居法国巴黎，继续在其他持有激进观点的相关报社从事专栏写作；也就是在这个时候，马克思遇见了后来的重要朋友和支持者——弗里德里希·恩格斯。1849年马克思遭流放，与妻儿一起迁居到英国伦敦。他到达伦敦后依然持续写作，同时开始构建他关于社会经济活动的理论。马克思积极参与社会主义运动，并很快在第一国际中成为重要人物。
 马克思关于社会、经济与政治的理论被统称为马克思主义。马克思主张人类社会是在控制生产资料的统治阶级与提供劳动生产的劳动阶级间不断的阶级斗争中发展而成的。马克思认为国家是为维护统治阶级的利益而运转的，而这一点又常常被视为大众的公共意志，并预言国家必然会走向消亡。他同时也预言如之前存在过的社会经济体系一样，资本主义的内部矛盾会导致它自身的灭亡，并会被新的社会主义社会形态所取代；而资产阶级和无产阶级之间存在的矛盾，将会由工人阶级夺取政治权力而终结，最终建立工人自由人联合体所管理、形成无任何阶级制度的共产主义社会。马克思积极地实践他的理论，指出工人阶级应该有组织地发动革命，推翻资本主义以改变社会经济体制。
 由于马克思是马克思主义的核心创始人，所以他长期以来受到了许多人各个方面的赞美和批评，因此马克思也被人们认为是人类历史上最有影响力的人物之一；卡尔·马克思与德国哲学家弗里德里希·尼采、奥地利心理学家西格蒙德·佛洛伊德并列为新哲学学说的奠基者；他还与法国社会学家艾密尔·涂尔干、德国政治经济学家马克斯·韦布并列为现代社会科学建立者。

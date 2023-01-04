@@ -1,0 +1,15 @@
+.canvas-css-class-opt {
+    font-weight: normal;
+    padding-left: 15px;
+    border: none;
+}
+
+.canvas-css-class-opt::before {
+    content: '•';
+    margin-right: 5px;
+}
+
+.canvas-css-class-title {
+    border-bottom: 1px dotted var(--background-modifier-border);
+    border-top: 2px solid var(--background-modifier-border);
+}

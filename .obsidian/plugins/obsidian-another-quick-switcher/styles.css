@@ -1,3 +1,13 @@
+.another-quick-switcher__floating-prompt {
+    width: 33vw;
+    min-width: 500px;
+    right: 30px;
+}
+
+.another-quick-switcher__floating-prompt .suggestion-item {
+    font-size: 90%;
+}
+
 .another-quick-switcher__item {
     display: flex;
     flex-direction: column;
@@ -46,6 +56,18 @@
     padding-right: 1rem;
 }
 
+.another-quick-switcher__item__extension {
+    display: inline-block;
+    text-align: center;
+    min-width: 2rem;
+    border-radius: 8px;
+    font-size: 80%;
+    /*noinspection CssUnresolvedCustomProperty*/
+    background-color: var(--background-modifier-hover);
+    margin-left: 5px;
+    padding: 1px 5px;
+}
+
 .another-quick-switcher__item__hot-key-guide::before {
     content: "[";
 }
@@ -60,6 +82,12 @@
     content: "]";
 }
 
+.another-quick-switcher__header__auto-preview-icon {
+    display: flex;
+    align-items: center;
+    margin-right: 12px;
+}
+
 .another-quick-switcher__header__floating-modal-bg {
     background-color: rgba(0, 0, 0, 0.3);
 }
@@ -72,6 +100,16 @@
     font-size: 90%;
 }
 
+.another-quick-switcher__custom-search__navigation-history-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 85%;
+    /*noinspection CssUnresolvedCustomProperty*/
+    color: var(--text-muted);
+    margin: 0 5px;
+    padding: 0.5rem 1rem 0 1rem;
+}
 .another-quick-switcher__status__search-command {
     display: flex;
     justify-content: end;
@@ -80,7 +118,7 @@
     /*noinspection CssUnresolvedCustomProperty*/
     color: var(--text-muted);
     margin: 0 5px;
-    padding: 1rem 1rem 0 1rem;
+    padding: 0.5rem 1rem 0 1rem;
 }
 .another-quick-switcher__status__default-input {
     display: flex;
@@ -96,7 +134,7 @@
     /*noinspection CssUnresolvedCustomProperty*/
     color: var(--text-muted);
     right: 35px;
-    top: 3.0rem;
+    top: 4.0rem;
 }
 .another-quick-switcher__item__title__header {
     line-height: 1.1em;
@@ -159,6 +197,7 @@
 
 .another-quick-switcher__grep__floating-prompt {
     width: 33vw;
+    min-width: 500px;
     right: 30px;
 }
 

@@ -220,5 +220,51 @@
   ],
   "Enhanced-editing:add-Line0": [],
   "Enhanced-editing:del-lines": [],
-  "Enhanced-editing:biaoti0-text": []
+  "Enhanced-editing:biaoti0-text": [],
+  "canvas-presentation:next-slide": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "]"
+    }
+  ],
+  "canvas-presentation:previous-slide": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "["
+    }
+  ],
+  "canvas-presentation:mark-slide-number": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "N"
+    }
+  ],
+  "canvas-mindmap:split-into-mindmap": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "H"
+    }
+  ],
+  "link-nodes-in-canvas:link-between-selection-nodes": [
+    {
+      "modifiers": [
+        "Alt",
+        "Mod"
+      ],
+      "key": "L"
+    }
+  ],
+  "obsidian-linter:lint-file": []
 }

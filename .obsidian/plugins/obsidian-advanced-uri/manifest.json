@@ -4,7 +4,8 @@
     "description": "Advanced modes for Obsidian URI",
     "isDesktopOnly": false,
     "js": "main.js",
-    "version": "1.31.1",
+    "fundingUrl": "https://ko-fi.com/vinzent",
+    "version": "1.31.2",
     "author": "Vinzent",
     "authorUrl": "https://github.com/Vinzent03"
 }

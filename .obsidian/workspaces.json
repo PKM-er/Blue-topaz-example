@@ -96,7 +96,7 @@
           }
         ],
         "direction": "horizontal",
-        "width": 255
+        "width": 276.9945435523987
       },
       "right": {
         "id": "4e390742ffc29613",
@@ -208,15 +208,7 @@
         "direction": "horizontal",
         "width": 265
       },
-      "active": "80430a4f104c0c57",
-      "workspaces-plus:settings-v1": {
-        "mode": null,
-        "explorerFoldState": [
-          "/",
-          "77-Example",
-          "88-Template"
-        ]
-      }
+      "active": "80430a4f104c0c57"
     },
     "kanban": {
       "main": {
@@ -738,7 +730,244 @@
       "workspaces-plus:settings-v1": {
         "mode": null
       }
+    },
+    "Canvas": {
+      "main": {
+        "id": "e8b4ea94b39a8520",
+        "type": "split",
+        "children": [
+          {
+            "id": "8bbe2deff908dd60",
+            "type": "tabs",
+            "children": [
+              {
+                "id": "944517de283150b7",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "canvas",
+                  "state": {
+                    "file": "60-Canvas/Home_middle.canvas",
+                    "viewState": {
+                      "x": -10452.012018334373,
+                      "y": -10105.74841400141,
+                      "zoom": -0.5809317117344484,
+                      "snapToGrid": false
+                    }
+                  },
+                  "pinned": true
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "vertical"
+      },
+      "left": {
+        "id": "687357708cbc920f",
+        "type": "split",
+        "children": [
+          {
+            "id": "4bc1edcafd063cfb",
+            "type": "tabs",
+            "dimension": 68.13048933500627,
+            "children": [
+              {
+                "id": "37c8f55a8ef7a09c",
+                "type": "leaf",
+                "state": {
+                  "type": "file-explorer",
+                  "state": {
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "b3290ae399933a0b",
+                "type": "leaf",
+                "state": {
+                  "type": "search",
+                  "state": {
+                    "query": "",
+                    "matchingCase": false,
+                    "explainSearch": false,
+                    "collapseAll": false,
+                    "extraContext": false,
+                    "sortOrder": "alphabetical"
+                  }
+                }
+              },
+              {
+                "id": "3d21402f76dc34c3",
+                "type": "leaf",
+                "state": {
+                  "type": "starred",
+                  "state": {}
+                }
+              },
+              {
+                "id": "f2c2f4dfc8473d58",
+                "type": "leaf",
+                "state": {
+                  "type": "file-tree-view",
+                  "state": {}
+                }
+              }
+            ]
+          },
+          {
+            "id": "d877e8285f98a38a",
+            "type": "tabs",
+            "dimension": 31.869510664993726,
+            "children": [
+              {
+                "id": "b37bc3d287f74512",
+                "type": "leaf",
+                "state": {
+                  "type": "recent-files",
+                  "state": {}
+                }
+              }
+            ]
+          }
+        ],
+        "direction": "horizontal",
+        "width": 276.9945435523987
+      },
+      "right": {
+        "id": "4e390742ffc29613",
+        "type": "split",
+        "children": [
+          {
+            "id": "d4c25b22f0c7d5f0",
+            "type": "tabs",
+            "dimension": 36.340852130325814,
+            "children": [
+              {
+                "id": "ca4e910af4602420",
+                "type": "leaf",
+                "state": {
+                  "type": "calendar",
+                  "state": {}
+                }
+              },
+              {
+                "id": "340969ccd24905e8",
+                "type": "leaf",
+                "state": {
+                  "type": "outline",
+                  "state": {
+                    "file": "88-Template/彩色时钟.md"
+                  }
+                }
+              },
+              {
+                "id": "83061aceea29f566",
+                "type": "leaf",
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "88-Template/彩色时钟.md",
+                    "mode": "preview",
+                    "backlinks": false,
+                    "source": true
+                  }
+                }
+              }
+            ],
+            "currentTab": 2
+          },
+          {
+            "id": "0b3485207df574dd",
+            "type": "tabs",
+            "dimension": 63.65914786967418,
+            "children": [
+              {
+                "id": "041c78328387b373",
+                "type": "leaf",
+                "state": {
+                  "type": "backlink",
+                  "state": {
+                    "file": "88-Template/彩色时钟.md",
+                    "collapseAll": true,
+                    "extraContext": true,
+                    "sortOrder": "byModifiedTime",
+                    "showSearch": false,
+                    "searchQuery": "",
+                    "backlinkCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "dc4a81bfd6624166",
+                "type": "leaf",
+                "state": {
+                  "type": "outgoing-link",
+                  "state": {
+                    "file": "88-Template/彩色时钟.md",
+                    "linksCollapsed": false,
+                    "unlinkedCollapsed": true
+                  }
+                }
+              },
+              {
+                "id": "b2ae90cb6049dbe9",
+                "type": "leaf",
+                "state": {
+                  "type": "tag",
+                  "state": {
+                    "sortOrder": "frequency",
+                    "useHierarchy": true
+                  }
+                }
+              },
+              {
+                "id": "8851ccb0aa4e524a",
+                "type": "leaf",
+                "pinned": true,
+                "state": {
+                  "type": "markdown",
+                  "state": {
+                    "file": "88-Template/常用工具.md",
+                    "mode": "preview",
+                    "backlinks": true,
+                    "source": false
+                  },
+                  "pinned": true
+                }
+              }
+            ],
+            "currentTab": 3
+          }
+        ],
+        "direction": "horizontal",
+        "width": 265
+      },
+      "left-ribbon": {
+        "hiddenItems": {
+          "surfing:surfing-bookmark-manager": false,
+          "omnisearch:Omnisearch": false,
+          "homepage:Open homepage": false,
+          "periodic-notes:Open today's daily note": false,
+          "dbfolder:创建一个新数据库表": false,
+          "obsidian-projects:Open projects": false,
+          "templater-obsidian:Templater": false,
+          "cmdr:显示当前文件": false,
+          "switcher:打开快速切换": false,
+          "graph:查看关系图谱": false,
+          "canvas:Create new canvas": false,
+          "daily-notes:打开/创建今天的日记": false,
+          "templates:插入模板": false,
+          "command-palette:打开命令面板": false,
+          "markdown-importer:打开 Markdown 格式转换器": false,
+          "audio-recorder:开始/结束录音": false,
+          "workspaces:管理工作区布局": false,
+          "obsidian-memos:Memos": false
+        }
+      },
+      "active": "37c8f55a8ef7a09c"
     }
   },
-  "active": "Home"
+  "active": "Canvas"
 }

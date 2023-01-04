@@ -3,6 +3,12 @@
   "positionStyle": "top",
   "menuCommands": [
     {
+      "id": "obsidian-emoji-toolbar:emoji-picker:open-picker",
+      "name": "Emoji Toolbar: Open emoji picker",
+      "hotkeys": [],
+      "icon": "remix-EmotionLine"
+    },
+    {
       "id": "editing-toolbar:editor-undo",
       "name": "undo editor",
       "icon": "undo-glyph"
@@ -214,6 +220,11 @@
       "id": "editing-toolbar:workplace-fullscreen-focus",
       "name": "workplace-Fullscreen ",
       "icon": "remix-SplitCellsHorizontal"
+    },
+    {
+      "id": "copy-document-as-html:copy-as-html",
+      "name": "Copy document as HTML: Copy current document to clipboard",
+      "icon": "remix-FileCopyLine"
     }
   ],
   "appendMethod": "workspace",
@@ -221,7 +232,8 @@
   "cMenuVisibility": true,
   "cMenuBottomValue": 4.25,
   "cMenuNumRows": 12,
-  "cMenuWidth": 528,
+  "cMenuWidth": 554,
   "cMenuFontColor": "#92cddc",
-  "cMenuBackgroundColor": "#d2cbff"
+  "cMenuBackgroundColor": "#d2cbff",
+  "autohide": false
 }

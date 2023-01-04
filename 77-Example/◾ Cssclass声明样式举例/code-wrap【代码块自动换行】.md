@@ -8,7 +8,7 @@ usage: "代码块自动换行"
 ---
 
 ```css
-.tag[href^="#questions"] {
+ .tag[href^="#questions"] {
   background-color: var(--tag-questions-bg) !important;
   font-weight: 600;
   font-family: var(--font-family-special-tag) !important;

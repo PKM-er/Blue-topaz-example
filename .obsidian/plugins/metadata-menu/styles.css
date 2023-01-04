@@ -740,6 +740,8 @@ span.flatpickr-weekday {
     background-color: var(--color-red); }
   .metadata-menu .chip.formula {
     background-color: var(--color-red); }
+  .metadata-menu .chip.canvas-links {
+    background-color: var(--color-blue); }
 
 .metadata-menu-dv-field-container {
   display: flex; }
@@ -827,13 +829,13 @@ span.flatpickr-weekday {
   margin: 1em 0; }
   .metadata-menu.modal-container .field-container .label {
     white-space: nowrap; }
-  .metadata-menu.modal-container .field-container input {
+  .metadata-menu.modal-container .field-container input, .metadata-menu.modal-container .field-container textarea {
     margin-right: 1em; }
-    .metadata-menu.modal-container .field-container input.with-label {
+    .metadata-menu.modal-container .field-container input.with-label, .metadata-menu.modal-container .field-container textarea.with-label {
       margin-left: 1em; }
-    .metadata-menu.modal-container .field-container input.full-width {
+    .metadata-menu.modal-container .field-container input.full-width, .metadata-menu.modal-container .field-container textarea.full-width {
       width: 100%; }
-    .metadata-menu.modal-container .field-container input:last-child {
+    .metadata-menu.modal-container .field-container input:last-child, .metadata-menu.modal-container .field-container textarea:last-child {
       margin-right: 0; }
   .metadata-menu.modal-container .field-container textarea.full-width {
     width: 100%; }
@@ -852,6 +854,103 @@ span.flatpickr-weekday {
     font-style: italic; }
   .metadata-menu.modal-container .field-container .warning {
     color: var(--color-red); }
+  .metadata-menu.modal-container .field-container .node-color {
+    min-height: 2em;
+    min-width: 2em;
+    border-radius: 50%;
+    margin: 0.2em 0.2em;
+    text-align: center; }
+    .metadata-menu.modal-container .field-container .node-color.color-1 {
+      background-color: rgba(var(--canvas-color-1), 0.2);
+      color: rgba(var(--canvas-color-1), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-1.active {
+      background-color: rgba(var(--canvas-color-1), 1);
+      color: rgba(var(--canvas-color-1), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-2 {
+      background-color: rgba(var(--canvas-color-2), 0.2);
+      color: rgba(var(--canvas-color-2), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-2.active {
+      background-color: rgba(var(--canvas-color-2), 1);
+      color: rgba(var(--canvas-color-2), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-3 {
+      background-color: rgba(var(--canvas-color-3), 0.2);
+      color: rgba(var(--canvas-color-3), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-3.active {
+      background-color: rgba(var(--canvas-color-3), 1);
+      color: rgba(var(--canvas-color-3), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-4 {
+      background-color: rgba(var(--canvas-color-4), 0.2);
+      color: rgba(var(--canvas-color-4), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-4.active {
+      background-color: rgba(var(--canvas-color-4), 1);
+      color: rgba(var(--canvas-color-4), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-5 {
+      background-color: rgba(var(--canvas-color-5), 0.2);
+      color: rgba(var(--canvas-color-5), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-5.active {
+      background-color: rgba(var(--canvas-color-5), 1);
+      color: rgba(var(--canvas-color-5), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-6 {
+      background-color: rgba(var(--canvas-color-6), 0.2);
+      color: rgba(var(--canvas-color-6), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-6.active {
+      background-color: rgba(var(--canvas-color-6), 1);
+      color: rgba(var(--canvas-color-6), 1); }
+    .metadata-menu.modal-container .field-container .node-color svg {
+      vertical-align: bottom;
+      stroke-width: 3px; }
+    .metadata-menu.modal-container .field-container .node-color.picker {
+      background: conic-gradient(var(--color-red), var(--color-yellow), var(--color-green), var(--color-blue), var(--color-purple), var(--color-red)); }
+      .metadata-menu.modal-container .field-container .node-color.picker input {
+        opacity: 0;
+        height: 2em;
+        width: 2em; }
+  .metadata-menu.modal-container .field-container .edge-side {
+    display: flex; }
+    .metadata-menu.modal-container .field-container .edge-side .side-icon svg {
+      height: 22px;
+      width: 22px;
+      margin: 0 0.1em 0 0.7em; }
+  .metadata-menu.modal-container .field-container.edges {
+    margin-bottom: 0; }
+  .metadata-menu.modal-container .field-container.colors {
+    display: flex;
+    flex-wrap: wrap; }
+  .metadata-menu.modal-container .field-container.labels {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; }
+    .metadata-menu.modal-container .field-container.labels .label {
+      margin-right: 1em; }
+    .metadata-menu.modal-container .field-container.labels .item {
+      white-space: nowrap; }
+      .metadata-menu.modal-container .field-container.labels .item.chip {
+        padding-top: 0.3em;
+        margin-left: 0em;
+        margin-right: 0.3em;
+        margin-top: 0.3em;
+        background-color: var(--tag-background);
+        border: 1px solid var(--tag-border-color);
+        width: fit-content;
+        display: flex;
+        color: var(--text-muted);
+        align-items: center; }
+      .metadata-menu.modal-container .field-container.labels .item p {
+        margin-block-end: 0;
+        margin-block-start: 0; }
+      .metadata-menu.modal-container .field-container.labels .item.spacer {
+        width: 100%; }
+      .metadata-menu.modal-container .field-container.labels .item.right-align {
+        padding-right: 0; }
+      .metadata-menu.modal-container .field-container.labels .item button {
+        border: none;
+        box-shadow: none;
+        background: none;
+        padding-right: 0; }
+        .metadata-menu.modal-container .field-container.labels .item button:hover {
+          color: var(--text-accent); }
+        .metadata-menu.modal-container .field-container.labels .item button.item-remove:hover {
+          color: var(--text-accent); }
   .metadata-menu.modal-container .field-container button {
     margin-right: 12px; }
     .metadata-menu.modal-container .field-container button :disabled {
@@ -880,7 +979,8 @@ span.flatpickr-weekday {
   border-radius: 0.5em; }
 
 .metadata-menu.modal-container .footer-actions {
-  display: flex; }
+  display: flex;
+  padding: var(--size-4-3); }
   .metadata-menu.modal-container .footer-actions .spacer {
     width: 100%; }
   .metadata-menu.modal-container .footer-actions .info {
@@ -970,6 +1070,8 @@ span.flatpickr-weekday {
       .metadata-menu.modal-container.note-fields-modal .fields-inheritance-manager-container .fileclass-manager-container .name.active {
         padding-bottom: 0em;
         border-bottom: 0.4em var(--color-accent) solid; }
+      .metadata-menu.modal-container.note-fields-modal .fields-inheritance-manager-container .fileclass-manager-container .name:hover {
+        cursor: context-menu; }
     .metadata-menu.modal-container.note-fields-modal .fields-inheritance-manager-container .fileclass-manager-container button svg {
       color: var(--text-faint);
       height: 1em; }
@@ -1002,13 +1104,13 @@ span.flatpickr-weekday {
   margin: 1em 0; }
   .metadata-menu.modal-container .field-container .label {
     white-space: nowrap; }
-  .metadata-menu.modal-container .field-container input {
+  .metadata-menu.modal-container .field-container input, .metadata-menu.modal-container .field-container textarea {
     margin-right: 1em; }
-    .metadata-menu.modal-container .field-container input.with-label {
+    .metadata-menu.modal-container .field-container input.with-label, .metadata-menu.modal-container .field-container textarea.with-label {
       margin-left: 1em; }
-    .metadata-menu.modal-container .field-container input.full-width {
+    .metadata-menu.modal-container .field-container input.full-width, .metadata-menu.modal-container .field-container textarea.full-width {
       width: 100%; }
-    .metadata-menu.modal-container .field-container input:last-child {
+    .metadata-menu.modal-container .field-container input:last-child, .metadata-menu.modal-container .field-container textarea:last-child {
       margin-right: 0; }
   .metadata-menu.modal-container .field-container textarea.full-width {
     width: 100%; }
@@ -1027,6 +1129,103 @@ span.flatpickr-weekday {
     font-style: italic; }
   .metadata-menu.modal-container .field-container .warning {
     color: var(--color-red); }
+  .metadata-menu.modal-container .field-container .node-color {
+    min-height: 2em;
+    min-width: 2em;
+    border-radius: 50%;
+    margin: 0.2em 0.2em;
+    text-align: center; }
+    .metadata-menu.modal-container .field-container .node-color.color-1 {
+      background-color: rgba(var(--canvas-color-1), 0.2);
+      color: rgba(var(--canvas-color-1), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-1.active {
+      background-color: rgba(var(--canvas-color-1), 1);
+      color: rgba(var(--canvas-color-1), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-2 {
+      background-color: rgba(var(--canvas-color-2), 0.2);
+      color: rgba(var(--canvas-color-2), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-2.active {
+      background-color: rgba(var(--canvas-color-2), 1);
+      color: rgba(var(--canvas-color-2), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-3 {
+      background-color: rgba(var(--canvas-color-3), 0.2);
+      color: rgba(var(--canvas-color-3), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-3.active {
+      background-color: rgba(var(--canvas-color-3), 1);
+      color: rgba(var(--canvas-color-3), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-4 {
+      background-color: rgba(var(--canvas-color-4), 0.2);
+      color: rgba(var(--canvas-color-4), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-4.active {
+      background-color: rgba(var(--canvas-color-4), 1);
+      color: rgba(var(--canvas-color-4), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-5 {
+      background-color: rgba(var(--canvas-color-5), 0.2);
+      color: rgba(var(--canvas-color-5), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-5.active {
+      background-color: rgba(var(--canvas-color-5), 1);
+      color: rgba(var(--canvas-color-5), 1); }
+    .metadata-menu.modal-container .field-container .node-color.color-6 {
+      background-color: rgba(var(--canvas-color-6), 0.2);
+      color: rgba(var(--canvas-color-6), 0.2); }
+    .metadata-menu.modal-container .field-container .node-color.color-6.active {
+      background-color: rgba(var(--canvas-color-6), 1);
+      color: rgba(var(--canvas-color-6), 1); }
+    .metadata-menu.modal-container .field-container .node-color svg {
+      vertical-align: bottom;
+      stroke-width: 3px; }
+    .metadata-menu.modal-container .field-container .node-color.picker {
+      background: conic-gradient(var(--color-red), var(--color-yellow), var(--color-green), var(--color-blue), var(--color-purple), var(--color-red)); }
+      .metadata-menu.modal-container .field-container .node-color.picker input {
+        opacity: 0;
+        height: 2em;
+        width: 2em; }
+  .metadata-menu.modal-container .field-container .edge-side {
+    display: flex; }
+    .metadata-menu.modal-container .field-container .edge-side .side-icon svg {
+      height: 22px;
+      width: 22px;
+      margin: 0 0.1em 0 0.7em; }
+  .metadata-menu.modal-container .field-container.edges {
+    margin-bottom: 0; }
+  .metadata-menu.modal-container .field-container.colors {
+    display: flex;
+    flex-wrap: wrap; }
+  .metadata-menu.modal-container .field-container.labels {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap; }
+    .metadata-menu.modal-container .field-container.labels .label {
+      margin-right: 1em; }
+    .metadata-menu.modal-container .field-container.labels .item {
+      white-space: nowrap; }
+      .metadata-menu.modal-container .field-container.labels .item.chip {
+        padding-top: 0.3em;
+        margin-left: 0em;
+        margin-right: 0.3em;
+        margin-top: 0.3em;
+        background-color: var(--tag-background);
+        border: 1px solid var(--tag-border-color);
+        width: fit-content;
+        display: flex;
+        color: var(--text-muted);
+        align-items: center; }
+      .metadata-menu.modal-container .field-container.labels .item p {
+        margin-block-end: 0;
+        margin-block-start: 0; }
+      .metadata-menu.modal-container .field-container.labels .item.spacer {
+        width: 100%; }
+      .metadata-menu.modal-container .field-container.labels .item.right-align {
+        padding-right: 0; }
+      .metadata-menu.modal-container .field-container.labels .item button {
+        border: none;
+        box-shadow: none;
+        background: none;
+        padding-right: 0; }
+        .metadata-menu.modal-container .field-container.labels .item button:hover {
+          color: var(--text-accent); }
+        .metadata-menu.modal-container .field-container.labels .item button.item-remove:hover {
+          color: var(--text-accent); }
   .metadata-menu.modal-container .field-container button {
     margin-right: 12px; }
     .metadata-menu.modal-container .field-container button :disabled {
@@ -1055,7 +1254,8 @@ span.flatpickr-weekday {
   border-radius: 0.5em; }
 
 .metadata-menu.modal-container .footer-actions {
-  display: flex; }
+  display: flex;
+  padding: var(--size-4-3); }
   .metadata-menu.modal-container .footer-actions .spacer {
     width: 100%; }
   .metadata-menu.modal-container .footer-actions .info {
@@ -1131,8 +1331,6 @@ span.flatpickr-weekday {
       margin-right: 0; }
   .value-container .spacer {
     width: 100%; }
-  .value-container .is-selected {
-    background-color: var(--interactive-accent); }
   .value-container .icon-container {
     margin: 0em 0.7em 0em 0em;
     display: block; }
@@ -1140,6 +1338,8 @@ span.flatpickr-weekday {
       vertical-align: text-bottom; }
   .value-container.value-checked {
     background-color: var(--interactive-accent); }
+    .value-container.value-checked.is-selected {
+      background-color: var(--background-modifier-hover); }
   .value-container .item-with-add-on {
     display: flex; }
     .value-container .item-with-add-on .add-on {
@@ -1263,6 +1463,8 @@ span.flatpickr-weekday {
               align-items: center; }
               .metadata-menu.fileclass-view .fv-settings .setting .cell .action .items .item.chip .item-remove:hover {
                 color: var(--text-accent); }
+            .metadata-menu.fileclass-view .fv-settings .setting .cell .action .items .item button {
+              padding-right: 0; }
             .metadata-menu.fileclass-view .fv-settings .setting .cell .action .items .item p {
               margin-block-end: 0;
               margin-block-start: 0; }

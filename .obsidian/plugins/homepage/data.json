@@ -3,10 +3,14 @@
   "defaultNote": "88-Template/home",
   "useMoment": false,
   "momentFormat": "YYYY-MM-DD",
-  "workspace": "Home",
+  "workspace": "Canvas",
   "workspaceEnabled": true,
-  "hasRibbonIcon": false,
+  "hasRibbonIcon": true,
   "openMode": "Replace all open notes",
-  "view": "Default view",
-  "refreshDataview": true
+  "manualOpenMode": "Keep open notes",
+  "view": "Reading view",
+  "revertView": true,
+  "refreshDataview": true,
+  "autoCreate": false,
+  "pin": false
 }

@@ -1,3 +1,5 @@
+@import url("https://unpkg.com/katex@0.12.0/dist/katex.min.css");
+
 :root {
     --opacity: 0.6;
     --line-height: 1.6;

@@ -1,5 +1,5 @@
 {
-  "confirmDeletion": true,
+  "confirmDeletion": false,
   "showAddCommand": false,
   "debug": false,
   "editorMenu": [],
@@ -70,38 +70,37 @@
     {
       "id": "quickadd:choice:79944a6f-1f8e-409d-b4e7-98674eb1b607",
       "icon": "switch-camera",
-      "name": "切换视图",
+      "name": "QuickAdd: 切换视图",
       "mode": "any"
     },
     {
       "id": "quickadd:choice:27d06043-87de-47b1-a058-cf6ff596b9c1",
-      "icon": "refresh-ccw",
+      "icon": "refresh-cw",
       "name": "QuickAdd: 刷新面板",
       "mode": "any"
-    },
-    {
-      "id": "surfing:refresh-page",
-      "icon": "refresh-cw",
-      "name": "Surfing: 刷新当前页面",
-      "mode": "any"
-    },
-    {
-      "id": "surfing:open-current-url-with-external-browser",
-      "icon": "chrome",
-      "name": "Surfing: 在外部浏览器中打开当前网址",
-      "mode": "any"
-    },
-    {
-      "id": "surfing:clear-current-page-history",
-      "icon": "shield-off",
-      "name": "Surfing: 清除当前页面的历史记录",
-      "mode": "any",
-      "color": "#d59d01"
     },
     {
       "id": "quickadd:choice:6224cb2b-a57e-41f9-99ad-a30f553042ec",
       "icon": "expand",
       "name": "QuickAdd: 收拢侧边栏",
+      "mode": "desktop"
+    },
+    {
+      "id": "surfing:clear-current-page-history",
+      "icon": "shield-close",
+      "name": "Surfing: 清除当前页面的历史记录",
+      "mode": "any"
+    },
+    {
+      "id": "surfing:toggle-dark-mode",
+      "icon": "moon",
+      "name": "Surfing: 切换夜间模式",
+      "mode": "any"
+    },
+    {
+      "id": "workspace:undo-close-pane",
+      "icon": "lucide-undo-2",
+      "name": "Undo close tab",
       "mode": "any"
     }
   ],

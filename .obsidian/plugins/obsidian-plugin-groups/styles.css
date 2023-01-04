@@ -1,0 +1,38 @@
+
+.group-edit-modal-plugin-list {
+	overflow: scroll;
+	min-height: 1vh;
+	max-height: 40vh;
+	padding-top: 10px;
+	padding-bottom: 5px;
+}
+
+.add-group-btn {
+
+}
+
+.btn-disabled {
+	pointer-events: none;
+	opacity: 0.3;
+}
+
+.group-edit-modal-footer {    position: sticky;
+	width: 100%;
+	left: 0;
+	bottom: -16px;
+	height: 30px;
+	display: flex;
+	justify-content: flex-end;
+	background: var(--modal-background, '#1e1e1');
+	align-items: center;
+	padding-top: 30px;
+	padding-bottom: 20px;
+}
+
+.group-edit-modal-content {
+}
+
+:root {
+	--pg-group-edit-modal-footer-height: 60px;
+}
+

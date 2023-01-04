@@ -5,6 +5,9 @@ obsidianUIMode: "preview"
 --- `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh` 
 %% Begin Waypoint %%
 - **[[◾ Dataview相关实例]]**
+	- [[【DV】列出包含摘要和缩略图的笔记列表]]
+	- [[【dv】tasks任务以日历视图汇总]]
+	- [[【dv】tasks任务以时间线视图汇总]]
 	- [[按小标题汇总内容]]
 	- [[插件信息展示]]
 	- [[带进度条的任务列表]]
@@ -21,7 +24,6 @@ obsidianUIMode: "preview"
 	- [[获取最近打开的文件列表]]
 	- [[卡片视图 展示笔记]]
 	- [[可以编辑的dv表格]]
-	- [[列出包含摘要和缩略图的笔记列表]]
 	- [[列出含有指定关键词的出链]]
 	- [[列出已链接但未创建的笔记和孤岛笔记]]
 	- [[随机显示文档中的图片和文字]]
@@ -39,6 +41,5 @@ obsidianUIMode: "preview"
 	- [[dataview 生成关系图-可视化]]
 	- [[dataview 生成关系图]]
 	- [[dataview实现任务查询（替代tasks插件）]]
-	- [[tasks任务以日历视图汇总]]
 
 %% End Waypoint %%

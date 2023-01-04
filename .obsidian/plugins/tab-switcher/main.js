@@ -1587,7 +1587,8 @@ var TabSwitcherModal = class extends import_obsidian.Modal {
     }
     this.availableLeaves = leafArray.filter((leaf) => {
       const viewType = leaf.view.getViewType();
-      return viewType === "markdown" || viewType === "surfing-view" || viewType === "surfing-iframe-view";
+      if (!/(backlink|file-explorer|outgoing-link|outline|search|starred|tag)/g.test(viewType))
+        return true;
     });
   }
   buildLeavesArray() {
@@ -1602,7 +1603,7 @@ var TabSwitcherModal = class extends import_obsidian.Modal {
     });
     contentEl.empty();
     contentEl.createEl("div", {
-      text: "Input the tab name or hotkey to switch",
+      text: "Input the tab name or hotkey to switch.",
       cls: "search-leaf-item-tips"
     });
     currentLeaves.forEach((leaf, index) => {
@@ -1632,7 +1633,7 @@ var TabSwitcherModal = class extends import_obsidian.Modal {
     this.currentLeaves = fuse.search({ titleName: key });
     contentEl.empty();
     contentEl.createEl("div", {
-      text: "Input the tab name or hotkey to switch",
+      text: "Input the tab name or hotkey to switch.",
       cls: "search-leaf-item-tips"
     });
     this.currentLeaves.forEach((item, index) => {
@@ -1672,6 +1673,9 @@ var TabSwitcherModal = class extends import_obsidian.Modal {
           app.workspace.setActiveLeaf(leaf);
         }
         return;
+      }
+      if (evt.key === "Tab") {
+        this.contentEl.toggleClass("show-all", !this.contentEl.hasClass("show-all"));
       }
       if (evt.key === "Enter") {
         if (((_d = this.currentLeaves) == null ? void 0 : _d.length) > 0) {

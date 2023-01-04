@@ -1,80 +1,56 @@
+/* src/stalin.css */
 .quiet-outline .n-tree {
   font-size: var(--nav-item-size);
 }
-
-
+.quiet-outline .n-tree-node-indent {
+  flex: 0 0 13px !important;
+}
 .quiet-outline .n-tree-node-wrapper {
   padding: 0px;
 }
-
 .quiet-outline .n-tree-node.n-tree-node--selectable {
   align-items: center;
 }
-
-
-/* heading的间距，通过行高来设置 */
-/*  heading line spacing */
-.quiet-outline .n-tree-node .n-tree-node-content{
+.quiet-outline .n-tree-node .n-tree-node-content {
   line-height: 1.6em;
   min-height: 10px;
 }
-
 .quiet-outline .n-tree-node-content__text p {
   margin: 0;
 }
-
-
-
-
-
-/* ellipsis */
 .quiet-outline .n-tree.ellipsis {
   overflow-x: hidden;
 }
-
-.quiet-outline .n-tree.ellipsis .n-tree-node .n-tree-node-content p{
+.quiet-outline .n-tree.ellipsis .n-tree-node .n-tree-node-content p {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
 }
-
 .quiet-outline .n-tree.ellipsis .n-tree-node-content__text {
   width: 100%;
 }
-
 .quiet-outline .n-tree.ellipsis .n-tree-node-content {
   width: 90%;
 }
-
-
-
-
-
-/* 悬浮时的背景颜色 */
 .quiet-outline .n-tree.n-tree--block-line .n-tree-node:not(.n-tree-node--disabled):hover {
-  background-color: #41b883;
+  color: var(--nav-item-color-active);
+  background-color: var(--nav-item-background-active);
+  font-weight: var(--nav-item-weight-active);
 }
-
-/* 功能栏 */
 .quiet-outline .function-bar {
   display: flex;
   align-items: center;
   padding: 0px;
   margin-bottom: 5px;
 }
-
 .quiet-outline .function-bar .n-button {
   margin-right: 5px;
   text-align: center;
 }
-
 .quiet-outline .function-bar .n-input {
   flex: 1;
   min-width: 10px;
 }
-
-
-/*mobile behaves weird*/
 .is-mobile .quiet-outline .function-bar .n-button {
   margin-right: 5px;
   text-align: center;
@@ -84,134 +60,91 @@
   min-width: 10px;
   flex: none;
 }
-
-
-/* 图标大小 */
 .quiet-outline .n-button__icon {
   --n-icon-size: 22px;
   font-size: 22px;
 }
-
 .quiet-outline code {
-  color:var(--text-color-code, var(--code-normal));
+  color: var(--text-color-code, var(--code-normal));
   font-weight: bold;
-  /* font-size: var(--font-size-code, var(--code-size)); */
   font-family: var(--font-monospace);
   background-color: var(--code-background);
-  border-radius:var(--radius-s);
+  border-radius: var(--radius-s);
 }
-
 .quiet-outline .internal-link {
   color: var(--link-external-color);
 }
-
 .quiet-outline mark {
   background-color: var(--text-highlight-bg);
   color: var(--text-normal);
 }
-
-/* ===================== */
-/* 对不同级别标题进行设置 */
-/* ===================== */
 .n-tree .n-tree-node-switcher {
   height: 0px;
 }
-
-/* 设置除一级标题之外的所有标题 */
-/* setting h2-h6 */
-.quiet-outline [class*="level-"]:not(.level-1) .n-tree-node-content{
-  /*
-  color: red;
-  font-weight:bold;
-  */
+.quiet-outline [class*=level-]:not(.level-1) .n-tree-node-content {
   font-size: 1em;
 }
-
-/* ============ */
-/*  彩虹大纲线   */
-/* rainbow line */
-/* ============ */
-.quiet-outline  .n-tree .n-tree-node-indent {
-  content: "";
-  height: unset;
-  align-self:stretch;
-}
-
-.quiet-outline .level-2 .n-tree-node-indent,
-.quiet-outline .level-3 .n-tree-node-indent:first-child,
-.quiet-outline .level-4 .n-tree-node-indent:first-child,
-.quiet-outline .level-5 .n-tree-node-indent:first-child,
-.quiet-outline .level-6 .n-tree-node-indent:first-child
-{
-  border-right: 2px solid rgb(253, 139, 31, 0.6);
-}
-.quiet-outline .level-3 .n-tree-node-indent,
-.quiet-outline .level-4 .n-tree-node-indent:nth-child(2),
-.quiet-outline .level-5 .n-tree-node-indent:nth-child(2),
-.quiet-outline .level-6 .n-tree-node-indent:nth-child(2)
-{
-  border-right: 2px solid rgb(255, 223, 0, 0.6);
-}
-.quiet-outline .level-4 .n-tree-node-indent,
-.quiet-outline .level-5 .n-tree-node-indent:nth-child(3),
-.quiet-outline .level-6 .n-tree-node-indent:nth-child(3)
-{
-  border-right: 2px solid rgb(7, 235, 35, 0.6);
-}
-.quiet-outline .level-5 .n-tree-node-indent,
-.quiet-outline .level-6 .n-tree-node-indent:nth-child(4)
-{
-  border-right: 2px solid rgb(45, 143, 240, 0.6);
-}
-.quiet-outline .level-6 .n-tree-node-indent {
-  border-right: 2px solid rgb(188, 1, 226, 0.6);
-}
-
-
-/* location */
 .n-tree-node.located {
   font-weight: bold !important;
 }
-/* .n-tree-node code {
-  font-weight: 500 !important;
-} */
 .n-tree-node.located code {
   font-weight: 1000 !important;
 }
 .n-tree-node.located mjx-math {
   font-weight: bold !important;
 }
-
 .n-tree.n-tree--block-line .n-tree-node:not(.n-tree-node--disabled).n-tree-node--selected {
   background-color: transparent !important;
 }
-
-
-/* 固定功能栏 */
 .quiet-outline {
   height: 100%;
-  /*避免被底部状态栏挡住*/
   padding-bottom: 24px;
 }
 .quiet-outline #container {
   height: 100%;
 }
 .quiet-outline .n-config-provider {
-  display:flex;
-  flex-direction:column;
+  display: flex;
+  flex-direction: column;
   height: 100%;
 }
 .quiet-outline .n-tree {
   overflow: auto;
 }
-
-
-
-/*remove 'no data'*/
 .n-tree__empty {
   display: none;
 }
 
+/* main.css */
+.quiet-outline .n-tree .n-tree-node-indent {
+  content: "";
+  height: unset;
+  align-self: stretch;
+}
+.quiet-outline .level-2 .n-tree-node-indent,
+.quiet-outline .level-3 .n-tree-node-indent:first-child,
+.quiet-outline .level-4 .n-tree-node-indent:first-child,
+.quiet-outline .level-5 .n-tree-node-indent:first-child,
+.quiet-outline .level-6 .n-tree-node-indent:first-child {
+  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor1);
+}
+.quiet-outline .level-3 .n-tree-node-indent,
+.quiet-outline .level-4 .n-tree-node-indent:nth-child(2),
+.quiet-outline .level-5 .n-tree-node-indent:nth-child(2),
+.quiet-outline .level-6 .n-tree-node-indent:nth-child(2) {
+  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor2);
+}
+.quiet-outline .level-4 .n-tree-node-indent,
+.quiet-outline .level-5 .n-tree-node-indent:nth-child(3),
+.quiet-outline .level-6 .n-tree-node-indent:nth-child(3) {
+  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor3);
+}
+.quiet-outline .level-5 .n-tree-node-indent,
+.quiet-outline .level-6 .n-tree-node-indent:nth-child(4) {
+  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor4);
+}
+.quiet-outline .level-6 .n-tree-node-indent {
+  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor5);
+}
 
-
-/* experimental */
+/* src/main.css */

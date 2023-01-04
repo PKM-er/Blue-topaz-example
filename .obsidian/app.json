@@ -6,7 +6,7 @@
   "alwaysUpdateLinks": true,
   "legacyEditor": false,
   "livePreview": true,
-  "showFrontmatter": false,
+  "showFrontmatter": true,
   "spellcheck": false,
   "spellcheckLanguages": [],
   "attachmentFolderPath": "99-Attachment",

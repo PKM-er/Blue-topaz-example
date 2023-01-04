@@ -1,10 +1,1 @@
-{
-	"id": "copy-document-as-html",
-	"name": "Copy document as HTML",
-	"version": "0.3.2",
-	"minAppVersion": "1.0.0",
-	"description": "Copy the current document to clipboard as HTML, including images",
-	"author": "mvdkwast",
-	"authorUrl": "https://github.com/mvdkwast",
-	"isDesktopOnly": true
-}
+{"id":"copy-document-as-html","name":"Copy document as HTML","version":"0.3.3","minAppVersion":"1.0.0","description":"Copy the current document to clipboard as HTML, including images","author":"mvdkwast","authorUrl":"https://github.com/mvdkwast","isDesktopOnly":true}

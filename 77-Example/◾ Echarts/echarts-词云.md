@@ -1,4 +1,10 @@
 ---
+aliases: 'echarts-词云'
+tags: 
+cssclass:
+source:
+created: "2022-08-13 00:45"
+updated: "2022-12-31 15:43"
 ---
 
 ```dataviewjs
@@ -8,6 +14,7 @@ datas.forEach((data)=>{
 })
  console.log(datas)
 var option = {
+backgroundColor: 'transparent',
 	tooltip: {},
     series: [{
         type: 'wordCloud',

@@ -59,10 +59,7 @@ vertical-align:middle;
 	max-width: 8em;
 	word-break: break-all;
 }
-.fixedFc th:nth-child(2) {
-    padding: 9px 20px;
-    font-size: 21px;
-}
+ 
 .fixedFc td:nth-child(2),
 .fixedFc tr > td:last-of-type { 
 	white-space: nowrap;

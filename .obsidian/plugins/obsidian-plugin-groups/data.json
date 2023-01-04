@@ -1,0 +1,160 @@
+{
+  "groups": [
+    {
+      "loadAtStartup": false,
+      "disableOnStartup": false,
+      "delay": 2,
+      "id": "pgeditor",
+      "name": "editor",
+      "plugins": [
+        {
+          "id": "editing-toolbar",
+          "name": "Editing Toolbar"
+        },
+        {
+          "id": "obsidian-hover-editor",
+          "name": "Hover Editor"
+        },
+        {
+          "id": "metaedit",
+          "name": "MetaEdit"
+        },
+        {
+          "id": "markdown-table-editor",
+          "name": "Markdown Table Editor"
+        },
+        {
+          "id": "cm-chs-patch",
+          "name": "Word Splitting for Simplified Chinese in Edit Mode"
+        }
+      ],
+      "groupIds": [],
+      "generateCommands": true
+    },
+    {
+      "loadAtStartup": false,
+      "disableOnStartup": false,
+      "delay": 2,
+      "id": "pgrequired",
+      "name": "Required",
+      "plugins": [
+        {
+          "id": "templater-obsidian",
+          "name": "Templater"
+        },
+        {
+          "id": "quickadd",
+          "name": "QuickAdd"
+        },
+        {
+          "id": "buttons",
+          "name": "Buttons"
+        },
+        {
+          "id": "obsidian-style-settings",
+          "name": "Style Settings"
+        },
+        {
+          "id": "obsidian-contextual-typography",
+          "name": "Contextual Typography"
+        },
+        {
+          "id": "dataview",
+          "name": "Dataview"
+        },
+        {
+          "id": "obsidian-react-components",
+          "name": "React Components"
+        },
+        {
+          "id": "obsidian-banners",
+          "name": "Banners"
+        },
+        {
+          "id": "workspaces-plus",
+          "name": "Workspaces Plus"
+        },
+        {
+          "id": "obsidian-view-mode-by-frontmatter",
+          "name": "Force note view mode"
+        },
+        {
+          "id": "recent-files-obsidian",
+          "name": "Recent Files"
+        },
+        {
+          "id": "obsidian-admonition",
+          "name": "Admonition"
+        },
+        {
+          "id": "calendar",
+          "name": "Calendar"
+        },
+        {
+          "id": "homepage",
+          "name": "Homepage"
+        }
+      ],
+      "groupIds": [],
+      "generateCommands": false
+    },
+    {
+      "loadAtStartup": false,
+      "disableOnStartup": false,
+      "delay": 2,
+      "id": "pg",
+      "name": "Ungrouped",
+      "plugins": [
+        {
+          "id": "obsidian-task-progress-bar",
+          "name": "Task Progress Bar"
+        }
+      ],
+      "groupIds": [],
+      "generateCommands": false,
+      "autoAdd": true
+    },
+    {
+      "loadAtStartup": false,
+      "disableOnStartup": false,
+      "delay": 2,
+      "id": "pgfeatures",
+      "name": "Features",
+      "plugins": [
+        {
+          "id": "Enhanced-editing",
+          "name": "增强编辑"
+        },
+        {
+          "id": "obsidian-emoji-toolbar",
+          "name": "Emoji Toolbar"
+        },
+        {
+          "id": "floating-toc",
+          "name": "floating toc"
+        },
+        {
+          "id": "metadata-menu",
+          "name": "Metadata Menu"
+        },
+        {
+          "id": "obsidian-echarts",
+          "name": "obsidian echarts"
+        },
+        {
+          "id": "obsidian-memos",
+          "name": "Obsidian Memos"
+        }
+      ],
+      "groupIds": [],
+      "generateCommands": false
+    }
+  ],
+  "generateCommands": true,
+  "showNoticeOnGroupLoad": "short",
+  "devices": [
+    "mobile",
+    "PC",
+    "MAC"
+  ]
+}

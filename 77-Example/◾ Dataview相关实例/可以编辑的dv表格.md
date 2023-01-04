@@ -3,6 +3,7 @@ created: 2022-04-24 14:18
 updated: "2022-04-26 09:01"
 ---
 > 通过把dataview查询的yaml字段用button按钮替代，就可以实现点击字段名称即可修改。根据字段类型可以选择下拉框，建议框，日期输入框，文本输入框等
+> 依赖metaedit插件
 
 ```dataviewjs
 //BlueTopaz example
