@@ -1,21 +1,21 @@
 /*
-'Shell commands' plugin for Obsidian.
-Copyright (C) 2021 - 2022 Jarkko Linnanvirta
-
-This program is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License as published by
-the Free Software Foundation, version 3 of the License.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
-GNU General Public License for more details.
-
-You should have received a copy of the GNU General Public License
-along with this program. If not, see <https://www.gnu.org/licenses/>.
-
-Contact the author (Jarkko Linnanvirta): https://github.com/Taitava/
-*/
+ * 'Shell commands' plugin for Obsidian.
+ * Copyright (C) 2021 - 2023 Jarkko Linnanvirta
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, version 3.0 of the License.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ *
+ * Contact the author (Jarkko Linnanvirta): https://github.com/Taitava/
+ */
 
 /*
  * COMMON
@@ -61,9 +61,16 @@ div.SC-setting-group div.setting-item {
     padding: 5px; /* Shrink the padding. */
 }
 
-div.SC-setting-group div.setting-item div.setting-item-info,
-div.SC-setting-group div.setting-item div.setting-item-control {
+div.SC-setting-group div.setting-item:not(.setting-item-heading) div.setting-item-info, /* :not() = Don't shrink headings, they usually don't have large control elements. Heading texts themselves can be long, so don't limit them to 50% width. */
+div.SC-setting-group div.setting-item:not(.setting-item-heading) div.setting-item-control {
     width: 50%; /* Make sure description does not take over 50% of the space. */
+}
+
+div.SC-setting-group div.setting-item.SC-full-description div.setting-item-info {
+    width: 100%; /* Give description 100% width. Built-in variable list in settings uses this. */
+}
+div.SC-setting-group div.setting-item.SC-full-description div.setting-item-control {
+    width: 0; /* Make room for description. */
 }
 
 div.SC-setting-group div.setting-item input[type=text],
@@ -78,12 +85,12 @@ div.SC-setting-group div.setting-item textarea {
     resize: vertical; /* Allow resizing multiline text fields vertically. Don't allow horizontal resizing, because the width is already maxed out (to 50%), and horizontal resizing would just make the field accidentally narrower. */
 }
 
-div.SC-setting-group div.SC-no-description div.setting-item-info { /* .SC-no-description is used by the 'alias' setting field. */
+div.SC-setting-group div.setting-item.SC-no-description div.setting-item-info { /* .SC-no-description is used by the 'alias' setting field. */
     width: 0;
     margin: 0;
 }
 
-div.SC-setting-group div.SC-no-description div.setting-item-control { /* .SC-no-description is used by the 'alias' setting field. */
+div.SC-setting-group div.setting-item.SC-no-description div.setting-item-control { /* .SC-no-description is used by the 'alias' setting field. */
     width: 100%;
 }
 
@@ -126,8 +133,15 @@ div.SC-shell-command-setting div.setting-item-info {
 
 div.SC-shell-command-setting textarea {
     width: 100%;
+}
+
+textarea.SC-multiline {
     padding: 2px 5px; /* Shrink the padding all around the textarea. */
     resize: vertical;
+}
+
+div.SC-hotkey-info {
+    white-space: nowrap;
 }
 
 div.SC-hotkey-info svg {
@@ -153,6 +167,14 @@ div.setting-item.SC-custom-variable-name-setting div.setting-item-control::befor
 
 div.setting-item.SC-custom-variable-name-setting div.setting-item-control::after {
     content: "}}"; /* Wrap custom variable name field in {{_ }} */
+}
+
+/*
+ * CUSTOM VARIABLE VIEW
+ */
+
+li.SC-custom-variable-view-list-item {
+    margin-bottom: 1em; /* Add space between variables in list. */
 }
 
 
@@ -263,6 +285,14 @@ button.SC-tab-header-button:hover {
     background-color: var(--background-modifier-border);
     padding-left: 5px;
     font-size: 75%;
+}
+
+a.SC-autocomplete-link-icon {
+    margin-left: 3px;
+}
+
+a.SC-autocomplete-link-icon svg {
+    vertical-align: middle; /* Not middle but close enough. */
 }
 
 /*

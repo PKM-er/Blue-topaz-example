@@ -1,6 +1,5 @@
 
-.workspace-tabs .workspace-leaf .view-content:has(.myhome)::before,
-body[data-canvas-path*="Home"] .view-content::before
+.workspace-tabs .workspace-leaf .view-content:has(.myhome)::before
 {
   z-index: 99;
   content: "";
@@ -25,7 +24,6 @@ body[data-canvas-path*="Home"]  .canvas-wrapper::after {
   left: 15%; 
   top: 5%;
   background: #FFEFAD;
- padding-top: 100px; 
   -webkit-mask: url('https://imgservices-1252317822.image.myqcloud.com/image/081320210201435/e9951400.png') right top no-repeat;
   -webkit-mask-size: auto 150px;
   animation: fireworks 2s steps(24) infinite, random 8s steps(1) infinite, random_color 1s infinite;

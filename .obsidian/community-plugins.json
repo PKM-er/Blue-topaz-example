@@ -46,7 +46,6 @@
   "quick-explorer",
   "obsidian-print-preview",
   "tab-switcher",
-  "workspaces-plus",
   "obsidian-hover-editor",
   "obsidian-enhancing-mindmap",
   "editing-toolbar",
@@ -62,7 +61,6 @@
   "obsidian-mindmap-nextgen",
   "obsidian-style-settings",
   "obsidian-contextual-typography",
-  "canvas-css-class",
   "canvas-presentation",
   "link-nodes-in-canvas",
   "obsidian-linkcard-plugin",
@@ -76,5 +74,7 @@
   "obsidian-plugin-groups",
   "surfing",
   "omnisearch",
-  "cmdr"
+  "cmdr",
+  "workspaces-plus",
+  "canvas-css-class"
 ]

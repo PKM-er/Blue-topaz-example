@@ -1,9 +1,8 @@
 {
-  "baseFontSize": 13,
+  "baseFontSize": 14,
   "theme": "obsidian",
   "cssTheme": "Blue Topaz",
   "enabledCssSnippets": [
-    "【图标】预览网址加图标 - External Link Icons",
     "B - Heatmap",
     "【自定义】表格样式ableStyles",
     "absolve",
@@ -16,7 +15,6 @@
     "【日记】timeline",
     "【天气】weather",
     "【自定义】彩色时钟样式",
-    "【自定义】mytools 样式",
     "【Linkcard】",
     "【Memos】Heatmap",
     "【Query】keep-live",
@@ -33,11 +31,12 @@
     "【列表】ob列表转换表格",
     "【图标】iconfont",
     "【字体】",
-    "【背景】默认笔记背景",
     "【FONT】Consolas-Bookerly",
-    "【自定义】myhome 样式",
     "【自定义】数字时钟",
-    "【特效】fireworks"
+    "【特效】fireworks",
+    "【图标】预览网址加图标 - External Link Icons",
+    "【自定义】mytools 样式",
+    "【自定义】myhome 样式"
   ],
   "translucency": false,
   "textFontFamily": "",

@@ -36,7 +36,7 @@ obsidianUIMode: preview
 let setting = {};
 let history = Object.assign(JSON.parse(await app.vault.adapter.read(".obsidian/.diary-stats")));
 let today = moment().format("YYYY-MM-DD");
-let moonIndex = moment().diff(moment().startOf('year'),"hours");
+let moonIndex = moment().diff(moment().startOf('year'),"hours").toString().padStart(4, '0')
 if (history.hasOwnProperty(today))
 {let weather=history[today].weather;
 let todayweather = weather[0];

@@ -1,104 +1,168 @@
 {
+  "version": 1,
   "projects": [
     {
-      "id": "452d8da3-6b6b-4c47-805f-4d9c0448647f",
-      "name": "Reading",
       "path": "30-Reading",
       "recursive": false,
+      "fieldConfig": {},
       "defaultName": "",
       "templates": [],
+      "dataview": false,
+      "query": "",
+      "excludedNotes": [],
+      "isDefault": false,
+      "id": "452d8da3-6b6b-4c47-805f-4d9c0448647f",
+      "name": "Reading",
       "views": [
         {
-          "id": "c9df6f2d-41a6-4bf2-9424-f6566c8c0581",
-          "name": "Board",
-          "type": "board",
           "config": {
             "groupByField": "tags",
             "priorityField": ""
-          }
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "c9df6f2d-41a6-4bf2-9424-f6566c8c0581",
+          "name": "Board",
+          "type": "board"
         },
         {
-          "id": "c57be598-7568-4930-be1d-11a3696b1a4b",
-          "name": "Table",
-          "type": "table",
           "config": {
             "fieldConfig": {
               "name": {
                 "width": 193
               }
             }
-          }
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "c57be598-7568-4930-be1d-11a3696b1a4b",
+          "name": "Table",
+          "type": "table"
         },
         {
-          "id": "585d39fd-f88b-4249-bd78-0874094f140d",
-          "name": "Calendar",
-          "type": "calendar",
           "config": {
             "dateField": "viewtime",
             "interval": "month",
             "checkField": "进度"
-          }
-        }
-      ],
-      "dataview": false
-    },
-    {
-      "id": "a6202afb-e904-4cbb-a090-1a40b5a5ec50",
-      "name": "30-Reading",
-      "path": "30-Reading",
-      "recursive": true,
-      "defaultName": "",
-      "templates": [],
-      "views": [
-        {
-          "id": "74ef48a1-4b1a-4a70-a59f-4dd4aa371e75",
-          "name": "Table",
-          "type": "table",
-          "config": {}
-        },
-        {
-          "id": "8135d89f-7848-4b7a-a525-2005b99eaccf",
-          "name": "Board",
-          "type": "board",
-          "config": {}
-        },
-        {
-          "id": "38b4b14e-b813-446a-8dc2-f5e8f37508a8",
+          },
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "585d39fd-f88b-4249-bd78-0874094f140d",
           "name": "Calendar",
-          "type": "calendar",
-          "config": {}
+          "type": "calendar"
         }
       ]
     },
     {
-      "id": "9fedc95d-29ff-4baa-98b9-3a25810a0f5b",
-      "name": "tips",
-      "path": "",
-      "recursive": false,
+      "path": "30-Reading",
+      "recursive": true,
+      "fieldConfig": {},
       "defaultName": "",
       "templates": [],
-      "views": [],
-      "dataview": true,
-      "query": "TABLE\ntags,author,readtime,pagecount\nfrom #book"
-    },
-    {
-      "id": "78fa420e-ac24-4e1d-91f4-a3dcfb314e64",
-      "name": "test",
-      "path": "test",
-      "recursive": false,
-      "defaultName": "",
-      "templates": [],
+      "dataview": false,
+      "query": "",
+      "excludedNotes": [],
+      "isDefault": false,
+      "id": "a6202afb-e904-4cbb-a090-1a40b5a5ec50",
+      "name": "30-Reading",
       "views": [
         {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "74ef48a1-4b1a-4a70-a59f-4dd4aa371e75",
+          "name": "Table",
+          "type": "table"
+        },
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "8135d89f-7848-4b7a-a525-2005b99eaccf",
+          "name": "Board",
+          "type": "board"
+        },
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
+          "id": "38b4b14e-b813-446a-8dc2-f5e8f37508a8",
+          "name": "Calendar",
+          "type": "calendar"
+        }
+      ]
+    },
+    {
+      "path": "",
+      "recursive": false,
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "dataview": true,
+      "query": "TABLE\ntags,author,readtime,pagecount\nfrom #book",
+      "excludedNotes": [],
+      "isDefault": false,
+      "id": "9fedc95d-29ff-4baa-98b9-3a25810a0f5b",
+      "name": "tips",
+      "views": []
+    },
+    {
+      "path": "test",
+      "recursive": false,
+      "fieldConfig": {},
+      "defaultName": "",
+      "templates": [],
+      "dataview": false,
+      "query": "",
+      "excludedNotes": [],
+      "isDefault": false,
+      "id": "78fa420e-ac24-4e1d-91f4-a3dcfb314e64",
+      "name": "test",
+      "views": [
+        {
+          "config": {},
+          "filter": {
+            "conditions": []
+          },
+          "colors": {
+            "conditions": []
+          },
           "id": "e7bb2340-c802-4558-9423-b5d94fdfe77f",
           "name": "Table",
-          "type": "table",
-          "config": {}
+          "type": "table"
         }
       ]
     }
   ],
-  "version": 1,
+  "preferences": {
+    "frontmatter": {
+      "quoteStrings": "PLAIN"
+    }
+  },
   "lastProjectId": "452d8da3-6b6b-4c47-805f-4d9c0448647f",
   "lastViewId": "c57be598-7568-4930-be1d-11a3696b1a4b"
 }

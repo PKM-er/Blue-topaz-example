@@ -1101,7 +1101,7 @@ svg.markmap {
  pointer-events:none; 
  
 }
- 
+
 body[data-canvas-path*="Home"]  .canvas-selection.mod-group-selection
 {
   pointer-events:none; 
@@ -1177,7 +1177,10 @@ body[data-canvas-path*="Home"]  .canvas-node .callout:not(.admonition).drop-shad
 body[data-canvas-path*="Home"]  .canvas-node .callout {
 border: none;
 }
-
+body[data-canvas-path*="Home"] .canvas-node-label
+{
+  color: #c0c0c0b3;
+}
 
 /**************************/
 

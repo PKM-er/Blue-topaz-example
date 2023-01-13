@@ -45,5 +45,4 @@ class circle_btn blank white
 <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=ta&skin=pear&fontsize=13&align=&paddingtop=2&paddingleft=15&city=&color=d2d1cd" frameborder="0" width="350" height="24" allowtransparency="true"></iframe>
 
 ## quote
-
 <iframe scrolling="no" src="https://v2.jinrishici.com/one.svg?font-size=20&spacing=2&color=white" frameborder="0" width="350" height="24" allowtransparency="true"></iframe>

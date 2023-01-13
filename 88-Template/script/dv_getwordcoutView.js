@@ -99,8 +99,9 @@ String.prototype.strong = function () {
 				
 			}
 			if (type==="folder")
-			sections = sections.filter(t => !exclude_arr.includes(t.file.folder));
-			
+		//	sections = sections.filter(t => !exclude_arr.includes(t.file.folder));
+		//排除顶层文件夹时 子文件夹一同排除
+			sections = sections.filter(t => {for(let i of exclude_arr){if(t.file.folder.slice(0, i.length) == i){return 0}} return 1});
 			}
 		   return sections;
 		}

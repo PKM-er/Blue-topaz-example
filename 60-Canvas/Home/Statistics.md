@@ -1,7 +1,7 @@
  ## days
  ```dataviewjs
 let nofold = '!"88-Template"'
-let ftMd = dv.pages("").file.sort(t => t.cday)[0]
+let ftMd = dv.pages("").file.sort(t => t.mday)[0]
 let total = parseInt([new Date() - ftMd.ctime] / (60*60*24*1000))
 let allFile = dv.pages(nofold).file
 dv.paragraph(`
@@ -63,6 +63,7 @@ let total = data.reduce((a, b) => {
                 x: 'center',
                 y: 'center',
                 textStyle: {
+	                color: 'white',
                     fontSize: 20
                 }
             },
@@ -121,7 +122,7 @@ app.plugins.plugins['obsidian-echarts'].render(options, this.container)
 ```dataviewjs
 const echarts = app.plugins.plugins['obsidian-echarts'].echarts()
 let pages= dv.pages()
-           .groupBy(p => p.file.cday.toFormat("yyyy-MM"))
+	           .groupBy(p => p.file.mday.toFormat("yyyy-MM"))
            .map(p => ({cday: p.key , count: p.rows.length,wordcout:p.rows.values}))
            .array();
   function sumItem(arr1, arr2) {

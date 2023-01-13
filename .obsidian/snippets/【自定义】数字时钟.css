@@ -1,4 +1,8 @@
-
+ 
+ body[data-canvas-path*="Home"]  .canvas-node .DPDCt, 
+  body[data-canvas-path*="Home"] .canvas-node .DPDCd   {
+ color:white;
+}
 .DPDC {
   display: table;
   position: relative;

@@ -11,6 +11,10 @@
 	background-clip: content-box;
 }
 
+.wb-view-content:has(.wb-bookmark-bar) .wb-frame {
+	height: calc(100% - 32px);
+}
+
 .wb-header-bar::after {
 	background: transparent !important;
 }
@@ -481,6 +485,8 @@ input[type="text"].wb-page-search-bar-input:focus-visible {
 	padding-top: var(--size-2-1);
 	padding-left: var(--size-4-2);
 
+	min-height: 32px;
+
 	border-top: 1px solid var(--background-modifier-border);
 	border-bottom: 1px solid var(--background-modifier-border);
 }
@@ -575,7 +581,8 @@ div[data-type^="empty"].workspace-leaf-content
 }
 
 .surfing-bookmark-manager {
-	margin: 1em;
+	margin: 0 1em;
+
 	display: flex;
 	flex-direction: column;
 }
@@ -655,7 +662,11 @@ div[data-type^="empty"].workspace-leaf-content
 }
 
 .ant-table-wrapper {
-	height: 85vh;
+	height: 86vh;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+	background-color: var(--background-secondary);
 }
 
 .ant-table {

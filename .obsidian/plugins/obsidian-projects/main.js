@@ -351,6 +351,271 @@ var require_localizedFormat = __commonJS({
   }
 });
 
+// node_modules/fp-ts/lib/function.js
+var require_function = __commonJS({
+  "node_modules/fp-ts/lib/function.js"(exports) {
+    "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
+    exports.getEndomorphismMonoid = exports.not = exports.SK = exports.hole = exports.pipe = exports.untupled = exports.tupled = exports.absurd = exports.decrement = exports.increment = exports.tuple = exports.flow = exports.flip = exports.constVoid = exports.constUndefined = exports.constNull = exports.constFalse = exports.constTrue = exports.constant = exports.unsafeCoerce = exports.identity = exports.apply = exports.getRing = exports.getSemiring = exports.getMonoid = exports.getSemigroup = exports.getBooleanAlgebra = void 0;
+    var getBooleanAlgebra2 = function(B2) {
+      return function() {
+        return {
+          meet: function(x2, y2) {
+            return function(a2) {
+              return B2.meet(x2(a2), y2(a2));
+            };
+          },
+          join: function(x2, y2) {
+            return function(a2) {
+              return B2.join(x2(a2), y2(a2));
+            };
+          },
+          zero: function() {
+            return B2.zero;
+          },
+          one: function() {
+            return B2.one;
+          },
+          implies: function(x2, y2) {
+            return function(a2) {
+              return B2.implies(x2(a2), y2(a2));
+            };
+          },
+          not: function(x2) {
+            return function(a2) {
+              return B2.not(x2(a2));
+            };
+          }
+        };
+      };
+    };
+    exports.getBooleanAlgebra = getBooleanAlgebra2;
+    var getSemigroup7 = function(S2) {
+      return function() {
+        return {
+          concat: function(f2, g2) {
+            return function(a2) {
+              return S2.concat(f2(a2), g2(a2));
+            };
+          }
+        };
+      };
+    };
+    exports.getSemigroup = getSemigroup7;
+    var getMonoid5 = function(M2) {
+      var getSemigroupM = (0, exports.getSemigroup)(M2);
+      return function() {
+        return {
+          concat: getSemigroupM().concat,
+          empty: function() {
+            return M2.empty;
+          }
+        };
+      };
+    };
+    exports.getMonoid = getMonoid5;
+    var getSemiring2 = function(S2) {
+      return {
+        add: function(f2, g2) {
+          return function(x2) {
+            return S2.add(f2(x2), g2(x2));
+          };
+        },
+        zero: function() {
+          return S2.zero;
+        },
+        mul: function(f2, g2) {
+          return function(x2) {
+            return S2.mul(f2(x2), g2(x2));
+          };
+        },
+        one: function() {
+          return S2.one;
+        }
+      };
+    };
+    exports.getSemiring = getSemiring2;
+    var getRing2 = function(R2) {
+      var S2 = (0, exports.getSemiring)(R2);
+      return {
+        add: S2.add,
+        mul: S2.mul,
+        one: S2.one,
+        zero: S2.zero,
+        sub: function(f2, g2) {
+          return function(x2) {
+            return R2.sub(f2(x2), g2(x2));
+          };
+        }
+      };
+    };
+    exports.getRing = getRing2;
+    var apply2 = function(a2) {
+      return function(f2) {
+        return f2(a2);
+      };
+    };
+    exports.apply = apply2;
+    function identity3(a2) {
+      return a2;
+    }
+    exports.identity = identity3;
+    exports.unsafeCoerce = identity3;
+    function constant2(a2) {
+      return function() {
+        return a2;
+      };
+    }
+    exports.constant = constant2;
+    exports.constTrue = constant2(true);
+    exports.constFalse = constant2(false);
+    exports.constNull = constant2(null);
+    exports.constUndefined = constant2(void 0);
+    exports.constVoid = exports.constUndefined;
+    function flip4(f2) {
+      return function() {
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          args[_i] = arguments[_i];
+        }
+        if (args.length > 1) {
+          return f2(args[1], args[0]);
+        }
+        return function(a2) {
+          return f2(a2)(args[0]);
+        };
+      };
+    }
+    exports.flip = flip4;
+    function flow2(ab, bc, cd, de, ef, fg, gh, hi, ij) {
+      switch (arguments.length) {
+        case 1:
+          return ab;
+        case 2:
+          return function() {
+            return bc(ab.apply(this, arguments));
+          };
+        case 3:
+          return function() {
+            return cd(bc(ab.apply(this, arguments)));
+          };
+        case 4:
+          return function() {
+            return de(cd(bc(ab.apply(this, arguments))));
+          };
+        case 5:
+          return function() {
+            return ef(de(cd(bc(ab.apply(this, arguments)))));
+          };
+        case 6:
+          return function() {
+            return fg(ef(de(cd(bc(ab.apply(this, arguments))))));
+          };
+        case 7:
+          return function() {
+            return gh(fg(ef(de(cd(bc(ab.apply(this, arguments)))))));
+          };
+        case 8:
+          return function() {
+            return hi(gh(fg(ef(de(cd(bc(ab.apply(this, arguments))))))));
+          };
+        case 9:
+          return function() {
+            return ij(hi(gh(fg(ef(de(cd(bc(ab.apply(this, arguments)))))))));
+          };
+      }
+      return;
+    }
+    exports.flow = flow2;
+    function tuple2() {
+      var t3 = [];
+      for (var _i = 0; _i < arguments.length; _i++) {
+        t3[_i] = arguments[_i];
+      }
+      return t3;
+    }
+    exports.tuple = tuple2;
+    function increment2(n2) {
+      return n2 + 1;
+    }
+    exports.increment = increment2;
+    function decrement2(n2) {
+      return n2 - 1;
+    }
+    exports.decrement = decrement2;
+    function absurd2(_24) {
+      throw new Error("Called `absurd` function which should be uncallable");
+    }
+    exports.absurd = absurd2;
+    function tupled2(f2) {
+      return function(a2) {
+        return f2.apply(void 0, a2);
+      };
+    }
+    exports.tupled = tupled2;
+    function untupled2(f2) {
+      return function() {
+        var a2 = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+          a2[_i] = arguments[_i];
+        }
+        return f2(a2);
+      };
+    }
+    exports.untupled = untupled2;
+    function pipe3(a2, ab, bc, cd, de, ef, fg, gh, hi) {
+      switch (arguments.length) {
+        case 1:
+          return a2;
+        case 2:
+          return ab(a2);
+        case 3:
+          return bc(ab(a2));
+        case 4:
+          return cd(bc(ab(a2)));
+        case 5:
+          return de(cd(bc(ab(a2))));
+        case 6:
+          return ef(de(cd(bc(ab(a2)))));
+        case 7:
+          return fg(ef(de(cd(bc(ab(a2))))));
+        case 8:
+          return gh(fg(ef(de(cd(bc(ab(a2)))))));
+        case 9:
+          return hi(gh(fg(ef(de(cd(bc(ab(a2))))))));
+        default: {
+          var ret = arguments[0];
+          for (var i2 = 1; i2 < arguments.length; i2++) {
+            ret = arguments[i2](ret);
+          }
+          return ret;
+        }
+      }
+    }
+    exports.pipe = pipe3;
+    exports.hole = absurd2;
+    var SK2 = function(_24, b2) {
+      return b2;
+    };
+    exports.SK = SK2;
+    function not3(predicate) {
+      return function(a2) {
+        return !predicate(a2);
+      };
+    }
+    exports.not = not3;
+    var getEndomorphismMonoid2 = function() {
+      return {
+        concat: function(first, second) {
+          return flow2(first, second);
+        },
+        empty: identity3
+      };
+    };
+    exports.getEndomorphismMonoid = getEndomorphismMonoid2;
+  }
+});
+
 // node_modules/obsidian-dataview/lib/index.js
 var require_lib = __commonJS({
   "node_modules/obsidian-dataview/lib/index.js"(exports) {
@@ -432,10 +697,10 @@ var require_lib = __commonJS({
           var a2 = [null];
           a2.push.apply(a2, args2);
           var Constructor = Function.bind.apply(Parent2, a2);
-          var instance107 = new Constructor();
+          var instance106 = new Constructor();
           if (Class2)
-            _setPrototypeOf2(instance107, Class2.prototype);
-          return instance107;
+            _setPrototypeOf2(instance106, Class2.prototype);
+          return instance106;
         };
       }
       return _construct.apply(null, arguments);
@@ -741,7 +1006,7 @@ var require_lib = __commonJS({
     function isInteger(o2) {
       return typeof o2 === "number" && o2 % 1 === 0;
     }
-    function isString2(o2) {
+    function isString3(o2) {
       return typeof o2 === "string";
     }
     function isDate3(o2) {
@@ -1643,7 +1908,7 @@ var require_lib = __commonJS({
     var singleton2 = null;
     var FixedOffsetZone = /* @__PURE__ */ function(_Zone) {
       _inheritsLoose(FixedOffsetZone2, _Zone);
-      FixedOffsetZone2.instance = function instance107(offset3) {
+      FixedOffsetZone2.instance = function instance106(offset3) {
         return offset3 === 0 ? FixedOffsetZone2.utcInstance : new FixedOffsetZone2(offset3);
       };
       FixedOffsetZone2.parseSpecifier = function parseSpecifier(s3) {
@@ -1763,7 +2028,7 @@ var require_lib = __commonJS({
         return defaultZone2;
       } else if (input instanceof Zone) {
         return input;
-      } else if (isString2(input)) {
+      } else if (isString3(input)) {
         var lowered = input.toLowerCase();
         if (lowered === "local" || lowered === "system")
           return defaultZone2;
@@ -6122,7 +6387,7 @@ var require_lib = __commonJS({
           return { type: "null", value: val };
         else if (isNumber3(val))
           return { type: "number", value: val };
-        else if (isString3(val))
+        else if (isString4(val))
           return { type: "string", value: val };
         else if (isBoolean2(val))
           return { type: "boolean", value: val };
@@ -6134,7 +6399,7 @@ var require_lib = __commonJS({
           return { type: "widget", value: val };
         else if (isArray(val))
           return { type: "array", value: val };
-        else if (isLink3(val))
+        else if (isLink(val))
           return { type: "link", value: val };
         else if (isFunction(val))
           return { type: "function", value: val };
@@ -6305,10 +6570,10 @@ var require_lib = __commonJS({
         }
       }
       Values2.deepCopy = deepCopy;
-      function isString3(val) {
+      function isString4(val) {
         return typeof val == "string";
       }
-      Values2.isString = isString3;
+      Values2.isString = isString4;
       function isNumber3(val) {
         return typeof val == "number";
       }
@@ -6333,10 +6598,10 @@ var require_lib = __commonJS({
         return typeof val === "boolean";
       }
       Values2.isBoolean = isBoolean2;
-      function isLink3(val) {
-        return val instanceof Link;
+      function isLink(val) {
+        return val instanceof Link2;
       }
-      Values2.isLink = isLink3;
+      Values2.isLink = isLink;
       function isWidget(val) {
         return val instanceof Widget;
       }
@@ -6350,7 +6615,7 @@ var require_lib = __commonJS({
       }
       Values2.isHtml = isHtml;
       function isObject(val) {
-        return typeof val == "object" && !isHtml(val) && !isWidget(val) && !isArray(val) && !isDuration(val) && !isDate4(val) && !isLink3(val) && val !== void 0 && !isNull(val);
+        return typeof val == "object" && !isHtml(val) && !isWidget(val) && !isArray(val) && !isDuration(val) && !isDate4(val) && !isLink(val) && val !== void 0 && !isNull(val);
       }
       Values2.isObject = isObject;
       function isFunction(val) {
@@ -6383,12 +6648,12 @@ var require_lib = __commonJS({
       }
       Groupings2.count = count;
     })(Groupings || (Groupings = {}));
-    var Link = class {
+    var Link2 = class {
       constructor(fields) {
         Object.assign(this, fields);
       }
       static file(path, embed = false, display) {
-        return new Link({
+        return new Link2({
           path,
           embed,
           display,
@@ -6399,15 +6664,15 @@ var require_lib = __commonJS({
       static infer(linkpath, embed = false, display) {
         if (linkpath.includes("#^")) {
           let split = linkpath.split("#^");
-          return Link.block(split[0], split[1], embed, display);
+          return Link2.block(split[0], split[1], embed, display);
         } else if (linkpath.includes("#")) {
           let split = linkpath.split("#");
-          return Link.header(split[0], split[1], embed, display);
+          return Link2.header(split[0], split[1], embed, display);
         } else
-          return Link.file(linkpath, embed, display);
+          return Link2.file(linkpath, embed, display);
       }
       static header(path, header, embed, display) {
-        return new Link({
+        return new Link2({
           path,
           embed,
           display,
@@ -6416,7 +6681,7 @@ var require_lib = __commonJS({
         });
       }
       static block(path, blockId, embed, display) {
-        return new Link({
+        return new Link2({
           path,
           embed,
           display,
@@ -6425,7 +6690,7 @@ var require_lib = __commonJS({
         });
       }
       static fromObject(object) {
-        return new Link(object);
+        return new Link2(object);
       }
       equals(other) {
         if (other == void 0 || other == null)
@@ -6439,22 +6704,22 @@ var require_lib = __commonJS({
         return { path: this.path, type: this.type, subpath: this.subpath, display: this.display, embed: this.embed };
       }
       withPath(path) {
-        return new Link(Object.assign({}, this, { path }));
+        return new Link2(Object.assign({}, this, { path }));
       }
       withDisplay(display) {
-        return new Link(Object.assign({}, this, { display }));
+        return new Link2(Object.assign({}, this, { display }));
       }
       withHeader(header) {
-        return Link.header(this.path, header, this.embed, this.display);
+        return Link2.header(this.path, header, this.embed, this.display);
       }
       toFile() {
-        return Link.file(this.path, this.embed, this.display);
+        return Link2.file(this.path, this.embed, this.display);
       }
       toEmbed() {
         if (this.embed) {
           return this;
         } else {
-          let link = new Link(this);
+          let link = new Link2(this);
           link.embed = true;
           return link;
         }
@@ -6463,7 +6728,7 @@ var require_lib = __commonJS({
         if (!this.embed) {
           return this;
         } else {
-          let link = new Link(this);
+          let link = new Link2(this);
           link.embed = false;
           return link;
         }
@@ -6689,17 +6954,17 @@ var require_lib = __commonJS({
     };
     var KEYWORDS = ["FROM", "WHERE", "LIMIT", "GROUP", "FLATTEN"];
     function splitOnUnescapedPipe(link) {
-      let pipe2 = -1;
-      while ((pipe2 = link.indexOf("|", pipe2 + 1)) >= 0) {
-        if (pipe2 > 0 && link[pipe2 - 1] == "\\")
+      let pipe3 = -1;
+      while ((pipe3 = link.indexOf("|", pipe3 + 1)) >= 0) {
+        if (pipe3 > 0 && link[pipe3 - 1] == "\\")
           continue;
-        return [link.substring(0, pipe2).replace(/\\\|/g, "|"), link.substring(pipe2 + 1)];
+        return [link.substring(0, pipe3).replace(/\\\|/g, "|"), link.substring(pipe3 + 1)];
       }
       return [link.replace(/\\\|/g, "|"), void 0];
     }
     function parseInnerLink(rawlink) {
       let [link, display] = splitOnUnescapedPipe(rawlink);
-      return Link.infer(link, false, display);
+      return Link2.infer(link, false, display);
     }
     function createBinaryParser(child, sep, combine) {
       return parsimmon_umd_min.exports.seqMap(child, parsimmon_umd_min.exports.seq(parsimmon_umd_min.exports.optWhitespace, sep, parsimmon_umd_min.exports.optWhitespace, child).many(), (first, rest) => {
@@ -9465,11 +9730,11 @@ var require_moment = __commonJS({
         }
       }
       var add = createAdder(1, "add"), subtract = createAdder(-1, "subtract");
-      function isString2(input) {
+      function isString3(input) {
         return typeof input === "string" || input instanceof String;
       }
       function isMomentInput(input) {
-        return isMoment(input) || isDate3(input) || isString2(input) || isNumber2(input) || isNumberOrStringArray(input) || isMomentInputObject(input) || input === null || input === void 0;
+        return isMoment(input) || isDate3(input) || isString3(input) || isNumber2(input) || isNumberOrStringArray(input) || isMomentInputObject(input) || input === null || input === void 0;
       }
       function isMomentInputObject(input) {
         var objectTest = isObject(input) && !isObjectEmpty(input), propertyTest = false, properties = [
@@ -9508,7 +9773,7 @@ var require_moment = __commonJS({
         var arrayTest = isArray(input), dataTypeTest = false;
         if (arrayTest) {
           dataTypeTest = input.filter(function(item) {
-            return !isNumber2(item) && isString2(input);
+            return !isNumber2(item) && isString3(input);
           }).length === 0;
         }
         return arrayTest && dataTypeTest;
@@ -12612,7 +12877,7 @@ var require_internal = __commonJS({
       }
       component.$$.dirty[i2 / 31 | 0] |= 1 << i2 % 31;
     }
-    function init6(component, options, instance107, create_fragment107, not_equal2, props, append_styles3, dirty = [-1]) {
+    function init6(component, options, instance106, create_fragment106, not_equal2, props, append_styles3, dirty = [-1]) {
       const parent_component = exports.current_component;
       set_current_component2(component);
       const $$ = component.$$ = {
@@ -12635,7 +12900,7 @@ var require_internal = __commonJS({
       };
       append_styles3 && append_styles3($$.root);
       let ready = false;
-      $$.ctx = instance107 ? instance107(component, options.props || {}, (i2, ret, ...rest) => {
+      $$.ctx = instance106 ? instance106(component, options.props || {}, (i2, ret, ...rest) => {
         const value = rest.length ? rest[0] : ret;
         if ($$.ctx && not_equal2($$.ctx[i2], $$.ctx[i2] = value)) {
           if (!$$.skip_bound && $$.bound[i2])
@@ -12648,7 +12913,7 @@ var require_internal = __commonJS({
       $$.update();
       ready = true;
       run_all2($$.before_update);
-      $$.fragment = create_fragment107 ? create_fragment107($$.ctx) : false;
+      $$.fragment = create_fragment106 ? create_fragment106($$.ctx) : false;
       if (options.target) {
         if (options.hydrate) {
           start_hydrating2();
@@ -12838,11 +13103,11 @@ var require_internal = __commonJS({
     function construct_svelte_component_dev(component, props) {
       const error_message = "this={...} of <svelte:component> should specify a Svelte component.";
       try {
-        const instance107 = new component(props);
-        if (!instance107.$$ || !instance107.$set || !instance107.$on || !instance107.$destroy) {
+        const instance106 = new component(props);
+        if (!instance106.$$ || !instance106.$set || !instance106.$on || !instance106.$destroy) {
           throw new Error(error_message);
         }
-        return instance107;
+        return instance106;
       } catch (err) {
         const { message } = err;
         if (typeof message === "string" && message.indexOf("is not a constructor") !== -1) {
@@ -13262,1166 +13527,4074 @@ module.exports = __toCommonJS(main_exports);
 var import_dayjs9 = __toESM(require_dayjs_min());
 var import_isoWeek = __toESM(require_isoWeek());
 var import_localizedFormat = __toESM(require_localizedFormat());
-var import_obsidian56 = require("obsidian");
-var import_obsidian_dataview4 = __toESM(require_lib());
 
-// node_modules/svelte/internal/index.mjs
-function noop() {
-}
-var identity = (x2) => x2;
-function assign(tar, src) {
-  for (const k2 in src)
-    tar[k2] = src[k2];
-  return tar;
-}
-function is_promise(value) {
-  return value && typeof value === "object" && typeof value.then === "function";
-}
-function run(fn3) {
-  return fn3();
-}
-function blank_object() {
-  return /* @__PURE__ */ Object.create(null);
-}
-function run_all(fns) {
-  fns.forEach(run);
-}
-function is_function(thing) {
-  return typeof thing === "function";
-}
-function safe_not_equal(a2, b2) {
-  return a2 != a2 ? b2 == b2 : a2 !== b2 || (a2 && typeof a2 === "object" || typeof a2 === "function");
-}
-var src_url_equal_anchor;
-function src_url_equal(element_src, url) {
-  if (!src_url_equal_anchor) {
-    src_url_equal_anchor = document.createElement("a");
-  }
-  src_url_equal_anchor.href = url;
-  return element_src === src_url_equal_anchor.href;
-}
-function is_empty(obj) {
-  return Object.keys(obj).length === 0;
-}
-function subscribe(store, ...callbacks) {
-  if (store == null) {
-    return noop;
-  }
-  const unsub = store.subscribe(...callbacks);
-  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
-}
-function get_store_value(store) {
-  let value;
-  subscribe(store, (_24) => value = _24)();
-  return value;
-}
-function component_subscribe(component, store, callback) {
-  component.$$.on_destroy.push(subscribe(store, callback));
-}
-function create_slot(definition, ctx, $$scope, fn3) {
-  if (definition) {
-    const slot_ctx = get_slot_context(definition, ctx, $$scope, fn3);
-    return definition[0](slot_ctx);
-  }
-}
-function get_slot_context(definition, ctx, $$scope, fn3) {
-  return definition[1] && fn3 ? assign($$scope.ctx.slice(), definition[1](fn3(ctx))) : $$scope.ctx;
-}
-function get_slot_changes(definition, $$scope, dirty, fn3) {
-  if (definition[2] && fn3) {
-    const lets = definition[2](fn3(dirty));
-    if ($$scope.dirty === void 0) {
-      return lets;
-    }
-    if (typeof lets === "object") {
-      const merged = [];
-      const len = Math.max($$scope.dirty.length, lets.length);
-      for (let i2 = 0; i2 < len; i2 += 1) {
-        merged[i2] = $$scope.dirty[i2] | lets[i2];
-      }
-      return merged;
-    }
-    return $$scope.dirty | lets;
-  }
-  return $$scope.dirty;
-}
-function update_slot_base(slot, slot_definition, ctx, $$scope, slot_changes, get_slot_context_fn) {
-  if (slot_changes) {
-    const slot_context = get_slot_context(slot_definition, ctx, $$scope, get_slot_context_fn);
-    slot.p(slot_context, slot_changes);
-  }
-}
-function get_all_dirty_from_scope($$scope) {
-  if ($$scope.ctx.length > 32) {
-    const dirty = [];
-    const length = $$scope.ctx.length / 32;
-    for (let i2 = 0; i2 < length; i2++) {
-      dirty[i2] = -1;
-    }
-    return dirty;
-  }
-  return -1;
-}
-function compute_slots(slots) {
-  const result = {};
-  for (const key in slots) {
-    result[key] = true;
-  }
-  return result;
-}
-function null_to_empty(value) {
-  return value == null ? "" : value;
-}
-function action_destroyer(action_result) {
-  return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
-}
-var is_client = typeof window !== "undefined";
-var now = is_client ? () => window.performance.now() : () => Date.now();
-var raf = is_client ? (cb) => requestAnimationFrame(cb) : noop;
-var tasks = /* @__PURE__ */ new Set();
-function run_tasks(now2) {
-  tasks.forEach((task2) => {
-    if (!task2.c(now2)) {
-      tasks.delete(task2);
-      task2.f();
-    }
-  });
-  if (tasks.size !== 0)
-    raf(run_tasks);
-}
-function loop(callback) {
-  let task2;
-  if (tasks.size === 0)
-    raf(run_tasks);
-  return {
-    promise: new Promise((fulfill) => {
-      tasks.add(task2 = { c: callback, f: fulfill });
-    }),
-    abort() {
-      tasks.delete(task2);
-    }
-  };
-}
-var is_hydrating = false;
-function start_hydrating() {
-  is_hydrating = true;
-}
-function end_hydrating() {
-  is_hydrating = false;
-}
-function append(target, node) {
-  target.appendChild(node);
-}
-function append_styles(target, style_sheet_id, styles) {
-  const append_styles_to = get_root_for_style(target);
-  if (!append_styles_to.getElementById(style_sheet_id)) {
-    const style = element("style");
-    style.id = style_sheet_id;
-    style.textContent = styles;
-    append_stylesheet(append_styles_to, style);
-  }
-}
-function get_root_for_style(node) {
-  if (!node)
-    return document;
-  const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
-  if (root && root.host) {
-    return root;
-  }
-  return node.ownerDocument;
-}
-function append_empty_stylesheet(node) {
-  const style_element = element("style");
-  append_stylesheet(get_root_for_style(node), style_element);
-  return style_element.sheet;
-}
-function append_stylesheet(node, style) {
-  append(node.head || node, style);
-  return style.sheet;
-}
-function insert(target, node, anchor) {
-  target.insertBefore(node, anchor || null);
-}
-function detach(node) {
-  if (node.parentNode) {
-    node.parentNode.removeChild(node);
-  }
-}
-function destroy_each(iterations, detaching) {
-  for (let i2 = 0; i2 < iterations.length; i2 += 1) {
-    if (iterations[i2])
-      iterations[i2].d(detaching);
-  }
-}
-function element(name) {
-  return document.createElement(name);
-}
-function text(data) {
-  return document.createTextNode(data);
-}
-function space() {
-  return text(" ");
-}
-function empty() {
-  return text("");
-}
-function listen(node, event, handler, options) {
-  node.addEventListener(event, handler, options);
-  return () => node.removeEventListener(event, handler, options);
-}
-function stop_propagation(fn3) {
-  return function(event) {
-    event.stopPropagation();
-    return fn3.call(this, event);
-  };
-}
-function attr(node, attribute, value) {
-  if (value == null)
-    node.removeAttribute(attribute);
-  else if (node.getAttribute(attribute) !== value)
-    node.setAttribute(attribute, value);
-}
-function set_attributes(node, attributes) {
-  const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
-  for (const key in attributes) {
-    if (attributes[key] == null) {
-      node.removeAttribute(key);
-    } else if (key === "style") {
-      node.style.cssText = attributes[key];
-    } else if (key === "__value") {
-      node.value = node[key] = attributes[key];
-    } else if (descriptors[key] && descriptors[key].set) {
-      node[key] = attributes[key];
-    } else {
-      attr(node, key, attributes[key]);
-    }
-  }
-}
-function set_custom_element_data_map(node, data_map) {
-  Object.keys(data_map).forEach((key) => {
-    set_custom_element_data(node, key, data_map[key]);
-  });
-}
-function set_custom_element_data(node, prop, value) {
-  if (prop in node) {
-    node[prop] = typeof node[prop] === "boolean" && value === "" ? true : value;
-  } else {
-    attr(node, prop, value);
-  }
-}
-function children(element2) {
-  return Array.from(element2.childNodes);
-}
-function set_data(text2, data) {
-  data = "" + data;
-  if (text2.wholeText !== data)
-    text2.data = data;
-}
-function set_input_value(input, value) {
-  input.value = value == null ? "" : value;
-}
-function set_style(node, key, value, important) {
-  if (value === null) {
-    node.style.removeProperty(key);
-  } else {
-    node.style.setProperty(key, value, important ? "important" : "");
-  }
-}
-function select_option(select, value) {
-  for (let i2 = 0; i2 < select.options.length; i2 += 1) {
-    const option2 = select.options[i2];
-    if (option2.__value === value) {
-      option2.selected = true;
-      return;
-    }
-  }
-  select.selectedIndex = -1;
-}
-var crossorigin;
-function is_crossorigin() {
-  if (crossorigin === void 0) {
-    crossorigin = false;
-    try {
-      if (typeof window !== "undefined" && window.parent) {
-        void window.parent.document;
-      }
-    } catch (error2) {
-      crossorigin = true;
-    }
-  }
-  return crossorigin;
-}
-function add_resize_listener(node, fn3) {
-  const computed_style = getComputedStyle(node);
-  if (computed_style.position === "static") {
-    node.style.position = "relative";
-  }
-  const iframe = element("iframe");
-  iframe.setAttribute("style", "display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border: 0; opacity: 0; pointer-events: none; z-index: -1;");
-  iframe.setAttribute("aria-hidden", "true");
-  iframe.tabIndex = -1;
-  const crossorigin2 = is_crossorigin();
-  let unsubscribe;
-  if (crossorigin2) {
-    iframe.src = "data:text/html,<script>onresize=function(){parent.postMessage(0,'*')}<\/script>";
-    unsubscribe = listen(window, "message", (event) => {
-      if (event.source === iframe.contentWindow)
-        fn3();
-    });
-  } else {
-    iframe.src = "about:blank";
-    iframe.onload = () => {
-      unsubscribe = listen(iframe.contentWindow, "resize", fn3);
-    };
-  }
-  append(node, iframe);
-  return () => {
-    if (crossorigin2) {
-      unsubscribe();
-    } else if (unsubscribe && iframe.contentWindow) {
-      unsubscribe();
-    }
-    detach(iframe);
-  };
-}
-function toggle_class(element2, name, toggle) {
-  element2.classList[toggle ? "add" : "remove"](name);
-}
-function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
-  const e = document.createEvent("CustomEvent");
-  e.initCustomEvent(type, bubbles, cancelable, detail);
-  return e;
-}
-var managed_styles = /* @__PURE__ */ new Map();
-var active = 0;
-function hash(str) {
-  let hash4 = 5381;
-  let i2 = str.length;
-  while (i2--)
-    hash4 = (hash4 << 5) - hash4 ^ str.charCodeAt(i2);
-  return hash4 >>> 0;
-}
-function create_style_information(doc, node) {
-  const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
-  managed_styles.set(doc, info);
-  return info;
-}
-function create_rule(node, a2, b2, duration, delay2, ease, fn3, uid = 0) {
-  const step = 16.666 / duration;
-  let keyframes = "{\n";
-  for (let p2 = 0; p2 <= 1; p2 += step) {
-    const t3 = a2 + (b2 - a2) * ease(p2);
-    keyframes += p2 * 100 + `%{${fn3(t3, 1 - t3)}}
-`;
-  }
-  const rule = keyframes + `100% {${fn3(b2, 1 - b2)}}
-}`;
-  const name = `__svelte_${hash(rule)}_${uid}`;
-  const doc = get_root_for_style(node);
-  const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
-  if (!rules[name]) {
-    rules[name] = true;
-    stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
-  }
-  const animation = node.style.animation || "";
-  node.style.animation = `${animation ? `${animation}, ` : ""}${name} ${duration}ms linear ${delay2}ms 1 both`;
-  active += 1;
-  return name;
-}
-function delete_rule(node, name) {
-  const previous = (node.style.animation || "").split(", ");
-  const next2 = previous.filter(
-    name ? (anim) => anim.indexOf(name) < 0 : (anim) => anim.indexOf("__svelte") === -1
-  );
-  const deleted = previous.length - next2.length;
-  if (deleted) {
-    node.style.animation = next2.join(", ");
-    active -= deleted;
-    if (!active)
-      clear_rules();
-  }
-}
-function clear_rules() {
-  raf(() => {
-    if (active)
-      return;
-    managed_styles.forEach((info) => {
-      const { ownerNode } = info.stylesheet;
-      if (ownerNode)
-        detach(ownerNode);
-    });
-    managed_styles.clear();
-  });
-}
-function create_animation(node, from, fn3, params) {
-  if (!from)
-    return noop;
-  const to = node.getBoundingClientRect();
-  if (from.left === to.left && from.right === to.right && from.top === to.top && from.bottom === to.bottom)
-    return noop;
-  const {
-    delay: delay2 = 0,
-    duration = 300,
-    easing = identity,
-    start: start_time = now() + delay2,
-    end: end2 = start_time + duration,
-    tick: tick2 = noop,
-    css: css2
-  } = fn3(node, { from, to }, params);
-  let running = true;
-  let started = false;
-  let name;
-  function start2() {
-    if (css2) {
-      name = create_rule(node, 0, 1, duration, delay2, easing, css2);
-    }
-    if (!delay2) {
-      started = true;
-    }
-  }
-  function stop() {
-    if (css2)
-      delete_rule(node, name);
-    running = false;
-  }
-  loop((now2) => {
-    if (!started && now2 >= start_time) {
-      started = true;
-    }
-    if (started && now2 >= end2) {
-      tick2(1, 0);
-      stop();
-    }
-    if (!running) {
-      return false;
-    }
-    if (started) {
-      const p2 = now2 - start_time;
-      const t3 = 0 + 1 * easing(p2 / duration);
-      tick2(t3, 1 - t3);
-    }
-    return true;
-  });
-  start2();
-  tick2(0, 1);
-  return stop;
-}
-function fix_position(node) {
-  const style = getComputedStyle(node);
-  if (style.position !== "absolute" && style.position !== "fixed") {
-    const { width, height } = style;
-    const a2 = node.getBoundingClientRect();
-    node.style.position = "absolute";
-    node.style.width = width;
-    node.style.height = height;
-    add_transform(node, a2);
-  }
-}
-function add_transform(node, a2) {
-  const b2 = node.getBoundingClientRect();
-  if (a2.left !== b2.left || a2.top !== b2.top) {
-    const style = getComputedStyle(node);
-    const transform = style.transform === "none" ? "" : style.transform;
-    node.style.transform = `${transform} translate(${a2.left - b2.left}px, ${a2.top - b2.top}px)`;
-  }
-}
-var current_component;
-function set_current_component(component) {
-  current_component = component;
-}
-function get_current_component() {
-  if (!current_component)
-    throw new Error("Function called outside component initialization");
-  return current_component;
-}
-function onMount(fn3) {
-  get_current_component().$$.on_mount.push(fn3);
-}
-function onDestroy(fn3) {
-  get_current_component().$$.on_destroy.push(fn3);
-}
-function createEventDispatcher() {
-  const component = get_current_component();
-  return (type, detail, { cancelable = false } = {}) => {
-    const callbacks = component.$$.callbacks[type];
-    if (callbacks) {
-      const event = custom_event(type, detail, { cancelable });
-      callbacks.slice().forEach((fn3) => {
-        fn3.call(component, event);
-      });
-      return !event.defaultPrevented;
-    }
-    return true;
-  };
-}
-function setContext(key, context) {
-  get_current_component().$$.context.set(key, context);
-  return context;
-}
-function getContext(key) {
-  return get_current_component().$$.context.get(key);
-}
-function bubble(component, event) {
-  const callbacks = component.$$.callbacks[event.type];
-  if (callbacks) {
-    callbacks.slice().forEach((fn3) => fn3.call(this, event));
-  }
-}
-var dirty_components = [];
-var binding_callbacks = [];
-var render_callbacks = [];
-var flush_callbacks = [];
-var resolved_promise = Promise.resolve();
-var update_scheduled = false;
-function schedule_update() {
-  if (!update_scheduled) {
-    update_scheduled = true;
-    resolved_promise.then(flush);
-  }
-}
-function tick() {
-  schedule_update();
-  return resolved_promise;
-}
-function add_render_callback(fn3) {
-  render_callbacks.push(fn3);
-}
-function add_flush_callback(fn3) {
-  flush_callbacks.push(fn3);
-}
-var seen_callbacks = /* @__PURE__ */ new Set();
-var flushidx = 0;
-function flush() {
-  const saved_component = current_component;
-  do {
-    while (flushidx < dirty_components.length) {
-      const component = dirty_components[flushidx];
-      flushidx++;
-      set_current_component(component);
-      update(component.$$);
-    }
-    set_current_component(null);
-    dirty_components.length = 0;
-    flushidx = 0;
-    while (binding_callbacks.length)
-      binding_callbacks.pop()();
-    for (let i2 = 0; i2 < render_callbacks.length; i2 += 1) {
-      const callback = render_callbacks[i2];
-      if (!seen_callbacks.has(callback)) {
-        seen_callbacks.add(callback);
-        callback();
-      }
-    }
-    render_callbacks.length = 0;
-  } while (dirty_components.length);
-  while (flush_callbacks.length) {
-    flush_callbacks.pop()();
-  }
-  update_scheduled = false;
-  seen_callbacks.clear();
-  set_current_component(saved_component);
-}
-function update($$) {
-  if ($$.fragment !== null) {
-    $$.update();
-    run_all($$.before_update);
-    const dirty = $$.dirty;
-    $$.dirty = [-1];
-    $$.fragment && $$.fragment.p($$.ctx, dirty);
-    $$.after_update.forEach(add_render_callback);
-  }
-}
-var promise;
-function wait() {
-  if (!promise) {
-    promise = Promise.resolve();
-    promise.then(() => {
-      promise = null;
-    });
-  }
-  return promise;
-}
-function dispatch(node, direction, kind) {
-  node.dispatchEvent(custom_event(`${direction ? "intro" : "outro"}${kind}`));
-}
-var outroing = /* @__PURE__ */ new Set();
-var outros;
-function group_outros() {
-  outros = {
-    r: 0,
-    c: [],
-    p: outros
-  };
-}
-function check_outros() {
-  if (!outros.r) {
-    run_all(outros.c);
-  }
-  outros = outros.p;
-}
-function transition_in(block, local) {
-  if (block && block.i) {
-    outroing.delete(block);
-    block.i(local);
-  }
-}
-function transition_out(block, local, detach2, callback) {
-  if (block && block.o) {
-    if (outroing.has(block))
-      return;
-    outroing.add(block);
-    outros.c.push(() => {
-      outroing.delete(block);
-      if (callback) {
-        if (detach2)
-          block.d(1);
-        callback();
-      }
-    });
-    block.o(local);
-  } else if (callback) {
-    callback();
-  }
-}
-var null_transition = { duration: 0 };
-function create_bidirectional_transition(node, fn3, params, intro) {
-  const options = { direction: "both" };
-  let config = fn3(node, params, options);
-  let t3 = intro ? 0 : 1;
-  let running_program = null;
-  let pending_program = null;
-  let animation_name = null;
-  function clear_animation() {
-    if (animation_name)
-      delete_rule(node, animation_name);
-  }
-  function init6(program, duration) {
-    const d2 = program.b - t3;
-    duration *= Math.abs(d2);
+// node_modules/fp-ts/es6/function.js
+var function_exports = {};
+__export(function_exports, {
+  SK: () => SK,
+  absurd: () => absurd,
+  apply: () => apply,
+  constFalse: () => constFalse,
+  constNull: () => constNull,
+  constTrue: () => constTrue,
+  constUndefined: () => constUndefined,
+  constVoid: () => constVoid,
+  constant: () => constant,
+  decrement: () => decrement,
+  flip: () => flip,
+  flow: () => flow,
+  getBooleanAlgebra: () => getBooleanAlgebra,
+  getEndomorphismMonoid: () => getEndomorphismMonoid,
+  getMonoid: () => getMonoid,
+  getRing: () => getRing,
+  getSemigroup: () => getSemigroup,
+  getSemiring: () => getSemiring,
+  hole: () => hole,
+  identity: () => identity,
+  increment: () => increment,
+  not: () => not,
+  pipe: () => pipe,
+  tuple: () => tuple,
+  tupled: () => tupled,
+  unsafeCoerce: () => unsafeCoerce,
+  untupled: () => untupled
+});
+var getBooleanAlgebra = function(B2) {
+  return function() {
     return {
-      a: t3,
-      b: program.b,
-      d: d2,
-      duration,
-      start: program.start,
-      end: program.start + duration,
-      group: program.group
-    };
-  }
-  function go(b2) {
-    const { delay: delay2 = 0, duration = 300, easing = identity, tick: tick2 = noop, css: css2 } = config || null_transition;
-    const program = {
-      start: now() + delay2,
-      b: b2
-    };
-    if (!b2) {
-      program.group = outros;
-      outros.r += 1;
-    }
-    if (running_program || pending_program) {
-      pending_program = program;
-    } else {
-      if (css2) {
-        clear_animation();
-        animation_name = create_rule(node, t3, b2, duration, delay2, easing, css2);
+      meet: function(x2, y2) {
+        return function(a2) {
+          return B2.meet(x2(a2), y2(a2));
+        };
+      },
+      join: function(x2, y2) {
+        return function(a2) {
+          return B2.join(x2(a2), y2(a2));
+        };
+      },
+      zero: function() {
+        return B2.zero;
+      },
+      one: function() {
+        return B2.one;
+      },
+      implies: function(x2, y2) {
+        return function(a2) {
+          return B2.implies(x2(a2), y2(a2));
+        };
+      },
+      not: function(x2) {
+        return function(a2) {
+          return B2.not(x2(a2));
+        };
       }
-      if (b2)
-        tick2(0, 1);
-      running_program = init6(program, duration);
-      add_render_callback(() => dispatch(node, b2, "start"));
-      loop((now2) => {
-        if (pending_program && now2 > pending_program.start) {
-          running_program = init6(pending_program, duration);
-          pending_program = null;
-          dispatch(node, running_program.b, "start");
-          if (css2) {
-            clear_animation();
-            animation_name = create_rule(node, t3, running_program.b, running_program.duration, 0, easing, config.css);
-          }
-        }
-        if (running_program) {
-          if (now2 >= running_program.end) {
-            tick2(t3 = running_program.b, 1 - t3);
-            dispatch(node, running_program.b, "end");
-            if (!pending_program) {
-              if (running_program.b) {
-                clear_animation();
-              } else {
-                if (!--running_program.group.r)
-                  run_all(running_program.group.c);
-              }
-            }
-            running_program = null;
-          } else if (now2 >= running_program.start) {
-            const p2 = now2 - running_program.start;
-            t3 = running_program.a + running_program.d * easing(p2 / running_program.duration);
-            tick2(t3, 1 - t3);
-          }
-        }
-        return !!(running_program || pending_program);
-      });
-    }
-  }
+    };
+  };
+};
+var getSemigroup = function(S2) {
+  return function() {
+    return {
+      concat: function(f2, g2) {
+        return function(a2) {
+          return S2.concat(f2(a2), g2(a2));
+        };
+      }
+    };
+  };
+};
+var getMonoid = function(M2) {
+  var getSemigroupM = getSemigroup(M2);
+  return function() {
+    return {
+      concat: getSemigroupM().concat,
+      empty: function() {
+        return M2.empty;
+      }
+    };
+  };
+};
+var getSemiring = function(S2) {
   return {
-    run(b2) {
-      if (is_function(config)) {
-        wait().then(() => {
-          config = config(options);
-          go(b2);
-        });
-      } else {
-        go(b2);
-      }
+    add: function(f2, g2) {
+      return function(x2) {
+        return S2.add(f2(x2), g2(x2));
+      };
     },
-    end() {
-      clear_animation();
-      running_program = pending_program = null;
+    zero: function() {
+      return S2.zero;
+    },
+    mul: function(f2, g2) {
+      return function(x2) {
+        return S2.mul(f2(x2), g2(x2));
+      };
+    },
+    one: function() {
+      return S2.one;
     }
   };
-}
-function handle_promise(promise2, info) {
-  const token = info.token = {};
-  function update2(type, index2, key, value) {
-    if (info.token !== token)
-      return;
-    info.resolved = value;
-    let child_ctx = info.ctx;
-    if (key !== void 0) {
-      child_ctx = child_ctx.slice();
-      child_ctx[key] = value;
-    }
-    const block = type && (info.current = type)(child_ctx);
-    let needs_flush = false;
-    if (info.block) {
-      if (info.blocks) {
-        info.blocks.forEach((block2, i2) => {
-          if (i2 !== index2 && block2) {
-            group_outros();
-            transition_out(block2, 1, 1, () => {
-              if (info.blocks[i2] === block2) {
-                info.blocks[i2] = null;
-              }
-            });
-            check_outros();
-          }
-        });
-      } else {
-        info.block.d(1);
-      }
-      block.c();
-      transition_in(block, 1);
-      block.m(info.mount(), info.anchor);
-      needs_flush = true;
-    }
-    info.block = block;
-    if (info.blocks)
-      info.blocks[index2] = block;
-    if (needs_flush) {
-      flush();
-    }
-  }
-  if (is_promise(promise2)) {
-    const current_component2 = get_current_component();
-    promise2.then((value) => {
-      set_current_component(current_component2);
-      update2(info.then, 1, info.value, value);
-      set_current_component(null);
-    }, (error2) => {
-      set_current_component(current_component2);
-      update2(info.catch, 2, info.error, error2);
-      set_current_component(null);
-      if (!info.hasCatch) {
-        throw error2;
-      }
-    });
-    if (info.current !== info.pending) {
-      update2(info.pending, 0);
-      return true;
-    }
-  } else {
-    if (info.current !== info.then) {
-      update2(info.then, 1, info.value, promise2);
-      return true;
-    }
-    info.resolved = promise2;
-  }
-}
-function update_await_block_branch(info, ctx, dirty) {
-  const child_ctx = ctx.slice();
-  const { resolved } = info;
-  if (info.current === info.then) {
-    child_ctx[info.value] = resolved;
-  }
-  if (info.current === info.catch) {
-    child_ctx[info.error] = resolved;
-  }
-  info.block.p(child_ctx, dirty);
-}
-var globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
-function outro_and_destroy_block(block, lookup3) {
-  transition_out(block, 1, 1, () => {
-    lookup3.delete(block.key);
-  });
-}
-function fix_and_outro_and_destroy_block(block, lookup3) {
-  block.f();
-  outro_and_destroy_block(block, lookup3);
-}
-function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup3, node, destroy2, create_each_block21, next2, get_context2) {
-  let o2 = old_blocks.length;
-  let n2 = list.length;
-  let i2 = o2;
-  const old_indexes = {};
-  while (i2--)
-    old_indexes[old_blocks[i2].key] = i2;
-  const new_blocks = [];
-  const new_lookup = /* @__PURE__ */ new Map();
-  const deltas = /* @__PURE__ */ new Map();
-  i2 = n2;
-  while (i2--) {
-    const child_ctx = get_context2(ctx, list, i2);
-    const key = get_key(child_ctx);
-    let block = lookup3.get(key);
-    if (!block) {
-      block = create_each_block21(key, child_ctx);
-      block.c();
-    } else if (dynamic) {
-      block.p(child_ctx, dirty);
-    }
-    new_lookup.set(key, new_blocks[i2] = block);
-    if (key in old_indexes)
-      deltas.set(key, Math.abs(i2 - old_indexes[key]));
-  }
-  const will_move = /* @__PURE__ */ new Set();
-  const did_move = /* @__PURE__ */ new Set();
-  function insert2(block) {
-    transition_in(block, 1);
-    block.m(node, next2);
-    lookup3.set(block.key, block);
-    next2 = block.first;
-    n2--;
-  }
-  while (o2 && n2) {
-    const new_block = new_blocks[n2 - 1];
-    const old_block = old_blocks[o2 - 1];
-    const new_key = new_block.key;
-    const old_key = old_block.key;
-    if (new_block === old_block) {
-      next2 = new_block.first;
-      o2--;
-      n2--;
-    } else if (!new_lookup.has(old_key)) {
-      destroy2(old_block, lookup3);
-      o2--;
-    } else if (!lookup3.has(new_key) || will_move.has(new_key)) {
-      insert2(new_block);
-    } else if (did_move.has(old_key)) {
-      o2--;
-    } else if (deltas.get(new_key) > deltas.get(old_key)) {
-      did_move.add(new_key);
-      insert2(new_block);
-    } else {
-      will_move.add(old_key);
-      o2--;
-    }
-  }
-  while (o2--) {
-    const old_block = old_blocks[o2];
-    if (!new_lookup.has(old_block.key))
-      destroy2(old_block, lookup3);
-  }
-  while (n2)
-    insert2(new_blocks[n2 - 1]);
-  return new_blocks;
-}
-function get_spread_update(levels, updates) {
-  const update2 = {};
-  const to_null_out = {};
-  const accounted_for = { $$scope: 1 };
-  let i2 = levels.length;
-  while (i2--) {
-    const o2 = levels[i2];
-    const n2 = updates[i2];
-    if (n2) {
-      for (const key in o2) {
-        if (!(key in n2))
-          to_null_out[key] = 1;
-      }
-      for (const key in n2) {
-        if (!accounted_for[key]) {
-          update2[key] = n2[key];
-          accounted_for[key] = 1;
-        }
-      }
-      levels[i2] = n2;
-    } else {
-      for (const key in o2) {
-        accounted_for[key] = 1;
-      }
-    }
-  }
-  for (const key in to_null_out) {
-    if (!(key in update2))
-      update2[key] = void 0;
-  }
-  return update2;
-}
-function bind(component, name, callback, value) {
-  const index2 = component.$$.props[name];
-  if (index2 !== void 0) {
-    component.$$.bound[index2] = callback;
-    if (value === void 0) {
-      callback(component.$$.ctx[index2]);
-    }
-  }
-}
-function create_component(block) {
-  block && block.c();
-}
-function mount_component(component, target, anchor, customElement) {
-  const { fragment, after_update } = component.$$;
-  fragment && fragment.m(target, anchor);
-  if (!customElement) {
-    add_render_callback(() => {
-      const new_on_destroy = component.$$.on_mount.map(run).filter(is_function);
-      if (component.$$.on_destroy) {
-        component.$$.on_destroy.push(...new_on_destroy);
-      } else {
-        run_all(new_on_destroy);
-      }
-      component.$$.on_mount = [];
-    });
-  }
-  after_update.forEach(add_render_callback);
-}
-function destroy_component(component, detaching) {
-  const $$ = component.$$;
-  if ($$.fragment !== null) {
-    run_all($$.on_destroy);
-    $$.fragment && $$.fragment.d(detaching);
-    $$.on_destroy = $$.fragment = null;
-    $$.ctx = [];
-  }
-}
-function make_dirty(component, i2) {
-  if (component.$$.dirty[0] === -1) {
-    dirty_components.push(component);
-    schedule_update();
-    component.$$.dirty.fill(0);
-  }
-  component.$$.dirty[i2 / 31 | 0] |= 1 << i2 % 31;
-}
-function init(component, options, instance107, create_fragment107, not_equal, props, append_styles2, dirty = [-1]) {
-  const parent_component = current_component;
-  set_current_component(component);
-  const $$ = component.$$ = {
-    fragment: null,
-    ctx: [],
-    props,
-    update: noop,
-    not_equal,
-    bound: blank_object(),
-    on_mount: [],
-    on_destroy: [],
-    on_disconnect: [],
-    before_update: [],
-    after_update: [],
-    context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
-    callbacks: blank_object(),
-    dirty,
-    skip_bound: false,
-    root: options.target || parent_component.$$.root
-  };
-  append_styles2 && append_styles2($$.root);
-  let ready = false;
-  $$.ctx = instance107 ? instance107(component, options.props || {}, (i2, ret, ...rest) => {
-    const value = rest.length ? rest[0] : ret;
-    if ($$.ctx && not_equal($$.ctx[i2], $$.ctx[i2] = value)) {
-      if (!$$.skip_bound && $$.bound[i2])
-        $$.bound[i2](value);
-      if (ready)
-        make_dirty(component, i2);
-    }
-    return ret;
-  }) : [];
-  $$.update();
-  ready = true;
-  run_all($$.before_update);
-  $$.fragment = create_fragment107 ? create_fragment107($$.ctx) : false;
-  if (options.target) {
-    if (options.hydrate) {
-      start_hydrating();
-      const nodes = children(options.target);
-      $$.fragment && $$.fragment.l(nodes);
-      nodes.forEach(detach);
-    } else {
-      $$.fragment && $$.fragment.c();
-    }
-    if (options.intro)
-      transition_in(component.$$.fragment);
-    mount_component(component, options.target, options.anchor, options.customElement);
-    end_hydrating();
-    flush();
-  }
-  set_current_component(parent_component);
-}
-var SvelteElement;
-if (typeof HTMLElement === "function") {
-  SvelteElement = class extends HTMLElement {
-    constructor() {
-      super();
-      this.attachShadow({ mode: "open" });
-    }
-    connectedCallback() {
-      const { on_mount } = this.$$;
-      this.$$.on_disconnect = on_mount.map(run).filter(is_function);
-      for (const key in this.$$.slotted) {
-        this.appendChild(this.$$.slotted[key]);
-      }
-    }
-    attributeChangedCallback(attr2, _oldValue, newValue) {
-      this[attr2] = newValue;
-    }
-    disconnectedCallback() {
-      run_all(this.$$.on_disconnect);
-    }
-    $destroy() {
-      destroy_component(this, 1);
-      this.$destroy = noop;
-    }
-    $on(type, callback) {
-      if (!is_function(callback)) {
-        return noop;
-      }
-      const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
-      callbacks.push(callback);
-      return () => {
-        const index2 = callbacks.indexOf(callback);
-        if (index2 !== -1)
-          callbacks.splice(index2, 1);
+};
+var getRing = function(R2) {
+  var S2 = getSemiring(R2);
+  return {
+    add: S2.add,
+    mul: S2.mul,
+    one: S2.one,
+    zero: S2.zero,
+    sub: function(f2, g2) {
+      return function(x2) {
+        return R2.sub(f2(x2), g2(x2));
       };
     }
-    $set($$props) {
-      if (this.$$set && !is_empty($$props)) {
-        this.$$.skip_bound = true;
-        this.$$set($$props);
-        this.$$.skip_bound = false;
-      }
-    }
+  };
+};
+var apply = function(a2) {
+  return function(f2) {
+    return f2(a2);
+  };
+};
+function identity(a2) {
+  return a2;
+}
+var unsafeCoerce = identity;
+function constant(a2) {
+  return function() {
+    return a2;
   };
 }
-var SvelteComponent = class {
-  $destroy() {
-    destroy_component(this, 1);
-    this.$destroy = noop;
-  }
-  $on(type, callback) {
-    if (!is_function(callback)) {
-      return noop;
+var constTrue = /* @__PURE__ */ constant(true);
+var constFalse = /* @__PURE__ */ constant(false);
+var constNull = /* @__PURE__ */ constant(null);
+var constUndefined = /* @__PURE__ */ constant(void 0);
+var constVoid = constUndefined;
+function flip(f2) {
+  return function() {
+    var args = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      args[_i] = arguments[_i];
     }
-    const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
-    callbacks.push(callback);
-    return () => {
-      const index2 = callbacks.indexOf(callback);
-      if (index2 !== -1)
-        callbacks.splice(index2, 1);
+    if (args.length > 1) {
+      return f2(args[1], args[0]);
+    }
+    return function(a2) {
+      return f2(a2)(args[0]);
     };
+  };
+}
+function flow(ab, bc, cd, de, ef, fg, gh, hi, ij) {
+  switch (arguments.length) {
+    case 1:
+      return ab;
+    case 2:
+      return function() {
+        return bc(ab.apply(this, arguments));
+      };
+    case 3:
+      return function() {
+        return cd(bc(ab.apply(this, arguments)));
+      };
+    case 4:
+      return function() {
+        return de(cd(bc(ab.apply(this, arguments))));
+      };
+    case 5:
+      return function() {
+        return ef(de(cd(bc(ab.apply(this, arguments)))));
+      };
+    case 6:
+      return function() {
+        return fg(ef(de(cd(bc(ab.apply(this, arguments))))));
+      };
+    case 7:
+      return function() {
+        return gh(fg(ef(de(cd(bc(ab.apply(this, arguments)))))));
+      };
+    case 8:
+      return function() {
+        return hi(gh(fg(ef(de(cd(bc(ab.apply(this, arguments))))))));
+      };
+    case 9:
+      return function() {
+        return ij(hi(gh(fg(ef(de(cd(bc(ab.apply(this, arguments)))))))));
+      };
   }
-  $set($$props) {
-    if (this.$$set && !is_empty($$props)) {
-      this.$$.skip_bound = true;
-      this.$$set($$props);
-      this.$$.skip_bound = false;
+  return;
+}
+function tuple() {
+  var t3 = [];
+  for (var _i = 0; _i < arguments.length; _i++) {
+    t3[_i] = arguments[_i];
+  }
+  return t3;
+}
+function increment(n2) {
+  return n2 + 1;
+}
+function decrement(n2) {
+  return n2 - 1;
+}
+function absurd(_24) {
+  throw new Error("Called `absurd` function which should be uncallable");
+}
+function tupled(f2) {
+  return function(a2) {
+    return f2.apply(void 0, a2);
+  };
+}
+function untupled(f2) {
+  return function() {
+    var a2 = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      a2[_i] = arguments[_i];
     }
+    return f2(a2);
+  };
+}
+function pipe(a2, ab, bc, cd, de, ef, fg, gh, hi) {
+  switch (arguments.length) {
+    case 1:
+      return a2;
+    case 2:
+      return ab(a2);
+    case 3:
+      return bc(ab(a2));
+    case 4:
+      return cd(bc(ab(a2)));
+    case 5:
+      return de(cd(bc(ab(a2))));
+    case 6:
+      return ef(de(cd(bc(ab(a2)))));
+    case 7:
+      return fg(ef(de(cd(bc(ab(a2))))));
+    case 8:
+      return gh(fg(ef(de(cd(bc(ab(a2)))))));
+    case 9:
+      return hi(gh(fg(ef(de(cd(bc(ab(a2))))))));
+    default: {
+      var ret = arguments[0];
+      for (var i2 = 1; i2 < arguments.length; i2++) {
+        ret = arguments[i2](ret);
+      }
+      return ret;
+    }
+  }
+}
+var hole = absurd;
+var SK = function(_24, b2) {
+  return b2;
+};
+function not(predicate) {
+  return function(a2) {
+    return !predicate(a2);
+  };
+}
+var getEndomorphismMonoid = function() {
+  return {
+    concat: function(first, second) {
+      return flow(first, second);
+    },
+    empty: identity
+  };
+};
+
+// node_modules/fp-ts/es6/internal.js
+var __spreadArray = function(to, from, pack) {
+  if (pack || arguments.length === 2)
+    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
+      if (ar || !(i2 in from)) {
+        if (!ar)
+          ar = Array.prototype.slice.call(from, 0, i2);
+        ar[i2] = from[i2];
+      }
+    }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
+var isNone = function(fa) {
+  return fa._tag === "None";
+};
+var isSome = function(fa) {
+  return fa._tag === "Some";
+};
+var none = { _tag: "None" };
+var some = function(a2) {
+  return { _tag: "Some", value: a2 };
+};
+var isLeft = function(ma) {
+  return ma._tag === "Left";
+};
+var isRight = function(ma) {
+  return ma._tag === "Right";
+};
+var left = function(e) {
+  return { _tag: "Left", left: e };
+};
+var right = function(a2) {
+  return { _tag: "Right", right: a2 };
+};
+var singleton = function(a2) {
+  return [a2];
+};
+var isNonEmpty = function(as) {
+  return as.length > 0;
+};
+var head = function(as) {
+  return as[0];
+};
+var tail = function(as) {
+  return as.slice(1);
+};
+var emptyReadonlyArray = [];
+var emptyRecord = {};
+var fromReadonlyNonEmptyArray = function(as) {
+  return __spreadArray([as[0]], as.slice(1), true);
+};
+
+// node_modules/fp-ts/es6/Apply.js
+function ap(F2, G2) {
+  return function(fa) {
+    return function(fab) {
+      return F2.ap(F2.map(fab, function(gab) {
+        return function(ga) {
+          return G2.ap(gab, ga);
+        };
+      }), fa);
+    };
+  };
+}
+function apFirst(A2) {
+  return function(second) {
+    return function(first) {
+      return A2.ap(A2.map(first, function(a2) {
+        return function() {
+          return a2;
+        };
+      }), second);
+    };
+  };
+}
+function apSecond(A2) {
+  return function(second) {
+    return function(first) {
+      return A2.ap(A2.map(first, function() {
+        return function(b2) {
+          return b2;
+        };
+      }), second);
+    };
+  };
+}
+function apS(F2) {
+  return function(name, fb) {
+    return function(fa) {
+      return F2.ap(F2.map(fa, function(a2) {
+        return function(b2) {
+          var _a;
+          return Object.assign({}, a2, (_a = {}, _a[name] = b2, _a));
+        };
+      }), fb);
+    };
+  };
+}
+function getApplySemigroup(F2) {
+  return function(S2) {
+    return {
+      concat: function(first, second) {
+        return F2.ap(F2.map(first, function(x2) {
+          return function(y2) {
+            return S2.concat(x2, y2);
+          };
+        }), second);
+      }
+    };
+  };
+}
+
+// node_modules/fp-ts/es6/Functor.js
+function map(F2, G2) {
+  return function(f2) {
+    return function(fa) {
+      return F2.map(fa, function(ga) {
+        return G2.map(ga, f2);
+      });
+    };
+  };
+}
+function flap(F2) {
+  return function(a2) {
+    return function(fab) {
+      return F2.map(fab, function(f2) {
+        return f2(a2);
+      });
+    };
+  };
+}
+function bindTo(F2) {
+  return function(name) {
+    return function(fa) {
+      return F2.map(fa, function(a2) {
+        var _a;
+        return _a = {}, _a[name] = a2, _a;
+      });
+    };
+  };
+}
+function let_(F2) {
+  return function(name, f2) {
+    return function(fa) {
+      return F2.map(fa, function(a2) {
+        var _a;
+        return Object.assign({}, a2, (_a = {}, _a[name] = f2(a2), _a));
+      });
+    };
+  };
+}
+
+// node_modules/fp-ts/es6/Applicative.js
+function getApplicativeMonoid(F2) {
+  var f2 = getApplySemigroup(F2);
+  return function(M2) {
+    return {
+      concat: f2(M2).concat,
+      empty: F2.of(M2.empty)
+    };
+  };
+}
+
+// node_modules/fp-ts/es6/Array.js
+var Array_exports = {};
+__export(Array_exports, {
+  Alt: () => Alt,
+  Alternative: () => Alternative,
+  Applicative: () => Applicative,
+  Apply: () => Apply,
+  Chain: () => Chain,
+  ChainRecBreadthFirst: () => ChainRecBreadthFirst,
+  ChainRecDepthFirst: () => ChainRecDepthFirst,
+  Compactable: () => Compactable,
+  Do: () => Do,
+  Extend: () => Extend,
+  Filterable: () => Filterable,
+  FilterableWithIndex: () => FilterableWithIndex,
+  Foldable: () => Foldable,
+  FoldableWithIndex: () => FoldableWithIndex,
+  FromEither: () => FromEither,
+  Functor: () => Functor,
+  FunctorWithIndex: () => FunctorWithIndex,
+  Monad: () => Monad,
+  Pointed: () => Pointed,
+  Traversable: () => Traversable,
+  TraversableWithIndex: () => TraversableWithIndex,
+  URI: () => URI,
+  Unfoldable: () => Unfoldable,
+  Witherable: () => Witherable,
+  Zero: () => Zero,
+  alt: () => alt,
+  altW: () => altW,
+  ap: () => ap2,
+  apFirst: () => apFirst2,
+  apS: () => apS2,
+  apSecond: () => apSecond2,
+  append: () => append3,
+  appendW: () => appendW3,
+  array: () => array,
+  bind: () => bind2,
+  bindTo: () => bindTo2,
+  chain: () => chain,
+  chainFirst: () => chainFirst2,
+  chainRecBreadthFirst: () => chainRecBreadthFirst2,
+  chainRecDepthFirst: () => chainRecDepthFirst2,
+  chainWithIndex: () => chainWithIndex,
+  chop: () => chop3,
+  chunksOf: () => chunksOf3,
+  compact: () => compact,
+  comprehension: () => comprehension,
+  concat: () => concat2,
+  concatW: () => concatW,
+  cons: () => cons3,
+  copy: () => copy2,
+  deleteAt: () => deleteAt,
+  difference: () => difference,
+  dropLeft: () => dropLeft,
+  dropLeftWhile: () => dropLeftWhile,
+  dropRight: () => dropRight,
+  duplicate: () => duplicate,
+  elem: () => elem2,
+  empty: () => empty2,
+  every: () => every2,
+  exists: () => exists,
+  extend: () => extend,
+  filter: () => filter,
+  filterE: () => filterE2,
+  filterMap: () => filterMap,
+  filterMapWithIndex: () => filterMapWithIndex,
+  filterWithIndex: () => filterWithIndex,
+  findFirst: () => findFirst2,
+  findFirstMap: () => findFirstMap2,
+  findIndex: () => findIndex2,
+  findLast: () => findLast2,
+  findLastIndex: () => findLastIndex2,
+  findLastMap: () => findLastMap2,
+  flap: () => flap2,
+  flatten: () => flatten,
+  foldLeft: () => foldLeft,
+  foldMap: () => foldMap3,
+  foldMapWithIndex: () => foldMapWithIndex3,
+  foldRight: () => foldRight,
+  fromEither: () => fromEither,
+  fromEitherK: () => fromEitherK2,
+  fromOption: () => fromOption2,
+  fromOptionK: () => fromOptionK2,
+  fromPredicate: () => fromPredicate2,
+  getDifferenceMagma: () => getDifferenceMagma,
+  getEq: () => getEq3,
+  getIntersectionSemigroup: () => getIntersectionSemigroup,
+  getMonoid: () => getMonoid3,
+  getOrd: () => getOrd2,
+  getSemigroup: () => getSemigroup3,
+  getShow: () => getShow3,
+  getUnionMonoid: () => getUnionMonoid,
+  getUnionSemigroup: () => getUnionSemigroup,
+  guard: () => guard2,
+  head: () => head5,
+  init: () => init3,
+  insertAt: () => insertAt,
+  intercalate: () => intercalate3,
+  intersection: () => intersection,
+  intersperse: () => intersperse3,
+  isEmpty: () => isEmpty,
+  isNonEmpty: () => isNonEmpty5,
+  isOutOfBound: () => isOutOfBound4,
+  last: () => last4,
+  lefts: () => lefts,
+  let: () => let_2,
+  lookup: () => lookup2,
+  makeBy: () => makeBy3,
+  map: () => map2,
+  mapWithIndex: () => mapWithIndex,
+  match: () => match2,
+  matchLeft: () => matchLeft,
+  matchLeftW: () => matchLeftW,
+  matchRight: () => matchRight,
+  matchRightW: () => matchRightW,
+  matchW: () => matchW2,
+  modifyAt: () => modifyAt,
+  of: () => of3,
+  partition: () => partition,
+  partitionMap: () => partitionMap,
+  partitionMapWithIndex: () => partitionMapWithIndex,
+  partitionWithIndex: () => partitionWithIndex,
+  prepend: () => prepend3,
+  prependAll: () => prependAll3,
+  prependToAll: () => prependToAll,
+  prependW: () => prependW3,
+  range: () => range3,
+  reduce: () => reduce3,
+  reduceRight: () => reduceRight3,
+  reduceRightWithIndex: () => reduceRightWithIndex3,
+  reduceWithIndex: () => reduceWithIndex3,
+  replicate: () => replicate,
+  reverse: () => reverse,
+  rights: () => rights,
+  rotate: () => rotate3,
+  scanLeft: () => scanLeft,
+  scanRight: () => scanRight,
+  separate: () => separate,
+  sequence: () => sequence,
+  size: () => size,
+  snoc: () => snoc3,
+  some: () => some2,
+  sort: () => sort2,
+  sortBy: () => sortBy3,
+  spanLeft: () => spanLeft,
+  splitAt: () => splitAt3,
+  tail: () => tail4,
+  takeLeft: () => takeLeft,
+  takeLeftWhile: () => takeLeftWhile,
+  takeRight: () => takeRight,
+  traverse: () => traverse,
+  traverseWithIndex: () => traverseWithIndex,
+  unfold: () => unfold,
+  union: () => union3,
+  uniq: () => uniq3,
+  unsafeDeleteAt: () => unsafeDeleteAt,
+  unsafeInsertAt: () => unsafeInsertAt3,
+  unsafeUpdateAt: () => unsafeUpdateAt3,
+  unzip: () => unzip,
+  updateAt: () => updateAt,
+  wilt: () => wilt,
+  wither: () => wither,
+  zero: () => zero,
+  zip: () => zip,
+  zipWith: () => zipWith
+});
+
+// node_modules/fp-ts/es6/Chain.js
+function chainFirst(M2) {
+  return function(f2) {
+    return function(first) {
+      return M2.chain(first, function(a2) {
+        return M2.map(f2(a2), function() {
+          return a2;
+        });
+      });
+    };
+  };
+}
+function bind(M2) {
+  return function(name, f2) {
+    return function(ma) {
+      return M2.chain(ma, function(a2) {
+        return M2.map(f2(a2), function(b2) {
+          var _a;
+          return Object.assign({}, a2, (_a = {}, _a[name] = b2, _a));
+        });
+      });
+    };
+  };
+}
+
+// node_modules/fp-ts/es6/FromEither.js
+function fromOption(F2) {
+  return function(onNone) {
+    return function(ma) {
+      return F2.fromEither(isNone(ma) ? left(onNone()) : right(ma.value));
+    };
+  };
+}
+function fromPredicate(F2) {
+  return function(predicate, onFalse) {
+    return function(a2) {
+      return F2.fromEither(predicate(a2) ? right(a2) : left(onFalse(a2)));
+    };
+  };
+}
+function fromOptionK(F2) {
+  var fromOptionF = fromOption(F2);
+  return function(onNone) {
+    var from = fromOptionF(onNone);
+    return function(f2) {
+      return flow(f2, from);
+    };
+  };
+}
+function chainOptionK(F2, M2) {
+  var fromOptionKF = fromOptionK(F2);
+  return function(onNone) {
+    var from = fromOptionKF(onNone);
+    return function(f2) {
+      return function(ma) {
+        return M2.chain(ma, from(f2));
+      };
+    };
+  };
+}
+function fromEitherK(F2) {
+  return function(f2) {
+    return flow(f2, F2.fromEither);
+  };
+}
+function chainEitherK(F2, M2) {
+  var fromEitherKF = fromEitherK(F2);
+  return function(f2) {
+    return function(ma) {
+      return M2.chain(ma, fromEitherKF(f2));
+    };
+  };
+}
+function chainFirstEitherK(F2, M2) {
+  return flow(fromEitherK(F2), chainFirst(M2));
+}
+function filterOrElse(F2, M2) {
+  return function(predicate, onFalse) {
+    return function(ma) {
+      return M2.chain(ma, function(a2) {
+        return F2.fromEither(predicate(a2) ? right(a2) : left(onFalse(a2)));
+      });
+    };
+  };
+}
+
+// node_modules/fp-ts/es6/Eq.js
+var fromEquals = function(equals) {
+  return {
+    equals: function(x2, y2) {
+      return x2 === y2 || equals(x2, y2);
+    }
+  };
+};
+var eqStrict = {
+  equals: function(a2, b2) {
+    return a2 === b2;
+  }
+};
+var strictEqual = eqStrict.equals;
+
+// node_modules/fp-ts/es6/Ord.js
+var equalsDefault = function(compare2) {
+  return function(first, second) {
+    return first === second || compare2(first, second) === 0;
+  };
+};
+var fromCompare = function(compare2) {
+  return {
+    equals: equalsDefault(compare2),
+    compare: function(first, second) {
+      return first === second ? 0 : compare2(first, second);
+    }
+  };
+};
+var getSemigroup2 = function() {
+  return {
+    concat: function(first, second) {
+      return fromCompare(function(a2, b2) {
+        var ox = first.compare(a2, b2);
+        return ox !== 0 ? ox : second.compare(a2, b2);
+      });
+    }
+  };
+};
+var getMonoid2 = function() {
+  return {
+    concat: getSemigroup2().concat,
+    empty: fromCompare(function() {
+      return 0;
+    })
+  };
+};
+function compare(first, second) {
+  return first < second ? -1 : first > second ? 1 : 0;
+}
+var strictOrd = {
+  equals: eqStrict.equals,
+  compare
+};
+
+// node_modules/fp-ts/es6/ReadonlyNonEmptyArray.js
+var __spreadArray2 = function(to, from, pack) {
+  if (pack || arguments.length === 2)
+    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
+      if (ar || !(i2 in from)) {
+        if (!ar)
+          ar = Array.prototype.slice.call(from, 0, i2);
+        ar[i2] = from[i2];
+      }
+    }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
+var isNonEmpty2 = isNonEmpty;
+var isOutOfBound = function(i2, as) {
+  return i2 < 0 || i2 >= as.length;
+};
+var prependW = function(head6) {
+  return function(tail5) {
+    return __spreadArray2([head6], tail5, true);
+  };
+};
+var prepend = prependW;
+var prependAll = function(middle) {
+  return function(as) {
+    var out = [middle, as[0]];
+    for (var i2 = 1; i2 < as.length; i2++) {
+      out.push(middle, as[i2]);
+    }
+    return out;
+  };
+};
+var intersperse = function(middle) {
+  return function(as) {
+    var rest = tail2(as);
+    return isNonEmpty2(rest) ? pipe(rest, prependAll(middle), prepend(head2(as))) : as;
+  };
+};
+var extract = head;
+var head2 = extract;
+var tail2 = tail;
+var last = function(as) {
+  return as[as.length - 1];
+};
+var concatAll = function(S2) {
+  return function(as) {
+    return as.reduce(S2.concat);
+  };
+};
+var intercalate = function(S2) {
+  var concatAllS = concatAll(S2);
+  return function(middle) {
+    return flow(intersperse(middle), concatAllS);
+  };
+};
+
+// node_modules/fp-ts/es6/NonEmptyArray.js
+var __spreadArray3 = function(to, from, pack) {
+  if (pack || arguments.length === 2)
+    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
+      if (ar || !(i2 in from)) {
+        if (!ar)
+          ar = Array.prototype.slice.call(from, 0, i2);
+        ar[i2] = from[i2];
+      }
+    }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
+var isNonEmpty3 = function(as) {
+  return as.length > 0;
+};
+var isOutOfBound2 = function(i2, as) {
+  return i2 < 0 || i2 >= as.length;
+};
+var prependW2 = function(head6) {
+  return function(tail5) {
+    return __spreadArray3([head6], tail5, true);
+  };
+};
+var prepend2 = prependW2;
+var appendW = function(end2) {
+  return function(init6) {
+    return __spreadArray3(__spreadArray3([], init6, true), [end2], false);
+  };
+};
+var append = appendW;
+var unsafeInsertAt = function(i2, a2, as) {
+  if (isNonEmpty3(as)) {
+    var xs = fromReadonlyNonEmptyArray2(as);
+    xs.splice(i2, 0, a2);
+    return xs;
+  }
+  return [a2];
+};
+var unsafeUpdateAt = function(i2, a2, as) {
+  var xs = fromReadonlyNonEmptyArray2(as);
+  xs[i2] = a2;
+  return xs;
+};
+var uniq = function(E2) {
+  return function(as) {
+    if (as.length === 1) {
+      return copy(as);
+    }
+    var out = [head3(as)];
+    var rest = tail3(as);
+    var _loop_1 = function(a3) {
+      if (out.every(function(o2) {
+        return !E2.equals(o2, a3);
+      })) {
+        out.push(a3);
+      }
+    };
+    for (var _i = 0, rest_1 = rest; _i < rest_1.length; _i++) {
+      var a2 = rest_1[_i];
+      _loop_1(a2);
+    }
+    return out;
+  };
+};
+var sortBy = function(ords) {
+  if (isNonEmpty3(ords)) {
+    var M2 = getMonoid2();
+    return sort(ords.reduce(M2.concat, M2.empty));
+  }
+  return copy;
+};
+var union = function(E2) {
+  var uniqE = uniq(E2);
+  return function(second) {
+    return function(first) {
+      return uniqE(pipe(first, concat(second)));
+    };
+  };
+};
+var rotate = function(n2) {
+  return function(as) {
+    var len = as.length;
+    var m = Math.round(n2) % len;
+    if (isOutOfBound2(Math.abs(m), as) || m === 0) {
+      return copy(as);
+    }
+    if (m < 0) {
+      var _a = splitAt(-m)(as), f2 = _a[0], s2 = _a[1];
+      return pipe(s2, concat(f2));
+    } else {
+      return rotate(m - len)(as);
+    }
+  };
+};
+var fromReadonlyNonEmptyArray2 = fromReadonlyNonEmptyArray;
+var makeBy = function(f2) {
+  return function(n2) {
+    var j2 = Math.max(0, Math.floor(n2));
+    var out = [f2(0)];
+    for (var i2 = 1; i2 < j2; i2++) {
+      out.push(f2(i2));
+    }
+    return out;
+  };
+};
+var range = function(start2, end2) {
+  return start2 <= end2 ? makeBy(function(i2) {
+    return start2 + i2;
+  })(end2 - start2 + 1) : [start2];
+};
+function concat(x2, y2) {
+  return y2 ? x2.concat(y2) : function(y3) {
+    return y3.concat(x2);
+  };
+}
+var sort = function(O2) {
+  return function(as) {
+    return as.slice().sort(O2.compare);
+  };
+};
+var copy = fromReadonlyNonEmptyArray2;
+var of = function(a2) {
+  return [a2];
+};
+var prependAll2 = function(middle) {
+  return function(as) {
+    var out = [middle, as[0]];
+    for (var i2 = 1; i2 < as.length; i2++) {
+      out.push(middle, as[i2]);
+    }
+    return out;
+  };
+};
+var intersperse2 = function(middle) {
+  return function(as) {
+    var rest = tail3(as);
+    return isNonEmpty3(rest) ? pipe(rest, prependAll2(middle), prepend2(head3(as))) : copy(as);
+  };
+};
+var chop = function(f2) {
+  return function(as) {
+    var _a = f2(as), b2 = _a[0], rest = _a[1];
+    var out = [b2];
+    var next2 = rest;
+    while (isNonEmpty3(next2)) {
+      var _b = f2(next2), b_1 = _b[0], rest_2 = _b[1];
+      out.push(b_1);
+      next2 = rest_2;
+    }
+    return out;
+  };
+};
+var splitAt = function(n2) {
+  return function(as) {
+    var m = Math.max(1, n2);
+    return m >= as.length ? [copy(as), []] : [pipe(as.slice(1, m), prepend2(head3(as))), as.slice(m)];
+  };
+};
+var chunksOf = function(n2) {
+  return chop(splitAt(n2));
+};
+var head3 = head2;
+var tail3 = function(as) {
+  return as.slice(1);
+};
+var last2 = last;
+var init = function(as) {
+  return as.slice(0, -1);
+};
+function cons(head6, tail5) {
+  return tail5 === void 0 ? prepend2(head6) : pipe(tail5, prepend2(head6));
+}
+var snoc = function(init6, end2) {
+  return pipe(init6, append(end2));
+};
+
+// node_modules/fp-ts/es6/number.js
+var Eq = {
+  equals: function(first, second) {
+    return first === second;
+  }
+};
+var Ord = {
+  equals: Eq.equals,
+  compare: function(first, second) {
+    return first < second ? -1 : first > second ? 1 : 0;
+  }
+};
+var Bounded = {
+  equals: Eq.equals,
+  compare: Ord.compare,
+  top: Infinity,
+  bottom: -Infinity
+};
+var MagmaSub = {
+  concat: function(first, second) {
+    return first - second;
+  }
+};
+var SemigroupSum = {
+  concat: function(first, second) {
+    return first + second;
+  }
+};
+var SemigroupProduct = {
+  concat: function(first, second) {
+    return first * second;
+  }
+};
+var MonoidSum = {
+  concat: SemigroupSum.concat,
+  empty: 0
+};
+var MonoidProduct = {
+  concat: SemigroupProduct.concat,
+  empty: 1
+};
+var Field = {
+  add: SemigroupSum.concat,
+  zero: 0,
+  mul: SemigroupProduct.concat,
+  one: 1,
+  sub: MagmaSub.concat,
+  degree: function(_24) {
+    return 1;
+  },
+  div: function(first, second) {
+    return first / second;
+  },
+  mod: function(first, second) {
+    return first % second;
   }
 };
 
-// node_modules/svelte/store/index.mjs
-var subscriber_queue = [];
-function readable(value, start2) {
-  return {
-    subscribe: writable(value, start2).subscribe
+// node_modules/fp-ts/es6/Separated.js
+var separated = function(left6, right6) {
+  return { left: left6, right: right6 };
+};
+
+// node_modules/fp-ts/es6/Witherable.js
+function wiltDefault(T, C) {
+  return function(F2) {
+    var traverseF = T.traverse(F2);
+    return function(wa, f2) {
+      return F2.map(traverseF(wa, f2), C.separate);
+    };
   };
 }
-function writable(value, start2 = noop) {
-  let stop;
-  const subscribers = /* @__PURE__ */ new Set();
-  function set2(new_value) {
-    if (safe_not_equal(value, new_value)) {
-      value = new_value;
-      if (stop) {
-        const run_queue = !subscriber_queue.length;
-        for (const subscriber of subscribers) {
-          subscriber[1]();
-          subscriber_queue.push(subscriber, value);
-        }
-        if (run_queue) {
-          for (let i2 = 0; i2 < subscriber_queue.length; i2 += 2) {
-            subscriber_queue[i2][0](subscriber_queue[i2 + 1]);
-          }
-          subscriber_queue.length = 0;
-        }
-      }
-    }
-  }
-  function update2(fn3) {
-    set2(fn3(value));
-  }
-  function subscribe2(run2, invalidate = noop) {
-    const subscriber = [run2, invalidate];
-    subscribers.add(subscriber);
-    if (subscribers.size === 1) {
-      stop = start2(set2) || noop;
-    }
-    run2(value);
-    return () => {
-      subscribers.delete(subscriber);
-      if (subscribers.size === 0) {
-        stop();
-        stop = null;
-      }
+function witherDefault(T, C) {
+  return function(F2) {
+    var traverseF = T.traverse(F2);
+    return function(wa, f2) {
+      return F2.map(traverseF(wa, f2), C.compact);
     };
-  }
-  return { set: set2, update: update2, subscribe: subscribe2 };
+  };
 }
-function derived(stores, fn3, initial_value) {
-  const single = !Array.isArray(stores);
-  const stores_array = single ? [stores] : stores;
-  const auto2 = fn3.length < 2;
-  return readable(initial_value, (set2) => {
-    let inited = false;
-    const values = [];
-    let pending = 0;
-    let cleanup = noop;
-    const sync = () => {
-      if (pending) {
-        return;
+function filterE(W2) {
+  return function(F2) {
+    var witherF = W2.wither(F2);
+    return function(predicate) {
+      return function(ga) {
+        return witherF(ga, function(a2) {
+          return F2.map(predicate(a2), function(b2) {
+            return b2 ? some(a2) : none;
+          });
+        });
+      };
+    };
+  };
+}
+
+// node_modules/fp-ts/es6/Zero.js
+function guard(F2, P2) {
+  return function(b2) {
+    return b2 ? P2.of(void 0) : F2.zero();
+  };
+}
+
+// node_modules/fp-ts/es6/ReadonlyArray.js
+var __spreadArray4 = function(to, from, pack) {
+  if (pack || arguments.length === 2)
+    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
+      if (ar || !(i2 in from)) {
+        if (!ar)
+          ar = Array.prototype.slice.call(from, 0, i2);
+        ar[i2] = from[i2];
       }
-      cleanup();
-      const result = fn3(single ? values[0] : values, set2);
-      if (auto2) {
-        set2(result);
+    }
+  return to.concat(ar || Array.prototype.slice.call(from));
+};
+var isNonEmpty4 = isNonEmpty2;
+var matchW = function(onEmpty, onNonEmpty) {
+  return function(as) {
+    return isNonEmpty4(as) ? onNonEmpty(as) : onEmpty();
+  };
+};
+var match = matchW;
+var isOutOfBound3 = isOutOfBound;
+function lookup(i2, as) {
+  return as === void 0 ? function(as2) {
+    return lookup(i2, as2);
+  } : isOutOfBound3(i2, as) ? none : some(as[i2]);
+}
+var head4 = function(as) {
+  return isNonEmpty4(as) ? some(head2(as)) : none;
+};
+var last3 = function(as) {
+  return isNonEmpty4(as) ? some(last(as)) : none;
+};
+var findIndex = function(predicate) {
+  return function(as) {
+    for (var i2 = 0; i2 < as.length; i2++) {
+      if (predicate(as[i2])) {
+        return some(i2);
+      }
+    }
+    return none;
+  };
+};
+function findFirst(predicate) {
+  return function(as) {
+    for (var i2 = 0; i2 < as.length; i2++) {
+      if (predicate(as[i2])) {
+        return some(as[i2]);
+      }
+    }
+    return none;
+  };
+}
+var findFirstMap = function(f2) {
+  return function(as) {
+    for (var i2 = 0; i2 < as.length; i2++) {
+      var out = f2(as[i2]);
+      if (isSome(out)) {
+        return out;
+      }
+    }
+    return none;
+  };
+};
+function findLast(predicate) {
+  return function(as) {
+    for (var i2 = as.length - 1; i2 >= 0; i2--) {
+      if (predicate(as[i2])) {
+        return some(as[i2]);
+      }
+    }
+    return none;
+  };
+}
+var findLastMap = function(f2) {
+  return function(as) {
+    for (var i2 = as.length - 1; i2 >= 0; i2--) {
+      var out = f2(as[i2]);
+      if (isSome(out)) {
+        return out;
+      }
+    }
+    return none;
+  };
+};
+var findLastIndex = function(predicate) {
+  return function(as) {
+    for (var i2 = as.length - 1; i2 >= 0; i2--) {
+      if (predicate(as[i2])) {
+        return some(i2);
+      }
+    }
+    return none;
+  };
+};
+function elem(E2) {
+  return function(a2, as) {
+    if (as === void 0) {
+      var elemE_1 = elem(E2);
+      return function(as2) {
+        return elemE_1(a2, as2);
+      };
+    }
+    var predicate = function(element2) {
+      return E2.equals(element2, a2);
+    };
+    var i2 = 0;
+    for (; i2 < as.length; i2++) {
+      if (predicate(as[i2])) {
+        return true;
+      }
+    }
+    return false;
+  };
+}
+var _chainRecDepthFirst = function(a2, f2) {
+  return pipe(a2, chainRecDepthFirst(f2));
+};
+var _chainRecBreadthFirst = function(a2, f2) {
+  return pipe(a2, chainRecBreadthFirst(f2));
+};
+var foldMapWithIndex2 = function(M2) {
+  return function(f2) {
+    return function(fa) {
+      return fa.reduce(function(b2, a2, i2) {
+        return M2.concat(b2, f2(i2, a2));
+      }, M2.empty);
+    };
+  };
+};
+var reduce2 = function(b2, f2) {
+  return reduceWithIndex2(b2, function(_24, b3, a2) {
+    return f2(b3, a2);
+  });
+};
+var foldMap2 = function(M2) {
+  var foldMapWithIndexM = foldMapWithIndex2(M2);
+  return function(f2) {
+    return foldMapWithIndexM(function(_24, a2) {
+      return f2(a2);
+    });
+  };
+};
+var reduceWithIndex2 = function(b2, f2) {
+  return function(fa) {
+    var len = fa.length;
+    var out = b2;
+    for (var i2 = 0; i2 < len; i2++) {
+      out = f2(i2, out, fa[i2]);
+    }
+    return out;
+  };
+};
+var reduceRight2 = function(b2, f2) {
+  return reduceRightWithIndex2(b2, function(_24, a2, b3) {
+    return f2(a2, b3);
+  });
+};
+var reduceRightWithIndex2 = function(b2, f2) {
+  return function(fa) {
+    return fa.reduceRight(function(b3, a2, i2) {
+      return f2(i2, a2, b3);
+    }, b2);
+  };
+};
+var getShow2 = function(S2) {
+  return {
+    show: function(as) {
+      return "[".concat(as.map(S2.show).join(", "), "]");
+    }
+  };
+};
+var getEq2 = function(E2) {
+  return fromEquals(function(xs, ys) {
+    return xs.length === ys.length && xs.every(function(x2, i2) {
+      return E2.equals(x2, ys[i2]);
+    });
+  });
+};
+var getOrd = function(O2) {
+  return fromCompare(function(a2, b2) {
+    var aLen = a2.length;
+    var bLen = b2.length;
+    var len = Math.min(aLen, bLen);
+    for (var i2 = 0; i2 < len; i2++) {
+      var ordering = O2.compare(a2[i2], b2[i2]);
+      if (ordering !== 0) {
+        return ordering;
+      }
+    }
+    return Ord.compare(aLen, bLen);
+  });
+};
+var chainRecDepthFirst = function(f2) {
+  return function(a2) {
+    var todo = __spreadArray4([], f2(a2), true);
+    var out = [];
+    while (todo.length > 0) {
+      var e = todo.shift();
+      if (isLeft(e)) {
+        todo.unshift.apply(todo, f2(e.left));
       } else {
-        cleanup = is_function(result) ? result : noop;
+        out.push(e.right);
       }
-    };
-    const unsubscribers = stores_array.map((store, i2) => subscribe(store, (value) => {
-      values[i2] = value;
-      pending &= ~(1 << i2);
-      if (inited) {
-        sync();
+    }
+    return out;
+  };
+};
+var chainRecBreadthFirst = function(f2) {
+  return function(a2) {
+    var initial = f2(a2);
+    var todo = [];
+    var out = [];
+    function go(e2) {
+      if (isLeft(e2)) {
+        f2(e2.left).forEach(function(v2) {
+          return todo.push(v2);
+        });
+      } else {
+        out.push(e2.right);
       }
-    }, () => {
-      pending |= 1 << i2;
-    }));
-    inited = true;
-    sync();
-    return function stop() {
-      run_all(unsubscribers);
-      cleanup();
+    }
+    for (var _i = 0, initial_1 = initial; _i < initial_1.length; _i++) {
+      var e = initial_1[_i];
+      go(e);
+    }
+    while (todo.length > 0) {
+      go(todo.shift());
+    }
+    return out;
+  };
+};
+function every(predicate) {
+  return function(as) {
+    return as.every(predicate);
+  };
+}
+var intercalate2 = function(M2) {
+  var intercalateM = intercalate(M2);
+  return function(middle) {
+    return match(function() {
+      return M2.empty;
+    }, intercalateM(middle));
+  };
+};
+
+// node_modules/fp-ts/es6/Array.js
+var isEmpty = function(as) {
+  return as.length === 0;
+};
+var isNonEmpty5 = isNonEmpty3;
+var prepend3 = prepend2;
+var prependW3 = prependW2;
+var append3 = append;
+var appendW3 = appendW;
+var makeBy3 = function(n2, f2) {
+  return n2 <= 0 ? [] : makeBy(f2)(n2);
+};
+var replicate = function(n2, a2) {
+  return makeBy3(n2, function() {
+    return a2;
+  });
+};
+function fromPredicate2(predicate) {
+  return function(a2) {
+    return predicate(a2) ? [a2] : [];
+  };
+}
+var fromOption2 = function(ma) {
+  return isNone(ma) ? [] : [ma.value];
+};
+var fromEither = function(e) {
+  return isLeft(e) ? [] : [e.right];
+};
+var matchW2 = function(onEmpty, onNonEmpty) {
+  return function(as) {
+    return isNonEmpty5(as) ? onNonEmpty(as) : onEmpty();
+  };
+};
+var match2 = matchW2;
+var matchLeftW = function(onEmpty, onNonEmpty) {
+  return function(as) {
+    return isNonEmpty5(as) ? onNonEmpty(head3(as), tail3(as)) : onEmpty();
+  };
+};
+var matchLeft = matchLeftW;
+var foldLeft = matchLeft;
+var matchRightW = function(onEmpty, onNonEmpty) {
+  return function(as) {
+    return isNonEmpty5(as) ? onNonEmpty(init(as), last2(as)) : onEmpty();
+  };
+};
+var matchRight = matchRightW;
+var foldRight = matchRight;
+var chainWithIndex = function(f2) {
+  return function(as) {
+    var out = [];
+    for (var i2 = 0; i2 < as.length; i2++) {
+      out.push.apply(out, f2(i2, as[i2]));
+    }
+    return out;
+  };
+};
+var scanLeft = function(b2, f2) {
+  return function(as) {
+    var len = as.length;
+    var out = new Array(len + 1);
+    out[0] = b2;
+    for (var i2 = 0; i2 < len; i2++) {
+      out[i2 + 1] = f2(out[i2], as[i2]);
+    }
+    return out;
+  };
+};
+var scanRight = function(b2, f2) {
+  return function(as) {
+    var len = as.length;
+    var out = new Array(len + 1);
+    out[len] = b2;
+    for (var i2 = len - 1; i2 >= 0; i2--) {
+      out[i2] = f2(as[i2], out[i2 + 1]);
+    }
+    return out;
+  };
+};
+var size = function(as) {
+  return as.length;
+};
+var isOutOfBound4 = isOutOfBound2;
+var lookup2 = lookup;
+var head5 = head4;
+var last4 = last3;
+var tail4 = function(as) {
+  return isNonEmpty5(as) ? some(tail3(as)) : none;
+};
+var init3 = function(as) {
+  return isNonEmpty5(as) ? some(init(as)) : none;
+};
+var takeLeft = function(n2) {
+  return function(as) {
+    return isOutOfBound4(n2, as) ? copy2(as) : as.slice(0, n2);
+  };
+};
+var takeRight = function(n2) {
+  return function(as) {
+    return isOutOfBound4(n2, as) ? copy2(as) : n2 === 0 ? [] : as.slice(-n2);
+  };
+};
+function takeLeftWhile(predicate) {
+  return function(as) {
+    var out = [];
+    for (var _i = 0, as_1 = as; _i < as_1.length; _i++) {
+      var a2 = as_1[_i];
+      if (!predicate(a2)) {
+        break;
+      }
+      out.push(a2);
+    }
+    return out;
+  };
+}
+var spanLeftIndex = function(as, predicate) {
+  var l2 = as.length;
+  var i2 = 0;
+  for (; i2 < l2; i2++) {
+    if (!predicate(as[i2])) {
+      break;
+    }
+  }
+  return i2;
+};
+function spanLeft(predicate) {
+  return function(as) {
+    var _a = splitAt3(spanLeftIndex(as, predicate))(as), init6 = _a[0], rest = _a[1];
+    return { init: init6, rest };
+  };
+}
+var dropLeft = function(n2) {
+  return function(as) {
+    return n2 <= 0 || isEmpty(as) ? copy2(as) : n2 >= as.length ? [] : as.slice(n2, as.length);
+  };
+};
+var dropRight = function(n2) {
+  return function(as) {
+    return n2 <= 0 || isEmpty(as) ? copy2(as) : n2 >= as.length ? [] : as.slice(0, as.length - n2);
+  };
+};
+function dropLeftWhile(predicate) {
+  return function(as) {
+    return as.slice(spanLeftIndex(as, predicate));
+  };
+}
+var findIndex2 = findIndex;
+function findFirst2(predicate) {
+  return findFirst(predicate);
+}
+var findFirstMap2 = findFirstMap;
+function findLast2(predicate) {
+  return findLast(predicate);
+}
+var findLastMap2 = findLastMap;
+var findLastIndex2 = findLastIndex;
+var copy2 = function(as) {
+  return as.slice();
+};
+var insertAt = function(i2, a2) {
+  return function(as) {
+    return i2 < 0 || i2 > as.length ? none : some(unsafeInsertAt3(i2, a2, as));
+  };
+};
+var updateAt = function(i2, a2) {
+  return modifyAt(i2, function() {
+    return a2;
+  });
+};
+var deleteAt = function(i2) {
+  return function(as) {
+    return isOutOfBound4(i2, as) ? none : some(unsafeDeleteAt(i2, as));
+  };
+};
+var modifyAt = function(i2, f2) {
+  return function(as) {
+    return isOutOfBound4(i2, as) ? none : some(unsafeUpdateAt3(i2, f2(as[i2]), as));
+  };
+};
+var reverse = function(as) {
+  return isEmpty(as) ? [] : as.slice().reverse();
+};
+var rights = function(as) {
+  var r2 = [];
+  for (var i2 = 0; i2 < as.length; i2++) {
+    var a2 = as[i2];
+    if (a2._tag === "Right") {
+      r2.push(a2.right);
+    }
+  }
+  return r2;
+};
+var lefts = function(as) {
+  var r2 = [];
+  for (var i2 = 0; i2 < as.length; i2++) {
+    var a2 = as[i2];
+    if (a2._tag === "Left") {
+      r2.push(a2.left);
+    }
+  }
+  return r2;
+};
+var sort2 = function(O2) {
+  return function(as) {
+    return as.length <= 1 ? copy2(as) : as.slice().sort(O2.compare);
+  };
+};
+var zipWith = function(fa, fb, f2) {
+  var fc = [];
+  var len = Math.min(fa.length, fb.length);
+  for (var i2 = 0; i2 < len; i2++) {
+    fc[i2] = f2(fa[i2], fb[i2]);
+  }
+  return fc;
+};
+function zip(as, bs) {
+  if (bs === void 0) {
+    return function(bs2) {
+      return zip(bs2, as);
     };
+  }
+  return zipWith(as, bs, function(a2, b2) {
+    return [a2, b2];
   });
 }
+var unzip = function(as) {
+  var fa = [];
+  var fb = [];
+  for (var i2 = 0; i2 < as.length; i2++) {
+    fa[i2] = as[i2][0];
+    fb[i2] = as[i2][1];
+  }
+  return [fa, fb];
+};
+var prependAll3 = function(middle) {
+  var f2 = prependAll2(middle);
+  return function(as) {
+    return isNonEmpty5(as) ? f2(as) : [];
+  };
+};
+var intersperse3 = function(middle) {
+  var f2 = intersperse2(middle);
+  return function(as) {
+    return isNonEmpty5(as) ? f2(as) : copy2(as);
+  };
+};
+var rotate3 = function(n2) {
+  var f2 = rotate(n2);
+  return function(as) {
+    return isNonEmpty5(as) ? f2(as) : copy2(as);
+  };
+};
+var elem2 = elem;
+var uniq3 = function(E2) {
+  var f2 = uniq(E2);
+  return function(as) {
+    return isNonEmpty5(as) ? f2(as) : copy2(as);
+  };
+};
+var sortBy3 = function(ords) {
+  var f2 = sortBy(ords);
+  return function(as) {
+    return isNonEmpty5(as) ? f2(as) : copy2(as);
+  };
+};
+var chop3 = function(f2) {
+  var g2 = chop(f2);
+  return function(as) {
+    return isNonEmpty5(as) ? g2(as) : [];
+  };
+};
+var splitAt3 = function(n2) {
+  return function(as) {
+    return n2 >= 1 && isNonEmpty5(as) ? splitAt(n2)(as) : isEmpty(as) ? [copy2(as), []] : [[], copy2(as)];
+  };
+};
+var chunksOf3 = function(n2) {
+  var f2 = chunksOf(n2);
+  return function(as) {
+    return isNonEmpty5(as) ? f2(as) : [];
+  };
+};
+var fromOptionK2 = function(f2) {
+  return function() {
+    var a2 = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      a2[_i] = arguments[_i];
+    }
+    return fromOption2(f2.apply(void 0, a2));
+  };
+};
+function comprehension(input, f2, g2) {
+  if (g2 === void 0) {
+    g2 = function() {
+      return true;
+    };
+  }
+  var go = function(scope, input2) {
+    return isNonEmpty5(input2) ? pipe(head3(input2), chain(function(x2) {
+      return go(pipe(scope, append3(x2)), tail3(input2));
+    })) : g2.apply(void 0, scope) ? [f2.apply(void 0, scope)] : [];
+  };
+  return go([], input);
+}
+var concatW = function(second) {
+  return function(first) {
+    return isEmpty(first) ? copy2(second) : isEmpty(second) ? copy2(first) : first.concat(second);
+  };
+};
+var concat2 = concatW;
+function union3(E2) {
+  var unionE = union(E2);
+  return function(first, second) {
+    if (second === void 0) {
+      var unionE_1 = union3(E2);
+      return function(second2) {
+        return unionE_1(second2, first);
+      };
+    }
+    return isNonEmpty5(first) && isNonEmpty5(second) ? unionE(second)(first) : isNonEmpty5(first) ? copy2(first) : copy2(second);
+  };
+}
+function intersection(E2) {
+  var elemE = elem2(E2);
+  return function(xs, ys) {
+    if (ys === void 0) {
+      var intersectionE_1 = intersection(E2);
+      return function(ys2) {
+        return intersectionE_1(ys2, xs);
+      };
+    }
+    return xs.filter(function(a2) {
+      return elemE(a2, ys);
+    });
+  };
+}
+function difference(E2) {
+  var elemE = elem2(E2);
+  return function(xs, ys) {
+    if (ys === void 0) {
+      var differenceE_1 = difference(E2);
+      return function(ys2) {
+        return differenceE_1(ys2, xs);
+      };
+    }
+    return xs.filter(function(a2) {
+      return !elemE(a2, ys);
+    });
+  };
+}
+var _map = function(fa, f2) {
+  return pipe(fa, map2(f2));
+};
+var _mapWithIndex = function(fa, f2) {
+  return pipe(fa, mapWithIndex(f2));
+};
+var _ap = function(fab, fa) {
+  return pipe(fab, ap2(fa));
+};
+var _chain = function(ma, f2) {
+  return pipe(ma, chain(f2));
+};
+var _filter = function(fa, predicate) {
+  return pipe(fa, filter(predicate));
+};
+var _filterMap = function(fa, f2) {
+  return pipe(fa, filterMap(f2));
+};
+var _partition = function(fa, predicate) {
+  return pipe(fa, partition(predicate));
+};
+var _partitionMap = function(fa, f2) {
+  return pipe(fa, partitionMap(f2));
+};
+var _partitionWithIndex = function(fa, predicateWithIndex) {
+  return pipe(fa, partitionWithIndex(predicateWithIndex));
+};
+var _partitionMapWithIndex = function(fa, f2) {
+  return pipe(fa, partitionMapWithIndex(f2));
+};
+var _alt = function(fa, that) {
+  return pipe(fa, alt(that));
+};
+var _reduce = function(fa, b2, f2) {
+  return pipe(fa, reduce3(b2, f2));
+};
+var _foldMap = function(M2) {
+  var foldMapM = foldMap3(M2);
+  return function(fa, f2) {
+    return pipe(fa, foldMapM(f2));
+  };
+};
+var _reduceRight = function(fa, b2, f2) {
+  return pipe(fa, reduceRight3(b2, f2));
+};
+var _reduceWithIndex = function(fa, b2, f2) {
+  return pipe(fa, reduceWithIndex3(b2, f2));
+};
+var _foldMapWithIndex = function(M2) {
+  var foldMapWithIndexM = foldMapWithIndex3(M2);
+  return function(fa, f2) {
+    return pipe(fa, foldMapWithIndexM(f2));
+  };
+};
+var _reduceRightWithIndex = function(fa, b2, f2) {
+  return pipe(fa, reduceRightWithIndex3(b2, f2));
+};
+var _filterMapWithIndex = function(fa, f2) {
+  return pipe(fa, filterMapWithIndex(f2));
+};
+var _filterWithIndex = function(fa, predicateWithIndex) {
+  return pipe(fa, filterWithIndex(predicateWithIndex));
+};
+var _extend = function(fa, f2) {
+  return pipe(fa, extend(f2));
+};
+var _traverse = function(F2) {
+  var traverseF = traverse(F2);
+  return function(ta, f2) {
+    return pipe(ta, traverseF(f2));
+  };
+};
+var _traverseWithIndex = function(F2) {
+  var traverseWithIndexF = traverseWithIndex(F2);
+  return function(ta, f2) {
+    return pipe(ta, traverseWithIndexF(f2));
+  };
+};
+var _chainRecDepthFirst2 = _chainRecDepthFirst;
+var _chainRecBreadthFirst2 = _chainRecBreadthFirst;
+var of3 = of;
+var zero = function() {
+  return [];
+};
+var map2 = function(f2) {
+  return function(fa) {
+    return fa.map(function(a2) {
+      return f2(a2);
+    });
+  };
+};
+var ap2 = function(fa) {
+  return chain(function(f2) {
+    return pipe(fa, map2(f2));
+  });
+};
+var chain = function(f2) {
+  return function(ma) {
+    return pipe(ma, chainWithIndex(function(_24, a2) {
+      return f2(a2);
+    }));
+  };
+};
+var flatten = /* @__PURE__ */ chain(identity);
+var mapWithIndex = function(f2) {
+  return function(fa) {
+    return fa.map(function(a2, i2) {
+      return f2(i2, a2);
+    });
+  };
+};
+var filterMapWithIndex = function(f2) {
+  return function(fa) {
+    var out = [];
+    for (var i2 = 0; i2 < fa.length; i2++) {
+      var optionB = f2(i2, fa[i2]);
+      if (isSome(optionB)) {
+        out.push(optionB.value);
+      }
+    }
+    return out;
+  };
+};
+var filterMap = function(f2) {
+  return filterMapWithIndex(function(_24, a2) {
+    return f2(a2);
+  });
+};
+var compact = /* @__PURE__ */ filterMap(identity);
+var separate = function(fa) {
+  var left6 = [];
+  var right6 = [];
+  for (var _i = 0, fa_1 = fa; _i < fa_1.length; _i++) {
+    var e = fa_1[_i];
+    if (e._tag === "Left") {
+      left6.push(e.left);
+    } else {
+      right6.push(e.right);
+    }
+  }
+  return separated(left6, right6);
+};
+var filter = function(predicate) {
+  return function(as) {
+    return as.filter(predicate);
+  };
+};
+var partition = function(predicate) {
+  return partitionWithIndex(function(_24, a2) {
+    return predicate(a2);
+  });
+};
+var partitionWithIndex = function(predicateWithIndex) {
+  return function(as) {
+    var left6 = [];
+    var right6 = [];
+    for (var i2 = 0; i2 < as.length; i2++) {
+      var b2 = as[i2];
+      if (predicateWithIndex(i2, b2)) {
+        right6.push(b2);
+      } else {
+        left6.push(b2);
+      }
+    }
+    return separated(left6, right6);
+  };
+};
+var partitionMap = function(f2) {
+  return partitionMapWithIndex(function(_24, a2) {
+    return f2(a2);
+  });
+};
+var partitionMapWithIndex = function(f2) {
+  return function(fa) {
+    var left6 = [];
+    var right6 = [];
+    for (var i2 = 0; i2 < fa.length; i2++) {
+      var e = f2(i2, fa[i2]);
+      if (e._tag === "Left") {
+        left6.push(e.left);
+      } else {
+        right6.push(e.right);
+      }
+    }
+    return separated(left6, right6);
+  };
+};
+var altW = function(that) {
+  return function(fa) {
+    return fa.concat(that());
+  };
+};
+var alt = altW;
+var filterWithIndex = function(predicateWithIndex) {
+  return function(as) {
+    return as.filter(function(b2, i2) {
+      return predicateWithIndex(i2, b2);
+    });
+  };
+};
+var extend = function(f2) {
+  return function(wa) {
+    return wa.map(function(_24, i2) {
+      return f2(wa.slice(i2));
+    });
+  };
+};
+var duplicate = /* @__PURE__ */ extend(identity);
+var foldMap3 = foldMap2;
+var foldMapWithIndex3 = foldMapWithIndex2;
+var reduce3 = reduce2;
+var reduceWithIndex3 = reduceWithIndex2;
+var reduceRight3 = reduceRight2;
+var reduceRightWithIndex3 = reduceRightWithIndex2;
+var traverse = function(F2) {
+  var traverseWithIndexF = traverseWithIndex(F2);
+  return function(f2) {
+    return traverseWithIndexF(function(_24, a2) {
+      return f2(a2);
+    });
+  };
+};
+var sequence = function(F2) {
+  return function(ta) {
+    return _reduce(ta, F2.of(zero()), function(fas, fa) {
+      return F2.ap(F2.map(fas, function(as) {
+        return function(a2) {
+          return pipe(as, append3(a2));
+        };
+      }), fa);
+    });
+  };
+};
+var traverseWithIndex = function(F2) {
+  return function(f2) {
+    return reduceWithIndex3(F2.of(zero()), function(i2, fbs, a2) {
+      return F2.ap(F2.map(fbs, function(bs) {
+        return function(b2) {
+          return pipe(bs, append3(b2));
+        };
+      }), f2(i2, a2));
+    });
+  };
+};
+var wither = function(F2) {
+  var _witherF = _wither(F2);
+  return function(f2) {
+    return function(fa) {
+      return _witherF(fa, f2);
+    };
+  };
+};
+var wilt = function(F2) {
+  var _wiltF = _wilt(F2);
+  return function(f2) {
+    return function(fa) {
+      return _wiltF(fa, f2);
+    };
+  };
+};
+var unfold = function(b2, f2) {
+  var out = [];
+  var bb = b2;
+  while (true) {
+    var mt = f2(bb);
+    if (isSome(mt)) {
+      var _a = mt.value, a2 = _a[0], b_1 = _a[1];
+      out.push(a2);
+      bb = b_1;
+    } else {
+      break;
+    }
+  }
+  return out;
+};
+var URI = "Array";
+var getShow3 = getShow2;
+var getSemigroup3 = function() {
+  return {
+    concat: function(first, second) {
+      return first.concat(second);
+    }
+  };
+};
+var getMonoid3 = function() {
+  return {
+    concat: getSemigroup3().concat,
+    empty: []
+  };
+};
+var getEq3 = getEq2;
+var getOrd2 = getOrd;
+var getUnionSemigroup = function(E2) {
+  var unionE = union3(E2);
+  return {
+    concat: function(first, second) {
+      return unionE(second)(first);
+    }
+  };
+};
+var getUnionMonoid = function(E2) {
+  return {
+    concat: getUnionSemigroup(E2).concat,
+    empty: []
+  };
+};
+var getIntersectionSemigroup = function(E2) {
+  var intersectionE = intersection(E2);
+  return {
+    concat: function(first, second) {
+      return intersectionE(second)(first);
+    }
+  };
+};
+var getDifferenceMagma = function(E2) {
+  var differenceE = difference(E2);
+  return {
+    concat: function(first, second) {
+      return differenceE(second)(first);
+    }
+  };
+};
+var Functor = {
+  URI,
+  map: _map
+};
+var flap2 = /* @__PURE__ */ flap(Functor);
+var Pointed = {
+  URI,
+  of: of3
+};
+var FunctorWithIndex = {
+  URI,
+  map: _map,
+  mapWithIndex: _mapWithIndex
+};
+var Apply = {
+  URI,
+  map: _map,
+  ap: _ap
+};
+var apFirst2 = /* @__PURE__ */ apFirst(Apply);
+var apSecond2 = /* @__PURE__ */ apSecond(Apply);
+var Applicative = {
+  URI,
+  map: _map,
+  ap: _ap,
+  of: of3
+};
+var Chain = {
+  URI,
+  map: _map,
+  ap: _ap,
+  chain: _chain
+};
+var chainFirst2 = /* @__PURE__ */ chainFirst(Chain);
+var Monad = {
+  URI,
+  map: _map,
+  ap: _ap,
+  of: of3,
+  chain: _chain
+};
+var Unfoldable = {
+  URI,
+  unfold
+};
+var Alt = {
+  URI,
+  map: _map,
+  alt: _alt
+};
+var Zero = {
+  URI,
+  zero
+};
+var guard2 = /* @__PURE__ */ guard(Zero, Pointed);
+var Alternative = {
+  URI,
+  map: _map,
+  ap: _ap,
+  of: of3,
+  alt: _alt,
+  zero
+};
+var Extend = {
+  URI,
+  map: _map,
+  extend: _extend
+};
+var Compactable = {
+  URI,
+  compact,
+  separate
+};
+var Filterable = {
+  URI,
+  map: _map,
+  compact,
+  separate,
+  filter: _filter,
+  filterMap: _filterMap,
+  partition: _partition,
+  partitionMap: _partitionMap
+};
+var FilterableWithIndex = {
+  URI,
+  map: _map,
+  mapWithIndex: _mapWithIndex,
+  compact,
+  separate,
+  filter: _filter,
+  filterMap: _filterMap,
+  partition: _partition,
+  partitionMap: _partitionMap,
+  partitionMapWithIndex: _partitionMapWithIndex,
+  partitionWithIndex: _partitionWithIndex,
+  filterMapWithIndex: _filterMapWithIndex,
+  filterWithIndex: _filterWithIndex
+};
+var Foldable = {
+  URI,
+  reduce: _reduce,
+  foldMap: _foldMap,
+  reduceRight: _reduceRight
+};
+var FoldableWithIndex = {
+  URI,
+  reduce: _reduce,
+  foldMap: _foldMap,
+  reduceRight: _reduceRight,
+  reduceWithIndex: _reduceWithIndex,
+  foldMapWithIndex: _foldMapWithIndex,
+  reduceRightWithIndex: _reduceRightWithIndex
+};
+var Traversable = {
+  URI,
+  map: _map,
+  reduce: _reduce,
+  foldMap: _foldMap,
+  reduceRight: _reduceRight,
+  traverse: _traverse,
+  sequence
+};
+var TraversableWithIndex = {
+  URI,
+  map: _map,
+  mapWithIndex: _mapWithIndex,
+  reduce: _reduce,
+  foldMap: _foldMap,
+  reduceRight: _reduceRight,
+  reduceWithIndex: _reduceWithIndex,
+  foldMapWithIndex: _foldMapWithIndex,
+  reduceRightWithIndex: _reduceRightWithIndex,
+  traverse: _traverse,
+  sequence,
+  traverseWithIndex: _traverseWithIndex
+};
+var _wither = /* @__PURE__ */ witherDefault(Traversable, Compactable);
+var _wilt = /* @__PURE__ */ wiltDefault(Traversable, Compactable);
+var Witherable = {
+  URI,
+  map: _map,
+  compact,
+  separate,
+  filter: _filter,
+  filterMap: _filterMap,
+  partition: _partition,
+  partitionMap: _partitionMap,
+  reduce: _reduce,
+  foldMap: _foldMap,
+  reduceRight: _reduceRight,
+  traverse: _traverse,
+  sequence,
+  wither: _wither,
+  wilt: _wilt
+};
+var chainRecDepthFirst2 = chainRecDepthFirst;
+var ChainRecDepthFirst = {
+  URI,
+  map: _map,
+  ap: _ap,
+  chain: _chain,
+  chainRec: _chainRecDepthFirst2
+};
+var chainRecBreadthFirst2 = chainRecBreadthFirst;
+var ChainRecBreadthFirst = {
+  URI,
+  map: _map,
+  ap: _ap,
+  chain: _chain,
+  chainRec: _chainRecBreadthFirst2
+};
+var filterE2 = /* @__PURE__ */ filterE(Witherable);
+var FromEither = {
+  URI,
+  fromEither
+};
+var fromEitherK2 = /* @__PURE__ */ fromEitherK(FromEither);
+var unsafeInsertAt3 = unsafeInsertAt;
+var unsafeUpdateAt3 = function(i2, a2, as) {
+  return isNonEmpty5(as) ? unsafeUpdateAt(i2, a2, as) : [];
+};
+var unsafeDeleteAt = function(i2, as) {
+  var xs = as.slice();
+  xs.splice(i2, 1);
+  return xs;
+};
+var every2 = every;
+var some2 = function(predicate) {
+  return function(as) {
+    return as.some(predicate);
+  };
+};
+var exists = some2;
+var intercalate3 = intercalate2;
+var Do = /* @__PURE__ */ of3(emptyRecord);
+var bindTo2 = /* @__PURE__ */ bindTo(Functor);
+var let_2 = /* @__PURE__ */ let_(Functor);
+var bind2 = /* @__PURE__ */ bind(Chain);
+var apS2 = /* @__PURE__ */ apS(Apply);
+var range3 = range;
+var empty2 = [];
+var cons3 = cons;
+var snoc3 = snoc;
+var prependToAll = prependAll3;
+var array = {
+  URI,
+  compact,
+  separate,
+  map: _map,
+  ap: _ap,
+  of: of3,
+  chain: _chain,
+  filter: _filter,
+  filterMap: _filterMap,
+  partition: _partition,
+  partitionMap: _partitionMap,
+  mapWithIndex: _mapWithIndex,
+  partitionMapWithIndex: _partitionMapWithIndex,
+  partitionWithIndex: _partitionWithIndex,
+  filterMapWithIndex: _filterMapWithIndex,
+  filterWithIndex: _filterWithIndex,
+  alt: _alt,
+  zero,
+  unfold,
+  reduce: _reduce,
+  foldMap: _foldMap,
+  reduceRight: _reduceRight,
+  traverse: _traverse,
+  sequence,
+  reduceWithIndex: _reduceWithIndex,
+  foldMapWithIndex: _foldMapWithIndex,
+  reduceRightWithIndex: _reduceRightWithIndex,
+  traverseWithIndex: _traverseWithIndex,
+  extend: _extend,
+  wither: _wither,
+  wilt: _wilt
+};
+
+// node_modules/fp-ts/es6/ChainRec.js
+var tailRec = function(startWith, f2) {
+  var ab = f2(startWith);
+  while (ab._tag === "Left") {
+    ab = f2(ab.left);
+  }
+  return ab.right;
+};
+
+// node_modules/fp-ts/es6/Predicate.js
+var not2 = function(predicate) {
+  return function(a2) {
+    return !predicate(a2);
+  };
+};
+
+// node_modules/fp-ts/es6/Option.js
+var none2 = none;
+var some3 = some;
+var getLeft = function(ma) {
+  return ma._tag === "Right" ? none2 : some3(ma.left);
+};
+var getRight = function(ma) {
+  return ma._tag === "Left" ? none2 : some3(ma.right);
+};
+
+// node_modules/fp-ts/es6/Compactable.js
+function compact2(F2, G2) {
+  return function(fga) {
+    return F2.map(fga, G2.compact);
+  };
+}
+function separate2(F2, C, G2) {
+  var _compact = compact2(F2, C);
+  var _map5 = map(F2, G2);
+  return function(fge) {
+    return separated(_compact(pipe(fge, _map5(getLeft))), _compact(pipe(fge, _map5(getRight))));
+  };
+}
+
+// node_modules/fp-ts/es6/Either.js
+var Either_exports = {};
+__export(Either_exports, {
+  Alt: () => Alt2,
+  ApT: () => ApT,
+  Applicative: () => Applicative2,
+  Apply: () => Apply2,
+  Bifunctor: () => Bifunctor,
+  Chain: () => Chain2,
+  ChainRec: () => ChainRec,
+  Do: () => Do2,
+  Extend: () => Extend2,
+  Foldable: () => Foldable2,
+  FromEither: () => FromEither2,
+  Functor: () => Functor2,
+  Monad: () => Monad2,
+  MonadThrow: () => MonadThrow,
+  Pointed: () => Pointed2,
+  Traversable: () => Traversable2,
+  URI: () => URI2,
+  alt: () => alt2,
+  altW: () => altW2,
+  ap: () => ap3,
+  apFirst: () => apFirst3,
+  apFirstW: () => apFirstW,
+  apS: () => apS3,
+  apSW: () => apSW,
+  apSecond: () => apSecond3,
+  apSecondW: () => apSecondW,
+  apW: () => apW,
+  bimap: () => bimap,
+  bind: () => bind3,
+  bindTo: () => bindTo3,
+  bindW: () => bindW,
+  chain: () => chain2,
+  chainFirst: () => chainFirst3,
+  chainFirstW: () => chainFirstW,
+  chainNullableK: () => chainNullableK,
+  chainOptionK: () => chainOptionK2,
+  chainW: () => chainW,
+  duplicate: () => duplicate2,
+  either: () => either,
+  elem: () => elem3,
+  exists: () => exists2,
+  extend: () => extend2,
+  filterOrElse: () => filterOrElse2,
+  filterOrElseW: () => filterOrElseW,
+  flap: () => flap3,
+  flatten: () => flatten2,
+  flattenW: () => flattenW,
+  fold: () => fold,
+  foldMap: () => foldMap4,
+  foldW: () => foldW,
+  fromNullable: () => fromNullable,
+  fromNullableK: () => fromNullableK,
+  fromOption: () => fromOption3,
+  fromOptionK: () => fromOptionK3,
+  fromPredicate: () => fromPredicate3,
+  getAltValidation: () => getAltValidation,
+  getApplicativeValidation: () => getApplicativeValidation,
+  getApplyMonoid: () => getApplyMonoid,
+  getApplySemigroup: () => getApplySemigroup2,
+  getCompactable: () => getCompactable,
+  getEq: () => getEq4,
+  getFilterable: () => getFilterable,
+  getOrElse: () => getOrElse,
+  getOrElseW: () => getOrElseW,
+  getSemigroup: () => getSemigroup4,
+  getShow: () => getShow4,
+  getValidation: () => getValidation,
+  getValidationMonoid: () => getValidationMonoid,
+  getValidationSemigroup: () => getValidationSemigroup,
+  getWitherable: () => getWitherable,
+  isLeft: () => isLeft2,
+  isRight: () => isRight2,
+  left: () => left2,
+  let: () => let_3,
+  map: () => map3,
+  mapLeft: () => mapLeft,
+  match: () => match3,
+  matchW: () => matchW3,
+  of: () => of4,
+  orElse: () => orElse,
+  orElseW: () => orElseW,
+  parseJSON: () => parseJSON,
+  reduce: () => reduce4,
+  reduceRight: () => reduceRight4,
+  right: () => right2,
+  sequence: () => sequence2,
+  sequenceArray: () => sequenceArray,
+  stringifyJSON: () => stringifyJSON,
+  swap: () => swap,
+  throwError: () => throwError,
+  toError: () => toError,
+  toUnion: () => toUnion,
+  traverse: () => traverse2,
+  traverseArray: () => traverseArray,
+  traverseArrayWithIndex: () => traverseArrayWithIndex,
+  traverseReadonlyArrayWithIndex: () => traverseReadonlyArrayWithIndex,
+  traverseReadonlyNonEmptyArrayWithIndex: () => traverseReadonlyNonEmptyArrayWithIndex,
+  tryCatch: () => tryCatch,
+  tryCatchK: () => tryCatchK
+});
+var left2 = left;
+var right2 = right;
+var _map2 = function(fa, f2) {
+  return pipe(fa, map3(f2));
+};
+var _ap2 = function(fab, fa) {
+  return pipe(fab, ap3(fa));
+};
+var _chain2 = function(ma, f2) {
+  return pipe(ma, chain2(f2));
+};
+var _reduce2 = function(fa, b2, f2) {
+  return pipe(fa, reduce4(b2, f2));
+};
+var _foldMap2 = function(M2) {
+  return function(fa, f2) {
+    var foldMapM = foldMap4(M2);
+    return pipe(fa, foldMapM(f2));
+  };
+};
+var _reduceRight2 = function(fa, b2, f2) {
+  return pipe(fa, reduceRight4(b2, f2));
+};
+var _traverse2 = function(F2) {
+  var traverseF = traverse2(F2);
+  return function(ta, f2) {
+    return pipe(ta, traverseF(f2));
+  };
+};
+var _bimap = function(fa, f2, g2) {
+  return pipe(fa, bimap(f2, g2));
+};
+var _mapLeft = function(fa, f2) {
+  return pipe(fa, mapLeft(f2));
+};
+var _alt2 = function(fa, that) {
+  return pipe(fa, alt2(that));
+};
+var _extend2 = function(wa, f2) {
+  return pipe(wa, extend2(f2));
+};
+var _chainRec = function(a2, f2) {
+  return tailRec(f2(a2), function(e) {
+    return isLeft2(e) ? right2(left2(e.left)) : isLeft2(e.right) ? left2(f2(e.right.left)) : right2(right2(e.right.right));
+  });
+};
+var URI2 = "Either";
+var getShow4 = function(SE, SA) {
+  return {
+    show: function(ma) {
+      return isLeft2(ma) ? "left(".concat(SE.show(ma.left), ")") : "right(".concat(SA.show(ma.right), ")");
+    }
+  };
+};
+var getEq4 = function(EL, EA) {
+  return {
+    equals: function(x2, y2) {
+      return x2 === y2 || (isLeft2(x2) ? isLeft2(y2) && EL.equals(x2.left, y2.left) : isRight2(y2) && EA.equals(x2.right, y2.right));
+    }
+  };
+};
+var getSemigroup4 = function(S2) {
+  return {
+    concat: function(x2, y2) {
+      return isLeft2(y2) ? x2 : isLeft2(x2) ? y2 : right2(S2.concat(x2.right, y2.right));
+    }
+  };
+};
+var getCompactable = function(M2) {
+  var empty4 = left2(M2.empty);
+  return {
+    URI: URI2,
+    _E: void 0,
+    compact: function(ma) {
+      return isLeft2(ma) ? ma : ma.right._tag === "None" ? empty4 : right2(ma.right.value);
+    },
+    separate: function(ma) {
+      return isLeft2(ma) ? separated(ma, ma) : isLeft2(ma.right) ? separated(right2(ma.right.left), empty4) : separated(empty4, right2(ma.right.right));
+    }
+  };
+};
+var getFilterable = function(M2) {
+  var empty4 = left2(M2.empty);
+  var _a = getCompactable(M2), compact3 = _a.compact, separate3 = _a.separate;
+  var filter3 = function(ma, predicate) {
+    return isLeft2(ma) ? ma : predicate(ma.right) ? ma : empty4;
+  };
+  var partition3 = function(ma, p2) {
+    return isLeft2(ma) ? separated(ma, ma) : p2(ma.right) ? separated(empty4, right2(ma.right)) : separated(right2(ma.right), empty4);
+  };
+  return {
+    URI: URI2,
+    _E: void 0,
+    map: _map2,
+    compact: compact3,
+    separate: separate3,
+    filter: filter3,
+    filterMap: function(ma, f2) {
+      if (isLeft2(ma)) {
+        return ma;
+      }
+      var ob = f2(ma.right);
+      return ob._tag === "None" ? empty4 : right2(ob.value);
+    },
+    partition: partition3,
+    partitionMap: function(ma, f2) {
+      if (isLeft2(ma)) {
+        return separated(ma, ma);
+      }
+      var e = f2(ma.right);
+      return isLeft2(e) ? separated(right2(e.left), empty4) : separated(empty4, right2(e.right));
+    }
+  };
+};
+var getWitherable = function(M2) {
+  var F_ = getFilterable(M2);
+  var C = getCompactable(M2);
+  return {
+    URI: URI2,
+    _E: void 0,
+    map: _map2,
+    compact: F_.compact,
+    separate: F_.separate,
+    filter: F_.filter,
+    filterMap: F_.filterMap,
+    partition: F_.partition,
+    partitionMap: F_.partitionMap,
+    traverse: _traverse2,
+    sequence: sequence2,
+    reduce: _reduce2,
+    foldMap: _foldMap2,
+    reduceRight: _reduceRight2,
+    wither: witherDefault(Traversable2, C),
+    wilt: wiltDefault(Traversable2, C)
+  };
+};
+var getApplicativeValidation = function(SE) {
+  return {
+    URI: URI2,
+    _E: void 0,
+    map: _map2,
+    ap: function(fab, fa) {
+      return isLeft2(fab) ? isLeft2(fa) ? left2(SE.concat(fab.left, fa.left)) : fab : isLeft2(fa) ? fa : right2(fab.right(fa.right));
+    },
+    of: of4
+  };
+};
+var getAltValidation = function(SE) {
+  return {
+    URI: URI2,
+    _E: void 0,
+    map: _map2,
+    alt: function(me, that) {
+      if (isRight2(me)) {
+        return me;
+      }
+      var ea = that();
+      return isLeft2(ea) ? left2(SE.concat(me.left, ea.left)) : ea;
+    }
+  };
+};
+var map3 = function(f2) {
+  return function(fa) {
+    return isLeft2(fa) ? fa : right2(f2(fa.right));
+  };
+};
+var Functor2 = {
+  URI: URI2,
+  map: _map2
+};
+var of4 = right2;
+var Pointed2 = {
+  URI: URI2,
+  of: of4
+};
+var apW = function(fa) {
+  return function(fab) {
+    return isLeft2(fab) ? fab : isLeft2(fa) ? fa : right2(fab.right(fa.right));
+  };
+};
+var ap3 = apW;
+var Apply2 = {
+  URI: URI2,
+  map: _map2,
+  ap: _ap2
+};
+var Applicative2 = {
+  URI: URI2,
+  map: _map2,
+  ap: _ap2,
+  of: of4
+};
+var chainW = function(f2) {
+  return function(ma) {
+    return isLeft2(ma) ? ma : f2(ma.right);
+  };
+};
+var chain2 = chainW;
+var Chain2 = {
+  URI: URI2,
+  map: _map2,
+  ap: _ap2,
+  chain: _chain2
+};
+var Monad2 = {
+  URI: URI2,
+  map: _map2,
+  ap: _ap2,
+  of: of4,
+  chain: _chain2
+};
+var reduce4 = function(b2, f2) {
+  return function(fa) {
+    return isLeft2(fa) ? b2 : f2(b2, fa.right);
+  };
+};
+var foldMap4 = function(M2) {
+  return function(f2) {
+    return function(fa) {
+      return isLeft2(fa) ? M2.empty : f2(fa.right);
+    };
+  };
+};
+var reduceRight4 = function(b2, f2) {
+  return function(fa) {
+    return isLeft2(fa) ? b2 : f2(fa.right, b2);
+  };
+};
+var Foldable2 = {
+  URI: URI2,
+  reduce: _reduce2,
+  foldMap: _foldMap2,
+  reduceRight: _reduceRight2
+};
+var traverse2 = function(F2) {
+  return function(f2) {
+    return function(ta) {
+      return isLeft2(ta) ? F2.of(left2(ta.left)) : F2.map(f2(ta.right), right2);
+    };
+  };
+};
+var sequence2 = function(F2) {
+  return function(ma) {
+    return isLeft2(ma) ? F2.of(left2(ma.left)) : F2.map(ma.right, right2);
+  };
+};
+var Traversable2 = {
+  URI: URI2,
+  map: _map2,
+  reduce: _reduce2,
+  foldMap: _foldMap2,
+  reduceRight: _reduceRight2,
+  traverse: _traverse2,
+  sequence: sequence2
+};
+var bimap = function(f2, g2) {
+  return function(fa) {
+    return isLeft2(fa) ? left2(f2(fa.left)) : right2(g2(fa.right));
+  };
+};
+var mapLeft = function(f2) {
+  return function(fa) {
+    return isLeft2(fa) ? left2(f2(fa.left)) : fa;
+  };
+};
+var Bifunctor = {
+  URI: URI2,
+  bimap: _bimap,
+  mapLeft: _mapLeft
+};
+var altW2 = function(that) {
+  return function(fa) {
+    return isLeft2(fa) ? that() : fa;
+  };
+};
+var alt2 = altW2;
+var Alt2 = {
+  URI: URI2,
+  map: _map2,
+  alt: _alt2
+};
+var extend2 = function(f2) {
+  return function(wa) {
+    return isLeft2(wa) ? wa : right2(f2(wa));
+  };
+};
+var Extend2 = {
+  URI: URI2,
+  map: _map2,
+  extend: _extend2
+};
+var ChainRec = {
+  URI: URI2,
+  map: _map2,
+  ap: _ap2,
+  chain: _chain2,
+  chainRec: _chainRec
+};
+var throwError = left2;
+var MonadThrow = {
+  URI: URI2,
+  map: _map2,
+  ap: _ap2,
+  of: of4,
+  chain: _chain2,
+  throwError
+};
+var FromEither2 = {
+  URI: URI2,
+  fromEither: identity
+};
+var fromPredicate3 = /* @__PURE__ */ fromPredicate(FromEither2);
+var fromOption3 = /* @__PURE__ */ fromOption(FromEither2);
+var isLeft2 = isLeft;
+var isRight2 = isRight;
+var matchW3 = function(onLeft, onRight) {
+  return function(ma) {
+    return isLeft2(ma) ? onLeft(ma.left) : onRight(ma.right);
+  };
+};
+var foldW = matchW3;
+var match3 = matchW3;
+var fold = match3;
+var getOrElseW = function(onLeft) {
+  return function(ma) {
+    return isLeft2(ma) ? onLeft(ma.left) : ma.right;
+  };
+};
+var getOrElse = getOrElseW;
+var flap3 = /* @__PURE__ */ flap(Functor2);
+var apFirst3 = /* @__PURE__ */ apFirst(Apply2);
+var apFirstW = apFirst3;
+var apSecond3 = /* @__PURE__ */ apSecond(Apply2);
+var apSecondW = apSecond3;
+var chainFirst3 = /* @__PURE__ */ chainFirst(Chain2);
+var chainFirstW = chainFirst3;
+var flattenW = /* @__PURE__ */ chainW(identity);
+var flatten2 = flattenW;
+var duplicate2 = /* @__PURE__ */ extend2(identity);
+var fromOptionK3 = /* @__PURE__ */ fromOptionK(FromEither2);
+var chainOptionK2 = /* @__PURE__ */ chainOptionK(FromEither2, Chain2);
+var filterOrElse2 = /* @__PURE__ */ filterOrElse(FromEither2, Chain2);
+var filterOrElseW = filterOrElse2;
+var swap = function(ma) {
+  return isLeft2(ma) ? right2(ma.left) : left2(ma.right);
+};
+var orElseW = function(onLeft) {
+  return function(ma) {
+    return isLeft2(ma) ? onLeft(ma.left) : ma;
+  };
+};
+var orElse = orElseW;
+var fromNullable = function(e) {
+  return function(a2) {
+    return a2 == null ? left2(e) : right2(a2);
+  };
+};
+var tryCatch = function(f2, onThrow) {
+  try {
+    return right2(f2());
+  } catch (e) {
+    return left2(onThrow(e));
+  }
+};
+var tryCatchK = function(f2, onThrow) {
+  return function() {
+    var a2 = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      a2[_i] = arguments[_i];
+    }
+    return tryCatch(function() {
+      return f2.apply(void 0, a2);
+    }, onThrow);
+  };
+};
+var fromNullableK = function(e) {
+  var from = fromNullable(e);
+  return function(f2) {
+    return flow(f2, from);
+  };
+};
+var chainNullableK = function(e) {
+  var from = fromNullableK(e);
+  return function(f2) {
+    return chain2(from(f2));
+  };
+};
+var toUnion = /* @__PURE__ */ foldW(identity, identity);
+function toError(e) {
+  return e instanceof Error ? e : new Error(String(e));
+}
+function elem3(E2) {
+  return function(a2, ma) {
+    if (ma === void 0) {
+      var elemE_1 = elem3(E2);
+      return function(ma2) {
+        return elemE_1(a2, ma2);
+      };
+    }
+    return isLeft2(ma) ? false : E2.equals(a2, ma.right);
+  };
+}
+var exists2 = function(predicate) {
+  return function(ma) {
+    return isLeft2(ma) ? false : predicate(ma.right);
+  };
+};
+var Do2 = /* @__PURE__ */ of4(emptyRecord);
+var bindTo3 = /* @__PURE__ */ bindTo(Functor2);
+var let_3 = /* @__PURE__ */ let_(Functor2);
+var bind3 = /* @__PURE__ */ bind(Chain2);
+var bindW = bind3;
+var apS3 = /* @__PURE__ */ apS(Apply2);
+var apSW = apS3;
+var ApT = /* @__PURE__ */ of4(emptyReadonlyArray);
+var traverseReadonlyNonEmptyArrayWithIndex = function(f2) {
+  return function(as) {
+    var e = f2(0, head(as));
+    if (isLeft2(e)) {
+      return e;
+    }
+    var out = [e.right];
+    for (var i2 = 1; i2 < as.length; i2++) {
+      var e_1 = f2(i2, as[i2]);
+      if (isLeft2(e_1)) {
+        return e_1;
+      }
+      out.push(e_1.right);
+    }
+    return right2(out);
+  };
+};
+var traverseReadonlyArrayWithIndex = function(f2) {
+  var g2 = traverseReadonlyNonEmptyArrayWithIndex(f2);
+  return function(as) {
+    return isNonEmpty(as) ? g2(as) : ApT;
+  };
+};
+var traverseArrayWithIndex = traverseReadonlyArrayWithIndex;
+var traverseArray = function(f2) {
+  return traverseReadonlyArrayWithIndex(function(_24, a2) {
+    return f2(a2);
+  });
+};
+var sequenceArray = /* @__PURE__ */ traverseArray(identity);
+function parseJSON(s2, onError) {
+  return tryCatch(function() {
+    return JSON.parse(s2);
+  }, onError);
+}
+var stringifyJSON = function(u2, onError) {
+  return tryCatch(function() {
+    var s2 = JSON.stringify(u2);
+    if (typeof s2 !== "string") {
+      throw new Error("Converting unsupported structure to JSON");
+    }
+    return s2;
+  }, onError);
+};
+var either = {
+  URI: URI2,
+  map: _map2,
+  of: of4,
+  ap: _ap2,
+  chain: _chain2,
+  reduce: _reduce2,
+  foldMap: _foldMap2,
+  reduceRight: _reduceRight2,
+  traverse: _traverse2,
+  sequence: sequence2,
+  bimap: _bimap,
+  mapLeft: _mapLeft,
+  alt: _alt2,
+  extend: _extend2,
+  chainRec: _chainRec,
+  throwError
+};
+var getApplySemigroup2 = /* @__PURE__ */ getApplySemigroup(Apply2);
+var getApplyMonoid = /* @__PURE__ */ getApplicativeMonoid(Applicative2);
+var getValidationSemigroup = function(SE, SA) {
+  return getApplySemigroup(getApplicativeValidation(SE))(SA);
+};
+var getValidationMonoid = function(SE, MA) {
+  return getApplicativeMonoid(getApplicativeValidation(SE))(MA);
+};
+function getValidation(SE) {
+  var ap7 = getApplicativeValidation(SE).ap;
+  var alt5 = getAltValidation(SE).alt;
+  return {
+    URI: URI2,
+    _E: void 0,
+    map: _map2,
+    of: of4,
+    chain: _chain2,
+    bimap: _bimap,
+    mapLeft: _mapLeft,
+    reduce: _reduce2,
+    foldMap: _foldMap2,
+    reduceRight: _reduceRight2,
+    extend: _extend2,
+    traverse: _traverse2,
+    sequence: sequence2,
+    chainRec: _chainRec,
+    throwError,
+    ap: ap7,
+    alt: alt5
+  };
+}
+
+// node_modules/fp-ts/es6/EitherT.js
+function right3(F2) {
+  return flow(right2, F2.of);
+}
+function left3(F2) {
+  return flow(left2, F2.of);
+}
+function rightF(F2) {
+  return function(fa) {
+    return F2.map(fa, right2);
+  };
+}
+function leftF(F2) {
+  return function(fe) {
+    return F2.map(fe, left2);
+  };
+}
+function fromNullable2(F2) {
+  return function(e) {
+    return flow(fromNullable(e), F2.of);
+  };
+}
+function fromNullableK2(F2) {
+  var fromNullableF = fromNullable2(F2);
+  return function(e) {
+    var fromNullableFE = fromNullableF(e);
+    return function(f2) {
+      return flow(f2, fromNullableFE);
+    };
+  };
+}
+function chainNullableK2(M2) {
+  var chainM = chain3(M2);
+  var fromNullableKM = fromNullableK2(M2);
+  return function(e) {
+    var fromNullableKMe = fromNullableKM(e);
+    return function(f2) {
+      return chainM(fromNullableKMe(f2));
+    };
+  };
+}
+function map4(F2) {
+  return map(F2, Functor2);
+}
+function ap4(F2) {
+  return ap(F2, Apply2);
+}
+function chain3(M2) {
+  return function(f2) {
+    return function(ma) {
+      return M2.chain(ma, function(e) {
+        return isLeft2(e) ? M2.of(e) : f2(e.right);
+      });
+    };
+  };
+}
+function alt3(M2) {
+  return function(second) {
+    return function(first) {
+      return M2.chain(first, function(e) {
+        return isLeft2(e) ? second() : M2.of(e);
+      });
+    };
+  };
+}
+function bimap2(F2) {
+  return function(f2, g2) {
+    return function(fea) {
+      return F2.map(fea, bimap(f2, g2));
+    };
+  };
+}
+function mapLeft2(F2) {
+  return function(f2) {
+    return function(fea) {
+      return F2.map(fea, mapLeft(f2));
+    };
+  };
+}
+function altValidation(M2, S2) {
+  return function(second) {
+    return function(first) {
+      return M2.chain(first, match3(function(e1) {
+        return M2.map(second(), mapLeft(function(e2) {
+          return S2.concat(e1, e2);
+        }));
+      }, right3(M2)));
+    };
+  };
+}
+function match4(F2) {
+  return function(onLeft, onRight) {
+    return function(ma) {
+      return F2.map(ma, match3(onLeft, onRight));
+    };
+  };
+}
+function matchE(M2) {
+  return function(onLeft, onRight) {
+    return function(ma) {
+      return M2.chain(ma, match3(onLeft, onRight));
+    };
+  };
+}
+function getOrElse2(M2) {
+  return function(onLeft) {
+    return function(ma) {
+      return M2.chain(ma, match3(onLeft, M2.of));
+    };
+  };
+}
+function orElse2(M2) {
+  return function(onLeft) {
+    return function(ma) {
+      return M2.chain(ma, function(e) {
+        return isLeft2(e) ? onLeft(e.left) : M2.of(e);
+      });
+    };
+  };
+}
+function orElseFirst(M2) {
+  var orElseM = orElse2(M2);
+  return function(onLeft) {
+    return orElseM(function(e) {
+      return M2.map(onLeft(e), function(eb) {
+        return isLeft2(eb) ? eb : left2(e);
+      });
+    });
+  };
+}
+function orLeft(M2) {
+  return function(onLeft) {
+    return function(ma) {
+      return M2.chain(ma, match3(function(e) {
+        return M2.map(onLeft(e), left2);
+      }, function(a2) {
+        return M2.of(right2(a2));
+      }));
+    };
+  };
+}
+function swap2(F2) {
+  return function(ma) {
+    return F2.map(ma, swap);
+  };
+}
+function toUnion2(F2) {
+  return function(fa) {
+    return F2.map(fa, toUnion);
+  };
+}
+
+// node_modules/fp-ts/es6/Filterable.js
+function filter2(F2, G2) {
+  return function(predicate) {
+    return function(fga) {
+      return F2.map(fga, function(ga) {
+        return G2.filter(ga, predicate);
+      });
+    };
+  };
+}
+function filterMap2(F2, G2) {
+  return function(f2) {
+    return function(fga) {
+      return F2.map(fga, function(ga) {
+        return G2.filterMap(ga, f2);
+      });
+    };
+  };
+}
+function partition2(F2, G2) {
+  var _filter2 = filter2(F2, G2);
+  return function(predicate) {
+    var left6 = _filter2(not2(predicate));
+    var right6 = _filter2(predicate);
+    return function(fgb) {
+      return separated(left6(fgb), right6(fgb));
+    };
+  };
+}
+function partitionMap2(F2, G2) {
+  var _filterMap2 = filterMap2(F2, G2);
+  return function(f2) {
+    return function(fga) {
+      return separated(pipe(fga, _filterMap2(function(a2) {
+        return getLeft(f2(a2));
+      })), pipe(fga, _filterMap2(function(a2) {
+        return getRight(f2(a2));
+      })));
+    };
+  };
+}
+
+// node_modules/fp-ts/es6/FromIO.js
+function fromIOK(F2) {
+  return function(f2) {
+    return flow(f2, F2.fromIO);
+  };
+}
+function chainIOK(F2, M2) {
+  return function(f2) {
+    var g2 = flow(f2, F2.fromIO);
+    return function(first) {
+      return M2.chain(first, g2);
+    };
+  };
+}
+function chainFirstIOK(F2, M2) {
+  var chainFirstM = chainFirst(M2);
+  return function(f2) {
+    return chainFirstM(flow(f2, F2.fromIO));
+  };
+}
+
+// node_modules/fp-ts/es6/FromTask.js
+function fromTaskK(F2) {
+  return function(f2) {
+    return flow(f2, F2.fromTask);
+  };
+}
+function chainTaskK(F2, M2) {
+  return function(f2) {
+    var g2 = flow(f2, F2.fromTask);
+    return function(first) {
+      return M2.chain(first, g2);
+    };
+  };
+}
+function chainFirstTaskK(F2, M2) {
+  var chainFirstM = chainFirst(M2);
+  return function(f2) {
+    return chainFirstM(flow(f2, F2.fromTask));
+  };
+}
+
+// node_modules/fp-ts/es6/Task.js
+var Task_exports = {};
+__export(Task_exports, {
+  ApT: () => ApT2,
+  ApplicativePar: () => ApplicativePar,
+  ApplicativeSeq: () => ApplicativeSeq,
+  ApplyPar: () => ApplyPar,
+  ApplySeq: () => ApplySeq,
+  Chain: () => Chain3,
+  Do: () => Do3,
+  FromIO: () => FromIO,
+  FromTask: () => FromTask,
+  Functor: () => Functor3,
+  Monad: () => Monad3,
+  MonadIO: () => MonadIO,
+  MonadTask: () => MonadTask,
+  Pointed: () => Pointed3,
+  URI: () => URI3,
+  ap: () => ap5,
+  apFirst: () => apFirst4,
+  apS: () => apS4,
+  apSecond: () => apSecond4,
+  bind: () => bind4,
+  bindTo: () => bindTo4,
+  chain: () => chain4,
+  chainFirst: () => chainFirst4,
+  chainFirstIOK: () => chainFirstIOK2,
+  chainIOK: () => chainIOK2,
+  delay: () => delay,
+  flap: () => flap4,
+  flatten: () => flatten3,
+  fromIO: () => fromIO,
+  fromIOK: () => fromIOK2,
+  fromTask: () => fromTask,
+  getMonoid: () => getMonoid4,
+  getRaceMonoid: () => getRaceMonoid,
+  getSemigroup: () => getSemigroup5,
+  let: () => let_4,
+  map: () => map5,
+  never: () => never,
+  of: () => of5,
+  sequenceArray: () => sequenceArray2,
+  sequenceSeqArray: () => sequenceSeqArray,
+  task: () => task,
+  taskSeq: () => taskSeq,
+  traverseArray: () => traverseArray2,
+  traverseArrayWithIndex: () => traverseArrayWithIndex2,
+  traverseReadonlyArrayWithIndex: () => traverseReadonlyArrayWithIndex2,
+  traverseReadonlyArrayWithIndexSeq: () => traverseReadonlyArrayWithIndexSeq,
+  traverseReadonlyNonEmptyArrayWithIndex: () => traverseReadonlyNonEmptyArrayWithIndex2,
+  traverseReadonlyNonEmptyArrayWithIndexSeq: () => traverseReadonlyNonEmptyArrayWithIndexSeq,
+  traverseSeqArray: () => traverseSeqArray,
+  traverseSeqArrayWithIndex: () => traverseSeqArrayWithIndex
+});
+var fromIO = function(ma) {
+  return function() {
+    return Promise.resolve().then(ma);
+  };
+};
+function delay(millis) {
+  return function(ma) {
+    return function() {
+      return new Promise(function(resolve) {
+        setTimeout(function() {
+          Promise.resolve().then(ma).then(resolve);
+        }, millis);
+      });
+    };
+  };
+}
+var _map3 = function(fa, f2) {
+  return pipe(fa, map5(f2));
+};
+var _apPar = function(fab, fa) {
+  return pipe(fab, ap5(fa));
+};
+var _apSeq = function(fab, fa) {
+  return pipe(fab, chain4(function(f2) {
+    return pipe(fa, map5(f2));
+  }));
+};
+var _chain3 = function(ma, f2) {
+  return pipe(ma, chain4(f2));
+};
+var map5 = function(f2) {
+  return function(fa) {
+    return function() {
+      return Promise.resolve().then(fa).then(f2);
+    };
+  };
+};
+var ap5 = function(fa) {
+  return function(fab) {
+    return function() {
+      return Promise.all([Promise.resolve().then(fab), Promise.resolve().then(fa)]).then(function(_a) {
+        var f2 = _a[0], a2 = _a[1];
+        return f2(a2);
+      });
+    };
+  };
+};
+var of5 = function(a2) {
+  return function() {
+    return Promise.resolve(a2);
+  };
+};
+var chain4 = function(f2) {
+  return function(ma) {
+    return function() {
+      return Promise.resolve().then(ma).then(function(a2) {
+        return f2(a2)();
+      });
+    };
+  };
+};
+var flatten3 = /* @__PURE__ */ chain4(identity);
+var URI3 = "Task";
+function getRaceMonoid() {
+  return {
+    concat: function(x2, y2) {
+      return function() {
+        return Promise.race([Promise.resolve().then(x2), Promise.resolve().then(y2)]);
+      };
+    },
+    empty: never
+  };
+}
+var Functor3 = {
+  URI: URI3,
+  map: _map3
+};
+var flap4 = /* @__PURE__ */ flap(Functor3);
+var Pointed3 = {
+  URI: URI3,
+  of: of5
+};
+var ApplyPar = {
+  URI: URI3,
+  map: _map3,
+  ap: _apPar
+};
+var apFirst4 = /* @__PURE__ */ apFirst(ApplyPar);
+var apSecond4 = /* @__PURE__ */ apSecond(ApplyPar);
+var ApplicativePar = {
+  URI: URI3,
+  map: _map3,
+  ap: _apPar,
+  of: of5
+};
+var ApplySeq = {
+  URI: URI3,
+  map: _map3,
+  ap: _apSeq
+};
+var ApplicativeSeq = {
+  URI: URI3,
+  map: _map3,
+  ap: _apSeq,
+  of: of5
+};
+var Chain3 = {
+  URI: URI3,
+  map: _map3,
+  ap: _apPar,
+  chain: _chain3
+};
+var Monad3 = {
+  URI: URI3,
+  map: _map3,
+  of: of5,
+  ap: _apPar,
+  chain: _chain3
+};
+var MonadIO = {
+  URI: URI3,
+  map: _map3,
+  of: of5,
+  ap: _apPar,
+  chain: _chain3,
+  fromIO
+};
+var fromTask = identity;
+var MonadTask = {
+  URI: URI3,
+  map: _map3,
+  of: of5,
+  ap: _apPar,
+  chain: _chain3,
+  fromIO,
+  fromTask
+};
+var chainFirst4 = /* @__PURE__ */ chainFirst(Chain3);
+var FromIO = {
+  URI: URI3,
+  fromIO
+};
+var fromIOK2 = /* @__PURE__ */ fromIOK(FromIO);
+var chainIOK2 = /* @__PURE__ */ chainIOK(FromIO, Chain3);
+var chainFirstIOK2 = /* @__PURE__ */ chainFirstIOK(FromIO, Chain3);
+var FromTask = {
+  URI: URI3,
+  fromIO,
+  fromTask
+};
+var never = function() {
+  return new Promise(function(_24) {
+    return void 0;
+  });
+};
+var Do3 = /* @__PURE__ */ of5(emptyRecord);
+var bindTo4 = /* @__PURE__ */ bindTo(Functor3);
+var let_4 = /* @__PURE__ */ let_(Functor3);
+var bind4 = /* @__PURE__ */ bind(Chain3);
+var apS4 = /* @__PURE__ */ apS(ApplyPar);
+var ApT2 = /* @__PURE__ */ of5(emptyReadonlyArray);
+var traverseReadonlyNonEmptyArrayWithIndex2 = function(f2) {
+  return function(as) {
+    return function() {
+      return Promise.all(as.map(function(a2, i2) {
+        return Promise.resolve().then(function() {
+          return f2(i2, a2)();
+        });
+      }));
+    };
+  };
+};
+var traverseReadonlyArrayWithIndex2 = function(f2) {
+  var g2 = traverseReadonlyNonEmptyArrayWithIndex2(f2);
+  return function(as) {
+    return isNonEmpty(as) ? g2(as) : ApT2;
+  };
+};
+var traverseReadonlyNonEmptyArrayWithIndexSeq = function(f2) {
+  return function(as) {
+    return function() {
+      return tail(as).reduce(function(acc, a2, i2) {
+        return acc.then(function(bs) {
+          return Promise.resolve().then(f2(i2 + 1, a2)).then(function(b2) {
+            bs.push(b2);
+            return bs;
+          });
+        });
+      }, Promise.resolve().then(f2(0, head(as))).then(singleton));
+    };
+  };
+};
+var traverseReadonlyArrayWithIndexSeq = function(f2) {
+  var g2 = traverseReadonlyNonEmptyArrayWithIndexSeq(f2);
+  return function(as) {
+    return isNonEmpty(as) ? g2(as) : ApT2;
+  };
+};
+var traverseArrayWithIndex2 = traverseReadonlyArrayWithIndex2;
+var traverseArray2 = function(f2) {
+  return traverseReadonlyArrayWithIndex2(function(_24, a2) {
+    return f2(a2);
+  });
+};
+var sequenceArray2 = /* @__PURE__ */ traverseArray2(identity);
+var traverseSeqArrayWithIndex = traverseReadonlyArrayWithIndexSeq;
+var traverseSeqArray = function(f2) {
+  return traverseReadonlyArrayWithIndexSeq(function(_24, a2) {
+    return f2(a2);
+  });
+};
+var sequenceSeqArray = /* @__PURE__ */ traverseSeqArray(identity);
+var task = {
+  URI: URI3,
+  map: _map3,
+  of: of5,
+  ap: _apPar,
+  chain: _chain3,
+  fromIO,
+  fromTask
+};
+var taskSeq = {
+  URI: URI3,
+  map: _map3,
+  of: of5,
+  ap: _apSeq,
+  chain: _chain3,
+  fromIO,
+  fromTask
+};
+var getSemigroup5 = /* @__PURE__ */ getApplySemigroup(ApplySeq);
+var getMonoid4 = /* @__PURE__ */ getApplicativeMonoid(ApplicativeSeq);
+
+// node_modules/fp-ts/es6/TaskEither.js
+var TaskEither_exports = {};
+__export(TaskEither_exports, {
+  Alt: () => Alt3,
+  ApT: () => ApT3,
+  ApplicativePar: () => ApplicativePar2,
+  ApplicativeSeq: () => ApplicativeSeq2,
+  ApplyPar: () => ApplyPar2,
+  ApplySeq: () => ApplySeq2,
+  Bifunctor: () => Bifunctor2,
+  Chain: () => Chain4,
+  Do: () => Do4,
+  FromEither: () => FromEither3,
+  FromIO: () => FromIO2,
+  FromTask: () => FromTask2,
+  Functor: () => Functor4,
+  Monad: () => Monad4,
+  MonadIO: () => MonadIO2,
+  MonadTask: () => MonadTask2,
+  MonadThrow: () => MonadThrow2,
+  Pointed: () => Pointed4,
+  URI: () => URI4,
+  alt: () => alt4,
+  altW: () => altW3,
+  ap: () => ap6,
+  apFirst: () => apFirst5,
+  apFirstW: () => apFirstW2,
+  apS: () => apS5,
+  apSW: () => apSW2,
+  apSecond: () => apSecond5,
+  apSecondW: () => apSecondW2,
+  apW: () => apW2,
+  bimap: () => bimap3,
+  bind: () => bind5,
+  bindTo: () => bindTo5,
+  bindW: () => bindW2,
+  bracket: () => bracket,
+  bracketW: () => bracketW,
+  chain: () => chain5,
+  chainEitherK: () => chainEitherK2,
+  chainEitherKW: () => chainEitherKW,
+  chainFirst: () => chainFirst5,
+  chainFirstEitherK: () => chainFirstEitherK2,
+  chainFirstEitherKW: () => chainFirstEitherKW,
+  chainFirstIOK: () => chainFirstIOK3,
+  chainFirstTaskK: () => chainFirstTaskK2,
+  chainFirstW: () => chainFirstW2,
+  chainIOEitherK: () => chainIOEitherK,
+  chainIOEitherKW: () => chainIOEitherKW,
+  chainIOK: () => chainIOK3,
+  chainNullableK: () => chainNullableK3,
+  chainOptionK: () => chainOptionK3,
+  chainTaskK: () => chainTaskK2,
+  chainTaskOptionK: () => chainTaskOptionK,
+  chainTaskOptionKW: () => chainTaskOptionKW,
+  chainW: () => chainW2,
+  filterOrElse: () => filterOrElse3,
+  filterOrElseW: () => filterOrElseW2,
+  flap: () => flap5,
+  flatten: () => flatten4,
+  flattenW: () => flattenW2,
+  fold: () => fold2,
+  foldW: () => foldW2,
+  fromEither: () => fromEither2,
+  fromEitherK: () => fromEitherK3,
+  fromIO: () => fromIO2,
+  fromIOEither: () => fromIOEither,
+  fromIOEitherK: () => fromIOEitherK,
+  fromIOK: () => fromIOK3,
+  fromNullable: () => fromNullable3,
+  fromNullableK: () => fromNullableK3,
+  fromOption: () => fromOption4,
+  fromOptionK: () => fromOptionK4,
+  fromPredicate: () => fromPredicate4,
+  fromTask: () => fromTask2,
+  fromTaskK: () => fromTaskK2,
+  fromTaskOption: () => fromTaskOption,
+  fromTaskOptionK: () => fromTaskOptionK,
+  getAltTaskValidation: () => getAltTaskValidation,
+  getApplicativeTaskValidation: () => getApplicativeTaskValidation,
+  getApplyMonoid: () => getApplyMonoid2,
+  getApplySemigroup: () => getApplySemigroup3,
+  getCompactable: () => getCompactable2,
+  getFilterable: () => getFilterable2,
+  getOrElse: () => getOrElse3,
+  getOrElseW: () => getOrElseW2,
+  getSemigroup: () => getSemigroup6,
+  getTaskValidation: () => getTaskValidation,
+  left: () => left4,
+  leftIO: () => leftIO,
+  leftTask: () => leftTask,
+  let: () => let_5,
+  map: () => map6,
+  mapLeft: () => mapLeft3,
+  match: () => match5,
+  matchE: () => matchE2,
+  matchEW: () => matchEW,
+  matchW: () => matchW4,
+  of: () => of6,
+  orElse: () => orElse3,
+  orElseFirst: () => orElseFirst2,
+  orElseFirstIOK: () => orElseFirstIOK,
+  orElseFirstTaskK: () => orElseFirstTaskK,
+  orElseFirstW: () => orElseFirstW,
+  orElseW: () => orElseW2,
+  orLeft: () => orLeft2,
+  right: () => right4,
+  rightIO: () => rightIO,
+  rightTask: () => rightTask,
+  sequenceArray: () => sequenceArray3,
+  sequenceSeqArray: () => sequenceSeqArray2,
+  swap: () => swap3,
+  taskEither: () => taskEither,
+  taskEitherSeq: () => taskEitherSeq,
+  taskify: () => taskify,
+  throwError: () => throwError2,
+  toUnion: () => toUnion3,
+  traverseArray: () => traverseArray3,
+  traverseArrayWithIndex: () => traverseArrayWithIndex3,
+  traverseReadonlyArrayWithIndex: () => traverseReadonlyArrayWithIndex3,
+  traverseReadonlyArrayWithIndexSeq: () => traverseReadonlyArrayWithIndexSeq2,
+  traverseReadonlyNonEmptyArrayWithIndex: () => traverseReadonlyNonEmptyArrayWithIndex3,
+  traverseReadonlyNonEmptyArrayWithIndexSeq: () => traverseReadonlyNonEmptyArrayWithIndexSeq2,
+  traverseSeqArray: () => traverseSeqArray2,
+  traverseSeqArrayWithIndex: () => traverseSeqArrayWithIndex2,
+  tryCatch: () => tryCatch2,
+  tryCatchK: () => tryCatchK2
+});
+var __awaiter = function(thisArg, _arguments, P2, generator) {
+  function adopt(value) {
+    return value instanceof P2 ? value : new P2(function(resolve) {
+      resolve(value);
+    });
+  }
+  return new (P2 || (P2 = Promise))(function(resolve, reject) {
+    function fulfilled(value) {
+      try {
+        step(generator.next(value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function rejected(value) {
+      try {
+        step(generator["throw"](value));
+      } catch (e) {
+        reject(e);
+      }
+    }
+    function step(result) {
+      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
+    }
+    step((generator = generator.apply(thisArg, _arguments || [])).next());
+  });
+};
+var __generator = function(thisArg, body) {
+  var _24 = { label: 0, sent: function() {
+    if (t3[0] & 1)
+      throw t3[1];
+    return t3[1];
+  }, trys: [], ops: [] }, f2, y2, t3, g2;
+  return g2 = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g2[Symbol.iterator] = function() {
+    return this;
+  }), g2;
+  function verb(n2) {
+    return function(v2) {
+      return step([n2, v2]);
+    };
+  }
+  function step(op) {
+    if (f2)
+      throw new TypeError("Generator is already executing.");
+    while (_24)
+      try {
+        if (f2 = 1, y2 && (t3 = op[0] & 2 ? y2["return"] : op[0] ? y2["throw"] || ((t3 = y2["return"]) && t3.call(y2), 0) : y2.next) && !(t3 = t3.call(y2, op[1])).done)
+          return t3;
+        if (y2 = 0, t3)
+          op = [op[0] & 2, t3.value];
+        switch (op[0]) {
+          case 0:
+          case 1:
+            t3 = op;
+            break;
+          case 4:
+            _24.label++;
+            return { value: op[1], done: false };
+          case 5:
+            _24.label++;
+            y2 = op[1];
+            op = [0];
+            continue;
+          case 7:
+            op = _24.ops.pop();
+            _24.trys.pop();
+            continue;
+          default:
+            if (!(t3 = _24.trys, t3 = t3.length > 0 && t3[t3.length - 1]) && (op[0] === 6 || op[0] === 2)) {
+              _24 = 0;
+              continue;
+            }
+            if (op[0] === 3 && (!t3 || op[1] > t3[0] && op[1] < t3[3])) {
+              _24.label = op[1];
+              break;
+            }
+            if (op[0] === 6 && _24.label < t3[1]) {
+              _24.label = t3[1];
+              t3 = op;
+              break;
+            }
+            if (t3 && _24.label < t3[2]) {
+              _24.label = t3[2];
+              _24.ops.push(op);
+              break;
+            }
+            if (t3[2])
+              _24.ops.pop();
+            _24.trys.pop();
+            continue;
+        }
+        op = body.call(thisArg, _24);
+      } catch (e) {
+        op = [6, e];
+        y2 = 0;
+      } finally {
+        f2 = t3 = 0;
+      }
+    if (op[0] & 5)
+      throw op[1];
+    return { value: op[0] ? op[1] : void 0, done: true };
+  }
+};
+var left4 = /* @__PURE__ */ left3(Pointed3);
+var right4 = /* @__PURE__ */ right3(Pointed3);
+var rightTask = /* @__PURE__ */ rightF(Functor3);
+var leftTask = /* @__PURE__ */ leftF(Functor3);
+var rightIO = /* @__PURE__ */ flow(fromIO, rightTask);
+var leftIO = /* @__PURE__ */ flow(fromIO, leftTask);
+var fromIO2 = rightIO;
+var fromTask2 = rightTask;
+var fromEither2 = of5;
+var fromIOEither = fromIO;
+var fromTaskOption = function(onNone) {
+  return map5(fromOption3(onNone));
+};
+var match5 = /* @__PURE__ */ match4(Functor3);
+var matchW4 = match5;
+var matchE2 = /* @__PURE__ */ matchE(Monad3);
+var fold2 = matchE2;
+var matchEW = matchE2;
+var foldW2 = matchEW;
+var getOrElse3 = /* @__PURE__ */ getOrElse2(Monad3);
+var getOrElseW2 = getOrElse3;
+var tryCatch2 = function(f2, onRejected) {
+  return function() {
+    return __awaiter(void 0, void 0, void 0, function() {
+      var reason_1;
+      return __generator(this, function(_a) {
+        switch (_a.label) {
+          case 0:
+            _a.trys.push([0, 2, , 3]);
+            return [4, f2().then(right)];
+          case 1:
+            return [2, _a.sent()];
+          case 2:
+            reason_1 = _a.sent();
+            return [2, left(onRejected(reason_1))];
+          case 3:
+            return [2];
+        }
+      });
+    });
+  };
+};
+var tryCatchK2 = function(f2, onRejected) {
+  return function() {
+    var a2 = [];
+    for (var _i = 0; _i < arguments.length; _i++) {
+      a2[_i] = arguments[_i];
+    }
+    return tryCatch2(function() {
+      return f2.apply(void 0, a2);
+    }, onRejected);
+  };
+};
+var toUnion3 = /* @__PURE__ */ toUnion2(Functor3);
+var fromNullable3 = /* @__PURE__ */ fromNullable2(Pointed3);
+var fromNullableK3 = /* @__PURE__ */ fromNullableK2(Pointed3);
+var chainNullableK3 = /* @__PURE__ */ chainNullableK2(Monad3);
+var orElse3 = /* @__PURE__ */ orElse2(Monad3);
+var orElseW2 = orElse3;
+var orElseFirst2 = /* @__PURE__ */ orElseFirst(Monad3);
+var orElseFirstW = orElseFirst2;
+var orElseFirstIOK = function(onLeft) {
+  return orElseFirst2(fromIOK3(onLeft));
+};
+var orElseFirstTaskK = function(onLeft) {
+  return orElseFirst2(fromTaskK2(onLeft));
+};
+var orLeft2 = /* @__PURE__ */ orLeft(Monad3);
+var swap3 = /* @__PURE__ */ swap2(Functor3);
+var fromTaskOptionK = function(onNone) {
+  var from = fromTaskOption(onNone);
+  return function(f2) {
+    return flow(f2, from);
+  };
+};
+var chainTaskOptionKW = function(onNone) {
+  return function(f2) {
+    return function(ma) {
+      return pipe(ma, chain5(fromTaskOptionK(onNone)(f2)));
+    };
+  };
+};
+var chainTaskOptionK = chainTaskOptionKW;
+var fromIOEitherK = function(f2) {
+  return flow(f2, fromIOEither);
+};
+var chainIOEitherKW = function(f2) {
+  return chainW2(fromIOEitherK(f2));
+};
+var chainIOEitherK = chainIOEitherKW;
+var _map4 = function(fa, f2) {
+  return pipe(fa, map6(f2));
+};
+var _apPar2 = function(fab, fa) {
+  return pipe(fab, ap6(fa));
+};
+var _apSeq2 = function(fab, fa) {
+  return pipe(fab, chain5(function(f2) {
+    return pipe(fa, map6(f2));
+  }));
+};
+var _chain4 = function(ma, f2) {
+  return pipe(ma, chain5(f2));
+};
+var _bimap2 = function(fa, f2, g2) {
+  return pipe(fa, bimap3(f2, g2));
+};
+var _mapLeft2 = function(fa, f2) {
+  return pipe(fa, mapLeft3(f2));
+};
+var _alt3 = function(fa, that) {
+  return pipe(fa, alt4(that));
+};
+var map6 = /* @__PURE__ */ map4(Functor3);
+var bimap3 = /* @__PURE__ */ bimap2(Functor3);
+var mapLeft3 = /* @__PURE__ */ mapLeft2(Functor3);
+var ap6 = /* @__PURE__ */ ap4(ApplyPar);
+var apW2 = ap6;
+var chain5 = /* @__PURE__ */ chain3(Monad3);
+var chainW2 = chain5;
+var flattenW2 = /* @__PURE__ */ chainW2(identity);
+var flatten4 = flattenW2;
+var alt4 = /* @__PURE__ */ alt3(Monad3);
+var altW3 = alt4;
+var of6 = right4;
+var throwError2 = left4;
+var URI4 = "TaskEither";
+function getApplicativeTaskValidation(A2, S2) {
+  var ap7 = ap(A2, getApplicativeValidation(S2));
+  return {
+    URI: URI4,
+    _E: void 0,
+    map: _map4,
+    ap: function(fab, fa) {
+      return pipe(fab, ap7(fa));
+    },
+    of: of6
+  };
+}
+function getAltTaskValidation(S2) {
+  var alt5 = altValidation(Monad3, S2);
+  return {
+    URI: URI4,
+    _E: void 0,
+    map: _map4,
+    alt: function(fa, that) {
+      return pipe(fa, alt5(that));
+    }
+  };
+}
+var getCompactable2 = function(M2) {
+  var C = getCompactable(M2);
+  return {
+    URI: URI4,
+    _E: void 0,
+    compact: compact2(Functor3, C),
+    separate: separate2(Functor3, C, Functor2)
+  };
+};
+function getFilterable2(M2) {
+  var F2 = getFilterable(M2);
+  var C = getCompactable2(M2);
+  var filter3 = filter2(Functor3, F2);
+  var filterMap3 = filterMap2(Functor3, F2);
+  var partition3 = partition2(Functor3, F2);
+  var partitionMap3 = partitionMap2(Functor3, F2);
+  return {
+    URI: URI4,
+    _E: void 0,
+    map: _map4,
+    compact: C.compact,
+    separate: C.separate,
+    filter: function(fa, predicate) {
+      return pipe(fa, filter3(predicate));
+    },
+    filterMap: function(fa, f2) {
+      return pipe(fa, filterMap3(f2));
+    },
+    partition: function(fa, predicate) {
+      return pipe(fa, partition3(predicate));
+    },
+    partitionMap: function(fa, f2) {
+      return pipe(fa, partitionMap3(f2));
+    }
+  };
+}
+var Functor4 = {
+  URI: URI4,
+  map: _map4
+};
+var flap5 = /* @__PURE__ */ flap(Functor4);
+var Pointed4 = {
+  URI: URI4,
+  of: of6
+};
+var ApplyPar2 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apPar2
+};
+var apFirst5 = /* @__PURE__ */ apFirst(ApplyPar2);
+var apFirstW2 = apFirst5;
+var apSecond5 = /* @__PURE__ */ apSecond(ApplyPar2);
+var apSecondW2 = apSecond5;
+var ApplicativePar2 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apPar2,
+  of: of6
+};
+var ApplySeq2 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apSeq2
+};
+var ApplicativeSeq2 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apSeq2,
+  of: of6
+};
+var Chain4 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apPar2,
+  chain: _chain4
+};
+var Monad4 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apPar2,
+  chain: _chain4,
+  of: of6
+};
+var MonadIO2 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apPar2,
+  chain: _chain4,
+  of: of6,
+  fromIO: fromIO2
+};
+var MonadTask2 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apPar2,
+  chain: _chain4,
+  of: of6,
+  fromIO: fromIO2,
+  fromTask: fromTask2
+};
+var MonadThrow2 = {
+  URI: URI4,
+  map: _map4,
+  ap: _apPar2,
+  chain: _chain4,
+  of: of6,
+  throwError: throwError2
+};
+var chainFirst5 = /* @__PURE__ */ chainFirst(Chain4);
+var chainFirstW2 = chainFirst5;
+var Bifunctor2 = {
+  URI: URI4,
+  bimap: _bimap2,
+  mapLeft: _mapLeft2
+};
+var Alt3 = {
+  URI: URI4,
+  map: _map4,
+  alt: _alt3
+};
+var FromEither3 = {
+  URI: URI4,
+  fromEither: fromEither2
+};
+var fromOption4 = /* @__PURE__ */ fromOption(FromEither3);
+var fromOptionK4 = /* @__PURE__ */ fromOptionK(FromEither3);
+var chainOptionK3 = /* @__PURE__ */ chainOptionK(FromEither3, Chain4);
+var chainEitherK2 = /* @__PURE__ */ chainEitherK(FromEither3, Chain4);
+var chainEitherKW = chainEitherK2;
+var chainFirstEitherK2 = /* @__PURE__ */ chainFirstEitherK(FromEither3, Chain4);
+var chainFirstEitherKW = chainFirstEitherK2;
+var fromPredicate4 = /* @__PURE__ */ fromPredicate(FromEither3);
+var filterOrElse3 = /* @__PURE__ */ filterOrElse(FromEither3, Chain4);
+var filterOrElseW2 = filterOrElse3;
+var fromEitherK3 = /* @__PURE__ */ fromEitherK(FromEither3);
+var FromIO2 = {
+  URI: URI4,
+  fromIO: fromIO2
+};
+var fromIOK3 = /* @__PURE__ */ fromIOK(FromIO2);
+var chainIOK3 = /* @__PURE__ */ chainIOK(FromIO2, Chain4);
+var chainFirstIOK3 = /* @__PURE__ */ chainFirstIOK(FromIO2, Chain4);
+var FromTask2 = {
+  URI: URI4,
+  fromIO: fromIO2,
+  fromTask: fromTask2
+};
+var fromTaskK2 = /* @__PURE__ */ fromTaskK(FromTask2);
+var chainTaskK2 = /* @__PURE__ */ chainTaskK(FromTask2, Chain4);
+var chainFirstTaskK2 = /* @__PURE__ */ chainFirstTaskK(FromTask2, Chain4);
+function taskify(f2) {
+  return function() {
+    var args = Array.prototype.slice.call(arguments);
+    return function() {
+      return new Promise(function(resolve) {
+        var cbResolver = function(e, r2) {
+          return e != null ? resolve(left(e)) : resolve(right(r2));
+        };
+        f2.apply(null, args.concat(cbResolver));
+      });
+    };
+  };
+}
+var bracket = function(acquire, use2, release) {
+  return bracketW(acquire, use2, release);
+};
+var bracketW = function(acquire, use2, release) {
+  return pipe(acquire, chainW2(function(a2) {
+    return pipe(use2(a2), chain4(function(e) {
+      return pipe(release(a2, e), chainW2(function() {
+        return of5(e);
+      }));
+    }));
+  }));
+};
+var Do4 = /* @__PURE__ */ of6(emptyRecord);
+var bindTo5 = /* @__PURE__ */ bindTo(Functor4);
+var let_5 = /* @__PURE__ */ let_(Functor4);
+var bind5 = /* @__PURE__ */ bind(Chain4);
+var bindW2 = bind5;
+var apS5 = /* @__PURE__ */ apS(ApplyPar2);
+var apSW2 = apS5;
+var ApT3 = /* @__PURE__ */ of6(emptyReadonlyArray);
+var traverseReadonlyNonEmptyArrayWithIndex3 = function(f2) {
+  return flow(traverseReadonlyNonEmptyArrayWithIndex2(f2), map5(traverseReadonlyNonEmptyArrayWithIndex(SK)));
+};
+var traverseReadonlyArrayWithIndex3 = function(f2) {
+  var g2 = traverseReadonlyNonEmptyArrayWithIndex3(f2);
+  return function(as) {
+    return isNonEmpty(as) ? g2(as) : ApT3;
+  };
+};
+var traverseReadonlyNonEmptyArrayWithIndexSeq2 = function(f2) {
+  return function(as) {
+    return function() {
+      return tail(as).reduce(function(acc, a2, i2) {
+        return acc.then(function(ebs) {
+          return isLeft(ebs) ? acc : f2(i2 + 1, a2)().then(function(eb) {
+            if (isLeft(eb)) {
+              return eb;
+            }
+            ebs.right.push(eb.right);
+            return ebs;
+          });
+        });
+      }, f2(0, head(as))().then(map3(singleton)));
+    };
+  };
+};
+var traverseReadonlyArrayWithIndexSeq2 = function(f2) {
+  var g2 = traverseReadonlyNonEmptyArrayWithIndexSeq2(f2);
+  return function(as) {
+    return isNonEmpty(as) ? g2(as) : ApT3;
+  };
+};
+var traverseArrayWithIndex3 = traverseReadonlyArrayWithIndex3;
+var traverseArray3 = function(f2) {
+  return traverseReadonlyArrayWithIndex3(function(_24, a2) {
+    return f2(a2);
+  });
+};
+var sequenceArray3 = /* @__PURE__ */ traverseArray3(identity);
+var traverseSeqArrayWithIndex2 = traverseReadonlyArrayWithIndexSeq2;
+var traverseSeqArray2 = function(f2) {
+  return traverseReadonlyArrayWithIndexSeq2(function(_24, a2) {
+    return f2(a2);
+  });
+};
+var sequenceSeqArray2 = /* @__PURE__ */ traverseSeqArray2(identity);
+var taskEither = {
+  URI: URI4,
+  bimap: _bimap2,
+  mapLeft: _mapLeft2,
+  map: _map4,
+  of: of6,
+  ap: _apPar2,
+  chain: _chain4,
+  alt: _alt3,
+  fromIO: fromIO2,
+  fromTask: fromTask2,
+  throwError: throwError2
+};
+var taskEitherSeq = {
+  URI: URI4,
+  bimap: _bimap2,
+  mapLeft: _mapLeft2,
+  map: _map4,
+  of: of6,
+  ap: _apSeq2,
+  chain: _chain4,
+  alt: _alt3,
+  fromIO: fromIO2,
+  fromTask: fromTask2,
+  throwError: throwError2
+};
+var getApplySemigroup3 = /* @__PURE__ */ getApplySemigroup(ApplySeq2);
+var getApplyMonoid2 = /* @__PURE__ */ getApplicativeMonoid(ApplicativeSeq2);
+var getSemigroup6 = function(S2) {
+  return getApplySemigroup(ApplySeq)(getSemigroup4(S2));
+};
+function getTaskValidation(SE) {
+  var applicativeTaskValidation = getApplicativeTaskValidation(ApplicativePar, SE);
+  var altTaskValidation = getAltTaskValidation(SE);
+  return {
+    URI: URI4,
+    _E: void 0,
+    map: _map4,
+    ap: applicativeTaskValidation.ap,
+    of: of6,
+    chain: _chain4,
+    bimap: _bimap2,
+    mapLeft: _mapLeft2,
+    alt: altTaskValidation.alt,
+    fromIO: fromIO2,
+    fromTask: fromTask2,
+    throwError: throwError2
+  };
+}
+
+// src/main.ts
+var import_function14 = __toESM(require_function());
+var import_obsidian54 = require("obsidian");
+var import_obsidian_dataview4 = __toESM(require_lib());
 
 // src/lib/data-api.ts
 var import_dayjs = __toESM(require_dayjs_min());
@@ -14819,6 +17992,1164 @@ var immer_esm_default = fn;
 var import_moment = __toESM(require_moment());
 var import_obsidian4 = require("obsidian");
 
+// node_modules/svelte/internal/index.mjs
+function noop() {
+}
+var identity2 = (x2) => x2;
+function assign(tar, src) {
+  for (const k2 in src)
+    tar[k2] = src[k2];
+  return tar;
+}
+function is_promise(value) {
+  return value && typeof value === "object" && typeof value.then === "function";
+}
+function run(fn3) {
+  return fn3();
+}
+function blank_object() {
+  return /* @__PURE__ */ Object.create(null);
+}
+function run_all(fns) {
+  fns.forEach(run);
+}
+function is_function(thing) {
+  return typeof thing === "function";
+}
+function safe_not_equal(a2, b2) {
+  return a2 != a2 ? b2 == b2 : a2 !== b2 || (a2 && typeof a2 === "object" || typeof a2 === "function");
+}
+var src_url_equal_anchor;
+function src_url_equal(element_src, url) {
+  if (!src_url_equal_anchor) {
+    src_url_equal_anchor = document.createElement("a");
+  }
+  src_url_equal_anchor.href = url;
+  return element_src === src_url_equal_anchor.href;
+}
+function is_empty(obj) {
+  return Object.keys(obj).length === 0;
+}
+function subscribe(store, ...callbacks) {
+  if (store == null) {
+    return noop;
+  }
+  const unsub = store.subscribe(...callbacks);
+  return unsub.unsubscribe ? () => unsub.unsubscribe() : unsub;
+}
+function get_store_value(store) {
+  let value;
+  subscribe(store, (_24) => value = _24)();
+  return value;
+}
+function component_subscribe(component, store, callback) {
+  component.$$.on_destroy.push(subscribe(store, callback));
+}
+function create_slot(definition, ctx, $$scope, fn3) {
+  if (definition) {
+    const slot_ctx = get_slot_context(definition, ctx, $$scope, fn3);
+    return definition[0](slot_ctx);
+  }
+}
+function get_slot_context(definition, ctx, $$scope, fn3) {
+  return definition[1] && fn3 ? assign($$scope.ctx.slice(), definition[1](fn3(ctx))) : $$scope.ctx;
+}
+function get_slot_changes(definition, $$scope, dirty, fn3) {
+  if (definition[2] && fn3) {
+    const lets = definition[2](fn3(dirty));
+    if ($$scope.dirty === void 0) {
+      return lets;
+    }
+    if (typeof lets === "object") {
+      const merged = [];
+      const len = Math.max($$scope.dirty.length, lets.length);
+      for (let i2 = 0; i2 < len; i2 += 1) {
+        merged[i2] = $$scope.dirty[i2] | lets[i2];
+      }
+      return merged;
+    }
+    return $$scope.dirty | lets;
+  }
+  return $$scope.dirty;
+}
+function update_slot_base(slot, slot_definition, ctx, $$scope, slot_changes, get_slot_context_fn) {
+  if (slot_changes) {
+    const slot_context = get_slot_context(slot_definition, ctx, $$scope, get_slot_context_fn);
+    slot.p(slot_context, slot_changes);
+  }
+}
+function get_all_dirty_from_scope($$scope) {
+  if ($$scope.ctx.length > 32) {
+    const dirty = [];
+    const length = $$scope.ctx.length / 32;
+    for (let i2 = 0; i2 < length; i2++) {
+      dirty[i2] = -1;
+    }
+    return dirty;
+  }
+  return -1;
+}
+function compute_slots(slots) {
+  const result = {};
+  for (const key in slots) {
+    result[key] = true;
+  }
+  return result;
+}
+function null_to_empty(value) {
+  return value == null ? "" : value;
+}
+function action_destroyer(action_result) {
+  return action_result && is_function(action_result.destroy) ? action_result.destroy : noop;
+}
+var is_client = typeof window !== "undefined";
+var now = is_client ? () => window.performance.now() : () => Date.now();
+var raf = is_client ? (cb) => requestAnimationFrame(cb) : noop;
+var tasks = /* @__PURE__ */ new Set();
+function run_tasks(now2) {
+  tasks.forEach((task2) => {
+    if (!task2.c(now2)) {
+      tasks.delete(task2);
+      task2.f();
+    }
+  });
+  if (tasks.size !== 0)
+    raf(run_tasks);
+}
+function loop(callback) {
+  let task2;
+  if (tasks.size === 0)
+    raf(run_tasks);
+  return {
+    promise: new Promise((fulfill) => {
+      tasks.add(task2 = { c: callback, f: fulfill });
+    }),
+    abort() {
+      tasks.delete(task2);
+    }
+  };
+}
+var is_hydrating = false;
+function start_hydrating() {
+  is_hydrating = true;
+}
+function end_hydrating() {
+  is_hydrating = false;
+}
+function append4(target, node) {
+  target.appendChild(node);
+}
+function append_styles(target, style_sheet_id, styles) {
+  const append_styles_to = get_root_for_style(target);
+  if (!append_styles_to.getElementById(style_sheet_id)) {
+    const style = element("style");
+    style.id = style_sheet_id;
+    style.textContent = styles;
+    append_stylesheet(append_styles_to, style);
+  }
+}
+function get_root_for_style(node) {
+  if (!node)
+    return document;
+  const root = node.getRootNode ? node.getRootNode() : node.ownerDocument;
+  if (root && root.host) {
+    return root;
+  }
+  return node.ownerDocument;
+}
+function append_empty_stylesheet(node) {
+  const style_element = element("style");
+  append_stylesheet(get_root_for_style(node), style_element);
+  return style_element.sheet;
+}
+function append_stylesheet(node, style) {
+  append4(node.head || node, style);
+  return style.sheet;
+}
+function insert(target, node, anchor) {
+  target.insertBefore(node, anchor || null);
+}
+function detach(node) {
+  if (node.parentNode) {
+    node.parentNode.removeChild(node);
+  }
+}
+function destroy_each(iterations, detaching) {
+  for (let i2 = 0; i2 < iterations.length; i2 += 1) {
+    if (iterations[i2])
+      iterations[i2].d(detaching);
+  }
+}
+function element(name) {
+  return document.createElement(name);
+}
+function text(data) {
+  return document.createTextNode(data);
+}
+function space() {
+  return text(" ");
+}
+function empty3() {
+  return text("");
+}
+function listen(node, event, handler, options) {
+  node.addEventListener(event, handler, options);
+  return () => node.removeEventListener(event, handler, options);
+}
+function stop_propagation(fn3) {
+  return function(event) {
+    event.stopPropagation();
+    return fn3.call(this, event);
+  };
+}
+function attr(node, attribute, value) {
+  if (value == null)
+    node.removeAttribute(attribute);
+  else if (node.getAttribute(attribute) !== value)
+    node.setAttribute(attribute, value);
+}
+function set_attributes(node, attributes) {
+  const descriptors = Object.getOwnPropertyDescriptors(node.__proto__);
+  for (const key in attributes) {
+    if (attributes[key] == null) {
+      node.removeAttribute(key);
+    } else if (key === "style") {
+      node.style.cssText = attributes[key];
+    } else if (key === "__value") {
+      node.value = node[key] = attributes[key];
+    } else if (descriptors[key] && descriptors[key].set) {
+      node[key] = attributes[key];
+    } else {
+      attr(node, key, attributes[key]);
+    }
+  }
+}
+function set_custom_element_data_map(node, data_map) {
+  Object.keys(data_map).forEach((key) => {
+    set_custom_element_data(node, key, data_map[key]);
+  });
+}
+function set_custom_element_data(node, prop, value) {
+  if (prop in node) {
+    node[prop] = typeof node[prop] === "boolean" && value === "" ? true : value;
+  } else {
+    attr(node, prop, value);
+  }
+}
+function children(element2) {
+  return Array.from(element2.childNodes);
+}
+function set_data(text2, data) {
+  data = "" + data;
+  if (text2.wholeText !== data)
+    text2.data = data;
+}
+function set_input_value(input, value) {
+  input.value = value == null ? "" : value;
+}
+function set_style(node, key, value, important) {
+  if (value === null) {
+    node.style.removeProperty(key);
+  } else {
+    node.style.setProperty(key, value, important ? "important" : "");
+  }
+}
+function select_option(select, value) {
+  for (let i2 = 0; i2 < select.options.length; i2 += 1) {
+    const option2 = select.options[i2];
+    if (option2.__value === value) {
+      option2.selected = true;
+      return;
+    }
+  }
+  select.selectedIndex = -1;
+}
+var crossorigin;
+function is_crossorigin() {
+  if (crossorigin === void 0) {
+    crossorigin = false;
+    try {
+      if (typeof window !== "undefined" && window.parent) {
+        void window.parent.document;
+      }
+    } catch (error2) {
+      crossorigin = true;
+    }
+  }
+  return crossorigin;
+}
+function add_resize_listener(node, fn3) {
+  const computed_style = getComputedStyle(node);
+  if (computed_style.position === "static") {
+    node.style.position = "relative";
+  }
+  const iframe = element("iframe");
+  iframe.setAttribute("style", "display: block; position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; border: 0; opacity: 0; pointer-events: none; z-index: -1;");
+  iframe.setAttribute("aria-hidden", "true");
+  iframe.tabIndex = -1;
+  const crossorigin2 = is_crossorigin();
+  let unsubscribe;
+  if (crossorigin2) {
+    iframe.src = "data:text/html,<script>onresize=function(){parent.postMessage(0,'*')}<\/script>";
+    unsubscribe = listen(window, "message", (event) => {
+      if (event.source === iframe.contentWindow)
+        fn3();
+    });
+  } else {
+    iframe.src = "about:blank";
+    iframe.onload = () => {
+      unsubscribe = listen(iframe.contentWindow, "resize", fn3);
+    };
+  }
+  append4(node, iframe);
+  return () => {
+    if (crossorigin2) {
+      unsubscribe();
+    } else if (unsubscribe && iframe.contentWindow) {
+      unsubscribe();
+    }
+    detach(iframe);
+  };
+}
+function toggle_class(element2, name, toggle) {
+  element2.classList[toggle ? "add" : "remove"](name);
+}
+function custom_event(type, detail, { bubbles = false, cancelable = false } = {}) {
+  const e = document.createEvent("CustomEvent");
+  e.initCustomEvent(type, bubbles, cancelable, detail);
+  return e;
+}
+var managed_styles = /* @__PURE__ */ new Map();
+var active = 0;
+function hash(str) {
+  let hash4 = 5381;
+  let i2 = str.length;
+  while (i2--)
+    hash4 = (hash4 << 5) - hash4 ^ str.charCodeAt(i2);
+  return hash4 >>> 0;
+}
+function create_style_information(doc, node) {
+  const info = { stylesheet: append_empty_stylesheet(node), rules: {} };
+  managed_styles.set(doc, info);
+  return info;
+}
+function create_rule(node, a2, b2, duration, delay2, ease, fn3, uid = 0) {
+  const step = 16.666 / duration;
+  let keyframes = "{\n";
+  for (let p2 = 0; p2 <= 1; p2 += step) {
+    const t3 = a2 + (b2 - a2) * ease(p2);
+    keyframes += p2 * 100 + `%{${fn3(t3, 1 - t3)}}
+`;
+  }
+  const rule = keyframes + `100% {${fn3(b2, 1 - b2)}}
+}`;
+  const name = `__svelte_${hash(rule)}_${uid}`;
+  const doc = get_root_for_style(node);
+  const { stylesheet, rules } = managed_styles.get(doc) || create_style_information(doc, node);
+  if (!rules[name]) {
+    rules[name] = true;
+    stylesheet.insertRule(`@keyframes ${name} ${rule}`, stylesheet.cssRules.length);
+  }
+  const animation = node.style.animation || "";
+  node.style.animation = `${animation ? `${animation}, ` : ""}${name} ${duration}ms linear ${delay2}ms 1 both`;
+  active += 1;
+  return name;
+}
+function delete_rule(node, name) {
+  const previous = (node.style.animation || "").split(", ");
+  const next2 = previous.filter(
+    name ? (anim) => anim.indexOf(name) < 0 : (anim) => anim.indexOf("__svelte") === -1
+  );
+  const deleted = previous.length - next2.length;
+  if (deleted) {
+    node.style.animation = next2.join(", ");
+    active -= deleted;
+    if (!active)
+      clear_rules();
+  }
+}
+function clear_rules() {
+  raf(() => {
+    if (active)
+      return;
+    managed_styles.forEach((info) => {
+      const { ownerNode } = info.stylesheet;
+      if (ownerNode)
+        detach(ownerNode);
+    });
+    managed_styles.clear();
+  });
+}
+function create_animation(node, from, fn3, params) {
+  if (!from)
+    return noop;
+  const to = node.getBoundingClientRect();
+  if (from.left === to.left && from.right === to.right && from.top === to.top && from.bottom === to.bottom)
+    return noop;
+  const {
+    delay: delay2 = 0,
+    duration = 300,
+    easing = identity2,
+    start: start_time = now() + delay2,
+    end: end2 = start_time + duration,
+    tick: tick2 = noop,
+    css: css2
+  } = fn3(node, { from, to }, params);
+  let running = true;
+  let started = false;
+  let name;
+  function start2() {
+    if (css2) {
+      name = create_rule(node, 0, 1, duration, delay2, easing, css2);
+    }
+    if (!delay2) {
+      started = true;
+    }
+  }
+  function stop() {
+    if (css2)
+      delete_rule(node, name);
+    running = false;
+  }
+  loop((now2) => {
+    if (!started && now2 >= start_time) {
+      started = true;
+    }
+    if (started && now2 >= end2) {
+      tick2(1, 0);
+      stop();
+    }
+    if (!running) {
+      return false;
+    }
+    if (started) {
+      const p2 = now2 - start_time;
+      const t3 = 0 + 1 * easing(p2 / duration);
+      tick2(t3, 1 - t3);
+    }
+    return true;
+  });
+  start2();
+  tick2(0, 1);
+  return stop;
+}
+function fix_position(node) {
+  const style = getComputedStyle(node);
+  if (style.position !== "absolute" && style.position !== "fixed") {
+    const { width, height } = style;
+    const a2 = node.getBoundingClientRect();
+    node.style.position = "absolute";
+    node.style.width = width;
+    node.style.height = height;
+    add_transform(node, a2);
+  }
+}
+function add_transform(node, a2) {
+  const b2 = node.getBoundingClientRect();
+  if (a2.left !== b2.left || a2.top !== b2.top) {
+    const style = getComputedStyle(node);
+    const transform = style.transform === "none" ? "" : style.transform;
+    node.style.transform = `${transform} translate(${a2.left - b2.left}px, ${a2.top - b2.top}px)`;
+  }
+}
+var current_component;
+function set_current_component(component) {
+  current_component = component;
+}
+function get_current_component() {
+  if (!current_component)
+    throw new Error("Function called outside component initialization");
+  return current_component;
+}
+function onMount(fn3) {
+  get_current_component().$$.on_mount.push(fn3);
+}
+function onDestroy(fn3) {
+  get_current_component().$$.on_destroy.push(fn3);
+}
+function createEventDispatcher() {
+  const component = get_current_component();
+  return (type, detail, { cancelable = false } = {}) => {
+    const callbacks = component.$$.callbacks[type];
+    if (callbacks) {
+      const event = custom_event(type, detail, { cancelable });
+      callbacks.slice().forEach((fn3) => {
+        fn3.call(component, event);
+      });
+      return !event.defaultPrevented;
+    }
+    return true;
+  };
+}
+function setContext(key, context) {
+  get_current_component().$$.context.set(key, context);
+  return context;
+}
+function getContext(key) {
+  return get_current_component().$$.context.get(key);
+}
+function bubble(component, event) {
+  const callbacks = component.$$.callbacks[event.type];
+  if (callbacks) {
+    callbacks.slice().forEach((fn3) => fn3.call(this, event));
+  }
+}
+var dirty_components = [];
+var binding_callbacks = [];
+var render_callbacks = [];
+var flush_callbacks = [];
+var resolved_promise = Promise.resolve();
+var update_scheduled = false;
+function schedule_update() {
+  if (!update_scheduled) {
+    update_scheduled = true;
+    resolved_promise.then(flush);
+  }
+}
+function tick() {
+  schedule_update();
+  return resolved_promise;
+}
+function add_render_callback(fn3) {
+  render_callbacks.push(fn3);
+}
+function add_flush_callback(fn3) {
+  flush_callbacks.push(fn3);
+}
+var seen_callbacks = /* @__PURE__ */ new Set();
+var flushidx = 0;
+function flush() {
+  const saved_component = current_component;
+  do {
+    while (flushidx < dirty_components.length) {
+      const component = dirty_components[flushidx];
+      flushidx++;
+      set_current_component(component);
+      update(component.$$);
+    }
+    set_current_component(null);
+    dirty_components.length = 0;
+    flushidx = 0;
+    while (binding_callbacks.length)
+      binding_callbacks.pop()();
+    for (let i2 = 0; i2 < render_callbacks.length; i2 += 1) {
+      const callback = render_callbacks[i2];
+      if (!seen_callbacks.has(callback)) {
+        seen_callbacks.add(callback);
+        callback();
+      }
+    }
+    render_callbacks.length = 0;
+  } while (dirty_components.length);
+  while (flush_callbacks.length) {
+    flush_callbacks.pop()();
+  }
+  update_scheduled = false;
+  seen_callbacks.clear();
+  set_current_component(saved_component);
+}
+function update($$) {
+  if ($$.fragment !== null) {
+    $$.update();
+    run_all($$.before_update);
+    const dirty = $$.dirty;
+    $$.dirty = [-1];
+    $$.fragment && $$.fragment.p($$.ctx, dirty);
+    $$.after_update.forEach(add_render_callback);
+  }
+}
+var promise;
+function wait() {
+  if (!promise) {
+    promise = Promise.resolve();
+    promise.then(() => {
+      promise = null;
+    });
+  }
+  return promise;
+}
+function dispatch(node, direction, kind) {
+  node.dispatchEvent(custom_event(`${direction ? "intro" : "outro"}${kind}`));
+}
+var outroing = /* @__PURE__ */ new Set();
+var outros;
+function group_outros() {
+  outros = {
+    r: 0,
+    c: [],
+    p: outros
+  };
+}
+function check_outros() {
+  if (!outros.r) {
+    run_all(outros.c);
+  }
+  outros = outros.p;
+}
+function transition_in(block, local) {
+  if (block && block.i) {
+    outroing.delete(block);
+    block.i(local);
+  }
+}
+function transition_out(block, local, detach2, callback) {
+  if (block && block.o) {
+    if (outroing.has(block))
+      return;
+    outroing.add(block);
+    outros.c.push(() => {
+      outroing.delete(block);
+      if (callback) {
+        if (detach2)
+          block.d(1);
+        callback();
+      }
+    });
+    block.o(local);
+  } else if (callback) {
+    callback();
+  }
+}
+var null_transition = { duration: 0 };
+function create_bidirectional_transition(node, fn3, params, intro) {
+  const options = { direction: "both" };
+  let config = fn3(node, params, options);
+  let t3 = intro ? 0 : 1;
+  let running_program = null;
+  let pending_program = null;
+  let animation_name = null;
+  function clear_animation() {
+    if (animation_name)
+      delete_rule(node, animation_name);
+  }
+  function init6(program, duration) {
+    const d2 = program.b - t3;
+    duration *= Math.abs(d2);
+    return {
+      a: t3,
+      b: program.b,
+      d: d2,
+      duration,
+      start: program.start,
+      end: program.start + duration,
+      group: program.group
+    };
+  }
+  function go(b2) {
+    const { delay: delay2 = 0, duration = 300, easing = identity2, tick: tick2 = noop, css: css2 } = config || null_transition;
+    const program = {
+      start: now() + delay2,
+      b: b2
+    };
+    if (!b2) {
+      program.group = outros;
+      outros.r += 1;
+    }
+    if (running_program || pending_program) {
+      pending_program = program;
+    } else {
+      if (css2) {
+        clear_animation();
+        animation_name = create_rule(node, t3, b2, duration, delay2, easing, css2);
+      }
+      if (b2)
+        tick2(0, 1);
+      running_program = init6(program, duration);
+      add_render_callback(() => dispatch(node, b2, "start"));
+      loop((now2) => {
+        if (pending_program && now2 > pending_program.start) {
+          running_program = init6(pending_program, duration);
+          pending_program = null;
+          dispatch(node, running_program.b, "start");
+          if (css2) {
+            clear_animation();
+            animation_name = create_rule(node, t3, running_program.b, running_program.duration, 0, easing, config.css);
+          }
+        }
+        if (running_program) {
+          if (now2 >= running_program.end) {
+            tick2(t3 = running_program.b, 1 - t3);
+            dispatch(node, running_program.b, "end");
+            if (!pending_program) {
+              if (running_program.b) {
+                clear_animation();
+              } else {
+                if (!--running_program.group.r)
+                  run_all(running_program.group.c);
+              }
+            }
+            running_program = null;
+          } else if (now2 >= running_program.start) {
+            const p2 = now2 - running_program.start;
+            t3 = running_program.a + running_program.d * easing(p2 / running_program.duration);
+            tick2(t3, 1 - t3);
+          }
+        }
+        return !!(running_program || pending_program);
+      });
+    }
+  }
+  return {
+    run(b2) {
+      if (is_function(config)) {
+        wait().then(() => {
+          config = config(options);
+          go(b2);
+        });
+      } else {
+        go(b2);
+      }
+    },
+    end() {
+      clear_animation();
+      running_program = pending_program = null;
+    }
+  };
+}
+function handle_promise(promise2, info) {
+  const token = info.token = {};
+  function update2(type, index2, key, value) {
+    if (info.token !== token)
+      return;
+    info.resolved = value;
+    let child_ctx = info.ctx;
+    if (key !== void 0) {
+      child_ctx = child_ctx.slice();
+      child_ctx[key] = value;
+    }
+    const block = type && (info.current = type)(child_ctx);
+    let needs_flush = false;
+    if (info.block) {
+      if (info.blocks) {
+        info.blocks.forEach((block2, i2) => {
+          if (i2 !== index2 && block2) {
+            group_outros();
+            transition_out(block2, 1, 1, () => {
+              if (info.blocks[i2] === block2) {
+                info.blocks[i2] = null;
+              }
+            });
+            check_outros();
+          }
+        });
+      } else {
+        info.block.d(1);
+      }
+      block.c();
+      transition_in(block, 1);
+      block.m(info.mount(), info.anchor);
+      needs_flush = true;
+    }
+    info.block = block;
+    if (info.blocks)
+      info.blocks[index2] = block;
+    if (needs_flush) {
+      flush();
+    }
+  }
+  if (is_promise(promise2)) {
+    const current_component2 = get_current_component();
+    promise2.then((value) => {
+      set_current_component(current_component2);
+      update2(info.then, 1, info.value, value);
+      set_current_component(null);
+    }, (error2) => {
+      set_current_component(current_component2);
+      update2(info.catch, 2, info.error, error2);
+      set_current_component(null);
+      if (!info.hasCatch) {
+        throw error2;
+      }
+    });
+    if (info.current !== info.pending) {
+      update2(info.pending, 0);
+      return true;
+    }
+  } else {
+    if (info.current !== info.then) {
+      update2(info.then, 1, info.value, promise2);
+      return true;
+    }
+    info.resolved = promise2;
+  }
+}
+function update_await_block_branch(info, ctx, dirty) {
+  const child_ctx = ctx.slice();
+  const { resolved } = info;
+  if (info.current === info.then) {
+    child_ctx[info.value] = resolved;
+  }
+  if (info.current === info.catch) {
+    child_ctx[info.error] = resolved;
+  }
+  info.block.p(child_ctx, dirty);
+}
+var globals = typeof window !== "undefined" ? window : typeof globalThis !== "undefined" ? globalThis : global;
+function outro_and_destroy_block(block, lookup3) {
+  transition_out(block, 1, 1, () => {
+    lookup3.delete(block.key);
+  });
+}
+function fix_and_outro_and_destroy_block(block, lookup3) {
+  block.f();
+  outro_and_destroy_block(block, lookup3);
+}
+function update_keyed_each(old_blocks, dirty, get_key, dynamic, ctx, list, lookup3, node, destroy2, create_each_block21, next2, get_context2) {
+  let o2 = old_blocks.length;
+  let n2 = list.length;
+  let i2 = o2;
+  const old_indexes = {};
+  while (i2--)
+    old_indexes[old_blocks[i2].key] = i2;
+  const new_blocks = [];
+  const new_lookup = /* @__PURE__ */ new Map();
+  const deltas = /* @__PURE__ */ new Map();
+  i2 = n2;
+  while (i2--) {
+    const child_ctx = get_context2(ctx, list, i2);
+    const key = get_key(child_ctx);
+    let block = lookup3.get(key);
+    if (!block) {
+      block = create_each_block21(key, child_ctx);
+      block.c();
+    } else if (dynamic) {
+      block.p(child_ctx, dirty);
+    }
+    new_lookup.set(key, new_blocks[i2] = block);
+    if (key in old_indexes)
+      deltas.set(key, Math.abs(i2 - old_indexes[key]));
+  }
+  const will_move = /* @__PURE__ */ new Set();
+  const did_move = /* @__PURE__ */ new Set();
+  function insert2(block) {
+    transition_in(block, 1);
+    block.m(node, next2);
+    lookup3.set(block.key, block);
+    next2 = block.first;
+    n2--;
+  }
+  while (o2 && n2) {
+    const new_block = new_blocks[n2 - 1];
+    const old_block = old_blocks[o2 - 1];
+    const new_key = new_block.key;
+    const old_key = old_block.key;
+    if (new_block === old_block) {
+      next2 = new_block.first;
+      o2--;
+      n2--;
+    } else if (!new_lookup.has(old_key)) {
+      destroy2(old_block, lookup3);
+      o2--;
+    } else if (!lookup3.has(new_key) || will_move.has(new_key)) {
+      insert2(new_block);
+    } else if (did_move.has(old_key)) {
+      o2--;
+    } else if (deltas.get(new_key) > deltas.get(old_key)) {
+      did_move.add(new_key);
+      insert2(new_block);
+    } else {
+      will_move.add(old_key);
+      o2--;
+    }
+  }
+  while (o2--) {
+    const old_block = old_blocks[o2];
+    if (!new_lookup.has(old_block.key))
+      destroy2(old_block, lookup3);
+  }
+  while (n2)
+    insert2(new_blocks[n2 - 1]);
+  return new_blocks;
+}
+function get_spread_update(levels, updates) {
+  const update2 = {};
+  const to_null_out = {};
+  const accounted_for = { $$scope: 1 };
+  let i2 = levels.length;
+  while (i2--) {
+    const o2 = levels[i2];
+    const n2 = updates[i2];
+    if (n2) {
+      for (const key in o2) {
+        if (!(key in n2))
+          to_null_out[key] = 1;
+      }
+      for (const key in n2) {
+        if (!accounted_for[key]) {
+          update2[key] = n2[key];
+          accounted_for[key] = 1;
+        }
+      }
+      levels[i2] = n2;
+    } else {
+      for (const key in o2) {
+        accounted_for[key] = 1;
+      }
+    }
+  }
+  for (const key in to_null_out) {
+    if (!(key in update2))
+      update2[key] = void 0;
+  }
+  return update2;
+}
+function bind6(component, name, callback, value) {
+  const index2 = component.$$.props[name];
+  if (index2 !== void 0) {
+    component.$$.bound[index2] = callback;
+    if (value === void 0) {
+      callback(component.$$.ctx[index2]);
+    }
+  }
+}
+function create_component(block) {
+  block && block.c();
+}
+function mount_component(component, target, anchor, customElement) {
+  const { fragment, after_update } = component.$$;
+  fragment && fragment.m(target, anchor);
+  if (!customElement) {
+    add_render_callback(() => {
+      const new_on_destroy = component.$$.on_mount.map(run).filter(is_function);
+      if (component.$$.on_destroy) {
+        component.$$.on_destroy.push(...new_on_destroy);
+      } else {
+        run_all(new_on_destroy);
+      }
+      component.$$.on_mount = [];
+    });
+  }
+  after_update.forEach(add_render_callback);
+}
+function destroy_component(component, detaching) {
+  const $$ = component.$$;
+  if ($$.fragment !== null) {
+    run_all($$.on_destroy);
+    $$.fragment && $$.fragment.d(detaching);
+    $$.on_destroy = $$.fragment = null;
+    $$.ctx = [];
+  }
+}
+function make_dirty(component, i2) {
+  if (component.$$.dirty[0] === -1) {
+    dirty_components.push(component);
+    schedule_update();
+    component.$$.dirty.fill(0);
+  }
+  component.$$.dirty[i2 / 31 | 0] |= 1 << i2 % 31;
+}
+function init4(component, options, instance106, create_fragment106, not_equal, props, append_styles2, dirty = [-1]) {
+  const parent_component = current_component;
+  set_current_component(component);
+  const $$ = component.$$ = {
+    fragment: null,
+    ctx: [],
+    props,
+    update: noop,
+    not_equal,
+    bound: blank_object(),
+    on_mount: [],
+    on_destroy: [],
+    on_disconnect: [],
+    before_update: [],
+    after_update: [],
+    context: new Map(options.context || (parent_component ? parent_component.$$.context : [])),
+    callbacks: blank_object(),
+    dirty,
+    skip_bound: false,
+    root: options.target || parent_component.$$.root
+  };
+  append_styles2 && append_styles2($$.root);
+  let ready = false;
+  $$.ctx = instance106 ? instance106(component, options.props || {}, (i2, ret, ...rest) => {
+    const value = rest.length ? rest[0] : ret;
+    if ($$.ctx && not_equal($$.ctx[i2], $$.ctx[i2] = value)) {
+      if (!$$.skip_bound && $$.bound[i2])
+        $$.bound[i2](value);
+      if (ready)
+        make_dirty(component, i2);
+    }
+    return ret;
+  }) : [];
+  $$.update();
+  ready = true;
+  run_all($$.before_update);
+  $$.fragment = create_fragment106 ? create_fragment106($$.ctx) : false;
+  if (options.target) {
+    if (options.hydrate) {
+      start_hydrating();
+      const nodes = children(options.target);
+      $$.fragment && $$.fragment.l(nodes);
+      nodes.forEach(detach);
+    } else {
+      $$.fragment && $$.fragment.c();
+    }
+    if (options.intro)
+      transition_in(component.$$.fragment);
+    mount_component(component, options.target, options.anchor, options.customElement);
+    end_hydrating();
+    flush();
+  }
+  set_current_component(parent_component);
+}
+var SvelteElement;
+if (typeof HTMLElement === "function") {
+  SvelteElement = class extends HTMLElement {
+    constructor() {
+      super();
+      this.attachShadow({ mode: "open" });
+    }
+    connectedCallback() {
+      const { on_mount } = this.$$;
+      this.$$.on_disconnect = on_mount.map(run).filter(is_function);
+      for (const key in this.$$.slotted) {
+        this.appendChild(this.$$.slotted[key]);
+      }
+    }
+    attributeChangedCallback(attr2, _oldValue, newValue) {
+      this[attr2] = newValue;
+    }
+    disconnectedCallback() {
+      run_all(this.$$.on_disconnect);
+    }
+    $destroy() {
+      destroy_component(this, 1);
+      this.$destroy = noop;
+    }
+    $on(type, callback) {
+      if (!is_function(callback)) {
+        return noop;
+      }
+      const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
+      callbacks.push(callback);
+      return () => {
+        const index2 = callbacks.indexOf(callback);
+        if (index2 !== -1)
+          callbacks.splice(index2, 1);
+      };
+    }
+    $set($$props) {
+      if (this.$$set && !is_empty($$props)) {
+        this.$$.skip_bound = true;
+        this.$$set($$props);
+        this.$$.skip_bound = false;
+      }
+    }
+  };
+}
+var SvelteComponent = class {
+  $destroy() {
+    destroy_component(this, 1);
+    this.$destroy = noop;
+  }
+  $on(type, callback) {
+    if (!is_function(callback)) {
+      return noop;
+    }
+    const callbacks = this.$$.callbacks[type] || (this.$$.callbacks[type] = []);
+    callbacks.push(callback);
+    return () => {
+      const index2 = callbacks.indexOf(callback);
+      if (index2 !== -1)
+        callbacks.splice(index2, 1);
+    };
+  }
+  $set($$props) {
+    if (this.$$set && !is_empty($$props)) {
+      this.$$.skip_bound = true;
+      this.$$set($$props);
+      this.$$.skip_bound = false;
+    }
+  }
+};
+
+// node_modules/svelte/store/index.mjs
+var subscriber_queue = [];
+function readable(value, start2) {
+  return {
+    subscribe: writable(value, start2).subscribe
+  };
+}
+function writable(value, start2 = noop) {
+  let stop;
+  const subscribers = /* @__PURE__ */ new Set();
+  function set2(new_value) {
+    if (safe_not_equal(value, new_value)) {
+      value = new_value;
+      if (stop) {
+        const run_queue = !subscriber_queue.length;
+        for (const subscriber of subscribers) {
+          subscriber[1]();
+          subscriber_queue.push(subscriber, value);
+        }
+        if (run_queue) {
+          for (let i2 = 0; i2 < subscriber_queue.length; i2 += 2) {
+            subscriber_queue[i2][0](subscriber_queue[i2 + 1]);
+          }
+          subscriber_queue.length = 0;
+        }
+      }
+    }
+  }
+  function update2(fn3) {
+    set2(fn3(value));
+  }
+  function subscribe2(run2, invalidate = noop) {
+    const subscriber = [run2, invalidate];
+    subscribers.add(subscriber);
+    if (subscribers.size === 1) {
+      stop = start2(set2) || noop;
+    }
+    run2(value);
+    return () => {
+      subscribers.delete(subscriber);
+      if (subscribers.size === 0) {
+        stop();
+        stop = null;
+      }
+    };
+  }
+  return { set: set2, update: update2, subscribe: subscribe2 };
+}
+function derived(stores, fn3, initial_value) {
+  const single = !Array.isArray(stores);
+  const stores_array = single ? [stores] : stores;
+  const auto2 = fn3.length < 2;
+  return readable(initial_value, (set2) => {
+    let inited = false;
+    const values = [];
+    let pending = 0;
+    let cleanup = noop;
+    const sync = () => {
+      if (pending) {
+        return;
+      }
+      cleanup();
+      const result = fn3(single ? values[0] : values, set2);
+      if (auto2) {
+        set2(result);
+      } else {
+        cleanup = is_function(result) ? result : noop;
+      }
+    };
+    const unsubscribers = stores_array.map((store, i2) => subscribe(store, (value) => {
+      values[i2] = value;
+      pending &= ~(1 << i2);
+      if (inited) {
+        sync();
+      }
+    }, () => {
+      pending |= 1 << i2;
+    }));
+    inited = true;
+    sync();
+    return function stop() {
+      run_all(unsubscribers);
+      cleanup();
+    };
+  });
+}
+
 // node_modules/uuid/dist/esm-browser/rng.js
 var getRandomValues;
 var rnds8 = new Uint8Array(16);
@@ -14874,6 +19205,49 @@ function v4(options, buf, offset2) {
 }
 var v4_default = v4;
 
+// src/types.ts
+var DEFAULT_VIEW = {
+  config: {},
+  filter: { conditions: [] },
+  colors: { conditions: [] }
+};
+function isStringFilterOperator(op) {
+  return ["is", "is-not", "contains", "not-contains"].includes(op);
+}
+function isNumberFilterOperator(op) {
+  return ["eq", "neq", "lt", "gt", "lte", "gte"].includes(op);
+}
+function isBooleanFilterOperator(op) {
+  return ["is-checked", "is-not-checked"].includes(op);
+}
+var filterOperatorTypes = {
+  "is-empty": "unary",
+  "is-not-empty": "unary",
+  is: "binary",
+  "is-not": "binary",
+  contains: "binary",
+  "not-contains": "binary",
+  eq: "binary",
+  neq: "binary",
+  lt: "binary",
+  gt: "binary",
+  lte: "binary",
+  gte: "binary",
+  "is-checked": "unary",
+  "is-not-checked": "unary"
+};
+var DEFAULT_PROJECT = {
+  path: "",
+  recursive: false,
+  fieldConfig: {},
+  defaultName: "",
+  templates: [],
+  dataview: false,
+  query: "",
+  excludedNotes: [],
+  isDefault: false
+};
+
 // src/lib/data.ts
 function isOptionalDataValue(value) {
   switch (typeof value) {
@@ -14894,8 +19268,9 @@ function isRepeatedDataValue(value) {
   return false;
 }
 var DataSource = class {
-  constructor(project) {
+  constructor(project, preferences) {
     this.project = project;
+    this.preferences = preferences;
   }
   readonly() {
     return false;
@@ -14909,12 +19284,6 @@ function isString(value) {
 }
 function isList(value) {
   return Array.isArray(value);
-}
-function isLink(value) {
-  if (value && typeof value === "object") {
-    return "linkText" in value && "sourcePath" in value;
-  }
-  return false;
 }
 function isNumber(value) {
   return typeof value === "number";
@@ -14931,9 +19300,6 @@ function isOptionalBoolean(value) {
 function isOptionalString(value) {
   return isString(value) || isOptional(value);
 }
-function isOptionalLink(value) {
-  return isLink(value) || isOptional(value);
-}
 function isOptionalList(value) {
   return isList(value) || isOptional(value);
 }
@@ -14942,12 +19308,6 @@ function isOptionalNumber(value) {
 }
 function isOptionalDate(value) {
   return isDate(value) || isOptional(value);
-}
-function isStringLink(value) {
-  if (isString(value)) {
-    return /^\[\[(.*)\]\]$/.test(value);
-  }
-  return false;
 }
 
 // src/lib/helpers.ts
@@ -14991,4069 +19351,6 @@ function nextUniqueViewName(views, name) {
   return uniquify(name, (candidate) => {
     return !!views.find((view2) => view2.name === candidate);
   });
-}
-
-// node_modules/fp-ts/es6/function.js
-var function_exports = {};
-__export(function_exports, {
-  SK: () => SK,
-  absurd: () => absurd,
-  apply: () => apply,
-  constFalse: () => constFalse,
-  constNull: () => constNull,
-  constTrue: () => constTrue,
-  constUndefined: () => constUndefined,
-  constVoid: () => constVoid,
-  constant: () => constant,
-  decrement: () => decrement,
-  flip: () => flip,
-  flow: () => flow,
-  getBooleanAlgebra: () => getBooleanAlgebra,
-  getEndomorphismMonoid: () => getEndomorphismMonoid,
-  getMonoid: () => getMonoid,
-  getRing: () => getRing,
-  getSemigroup: () => getSemigroup,
-  getSemiring: () => getSemiring,
-  hole: () => hole,
-  identity: () => identity2,
-  increment: () => increment,
-  not: () => not,
-  pipe: () => pipe,
-  tuple: () => tuple,
-  tupled: () => tupled,
-  unsafeCoerce: () => unsafeCoerce,
-  untupled: () => untupled
-});
-var getBooleanAlgebra = function(B2) {
-  return function() {
-    return {
-      meet: function(x2, y2) {
-        return function(a2) {
-          return B2.meet(x2(a2), y2(a2));
-        };
-      },
-      join: function(x2, y2) {
-        return function(a2) {
-          return B2.join(x2(a2), y2(a2));
-        };
-      },
-      zero: function() {
-        return B2.zero;
-      },
-      one: function() {
-        return B2.one;
-      },
-      implies: function(x2, y2) {
-        return function(a2) {
-          return B2.implies(x2(a2), y2(a2));
-        };
-      },
-      not: function(x2) {
-        return function(a2) {
-          return B2.not(x2(a2));
-        };
-      }
-    };
-  };
-};
-var getSemigroup = function(S2) {
-  return function() {
-    return {
-      concat: function(f2, g2) {
-        return function(a2) {
-          return S2.concat(f2(a2), g2(a2));
-        };
-      }
-    };
-  };
-};
-var getMonoid = function(M2) {
-  var getSemigroupM = getSemigroup(M2);
-  return function() {
-    return {
-      concat: getSemigroupM().concat,
-      empty: function() {
-        return M2.empty;
-      }
-    };
-  };
-};
-var getSemiring = function(S2) {
-  return {
-    add: function(f2, g2) {
-      return function(x2) {
-        return S2.add(f2(x2), g2(x2));
-      };
-    },
-    zero: function() {
-      return S2.zero;
-    },
-    mul: function(f2, g2) {
-      return function(x2) {
-        return S2.mul(f2(x2), g2(x2));
-      };
-    },
-    one: function() {
-      return S2.one;
-    }
-  };
-};
-var getRing = function(R2) {
-  var S2 = getSemiring(R2);
-  return {
-    add: S2.add,
-    mul: S2.mul,
-    one: S2.one,
-    zero: S2.zero,
-    sub: function(f2, g2) {
-      return function(x2) {
-        return R2.sub(f2(x2), g2(x2));
-      };
-    }
-  };
-};
-var apply = function(a2) {
-  return function(f2) {
-    return f2(a2);
-  };
-};
-function identity2(a2) {
-  return a2;
-}
-var unsafeCoerce = identity2;
-function constant(a2) {
-  return function() {
-    return a2;
-  };
-}
-var constTrue = /* @__PURE__ */ constant(true);
-var constFalse = /* @__PURE__ */ constant(false);
-var constNull = /* @__PURE__ */ constant(null);
-var constUndefined = /* @__PURE__ */ constant(void 0);
-var constVoid = constUndefined;
-function flip(f2) {
-  return function() {
-    var args = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      args[_i] = arguments[_i];
-    }
-    if (args.length > 1) {
-      return f2(args[1], args[0]);
-    }
-    return function(a2) {
-      return f2(a2)(args[0]);
-    };
-  };
-}
-function flow(ab, bc, cd, de, ef, fg, gh, hi, ij) {
-  switch (arguments.length) {
-    case 1:
-      return ab;
-    case 2:
-      return function() {
-        return bc(ab.apply(this, arguments));
-      };
-    case 3:
-      return function() {
-        return cd(bc(ab.apply(this, arguments)));
-      };
-    case 4:
-      return function() {
-        return de(cd(bc(ab.apply(this, arguments))));
-      };
-    case 5:
-      return function() {
-        return ef(de(cd(bc(ab.apply(this, arguments)))));
-      };
-    case 6:
-      return function() {
-        return fg(ef(de(cd(bc(ab.apply(this, arguments))))));
-      };
-    case 7:
-      return function() {
-        return gh(fg(ef(de(cd(bc(ab.apply(this, arguments)))))));
-      };
-    case 8:
-      return function() {
-        return hi(gh(fg(ef(de(cd(bc(ab.apply(this, arguments))))))));
-      };
-    case 9:
-      return function() {
-        return ij(hi(gh(fg(ef(de(cd(bc(ab.apply(this, arguments)))))))));
-      };
-  }
-  return;
-}
-function tuple() {
-  var t3 = [];
-  for (var _i = 0; _i < arguments.length; _i++) {
-    t3[_i] = arguments[_i];
-  }
-  return t3;
-}
-function increment(n2) {
-  return n2 + 1;
-}
-function decrement(n2) {
-  return n2 - 1;
-}
-function absurd(_24) {
-  throw new Error("Called `absurd` function which should be uncallable");
-}
-function tupled(f2) {
-  return function(a2) {
-    return f2.apply(void 0, a2);
-  };
-}
-function untupled(f2) {
-  return function() {
-    var a2 = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      a2[_i] = arguments[_i];
-    }
-    return f2(a2);
-  };
-}
-function pipe(a2, ab, bc, cd, de, ef, fg, gh, hi) {
-  switch (arguments.length) {
-    case 1:
-      return a2;
-    case 2:
-      return ab(a2);
-    case 3:
-      return bc(ab(a2));
-    case 4:
-      return cd(bc(ab(a2)));
-    case 5:
-      return de(cd(bc(ab(a2))));
-    case 6:
-      return ef(de(cd(bc(ab(a2)))));
-    case 7:
-      return fg(ef(de(cd(bc(ab(a2))))));
-    case 8:
-      return gh(fg(ef(de(cd(bc(ab(a2)))))));
-    case 9:
-      return hi(gh(fg(ef(de(cd(bc(ab(a2))))))));
-    default: {
-      var ret = arguments[0];
-      for (var i2 = 1; i2 < arguments.length; i2++) {
-        ret = arguments[i2](ret);
-      }
-      return ret;
-    }
-  }
-}
-var hole = absurd;
-var SK = function(_24, b2) {
-  return b2;
-};
-function not(predicate) {
-  return function(a2) {
-    return !predicate(a2);
-  };
-}
-var getEndomorphismMonoid = function() {
-  return {
-    concat: function(first, second) {
-      return flow(first, second);
-    },
-    empty: identity2
-  };
-};
-
-// node_modules/fp-ts/es6/internal.js
-var __spreadArray = function(to, from, pack) {
-  if (pack || arguments.length === 2)
-    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
-      if (ar || !(i2 in from)) {
-        if (!ar)
-          ar = Array.prototype.slice.call(from, 0, i2);
-        ar[i2] = from[i2];
-      }
-    }
-  return to.concat(ar || Array.prototype.slice.call(from));
-};
-var isNone = function(fa) {
-  return fa._tag === "None";
-};
-var isSome = function(fa) {
-  return fa._tag === "Some";
-};
-var none = { _tag: "None" };
-var some = function(a2) {
-  return { _tag: "Some", value: a2 };
-};
-var isLeft = function(ma) {
-  return ma._tag === "Left";
-};
-var isRight = function(ma) {
-  return ma._tag === "Right";
-};
-var left = function(e) {
-  return { _tag: "Left", left: e };
-};
-var right = function(a2) {
-  return { _tag: "Right", right: a2 };
-};
-var singleton = function(a2) {
-  return [a2];
-};
-var isNonEmpty = function(as) {
-  return as.length > 0;
-};
-var head = function(as) {
-  return as[0];
-};
-var tail = function(as) {
-  return as.slice(1);
-};
-var emptyReadonlyArray = [];
-var emptyRecord = {};
-var fromReadonlyNonEmptyArray = function(as) {
-  return __spreadArray([as[0]], as.slice(1), true);
-};
-
-// node_modules/fp-ts/es6/Apply.js
-function ap(F2, G2) {
-  return function(fa) {
-    return function(fab) {
-      return F2.ap(F2.map(fab, function(gab) {
-        return function(ga) {
-          return G2.ap(gab, ga);
-        };
-      }), fa);
-    };
-  };
-}
-function apFirst(A2) {
-  return function(second) {
-    return function(first) {
-      return A2.ap(A2.map(first, function(a2) {
-        return function() {
-          return a2;
-        };
-      }), second);
-    };
-  };
-}
-function apSecond(A2) {
-  return function(second) {
-    return function(first) {
-      return A2.ap(A2.map(first, function() {
-        return function(b2) {
-          return b2;
-        };
-      }), second);
-    };
-  };
-}
-function apS(F2) {
-  return function(name, fb) {
-    return function(fa) {
-      return F2.ap(F2.map(fa, function(a2) {
-        return function(b2) {
-          var _a;
-          return Object.assign({}, a2, (_a = {}, _a[name] = b2, _a));
-        };
-      }), fb);
-    };
-  };
-}
-function getApplySemigroup(F2) {
-  return function(S2) {
-    return {
-      concat: function(first, second) {
-        return F2.ap(F2.map(first, function(x2) {
-          return function(y2) {
-            return S2.concat(x2, y2);
-          };
-        }), second);
-      }
-    };
-  };
-}
-
-// node_modules/fp-ts/es6/Functor.js
-function map(F2, G2) {
-  return function(f2) {
-    return function(fa) {
-      return F2.map(fa, function(ga) {
-        return G2.map(ga, f2);
-      });
-    };
-  };
-}
-function flap(F2) {
-  return function(a2) {
-    return function(fab) {
-      return F2.map(fab, function(f2) {
-        return f2(a2);
-      });
-    };
-  };
-}
-function bindTo(F2) {
-  return function(name) {
-    return function(fa) {
-      return F2.map(fa, function(a2) {
-        var _a;
-        return _a = {}, _a[name] = a2, _a;
-      });
-    };
-  };
-}
-function let_(F2) {
-  return function(name, f2) {
-    return function(fa) {
-      return F2.map(fa, function(a2) {
-        var _a;
-        return Object.assign({}, a2, (_a = {}, _a[name] = f2(a2), _a));
-      });
-    };
-  };
-}
-
-// node_modules/fp-ts/es6/Applicative.js
-function getApplicativeMonoid(F2) {
-  var f2 = getApplySemigroup(F2);
-  return function(M2) {
-    return {
-      concat: f2(M2).concat,
-      empty: F2.of(M2.empty)
-    };
-  };
-}
-
-// node_modules/fp-ts/es6/Array.js
-var Array_exports = {};
-__export(Array_exports, {
-  Alt: () => Alt,
-  Alternative: () => Alternative,
-  Applicative: () => Applicative,
-  Apply: () => Apply,
-  Chain: () => Chain,
-  ChainRecBreadthFirst: () => ChainRecBreadthFirst,
-  ChainRecDepthFirst: () => ChainRecDepthFirst,
-  Compactable: () => Compactable,
-  Do: () => Do,
-  Extend: () => Extend,
-  Filterable: () => Filterable,
-  FilterableWithIndex: () => FilterableWithIndex,
-  Foldable: () => Foldable,
-  FoldableWithIndex: () => FoldableWithIndex,
-  FromEither: () => FromEither,
-  Functor: () => Functor,
-  FunctorWithIndex: () => FunctorWithIndex,
-  Monad: () => Monad,
-  Pointed: () => Pointed,
-  Traversable: () => Traversable,
-  TraversableWithIndex: () => TraversableWithIndex,
-  URI: () => URI,
-  Unfoldable: () => Unfoldable,
-  Witherable: () => Witherable,
-  Zero: () => Zero,
-  alt: () => alt,
-  altW: () => altW,
-  ap: () => ap2,
-  apFirst: () => apFirst2,
-  apS: () => apS2,
-  apSecond: () => apSecond2,
-  append: () => append4,
-  appendW: () => appendW3,
-  array: () => array,
-  bind: () => bind3,
-  bindTo: () => bindTo2,
-  chain: () => chain,
-  chainFirst: () => chainFirst2,
-  chainRecBreadthFirst: () => chainRecBreadthFirst2,
-  chainRecDepthFirst: () => chainRecDepthFirst2,
-  chainWithIndex: () => chainWithIndex,
-  chop: () => chop3,
-  chunksOf: () => chunksOf3,
-  compact: () => compact,
-  comprehension: () => comprehension,
-  concat: () => concat2,
-  concatW: () => concatW,
-  cons: () => cons3,
-  copy: () => copy2,
-  deleteAt: () => deleteAt,
-  difference: () => difference,
-  dropLeft: () => dropLeft,
-  dropLeftWhile: () => dropLeftWhile,
-  dropRight: () => dropRight,
-  duplicate: () => duplicate,
-  elem: () => elem2,
-  empty: () => empty3,
-  every: () => every2,
-  exists: () => exists,
-  extend: () => extend,
-  filter: () => filter,
-  filterE: () => filterE2,
-  filterMap: () => filterMap,
-  filterMapWithIndex: () => filterMapWithIndex,
-  filterWithIndex: () => filterWithIndex,
-  findFirst: () => findFirst2,
-  findFirstMap: () => findFirstMap2,
-  findIndex: () => findIndex2,
-  findLast: () => findLast2,
-  findLastIndex: () => findLastIndex2,
-  findLastMap: () => findLastMap2,
-  flap: () => flap2,
-  flatten: () => flatten,
-  foldLeft: () => foldLeft,
-  foldMap: () => foldMap3,
-  foldMapWithIndex: () => foldMapWithIndex3,
-  foldRight: () => foldRight,
-  fromEither: () => fromEither,
-  fromEitherK: () => fromEitherK2,
-  fromOption: () => fromOption2,
-  fromOptionK: () => fromOptionK2,
-  fromPredicate: () => fromPredicate2,
-  getDifferenceMagma: () => getDifferenceMagma,
-  getEq: () => getEq3,
-  getIntersectionSemigroup: () => getIntersectionSemigroup,
-  getMonoid: () => getMonoid3,
-  getOrd: () => getOrd2,
-  getSemigroup: () => getSemigroup3,
-  getShow: () => getShow3,
-  getUnionMonoid: () => getUnionMonoid,
-  getUnionSemigroup: () => getUnionSemigroup,
-  guard: () => guard2,
-  head: () => head5,
-  init: () => init4,
-  insertAt: () => insertAt,
-  intercalate: () => intercalate3,
-  intersection: () => intersection,
-  intersperse: () => intersperse3,
-  isEmpty: () => isEmpty,
-  isNonEmpty: () => isNonEmpty5,
-  isOutOfBound: () => isOutOfBound4,
-  last: () => last4,
-  lefts: () => lefts,
-  let: () => let_2,
-  lookup: () => lookup2,
-  makeBy: () => makeBy3,
-  map: () => map2,
-  mapWithIndex: () => mapWithIndex,
-  match: () => match2,
-  matchLeft: () => matchLeft,
-  matchLeftW: () => matchLeftW,
-  matchRight: () => matchRight,
-  matchRightW: () => matchRightW,
-  matchW: () => matchW2,
-  modifyAt: () => modifyAt,
-  of: () => of3,
-  partition: () => partition,
-  partitionMap: () => partitionMap,
-  partitionMapWithIndex: () => partitionMapWithIndex,
-  partitionWithIndex: () => partitionWithIndex,
-  prepend: () => prepend3,
-  prependAll: () => prependAll3,
-  prependToAll: () => prependToAll,
-  prependW: () => prependW3,
-  range: () => range3,
-  reduce: () => reduce3,
-  reduceRight: () => reduceRight3,
-  reduceRightWithIndex: () => reduceRightWithIndex3,
-  reduceWithIndex: () => reduceWithIndex3,
-  replicate: () => replicate,
-  reverse: () => reverse,
-  rights: () => rights,
-  rotate: () => rotate3,
-  scanLeft: () => scanLeft,
-  scanRight: () => scanRight,
-  separate: () => separate,
-  sequence: () => sequence,
-  size: () => size,
-  snoc: () => snoc3,
-  some: () => some2,
-  sort: () => sort2,
-  sortBy: () => sortBy3,
-  spanLeft: () => spanLeft,
-  splitAt: () => splitAt3,
-  tail: () => tail4,
-  takeLeft: () => takeLeft,
-  takeLeftWhile: () => takeLeftWhile,
-  takeRight: () => takeRight,
-  traverse: () => traverse,
-  traverseWithIndex: () => traverseWithIndex,
-  unfold: () => unfold,
-  union: () => union3,
-  uniq: () => uniq3,
-  unsafeDeleteAt: () => unsafeDeleteAt,
-  unsafeInsertAt: () => unsafeInsertAt3,
-  unsafeUpdateAt: () => unsafeUpdateAt3,
-  unzip: () => unzip,
-  updateAt: () => updateAt,
-  wilt: () => wilt,
-  wither: () => wither,
-  zero: () => zero,
-  zip: () => zip,
-  zipWith: () => zipWith
-});
-
-// node_modules/fp-ts/es6/Chain.js
-function chainFirst(M2) {
-  return function(f2) {
-    return function(first) {
-      return M2.chain(first, function(a2) {
-        return M2.map(f2(a2), function() {
-          return a2;
-        });
-      });
-    };
-  };
-}
-function bind2(M2) {
-  return function(name, f2) {
-    return function(ma) {
-      return M2.chain(ma, function(a2) {
-        return M2.map(f2(a2), function(b2) {
-          var _a;
-          return Object.assign({}, a2, (_a = {}, _a[name] = b2, _a));
-        });
-      });
-    };
-  };
-}
-
-// node_modules/fp-ts/es6/FromEither.js
-function fromOption(F2) {
-  return function(onNone) {
-    return function(ma) {
-      return F2.fromEither(isNone(ma) ? left(onNone()) : right(ma.value));
-    };
-  };
-}
-function fromPredicate(F2) {
-  return function(predicate, onFalse) {
-    return function(a2) {
-      return F2.fromEither(predicate(a2) ? right(a2) : left(onFalse(a2)));
-    };
-  };
-}
-function fromOptionK(F2) {
-  var fromOptionF = fromOption(F2);
-  return function(onNone) {
-    var from = fromOptionF(onNone);
-    return function(f2) {
-      return flow(f2, from);
-    };
-  };
-}
-function chainOptionK(F2, M2) {
-  var fromOptionKF = fromOptionK(F2);
-  return function(onNone) {
-    var from = fromOptionKF(onNone);
-    return function(f2) {
-      return function(ma) {
-        return M2.chain(ma, from(f2));
-      };
-    };
-  };
-}
-function fromEitherK(F2) {
-  return function(f2) {
-    return flow(f2, F2.fromEither);
-  };
-}
-function chainEitherK(F2, M2) {
-  var fromEitherKF = fromEitherK(F2);
-  return function(f2) {
-    return function(ma) {
-      return M2.chain(ma, fromEitherKF(f2));
-    };
-  };
-}
-function chainFirstEitherK(F2, M2) {
-  return flow(fromEitherK(F2), chainFirst(M2));
-}
-function filterOrElse(F2, M2) {
-  return function(predicate, onFalse) {
-    return function(ma) {
-      return M2.chain(ma, function(a2) {
-        return F2.fromEither(predicate(a2) ? right(a2) : left(onFalse(a2)));
-      });
-    };
-  };
-}
-
-// node_modules/fp-ts/es6/Eq.js
-var fromEquals = function(equals) {
-  return {
-    equals: function(x2, y2) {
-      return x2 === y2 || equals(x2, y2);
-    }
-  };
-};
-var eqStrict = {
-  equals: function(a2, b2) {
-    return a2 === b2;
-  }
-};
-var strictEqual = eqStrict.equals;
-
-// node_modules/fp-ts/es6/Ord.js
-var equalsDefault = function(compare2) {
-  return function(first, second) {
-    return first === second || compare2(first, second) === 0;
-  };
-};
-var fromCompare = function(compare2) {
-  return {
-    equals: equalsDefault(compare2),
-    compare: function(first, second) {
-      return first === second ? 0 : compare2(first, second);
-    }
-  };
-};
-var getSemigroup2 = function() {
-  return {
-    concat: function(first, second) {
-      return fromCompare(function(a2, b2) {
-        var ox = first.compare(a2, b2);
-        return ox !== 0 ? ox : second.compare(a2, b2);
-      });
-    }
-  };
-};
-var getMonoid2 = function() {
-  return {
-    concat: getSemigroup2().concat,
-    empty: fromCompare(function() {
-      return 0;
-    })
-  };
-};
-function compare(first, second) {
-  return first < second ? -1 : first > second ? 1 : 0;
-}
-var strictOrd = {
-  equals: eqStrict.equals,
-  compare
-};
-
-// node_modules/fp-ts/es6/ReadonlyNonEmptyArray.js
-var __spreadArray2 = function(to, from, pack) {
-  if (pack || arguments.length === 2)
-    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
-      if (ar || !(i2 in from)) {
-        if (!ar)
-          ar = Array.prototype.slice.call(from, 0, i2);
-        ar[i2] = from[i2];
-      }
-    }
-  return to.concat(ar || Array.prototype.slice.call(from));
-};
-var isNonEmpty2 = isNonEmpty;
-var isOutOfBound = function(i2, as) {
-  return i2 < 0 || i2 >= as.length;
-};
-var prependW = function(head6) {
-  return function(tail5) {
-    return __spreadArray2([head6], tail5, true);
-  };
-};
-var prepend = prependW;
-var prependAll = function(middle) {
-  return function(as) {
-    var out = [middle, as[0]];
-    for (var i2 = 1; i2 < as.length; i2++) {
-      out.push(middle, as[i2]);
-    }
-    return out;
-  };
-};
-var intersperse = function(middle) {
-  return function(as) {
-    var rest = tail2(as);
-    return isNonEmpty2(rest) ? pipe(rest, prependAll(middle), prepend(head2(as))) : as;
-  };
-};
-var extract = head;
-var head2 = extract;
-var tail2 = tail;
-var last = function(as) {
-  return as[as.length - 1];
-};
-var concatAll = function(S2) {
-  return function(as) {
-    return as.reduce(S2.concat);
-  };
-};
-var intercalate = function(S2) {
-  var concatAllS = concatAll(S2);
-  return function(middle) {
-    return flow(intersperse(middle), concatAllS);
-  };
-};
-
-// node_modules/fp-ts/es6/NonEmptyArray.js
-var __spreadArray3 = function(to, from, pack) {
-  if (pack || arguments.length === 2)
-    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
-      if (ar || !(i2 in from)) {
-        if (!ar)
-          ar = Array.prototype.slice.call(from, 0, i2);
-        ar[i2] = from[i2];
-      }
-    }
-  return to.concat(ar || Array.prototype.slice.call(from));
-};
-var isNonEmpty3 = function(as) {
-  return as.length > 0;
-};
-var isOutOfBound2 = function(i2, as) {
-  return i2 < 0 || i2 >= as.length;
-};
-var prependW2 = function(head6) {
-  return function(tail5) {
-    return __spreadArray3([head6], tail5, true);
-  };
-};
-var prepend2 = prependW2;
-var appendW = function(end2) {
-  return function(init6) {
-    return __spreadArray3(__spreadArray3([], init6, true), [end2], false);
-  };
-};
-var append2 = appendW;
-var unsafeInsertAt = function(i2, a2, as) {
-  if (isNonEmpty3(as)) {
-    var xs = fromReadonlyNonEmptyArray2(as);
-    xs.splice(i2, 0, a2);
-    return xs;
-  }
-  return [a2];
-};
-var unsafeUpdateAt = function(i2, a2, as) {
-  var xs = fromReadonlyNonEmptyArray2(as);
-  xs[i2] = a2;
-  return xs;
-};
-var uniq = function(E2) {
-  return function(as) {
-    if (as.length === 1) {
-      return copy(as);
-    }
-    var out = [head3(as)];
-    var rest = tail3(as);
-    var _loop_1 = function(a3) {
-      if (out.every(function(o2) {
-        return !E2.equals(o2, a3);
-      })) {
-        out.push(a3);
-      }
-    };
-    for (var _i = 0, rest_1 = rest; _i < rest_1.length; _i++) {
-      var a2 = rest_1[_i];
-      _loop_1(a2);
-    }
-    return out;
-  };
-};
-var sortBy = function(ords) {
-  if (isNonEmpty3(ords)) {
-    var M2 = getMonoid2();
-    return sort(ords.reduce(M2.concat, M2.empty));
-  }
-  return copy;
-};
-var union = function(E2) {
-  var uniqE = uniq(E2);
-  return function(second) {
-    return function(first) {
-      return uniqE(pipe(first, concat(second)));
-    };
-  };
-};
-var rotate = function(n2) {
-  return function(as) {
-    var len = as.length;
-    var m = Math.round(n2) % len;
-    if (isOutOfBound2(Math.abs(m), as) || m === 0) {
-      return copy(as);
-    }
-    if (m < 0) {
-      var _a = splitAt(-m)(as), f2 = _a[0], s2 = _a[1];
-      return pipe(s2, concat(f2));
-    } else {
-      return rotate(m - len)(as);
-    }
-  };
-};
-var fromReadonlyNonEmptyArray2 = fromReadonlyNonEmptyArray;
-var makeBy = function(f2) {
-  return function(n2) {
-    var j2 = Math.max(0, Math.floor(n2));
-    var out = [f2(0)];
-    for (var i2 = 1; i2 < j2; i2++) {
-      out.push(f2(i2));
-    }
-    return out;
-  };
-};
-var range = function(start2, end2) {
-  return start2 <= end2 ? makeBy(function(i2) {
-    return start2 + i2;
-  })(end2 - start2 + 1) : [start2];
-};
-function concat(x2, y2) {
-  return y2 ? x2.concat(y2) : function(y3) {
-    return y3.concat(x2);
-  };
-}
-var sort = function(O2) {
-  return function(as) {
-    return as.slice().sort(O2.compare);
-  };
-};
-var copy = fromReadonlyNonEmptyArray2;
-var of = function(a2) {
-  return [a2];
-};
-var prependAll2 = function(middle) {
-  return function(as) {
-    var out = [middle, as[0]];
-    for (var i2 = 1; i2 < as.length; i2++) {
-      out.push(middle, as[i2]);
-    }
-    return out;
-  };
-};
-var intersperse2 = function(middle) {
-  return function(as) {
-    var rest = tail3(as);
-    return isNonEmpty3(rest) ? pipe(rest, prependAll2(middle), prepend2(head3(as))) : copy(as);
-  };
-};
-var chop = function(f2) {
-  return function(as) {
-    var _a = f2(as), b2 = _a[0], rest = _a[1];
-    var out = [b2];
-    var next2 = rest;
-    while (isNonEmpty3(next2)) {
-      var _b = f2(next2), b_1 = _b[0], rest_2 = _b[1];
-      out.push(b_1);
-      next2 = rest_2;
-    }
-    return out;
-  };
-};
-var splitAt = function(n2) {
-  return function(as) {
-    var m = Math.max(1, n2);
-    return m >= as.length ? [copy(as), []] : [pipe(as.slice(1, m), prepend2(head3(as))), as.slice(m)];
-  };
-};
-var chunksOf = function(n2) {
-  return chop(splitAt(n2));
-};
-var head3 = head2;
-var tail3 = function(as) {
-  return as.slice(1);
-};
-var last2 = last;
-var init2 = function(as) {
-  return as.slice(0, -1);
-};
-function cons(head6, tail5) {
-  return tail5 === void 0 ? prepend2(head6) : pipe(tail5, prepend2(head6));
-}
-var snoc = function(init6, end2) {
-  return pipe(init6, append2(end2));
-};
-
-// node_modules/fp-ts/es6/number.js
-var Eq = {
-  equals: function(first, second) {
-    return first === second;
-  }
-};
-var Ord = {
-  equals: Eq.equals,
-  compare: function(first, second) {
-    return first < second ? -1 : first > second ? 1 : 0;
-  }
-};
-var Bounded = {
-  equals: Eq.equals,
-  compare: Ord.compare,
-  top: Infinity,
-  bottom: -Infinity
-};
-var MagmaSub = {
-  concat: function(first, second) {
-    return first - second;
-  }
-};
-var SemigroupSum = {
-  concat: function(first, second) {
-    return first + second;
-  }
-};
-var SemigroupProduct = {
-  concat: function(first, second) {
-    return first * second;
-  }
-};
-var MonoidSum = {
-  concat: SemigroupSum.concat,
-  empty: 0
-};
-var MonoidProduct = {
-  concat: SemigroupProduct.concat,
-  empty: 1
-};
-var Field = {
-  add: SemigroupSum.concat,
-  zero: 0,
-  mul: SemigroupProduct.concat,
-  one: 1,
-  sub: MagmaSub.concat,
-  degree: function(_24) {
-    return 1;
-  },
-  div: function(first, second) {
-    return first / second;
-  },
-  mod: function(first, second) {
-    return first % second;
-  }
-};
-
-// node_modules/fp-ts/es6/Separated.js
-var separated = function(left6, right6) {
-  return { left: left6, right: right6 };
-};
-
-// node_modules/fp-ts/es6/Witherable.js
-function wiltDefault(T, C) {
-  return function(F2) {
-    var traverseF = T.traverse(F2);
-    return function(wa, f2) {
-      return F2.map(traverseF(wa, f2), C.separate);
-    };
-  };
-}
-function witherDefault(T, C) {
-  return function(F2) {
-    var traverseF = T.traverse(F2);
-    return function(wa, f2) {
-      return F2.map(traverseF(wa, f2), C.compact);
-    };
-  };
-}
-function filterE(W2) {
-  return function(F2) {
-    var witherF = W2.wither(F2);
-    return function(predicate) {
-      return function(ga) {
-        return witherF(ga, function(a2) {
-          return F2.map(predicate(a2), function(b2) {
-            return b2 ? some(a2) : none;
-          });
-        });
-      };
-    };
-  };
-}
-
-// node_modules/fp-ts/es6/Zero.js
-function guard(F2, P2) {
-  return function(b2) {
-    return b2 ? P2.of(void 0) : F2.zero();
-  };
-}
-
-// node_modules/fp-ts/es6/ReadonlyArray.js
-var __spreadArray4 = function(to, from, pack) {
-  if (pack || arguments.length === 2)
-    for (var i2 = 0, l2 = from.length, ar; i2 < l2; i2++) {
-      if (ar || !(i2 in from)) {
-        if (!ar)
-          ar = Array.prototype.slice.call(from, 0, i2);
-        ar[i2] = from[i2];
-      }
-    }
-  return to.concat(ar || Array.prototype.slice.call(from));
-};
-var isNonEmpty4 = isNonEmpty2;
-var matchW = function(onEmpty, onNonEmpty) {
-  return function(as) {
-    return isNonEmpty4(as) ? onNonEmpty(as) : onEmpty();
-  };
-};
-var match = matchW;
-var isOutOfBound3 = isOutOfBound;
-function lookup(i2, as) {
-  return as === void 0 ? function(as2) {
-    return lookup(i2, as2);
-  } : isOutOfBound3(i2, as) ? none : some(as[i2]);
-}
-var head4 = function(as) {
-  return isNonEmpty4(as) ? some(head2(as)) : none;
-};
-var last3 = function(as) {
-  return isNonEmpty4(as) ? some(last(as)) : none;
-};
-var findIndex = function(predicate) {
-  return function(as) {
-    for (var i2 = 0; i2 < as.length; i2++) {
-      if (predicate(as[i2])) {
-        return some(i2);
-      }
-    }
-    return none;
-  };
-};
-function findFirst(predicate) {
-  return function(as) {
-    for (var i2 = 0; i2 < as.length; i2++) {
-      if (predicate(as[i2])) {
-        return some(as[i2]);
-      }
-    }
-    return none;
-  };
-}
-var findFirstMap = function(f2) {
-  return function(as) {
-    for (var i2 = 0; i2 < as.length; i2++) {
-      var out = f2(as[i2]);
-      if (isSome(out)) {
-        return out;
-      }
-    }
-    return none;
-  };
-};
-function findLast(predicate) {
-  return function(as) {
-    for (var i2 = as.length - 1; i2 >= 0; i2--) {
-      if (predicate(as[i2])) {
-        return some(as[i2]);
-      }
-    }
-    return none;
-  };
-}
-var findLastMap = function(f2) {
-  return function(as) {
-    for (var i2 = as.length - 1; i2 >= 0; i2--) {
-      var out = f2(as[i2]);
-      if (isSome(out)) {
-        return out;
-      }
-    }
-    return none;
-  };
-};
-var findLastIndex = function(predicate) {
-  return function(as) {
-    for (var i2 = as.length - 1; i2 >= 0; i2--) {
-      if (predicate(as[i2])) {
-        return some(i2);
-      }
-    }
-    return none;
-  };
-};
-function elem(E2) {
-  return function(a2, as) {
-    if (as === void 0) {
-      var elemE_1 = elem(E2);
-      return function(as2) {
-        return elemE_1(a2, as2);
-      };
-    }
-    var predicate = function(element2) {
-      return E2.equals(element2, a2);
-    };
-    var i2 = 0;
-    for (; i2 < as.length; i2++) {
-      if (predicate(as[i2])) {
-        return true;
-      }
-    }
-    return false;
-  };
-}
-var _chainRecDepthFirst = function(a2, f2) {
-  return pipe(a2, chainRecDepthFirst(f2));
-};
-var _chainRecBreadthFirst = function(a2, f2) {
-  return pipe(a2, chainRecBreadthFirst(f2));
-};
-var foldMapWithIndex2 = function(M2) {
-  return function(f2) {
-    return function(fa) {
-      return fa.reduce(function(b2, a2, i2) {
-        return M2.concat(b2, f2(i2, a2));
-      }, M2.empty);
-    };
-  };
-};
-var reduce2 = function(b2, f2) {
-  return reduceWithIndex2(b2, function(_24, b3, a2) {
-    return f2(b3, a2);
-  });
-};
-var foldMap2 = function(M2) {
-  var foldMapWithIndexM = foldMapWithIndex2(M2);
-  return function(f2) {
-    return foldMapWithIndexM(function(_24, a2) {
-      return f2(a2);
-    });
-  };
-};
-var reduceWithIndex2 = function(b2, f2) {
-  return function(fa) {
-    var len = fa.length;
-    var out = b2;
-    for (var i2 = 0; i2 < len; i2++) {
-      out = f2(i2, out, fa[i2]);
-    }
-    return out;
-  };
-};
-var reduceRight2 = function(b2, f2) {
-  return reduceRightWithIndex2(b2, function(_24, a2, b3) {
-    return f2(a2, b3);
-  });
-};
-var reduceRightWithIndex2 = function(b2, f2) {
-  return function(fa) {
-    return fa.reduceRight(function(b3, a2, i2) {
-      return f2(i2, a2, b3);
-    }, b2);
-  };
-};
-var getShow2 = function(S2) {
-  return {
-    show: function(as) {
-      return "[".concat(as.map(S2.show).join(", "), "]");
-    }
-  };
-};
-var getEq2 = function(E2) {
-  return fromEquals(function(xs, ys) {
-    return xs.length === ys.length && xs.every(function(x2, i2) {
-      return E2.equals(x2, ys[i2]);
-    });
-  });
-};
-var getOrd = function(O2) {
-  return fromCompare(function(a2, b2) {
-    var aLen = a2.length;
-    var bLen = b2.length;
-    var len = Math.min(aLen, bLen);
-    for (var i2 = 0; i2 < len; i2++) {
-      var ordering = O2.compare(a2[i2], b2[i2]);
-      if (ordering !== 0) {
-        return ordering;
-      }
-    }
-    return Ord.compare(aLen, bLen);
-  });
-};
-var chainRecDepthFirst = function(f2) {
-  return function(a2) {
-    var todo = __spreadArray4([], f2(a2), true);
-    var out = [];
-    while (todo.length > 0) {
-      var e = todo.shift();
-      if (isLeft(e)) {
-        todo.unshift.apply(todo, f2(e.left));
-      } else {
-        out.push(e.right);
-      }
-    }
-    return out;
-  };
-};
-var chainRecBreadthFirst = function(f2) {
-  return function(a2) {
-    var initial = f2(a2);
-    var todo = [];
-    var out = [];
-    function go(e2) {
-      if (isLeft(e2)) {
-        f2(e2.left).forEach(function(v2) {
-          return todo.push(v2);
-        });
-      } else {
-        out.push(e2.right);
-      }
-    }
-    for (var _i = 0, initial_1 = initial; _i < initial_1.length; _i++) {
-      var e = initial_1[_i];
-      go(e);
-    }
-    while (todo.length > 0) {
-      go(todo.shift());
-    }
-    return out;
-  };
-};
-function every(predicate) {
-  return function(as) {
-    return as.every(predicate);
-  };
-}
-var intercalate2 = function(M2) {
-  var intercalateM = intercalate(M2);
-  return function(middle) {
-    return match(function() {
-      return M2.empty;
-    }, intercalateM(middle));
-  };
-};
-
-// node_modules/fp-ts/es6/Array.js
-var isEmpty = function(as) {
-  return as.length === 0;
-};
-var isNonEmpty5 = isNonEmpty3;
-var prepend3 = prepend2;
-var prependW3 = prependW2;
-var append4 = append2;
-var appendW3 = appendW;
-var makeBy3 = function(n2, f2) {
-  return n2 <= 0 ? [] : makeBy(f2)(n2);
-};
-var replicate = function(n2, a2) {
-  return makeBy3(n2, function() {
-    return a2;
-  });
-};
-function fromPredicate2(predicate) {
-  return function(a2) {
-    return predicate(a2) ? [a2] : [];
-  };
-}
-var fromOption2 = function(ma) {
-  return isNone(ma) ? [] : [ma.value];
-};
-var fromEither = function(e) {
-  return isLeft(e) ? [] : [e.right];
-};
-var matchW2 = function(onEmpty, onNonEmpty) {
-  return function(as) {
-    return isNonEmpty5(as) ? onNonEmpty(as) : onEmpty();
-  };
-};
-var match2 = matchW2;
-var matchLeftW = function(onEmpty, onNonEmpty) {
-  return function(as) {
-    return isNonEmpty5(as) ? onNonEmpty(head3(as), tail3(as)) : onEmpty();
-  };
-};
-var matchLeft = matchLeftW;
-var foldLeft = matchLeft;
-var matchRightW = function(onEmpty, onNonEmpty) {
-  return function(as) {
-    return isNonEmpty5(as) ? onNonEmpty(init2(as), last2(as)) : onEmpty();
-  };
-};
-var matchRight = matchRightW;
-var foldRight = matchRight;
-var chainWithIndex = function(f2) {
-  return function(as) {
-    var out = [];
-    for (var i2 = 0; i2 < as.length; i2++) {
-      out.push.apply(out, f2(i2, as[i2]));
-    }
-    return out;
-  };
-};
-var scanLeft = function(b2, f2) {
-  return function(as) {
-    var len = as.length;
-    var out = new Array(len + 1);
-    out[0] = b2;
-    for (var i2 = 0; i2 < len; i2++) {
-      out[i2 + 1] = f2(out[i2], as[i2]);
-    }
-    return out;
-  };
-};
-var scanRight = function(b2, f2) {
-  return function(as) {
-    var len = as.length;
-    var out = new Array(len + 1);
-    out[len] = b2;
-    for (var i2 = len - 1; i2 >= 0; i2--) {
-      out[i2] = f2(as[i2], out[i2 + 1]);
-    }
-    return out;
-  };
-};
-var size = function(as) {
-  return as.length;
-};
-var isOutOfBound4 = isOutOfBound2;
-var lookup2 = lookup;
-var head5 = head4;
-var last4 = last3;
-var tail4 = function(as) {
-  return isNonEmpty5(as) ? some(tail3(as)) : none;
-};
-var init4 = function(as) {
-  return isNonEmpty5(as) ? some(init2(as)) : none;
-};
-var takeLeft = function(n2) {
-  return function(as) {
-    return isOutOfBound4(n2, as) ? copy2(as) : as.slice(0, n2);
-  };
-};
-var takeRight = function(n2) {
-  return function(as) {
-    return isOutOfBound4(n2, as) ? copy2(as) : n2 === 0 ? [] : as.slice(-n2);
-  };
-};
-function takeLeftWhile(predicate) {
-  return function(as) {
-    var out = [];
-    for (var _i = 0, as_1 = as; _i < as_1.length; _i++) {
-      var a2 = as_1[_i];
-      if (!predicate(a2)) {
-        break;
-      }
-      out.push(a2);
-    }
-    return out;
-  };
-}
-var spanLeftIndex = function(as, predicate) {
-  var l2 = as.length;
-  var i2 = 0;
-  for (; i2 < l2; i2++) {
-    if (!predicate(as[i2])) {
-      break;
-    }
-  }
-  return i2;
-};
-function spanLeft(predicate) {
-  return function(as) {
-    var _a = splitAt3(spanLeftIndex(as, predicate))(as), init6 = _a[0], rest = _a[1];
-    return { init: init6, rest };
-  };
-}
-var dropLeft = function(n2) {
-  return function(as) {
-    return n2 <= 0 || isEmpty(as) ? copy2(as) : n2 >= as.length ? [] : as.slice(n2, as.length);
-  };
-};
-var dropRight = function(n2) {
-  return function(as) {
-    return n2 <= 0 || isEmpty(as) ? copy2(as) : n2 >= as.length ? [] : as.slice(0, as.length - n2);
-  };
-};
-function dropLeftWhile(predicate) {
-  return function(as) {
-    return as.slice(spanLeftIndex(as, predicate));
-  };
-}
-var findIndex2 = findIndex;
-function findFirst2(predicate) {
-  return findFirst(predicate);
-}
-var findFirstMap2 = findFirstMap;
-function findLast2(predicate) {
-  return findLast(predicate);
-}
-var findLastMap2 = findLastMap;
-var findLastIndex2 = findLastIndex;
-var copy2 = function(as) {
-  return as.slice();
-};
-var insertAt = function(i2, a2) {
-  return function(as) {
-    return i2 < 0 || i2 > as.length ? none : some(unsafeInsertAt3(i2, a2, as));
-  };
-};
-var updateAt = function(i2, a2) {
-  return modifyAt(i2, function() {
-    return a2;
-  });
-};
-var deleteAt = function(i2) {
-  return function(as) {
-    return isOutOfBound4(i2, as) ? none : some(unsafeDeleteAt(i2, as));
-  };
-};
-var modifyAt = function(i2, f2) {
-  return function(as) {
-    return isOutOfBound4(i2, as) ? none : some(unsafeUpdateAt3(i2, f2(as[i2]), as));
-  };
-};
-var reverse = function(as) {
-  return isEmpty(as) ? [] : as.slice().reverse();
-};
-var rights = function(as) {
-  var r2 = [];
-  for (var i2 = 0; i2 < as.length; i2++) {
-    var a2 = as[i2];
-    if (a2._tag === "Right") {
-      r2.push(a2.right);
-    }
-  }
-  return r2;
-};
-var lefts = function(as) {
-  var r2 = [];
-  for (var i2 = 0; i2 < as.length; i2++) {
-    var a2 = as[i2];
-    if (a2._tag === "Left") {
-      r2.push(a2.left);
-    }
-  }
-  return r2;
-};
-var sort2 = function(O2) {
-  return function(as) {
-    return as.length <= 1 ? copy2(as) : as.slice().sort(O2.compare);
-  };
-};
-var zipWith = function(fa, fb, f2) {
-  var fc = [];
-  var len = Math.min(fa.length, fb.length);
-  for (var i2 = 0; i2 < len; i2++) {
-    fc[i2] = f2(fa[i2], fb[i2]);
-  }
-  return fc;
-};
-function zip(as, bs) {
-  if (bs === void 0) {
-    return function(bs2) {
-      return zip(bs2, as);
-    };
-  }
-  return zipWith(as, bs, function(a2, b2) {
-    return [a2, b2];
-  });
-}
-var unzip = function(as) {
-  var fa = [];
-  var fb = [];
-  for (var i2 = 0; i2 < as.length; i2++) {
-    fa[i2] = as[i2][0];
-    fb[i2] = as[i2][1];
-  }
-  return [fa, fb];
-};
-var prependAll3 = function(middle) {
-  var f2 = prependAll2(middle);
-  return function(as) {
-    return isNonEmpty5(as) ? f2(as) : [];
-  };
-};
-var intersperse3 = function(middle) {
-  var f2 = intersperse2(middle);
-  return function(as) {
-    return isNonEmpty5(as) ? f2(as) : copy2(as);
-  };
-};
-var rotate3 = function(n2) {
-  var f2 = rotate(n2);
-  return function(as) {
-    return isNonEmpty5(as) ? f2(as) : copy2(as);
-  };
-};
-var elem2 = elem;
-var uniq3 = function(E2) {
-  var f2 = uniq(E2);
-  return function(as) {
-    return isNonEmpty5(as) ? f2(as) : copy2(as);
-  };
-};
-var sortBy3 = function(ords) {
-  var f2 = sortBy(ords);
-  return function(as) {
-    return isNonEmpty5(as) ? f2(as) : copy2(as);
-  };
-};
-var chop3 = function(f2) {
-  var g2 = chop(f2);
-  return function(as) {
-    return isNonEmpty5(as) ? g2(as) : [];
-  };
-};
-var splitAt3 = function(n2) {
-  return function(as) {
-    return n2 >= 1 && isNonEmpty5(as) ? splitAt(n2)(as) : isEmpty(as) ? [copy2(as), []] : [[], copy2(as)];
-  };
-};
-var chunksOf3 = function(n2) {
-  var f2 = chunksOf(n2);
-  return function(as) {
-    return isNonEmpty5(as) ? f2(as) : [];
-  };
-};
-var fromOptionK2 = function(f2) {
-  return function() {
-    var a2 = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      a2[_i] = arguments[_i];
-    }
-    return fromOption2(f2.apply(void 0, a2));
-  };
-};
-function comprehension(input, f2, g2) {
-  if (g2 === void 0) {
-    g2 = function() {
-      return true;
-    };
-  }
-  var go = function(scope, input2) {
-    return isNonEmpty5(input2) ? pipe(head3(input2), chain(function(x2) {
-      return go(pipe(scope, append4(x2)), tail3(input2));
-    })) : g2.apply(void 0, scope) ? [f2.apply(void 0, scope)] : [];
-  };
-  return go([], input);
-}
-var concatW = function(second) {
-  return function(first) {
-    return isEmpty(first) ? copy2(second) : isEmpty(second) ? copy2(first) : first.concat(second);
-  };
-};
-var concat2 = concatW;
-function union3(E2) {
-  var unionE = union(E2);
-  return function(first, second) {
-    if (second === void 0) {
-      var unionE_1 = union3(E2);
-      return function(second2) {
-        return unionE_1(second2, first);
-      };
-    }
-    return isNonEmpty5(first) && isNonEmpty5(second) ? unionE(second)(first) : isNonEmpty5(first) ? copy2(first) : copy2(second);
-  };
-}
-function intersection(E2) {
-  var elemE = elem2(E2);
-  return function(xs, ys) {
-    if (ys === void 0) {
-      var intersectionE_1 = intersection(E2);
-      return function(ys2) {
-        return intersectionE_1(ys2, xs);
-      };
-    }
-    return xs.filter(function(a2) {
-      return elemE(a2, ys);
-    });
-  };
-}
-function difference(E2) {
-  var elemE = elem2(E2);
-  return function(xs, ys) {
-    if (ys === void 0) {
-      var differenceE_1 = difference(E2);
-      return function(ys2) {
-        return differenceE_1(ys2, xs);
-      };
-    }
-    return xs.filter(function(a2) {
-      return !elemE(a2, ys);
-    });
-  };
-}
-var _map = function(fa, f2) {
-  return pipe(fa, map2(f2));
-};
-var _mapWithIndex = function(fa, f2) {
-  return pipe(fa, mapWithIndex(f2));
-};
-var _ap = function(fab, fa) {
-  return pipe(fab, ap2(fa));
-};
-var _chain = function(ma, f2) {
-  return pipe(ma, chain(f2));
-};
-var _filter = function(fa, predicate) {
-  return pipe(fa, filter(predicate));
-};
-var _filterMap = function(fa, f2) {
-  return pipe(fa, filterMap(f2));
-};
-var _partition = function(fa, predicate) {
-  return pipe(fa, partition(predicate));
-};
-var _partitionMap = function(fa, f2) {
-  return pipe(fa, partitionMap(f2));
-};
-var _partitionWithIndex = function(fa, predicateWithIndex) {
-  return pipe(fa, partitionWithIndex(predicateWithIndex));
-};
-var _partitionMapWithIndex = function(fa, f2) {
-  return pipe(fa, partitionMapWithIndex(f2));
-};
-var _alt = function(fa, that) {
-  return pipe(fa, alt(that));
-};
-var _reduce = function(fa, b2, f2) {
-  return pipe(fa, reduce3(b2, f2));
-};
-var _foldMap = function(M2) {
-  var foldMapM = foldMap3(M2);
-  return function(fa, f2) {
-    return pipe(fa, foldMapM(f2));
-  };
-};
-var _reduceRight = function(fa, b2, f2) {
-  return pipe(fa, reduceRight3(b2, f2));
-};
-var _reduceWithIndex = function(fa, b2, f2) {
-  return pipe(fa, reduceWithIndex3(b2, f2));
-};
-var _foldMapWithIndex = function(M2) {
-  var foldMapWithIndexM = foldMapWithIndex3(M2);
-  return function(fa, f2) {
-    return pipe(fa, foldMapWithIndexM(f2));
-  };
-};
-var _reduceRightWithIndex = function(fa, b2, f2) {
-  return pipe(fa, reduceRightWithIndex3(b2, f2));
-};
-var _filterMapWithIndex = function(fa, f2) {
-  return pipe(fa, filterMapWithIndex(f2));
-};
-var _filterWithIndex = function(fa, predicateWithIndex) {
-  return pipe(fa, filterWithIndex(predicateWithIndex));
-};
-var _extend = function(fa, f2) {
-  return pipe(fa, extend(f2));
-};
-var _traverse = function(F2) {
-  var traverseF = traverse(F2);
-  return function(ta, f2) {
-    return pipe(ta, traverseF(f2));
-  };
-};
-var _traverseWithIndex = function(F2) {
-  var traverseWithIndexF = traverseWithIndex(F2);
-  return function(ta, f2) {
-    return pipe(ta, traverseWithIndexF(f2));
-  };
-};
-var _chainRecDepthFirst2 = _chainRecDepthFirst;
-var _chainRecBreadthFirst2 = _chainRecBreadthFirst;
-var of3 = of;
-var zero = function() {
-  return [];
-};
-var map2 = function(f2) {
-  return function(fa) {
-    return fa.map(function(a2) {
-      return f2(a2);
-    });
-  };
-};
-var ap2 = function(fa) {
-  return chain(function(f2) {
-    return pipe(fa, map2(f2));
-  });
-};
-var chain = function(f2) {
-  return function(ma) {
-    return pipe(ma, chainWithIndex(function(_24, a2) {
-      return f2(a2);
-    }));
-  };
-};
-var flatten = /* @__PURE__ */ chain(identity2);
-var mapWithIndex = function(f2) {
-  return function(fa) {
-    return fa.map(function(a2, i2) {
-      return f2(i2, a2);
-    });
-  };
-};
-var filterMapWithIndex = function(f2) {
-  return function(fa) {
-    var out = [];
-    for (var i2 = 0; i2 < fa.length; i2++) {
-      var optionB = f2(i2, fa[i2]);
-      if (isSome(optionB)) {
-        out.push(optionB.value);
-      }
-    }
-    return out;
-  };
-};
-var filterMap = function(f2) {
-  return filterMapWithIndex(function(_24, a2) {
-    return f2(a2);
-  });
-};
-var compact = /* @__PURE__ */ filterMap(identity2);
-var separate = function(fa) {
-  var left6 = [];
-  var right6 = [];
-  for (var _i = 0, fa_1 = fa; _i < fa_1.length; _i++) {
-    var e = fa_1[_i];
-    if (e._tag === "Left") {
-      left6.push(e.left);
-    } else {
-      right6.push(e.right);
-    }
-  }
-  return separated(left6, right6);
-};
-var filter = function(predicate) {
-  return function(as) {
-    return as.filter(predicate);
-  };
-};
-var partition = function(predicate) {
-  return partitionWithIndex(function(_24, a2) {
-    return predicate(a2);
-  });
-};
-var partitionWithIndex = function(predicateWithIndex) {
-  return function(as) {
-    var left6 = [];
-    var right6 = [];
-    for (var i2 = 0; i2 < as.length; i2++) {
-      var b2 = as[i2];
-      if (predicateWithIndex(i2, b2)) {
-        right6.push(b2);
-      } else {
-        left6.push(b2);
-      }
-    }
-    return separated(left6, right6);
-  };
-};
-var partitionMap = function(f2) {
-  return partitionMapWithIndex(function(_24, a2) {
-    return f2(a2);
-  });
-};
-var partitionMapWithIndex = function(f2) {
-  return function(fa) {
-    var left6 = [];
-    var right6 = [];
-    for (var i2 = 0; i2 < fa.length; i2++) {
-      var e = f2(i2, fa[i2]);
-      if (e._tag === "Left") {
-        left6.push(e.left);
-      } else {
-        right6.push(e.right);
-      }
-    }
-    return separated(left6, right6);
-  };
-};
-var altW = function(that) {
-  return function(fa) {
-    return fa.concat(that());
-  };
-};
-var alt = altW;
-var filterWithIndex = function(predicateWithIndex) {
-  return function(as) {
-    return as.filter(function(b2, i2) {
-      return predicateWithIndex(i2, b2);
-    });
-  };
-};
-var extend = function(f2) {
-  return function(wa) {
-    return wa.map(function(_24, i2) {
-      return f2(wa.slice(i2));
-    });
-  };
-};
-var duplicate = /* @__PURE__ */ extend(identity2);
-var foldMap3 = foldMap2;
-var foldMapWithIndex3 = foldMapWithIndex2;
-var reduce3 = reduce2;
-var reduceWithIndex3 = reduceWithIndex2;
-var reduceRight3 = reduceRight2;
-var reduceRightWithIndex3 = reduceRightWithIndex2;
-var traverse = function(F2) {
-  var traverseWithIndexF = traverseWithIndex(F2);
-  return function(f2) {
-    return traverseWithIndexF(function(_24, a2) {
-      return f2(a2);
-    });
-  };
-};
-var sequence = function(F2) {
-  return function(ta) {
-    return _reduce(ta, F2.of(zero()), function(fas, fa) {
-      return F2.ap(F2.map(fas, function(as) {
-        return function(a2) {
-          return pipe(as, append4(a2));
-        };
-      }), fa);
-    });
-  };
-};
-var traverseWithIndex = function(F2) {
-  return function(f2) {
-    return reduceWithIndex3(F2.of(zero()), function(i2, fbs, a2) {
-      return F2.ap(F2.map(fbs, function(bs) {
-        return function(b2) {
-          return pipe(bs, append4(b2));
-        };
-      }), f2(i2, a2));
-    });
-  };
-};
-var wither = function(F2) {
-  var _witherF = _wither(F2);
-  return function(f2) {
-    return function(fa) {
-      return _witherF(fa, f2);
-    };
-  };
-};
-var wilt = function(F2) {
-  var _wiltF = _wilt(F2);
-  return function(f2) {
-    return function(fa) {
-      return _wiltF(fa, f2);
-    };
-  };
-};
-var unfold = function(b2, f2) {
-  var out = [];
-  var bb = b2;
-  while (true) {
-    var mt = f2(bb);
-    if (isSome(mt)) {
-      var _a = mt.value, a2 = _a[0], b_1 = _a[1];
-      out.push(a2);
-      bb = b_1;
-    } else {
-      break;
-    }
-  }
-  return out;
-};
-var URI = "Array";
-var getShow3 = getShow2;
-var getSemigroup3 = function() {
-  return {
-    concat: function(first, second) {
-      return first.concat(second);
-    }
-  };
-};
-var getMonoid3 = function() {
-  return {
-    concat: getSemigroup3().concat,
-    empty: []
-  };
-};
-var getEq3 = getEq2;
-var getOrd2 = getOrd;
-var getUnionSemigroup = function(E2) {
-  var unionE = union3(E2);
-  return {
-    concat: function(first, second) {
-      return unionE(second)(first);
-    }
-  };
-};
-var getUnionMonoid = function(E2) {
-  return {
-    concat: getUnionSemigroup(E2).concat,
-    empty: []
-  };
-};
-var getIntersectionSemigroup = function(E2) {
-  var intersectionE = intersection(E2);
-  return {
-    concat: function(first, second) {
-      return intersectionE(second)(first);
-    }
-  };
-};
-var getDifferenceMagma = function(E2) {
-  var differenceE = difference(E2);
-  return {
-    concat: function(first, second) {
-      return differenceE(second)(first);
-    }
-  };
-};
-var Functor = {
-  URI,
-  map: _map
-};
-var flap2 = /* @__PURE__ */ flap(Functor);
-var Pointed = {
-  URI,
-  of: of3
-};
-var FunctorWithIndex = {
-  URI,
-  map: _map,
-  mapWithIndex: _mapWithIndex
-};
-var Apply = {
-  URI,
-  map: _map,
-  ap: _ap
-};
-var apFirst2 = /* @__PURE__ */ apFirst(Apply);
-var apSecond2 = /* @__PURE__ */ apSecond(Apply);
-var Applicative = {
-  URI,
-  map: _map,
-  ap: _ap,
-  of: of3
-};
-var Chain = {
-  URI,
-  map: _map,
-  ap: _ap,
-  chain: _chain
-};
-var chainFirst2 = /* @__PURE__ */ chainFirst(Chain);
-var Monad = {
-  URI,
-  map: _map,
-  ap: _ap,
-  of: of3,
-  chain: _chain
-};
-var Unfoldable = {
-  URI,
-  unfold
-};
-var Alt = {
-  URI,
-  map: _map,
-  alt: _alt
-};
-var Zero = {
-  URI,
-  zero
-};
-var guard2 = /* @__PURE__ */ guard(Zero, Pointed);
-var Alternative = {
-  URI,
-  map: _map,
-  ap: _ap,
-  of: of3,
-  alt: _alt,
-  zero
-};
-var Extend = {
-  URI,
-  map: _map,
-  extend: _extend
-};
-var Compactable = {
-  URI,
-  compact,
-  separate
-};
-var Filterable = {
-  URI,
-  map: _map,
-  compact,
-  separate,
-  filter: _filter,
-  filterMap: _filterMap,
-  partition: _partition,
-  partitionMap: _partitionMap
-};
-var FilterableWithIndex = {
-  URI,
-  map: _map,
-  mapWithIndex: _mapWithIndex,
-  compact,
-  separate,
-  filter: _filter,
-  filterMap: _filterMap,
-  partition: _partition,
-  partitionMap: _partitionMap,
-  partitionMapWithIndex: _partitionMapWithIndex,
-  partitionWithIndex: _partitionWithIndex,
-  filterMapWithIndex: _filterMapWithIndex,
-  filterWithIndex: _filterWithIndex
-};
-var Foldable = {
-  URI,
-  reduce: _reduce,
-  foldMap: _foldMap,
-  reduceRight: _reduceRight
-};
-var FoldableWithIndex = {
-  URI,
-  reduce: _reduce,
-  foldMap: _foldMap,
-  reduceRight: _reduceRight,
-  reduceWithIndex: _reduceWithIndex,
-  foldMapWithIndex: _foldMapWithIndex,
-  reduceRightWithIndex: _reduceRightWithIndex
-};
-var Traversable = {
-  URI,
-  map: _map,
-  reduce: _reduce,
-  foldMap: _foldMap,
-  reduceRight: _reduceRight,
-  traverse: _traverse,
-  sequence
-};
-var TraversableWithIndex = {
-  URI,
-  map: _map,
-  mapWithIndex: _mapWithIndex,
-  reduce: _reduce,
-  foldMap: _foldMap,
-  reduceRight: _reduceRight,
-  reduceWithIndex: _reduceWithIndex,
-  foldMapWithIndex: _foldMapWithIndex,
-  reduceRightWithIndex: _reduceRightWithIndex,
-  traverse: _traverse,
-  sequence,
-  traverseWithIndex: _traverseWithIndex
-};
-var _wither = /* @__PURE__ */ witherDefault(Traversable, Compactable);
-var _wilt = /* @__PURE__ */ wiltDefault(Traversable, Compactable);
-var Witherable = {
-  URI,
-  map: _map,
-  compact,
-  separate,
-  filter: _filter,
-  filterMap: _filterMap,
-  partition: _partition,
-  partitionMap: _partitionMap,
-  reduce: _reduce,
-  foldMap: _foldMap,
-  reduceRight: _reduceRight,
-  traverse: _traverse,
-  sequence,
-  wither: _wither,
-  wilt: _wilt
-};
-var chainRecDepthFirst2 = chainRecDepthFirst;
-var ChainRecDepthFirst = {
-  URI,
-  map: _map,
-  ap: _ap,
-  chain: _chain,
-  chainRec: _chainRecDepthFirst2
-};
-var chainRecBreadthFirst2 = chainRecBreadthFirst;
-var ChainRecBreadthFirst = {
-  URI,
-  map: _map,
-  ap: _ap,
-  chain: _chain,
-  chainRec: _chainRecBreadthFirst2
-};
-var filterE2 = /* @__PURE__ */ filterE(Witherable);
-var FromEither = {
-  URI,
-  fromEither
-};
-var fromEitherK2 = /* @__PURE__ */ fromEitherK(FromEither);
-var unsafeInsertAt3 = unsafeInsertAt;
-var unsafeUpdateAt3 = function(i2, a2, as) {
-  return isNonEmpty5(as) ? unsafeUpdateAt(i2, a2, as) : [];
-};
-var unsafeDeleteAt = function(i2, as) {
-  var xs = as.slice();
-  xs.splice(i2, 1);
-  return xs;
-};
-var every2 = every;
-var some2 = function(predicate) {
-  return function(as) {
-    return as.some(predicate);
-  };
-};
-var exists = some2;
-var intercalate3 = intercalate2;
-var Do = /* @__PURE__ */ of3(emptyRecord);
-var bindTo2 = /* @__PURE__ */ bindTo(Functor);
-var let_2 = /* @__PURE__ */ let_(Functor);
-var bind3 = /* @__PURE__ */ bind2(Chain);
-var apS2 = /* @__PURE__ */ apS(Apply);
-var range3 = range;
-var empty3 = [];
-var cons3 = cons;
-var snoc3 = snoc;
-var prependToAll = prependAll3;
-var array = {
-  URI,
-  compact,
-  separate,
-  map: _map,
-  ap: _ap,
-  of: of3,
-  chain: _chain,
-  filter: _filter,
-  filterMap: _filterMap,
-  partition: _partition,
-  partitionMap: _partitionMap,
-  mapWithIndex: _mapWithIndex,
-  partitionMapWithIndex: _partitionMapWithIndex,
-  partitionWithIndex: _partitionWithIndex,
-  filterMapWithIndex: _filterMapWithIndex,
-  filterWithIndex: _filterWithIndex,
-  alt: _alt,
-  zero,
-  unfold,
-  reduce: _reduce,
-  foldMap: _foldMap,
-  reduceRight: _reduceRight,
-  traverse: _traverse,
-  sequence,
-  reduceWithIndex: _reduceWithIndex,
-  foldMapWithIndex: _foldMapWithIndex,
-  reduceRightWithIndex: _reduceRightWithIndex,
-  traverseWithIndex: _traverseWithIndex,
-  extend: _extend,
-  wither: _wither,
-  wilt: _wilt
-};
-
-// node_modules/fp-ts/es6/ChainRec.js
-var tailRec = function(startWith, f2) {
-  var ab = f2(startWith);
-  while (ab._tag === "Left") {
-    ab = f2(ab.left);
-  }
-  return ab.right;
-};
-
-// node_modules/fp-ts/es6/Predicate.js
-var not2 = function(predicate) {
-  return function(a2) {
-    return !predicate(a2);
-  };
-};
-
-// node_modules/fp-ts/es6/Option.js
-var none2 = none;
-var some3 = some;
-var getLeft = function(ma) {
-  return ma._tag === "Right" ? none2 : some3(ma.left);
-};
-var getRight = function(ma) {
-  return ma._tag === "Left" ? none2 : some3(ma.right);
-};
-
-// node_modules/fp-ts/es6/Compactable.js
-function compact2(F2, G2) {
-  return function(fga) {
-    return F2.map(fga, G2.compact);
-  };
-}
-function separate2(F2, C, G2) {
-  var _compact = compact2(F2, C);
-  var _map5 = map(F2, G2);
-  return function(fge) {
-    return separated(_compact(pipe(fge, _map5(getLeft))), _compact(pipe(fge, _map5(getRight))));
-  };
-}
-
-// node_modules/fp-ts/es6/Either.js
-var Either_exports = {};
-__export(Either_exports, {
-  Alt: () => Alt2,
-  ApT: () => ApT,
-  Applicative: () => Applicative2,
-  Apply: () => Apply2,
-  Bifunctor: () => Bifunctor,
-  Chain: () => Chain2,
-  ChainRec: () => ChainRec,
-  Do: () => Do2,
-  Extend: () => Extend2,
-  Foldable: () => Foldable2,
-  FromEither: () => FromEither2,
-  Functor: () => Functor2,
-  Monad: () => Monad2,
-  MonadThrow: () => MonadThrow,
-  Pointed: () => Pointed2,
-  Traversable: () => Traversable2,
-  URI: () => URI2,
-  alt: () => alt2,
-  altW: () => altW2,
-  ap: () => ap3,
-  apFirst: () => apFirst3,
-  apFirstW: () => apFirstW,
-  apS: () => apS3,
-  apSW: () => apSW,
-  apSecond: () => apSecond3,
-  apSecondW: () => apSecondW,
-  apW: () => apW,
-  bimap: () => bimap,
-  bind: () => bind4,
-  bindTo: () => bindTo3,
-  bindW: () => bindW,
-  chain: () => chain2,
-  chainFirst: () => chainFirst3,
-  chainFirstW: () => chainFirstW,
-  chainNullableK: () => chainNullableK,
-  chainOptionK: () => chainOptionK2,
-  chainW: () => chainW,
-  duplicate: () => duplicate2,
-  either: () => either,
-  elem: () => elem3,
-  exists: () => exists2,
-  extend: () => extend2,
-  filterOrElse: () => filterOrElse2,
-  filterOrElseW: () => filterOrElseW,
-  flap: () => flap3,
-  flatten: () => flatten2,
-  flattenW: () => flattenW,
-  fold: () => fold,
-  foldMap: () => foldMap4,
-  foldW: () => foldW,
-  fromNullable: () => fromNullable,
-  fromNullableK: () => fromNullableK,
-  fromOption: () => fromOption3,
-  fromOptionK: () => fromOptionK3,
-  fromPredicate: () => fromPredicate3,
-  getAltValidation: () => getAltValidation,
-  getApplicativeValidation: () => getApplicativeValidation,
-  getApplyMonoid: () => getApplyMonoid,
-  getApplySemigroup: () => getApplySemigroup2,
-  getCompactable: () => getCompactable,
-  getEq: () => getEq4,
-  getFilterable: () => getFilterable,
-  getOrElse: () => getOrElse,
-  getOrElseW: () => getOrElseW,
-  getSemigroup: () => getSemigroup4,
-  getShow: () => getShow4,
-  getValidation: () => getValidation,
-  getValidationMonoid: () => getValidationMonoid,
-  getValidationSemigroup: () => getValidationSemigroup,
-  getWitherable: () => getWitherable,
-  isLeft: () => isLeft2,
-  isRight: () => isRight2,
-  left: () => left2,
-  let: () => let_3,
-  map: () => map3,
-  mapLeft: () => mapLeft,
-  match: () => match3,
-  matchW: () => matchW3,
-  of: () => of4,
-  orElse: () => orElse,
-  orElseW: () => orElseW,
-  parseJSON: () => parseJSON,
-  reduce: () => reduce4,
-  reduceRight: () => reduceRight4,
-  right: () => right2,
-  sequence: () => sequence2,
-  sequenceArray: () => sequenceArray,
-  stringifyJSON: () => stringifyJSON,
-  swap: () => swap,
-  throwError: () => throwError,
-  toError: () => toError,
-  toUnion: () => toUnion,
-  traverse: () => traverse2,
-  traverseArray: () => traverseArray,
-  traverseArrayWithIndex: () => traverseArrayWithIndex,
-  traverseReadonlyArrayWithIndex: () => traverseReadonlyArrayWithIndex,
-  traverseReadonlyNonEmptyArrayWithIndex: () => traverseReadonlyNonEmptyArrayWithIndex,
-  tryCatch: () => tryCatch,
-  tryCatchK: () => tryCatchK
-});
-var left2 = left;
-var right2 = right;
-var _map2 = function(fa, f2) {
-  return pipe(fa, map3(f2));
-};
-var _ap2 = function(fab, fa) {
-  return pipe(fab, ap3(fa));
-};
-var _chain2 = function(ma, f2) {
-  return pipe(ma, chain2(f2));
-};
-var _reduce2 = function(fa, b2, f2) {
-  return pipe(fa, reduce4(b2, f2));
-};
-var _foldMap2 = function(M2) {
-  return function(fa, f2) {
-    var foldMapM = foldMap4(M2);
-    return pipe(fa, foldMapM(f2));
-  };
-};
-var _reduceRight2 = function(fa, b2, f2) {
-  return pipe(fa, reduceRight4(b2, f2));
-};
-var _traverse2 = function(F2) {
-  var traverseF = traverse2(F2);
-  return function(ta, f2) {
-    return pipe(ta, traverseF(f2));
-  };
-};
-var _bimap = function(fa, f2, g2) {
-  return pipe(fa, bimap(f2, g2));
-};
-var _mapLeft = function(fa, f2) {
-  return pipe(fa, mapLeft(f2));
-};
-var _alt2 = function(fa, that) {
-  return pipe(fa, alt2(that));
-};
-var _extend2 = function(wa, f2) {
-  return pipe(wa, extend2(f2));
-};
-var _chainRec = function(a2, f2) {
-  return tailRec(f2(a2), function(e) {
-    return isLeft2(e) ? right2(left2(e.left)) : isLeft2(e.right) ? left2(f2(e.right.left)) : right2(right2(e.right.right));
-  });
-};
-var URI2 = "Either";
-var getShow4 = function(SE, SA) {
-  return {
-    show: function(ma) {
-      return isLeft2(ma) ? "left(".concat(SE.show(ma.left), ")") : "right(".concat(SA.show(ma.right), ")");
-    }
-  };
-};
-var getEq4 = function(EL, EA) {
-  return {
-    equals: function(x2, y2) {
-      return x2 === y2 || (isLeft2(x2) ? isLeft2(y2) && EL.equals(x2.left, y2.left) : isRight2(y2) && EA.equals(x2.right, y2.right));
-    }
-  };
-};
-var getSemigroup4 = function(S2) {
-  return {
-    concat: function(x2, y2) {
-      return isLeft2(y2) ? x2 : isLeft2(x2) ? y2 : right2(S2.concat(x2.right, y2.right));
-    }
-  };
-};
-var getCompactable = function(M2) {
-  var empty4 = left2(M2.empty);
-  return {
-    URI: URI2,
-    _E: void 0,
-    compact: function(ma) {
-      return isLeft2(ma) ? ma : ma.right._tag === "None" ? empty4 : right2(ma.right.value);
-    },
-    separate: function(ma) {
-      return isLeft2(ma) ? separated(ma, ma) : isLeft2(ma.right) ? separated(right2(ma.right.left), empty4) : separated(empty4, right2(ma.right.right));
-    }
-  };
-};
-var getFilterable = function(M2) {
-  var empty4 = left2(M2.empty);
-  var _a = getCompactable(M2), compact3 = _a.compact, separate3 = _a.separate;
-  var filter3 = function(ma, predicate) {
-    return isLeft2(ma) ? ma : predicate(ma.right) ? ma : empty4;
-  };
-  var partition3 = function(ma, p2) {
-    return isLeft2(ma) ? separated(ma, ma) : p2(ma.right) ? separated(empty4, right2(ma.right)) : separated(right2(ma.right), empty4);
-  };
-  return {
-    URI: URI2,
-    _E: void 0,
-    map: _map2,
-    compact: compact3,
-    separate: separate3,
-    filter: filter3,
-    filterMap: function(ma, f2) {
-      if (isLeft2(ma)) {
-        return ma;
-      }
-      var ob = f2(ma.right);
-      return ob._tag === "None" ? empty4 : right2(ob.value);
-    },
-    partition: partition3,
-    partitionMap: function(ma, f2) {
-      if (isLeft2(ma)) {
-        return separated(ma, ma);
-      }
-      var e = f2(ma.right);
-      return isLeft2(e) ? separated(right2(e.left), empty4) : separated(empty4, right2(e.right));
-    }
-  };
-};
-var getWitherable = function(M2) {
-  var F_ = getFilterable(M2);
-  var C = getCompactable(M2);
-  return {
-    URI: URI2,
-    _E: void 0,
-    map: _map2,
-    compact: F_.compact,
-    separate: F_.separate,
-    filter: F_.filter,
-    filterMap: F_.filterMap,
-    partition: F_.partition,
-    partitionMap: F_.partitionMap,
-    traverse: _traverse2,
-    sequence: sequence2,
-    reduce: _reduce2,
-    foldMap: _foldMap2,
-    reduceRight: _reduceRight2,
-    wither: witherDefault(Traversable2, C),
-    wilt: wiltDefault(Traversable2, C)
-  };
-};
-var getApplicativeValidation = function(SE) {
-  return {
-    URI: URI2,
-    _E: void 0,
-    map: _map2,
-    ap: function(fab, fa) {
-      return isLeft2(fab) ? isLeft2(fa) ? left2(SE.concat(fab.left, fa.left)) : fab : isLeft2(fa) ? fa : right2(fab.right(fa.right));
-    },
-    of: of4
-  };
-};
-var getAltValidation = function(SE) {
-  return {
-    URI: URI2,
-    _E: void 0,
-    map: _map2,
-    alt: function(me, that) {
-      if (isRight2(me)) {
-        return me;
-      }
-      var ea = that();
-      return isLeft2(ea) ? left2(SE.concat(me.left, ea.left)) : ea;
-    }
-  };
-};
-var map3 = function(f2) {
-  return function(fa) {
-    return isLeft2(fa) ? fa : right2(f2(fa.right));
-  };
-};
-var Functor2 = {
-  URI: URI2,
-  map: _map2
-};
-var of4 = right2;
-var Pointed2 = {
-  URI: URI2,
-  of: of4
-};
-var apW = function(fa) {
-  return function(fab) {
-    return isLeft2(fab) ? fab : isLeft2(fa) ? fa : right2(fab.right(fa.right));
-  };
-};
-var ap3 = apW;
-var Apply2 = {
-  URI: URI2,
-  map: _map2,
-  ap: _ap2
-};
-var Applicative2 = {
-  URI: URI2,
-  map: _map2,
-  ap: _ap2,
-  of: of4
-};
-var chainW = function(f2) {
-  return function(ma) {
-    return isLeft2(ma) ? ma : f2(ma.right);
-  };
-};
-var chain2 = chainW;
-var Chain2 = {
-  URI: URI2,
-  map: _map2,
-  ap: _ap2,
-  chain: _chain2
-};
-var Monad2 = {
-  URI: URI2,
-  map: _map2,
-  ap: _ap2,
-  of: of4,
-  chain: _chain2
-};
-var reduce4 = function(b2, f2) {
-  return function(fa) {
-    return isLeft2(fa) ? b2 : f2(b2, fa.right);
-  };
-};
-var foldMap4 = function(M2) {
-  return function(f2) {
-    return function(fa) {
-      return isLeft2(fa) ? M2.empty : f2(fa.right);
-    };
-  };
-};
-var reduceRight4 = function(b2, f2) {
-  return function(fa) {
-    return isLeft2(fa) ? b2 : f2(fa.right, b2);
-  };
-};
-var Foldable2 = {
-  URI: URI2,
-  reduce: _reduce2,
-  foldMap: _foldMap2,
-  reduceRight: _reduceRight2
-};
-var traverse2 = function(F2) {
-  return function(f2) {
-    return function(ta) {
-      return isLeft2(ta) ? F2.of(left2(ta.left)) : F2.map(f2(ta.right), right2);
-    };
-  };
-};
-var sequence2 = function(F2) {
-  return function(ma) {
-    return isLeft2(ma) ? F2.of(left2(ma.left)) : F2.map(ma.right, right2);
-  };
-};
-var Traversable2 = {
-  URI: URI2,
-  map: _map2,
-  reduce: _reduce2,
-  foldMap: _foldMap2,
-  reduceRight: _reduceRight2,
-  traverse: _traverse2,
-  sequence: sequence2
-};
-var bimap = function(f2, g2) {
-  return function(fa) {
-    return isLeft2(fa) ? left2(f2(fa.left)) : right2(g2(fa.right));
-  };
-};
-var mapLeft = function(f2) {
-  return function(fa) {
-    return isLeft2(fa) ? left2(f2(fa.left)) : fa;
-  };
-};
-var Bifunctor = {
-  URI: URI2,
-  bimap: _bimap,
-  mapLeft: _mapLeft
-};
-var altW2 = function(that) {
-  return function(fa) {
-    return isLeft2(fa) ? that() : fa;
-  };
-};
-var alt2 = altW2;
-var Alt2 = {
-  URI: URI2,
-  map: _map2,
-  alt: _alt2
-};
-var extend2 = function(f2) {
-  return function(wa) {
-    return isLeft2(wa) ? wa : right2(f2(wa));
-  };
-};
-var Extend2 = {
-  URI: URI2,
-  map: _map2,
-  extend: _extend2
-};
-var ChainRec = {
-  URI: URI2,
-  map: _map2,
-  ap: _ap2,
-  chain: _chain2,
-  chainRec: _chainRec
-};
-var throwError = left2;
-var MonadThrow = {
-  URI: URI2,
-  map: _map2,
-  ap: _ap2,
-  of: of4,
-  chain: _chain2,
-  throwError
-};
-var FromEither2 = {
-  URI: URI2,
-  fromEither: identity2
-};
-var fromPredicate3 = /* @__PURE__ */ fromPredicate(FromEither2);
-var fromOption3 = /* @__PURE__ */ fromOption(FromEither2);
-var isLeft2 = isLeft;
-var isRight2 = isRight;
-var matchW3 = function(onLeft, onRight) {
-  return function(ma) {
-    return isLeft2(ma) ? onLeft(ma.left) : onRight(ma.right);
-  };
-};
-var foldW = matchW3;
-var match3 = matchW3;
-var fold = match3;
-var getOrElseW = function(onLeft) {
-  return function(ma) {
-    return isLeft2(ma) ? onLeft(ma.left) : ma.right;
-  };
-};
-var getOrElse = getOrElseW;
-var flap3 = /* @__PURE__ */ flap(Functor2);
-var apFirst3 = /* @__PURE__ */ apFirst(Apply2);
-var apFirstW = apFirst3;
-var apSecond3 = /* @__PURE__ */ apSecond(Apply2);
-var apSecondW = apSecond3;
-var chainFirst3 = /* @__PURE__ */ chainFirst(Chain2);
-var chainFirstW = chainFirst3;
-var flattenW = /* @__PURE__ */ chainW(identity2);
-var flatten2 = flattenW;
-var duplicate2 = /* @__PURE__ */ extend2(identity2);
-var fromOptionK3 = /* @__PURE__ */ fromOptionK(FromEither2);
-var chainOptionK2 = /* @__PURE__ */ chainOptionK(FromEither2, Chain2);
-var filterOrElse2 = /* @__PURE__ */ filterOrElse(FromEither2, Chain2);
-var filterOrElseW = filterOrElse2;
-var swap = function(ma) {
-  return isLeft2(ma) ? right2(ma.left) : left2(ma.right);
-};
-var orElseW = function(onLeft) {
-  return function(ma) {
-    return isLeft2(ma) ? onLeft(ma.left) : ma;
-  };
-};
-var orElse = orElseW;
-var fromNullable = function(e) {
-  return function(a2) {
-    return a2 == null ? left2(e) : right2(a2);
-  };
-};
-var tryCatch = function(f2, onThrow) {
-  try {
-    return right2(f2());
-  } catch (e) {
-    return left2(onThrow(e));
-  }
-};
-var tryCatchK = function(f2, onThrow) {
-  return function() {
-    var a2 = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      a2[_i] = arguments[_i];
-    }
-    return tryCatch(function() {
-      return f2.apply(void 0, a2);
-    }, onThrow);
-  };
-};
-var fromNullableK = function(e) {
-  var from = fromNullable(e);
-  return function(f2) {
-    return flow(f2, from);
-  };
-};
-var chainNullableK = function(e) {
-  var from = fromNullableK(e);
-  return function(f2) {
-    return chain2(from(f2));
-  };
-};
-var toUnion = /* @__PURE__ */ foldW(identity2, identity2);
-function toError(e) {
-  return e instanceof Error ? e : new Error(String(e));
-}
-function elem3(E2) {
-  return function(a2, ma) {
-    if (ma === void 0) {
-      var elemE_1 = elem3(E2);
-      return function(ma2) {
-        return elemE_1(a2, ma2);
-      };
-    }
-    return isLeft2(ma) ? false : E2.equals(a2, ma.right);
-  };
-}
-var exists2 = function(predicate) {
-  return function(ma) {
-    return isLeft2(ma) ? false : predicate(ma.right);
-  };
-};
-var Do2 = /* @__PURE__ */ of4(emptyRecord);
-var bindTo3 = /* @__PURE__ */ bindTo(Functor2);
-var let_3 = /* @__PURE__ */ let_(Functor2);
-var bind4 = /* @__PURE__ */ bind2(Chain2);
-var bindW = bind4;
-var apS3 = /* @__PURE__ */ apS(Apply2);
-var apSW = apS3;
-var ApT = /* @__PURE__ */ of4(emptyReadonlyArray);
-var traverseReadonlyNonEmptyArrayWithIndex = function(f2) {
-  return function(as) {
-    var e = f2(0, head(as));
-    if (isLeft2(e)) {
-      return e;
-    }
-    var out = [e.right];
-    for (var i2 = 1; i2 < as.length; i2++) {
-      var e_1 = f2(i2, as[i2]);
-      if (isLeft2(e_1)) {
-        return e_1;
-      }
-      out.push(e_1.right);
-    }
-    return right2(out);
-  };
-};
-var traverseReadonlyArrayWithIndex = function(f2) {
-  var g2 = traverseReadonlyNonEmptyArrayWithIndex(f2);
-  return function(as) {
-    return isNonEmpty(as) ? g2(as) : ApT;
-  };
-};
-var traverseArrayWithIndex = traverseReadonlyArrayWithIndex;
-var traverseArray = function(f2) {
-  return traverseReadonlyArrayWithIndex(function(_24, a2) {
-    return f2(a2);
-  });
-};
-var sequenceArray = /* @__PURE__ */ traverseArray(identity2);
-function parseJSON(s2, onError) {
-  return tryCatch(function() {
-    return JSON.parse(s2);
-  }, onError);
-}
-var stringifyJSON = function(u2, onError) {
-  return tryCatch(function() {
-    var s2 = JSON.stringify(u2);
-    if (typeof s2 !== "string") {
-      throw new Error("Converting unsupported structure to JSON");
-    }
-    return s2;
-  }, onError);
-};
-var either = {
-  URI: URI2,
-  map: _map2,
-  of: of4,
-  ap: _ap2,
-  chain: _chain2,
-  reduce: _reduce2,
-  foldMap: _foldMap2,
-  reduceRight: _reduceRight2,
-  traverse: _traverse2,
-  sequence: sequence2,
-  bimap: _bimap,
-  mapLeft: _mapLeft,
-  alt: _alt2,
-  extend: _extend2,
-  chainRec: _chainRec,
-  throwError
-};
-var getApplySemigroup2 = /* @__PURE__ */ getApplySemigroup(Apply2);
-var getApplyMonoid = /* @__PURE__ */ getApplicativeMonoid(Applicative2);
-var getValidationSemigroup = function(SE, SA) {
-  return getApplySemigroup(getApplicativeValidation(SE))(SA);
-};
-var getValidationMonoid = function(SE, MA) {
-  return getApplicativeMonoid(getApplicativeValidation(SE))(MA);
-};
-function getValidation(SE) {
-  var ap7 = getApplicativeValidation(SE).ap;
-  var alt5 = getAltValidation(SE).alt;
-  return {
-    URI: URI2,
-    _E: void 0,
-    map: _map2,
-    of: of4,
-    chain: _chain2,
-    bimap: _bimap,
-    mapLeft: _mapLeft,
-    reduce: _reduce2,
-    foldMap: _foldMap2,
-    reduceRight: _reduceRight2,
-    extend: _extend2,
-    traverse: _traverse2,
-    sequence: sequence2,
-    chainRec: _chainRec,
-    throwError,
-    ap: ap7,
-    alt: alt5
-  };
-}
-
-// node_modules/fp-ts/es6/EitherT.js
-function right3(F2) {
-  return flow(right2, F2.of);
-}
-function left3(F2) {
-  return flow(left2, F2.of);
-}
-function rightF(F2) {
-  return function(fa) {
-    return F2.map(fa, right2);
-  };
-}
-function leftF(F2) {
-  return function(fe) {
-    return F2.map(fe, left2);
-  };
-}
-function fromNullable2(F2) {
-  return function(e) {
-    return flow(fromNullable(e), F2.of);
-  };
-}
-function fromNullableK2(F2) {
-  var fromNullableF = fromNullable2(F2);
-  return function(e) {
-    var fromNullableFE = fromNullableF(e);
-    return function(f2) {
-      return flow(f2, fromNullableFE);
-    };
-  };
-}
-function chainNullableK2(M2) {
-  var chainM = chain3(M2);
-  var fromNullableKM = fromNullableK2(M2);
-  return function(e) {
-    var fromNullableKMe = fromNullableKM(e);
-    return function(f2) {
-      return chainM(fromNullableKMe(f2));
-    };
-  };
-}
-function map4(F2) {
-  return map(F2, Functor2);
-}
-function ap4(F2) {
-  return ap(F2, Apply2);
-}
-function chain3(M2) {
-  return function(f2) {
-    return function(ma) {
-      return M2.chain(ma, function(e) {
-        return isLeft2(e) ? M2.of(e) : f2(e.right);
-      });
-    };
-  };
-}
-function alt3(M2) {
-  return function(second) {
-    return function(first) {
-      return M2.chain(first, function(e) {
-        return isLeft2(e) ? second() : M2.of(e);
-      });
-    };
-  };
-}
-function bimap2(F2) {
-  return function(f2, g2) {
-    return function(fea) {
-      return F2.map(fea, bimap(f2, g2));
-    };
-  };
-}
-function mapLeft2(F2) {
-  return function(f2) {
-    return function(fea) {
-      return F2.map(fea, mapLeft(f2));
-    };
-  };
-}
-function altValidation(M2, S2) {
-  return function(second) {
-    return function(first) {
-      return M2.chain(first, match3(function(e1) {
-        return M2.map(second(), mapLeft(function(e2) {
-          return S2.concat(e1, e2);
-        }));
-      }, right3(M2)));
-    };
-  };
-}
-function match4(F2) {
-  return function(onLeft, onRight) {
-    return function(ma) {
-      return F2.map(ma, match3(onLeft, onRight));
-    };
-  };
-}
-function matchE(M2) {
-  return function(onLeft, onRight) {
-    return function(ma) {
-      return M2.chain(ma, match3(onLeft, onRight));
-    };
-  };
-}
-function getOrElse2(M2) {
-  return function(onLeft) {
-    return function(ma) {
-      return M2.chain(ma, match3(onLeft, M2.of));
-    };
-  };
-}
-function orElse2(M2) {
-  return function(onLeft) {
-    return function(ma) {
-      return M2.chain(ma, function(e) {
-        return isLeft2(e) ? onLeft(e.left) : M2.of(e);
-      });
-    };
-  };
-}
-function orElseFirst(M2) {
-  var orElseM = orElse2(M2);
-  return function(onLeft) {
-    return orElseM(function(e) {
-      return M2.map(onLeft(e), function(eb) {
-        return isLeft2(eb) ? eb : left2(e);
-      });
-    });
-  };
-}
-function orLeft(M2) {
-  return function(onLeft) {
-    return function(ma) {
-      return M2.chain(ma, match3(function(e) {
-        return M2.map(onLeft(e), left2);
-      }, function(a2) {
-        return M2.of(right2(a2));
-      }));
-    };
-  };
-}
-function swap2(F2) {
-  return function(ma) {
-    return F2.map(ma, swap);
-  };
-}
-function toUnion2(F2) {
-  return function(fa) {
-    return F2.map(fa, toUnion);
-  };
-}
-
-// node_modules/fp-ts/es6/Filterable.js
-function filter2(F2, G2) {
-  return function(predicate) {
-    return function(fga) {
-      return F2.map(fga, function(ga) {
-        return G2.filter(ga, predicate);
-      });
-    };
-  };
-}
-function filterMap2(F2, G2) {
-  return function(f2) {
-    return function(fga) {
-      return F2.map(fga, function(ga) {
-        return G2.filterMap(ga, f2);
-      });
-    };
-  };
-}
-function partition2(F2, G2) {
-  var _filter2 = filter2(F2, G2);
-  return function(predicate) {
-    var left6 = _filter2(not2(predicate));
-    var right6 = _filter2(predicate);
-    return function(fgb) {
-      return separated(left6(fgb), right6(fgb));
-    };
-  };
-}
-function partitionMap2(F2, G2) {
-  var _filterMap2 = filterMap2(F2, G2);
-  return function(f2) {
-    return function(fga) {
-      return separated(pipe(fga, _filterMap2(function(a2) {
-        return getLeft(f2(a2));
-      })), pipe(fga, _filterMap2(function(a2) {
-        return getRight(f2(a2));
-      })));
-    };
-  };
-}
-
-// node_modules/fp-ts/es6/FromIO.js
-function fromIOK(F2) {
-  return function(f2) {
-    return flow(f2, F2.fromIO);
-  };
-}
-function chainIOK(F2, M2) {
-  return function(f2) {
-    var g2 = flow(f2, F2.fromIO);
-    return function(first) {
-      return M2.chain(first, g2);
-    };
-  };
-}
-function chainFirstIOK(F2, M2) {
-  var chainFirstM = chainFirst(M2);
-  return function(f2) {
-    return chainFirstM(flow(f2, F2.fromIO));
-  };
-}
-
-// node_modules/fp-ts/es6/FromTask.js
-function fromTaskK(F2) {
-  return function(f2) {
-    return flow(f2, F2.fromTask);
-  };
-}
-function chainTaskK(F2, M2) {
-  return function(f2) {
-    var g2 = flow(f2, F2.fromTask);
-    return function(first) {
-      return M2.chain(first, g2);
-    };
-  };
-}
-function chainFirstTaskK(F2, M2) {
-  var chainFirstM = chainFirst(M2);
-  return function(f2) {
-    return chainFirstM(flow(f2, F2.fromTask));
-  };
-}
-
-// node_modules/fp-ts/es6/Task.js
-var Task_exports = {};
-__export(Task_exports, {
-  ApT: () => ApT2,
-  ApplicativePar: () => ApplicativePar,
-  ApplicativeSeq: () => ApplicativeSeq,
-  ApplyPar: () => ApplyPar,
-  ApplySeq: () => ApplySeq,
-  Chain: () => Chain3,
-  Do: () => Do3,
-  FromIO: () => FromIO,
-  FromTask: () => FromTask,
-  Functor: () => Functor3,
-  Monad: () => Monad3,
-  MonadIO: () => MonadIO,
-  MonadTask: () => MonadTask,
-  Pointed: () => Pointed3,
-  URI: () => URI3,
-  ap: () => ap5,
-  apFirst: () => apFirst4,
-  apS: () => apS4,
-  apSecond: () => apSecond4,
-  bind: () => bind5,
-  bindTo: () => bindTo4,
-  chain: () => chain4,
-  chainFirst: () => chainFirst4,
-  chainFirstIOK: () => chainFirstIOK2,
-  chainIOK: () => chainIOK2,
-  delay: () => delay,
-  flap: () => flap4,
-  flatten: () => flatten3,
-  fromIO: () => fromIO,
-  fromIOK: () => fromIOK2,
-  fromTask: () => fromTask,
-  getMonoid: () => getMonoid4,
-  getRaceMonoid: () => getRaceMonoid,
-  getSemigroup: () => getSemigroup5,
-  let: () => let_4,
-  map: () => map5,
-  never: () => never,
-  of: () => of5,
-  sequenceArray: () => sequenceArray2,
-  sequenceSeqArray: () => sequenceSeqArray,
-  task: () => task,
-  taskSeq: () => taskSeq,
-  traverseArray: () => traverseArray2,
-  traverseArrayWithIndex: () => traverseArrayWithIndex2,
-  traverseReadonlyArrayWithIndex: () => traverseReadonlyArrayWithIndex2,
-  traverseReadonlyArrayWithIndexSeq: () => traverseReadonlyArrayWithIndexSeq,
-  traverseReadonlyNonEmptyArrayWithIndex: () => traverseReadonlyNonEmptyArrayWithIndex2,
-  traverseReadonlyNonEmptyArrayWithIndexSeq: () => traverseReadonlyNonEmptyArrayWithIndexSeq,
-  traverseSeqArray: () => traverseSeqArray,
-  traverseSeqArrayWithIndex: () => traverseSeqArrayWithIndex
-});
-var fromIO = function(ma) {
-  return function() {
-    return Promise.resolve().then(ma);
-  };
-};
-function delay(millis) {
-  return function(ma) {
-    return function() {
-      return new Promise(function(resolve) {
-        setTimeout(function() {
-          Promise.resolve().then(ma).then(resolve);
-        }, millis);
-      });
-    };
-  };
-}
-var _map3 = function(fa, f2) {
-  return pipe(fa, map5(f2));
-};
-var _apPar = function(fab, fa) {
-  return pipe(fab, ap5(fa));
-};
-var _apSeq = function(fab, fa) {
-  return pipe(fab, chain4(function(f2) {
-    return pipe(fa, map5(f2));
-  }));
-};
-var _chain3 = function(ma, f2) {
-  return pipe(ma, chain4(f2));
-};
-var map5 = function(f2) {
-  return function(fa) {
-    return function() {
-      return Promise.resolve().then(fa).then(f2);
-    };
-  };
-};
-var ap5 = function(fa) {
-  return function(fab) {
-    return function() {
-      return Promise.all([Promise.resolve().then(fab), Promise.resolve().then(fa)]).then(function(_a) {
-        var f2 = _a[0], a2 = _a[1];
-        return f2(a2);
-      });
-    };
-  };
-};
-var of5 = function(a2) {
-  return function() {
-    return Promise.resolve(a2);
-  };
-};
-var chain4 = function(f2) {
-  return function(ma) {
-    return function() {
-      return Promise.resolve().then(ma).then(function(a2) {
-        return f2(a2)();
-      });
-    };
-  };
-};
-var flatten3 = /* @__PURE__ */ chain4(identity2);
-var URI3 = "Task";
-function getRaceMonoid() {
-  return {
-    concat: function(x2, y2) {
-      return function() {
-        return Promise.race([Promise.resolve().then(x2), Promise.resolve().then(y2)]);
-      };
-    },
-    empty: never
-  };
-}
-var Functor3 = {
-  URI: URI3,
-  map: _map3
-};
-var flap4 = /* @__PURE__ */ flap(Functor3);
-var Pointed3 = {
-  URI: URI3,
-  of: of5
-};
-var ApplyPar = {
-  URI: URI3,
-  map: _map3,
-  ap: _apPar
-};
-var apFirst4 = /* @__PURE__ */ apFirst(ApplyPar);
-var apSecond4 = /* @__PURE__ */ apSecond(ApplyPar);
-var ApplicativePar = {
-  URI: URI3,
-  map: _map3,
-  ap: _apPar,
-  of: of5
-};
-var ApplySeq = {
-  URI: URI3,
-  map: _map3,
-  ap: _apSeq
-};
-var ApplicativeSeq = {
-  URI: URI3,
-  map: _map3,
-  ap: _apSeq,
-  of: of5
-};
-var Chain3 = {
-  URI: URI3,
-  map: _map3,
-  ap: _apPar,
-  chain: _chain3
-};
-var Monad3 = {
-  URI: URI3,
-  map: _map3,
-  of: of5,
-  ap: _apPar,
-  chain: _chain3
-};
-var MonadIO = {
-  URI: URI3,
-  map: _map3,
-  of: of5,
-  ap: _apPar,
-  chain: _chain3,
-  fromIO
-};
-var fromTask = identity2;
-var MonadTask = {
-  URI: URI3,
-  map: _map3,
-  of: of5,
-  ap: _apPar,
-  chain: _chain3,
-  fromIO,
-  fromTask
-};
-var chainFirst4 = /* @__PURE__ */ chainFirst(Chain3);
-var FromIO = {
-  URI: URI3,
-  fromIO
-};
-var fromIOK2 = /* @__PURE__ */ fromIOK(FromIO);
-var chainIOK2 = /* @__PURE__ */ chainIOK(FromIO, Chain3);
-var chainFirstIOK2 = /* @__PURE__ */ chainFirstIOK(FromIO, Chain3);
-var FromTask = {
-  URI: URI3,
-  fromIO,
-  fromTask
-};
-var never = function() {
-  return new Promise(function(_24) {
-    return void 0;
-  });
-};
-var Do3 = /* @__PURE__ */ of5(emptyRecord);
-var bindTo4 = /* @__PURE__ */ bindTo(Functor3);
-var let_4 = /* @__PURE__ */ let_(Functor3);
-var bind5 = /* @__PURE__ */ bind2(Chain3);
-var apS4 = /* @__PURE__ */ apS(ApplyPar);
-var ApT2 = /* @__PURE__ */ of5(emptyReadonlyArray);
-var traverseReadonlyNonEmptyArrayWithIndex2 = function(f2) {
-  return function(as) {
-    return function() {
-      return Promise.all(as.map(function(a2, i2) {
-        return Promise.resolve().then(function() {
-          return f2(i2, a2)();
-        });
-      }));
-    };
-  };
-};
-var traverseReadonlyArrayWithIndex2 = function(f2) {
-  var g2 = traverseReadonlyNonEmptyArrayWithIndex2(f2);
-  return function(as) {
-    return isNonEmpty(as) ? g2(as) : ApT2;
-  };
-};
-var traverseReadonlyNonEmptyArrayWithIndexSeq = function(f2) {
-  return function(as) {
-    return function() {
-      return tail(as).reduce(function(acc, a2, i2) {
-        return acc.then(function(bs) {
-          return Promise.resolve().then(f2(i2 + 1, a2)).then(function(b2) {
-            bs.push(b2);
-            return bs;
-          });
-        });
-      }, Promise.resolve().then(f2(0, head(as))).then(singleton));
-    };
-  };
-};
-var traverseReadonlyArrayWithIndexSeq = function(f2) {
-  var g2 = traverseReadonlyNonEmptyArrayWithIndexSeq(f2);
-  return function(as) {
-    return isNonEmpty(as) ? g2(as) : ApT2;
-  };
-};
-var traverseArrayWithIndex2 = traverseReadonlyArrayWithIndex2;
-var traverseArray2 = function(f2) {
-  return traverseReadonlyArrayWithIndex2(function(_24, a2) {
-    return f2(a2);
-  });
-};
-var sequenceArray2 = /* @__PURE__ */ traverseArray2(identity2);
-var traverseSeqArrayWithIndex = traverseReadonlyArrayWithIndexSeq;
-var traverseSeqArray = function(f2) {
-  return traverseReadonlyArrayWithIndexSeq(function(_24, a2) {
-    return f2(a2);
-  });
-};
-var sequenceSeqArray = /* @__PURE__ */ traverseSeqArray(identity2);
-var task = {
-  URI: URI3,
-  map: _map3,
-  of: of5,
-  ap: _apPar,
-  chain: _chain3,
-  fromIO,
-  fromTask
-};
-var taskSeq = {
-  URI: URI3,
-  map: _map3,
-  of: of5,
-  ap: _apSeq,
-  chain: _chain3,
-  fromIO,
-  fromTask
-};
-var getSemigroup5 = /* @__PURE__ */ getApplySemigroup(ApplySeq);
-var getMonoid4 = /* @__PURE__ */ getApplicativeMonoid(ApplicativeSeq);
-
-// node_modules/fp-ts/es6/TaskEither.js
-var TaskEither_exports = {};
-__export(TaskEither_exports, {
-  Alt: () => Alt3,
-  ApT: () => ApT3,
-  ApplicativePar: () => ApplicativePar2,
-  ApplicativeSeq: () => ApplicativeSeq2,
-  ApplyPar: () => ApplyPar2,
-  ApplySeq: () => ApplySeq2,
-  Bifunctor: () => Bifunctor2,
-  Chain: () => Chain4,
-  Do: () => Do4,
-  FromEither: () => FromEither3,
-  FromIO: () => FromIO2,
-  FromTask: () => FromTask2,
-  Functor: () => Functor4,
-  Monad: () => Monad4,
-  MonadIO: () => MonadIO2,
-  MonadTask: () => MonadTask2,
-  MonadThrow: () => MonadThrow2,
-  Pointed: () => Pointed4,
-  URI: () => URI4,
-  alt: () => alt4,
-  altW: () => altW3,
-  ap: () => ap6,
-  apFirst: () => apFirst5,
-  apFirstW: () => apFirstW2,
-  apS: () => apS5,
-  apSW: () => apSW2,
-  apSecond: () => apSecond5,
-  apSecondW: () => apSecondW2,
-  apW: () => apW2,
-  bimap: () => bimap3,
-  bind: () => bind6,
-  bindTo: () => bindTo5,
-  bindW: () => bindW2,
-  bracket: () => bracket,
-  bracketW: () => bracketW,
-  chain: () => chain5,
-  chainEitherK: () => chainEitherK2,
-  chainEitherKW: () => chainEitherKW,
-  chainFirst: () => chainFirst5,
-  chainFirstEitherK: () => chainFirstEitherK2,
-  chainFirstEitherKW: () => chainFirstEitherKW,
-  chainFirstIOK: () => chainFirstIOK3,
-  chainFirstTaskK: () => chainFirstTaskK2,
-  chainFirstW: () => chainFirstW2,
-  chainIOEitherK: () => chainIOEitherK,
-  chainIOEitherKW: () => chainIOEitherKW,
-  chainIOK: () => chainIOK3,
-  chainNullableK: () => chainNullableK3,
-  chainOptionK: () => chainOptionK3,
-  chainTaskK: () => chainTaskK2,
-  chainTaskOptionK: () => chainTaskOptionK,
-  chainTaskOptionKW: () => chainTaskOptionKW,
-  chainW: () => chainW2,
-  filterOrElse: () => filterOrElse3,
-  filterOrElseW: () => filterOrElseW2,
-  flap: () => flap5,
-  flatten: () => flatten4,
-  flattenW: () => flattenW2,
-  fold: () => fold2,
-  foldW: () => foldW2,
-  fromEither: () => fromEither2,
-  fromEitherK: () => fromEitherK3,
-  fromIO: () => fromIO2,
-  fromIOEither: () => fromIOEither,
-  fromIOEitherK: () => fromIOEitherK,
-  fromIOK: () => fromIOK3,
-  fromNullable: () => fromNullable3,
-  fromNullableK: () => fromNullableK3,
-  fromOption: () => fromOption4,
-  fromOptionK: () => fromOptionK4,
-  fromPredicate: () => fromPredicate4,
-  fromTask: () => fromTask2,
-  fromTaskK: () => fromTaskK2,
-  fromTaskOption: () => fromTaskOption,
-  fromTaskOptionK: () => fromTaskOptionK,
-  getAltTaskValidation: () => getAltTaskValidation,
-  getApplicativeTaskValidation: () => getApplicativeTaskValidation,
-  getApplyMonoid: () => getApplyMonoid2,
-  getApplySemigroup: () => getApplySemigroup3,
-  getCompactable: () => getCompactable2,
-  getFilterable: () => getFilterable2,
-  getOrElse: () => getOrElse3,
-  getOrElseW: () => getOrElseW2,
-  getSemigroup: () => getSemigroup6,
-  getTaskValidation: () => getTaskValidation,
-  left: () => left4,
-  leftIO: () => leftIO,
-  leftTask: () => leftTask,
-  let: () => let_5,
-  map: () => map6,
-  mapLeft: () => mapLeft3,
-  match: () => match5,
-  matchE: () => matchE2,
-  matchEW: () => matchEW,
-  matchW: () => matchW4,
-  of: () => of6,
-  orElse: () => orElse3,
-  orElseFirst: () => orElseFirst2,
-  orElseFirstIOK: () => orElseFirstIOK,
-  orElseFirstTaskK: () => orElseFirstTaskK,
-  orElseFirstW: () => orElseFirstW,
-  orElseW: () => orElseW2,
-  orLeft: () => orLeft2,
-  right: () => right4,
-  rightIO: () => rightIO,
-  rightTask: () => rightTask,
-  sequenceArray: () => sequenceArray3,
-  sequenceSeqArray: () => sequenceSeqArray2,
-  swap: () => swap3,
-  taskEither: () => taskEither,
-  taskEitherSeq: () => taskEitherSeq,
-  taskify: () => taskify,
-  throwError: () => throwError2,
-  toUnion: () => toUnion3,
-  traverseArray: () => traverseArray3,
-  traverseArrayWithIndex: () => traverseArrayWithIndex3,
-  traverseReadonlyArrayWithIndex: () => traverseReadonlyArrayWithIndex3,
-  traverseReadonlyArrayWithIndexSeq: () => traverseReadonlyArrayWithIndexSeq2,
-  traverseReadonlyNonEmptyArrayWithIndex: () => traverseReadonlyNonEmptyArrayWithIndex3,
-  traverseReadonlyNonEmptyArrayWithIndexSeq: () => traverseReadonlyNonEmptyArrayWithIndexSeq2,
-  traverseSeqArray: () => traverseSeqArray2,
-  traverseSeqArrayWithIndex: () => traverseSeqArrayWithIndex2,
-  tryCatch: () => tryCatch2,
-  tryCatchK: () => tryCatchK2
-});
-var __awaiter = function(thisArg, _arguments, P2, generator) {
-  function adopt(value) {
-    return value instanceof P2 ? value : new P2(function(resolve) {
-      resolve(value);
-    });
-  }
-  return new (P2 || (P2 = Promise))(function(resolve, reject) {
-    function fulfilled(value) {
-      try {
-        step(generator.next(value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-    function rejected(value) {
-      try {
-        step(generator["throw"](value));
-      } catch (e) {
-        reject(e);
-      }
-    }
-    function step(result) {
-      result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected);
-    }
-    step((generator = generator.apply(thisArg, _arguments || [])).next());
-  });
-};
-var __generator = function(thisArg, body) {
-  var _24 = { label: 0, sent: function() {
-    if (t3[0] & 1)
-      throw t3[1];
-    return t3[1];
-  }, trys: [], ops: [] }, f2, y2, t3, g2;
-  return g2 = { next: verb(0), "throw": verb(1), "return": verb(2) }, typeof Symbol === "function" && (g2[Symbol.iterator] = function() {
-    return this;
-  }), g2;
-  function verb(n2) {
-    return function(v2) {
-      return step([n2, v2]);
-    };
-  }
-  function step(op) {
-    if (f2)
-      throw new TypeError("Generator is already executing.");
-    while (_24)
-      try {
-        if (f2 = 1, y2 && (t3 = op[0] & 2 ? y2["return"] : op[0] ? y2["throw"] || ((t3 = y2["return"]) && t3.call(y2), 0) : y2.next) && !(t3 = t3.call(y2, op[1])).done)
-          return t3;
-        if (y2 = 0, t3)
-          op = [op[0] & 2, t3.value];
-        switch (op[0]) {
-          case 0:
-          case 1:
-            t3 = op;
-            break;
-          case 4:
-            _24.label++;
-            return { value: op[1], done: false };
-          case 5:
-            _24.label++;
-            y2 = op[1];
-            op = [0];
-            continue;
-          case 7:
-            op = _24.ops.pop();
-            _24.trys.pop();
-            continue;
-          default:
-            if (!(t3 = _24.trys, t3 = t3.length > 0 && t3[t3.length - 1]) && (op[0] === 6 || op[0] === 2)) {
-              _24 = 0;
-              continue;
-            }
-            if (op[0] === 3 && (!t3 || op[1] > t3[0] && op[1] < t3[3])) {
-              _24.label = op[1];
-              break;
-            }
-            if (op[0] === 6 && _24.label < t3[1]) {
-              _24.label = t3[1];
-              t3 = op;
-              break;
-            }
-            if (t3 && _24.label < t3[2]) {
-              _24.label = t3[2];
-              _24.ops.push(op);
-              break;
-            }
-            if (t3[2])
-              _24.ops.pop();
-            _24.trys.pop();
-            continue;
-        }
-        op = body.call(thisArg, _24);
-      } catch (e) {
-        op = [6, e];
-        y2 = 0;
-      } finally {
-        f2 = t3 = 0;
-      }
-    if (op[0] & 5)
-      throw op[1];
-    return { value: op[0] ? op[1] : void 0, done: true };
-  }
-};
-var left4 = /* @__PURE__ */ left3(Pointed3);
-var right4 = /* @__PURE__ */ right3(Pointed3);
-var rightTask = /* @__PURE__ */ rightF(Functor3);
-var leftTask = /* @__PURE__ */ leftF(Functor3);
-var rightIO = /* @__PURE__ */ flow(fromIO, rightTask);
-var leftIO = /* @__PURE__ */ flow(fromIO, leftTask);
-var fromIO2 = rightIO;
-var fromTask2 = rightTask;
-var fromEither2 = of5;
-var fromIOEither = fromIO;
-var fromTaskOption = function(onNone) {
-  return map5(fromOption3(onNone));
-};
-var match5 = /* @__PURE__ */ match4(Functor3);
-var matchW4 = match5;
-var matchE2 = /* @__PURE__ */ matchE(Monad3);
-var fold2 = matchE2;
-var matchEW = matchE2;
-var foldW2 = matchEW;
-var getOrElse3 = /* @__PURE__ */ getOrElse2(Monad3);
-var getOrElseW2 = getOrElse3;
-var tryCatch2 = function(f2, onRejected) {
-  return function() {
-    return __awaiter(void 0, void 0, void 0, function() {
-      var reason_1;
-      return __generator(this, function(_a) {
-        switch (_a.label) {
-          case 0:
-            _a.trys.push([0, 2, , 3]);
-            return [4, f2().then(right)];
-          case 1:
-            return [2, _a.sent()];
-          case 2:
-            reason_1 = _a.sent();
-            return [2, left(onRejected(reason_1))];
-          case 3:
-            return [2];
-        }
-      });
-    });
-  };
-};
-var tryCatchK2 = function(f2, onRejected) {
-  return function() {
-    var a2 = [];
-    for (var _i = 0; _i < arguments.length; _i++) {
-      a2[_i] = arguments[_i];
-    }
-    return tryCatch2(function() {
-      return f2.apply(void 0, a2);
-    }, onRejected);
-  };
-};
-var toUnion3 = /* @__PURE__ */ toUnion2(Functor3);
-var fromNullable3 = /* @__PURE__ */ fromNullable2(Pointed3);
-var fromNullableK3 = /* @__PURE__ */ fromNullableK2(Pointed3);
-var chainNullableK3 = /* @__PURE__ */ chainNullableK2(Monad3);
-var orElse3 = /* @__PURE__ */ orElse2(Monad3);
-var orElseW2 = orElse3;
-var orElseFirst2 = /* @__PURE__ */ orElseFirst(Monad3);
-var orElseFirstW = orElseFirst2;
-var orElseFirstIOK = function(onLeft) {
-  return orElseFirst2(fromIOK3(onLeft));
-};
-var orElseFirstTaskK = function(onLeft) {
-  return orElseFirst2(fromTaskK2(onLeft));
-};
-var orLeft2 = /* @__PURE__ */ orLeft(Monad3);
-var swap3 = /* @__PURE__ */ swap2(Functor3);
-var fromTaskOptionK = function(onNone) {
-  var from = fromTaskOption(onNone);
-  return function(f2) {
-    return flow(f2, from);
-  };
-};
-var chainTaskOptionKW = function(onNone) {
-  return function(f2) {
-    return function(ma) {
-      return pipe(ma, chain5(fromTaskOptionK(onNone)(f2)));
-    };
-  };
-};
-var chainTaskOptionK = chainTaskOptionKW;
-var fromIOEitherK = function(f2) {
-  return flow(f2, fromIOEither);
-};
-var chainIOEitherKW = function(f2) {
-  return chainW2(fromIOEitherK(f2));
-};
-var chainIOEitherK = chainIOEitherKW;
-var _map4 = function(fa, f2) {
-  return pipe(fa, map6(f2));
-};
-var _apPar2 = function(fab, fa) {
-  return pipe(fab, ap6(fa));
-};
-var _apSeq2 = function(fab, fa) {
-  return pipe(fab, chain5(function(f2) {
-    return pipe(fa, map6(f2));
-  }));
-};
-var _chain4 = function(ma, f2) {
-  return pipe(ma, chain5(f2));
-};
-var _bimap2 = function(fa, f2, g2) {
-  return pipe(fa, bimap3(f2, g2));
-};
-var _mapLeft2 = function(fa, f2) {
-  return pipe(fa, mapLeft3(f2));
-};
-var _alt3 = function(fa, that) {
-  return pipe(fa, alt4(that));
-};
-var map6 = /* @__PURE__ */ map4(Functor3);
-var bimap3 = /* @__PURE__ */ bimap2(Functor3);
-var mapLeft3 = /* @__PURE__ */ mapLeft2(Functor3);
-var ap6 = /* @__PURE__ */ ap4(ApplyPar);
-var apW2 = ap6;
-var chain5 = /* @__PURE__ */ chain3(Monad3);
-var chainW2 = chain5;
-var flattenW2 = /* @__PURE__ */ chainW2(identity2);
-var flatten4 = flattenW2;
-var alt4 = /* @__PURE__ */ alt3(Monad3);
-var altW3 = alt4;
-var of6 = right4;
-var throwError2 = left4;
-var URI4 = "TaskEither";
-function getApplicativeTaskValidation(A2, S2) {
-  var ap7 = ap(A2, getApplicativeValidation(S2));
-  return {
-    URI: URI4,
-    _E: void 0,
-    map: _map4,
-    ap: function(fab, fa) {
-      return pipe(fab, ap7(fa));
-    },
-    of: of6
-  };
-}
-function getAltTaskValidation(S2) {
-  var alt5 = altValidation(Monad3, S2);
-  return {
-    URI: URI4,
-    _E: void 0,
-    map: _map4,
-    alt: function(fa, that) {
-      return pipe(fa, alt5(that));
-    }
-  };
-}
-var getCompactable2 = function(M2) {
-  var C = getCompactable(M2);
-  return {
-    URI: URI4,
-    _E: void 0,
-    compact: compact2(Functor3, C),
-    separate: separate2(Functor3, C, Functor2)
-  };
-};
-function getFilterable2(M2) {
-  var F2 = getFilterable(M2);
-  var C = getCompactable2(M2);
-  var filter3 = filter2(Functor3, F2);
-  var filterMap3 = filterMap2(Functor3, F2);
-  var partition3 = partition2(Functor3, F2);
-  var partitionMap3 = partitionMap2(Functor3, F2);
-  return {
-    URI: URI4,
-    _E: void 0,
-    map: _map4,
-    compact: C.compact,
-    separate: C.separate,
-    filter: function(fa, predicate) {
-      return pipe(fa, filter3(predicate));
-    },
-    filterMap: function(fa, f2) {
-      return pipe(fa, filterMap3(f2));
-    },
-    partition: function(fa, predicate) {
-      return pipe(fa, partition3(predicate));
-    },
-    partitionMap: function(fa, f2) {
-      return pipe(fa, partitionMap3(f2));
-    }
-  };
-}
-var Functor4 = {
-  URI: URI4,
-  map: _map4
-};
-var flap5 = /* @__PURE__ */ flap(Functor4);
-var Pointed4 = {
-  URI: URI4,
-  of: of6
-};
-var ApplyPar2 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apPar2
-};
-var apFirst5 = /* @__PURE__ */ apFirst(ApplyPar2);
-var apFirstW2 = apFirst5;
-var apSecond5 = /* @__PURE__ */ apSecond(ApplyPar2);
-var apSecondW2 = apSecond5;
-var ApplicativePar2 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apPar2,
-  of: of6
-};
-var ApplySeq2 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apSeq2
-};
-var ApplicativeSeq2 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apSeq2,
-  of: of6
-};
-var Chain4 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apPar2,
-  chain: _chain4
-};
-var Monad4 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apPar2,
-  chain: _chain4,
-  of: of6
-};
-var MonadIO2 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apPar2,
-  chain: _chain4,
-  of: of6,
-  fromIO: fromIO2
-};
-var MonadTask2 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apPar2,
-  chain: _chain4,
-  of: of6,
-  fromIO: fromIO2,
-  fromTask: fromTask2
-};
-var MonadThrow2 = {
-  URI: URI4,
-  map: _map4,
-  ap: _apPar2,
-  chain: _chain4,
-  of: of6,
-  throwError: throwError2
-};
-var chainFirst5 = /* @__PURE__ */ chainFirst(Chain4);
-var chainFirstW2 = chainFirst5;
-var Bifunctor2 = {
-  URI: URI4,
-  bimap: _bimap2,
-  mapLeft: _mapLeft2
-};
-var Alt3 = {
-  URI: URI4,
-  map: _map4,
-  alt: _alt3
-};
-var FromEither3 = {
-  URI: URI4,
-  fromEither: fromEither2
-};
-var fromOption4 = /* @__PURE__ */ fromOption(FromEither3);
-var fromOptionK4 = /* @__PURE__ */ fromOptionK(FromEither3);
-var chainOptionK3 = /* @__PURE__ */ chainOptionK(FromEither3, Chain4);
-var chainEitherK2 = /* @__PURE__ */ chainEitherK(FromEither3, Chain4);
-var chainEitherKW = chainEitherK2;
-var chainFirstEitherK2 = /* @__PURE__ */ chainFirstEitherK(FromEither3, Chain4);
-var chainFirstEitherKW = chainFirstEitherK2;
-var fromPredicate4 = /* @__PURE__ */ fromPredicate(FromEither3);
-var filterOrElse3 = /* @__PURE__ */ filterOrElse(FromEither3, Chain4);
-var filterOrElseW2 = filterOrElse3;
-var fromEitherK3 = /* @__PURE__ */ fromEitherK(FromEither3);
-var FromIO2 = {
-  URI: URI4,
-  fromIO: fromIO2
-};
-var fromIOK3 = /* @__PURE__ */ fromIOK(FromIO2);
-var chainIOK3 = /* @__PURE__ */ chainIOK(FromIO2, Chain4);
-var chainFirstIOK3 = /* @__PURE__ */ chainFirstIOK(FromIO2, Chain4);
-var FromTask2 = {
-  URI: URI4,
-  fromIO: fromIO2,
-  fromTask: fromTask2
-};
-var fromTaskK2 = /* @__PURE__ */ fromTaskK(FromTask2);
-var chainTaskK2 = /* @__PURE__ */ chainTaskK(FromTask2, Chain4);
-var chainFirstTaskK2 = /* @__PURE__ */ chainFirstTaskK(FromTask2, Chain4);
-function taskify(f2) {
-  return function() {
-    var args = Array.prototype.slice.call(arguments);
-    return function() {
-      return new Promise(function(resolve) {
-        var cbResolver = function(e, r2) {
-          return e != null ? resolve(left(e)) : resolve(right(r2));
-        };
-        f2.apply(null, args.concat(cbResolver));
-      });
-    };
-  };
-}
-var bracket = function(acquire, use2, release) {
-  return bracketW(acquire, use2, release);
-};
-var bracketW = function(acquire, use2, release) {
-  return pipe(acquire, chainW2(function(a2) {
-    return pipe(use2(a2), chain4(function(e) {
-      return pipe(release(a2, e), chainW2(function() {
-        return of5(e);
-      }));
-    }));
-  }));
-};
-var Do4 = /* @__PURE__ */ of6(emptyRecord);
-var bindTo5 = /* @__PURE__ */ bindTo(Functor4);
-var let_5 = /* @__PURE__ */ let_(Functor4);
-var bind6 = /* @__PURE__ */ bind2(Chain4);
-var bindW2 = bind6;
-var apS5 = /* @__PURE__ */ apS(ApplyPar2);
-var apSW2 = apS5;
-var ApT3 = /* @__PURE__ */ of6(emptyReadonlyArray);
-var traverseReadonlyNonEmptyArrayWithIndex3 = function(f2) {
-  return flow(traverseReadonlyNonEmptyArrayWithIndex2(f2), map5(traverseReadonlyNonEmptyArrayWithIndex(SK)));
-};
-var traverseReadonlyArrayWithIndex3 = function(f2) {
-  var g2 = traverseReadonlyNonEmptyArrayWithIndex3(f2);
-  return function(as) {
-    return isNonEmpty(as) ? g2(as) : ApT3;
-  };
-};
-var traverseReadonlyNonEmptyArrayWithIndexSeq2 = function(f2) {
-  return function(as) {
-    return function() {
-      return tail(as).reduce(function(acc, a2, i2) {
-        return acc.then(function(ebs) {
-          return isLeft(ebs) ? acc : f2(i2 + 1, a2)().then(function(eb) {
-            if (isLeft(eb)) {
-              return eb;
-            }
-            ebs.right.push(eb.right);
-            return ebs;
-          });
-        });
-      }, f2(0, head(as))().then(map3(singleton)));
-    };
-  };
-};
-var traverseReadonlyArrayWithIndexSeq2 = function(f2) {
-  var g2 = traverseReadonlyNonEmptyArrayWithIndexSeq2(f2);
-  return function(as) {
-    return isNonEmpty(as) ? g2(as) : ApT3;
-  };
-};
-var traverseArrayWithIndex3 = traverseReadonlyArrayWithIndex3;
-var traverseArray3 = function(f2) {
-  return traverseReadonlyArrayWithIndex3(function(_24, a2) {
-    return f2(a2);
-  });
-};
-var sequenceArray3 = /* @__PURE__ */ traverseArray3(identity2);
-var traverseSeqArrayWithIndex2 = traverseReadonlyArrayWithIndexSeq2;
-var traverseSeqArray2 = function(f2) {
-  return traverseReadonlyArrayWithIndexSeq2(function(_24, a2) {
-    return f2(a2);
-  });
-};
-var sequenceSeqArray2 = /* @__PURE__ */ traverseSeqArray2(identity2);
-var taskEither = {
-  URI: URI4,
-  bimap: _bimap2,
-  mapLeft: _mapLeft2,
-  map: _map4,
-  of: of6,
-  ap: _apPar2,
-  chain: _chain4,
-  alt: _alt3,
-  fromIO: fromIO2,
-  fromTask: fromTask2,
-  throwError: throwError2
-};
-var taskEitherSeq = {
-  URI: URI4,
-  bimap: _bimap2,
-  mapLeft: _mapLeft2,
-  map: _map4,
-  of: of6,
-  ap: _apSeq2,
-  chain: _chain4,
-  alt: _alt3,
-  fromIO: fromIO2,
-  fromTask: fromTask2,
-  throwError: throwError2
-};
-var getApplySemigroup3 = /* @__PURE__ */ getApplySemigroup(ApplySeq2);
-var getApplyMonoid2 = /* @__PURE__ */ getApplicativeMonoid(ApplicativeSeq2);
-var getSemigroup6 = function(S2) {
-  return getApplySemigroup(ApplySeq)(getSemigroup4(S2));
-};
-function getTaskValidation(SE) {
-  var applicativeTaskValidation = getApplicativeTaskValidation(ApplicativePar, SE);
-  var altTaskValidation = getAltTaskValidation(SE);
-  return {
-    URI: URI4,
-    _E: void 0,
-    map: _map4,
-    ap: applicativeTaskValidation.ap,
-    of: of6,
-    chain: _chain4,
-    bimap: _bimap2,
-    mapLeft: _mapLeft2,
-    alt: altTaskValidation.alt,
-    fromIO: fromIO2,
-    fromTask: fromTask2,
-    throwError: throwError2
-  };
 }
 
 // node_modules/yaml/browser/dist/nodes/Node.js
@@ -25010,8 +25307,8 @@ function _typeof(obj) {
 }
 
 // node_modules/@babel/runtime/helpers/esm/classCallCheck.js
-function _classCallCheck(instance107, Constructor) {
-  if (!(instance107 instanceof Constructor)) {
+function _classCallCheck(instance106, Constructor) {
+  if (!(instance106 instanceof Constructor)) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
@@ -28055,7 +28352,6 @@ i18next_default.init({
           number: "Number",
           boolean: "True or false",
           date: "Date",
-          link: "Link",
           unknown: "Unknown data type",
           repeated: "Repeated field"
         },
@@ -28098,7 +28394,7 @@ i18next_default.init({
             delete: {
               "short-title": "Delete project",
               title: "Delete project",
-              message: "Are you sure you want to delete the project?",
+              message: 'Are you sure you want to delete "{{project}}"?',
               cta: "Delete"
             },
             name: {
@@ -28321,10 +28617,9 @@ var i18n = (0, import_svelte_i18next.createI18nStore)(i18next_default);
 
 // src/lib/stores/settings.ts
 function createSettings() {
-  const { set: set2, update: update2, subscribe: subscribe2 } = writable({
-    version: 1,
-    projects: []
-  });
+  const { set: set2, update: update2, subscribe: subscribe2 } = writable(
+    Object.assign({}, DEFAULT_SETTINGS)
+  );
   return {
     set: set2,
     subscribe: subscribe2,
@@ -28513,27 +28808,49 @@ function createSettings() {
   };
 }
 var settings = createSettings();
-function migrateAny(settings2) {
+function migrateSettings(settings2) {
   if (!settings2) {
-    return { version: 1, projects: [] };
+    return Either_exports.right(Object.assign({}, DEFAULT_SETTINGS));
   }
-  if ("version" in settings2) {
-    return Object.assign(
-      {},
-      DEFAULT_SETTINGS,
-      settings2
-    );
+  if ("version" in settings2 && typeof settings2.version === "number") {
+    if ("projects" in settings2 && Array.isArray(settings2.projects)) {
+      return Either_exports.tryCatch(() => {
+        return __spreadProps(__spreadValues(__spreadValues({}, DEFAULT_SETTINGS), settings2), {
+          projects: settings2.projects.map(loadProject),
+          preferences: Object.assign({}, DEFAULT_SETTINGS.preferences)
+        });
+      }, Either_exports.toError);
+    }
+    return Either_exports.right(__spreadValues(__spreadValues({}, DEFAULT_SETTINGS), settings2));
   }
-  return migrate(settings2);
+  return Either_exports.left(new Error("Missing version"));
 }
-function migrate(v0) {
-  return {
-    version: 1,
-    lastProjectId: v0.lastWorkspaceId,
-    lastViewId: v0.lastViewId,
-    projects: v0.workspaces
-  };
+function loadProject(project) {
+  const res = __spreadValues(__spreadValues({}, DEFAULT_PROJECT), project);
+  if ("name" in res && "id" in res) {
+    const { name, id } = res;
+    if (isString2(name) && isString2(id)) {
+      if ("views" in res && Array.isArray(res.views)) {
+        return __spreadProps(__spreadValues({}, res), { name, id, views: res.views.map(loadView) });
+      }
+      return __spreadProps(__spreadValues({}, res), { name, id, views: [] });
+    }
+  }
+  throw new Error("Invalid project definition");
 }
+function loadView(view2) {
+  const res = __spreadValues(__spreadValues({}, DEFAULT_VIEW), view2);
+  if ("name" in res && "id" in res && "type" in res) {
+    const { name, id, type } = res;
+    if (isString2(name) && isString2(id) && isString2(type)) {
+      return __spreadProps(__spreadValues({}, res), { name, id, type });
+    }
+  }
+  throw new Error("Invalid view definition");
+}
+var isString2 = (value) => {
+  return typeof value === "string";
+};
 
 // src/lib/templates/index.ts
 function interpolateTemplate(template, data) {
@@ -28634,10 +28951,6 @@ function doUpdateRecord(data, fields, record) {
           (entry) => isDate(entry[1]) ? immer_esm_default(entry, (draft) => {
             draft[1] = (0, import_dayjs.default)(entry[1]).format("YYYY-MM-DD");
           }) : entry
-        ).map(
-          (entry) => isLink(entry[1]) ? immer_esm_default(entry, (draft) => {
-            draft[1] = `[[${draft[1].linkText}]]`;
-          }) : entry
         ).filter(
           (entry) => !fields.find((field) => field.name === entry[0] && field.derived)
         )
@@ -28674,26 +28987,20 @@ function doRenameField(data, from, to) {
   );
 }
 function createProject() {
-  return {
+  return Object.assign({}, DEFAULT_PROJECT, {
     id: v4_default(),
     name: nextUniqueProjectName(
       get_store_value(settings).projects,
       get_store_value(i18n).t("modals.project.create.untitled")
     ),
-    path: "",
-    recursive: false,
-    defaultName: "",
-    templates: [],
-    fieldConfig: {},
     views: [
-      {
+      Object.assign({}, DEFAULT_VIEW, {
         id: v4_default(),
         name: get_store_value(i18n).t("views.table.name"),
-        type: "table",
-        config: {}
-      }
+        type: "table"
+      })
     ]
-  };
+  });
 }
 function createDataRecord(name, project, values) {
   return {
@@ -29249,26 +29556,26 @@ var passive = {
   passive: true
 };
 function effect3(_ref) {
-  var state = _ref.state, instance107 = _ref.instance, options = _ref.options;
+  var state = _ref.state, instance106 = _ref.instance, options = _ref.options;
   var _options$scroll = options.scroll, scroll = _options$scroll === void 0 ? true : _options$scroll, _options$resize = options.resize, resize = _options$resize === void 0 ? true : _options$resize;
   var window2 = getWindow(state.elements.popper);
   var scrollParents = [].concat(state.scrollParents.reference, state.scrollParents.popper);
   if (scroll) {
     scrollParents.forEach(function(scrollParent) {
-      scrollParent.addEventListener("scroll", instance107.update, passive);
+      scrollParent.addEventListener("scroll", instance106.update, passive);
     });
   }
   if (resize) {
-    window2.addEventListener("resize", instance107.update, passive);
+    window2.addEventListener("resize", instance106.update, passive);
   }
   return function() {
     if (scroll) {
       scrollParents.forEach(function(scrollParent) {
-        scrollParent.removeEventListener("scroll", instance107.update, passive);
+        scrollParent.removeEventListener("scroll", instance106.update, passive);
       });
     }
     if (resize) {
-      window2.removeEventListener("resize", instance107.update, passive);
+      window2.removeEventListener("resize", instance106.update, passive);
     }
   };
 }
@@ -30150,7 +30457,7 @@ function popperGenerator(generatorOptions) {
     };
     var effectCleanupFns = [];
     var isDestroyed = false;
-    var instance107 = {
+    var instance106 = {
       state,
       setOptions: function setOptions(setOptionsAction) {
         var options2 = typeof setOptionsAction === "function" ? setOptionsAction(state.options) : setOptionsAction;
@@ -30187,7 +30494,7 @@ function popperGenerator(generatorOptions) {
           }
         }
         runModifierEffects();
-        return instance107.update();
+        return instance106.update();
       },
       forceUpdate: function forceUpdate() {
         if (isDestroyed) {
@@ -30229,14 +30536,14 @@ function popperGenerator(generatorOptions) {
               state,
               options: _options,
               name,
-              instance: instance107
+              instance: instance106
             }) || state;
           }
         }
       },
       update: debounce(function() {
         return new Promise(function(resolve) {
-          instance107.forceUpdate();
+          instance106.forceUpdate();
           resolve(state);
         });
       }),
@@ -30249,9 +30556,9 @@ function popperGenerator(generatorOptions) {
       if (true) {
         console.error(INVALID_ELEMENT_ERROR);
       }
-      return instance107;
+      return instance106;
     }
-    instance107.setOptions(options).then(function(state2) {
+    instance106.setOptions(options).then(function(state2) {
       if (!isDestroyed && options.onFirstUpdate) {
         options.onFirstUpdate(state2);
       }
@@ -30263,7 +30570,7 @@ function popperGenerator(generatorOptions) {
           var cleanupFn = effect4({
             state,
             name,
-            instance: instance107,
+            instance: instance106,
             options: options2
           });
           var noopFn = function noopFn2() {
@@ -30278,7 +30585,7 @@ function popperGenerator(generatorOptions) {
       });
       effectCleanupFns = [];
     }
-    return instance107;
+    return instance106;
   };
 }
 
@@ -30396,7 +30703,7 @@ function instance2($$self, $$props, $$invalidate) {
 var Portal = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance2, create_fragment, safe_not_equal, { target: 0 });
+    init4(this, options, instance2, create_fragment, safe_not_equal, { target: 0 });
   }
 };
 var Portal_default = Portal;
@@ -30550,7 +30857,7 @@ function create_fragment2(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -30673,7 +30980,7 @@ function instance3($$self, $$props, $$invalidate) {
 var Popover = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance3,
@@ -30814,7 +31121,7 @@ function instance4($$self, $$props, $$invalidate) {
 var Menu = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance4, create_fragment3, safe_not_equal, {
+    init4(this, options, instance4, create_fragment3, safe_not_equal, {
       anchorEl: 0,
       open: 1,
       onClose: 2,
@@ -30913,7 +31220,7 @@ function instance5($$self, $$props, $$invalidate) {
 var Switch = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance5, create_fragment4, safe_not_equal, { checked: 0, disabled: 1 }, add_css2);
+    init4(this, options, instance5, create_fragment4, safe_not_equal, { checked: 0, disabled: 1 }, add_css2);
   }
 };
 var Switch_default = Switch;
@@ -30997,7 +31304,7 @@ function instance6($$self, $$props, $$invalidate) {
 var Icon = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance6, create_fragment5, safe_not_equal, { name: 0, size: 1, accent: 2, tooltip: 3 }, add_css3);
+    init4(this, options, instance6, create_fragment5, safe_not_equal, { name: 0, size: 1, accent: 2, tooltip: 3 }, add_css3);
   }
 };
 var Icon_default = Icon;
@@ -31098,7 +31405,7 @@ function instance7($$self, $$props, $$invalidate) {
 var IconButton = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance7,
@@ -31222,12 +31529,12 @@ function create_fragment7(ctx) {
       insert(target, div1, anchor);
       if (if_block0)
         if_block0.m(div1, null);
-      append(div1, t0);
+      append4(div1, t0);
       if (if_block1)
         if_block1.m(div1, null);
-      append(div1, t1);
-      append(div1, div0);
-      append(div0, t22);
+      append4(div1, t1);
+      append4(div1, div0);
+      append4(div0, t22);
       current = true;
       if (!mounted) {
         dispose = [
@@ -31343,7 +31650,7 @@ function instance8($$self, $$props, $$invalidate) {
 var MenuItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance8, create_fragment7, safe_not_equal, { label: 1, icon: 2, checked: 0 });
+    init4(this, options, instance8, create_fragment7, safe_not_equal, { label: 1, icon: 2, checked: 0 });
   }
 };
 var MenuItem_default = MenuItem;
@@ -31477,7 +31784,7 @@ function instance9($$self, $$props, $$invalidate) {
 var Suggestion = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance9, create_fragment8, safe_not_equal, {
+    init4(this, options, instance9, create_fragment8, safe_not_equal, {
       anchorEl: 0,
       open: 1,
       onClose: 2,
@@ -31520,14 +31827,14 @@ function create_fragment9(ctx) {
     },
     m(target, anchor) {
       insert(target, div4, anchor);
-      append(div4, div2);
-      append(div2, div0);
-      append(div0, t0);
-      append(div2, t1);
-      append(div2, div1);
-      append(div1, t22);
-      append(div4, t3);
-      append(div4, div3);
+      append4(div4, div2);
+      append4(div2, div0);
+      append4(div0, t0);
+      append4(div2, t1);
+      append4(div2, div1);
+      append4(div1, t22);
+      append4(div4, t3);
+      append4(div4, div3);
       ctx[5](div4);
       if (!mounted) {
         dispose = [
@@ -31611,7 +31918,7 @@ function instance10($$self, $$props, $$invalidate) {
 var SuggestionItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance10, create_fragment9, safe_not_equal, { label: 1, description: 2, selected: 0 });
+    init4(this, options, instance10, create_fragment9, safe_not_equal, { label: 1, description: 2, selected: 0 });
   }
 };
 var SuggestionItem_default = SuggestionItem;
@@ -31632,7 +31939,7 @@ function create_if_block3(ctx) {
     },
     m(target, anchor) {
       insert(target, small, anchor);
-      append(small, t3);
+      append4(small, t3);
     },
     p(ctx2, dirty) {
       if (dirty & 512)
@@ -31676,9 +31983,9 @@ function create_fragment10(ctx) {
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, input);
+      append4(div, input);
       ctx[16](input);
-      append(div, t3);
+      append4(div, t3);
       if (if_block)
         if_block.m(div, null);
       if (!mounted) {
@@ -31838,7 +32145,7 @@ function instance11($$self, $$props, $$invalidate) {
 var Input = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance11,
@@ -31893,8 +32200,8 @@ function create_fragment11(ctx) {
     input_props.value = ctx[0];
   }
   input = new Input_default({ props: input_props });
-  binding_callbacks.push(() => bind(input, "ref", input_ref_binding, ctx[1]));
-  binding_callbacks.push(() => bind(input, "value", input_value_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(input, "ref", input_ref_binding, ctx[1]));
+  binding_callbacks.push(() => bind6(input, "value", input_value_binding, ctx[0]));
   input.$on("input", ctx[10]);
   input.$on("focus", ctx[13]);
   input.$on("blur", ctx[14]);
@@ -32041,7 +32348,7 @@ function instance12($$self, $$props, $$invalidate) {
 var TextInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance12, create_fragment11, safe_not_equal, {
+    init4(this, options, instance12, create_fragment11, safe_not_equal, {
       value: 0,
       readonly: 2,
       placeholder: 3,
@@ -32087,8 +32394,8 @@ function create_fragment12(ctx) {
     input_props.value = ctx[0];
   }
   input = new Input_default({ props: input_props });
-  binding_callbacks.push(() => bind(input, "ref", input_ref_binding, ctx[1]));
-  binding_callbacks.push(() => bind(input, "value", input_value_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(input, "ref", input_ref_binding, ctx[1]));
+  binding_callbacks.push(() => bind6(input, "value", input_value_binding, ctx[0]));
   input.$on("input", ctx[10]);
   input.$on("focus", ctx[13]);
   input.$on("blur", ctx[14]);
@@ -32230,7 +32537,7 @@ function instance13($$self, $$props, $$invalidate) {
 var NumberInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance13, create_fragment12, safe_not_equal, {
+    init4(this, options, instance13, create_fragment12, safe_not_equal, {
       value: 0,
       ref: 1,
       readonly: 2,
@@ -32356,7 +32663,7 @@ function create_default_slot4(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -32464,8 +32771,8 @@ function create_fragment13(ctx) {
     textinput_props.ref = ctx[9];
   }
   textinput = new TextInput_default({ props: textinput_props });
-  binding_callbacks.push(() => bind(textinput, "value", textinput_value_binding, ctx[0]));
-  binding_callbacks.push(() => bind(textinput, "ref", textinput_ref_binding, ctx[9]));
+  binding_callbacks.push(() => bind6(textinput, "value", textinput_value_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(textinput, "ref", textinput_ref_binding, ctx[9]));
   textinput.$on("focus", ctx[16]);
   textinput.$on("blur", ctx[17]);
   textinput.$on("input", ctx[18]);
@@ -32670,7 +32977,7 @@ function instance14($$self, $$props, $$invalidate) {
 var Autocomplete = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance14, create_fragment13, safe_not_equal, {
+    init4(this, options, instance14, create_fragment13, safe_not_equal, {
       value: 0,
       options: 12,
       maxItems: 13,
@@ -32711,8 +33018,8 @@ function create_fragment14(ctx) {
     autocomplete_props.options = ctx[6];
   }
   autocomplete = new Autocomplete_default({ props: autocomplete_props });
-  binding_callbacks.push(() => bind(autocomplete, "value", autocomplete_value_binding, ctx[0]));
-  binding_callbacks.push(() => bind(autocomplete, "options", autocomplete_options_binding, ctx[6]));
+  binding_callbacks.push(() => bind6(autocomplete, "value", autocomplete_value_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(autocomplete, "options", autocomplete_options_binding, ctx[6]));
   autocomplete.$on("change", ctx[12]);
   autocomplete.$on("blur", ctx[13]);
   return {
@@ -32836,7 +33143,7 @@ function instance15($$self, $$props, $$invalidate) {
 var FileAutocomplete = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance15, create_fragment14, safe_not_equal, {
+    init4(this, options, instance15, create_fragment14, safe_not_equal, {
       value: 0,
       files: 7,
       getLabel: 8,
@@ -32972,7 +33279,7 @@ function instance16($$self, $$props, $$invalidate) {
 var Button = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance16,
@@ -33029,13 +33336,13 @@ function create_fragment16(ctx) {
     },
     m(target, anchor) {
       insert(target, div4, anchor);
-      append(div4, div2);
-      append(div2, div0);
-      append(div2, t0);
-      append(div2, div1);
-      append(div1, t1);
-      append(div4, t22);
-      append(div4, div3);
+      append4(div4, div2);
+      append4(div2, div0);
+      append4(div2, t0);
+      append4(div2, div1);
+      append4(div1, t1);
+      append4(div4, t22);
+      append4(div4, div3);
       if (default_slot) {
         default_slot.m(div3, null);
       }
@@ -33106,7 +33413,7 @@ function instance17($$self, $$props, $$invalidate) {
 var Callout = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance17, create_fragment16, safe_not_equal, { title: 0, icon: 1, variant: 2 });
+    init4(this, options, instance17, create_fragment16, safe_not_equal, { title: 0, icon: 1, variant: 2 });
   }
 };
 var Callout_default = Callout;
@@ -33177,7 +33484,7 @@ function instance18($$self, $$props, $$invalidate) {
 var Checkbox = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance18, create_fragment17, safe_not_equal, { checked: 0 });
+    init4(this, options, instance18, create_fragment17, safe_not_equal, { checked: 0 });
   }
 };
 var Checkbox_default = Checkbox;
@@ -33240,7 +33547,7 @@ function instance19($$self, $$props, $$invalidate) {
 var ColorInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance19, create_fragment18, safe_not_equal, { value: 0 });
+    init4(this, options, instance19, create_fragment18, safe_not_equal, { value: 0 });
   }
 };
 var ColorInput_default = ColorInput;
@@ -33308,7 +33615,7 @@ function instance20($$self, $$props, $$invalidate) {
 var DateInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance20, create_fragment19, safe_not_equal, { value: 0, embed: 1 }, add_css7);
+    init4(this, options, instance20, create_fragment19, safe_not_equal, { value: 0, embed: 1 }, add_css7);
   }
 };
 var DateInput_default = DateInput;
@@ -33450,7 +33757,7 @@ function instance21($$self, $$props, $$invalidate) {
 var InternalLink = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance21,
@@ -33500,7 +33807,7 @@ function create_fragment21(ctx) {
 var Loading = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, null, create_fragment21, safe_not_equal, {});
+    init4(this, options, null, create_fragment21, safe_not_equal, {});
   }
 };
 var Loading_default = Loading;
@@ -33568,7 +33875,7 @@ function instance22($$self, $$props, $$invalidate) {
 var ModalButtonGroup = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance22, create_fragment22, safe_not_equal, {});
+    init4(this, options, instance22, create_fragment22, safe_not_equal, {});
   }
 };
 var ModalButtonGroup_default = ModalButtonGroup;
@@ -33636,7 +33943,7 @@ function instance23($$self, $$props, $$invalidate) {
 var ModalContent = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance23, create_fragment23, safe_not_equal, {});
+    init4(this, options, instance23, create_fragment23, safe_not_equal, {});
   }
 };
 var ModalContent_default = ModalContent;
@@ -33660,7 +33967,7 @@ function create_fragment24(ctx) {
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, t0);
+      append4(div, t0);
       insert(target, t1, anchor);
       if (default_slot) {
         default_slot.m(target, anchor);
@@ -33717,7 +34024,7 @@ function instance24($$self, $$props, $$invalidate) {
 var ModalLayout = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance24, create_fragment24, safe_not_equal, { title: 0 });
+    init4(this, options, instance24, create_fragment24, safe_not_equal, { title: 0 });
   }
 };
 var ModalLayout_default = ModalLayout;
@@ -33737,7 +34044,7 @@ function create_fragment25(ctx) {
     },
     m(target, anchor) {
       insert(target, option2, anchor);
-      append(option2, t3);
+      append4(option2, t3);
     },
     p(ctx2, [dirty]) {
       if (dirty & 3 && t_value !== (t_value = (ctx2[0] || ctx2[1]) + ""))
@@ -33775,7 +34082,7 @@ function instance25($$self, $$props, $$invalidate) {
 var SelectItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance25, create_fragment25, safe_not_equal, { text: 0, value: 1, disabled: 2 });
+    init4(this, options, instance25, create_fragment25, safe_not_equal, { text: 0, value: 1, disabled: 2 });
   }
 };
 var SelectItem_default = SelectItem;
@@ -33923,10 +34230,10 @@ function create_fragment26(ctx) {
       select = element("select");
       if (if_block0)
         if_block0.c();
-      if_block0_anchor = empty();
+      if_block0_anchor = empty3();
       if (if_block1)
         if_block1.c();
-      if_block1_anchor = empty();
+      if_block1_anchor = empty3();
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
@@ -33937,10 +34244,10 @@ function create_fragment26(ctx) {
       insert(target, select, anchor);
       if (if_block0)
         if_block0.m(select, null);
-      append(select, if_block0_anchor);
+      append4(select, if_block0_anchor);
       if (if_block1)
         if_block1.m(select, null);
-      append(select, if_block1_anchor);
+      append4(select, if_block1_anchor);
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(select, null);
       }
@@ -34079,7 +34386,7 @@ function instance26($$self, $$props, $$invalidate) {
 var Select = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance26, create_fragment26, safe_not_equal, {
+    init4(this, options, instance26, create_fragment26, safe_not_equal, {
       options: 0,
       value: 1,
       placeholder: 2,
@@ -34133,14 +34440,14 @@ function create_fragment27(ctx) {
     },
     m(target, anchor) {
       insert(target, div4, anchor);
-      append(div4, div2);
-      append(div2, div0);
-      append(div0, t0);
-      append(div2, t1);
-      append(div2, div1);
-      append(div1, t22);
-      append(div4, t3);
-      append(div4, div3);
+      append4(div4, div2);
+      append4(div2, div0);
+      append4(div0, t0);
+      append4(div2, t1);
+      append4(div2, div1);
+      append4(div1, t22);
+      append4(div4, t3);
+      append4(div4, div3);
       if (default_slot) {
         default_slot.m(div3, null);
       }
@@ -34209,7 +34516,7 @@ function instance27($$self, $$props, $$invalidate) {
 var SettingItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance27, create_fragment27, safe_not_equal, { name: 0, description: 1, vertical: 2 }, add_css9);
+    init4(this, options, instance27, create_fragment27, safe_not_equal, { name: 0, description: 1, vertical: 2 }, add_css9);
   }
 };
 var SettingItem_default = SettingItem;
@@ -34280,7 +34587,7 @@ function instance28($$self, $$props, $$invalidate) {
 var Tag = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance28, create_fragment28, safe_not_equal, {}, add_css10);
+    init4(this, options, instance28, create_fragment28, safe_not_equal, {}, add_css10);
   }
 };
 var Tag_default = Tag;
@@ -34365,7 +34672,7 @@ function instance29($$self, $$props, $$invalidate) {
 var TextArea = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance29,
@@ -34466,7 +34773,7 @@ function create_fragment30(ctx) {
     c() {
       if (svelte_element)
         svelte_element.c();
-      svelte_element_anchor = empty();
+      svelte_element_anchor = empty3();
     },
     m(target, anchor) {
       if (svelte_element)
@@ -34539,7 +34846,7 @@ function instance30($$self, $$props, $$invalidate) {
 var Typography = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance30, create_fragment30, safe_not_equal, { variant: 0, nomargin: 1 }, add_css12);
+    init4(this, options, instance30, create_fragment30, safe_not_equal, { variant: 0, nomargin: 1 }, add_css12);
   }
 };
 var Typography_default = Typography;
@@ -34580,9 +34887,6 @@ function getFilesInFolder(folder) {
     }
   });
   return result;
-}
-function getNotesInFolder(folder) {
-  return getFilesInFolder(folder).filter((file) => file.extension === "md");
 }
 function getFoldersInFolder(folder) {
   const result = [];
@@ -34855,7 +35159,7 @@ function create_default_slot_4(ctx) {
   };
 }
 function create_default_slot_3(ctx) {
-  var _a, _b, _c;
+  var _a, _b;
   let settingitem0;
   let t0;
   let settingitem1;
@@ -34879,7 +35183,7 @@ function create_default_slot_3(ctx) {
       $$scope: { ctx }
     }
   });
-  let if_block0 = ((_c = ctx[1].templates) == null ? void 0 : _c.length) && create_if_block_13(ctx);
+  let if_block0 = ctx[1].templates.length && create_if_block_13(ctx);
   let if_block1 = ctx[1].dataview && create_if_block6(ctx);
   return {
     c() {
@@ -34892,7 +35196,7 @@ function create_default_slot_3(ctx) {
       t22 = space();
       if (if_block1)
         if_block1.c();
-      if_block1_anchor = empty();
+      if_block1_anchor = empty3();
     },
     m(target, anchor) {
       mount_component(settingitem0, target, anchor);
@@ -34908,7 +35212,7 @@ function create_default_slot_3(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      var _a2, _b2, _c2;
+      var _a2, _b2;
       const settingitem0_changes = {};
       if (dirty & 32)
         settingitem0_changes.name = ctx2[5].t("modals.note.create.name.name");
@@ -34927,7 +35231,7 @@ function create_default_slot_3(ctx) {
         settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem1.$set(settingitem1_changes);
-      if ((_c2 = ctx2[1].templates) == null ? void 0 : _c2.length) {
+      if (ctx2[1].templates.length) {
         if (if_block0) {
           if_block0.p(ctx2, dirty);
           if (dirty & 2) {
@@ -35236,7 +35540,7 @@ function instance31($$self, $$props, $$invalidate) {
 var CreateNote = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance31, create_fragment31, safe_not_equal, { name: 0, project: 1, onSave: 2 });
+    init4(this, options, instance31, create_fragment31, safe_not_equal, { name: 0, project: 1, onSave: 2 });
   }
 };
 var CreateNote_default = CreateNote;
@@ -35249,11 +35553,10 @@ var CreateNoteModal = class extends import_obsidian11.Modal {
     this.onSave = onSave;
   }
   onOpen() {
-    var _a;
     this.component = new CreateNote_default({
       target: this.contentEl,
       props: {
-        name: this.project.defaultName ? interpolateTemplate((_a = this.project.defaultName) != null ? _a : "", {
+        name: this.project.defaultName ? interpolateTemplate(this.project.defaultName, {
           date: (format2) => (0, import_moment2.default)().format(format2 || "YYYY-MM-DD"),
           time: (format2) => (0, import_moment2.default)().format(format2 || "HH:mm")
         }) : nextUniqueFileName(
@@ -35325,7 +35628,7 @@ function create_each_block3(ctx) {
     m(target, anchor) {
       insert(target, div, anchor);
       mount_component(fileautocomplete, div, null);
-      append(div, t3);
+      append4(div, t3);
       mount_component(iconbutton, div, null);
       current = true;
     },
@@ -35505,7 +35808,7 @@ function instance32($$self, $$props, $$invalidate) {
 var FileListInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance32,
@@ -36024,7 +36327,7 @@ function create_if_block7(ctx) {
     },
     m(target, anchor) {
       insert(target, small, anchor);
-      append(small, t3);
+      append4(small, t3);
     },
     p(ctx2, dirty) {
       if (dirty & 64 && t_value !== (t_value = ctx2[6].t("modals.project.defaultName.invalid") + ""))
@@ -36063,14 +36366,14 @@ function create_default_slot_62(ctx) {
       t22 = space();
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
       attr(small, "class", "svelte-6mkdkz");
     },
     m(target, anchor) {
       mount_component(textinput, target, anchor);
       insert(target, t0, anchor);
       insert(target, small, anchor);
-      append(small, t1);
+      append4(small, t1);
       insert(target, t22, anchor);
       if (if_block)
         if_block.m(target, anchor);
@@ -36685,7 +36988,7 @@ function instance33($$self, $$props, $$invalidate) {
   const change_handler = ({ detail: path }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { path }));
   const check_handler_2 = ({ detail: recursive }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { recursive }));
   const input_handler_2 = ({ detail: defaultName2 }) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { defaultName: defaultName2 }));
-  const func_14 = (templates) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { templates }));
+  const func_13 = (templates) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { templates }));
   const func_2 = (excludedNotes) => $$invalidate(0, project = __spreadProps(__spreadValues({}, project), { excludedNotes }));
   const click_handler = () => {
     var _a2, _b;
@@ -36747,7 +37050,7 @@ function instance33($$self, $$props, $$invalidate) {
     change_handler,
     check_handler_2,
     input_handler_2,
-    func_14,
+    func_13,
     func_2,
     click_handler
   ];
@@ -36755,7 +37058,7 @@ function instance33($$self, $$props, $$invalidate) {
 var CreateProject = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance33, create_fragment33, safe_not_equal, { title: 1, cta: 2, onSave: 3, project: 0 }, add_css14);
+    init4(this, options, instance33, create_fragment33, safe_not_equal, { title: 1, cta: 2, onSave: 3, project: 0 }, add_css14);
   }
 };
 var CreateProject_default = CreateProject;
@@ -36970,8 +37273,37 @@ function registerFileEvents(plugin2) {
   }
 }
 
+// src/settings.ts
+var import_obsidian19 = require("obsidian");
+var ProjectsSettingTab = class extends import_obsidian19.PluginSettingTab {
+  constructor(app2, plugin2) {
+    super(app2, plugin2);
+    this.plugin = plugin2;
+  }
+  display() {
+    const { preferences } = get_store_value(settings);
+    const save2 = (prefs) => {
+      settings.updatePreferences(prefs);
+    };
+    const { containerEl } = this;
+    containerEl.empty();
+    new import_obsidian19.Setting(containerEl).setName("Front matter").setHeading();
+    new import_obsidian19.Setting(containerEl).setName("Quote strings").addDropdown(
+      (dropdown) => dropdown.addOption("PLAIN", "If needed").addOption("QUOTE_DOUBLE", "Always").setValue(preferences.frontmatter.quoteStrings).onChange((value) => {
+        if (value === "PLAIN" || value === "QUOTE_DOUBLE") {
+          save2(__spreadProps(__spreadValues({}, preferences), {
+            frontmatter: {
+              quoteStrings: value
+            }
+          }));
+        }
+      })
+    );
+  }
+};
+
 // src/view.ts
-var import_obsidian53 = require("obsidian");
+var import_obsidian52 = require("obsidian");
 
 // src/lib/view-api.ts
 var ViewApi = class {
@@ -37132,9 +37464,6 @@ function detectCellType(value) {
   } else if (typeof value === "boolean") {
     return "boolean" /* Boolean */;
   }
-  if (isLink2(value)) {
-    return "link" /* Link */;
-  }
   if (Array.isArray(value)) {
     return typeFromValues(value);
   }
@@ -37142,12 +37471,6 @@ function detectCellType(value) {
     return "unknown" /* Unknown */;
   }
   return "unknown" /* Unknown */;
-}
-function isLink2(value) {
-  if (value && typeof value === "object") {
-    return "linkText" in value && "sourcePath" in value;
-  }
-  return false;
 }
 function stringToBoolean(stringValue) {
   var _a;
@@ -37169,11 +37492,9 @@ function stringToBoolean(stringValue) {
 
 // src/lib/datasources/dataview/dataview-helpers.ts
 var import_dayjs4 = __toESM(require_dayjs_min());
-var import_obsidian20 = require("obsidian");
-function standardizeValues(app2, values) {
+function standardizeValues(values) {
   const res = {};
   Object.keys(values).forEach((field) => {
-    var _a, _b;
     const value = values[field];
     if (!value) {
       return;
@@ -37182,23 +37503,7 @@ function standardizeValues(app2, values) {
       res[field] = value;
     } else if (typeof value === "object") {
       if ("path" in value && "display" in value) {
-        const file = app2.vault.getAbstractFileByPath(value.path);
-        if (file instanceof import_obsidian20.TFile) {
-          const linkText = app2.metadataCache.fileToLinktext(file, "", true);
-          res[field] = {
-            displayName: (_a = value.display) != null ? _a : linkText,
-            fullPath: value.path,
-            linkText,
-            sourcePath: ""
-          };
-        } else {
-          res[field] = {
-            displayName: (_b = value.display) != null ? _b : value.path,
-            fullPath: value.path,
-            linkText: value.path,
-            sourcePath: ""
-          };
-        }
+        res[field] = value.toString();
       }
       if ("ts" in value) {
         res[field] = (0, import_dayjs4.default)(value.ts).format("YYYY-MM-DD");
@@ -37218,8 +37523,8 @@ var UnsupportedCapability = class extends Error {
   }
 };
 var DataviewDataSource = class extends DataSource {
-  constructor(app2, project) {
-    super(project);
+  constructor(app2, project, preferences) {
+    super(project, preferences);
     this.app = app2;
   }
   queryOne() {
@@ -37239,9 +37544,35 @@ var DataviewDataSource = class extends DataSource {
       }
       const rows = parseTableResult(result.value);
       const standardizedRecords = this.standardizeRecords(rows);
-      const fields = detectSchema(standardizedRecords);
+      let fields = this.sortFields(
+        detectSchema(standardizedRecords),
+        result.value.headers
+      );
+      for (const f2 in this.project.fieldConfig) {
+        fields = fields.map(
+          (field) => {
+            var _a2;
+            return field.name !== f2 ? field : __spreadProps(__spreadValues({}, field), {
+              typeConfig: __spreadValues(__spreadValues({}, (_a2 = this.project.fieldConfig) == null ? void 0 : _a2[f2]), field.typeConfig)
+            });
+          }
+        );
+      }
       const records = parseRecords(standardizedRecords, fields);
       return { fields, records };
+    });
+  }
+  sortFields(fields, headers) {
+    return immer_esm_default(fields, (draft) => {
+      draft.sort((a2, b2) => {
+        const aval = headers.indexOf(a2.name);
+        const bval = headers.indexOf(b2.name);
+        const distance = aval - bval;
+        if (distance !== 0) {
+          return distance;
+        }
+        return a2.name.localeCompare(b2.name);
+      });
     });
   }
   includes(path) {
@@ -37262,13 +37593,9 @@ var DataviewDataSource = class extends DataSource {
   }
   standardizeRecords(rows) {
     const records = [];
-    rows.forEach((row) => {
-      const values = standardizeValues(this.app, row);
-      const id = values["File"];
-      if (id && isLink2(id) && id.fullPath) {
-        records.push({ id: id.fullPath, values });
-      }
-    });
+    rows.map((row) => ({ id: row["File"], row })).forEach(
+      ({ id, row }) => records.push({ id: id.path, values: standardizeValues(row) })
+    );
     return records;
   }
 };
@@ -37287,7 +37614,13 @@ function parseTableResult(value) {
 }
 function detectSchema(records) {
   return detectFields(records).map((field) => __spreadProps(__spreadValues({}, field), { derived: true })).map(
-    (field) => field.name === "File" ? __spreadProps(__spreadValues({}, field), { identifier: true }) : field
+    (field) => field.name === "File" ? immer_esm_default(field, (draft) => {
+      var _a;
+      draft.identifier = true;
+      draft.typeConfig = immer_esm_default((_a = draft.typeConfig) != null ? _a : {}, (draft2) => {
+        draft2.richText = true;
+      });
+    }) : field
   );
 }
 
@@ -37295,31 +37628,14 @@ function detectSchema(records) {
 function standardizeRecord(id, values) {
   return {
     id,
-    values: Object.fromEntries(
-      Object.entries(values).map(([field, value]) => {
-        return [
-          field,
-          isStringLink(value) ? parseStringLink(value, "") : value
-        ];
-      })
-    )
+    values
   };
-}
-function parseStringLink(rawLink, sourcePath) {
-  const linkText = extractLinkText(rawLink);
-  return {
-    linkText,
-    sourcePath
-  };
-}
-function extractLinkText(val) {
-  return val.replace(/\[\[(.*)\]\]/m, (_match, p1) => p1);
 }
 
 // src/lib/datasources/frontmatter/frontmatter.ts
 var FrontMatterDataSource = class extends DataSource {
-  constructor(app2, project) {
-    super(project);
+  constructor(app2, project, preferences) {
+    super(project, preferences);
     this.app = app2;
   }
   queryOne(file, fields) {
@@ -37337,13 +37653,13 @@ var FrontMatterDataSource = class extends DataSource {
     return __async(this, null, function* () {
       const standardizedRecords = yield standardizeRecords(files, this.app.vault);
       const res = Array_exports.separate(standardizedRecords);
-      let fields = detectSchema2(res.right);
+      let fields = this.sortFields(detectSchema2(res.right));
       for (const f2 in this.project.fieldConfig) {
         fields = fields.map(
           (field) => {
-            var _a, _b;
+            var _a;
             return field.name !== f2 ? field : __spreadProps(__spreadValues({}, field), {
-              typeConfig: (_b = (_a = this.project.fieldConfig) == null ? void 0 : _a[f2]) != null ? _b : {}
+              typeConfig: __spreadValues(__spreadValues({}, (_a = this.project.fieldConfig) == null ? void 0 : _a[f2]), field.typeConfig)
             });
           }
         );
@@ -37355,6 +37671,19 @@ var FrontMatterDataSource = class extends DataSource {
       }
       const records = parseRecords(res.right, fields);
       return { fields, records, errors: res.left };
+    });
+  }
+  sortFields(fields) {
+    return immer_esm_default(fields, (draft) => {
+      draft.sort((a2, b2) => {
+        if (a2.name === "name" || a2.name === "path") {
+          return -1;
+        }
+        if (b2.name === "name" || b2.name === "path") {
+          return 1;
+        }
+        return a2.name.localeCompare(b2.name);
+      });
     });
   }
   includes(path) {
@@ -37392,7 +37721,7 @@ function standardizeRecords(files, vault) {
           Either_exports.map(filterUndefinedValues),
           Either_exports.map((values) => __spreadProps(__spreadValues({}, values), {
             path: file.path,
-            name: file.basename
+            name: `[[${file.path}|${file.basename}]]`
           })),
           Either_exports.map((values) => standardizeRecord(file.path, values))
         );
@@ -37407,9 +37736,17 @@ function filterUndefinedValues(val) {
 }
 function detectSchema2(records) {
   return detectFields(records).map(
-    (field) => field.name === "name" || field.name === "path" ? __spreadProps(__spreadValues({}, field), { derived: true }) : field
+    (field) => field.name === "name" ? immer_esm_default(field, (draft) => {
+      var _a;
+      draft.derived = true;
+      draft.typeConfig = immer_esm_default((_a = field.typeConfig) != null ? _a : {}, (draft2) => {
+        draft2.richText = true;
+      });
+    }) : field
   ).map(
-    (field) => field.name === "path" ? __spreadProps(__spreadValues({}, field), { identifier: true }) : field
+    (field) => field.name === "path" ? immer_esm_default(field, (draft) => {
+      draft.derived = true;
+    }) : field
   );
 }
 
@@ -37482,25 +37819,25 @@ function create_fragment34(ctx) {
     },
     m(target, anchor) {
       insert(target, div3, anchor);
-      append(div3, div0);
+      append4(div3, div0);
       if (left_slot) {
         left_slot.m(div0, null);
       }
-      append(div3, t0);
+      append4(div3, t0);
       if (info_slot) {
         info_slot.m(div3, null);
       }
-      append(div3, t1);
-      append(div3, div1);
+      append4(div3, t1);
+      append4(div3, div1);
       if (middle_slot) {
         middle_slot.m(div1, null);
       }
-      append(div3, t22);
+      append4(div3, t22);
       if (view_options_slot) {
         view_options_slot.m(div3, null);
       }
-      append(div3, t3);
-      append(div3, div2);
+      append4(div3, t3);
+      append4(div3, div2);
       if (right_slot) {
         right_slot.m(div2, null);
       }
@@ -37639,7 +37976,7 @@ function instance34($$self, $$props, $$invalidate) {
 var ViewToolbar = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance34, create_fragment34, safe_not_equal, { variant: 0 }, add_css15);
+    init4(this, options, instance34, create_fragment34, safe_not_equal, { variant: 0 }, add_css15);
   }
 };
 var ViewToolbar_default = ViewToolbar;
@@ -37732,37 +38069,10 @@ function instance35($$self, $$props, $$invalidate) {
 var HorizontalGroup = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance35, create_fragment35, safe_not_equal, { fullWidth: 0, alignItems: 1, padding: 2 }, add_css16);
+    init4(this, options, instance35, create_fragment35, safe_not_equal, { fullWidth: 0, alignItems: 1, padding: 2 }, add_css16);
   }
 };
 var HorizontalGroup_default = HorizontalGroup;
-
-// src/types.ts
-function isStringFilterOperator(op) {
-  return ["is", "is-not", "contains", "not-contains"].includes(op);
-}
-function isNumberFilterOperator(op) {
-  return ["eq", "neq", "lt", "gt", "lte", "gte"].includes(op);
-}
-function isBooleanFilterOperator(op) {
-  return ["is-checked", "is-not-checked"].includes(op);
-}
-var filterOperatorTypes = {
-  "is-empty": "unary",
-  "is-not-empty": "unary",
-  is: "binary",
-  "is-not": "binary",
-  contains: "binary",
-  "not-contains": "binary",
-  eq: "binary",
-  neq: "binary",
-  lt: "binary",
-  gt: "binary",
-  lte: "binary",
-  gte: "binary",
-  "is-checked": "unary",
-  "is-not-checked": "unary"
-};
 
 // src/components/FilterSettings/FilterSettings.svelte
 function get_each_context4(ctx, list, i2) {
@@ -37804,7 +38114,7 @@ function create_if_block8(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (~current_block_type_index) {
@@ -37987,7 +38297,7 @@ function create_default_slot_23(ctx) {
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, t0);
+      append4(div, t0);
       insert(target, t1, anchor);
       mount_component(select0, target, anchor);
       insert(target, t22, anchor);
@@ -38216,7 +38526,7 @@ function create_fragment36(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(div, null);
       }
-      append(div, t3);
+      append4(div, t3);
       mount_component(horizontalgroup, div, null);
       current = true;
     },
@@ -38395,7 +38705,7 @@ function instance36($$self, $$props, $$invalidate) {
 var FilterSettings = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance36, create_fragment36, safe_not_equal, { filter: 0, fields: 9, onFilterChange: 10 });
+    init4(this, options, instance36, create_fragment36, safe_not_equal, { filter: 0, fields: 9, onFilterChange: 10 });
   }
 };
 var FilterSettings_default = FilterSettings;
@@ -38440,7 +38750,7 @@ function create_if_block9(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (~current_block_type_index) {
@@ -38870,7 +39180,7 @@ function create_fragment37(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(div, null);
       }
-      append(div, t3);
+      append4(div, t3);
       mount_component(horizontalgroup, div, null);
       current = true;
     },
@@ -39068,7 +39378,7 @@ function instance37($$self, $$props, $$invalidate) {
 var ColorFilterSettings = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance37, create_fragment37, safe_not_equal, {
+    init4(this, options, instance37, create_fragment37, safe_not_equal, {
       filter: 0,
       fields: 10,
       onFilterChange: 11
@@ -39518,12 +39828,11 @@ function instance38($$self, $$props, $$invalidate) {
   };
   const click_handler = () => {
     var _a;
-    onSave(project.id, {
+    onSave(project.id, Object.assign({}, DEFAULT_VIEW, {
       id: v4_default(),
       name: name || nextUniqueViewName(project.views, (_a = selectedOption == null ? void 0 : selectedOption.label) != null ? _a : type),
-      type,
-      config: {}
-    });
+      type
+    }));
   };
   $$self.$$set = ($$props2) => {
     if ("onSave" in $$props2)
@@ -39560,7 +39869,7 @@ function instance38($$self, $$props, $$invalidate) {
 var AddView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance38, create_fragment38, safe_not_equal, { onSave: 1, project: 0 });
+    init4(this, options, instance38, create_fragment38, safe_not_equal, { onSave: 1, project: 0 });
   }
 };
 var AddView_default = AddView;
@@ -39902,7 +40211,7 @@ function instance39($$self, $$props, $$invalidate) {
 var ConfirmDialog = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance39, create_fragment39, safe_not_equal, {
+    init4(this, options, instance39, create_fragment39, safe_not_equal, {
       title: 0,
       message: 1,
       cta: 2,
@@ -40040,7 +40349,7 @@ function instance40($$self, $$props, $$invalidate) {
 var Flair = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance40, create_fragment40, safe_not_equal, { variant: 0 }, add_css17);
+    init4(this, options, instance40, create_fragment40, safe_not_equal, { variant: 0 }, add_css17);
   }
 };
 var Flair_default = Flair;
@@ -40108,7 +40417,7 @@ function create_fragment41(ctx) {
     m(target, anchor) {
       insert(target, span, anchor);
       mount_component(select, span, null);
-      append(span, t3);
+      append4(span, t3);
       if (if_block)
         if_block.m(span, null);
       current = true;
@@ -40197,10 +40506,11 @@ function instance41($$self, $$props, $$invalidate) {
     });
     menu.addItem((item) => {
       item.setTitle($i18n.t("modals.project.delete.short-title")).setIcon("trash").onClick(() => {
+        var _a;
         new ConfirmDialogModal(
           $app,
           $i18n.t("modals.project.delete.title"),
-          $i18n.t("modals.project.delete.message"),
+          $i18n.t("modals.project.delete.message", { project: (_a = project == null ? void 0 : project.name) != null ? _a : "" }),
           $i18n.t("modals.project.delete.cta"),
           () => {
             if (projectId) {
@@ -40240,7 +40550,7 @@ function instance41($$self, $$props, $$invalidate) {
 var ProjectSelect = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance41,
@@ -40339,8 +40649,8 @@ function create_if_block_17(ctx) {
     textinput_props.value = ctx[0];
   }
   textinput = new TextInput_default({ props: textinput_props });
-  binding_callbacks.push(() => bind(textinput, "ref", textinput_ref_binding, ctx[5]));
-  binding_callbacks.push(() => bind(textinput, "value", textinput_value_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(textinput, "ref", textinput_ref_binding, ctx[5]));
+  binding_callbacks.push(() => bind6(textinput, "value", textinput_value_binding, ctx[0]));
   textinput.$on("keydown", ctx[14]);
   return {
     c() {
@@ -40456,9 +40766,9 @@ function create_fragment42(ctx) {
       insert(target, div, anchor);
       if (if_block0)
         if_block0.m(div, null);
-      append(div, t0);
+      append4(div, t0);
       if_blocks[current_block_type_index].m(div, null);
-      append(div, t1);
+      append4(div, t1);
       if (if_block2)
         if_block2.m(div, null);
       current = true;
@@ -40683,7 +40993,7 @@ function instance42($$self, $$props, $$invalidate) {
 var ViewItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance42,
@@ -42902,7 +43212,7 @@ function create_fragment43(ctx) {
     },
     m(target, anchor) {
       insert(target, section, anchor);
-      append(section, div);
+      append4(section, div);
       if (default_slot) {
         default_slot.m(div, null);
       }
@@ -42976,7 +43286,7 @@ function instance43($$self, $$props, $$invalidate) {
 var ViewItemList = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance43, create_fragment43, safe_not_equal, { onSort: 1 }, add_css20);
+    init4(this, options, instance43, create_fragment43, safe_not_equal, { onSort: 1 }, add_css20);
   }
 };
 var ViewItemList_default = ViewItemList;
@@ -43072,7 +43382,7 @@ function create_key_block(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
@@ -43134,7 +43444,7 @@ function create_default_slot12(ctx) {
   return {
     c() {
       key_block.c();
-      key_block_anchor = empty();
+      key_block_anchor = empty3();
     },
     m(target, anchor) {
       key_block.m(target, anchor);
@@ -43282,7 +43592,7 @@ function instance44($$self, $$props, $$invalidate) {
 var ViewSelect = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance44, create_fragment44, safe_not_equal, {
+    init4(this, options, instance44, create_fragment44, safe_not_equal, {
       viewId: 0,
       views: 1,
       onViewChange: 2,
@@ -43361,7 +43671,7 @@ function instance45($$self, $$props, $$invalidate) {
 var Accordion = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance45, create_fragment45, safe_not_equal, {});
+    init4(this, options, instance45, create_fragment45, safe_not_equal, {});
   }
 };
 var Accordion_default = Accordion;
@@ -43492,13 +43802,13 @@ function create_fragment46(ctx) {
     },
     m(target, anchor) {
       insert(target, section, anchor);
-      append(section, header);
+      append4(section, header);
       if (header_slot) {
         header_slot.m(header, null);
       }
-      append(header, t0);
+      append4(header, t0);
       mount_component(icon, header, null);
-      append(section, t1);
+      append4(section, t1);
       if (if_block)
         if_block.m(section, null);
       current = true;
@@ -43590,7 +43900,7 @@ function instance46($$self, $$props, $$invalidate) {
 var AccordionItem = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance46, create_fragment46, safe_not_equal, {}, add_css21);
+    init4(this, options, instance46, create_fragment46, safe_not_equal, {}, add_css21);
   }
 };
 var AccordionItem_default = AccordionItem;
@@ -43677,7 +43987,7 @@ function create_default_slot_64(ctx) {
     },
     m(target, anchor) {
       insert(target, pre, anchor);
-      append(pre, t0);
+      append4(pre, t0);
       insert(target, t1, anchor);
     },
     p(ctx2, dirty) {
@@ -43757,17 +44067,17 @@ function create_header_slot(ctx) {
     },
     m(target, anchor) {
       insert(target, div3, anchor);
-      append(div3, span);
+      append4(div3, span);
       mount_component(flair, span, null);
       mount_component(iconbutton, span, null);
-      append(span, t0);
-      append(span, div2);
-      append(div2, div0);
-      append(div0, t1);
-      append(div2, t22);
-      append(div2, div1);
-      append(div1, t3);
-      append(div3, t4);
+      append4(span, t0);
+      append4(span, div2);
+      append4(div2, div0);
+      append4(div0, t1);
+      append4(div2, t22);
+      append4(div2, div1);
+      append4(div1, t3);
+      append4(div3, t4);
       current = true;
     },
     p(new_ctx, dirty) {
@@ -43860,7 +44170,7 @@ function create_default_slot_45(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
@@ -44163,7 +44473,7 @@ function instance47($$self, $$props, $$invalidate) {
 var Inspector = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance47, create_fragment47, safe_not_equal, { title: 0, errors: 1, onCancel: 2 }, add_css22);
+    init4(this, options, instance47, create_fragment47, safe_not_equal, { title: 0, errors: 1, onCancel: 2 }, add_css22);
   }
 };
 var Inspector_default = Inspector;
@@ -44271,7 +44581,7 @@ function create_info_slot(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -44498,13 +44808,14 @@ function create_if_block13(ctx) {
     button0_props.ref = ctx[9];
   }
   button0 = new Button_default({ props: button0_props });
-  binding_callbacks.push(() => bind(button0, "ref", button0_ref_binding, ctx[9]));
+  binding_callbacks.push(() => bind6(button0, "ref", button0_ref_binding, ctx[9]));
   button0.$on("click", ctx[20]);
   popover0 = new Popover_default({
     props: {
       anchorEl: ctx[9],
       open: ctx[10],
       onClose: ctx[22],
+      placement: "auto",
       $$slots: { default: [create_default_slot_46] },
       $$scope: { ctx }
     }
@@ -44520,13 +44831,14 @@ function create_if_block13(ctx) {
     button1_props.ref = ctx[7];
   }
   button1 = new Button_default({ props: button1_props });
-  binding_callbacks.push(() => bind(button1, "ref", button1_ref_binding, ctx[7]));
+  binding_callbacks.push(() => bind6(button1, "ref", button1_ref_binding, ctx[7]));
   button1.$on("click", ctx[24]);
   popover1 = new Popover_default({
     props: {
       anchorEl: ctx[7],
       open: ctx[8],
       onClose: ctx[26],
+      placement: "auto",
       $$slots: { default: [create_default_slot_110] },
       $$scope: { ctx }
     }
@@ -44666,8 +44978,8 @@ function create_if_block_25(ctx) {
   };
 }
 function create_default_slot_65(ctx) {
-  var _a, _b;
-  let t_value = ((_b = (_a = ctx[33]) == null ? void 0 : _a.colors) == null ? void 0 : _b.conditions.length) + "";
+  var _a;
+  let t_value = ((_a = ctx[33]) == null ? void 0 : _a.colors.conditions.length) + "";
   let t3;
   return {
     c() {
@@ -44677,8 +44989,8 @@ function create_default_slot_65(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      var _a2, _b2;
-      if (dirty[0] & 11 && t_value !== (t_value = ((_b2 = (_a2 = ctx2[33]) == null ? void 0 : _a2.colors) == null ? void 0 : _b2.conditions.length) + ""))
+      var _a2;
+      if (dirty[0] & 11 && t_value !== (t_value = ((_a2 = ctx2[33]) == null ? void 0 : _a2.colors.conditions.length) + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -44688,20 +45000,20 @@ function create_default_slot_65(ctx) {
   };
 }
 function create_default_slot_56(ctx) {
-  var _a, _b;
+  var _a;
   let icon;
   let t3;
   let if_block_anchor;
   let current;
   icon = new Icon_default({ props: { name: "palette" } });
-  let if_block = ((_b = (_a = ctx[33]) == null ? void 0 : _a.colors) == null ? void 0 : _b.conditions.length) && create_if_block_25(ctx);
+  let if_block = ((_a = ctx[33]) == null ? void 0 : _a.colors.conditions.length) && create_if_block_25(ctx);
   return {
     c() {
       create_component(icon.$$.fragment);
       t3 = text("\n        Color\n        ");
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       mount_component(icon, target, anchor);
@@ -44712,8 +45024,8 @@ function create_default_slot_56(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      var _a2, _b2;
-      if ((_b2 = (_a2 = ctx2[33]) == null ? void 0 : _a2.colors) == null ? void 0 : _b2.conditions.length) {
+      var _a2;
+      if ((_a2 = ctx2[33]) == null ? void 0 : _a2.colors.conditions.length) {
         if (if_block) {
           if_block.p(ctx2, dirty);
           if (dirty[0] & 11) {
@@ -44842,8 +45154,8 @@ function create_if_block_18(ctx) {
   };
 }
 function create_default_slot_36(ctx) {
-  var _a, _b;
-  let t_value = ((_b = (_a = ctx[33]) == null ? void 0 : _a.filter) == null ? void 0 : _b.conditions.length) + "";
+  var _a;
+  let t_value = ((_a = ctx[33]) == null ? void 0 : _a.filter.conditions.length) + "";
   let t3;
   return {
     c() {
@@ -44853,8 +45165,8 @@ function create_default_slot_36(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      var _a2, _b2;
-      if (dirty[0] & 11 && t_value !== (t_value = ((_b2 = (_a2 = ctx2[33]) == null ? void 0 : _a2.filter) == null ? void 0 : _b2.conditions.length) + ""))
+      var _a2;
+      if (dirty[0] & 11 && t_value !== (t_value = ((_a2 = ctx2[33]) == null ? void 0 : _a2.filter.conditions.length) + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -44864,20 +45176,20 @@ function create_default_slot_36(ctx) {
   };
 }
 function create_default_slot_28(ctx) {
-  var _a, _b;
+  var _a;
   let icon;
   let t3;
   let if_block_anchor;
   let current;
   icon = new Icon_default({ props: { name: "filter" } });
-  let if_block = ((_b = (_a = ctx[33]) == null ? void 0 : _a.filter) == null ? void 0 : _b.conditions.length) && create_if_block_18(ctx);
+  let if_block = ((_a = ctx[33]) == null ? void 0 : _a.filter.conditions.length) && create_if_block_18(ctx);
   return {
     c() {
       create_component(icon.$$.fragment);
       t3 = text("\n        Filter\n        ");
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       mount_component(icon, target, anchor);
@@ -44888,8 +45200,8 @@ function create_default_slot_28(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      var _a2, _b2;
-      if ((_b2 = (_a2 = ctx2[33]) == null ? void 0 : _a2.filter) == null ? void 0 : _b2.conditions.length) {
+      var _a2;
+      if ((_a2 = ctx2[33]) == null ? void 0 : _a2.filter.conditions.length) {
         if (if_block) {
           if_block.p(ctx2, dirty);
           if (dirty[0] & 11) {
@@ -44985,7 +45297,7 @@ function create_view_options_slot(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -45370,7 +45682,7 @@ function instance48($$self, $$props, $$invalidate) {
 var Toolbar = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance48,
@@ -45412,7 +45724,7 @@ function create_catch_block_1(ctx) {
   let current;
   callout = new Callout_default({
     props: {
-      title: ctx[17].name,
+      title: ctx[18].name,
       icon: "zap",
       variant: "danger",
       $$slots: { default: [create_default_slot15] },
@@ -45433,7 +45745,7 @@ function create_catch_block_1(ctx) {
     p(ctx2, dirty) {
       const callout_changes = {};
       if (dirty & 32)
-        callout_changes.title = ctx2[17].name;
+        callout_changes.title = ctx2[18].name;
       if (dirty & 32800) {
         callout_changes.$$scope = { dirty, ctx: ctx2 };
       }
@@ -45457,7 +45769,7 @@ function create_catch_block_1(ctx) {
   };
 }
 function create_default_slot_111(ctx) {
-  let t_value = ctx[17].message + "";
+  let t_value = ctx[18].message + "";
   let t3;
   return {
     c() {
@@ -45467,7 +45779,7 @@ function create_default_slot_111(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty & 32 && t_value !== (t_value = ctx2[17].message + ""))
+      if (dirty & 32 && t_value !== (t_value = ctx2[18].message + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -45578,7 +45890,7 @@ function create_pending_block(ctx) {
   handle_promise(promise2 = ctx[8](), info);
   return {
     c() {
-      await_block_anchor = empty();
+      await_block_anchor = empty3();
       info.block.c();
     },
     m(target, anchor) {
@@ -45683,7 +45995,7 @@ function create_fragment49(ctx) {
     pending: create_pending_block,
     then: create_then_block_1,
     catch: create_catch_block_1,
-    error: 17,
+    error: 18,
     blocks: [, , ,]
   };
   handle_promise(promise2 = ctx[5], info);
@@ -45700,8 +46012,8 @@ function create_fragment49(ctx) {
     m(target, anchor) {
       insert(target, div1, anchor);
       mount_component(toolbar, div1, null);
-      append(div1, t3);
-      append(div1, div0);
+      append4(div1, t3);
+      append4(div1, div0);
       info.block.m(div0, info.anchor = null);
       info.mount = () => div0;
       info.anchor = null;
@@ -45758,9 +46070,11 @@ function instance49($$self, $$props, $$invalidate) {
   let selectedProject;
   let views;
   let selectedView;
+  let $settings;
   let $dataSource;
   let $app;
   let $dataFrame;
+  component_subscribe($$self, settings, ($$value) => $$invalidate(16, $settings = $$value));
   component_subscribe($$self, dataSource, ($$value) => $$invalidate(4, $dataSource = $$value));
   component_subscribe($$self, app, ($$value) => $$invalidate(11, $app = $$value));
   component_subscribe($$self, dataFrame, ($$value) => $$invalidate(7, $dataFrame = $$value));
@@ -45770,11 +46084,11 @@ function instance49($$self, $$props, $$invalidate) {
   let { viewId } = $$props;
   let querying;
   function resolveDataSource(project, app2) {
-    return project.dataview ? new DataviewDataSource(app2, project) : new FrontMatterDataSource(app2, project);
+    return project.dataview ? new DataviewDataSource(app2, project, $settings.preferences) : new FrontMatterDataSource(app2, project, $settings.preferences);
   }
   const wait2 = () => new Promise((res) => setTimeout(res, 500));
   const func7 = (id) => $$invalidate(0, projectId = id);
-  const func_14 = (id) => $$invalidate(1, viewId = id);
+  const func_13 = (id) => $$invalidate(1, viewId = id);
   $$self.$$set = ($$props2) => {
     if ("projects" in $$props2)
       $$invalidate(2, projects = $$props2.projects);
@@ -45834,14 +46148,14 @@ function instance49($$self, $$props, $$invalidate) {
     $app,
     slots,
     func7,
-    func_14,
+    func_13,
     $$scope
   ];
 }
 var AppContainer = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance49, create_fragment49, safe_not_equal, { projects: 2, projectId: 0, viewId: 1 }, add_css23);
+    init4(this, options, instance49, create_fragment49, safe_not_equal, { projects: 2, projectId: 0, viewId: 1 }, add_css23);
   }
 };
 var AppContainer_default = AppContainer;
@@ -45924,29 +46238,39 @@ function createDemoProject(vault) {
     const galleryConfig = {
       coverField: "image"
     };
-    settings.addProject({
-      name: "Demo project",
-      id: v4_default(),
-      path: demoFolder,
-      recursive: false,
-      fieldConfig: {},
-      views: [
-        { name: "Table", id: v4_default(), type: "table", config: tableConfig },
-        { name: "Board", id: v4_default(), type: "board", config: boardConfig },
-        {
-          name: "Calendar",
-          id: v4_default(),
-          type: "calendar",
-          config: calendarConfig
-        },
-        {
-          name: "Gallery",
-          id: v4_default(),
-          type: "gallery",
-          config: galleryConfig
-        }
-      ]
-    });
+    settings.addProject(
+      Object.assign({}, DEFAULT_PROJECT, {
+        name: "Demo project",
+        id: v4_default(),
+        path: demoFolder,
+        views: [
+          Object.assign({}, DEFAULT_VIEW, {
+            name: "Table",
+            id: v4_default(),
+            type: "table",
+            config: tableConfig
+          }),
+          Object.assign({}, DEFAULT_VIEW, {
+            name: "Board",
+            id: v4_default(),
+            type: "board",
+            config: boardConfig
+          }),
+          Object.assign({}, DEFAULT_VIEW, {
+            name: "Calendar",
+            id: v4_default(),
+            type: "calendar",
+            config: calendarConfig
+          }),
+          Object.assign({}, DEFAULT_VIEW, {
+            name: "Gallery",
+            id: v4_default(),
+            type: "gallery",
+            config: galleryConfig
+          })
+        ]
+      })
+    );
   });
 }
 
@@ -45984,8 +46308,8 @@ function create_each_block8(ctx) {
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, t0);
-      append(div, t1);
+      append4(div, t0);
+      append4(div, t1);
       if (!mounted) {
         dispose = [
           listen(div, "keypress", ctx[4]),
@@ -46039,12 +46363,12 @@ function create_fragment50(ctx) {
     },
     m(target, anchor) {
       insert(target, div2, anchor);
-      append(div2, div0);
+      append4(div2, div0);
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(div0, null);
       }
-      append(div2, t3);
-      append(div2, div1);
+      append4(div2, t3);
+      append4(div2, div1);
       if (default_slot) {
         default_slot.m(div1, null);
       }
@@ -46123,7 +46447,7 @@ function instance50($$self, $$props, $$invalidate) {
 var TabContainer = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance50, create_fragment50, safe_not_equal, { options: 0 }, add_css24);
+    init4(this, options, instance50, create_fragment50, safe_not_equal, { options: 0 }, add_css24);
   }
 };
 var TabContainer_default = TabContainer;
@@ -46357,7 +46681,7 @@ function create_default_slot16(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_block.m(target, anchor);
@@ -46469,17 +46793,17 @@ published: false
     m(target, anchor) {
       insert(target, div, anchor);
       mount_component(typography0, div, null);
-      append(div, t0);
+      append4(div, t0);
       mount_component(typography1, div, null);
-      append(div, t1);
-      append(div, pre);
-      append(div, t3);
+      append4(div, t1);
+      append4(div, pre);
+      append4(div, t3);
       mount_component(typography2, div, null);
-      append(div, t4);
+      append4(div, t4);
       mount_component(modalbuttongroup, div, null);
-      append(div, t5);
-      append(div, p2);
-      append(div, t8);
+      append4(div, t5);
+      append4(div, p2);
+      append4(div, t8);
       mount_component(tabcontainer, div, null);
       current = true;
     },
@@ -46555,7 +46879,7 @@ function instance51($$self, $$props, $$invalidate) {
 var Onboarding = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance51, create_fragment51, safe_not_equal, { onCreate: 0, onTry: 1 }, add_css25);
+    init4(this, options, instance51, create_fragment51, safe_not_equal, { onCreate: 0, onTry: 1 }, add_css25);
   }
 };
 var Onboarding_default = Onboarding;
@@ -46823,7 +47147,7 @@ function instance52($$self, $$props, $$invalidate) {
 var View = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance52,
@@ -46902,7 +47226,7 @@ function create_default_slot17(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -46983,8 +47307,8 @@ function create_fragment53(ctx) {
     appcontainer_props.viewId = ctx[1];
   }
   appcontainer = new AppContainer_default({ props: appcontainer_props });
-  binding_callbacks.push(() => bind(appcontainer, "projectId", appcontainer_projectId_binding, ctx[0]));
-  binding_callbacks.push(() => bind(appcontainer, "viewId", appcontainer_viewId_binding, ctx[1]));
+  binding_callbacks.push(() => bind6(appcontainer, "projectId", appcontainer_projectId_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(appcontainer, "viewId", appcontainer_viewId_binding, ctx[1]));
   return {
     c() {
       create_component(appcontainer.$$.fragment);
@@ -47080,7 +47404,7 @@ function instance53($$self, $$props, $$invalidate) {
 var App9 = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance53, create_fragment53, safe_not_equal, {});
+    init4(this, options, instance53, create_fragment53, safe_not_equal, {});
   }
 };
 var App_default = App9;
@@ -47151,7 +47475,7 @@ function create_fragment54(ctx) {
     m(target, anchor) {
       insert(target, div, anchor);
       mount_component(typography, div, null);
-      append(div, t3);
+      append4(div, t3);
       if (default_slot) {
         default_slot.m(div, null);
       }
@@ -47211,7 +47535,7 @@ function instance54($$self, $$props, $$invalidate) {
 var Field2 = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance54, create_fragment54, safe_not_equal, { name: 0 }, add_css27);
+    init4(this, options, instance54, create_fragment54, safe_not_equal, { name: 0 }, add_css27);
   }
 };
 var Field_default = Field2;
@@ -47282,7 +47606,7 @@ function instance55($$self, $$props, $$invalidate) {
 var ViewContent = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance55, create_fragment55, safe_not_equal, {}, add_css28);
+    init4(this, options, instance55, create_fragment55, safe_not_equal, {}, add_css28);
   }
 };
 var ViewContent_default = ViewContent;
@@ -47349,7 +47673,7 @@ function instance56($$self, $$props, $$invalidate) {
 var ViewHeader = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance56, create_fragment56, safe_not_equal, {});
+    init4(this, options, instance56, create_fragment56, safe_not_equal, {});
   }
 };
 var ViewHeader_default = ViewHeader;
@@ -47420,7 +47744,7 @@ function instance57($$self, $$props, $$invalidate) {
 var ViewLayout = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance57, create_fragment57, safe_not_equal, {}, add_css29);
+    init4(this, options, instance57, create_fragment57, safe_not_equal, {}, add_css29);
   }
 };
 var ViewLayout_default = ViewLayout;
@@ -47733,7 +48057,7 @@ function instance58($$self, $$props, $$invalidate) {
 var InputDialog = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance58,
@@ -47817,7 +48141,7 @@ function create_else_block4(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
@@ -48208,50 +48532,12 @@ function instance59($$self, $$props, $$invalidate) {
 var TagList = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance59, create_fragment59, safe_not_equal, { values: 0, edit: 1, onChange: 2 }, add_css31);
+    init4(this, options, instance59, create_fragment59, safe_not_equal, { values: 0, edit: 1, onChange: 2 }, add_css31);
   }
 };
 var TagList_default = TagList;
 
 // src/components/FieldControl/FieldControl.svelte
-function create_if_block_6(ctx) {
-  let textinput;
-  let current;
-  textinput = new TextInput_default({
-    props: {
-      value: isLink(ctx[1]) ? ctx[1].linkText : ""
-    }
-  });
-  textinput.$on("input", ctx[13]);
-  return {
-    c() {
-      create_component(textinput.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(textinput, target, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      const textinput_changes = {};
-      if (dirty & 2)
-        textinput_changes.value = isLink(ctx2[1]) ? ctx2[1].linkText : "";
-      textinput.$set(textinput_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(textinput.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(textinput.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(textinput, detaching);
-    }
-  };
-}
 function create_if_block_5(ctx) {
   let dateinput;
   let current;
@@ -48345,7 +48631,7 @@ function create_if_block_26(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_blocks[current_block_type_index].m(target, anchor);
@@ -48565,8 +48851,7 @@ function create_fragment60(ctx) {
     create_if_block_110,
     create_if_block_26,
     create_if_block_42,
-    create_if_block_5,
-    create_if_block_6
+    create_if_block_5
   ];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
@@ -48584,8 +48869,6 @@ function create_fragment60(ctx) {
       return 3;
     if (ctx2[0].type === "date" /* Date */)
       return 4;
-    if (ctx2[0].type === "link" /* Link */)
-      return 5;
     return -1;
   }
   if (~(current_block_type_index = select_block_type(ctx, -1))) {
@@ -48595,7 +48878,7 @@ function create_fragment60(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (~current_block_type_index) {
@@ -48665,11 +48948,6 @@ function instance60($$self, $$props, $$invalidate) {
   const input_handler = ({ detail: value2 }) => onChange(value2);
   const input_handler_1 = ({ detail: value2 }) => onChange(value2 !== null ? value2 : void 0);
   const change_handler_1 = ({ detail: value2 }) => onChange(value2 != null ? value2 : void 0);
-  const input_handler_2 = ({ detail: val }) => {
-    if (isLink(value)) {
-      onChange(__spreadProps(__spreadValues({}, value), { linkText: val }));
-    }
-  };
   $$self.$$set = ($$props2) => {
     if ("field" in $$props2)
       $$invalidate(0, field = $$props2.field);
@@ -48699,14 +48977,13 @@ function instance60($$self, $$props, $$invalidate) {
     change_handler,
     input_handler,
     input_handler_1,
-    change_handler_1,
-    input_handler_2
+    change_handler_1
   ];
 }
 var FieldControl = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance60, create_fragment60, safe_not_equal, {
+    init4(this, options, instance60, create_fragment60, safe_not_equal, {
       field: 0,
       value: 1,
       onChange: 2,
@@ -48901,7 +49178,7 @@ function create_default_slot_39(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -49181,7 +49458,7 @@ function instance61($$self, $$props, $$invalidate) {
 var EditNote = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance61, create_fragment61, safe_not_equal, { fields: 4, record: 0, onSave: 1 });
+    init4(this, options, instance61, create_fragment61, safe_not_equal, { fields: 4, record: 0, onSave: 1 });
   }
 };
 var EditNote_default = EditNote;
@@ -51306,9 +51583,9 @@ function create_each_block11(key_1, ctx) {
       insert(target, div, anchor);
       if (if_block)
         if_block.m(div, null);
-      append(div, t0);
+      append4(div, t0);
       mount_component(internallink, div, null);
-      append(div, t1);
+      append4(div, t1);
       current = true;
       if (!mounted) {
         dispose = [
@@ -51526,7 +51803,7 @@ function instance62($$self, $$props, $$invalidate) {
 var CardGroup = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance62,
@@ -51660,9 +51937,9 @@ function create_if_block_111(ctx) {
       mount_component(cardgroup0, div0, null);
       insert(target, t0, anchor);
       insert(target, div1, anchor);
-      append(div1, p2);
-      append(p2, t1);
-      append(div1, t22);
+      append4(div1, p2);
+      append4(p2, t1);
+      append4(div1, t22);
       mount_component(cardgroup1, div1, null);
       current = true;
     },
@@ -51820,11 +52097,11 @@ function create_fragment63(ctx) {
     },
     m(target, anchor) {
       insert(target, div1, anchor);
-      append(div1, div0);
+      append4(div1, div0);
       mount_component(typography, div0, null);
-      append(div1, t0);
+      append4(div1, t0);
       if_blocks[current_block_type_index].m(div1, null);
-      append(div1, t1);
+      append4(div1, t1);
       if (if_block1)
         if_block1.m(div1, null);
       current = true;
@@ -51986,7 +52263,7 @@ function instance63($$self, $$props, $$invalidate) {
 var BoardColumn = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance63,
@@ -52024,7 +52301,7 @@ function create_each_block12(key_1, ctx) {
   function func7() {
     return ctx[11](ctx[13]);
   }
-  function func_14(...args) {
+  function func_13(...args) {
     return ctx[12](ctx[13], ...args);
   }
   boardcolumn = new BoardColumn_default({
@@ -52036,14 +52313,14 @@ function create_each_block12(key_1, ctx) {
       onRecordClick: ctx[3],
       onRecordAdd: func7,
       dragDisabled: ctx[7],
-      onRecordUpdate: func_14
+      onRecordUpdate: func_13
     }
   });
   return {
     key: key_1,
     first: null,
     c() {
-      first = empty();
+      first = empty3();
       create_component(boardcolumn.$$.fragment);
       this.first = first;
     },
@@ -52070,7 +52347,7 @@ function create_each_block12(key_1, ctx) {
       if (dirty & 128)
         boardcolumn_changes.dragDisabled = ctx[7];
       if (dirty & 17)
-        boardcolumn_changes.onRecordUpdate = func_14;
+        boardcolumn_changes.onRecordUpdate = func_13;
       boardcolumn.$set(boardcolumn_changes);
     },
     i(local) {
@@ -52197,7 +52474,7 @@ function instance64($$self, $$props, $$invalidate) {
     onSortColumns(columns.map((col) => col.id));
   }
   const func7 = (column) => onRecordAdd(column.id);
-  const func_14 = (column, record) => onRecordUpdate(column.id, record);
+  const func_13 = (column, record) => onRecordUpdate(column.id, record);
   $$self.$$set = ($$props2) => {
     if ("columns" in $$props2)
       $$invalidate(0, columns = $$props2.columns);
@@ -52231,13 +52508,13 @@ function instance64($$self, $$props, $$invalidate) {
     handleDndFinalize,
     onSortColumns,
     func7,
-    func_14
+    func_13
   ];
 }
 var Board = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance64,
@@ -52276,7 +52553,7 @@ function create_default_slot_212(ctx) {
     numberinput_props.value = ctx[2];
   }
   numberinput = new NumberInput_default({ props: numberinput_props });
-  binding_callbacks.push(() => bind(numberinput, "value", numberinput_value_binding, ctx[2]));
+  binding_callbacks.push(() => bind6(numberinput, "value", numberinput_value_binding, ctx[2]));
   numberinput.$on("blur", ctx[4]);
   return {
     c() {
@@ -52457,7 +52734,7 @@ function instance65($$self, $$props, $$invalidate) {
 var BoardSettings = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance65, create_fragment65, safe_not_equal, { config: 0, onSave: 1 });
+    init4(this, options, instance65, create_fragment65, safe_not_equal, { config: 0, onSave: 1 });
   }
 };
 var BoardSettings_default = BoardSettings;
@@ -53104,7 +53381,7 @@ function instance66($$self, $$props, $$invalidate) {
 var BoardView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance66,
@@ -53368,7 +53645,7 @@ function instance67($$self, $$props, $$invalidate) {
 var Week = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance67, create_fragment67, safe_not_equal, { height: 0 }, add_css36);
+    init4(this, options, instance67, create_fragment67, safe_not_equal, { height: 0 }, add_css36);
   }
 };
 var Week_default = Week;
@@ -53439,7 +53716,7 @@ function instance68($$self, $$props, $$invalidate) {
 var Calendar = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance68, create_fragment68, safe_not_equal, {}, add_css37);
+    init4(this, options, instance68, create_fragment68, safe_not_equal, {}, add_css37);
   }
 };
 var Calendar_default = Calendar;
@@ -53521,7 +53798,7 @@ function instance69($$self, $$props, $$invalidate) {
 var Date2 = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance69, create_fragment69, safe_not_equal, { today: 0 }, add_css38);
+    init4(this, options, instance69, create_fragment69, safe_not_equal, { today: 0 }, add_css38);
   }
 };
 var Date_default = Date2;
@@ -53570,7 +53847,7 @@ function instance70($$self, $$props, $$invalidate) {
 var ColorPill = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance70, create_fragment70, safe_not_equal, { color: 0, width: 1 });
+    init4(this, options, instance70, create_fragment70, safe_not_equal, { color: 0, width: 1 });
   }
 };
 var ColorPill_default = ColorPill;
@@ -53641,7 +53918,7 @@ function instance71($$self, $$props, $$invalidate) {
 var Ellipsis = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance71, create_fragment71, safe_not_equal, {}, add_css39);
+    init4(this, options, instance71, create_fragment71, safe_not_equal, {}, add_css39);
   }
 };
 var Ellipsis_default = Ellipsis;
@@ -53724,7 +54001,7 @@ function create_if_block22(ctx) {
     checkbox_props.checked = ctx[0];
   }
   checkbox = new Checkbox_default({ props: checkbox_props });
-  binding_callbacks.push(() => bind(checkbox, "checked", checkbox_checked_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(checkbox, "checked", checkbox_checked_binding, ctx[0]));
   checkbox.$on("check", ctx[5]);
   return {
     c() {
@@ -53848,11 +54125,11 @@ function create_fragment72(ctx) {
       insert(target, div, anchor);
       if (if_block0)
         if_block0.m(div, null);
-      append(div, t0);
+      append4(div, t0);
       if (~current_block_type_index) {
         if_blocks[current_block_type_index].m(div, null);
       }
-      append(div, t1);
+      append4(div, t1);
       mount_component(ellipsis, div, null);
       current = true;
       if (!mounted) {
@@ -53986,7 +54263,7 @@ function instance72($$self, $$props, $$invalidate) {
 var Event = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance72, create_fragment72, safe_not_equal, { color: 1, checked: 0 }, add_css40);
+    init4(this, options, instance72, create_fragment72, safe_not_equal, { color: 1, checked: 0 }, add_css40);
   }
 };
 var Event_default = Event;
@@ -54141,10 +54418,10 @@ function create_each_block13(key_1, ctx) {
     key: key_1,
     first: null,
     c() {
-      first = empty();
+      first = empty3();
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
       this.first = first;
     },
     m(target, anchor) {
@@ -54355,7 +54632,7 @@ function instance73($$self, $$props, $$invalidate) {
 var EventList = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance73,
@@ -54433,7 +54710,7 @@ function create_fragment74(ctx) {
     m(target, anchor) {
       insert(target, div, anchor);
       mount_component(date_1, div, null);
-      append(div, t3);
+      append4(div, t3);
       mount_component(eventlist, div, null);
       current = true;
       if (!mounted) {
@@ -54556,7 +54833,7 @@ function instance74($$self, $$props, $$invalidate) {
 var Day = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance74,
@@ -54657,7 +54934,7 @@ function instance75($$self, $$props, $$invalidate) {
 var Weekday = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance75, create_fragment75, safe_not_equal, { weekend: 0, width: 1 }, add_css43);
+    init4(this, options, instance75, create_fragment75, safe_not_equal, { weekend: 0, width: 1 }, add_css43);
   }
 };
 var Weekday_default = Weekday;
@@ -54728,7 +55005,7 @@ function instance76($$self, $$props, $$invalidate) {
 var WeekHeader = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance76, create_fragment76, safe_not_equal, {}, add_css44);
+    init4(this, options, instance76, create_fragment76, safe_not_equal, {}, add_css44);
   }
 };
 var WeekHeader_default = WeekHeader;
@@ -54798,9 +55075,9 @@ function create_fragment77(ctx) {
     m(target, anchor) {
       insert(target, div, anchor);
       mount_component(iconbutton0, div, null);
-      append(div, t0);
+      append4(div, t0);
       mount_component(button, div, null);
-      append(div, t1);
+      append4(div, t1);
       mount_component(iconbutton1, div, null);
       current = true;
     },
@@ -54854,7 +55131,7 @@ function instance77($$self, $$props, $$invalidate) {
 var Navigation = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance77, create_fragment77, safe_not_equal, { onNext: 0, onPrevious: 1, onToday: 2 }, add_css45);
+    init4(this, options, instance77, create_fragment77, safe_not_equal, { onNext: 0, onPrevious: 1, onToday: 2 }, add_css45);
   }
 };
 var Navigation_default = Navigation;
@@ -55339,7 +55616,7 @@ function create_default_slot_411(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
@@ -55593,7 +55870,7 @@ function create_default_slot_214(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       mount_component(weekheader, target, anchor);
@@ -55879,7 +56156,7 @@ function instance78($$self, $$props, $$invalidate) {
   const change_handler_1 = ({ detail }) => handleCheckFieldChange(detail);
   const change_handler_2 = ({ detail }) => handleIntervalChange(detail);
   const func7 = () => $$invalidate(1, anchorDate = addInterval(anchorDate, interval));
-  const func_14 = () => $$invalidate(1, anchorDate = subtractInterval(anchorDate, interval));
+  const func_13 = () => $$invalidate(1, anchorDate = subtractInterval(anchorDate, interval));
   const func_2 = () => $$invalidate(1, anchorDate = (0, import_dayjs8.default)());
   const func_3 = (date, record) => {
     handleRecordChange(date, record);
@@ -55993,7 +56270,7 @@ function instance78($$self, $$props, $$invalidate) {
     change_handler_1,
     change_handler_2,
     func7,
-    func_14,
+    func_13,
     func_2,
     func_3,
     func_4
@@ -56002,7 +56279,7 @@ function instance78($$self, $$props, $$invalidate) {
 var CalendarView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
       instance78,
@@ -56132,7 +56409,7 @@ function instance79($$self, $$props, $$invalidate) {
 var CenterBox = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance79, create_fragment79, safe_not_equal, {}, add_css46);
+    init4(this, options, instance79, create_fragment79, safe_not_equal, {}, add_css46);
   }
 };
 var CenterBox_default = CenterBox;
@@ -56203,7 +56480,7 @@ function instance80($$self, $$props, $$invalidate) {
 var Card = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance80, create_fragment80, safe_not_equal, {}, add_css47);
+    init4(this, options, instance80, create_fragment80, safe_not_equal, {}, add_css47);
   }
 };
 var Card_default2 = Card;
@@ -56274,7 +56551,7 @@ function instance81($$self, $$props, $$invalidate) {
 var CardContent = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance81, create_fragment81, safe_not_equal, {}, add_css48);
+    init4(this, options, instance81, create_fragment81, safe_not_equal, {}, add_css48);
   }
 };
 var CardContent_default = CardContent;
@@ -56362,26 +56639,28 @@ function instance82($$self, $$props, $$invalidate) {
 var CardMedia = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance82, create_fragment82, safe_not_equal, {}, add_css49);
+    init4(this, options, instance82, create_fragment82, safe_not_equal, {}, add_css49);
   }
 };
 var CardMedia_default = CardMedia;
 
 // src/views/Gallery/components/Grid/Grid.svelte
 function add_css50(target) {
-  append_styles(target, "svelte-29f12s", "div.svelte-29f12s{display:grid;gap:24px;grid-template-columns:repeat(auto-fill, minmax(300px, 1fr))}");
+  append_styles(target, "svelte-1eu9z5i", "div.svelte-1eu9z5i{display:grid;gap:24px}");
 }
 function create_fragment83(ctx) {
   let div;
+  let div_style_value;
   let current;
-  const default_slot_template = ctx[1].default;
-  const default_slot = create_slot(default_slot_template, ctx, ctx[0], null);
+  const default_slot_template = ctx[2].default;
+  const default_slot = create_slot(default_slot_template, ctx, ctx[1], null);
   return {
     c() {
       div = element("div");
       if (default_slot)
         default_slot.c();
-      attr(div, "class", "svelte-29f12s");
+      attr(div, "style", div_style_value = `grid-template-columns: repeat(auto-fill, minmax(${ctx[0]}px, 1fr));`);
+      attr(div, "class", "svelte-1eu9z5i");
     },
     m(target, anchor) {
       insert(target, div, anchor);
@@ -56392,16 +56671,19 @@ function create_fragment83(ctx) {
     },
     p(ctx2, [dirty]) {
       if (default_slot) {
-        if (default_slot.p && (!current || dirty & 1)) {
+        if (default_slot.p && (!current || dirty & 2)) {
           update_slot_base(
             default_slot,
             default_slot_template,
             ctx2,
-            ctx2[0],
-            !current ? get_all_dirty_from_scope(ctx2[0]) : get_slot_changes(default_slot_template, ctx2[0], dirty, null),
+            ctx2[1],
+            !current ? get_all_dirty_from_scope(ctx2[1]) : get_slot_changes(default_slot_template, ctx2[1], dirty, null),
             null
           );
         }
+      }
+      if (!current || dirty & 1 && div_style_value !== (div_style_value = `grid-template-columns: repeat(auto-fill, minmax(${ctx2[0]}px, 1fr));`)) {
+        attr(div, "style", div_style_value);
       }
     },
     i(local) {
@@ -56424,16 +56706,19 @@ function create_fragment83(ctx) {
 }
 function instance83($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
+  let { cardWidth } = $$props;
   $$self.$$set = ($$props2) => {
+    if ("cardWidth" in $$props2)
+      $$invalidate(0, cardWidth = $$props2.cardWidth);
     if ("$$scope" in $$props2)
-      $$invalidate(0, $$scope = $$props2.$$scope);
+      $$invalidate(1, $$scope = $$props2.$$scope);
   };
-  return [$$scope, slots];
+  return [cardWidth, $$scope, slots];
 }
 var Grid = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance83, create_fragment83, safe_not_equal, {}, add_css50);
+    init4(this, options, instance83, create_fragment83, safe_not_equal, { cardWidth: 0 }, add_css50);
   }
 };
 var Grid_default = Grid;
@@ -56493,10 +56778,248 @@ function instance84($$self, $$props, $$invalidate) {
 var Image = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance84, create_fragment84, safe_not_equal, { alt: 0, src: 1, fit: 2 }, add_css51);
+    init4(this, options, instance84, create_fragment84, safe_not_equal, { alt: 0, src: 1, fit: 2 }, add_css51);
   }
 };
 var Image_default = Image;
+
+// src/views/Gallery/helpers.ts
+var obsidianLinkRegExp = /^\[\[(.*?)(\|(.*?))?\]\]$/;
+function parseObsidianLink(link) {
+  const match6 = link.match(obsidianLinkRegExp);
+  return match6 ? {
+    linkText: match6[1] || "",
+    displayName: match6[3] || ""
+  } : null;
+}
+
+// src/views/Gallery/settings/settings-modal.ts
+var import_obsidian43 = require("obsidian");
+
+// src/views/Gallery/settings/GallerySettings.svelte
+function create_default_slot_215(ctx) {
+  let numberinput;
+  let updating_value;
+  let current;
+  function numberinput_value_binding(value) {
+    ctx[3](value);
+  }
+  let numberinput_props = { placeholder: "300" };
+  if (ctx[2] !== void 0) {
+    numberinput_props.value = ctx[2];
+  }
+  numberinput = new NumberInput_default({ props: numberinput_props });
+  binding_callbacks.push(() => bind6(numberinput, "value", numberinput_value_binding, ctx[2]));
+  numberinput.$on("blur", ctx[4]);
+  return {
+    c() {
+      create_component(numberinput.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(numberinput, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const numberinput_changes = {};
+      if (!updating_value && dirty & 4) {
+        updating_value = true;
+        numberinput_changes.value = ctx2[2];
+        add_flush_callback(() => updating_value = false);
+      }
+      numberinput.$set(numberinput_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(numberinput.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(numberinput.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(numberinput, detaching);
+    }
+  };
+}
+function create_default_slot_121(ctx) {
+  let settingitem;
+  let current;
+  settingitem = new SettingItem_default({
+    props: {
+      name: "Card width",
+      description: "Width of each card in pixels.",
+      $$slots: { default: [create_default_slot_215] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(settingitem.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(settingitem, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const settingitem_changes = {};
+      if (dirty & 71) {
+        settingitem_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem.$set(settingitem_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(settingitem.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(settingitem.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(settingitem, detaching);
+    }
+  };
+}
+function create_default_slot31(ctx) {
+  let modalcontent;
+  let current;
+  modalcontent = new ModalContent_default({
+    props: {
+      $$slots: { default: [create_default_slot_121] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(modalcontent.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(modalcontent, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      const modalcontent_changes = {};
+      if (dirty & 71) {
+        modalcontent_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      modalcontent.$set(modalcontent_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(modalcontent.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(modalcontent.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(modalcontent, detaching);
+    }
+  };
+}
+function create_fragment85(ctx) {
+  let modallayout;
+  let current;
+  modallayout = new ModalLayout_default({
+    props: {
+      title: "Gallery settings",
+      $$slots: { default: [create_default_slot31] },
+      $$scope: { ctx }
+    }
+  });
+  return {
+    c() {
+      create_component(modallayout.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(modallayout, target, anchor);
+      current = true;
+    },
+    p(ctx2, [dirty]) {
+      const modallayout_changes = {};
+      if (dirty & 71) {
+        modallayout_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      modallayout.$set(modallayout_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(modallayout.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(modallayout.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(modallayout, detaching);
+    }
+  };
+}
+function instance85($$self, $$props, $$invalidate) {
+  var _a;
+  let { config } = $$props;
+  let { onSave } = $$props;
+  let cardWidthValue = (_a = config.cardWidth) !== null && _a !== void 0 ? _a : null;
+  function numberinput_value_binding(value) {
+    cardWidthValue = value;
+    $$invalidate(2, cardWidthValue);
+  }
+  const blur_handler = () => onSave(immer_esm_default(config, (draft) => {
+    const _a2 = draft, { cardWidth } = _a2, rest = __objRest(_a2, ["cardWidth"]);
+    if (!cardWidthValue) {
+      return rest;
+    }
+    return __spreadProps(__spreadValues({}, rest), { cardWidth: cardWidthValue });
+  }));
+  $$self.$$set = ($$props2) => {
+    if ("config" in $$props2)
+      $$invalidate(0, config = $$props2.config);
+    if ("onSave" in $$props2)
+      $$invalidate(1, onSave = $$props2.onSave);
+  };
+  return [config, onSave, cardWidthValue, numberinput_value_binding, blur_handler];
+}
+var GallerySettings = class extends SvelteComponent {
+  constructor(options) {
+    super();
+    init4(this, options, instance85, create_fragment85, safe_not_equal, { config: 0, onSave: 1 });
+  }
+};
+var GallerySettings_default = GallerySettings;
+
+// src/views/Gallery/settings/settings-modal.ts
+var GallerySettingsModal = class extends import_obsidian43.Modal {
+  constructor(app2, config, onSave) {
+    super(app2);
+    this.config = config;
+    this.onSave = onSave;
+  }
+  onOpen() {
+    const { contentEl } = this;
+    this.component = new GallerySettings_default({
+      target: contentEl,
+      props: {
+        config: this.config,
+        onSave: (config) => {
+          this.onSave(config);
+        }
+      }
+    });
+  }
+  onClose() {
+    if (this.component) {
+      this.component.$destroy();
+    }
+  }
+};
 
 // src/views/Gallery/GalleryView.svelte
 function add_css52(target) {
@@ -56504,14 +57027,14 @@ function add_css52(target) {
 }
 function get_each_context15(ctx, list, i2) {
   const child_ctx = ctx.slice();
-  child_ctx[22] = list[i2];
-  const constants_0 = child_ctx[1](child_ctx[22]);
-  child_ctx[23] = constants_0;
+  child_ctx[23] = list[i2];
+  const constants_0 = child_ctx[2](child_ctx[23]);
+  child_ctx[24] = constants_0;
   return child_ctx;
 }
 function get_context(ctx) {
-  const constants_0 = ctx[8](ctx[22]);
-  ctx[26] = constants_0;
+  const constants_0 = ctx[9](ctx[23]);
+  ctx[27] = constants_0;
 }
 function create_default_slot_102(ctx) {
   var _a, _b, _c;
@@ -56520,9 +57043,9 @@ function create_default_slot_102(ctx) {
   select = new Select_default({
     props: {
       allowEmpty: true,
-      value: (_b = (_a = ctx[3]) == null ? void 0 : _a.name) != null ? _b : "",
-      options: ctx[2].map(fieldToSelectableValue),
-      placeholder: (_c = ctx[7].t("views.gallery.fields.none")) != null ? _c : ""
+      value: (_b = (_a = ctx[4]) == null ? void 0 : _a.name) != null ? _b : "",
+      options: ctx[3].map(fieldToSelectableValue),
+      placeholder: (_c = ctx[8].t("views.gallery.fields.none")) != null ? _c : ""
     }
   });
   select.$on("change", ctx[17]);
@@ -56537,12 +57060,12 @@ function create_default_slot_102(ctx) {
     p(ctx2, dirty) {
       var _a2, _b2, _c2;
       const select_changes = {};
+      if (dirty & 16)
+        select_changes.value = (_b2 = (_a2 = ctx2[4]) == null ? void 0 : _a2.name) != null ? _b2 : "";
       if (dirty & 8)
-        select_changes.value = (_b2 = (_a2 = ctx2[3]) == null ? void 0 : _a2.name) != null ? _b2 : "";
-      if (dirty & 4)
-        select_changes.options = ctx2[2].map(fieldToSelectableValue);
-      if (dirty & 128)
-        select_changes.placeholder = (_c2 = ctx2[7].t("views.gallery.fields.none")) != null ? _c2 : "";
+        select_changes.options = ctx2[3].map(fieldToSelectableValue);
+      if (dirty & 256)
+        select_changes.placeholder = (_c2 = ctx2[8].t("views.gallery.fields.none")) != null ? _c2 : "";
       select.$set(select_changes);
     },
     i(local) {
@@ -56563,12 +57086,14 @@ function create_default_slot_102(ctx) {
 function create_right_slot4(ctx) {
   var _a, _b;
   let field;
-  let t3;
+  let t0;
   let select;
+  let t1;
+  let iconbutton;
   let current;
   field = new Field_default({
     props: {
-      name: ctx[7].t("views.gallery.fields.cover"),
+      name: ctx[8].t("views.gallery.fields.cover"),
       $$slots: { default: [create_default_slot_102] },
       $$scope: { ctx }
     }
@@ -56583,24 +57108,30 @@ function create_right_slot4(ctx) {
     }
   });
   select.$on("change", ctx[18]);
+  iconbutton = new IconButton_default({ props: { icon: "settings" } });
+  iconbutton.$on("click", ctx[19]);
   return {
     c() {
       create_component(field.$$.fragment);
-      t3 = space();
+      t0 = space();
       create_component(select.$$.fragment);
+      t1 = space();
+      create_component(iconbutton.$$.fragment);
     },
     m(target, anchor) {
       mount_component(field, target, anchor);
-      insert(target, t3, anchor);
+      insert(target, t0, anchor);
       mount_component(select, target, anchor);
+      insert(target, t1, anchor);
+      mount_component(iconbutton, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
       var _a2, _b2;
       const field_changes = {};
-      if (dirty & 128)
-        field_changes.name = ctx2[7].t("views.gallery.fields.cover");
-      if (dirty & 134217868) {
+      if (dirty & 256)
+        field_changes.name = ctx2[8].t("views.gallery.fields.cover");
+      if (dirty & 268435736) {
         field_changes.$$scope = { dirty, ctx: ctx2 };
       }
       field.$set(field_changes);
@@ -56614,18 +57145,23 @@ function create_right_slot4(ctx) {
         return;
       transition_in(field.$$.fragment, local);
       transition_in(select.$$.fragment, local);
+      transition_in(iconbutton.$$.fragment, local);
       current = true;
     },
     o(local) {
       transition_out(field.$$.fragment, local);
       transition_out(select.$$.fragment, local);
+      transition_out(iconbutton.$$.fragment, local);
       current = false;
     },
     d(detaching) {
       destroy_component(field, detaching);
       if (detaching)
-        detach(t3);
+        detach(t0);
       destroy_component(select, detaching);
+      if (detaching)
+        detach(t1);
+      destroy_component(iconbutton, detaching);
     }
   };
 }
@@ -56649,7 +57185,7 @@ function create_default_slot_93(ctx) {
     },
     p(ctx2, dirty) {
       const viewtoolbar_changes = {};
-      if (dirty & 134217869) {
+      if (dirty & 268435867) {
         viewtoolbar_changes.$$scope = { dirty, ctx: ctx2 };
       }
       viewtoolbar.$set(viewtoolbar_changes);
@@ -56688,7 +57224,7 @@ function create_else_block_1(ctx) {
     },
     p(ctx2, dirty) {
       const centerbox_changes = {};
-      if (dirty & 134217856) {
+      if (dirty & 268435712) {
         centerbox_changes.$$scope = { dirty, ctx: ctx2 };
       }
       centerbox.$set(centerbox_changes);
@@ -56709,12 +57245,14 @@ function create_else_block_1(ctx) {
   };
 }
 function create_if_block24(ctx) {
+  var _a, _b;
   let div;
   let grid;
   let current;
   grid = new Grid_default({
     props: {
-      $$slots: { default: [create_default_slot_215] },
+      cardWidth: (_b = (_a = ctx[0]) == null ? void 0 : _a.cardWidth) != null ? _b : 300,
+      $$slots: { default: [create_default_slot_216] },
       $$scope: { ctx }
     }
   });
@@ -56730,8 +57268,11 @@ function create_if_block24(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
+      var _a2, _b2;
       const grid_changes = {};
-      if (dirty & 134217842) {
+      if (dirty & 1)
+        grid_changes.cardWidth = (_b2 = (_a2 = ctx2[0]) == null ? void 0 : _a2.cardWidth) != null ? _b2 : 300;
+      if (dirty & 268435684) {
         grid_changes.$$scope = { dirty, ctx: ctx2 };
       }
       grid.$set(grid_changes);
@@ -56754,7 +57295,7 @@ function create_if_block24(ctx) {
   };
 }
 function create_default_slot_83(ctx) {
-  let t_value = ctx[7].t("views.gallery.empty") + "";
+  let t_value = ctx[8].t("views.gallery.empty") + "";
   let t3;
   return {
     c() {
@@ -56764,7 +57305,7 @@ function create_default_slot_83(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty & 128 && t_value !== (t_value = ctx2[7].t("views.gallery.empty") + ""))
+      if (dirty & 256 && t_value !== (t_value = ctx2[8].t("views.gallery.empty") + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -56793,7 +57334,7 @@ function create_default_slot_75(ctx) {
     },
     p(ctx2, dirty) {
       const typography_changes = {};
-      if (dirty & 134217856) {
+      if (dirty & 268435712) {
         typography_changes.$$scope = { dirty, ctx: ctx2 };
       }
       typography.$set(typography_changes);
@@ -56847,8 +57388,8 @@ function create_if_block_28(ctx) {
   image = new Image_default({
     props: {
       alt: "Title",
-      src: ctx[26],
-      fit: ctx[4]
+      src: ctx[27],
+      fit: ctx[5]
     }
   });
   return {
@@ -56861,10 +57402,10 @@ function create_if_block_28(ctx) {
     },
     p(ctx2, dirty) {
       const image_changes = {};
+      if (dirty & 64)
+        image_changes.src = ctx2[27];
       if (dirty & 32)
-        image_changes.src = ctx2[26];
-      if (dirty & 16)
-        image_changes.fit = ctx2[4];
+        image_changes.fit = ctx2[5];
       image.$set(image_changes);
     },
     i(local) {
@@ -56891,7 +57432,7 @@ function create_default_slot_68(ctx) {
   const if_block_creators = [create_if_block_28, create_else_block7];
   const if_blocks = [];
   function select_block_type_1(ctx2, dirty) {
-    if (ctx2[26])
+    if (ctx2[27])
       return 0;
     return 1;
   }
@@ -56900,7 +57441,7 @@ function create_default_slot_68(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_blocks[current_block_type_index].m(target, anchor);
@@ -56953,7 +57494,7 @@ function create_if_block_113(ctx) {
     c() {
       span = element("span");
       set_style(span, "margin-right", "8px");
-      set_style(span, "background-color", ctx[23]);
+      set_style(span, "background-color", ctx[24]);
       set_style(span, "width", "5px");
       set_style(span, "border-radius", "9999px");
     },
@@ -56961,8 +57502,8 @@ function create_if_block_113(ctx) {
       insert(target, span, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty & 34) {
-        set_style(span, "background-color", ctx2[23]);
+      if (dirty & 68) {
+        set_style(span, "background-color", ctx2[24]);
       }
     },
     d(detaching) {
@@ -56972,7 +57513,7 @@ function create_if_block_113(ctx) {
   };
 }
 function create_default_slot_510(ctx) {
-  let t_value = getDisplayName(ctx[22].id) + "";
+  let t_value = getDisplayName(ctx[23].id) + "";
   let t3;
   return {
     c() {
@@ -56982,7 +57523,7 @@ function create_default_slot_510(ctx) {
       insert(target, t3, anchor);
     },
     p(ctx2, dirty) {
-      if (dirty & 32 && t_value !== (t_value = getDisplayName(ctx2[22].id) + ""))
+      if (dirty & 64 && t_value !== (t_value = getDisplayName(ctx2[23].id) + ""))
         set_data(t3, t_value);
     },
     d(detaching) {
@@ -56995,13 +57536,13 @@ function create_default_slot_412(ctx) {
   let t3;
   let internallink;
   let current;
-  let if_block = ctx[23] && create_if_block_113(ctx);
+  let if_block = ctx[24] && create_if_block_113(ctx);
   function open_handler(...args) {
-    return ctx[20](ctx[22], ...args);
+    return ctx[21](ctx[23], ...args);
   }
   internallink = new InternalLink_default({
     props: {
-      linkText: ctx[22].id,
+      linkText: ctx[23].id,
       sourcePath: "",
       resolved: true,
       $$slots: { default: [create_default_slot_510] },
@@ -57025,7 +57566,7 @@ function create_default_slot_412(ctx) {
     },
     p(new_ctx, dirty) {
       ctx = new_ctx;
-      if (ctx[23]) {
+      if (ctx[24]) {
         if (if_block) {
           if_block.p(ctx, dirty);
         } else {
@@ -57038,9 +57579,9 @@ function create_default_slot_412(ctx) {
         if_block = null;
       }
       const internallink_changes = {};
-      if (dirty & 32)
-        internallink_changes.linkText = ctx[22].id;
-      if (dirty & 134217760) {
+      if (dirty & 64)
+        internallink_changes.linkText = ctx[23].id;
+      if (dirty & 268435520) {
         internallink_changes.$$scope = { dirty, ctx };
       }
       internallink.$set(internallink_changes);
@@ -57070,8 +57611,8 @@ function create_default_slot_312(ctx) {
   let cardcontent;
   let t1;
   let current;
-  function click_handler(...args) {
-    return ctx[19](ctx[22], ...args);
+  function click_handler_1(...args) {
+    return ctx[20](ctx[23], ...args);
   }
   cardmedia = new CardMedia_default({
     props: {
@@ -57079,7 +57620,7 @@ function create_default_slot_312(ctx) {
       $$scope: { ctx }
     }
   });
-  cardmedia.$on("click", click_handler);
+  cardmedia.$on("click", click_handler_1);
   cardcontent = new CardContent_default({
     props: {
       $$slots: { default: [create_default_slot_412] },
@@ -57103,12 +57644,12 @@ function create_default_slot_312(ctx) {
     p(new_ctx, dirty) {
       ctx = new_ctx;
       const cardmedia_changes = {};
-      if (dirty & 134217776) {
+      if (dirty & 268435552) {
         cardmedia_changes.$$scope = { dirty, ctx };
       }
       cardmedia.$set(cardmedia_changes);
       const cardcontent_changes = {};
-      if (dirty & 134217826) {
+      if (dirty & 268435652) {
         cardcontent_changes.$$scope = { dirty, ctx };
       }
       cardcontent.$set(cardcontent_changes);
@@ -57154,7 +57695,7 @@ function create_each_block15(ctx) {
     },
     p(ctx2, dirty) {
       const card_changes = {};
-      if (dirty & 134217842) {
+      if (dirty & 268435684) {
         card_changes.$$scope = { dirty, ctx: ctx2 };
       }
       card.$set(card_changes);
@@ -57174,10 +57715,10 @@ function create_each_block15(ctx) {
     }
   };
 }
-function create_default_slot_215(ctx) {
+function create_default_slot_216(ctx) {
   let each_1_anchor;
   let current;
-  let each_value = ctx[5];
+  let each_value = ctx[6];
   let each_blocks = [];
   for (let i2 = 0; i2 < each_value.length; i2 += 1) {
     each_blocks[i2] = create_each_block15(get_each_context15(ctx, each_value, i2));
@@ -57190,7 +57731,7 @@ function create_default_slot_215(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
@@ -57200,8 +57741,8 @@ function create_default_slot_215(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if (dirty & 2418) {
-        each_value = ctx2[5];
+      if (dirty & 4836) {
+        each_value = ctx2[6];
         let i2;
         for (i2 = 0; i2 < each_value.length; i2 += 1) {
           const child_ctx = get_each_context15(ctx2, each_value, i2);
@@ -57244,7 +57785,7 @@ function create_default_slot_215(ctx) {
     }
   };
 }
-function create_default_slot_121(ctx) {
+function create_default_slot_122(ctx) {
   let current_block_type_index;
   let if_block;
   let if_block_anchor;
@@ -57252,7 +57793,7 @@ function create_default_slot_121(ctx) {
   const if_block_creators = [create_if_block24, create_else_block_1];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
-    if (ctx2[5].length)
+    if (ctx2[6].length)
       return 0;
     return 1;
   }
@@ -57261,7 +57802,7 @@ function create_default_slot_121(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_blocks[current_block_type_index].m(target, anchor);
@@ -57307,7 +57848,7 @@ function create_default_slot_121(ctx) {
     }
   };
 }
-function create_default_slot31(ctx) {
+function create_default_slot32(ctx) {
   let viewheader;
   let t3;
   let viewcontent;
@@ -57320,7 +57861,7 @@ function create_default_slot31(ctx) {
   });
   viewcontent = new ViewContent_default({
     props: {
-      $$slots: { default: [create_default_slot_121] },
+      $$slots: { default: [create_default_slot_122] },
       $$scope: { ctx }
     }
   });
@@ -57338,12 +57879,12 @@ function create_default_slot31(ctx) {
     },
     p(ctx2, dirty) {
       const viewheader_changes = {};
-      if (dirty & 134217869) {
+      if (dirty & 268435867) {
         viewheader_changes.$$scope = { dirty, ctx: ctx2 };
       }
       viewheader.$set(viewheader_changes);
       const viewcontent_changes = {};
-      if (dirty & 134217970) {
+      if (dirty & 268435941) {
         viewcontent_changes.$$scope = { dirty, ctx: ctx2 };
       }
       viewcontent.$set(viewcontent_changes);
@@ -57368,12 +57909,12 @@ function create_default_slot31(ctx) {
     }
   };
 }
-function create_fragment85(ctx) {
+function create_fragment86(ctx) {
   let viewlayout;
   let current;
   viewlayout = new ViewLayout_default({
     props: {
-      $$slots: { default: [create_default_slot31] },
+      $$slots: { default: [create_default_slot32] },
       $$scope: { ctx }
     }
   });
@@ -57387,7 +57928,7 @@ function create_fragment85(ctx) {
     },
     p(ctx2, [dirty]) {
       const viewlayout_changes = {};
-      if (dirty & 134217983) {
+      if (dirty & 268435967) {
         viewlayout_changes.$$scope = { dirty, ctx: ctx2 };
       }
       viewlayout.$set(viewlayout_changes);
@@ -57407,7 +57948,7 @@ function create_fragment85(ctx) {
     }
   };
 }
-function instance85($$self, $$props, $$invalidate) {
+function instance86($$self, $$props, $$invalidate) {
   let fields;
   let records;
   let textFields;
@@ -57415,8 +57956,8 @@ function instance85($$self, $$props, $$invalidate) {
   let fitStyle;
   let $app;
   let $i18n;
-  component_subscribe($$self, app, ($$value) => $$invalidate(6, $app = $$value));
-  component_subscribe($$self, i18n, ($$value) => $$invalidate(7, $i18n = $$value));
+  component_subscribe($$self, app, ($$value) => $$invalidate(7, $app = $$value));
+  component_subscribe($$self, i18n, ($$value) => $$invalidate(8, $i18n = $$value));
   var _a;
   let { frame } = $$props;
   let { config } = $$props;
@@ -57437,13 +57978,12 @@ function instance85($$self, $$props, $$invalidate) {
       }
       return getResourcePathFromLinkText(coverPath);
     }
-    if (isLink(coverPath)) {
-      return getResourcePathFromLinkText(coverPath.linkText);
-    }
     return null;
   }
   function getResourcePathFromLinkText(text2) {
-    const file = $app.metadataCache.getFirstLinkpathDest(text2, "");
+    var _a2;
+    const linkText = ((_a2 = parseObsidianLink(text2)) === null || _a2 === void 0 ? void 0 : _a2.linkText) || text2;
+    const file = $app.metadataCache.getFirstLinkpathDest(linkText, "");
     if (file) {
       if (["png", "jpg", "jpeg", "gif", "bmp", "svg"].includes(file.extension)) {
         return $app.vault.getResourcePath(file);
@@ -57462,7 +58002,17 @@ function instance85($$self, $$props, $$invalidate) {
   }
   const change_handler = ({ detail }) => handleCoverFieldChange(detail);
   const change_handler_1 = ({ detail }) => handleFitStyleChange(detail);
-  const click_handler = (record, event) => {
+  const click_handler = () => {
+    new GallerySettingsModal(
+      $app,
+      config != null ? config : {},
+      (value) => {
+        $$invalidate(0, config = value);
+        onConfigChange(value);
+      }
+    ).open();
+  };
+  const click_handler_1 = (record, event) => {
     if (event.metaKey || event.ctrlKey) {
       $app.workspace.openLinkText(record.id, "", true);
     } else {
@@ -57478,36 +58028,37 @@ function instance85($$self, $$props, $$invalidate) {
   };
   $$self.$$set = ($$props2) => {
     if ("frame" in $$props2)
-      $$invalidate(12, frame = $$props2.frame);
+      $$invalidate(13, frame = $$props2.frame);
     if ("config" in $$props2)
       $$invalidate(0, config = $$props2.config);
     if ("onConfigChange" in $$props2)
-      $$invalidate(13, onConfigChange = $$props2.onConfigChange);
+      $$invalidate(1, onConfigChange = $$props2.onConfigChange);
     if ("api" in $$props2)
       $$invalidate(14, api2 = $$props2.api);
     if ("getRecordColor" in $$props2)
-      $$invalidate(1, getRecordColor = $$props2.getRecordColor);
+      $$invalidate(2, getRecordColor = $$props2.getRecordColor);
   };
   $$self.$$.update = () => {
-    if ($$self.$$.dirty & 4096) {
+    if ($$self.$$.dirty & 8192) {
       $:
-        $$invalidate(16, { fields, records } = frame, fields, ($$invalidate(5, records), $$invalidate(12, frame)));
+        $$invalidate(16, { fields, records } = frame, fields, ($$invalidate(6, records), $$invalidate(13, frame)));
     }
     if ($$self.$$.dirty & 65536) {
       $:
-        $$invalidate(2, textFields = fields.filter((field) => !field.repeated).filter((field) => field.type === "string" /* String */ || field.type === "link" /* Link */));
+        $$invalidate(3, textFields = fields.filter((field) => !field.repeated).filter((field) => field.type === "string" /* String */));
     }
-    if ($$self.$$.dirty & 5) {
+    if ($$self.$$.dirty & 9) {
       $:
-        $$invalidate(3, coverField = textFields.find((field) => (config === null || config === void 0 ? void 0 : config.coverField) === field.name));
+        $$invalidate(4, coverField = textFields.find((field) => (config === null || config === void 0 ? void 0 : config.coverField) === field.name));
     }
     if ($$self.$$.dirty & 32769) {
       $:
-        $$invalidate(4, fitStyle = $$invalidate(15, _a = config === null || config === void 0 ? void 0 : config.fitStyle) !== null && _a !== void 0 ? _a : "cover");
+        $$invalidate(5, fitStyle = $$invalidate(15, _a = config === null || config === void 0 ? void 0 : config.fitStyle) !== null && _a !== void 0 ? _a : "cover");
     }
   };
   return [
     config,
+    onConfigChange,
     getRecordColor,
     textFields,
     coverField,
@@ -57520,31 +58071,31 @@ function instance85($$self, $$props, $$invalidate) {
     handleFitStyleChange,
     handleRecordClick,
     frame,
-    onConfigChange,
     api2,
     _a,
     fields,
     change_handler,
     change_handler_1,
     click_handler,
+    click_handler_1,
     open_handler
   ];
 }
 var GalleryView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
-      instance85,
-      create_fragment85,
+      instance86,
+      create_fragment86,
       safe_not_equal,
       {
-        frame: 12,
+        frame: 13,
         config: 0,
-        onConfigChange: 13,
+        onConfigChange: 1,
         api: 14,
-        getRecordColor: 1
+        getRecordColor: 2
       },
       add_css52
     );
@@ -57593,7 +58144,7 @@ var GalleryView2 = class extends ProjectView {
 };
 
 // src/views/Table/components/DataGrid/DataGrid.svelte
-var import_obsidian50 = require("obsidian");
+var import_obsidian49 = require("obsidian");
 
 // src/views/Table/components/DataGrid/GridCell/Resizer.svelte
 function add_css53(target) {
@@ -57649,7 +58200,7 @@ function create_if_block25(ctx) {
     }
   };
 }
-function create_fragment86(ctx) {
+function create_fragment87(ctx) {
   let if_block_anchor;
   let mounted;
   let dispose;
@@ -57663,7 +58214,7 @@ function create_fragment86(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_block.m(target, anchor);
@@ -57699,7 +58250,7 @@ function create_fragment86(ctx) {
     }
   };
 }
-function instance86($$self, $$props, $$invalidate) {
+function instance87($$self, $$props, $$invalidate) {
   let { width } = $$props;
   let { onChange } = $$props;
   let { onFinalize } = $$props;
@@ -57745,11 +58296,11 @@ function instance86($$self, $$props, $$invalidate) {
 var Resizer = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
-      instance86,
-      create_fragment86,
+      instance87,
+      create_fragment87,
       safe_not_equal,
       {
         width: 4,
@@ -57794,7 +58345,7 @@ function create_else_block_12(ctx) {
   let current;
   let mounted;
   let dispose;
-  const if_block_creators = [create_if_block_34, create_if_block_52, create_if_block_62, create_else_block_3];
+  const if_block_creators = [create_if_block_34, create_if_block_52, create_if_block_6, create_else_block_3];
   const if_blocks = [];
   function select_block_type_2(ctx2, dirty) {
     if (ctx2[18].edit && ctx2[1])
@@ -57829,7 +58380,7 @@ function create_else_block_12(ctx) {
     m(target, anchor) {
       insert(target, div, anchor);
       if_blocks[current_block_type_index].m(div, null);
-      append(div, t3);
+      append4(div, t3);
       if (if_block1)
         if_block1.m(div, null);
       ctx[30](div);
@@ -57980,8 +58531,8 @@ function create_if_block26(ctx) {
     m(target, anchor) {
       insert(target, div, anchor);
       if_blocks[current_block_type_index].m(div, null);
-      append(div, t3);
-      append(div, span);
+      append4(div, t3);
+      append4(div, span);
       ctx[27](div);
       current = true;
       if (!mounted) {
@@ -58089,7 +58640,7 @@ function create_else_block_3(ctx) {
     }
   };
 }
-function create_if_block_62(ctx) {
+function create_if_block_6(ctx) {
   let current;
   const hover_slot_template = ctx[24].hover;
   const hover_slot = create_slot(hover_slot_template, ctx, ctx[23], get_hover_slot_context_1);
@@ -58196,7 +58747,7 @@ function create_if_block_34(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_blocks[current_block_type_index].m(target, anchor);
@@ -58468,7 +59019,7 @@ function create_if_block_114(ctx) {
     }
   };
 }
-function create_fragment87(ctx) {
+function create_fragment88(ctx) {
   let current_block_type_index;
   let if_block;
   let if_block_anchor;
@@ -58485,7 +59036,7 @@ function create_fragment87(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_blocks[current_block_type_index].m(target, anchor);
@@ -58531,7 +59082,7 @@ function create_fragment87(ctx) {
     }
   };
 }
-function instance87($$self, $$props, $$invalidate) {
+function instance88($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   const $$slots = compute_slots(slots);
   let { selected = false } = $$props;
@@ -58752,11 +59303,11 @@ function instance87($$self, $$props, $$invalidate) {
 var GridCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
-      instance87,
-      create_fragment87,
+      instance88,
+      create_fragment88,
       safe_not_equal,
       {
         selected: 0,
@@ -58833,7 +59384,7 @@ function create_read_slot(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -58923,7 +59474,7 @@ function create_edit_slot(ctx) {
     }
   };
 }
-function create_fragment88(ctx) {
+function create_fragment89(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -58979,7 +59530,7 @@ function create_fragment88(ctx) {
     }
   };
 }
-function instance88($$self, $$props, $$invalidate) {
+function instance89($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -59024,7 +59575,7 @@ function instance88($$self, $$props, $$invalidate) {
 var GridBooleanCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance88, create_fragment88, safe_not_equal, {
+    init4(this, options, instance89, create_fragment89, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -59082,7 +59633,7 @@ function create_read_slot2(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -59168,7 +59719,7 @@ function create_edit_slot2(ctx) {
     }
   };
 }
-function create_fragment89(ctx) {
+function create_fragment90(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -59233,7 +59784,7 @@ function create_fragment89(ctx) {
     }
   };
 }
-function instance89($$self, $$props, $$invalidate) {
+function instance90($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -59248,7 +59799,7 @@ function instance89($$self, $$props, $$invalidate) {
   const func7 = (mode) => {
     $$invalidate(6, edit = mode);
   };
-  const func_14 = () => {
+  const func_13 = () => {
     if (value) {
       navigator.clipboard.writeText(new Intl.DateTimeFormat().format(value));
     }
@@ -59283,7 +59834,7 @@ function instance89($$self, $$props, $$invalidate) {
     edit,
     change_handler,
     func7,
-    func_14,
+    func_13,
     mousedown_handler,
     navigate_handler
   ];
@@ -59291,7 +59842,7 @@ function instance89($$self, $$props, $$invalidate) {
 var GridDateCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance89, create_fragment89, safe_not_equal, {
+    init4(this, options, instance90, create_fragment90, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -59307,7 +59858,7 @@ var GridDateCell_default = GridDateCell;
 function add_css55(target) {
   append_styles(target, "svelte-1636x3v", "div.svelte-1636x3v{width:100%;padding:6px;text-align:right}");
 }
-function create_fragment90(ctx) {
+function create_fragment91(ctx) {
   let div;
   let t_value = new Intl.NumberFormat().format(ctx[0]) + "";
   let t3;
@@ -59319,7 +59870,7 @@ function create_fragment90(ctx) {
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, t3);
+      append4(div, t3);
     },
     p(ctx2, [dirty]) {
       if (dirty & 1 && t_value !== (t_value = new Intl.NumberFormat().format(ctx2[0]) + ""))
@@ -59333,7 +59884,7 @@ function create_fragment90(ctx) {
     }
   };
 }
-function instance90($$self, $$props, $$invalidate) {
+function instance91($$self, $$props, $$invalidate) {
   let { value } = $$props;
   $$self.$$set = ($$props2) => {
     if ("value" in $$props2)
@@ -59344,7 +59895,7 @@ function instance90($$self, $$props, $$invalidate) {
 var NumberLabel = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance90, create_fragment90, safe_not_equal, { value: 0 }, add_css55);
+    init4(this, options, instance91, create_fragment91, safe_not_equal, { value: 0 }, add_css55);
   }
 };
 var NumberLabel_default = NumberLabel;
@@ -59353,7 +59904,7 @@ var NumberLabel_default = NumberLabel;
 function add_css56(target) {
   append_styles(target, "svelte-1uq2i75", "input.svelte-1uq2i75{all:unset;background-color:var(--background-primary);box-sizing:border-box;width:100%;padding:6px;font-weight:400;font-family:var(--font-default);color:var(--text-normal);text-align:right}input.svelte-1uq2i75:focus{box-shadow:none !important}input.svelte-1uq2i75:hover{background-color:transparent}");
 }
-function create_fragment91(ctx) {
+function create_fragment92(ctx) {
   let input;
   let input_tabindex_value;
   let mounted;
@@ -59394,7 +59945,7 @@ function create_fragment91(ctx) {
     }
   };
 }
-function instance91($$self, $$props, $$invalidate) {
+function instance92($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let ref;
@@ -59432,7 +59983,7 @@ function instance91($$self, $$props, $$invalidate) {
 var NumberInput2 = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance91, create_fragment91, safe_not_equal, { value: 0, onChange: 4 }, add_css56);
+    init4(this, options, instance92, create_fragment92, safe_not_equal, { value: 0, onChange: 4 }, add_css56);
   }
 };
 var NumberInput_default2 = NumberInput2;
@@ -59480,7 +60031,7 @@ function create_read_slot3(ctx) {
     c() {
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if (if_block)
@@ -59573,7 +60124,7 @@ function create_edit_slot3(ctx) {
     }
   };
 }
-function create_fragment92(ctx) {
+function create_fragment93(ctx) {
   let gridcell;
   let updating_edit;
   let updating_selected;
@@ -59604,8 +60155,8 @@ function create_fragment92(ctx) {
     gridcell_props.selected = ctx[0];
   }
   gridcell = new GridCell_default({ props: gridcell_props });
-  binding_callbacks.push(() => bind(gridcell, "edit", gridcell_edit_binding, ctx[6]));
-  binding_callbacks.push(() => bind(gridcell, "selected", gridcell_selected_binding, ctx[0]));
+  binding_callbacks.push(() => bind6(gridcell, "edit", gridcell_edit_binding, ctx[6]));
+  binding_callbacks.push(() => bind6(gridcell, "selected", gridcell_selected_binding, ctx[0]));
   gridcell.$on("mousedown", ctx[14]);
   gridcell.$on("navigate", ctx[15]);
   return {
@@ -59660,7 +60211,7 @@ function create_fragment92(ctx) {
     }
   };
 }
-function instance92($$self, $$props, $$invalidate) {
+function instance93($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -59677,7 +60228,7 @@ function instance92($$self, $$props, $$invalidate) {
       $$invalidate(6, edit = false);
     }
   };
-  const func_14 = () => {
+  const func_13 = () => {
     navigator.clipboard.writeText((value == null ? void 0 : value.toString()) || "");
   };
   const func_2 = () => {
@@ -59725,7 +60276,7 @@ function instance92($$self, $$props, $$invalidate) {
     edit,
     func7,
     blur_handler,
-    func_14,
+    func_13,
     func_2,
     func_3,
     gridcell_edit_binding,
@@ -59737,7 +60288,7 @@ function instance92($$self, $$props, $$invalidate) {
 var GridNumberCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance92, create_fragment92, safe_not_equal, {
+    init4(this, options, instance93, create_fragment93, safe_not_equal, {
       value: 1,
       onChange: 2,
       column: 3,
@@ -59750,57 +60301,157 @@ var GridNumberCell = class extends SvelteComponent {
 var GridNumberCell_default = GridNumberCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridTextCell/TextLabel.svelte
+var import_obsidian45 = require("obsidian");
 function add_css57(target) {
-  append_styles(target, "svelte-q1s3im", "div.svelte-q1s3im{padding:6px;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}");
+  append_styles(target, "svelte-6n2r4e", "div.svelte-6n2r4e{padding:6px;width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}div.svelte-6n2r4e p:first-child{margin-top:0}div.svelte-6n2r4e p:last-child{margin-bottom:0}");
 }
-function create_fragment93(ctx) {
+function create_else_block10(ctx) {
   let div;
   let t3;
   return {
     c() {
       div = element("div");
       t3 = text(ctx[0]);
-      attr(div, "class", "svelte-q1s3im");
+      attr(div, "class", "svelte-6n2r4e");
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, t3);
+      append4(div, t3);
     },
-    p(ctx2, [dirty]) {
+    p(ctx2, dirty) {
       if (dirty & 1)
         set_data(t3, ctx2[0]);
     },
-    i: noop,
-    o: noop,
     d(detaching) {
       if (detaching)
         detach(div);
     }
   };
 }
-function instance93($$self, $$props, $$invalidate) {
+function create_if_block30(ctx) {
+  let div;
+  let useMarkdown_action;
+  let mounted;
+  let dispose;
+  return {
+    c() {
+      div = element("div");
+      attr(div, "class", "svelte-6n2r4e");
+    },
+    m(target, anchor) {
+      insert(target, div, anchor);
+      if (!mounted) {
+        dispose = [
+          action_destroyer(useMarkdown_action = ctx[2].call(null, div)),
+          listen(div, "click", ctx[3]),
+          listen(div, "keypress", ctx[4])
+        ];
+        mounted = true;
+      }
+    },
+    p: noop,
+    d(detaching) {
+      if (detaching)
+        detach(div);
+      mounted = false;
+      run_all(dispose);
+    }
+  };
+}
+function create_fragment94(ctx) {
+  let if_block_anchor;
+  function select_block_type(ctx2, dirty) {
+    if (ctx2[1])
+      return create_if_block30;
+    return create_else_block10;
+  }
+  let current_block_type = select_block_type(ctx, -1);
+  let if_block = current_block_type(ctx);
+  return {
+    c() {
+      if_block.c();
+      if_block_anchor = empty3();
+    },
+    m(target, anchor) {
+      if_block.m(target, anchor);
+      insert(target, if_block_anchor, anchor);
+    },
+    p(ctx2, [dirty]) {
+      if (current_block_type === (current_block_type = select_block_type(ctx2, dirty)) && if_block) {
+        if_block.p(ctx2, dirty);
+      } else {
+        if_block.d(1);
+        if_block = current_block_type(ctx2);
+        if (if_block) {
+          if_block.c();
+          if_block.m(if_block_anchor.parentNode, if_block_anchor);
+        }
+      }
+    },
+    i: noop,
+    o: noop,
+    d(detaching) {
+      if_block.d(detaching);
+      if (detaching)
+        detach(if_block_anchor);
+    }
+  };
+}
+function instance94($$self, $$props, $$invalidate) {
+  let $app;
+  let $view;
+  component_subscribe($$self, app, ($$value) => $$invalidate(6, $app = $$value));
+  component_subscribe($$self, view, ($$value) => $$invalidate(7, $view = $$value));
+  var _a;
   let { value } = $$props;
+  let { richText = false } = $$props;
+  const sourcePath = (_a = getContext("sourcePath")) !== null && _a !== void 0 ? _a : "";
+  function useMarkdown(node) {
+    import_obsidian45.MarkdownRenderer.renderMarkdown(value, node, sourcePath, $view);
+  }
+  function handleClick(event) {
+    const targetEl = event.target;
+    const closestAnchor = targetEl.tagName === "A" ? targetEl : targetEl.closest("a");
+    if (!closestAnchor) {
+      return;
+    }
+    if (closestAnchor.hasClass("internal-link")) {
+      event.preventDefault();
+      const href = closestAnchor.getAttr("href");
+      const newLeaf = event.button === 1 || event.ctrlKey || event.metaKey;
+      if (href) {
+        $app.workspace.openLinkText(href, sourcePath, newLeaf);
+      }
+    }
+  }
+  function keypress_handler(event) {
+    bubble.call(this, $$self, event);
+  }
   $$self.$$set = ($$props2) => {
     if ("value" in $$props2)
       $$invalidate(0, value = $$props2.value);
+    if ("richText" in $$props2)
+      $$invalidate(1, richText = $$props2.richText);
   };
-  return [value];
+  return [value, richText, useMarkdown, handleClick, keypress_handler];
 }
 var TextLabel = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance93, create_fragment93, safe_not_equal, { value: 0 }, add_css57);
+    init4(this, options, instance94, create_fragment94, safe_not_equal, { value: 0, richText: 1 }, add_css57);
   }
 };
 var TextLabel_default = TextLabel;
 
 // src/views/Table/components/DataGrid/GridCell/GridTextCell/GridTextCell.svelte
 function create_read_slot4(ctx) {
+  var _a, _b;
   let textlabel;
   let current;
   textlabel = new TextLabel_default({
     props: {
       slot: "read",
+      richText: (_b = (_a = ctx[3].typeConfig) == null ? void 0 : _a.richText) != null ? _b : false,
       value: ctx[0] || ""
     }
   });
@@ -59813,7 +60464,10 @@ function create_read_slot4(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
+      var _a2, _b2;
       const textlabel_changes = {};
+      if (dirty & 8)
+        textlabel_changes.richText = (_b2 = (_a2 = ctx2[3].typeConfig) == null ? void 0 : _a2.richText) != null ? _b2 : false;
       if (dirty & 1)
         textlabel_changes.value = ctx2[0] || "";
       textlabel.$set(textlabel_changes);
@@ -59833,7 +60487,7 @@ function create_read_slot4(ctx) {
     }
   };
 }
-function create_else_block10(ctx) {
+function create_else_block11(ctx) {
   let textinput;
   let current;
   textinput = new TextInput_default({
@@ -59875,7 +60529,7 @@ function create_else_block10(ctx) {
     }
   };
 }
-function create_if_block30(ctx) {
+function create_if_block31(ctx) {
   let autocomplete;
   let current;
   autocomplete = new Autocomplete_default({
@@ -59924,7 +60578,7 @@ function create_edit_slot4(ctx) {
   let if_block;
   let if_block_anchor;
   let current;
-  const if_block_creators = [create_if_block30, create_else_block10];
+  const if_block_creators = [create_if_block31, create_else_block11];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
     if (ctx2[7].length > 0)
@@ -59936,7 +60590,7 @@ function create_edit_slot4(ctx) {
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_blocks[current_block_type_index].m(target, anchor);
@@ -59982,7 +60636,7 @@ function create_edit_slot4(ctx) {
     }
   };
 }
-function create_fragment94(ctx) {
+function create_fragment95(ctx) {
   let gridcell;
   let updating_edit;
   let updating_selected;
@@ -60013,8 +60667,8 @@ function create_fragment94(ctx) {
     gridcell_props.selected = ctx[1];
   }
   gridcell = new GridCell_default({ props: gridcell_props });
-  binding_callbacks.push(() => bind(gridcell, "edit", gridcell_edit_binding, ctx[6]));
-  binding_callbacks.push(() => bind(gridcell, "selected", gridcell_selected_binding, ctx[1]));
+  binding_callbacks.push(() => bind6(gridcell, "edit", gridcell_edit_binding, ctx[6]));
+  binding_callbacks.push(() => bind6(gridcell, "selected", gridcell_selected_binding, ctx[1]));
   gridcell.$on("mousedown", ctx[20]);
   gridcell.$on("navigate", ctx[21]);
   return {
@@ -60039,7 +60693,7 @@ function create_fragment94(ctx) {
         gridcell_changes.onCut = ctx2[16];
       if (dirty & 4)
         gridcell_changes.onPaste = ctx2[17];
-      if (dirty & 4194503) {
+      if (dirty & 4194511) {
         gridcell_changes.$$scope = { dirty, ctx: ctx2 };
       }
       if (!updating_edit && dirty & 64) {
@@ -60069,7 +60723,7 @@ function create_fragment94(ctx) {
     }
   };
 }
-function instance94($$self, $$props, $$invalidate) {
+function instance95($$self, $$props, $$invalidate) {
   let options;
   var _a, _b, _c;
   let { value } = $$props;
@@ -60098,7 +60752,7 @@ function instance94($$self, $$props, $$invalidate) {
   const func7 = () => {
     navigator.clipboard.writeText((value == null ? void 0 : value.toString()) || "");
   };
-  const func_14 = () => {
+  const func_13 = () => {
     navigator.clipboard.writeText((value == null ? void 0 : value.toString()) || "");
     onChange(void 0);
   };
@@ -60156,7 +60810,7 @@ function instance94($$self, $$props, $$invalidate) {
     input_handler,
     blur_handler_1,
     func7,
-    func_14,
+    func_13,
     func_2,
     gridcell_edit_binding,
     gridcell_selected_binding,
@@ -60167,7 +60821,7 @@ function instance94($$self, $$props, $$invalidate) {
 var GridTextCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance94, create_fragment94, safe_not_equal, {
+    init4(this, options, instance95, create_fragment95, safe_not_equal, {
       value: 0,
       onChange: 2,
       column: 3,
@@ -60179,497 +60833,8 @@ var GridTextCell = class extends SvelteComponent {
 };
 var GridTextCell_default = GridTextCell;
 
-// src/views/Table/components/DataGrid/GridCell/GridLinkCell/GridLinkCell.svelte
-var import_obsidian45 = require("obsidian");
-
-// src/views/Table/components/DataGrid/GridCell/GridLinkCell/LinkLabel.svelte
-function add_css58(target) {
-  append_styles(target, "svelte-1ip22jj", "div.svelte-1ip22jj{padding:6px;width:100%}");
-}
-function create_if_block31(ctx) {
-  let internallink;
-  let current;
-  internallink = new InternalLink_default({
-    props: {
-      linkText: ctx[0].linkText,
-      sourcePath: ctx[0].sourcePath,
-      resolved: !!ctx[1].metadataCache.getFirstLinkpathDest(ctx[0].linkText, ctx[0].sourcePath),
-      $$slots: { default: [create_default_slot32] },
-      $$scope: { ctx }
-    }
-  });
-  internallink.$on("open", ctx[2]);
-  return {
-    c() {
-      create_component(internallink.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(internallink, target, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      const internallink_changes = {};
-      if (dirty & 1)
-        internallink_changes.linkText = ctx2[0].linkText;
-      if (dirty & 1)
-        internallink_changes.sourcePath = ctx2[0].sourcePath;
-      if (dirty & 3)
-        internallink_changes.resolved = !!ctx2[1].metadataCache.getFirstLinkpathDest(ctx2[0].linkText, ctx2[0].sourcePath);
-      if (dirty & 9) {
-        internallink_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      internallink.$set(internallink_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(internallink.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(internallink.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(internallink, detaching);
-    }
-  };
-}
-function create_default_slot32(ctx) {
-  var _a;
-  let t_value = ((_a = ctx[0].displayName) != null ? _a : ctx[0].linkText) + "";
-  let t3;
-  return {
-    c() {
-      t3 = text(t_value);
-    },
-    m(target, anchor) {
-      insert(target, t3, anchor);
-    },
-    p(ctx2, dirty) {
-      var _a2;
-      if (dirty & 1 && t_value !== (t_value = ((_a2 = ctx2[0].displayName) != null ? _a2 : ctx2[0].linkText) + ""))
-        set_data(t3, t_value);
-    },
-    d(detaching) {
-      if (detaching)
-        detach(t3);
-    }
-  };
-}
-function create_fragment95(ctx) {
-  let div;
-  let current;
-  let if_block = ctx[0] && create_if_block31(ctx);
-  return {
-    c() {
-      div = element("div");
-      if (if_block)
-        if_block.c();
-      attr(div, "class", "svelte-1ip22jj");
-    },
-    m(target, anchor) {
-      insert(target, div, anchor);
-      if (if_block)
-        if_block.m(div, null);
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      if (ctx2[0]) {
-        if (if_block) {
-          if_block.p(ctx2, dirty);
-          if (dirty & 1) {
-            transition_in(if_block, 1);
-          }
-        } else {
-          if_block = create_if_block31(ctx2);
-          if_block.c();
-          transition_in(if_block, 1);
-          if_block.m(div, null);
-        }
-      } else if (if_block) {
-        group_outros();
-        transition_out(if_block, 1, 1, () => {
-          if_block = null;
-        });
-        check_outros();
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(if_block);
-      current = true;
-    },
-    o(local) {
-      transition_out(if_block);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(div);
-      if (if_block)
-        if_block.d();
-    }
-  };
-}
-function instance95($$self, $$props, $$invalidate) {
-  let $app;
-  component_subscribe($$self, app, ($$value) => $$invalidate(1, $app = $$value));
-  let { value } = $$props;
-  const open_handler = ({ detail: { linkText, sourcePath, newLeaf } }) => {
-    $app.workspace.openLinkText(linkText, sourcePath, newLeaf);
-  };
-  $$self.$$set = ($$props2) => {
-    if ("value" in $$props2)
-      $$invalidate(0, value = $$props2.value);
-  };
-  return [value, $app, open_handler];
-}
-var LinkLabel = class extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance95, create_fragment95, safe_not_equal, { value: 0 }, add_css58);
-  }
-};
-var LinkLabel_default = LinkLabel;
-
-// src/views/Table/components/DataGrid/GridCell/GridLinkCell/GridLinkCell.svelte
-function create_if_block_115(ctx) {
-  let linklabel;
-  let current;
-  linklabel = new LinkLabel_default({ props: { value: ctx[0] } });
-  return {
-    c() {
-      create_component(linklabel.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(linklabel, target, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      const linklabel_changes = {};
-      if (dirty & 1)
-        linklabel_changes.value = ctx2[0];
-      linklabel.$set(linklabel_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(linklabel.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(linklabel.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(linklabel, detaching);
-    }
-  };
-}
-function create_read_slot5(ctx) {
-  let show_if = isOptionalLink(ctx[0]);
-  let if_block_anchor;
-  let current;
-  let if_block = show_if && create_if_block_115(ctx);
-  return {
-    c() {
-      if (if_block)
-        if_block.c();
-      if_block_anchor = empty();
-    },
-    m(target, anchor) {
-      if (if_block)
-        if_block.m(target, anchor);
-      insert(target, if_block_anchor, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (dirty & 1)
-        show_if = isOptionalLink(ctx2[0]);
-      if (show_if) {
-        if (if_block) {
-          if_block.p(ctx2, dirty);
-          if (dirty & 1) {
-            transition_in(if_block, 1);
-          }
-        } else {
-          if_block = create_if_block_115(ctx2);
-          if_block.c();
-          transition_in(if_block, 1);
-          if_block.m(if_block_anchor.parentNode, if_block_anchor);
-        }
-      } else if (if_block) {
-        group_outros();
-        transition_out(if_block, 1, 1, () => {
-          if_block = null;
-        });
-        check_outros();
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(if_block);
-      current = true;
-    },
-    o(local) {
-      transition_out(if_block);
-      current = false;
-    },
-    d(detaching) {
-      if (if_block)
-        if_block.d(detaching);
-      if (detaching)
-        detach(if_block_anchor);
-    }
-  };
-}
-function create_if_block32(ctx) {
-  var _a, _b;
-  let fileautocomplete;
-  let current;
-  fileautocomplete = new FileAutocomplete_default({
-    props: {
-      files: getNotesInFolder(ctx[7].vault.getRoot()),
-      value: (_b = (_a = ctx[0]) == null ? void 0 : _a.linkText) != null ? _b : "",
-      embed: true,
-      autoFocus: true,
-      width: "100%",
-      getLabel: ctx[9],
-      getDescription: func_13
-    }
-  });
-  fileautocomplete.$on("blur", ctx[10]);
-  fileautocomplete.$on("change", ctx[11]);
-  return {
-    c() {
-      create_component(fileautocomplete.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(fileautocomplete, target, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      var _a2, _b2;
-      const fileautocomplete_changes = {};
-      if (dirty & 128)
-        fileautocomplete_changes.files = getNotesInFolder(ctx2[7].vault.getRoot());
-      if (dirty & 1)
-        fileautocomplete_changes.value = (_b2 = (_a2 = ctx2[0]) == null ? void 0 : _a2.linkText) != null ? _b2 : "";
-      fileautocomplete.$set(fileautocomplete_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(fileautocomplete.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(fileautocomplete.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(fileautocomplete, detaching);
-    }
-  };
-}
-function create_edit_slot5(ctx) {
-  let show_if = isOptionalLink(ctx[0]);
-  let if_block_anchor;
-  let current;
-  let if_block = show_if && create_if_block32(ctx);
-  return {
-    c() {
-      if (if_block)
-        if_block.c();
-      if_block_anchor = empty();
-    },
-    m(target, anchor) {
-      if (if_block)
-        if_block.m(target, anchor);
-      insert(target, if_block_anchor, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      if (dirty & 1)
-        show_if = isOptionalLink(ctx2[0]);
-      if (show_if) {
-        if (if_block) {
-          if_block.p(ctx2, dirty);
-          if (dirty & 1) {
-            transition_in(if_block, 1);
-          }
-        } else {
-          if_block = create_if_block32(ctx2);
-          if_block.c();
-          transition_in(if_block, 1);
-          if_block.m(if_block_anchor.parentNode, if_block_anchor);
-        }
-      } else if (if_block) {
-        group_outros();
-        transition_out(if_block, 1, 1, () => {
-          if_block = null;
-        });
-        check_outros();
-      }
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(if_block);
-      current = true;
-    },
-    o(local) {
-      transition_out(if_block);
-      current = false;
-    },
-    d(detaching) {
-      if (if_block)
-        if_block.d(detaching);
-      if (detaching)
-        detach(if_block_anchor);
-    }
-  };
-}
-function create_fragment96(ctx) {
-  let gridcell;
-  let current;
-  gridcell = new GridCell_default({
-    props: {
-      selected: ctx[5],
-      rowindex: ctx[3],
-      colindex: ctx[4],
-      edit: ctx[6],
-      onEditChange: ctx[12],
-      column: ctx[2],
-      $$slots: {
-        edit: [create_edit_slot5],
-        read: [create_read_slot5]
-      },
-      $$scope: { ctx }
-    }
-  });
-  gridcell.$on("mousedown", ctx[13]);
-  gridcell.$on("navigate", ctx[14]);
-  return {
-    c() {
-      create_component(gridcell.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(gridcell, target, anchor);
-      current = true;
-    },
-    p(ctx2, [dirty]) {
-      const gridcell_changes = {};
-      if (dirty & 32)
-        gridcell_changes.selected = ctx2[5];
-      if (dirty & 8)
-        gridcell_changes.rowindex = ctx2[3];
-      if (dirty & 16)
-        gridcell_changes.colindex = ctx2[4];
-      if (dirty & 64)
-        gridcell_changes.edit = ctx2[6];
-      if (dirty & 64)
-        gridcell_changes.onEditChange = ctx2[12];
-      if (dirty & 4)
-        gridcell_changes.column = ctx2[2];
-      if (dirty & 32963) {
-        gridcell_changes.$$scope = { dirty, ctx: ctx2 };
-      }
-      gridcell.$set(gridcell_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(gridcell.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(gridcell.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(gridcell, detaching);
-    }
-  };
-}
-var func_13 = (file) => file.path.split("/").slice(0, -1).join("/");
-function instance96($$self, $$props, $$invalidate) {
-  let $app;
-  component_subscribe($$self, app, ($$value) => $$invalidate(7, $app = $$value));
-  let { value } = $$props;
-  let { onChange } = $$props;
-  let { column } = $$props;
-  let { rowindex } = $$props;
-  let { colindex } = $$props;
-  let { selected } = $$props;
-  const sourcePath = getContext("sourcePath");
-  let edit = false;
-  const func7 = (file) => file instanceof import_obsidian45.TFile ? file.basename : "";
-  const blur_handler = () => {
-    $$invalidate(6, edit = false);
-  };
-  const change_handler = ({ detail: linkText }) => {
-    onChange(linkText ? { linkText, sourcePath } : void 0);
-  };
-  const func_2 = (value2) => $$invalidate(6, edit = value2);
-  function mousedown_handler(event) {
-    bubble.call(this, $$self, event);
-  }
-  function navigate_handler(event) {
-    bubble.call(this, $$self, event);
-  }
-  $$self.$$set = ($$props2) => {
-    if ("value" in $$props2)
-      $$invalidate(0, value = $$props2.value);
-    if ("onChange" in $$props2)
-      $$invalidate(1, onChange = $$props2.onChange);
-    if ("column" in $$props2)
-      $$invalidate(2, column = $$props2.column);
-    if ("rowindex" in $$props2)
-      $$invalidate(3, rowindex = $$props2.rowindex);
-    if ("colindex" in $$props2)
-      $$invalidate(4, colindex = $$props2.colindex);
-    if ("selected" in $$props2)
-      $$invalidate(5, selected = $$props2.selected);
-  };
-  return [
-    value,
-    onChange,
-    column,
-    rowindex,
-    colindex,
-    selected,
-    edit,
-    $app,
-    sourcePath,
-    func7,
-    blur_handler,
-    change_handler,
-    func_2,
-    mousedown_handler,
-    navigate_handler
-  ];
-}
-var GridLinkCell = class extends SvelteComponent {
-  constructor(options) {
-    super();
-    init(this, options, instance96, create_fragment96, safe_not_equal, {
-      value: 0,
-      onChange: 1,
-      column: 2,
-      rowindex: 3,
-      colindex: 4,
-      selected: 5
-    });
-  }
-};
-var GridLinkCell_default = GridLinkCell;
-
 // src/views/Table/components/DataGrid/GridCell/GridListCell/GridListCell.svelte
-function create_read_slot6(ctx) {
+function create_read_slot5(ctx) {
   let taglist;
   let current;
   taglist = new TagList_default({
@@ -60708,7 +60873,7 @@ function create_read_slot6(ctx) {
     }
   };
 }
-function create_edit_slot6(ctx) {
+function create_edit_slot5(ctx) {
   let taglist;
   let current;
   taglist = new TagList_default({
@@ -60750,7 +60915,7 @@ function create_edit_slot6(ctx) {
     }
   };
 }
-function create_fragment97(ctx) {
+function create_fragment96(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -60760,8 +60925,8 @@ function create_fragment97(ctx) {
       colindex: ctx[4],
       column: ctx[2],
       $$slots: {
-        edit: [create_edit_slot6],
-        read: [create_read_slot6]
+        edit: [create_edit_slot5],
+        read: [create_read_slot5]
       },
       $$scope: { ctx }
     }
@@ -60806,7 +60971,7 @@ function create_fragment97(ctx) {
     }
   };
 }
-function instance97($$self, $$props, $$invalidate) {
+function instance96($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -60847,7 +61012,7 @@ function instance97($$self, $$props, $$invalidate) {
 var GridListCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance97, create_fragment97, safe_not_equal, {
+    init4(this, options, instance96, create_fragment96, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -60860,7 +61025,7 @@ var GridListCell = class extends SvelteComponent {
 var GridListCell_default = GridListCell;
 
 // src/views/Table/components/DataGrid/GridCell/GridTypedCell.svelte
-function create_else_block11(ctx) {
+function create_else_block12(ctx) {
   let gridcell;
   let current;
   gridcell = new GridCell_default({
@@ -60871,8 +61036,8 @@ function create_else_block11(ctx) {
       column: ctx[2]
     }
   });
-  gridcell.$on("mousedown", ctx[18]);
-  gridcell.$on("navigate", ctx[19]);
+  gridcell.$on("mousedown", ctx[16]);
+  gridcell.$on("navigate", ctx[17]);
   return {
     c() {
       create_component(gridcell.$$.fragment);
@@ -60905,60 +61070,6 @@ function create_else_block11(ctx) {
     },
     d(detaching) {
       destroy_component(gridcell, detaching);
-    }
-  };
-}
-function create_if_block_53(ctx) {
-  let gridlinkcell;
-  let current;
-  gridlinkcell = new GridLinkCell_default({
-    props: {
-      selected: ctx[5],
-      rowindex: ctx[3],
-      colindex: ctx[4],
-      value: ctx[0],
-      onChange: ctx[1],
-      column: ctx[2]
-    }
-  });
-  gridlinkcell.$on("mousedown", ctx[16]);
-  gridlinkcell.$on("navigate", ctx[17]);
-  return {
-    c() {
-      create_component(gridlinkcell.$$.fragment);
-    },
-    m(target, anchor) {
-      mount_component(gridlinkcell, target, anchor);
-      current = true;
-    },
-    p(ctx2, dirty) {
-      const gridlinkcell_changes = {};
-      if (dirty & 32)
-        gridlinkcell_changes.selected = ctx2[5];
-      if (dirty & 8)
-        gridlinkcell_changes.rowindex = ctx2[3];
-      if (dirty & 16)
-        gridlinkcell_changes.colindex = ctx2[4];
-      if (dirty & 1)
-        gridlinkcell_changes.value = ctx2[0];
-      if (dirty & 2)
-        gridlinkcell_changes.onChange = ctx2[1];
-      if (dirty & 4)
-        gridlinkcell_changes.column = ctx2[2];
-      gridlinkcell.$set(gridlinkcell_changes);
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(gridlinkcell.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(gridlinkcell.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      destroy_component(gridlinkcell, detaching);
     }
   };
 }
@@ -61124,7 +61235,7 @@ function create_if_block_210(ctx) {
     }
   };
 }
-function create_if_block_116(ctx) {
+function create_if_block_115(ctx) {
   let gridtextcell;
   let current;
   gridtextcell = new GridTextCell_default({
@@ -61178,7 +61289,7 @@ function create_if_block_116(ctx) {
     }
   };
 }
-function create_if_block33(ctx) {
+function create_if_block32(ctx) {
   let gridlistcell;
   let current;
   gridlistcell = new GridListCell_default({
@@ -61232,25 +61343,23 @@ function create_if_block33(ctx) {
     }
   };
 }
-function create_fragment98(ctx) {
+function create_fragment97(ctx) {
   let show_if;
   let show_if_1;
   let show_if_2;
   let show_if_3;
   let show_if_4;
-  let show_if_5;
   let current_block_type_index;
   let if_block;
   let if_block_anchor;
   let current;
   const if_block_creators = [
-    create_if_block33,
-    create_if_block_116,
+    create_if_block32,
+    create_if_block_115,
     create_if_block_210,
     create_if_block_35,
     create_if_block_44,
-    create_if_block_53,
-    create_else_block11
+    create_else_block12
   ];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
@@ -61264,8 +61373,6 @@ function create_fragment98(ctx) {
       show_if_3 = null;
     if (dirty & 5)
       show_if_4 = null;
-    if (dirty & 5)
-      show_if_5 = null;
     if (show_if == null)
       show_if = !!(ctx2[2].repeated && isOptionalList(ctx2[0]));
     if (show_if)
@@ -61286,18 +61393,14 @@ function create_fragment98(ctx) {
       show_if_4 = !!(ctx2[2].type === "date" && isOptionalDate(ctx2[0]));
     if (show_if_4)
       return 4;
-    if (show_if_5 == null)
-      show_if_5 = !!(ctx2[2].type === "link" && isOptionalLink(ctx2[0]));
-    if (show_if_5)
-      return 5;
-    return 6;
+    return 5;
   }
   current_block_type_index = select_block_type(ctx, -1);
   if_block = if_blocks[current_block_type_index] = if_block_creators[current_block_type_index](ctx);
   return {
     c() {
       if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       if_blocks[current_block_type_index].m(target, anchor);
@@ -61343,7 +61446,7 @@ function create_fragment98(ctx) {
     }
   };
 }
-function instance98($$self, $$props, $$invalidate) {
+function instance97($$self, $$props, $$invalidate) {
   let { value } = $$props;
   let { onChange } = $$props;
   let { column } = $$props;
@@ -61386,12 +61489,6 @@ function instance98($$self, $$props, $$invalidate) {
   function navigate_handler_5(event) {
     bubble.call(this, $$self, event);
   }
-  function mousedown_handler_6(event) {
-    bubble.call(this, $$self, event);
-  }
-  function navigate_handler_6(event) {
-    bubble.call(this, $$self, event);
-  }
   $$self.$$set = ($$props2) => {
     if ("value" in $$props2)
       $$invalidate(0, value = $$props2.value);
@@ -61424,15 +61521,13 @@ function instance98($$self, $$props, $$invalidate) {
     mousedown_handler_4,
     navigate_handler_4,
     mousedown_handler_5,
-    navigate_handler_5,
-    mousedown_handler_6,
-    navigate_handler_6
+    navigate_handler_5
   ];
 }
 var GridTypedCell = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance98, create_fragment98, safe_not_equal, {
+    init4(this, options, instance97, create_fragment97, safe_not_equal, {
       value: 0,
       onChange: 1,
       column: 2,
@@ -61445,7 +61540,7 @@ var GridTypedCell = class extends SvelteComponent {
 var GridTypedCell_default = GridTypedCell;
 
 // src/views/Table/components/DataGrid/data-grid.ts
-var import_types4 = require("util/types");
+var import_types8 = require("util/types");
 function fieldIcon(field) {
   switch (field) {
     case "string" /* String */:
@@ -61456,8 +61551,6 @@ function fieldIcon(field) {
       return "check";
     case "date" /* Date */:
       return "calendar-days";
-    case "link" /* Link */:
-      return "link";
   }
   return "alert-triangle";
 }
@@ -61481,7 +61574,7 @@ function sortRows(rows, sortModel) {
         return 0;
       }
     }
-    if ((0, import_types4.isDate)(aval) && (0, import_types4.isDate)(bval)) {
+    if ((0, import_types8.isDate)(aval) && (0, import_types8.isDate)(bval)) {
       if (aval.getTime() < bval.getTime())
         return isAsc ? -1 : 1;
       if (aval.getTime() > bval.getTime())
@@ -61499,20 +61592,6 @@ function sortRows(rows, sortModel) {
     }
   });
 }
-function sortColumns(columns) {
-  return columns.sort((a2, b2) => {
-    var _a, _b;
-    const left6 = (_a = a2.weight) != null ? _a : 9999;
-    const right6 = (_b = b2.weight) != null ? _b : 9999;
-    if (left6 < right6) {
-      return -1;
-    } else if (left6 > right6) {
-      return 1;
-    } else {
-      return a2.name.localeCompare(b2.name);
-    }
-  });
-}
 function menuOnContextMenu(event, menu) {
   const contextMenuFunc = (event2) => {
     window.removeEventListener("contextmenu", contextMenuFunc);
@@ -61524,10 +61603,10 @@ function menuOnContextMenu(event, menu) {
 }
 
 // src/views/Table/components/DataGrid/GridCellGroup.svelte
-function add_css59(target) {
+function add_css58(target) {
   append_styles(target, "svelte-1jrmech", "div.svelte-1jrmech{display:flex}.header.svelte-1jrmech{position:sticky;top:0;z-index:10}");
 }
-function create_fragment99(ctx) {
+function create_fragment98(ctx) {
   let div;
   let current;
   let mounted;
@@ -61598,7 +61677,7 @@ function create_fragment99(ctx) {
     }
   };
 }
-function instance99($$self, $$props, $$invalidate) {
+function instance98($$self, $$props, $$invalidate) {
   let { $$slots: slots = {}, $$scope } = $$props;
   let { index: index2 } = $$props;
   let { header = false } = $$props;
@@ -61621,7 +61700,7 @@ function instance99($$self, $$props, $$invalidate) {
 var GridCellGroup = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance99, create_fragment99, safe_not_equal, { index: 0, header: 1 }, add_css59);
+    init4(this, options, instance98, create_fragment98, safe_not_equal, { index: 0, header: 1 }, add_css58);
   }
 };
 var GridCellGroup_default = GridCellGroup;
@@ -61633,7 +61712,7 @@ function get_each_context16(ctx, list, i2) {
   child_ctx[10] = i2;
   return child_ctx;
 }
-function create_else_block12(ctx) {
+function create_else_block13(ctx) {
   var _a, _b;
   let icon;
   let current;
@@ -61675,7 +61754,7 @@ function create_else_block12(ctx) {
     }
   };
 }
-function create_if_block34(ctx) {
+function create_if_block33(ctx) {
   var _a;
   let icon;
   let current;
@@ -61709,7 +61788,7 @@ function create_if_block34(ctx) {
     }
   };
 }
-function create_read_slot7(ctx) {
+function create_read_slot6(ctx) {
   let current_block_type_index;
   let if_block;
   let t0;
@@ -61718,7 +61797,7 @@ function create_read_slot7(ctx) {
   let iconbutton;
   let t22;
   let current;
-  const if_block_creators = [create_if_block34, create_else_block12];
+  const if_block_creators = [create_if_block33, create_else_block13];
   const if_blocks = [];
   function select_block_type(ctx2, dirty) {
     if (ctx2[8].repeated)
@@ -61815,7 +61894,7 @@ function create_each_block16(ctx) {
   function func7(...args) {
     return ctx[6](ctx[8], ...args);
   }
-  function func_14(...args) {
+  function func_13(...args) {
     return ctx[7](ctx[8], ...args);
   }
   gridcell = new GridCell_default({
@@ -61825,9 +61904,9 @@ function create_each_block16(ctx) {
       column: ctx[8],
       resizable: true,
       onResize: func7,
-      onFinalizeResize: func_14,
+      onFinalizeResize: func_13,
       columnHeader: true,
-      $$slots: { read: [create_read_slot7] },
+      $$slots: { read: [create_read_slot6] },
       $$scope: { ctx }
     }
   });
@@ -61851,7 +61930,7 @@ function create_each_block16(ctx) {
       if (dirty & 3)
         gridcell_changes.onResize = func7;
       if (dirty & 5)
-        gridcell_changes.onFinalizeResize = func_14;
+        gridcell_changes.onFinalizeResize = func_13;
       if (dirty & 2049) {
         gridcell_changes.$$scope = { dirty, ctx };
       }
@@ -61906,7 +61985,7 @@ function create_default_slot33(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       mount_component(gridcell, target, anchor);
@@ -61967,7 +62046,7 @@ function create_default_slot33(ctx) {
     }
   };
 }
-function create_fragment100(ctx) {
+function create_fragment99(ctx) {
   let gridcellgroup;
   let current;
   gridcellgroup = new GridCellGroup_default({
@@ -62008,7 +62087,7 @@ function create_fragment100(ctx) {
     }
   };
 }
-function instance100($$self, $$props, $$invalidate) {
+function instance99($$self, $$props, $$invalidate) {
   let { columns } = $$props;
   let { onResize } = $$props;
   let { onFinalizeResize } = $$props;
@@ -62028,7 +62107,7 @@ function instance100($$self, $$props, $$invalidate) {
   const func7 = (column, width) => {
     onResize(column.field, width);
   };
-  const func_14 = (column, width) => {
+  const func_13 = (column, width) => {
     onFinalizeResize(column.field, width);
   };
   $$self.$$set = ($$props2) => {
@@ -62049,13 +62128,13 @@ function instance100($$self, $$props, $$invalidate) {
     handleFieldClick,
     onColumnMenu,
     func7,
-    func_14
+    func_13
   ];
 }
 var GridHeader = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance100, create_fragment100, safe_not_equal, {
+    init4(this, options, instance99, create_fragment99, safe_not_equal, {
       columns: 0,
       onResize: 1,
       onFinalizeResize: 2,
@@ -62066,14 +62145,14 @@ var GridHeader = class extends SvelteComponent {
 var GridHeader_default = GridHeader;
 
 // src/views/Table/components/DataGrid/GridRow.svelte
-var import_obsidian48 = require("obsidian");
+var import_obsidian47 = require("obsidian");
 function get_each_context17(ctx, list, i2) {
   const child_ctx = ctx.slice();
-  child_ctx[16] = list[i2];
-  child_ctx[18] = i2;
+  child_ctx[15] = list[i2];
+  child_ctx[17] = i2;
   return child_ctx;
 }
-function create_read_slot8(ctx) {
+function create_read_slot7(ctx) {
   let div;
   let t_value = (ctx[1] - 1).toString() + "";
   let t3;
@@ -62086,7 +62165,7 @@ function create_read_slot8(ctx) {
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, t3);
+      append4(div, t3);
     },
     p(ctx2, dirty) {
       if (dirty & 2 && t_value !== (t_value = (ctx2[1] - 1).toString() + ""))
@@ -62098,68 +62177,27 @@ function create_read_slot8(ctx) {
     }
   };
 }
-function create_hover_slot(ctx) {
-  let div;
-  let iconbutton;
-  let current;
-  iconbutton = new IconButton_default({ props: { icon: "link", size: "sm" } });
-  iconbutton.$on("click", function() {
-    if (is_function(ctx[7]))
-      ctx[7].apply(this, arguments);
-  });
-  return {
-    c() {
-      div = element("div");
-      create_component(iconbutton.$$.fragment);
-      attr(div, "slot", "hover");
-      set_style(div, "text-align", "center");
-    },
-    m(target, anchor) {
-      insert(target, div, anchor);
-      mount_component(iconbutton, div, null);
-      current = true;
-    },
-    p(new_ctx, dirty) {
-      ctx = new_ctx;
-    },
-    i(local) {
-      if (current)
-        return;
-      transition_in(iconbutton.$$.fragment, local);
-      current = true;
-    },
-    o(local) {
-      transition_out(iconbutton.$$.fragment, local);
-      current = false;
-    },
-    d(detaching) {
-      if (detaching)
-        detach(div);
-      destroy_component(iconbutton);
-    }
-  };
-}
 function create_each_block17(ctx) {
   let gridtypedcell;
   let current;
   function func7(...args) {
-    return ctx[13](ctx[16], ...args);
+    return ctx[12](ctx[15], ...args);
   }
   gridtypedcell = new GridTypedCell_default({
     props: {
-      selected: ctx[4][0] === ctx[18] + 2 && ctx[4][1] === ctx[1] + 2,
+      selected: ctx[4][0] === ctx[17] + 2 && ctx[4][1] === ctx[1] + 2,
       rowindex: ctx[1] + 2,
-      colindex: ctx[18] + 2,
-      value: ctx[2][ctx[16].field],
-      column: ctx[16],
+      colindex: ctx[17] + 2,
+      value: ctx[2][ctx[15].field],
+      column: ctx[15],
       onChange: func7
     }
   });
   gridtypedcell.$on("mousedown", function() {
-    if (is_function(ctx[9](ctx[16], ctx[2][ctx[16].field])))
-      ctx[9](ctx[16], ctx[2][ctx[16].field]).apply(this, arguments);
+    if (is_function(ctx[8](ctx[15], ctx[2][ctx[15].field])))
+      ctx[8](ctx[15], ctx[2][ctx[15].field]).apply(this, arguments);
   });
-  gridtypedcell.$on("navigate", ctx[14]);
+  gridtypedcell.$on("navigate", ctx[13]);
   return {
     c() {
       create_component(gridtypedcell.$$.fragment);
@@ -62172,13 +62210,13 @@ function create_each_block17(ctx) {
       ctx = new_ctx;
       const gridtypedcell_changes = {};
       if (dirty & 18)
-        gridtypedcell_changes.selected = ctx[4][0] === ctx[18] + 2 && ctx[4][1] === ctx[1] + 2;
+        gridtypedcell_changes.selected = ctx[4][0] === ctx[17] + 2 && ctx[4][1] === ctx[1] + 2;
       if (dirty & 2)
         gridtypedcell_changes.rowindex = ctx[1] + 2;
       if (dirty & 12)
-        gridtypedcell_changes.value = ctx[2][ctx[16].field];
+        gridtypedcell_changes.value = ctx[2][ctx[15].field];
       if (dirty & 8)
-        gridtypedcell_changes.column = ctx[16];
+        gridtypedcell_changes.column = ctx[15];
       if (dirty & 77)
         gridtypedcell_changes.onChange = func7;
       gridtypedcell.$set(gridtypedcell_changes);
@@ -62215,14 +62253,11 @@ function create_default_slot34(ctx) {
       },
       rowHeader: true,
       color: ctx[5],
-      $$slots: {
-        hover: [create_hover_slot],
-        read: [create_read_slot8]
-      },
+      $$slots: { read: [create_read_slot7] },
       $$scope: { ctx }
     }
   });
-  gridcell.$on("mousedown", ctx[8]());
+  gridcell.$on("mousedown", ctx[7]());
   let each_value = ctx[3];
   let each_blocks = [];
   for (let i2 = 0; i2 < each_value.length; i2 += 1) {
@@ -62238,7 +62273,7 @@ function create_default_slot34(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       mount_component(gridcell, target, anchor);
@@ -62253,11 +62288,11 @@ function create_default_slot34(ctx) {
       const gridcell_changes = {};
       if (dirty & 32)
         gridcell_changes.color = ctx2[5];
-      if (dirty & 524418) {
+      if (dirty & 262146) {
         gridcell_changes.$$scope = { dirty, ctx: ctx2 };
       }
       gridcell.$set(gridcell_changes);
-      if (dirty & 607) {
+      if (dirty & 351) {
         each_value = ctx2[3];
         let i2;
         for (i2 = 0; i2 < each_value.length; i2 += 1) {
@@ -62306,7 +62341,7 @@ function create_default_slot34(ctx) {
     }
   };
 }
-function create_fragment101(ctx) {
+function create_fragment100(ctx) {
   let gridcellgroup;
   let current;
   gridcellgroup = new GridCellGroup_default({
@@ -62316,7 +62351,7 @@ function create_fragment101(ctx) {
       $$scope: { ctx }
     }
   });
-  gridcellgroup.$on("mouseover", ctx[10]);
+  gridcellgroup.$on("mouseover", ctx[9]);
   return {
     c() {
       create_component(gridcellgroup.$$.fragment);
@@ -62329,7 +62364,7 @@ function create_fragment101(ctx) {
       const gridcellgroup_changes = {};
       if (dirty & 2)
         gridcellgroup_changes.index = ctx2[1];
-      if (dirty & 524543) {
+      if (dirty & 262271) {
         gridcellgroup_changes.$$scope = { dirty, ctx: ctx2 };
       }
       gridcellgroup.$set(gridcellgroup_changes);
@@ -62349,9 +62384,9 @@ function create_fragment101(ctx) {
     }
   };
 }
-function instance101($$self, $$props, $$invalidate) {
+function instance100($$self, $$props, $$invalidate) {
   let $app;
-  component_subscribe($$self, app, ($$value) => $$invalidate(15, $app = $$value));
+  component_subscribe($$self, app, ($$value) => $$invalidate(14, $app = $$value));
   let { rowId } = $$props;
   let { index: index2 } = $$props;
   let { row } = $$props;
@@ -62362,7 +62397,6 @@ function instance101($$self, $$props, $$invalidate) {
   let { onRowChange } = $$props;
   let { onRowMenu } = $$props;
   let { onCellMenu } = $$props;
-  let { onNavigate } = $$props;
   function handleHeaderClick() {
     return (event) => {
       if (event.button === 2) {
@@ -62390,7 +62424,7 @@ function instance101($$self, $$props, $$invalidate) {
     const targetEl = event.target;
     if (targetEl instanceof HTMLDivElement) {
       const file = $app.vault.getAbstractFileByPath(rowId);
-      if (file instanceof import_obsidian48.TFile) {
+      if (file instanceof import_obsidian47.TFile) {
         $app.workspace.trigger("hover-link", {
           event,
           source: "obsidian-projects-table-view",
@@ -62427,11 +62461,9 @@ function instance101($$self, $$props, $$invalidate) {
     if ("onRowChange" in $$props2)
       $$invalidate(6, onRowChange = $$props2.onRowChange);
     if ("onRowMenu" in $$props2)
-      $$invalidate(11, onRowMenu = $$props2.onRowMenu);
+      $$invalidate(10, onRowMenu = $$props2.onRowMenu);
     if ("onCellMenu" in $$props2)
-      $$invalidate(12, onCellMenu = $$props2.onCellMenu);
-    if ("onNavigate" in $$props2)
-      $$invalidate(7, onNavigate = $$props2.onNavigate);
+      $$invalidate(11, onCellMenu = $$props2.onCellMenu);
   };
   return [
     rowId,
@@ -62441,7 +62473,6 @@ function instance101($$self, $$props, $$invalidate) {
     activeCell,
     color,
     onRowChange,
-    onNavigate,
     handleHeaderClick,
     handleCellClick,
     handleHoverLink,
@@ -62454,7 +62485,7 @@ function instance101($$self, $$props, $$invalidate) {
 var GridRow = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance101, create_fragment101, safe_not_equal, {
+    init4(this, options, instance100, create_fragment100, safe_not_equal, {
       rowId: 0,
       index: 1,
       row: 2,
@@ -62462,49 +62493,44 @@ var GridRow = class extends SvelteComponent {
       activeCell: 4,
       color: 5,
       onRowChange: 6,
-      onRowMenu: 11,
-      onCellMenu: 12,
-      onNavigate: 7
+      onRowMenu: 10,
+      onCellMenu: 11
     });
   }
 };
 var GridRow_default = GridRow;
 
 // src/views/Table/components/DataGrid/DataGrid.svelte
-function add_css60(target) {
+function add_css59(target) {
   append_styles(target, "svelte-8irtc3", "div.svelte-8irtc3{display:inline-block}span.svelte-8irtc3{padding:4px;position:sticky;left:0}");
 }
 function get_each_context18(ctx, list, i2) {
   const child_ctx = ctx.slice();
-  child_ctx[33] = list[i2].rowId;
-  child_ctx[34] = list[i2].row;
-  child_ctx[36] = i2;
+  child_ctx[31] = list[i2].rowId;
+  child_ctx[32] = list[i2].row;
+  child_ctx[34] = i2;
   return child_ctx;
 }
 function create_each_block18(ctx) {
   let gridrow;
   let current;
   function func_4(...args) {
-    return ctx[29](ctx[34], ...args);
-  }
-  function func_5(...args) {
-    return ctx[30](ctx[33], ...args);
+    return ctx[28](ctx[32], ...args);
   }
   gridrow = new GridRow_default({
     props: {
-      columns: ctx[10],
-      index: ctx[36] + 2,
-      rowId: ctx[33],
-      row: ctx[34],
-      activeCell: ctx[7],
+      columns: ctx[9],
+      index: ctx[34] + 2,
+      rowId: ctx[31],
+      row: ctx[32],
+      activeCell: ctx[6],
       onRowChange: ctx[5],
-      color: ctx[1](ctx[33]),
-      onRowMenu: ctx[28],
-      onCellMenu: func_4,
-      onNavigate: func_5
+      color: ctx[1](ctx[31]),
+      onRowMenu: ctx[27],
+      onCellMenu: func_4
     }
   });
-  gridrow.$on("navigate", ctx[31]);
+  gridrow.$on("navigate", ctx[29]);
   return {
     c() {
       create_component(gridrow.$$.fragment);
@@ -62516,22 +62542,20 @@ function create_each_block18(ctx) {
     p(new_ctx, dirty) {
       ctx = new_ctx;
       const gridrow_changes = {};
-      if (dirty[0] & 1024)
-        gridrow_changes.columns = ctx[10];
       if (dirty[0] & 512)
-        gridrow_changes.rowId = ctx[33];
-      if (dirty[0] & 512)
-        gridrow_changes.row = ctx[34];
-      if (dirty[0] & 128)
-        gridrow_changes.activeCell = ctx[7];
+        gridrow_changes.columns = ctx[9];
+      if (dirty[0] & 256)
+        gridrow_changes.rowId = ctx[31];
+      if (dirty[0] & 256)
+        gridrow_changes.row = ctx[32];
+      if (dirty[0] & 64)
+        gridrow_changes.activeCell = ctx[6];
       if (dirty[0] & 32)
         gridrow_changes.onRowChange = ctx[5];
-      if (dirty[0] & 514)
-        gridrow_changes.color = ctx[1](ctx[33]);
-      if (dirty[0] & 512)
+      if (dirty[0] & 258)
+        gridrow_changes.color = ctx[1](ctx[31]);
+      if (dirty[0] & 256)
         gridrow_changes.onCellMenu = func_4;
-      if (dirty[0] & 576)
-        gridrow_changes.onNavigate = func_5;
       gridrow.$set(gridrow_changes);
     },
     i(local) {
@@ -62549,17 +62573,17 @@ function create_each_block18(ctx) {
     }
   };
 }
-function create_if_block35(ctx) {
+function create_if_block34(ctx) {
   let button;
   let current;
   button = new Button_default({
     props: {
       variant: "plain",
-      $$slots: { default: [create_default_slot_122] },
+      $$slots: { default: [create_default_slot_123] },
       $$scope: { ctx }
     }
   });
-  button.$on("click", ctx[32]);
+  button.$on("click", ctx[30]);
   return {
     c() {
       create_component(button.$$.fragment);
@@ -62570,7 +62594,7 @@ function create_if_block35(ctx) {
     },
     p(ctx2, dirty) {
       const button_changes = {};
-      if (dirty[0] & 256 | dirty[1] & 64) {
+      if (dirty[0] & 128 | dirty[1] & 16) {
         button_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button.$set(button_changes);
@@ -62590,10 +62614,10 @@ function create_if_block35(ctx) {
     }
   };
 }
-function create_default_slot_122(ctx) {
+function create_default_slot_123(ctx) {
   let icon;
   let t0;
-  let t1_value = ctx[8]("components.data-grid.row.add") + "";
+  let t1_value = ctx[7]("components.data-grid.row.add") + "";
   let t1;
   let current;
   icon = new Icon_default({ props: { name: "plus" } });
@@ -62610,7 +62634,7 @@ function create_default_slot_122(ctx) {
       current = true;
     },
     p(ctx2, dirty) {
-      if ((!current || dirty[0] & 256) && t1_value !== (t1_value = ctx2[8]("components.data-grid.row.add") + ""))
+      if ((!current || dirty[0] & 128) && t1_value !== (t1_value = ctx2[7]("components.data-grid.row.add") + ""))
         set_data(t1, t1_value);
     },
     i(local) {
@@ -62636,14 +62660,14 @@ function create_default_slot35(ctx) {
   let span;
   let span_style_value;
   let current;
-  let if_block = !ctx[2] && create_if_block35(ctx);
+  let if_block = !ctx[2] && create_if_block34(ctx);
   return {
     c() {
       var _a, _b;
       span = element("span");
       if (if_block)
         if_block.c();
-      attr(span, "style", span_style_value = `width: ${60 + ((_b = (_a = ctx[10][0]) == null ? void 0 : _a.width) != null ? _b : 0)}`);
+      attr(span, "style", span_style_value = `width: ${60 + ((_b = (_a = ctx[9][0]) == null ? void 0 : _a.width) != null ? _b : 0)}`);
       attr(span, "class", "svelte-8irtc3");
     },
     m(target, anchor) {
@@ -62661,7 +62685,7 @@ function create_default_slot35(ctx) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block35(ctx2);
+          if_block = create_if_block34(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(span, null);
@@ -62673,7 +62697,7 @@ function create_default_slot35(ctx) {
         });
         check_outros();
       }
-      if (!current || dirty[0] & 1024 && span_style_value !== (span_style_value = `width: ${60 + ((_b = (_a = ctx2[10][0]) == null ? void 0 : _a.width) != null ? _b : 0)}`)) {
+      if (!current || dirty[0] & 512 && span_style_value !== (span_style_value = `width: ${60 + ((_b = (_a = ctx2[9][0]) == null ? void 0 : _a.width) != null ? _b : 0)}`)) {
         attr(span, "style", span_style_value);
       }
     },
@@ -62695,7 +62719,7 @@ function create_default_slot35(ctx) {
     }
   };
 }
-function create_fragment102(ctx) {
+function create_fragment101(ctx) {
   let div;
   let gridheader;
   let t0;
@@ -62706,13 +62730,13 @@ function create_fragment102(ctx) {
   let current;
   gridheader = new GridHeader_default({
     props: {
-      columns: ctx[10],
-      onResize: ctx[25],
-      onFinalizeResize: ctx[26],
-      onColumnMenu: ctx[27]
+      columns: ctx[9],
+      onResize: ctx[24],
+      onFinalizeResize: ctx[25],
+      onColumnMenu: ctx[26]
     }
   });
-  let each_value = ctx[9];
+  let each_value = ctx[8];
   let each_blocks = [];
   for (let i2 = 0; i2 < each_value.length; i2 += 1) {
     each_blocks[i2] = create_each_block18(get_each_context18(ctx, each_value, i2));
@@ -62722,7 +62746,7 @@ function create_fragment102(ctx) {
   });
   gridcellgroup = new GridCellGroup_default({
     props: {
-      index: ctx[9].length + 2,
+      index: ctx[8].length + 2,
       $$slots: { default: [create_default_slot35] },
       $$scope: { ctx }
     }
@@ -62738,32 +62762,32 @@ function create_fragment102(ctx) {
       t1 = space();
       create_component(gridcellgroup.$$.fragment);
       attr(div, "role", "grid");
-      attr(div, "aria-colcount", div_aria_colcount_value = ctx[10].length + 1);
-      attr(div, "aria-rowcount", div_aria_rowcount_value = ctx[9].length + 2);
+      attr(div, "aria-colcount", div_aria_colcount_value = ctx[9].length + 1);
+      attr(div, "aria-rowcount", div_aria_rowcount_value = ctx[8].length + 2);
       attr(div, "class", "svelte-8irtc3");
     },
     m(target, anchor) {
       insert(target, div, anchor);
       mount_component(gridheader, div, null);
-      append(div, t0);
+      append4(div, t0);
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(div, null);
       }
-      append(div, t1);
+      append4(div, t1);
       mount_component(gridcellgroup, div, null);
       current = true;
     },
     p(ctx2, dirty) {
       const gridheader_changes = {};
-      if (dirty[0] & 1024)
-        gridheader_changes.columns = ctx2[10];
+      if (dirty[0] & 512)
+        gridheader_changes.columns = ctx2[9];
       if (dirty[0] & 1)
-        gridheader_changes.onResize = ctx2[25];
+        gridheader_changes.onResize = ctx2[24];
       if (dirty[0] & 8)
-        gridheader_changes.onFinalizeResize = ctx2[26];
+        gridheader_changes.onFinalizeResize = ctx2[25];
       gridheader.$set(gridheader_changes);
-      if (dirty[0] & 30434) {
-        each_value = ctx2[9];
+      if (dirty[0] & 15202) {
+        each_value = ctx2[8];
         let i2;
         for (i2 = 0; i2 < each_value.length; i2 += 1) {
           const child_ctx = get_each_context18(ctx2, each_value, i2);
@@ -62784,16 +62808,16 @@ function create_fragment102(ctx) {
         check_outros();
       }
       const gridcellgroup_changes = {};
-      if (dirty[0] & 512)
-        gridcellgroup_changes.index = ctx2[9].length + 2;
-      if (dirty[0] & 1300 | dirty[1] & 64) {
+      if (dirty[0] & 256)
+        gridcellgroup_changes.index = ctx2[8].length + 2;
+      if (dirty[0] & 660 | dirty[1] & 16) {
         gridcellgroup_changes.$$scope = { dirty, ctx: ctx2 };
       }
       gridcellgroup.$set(gridcellgroup_changes);
-      if (!current || dirty[0] & 1024 && div_aria_colcount_value !== (div_aria_colcount_value = ctx2[10].length + 1)) {
+      if (!current || dirty[0] & 512 && div_aria_colcount_value !== (div_aria_colcount_value = ctx2[9].length + 1)) {
         attr(div, "aria-colcount", div_aria_colcount_value);
       }
-      if (!current || dirty[0] & 512 && div_aria_rowcount_value !== (div_aria_rowcount_value = ctx2[9].length + 2)) {
+      if (!current || dirty[0] & 256 && div_aria_rowcount_value !== (div_aria_rowcount_value = ctx2[8].length + 2)) {
         attr(div, "aria-rowcount", div_aria_rowcount_value);
       }
     },
@@ -62825,13 +62849,13 @@ function create_fragment102(ctx) {
     }
   };
 }
-function instance102($$self, $$props, $$invalidate) {
+function instance101($$self, $$props, $$invalidate) {
   let t3;
   let visibleColumns;
   let sortedColumns;
   let sortedRows;
   let $i18n;
-  component_subscribe($$self, i18n, ($$value) => $$invalidate(24, $i18n = $$value));
+  component_subscribe($$self, i18n, ($$value) => $$invalidate(23, $i18n = $$value));
   let { columns } = $$props;
   let { rows } = $$props;
   let { sortModel } = $$props;
@@ -62841,7 +62865,6 @@ function instance102($$self, $$props, $$invalidate) {
   let { onColumnResize } = $$props;
   let { onRowAdd } = $$props;
   let { onRowChange } = $$props;
-  let { onRowNavigate } = $$props;
   let { onColumnConfigure } = $$props;
   let { onColumnDelete } = $$props;
   let { onColumnHide } = $$props;
@@ -62849,11 +62872,12 @@ function instance102($$self, $$props, $$invalidate) {
   let { onRowEdit } = $$props;
   let activeCell = [3, 3];
   function createColumnMenu(column) {
-    const menu = new import_obsidian50.Menu();
-    if (column.editable && !readonly) {
-      menu.addItem((item) => {
-        item.setTitle(t3("components.data-grid.column.configure")).setIcon("settings").onClick(() => onColumnConfigure(column));
-      });
+    const editable = !!column.editable && !readonly;
+    const menu = new import_obsidian49.Menu();
+    menu.addItem((item) => {
+      item.setTitle(t3("components.data-grid.column.configure")).setIcon("settings").onClick(() => onColumnConfigure(column, editable));
+    });
+    if (editable) {
       menu.addItem((item) => {
         item.setTitle(t3("components.data-grid.column.delete")).setIcon("trash").onClick(() => onColumnDelete(column.field));
       });
@@ -62875,7 +62899,7 @@ function instance102($$self, $$props, $$invalidate) {
     return menu;
   }
   function createRowMenu(rowId, row) {
-    const menu = new import_obsidian50.Menu();
+    const menu = new import_obsidian49.Menu();
     menu.addItem((item) => {
       item.setTitle(t3("components.data-grid.row.edit")).setIcon("edit").onClick(() => onRowEdit(rowId, row));
     });
@@ -62888,7 +62912,7 @@ function instance102($$self, $$props, $$invalidate) {
     return menu;
   }
   function createCellMenu(rowId, row, column) {
-    const menu = new import_obsidian50.Menu();
+    const menu = new import_obsidian49.Menu();
     if (column.editable) {
       menu.addItem((item) => {
         item.setTitle(t3("components.data-grid.cell.clear")).setIcon("x").onClick(() => {
@@ -62905,15 +62929,14 @@ function instance102($$self, $$props, $$invalidate) {
   const func7 = (name, width) => {
     $$invalidate(0, columns = columns.map((column) => column.field === name ? __spreadProps(__spreadValues({}, column), { width }) : column));
   };
-  const func_14 = (name, width) => {
+  const func_13 = (name, width) => {
     onColumnResize(name, width);
   };
   const func_2 = (field) => createColumnMenu(field);
   const func_3 = (rowId, row) => createRowMenu(rowId, row);
   const func_4 = (row, rowId, column) => createCellMenu(rowId, row, column);
-  const func_5 = (rowId, event) => onRowNavigate(rowId, event.ctrlKey || event.metaKey);
   const navigate_handler = ({ detail: cell }) => {
-    $$invalidate(7, activeCell = [
+    $$invalidate(6, activeCell = [
       clamp(cell[0], 2, sortedColumns.length + 1),
       clamp(cell[1], 4, sortedRows.length + 3)
     ]);
@@ -62923,50 +62946,48 @@ function instance102($$self, $$props, $$invalidate) {
     if ("columns" in $$props2)
       $$invalidate(0, columns = $$props2.columns);
     if ("rows" in $$props2)
-      $$invalidate(15, rows = $$props2.rows);
+      $$invalidate(14, rows = $$props2.rows);
     if ("sortModel" in $$props2)
-      $$invalidate(16, sortModel = $$props2.sortModel);
+      $$invalidate(15, sortModel = $$props2.sortModel);
     if ("colorModel" in $$props2)
       $$invalidate(1, colorModel = $$props2.colorModel);
     if ("readonly" in $$props2)
       $$invalidate(2, readonly = $$props2.readonly);
     if ("onSortModelChange" in $$props2)
-      $$invalidate(17, onSortModelChange = $$props2.onSortModelChange);
+      $$invalidate(16, onSortModelChange = $$props2.onSortModelChange);
     if ("onColumnResize" in $$props2)
       $$invalidate(3, onColumnResize = $$props2.onColumnResize);
     if ("onRowAdd" in $$props2)
       $$invalidate(4, onRowAdd = $$props2.onRowAdd);
     if ("onRowChange" in $$props2)
       $$invalidate(5, onRowChange = $$props2.onRowChange);
-    if ("onRowNavigate" in $$props2)
-      $$invalidate(6, onRowNavigate = $$props2.onRowNavigate);
     if ("onColumnConfigure" in $$props2)
-      $$invalidate(18, onColumnConfigure = $$props2.onColumnConfigure);
+      $$invalidate(17, onColumnConfigure = $$props2.onColumnConfigure);
     if ("onColumnDelete" in $$props2)
-      $$invalidate(19, onColumnDelete = $$props2.onColumnDelete);
+      $$invalidate(18, onColumnDelete = $$props2.onColumnDelete);
     if ("onColumnHide" in $$props2)
-      $$invalidate(20, onColumnHide = $$props2.onColumnHide);
+      $$invalidate(19, onColumnHide = $$props2.onColumnHide);
     if ("onRowDelete" in $$props2)
-      $$invalidate(21, onRowDelete = $$props2.onRowDelete);
+      $$invalidate(20, onRowDelete = $$props2.onRowDelete);
     if ("onRowEdit" in $$props2)
-      $$invalidate(22, onRowEdit = $$props2.onRowEdit);
+      $$invalidate(21, onRowEdit = $$props2.onRowEdit);
   };
   $$self.$$.update = () => {
-    if ($$self.$$.dirty[0] & 16777216) {
+    if ($$self.$$.dirty[0] & 8388608) {
       $:
-        $$invalidate(8, t3 = $i18n.t);
+        $$invalidate(7, t3 = $i18n.t);
     }
     if ($$self.$$.dirty[0] & 1) {
       $:
-        $$invalidate(23, visibleColumns = columns.filter((column) => !column.hide));
+        $$invalidate(22, visibleColumns = columns.filter((column) => !column.hide));
     }
-    if ($$self.$$.dirty[0] & 8388608) {
+    if ($$self.$$.dirty[0] & 4194304) {
       $:
-        $$invalidate(10, sortedColumns = sortColumns(visibleColumns));
+        $$invalidate(9, sortedColumns = visibleColumns);
     }
-    if ($$self.$$.dirty[0] & 98304) {
+    if ($$self.$$.dirty[0] & 49152) {
       $:
-        $$invalidate(9, sortedRows = sortRows(rows, sortModel));
+        $$invalidate(8, sortedRows = sortRows(rows, sortModel));
     }
   };
   return [
@@ -62976,7 +62997,6 @@ function instance102($$self, $$props, $$invalidate) {
     onColumnResize,
     onRowAdd,
     onRowChange,
-    onRowNavigate,
     activeCell,
     t3,
     sortedRows,
@@ -62996,11 +63016,10 @@ function instance102($$self, $$props, $$invalidate) {
     visibleColumns,
     $i18n,
     func7,
-    func_14,
+    func_13,
     func_2,
     func_3,
     func_4,
-    func_5,
     navigate_handler,
     click_handler
   ];
@@ -63008,30 +63027,29 @@ function instance102($$self, $$props, $$invalidate) {
 var DataGrid = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(
+    init4(
       this,
       options,
-      instance102,
-      create_fragment102,
+      instance101,
+      create_fragment101,
       safe_not_equal,
       {
         columns: 0,
-        rows: 15,
-        sortModel: 16,
+        rows: 14,
+        sortModel: 15,
         colorModel: 1,
         readonly: 2,
-        onSortModelChange: 17,
+        onSortModelChange: 16,
         onColumnResize: 3,
         onRowAdd: 4,
         onRowChange: 5,
-        onRowNavigate: 6,
-        onColumnConfigure: 18,
-        onColumnDelete: 19,
-        onColumnHide: 20,
-        onRowDelete: 21,
-        onRowEdit: 22
+        onColumnConfigure: 17,
+        onColumnDelete: 18,
+        onColumnHide: 19,
+        onRowDelete: 20,
+        onRowEdit: 21
       },
-      add_css60,
+      add_css59,
       [-1, -1]
     );
   }
@@ -63039,7 +63057,7 @@ var DataGrid = class extends SvelteComponent {
 var DataGrid_default = DataGrid;
 
 // src/views/Table/components/SwitchSelect/SwitchSelect.svelte
-function add_css61(target) {
+function add_css60(target) {
   append_styles(target, "svelte-zdcf2i", "div.svelte-zdcf2i{align-items:center;display:inline-flex;text-align:start}");
 }
 function get_each_context19(ctx, list, i2) {
@@ -63110,7 +63128,7 @@ function create_default_slot36(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].c();
       }
-      each_1_anchor = empty();
+      each_1_anchor = empty3();
     },
     m(target, anchor) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
@@ -63164,7 +63182,7 @@ function create_default_slot36(ctx) {
     }
   };
 }
-function create_fragment103(ctx) {
+function create_fragment102(ctx) {
   let div;
   let t0;
   let t1;
@@ -63191,7 +63209,7 @@ function create_fragment103(ctx) {
     },
     m(target, anchor) {
       insert(target, div, anchor);
-      append(div, t0);
+      append4(div, t0);
       ctx[6](div);
       insert(target, t1, anchor);
       mount_component(menu, target, anchor);
@@ -63241,7 +63259,7 @@ function create_fragment103(ctx) {
     }
   };
 }
-function instance103($$self, $$props, $$invalidate) {
+function instance102($$self, $$props, $$invalidate) {
   let { items } = $$props;
   let { label } = $$props;
   let { onChange } = $$props;
@@ -63283,16 +63301,16 @@ function instance103($$self, $$props, $$invalidate) {
 var SwitchSelect = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance103, create_fragment103, safe_not_equal, { items: 0, label: 2, onChange: 1 }, add_css61);
+    init4(this, options, instance102, create_fragment102, safe_not_equal, { items: 0, label: 2, onChange: 1 }, add_css60);
   }
 };
 var SwitchSelect_default = SwitchSelect;
 
 // src/modals/configure-field.ts
-var import_obsidian51 = require("obsidian");
+var import_obsidian50 = require("obsidian");
 
 // src/components/MultiTextInput/MultiTextInput.svelte
-function add_css62(target) {
+function add_css61(target) {
   append_styles(target, "svelte-9r99fn", "div.svelte-9r99fn{display:flex;flex-direction:column;gap:4px;width:100%}span.svelte-9r99fn{display:flex;gap:4px}");
 }
 function get_each_context20(ctx, list, i2) {
@@ -63324,7 +63342,7 @@ function create_each_block20(ctx) {
     m(target, anchor) {
       insert(target, span, anchor);
       mount_component(textinput, span, null);
-      append(span, t3);
+      append4(span, t3);
       mount_component(iconbutton, span, null);
       current = true;
     },
@@ -63387,7 +63405,7 @@ function create_default_slot37(ctx) {
     }
   };
 }
-function create_fragment104(ctx) {
+function create_fragment103(ctx) {
   let div;
   let t3;
   let button;
@@ -63423,7 +63441,7 @@ function create_fragment104(ctx) {
       for (let i2 = 0; i2 < each_blocks.length; i2 += 1) {
         each_blocks[i2].m(div, null);
       }
-      append(div, t3);
+      append4(div, t3);
       mount_component(button, div, null);
       current = true;
     },
@@ -63480,7 +63498,7 @@ function create_fragment104(ctx) {
     }
   };
 }
-function instance104($$self, $$props, $$invalidate) {
+function instance103($$self, $$props, $$invalidate) {
   let { options } = $$props;
   let { onChange } = $$props;
   function handleOptionAdd() {
@@ -63517,17 +63535,22 @@ function instance104($$self, $$props, $$invalidate) {
 var MultiTextInput = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance104, create_fragment104, safe_not_equal, { options: 0, onChange: 4 }, add_css62);
+    init4(this, options, instance103, create_fragment103, safe_not_equal, { options: 0, onChange: 4 }, add_css61);
   }
 };
 var MultiTextInput_default = MultiTextInput;
 
 // src/modals/components/ConfigureField.svelte
-function create_default_slot_69(ctx) {
+function create_default_slot_76(ctx) {
   let textinput;
   let current;
-  textinput = new TextInput_default({ props: { value: ctx[0].name } });
-  textinput.$on("input", ctx[4]);
+  textinput = new TextInput_default({
+    props: {
+      readonly: !ctx[2],
+      value: ctx[0].name
+    }
+  });
+  textinput.$on("input", ctx[5]);
   return {
     c() {
       create_component(textinput.$$.fragment);
@@ -63538,6 +63561,8 @@ function create_default_slot_69(ctx) {
     },
     p(ctx2, dirty) {
       const textinput_changes = {};
+      if (dirty & 4)
+        textinput_changes.readonly = !ctx2[2];
       if (dirty & 1)
         textinput_changes.value = ctx2[0].name;
       textinput.$set(textinput_changes);
@@ -63557,17 +63582,17 @@ function create_default_slot_69(ctx) {
     }
   };
 }
-function create_default_slot_511(ctx) {
+function create_default_slot_69(ctx) {
   let select;
   let current;
   select = new Select_default({
     props: {
       disabled: true,
       value: ctx[0].type,
-      options: ctx[3]
+      options: ctx[4]
     }
   });
-  select.$on("change", ctx[5]);
+  select.$on("change", ctx[6]);
   return {
     c() {
       create_component(select.$$.fragment);
@@ -63580,8 +63605,8 @@ function create_default_slot_511(ctx) {
       const select_changes = {};
       if (dirty & 1)
         select_changes.value = ctx2[0].type;
-      if (dirty & 8)
-        select_changes.options = ctx2[3];
+      if (dirty & 16)
+        select_changes.options = ctx2[4];
       select.$set(select_changes);
     },
     i(local) {
@@ -63599,56 +63624,80 @@ function create_default_slot_511(ctx) {
     }
   };
 }
-function create_if_block36(ctx) {
-  let settingitem;
+function create_if_block35(ctx) {
+  let settingitem0;
+  let t3;
+  let settingitem1;
   let current;
-  settingitem = new SettingItem_default({
+  settingitem0 = new SettingItem_default({
     props: {
       name: "Options",
       description: "Predefined values for the field.",
       vertical: true,
+      $$slots: { default: [create_default_slot_511] },
+      $$scope: { ctx }
+    }
+  });
+  settingitem1 = new SettingItem_default({
+    props: {
+      name: "Enable rich text formatting",
+      description: "For fields with Markdown content.",
       $$slots: { default: [create_default_slot_413] },
       $$scope: { ctx }
     }
   });
   return {
     c() {
-      create_component(settingitem.$$.fragment);
+      create_component(settingitem0.$$.fragment);
+      t3 = space();
+      create_component(settingitem1.$$.fragment);
     },
     m(target, anchor) {
-      mount_component(settingitem, target, anchor);
+      mount_component(settingitem0, target, anchor);
+      insert(target, t3, anchor);
+      mount_component(settingitem1, target, anchor);
       current = true;
     },
     p(ctx2, dirty) {
-      const settingitem_changes = {};
-      if (dirty & 257) {
-        settingitem_changes.$$scope = { dirty, ctx: ctx2 };
+      const settingitem0_changes = {};
+      if (dirty & 1025) {
+        settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
       }
-      settingitem.$set(settingitem_changes);
+      settingitem0.$set(settingitem0_changes);
+      const settingitem1_changes = {};
+      if (dirty & 1025) {
+        settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
+      }
+      settingitem1.$set(settingitem1_changes);
     },
     i(local) {
       if (current)
         return;
-      transition_in(settingitem.$$.fragment, local);
+      transition_in(settingitem0.$$.fragment, local);
+      transition_in(settingitem1.$$.fragment, local);
       current = true;
     },
     o(local) {
-      transition_out(settingitem.$$.fragment, local);
+      transition_out(settingitem0.$$.fragment, local);
+      transition_out(settingitem1.$$.fragment, local);
       current = false;
     },
     d(detaching) {
-      destroy_component(settingitem, detaching);
+      destroy_component(settingitem0, detaching);
+      if (detaching)
+        detach(t3);
+      destroy_component(settingitem1, detaching);
     }
   };
 }
-function create_default_slot_413(ctx) {
+function create_default_slot_511(ctx) {
   var _a, _b;
   let multitextinput;
   let current;
   multitextinput = new MultiTextInput_default({
     props: {
       options: (_b = (_a = ctx[0].typeConfig) == null ? void 0 : _a.options) != null ? _b : [],
-      onChange: ctx[6]
+      onChange: ctx[7]
     }
   });
   return {
@@ -63681,6 +63730,46 @@ function create_default_slot_413(ctx) {
     }
   };
 }
+function create_default_slot_413(ctx) {
+  var _a, _b;
+  let switch_1;
+  let current;
+  switch_1 = new Switch_default({
+    props: {
+      checked: (_b = (_a = ctx[0].typeConfig) == null ? void 0 : _a.richText) != null ? _b : false
+    }
+  });
+  switch_1.$on("check", ctx[8]);
+  return {
+    c() {
+      create_component(switch_1.$$.fragment);
+    },
+    m(target, anchor) {
+      mount_component(switch_1, target, anchor);
+      current = true;
+    },
+    p(ctx2, dirty) {
+      var _a2, _b2;
+      const switch_1_changes = {};
+      if (dirty & 1)
+        switch_1_changes.checked = (_b2 = (_a2 = ctx2[0].typeConfig) == null ? void 0 : _a2.richText) != null ? _b2 : false;
+      switch_1.$set(switch_1_changes);
+    },
+    i(local) {
+      if (current)
+        return;
+      transition_in(switch_1.$$.fragment, local);
+      current = true;
+    },
+    o(local) {
+      transition_out(switch_1.$$.fragment, local);
+      current = false;
+    },
+    d(detaching) {
+      destroy_component(switch_1, detaching);
+    }
+  };
+}
 function create_default_slot_313(ctx) {
   let settingitem0;
   let t0;
@@ -63691,18 +63780,18 @@ function create_default_slot_313(ctx) {
   settingitem0 = new SettingItem_default({
     props: {
       name: "Name",
-      $$slots: { default: [create_default_slot_69] },
+      $$slots: { default: [create_default_slot_76] },
       $$scope: { ctx }
     }
   });
   settingitem1 = new SettingItem_default({
     props: {
       name: "Type",
-      $$slots: { default: [create_default_slot_511] },
+      $$slots: { default: [create_default_slot_69] },
       $$scope: { ctx }
     }
   });
-  let if_block = ctx[0].type === "string" /* String */ && !ctx[0].repeated && create_if_block36(ctx);
+  let if_block = ctx[0].type === "string" /* String */ && !ctx[0].repeated && !ctx[0].identifier && create_if_block35(ctx);
   return {
     c() {
       create_component(settingitem0.$$.fragment);
@@ -63711,7 +63800,7 @@ function create_default_slot_313(ctx) {
       t1 = space();
       if (if_block)
         if_block.c();
-      if_block_anchor = empty();
+      if_block_anchor = empty3();
     },
     m(target, anchor) {
       mount_component(settingitem0, target, anchor);
@@ -63725,23 +63814,23 @@ function create_default_slot_313(ctx) {
     },
     p(ctx2, dirty) {
       const settingitem0_changes = {};
-      if (dirty & 257) {
+      if (dirty & 1029) {
         settingitem0_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem0.$set(settingitem0_changes);
       const settingitem1_changes = {};
-      if (dirty & 265) {
+      if (dirty & 1041) {
         settingitem1_changes.$$scope = { dirty, ctx: ctx2 };
       }
       settingitem1.$set(settingitem1_changes);
-      if (ctx2[0].type === "string" /* String */ && !ctx2[0].repeated) {
+      if (ctx2[0].type === "string" /* String */ && !ctx2[0].repeated && !ctx2[0].identifier) {
         if (if_block) {
           if_block.p(ctx2, dirty);
           if (dirty & 1) {
             transition_in(if_block, 1);
           }
         } else {
-          if_block = create_if_block36(ctx2);
+          if_block = create_if_block35(ctx2);
           if_block.c();
           transition_in(if_block, 1);
           if_block.m(if_block_anchor.parentNode, if_block_anchor);
@@ -63782,7 +63871,7 @@ function create_default_slot_313(ctx) {
     }
   };
 }
-function create_default_slot_216(ctx) {
+function create_default_slot_217(ctx) {
   let t3;
   return {
     c() {
@@ -63797,17 +63886,17 @@ function create_default_slot_216(ctx) {
     }
   };
 }
-function create_default_slot_123(ctx) {
+function create_default_slot_124(ctx) {
   let button;
   let current;
   button = new Button_default({
     props: {
       variant: "primary",
-      $$slots: { default: [create_default_slot_216] },
+      $$slots: { default: [create_default_slot_217] },
       $$scope: { ctx }
     }
   });
-  button.$on("click", ctx[7]);
+  button.$on("click", ctx[9]);
   return {
     c() {
       create_component(button.$$.fragment);
@@ -63818,7 +63907,7 @@ function create_default_slot_123(ctx) {
     },
     p(ctx2, dirty) {
       const button_changes = {};
-      if (dirty & 256) {
+      if (dirty & 1024) {
         button_changes.$$scope = { dirty, ctx: ctx2 };
       }
       button.$set(button_changes);
@@ -63851,7 +63940,7 @@ function create_default_slot38(ctx) {
   });
   modalbuttongroup = new ModalButtonGroup_default({
     props: {
-      $$slots: { default: [create_default_slot_123] },
+      $$slots: { default: [create_default_slot_124] },
       $$scope: { ctx }
     }
   });
@@ -63869,12 +63958,12 @@ function create_default_slot38(ctx) {
     },
     p(ctx2, dirty) {
       const modalcontent_changes = {};
-      if (dirty & 265) {
+      if (dirty & 1045) {
         modalcontent_changes.$$scope = { dirty, ctx: ctx2 };
       }
       modalcontent.$set(modalcontent_changes);
       const modalbuttongroup_changes = {};
-      if (dirty & 261) {
+      if (dirty & 1033) {
         modalbuttongroup_changes.$$scope = { dirty, ctx: ctx2 };
       }
       modalbuttongroup.$set(modalbuttongroup_changes);
@@ -63899,7 +63988,7 @@ function create_default_slot38(ctx) {
     }
   };
 }
-function create_fragment105(ctx) {
+function create_fragment104(ctx) {
   let modallayout;
   let current;
   modallayout = new ModalLayout_default({
@@ -63921,7 +64010,7 @@ function create_fragment105(ctx) {
       const modallayout_changes = {};
       if (dirty & 2)
         modallayout_changes.title = ctx2[1];
-      if (dirty & 269) {
+      if (dirty & 1053) {
         modallayout_changes.$$scope = { dirty, ctx: ctx2 };
       }
       modallayout.$set(modallayout_changes);
@@ -63941,10 +64030,11 @@ function create_fragment105(ctx) {
     }
   };
 }
-function instance105($$self, $$props, $$invalidate) {
+function instance104($$self, $$props, $$invalidate) {
   let options;
   let { title } = $$props;
   let { field } = $$props;
+  let { editable } = $$props;
   let { onSave } = $$props;
   function handleNameChange(value) {
     $$invalidate(0, field = Object.assign(Object.assign({}, field), { name: value.detail }));
@@ -63952,8 +64042,15 @@ function instance105($$self, $$props, $$invalidate) {
   function handleTypeChange(value) {
     $$invalidate(0, field = Object.assign(Object.assign({}, field), { type: value.detail }));
   }
-  function handleTypeConfigChange(options2) {
-    $$invalidate(0, field = Object.assign(Object.assign({}, field), { typeConfig: { options: options2 } }));
+  function handleOptionsChange(options2) {
+    $$invalidate(0, field = Object.assign(Object.assign({}, field), {
+      typeConfig: Object.assign(Object.assign({}, field.typeConfig), { options: options2 })
+    }));
+  }
+  function handleRichTextChange({ detail: richText }) {
+    $$invalidate(0, field = Object.assign(Object.assign({}, field), {
+      typeConfig: Object.assign(Object.assign({}, field.typeConfig), { richText })
+    }));
   }
   const click_handler = () => {
     onSave(field);
@@ -63963,11 +64060,13 @@ function instance105($$self, $$props, $$invalidate) {
       $$invalidate(1, title = $$props2.title);
     if ("field" in $$props2)
       $$invalidate(0, field = $$props2.field);
+    if ("editable" in $$props2)
+      $$invalidate(2, editable = $$props2.editable);
     if ("onSave" in $$props2)
-      $$invalidate(2, onSave = $$props2.onSave);
+      $$invalidate(3, onSave = $$props2.onSave);
   };
   $:
-    $$invalidate(3, options = [
+    $$invalidate(4, options = [
       {
         label: "Text",
         value: "string" /* String */
@@ -63981,7 +64080,6 @@ function instance105($$self, $$props, $$invalidate) {
         value: "boolean" /* Boolean */
       },
       { label: "Date", value: "date" /* Date */ },
-      { label: "Link", value: "link" /* Link */ },
       {
         label: "Unknown",
         value: "unknown" /* Unknown */
@@ -63990,28 +64088,36 @@ function instance105($$self, $$props, $$invalidate) {
   return [
     field,
     title,
+    editable,
     onSave,
     options,
     handleNameChange,
     handleTypeChange,
-    handleTypeConfigChange,
+    handleOptionsChange,
+    handleRichTextChange,
     click_handler
   ];
 }
 var ConfigureField = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance105, create_fragment105, safe_not_equal, { title: 1, field: 0, onSave: 2 });
+    init4(this, options, instance104, create_fragment104, safe_not_equal, {
+      title: 1,
+      field: 0,
+      editable: 2,
+      onSave: 3
+    });
   }
 };
 var ConfigureField_default = ConfigureField;
 
 // src/modals/configure-field.ts
-var ConfigureFieldModal = class extends import_obsidian51.Modal {
-  constructor(app2, title, field, onSave) {
+var ConfigureFieldModal = class extends import_obsidian50.Modal {
+  constructor(app2, title, field, editable, onSave) {
     super(app2);
     this.title = title;
     this.field = field;
+    this.editable = editable;
     this.onSave = onSave;
   }
   onOpen() {
@@ -64020,6 +64126,7 @@ var ConfigureFieldModal = class extends import_obsidian51.Modal {
       props: {
         title: this.title,
         field: this.field,
+        editable: this.editable,
         onSave: (field) => {
           this.onSave(field);
           this.close();
@@ -64033,6 +64140,25 @@ var ConfigureFieldModal = class extends import_obsidian51.Modal {
     }
   }
 };
+
+// src/views/Table/helpers.ts
+function sortFields(fields, order2) {
+  if (!order2.length) {
+    return fields;
+  }
+  const test = immer_esm_default(fields, (draft) => {
+    draft.sort((left6, right6) => {
+      if (!order2.includes(left6.name)) {
+        return 1;
+      }
+      if (!order2.includes(right6.name)) {
+        return -1;
+      }
+      return order2.indexOf(left6.name) - order2.indexOf(right6.name);
+    });
+  });
+  return test;
+}
 
 // src/views/Table/TableView.svelte
 function create_right_slot5(ctx) {
@@ -64076,7 +64202,7 @@ function create_right_slot5(ctx) {
     }
   };
 }
-function create_default_slot_217(ctx) {
+function create_default_slot_218(ctx) {
   let viewtoolbar;
   let current;
   viewtoolbar = new ViewToolbar_default({
@@ -64116,7 +64242,7 @@ function create_default_slot_217(ctx) {
     }
   };
 }
-function create_default_slot_124(ctx) {
+function create_default_slot_125(ctx) {
   var _a, _b, _c;
   let datagrid;
   let current;
@@ -64125,16 +64251,15 @@ function create_default_slot_124(ctx) {
       columns: ctx[9],
       rows: ctx[8],
       readonly: ctx[3],
-      colorModel: ctx[17],
-      onRowAdd: ctx[18],
-      onRowEdit: ctx[19],
-      onRowDelete: ctx[20],
-      onColumnHide: ctx[21],
-      onColumnConfigure: ctx[22],
-      onColumnDelete: ctx[23],
-      onRowChange: ctx[24],
+      colorModel: ctx[18],
+      onRowAdd: ctx[19],
+      onRowEdit: ctx[20],
+      onRowDelete: ctx[21],
+      onColumnHide: ctx[22],
+      onColumnConfigure: ctx[23],
+      onColumnDelete: ctx[24],
+      onRowChange: ctx[25],
       onColumnResize: ctx[13],
-      onRowNavigate: ctx[25],
       sortModel: {
         field: (_b = (_a = ctx[0]) == null ? void 0 : _a.sortField) != null ? _b : "name",
         sort: ((_c = ctx[0]) == null ? void 0 : _c.sortAsc) ? "asc" : "desc"
@@ -64160,21 +64285,19 @@ function create_default_slot_124(ctx) {
       if (dirty & 8)
         datagrid_changes.readonly = ctx2[3];
       if (dirty & 36)
-        datagrid_changes.colorModel = ctx2[17];
+        datagrid_changes.colorModel = ctx2[18];
       if (dirty & 2066)
-        datagrid_changes.onRowAdd = ctx2[18];
+        datagrid_changes.onRowAdd = ctx2[19];
       if (dirty & 2192)
-        datagrid_changes.onRowEdit = ctx2[19];
+        datagrid_changes.onRowEdit = ctx2[20];
       if (dirty & 16)
-        datagrid_changes.onRowDelete = ctx2[20];
+        datagrid_changes.onRowDelete = ctx2[21];
       if (dirty & 2194)
-        datagrid_changes.onColumnConfigure = ctx2[22];
+        datagrid_changes.onColumnConfigure = ctx2[23];
       if (dirty & 16)
-        datagrid_changes.onColumnDelete = ctx2[23];
+        datagrid_changes.onColumnDelete = ctx2[24];
       if (dirty & 144)
-        datagrid_changes.onRowChange = ctx2[24];
-      if (dirty & 2048)
-        datagrid_changes.onRowNavigate = ctx2[25];
+        datagrid_changes.onRowChange = ctx2[25];
       if (dirty & 1)
         datagrid_changes.sortModel = {
           field: (_b2 = (_a2 = ctx2[0]) == null ? void 0 : _a2.sortField) != null ? _b2 : "name",
@@ -64206,13 +64329,13 @@ function create_default_slot39(ctx) {
   let current;
   viewheader = new ViewHeader_default({
     props: {
-      $$slots: { default: [create_default_slot_217] },
+      $$slots: { default: [create_default_slot_218] },
       $$scope: { ctx }
     }
   });
   viewcontent = new ViewContent_default({
     props: {
-      $$slots: { default: [create_default_slot_124] },
+      $$slots: { default: [create_default_slot_125] },
       $$scope: { ctx }
     }
   });
@@ -64260,7 +64383,7 @@ function create_default_slot39(ctx) {
     }
   };
 }
-function create_fragment106(ctx) {
+function create_fragment105(ctx) {
   let viewlayout;
   let current;
   viewlayout = new ViewLayout_default({
@@ -64299,24 +64422,12 @@ function create_fragment106(ctx) {
     }
   };
 }
-function defaultWeight(field) {
-  switch (field) {
-    case "name":
-      return 1;
-    case "path":
-      return 2;
-    case "Field":
-      return 1;
-    default:
-      return void 0;
-  }
-}
 var func6 = (column) => ({
   label: column.field,
   value: column.field,
   enabled: !column.hide
 });
-function instance106($$self, $$props, $$invalidate) {
+function instance105($$self, $$props, $$invalidate) {
   let fields;
   let records;
   let fieldConfig;
@@ -64326,7 +64437,7 @@ function instance106($$self, $$props, $$invalidate) {
   let $app;
   component_subscribe($$self, i18n, ($$value) => $$invalidate(10, $i18n = $$value));
   component_subscribe($$self, app, ($$value) => $$invalidate(11, $app = $$value));
-  var _a;
+  var _a, _b;
   let { project } = $$props;
   let { frame } = $$props;
   let { readonly } = $$props;
@@ -64350,7 +64461,7 @@ function instance106($$self, $$props, $$invalidate) {
     }));
     onConfigChange(config);
   }
-  const func_14 = (rowId) => {
+  const func_13 = (rowId) => {
     const record = frame.records.find((record2) => record2.id === rowId);
     if (record) {
       return getRecordColor(record);
@@ -64378,26 +64489,31 @@ function instance106($$self, $$props, $$invalidate) {
   };
   const func_4 = (id) => api2.deleteRecord(id);
   const func_5 = (column) => handleVisibilityChange(column.field, false);
-  const func_6 = (column) => {
+  const func_6 = (column, editable) => {
     const field = fields.find((field2) => field2.name === column.field);
     if (field) {
       new ConfigureFieldModal(
         $app,
         "Configure field",
         field,
+        editable,
         (field2) => {
           var _a2;
-          if (field2.name !== column.field) {
-            api2.updateField(field2, column.field);
-          } else {
-            api2.updateField(field2);
+          if (editable) {
+            if (field2.name !== column.field) {
+              api2.updateField(field2, column.field);
+            } else {
+              api2.updateField(field2);
+            }
           }
           const projectFields = Object.fromEntries(Object.entries((_a2 = project.fieldConfig) != null ? _a2 : {}).filter(([key, _24]) => fields.find((field3) => field3.name === key)));
-          settings.updateProject(__spreadProps(__spreadValues({}, project), {
-            fieldConfig: __spreadProps(__spreadValues({}, projectFields), {
-              [field2.name]: field2.typeConfig
-            })
-          }));
+          if (field2.typeConfig) {
+            settings.updateProject(__spreadProps(__spreadValues({}, project), {
+              fieldConfig: __spreadProps(__spreadValues({}, projectFields), {
+                [field2.name]: field2.typeConfig
+              })
+            }));
+          }
         }
       ).open();
     }
@@ -64406,8 +64522,7 @@ function instance106($$self, $$props, $$invalidate) {
   const func_8 = (rowId, row) => {
     api2.updateRecord({ id: rowId, values: row }, fields);
   };
-  const func_9 = (rowId, openNew) => $app.workspace.openLinkText(rowId, "", openNew);
-  const func_10 = (field, sort4) => {
+  const func_9 = (field, sort4) => {
     onConfigChange(__spreadProps(__spreadValues({}, config), {
       sortField: field,
       sortAsc: sort4 === "asc"
@@ -64432,13 +64547,18 @@ function instance106($$self, $$props, $$invalidate) {
   $$self.$$.update = () => {
     if ($$self.$$.dirty & 4) {
       $:
-        $$invalidate(7, { fields, records } = frame, fields, ($$invalidate(16, records), $$invalidate(2, frame)));
+        $$invalidate(7, { fields, records } = frame, fields, ($$invalidate(17, records), $$invalidate(2, frame)));
     }
-    if ($$self.$$.dirty & 16385) {
+    if ($$self.$$.dirty & 16513) {
+      $: {
+        $$invalidate(7, fields = sortFields(fields, $$invalidate(14, _a = config === null || config === void 0 ? void 0 : config.orderFields) !== null && _a !== void 0 ? _a : []));
+      }
+    }
+    if ($$self.$$.dirty & 32769) {
       $:
-        $$invalidate(15, fieldConfig = $$invalidate(14, _a = config === null || config === void 0 ? void 0 : config.fieldConfig) !== null && _a !== void 0 ? _a : {});
+        $$invalidate(16, fieldConfig = $$invalidate(15, _b = config === null || config === void 0 ? void 0 : config.fieldConfig) !== null && _b !== void 0 ? _b : {});
     }
-    if ($$self.$$.dirty & 32896) {
+    if ($$self.$$.dirty & 65664) {
       $:
         $$invalidate(9, columns = fields.filter((field) => {
           if (field.repeated) {
@@ -64446,18 +64566,17 @@ function instance106($$self, $$props, $$invalidate) {
           }
           return true;
         }).map((field) => {
-          var _a2, _b, _c, _d;
+          var _a2, _b2, _c, _d;
           const colDef = Object.assign(Object.assign({}, field), {
             field: field.name,
-            width: (_b = (_a2 = fieldConfig[field.name]) === null || _a2 === void 0 ? void 0 : _a2.width) !== null && _b !== void 0 ? _b : 180,
+            width: (_b2 = (_a2 = fieldConfig[field.name]) === null || _a2 === void 0 ? void 0 : _a2.width) !== null && _b2 !== void 0 ? _b2 : 180,
             hide: (_d = (_c = fieldConfig[field.name]) === null || _c === void 0 ? void 0 : _c.hide) !== null && _d !== void 0 ? _d : false,
             editable: !field.derived
           });
-          const weight = defaultWeight(field.name);
-          return weight ? Object.assign(Object.assign({}, colDef), { weight }) : colDef;
+          return colDef;
         }));
     }
-    if ($$self.$$.dirty & 65536) {
+    if ($$self.$$.dirty & 131072) {
       $:
         $$invalidate(8, rows = records.map(({ id, values }) => ({ rowId: id, row: values })));
     }
@@ -64478,9 +64597,10 @@ function instance106($$self, $$props, $$invalidate) {
     handleVisibilityChange,
     handleWidthChange,
     _a,
+    _b,
     fieldConfig,
     records,
-    func_14,
+    func_13,
     func_2,
     func_3,
     func_4,
@@ -64488,14 +64608,13 @@ function instance106($$self, $$props, $$invalidate) {
     func_6,
     func_7,
     func_8,
-    func_9,
-    func_10
+    func_9
   ];
 }
 var TableView = class extends SvelteComponent {
   constructor(options) {
     super();
-    init(this, options, instance106, create_fragment106, safe_not_equal, {
+    init4(this, options, instance105, create_fragment105, safe_not_equal, {
       project: 1,
       frame: 2,
       readonly: 3,
@@ -64552,7 +64671,7 @@ var TableView2 = class extends ProjectView {
 
 // src/view.ts
 var VIEW_TYPE_PROJECTS = "obsidian-projects";
-var ProjectsView = class extends import_obsidian53.ItemView {
+var ProjectsView = class extends import_obsidian52.ItemView {
   constructor(leaf, plugin2) {
     super(leaf);
     this.plugin = plugin2;
@@ -64596,8 +64715,8 @@ var ProjectsView = class extends import_obsidian53.ItemView {
         const registerView = plugin2 == null ? void 0 : plugin2.onRegisterProjectView;
         if (registerView) {
           const create = registerView.bind(plugin2);
-          const instance107 = create();
-          views[instance107.getViewType()] = instance107;
+          const instance106 = create();
+          views[instance106.getViewType()] = instance106;
         }
       }
     }
@@ -64609,45 +64728,19 @@ var ProjectsView = class extends import_obsidian53.ItemView {
   }
 };
 
-// src/settings.ts
-var import_obsidian55 = require("obsidian");
-var ProjectsSettingTab = class extends import_obsidian55.PluginSettingTab {
-  constructor(app2, plugin2) {
-    super(app2, plugin2);
-    this.plugin = plugin2;
-  }
-  display() {
-    const { preferences } = get_store_value(settings);
-    const save2 = (prefs) => {
-      settings.updatePreferences(prefs);
-    };
-    const { containerEl } = this;
-    containerEl.empty();
-    new import_obsidian55.Setting(containerEl).setName("Front matter").setHeading();
-    new import_obsidian55.Setting(containerEl).setName("Quote strings").addDropdown(
-      (dropdown) => {
-        var _a, _b;
-        return dropdown.addOption("PLAIN", "If needed").addOption("QUOTE_DOUBLE", "Always").setValue((_b = (_a = preferences == null ? void 0 : preferences.frontmatter) == null ? void 0 : _a.quoteStrings) != null ? _b : "PLAIN").onChange((value) => {
-          if (value === "PLAIN" || value === "QUOTE_DOUBLE") {
-            save2(__spreadProps(__spreadValues({}, preferences), {
-              frontmatter: {
-                quoteStrings: value
-              }
-            }));
-          }
-        });
-      }
-    );
-  }
-};
-
 // src/main.ts
 import_dayjs9.default.extend(import_isoWeek.default);
 import_dayjs9.default.extend(import_localizedFormat.default);
 var DEFAULT_SETTINGS = {
-  projects: []
+  version: 1,
+  projects: [],
+  preferences: {
+    frontmatter: {
+      quoteStrings: "PLAIN"
+    }
+  }
 };
-var ProjectsPlugin = class extends import_obsidian56.Plugin {
+var ProjectsPlugin = class extends import_obsidian54.Plugin {
   onload() {
     return __async(this, null, function* () {
       const t3 = get_store_value(i18n).t;
@@ -64658,7 +64751,7 @@ var ProjectsPlugin = class extends import_obsidian56.Plugin {
       );
       this.registerEvent(
         this.app.workspace.on("file-menu", (menu, file) => {
-          if (file instanceof import_obsidian56.TFolder) {
+          if (file instanceof import_obsidian54.TFolder) {
             menu.addItem((item) => {
               item.setTitle(t3("menus.project.create.title")).setIcon("folder-plus").onClick(() => __async(this, null, function* () {
                 const project = createProject();
@@ -64724,17 +64817,36 @@ var ProjectsPlugin = class extends import_obsidian56.Plugin {
       this.addRibbonIcon("layout", "Open projects", () => {
         this.activateView();
       });
-      (0, import_obsidian56.addIcon)(
+      (0, import_obsidian54.addIcon)(
         "text",
         `<g transform="matrix(1,0,0,1,2,2)"><path d="M20,32L28,32L28,24L41.008,24L30.72,72L20,72L20,80L52,80L52,72L42.992,72L53.28,24L68,24L68,32L76,32L76,16L20,16L20,32Z" /></g>`
       );
       app.set(this.app);
       plugin.set(this);
-      settings.set(migrateAny(yield this.loadData()));
+      yield this.loadSettings();
       registerFileEvents(this);
       this.unsubscribeSettings = settings.subscribe((value) => {
         this.saveData(value);
       });
+    });
+  }
+  loadSettings() {
+    return __async(this, null, function* () {
+      return (0, import_function14.pipe)(
+        TaskEither_exports.tryCatch(() => this.loadData(), Either_exports.toError),
+        TaskEither_exports.map(migrateSettings),
+        TaskEither_exports.chain(TaskEither_exports.fromEither),
+        Task_exports.map(
+          Either_exports.fold(
+            (err) => {
+              throw err;
+            },
+            (value) => {
+              settings.set(value);
+            }
+          )
+        )
+      )();
     });
   }
   onunload() {

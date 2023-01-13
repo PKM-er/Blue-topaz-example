@@ -26,28 +26,47 @@
             }
           },
           {
-            "id": "c67efc1860635a41",
+            "id": "3571d48344fe1038",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Changlog.md",
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": true
+              }
+            }
+          },
+          {
+            "id": "1ea5e0265a6e3055",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "20230113141501.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
             }
-          },
-          {
-            "id": "500ccfe0af1e7b5a",
-            "type": "leaf",
-            "state": {
-              "type": "empty",
-              "state": {}
-            }
           }
         ],
         "currentTab": 1
+      },
+      {
+        "id": "81459ff2a6d80b65",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9bda61bf62dac37b",
+            "type": "leaf",
+            "state": {
+              "type": "style-settings",
+              "state": {}
+            }
+          }
+        ]
       }
     ],
     "direction": "vertical"
@@ -77,7 +96,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "坑",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -146,7 +165,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Changlog.md"
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md"
               }
             }
           },
@@ -177,7 +196,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Changlog.md",
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -194,7 +213,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Changlog.md",
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -235,12 +254,9 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "surfing:surfing-bookmark-manager": false,
       "omnisearch:Omnisearch": false,
       "homepage:Open homepage": false,
       "periodic-notes:Open today's daily note": false,
-      "dbfolder:创建一个新数据库表": false,
-      "obsidian-projects:Open projects": false,
       "templater-obsidian:Templater": false,
       "cmdr:显示当前文件": false,
       "switcher:打开快速切换": false,
@@ -252,20 +268,22 @@
       "markdown-importer:打开 Markdown 格式转换器": false,
       "audio-recorder:开始/结束录音": false,
       "workspaces:管理工作区布局": false,
-      "obsidian-memos:Memos": false
+      "obsidian-memos:Memos": false,
+      "dbfolder:创建一个新数据库表": false,
+      "obsidian-projects:Open projects": false
     }
   },
   "active": "37c8f55a8ef7a09c",
   "lastOpenFiles": [
-    "60-Canvas/canvas白板介绍_middle.canvas",
-    "Changlog.md",
-    "60-Canvas/Home_middle.canvas",
-    "20230104165032.md",
-    "88-Template/彩色时钟.md",
-    "77-Example/◾ Dataview相关实例/电影看板.md",
-    "77-Example/◾ Dataview相关实例/带进度条的任务列表.md",
-    "60-Canvas/Assets/1505323928_home_.png",
-    "77-Example/◾ Dataview相关实例/获取当前文件夹下的文件并表格展示.md",
-    "77-Example/◾ Dataview相关实例/电影观看清单-状态控制（dvjs）.md"
+    "20230113141501.md",
+    "00-Tips/🥑Blue Topaz Themes Tips.md",
+    "00-Tips/00-Tips.md",
+    "10-Help/Dataview系列教程/入门到退坑系列/DataviewJS - 从入门到退坑 01.md",
+    "88-Template/常用工具.md",
+    "10-Help/Dataview系列教程/🔑Dataview教程.md",
+    "10-Help/Dataview系列教程/Dataview系列教程.md",
+    "10-Help/Mermaid从入门到入土.md",
+    "10-Help/10-Help.md",
+    "10-Help/Dataview系列教程/入门到退坑系列/入门到退坑系列.md"
   ]
 }

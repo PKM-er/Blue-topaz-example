@@ -530,7 +530,7 @@ var sortPriorityList = [
   "Alphabetical reverse"
 ];
 function regardAsSortPriority(x) {
-  return sortPriorityList.includes(x) || x.split(",").every((y) => y.startsWith("#"));
+  return sortPriorityList.includes(x) || x.split(",").every((y) => y.startsWith("#")) || x.split(",").every((y) => y.startsWith("."));
 }
 function filterNoQueryPriorities(priorities) {
   return priorities.filter(
@@ -542,7 +542,7 @@ function filterNoQueryPriorities(priorities) {
       "Star",
       "Alphabetical",
       "Alphabetical reverse"
-    ].includes(x) || x.startsWith("#")
+    ].includes(x) || x.startsWith("#") || x.startsWith(".")
   );
 }
 function getComparator(priority) {
@@ -579,6 +579,10 @@ function getComparator(priority) {
       if (priority.startsWith("#")) {
         const tags = priority.split(",");
         return (a, b) => priorityToTags(a, b, tags);
+      }
+      if (priority.startsWith(".")) {
+        const extensions = priority.split(",").map((x) => x.slice(1));
+        return (a, b) => priorityToExtensions(a, b, extensions);
       }
       throw new ExhaustiveError(priority);
   }
@@ -707,7 +711,7 @@ function priorityToStar(a, b) {
 }
 var toComparedAlphabetical = (item) => {
   var _a, _b;
-  return excludeEmoji((_b = (_a = item.matchResults[0]) == null ? void 0 : _a.alias) != null ? _b : item.file.basename);
+  return excludeEmoji((_b = (_a = item.matchResults[0]) == null ? void 0 : _a.alias) != null ? _b : item.file.basename).toLowerCase();
 };
 function priorityToAlphabetical(a, b) {
   return toComparedAlphabetical(a).localeCompare(toComparedAlphabetical(b));
@@ -717,6 +721,14 @@ function priorityToAlphabeticalReverse(a, b) {
 }
 function priorityToTags(a, b, tags) {
   return compare(a, b, (x) => intersection([tags, x.tags]).length, "desc");
+}
+function priorityToExtensions(a, b, extensions) {
+  return compare(
+    a,
+    b,
+    (x) => Number(extensions.contains(x.file.extension)),
+    "desc"
+  );
 }
 
 // src/keys.ts
@@ -908,7 +920,7 @@ var createPreSettingSearchCommands = () => [
     excludeFrontMatterKeys: createDefaultExcludeFrontMatterKeys(),
     defaultInput: "",
     commandPrefix: ":e ",
-    sortPriorities: ["Name match", "Last opened", "Last modified"],
+    sortPriorities: ["Name match", ".md", "Last opened", "Last modified"],
     includePrefixPathPatterns: [],
     excludePrefixPathPatterns: [],
     expand: true
@@ -930,6 +942,7 @@ var createPreSettingSearchCommands = () => [
     sortPriorities: [
       "Prefix name match",
       "Alphabetical",
+      ".md",
       "Last opened",
       "Last modified"
     ],
@@ -957,6 +970,7 @@ var createPreSettingSearchCommands = () => [
       "Tag match",
       "Header match",
       "Link match",
+      ".md",
       "Last opened",
       "Last modified"
     ],
@@ -978,7 +992,7 @@ var createPreSettingSearchCommands = () => [
     excludeFrontMatterKeys: createDefaultExcludeFrontMatterKeys(),
     defaultInput: "",
     commandPrefix: ":s ",
-    sortPriorities: ["Star", "Last opened", "Last modified"],
+    sortPriorities: ["Star", ".md", "Last opened", "Last modified"],
     includePrefixPathPatterns: [],
     excludePrefixPathPatterns: [],
     expand: false

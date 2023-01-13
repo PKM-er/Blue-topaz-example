@@ -32,7 +32,182 @@
 .group-edit-modal-content {
 }
 
+.pg-tabs {
+	display: flex;
+	flex: 0 1 auto;
+	overflow: auto;
+	margin: 6px -5px calc(var(--tab-outline-width) * -1);
+	padding: 1px 15px 0;
+}
+
+.pg-tab {
+	background: var(--color-base-20);
+	align-items: center;
+	display: flex;
+	gap: var(--size-2-1);
+	height: 100%;
+	border-radius: 4px 4px 0 0;
+	overflow: hidden;
+	padding: 8px 8px;
+	width: 100%;
+}
+
+.pg-tab:before {
+	position: absolute;
+	bottom: 0;
+	content: '';
+	width: calc(var(--tab-curve) * 2);
+	height: calc(var(--tab-curve) * 2);
+	border-radius: 100%;
+	box-shadow: 0 0 0 calc(var(--tab-curve) * 3) transparent;
+}
+
+.pg-tab.is-active {
+	background: var(--tab-background-active, darkgray);
+	border-top: 1px solid var(--color-base-30, silver);
+	border-right: 1px solid var(--color-base-30, silver);
+	border-left: 1px solid var(--color-base-30, silver);
+}
+
+.pg-tab:hover {
+	background: var(--interactive-hover, #363636);
+}
+
+.pg-tabbed-content {
+	display: none;
+	margin: 0 6px;
+	padding: 0 4px 8px;
+	border-top: 1px solid var(--color-base-30, silver);
+}
+
+.pg-tabbed-content.is-active {
+	display: block;
+}
+
+.pg-plugin-filter-section {
+	display: flex;
+	justify-content: space-between;
+}
+
+.pg-drp-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: var(--text-normal, white);
+	font-size: var(--font-ui-small, small);
+	border-radius: var(--button-radius, 5px);
+	border: 0;
+	padding: 1px 1px;
+	height: var(--input-height, 30px);
+	font-weight: var(--input-font-weight);
+	cursor: var(--cursor);
+	font-family: inherit;
+	outline: none;
+	user-select: none;
+	white-space: nowrap;
+	position: relative;
+	margin: 2px;
+	background-color: var(--interactive-normal, #363636);
+	box-shadow: var(--input-shadow);
+}
+
+
+.pg-drp-btn span {
+	display: inline-block;
+	padding: 6px;
+}
+
+.pg-drp-btn-main-label {
+	width: 75%;
+}
+
+.pg-drp-btn-list {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	z-index: 1;
+
+	align-items: center;
+	justify-content: center;
+	color: var(--text-normal, white);
+	font-size: var(--font-ui-small, small);
+	border-radius: var(--button-radius, 5px);
+	border: 0;
+	font-weight: var(--input-font-weight, normal);
+	cursor: var(--cursor, default);
+	font-family: inherit;
+	outline: none;
+	user-select: none;
+	white-space: nowrap;
+	background-color: var(--interactive-normal, #363636);
+	box-shadow: var(--input-shadow, rgba(211, 211, 211, 0.5));
+}
+.pg-drp-btn-list.is-active {
+	display: inline-block;
+}
+
+
+.pg-drp-btn .pg-drp-btn-divider {
+	padding: 0;
+	margin: 4px 1px;
+}
+
+.pg-drp-btn-list li {
+	padding: 10px;
+	white-space: normal;
+}
+
+.pg-drp-btn-list li:hover {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+	background-color: var(--interactive-hover, #363636);
+}
+
+.pg-chip {
+	background-color: var(--color-base-30, #363636);
+	border-radius: 16px;
+	font-size: 14px;
+	display: inline-flex;
+	align-items: center;
+}
+
+.pg-chip span {
+	margin-left: 12px;
+}
+
+.pg-chip .pg-chip-close-btn {
+	padding-top: 4px;
+	padding-right: 4px;
+	padding-left: 4px;
+	border-radius: 16px;
+	margin-left: 12px;
+}
+
+.pg-chip-close-btn:hover {
+	background: var(--color-base-50, rgb(255 255 255 / 20%));
+}
+
+.pg-group-filter-list {
+	display: flex;
+	gap: 8px;
+	margin-top: 8px;
+	min-height: 1.8rem;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.pg-plugin-filter-container {
+	border-bottom: 1px solid var(--color-base-30, silver);
+	margin-bottom: 1rem;
+	padding-bottom: 0.6rem;
+}
+
 :root {
 	--pg-group-edit-modal-footer-height: 60px;
 }
+
 

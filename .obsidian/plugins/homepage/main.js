@@ -1536,6 +1536,9 @@ var createPopper = /* @__PURE__ */ popperGenerator({
 function trimFile(file) {
   return file.path.slice(0, -3);
 }
+function untrimName(name) {
+  return name.endsWith(".canvas") ? name : `${name}.md`;
+}
 function wrapAround(value, size) {
   return (value % size + size) % size;
 }
@@ -1951,7 +1954,7 @@ var Homepage = class extends import_obsidian3.Plugin {
     return __async(this, null, function* () {
       const mode = this.loaded ? this.settings.manualOpenMode : this.settings.openMode;
       const nonextant = () => __async(this, null, function* () {
-        return !(yield this.app.vault.adapter.exists(`${this.homepage}.md`)) && !this.workspacesMode();
+        return !(yield this.app.vault.adapter.exists(untrimName(this.homepage)));
       });
       const openLink = (mode2) => __async(this, null, function* () {
         return yield this.app.workspace.openLinkText(this.homepage, "", mode2 == Mode.Retain, { active: true });

@@ -6,3 +6,22 @@ available in the app when your plugin is enabled.
 If your plugin does not need CSS, delete this file.
 
 */
+
+
+.ltn-suggester-container {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	gap: var(--size-2-2);
+}
+
+.ltn-suggester-icon {
+	height: 18px;
+}
+
+.ltn-text-node, .ltn-file-node, .ltn-group-node, .ltn-link-node {
+	/* Prevent text overflow and ellipse*/
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}

@@ -1,14 +1,15 @@
 ---
-aliases: README
 tags: 
 cssclass:
 source:
 obsidianUIMode: preview
 progress: 正在进行
 title: README
-updated: "2022-12-08 20:34"
+updated: "2023-01-07 15:01"
 created: "2022-09-01 09:56"
 ---
+![Home_middle3](https://user-images.githubusercontent.com/42957010/211135782-62cfc6e6-fe78-4a4c-9b71-41f2926aedab.png)
+
 ![](https://user-images.githubusercontent.com/42957010/184872220-f9b52079-8695-46a7-b517-0588426aa7b5.jpg)
 
 感谢@代码7 的视频
@@ -119,6 +120,7 @@ path: 77-Example usage:
 ^|---|---|	---|
 |[[$filename]]|$frontmatter:cssclass|$frontmatter:usage|
 ```
+
 |文件名称|cssclass|用法|
 |---|---|	---|
 |[[电影观看清单-状态控制（dvjs）]]|cards|对dataview表格渲染成卡片视图|

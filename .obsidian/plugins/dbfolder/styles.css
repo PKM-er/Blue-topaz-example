@@ -92,6 +92,10 @@
 div.database-plugin__td.data-input:hover {
   box-shadow: 0 0 1px 2px var(--text-accent-hover);
 }
+div.database-plugin__td.data-input div:focus,
+div.database-plugin__td.data-input span:focus {
+  box-shadow: 0 0 1px 2px var(--text-accent);
+}
 
 /******************************************************
 *                   Table Structure
@@ -386,7 +390,9 @@ div.database-plugin__td.data-input:hover {
   display: flex;
   align-items: center;
 }
-
+/******************************************************
+ *                        ROWS
+ /******************************************************/
 .database-plugin__td {
   overflow: hidden;
   color: var(--text-normal);
@@ -454,6 +460,7 @@ div.database-plugin__td.data-input:hover {
   display: table;
   height: 1px; /** Hack to prevent collapsing of table cells */
   overflow: scroll;
+  margin-bottom: 1rem;
 }
 
 .database-plugin__th:last-child {
@@ -473,6 +480,16 @@ div.database-plugin__td.data-input:hover {
   position: relative;
 }
 
+.database-plugin__row-selected {
+  background-color: var(--background-modifier-error-hover);
+}
+
+.database-plugin__row-shadow {
+  background-color: var(--background-secondary);
+}
+/******************************************************
+ *                        BODY
+ /******************************************************/
 .database-plugin__tbody {
   display: table-row-group;
 }
@@ -481,6 +498,10 @@ div.database-plugin__td.data-input:hover {
 .database-plugin__header {
   justify-content: flex-start;
   background-color: var(--background-secondary);
+}
+
+.database-plugin__header-menu {
+  width: 30px;
 }
 
 .database-plugin__sticky-top {
@@ -644,6 +665,18 @@ div.database-plugin__td.data-input:hover {
   text-align: justify;
 }
 
+.database-plugin__align-top {
+  align-items: flex-start;
+}
+
+.database-plugin__align-middle {
+  align-items: center;
+}
+
+.database-plugin__align-bottom {
+  align-items: flex-end;
+}
+
 .database-plugin__text-wrap {
   white-space: normal;
   flex-wrap: wrap;
@@ -685,8 +718,8 @@ div.database-plugin__td.data-input:hover {
 }
 
 .database-plugin__scroll-horizontal {
-  overflow-y: auto;
-  overflow-x: auto;
+  overflow-y: overlay;
+  overflow-x: overlay;
 }
 
 .database-plugin__scroll-container {
@@ -698,24 +731,18 @@ div.database-plugin__td.data-input:hover {
 
 @media only screen and (max-height: 1440px) {
   .database-plugin__scroll-container {
-    will-change: transform;
-    width: 100%;
     height: 95%;
   }
 }
 
 @media only screen and (max-height: 1024px) {
   .database-plugin__scroll-container {
-    will-change: transform;
-    width: 100%;
     height: 92%;
   }
 }
 
 @media only screen and (max-height: 768px) {
   .database-plugin__scroll-container {
-    will-change: transform;
-    width: 100%;
     height: 85%;
   }
 }
