@@ -5,10 +5,10 @@ defines-react-components: true
 ```jsx:component:Weather
 //First debut by cuman in 🥑Blue Topaz example 
 //2022-05-18
-const isDarkMode = app.vault.getConfig("theme") === "obsidian";
+//const isDarkMode = app.vault.getConfig("theme") === "obsidian";
 const city = props.src.trim(" ");
-let color='';
- if (isDarkMode) color='&color=d2d1cd';
+let color='&color=707271';
+// if (!isDarkMode) color='&color=707271';
 const weathersrc='https://tianqiapi.com/api.php?style=ta&skin=pear&fontsize=13&align=&paddingtop=2&paddingleft=15&city='+city+color;
 
 return (

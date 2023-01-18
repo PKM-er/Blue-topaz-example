@@ -1,7 +1,7 @@
 {
 	"id": "dbfolder",
 	"name": "DB Folder",
-	"version": "3.2.3",
+	"version": "3.2.4",
 	"minAppVersion": "1.0.3",
 	"description": "Folder with the capability to store and retrieve data from a folder like database",
 	"author": "RafaelGB",

@@ -220,7 +220,7 @@
       "appendLink": false,
       "incrementFileName": true,
       "openFileInNewTab": {
-        "enabled": true,
+        "enabled": false,
         "direction": "vertical",
         "focus": true
       },

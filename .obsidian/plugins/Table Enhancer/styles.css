@@ -4,7 +4,6 @@
 	position: absolute;
 	width: fit-content;
 	max-width: 3em;
-	z-index: 99;
 	flex-wrap: wrap;
 	transition: opacity 200ms ease-in-out;
 }
@@ -39,4 +38,48 @@
 	margin: 0;
 	filter: brightness(0.5);
 	transition: all 200ms ease-in-out;
+}
+
+div.ob-table-enhancer.button-menu {
+	display: flex;
+	flex-wrap: wrap;
+	max-width: 150px;
+}
+
+div.ob-table-enhancer.button-menu > button {
+	width: 30px;
+	height: 26px;
+	padding: 0;
+}
+
+.table-generator-container {
+	display: flex;
+	flex-flow: row wrap;
+	max-width: 150px;
+	align-content: flex-start;
+	padding-top: 5px;
+	padding-left: 3px;
+}
+
+.table-generator-grid {
+	width: 15px;
+	height: 15px;
+	background-color: var(--interactive-normal);
+	margin: 3px;
+	border-radius: 3px;
+}
+
+.table-generator-grid.select {
+	background-color: var(--interactive-accent);
+	opacity: 1;
+}
+
+.table-generator-counter {
+	display: block;
+	text-align: center;
+}
+
+.table-height-adjust th, .table-height-adjust tr {
+	/** 防止单元格太窄不方便点击 */
+	height: 1.5em !important;
 }

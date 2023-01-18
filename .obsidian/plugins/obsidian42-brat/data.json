@@ -1,5 +1,6 @@
 {
   "pluginList": [
+    "Lisandra-dev/obsidian-canvas-css-class",
     "Mocca101/obsidian-plugin-groups",
     "tadashi-aikawa/obsidian-various-complements-plugin",
     "benhughes/obsidian-link-exploder",

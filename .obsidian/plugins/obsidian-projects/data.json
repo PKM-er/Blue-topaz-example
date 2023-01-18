@@ -1,18 +1,20 @@
 {
-  "version": 1,
+  "version": 2,
   "projects": [
     {
-      "path": "30-Reading",
-      "recursive": false,
       "fieldConfig": {},
       "defaultName": "",
       "templates": [],
-      "dataview": false,
-      "query": "",
       "excludedNotes": [],
       "isDefault": false,
-      "id": "452d8da3-6b6b-4c47-805f-4d9c0448647f",
-      "name": "Reading",
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "30-Reading",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
       "views": [
         {
           "config": {
@@ -63,20 +65,24 @@
           "name": "Calendar",
           "type": "calendar"
         }
-      ]
+      ],
+      "name": "Reading",
+      "id": "452d8da3-6b6b-4c47-805f-4d9c0448647f"
     },
     {
-      "path": "30-Reading",
-      "recursive": true,
       "fieldConfig": {},
       "defaultName": "",
       "templates": [],
-      "dataview": false,
-      "query": "",
       "excludedNotes": [],
       "isDefault": false,
-      "id": "a6202afb-e904-4cbb-a090-1a40b5a5ec50",
-      "name": "30-Reading",
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "30-Reading",
+          "recursive": true
+        }
+      },
+      "newNotesFolder": "",
       "views": [
         {
           "config": {},
@@ -114,34 +120,41 @@
           "name": "Calendar",
           "type": "calendar"
         }
-      ]
+      ],
+      "name": "30-Reading",
+      "id": "a6202afb-e904-4cbb-a090-1a40b5a5ec50"
     },
     {
-      "path": "",
-      "recursive": false,
       "fieldConfig": {},
       "defaultName": "",
       "templates": [],
-      "dataview": true,
-      "query": "TABLE\ntags,author,readtime,pagecount\nfrom #book",
       "excludedNotes": [],
       "isDefault": false,
-      "id": "9fedc95d-29ff-4baa-98b9-3a25810a0f5b",
+      "dataSource": {
+        "kind": "dataview",
+        "config": {
+          "query": "TABLE\ntags,author,readtime,pagecount\nfrom #book"
+        }
+      },
+      "newNotesFolder": "",
+      "views": [],
       "name": "tips",
-      "views": []
+      "id": "9fedc95d-29ff-4baa-98b9-3a25810a0f5b"
     },
     {
-      "path": "test",
-      "recursive": false,
       "fieldConfig": {},
       "defaultName": "",
       "templates": [],
-      "dataview": false,
-      "query": "",
       "excludedNotes": [],
       "isDefault": false,
-      "id": "78fa420e-ac24-4e1d-91f4-a3dcfb314e64",
-      "name": "test",
+      "dataSource": {
+        "kind": "folder",
+        "config": {
+          "path": "test",
+          "recursive": false
+        }
+      },
+      "newNotesFolder": "",
       "views": [
         {
           "config": {},
@@ -155,14 +168,14 @@
           "name": "Table",
           "type": "table"
         }
-      ]
+      ],
+      "name": "test",
+      "id": "78fa420e-ac24-4e1d-91f4-a3dcfb314e64"
     }
   ],
   "preferences": {
     "frontmatter": {
       "quoteStrings": "PLAIN"
     }
-  },
-  "lastProjectId": "452d8da3-6b6b-4c47-805f-4d9c0448647f",
-  "lastViewId": "c57be598-7568-4930-be1d-11a3696b1a4b"
+  }
 }

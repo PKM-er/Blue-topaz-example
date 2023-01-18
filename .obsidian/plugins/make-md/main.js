@@ -21184,7 +21184,6 @@ var OptionCell = (props2) => {
   ].filter(onlyUniqueProp("value"));
   const [options, setOptions] = p2(initialOptions);
   const [value, setValue] = p2(initialValue);
-  const [saveState, setSaveState] = p2(false);
   h2(() => {
     var _a3;
     setValue(
@@ -21205,33 +21204,22 @@ var OptionCell = (props2) => {
         _options.filter((f4) => f4.length > 0).map((t4) => ({ name: t4, value: t4 }))
       );
       setValue(_value);
+      props2.saveOptions(_options.filter((f4) => f4.length > 0).join(","), _value.join(","));
     } else {
       setOptions(_options.map((t4) => ({ name: t4, value: t4 })));
       setValue(_value);
+      props2.saveOptions(_options.filter((f4) => f4.length > 0).join(","), _value.join(","));
     }
   };
-  h2(() => {
-    if (saveState) {
-      props2.saveOptions(
-        options.filter((f4) => f4.value.length > 0).map((f4) => f4.value).join(","),
-        value.join(",")
-      );
-      props2.setEditMode(null);
-      setSaveState(false);
-    }
-  }, [saveState]);
   const menuProps = () => ({
-    multi: props2.multi,
+    multi: false,
     editable: true,
     value,
     options: !props2.multi ? [{ name: i18n_default.menu.none, value: "" }, ...options] : options,
     saveOptions,
     placeholder: i18n_default.labels.optionItemSelectPlaceholder,
     searchable: true,
-    showAll: true,
-    onHide: () => {
-      setSaveState(true);
-    }
+    showAll: true
   });
   return /* @__PURE__ */ bn.createElement(OptionCellBase, {
     value,
@@ -46064,7 +46052,7 @@ var FileContextList = (props2) => {
     column: { ...f4, table: "" },
     editable: true,
     updateValue: (v3) => updateValue(f4.name, v3, "", fileContext.folder.dataIndex, fileContext.folder.data["File"]),
-    updateFieldValue: (v3, fv) => updateFieldValue(f4.name, fv, v3, "", fileContext.folder.dataIndex, fileContext.folder.data["File"]),
+    updateFieldValue: (fv, v3) => updateFieldValue(f4.name, fv, v3, "", fileContext.folder.dataIndex, fileContext.folder.data["File"]),
     contextTable
   })))), /* @__PURE__ */ bn.createElement("div", {
     className: "mk-file-context-field-new",

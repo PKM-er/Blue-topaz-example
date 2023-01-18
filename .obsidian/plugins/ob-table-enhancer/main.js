@@ -27,7 +27,7 @@ __export(main_exports, {
   default: () => TableEnhancer2
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian4 = require("obsidian");
+var import_obsidian6 = require("obsidian");
 
 // src/global.ts
 var editingCellClassName = "editing-cell";
@@ -203,13 +203,13 @@ var TableEditor = class {
         editor.setLine(tableLine + 1, formatLine);
         notStandard = true;
       }
-      const parsedFormatLine = formatLine.split("|").slice(1, -1);
+      const parsedFormatLine = formatLine.split(/(?<!\\)\|/).slice(1, -1);
       let headerLine = editor.getLine(tableLine);
       if (notStandard) {
         headerLine = `| ${headerLine} |`;
         editor.setLine(tableLine, headerLine);
       }
-      const parsedHeaderLine = headerLine.split("|").slice(1, -1);
+      const parsedHeaderLine = headerLine.split(/(?<!\\)\|/).slice(1, -1);
       cells.push(parsedHeaderLine);
       let i = tableLine + 1;
       const notStandardRegex = /^\s*[^|]*\|/;
@@ -219,13 +219,13 @@ var TableEditor = class {
           if (notStandardRegex.exec(bodyLine)) {
             bodyLine = `| ${bodyLine} |`;
             editor.setLine(i, bodyLine);
-            const parsedBodyLine = bodyLine.split("|").slice(1, -1);
+            const parsedBodyLine = bodyLine.split(/(?<!\\)\|/).slice(1, -1);
             cells.push(parsedBodyLine);
           } else
             break;
         } else {
           if (bodyLine.trimStart().startsWith("|")) {
-            const parsedBodyLine = bodyLine.split("|").slice(1, -1);
+            const parsedBodyLine = bodyLine.split(/(?<!\\)\|/).slice(1, -1);
             cells.push(parsedBodyLine);
           } else
             break;
@@ -424,6 +424,34 @@ var TableEditor = class {
       });
     }
   }
+  async createEmptyTable(i, j, fill) {
+    if (j < 1 || i < 1) {
+      console.error("Cannot create an empty table");
+      return;
+    }
+    const markdownView = this.plugin.app.workspace.getActiveViewOfType(import_obsidian.MarkdownView);
+    const editor = markdownView == null ? void 0 : markdownView.editor;
+    const editorView = editor == null ? void 0 : editor.cm;
+    if (!editor || !editorView) {
+      console.error("Cannot get editor");
+      return;
+    }
+    const cursor = editor.getCursor();
+    const cursorLine = editor.getLine(cursor.line);
+    const bodyString = "|" + "  |".repeat(j);
+    const formatString = "|" + ":-:|".repeat(j);
+    let tableArr = [
+      cursorLine,
+      "\n",
+      bodyString,
+      "\n",
+      formatString,
+      "\n"
+    ];
+    while (i--)
+      tableArr.push(bodyString, "\n");
+    editor.setLine(cursor.line, tableArr.join(""));
+  }
   static rowCells2rowString(cells) {
     const result = ["|"];
     try {
@@ -453,6 +481,8 @@ var getTableEditorExt = (plugin) => import_view.ViewPlugin.fromClass(class {
     const dom = update.view.contentDOM;
     const tableEls = dom.querySelectorAll("table");
     tableEls.forEach((tableEl) => {
+      if (tableEl.hasClass("dataview"))
+        return;
       if (tableEl.hasClass("intercepted"))
         return;
       tableEl.addClass("intercepted");
@@ -519,161 +549,6 @@ var getTableEditorExt = (plugin) => import_view.ViewPlugin.fromClass(class {
     });
   }
 });
-
-// src/menuItems.ts
-var import_obsidian2 = require("obsidian");
-var getInsertRowBelowItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Insert Row Below");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to insert row below ", cellEl);
-      return;
-    }
-    await plugin.tableEditor.insertRowBelow(table, i);
-  });
-};
-var getInsertColRightItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Insert Column Right");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to insert column below ", cellEl);
-      return;
-    }
-    await plugin.tableEditor.insertColRight(table, i);
-  });
-};
-var getCloneRowItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Clone Row");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    await plugin.tableEditor.insertRowBelow(table, i, table.cells[i]);
-  });
-};
-var getCloneColItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Clone Column");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    const col = table.cells.map((row) => row[j]);
-    console.log(col);
-    await plugin.tableEditor.insertColRight(table, j, col);
-  });
-};
-var getDelRowItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Delete Row");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    await plugin.tableEditor.deleteRow(table, i);
-  });
-};
-var getDelColItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Delete Column");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    await plugin.tableEditor.deleteCol(table, j);
-  });
-};
-var getMoveColRightItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Move Column Right");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    const colNum = table.formatLine.length;
-    if (j == colNum - 1) {
-      new import_obsidian2.Notice("Current column is already the rightmost column.");
-      return;
-    }
-    await plugin.tableEditor.swapCols(table, j, j + 1);
-  });
-};
-var getMoveColLeftItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Move Column Left");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    if (j == 0) {
-      new import_obsidian2.Notice("Current column is already the leftmost column.");
-      return;
-    }
-    await plugin.tableEditor.swapCols(table, j, j - 1);
-  });
-};
-var getMoveRowDownItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Move Row Downward");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    const rowNum = table.cells.length;
-    if (i == rowNum - 1) {
-      new import_obsidian2.Notice("Current column is already the bottom row.");
-      return;
-    }
-    await plugin.tableEditor.swapRows(table, i, i + 1);
-  });
-};
-var getMoveRowUpItem = (plugin, cellEl) => (item) => {
-  item.setTitle("Move Row Upward");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    if (i == 1) {
-      new import_obsidian2.Notice("Current column is already the top row.");
-      return;
-    }
-    await plugin.tableEditor.swapRows(table, i, i - 1);
-  });
-};
-var getColAlignItem = (plugin, cellEl, aligned) => (item) => {
-  item.setTitle("Set Column " + aligned.toUpperCase() + " Aligned");
-  item.onClick(async (e) => {
-    const { tableLine, i, j } = parseCellId(cellEl.id);
-    const table = plugin.tableEditor.getTable(tableLine);
-    if (!table) {
-      console.error("cannot locate table when trying to copy row below ", cellEl);
-      return;
-    }
-    await plugin.tableEditor.setColAligned(table, j, aligned);
-  });
-};
 
 // src/icon.ts
 var insertBelowIcon = `
@@ -776,9 +651,47 @@ var upwardIcon = `
 var downIcon = `
 <svg t="1671934792670" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3163" width="16" height="16"><path d="M830.24 340.688l11.328 11.312a16 16 0 0 1 0 22.624L530.448 685.76a16 16 0 0 1-22.64 0L196.688 374.624a16 16 0 0 1 0-22.624l11.312-11.312a16 16 0 0 1 22.624 0l288.496 288.496 288.512-288.496a16 16 0 0 1 22.624 0z" fill="currentColor"
 	   stroke="currentColor" p-id="3164"></path></svg>`;
+var insertColRight = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
+    <path d="M6,5C5.448,5 5,5.448 5,6L5,18C5,18.552 5.448,19 6,19L12,19C12.552,19 13,18.552 13,18L13,6C13,5.448 12.552,5 12,5L6,5Z"/>
+    <path d="M19,19L19,5"/>
+</svg>`;
+var insertRowBelow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
+    <path d="M19,6C19,5.448 18.552,5 18,5L6,5C5.448,5 5,5.448 5,6L5,12C5,12.552 5.448,13 6,13L18,13C18.552,13 19,12.552 19,12L19,6Z"/>
+    <path d="M5,19L19,19"/>
+</svg>`;
+var cloneRow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
+    <path d="M19,6L5,6"/>
+    <path d="M7,19L5,19"/>
+    <path d="M13,19L11,19"/>
+    <path d="M19,19L17,19"/>
+    <path d="M12,14L15,11"/>
+    <path d="M12,14L9,11"/>
+</svg>`;
+var cloneCol = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
+    <path d="M6,5L6,19"/>
+    <path d="M19,17L19,19"/>
+    <path d="M19,11L19,13"/>
+    <path d="M19,5L19,7"/>
+    <path d="M14,12L11,9"/>
+    <path d="M14,12L11,15"/>
+</svg>`;
+var delRow = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
+    <path d="M17.75,5L4,5"/>
+    <path d="M17.75,19L4,19"/>
+    <path d="M12,12L4,12"/>
+    <path d="M15,14.5L20,9.5"/>
+    <path d="M20,14.5L15,9.5"/>
+</svg>`;
+var delCol = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="svg-icon">
+    <path d="M5,6.25L5,20"/>
+    <path d="M19,6.25L19,20"/>
+    <path d="M12,12L12,20"/>
+    <path d="M14.5,9L9.5,4"/>
+    <path d="M14.5,4L9.5,9"/>
+</svg>`;
 
 // src/toolBar.ts
-var import_obsidian3 = require("obsidian");
+var import_obsidian2 = require("obsidian");
 var ToolBar = class {
   constructor(plugin) {
     this.plugin = plugin;
@@ -790,7 +703,7 @@ var ToolBar = class {
       el.innerHTML = upwardIcon;
       el.onclick = async () => {
         if (this.cell.i == 1) {
-          new import_obsidian3.Notice("Current column is already the top row.");
+          new import_obsidian2.Notice("Current column is already the top row.");
           return;
         }
         const table = await plugin.tableEditor.getTable(this.cell.tableLine);
@@ -813,7 +726,7 @@ var ToolBar = class {
         }
         const rowNum = table.cells.length;
         if (this.cell.i == rowNum - 1) {
-          new import_obsidian3.Notice("Current column is already the bottom row.");
+          new import_obsidian2.Notice("Current column is already the bottom row.");
           return;
         }
         await this.plugin.tableEditor.swapRows(table, this.cell.i, this.cell.i + 1);
@@ -838,7 +751,7 @@ var ToolBar = class {
       el.innerHTML = moveLeftIcon;
       el.onclick = async () => {
         if (this.cell.j == 0) {
-          new import_obsidian3.Notice("Current column is already the leftmost column.");
+          new import_obsidian2.Notice("Current column is already the leftmost column.");
           return;
         }
         const table = await plugin.tableEditor.getTable(this.cell.tableLine);
@@ -868,7 +781,7 @@ var ToolBar = class {
       el.innerHTML = deleteIcon;
       el.onclick = async () => {
         if (this.cell.i == 0) {
-          new import_obsidian3.Notice("You can't delete the header of a table.");
+          new import_obsidian2.Notice("You can't delete the header of a table.");
           return;
         }
         const table = await plugin.tableEditor.getTable(this.cell.tableLine);
@@ -904,7 +817,7 @@ var ToolBar = class {
         }
         const colNum = table.formatLine.length;
         if (this.cell.j == colNum - 1) {
-          new import_obsidian3.Notice("Current column is already the rightmost column.");
+          new import_obsidian2.Notice("Current column is already the rightmost column.");
           return;
         }
         await this.plugin.tableEditor.swapCols(table, this.cell.j, this.cell.j + 1);
@@ -956,6 +869,7 @@ var ToolBar = class {
     if (this.cell.j == 0) {
       this.activeOpBars.push(this.rowOpBarEl);
       this.rowOpBarEl.style.opacity = "1";
+      this.colOpBarEl.style.zIndex = "99";
       const cellRect = cellEl.getBoundingClientRect();
       const toolBarRect = this.rowOpBarEl.getBoundingClientRect();
       this.rowOpBarEl.style.top = `${cellRect.top}px`;
@@ -965,6 +879,7 @@ var ToolBar = class {
     if (this.cell.i == 0) {
       this.activeOpBars.push(this.colOpBarEl);
       this.colOpBarEl.style.opacity = "1";
+      this.colOpBarEl.style.zIndex = "99";
       const cellRect = cellEl.getBoundingClientRect();
       const toolBarRect = this.colOpBarEl.getBoundingClientRect();
       this.colOpBarEl.style.top = `${cellRect.top - toolBarRect.height}px`;
@@ -976,6 +891,8 @@ var ToolBar = class {
     this.hideTimeout = setTimeout(() => {
       this.colOpBarEl.style.opacity = "0";
       this.rowOpBarEl.style.opacity = "0";
+      this.colOpBarEl.style.zIndex = "-1";
+      this.rowOpBarEl.style.zIndex = "-1";
       this.activeOpBars = [];
     }, timeout);
     const stopHideTimeout = (e) => {
@@ -998,15 +915,262 @@ var ToolBar = class {
   }
 };
 
+// src/buttonPanel.ts
+var import_obsidian3 = require("obsidian");
+var addButtons = (menu, plugin, cellEl) => {
+  const oldOnLoad = menu.onload;
+  menu.onload = () => {
+    oldOnLoad.call(menu);
+    const menuDom = menu.dom;
+    const containerEl = createDiv({ cls: ["ob-table-enhancer", "button-menu"] });
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Insert row below").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to insert row below ", cellEl);
+        return;
+      }
+      await plugin.tableEditor.insertRowBelow(table, i);
+    }).then((button) => button.buttonEl.innerHTML = insertRowBelow);
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Insert column right").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      console.log(table);
+      if (!table) {
+        console.error("cannot locate table when trying to insert column below ", cellEl);
+        return;
+      }
+      await plugin.tableEditor.insertColRight(table, j);
+    }).then((button) => button.buttonEl.innerHTML = insertColRight);
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Clone row").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      await plugin.tableEditor.insertRowBelow(table, i, table.cells[i]);
+    }).then((button) => button.buttonEl.innerHTML = cloneRow);
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Clone column").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      const col = table.cells.map((row) => row[j]);
+      console.log(col);
+      await plugin.tableEditor.insertColRight(table, j, col);
+    }).then((button) => button.buttonEl.innerHTML = cloneCol);
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Delete row").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      await plugin.tableEditor.deleteRow(table, i);
+    }).then((button) => button.buttonEl.innerHTML = delRow);
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Delete column").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      await plugin.tableEditor.deleteCol(table, j);
+    }).then((button) => button.buttonEl.innerHTML = delCol);
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Move column left").setIcon("chevron-left").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      if (j == 0) {
+        new import_obsidian3.Notice("Current column is already the leftmost column.");
+        return;
+      }
+      await plugin.tableEditor.swapCols(table, j, j - 1);
+    });
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Move column right").setIcon("chevron-right").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      const colNum = table.formatLine.length;
+      if (j == colNum - 1) {
+        new import_obsidian3.Notice("Current column is already the rightmost column.");
+        return;
+      }
+      await plugin.tableEditor.swapCols(table, j, j + 1);
+    });
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Move row upward").setIcon("chevron-up").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      if (i == 1) {
+        new import_obsidian3.Notice("Current column is already the top row.");
+        return;
+      }
+      await plugin.tableEditor.swapRows(table, i, i - 1);
+    });
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Move row down").setIcon("chevron-down").setClass("clickable-icon").onClick(async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      const rowNum = table.cells.length;
+      if (i == rowNum - 1) {
+        new import_obsidian3.Notice("Current column is already the bottom row.");
+        return;
+      }
+      await plugin.tableEditor.swapRows(table, i, i + 1);
+    });
+    const setColAlign = (aligned) => async () => {
+      const { tableLine, i, j } = parseCellId(cellEl.id);
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying to copy row below ", cellEl);
+        return;
+      }
+      await plugin.tableEditor.setColAligned(table, j, aligned);
+    };
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Center align").setIcon("align-center").setClass("clickable-icon").onClick(setColAlign("center"));
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Left align").setIcon("align-left").setClass("clickable-icon").onClick(setColAlign("left"));
+    new import_obsidian3.ButtonComponent(containerEl).setTooltip("Right align").setIcon("align-right").setClass("clickable-icon").onClick(setColAlign("right"));
+    const dividerEl = createDiv({ cls: "menu-separator" });
+    menuDom.prepend(dividerEl);
+    menuDom.prepend(containerEl);
+  };
+};
+
+// src/tableGenerator.ts
+var import_obsidian4 = require("obsidian");
+var addTableGenerator = (menu, plugin, editor) => {
+  menu.addItem((menuItem) => {
+    menuItem.setTitle("Create new table");
+    menuItem.setIcon("table");
+    menuItem.onClick(async (e) => {
+      var _a, _b, _c;
+      const cursor = editor.getCursor("from");
+      const editor2 = editor;
+      let coord;
+      if (editor2.coordsAtPos) {
+        const offset = editor.posToOffset(cursor);
+        coord = (_c = (_b = (_a = editor2.cm).coordsAtPos) == null ? void 0 : _b.call(_a, offset)) != null ? _c : editor2.coordsAtPos(offset);
+      } else {
+        console.error("Cannot get cursor coordinate");
+        return;
+      }
+      const tableGenerator = new TableGenerator(plugin);
+      tableGenerator.showAtPosition({ x: coord.left, y: coord.bottom });
+    });
+  });
+};
+var TableGenerator = class extends import_obsidian4.Menu {
+  constructor(plugin) {
+    super();
+    this.plugin = plugin;
+    this.addItem((item) => item.setDisabled(true));
+  }
+  onload() {
+    super.onload();
+    const menuDom = this.dom;
+    const frag = activeDocument.createDocumentFragment();
+    const containerEl = frag.createDiv({ cls: "table-generator-container" });
+    const counter = frag.createDiv({ cls: ["table-generator-counter", "menu-item"] });
+    for (let i = 0; i < 7; i++) {
+      for (let j = 0; j < 7; j++) {
+        const gridEl = createDiv({ cls: "table-generator-grid" });
+        gridEl.setAttr("i", i);
+        gridEl.setAttr("j", j);
+        gridEl.addEventListener("click", async () => {
+          console.log("---");
+          await this.plugin.tableEditor.createEmptyTable(i + 1, j + 1);
+        });
+        gridEl.addEventListener("mouseenter", async () => {
+          containerEl.querySelectorAll(".table-generator-grid").forEach((gridEl2) => {
+            const i2 = parseInt(gridEl2.getAttr("i"));
+            const j2 = parseInt(gridEl2.getAttr("j"));
+            if (i2 > i || j2 > j)
+              gridEl2.removeClass("select");
+            else
+              gridEl2.addClass("select");
+          });
+          counter.innerText = `${i + 1} rows ${j + 1} columns`;
+        });
+        containerEl.append(gridEl);
+      }
+    }
+    menuDom.append(frag);
+  }
+};
+
+// src/settings.ts
+var import_obsidian5 = require("obsidian");
+var DEFAULT_SETTINGS = {
+  enableButtonPanel: true,
+  enableTableGenerator: true,
+  enableFloatingToolbar: false,
+  adjustTableCellHeight: true
+};
+var TableEnhancer2SettingTab = class extends import_obsidian5.PluginSettingTab {
+  constructor(app, plugin) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
+  display() {
+    this.containerEl.empty();
+    this.containerEl.createEl("h2", { text: "Table Enhancer Settings" });
+    new import_obsidian5.Setting(this.containerEl).setName("Enable Button Panel").addToggle((c) => c.setValue(this.plugin.settings.enableButtonPanel).onChange(async (val) => {
+      this.plugin.settings.enableButtonPanel = val;
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian5.Setting(this.containerEl).setName("Enable Table Generator").addToggle((c) => c.setValue(this.plugin.settings.enableTableGenerator).onChange(async (val) => {
+      this.plugin.settings.enableTableGenerator = val;
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian5.Setting(this.containerEl).setName("Enable Floating Panel").addToggle((c) => c.setValue(this.plugin.settings.enableFloatingToolbar).onChange(async (val) => {
+      this.plugin.settings.enableFloatingToolbar = val;
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian5.Setting(this.containerEl).setName("Adjust Height of Table Cells").setDesc("The default height of an empty cell is very short. Activate this to increase the cell height and make it easier to click.").addToggle((c) => c.setValue(this.plugin.settings.adjustTableCellHeight).onChange(async (val) => {
+      var _a, _b;
+      if (val == true)
+        (_a = activeDocument == null ? void 0 : activeDocument.body) == null ? void 0 : _a.addClass("table-height-adjust");
+      else
+        (_b = activeDocument == null ? void 0 : activeDocument.body) == null ? void 0 : _b.removeClass("table-height-adjust");
+      this.plugin.settings.adjustTableCellHeight = val;
+      await this.plugin.saveSettings();
+    }));
+  }
+};
+
 // main.ts
-var TableEnhancer2 = class extends import_obsidian4.Plugin {
+var TableEnhancer2 = class extends import_obsidian6.Plugin {
   async onload() {
     this.tableEditor = new TableEditor(this);
-    this.toolBar = new ToolBar(this);
+    await this.loadSettings();
+    this.addSettingTab(new TableEnhancer2SettingTab(this.app, this));
+    if (this.settings.enableFloatingToolbar)
+      this.toolBar = new ToolBar(this);
     const tableEditorExt = getTableEditorExt(this);
     this.registerEditorExtension(tableEditorExt);
     this.app.workspace.onLayoutReady(() => {
-      this.registerDomEvent(activeDocument, "keydown", async (e) => {
+      if (this.settings.adjustTableCellHeight)
+        activeDocument.body.addClass("table-height-adjust");
+      const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian6.MarkdownView);
+      if (!markdownView)
+        return;
+      this.registerDomEvent(markdownView.contentEl, "keydown", async (e) => {
         const cellEl = activeDocument.querySelector("." + editingCellClassName);
         if (!(cellEl instanceof HTMLTableCellElement))
           return;
@@ -1140,23 +1304,15 @@ var TableEnhancer2 = class extends import_obsidian4.Plugin {
         }
       });
     });
-    this.registerEvent(this.app.workspace.on("editor-menu", (menu, view) => {
+    this.registerEvent(this.app.workspace.on("editor-menu", (menu, editor) => {
       const hoveredCell = activeDocument.querySelector("." + hoveredCellClassName);
-      if (!(hoveredCell instanceof HTMLTableCellElement))
+      if (!(hoveredCell instanceof HTMLTableCellElement)) {
+        if (this.settings.enableTableGenerator)
+          addTableGenerator(menu, this, editor);
         return;
-      menu.addItem(getInsertRowBelowItem(this, hoveredCell));
-      menu.addItem(getInsertColRightItem(this, hoveredCell));
-      menu.addItem(getCloneRowItem(this, hoveredCell));
-      menu.addItem(getCloneColItem(this, hoveredCell));
-      menu.addItem(getDelRowItem(this, hoveredCell));
-      menu.addItem(getDelColItem(this, hoveredCell));
-      menu.addItem(getMoveColLeftItem(this, hoveredCell));
-      menu.addItem(getMoveColRightItem(this, hoveredCell));
-      menu.addItem(getMoveRowUpItem(this, hoveredCell));
-      menu.addItem(getMoveRowDownItem(this, hoveredCell));
-      menu.addItem(getColAlignItem(this, hoveredCell, "left"));
-      menu.addItem(getColAlignItem(this, hoveredCell, "right"));
-      menu.addItem(getColAlignItem(this, hoveredCell, "center"));
+      }
+      if (this.settings.enableButtonPanel)
+        addButtons(menu, this, hoveredCell);
     }));
   }
   async doneEdit(cellEl) {
@@ -1178,8 +1334,14 @@ var TableEnhancer2 = class extends import_obsidian4.Plugin {
     await this.tableEditor.updateCell(table, i, j, cellEl.innerText.trim());
   }
   isInReadingView() {
-    const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian4.MarkdownView);
-    return markdownView instanceof import_obsidian4.MarkdownView && markdownView.getMode() == "preview";
+    const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian6.MarkdownView);
+    return markdownView instanceof import_obsidian6.MarkdownView && markdownView.getMode() == "preview";
+  }
+  async loadSettings() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+  }
+  async saveSettings() {
+    await this.saveData(this.settings);
   }
   onunload() {
   }

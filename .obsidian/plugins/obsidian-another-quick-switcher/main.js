@@ -802,6 +802,7 @@ var createDefaultHotkeys = () => ({
     "create in new tab": [{ modifiers: ["Mod", "Shift"], key: "Enter" }],
     "create in new window": [{ modifiers: ["Mod", "Shift"], key: "o" }],
     "create in new popup": [],
+    "open in default app": [],
     "open in google": [{ modifiers: ["Mod"], key: "g" }],
     "open first URL": [{ modifiers: ["Mod"], key: "]" }],
     "insert to editor": [{ modifiers: ["Alt"], key: "Enter" }],
@@ -813,7 +814,8 @@ var createDefaultHotkeys = () => ({
   },
   move: {
     up: [{ modifiers: ["Mod"], key: "p" }],
-    down: [{ modifiers: ["Mod"], key: "n" }]
+    down: [{ modifiers: ["Mod"], key: "n" }],
+    "open in default app": []
   },
   header: {
     up: [{ modifiers: ["Mod"], key: "p" }],
@@ -1728,6 +1730,12 @@ var AppHelper = class {
         throw new ExhaustiveError(opt.leaf);
     }
   }
+  openFileInDefaultApp(file) {
+    this.unsafeApp.openWithDefaultApp(file.path);
+  }
+  openFolderInDefaultApp(folder) {
+    this.unsafeApp.openWithDefaultApp(folder.path);
+  }
   getStarredFilePaths() {
     return this.unsafeApp.internalPlugins.plugins.starred.instance.items.map(
       (x) => x.path
@@ -2010,7 +2018,10 @@ function createItemDiv(item, aliases, options) {
       item.phantom ? "another-quick-switcher__phantom_item" : "",
       item.starred ? "another-quick-switcher__starred_item" : "",
       options.hideGutterIcons ? "another-quick-switcher__gutter_hidden" : ""
-    ]
+    ].filter((x) => x),
+    attr: {
+      extension: item.file.extension
+    }
   });
   const entryDiv = createDiv({
     cls: "another-quick-switcher__item__entry"
@@ -2300,7 +2311,7 @@ var AnotherQuickSwitcherModal = class extends import_obsidian4.SuggestModal {
       (x) => x
     );
     const originFilePath = (_a = this.originFile) == null ? void 0 : _a.path;
-    const start = performance.now();
+    let start = performance.now();
     const fileItems = app.vault.getFiles().filter(
       (x) => x.path !== originFilePath && app.metadataCache.getFileCache(x)
     ).map((x) => {
@@ -2329,7 +2340,11 @@ var AnotherQuickSwitcherModal = class extends import_obsidian4.SuggestModal {
       () => buildLogMessage(`Indexing file items: `, performance.now() - start)
     );
     this.originItems = [...fileItems, ...this.phantomItems];
+    start = performance.now();
     this.ignoredItems = this.prefilterItems(this.command);
+    this.showDebugLog(
+      () => buildLogMessage(`Prefilter items: `, performance.now() - start)
+    );
   }
   async handleCreateNewMarkdown(searchQuery, leafType) {
     if (!searchQuery) {
@@ -2660,6 +2675,15 @@ var AnotherQuickSwitcherModal = class extends import_obsidian4.SuggestModal {
     this.registerKeys("create in new popup", async () => {
       await this.handleCreateNewMarkdown(this.searchQuery, "popup");
     });
+    this.registerKeys("open in default app", () => {
+      var _a, _b;
+      const file = (_b = (_a = this.chooser.values) == null ? void 0 : _a[this.chooser.selectedItem]) == null ? void 0 : _b.file;
+      if (!file) {
+        return;
+      }
+      this.appHelper.openFileInDefaultApp(file);
+      this.close();
+    });
     this.registerKeys("open in google", () => {
       activeWindow.open(`https://www.google.com/search?q=${this.searchQuery}`);
       this.close();
@@ -2917,6 +2941,15 @@ var MoveModal = class extends import_obsidian5.SuggestModal {
       document.dispatchEvent(
         new KeyboardEvent("keydown", { key: "ArrowDown" })
       );
+    });
+    this.registerKeys("open in default app", () => {
+      var _a, _b;
+      const folder = (_b = (_a = this.chooser.values) == null ? void 0 : _a[this.chooser.selectedItem]) == null ? void 0 : _b.folder;
+      if (!folder) {
+        return;
+      }
+      this.appHelper.openFolderInDefaultApp(folder);
+      this.close();
     });
   }
 };

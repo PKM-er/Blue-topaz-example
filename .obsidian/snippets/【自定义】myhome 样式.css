@@ -452,6 +452,7 @@ path#f3-l9 {
   text-decoration: none;
 }
 /****主页卡片视图***/
+
 .myhome div.admonition-grid > .admonition-content {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(0, auto));
@@ -1047,10 +1048,18 @@ dvjs ~ :is(p, b, bold) > select option {
 /****table enhancer*********/
 
 /**ob 1.0 **/
+body.border-callout-style .myhome .callout
+{
+border:none;
+}
 
-.myhome .callout {
+body .myhome .callout
+{
+  background-color: unset;
+  box-shadow:none !important;
   overflow: unset;
 }
+
 .myhome button {
   height: auto;
 }
@@ -1184,9 +1193,7 @@ body[data-canvas-path*="Home"] .canvas-node-label
 
 /**************************/
 
-body.canvas-file .cm-gutters
+.workspace-leaf-content[data-type="canvas"] .cm-gutters
 {
   display: none;
 }
- 
- 

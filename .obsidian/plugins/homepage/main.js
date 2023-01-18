@@ -1969,13 +1969,16 @@ var Homepage = class extends import_obsidian3.Plugin {
         return;
       }
       if (mode != Mode.ReplaceAll) {
-        const alreadyOpened = this.getOpenedHomepage();
-        if (alreadyOpened !== void 0) {
-          this.app.workspace.setActiveLeaf(alreadyOpened);
+        const alreadyOpened = this.getOpenedHomepages();
+        if (alreadyOpened.length > 0) {
+          this.app.workspace.setActiveLeaf(alreadyOpened[0]);
           yield this.configureHomepage();
           return;
         }
       } else {
+        if (this.settings.pin) {
+          this.getOpenedHomepages().forEach((h) => h.setPinned(false));
+        }
         LEAF_TYPES.forEach((i) => this.app.workspace.detachLeavesOfType(i));
       }
       yield openLink(mode);
@@ -1992,9 +1995,9 @@ var Homepage = class extends import_obsidian3.Plugin {
     }
     return homepage;
   }
-  getOpenedHomepage() {
+  getOpenedHomepages() {
     let leaves = LEAF_TYPES.flatMap((i) => this.app.workspace.getLeavesOfType(i));
-    return leaves.find((leaf) => trimFile(leaf.view.file) == this.homepage);
+    return leaves.filter((leaf) => trimFile(leaf.view.file) == this.homepage);
   }
   configureHomepage() {
     return __async(this, null, function* () {

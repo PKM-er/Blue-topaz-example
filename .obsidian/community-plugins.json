@@ -23,7 +23,6 @@
   "obsidian-memos",
   "obsidian42-brat",
   "metaedit",
-  "obsidian-table-generator",
   "obsidian-better-command-palette",
   "mrj-text-expand",
   "dataview",
@@ -64,7 +63,6 @@
   "canvas-presentation",
   "link-nodes-in-canvas",
   "obsidian-linkcard-plugin",
-  "obsidian-emoji-toolbar",
   "canvas-mindmap",
   "obsidian-better-codeblock",
   "canvas-block-reference",
@@ -76,5 +74,7 @@
   "omnisearch",
   "cmdr",
   "workspaces-plus",
-  "canvas-css-class"
+  "obsidian-emoji-toolbar",
+  "canvas-css-class",
+  "ob-table-enhancer"
 ]
