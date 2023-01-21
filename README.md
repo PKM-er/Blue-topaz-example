@@ -5,7 +5,7 @@ source:
 obsidianUIMode: preview
 progress: 正在进行
 title: README
-updated: "2023-01-07 15:01"
+updated: "2023-01-21 19:01"
 created: "2022-09-01 09:56"
 ---
 ![Home_middle3](https://user-images.githubusercontent.com/42957010/211135782-62cfc6e6-fe78-4a4c-9b71-41f2926aedab.png)
@@ -28,7 +28,7 @@ https://github.com/cumany/Blue-topaz-examples/releases/
 
 ==示例库在线预览地址：==
 
-[Blue-topaz-example-online](cumany.github.io/Blue-topaz-example-online/)
+[Blue-topaz-example-online](https://cumany.github.io/Blue-topaz-example-online/)
 
 注意：本示例库包含大量插件目前有七十多个，很多插件都是辅助类插件，可以根据需要删除或者关闭，为了方便初学者，特推出一个简化版示例库删减了大量不必要的插件下载链接
 [Release 20221208 lite 精简版 · cumany/Blue-topaz-examples (github.com)](https://github.com/cumany/Blue-topaz-examples/releases/tag/20221208-lite)
