@@ -1,7 +1,7 @@
 {
 	"id": "ob-table-enhancer",
 	"name": "Table Enhancer",
-	"version": "0.4.1",
+	"version": "0.5.5",
 	"minAppVersion": "0.15.0",
 	"description": "Manipulate markdown tables without touching the source code in Obsidian.",
 	"author": "Stardust",

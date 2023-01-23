@@ -30,7 +30,7 @@ aliases: TIPS
 
 ````ad-question
 title: 想要更多的高亮方式？
-collapse: true
+collapse: open
 下面的css代码保存成片段即可使用。 [如何使用片段](obsidian://open?vault=Obsidian%20Help&fi le=%E4%BD%BF%E7%94%A8%E6%8C%87%E5%8D%97%2F%E6%B7%BB%E5%8A%A0%E8%87%AA%E5%AE%9A%E4%B9%89%E4%B8%BB%E9%A2%98)
 ```css
 /*实现下面语法高亮颜色不同

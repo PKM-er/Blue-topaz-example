@@ -2257,13 +2257,14 @@ var AppHelper = class {
     return this.getCurrentLine(editor).slice(0, editor.getCursor().ch);
   }
   optimizeMarkdownLinkText(linkText) {
+    var _a;
     const activeFile = this.getActiveFile();
     if (!activeFile) {
       return null;
     }
     const path = this.linkText2Path(linkText);
     if (!path) {
-      return linkText;
+      return { displayed: linkText, link: linkText };
     }
     const file = this.getMarkdownFileByPath(path);
     if (!file) {
@@ -2273,7 +2274,13 @@ var AppHelper = class {
       file,
       activeFile.path
     );
-    return markdownLink.startsWith("[[") ? markdownLink.replace("[[", "").replace("]]", "") : markdownLink.replace("[", "").replace(/\]\(.+\)/g, "");
+    if (markdownLink.startsWith("[[")) {
+      const text2 = (_a = markdownLink.matchAll(/^\[\[(?<text>.+)]]$/g).next().value.groups) == null ? void 0 : _a.text;
+      return { displayed: text2, link: text2 };
+    } else {
+      const { displayed, link } = markdownLink.matchAll(/^\[(?<displayed>.+)]\((?<link>.+)\.md\)$/g).next().value.groups;
+      return { displayed, link };
+    }
   }
   linkText2Path(linkText) {
     var _a, _b;
@@ -2358,6 +2365,10 @@ var AppHelper = class {
   }
   get useWikiLinks() {
     return !this.unsafeApp.vault.config.useMarkdownLinks;
+  }
+  get newLinkFormat() {
+    var _a;
+    return (_a = this.unsafeApp.vault.config.newLinkFormat) != null ? _a : "shortest";
   }
 };
 
@@ -4119,15 +4130,19 @@ var AutoCompleteSuggest = class extends import_obsidian3.EditorSuggest {
     let insertedText = word.value;
     if (word.type === "internalLink") {
       if (this.settings.suggestInternalLinkWithAlias && word.aliasMeta) {
-        const linkText = this.appHelper.optimizeMarkdownLinkText(
+        const { link } = this.appHelper.optimizeMarkdownLinkText(
           word.aliasMeta.origin
         );
-        insertedText = this.appHelper.useWikiLinks ? `[[${linkText}|${word.value}]]` : `[${word.value}](${encodeSpace(linkText)}.md)`;
+        insertedText = this.appHelper.useWikiLinks ? `[[${link}|${word.value}]]` : `[${word.value}](${encodeSpace(link)}.md)`;
       } else {
-        const linkText = this.appHelper.optimizeMarkdownLinkText(
+        const { displayed, link } = this.appHelper.optimizeMarkdownLinkText(
           word.phantom ? word.value : word.createdPath
         );
-        insertedText = this.appHelper.useWikiLinks ? `[[${linkText}]]` : `[${linkText}](${encodeSpace(linkText)}.md)`;
+        if (this.appHelper.newLinkFormat === "shortest" && displayed.includes("/")) {
+          insertedText = this.appHelper.useWikiLinks ? `[[${link}|${word.value}]]` : `[${word.value}](${encodeSpace(link)}.md)`;
+        } else {
+          insertedText = this.appHelper.useWikiLinks ? `[[${link}]]` : `[${displayed}](${encodeSpace(link)}.md)`;
+        }
       }
     }
     if (word.type === "frontMatter" && this.settings.insertCommaAfterFrontMatterCompletion) {

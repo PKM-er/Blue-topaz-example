@@ -4,7 +4,7 @@ cssclass:
 source:
 mindmap-plugin: basic
 updated: "2023-01-04 18:35"
-aliases: '[## ⏳更新日志, Changlog]'
+aliases:  更新日志
 created: "2022-04-27 10:05"
 ---
 

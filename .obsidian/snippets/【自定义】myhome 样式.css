@@ -629,6 +629,16 @@ div[data-callout="profile-card-inf"].callout
   .block-language-dataviewjs {
   overflow: hidden;
 }
+.flex-container div[data-callout="profile-card-inf"].callout
+  > .callout-content
+  .block-language-dataviewjs
+  {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin-top: 5px;
+}
 div[data-callout="profile-card-inf"].callout
   > .callout-content
   .block-language-dataviewjs

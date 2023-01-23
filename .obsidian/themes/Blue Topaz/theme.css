@@ -5055,7 +5055,9 @@ body {
   --code-background: var(--background-code);
   --canvas-card-opacity: 0.1;
 }
-
+body {
+  background-color: var(--color-base-25);
+}
 body.all-dark .print.theme-light,
 .theme-dark {
   --background-primary: var(--background-primary-bg-4-bt,#202020);
@@ -14328,7 +14330,7 @@ body.embed-hd .markdown-embed :is(.markdown-preview-view,.markdown-rendered) :is
   min-height: min-content !important;
 }
 
-/*![[]] 嵌入笔记浮动效果*/
+
 body.embed-hover.theme-light :is(.markdown-preview-view,.markdown-rendered) .internal-embed .markdown-embed:hover {
   box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .25);
   transition: all .2s ease-in-out;
@@ -15340,15 +15342,15 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 /* from Notation by death_au  https://github.com/deathau/Notation-for-Obsidian */
 /* Original idea from: https://gist.github.com/mklepaczewski/54e451f09994b9d450de81c8baaf8aa4 */
 /* but also with simpler classes so you can use `<span class='colour'>` as well */
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink-bg code,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink-bg code,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red-bg code,
 .print pre.language-note-gray-bg code,
 .print pre.language-note-brown-bg code,
 .print pre.language-note-orange-bg code,
@@ -15372,9 +15374,9 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
   white-space: pre-wrap !important;
 }
 
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-notice,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-notice,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray-bg,
 .gray-background,
 .gray-bg,
 .print pre.language-note-gray-bg .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-notice,
@@ -15382,8 +15384,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray-bg {
   background-color: var(--background-gray) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown-bg,
 .brown-background,
 .brown-bg,
 .print pre.language-note-brown-bg,
@@ -15391,8 +15393,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown-bg {
   background-color: var(--background-brown) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange-bg,
 .orange-background,
 .orange-bg,
 .print pre.language-note-orange-bg,
@@ -15400,8 +15402,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange-bg {
   background-color: var(--background-orange) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow-bg,
 .yellow-background,
 .yellow-bg,
 .print pre.language-note-yellow-bg,
@@ -15409,8 +15411,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow-bg {
   background-color: var(--background-yellow) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green-bg,
 .green-background,
 .green-bg,
 .print pre.language-note-green-bg,
@@ -15418,8 +15420,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green-bg {
   background-color: var(--background-green) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue-bg,
 .blue-background,
 .blue-bg,
 .print pre.language-note-blue-bg,
@@ -15427,8 +15429,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue-bg {
   background-color: var(--background-blue) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple-bg,
 .purple-background,
 .purple-bg,
 .print pre.language-note-purple-bg,
@@ -15436,8 +15438,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple-bg {
   background-color: var(--background-purple) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink-bg,
 .pink-background,
 .pink-bg,
 .print pre.language-note-pink-bg,
@@ -15445,8 +15447,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink-bg {
   background-color: var(--background-pink) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red-background,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red-bg,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red-background,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red-bg,
 .red-background,
 .red-bg,
 .print pre.language-note-red-bg,
@@ -15454,8 +15456,8 @@ div:not(.CodeMirror-activeline)>.CodeMirror-line span.cm-hr:after {
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red-bg {
   background-color: var(--background-red) !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-important,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-imp,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-important,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-imp,
 .print pre.language-note-important,
 .print pre.language-note-imp,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-important,
@@ -15471,15 +15473,15 @@ pre.language-note-imp::before {
 }
 
 /*colourful text*/
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink,
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red,
 .print pre.language-note-gray,
 .print pre.language-note-brown,
 .print pre.language-note-orange,
@@ -15503,55 +15505,55 @@ pre.language-note-imp::before {
   padding: 5px 10px;
 }
 
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray code.language-note-gray,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray code.language-note-gray,
 .print code.language-note-gray,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-gray code.language-note-gray {
   color: var(--text-gray) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown code.language-note-brown,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown code.language-note-brown,
 .print code.language-note-brown,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-brown code.language-note-brown {
   color: var(--text-brown) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange code.language-note-orange,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange code.language-note-orange,
 .print code.language-note-orange,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-orange code.language-note-orange {
   color: var(--text-orange) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow code.language-note-yellow,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow code.language-note-yellow,
 .print code.language-note-yellow,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-yellow code.language-note-yellow {
   color: var(--text-yellow) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green code.language-note-green,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green code.language-note-green,
 .print code.language-note-green,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-green code.language-note-green {
   color: var(--text-green) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue code.language-note-blue,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue code.language-note-blue,
 .print code.language-note-blue,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-blue code.language-note-blue {
   color: var(--text-blue) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple code.language-note-purple,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple code.language-note-purple,
 .print code.language-note-purple,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-purple code.language-note-purple {
   color: var(--text-purple) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink code.language-note-pink,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink code.language-note-pink,
 .print code.language-note-pink,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-pink code.language-note-pink {
   color: var(--text-pink) !important;
   background: unset !important;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red code.language-note-red,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red code.language-note-red,
 .print code.language-note-red,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-red code.language-note-red {
   color: var(--text-red) !important;
@@ -15559,7 +15561,7 @@ pre.language-note-imp::before {
 }
 
 /* cloze */
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze code.language-note-cloze,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze code.language-note-cloze,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze code.language-note-cloze {
   color: var(--text-normal) !important;
   background-color: var(--text-normal)!important;
@@ -15570,7 +15572,7 @@ pre.language-note-imp::before {
   font-size: var(--font-size-cloze) !important;
 }
 
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze {
   background-color: transparent;
 }
@@ -15578,7 +15580,7 @@ pre.language-note-imp::before {
 code.language-note-cloze.is-loaded:hover {
   cursor: pointer;
 }
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze code.language-note-cloze.is-loaded:active,
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze code.language-note-cloze.is-loaded:active,
 .popover :is(.markdown-preview-view,.markdown-rendered) pre.language-note-cloze code.language-note-cloze.is-loaded:active {
   background-color: transparent !important;
 }
@@ -15598,17 +15600,17 @@ pre.language-note-cloze::before {
   initial-value: 24px;
 }
 
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-hibox {
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-hibox {
   background-color: transparent;
 }
 
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-hibox code.language-hibox:hover {
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-hibox code.language-hibox:hover {
   color: var(--text-normal);
   --hibox: 900px;
   overflow: auto;
 }
 
-.app-container :is(.markdown-preview-view,.markdown-rendered) pre.language-hibox code.language-hibox {
+ :is(.markdown-preview-view,.markdown-rendered) pre.language-hibox code.language-hibox {
   position: relative;
   height: auto;
   overflow: hidden;
@@ -16270,7 +16272,10 @@ body.hover-scrollbars .community-modal-info div[class^='community-modal-info-']
 {
   color:var(--text-normal);
 }
-
+body.hover-scrollbars .canvas-node-content  .markdown-preview-view
+{
+  overflow-y: auto!important;
+}
 body.hover-scrollbars :is(.vertical-tab-header, .vertical-tab-content, .nav-files-container, .view-content, .search-result-container, .git-view-body, .workspace-leaf-content[data-type=markdown] .cm-scroller, .markdown-preview-view, .suggestion-container .suggestion, .prompt-results, .markdown-embed-content, .community-modal-search-results-wrapper,.community-modal-info,.tag-container) {
   color: transparent;
   transition: color var(--anim-duration-fast) var(--anim-motion-smooth);
@@ -19763,6 +19768,67 @@ body.hide-titlebar-close-btn.hide-left-ribbon-retention-drawer .file-tree-plugin
 }
 .file-tree-plugin-view  .oz-folders-tree-wrapper{
   margin-top: -8px;
+}
+/* ================================== */
+/* ============== webpage export html ============= */
+/* ================================== */
+.flex-container
+{
+--banner-height:300px;
+--banner-internal-embed-height:200px;
+--banner-preview-embed-height:120px;
+}
+
+
+body.color-scheme-options-simplicity-topaz.theme-dark.background-settings-workplace-background-image .flex-container::before {
+  filter: blur(var(--blur-depth)) brightness(calc(var(--brightness-4-bg) - 0.5)) saturate(var(--saturate-4-bg));
+}
+body.background-settings-workplace-background-image.theme-light .flex-container::before,
+ body.background-settings-workplace-background-image.theme-dark .flex-container::before {
+  background-image: var(--theme-background);
+  background-size: cover;
+  filter: blur(var(--blur-depth)) brightness(var(--brightness-4-bg)) saturate(var(--saturate-4-bg));
+}
+body.background-settings-workplace-background-image.background-settings-workplace-waves2-light.theme-light .flex-container::before,
+body.background-settings-workplace-background-image.background-settings-workplace-waves2.theme-dark .flex-container:before {
+  content: "";
+  position: fixed;
+  height: auto;
+  width: 300%;
+  top: 75%;
+  left: -25%;
+  background-image: unset;
+  -webkit-mask-image: var(--theme-background);
+  background-size: 100% 100%;
+  opacity: 0.7;
+  filter: blur(var(--blur-depth)) brightness(var(--brightness-4-bg)) saturate(var(--saturate-4-bg));
+  background-color: var(--wave2-background-color);
+}
+body.background-settings-workplace-background-image .flex-container::before {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -37px;
+  right: -15px;
+  bottom: 0;
+  left: -15px;
+}
+
+body.background-settings-workplace-background-image.background-settings-workplace-waves-light.theme-light .flex-container::before, 
+body.background-settings-workplace-background-image.background-settings-workplace-waves.theme-dark .flex-container::before {
+  content: "";
+  position: fixed;
+  height: auto;
+  width: 300%;
+  transform: rotate(180deg);
+  top: 75%;
+  left: -25%;
+  background-image: unset;
+  -webkit-mask-image: var(--theme-background);
+  background-size: 100% 100%;
+  opacity: 0.7;
+  filter: blur(var(--blur-depth)) brightness(var(--brightness-4-bg)) saturate(var(--saturate-4-bg));
+  background-color: var(--wave-background-color);
 }
 /* ================================== */
 /* ============== quiet-outline ============= */

@@ -1,0 +1,113 @@
+/* THIS FILE IS NOT EXPORTED WITH THE HTML FILE! */
+
+
+
+/* Toggle Styles for inside Obsidian */
+.theme-toggle {
+    --toggle-width: 50px;
+    --toggle-height: calc(var(--toggle-width) / 2.2);
+    --border-radius: calc(var(--toggle-height) / 2);
+    --handle-width: calc(var(--toggle-height) * 0.6);
+    --handle-radius: calc(var(--handle-width) / 2);
+    --handle-margin: calc((var(--toggle-height) - var(--handle-width)) / 2);
+    --handle-translation: calc(var(--toggle-width) - var(--handle-width) - (var(--handle-margin) * 2));
+
+    display: inline-block;
+    cursor: pointer;
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1000;
+}
+
+.theme-toggle-inline {
+    --toggle-width: 50px;
+    --toggle-height: calc(var(--toggle-width) / 2.2);
+    --border-radius: calc(var(--toggle-height) / 2);
+    --handle-width: calc(var(--toggle-height) * 0.6);
+    --handle-radius: calc(var(--handle-width) / 2);
+    --handle-margin: calc((var(--toggle-height) - var(--handle-width)) / 2);
+    --handle-translation: calc(var(--toggle-width) - var(--handle-width) - (var(--handle-margin) * 2));
+
+    display: inline-block;
+    cursor: pointer;
+    position: relative;
+
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.toggle__input {
+    display: none;
+    z-index: 1000;
+}
+
+/* Fill in dark mode / default */
+.toggle__fill {
+    position: relative;
+    width: var(--toggle-width);
+    height: var(--toggle-height);
+    border-radius: var(--border-radius);
+    background-color: var(--background-primary-alt);
+    transition: background-color 0.2s;
+    z-index: 1000;
+
+    box-shadow: inset 0px 0px 10px 2px rgba(0, 0, 0, 0.4);
+
+	border: 1px solid var(--divider-color);
+}
+
+.theme-light .toggle__fill 
+{
+    box-shadow: inset 0px 0px 5px 2px hsla(var(--color-accent-hsl), 0.15);
+}
+
+/* Fill in light mode */
+/* .toggle__input:checked ~ .toggle__fill 
+{
+
+} */
+
+/* Handle default */
+.toggle__fill::before 
+{
+    content: "";
+    position: absolute;
+    left: var(--handle-margin);
+    top: calc(var(--handle-margin) * 0.75);
+    height: var(--handle-width);
+    width: var(--handle-width);
+    
+    border-radius: var(--handle-radius);
+    background-color: var(--text-normal);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.2);
+    animation: toggle-slide-left 0.2s ease-in-out normal both;
+
+    z-index: 1000;
+}
+
+/* handle light*/
+
+.toggle__input:active ~ .toggle__fill::before 
+{
+    animation: toggle-expand-right 0.2s ease-in-out normal both;
+}
+
+
+
+/* sun moon icon icon default */
+.toggle__fill::after
+{
+    content: "";
+    position: absolute;
+    right: var(--handle-margin);
+    top: calc(var(--handle-margin) * 0.75);
+    height: var(--handle-width);
+    width: var(--handle-width);
+    scale: 90%;
+    transition: transform 0.3s;
+
+    background: url('https://api.iconify.design/lucide/moon.svg?color=white') no-repeat center center;
+}
+
+

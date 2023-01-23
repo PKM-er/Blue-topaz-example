@@ -1,0 +1,10 @@
+{
+	"id": "webpage-html-export",
+	"name": "Webpage HTML Export",
+	"version": "1.3.3",
+	"minAppVersion": "0.15.0",
+	"description": "Exports an obsidian document as an HTML document / webpage / website (correctly!). Also has interactive embedded dark / light theme toggle, and document outline.",
+	"author": "Nathan George",
+	"authorUrl": "https://github.com/KosmosisDire/obsidian-webpage-export",
+	"isDesktopOnly": true
+}

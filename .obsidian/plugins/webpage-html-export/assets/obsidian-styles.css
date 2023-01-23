@@ -1,0 +1,262 @@
+.callout
+{
+	mix-blend-mode: normal !important;
+}
+
+@media print 
+{
+    
+    html body> :not(.print) 
+    {
+        display: unset !important;
+    }
+
+    .collapse-indicator
+    {
+        display: none !important;
+    }
+
+    .is-collapsed > element > .collapse-indicator
+    {
+        display: unset !important;
+    }
+}
+
+.list-collapse-indicator
+{
+    display: none !important;
+}
+
+@font-face
+{
+    font-family: MJXZERO;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Zero.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-B;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Bold.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-I;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-Italic.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-MI;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Main-Italic.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-BI;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Math-BoldItalic.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-S1;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size1-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-S2;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size2-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-S3;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size3-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-S4;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Size4-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-A;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_AMS-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-C;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-CB;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Calligraphic-Bold.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-FR;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-FRB;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Fraktur-Bold.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-SS;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-SSB;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Bold.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-SSI;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_SansSerif-Italic.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-SC;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Script-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-T;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Typewriter-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-V;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Regular.woff") format("woff");
+}
+
+@font-face
+{
+    font-family: MJXTEX-VB;
+    src: url("https://publish.obsidian.md/lib/mathjax/output/chtml/fonts/woff-v2/MathJax_Vector-Bold.woff") format("woff");
+}
+
+@font-face {
+    font-family: 'Avenir Next';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/94f2f163d4b698242fef.otf');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 200;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/72505e6a122c6acd5471.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 300;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/2d5198822ab091ce4305.woff2') format('woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/c8ba52b05a9ef10f4758.woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 400;
+    font-style: italic;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/cb10ffd7684cd9836a05.woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/b5f0f109bc88052d4000.woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/cbe0ae49c52c920fd563.woff2');
+}
+
+@font-face {
+    font-family: 'Inter';
+    font-weight: 800;
+    font-style: italic;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/535a6cf662596b3bd6a6.woff2');
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/70cc7ff27245e82ad414.ttf');
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/454577c22304619db035.ttf');
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/52ac8f3034507f1d9e53.ttf');
+}
+
+@font-face {
+    font-family: 'Source Code Pro';
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/05b618077343fbbd92b7.ttf');
+}
+
+@font-face {
+    font-family: 'Flow Circular';
+    font-display: swap;
+    src: url('https://publish.obsidian.md/public/fonts/853ff76f08786ae44ca0.woff');
+}

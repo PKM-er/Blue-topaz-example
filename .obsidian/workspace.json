@@ -4,18 +4,58 @@
     "type": "split",
     "children": [
       {
-        "id": "2af59c2cbcb88278",
+        "id": "8bbe2deff908dd60",
         "type": "tabs",
         "children": [
           {
-            "id": "23e9374d1986e8e9",
+            "id": "944517de283150b7",
+            "type": "leaf",
+            "pinned": true,
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "60-Canvas/Home_middle.canvas",
+                "viewState": {
+                  "x": -10452.012018334373,
+                  "y": -10105.74841400141,
+                  "zoom": -0.5809317117344484,
+                  "snapToGrid": false
+                }
+              },
+              "pinned": true
+            }
+          },
+          {
+            "id": "27cf7f32a6d5470b",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {}
+              "type": "canvas",
+              "state": {
+                "file": "60-Canvas/Home_middle.canvas",
+                "viewState": {
+                  "x": -10376,
+                  "y": -10138.5,
+                  "zoom": -1.4738896713309884,
+                  "snapToGrid": false
+                }
+              }
+            }
+          },
+          {
+            "id": "be67ba51ac495e95",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
+                "mode": "preview",
+                "backlinks": false,
+                "source": false
+              }
             }
           }
-        ]
+        ],
+        "currentTab": 2
       }
     ],
     "direction": "vertical"
@@ -113,7 +153,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md"
+              }
             }
           },
           {
@@ -143,6 +185,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -159,6 +202,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "00-Tips/🥑Blue Topaz Themes Tips.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -195,13 +239,18 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265
+    "width": 265,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
+      "webpage-html-export:Export Vault to HTML": false,
       "surfing:surfing-bookmark-manager": false,
       "omnisearch:Omnisearch": false,
+      "homepage:Open homepage": false,
       "periodic-notes:Open today's daily note": false,
+      "dbfolder:创建一个新数据库表": false,
+      "obsidian-projects:Open projects": false,
       "templater-obsidian:Templater": false,
       "cmdr:显示当前文件": false,
       "switcher:打开快速切换": false,
@@ -213,23 +262,20 @@
       "markdown-importer:打开 Markdown 格式转换器": false,
       "audio-recorder:开始/结束录音": false,
       "workspaces:管理工作区布局": false,
-      "obsidian-memos:Memos": false,
-      "homepage:Open homepage": false,
-      "dbfolder:创建一个新数据库表": false,
-      "obsidian-projects:Open projects": false
+      "obsidian-memos:Memos": false
     }
   },
-  "active": "23e9374d1986e8e9",
+  "active": "37c8f55a8ef7a09c",
   "lastOpenFiles": [
-    "untitled.md",
-    "20230115202951.md",
-    "88-Template/home.md",
-    "88-Template/常用工具.md",
-    "88-Template/button.md",
-    "50-Inbox/Website/文本处理-textce.md",
-    "20230118095741.md",
+    "00-Tips/00-Tips.md",
+    "30-Reading/《理解海德格尔》.md",
+    "20230118105919.md",
+    "未命名.canvas",
     "60-Canvas/Home_middle.canvas",
-    "77-Example/各级标题示例.md",
-    "77-Example/分栏效果示例.md"
+    "30-Reading/《笔醒山河》.md",
+    "88-Template/常用工具.md",
+    "30-Reading/30-Reading.md",
+    "60-Canvas/代码块相关样式_middle.canvas",
+    "88-Template/FastStart-Plugins-ShortDelay.md"
   ]
 }
