@@ -219,6 +219,222 @@
       "Include CJK Symbols and Punctuation": true,
       "Include Dashes": true,
       "Other symbols": ""
+    },
+    "插入 YAML 属性": {
+      "将给定的 YAML 属性插入到 YAML 中。每个属性各占一行。": false,
+      "要插入的文本": "aliases: \ntags: "
+    },
+    "格式化标签内容": {
+      "从 YAML 中整理标签样式，此操作会使原有标签格式失效。": false
+    },
+    "格式化数组内容": {
+      "允许将 YAML 中常规的数组格式化为多行或单行样式，并允许标签和别名具有一些特定格式。请注意，如果存在多个条目，则【单字符串到单多行】将从单行字符串条目变为单, 多行数组。": false,
+      "设置 YAML 别名部分的格式": true,
+      "设置 YAML 标签部分的格式": true,
+      "默认 YAML 数组部分的样式": "single-line",
+      "格式化数组部分": true,
+      "强制键值为单行数组": "",
+      "强制键值为多行数组": ""
+    },
+    "将标签移动到 Yaml": {
+      "将所有标签移动到文档的  Yaml 内。": false,
+      "正文标签操作": "Nothing",
+      "要忽略的标签": ""
+    },
+    "强制转义": {
+      "转义指定 YAML 键的值。": false,
+      "在 YAML 键上强制转义": ""
+    },
+    "删除 YAML 键": {
+      "删除指定的 YAML 键": false,
+      "要删除的 YAML 键": ""
+    },
+    "转义特殊字符": {
+      "在 YAML 中转义后带空格的冒号, 单引号和双引号。": false,
+      "尝试转义单行数组": false
+    },
+    "YAML 标题": {
+      "将文件标题插入到 YAML 中。从第一个 H1标题行或文件名（如果没有 H1标题行）中获取标题。": false,
+      "标题的键名": "title"
+    },
+    "YAML 标题别名": {
+      "将标题名称插入到 YAML 的别名部分。从首个 H1标题行或文件名获取此名称。": false,
+      "保留现有别名部分样式": true,
+      "保留与文件名匹配的别名": false,
+      "使用 YAML 键名 `linter-yaml-title-alias` 来帮助更改文件名和标题": true
+    },
+    "YAML 键排序": {
+      "根据指定的顺序和优先级对 YAML 键进行排序。注意:也可以删除空行。": false,
+      "YAML 键值优先级排列顺序": "",
+      "YAML 开始时的优先级键": true,
+      "YAML 其他键的排列顺序": "None"
+    },
+    "YAML 时间戳": {
+      "跟踪文件（从元数据中获取）创建及编辑的日期并显示到 YAML 中。": false,
+      "创建日期": true,
+      "创建日期的键名": "date created",
+      "修改日期": true,
+      "修改日期的键名": "date modified",
+      "格式化": "dddd, MMMM Do YYYY, h:mm:ss a"
+    },
+    "标题起始行": {
+      "不以行开头的标题将删除其前面的空格，以确保它们被识别为标题。": false
+    },
+    "大写标题": {
+      "标题应采用大写格式": false,
+      "样式": "Title Case",
+      "忽略大小写单词": true,
+      "忽略单词": "macOS, iOS, iPhone, iPad, JavaScript, TypeScript, AppleScript, I",
+      "小写单词": "a, an, the, aboard, about, abt., above, abreast, absent, across, after, against, along, aloft, alongside, amid, amidst, mid, midst, among, amongst, anti, apropos, around, round, as, aslant, astride, at, atop, ontop, bar, barring, before, B4, behind, below, beneath, neath, beside, besides, between, 'tween, beyond, but, by, chez, circa, c., ca., come, concerning, contra, counting, cum, despite, spite, down, during, effective, ere, except, excepting, excluding, failing, following, for, from, in, including, inside, into, less, like, minus, modulo, mod, near, nearer, nearest, next, notwithstanding, of, o', off, offshore, on, onto, opposite, out, outside, over, o'er, pace, past, pending, per, plus, post, pre, pro, qua, re, regarding, respecting, sans, save, saving, short, since, sub, than, through, thru, throughout, thruout, till, times, to, t', touching, toward, towards, under, underneath, unlike, until, unto, up, upon, versus, vs., v., via, vice, vis-à-vis, wanting, with, w/, w., c̄, within, w/i, without, 'thout, w/o, abroad, adrift, aft, afterward, afterwards, ahead, apart, ashore, aside, away, back, backward, backwards, beforehand, downhill, downstage, downstairs, downstream, downward, downwards, downwind, east, eastward, eastwards, forth, forward, forwards, heavenward, heavenwards, hence, henceforth, here, hereby, herein, hereof, hereto, herewith, home, homeward, homewards, indoors, inward, inwards, leftward, leftwards, north, northeast, northward, northwards, northwest, now, onward, onwards, outdoors, outward, outwards, overboard, overhead, overland, overseas, rightward, rightwards, seaward, seawards, skywards, skyward, south, southeast, southwards, southward, southwest, then, thence, thenceforth, there, thereby, therein, thereof, thereto, therewith, together, underfoot, underground, uphill, upstage, upstairs, upstream, upward, upwards, upwind, west, westward, westwards, when, whence, where, whereby, wherein, whereto, wherewith, although, because, considering, given, granted, if, lest, once, provided, providing, seeing, so, supposing, though, unless, whenever, whereas, wherever, while, whilst, ago, according to, as regards, counter to, instead of, owing to, pertaining to, at the behest of, at the expense of, at the hands of, at risk of, at the risk of, at variance with, by dint of, by means of, by virtue of, by way of, for the sake of, for sake of, for lack of, for want of, from want of, in accordance with, in addition to, in case of, in charge of, in compliance with, in conformity with, in contact with, in exchange for, in favor of, in front of, in lieu of, in light of, in the light of, in line with, in place of, in point of, in quest of, in relation to, in regard to, with regard to, in respect to, with respect to, in return for, in search of, in step with, in touch with, in terms of, in the name of, in view of, on account of, on behalf of, on grounds of, on the grounds of, on the part of, on top of, with a view to, with the exception of, à la, a la, as soon as, as well as, close to, due to, far from, in case, other than, prior to, pursuant to, regardless of, subsequent to, as long as, as much as, as far as, by the time, in as much as, inasmuch, in order to, in order that, even, provide that, if only, whether, whose, whoever, why, how, or not, whatever, what, both, and, or, not only, but also, either, neither, nor, just, rather, no sooner, such, that, yet, is, it"
+    },
+    "级别增量": {
+      "标题级别一次只能增加一个级别": false,
+      "从 标题2 级别开始增量": false
+    },
+    "删除尾随标点": {
+      "从标题末尾删除指定的标点符号，确保忽略末尾的分号或遵循[HTML 实体引用](https://en.wikipedia.org/wiki/List_of_XML_and_HTML_character_entity_references).": false,
+      "末尾的标点符号": ".,;:!。，；：！"
+    },
+    "文件名标题": {
+      "如果不存在 H1 标题，则将文件名作为 H1 标题插入。": false
+    },
+    "标点后的脚注": {
+      "确保脚注引用放在标点符号之后(不是之前)。": false
+    },
+    "脚注移到底部": {
+      "将所有脚注移到文档底部。": false
+    },
+    "重新索引脚注": {
+      "根据出现顺序重新索引脚注键和脚注 (注意: 该规则故意*不*保留键和脚注之间的关系，以便能够重新索引重复的键。)": false
+    },
+    "格式化网址": {
+      "用尖括号将裸露的网址 URL 括起来，除非已经被反引号, 方括号, 单引号或双引号括起来。": false
+    },
+    "两行之间加两个空格": {
+      "确保在行尾添加两个空格，并在下一行继续显示段落, 块引号和列表项等内容": false
+    },
+    "强调的风格": {
+      "确保风格一致。": false,
+      "样式": "consistent"
+    },
+    "强调样式": {
+      "确保强调样式一致。": false,
+      "样式": "consistent"
+    },
+    "删除带连字符的换行符": {
+      "删除带连字符的换行符。粘贴课本中的文本时很有用。": false
+    },
+    "删除多个空格": {
+      "删除连续的两个或多个空格。忽略行首和行尾的空格。": false
+    },
+    "删除空列表的标记": {
+      "删除空列表(没有内容的列表项)的标记。": false
+    },
+    "删除连续的列表标记": {
+      "删除连续的列表标记。在复制粘贴列表项时很有用。": false
+    },
+    "适当的省略": {
+      "用省略号替换三个连续的点。": false
+    },
+    "无序列表样式": {
+      "确保无序列表遵循指定的样式。": false,
+      "列表项目样式": "consistent"
+    },
+    "有序列表样式": {
+      "确保有序列表遵循指定的样式。注意，两个空格或一个制表符被认为是缩进级别。": false,
+      "数字样式": "ascending",
+      "有序列表的结束样式": "."
+    },
+    "转换项目符号, 列表标记": {
+      "将常用项目符号列表的标记符号转换为 MarkDown 列表标记。": false
+    },
+    "自动更正拼写错误": {
+      "使用常见拼写错误词典将它们自动转换为正确的拼写。查看 [自动更正说明](https://github.com/platers/obsidian-linter/tree/master/src/utils/auto-correct-misspellings.ts) 的完整文档列表。": false,
+      "忽略单词": ""
+    },
+    "标题周围的空行": {
+      "所有标题的前后都保留一个空行(位于文档开头或结尾的标题除外)。": false,
+      "后面的空行": true,
+      "Yaml 和标题之间的空行": true
+    },
+    "表格周围的空行": {
+      "确保表格周围有一个空行，除非表格位于文档的开始或结尾。": false
+    },
+    "代码块周围的空行": {
+      "确保代码块周围有一个空行，除非它们位于文档开始或结束位置。": false
+    },
+    "段落周围的空行": {
+      "所有段落前后都只保留一个空行。": false
+    },
+    "紧凑型 YAML": {
+      "删除 YAML 里的前导和尾随空行。": false,
+      "删除新行": false
+    },
+    "空格转为制表符": {
+      "将每行的前导空格转换为制表符。": false,
+      "制表符大小": 4
+    },
+    "块引用周围的空行": {
+      "确保在块引用周围有一个空行，除非它位于文档的开始或结尾。**注意**，空行要么是少了一层嵌套的块引号，要么是换行符": false
+    },
+    "连续空行": {
+      "最多保留一个连续的空行。": false
+    },
+    "列表标记后的空格": {
+      "列表标记和复选框后面应该有一个空格。": false
+    },
+    "删除标记和列表之间的空行": {
+      "检查列表标记和列表之间不应该有任何空行。": false
+    },
+    "删除链接周围的空格": {
+      "删除链接文本周围的空格。": false
+    },
+    "删除字符周围的空格": {
+      "确保某些字符不会被空格(单个空格或制表符)包围。注意，在某些情况下可能会导致 MD 语法出现问题。": false,
+      "包括全角表单": true,
+      "包括 CJK 符号和标点符号": true,
+      "包括破折号": true,
+      "其他符号": ""
+    },
+    "数学块周围的空行": {
+      "确保在数学块周围有一个空行，使用【用于指示数学块的美元符号的数量】来确定有多少美元符号表示用于单行数学的数学块。": false
+    },
+    "文档末尾换行符": {
+      "确保文档末尾只有一个换行符。": false
+    },
+    "行尾的空格": {
+      "删除每行末尾的多余空格。": false,
+      "两个空格的换行符": false
+    },
+    "指示器移到数学块行": {
+      "使用【用于指示数学块的美元符号数量】将所有数学块的开始和结束指示器移动到各自的行中，以确定有多少美元符号表示用于单行数学的数学块。": false
+    },
+    "中文, 日语, 韩语, 英语或数字之间的空格": {
+      "确保中文, 日文, 韩文和英文或数字之间用空格隔开。请遵循以下 [指导方针](https://github.com/sparanoid/chinese-copywriting-guidelines)": false
+    },
+    "防止粘贴时出现双重列表指示符": {
+      "如果文件中光标所在行具有任务清单指示符，则从要粘贴的文本中删除任务清单指示符": false
+    },
+    "防止粘贴时出现重复的列表项指示符": {
+      "如果文件中光标所在行具有列表指示符，则从要粘贴的文本中删除列表指示符": false
+    },
+    "删除所贴文本中的连字符": {
+      "从所贴文本中删除连字符": false
+    },
+    "删除所贴文本中的前导或尾随空格": {
+      "删除所贴文本中的所有前导空格(非制表符)和尾随空格": false
+    },
+    "删除粘贴时的多个空行": {
+      "将多个空行压缩为一个空行，以便粘贴文本": false
+    },
+    "粘贴时从引用中删除剩余脚注": {
+      "删除要所贴文本中的所有剩余脚注引用": false
+    },
+    "粘贴时添加块引用缩进": {
+      "在粘贴过程中，当光标位于块引用/标注行中时，将块引用添加到除第一行之外的所有行": false
+    },
+    "粘贴时正确显示省略号": {
+      "用三个连续的点替换省略号，即使它们之间存在空格": false
     }
   },
   "lintOnSave": true,

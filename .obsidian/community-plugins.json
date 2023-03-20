@@ -74,5 +74,6 @@
   "obsidian-image-auto-upload-plugin",
   "float-search",
   "editing-toolbar",
-  "home-tab"
+  "home-tab",
+  "obsidian-linter"
 ]

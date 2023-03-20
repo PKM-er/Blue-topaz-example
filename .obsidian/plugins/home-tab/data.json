@@ -24,24 +24,24 @@
   "unresolvedLinks": false,
   "recentFilesStore": [
     {
+      "filepath": "60-Canvas/Home_middle.canvas",
+      "timestamp": 1679321466055
+    },
+    {
+      "filepath": "Changlog.md",
+      "timestamp": 1679321277762
+    },
+    {
+      "filepath": "README.md",
+      "timestamp": 1679321182728
+    },
+    {
       "filepath": "77-Example/分栏效果示例.md",
       "timestamp": 1679320753755
     },
     {
-      "filepath": "60-Canvas/Home_middle.canvas",
-      "timestamp": 1679320743528
-    },
-    {
       "filepath": "77-Example/77-Example.md",
       "timestamp": 1679320741369
-    },
-    {
-      "filepath": "77-Example/ob提示框(callout)样式展示.md",
-      "timestamp": 1679320728514
-    },
-    {
-      "filepath": "88-Template/常用工具.md",
-      "timestamp": 1679320605341
     }
   ],
   "starredFileStore": [

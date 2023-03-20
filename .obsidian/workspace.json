@@ -23,17 +23,8 @@
               },
               "pinned": true
             }
-          },
-          {
-            "id": "a02f685ad14f78c2",
-            "type": "leaf",
-            "state": {
-              "type": "home-tab-view",
-              "state": {}
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -88,8 +79,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 2
+        ]
       },
       {
         "id": "d877e8285f98a38a",
@@ -108,8 +98,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 276.9945435523987,
-    "collapsed": true
+    "width": 276.9945435523987
   },
   "right": {
     "id": "4e390742ffc29613",
@@ -133,7 +122,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "60-Canvas/Home_middle.canvas"
+              }
             }
           },
           {
@@ -163,6 +154,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "60-Canvas/Home_middle.canvas",
                 "collapseAll": true,
                 "extraContext": true,
                 "sortOrder": "byModifiedTime",
@@ -179,6 +171,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "60-Canvas/Home_middle.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -215,8 +208,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 265,
-    "collapsed": true
+    "width": 265
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -243,10 +235,11 @@
       "obsidian-memos:Memos": false
     }
   },
-  "active": "a02f685ad14f78c2",
+  "active": "944517de283150b7",
   "lastOpenFiles": [
-    "77-Example/分栏效果示例.md",
+    "README.md",
     "60-Canvas/Home_middle.canvas",
+    "77-Example/分栏效果示例.md",
     "77-Example/77-Example.md",
     "77-Example/ob提示框(callout)样式展示.md",
     "88-Template/常用工具.md",
@@ -272,7 +265,6 @@
     "00-Tips/🥑Blue Topaz Themes Tips.md",
     "77-Example/◾ Dataview相关实例/【dv】tasks任务以时间线视图汇总.md",
     "77-Example/◾ Dataview相关实例/【dv】tasks任务以日历视图汇总.md",
-    "30-Reading/《世界是如何思考的》.md",
     "60-Canvas/代码块相关样式_middle.canvas",
     "60-Canvas/Formatting_Cheatsheet.canvas",
     "60-Canvas/canvas白板介绍_middle.canvas",
