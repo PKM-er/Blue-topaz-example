@@ -593,13 +593,25 @@ div.database-plugin__td.data-input span:focus {
 
 .database-plugin__relationship,
 .react-select__option {
-  color: rgb(66, 66, 66);
   box-sizing: border-box;
   font-weight: 400;
   padding: 2px 6px;
   border-radius: 4px;
   display: inline-block;
   white-space: nowrap;
+}
+
+.database-plugin__relationship .markdown-preview-view {
+  color: unset;
+}
+
+.database-plugin__relation-container .database-plugin__relationship a:link {
+  color: #dadada;
+  text-decoration: none;
+}
+
+.database-plugin__relation-container .database-plugin__relationship a:hover {
+  color: #a38484;
 }
 
 .react-select__option + .react-select__option {
@@ -713,6 +725,14 @@ div.database-plugin__td.data-input span:focus {
   position: relative;
 }
 
+.database-plugin__container-mobile {
+  contain: content;
+  height: 100%;
+  width: 100%;
+  position: relative;
+  margin-bottom: 5rem;
+}
+
 .database-plugin__container tr input {
   background: var(--background-modifier-box-shadow);
 }
@@ -756,6 +776,19 @@ div.database-plugin__td.data-input span:focus {
 .configuration-section-container-columns-template {
   background-color: var(--background-modifier-box-shadow);
 }
+
+.database-plugin__setting-item {
+  display: grid;
+}
+
+.database-plugin__setting-item > .setting-item-info {
+  margin-bottom: 10px;
+}
+
+.database-plugin__center-cell td {
+  text-align: center;
+}
+
 /**
 *  Row styles
 */

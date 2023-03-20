@@ -1,6 +1,33 @@
 /* THIS FILE IS NOT EXPORTED WITH THE HTML FILE! */
 
+/* Flow list used on the settings page */
+.flow-list {
+    contain: inline-size;
+    gap: 0.2em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width: -webkit-fill-available;
+	background-color: var(--background-secondary);
+	border: 1px solid var(--divider-color);
+	border-radius: 5px;
+	padding: 6px;
+}
 
+.flow-item {
+    display: flex;
+	flex-direction: row;
+    border-radius: 100px;
+	border: 1px solid var(--divider-color);
+    font-size: 0.9em;
+    height: min-content;
+    width: max-content;
+    padding: 3px 8px 3px 8px;
+    margin: 0.1em 0em 0.1em 0.0em;
+    background-color: var(--background-primary);
+	align-items: center;
+}
 
 /* Toggle Styles for inside Obsidian */
 .theme-toggle {

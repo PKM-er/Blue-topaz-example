@@ -1,16 +1,49 @@
+
+/* General */
+
 :root {
     --mm-color-text: #fff;
-    --mm-line-height: 1em;
 }
 
-#markmap {
+[hidden] {
+    display: none !important;
+}
+
+.mmng-coloring-approach-description {
+    border-top: none;
+    padding-top: 0;
+}
+
+.mmng-coloring-approach-description .setting-item-description { padding-top: 0 }
+
+
+/* Mindmaps */
+
+.markmap {
     width: 100%;
     height: 100%;
+    display: block;
+    white-space: nowrap;
 }
 
-#markmap div {
-    line-height: var(--mm-line-height, 1em);
+.markmap div { line-height: var(--mm-line-height, 1em) }
+
+
+/* Code blocks inside mindmaps */
+
+/* Remove markmap's code block style */
+.markmap-foreign.markmap-foreign code {
+    color: inherit;
+    background-color: inherit;
 }
+
+/* Hide language tag shown by some themes */
+.markmap-foreign pre[class*='language-']::after {
+    display: none;
+}
+
+
+/* Checkboxes */
 
 .mm-ng-checkbox {
     font-weight: bold;
@@ -24,60 +57,54 @@
     color: red;
 }
 
-.markmap-inline-container_boxed {
-    background-color: rgba(0, 0, 0, 0.1);
-    border-color: rgba(0, 0, 0, 0.2);
-    border-radius: 5px;
-    border-width: 2px;
-    border-style: solid;
-    padding: 7px;
+
+/* Inline mindmaps */
+
+.block-language-markmap { border-radius: 5px }
+.block-language-markmap svg { border-radius: 5px }
+
+.mmng-highlight-inline .block-language-markmap {
+    background-color: var(--code-background);
+    padding: 3px;
+}
+
+.mmng-highlight-inline-off .block-language-markmap {
+    background-color: inherit;
+}
+
+.markdown-source-view.mod-cm6 .cm-embed-block:has(.block-language-markmap):hover {
+    box-shadow: none;
 }
 
 
-.markmap-inline-container_unboxed {
-    background-color: transparent;
-    border-color: transparent;
-    border-radius: 0px;
-    border-width: 0px;
-    border-style: none;
-    padding: 0px;
+/* Toolbars */
+
+.mm-toolbar {
+    position: absolute;
+    bottom: 2rem;
+    right: 1rem;
+    background-color: white;
+    border-radius: 0.5rem;
+    padding: 0.2rem;
+    box-shadow: 0 0 0.4rem 0 white;
+    z-index: 1;
+    border: 1px solid #ccc;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
 }
 
-.markmap-inline-svg {
-    width: 100%;
+.mm-toolbar .mm-toolbar-brand {
+    display: none;
 }
 
-.markmap-inline-svg div {
-    line-height: var(--mm-line-height, 1em);
+.mm-toolbar .mm-toolbar-item {
+    height: 20px;
+    color: black;
 }
 
-
-.markmap-toolbar-container .mm-toolbar {
-position: absolute;
-bottom: 2rem;
-right: 1rem;
-background-color: white;
-border-radius: 0.5rem;
-padding: 0.2rem;
-box-shadow: 0 0 0.4rem 0 white;
-z-index: 1;
-border: 1px solid #ccc;
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-}
-
-.markmap-toolbar-container .mm-toolbar .mm-toolbar-brand {
-display: none;
-}
-
-.markmap-toolbar-container .mm-toolbar .mm-toolbar-item {
-height: 20px;
-color: black;
-}
-
-.markmap-toolbar-container .mm-toolbar .mm-toolbar-item.active,
-.markmap-toolbar-container .mm-toolbar .mm-toolbar-item:hover {
-color: brown;
+.mm-toolbar .mm-toolbar-item.active,
+.mm-toolbar .mm-toolbar-item:hover {
+    color: brown;
 }

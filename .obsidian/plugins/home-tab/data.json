@@ -1,0 +1,90 @@
+{
+  "logoType": "default",
+  "logo": {
+    "lucideIcon": "search",
+    "imagePath": "",
+    "imageLink": "http://www.baidu.com"
+  },
+  "logoScale": 1,
+  "iconColorType": "default",
+  "wordmark": "Blue Topaz Example",
+  "customFont": "interfaceFont",
+  "fontSize": "3em",
+  "fontColorType": "default",
+  "fontWeight": 600,
+  "maxResults": 5,
+  "showStarredFiles": true,
+  "showRecentFiles": true,
+  "maxRecentFiles": 5,
+  "storeRecentFile": true,
+  "showPath": false,
+  "selectionHighlight": "default",
+  "showShortcuts": true,
+  "markdownOnly": false,
+  "unresolvedLinks": false,
+  "recentFilesStore": [
+    {
+      "filepath": "77-Example/分栏效果示例.md",
+      "timestamp": 1679320753755
+    },
+    {
+      "filepath": "60-Canvas/Home_middle.canvas",
+      "timestamp": 1679320743528
+    },
+    {
+      "filepath": "77-Example/77-Example.md",
+      "timestamp": 1679320741369
+    },
+    {
+      "filepath": "77-Example/ob提示框(callout)样式展示.md",
+      "timestamp": 1679320728514
+    },
+    {
+      "filepath": "88-Template/常用工具.md",
+      "timestamp": 1679320605341
+    }
+  ],
+  "starredFileStore": [
+    {
+      "filepath": "77-Example/各级标题示例.md",
+      "iconId": "star"
+    },
+    {
+      "filepath": "77-Example/分栏效果示例.md",
+      "iconId": "star"
+    },
+    {
+      "filepath": "77-Example/各类列表和彩虹大纲线.md",
+      "iconId": "star"
+    },
+    {
+      "filepath": "77-Example/77-Example.md",
+      "iconId": "star"
+    },
+    {
+      "filepath": "77-Example/◾ Dataview相关实例/通过下拉框检索文件示例.md",
+      "iconId": "star"
+    },
+    {
+      "filepath": "77-Example/◾ Dataview相关实例/项目追踪（完成的字数和任务）.md",
+      "iconId": "lightbulb"
+    },
+    {
+      "filepath": "10-Help/Dataview系列教程/🔑Dataview教程.md",
+      "iconId": "database"
+    },
+    {
+      "filepath": "00-Tips/🥑Blue Topaz Themes Tips.md",
+      "iconId": "book-open"
+    },
+    {
+      "filepath": "77-Example/ob提示框(callout)样式展示.md",
+      "iconId": "bookmark"
+    }
+  ],
+  "searchDelay": 200,
+  "replaceNewTabs": true,
+  "newTabOnStart": false,
+  "closePreviousSessionTabs": false,
+  "font": "霞鹜文楷"
+}

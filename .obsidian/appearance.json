@@ -33,7 +33,11 @@
     "【天气】weather",
     "【Memos】Popover",
     "【卡片视图】cards",
-    "【图标】预览网址加图标 - External Link Icons"
+    "【图标】预览网址加图标 - External Link Icons",
+    "【列表】ob列表转换表格",
+    "【分栏】Easy multi-column notes",
+    "【callout】Custom page preview",
+    "【FONT】Consolas-Bookerly"
   ],
   "translucency": false,
   "textFontFamily": "",

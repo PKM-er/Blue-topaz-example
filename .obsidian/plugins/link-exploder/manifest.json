@@ -1,0 +1,1 @@
+{"id":"link-exploder","name":"Link Exploder","version":"0.2.4","minAppVersion":"1.1.0","description":"Link Exploder is a Obsidian plugin that creates a canvas from a note, embedding it's incoming (i.e. backlinks) and outgoing links onto the canvas (as well as the their linked notes).","author":"Ben Hughes","authorUrl":"https://github.com/benhughes","isDesktopOnly":true}

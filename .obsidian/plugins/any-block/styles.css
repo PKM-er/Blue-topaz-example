@@ -1,0 +1,256 @@
+@charset "UTF-8";
+:root {
+  --pre-background-color: #1b1b1b;
+}
+
+/** 替换内容
+ * .ab-replace
+ *   .ab-note
+ *   .ab-button
+ */
+.ab-replace {
+  /*background-color: #272e3a;*/
+  position: relative;
+  border-radius: 4px;
+}
+
+.ab-replace .ab-note {
+  position: relative;
+  /*padding: 24px 12px 12px 12px;*/
+}
+
+.ab-replace .ab-button {
+  box-sizing: border-box;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+}
+
+.ab-replace img.cm-widgetBuffer {
+  height: 2px;
+}
+
+.ab-note table[modeT="true"] tr {
+  display: block;
+  float: left;
+}
+
+.ab-note table[modeT="true"] th, .ab-note table[modeT="true"] td {
+  display: block;
+}
+
+.ab-note .ab-tab-root {
+  border: solid royalblue 1px;
+}
+
+.ab-note .ab-tab-root > ul {
+  height: 30px;
+}
+
+.ab-note .ab-tab-root .ab-tab-tab {
+  float: left;
+  list-style: none;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 5px;
+  text-align: center;
+  border: solid royalblue 1px;
+}
+
+.ab-note .ab-tab-root .ab-tab-tab[is_activate="true"] {
+  background-color: slateblue;
+}
+
+.ab-note .ab-tab-root .ab-tab-content {
+  clear: both;
+  padding: 8px 10px;
+}
+
+.ab-note .ab-table {
+  border-collapse: collapse;
+}
+
+.ab-note .ab-table td > p:first-child,
+.ab-note .ab-table th > p:first-child,
+.ab-note .ab-table .ab-list-table-witharrow > p:first-child {
+  margin-top: 0;
+}
+
+.ab-note .ab-table td > p:last-child,
+.ab-note .ab-table th > p:last-child,
+.ab-note .ab-table .ab-list-table-witharrow > p:last-child {
+  margin-bottom: 0;
+}
+
+.ab-note .ab-table td, .ab-note .ab-table th {
+  padding: 2px 5px;
+  border: solid #363636 1px;
+}
+
+.ab-note .ab-list-table .ab-foldable-tr > td:first-child > div {
+  padding-left: 15px;
+  position: relative;
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[able_fold="true"] > td:first-child > div::before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[able_fold="true"][is_fold="true"] > td:first-child > div::before {
+  top: 5px;
+  left: 2px;
+  border: 6px solid transparent;
+  border-left-color: #d9d9d9;
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[able_fold="true"][is_fold="false"] > td:first-child > div::before {
+  top: 9px;
+  left: -1px;
+  border: 6px solid transparent;
+  border-top-color: #d9d9d9;
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="1"] > td:first-child {
+  padding-left: calc(1*12px);
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="2"] > td:first-child {
+  padding-left: calc(2*12px);
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="3"] > td:first-child {
+  padding-left: calc(3*12px);
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="4"] > td:first-child {
+  padding-left: calc(4*12px);
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="5"] > td:first-child {
+  padding-left: calc(5*12px);
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="6"] > td:first-child {
+  padding-left: calc(6*12px);
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="7"] > td:first-child {
+  padding-left: calc(7*12px);
+}
+
+.ab-note .ab-list-table .ab-foldable-tr[tr_level="8"] > td:first-child {
+  padding-left: calc(8*12px);
+}
+
+.ab-note .ab-deco-fold .ab-deco-fold-button {
+  background-color: slateblue;
+  height: 30px;
+  line-height: 30px;
+  padding-left: 6px;
+  border-radius: 5px;
+  width: 100%;
+}
+
+.ab-note .ab-deco-scroll.ab-deco-scroll-y {
+  overflow-y: auto;
+}
+
+.ab-note .ab-deco-scroll.ab-deco-scroll-x {
+  overflow-x: auto;
+  white-space: nowrap;
+}
+
+.ab-note .ab-deco-overfold {
+  overflow-y: hidden;
+  position: relative;
+}
+
+.ab-note .ab-deco-overfold .ab-deco-overfold-button {
+  position: absolute;
+  bottom: 0;
+  height: 40px;
+  line-height: 40px;
+  width: 100%;
+  text-align: center;
+  box-sizing: content-box;
+}
+
+.ab-note .ab-deco-overfold .ab-deco-overfold-content {
+  margin-bottom: 40px;
+}
+
+.ab-note .ab-deco-overfold[is-fold="true"] .ab-deco-overfold-button {
+  padding-top: 60px;
+  background-image: linear-gradient(-180deg, rgba(24, 26, 27, 0) 0%, #181a1b 100%);
+}
+
+.ab-note .ab-deco-heimu, .ab-note .ab-deco-heimu a {
+  background-color: #252525;
+  color: #252525;
+  text-shadow: none;
+}
+
+.ab-note ::selection {
+  background: #9ab0c0;
+  color: #fff;
+}
+
+.ab-note .ab-deco-heimu:hover, .ab-note .ab-deco-heimu:hover a {
+  transition: color .13s linear;
+  color: #fff;
+}
+
+.ab-note .ab-deco-title {
+  width: 100%;
+}
+
+.ab-note .ab-deco-title p {
+  font-size: 17px;
+  line-height: 17px;
+  margin: 0;
+  margin-bottom: 10px;
+}
+
+.ab-note .ab-deco-title .ab-deco-title-title {
+  height: auto;
+}
+
+.ab-note .ab-deco-title .ab-deco-title-title[title-type="table"] > p {
+  font-weight: bold;
+  text-align: center;
+  margin-top: 10px;
+  margin-bottom: 16px;
+}
+
+.ab-note .ab-deco-title .ab-deco-title-title[title-type="pre"] > p {
+  display: inline;
+  font-size: 16px;
+  font-weight: 400;
+  background-color: var(--pre-background-color);
+  padding: 8px 16px 11px 16px;
+  border-radius: 8px 8px 0 0;
+  margin: 0;
+}
+
+.ab-note .ab-deco-title .ab-deco-title-title[title-type="quote"] > p {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.ab-note .ab-deco-title .ab-deco-title-title[title-type="ul"] > p {
+  font-weight: bold;
+}
+
+div.md-table-fig1 {
+  overflow-x: scroll;
+  transform: scaleY(-1);
+}
+
+table.md-table-fig2 {
+  overflow-x: scroll;
+  transform: scaleY(-1);
+  white-space: nowrap;
+}

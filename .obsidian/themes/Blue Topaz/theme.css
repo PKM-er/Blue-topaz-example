@@ -9550,7 +9550,7 @@ body.font-family-change-to-default :is(.markdown-preview-view,.markdown-rendered
   font-family: 'Source Code Pro', monospace !important;
 }
 
-body.reduce-bottom-padding :is(.markdown-preview-view,.markdown-rendered) .markdown-preview-sizer,
+body.reduce-bottom-padding .workspace-leaf-content[data-type="markdown"] :is(.markdown-preview-view,.markdown-rendered) .markdown-preview-sizer,
 body.reduce-bottom-padding:not(.plugin-cm-typewriter-scroll) .cm-s-obsidian .cm-content {
   padding-bottom: var(--bottom-padding-value) !important;
 }
@@ -25138,6 +25138,14 @@ body:not(.default-loading-page) .progress-bar-subline {
 /* ================================== */
 /* ======= Banner ======= */
 /* ================================== */
+
+.show-inline-title .obsidian-banner-wrapper.has-banner-icon .obsidian-banner-icon.v-center, 
+.show-inline-title  .obsidian-banner-wrapper.has-banner-icon .obsidian-banner-icon.v-custom {
+  margin-top: calc(-1em - 6px);
+}
+.show-inline-title .obsidian-banner-wrapper.has-banner-icon .obsidian-banner-icon.v-above {
+  margin-top: calc(-2em - 12px);
+}
 /* ====cssclass background 属性可以使得banner作为笔记背景  ===== */
 .markdown-preview-view.background .obsidian-banner-wrapper {
   position: absolute;
@@ -26600,6 +26608,11 @@ body.colorful-p-kanban .callout.callout[data-callout*="kanban"] .task-list-item-
 }
 
 /******callout icon*****/
+.show-inline-title  .callout.callout:is([data-callout-metadata^='icon'],
+.show-inline-title [data-callout='icon'])
+{
+  margin-top: -7em;
+}
 .callout.callout:is([data-callout-metadata^='icon'],
 [data-callout='icon']) {
   flex: none !important;
@@ -29085,14 +29098,15 @@ body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-custom) .ca
 .show-full-metadata  .frontmatter-container:not(.is-collapsed) .frontmatter-section {
   display: flex!important;
 }
-:not(.show-full-metadata) .frontmatter-container  .frontmatter-container-header  ~ .frontmatter-section:not(:is(.mod-aliases,.mod-tags)) {
+body:not(.show-full-metadata) .frontmatter-container  .frontmatter-container-header  ~ .frontmatter-section:not(:is(.mod-aliases,.mod-tags)) 
+{
   display: none;
 }
 
-:not(.show-full-metadata) .frontmatter-container:has(.frontmatter-container-header + .frontmatter-section:not(:is(.mod-aliases,.mod-tags))) {
+body:not(.show-full-metadata) .frontmatter-container:has(.frontmatter-container-header + .frontmatter-section:not(:is(.mod-aliases,.mod-tags))) {
   display: none;
 }
-:not(.show-full-metadata) .frontmatter-container:not(:has(.frontmatter-container-header + .frontmatter-section)) {
+body:not(.show-full-metadata) .frontmatter-container:not(:has(.frontmatter-container-header + .frontmatter-section)) {
   display: none;
 }
 
@@ -29121,9 +29135,9 @@ body.canvas-card-focus-mode .canvas:has(.is-focused.mod-canvas-color-custom) .ca
 .canvas-icon-placeholder svg {
   opacity: 0.5;
 }
-
-body.canvas-card-text-middle .canvas-node-container .canvas-node-content.markdown-embed:not(.is-loaded) {
-  text-align: center;
+body.canvas-card-text-middle .canvas-node-container .canvas-node-content.markdown-embed:not(.is-loaded)
+{
+text-align: center;
 }
 
 div#popup-search {

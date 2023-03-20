@@ -266,5 +266,13 @@
       "key": "L"
     }
   ],
-  "obsidian-linter:lint-file": []
+  "obsidian-linter:lint-file": [],
+  "float-search:float-search": [
+    {
+      "modifiers": [
+        "Shift"
+      ],
+      "key": "F"
+    }
+  ]
 }

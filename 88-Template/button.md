@@ -308,7 +308,7 @@ class grad_button g_blue
 ```button
 name 🔍 搜索
 type command
-action Omnisearch: Vault search
+action Floating Search: Search Obsidian Globally (With Last State)
 class grad_button g_blue
 ```
 ^button-search

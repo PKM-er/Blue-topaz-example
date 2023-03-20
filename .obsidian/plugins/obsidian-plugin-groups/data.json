@@ -108,6 +108,18 @@
         {
           "id": "obsidian-task-progress-bar",
           "name": "Task Progress Bar"
+        },
+        {
+          "id": "float-search",
+          "name": "Floating Search"
+        },
+        {
+          "id": "home-tab",
+          "name": "Home tab"
+        },
+        {
+          "id": "tab-switcher",
+          "name": "Tab Switcher"
         }
       ],
       "groupIds": [],
@@ -152,9 +164,12 @@
   ],
   "generateCommands": true,
   "showNoticeOnGroupLoad": "short",
+  "devLogs": false,
   "devices": [
     "mobile",
     "PC",
     "MAC"
-  ]
+  ],
+  "doLoadSynchronously": true,
+  "showStatusbarIcon": "None"
 }

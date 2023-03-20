@@ -1,0 +1,68 @@
+/* Custom page preview v1.2 
+from https://github.com/zamsyt/obsidian-snippets
+*/
+
+.callout[data-callout="page-preview"] {
+  --callout-icon: lucide-inspect;
+  --callout-color: 150,150,150;
+  mix-blend-mode: normal;
+  padding: 0; }
+
+/* Editing */
+.callout[data-callout="page-preview"] .callout-title {
+  padding: var(--callout-padding); }
+.markdown-source-view > * > * > * > * > * > * > .callout[data-callout="page-preview"] .callout-content {
+  border: 1px solid var(--background-modifier-border);
+  border-radius: var(--callout-radius); }
+
+
+.callout[data-callout="page-preview"] .callout-content {
+  display: flex;
+  background: var(--background-secondary); }
+
+.hover-popover .callout[data-callout="page-preview"] .callout-content {
+  display: flex !important; }
+
+/* text */
+.callout[data-callout="page-preview"] .callout-content > :first-child {
+  margin: 1em; }
+
+/* image */
+.callout[data-callout="page-preview"] .callout-content > :last-child:not(:first-child) {
+  margin: 0;
+  margin-left: auto;
+  flex-basis: 45%;
+  flex-shrink: 0; }
+.callout[data-callout="page-preview"] .callout-content img {
+  display: block;
+  object-fit: cover;
+  height: 100%;
+  width: 100%; }
+
+/* Fill the whole window */
+.hover-popover .markdown-preview-sizer > div > :not(.callout[data-callout="page-preview"]) {
+  display: none; }
+:root:root:root .hover-popover .markdown-preview-view {
+  padding: 0; }
+.hover-popover .markdown-preview-sizer {
+  min-height: 0 !important; }
+:root .hover-popover {
+  min-height: var(--size-4-12); }
+:root .hover-popover > .markdown-embed {
+  height: auto;
+  max-height: var(--popover-height); }
+.hover-popover .callout[data-callout="page-preview"] {
+  margin: 0; }
+
+/* Hide callout title */
+.hover-popover .callout[data-callout="page-preview"] .callout-title {
+  display: none; }
+
+
+/* Revert to normal preview when there's no Page preview callout.
+   Requires installer v1.1.9 */
+.hover-popover .markdown-preview-sizer:not(:has(.callout[data-callout="page-preview"])) > div > * {
+  display: block; }
+:root:root .hover-popover .markdown-preview-view:not(:has(.callout[data-callout="page-preview"])) {
+  padding: var(--file-margins); }
+

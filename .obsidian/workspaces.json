@@ -749,10 +749,9 @@
                   "state": {
                     "file": "60-Canvas/Home_middle.canvas",
                     "viewState": {
-                      "x": -10452.012018334373,
-                      "y": -10105.74841400141,
-                      "zoom": -0.5809317117344484,
-                      "snapToGrid": false
+                      "x": -10662.138596026609,
+                      "y": -10057.075061925732,
+                      "zoom": -0.5809317117344484
                     }
                   },
                   "pinned": true
@@ -857,7 +856,7 @@
                 "state": {
                   "type": "outline",
                   "state": {
-                    "file": "88-Template/彩色时钟.md"
+                    "file": "60-Canvas/Home_middle.canvas"
                   }
                 }
               },
@@ -888,7 +887,7 @@
                 "state": {
                   "type": "backlink",
                   "state": {
-                    "file": "88-Template/彩色时钟.md",
+                    "file": "60-Canvas/Home_middle.canvas",
                     "collapseAll": true,
                     "extraContext": true,
                     "sortOrder": "byModifiedTime",
@@ -905,7 +904,7 @@
                 "state": {
                   "type": "outgoing-link",
                   "state": {
-                    "file": "88-Template/彩色时钟.md",
+                    "file": "60-Canvas/Home_middle.canvas",
                     "linksCollapsed": false,
                     "unlinkedCollapsed": true
                   }
@@ -946,6 +945,10 @@
       },
       "left-ribbon": {
         "hiddenItems": {
+          "canvas:新建白板": false,
+          "obsidian-weread-plugin:Weread": false,
+          "float-search:Search Obsidian In Modal": false,
+          "webpage-html-export:Export Vault to HTML": false,
           "surfing:surfing-bookmark-manager": false,
           "omnisearch:Omnisearch": false,
           "homepage:Open homepage": false,
@@ -956,7 +959,6 @@
           "cmdr:显示当前文件": false,
           "switcher:打开快速切换": false,
           "graph:查看关系图谱": false,
-          "canvas:Create new canvas": false,
           "daily-notes:打开/创建今天的日记": false,
           "templates:插入模板": false,
           "command-palette:打开命令面板": false,
@@ -966,7 +968,7 @@
           "obsidian-memos:Memos": false
         }
       },
-      "active": "37c8f55a8ef7a09c"
+      "active": "944517de283150b7"
     }
   },
   "active": "Canvas"

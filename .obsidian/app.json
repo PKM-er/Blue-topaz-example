@@ -13,7 +13,7 @@
   "showLineNumber": true,
   "defaultViewMode": "preview",
   "showUnsupportedFiles": true,
-  "strictLineBreaks": true,
+  "strictLineBreaks": false,
   "tabSize": 4,
   "fileSortOrder": "alphabetical",
   "useTab": true,

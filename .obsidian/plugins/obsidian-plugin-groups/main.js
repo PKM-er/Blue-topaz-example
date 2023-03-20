@@ -27,24 +27,21 @@ __export(main_exports, {
   default: () => PgMain
 });
 module.exports = __toCommonJS(main_exports);
-var import_obsidian12 = require("obsidian");
+var import_obsidian20 = require("obsidian");
 
-// src/GroupSettingsTab.ts
-var import_obsidian11 = require("obsidian");
-
-// src/GroupEditModal.ts
-var import_obsidian10 = require("obsidian");
+// src/PluginGroupSettings.ts
+var import_obsidian19 = require("obsidian");
 
 // src/Utils/Constants.ts
-var disableStartupTimeout = 25;
+var disableStartupTimeout = 25 * 1e3;
 var pluginId = "obsidian-plugin-groups";
 var deviceNameKey = "obsidian-plugin-groups-device-name";
 var knownPluginIdsKey = "obsidian-plugin-groups-known-plugins";
 
-// src/PluginGroup.ts
+// src/DataStructures/PluginGroup.ts
 var import_obsidian = require("obsidian");
 
-// src/PgPlugin.ts
+// src/DataStructures/PgPlugin.ts
 var PgPlugin = class {
   constructor(id, name) {
     this.id = id;
@@ -81,28 +78,29 @@ var _PluginManager = class {
     this.pgEnabledPlugins.delete(plugin.id);
     this.disablePluginQueue.delete(plugin.id);
   }
-  static loadNewPlugins() {
+  static async loadNewPlugins() {
     if (_PluginManager.getKnownPluginIds() === null) {
       _PluginManager.setKnownPluginIds(_PluginManager.getInstalledPluginIds());
     } else {
       const knownPlugins = _PluginManager.getKnownPluginIds();
       const installedPlugins = _PluginManager.getInstalledPluginIds();
-      _PluginManager.setKnownPluginIds(installedPlugins);
-      const newPlugins = new Set([...installedPlugins].filter((id) => !(knownPlugins == null ? void 0 : knownPlugins.has(id))));
-      if (newPlugins.size <= 0) {
+      if (!installedPlugins) {
         return;
       }
-      Manager.getInstance().groupsMap.forEach((g) => {
-        if (g.autoAdd) {
-          newPlugins.forEach((pluginId2) => {
-            const plugin = _PluginManager.getInstalledPluginFromId(pluginId2);
-            if (plugin) {
-              g.addPlugin(plugin);
+      _PluginManager.setKnownPluginIds(installedPlugins);
+      installedPlugins == null ? void 0 : installedPlugins.forEach((id) => {
+        if (!(knownPlugins == null ? void 0 : knownPlugins.has(id))) {
+          Manager.getInstance().groupsMap.forEach((g) => {
+            if (g.autoAdd) {
+              const plugin = _PluginManager.getInstalledPluginFromId(id);
+              if (plugin) {
+                g.addPlugin(plugin);
+              }
             }
           });
         }
       });
-      Manager.getInstance().saveSettings();
+      return Manager.getInstance().saveSettings();
     }
   }
   static getKnownPluginIds() {
@@ -120,7 +118,7 @@ var _PluginManager = class {
     saveVaultLocalStorage(knownPluginIdsKey, setAsString);
   }
   static getInstalledPluginIds() {
-    const manifests = app.plugins.manifests;
+    const manifests = Manager.getInstance().pluginsManifests;
     const installedPlugins = /* @__PURE__ */ new Set();
     for (const key in manifests) {
       installedPlugins.add(key);
@@ -128,13 +126,17 @@ var _PluginManager = class {
     return installedPlugins;
   }
   static getInstalledPluginFromId(id) {
-    if (!app.plugins.manifests[id]) {
+    var _a;
+    if (!Manager.getInstance().obsidianPluginsObject) {
       return null;
     }
-    return new PgPlugin(this.app.plugins.manifests[id].id, this.app.plugins.manifests[id].name);
+    if (!((_a = Manager.getInstance().pluginsManifests) == null ? void 0 : _a[id])) {
+      return null;
+    }
+    return new PgPlugin(Manager.getInstance().pluginsManifests[id].id, Manager.getInstance().pluginsManifests[id].name);
   }
   static getAllAvailablePlugins() {
-    const manifests = app.plugins.manifests;
+    const manifests = Manager.getInstance().pluginsManifests;
     const plugins = [];
     for (const key in manifests) {
       if (manifests[key].id === pluginId)
@@ -145,16 +147,16 @@ var _PluginManager = class {
     return plugins;
   }
   static checkPluginEnabled(plugin) {
-    return app.plugins.enabledPlugins.has(plugin.id) || this.checkPluginEnabledFromPluginGroups(plugin);
+    return Manager.getInstance().obsidianPluginsObject.enabledPlugins.has(plugin.id) || this.checkPluginEnabledFromPluginGroups(plugin);
   }
   static checkPluginEnabledFromPluginGroups(plugin) {
     return this.pgEnabledPlugins.has(plugin.id);
   }
   static enablePlugin(plugin) {
-    return app.plugins.enablePlugin(plugin.id);
+    return Manager.getInstance().obsidianPluginsObject.enablePlugin(plugin.id);
   }
   static disablePlugin(plugin) {
-    return app.plugins.disablePlugin(plugin.id);
+    return Manager.getInstance().obsidianPluginsObject.disablePlugin(plugin.id);
   }
 };
 var PluginManager = _PluginManager;
@@ -162,7 +164,7 @@ PluginManager.enablePluginQueue = /* @__PURE__ */ new Set();
 PluginManager.disablePluginQueue = /* @__PURE__ */ new Set();
 PluginManager.pgEnabledPlugins = /* @__PURE__ */ new Set();
 
-// src/PluginGroup.ts
+// src/DataStructures/PluginGroup.ts
 var PluginGroup = class {
   constructor(pgData) {
     this.loadAtStartup = false;
@@ -216,7 +218,11 @@ var PluginGroup = class {
     }
     const pluginPromises = [];
     for (const plugin of this.plugins) {
-      pluginPromises.push(PluginManager.queuePluginForEnable(plugin));
+      if (Manager.getInstance().doLoadSynchronously) {
+        pluginPromises.push(PluginManager.queuePluginForEnable(plugin));
+      } else {
+        await PluginManager.queuePluginForEnable(plugin);
+      }
     }
     await Promise.allSettled(pluginPromises);
     for (const groupId of this.groupIds) {
@@ -310,7 +316,10 @@ var PluginGroup = class {
     this.groupIds.forEach((gid) => {
       const group = groupFromId(gid);
       if (group) {
-        pluginsArr = [...pluginsArr, ...group.getAllPluginIdsControlledByGroup()];
+        pluginsArr = [
+          ...pluginsArr,
+          ...group.getAllPluginIdsControlledByGroup()
+        ];
       }
     });
     return new Set(pluginsArr);
@@ -318,146 +327,48 @@ var PluginGroup = class {
 };
 
 // src/Managers/Manager.ts
-var DEFAULT_SETTINGS = {
-  groupsMap: /* @__PURE__ */ new Map(),
-  generateCommands: true,
-  showNoticeOnGroupLoad: "none",
-  devices: []
-};
-var Manager = class {
-  constructor() {
-  }
-  static getInstance() {
-    if (!Manager.instance) {
-      Manager.instance = new Manager();
-    }
-    return Manager.instance;
-  }
-  async init(main) {
-    this.main = main;
-    await this.loadSettings();
-    return this;
-  }
-  async loadSettings() {
-    const savedSettings = await this.main.loadData();
-    this.settings = Object.assign({}, DEFAULT_SETTINGS);
-    if (!savedSettings) {
-      return;
-    }
-    Object.keys(this.settings).forEach(function(key) {
-      if (key in savedSettings) {
-        Manager.getInstance().settings[key] = savedSettings[key];
-      }
-    });
-    if (savedSettings.groups && Array.isArray(savedSettings.groups)) {
-      this.settings.groupsMap = /* @__PURE__ */ new Map();
-      savedSettings.groups.forEach((g) => {
-        this.groupsMap.set(g.id, new PluginGroup(g));
-      });
+var import_obsidian13 = require("obsidian");
+
+// src/Components/BaseComponents/HtmlComponent.ts
+var HtmlComponent = class {
+  constructor(parentElement, options) {
+    this.parentEl = parentElement;
+    if (options) {
+      this.options = options;
     }
   }
-  get mapOfPluginsConnectedGroupsIncludingParentGroups() {
-    const pluginsMemMap = /* @__PURE__ */ new Map();
-    this.groupsMap.forEach((group) => {
-      group.getAllPluginIdsControlledByGroup().forEach((plugin) => {
-        var _a;
-        if (!pluginsMemMap.has(pluginId)) {
-          pluginsMemMap.set(plugin, /* @__PURE__ */ new Set());
-        }
-        (_a = pluginsMemMap.get(plugin)) == null ? void 0 : _a.add(group.id);
-      });
-    });
-    return pluginsMemMap;
+  update(options) {
+    if (options) {
+      this.options = options;
+    }
+    this.render();
   }
-  get mapOfPluginsDirectlyConnectedGroups() {
-    const pluginsMemMap = /* @__PURE__ */ new Map();
-    this.groupsMap.forEach((group) => {
-      group.plugins.forEach((plugin) => {
-        var _a;
-        if (!pluginsMemMap.has(pluginId)) {
-          pluginsMemMap.set(plugin.id, /* @__PURE__ */ new Set());
-        }
-        (_a = pluginsMemMap.get(plugin.id)) == null ? void 0 : _a.add(group.id);
-      });
-    });
-    return pluginsMemMap;
+  render() {
+    if (!this.mainEl) {
+      this.generateComponent();
+    } else {
+      this.clear();
+      this.generateContent();
+    }
   }
-  async saveSettings() {
-    var _a, _b, _c, _d;
-    const persistentSettings = {
-      groups: Array.from((_a = this.groupsMap.values()) != null ? _a : []),
-      generateCommands: (_b = this.settings.generateCommands) != null ? _b : DEFAULT_SETTINGS.generateCommands,
-      showNoticeOnGroupLoad: (_c = this.settings.showNoticeOnGroupLoad) != null ? _c : DEFAULT_SETTINGS.showNoticeOnGroupLoad,
-      devices: (_d = this.settings.devices) != null ? _d : DEFAULT_SETTINGS.devices
-    };
-    await this.main.saveData(persistentSettings);
+  generateComponent() {
+    this.generateContainer();
+    this.generateContent();
   }
-  get pluginInstance() {
-    return this.main;
-  }
-  get groupsMap() {
-    return this.settings.groupsMap;
-  }
-  get generateCommands() {
-    return this.settings.generateCommands;
-  }
-  set shouldGenerateCommands(val) {
-    this.settings.generateCommands = val;
-  }
-  get showNoticeOnGroupLoad() {
-    return this.settings.showNoticeOnGroupLoad;
-  }
-  set showNoticeOnGroupLoad(val) {
-    this.settings.showNoticeOnGroupLoad = val;
-  }
-  get devices() {
-    return this.settings.devices;
+  clear() {
+    if (this.mainEl) {
+      this.mainEl.textContent = "";
+    }
   }
 };
 
-// src/Utils/Utilities.ts
-function generateGroupID(name, delay) {
-  let id = nameToId((delay ? "stg-" : "pg-") + name);
-  const groupMap = Manager.getInstance().groupsMap;
-  if (!groupMap) {
-    return void 0;
-  }
-  if (!groupMap.has(id)) {
-    return id;
-  }
-  for (let i = 0; i < 512; i++) {
-    const nrdId = id + i.toString();
-    id += i.toString();
-    if (!groupMap.has(id)) {
-      return delay ? nrdId + delay.toString() : nrdId;
-    }
-  }
-  return void 0;
-}
-function nameToId(name) {
-  return name.replace(/[\W_]/g, "").toLowerCase();
-}
-function saveVaultLocalStorage(key, object) {
-  app.saveLocalStorage(key, object);
-}
-function loadVaultLocalStorage(key) {
-  return app.loadLocalStorage(key);
-}
-function getCurrentlyActiveDevice() {
-  const device = loadVaultLocalStorage(deviceNameKey);
-  if (typeof device === "string") {
-    return device;
-  }
-  return null;
-}
-function setCurrentlyActiveDevice(device) {
-  saveVaultLocalStorage(deviceNameKey, device);
-}
-function groupFromId(id) {
-  return Manager.getInstance().groupsMap.get(id);
-}
+// src/Components/Settings/GroupSettings.ts
+var import_obsidian12 = require("obsidian");
 
-// src/Components/ConfirmationPopupModal.ts
+// src/Components/Modals/GroupEditModal.ts
+var import_obsidian11 = require("obsidian");
+
+// src/Components/BaseComponents/ConfirmationPopupModal.ts
 var import_obsidian2 = require("obsidian");
 var ConfirmationPopupModal = class extends import_obsidian2.Modal {
   constructor(app2, headerText, cancelText, confirmText, onConfirmListener) {
@@ -467,8 +378,9 @@ var ConfirmationPopupModal = class extends import_obsidian2.Modal {
     this.eventTarget = new EventTarget();
     this.cancelText = cancelText != null ? cancelText : "Cancel";
     this.confirmText = confirmText != null ? confirmText : "Confirm";
-    if (onConfirmListener) {
-      this.eventTarget.addEventListener(this.onConfirm.type, onConfirmListener);
+    this.onConfirmListener = onConfirmListener;
+    if (this.onConfirmListener) {
+      this.eventTarget.addEventListener(this.onConfirm.type, this.onConfirmListener);
     }
   }
   onOpen() {
@@ -482,6 +394,9 @@ var ConfirmationPopupModal = class extends import_obsidian2.Modal {
       btn.setButtonText(this.confirmText);
       btn.onClick(() => {
         this.eventTarget.dispatchEvent(this.onConfirm);
+        if (this.onConfirmListener) {
+          this.eventTarget.removeEventListener(this.onConfirm.type, this.onConfirmListener);
+        }
         this.close();
       });
     });
@@ -489,46 +404,47 @@ var ConfirmationPopupModal = class extends import_obsidian2.Modal {
 };
 
 // src/GroupEditModal/GroupEditPluginsTab.ts
-var import_obsidian6 = require("obsidian");
+var import_obsidian7 = require("obsidian");
 
-// src/Components/DropdownActionButton.ts
+// src/Components/BaseComponents/DropdownActionButton.ts
 var import_obsidian3 = require("obsidian");
-var DropdownActionButton = class {
-  constructor(parentEl, mainLabel, dropdownOptions, options) {
-    this.mainLabel = mainLabel;
-    this.dropdownOptions = dropdownOptions;
-    this.parentEl = parentEl;
-    this.minWidth = options == null ? void 0 : options.width;
-    this.drpIcon = options == null ? void 0 : options.drpIcon;
-    this.render();
+var DropdownActionButton = class extends HtmlComponent {
+  constructor(parentElement, options) {
+    super(parentElement, options);
+    this.generateComponent();
   }
-  rerender() {
-    this.containerEL.remove();
-    this.render();
+  generateContainer() {
+    this.mainEl = this.parentEl.createEl("button", {
+      cls: "pg-drp-btn pg-has-dropdown-single"
+    });
   }
-  render() {
-    this.containerEL = this.parentEl.createEl("button", { cls: "pg-drp-btn" });
-    if (this.minWidth) {
-      this.containerEL.style.minWidth = this.minWidth;
+  generateContent() {
+    if (!this.mainEl) {
+      return;
     }
-    this.containerEL.onClickEvent(() => this.toggleDropdown());
-    const activeOptionBtn = this.containerEL.createSpan({ cls: "pg-drp-btn-main-label" });
-    this.setElementTextOrIcon(activeOptionBtn, this.mainLabel.label, this.mainLabel.icon);
-    if (this.drpIcon) {
-      const iconSpan = this.containerEL.createSpan();
-      (0, import_obsidian3.setIcon)(iconSpan, this.drpIcon);
+    const { dropDownOptions, mainLabel, drpIcon, minWidth } = this.options;
+    if (minWidth) {
+      this.mainEl.style.minWidth = minWidth;
+    }
+    const activeOptionBtn = this.mainEl.createSpan({
+      cls: "pg-drp-btn-main-label"
+    });
+    this.setElementTextOrIcon(activeOptionBtn, mainLabel.label, mainLabel.icon);
+    if (drpIcon) {
+      const iconSpan = this.mainEl.createSpan();
+      (0, import_obsidian3.setIcon)(iconSpan, drpIcon);
       iconSpan.style.paddingTop = "12px";
     } else {
-      this.containerEL.createSpan({ text: "\u25BC" });
+      this.mainEl.createSpan({ text: "\u25BC" });
     }
-    this.drpList = this.containerEL.createEl("ul", { cls: "pg-drp-btn-list" });
-    this.dropdownOptions.forEach((option) => {
-      const item = this.drpList.createEl("li");
+    this.drpList = this.mainEl.createEl("ul", { cls: "pg-dropdown" });
+    dropDownOptions.forEach((option) => {
+      const item = this.drpList.createEl("li", {
+        cls: "pg-dropdown-item"
+      });
       this.setElementTextOrIcon(item, option.label, option.icon);
-      item.onClickEvent((evt) => {
-        evt.stopPropagation();
+      item.onClickEvent(() => {
         option.func();
-        this.closeDropdown();
       });
     });
   }
@@ -539,27 +455,11 @@ var DropdownActionButton = class {
       element.setText(label);
     }
   }
-  toggleDropdown() {
-    this.drpList.hasClass("is-active") ? this.closeDropdown() : this.openDropdown();
-  }
-  closeDropdown() {
-    this.drpList.removeClass("is-active");
-  }
-  openDropdown() {
-    this.drpList.addClass("is-active");
-    const outsideClickController = new AbortController();
-    document.addEventListener("click", (event) => {
-      if (!this.containerEL.contains(event.targetNode) && this.drpList.hasClass("is-active")) {
-        this.closeDropdown();
-        outsideClickController.abort();
-      }
-    }, outsideClickController);
-  }
 };
 
-// src/Components/PluginList.ts
+// src/Components/PluginListTogglable.ts
 var import_obsidian4 = require("obsidian");
-var PluginList = class {
+var PluginListTogglable = class {
   constructor(parentEL, pluginsToDisplay, actionOption) {
     this.pluginListTarget = new EventTarget();
     this.plugins = pluginsToDisplay;
@@ -582,7 +482,7 @@ var PluginList = class {
   }
   generateList() {
     this.pluginListEl = this.parentEL.createEl("div");
-    this.pluginListEl.addClass("group-edit-modal-plugin-list");
+    this.pluginListEl.addClass("pg-settings-list");
     this.plugins.forEach((plugin) => {
       const setting = new import_obsidian4.Setting(this.pluginListEl).setName(plugin.name);
       if (this.ownerGroup) {
@@ -603,24 +503,30 @@ var PluginList = class {
   }
 };
 
-// src/Components/RemovableChip.ts
+// src/Components/BaseComponents/RemovableChip.ts
 var import_obsidian5 = require("obsidian");
-var RemovableChip = class {
-  constructor(parentEl, label, onClose) {
+var RemovableChip = class extends HtmlComponent {
+  constructor(parentEl, options) {
+    super(parentEl);
     this.parentEl = parentEl;
-    this.label = label;
-    this.onClose = onClose;
+    this.options = options;
     this.render();
   }
-  render() {
-    this.chipEl = this.parentEl.createDiv({ cls: "pg-chip" });
-    this.chipEl.createSpan({ text: this.label });
-    const closeBtn = this.chipEl.createDiv({ cls: "pg-chip-close-btn" });
+  generateContent() {
+    if (!this.mainEl) {
+      return;
+    }
+    this.mainEl.createSpan({ text: this.options.label });
+    const closeBtn = this.mainEl.createDiv({ cls: "pg-chip-close-btn" });
     (0, import_obsidian5.setIcon)(closeBtn, "x", 1);
     closeBtn.onClickEvent(() => {
-      this.onClose();
-      this.chipEl.remove();
+      var _a;
+      this.options.onClose();
+      (_a = this.mainEl) == null ? void 0 : _a.remove();
     });
+  }
+  generateContainer() {
+    this.mainEl = this.parentEl.createDiv({ cls: "pg-chip" });
   }
 };
 
@@ -641,17 +547,134 @@ var FilteredGroupsList = class {
     this.listEL = this.parentEl.createDiv({ cls: "pg-group-filter-list" });
     this.listEL.createSpan({ text: "Filters:" });
     this.groups.forEach((group) => {
-      new RemovableChip(this.listEL, group.name, () => {
-        this.groups.delete(group.id);
-        this.onChipClosed();
+      new RemovableChip(this.listEL, {
+        label: group.name,
+        onClose: () => {
+          this.groups.delete(group.id);
+          this.onChipClosed();
+        }
       });
     });
   }
 };
 
+// src/Components/BaseComponents/SettingsList.ts
+var SettingsList = class extends HtmlComponent {
+  constructor(parentEL, options) {
+    super(parentEL, options);
+    this.generateComponent();
+  }
+  generateComponent() {
+    this.generateContainer();
+    this.generateContent();
+  }
+  generateContainer() {
+    this.mainEl = this.parentEl.createEl("div");
+    this.mainEl.addClass("pg-settings-list");
+  }
+  generateContent() {
+    if (!this.mainEl) {
+      return;
+    }
+    const container = this.mainEl;
+    this.options.items.forEach((item) => {
+      this.generateListItem(container, item);
+    });
+  }
+  clear() {
+    if (this.mainEl && this.mainEl.hasClass("pg-settings-list")) {
+      this.mainEl.textContent = "";
+    }
+  }
+};
+
+// src/Components/BaseComponents/ReorderableList.ts
+var import_obsidian6 = require("obsidian");
+var ReorderableList = class extends SettingsList {
+  moveItemUp(item) {
+    const currentIndex = this.findIndexInItems(item);
+    if (currentIndex < this.options.items.length - 1 && currentIndex > -1) {
+      this.options.items[currentIndex] = this.options.items[currentIndex + 1];
+      this.options.items[currentIndex + 1] = item;
+    }
+    this.render();
+  }
+  moveItemDown(item) {
+    const currentIndex = this.findIndexInItems(item);
+    if (currentIndex > 0) {
+      this.options.items[currentIndex] = this.options.items[currentIndex - 1];
+      this.options.items[currentIndex - 1] = item;
+    }
+    this.render();
+  }
+  findIndexInItems(item) {
+    return this.options.items.findIndex((listItem) => listItem === item);
+  }
+  generateListItem(listEl, item) {
+    const itemEl = new import_obsidian6.Setting(listEl).addButton((btn) => {
+      (0, import_obsidian6.setIcon)(btn.buttonEl, "arrow-down");
+      btn.onClick(() => {
+        this.moveItemUp(item);
+      });
+    }).addButton((btn) => {
+      (0, import_obsidian6.setIcon)(btn.buttonEl, "arrow-up");
+      btn.onClick(() => {
+        this.moveItemDown(item);
+      });
+    });
+    return itemEl;
+  }
+};
+
+// src/Components/ReorderablePluginList.ts
+var ReorderablePluginList = class extends ReorderableList {
+  generateListItem(listEl, item) {
+    const itemEl = super.generateListItem(listEl, item).setName(item.name);
+    return itemEl;
+  }
+};
+
+// src/Components/BaseComponents/TabGroupComponent.ts
+var TabGroupComponent = class extends HtmlComponent {
+  constructor(parentEL, options) {
+    super(parentEL, options);
+    this.generateComponent();
+  }
+  switchActiveTab(newActiveTab, newActiveContent) {
+    var _a, _b, _c, _d;
+    (_a = this.activeTab) == null ? void 0 : _a.removeClass("is-active");
+    (_b = this.activeContent) == null ? void 0 : _b.removeClass("is-active");
+    this.activeTab = newActiveTab;
+    this.activeContent = newActiveContent;
+    (_c = this.activeTab) == null ? void 0 : _c.addClass("is-active");
+    (_d = this.activeContent) == null ? void 0 : _d.addClass("is-active");
+  }
+  generateContent() {
+    if (!this.mainEl) {
+      return;
+    }
+    const tabContainer = this.mainEl.createDiv({ cls: "pg-tabs" });
+    const contentContainer = this.mainEl.createDiv();
+    this.options.tabs.forEach((tab, index) => {
+      const tabEl = tabContainer == null ? void 0 : tabContainer.createDiv({ cls: "pg-tab" });
+      tabEl.createSpan({ text: tab.title });
+      const contentEl = contentContainer.appendChild(tab.content);
+      contentEl.addClass("pg-tabbed-content");
+      tabEl.onClickEvent(() => this.switchActiveTab(tabEl, contentEl));
+      if (index === 0) {
+        this.switchActiveTab(tabEl, contentEl);
+      }
+    });
+  }
+  generateContainer() {
+    this.mainEl = this.parentEl.createDiv();
+  }
+};
+
 // src/GroupEditModal/GroupEditPluginsTab.ts
-var GroupEditPluginsTab = class {
-  constructor(group, parentEl) {
+var GroupEditPluginsTab = class extends HtmlComponent {
+  constructor(parentElement, options) {
+    super(parentElement, options);
     this.availablePlugins = PluginManager.getAllAvailablePlugins();
     this.sortModes = {
       byName: "By Name",
@@ -659,80 +682,134 @@ var GroupEditPluginsTab = class {
     };
     this.selectedSortMode = this.sortModes.byNameAndSelected;
     this.filteredGroups = /* @__PURE__ */ new Map();
-    this.groupToEdit = group;
     this.filteredPlugins = this.availablePlugins;
-    this.containerEl = this.generatePluginSection(parentEl);
+    this.generateComponent();
   }
-  generatePluginSection(parentElement) {
-    const pluginSection = parentElement.createDiv({ cls: "pg-tabbed-content" });
-    pluginSection.createEl("h5", { text: "Plugins" });
-    const searchAndList = pluginSection.createEl("div");
-    new import_obsidian6.Setting(searchAndList).setName("Search").addText((txt) => {
+  generateContainer() {
+    this.mainEl = this.parentEl.createDiv();
+    this.mainEl.createEl("h5", { text: "Plugins" });
+  }
+  generateContent() {
+    if (!this.mainEl) {
+      return;
+    }
+    const mainPluginSection = this.mainEl.createEl("div");
+    const filterSection = this.createFilterSection(mainPluginSection);
+    this.pluginsList = new PluginListTogglable(mainPluginSection, this.sortPlugins(this.filteredPlugins, this.selectedSortMode), {
+      group: this.options.group,
+      onClickAction: (plugin) => this.togglePluginForGroup(plugin)
+    });
+    const reorderPluginSection = new ReorderablePluginList(this.mainEl.createDiv(), {
+      items: this.options.group.plugins
+    }).mainEl;
+    new TabGroupComponent(this.mainEl, {
+      tabs: [
+        {
+          title: "Main",
+          content: mainPluginSection
+        },
+        {
+          title: "Order",
+          content: reorderPluginSection != null ? reorderPluginSection : createSpan("No Plugins loaded, please contact Dev")
+        }
+      ]
+    });
+  }
+  createFilterSection(parentEl) {
+    const filterSection = parentEl.createDiv();
+    new import_obsidian7.Setting(filterSection).setName("Search").addText((txt) => {
       txt.setPlaceholder("Search for Plugin...");
       txt.onChange((search) => {
         this.searchPlugins(search);
       });
     });
-    const filtersAndSelectionContainer = searchAndList.createDiv({ cls: "pg-plugin-filter-container" });
-    const filtersAndSelection = filtersAndSelectionContainer.createDiv({ cls: "pg-plugin-filter-section" });
+    const filtersAndSelectionContainer = filterSection.createDiv({
+      cls: "pg-plugin-filter-container"
+    });
+    const filtersAndSelection = filtersAndSelectionContainer.createDiv({
+      cls: "pg-plugin-filter-section"
+    });
     const filters = filtersAndSelection.createDiv();
-    const filteredGroupsList = new FilteredGroupsList(filtersAndSelectionContainer, this.filteredGroups, () => this.filterAndSortPlugins());
+    const filteredGroupsChips = new FilteredGroupsList(filtersAndSelectionContainer, this.filteredGroups, () => this.filterAndSortPlugins());
     const toggleGroupFilter = (group) => {
       this.filteredGroups.has(group.id) ? this.filteredGroups.delete(group.id) : this.filteredGroups.set(group.id, group);
-      filteredGroupsList.update(this.filteredGroups);
     };
-    const groupOptionsForButton = [{
-      label: "All groups",
-      func: () => {
-        if (this.filteredGroups.size === Manager.getInstance().groupsMap.size) {
-          Manager.getInstance().groupsMap.forEach((group) => {
-            this.filteredGroups.delete(group.id);
-          });
-        } else {
-          Manager.getInstance().groupsMap.forEach((group) => {
-            this.filteredGroups.set(group.id, group);
-          });
+    const updateGroupFilters = () => {
+      filteredGroupsChips.update(this.filteredGroups);
+      this.filterAndSortPlugins();
+    };
+    const groupFilterOptions = [
+      {
+        label: "All groups",
+        func: () => {
+          if (this.filteredGroups.size === Manager.getInstance().groupsMap.size) {
+            this.filteredGroups.clear();
+          } else {
+            this.filteredGroups = new Map(Manager.getInstance().groupsMap);
+          }
+          updateGroupFilters();
         }
-        filteredGroupsList.update(this.filteredGroups);
-        this.filterAndSortPlugins();
       }
-    }];
+    ];
     Manager.getInstance().groupsMap.forEach((group) => {
-      groupOptionsForButton.push({
+      groupFilterOptions.push({
         label: group.name,
         func: () => {
           toggleGroupFilter(group);
-          this.filterAndSortPlugins();
+          updateGroupFilters();
         }
       });
     });
-    new DropdownActionButton(filters, { label: "Filter Groups" }, groupOptionsForButton, { drpIcon: "filter" });
-    const sortButton = new DropdownActionButton(filters, { label: "Sort" }, [
-      {
-        label: this.sortModes.byName,
-        func: () => {
-          this.selectedSortMode = this.sortModes.byName;
-          sortButton.mainLabel.label = this.sortModes.byName;
-          sortButton.rerender();
-          this.filterAndSortPlugins();
-        }
+    new DropdownActionButton(filters, {
+      mainLabel: {
+        label: "Filter Groups"
       },
-      {
-        label: this.sortModes.byNameAndSelected,
-        func: () => {
-          this.selectedSortMode = this.sortModes.byNameAndSelected;
-          sortButton.mainLabel.label = this.sortModes.byNameAndSelected;
-          sortButton.rerender();
-          this.filterAndSortPlugins();
+      dropDownOptions: groupFilterOptions,
+      drpIcon: "filter"
+    });
+    const sortButton = new DropdownActionButton(filters, {
+      mainLabel: {
+        label: "Sort"
+      },
+      dropDownOptions: [
+        {
+          label: this.sortModes.byName,
+          func: () => {
+            this.onSortModeChanged(this.sortModes.byName, sortButton);
+          }
+        },
+        {
+          label: this.sortModes.byNameAndSelected,
+          func: () => {
+            this.onSortModeChanged(this.sortModes.byNameAndSelected, sortButton);
+          }
         }
-      }
-    ], { width: "80px", drpIcon: "sort-desc" });
-    new DropdownActionButton(filtersAndSelection, { label: "Bulk Select" }, [
-      { label: "Select all", func: () => this.selectAllFilteredPlugins() },
-      { label: "Deselect all", func: () => this.deselectAllFilteredPlugins() }
-    ]);
-    this.pluginsList = new PluginList(searchAndList, this.sortPlugins(this.filteredPlugins, this.selectedSortMode), { group: this.groupToEdit, onClickAction: (plugin) => this.togglePluginForGroup(plugin) });
-    return pluginSection;
+      ],
+      minWidth: "80px",
+      drpIcon: "sort-desc"
+    });
+    new DropdownActionButton(filtersAndSelection, {
+      mainLabel: {
+        label: "Bulk Select"
+      },
+      dropDownOptions: [
+        {
+          label: "Select all",
+          func: () => this.selectAllFilteredPlugins()
+        },
+        {
+          label: "Deselect all",
+          func: () => this.deselectAllFilteredPlugins()
+        }
+      ]
+    });
+    return filterSection;
+  }
+  onSortModeChanged(sortMode, sortButton) {
+    this.selectedSortMode = sortMode;
+    sortButton.options.mainLabel.label = sortMode;
+    sortButton.update();
+    this.filterAndSortPlugins();
   }
   filterAndSortPlugins() {
     this.filteredPlugins = this.availablePlugins;
@@ -769,14 +846,17 @@ var GroupEditPluginsTab = class {
     this.pluginsList.updateList(this.filteredPlugins);
   }
   deselectAllFilteredPlugins() {
-    this.filteredPlugins.forEach((plugin) => this.groupToEdit.removePlugin(plugin));
+    this.filteredPlugins.forEach((plugin) => this.options.group.removePlugin(plugin));
     this.showFilteredPlugins();
   }
   selectAllFilteredPlugins() {
-    this.filteredPlugins.forEach((plugin) => this.groupToEdit.addPlugin(plugin));
+    this.filteredPlugins.forEach((plugin) => this.options.group.addPlugin(plugin));
     this.showFilteredPlugins();
   }
   sortPlugins(plugins, sortMode) {
+    if (!plugins || !(typeof plugins[Symbol.iterator] === "function")) {
+      return [];
+    }
     const sortedArray = [...plugins];
     if (sortMode === this.sortModes.byName) {
       return sortedArray.sort((a, b) => a.name.localeCompare(b.name));
@@ -797,19 +877,16 @@ var GroupEditPluginsTab = class {
     return sortedArray;
   }
   isPluginInGroup(plugin) {
-    return this.groupToEdit.plugins.map((p) => p.id).contains(plugin.id);
+    return this.options.group.plugins.map((p) => p.id).contains(plugin.id);
   }
   togglePluginForGroup(plugin) {
-    if (this.groupToEdit.plugins.map((p) => p.id).contains(plugin.id)) {
-      this.groupToEdit.removePlugin(plugin);
-    } else {
-      this.groupToEdit.addPlugin(plugin);
-    }
+    const { group } = this.options;
+    group.plugins.filter((p) => p.id === plugin.id).length > 0 ? group.removePlugin(plugin) : group.addPlugin(plugin);
   }
 };
 
 // src/GroupEditModal/GroupEditGroupsTab.ts
-var import_obsidian7 = require("obsidian");
+var import_obsidian8 = require("obsidian");
 var GroupEditGroupsTab = class {
   constructor(group, parentEl) {
     this.groupListElements = /* @__PURE__ */ new Map();
@@ -818,20 +895,20 @@ var GroupEditGroupsTab = class {
     this.containerEl = this.generateGroupsSection(parentEl);
   }
   generateGroupsSection(parentElement) {
-    const groupSection = parentElement.createDiv({ cls: "pg-tabbed-content" });
+    const groupSection = parentElement.createDiv();
     groupSection.createEl("h5", { text: "Groups" });
     const searchAndList = groupSection.createEl("div");
-    new import_obsidian7.Setting(searchAndList).setName("Search").addText((txt) => {
+    new import_obsidian8.Setting(searchAndList).setName("Search").addText((txt) => {
       txt.setPlaceholder("Search for Groups...");
       txt.onChange((search) => {
         this.searchGroups(search);
       });
     });
     const groupList = searchAndList.createEl("div");
-    groupList.addClass("group-edit-modal-plugin-list");
+    groupList.addClass("pg-settings-list");
     this.groupListElements = /* @__PURE__ */ new Map();
     this.sortGroups(this.availableGroups).forEach((pluginGroup) => {
-      const setting = new import_obsidian7.Setting(groupList).setName(pluginGroup.name).addButton((btn) => {
+      const setting = new import_obsidian8.Setting(groupList).setName(pluginGroup.name).addButton((btn) => {
         btn.setIcon(this.groupToEdit.groupIds.contains(pluginGroup.id) ? "check-circle" : "circle").onClick(() => {
           this.toggleGroupForGroup(pluginGroup);
           btn.setIcon(this.groupToEdit.groupIds.contains(pluginGroup.id) ? "check-circle" : "circle");
@@ -875,11 +952,11 @@ var GroupEditGroupsTab = class {
 };
 
 // src/GroupEditModal/GroupEditGeneralTab.ts
-var import_obsidian9 = require("obsidian");
+var import_obsidian10 = require("obsidian");
 
-// src/DeviceSelectionModal.ts
-var import_obsidian8 = require("obsidian");
-var DeviceSelectionModal = class extends import_obsidian8.Modal {
+// src/Components/DeviceSelectionModal.ts
+var import_obsidian9 = require("obsidian");
+var DeviceSelectionModal = class extends import_obsidian9.Modal {
   constructor(app2, onConfirmSelectionListener, selectedDevices) {
     var _a;
     super(app2);
@@ -905,7 +982,7 @@ var DeviceSelectionModal = class extends import_obsidian8.Modal {
     contentEl.createEl("h2", { text: this.headerText });
     contentEl.createEl("h6", { text: "Existing Devices" });
     Manager.getInstance().devices.forEach((device) => {
-      new import_obsidian8.Setting(contentEl).setName(device).addButton((tgl) => {
+      new import_obsidian9.Setting(contentEl).setName(device).addButton((tgl) => {
         tgl.setIcon(this.selectedDevices.has(device) ? "check-circle" : "circle").onClick(() => {
           if (this.selectedDevices.has(device)) {
             this.selectedDevices.delete(device);
@@ -917,7 +994,7 @@ var DeviceSelectionModal = class extends import_obsidian8.Modal {
         });
       });
     });
-    new import_obsidian8.Setting(contentEl).addButton((btn) => {
+    new import_obsidian9.Setting(contentEl).addButton((btn) => {
       btn.setButtonText(this.cancelText);
       btn.onClick(() => this.close());
     }).addButton((btn) => {
@@ -938,18 +1015,18 @@ var GroupEditGeneralTab = class {
     this.containerEl = this.generateGeneralSettingsSection(parentEl);
   }
   generateGeneralSettingsSection(contentEl) {
-    const generalSettingsSection = contentEl.createDiv({ cls: "pg-tabbed-content is-active" });
+    const generalSettingsSection = contentEl.createDiv();
     generalSettingsSection.createEl("h5", { text: "General" });
-    new import_obsidian9.Setting(generalSettingsSection).setName("Commands").setDesc("Add Commands to enable/disable this group").addToggle((tgl) => {
+    new import_obsidian10.Setting(generalSettingsSection).setName("Commands").setDesc("Add Commands to enable/disable this group").addToggle((tgl) => {
       tgl.setValue(this.groupToEdit.generateCommands);
       tgl.onChange((value) => this.groupToEdit.generateCommands = value);
     });
-    new import_obsidian9.Setting(generalSettingsSection).setName("Auto Add").setDesc("Automatically add new Plugins to this group").addToggle((tgl) => {
+    new import_obsidian10.Setting(generalSettingsSection).setName("Auto Add").setDesc("Automatically add new Plugins to this group").addToggle((tgl) => {
       var _a;
       tgl.setValue((_a = this.groupToEdit.autoAdd) != null ? _a : false);
       tgl.onChange((value) => this.groupToEdit.autoAdd = value);
     });
-    const devicesSetting = new import_obsidian9.Setting(generalSettingsSection).setName("Devices").setDesc(this.getDevicesDescription()).addButton((btn) => {
+    const devicesSetting = new import_obsidian10.Setting(generalSettingsSection).setName("Devices").setDesc(this.getDevicesDescription()).addButton((btn) => {
       btn.setIcon("pencil").onClick(() => {
         new DeviceSelectionModal(app, (evt) => {
           this.groupToEdit.assignedDevices = evt.detail.devices;
@@ -991,7 +1068,7 @@ var GroupEditGeneralTab = class {
         this.groupToEdit.loadAtStartup ? behaviourElement.show() : behaviourElement.hide();
       }
     };
-    new import_obsidian9.Setting(startupParent).setName("Load on Startup").addDropdown((drp) => {
+    new import_obsidian10.Setting(startupParent).setName("Load on Startup").addDropdown((drp) => {
       behaviourElement = drp.selectEl;
       drp.addOption("enable", "Enable");
       drp.addOption("disable", "Disable");
@@ -1006,9 +1083,9 @@ var GroupEditGeneralTab = class {
       });
       tgl.setValue(this.groupToEdit.loadAtStartup);
     });
-    delaySetting = new import_obsidian9.Setting(startupParent).setName("Delay").addSlider((slider) => {
+    delaySetting = new import_obsidian10.Setting(startupParent).setName("Delay").addSlider((slider) => {
       slider.setValue(this.groupToEdit.delay);
-      slider.setLimits(0, disableStartupTimeout, 1);
+      slider.setLimits(0, disableStartupTimeout / 1e3, 1);
       slider.onChange((value) => {
         this.groupToEdit.delay = value;
         delaySetting.setDesc(value.toString());
@@ -1090,70 +1167,53 @@ var CommandManager = class {
   }
 };
 
-// src/GroupEditModal.ts
-var GroupEditModal = class extends import_obsidian10.Modal {
+// src/Components/Modals/GroupEditModal.ts
+var GroupEditModal = class extends import_obsidian11.Modal {
   constructor(app2, settingsTab, group) {
     super(app2);
     this.discardChanges = true;
-    this.settingsTab = settingsTab;
+    this.groupSettings = settingsTab;
     this.groupToEdit = group;
     this.groupToEditCache = JSON.stringify(group);
   }
   onOpen() {
+    var _a;
     const { modalEl } = this;
     modalEl.empty();
-    const contentEl = modalEl.createEl("div", { cls: "group-edit-modal-content " });
-    let generalSettings;
-    let pluginsSection;
-    let groupsSection;
-    const nameSettingNameEl = new import_obsidian10.Setting(contentEl).addText((txt) => {
+    const contentEl = modalEl.createDiv();
+    const nameSettingNameEl = new import_obsidian11.Setting(contentEl).addText((txt) => {
       txt.setValue(this.groupToEdit.name);
       txt.onChange((val) => {
         this.groupToEdit.name = val;
         nameSettingNameEl.setText('Editing "' + this.groupToEdit.name + '"');
       });
-    }).nameEl.createEl("h2", { text: 'Editing "' + this.groupToEdit.name + '"' });
-    const tabContainer = contentEl.createDiv({ cls: "pg-tabs" });
-    const generalTab = tabContainer.createDiv({ cls: "pg-tab is-active" });
-    generalTab.createSpan({ text: "General" });
-    const pluginsTab = tabContainer.createDiv({ cls: "pg-tab" });
-    pluginsTab.createSpan({ text: "Plugins" });
-    const groupsTab = tabContainer.createDiv({ cls: "pg-tab" });
-    groupsTab.createSpan({ text: "Groups" });
-    const switchActive = (clicked) => {
-      generalTab.removeClass("is-active");
-      pluginsTab.removeClass("is-active");
-      groupsTab.removeClass("is-active");
-      generalSettings == null ? void 0 : generalSettings.removeClass("is-active");
-      pluginsSection == null ? void 0 : pluginsSection.removeClass("is-active");
-      groupsSection == null ? void 0 : groupsSection.removeClass("is-active");
-      switch (clicked) {
-        case "Plugins":
-          pluginsSection == null ? void 0 : pluginsSection.addClass("is-active");
-          pluginsTab == null ? void 0 : pluginsTab.addClass("is-active");
-          break;
-        case "Groups":
-          groupsSection == null ? void 0 : groupsSection.addClass("is-active");
-          groupsTab.addClass("is-active");
-          break;
-        default:
-          generalSettings == null ? void 0 : generalSettings.addClass("is-active");
-          generalTab.addClass("is-active");
-          break;
-      }
-    };
-    generalTab.onClickEvent(() => switchActive("General"));
-    pluginsTab.onClickEvent(() => switchActive("Plugins"));
-    groupsTab.onClickEvent(() => switchActive("Groups"));
-    generalSettings = new GroupEditGeneralTab(this.groupToEdit, contentEl).containerEl;
-    pluginsSection = new GroupEditPluginsTab(this.groupToEdit, contentEl).containerEl;
-    groupsSection = new GroupEditGroupsTab(this.groupToEdit, contentEl).containerEl;
+    }).nameEl.createEl("h2", {
+      text: 'Editing "' + this.groupToEdit.name + '"'
+    });
+    const tabGroup = new TabGroupComponent(modalEl, {
+      tabs: [
+        {
+          title: "General",
+          content: new GroupEditGeneralTab(this.groupToEdit, contentEl).containerEl
+        },
+        {
+          title: "Plugins",
+          content: (_a = new GroupEditPluginsTab(contentEl, {
+            group: this.groupToEdit
+          }).mainEl) != null ? _a : modalEl.createSpan("Plugins Not Loaded, please contact Dev.")
+        },
+        {
+          title: "Groups",
+          content: new GroupEditGroupsTab(this.groupToEdit, contentEl).containerEl
+        }
+      ]
+    });
     this.generateFooter(modalEl);
   }
   generateFooter(parentElement) {
     const footer = parentElement.createEl("div");
-    footer.addClass("group-edit-modal-footer");
-    new import_obsidian10.Setting(footer).addButton((btn) => {
+    footer.addClass("pg-edit-modal-footer");
+    new import_obsidian11.Setting(footer).addButton((btn) => {
       btn.setButtonText("Delete");
       btn.onClick(() => new ConfirmationPopupModal(this.app, "You are about to delete: " + this.groupToEdit.name, void 0, "Delete", () => this.deleteGroup()).open());
     }).addButton((btn) => {
@@ -1207,48 +1267,35 @@ var GroupEditModal = class extends import_obsidian10.Modal {
   }
   async persistChangesAndClose() {
     await Manager.getInstance().saveSettings();
-    this.settingsTab.display();
+    this.groupSettings.render();
     this.close();
   }
   async deleteGroup() {
     Manager.getInstance().groupsMap.delete(this.groupToEdit.id);
     await Manager.getInstance().saveSettings();
-    this.settingsTab.display();
+    this.groupSettings.render();
     this.close();
   }
 };
 
-// src/GroupSettingsTab.ts
-var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
-  constructor(app2, plugin) {
-    super(app2, plugin);
+// src/Components/Settings/GroupSettings.ts
+var GroupSettings = class extends HtmlComponent {
+  constructor(parentEL, options) {
+    super(parentEL, options);
+    this.generateComponent();
   }
-  display() {
-    PluginManager.loadNewPlugins();
-    const { containerEl } = this;
-    containerEl.empty();
-    const generalParent = containerEl.createEl("h4", { text: "General" });
-    new import_obsidian11.Setting(generalParent).setName("Generate Commands for Groups").addToggle((tgl) => {
-      var _a;
-      tgl.setValue((_a = Manager.getInstance().generateCommands) != null ? _a : false);
-      tgl.onChange(async (value) => {
-        Manager.getInstance().shouldGenerateCommands = value;
-        await Manager.getInstance().saveSettings();
-      });
-    });
-    new import_obsidian11.Setting(generalParent).setName("Notice upon un-/loading groups").addDropdown((drp) => {
-      var _a;
-      drp.addOption("none", "None").addOption("short", "Short").addOption("normal", "Normal");
-      drp.setValue((_a = Manager.getInstance().showNoticeOnGroupLoad) != null ? _a : "none");
-      drp.onChange(async (value) => {
-        Manager.getInstance().showNoticeOnGroupLoad = value;
-        await Manager.getInstance().saveSettings();
-      });
-    });
-    const groupParent = containerEl.createEl("div");
-    groupParent.createEl("h5", { text: "Groups" });
+  generateContent() {
+    var _a, _b;
+    if (!this.mainEl) {
+      return;
+    }
+    const header = this.mainEl.createEl("h5", { text: "Groups" });
+    const content = this.mainEl.createDiv();
+    if (this.options.collapsible) {
+      makeCollapsible(header, content, this.options.startOpened);
+    }
     let addBtnEl;
-    new import_obsidian11.Setting(groupParent).setName("Add Group").addText((text) => {
+    new import_obsidian12.Setting(content).setName("Add Group").addText((text) => {
       this.groupNameField = text;
       this.groupNameField.setPlaceholder("Enter group name...").setValue(this.newGroupName).onChange((val) => {
         this.newGroupName = val;
@@ -1265,12 +1312,17 @@ var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
       addBtnEl = btn.buttonEl;
       addBtnEl.addClass("btn-disabled");
     });
-    this.GenerateGroupList(groupParent);
-    this.GenerateDeviceList(containerEl);
+    const listContainer = content.createDiv();
+    listContainer.style.overflow = "scroll";
+    listContainer.style.maxHeight = ((_b = (_a = this.options.maxListHeight) == null ? void 0 : _a.toString()) != null ? _b : "") + "px";
+    this.GenerateGroupList(listContainer);
+  }
+  generateContainer() {
+    this.mainEl = this.parentEl.createDiv();
   }
   GenerateGroupList(groupParent) {
     Manager.getInstance().groupsMap.forEach((group) => {
-      const groupSetting = new import_obsidian11.Setting(groupParent).setName(group.name).addButton((btn) => {
+      const groupSetting = new import_obsidian12.Setting(groupParent).setName(group.name).addButton((btn) => {
         btn.setButtonText("Enable");
         btn.setIcon("power");
         btn.onClick(async () => {
@@ -1292,12 +1344,16 @@ var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
         startupEl.createEl("b", {
           text: "Startup: "
         });
-        startupEl.createEl("span", { text: "Delayed by " + group.delay + " seconds" });
+        startupEl.createEl("span", {
+          text: "Delayed by " + group.delay + " seconds"
+        });
         if (!group.groupActive()) {
           const activeEl = descFrag.createEl("span");
           activeEl.createEl("br");
           activeEl.createEl("b", { text: "Inactive: " });
-          activeEl.createEl("span", { text: "Not enabled for current Device" });
+          activeEl.createEl("span", {
+            text: "Not enabled for current Device"
+          });
         }
         groupSetting.setDesc(descFrag);
       }
@@ -1313,14 +1369,523 @@ var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
       id,
       name: this.newGroupName
     });
-    new GroupEditModal(this.app, this, newGroup).open();
+    new GroupEditModal(Manager.getInstance().pluginInstance.app, this, newGroup).open();
     this.newGroupName = "";
     if (this.groupNameField) {
       this.groupNameField.setValue("");
     }
   }
   editGroup(group) {
-    new GroupEditModal(this.app, this, group).open();
+    new GroupEditModal(Manager.getInstance().pluginInstance.app, this, group).open();
+  }
+};
+
+// src/Components/Modals/GroupSettingsMenu.ts
+var GroupSettingsMenu = class extends HtmlComponent {
+  constructor(parentEl, options) {
+    super(parentEl, options);
+    this.generateComponent();
+  }
+  generateContainer() {
+    this.mainEl = this.parentEl.createDiv({ cls: "pg-settings-window" });
+  }
+  generateContent() {
+    if (!this.mainEl) {
+      return;
+    }
+    new GroupSettings(this.mainEl, { maxListHeight: 340 });
+    this.updatePosition();
+  }
+  updatePosition() {
+    if (!this.mainEl) {
+      return;
+    }
+    this.mainEl.style.transform = "translate(0px, 0px)";
+    let xOffset = -this.mainEl.getBoundingClientRect().width / 2;
+    const yOffset = -this.mainEl.clientHeight / 2 - 30;
+    const diff = window.innerWidth - this.mainEl.getBoundingClientRect().right - 16;
+    if (diff < 0) {
+      xOffset = diff;
+    }
+    this.mainEl.style.transform = "translate(" + xOffset + "px, " + yOffset + "px)";
+  }
+};
+
+// src/Managers/Manager.ts
+var DEFAULT_SETTINGS = {
+  groupsMap: /* @__PURE__ */ new Map(),
+  generateCommands: true,
+  showNoticeOnGroupLoad: "none",
+  devLogs: false,
+  devices: [],
+  doLoadSynchronously: true,
+  showStatusbarIcon: "None"
+};
+var Manager = class {
+  constructor() {
+  }
+  static getInstance() {
+    if (!Manager.instance) {
+      Manager.instance = new Manager();
+    }
+    return Manager.instance;
+  }
+  async init(main) {
+    this.main = main;
+    await this.loadSettings();
+    return this;
+  }
+  async loadSettings() {
+    const savedSettings = await this.main.loadData();
+    this.settings = Object.assign({}, DEFAULT_SETTINGS);
+    if (!savedSettings) {
+      return;
+    }
+    Object.keys(this.settings).forEach(function(key) {
+      if (key in savedSettings) {
+        Manager.getInstance().settings[key] = savedSettings[key];
+      }
+    });
+    if (savedSettings.groups && Array.isArray(savedSettings.groups)) {
+      this.settings.groupsMap = /* @__PURE__ */ new Map();
+      savedSettings.groups.forEach((g) => {
+        this.groupsMap.set(g.id, new PluginGroup(g));
+      });
+    }
+  }
+  get mapOfPluginsConnectedGroupsIncludingParentGroups() {
+    const pluginsMemMap = /* @__PURE__ */ new Map();
+    this.groupsMap.forEach((group) => {
+      group.getAllPluginIdsControlledByGroup().forEach((plugin) => {
+        var _a;
+        if (!pluginsMemMap.has(pluginId)) {
+          pluginsMemMap.set(plugin, /* @__PURE__ */ new Set());
+        }
+        (_a = pluginsMemMap.get(plugin)) == null ? void 0 : _a.add(group.id);
+      });
+    });
+    return pluginsMemMap;
+  }
+  get mapOfPluginsDirectlyConnectedGroups() {
+    const pluginsMemMap = /* @__PURE__ */ new Map();
+    this.groupsMap.forEach((group) => {
+      group.plugins.forEach((plugin) => {
+        var _a;
+        if (!pluginsMemMap.has(plugin.id)) {
+          pluginsMemMap.set(plugin.id, /* @__PURE__ */ new Set());
+        }
+        (_a = pluginsMemMap.get(plugin.id)) == null ? void 0 : _a.add(group.id);
+      });
+    });
+    return pluginsMemMap;
+  }
+  getGroupsOfPlugin(pluginId2) {
+    const groups = [];
+    for (const group of this.groupsMap.values()) {
+      if (group.plugins.find((plugin) => plugin.id === pluginId2)) {
+        groups.push(group);
+      }
+    }
+    return groups;
+  }
+  async saveSettings() {
+    var _a, _b, _c, _d, _e, _f, _g;
+    const persistentSettings = {
+      groups: Array.from((_a = this.groupsMap.values()) != null ? _a : []),
+      generateCommands: (_b = this.settings.generateCommands) != null ? _b : DEFAULT_SETTINGS.generateCommands,
+      showNoticeOnGroupLoad: (_c = this.settings.showNoticeOnGroupLoad) != null ? _c : DEFAULT_SETTINGS.showNoticeOnGroupLoad,
+      devLogs: (_d = this.settings.devLogs) != null ? _d : DEFAULT_SETTINGS.devLogs,
+      devices: (_e = this.settings.devices) != null ? _e : DEFAULT_SETTINGS.devices,
+      doLoadSynchronously: (_f = this.settings.doLoadSynchronously) != null ? _f : DEFAULT_SETTINGS.doLoadSynchronously,
+      showStatusbarIcon: (_g = this.settings.showStatusbarIcon) != null ? _g : DEFAULT_SETTINGS.showStatusbarIcon
+    };
+    await this.main.saveData(persistentSettings);
+  }
+  get doLoadSynchronously() {
+    return this.settings.doLoadSynchronously;
+  }
+  set doLoadSynchronously(value) {
+    this.settings.doLoadSynchronously = value;
+  }
+  get showStatusbarIcon() {
+    return this.settings.showStatusbarIcon;
+  }
+  set showStatusbarIcon(value) {
+    this.settings.showStatusbarIcon = value;
+  }
+  get devLog() {
+    return this.settings.devLogs;
+  }
+  set devLog(value) {
+    this.settings.devLogs = value;
+  }
+  get pluginInstance() {
+    return this.main;
+  }
+  get pluginsManifests() {
+    return this.obsidianPluginsObject.manifests;
+  }
+  get obsidianPluginsObject() {
+    return this.main.app.plugins;
+  }
+  get groupsMap() {
+    return this.settings.groupsMap;
+  }
+  get generateCommands() {
+    return this.settings.generateCommands;
+  }
+  set shouldGenerateCommands(val) {
+    this.settings.generateCommands = val;
+  }
+  get showNoticeOnGroupLoad() {
+    return this.settings.showNoticeOnGroupLoad;
+  }
+  set showNoticeOnGroupLoad(val) {
+    this.settings.showNoticeOnGroupLoad = val;
+  }
+  get devices() {
+    return this.settings.devices;
+  }
+  updateStatusbarItem() {
+    if (this.statusbarItem) {
+      this.statusbarItem.remove();
+    }
+    if (this.showStatusbarIcon === "None") {
+      return;
+    }
+    this.statusbarItem = this.pluginInstance.addStatusBarItem();
+    this.statusbarItem.addClasses(["pg-statusbar-icon", "mod-clickable"]);
+    this.statusbarItem.tabIndex = 0;
+    if (this.showStatusbarIcon === "Text") {
+      this.statusbarItem.textContent = "Plugins";
+    } else if (this.showStatusbarIcon === "Icon") {
+      (0, import_obsidian13.setIcon)(this.statusbarItem, "boxes");
+    }
+    const menu = new GroupSettingsMenu(this.statusbarItem, {});
+    this.statusbarItem.onfocus = () => {
+      menu.updatePosition();
+    };
+  }
+};
+
+// src/Utils/Utilities.ts
+var import_obsidian14 = require("obsidian");
+function generateGroupID(name, delay) {
+  let id = nameToId((delay ? "stg-" : "pg-") + name);
+  const groupMap = Manager.getInstance().groupsMap;
+  if (!groupMap) {
+    return void 0;
+  }
+  if (!groupMap.has(id)) {
+    return id;
+  }
+  for (let i = 0; i < 512; i++) {
+    const nrdId = id + i.toString();
+    id += i.toString();
+    if (!groupMap.has(id)) {
+      return delay ? nrdId + delay.toString() : nrdId;
+    }
+  }
+  return void 0;
+}
+function nameToId(name) {
+  return name.replace(/[\W_]/g, "").toLowerCase();
+}
+function saveVaultLocalStorage(key, object) {
+  Manager.getInstance().pluginInstance.app.saveLocalStorage(key, object);
+}
+function loadVaultLocalStorage(key) {
+  return Manager.getInstance().pluginInstance.app.loadLocalStorage(key);
+}
+function getCurrentlyActiveDevice() {
+  const device = loadVaultLocalStorage(deviceNameKey);
+  if (typeof device === "string") {
+    return device;
+  }
+  return null;
+}
+function setCurrentlyActiveDevice(device) {
+  saveVaultLocalStorage(deviceNameKey, device);
+}
+function groupFromId(id) {
+  return Manager.getInstance().groupsMap.get(id);
+}
+function makeCollapsible(foldClickElement, content, startOpened) {
+  if (!content.hasClass("pg-collapsible-content")) {
+    content.addClass("pg-collapsible-content");
+  }
+  if (!foldClickElement.hasClass("pg-collapsible-header")) {
+    foldClickElement.addClass("pg-collapsible-header");
+  }
+  toggleCollapsibleIcon(foldClickElement);
+  if (startOpened) {
+    content.addClass("is-active");
+    toggleCollapsibleIcon(foldClickElement);
+  }
+  foldClickElement.onclick = () => {
+    content.hasClass("is-active") ? content.removeClass("is-active") : content.addClass("is-active");
+    toggleCollapsibleIcon(foldClickElement);
+  };
+}
+function toggleCollapsibleIcon(parentEl) {
+  let foldable = parentEl.querySelector(":scope > .pg-collapsible-icon");
+  if (!foldable) {
+    foldable = parentEl.createSpan({ cls: "pg-collapsible-icon" });
+  }
+  if (foldable.dataset.togglestate === "up") {
+    (0, import_obsidian14.setIcon)(foldable, "chevron-down");
+    foldable.dataset.togglestate = "down";
+  } else {
+    (0, import_obsidian14.setIcon)(foldable, "chevron-up");
+    foldable.dataset.togglestate = "up";
+  }
+}
+
+// src/Components/Settings/AdvancedSettings.ts
+var import_obsidian15 = require("obsidian");
+var AdvancedSettings = class extends HtmlComponent {
+  constructor(parentEL, options) {
+    super(parentEL, options);
+    this.generateComponent();
+  }
+  generateContent() {
+    if (!this.mainEl) {
+      return;
+    }
+    const header = this.mainEl.createEl("h5", {
+      text: "Advanced Settings"
+    });
+    const content = this.mainEl.createDiv();
+    if (this.options.collapsible) {
+      makeCollapsible(header, content);
+    }
+    new import_obsidian15.Setting(content).setName("Development Logs").addToggle((tgl) => {
+      tgl.setValue(Manager.getInstance().devLog);
+      tgl.onChange(async (value) => {
+        Manager.getInstance().devLog = value;
+        await Manager.getInstance().saveSettings();
+      });
+    });
+    new import_obsidian15.Setting(content).setName("Load Synchronously").addToggle((tgl) => {
+      tgl.setValue(Manager.getInstance().doLoadSynchronously);
+      tgl.onChange(async (value) => {
+        Manager.getInstance().doLoadSynchronously = value;
+        await Manager.getInstance().saveSettings();
+      });
+    });
+  }
+  generateContainer() {
+    this.mainEl = this.parentEl.createDiv();
+  }
+};
+
+// src/Components/DescriptionsList.ts
+var import_obsidian16 = require("obsidian");
+var DescriptionsList = class extends SettingsList {
+  constructor(parentEL, options) {
+    super(parentEL, options);
+  }
+  generateListItem(listEl, plugin) {
+    const item = new import_obsidian16.Setting(listEl).setName(plugin.item.name);
+    if (plugin.description) {
+      item.setDesc(plugin.description);
+    }
+    return item;
+  }
+};
+
+// src/Components/Modals/PluginModal.ts
+var import_obsidian18 = require("obsidian");
+
+// src/Components/BaseComponents/TogglableList.ts
+var import_obsidian17 = require("obsidian");
+var TogglableList = class extends SettingsList {
+  generateListItem(listEl, item) {
+    const settingItem = new import_obsidian17.Setting(listEl);
+    settingItem.setName(item.name);
+    this.addToggleButton(settingItem, item);
+    return settingItem;
+  }
+  addToggleButton(setting, item) {
+    setting.addButton((btn) => {
+      const currentState = this.getItemState(item);
+      this.setToggleIcon(btn, currentState);
+      btn.onClick(() => {
+        this.toggleItem(item);
+        this.setToggleIcon(btn, this.getItemState(item));
+      });
+    });
+  }
+  toggleItem(item) {
+    this.options.toggle(item);
+  }
+  getItemState(item) {
+    return this.options.getToggleState(item);
+  }
+  setToggleIcon(btn, value) {
+    btn.setIcon(value ? "check-circle" : "circle");
+  }
+};
+
+// src/Components/Modals/PluginModal.ts
+var PluginModal = class extends import_obsidian18.Modal {
+  constructor(app2, pluginToEdit, onCloseActions) {
+    super(app2);
+    this.discardChanges = true;
+    this.pluginToEdit = pluginToEdit;
+    this.onCloseActions = onCloseActions;
+    this.memberGroupIds = Manager.getInstance().getGroupsOfPlugin(pluginToEdit.id).map((g) => g.id);
+    this.memberGroupsIdsCache = this.memberGroupIds.map((id) => id);
+  }
+  onOpen() {
+    const { modalEl } = this;
+    modalEl.empty();
+    const contentEl = modalEl.createDiv();
+    const title = contentEl.createEl("h4");
+    title.textContent = "Editing Plugin: ";
+    title.createEl("b").textContent = this.pluginToEdit.name;
+    if (this.memberGroupIds) {
+      const groupsList = new TogglableList(contentEl, {
+        items: Array.from(Manager.getInstance().groupsMap.values()),
+        getToggleState: (item) => {
+          return this.getToggleState(item);
+        },
+        toggle: (item) => {
+          this.toggleItem(item);
+        }
+      });
+    }
+    this.generateFooter(contentEl);
+  }
+  toggleItem(item) {
+    if (!this.memberGroupIds.contains(item.id)) {
+      this.memberGroupIds.push(item.id);
+    } else {
+      this.memberGroupIds.remove(item.id);
+    }
+  }
+  getToggleState(item) {
+    return this.memberGroupIds && this.memberGroupIds.contains(item.id);
+  }
+  onClose() {
+    const { contentEl } = this;
+    if (this.onCloseActions) {
+      this.onCloseActions();
+    }
+    contentEl.empty();
+  }
+  generateFooter(parentElement) {
+    const footer = parentElement.createEl("div");
+    footer.addClass("pg-edit-modal-footer");
+    new import_obsidian18.Setting(footer).addButton((btn) => {
+      btn.setButtonText("Cancel");
+      btn.onClick(() => this.close());
+    }).addButton((btn) => {
+      btn.setButtonText("Save");
+      btn.onClick(() => this.saveChanges());
+    }).settingEl.addClass("modal-footer");
+  }
+  async saveChanges() {
+    const removedGroupIds = this.memberGroupsIdsCache.filter((id) => !this.memberGroupIds.includes(id));
+    removedGroupIds.forEach((id) => {
+      var _a;
+      return (_a = Manager.getInstance().groupsMap.get(id)) == null ? void 0 : _a.removePlugin(this.pluginToEdit);
+    });
+    const addedGroupIds = this.memberGroupIds.filter((id) => !this.memberGroupsIdsCache.includes(id));
+    addedGroupIds.forEach((id) => {
+      var _a;
+      (_a = Manager.getInstance().groupsMap.get(id)) == null ? void 0 : _a.addPlugin(this.pluginToEdit);
+    });
+    await Manager.getInstance().saveSettings();
+    this.close();
+  }
+};
+
+// src/Components/EditPluginList.ts
+var EditPluginList = class extends DescriptionsList {
+  constructor(parentEL, options, onEditFinished) {
+    super(parentEL, options);
+    this.onEditFinished = onEditFinished;
+  }
+  generateListItem(listEl, plugin) {
+    const item = super.generateListItem(listEl, plugin);
+    item.addButton((btn) => {
+      btn.setIcon("pencil");
+      btn.onClick(() => {
+        new PluginModal(Manager.getInstance().pluginInstance.app, plugin.item, () => {
+          if (this.onEditFinished) {
+            this.onEditFinished();
+          }
+        }).open();
+      });
+    });
+    return item;
+  }
+};
+
+// src/PluginGroupSettings.ts
+var PluginGroupSettings = class extends import_obsidian19.PluginSettingTab {
+  constructor(app2, plugin) {
+    super(app2, plugin);
+  }
+  async display() {
+    await PluginManager.loadNewPlugins();
+    const { containerEl } = this;
+    containerEl.empty();
+    this.generateGeneralSettings(containerEl);
+    new GroupSettings(containerEl, {
+      collapsible: true,
+      startOpened: true
+    });
+    this.GenerateDeviceList(containerEl);
+    this.GeneratePluginsList(containerEl);
+    new AdvancedSettings(containerEl, { collapsible: true });
+  }
+  generateGeneralSettings(containerEl) {
+    const generalParent = containerEl.createDiv();
+    const header = generalParent.createEl("h4", {
+      text: "General",
+      cls: "mod-clickable"
+    });
+    const content = generalParent.createDiv();
+    makeCollapsible(header, content, true);
+    new import_obsidian19.Setting(content).setName("Generate Commands for Groups").addToggle((tgl) => {
+      var _a;
+      tgl.setValue((_a = Manager.getInstance().generateCommands) != null ? _a : false);
+      tgl.onChange(async (value) => {
+        Manager.getInstance().shouldGenerateCommands = value;
+        await Manager.getInstance().saveSettings();
+      });
+    });
+    new import_obsidian19.Setting(content).setName("Notice upon un-/loading groups").addDropdown((drp) => {
+      var _a;
+      drp.addOption("none", "None").addOption("short", "Short").addOption("normal", "Normal");
+      drp.setValue((_a = Manager.getInstance().showNoticeOnGroupLoad) != null ? _a : "none");
+      drp.onChange(async (value) => {
+        Manager.getInstance().showNoticeOnGroupLoad = value;
+        await Manager.getInstance().saveSettings();
+      });
+    });
+    new import_obsidian19.Setting(content).setName("Statusbar Menu").addDropdown((drp) => {
+      var _a;
+      drp.addOption("None", "None").addOption("Icon", "Icon").addOption("Text", "Text");
+      drp.setValue((_a = Manager.getInstance().showStatusbarIcon) != null ? _a : "None");
+      drp.onChange(async (value) => {
+        switch (value) {
+          case "Icon":
+            Manager.getInstance().showStatusbarIcon = "Icon";
+            break;
+          case "Text":
+            Manager.getInstance().showStatusbarIcon = "Text";
+            break;
+          default:
+            Manager.getInstance().showStatusbarIcon = "None";
+            break;
+        }
+        await Manager.getInstance().saveSettings();
+        Manager.getInstance().updateStatusbarItem();
+      });
+    });
   }
   GenerateDeviceList(contentEl) {
     let newDeviceName = "";
@@ -1329,7 +1894,7 @@ var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
         return;
       }
       if (Manager.getInstance().devices.contains(newDeviceName)) {
-        new import_obsidian11.Notice("Name already in use for other device");
+        new import_obsidian19.Notice("Name already in use for other device");
         return;
       }
       Manager.getInstance().devices.push(newDeviceName);
@@ -1341,10 +1906,12 @@ var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
       newDeviceName = "";
       newDevNameText.setValue(newDeviceName);
     };
-    contentEl.createEl("h4", { text: "Devices" });
+    const header = contentEl.createEl("h4", { text: "Devices" });
+    const content = contentEl.createDiv();
+    makeCollapsible(header, content);
     let deviceAddBtn;
-    const deviceNameSetting = new import_obsidian11.Setting(contentEl).setName("New Device");
-    const newDevNameText = new import_obsidian11.TextComponent(deviceNameSetting.controlEl);
+    const deviceNameSetting = new import_obsidian19.Setting(content).setName("New Device");
+    const newDevNameText = new import_obsidian19.TextComponent(deviceNameSetting.controlEl);
     newDevNameText.setValue(newDeviceName).onChange((value) => {
       newDeviceName = value;
       if (deviceAddBtn) {
@@ -1362,7 +1929,7 @@ var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
       }).buttonEl.addClass("btn-disabled");
     });
     Manager.getInstance().devices.forEach((device) => {
-      const deviceSetting = new import_obsidian11.Setting(contentEl).setName(device);
+      const deviceSetting = new import_obsidian19.Setting(content).setName(device);
       if (getCurrentlyActiveDevice() === device) {
         deviceSetting.setDesc("Current Device").addButton((btn) => {
           btn.setIcon("trash");
@@ -1397,45 +1964,93 @@ var GroupSettingsTab = class extends import_obsidian11.PluginSettingTab {
     setCurrentlyActiveDevice(null);
     this.display();
   }
+  GeneratePluginsList(parentEl) {
+    const header = parentEl.createEl("h4", { text: "Plugins" });
+    const content = parentEl.createDiv();
+    makeCollapsible(header, content);
+    const refresh = new import_obsidian19.ExtraButtonComponent(content);
+    refresh.setIcon("refresh-cw");
+    refresh.setTooltip("Refresh list for changes to the plugins and assigned groups.");
+    const pluginList = new EditPluginList(content, {
+      items: this.getPluginsWithGroupsAsDescription()
+    }, () => {
+      pluginList.update({
+        items: this.getPluginsWithGroupsAsDescription()
+      });
+    });
+    refresh.onClick(() => {
+      pluginList.update({
+        items: this.getPluginsWithGroupsAsDescription()
+      });
+    });
+  }
+  getPluginsWithGroupsAsDescription() {
+    return PluginManager.getAllAvailablePlugins().map((plugin) => {
+      const groups = Manager.getInstance().getGroupsOfPlugin(plugin.id);
+      return {
+        item: plugin,
+        description: groups.map((group) => group.name).join(", ")
+      };
+    });
+  }
 };
 
 // main.ts
-var PgMain = class extends import_obsidian12.Plugin {
-  constructor() {
-    super(...arguments);
-    this.doLogTime = false;
-  }
+var PgMain = class extends import_obsidian20.Plugin {
   async onload() {
+    const times = [];
+    times.push({ label: "Time on Load", time: this.getCurrentTime() });
     await Manager.getInstance().init(this);
-    if (this.doLogTime) {
-      console.log("pg-afterManagerInit", window.performance.now() / 1e3);
-    }
-    PluginManager.loadNewPlugins();
-    if (this.doLogTime) {
-      console.log("pg-afterNewPluginLoad", window.performance.now() / 1e3);
-    }
-    this.addSettingTab(new GroupSettingsTab(this.app, this));
-    if (this.doLogTime) {
-      console.log("pg-afterAddSettings", window.performance.now() / 1e3);
-    }
+    this.logTime("Manager Setup", times);
+    await PluginManager.loadNewPlugins();
+    this.logTime("Loading new plugins", times);
+    this.addSettingTab(new PluginGroupSettings(this.app, this));
+    this.logTime("Creating the Settings Tab", times);
+    Manager.getInstance().updateStatusbarItem();
     if (!Manager.getInstance().groupsMap) {
+      this.displayTimeNotice(times);
       return;
     }
     if (Manager.getInstance().generateCommands) {
       Manager.getInstance().groupsMap.forEach((group) => CommandManager.getInstance().AddGroupCommands(group.id));
-      if (this.doLogTime) {
-        console.log("pg-afterGenerateCommand", window.performance.now() / 1e3);
+      if (Manager.getInstance().devLog) {
+        this.logTime("Generated Commands for Groups in", times);
       }
     }
-    if (window.performance.now() / 1e3 < disableStartupTimeout) {
+    if (window.performance.now() < disableStartupTimeout) {
       Manager.getInstance().groupsMap.forEach((group) => {
         if (group.loadAtStartup)
           group.startup();
       });
+      if (Manager.getInstance().devLog) {
+        this.logTime("Dispatching Groups for delayed start in", times);
+      }
     }
-    if (this.doLogTime) {
-      console.log("pg-afterInitStartups", window.performance.now() / 1e3);
+    this.displayTimeNotice(times);
+  }
+  logTime(label, times) {
+    if (Manager.getInstance().devLog) {
+      times.push({ label, time: this.elapsedTime(times) });
     }
+  }
+  displayTimeNotice(times) {
+    if (!Manager.getInstance().devLog || times.length === 0) {
+      return;
+    }
+    const totalTime = Math.round(this.accTime(times.slice(1)));
+    new import_obsidian20.Notice(times.map((item) => item.label + ": " + item.time + " ms").join("\n") + "\nTotal Time: " + totalTime + " ms", 1e4);
+  }
+  elapsedTime(times) {
+    if (times.length > 1) {
+      return this.getCurrentTime() - this.accTime(times);
+    }
+    return this.getCurrentTime() - times[0].time;
+  }
+  accTime(times) {
+    return times.map((item) => item.time).reduce((prev, curr) => prev + curr);
+  }
+  getCurrentTime() {
+    return Date.now();
   }
   onunload() {
   }

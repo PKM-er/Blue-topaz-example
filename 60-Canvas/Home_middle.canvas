@@ -1,20 +1,23 @@
 {
 	"nodes":[
-		{"id":"0b46ed2b79a7630d","x":-9924,"y":-9894,"width":250,"height":60,"type":"text","text":""},
-		{"id":"27cb72d5e0506970","x":-11078,"y":-10619,"width":1281,"height":961,"color":"1","type":"file","file":"60-Canvas/Assets/1505323928_home_.png"},
-		{"id":"ddf82df1c78fc1d8","x":-10455,"y":-10171,"width":576,"height":294,"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#分布"},
-		{"id":"52031f4242a60186","x":-10545,"y":-10334,"width":215,"height":73,"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#notes"},
-		{"id":"598f6794f27c80e2","x":-10733,"y":-10504,"width":94,"height":78,"color":"1","type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#daily"},
-		{"id":"80f6e49e56a9e257","x":-10455,"y":-10504,"width":94,"height":78,"color":"1","type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#home"},
-		{"id":"61da39dc99a4d76b","x":-10309,"y":-10334,"width":203,"height":73,"color":"2","type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#tags"},
-		{"id":"c837ba7a50d610b1","x":-10770,"y":-10336,"width":203,"height":73,"color":"2","type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#days"},
-		{"id":"34031e7a451b48c0","x":-10567,"y":-9833,"width":400,"height":50,"color":"#ac5d5d","type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#quote"},
-		{"id":"e52be782056df252","x":-10770,"y":-10171,"width":297,"height":294,"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#笔记数量"},
-		{"id":"a93596e116afb2e4","x":-10082,"y":-10336,"width":203,"height":73,"color":"2","type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#tasks"},
-		{"id":"f2a151e6096cde94","x":-10082,"y":-10531,"width":240,"height":105,"color":"#d3a6a6","type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#clock"},
-		{"id":"3d8dc1a480fee953","x":-10549,"y":-10504,"width":94,"height":78,"color":"1","type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#inbox"},
-		{"id":"3803587a7f1389b4","x":-10792,"y":-10426,"width":384,"height":64,"color":"1","type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#weather"},
-		{"id":"213bec13200cad49","x":-10639,"y":-10504,"width":94,"height":78,"color":"1","type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#task"}
+		{"type":"group","id":"bf71ccad731d16e0","x":-11480,"y":-10646,"width":1580,"height":1166,"label":"Home","background":"60-Canvas/Assets/1505323928_home_.png"},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#inbox","id":"3d8dc1a480fee953","x":-10930,"y":-10511,"width":94,"height":78,"color":"1"},
+		{"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#notes","id":"52031f4242a60186","x":-10796,"y":-10323,"width":215,"height":83},
+		{"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#笔记数量","id":"e52be782056df252","x":-11079,"y":-10080,"width":378,"height":344},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#weather","id":"3803587a7f1389b4","x":-11118,"y":-10403,"width":322,"height":53,"color":"1"},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#daily","id":"598f6794f27c80e2","x":-11120,"y":-10511,"width":94,"height":78,"color":"1"},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#task","id":"213bec13200cad49","x":-11026,"y":-10511,"width":94,"height":78,"color":"1"},
+		{"type":"text","text":"## 笔记统计","id":"9362e99f4b8fe0a3","x":-11158,"y":-10377,"width":250,"height":60,"color":"#354057"},
+		{"type":"text","text":"## 笔记数量","id":"03649eaede8a5c6f","x":-11158,"y":-10180,"width":250,"height":60,"color":"#354057"},
+		{"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#days","id":"c837ba7a50d610b1","x":-11080,"y":-10329,"width":203,"height":116,"color":"2"},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#home","id":"80f6e49e56a9e257","x":-10836,"y":-10511,"width":94,"height":78,"color":"1"},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#quote","id":"34031e7a451b48c0","x":-10828,"y":-9700,"width":678,"height":80,"color":"#ac5d5d"},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#clock","id":"f2a151e6096cde94","x":-10230,"y":-10538,"width":264,"height":105,"color":"#d3a6a6"},
+		{"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#分布","id":"ddf82df1c78fc1d8","x":-10683,"y":-10080,"width":656,"height":314},
+		{"type":"text","text":"## 笔记分布","id":"b07716d113430eb4","x":-10760,"y":-10180,"width":250,"height":60,"color":"#354057"},
+		{"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#tags","id":"61da39dc99a4d76b","x":-10500,"y":-10329,"width":200,"height":122,"color":"2"},
+		{"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#tasks","id":"a93596e116afb2e4","x":-10230,"y":-10323,"width":203,"height":110,"color":"2"},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#Search","id":"61c231d1f5d17414","x":-10900,"y":-10529,"width":400,"height":400}
 	],
 	"edges":[]
 }

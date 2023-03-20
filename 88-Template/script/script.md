@@ -6,11 +6,13 @@ obsidianUIMode: preview
 `button-homewp`  `button-browsevault`  `button-browsenext` `button-browserefresh`
 %% Begin Waypoint %%
 - **[[script]]**
+	- [[askChat.js]]
 	- [[bookfromdouban.js]]
 	- [[changeInlineToYaml.js]]
 	- [[changeSticky.js]]
 	- [[colorclock.js]]
 	- [[copy_canvas_node_text.js]]
+	- [[copyChat.js]]
 	- [[dv_getWordCloud.js]]
 	- [[dv_getwordcoutView.js]]
 	- [[dv_project_tracking.js]]

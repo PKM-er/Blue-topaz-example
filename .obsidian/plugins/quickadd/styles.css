@@ -1,210 +1,177 @@
+/* src/styles.css */
 .configureMacroDiv {
-    display: grid;
-    grid-template-rows: 1fr;
-    min-width: 12rem;
+  display: grid;
+  grid-template-rows: 1fr;
+  min-width: 12rem;
 }
-
 .configureMacroDivItem {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
-
 .configureMacroDivItemButton {
-    display: flex;
-    align-content: center;
-    justify-content: center;
-    margin-bottom: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  margin-bottom: 10px;
 }
-
 .macroContainer {
-    display: grid;
-    grid-template-rows: repeat(auto-fill, 120px);
-    grid-gap: 40px;
-
-    overflow-y: auto;
-    max-height: 30em;
-    padding: 2em;
+  display: grid;
+  grid-template-rows: repeat(auto-fill, 120px);
+  grid-gap: 40px;
+  overflow-y: auto;
+  max-height: 30em;
+  padding: 2em;
 }
-
-/* Mobile */
 @media screen and (max-width: 540px) {
-    .macroContainer1 {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .macroContainer2 {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .macroContainer3 {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .wideInputPromptInputEl {
-        width: 20rem;
-        max-width: 100%;
-        height: 3rem;
-    }
+  .macroContainer1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .macroContainer2 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .macroContainer3 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .wideInputPromptInputEl {
+    width: 20rem;
+    max-width: 100%;
+    height: 3rem;
+  }
 }
-
-/* Tablet */
 @media screen and (max-width: 540px) and (max-width: 780px) {
-    .macroContainer1 {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .macroContainer2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .macroContainer3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .wideInputPromptInputEl {
-        width: 30rem;
-        max-width: 100%;
-        height: 20rem;
-    }
+  .macroContainer1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .macroContainer2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .macroContainer3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wideInputPromptInputEl {
+    width: 30rem;
+    max-width: 100%;
+    height: 20rem;
+  }
 }
-
-/* Everything else */
 @media screen and (min-width: 781px) {
-    .macroContainer1 {
-        grid-template-columns: repeat(1, 1fr);
-    }
-
-    .macroContainer2 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .macroContainer3 {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .wideInputPromptInputEl {
-        width: 40rem;
-        max-width: 100%;
-        height: 20rem;
-    }
+  .macroContainer1 {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .macroContainer2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .macroContainer3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .wideInputPromptInputEl {
+    width: 40rem;
+    max-width: 100%;
+    height: 20rem;
+  }
 }
-
 .addMacroBarContainer {
-    display: flex;
-    align-content: center;
-    justify-content: space-around;
-    margin-top: 20px;
+  display: flex;
+  align-content: center;
+  justify-content: space-around;
+  margin-top: 20px;
 }
-
 .captureToActiveFileContainer {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
-
 .choiceNameHeader {
-    text-align: center;
+  text-align: center;
 }
-
 .choiceNameHeader:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-
 .folderInputContainer {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    margin-bottom: 8px;
-    gap: 4px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  gap: 4px;
 }
-
 .selectMacroDropdownContainer {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
-
 .quickAddModal .modal {
-    min-width: 35%;
-    overflow-y: auto;
-    max-height: 70%;
+  min-width: 35%;
+  overflow-y: auto;
+  max-height: 70%;
 }
-
 .checkboxRowContainer {
-    display: grid;
-    grid-template-rows: auto;
-    align-content: center;
+  margin: 30px 0px;
+  display: grid;
+  grid-template-rows: auto;
+  align-content: center;
+  gap: 5px;
 }
-
 .checkboxRow {
-    display: flex;
-    justify-content: space-between;
-    align-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
 }
-
 .checkboxRow .checkbox-container {
-    flex-shrink: 0;
+  flex-shrink: 0;
 }
-
 .checkboxRow span {
-    font-size: 16px;
-    word-break: break-all;
+  font-size: 16px;
+  word-break: break-all;
 }
-
 .submitButtonContainer {
-    display: flex;
-    align-content: center;
-    justify-content: center;
+  display: flex;
+  align-content: center;
+  justify-content: center;
 }
-
 .chooseFolderWhenCreatingNoteContainer {
-    display: flex;
-    align-content: center;
-    justify-content: space-between;
-    margin-bottom: 10px;
+  display: flex;
+  align-content: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
 }
-
+.chooseFolderFromSubfolderContainer {
+  margin: 20px 0 0 0;
+}
 .clickable:hover {
-    cursor: pointer;
+  cursor: pointer;
 }
-
 .quickAddCommandListItem {
-    display: flex;
-    flex: 1 1 auto;
-    align-items: center;
-    justify-content: space-between;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: space-between;
 }
-
 .quickCommandContainer {
-    display: flex;
-    justify-content: flex-end;
-    align-content: center;
-    margin-bottom: 1em;
+  display: flex;
+  justify-content: flex-end;
+  align-content: center;
+  margin-bottom: 1em;
 }
-
 .yesNoPromptButtonContainer {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2rem;
 }
-
 .yesNoPromptParagraph {
-    text-align: center;
+  text-align: center;
 }
-
 .qaFileSuggestionItem {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
-
 .qaFileSuggestionItem .suggestion-main-text {
-    font-weight: bold;
+  font-weight: bold;
 }
 .qaFileSuggestionItem .suggestion-sub-text {
-    font-style: italic;
+  font-style: italic;
 }

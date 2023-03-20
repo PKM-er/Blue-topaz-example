@@ -422,6 +422,12 @@ function uniqWith(arr, fn) {
     (element2, index) => arr.findIndex((step) => fn(element2, step)) === index
   );
 }
+function setEquals(set1, set2) {
+  if (set1.size !== set2.size) {
+    return false;
+  }
+  return Array.from(set1).every((element2) => set2.has(element2));
+}
 function mirrorMap(collection, toValue) {
   return collection.reduce((p, c) => ({ ...p, [toValue(c)]: toValue(c) }), {});
 }
@@ -2298,6 +2304,11 @@ var AppHelper = class {
       ([path, obj]) => Object.keys(obj).map((link) => ({ path, link }))
     );
   }
+  getUnresolvedLinks(file) {
+    var _a;
+    const countsByLink = (_a = this.unsafeApp.metadataCache.unresolvedLinks[file.path]) != null ? _a : {};
+    return new Set(Object.keys(countsByLink));
+  }
   getMarkdownFileByPath(path) {
     if (!path.endsWith(".md")) {
       return null;
@@ -3437,6 +3448,7 @@ var AutoCompleteSuggest = class extends import_obsidian3.EditorSuggest {
   constructor(app, statusBar) {
     super(app);
     this.previousCurrentLine = "";
+    this.previousLinksCacheInActiveFile = /* @__PURE__ */ new Set();
     this.keymapEventHandler = [];
     this.appHelper = new AppHelper(app);
     this.statusBar = statusBar;
@@ -3499,10 +3511,18 @@ var AutoCompleteSuggest = class extends import_obsidian3.EditorSuggest {
         ins.updateFrontMatterToken();
       }
     );
-    ins.metadataCacheChangeRef = app.metadataCache.on("changed", (f) => {
+    ins.metadataCacheChangeRef = app.metadataCache.on("changed", async (f) => {
       ins.updateFrontMatterTokenIndex(f);
       if (!ins.appHelper.isActiveFile(f)) {
         ins.updateFrontMatterToken();
+      }
+      if (settings.updateInternalLinksOnSave) {
+        await sleep(50);
+        const currentCache = ins.appHelper.getUnresolvedLinks(f);
+        if (!setEquals(ins.previousLinksCacheInActiveFile, currentCache)) {
+          ins.refreshInternalLinkTokens();
+          ins.previousLinksCacheInActiveFile = currentCache;
+        }
       }
     });
     const cacheResolvedRef = app.metadataCache.on("resolved", async () => {
@@ -4246,6 +4266,7 @@ var DEFAULT_SETTINGS = {
   enableInternalLinkComplement: true,
   suggestInternalLinkWithAlias: false,
   excludeInternalLinkPathPrefixPatterns: "",
+  updateInternalLinksOnSave: true,
   enableFrontMatterComplement: true,
   frontMatterComplementMatchStrategy: "inherit",
   insertCommaAfterFrontMatterCompletion: false,
@@ -4672,6 +4693,14 @@ var VariousComplementsSettingTab = class extends import_obsidian4.PluginSettingT
           this.plugin.settings.suggestInternalLinkWithAlias = value;
           await this.plugin.saveSettings({ internalLink: true });
         });
+      });
+      new import_obsidian4.Setting(containerEl).setName("Update internal links on save").addToggle((tc) => {
+        tc.setValue(this.plugin.settings.updateInternalLinksOnSave).onChange(
+          async (value) => {
+            this.plugin.settings.updateInternalLinksOnSave = value;
+            await this.plugin.saveSettings({ internalLink: true });
+          }
+        );
       });
       new import_obsidian4.Setting(containerEl).setName("Exclude prefix path patterns").setDesc("Prefix match path patterns to exclude files.").addTextArea((tac) => {
         const el = tac.setValue(

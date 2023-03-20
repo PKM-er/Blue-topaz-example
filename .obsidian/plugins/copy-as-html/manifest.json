@@ -1,0 +1,10 @@
+{
+	"id": "copy-as-html",
+	"name": "Copy as HTML",
+	"version": "1.0.6",
+	"minAppVersion": "0.12.0",
+	"description": "This is a simple plugin that converts the selected markdown to HTML and copies it to the clipboard.",
+	"author": "Bailey Jennings",
+	"authorUrl": "https://twitter.com/Bailey_Jennings",
+	"isDesktopOnly": false
+}

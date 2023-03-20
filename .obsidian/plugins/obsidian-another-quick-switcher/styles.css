@@ -1,7 +1,6 @@
 .another-quick-switcher__floating-prompt {
-    width: 33vw;
+    width: min(700px, 33vw);
     min-width: 500px;
-    right: 30px;
 }
 
 .another-quick-switcher__floating-prompt .suggestion-item {
@@ -189,16 +188,6 @@
     /*noinspection CssUnresolvedCustomProperty*/
     color: var(--text-accent);
     font-weight: bold;
-}
-
-.another-quick-switcher__grep__floating-modal-bg {
-    background-color: rgba(0, 0, 0, 0.3);
-}
-
-.another-quick-switcher__grep__floating-prompt {
-    width: 33vw;
-    min-width: 500px;
-    right: 30px;
 }
 
 .another-quick-switcher__grep__count-input {

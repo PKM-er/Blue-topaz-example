@@ -66,16 +66,8 @@ function getCellText(table, i, j) {
   return result;
 }
 function getCellInfo(cellEl, plugin, tableEl, editorView) {
-  if (!tableEl) {
-    let parent = cellEl.parentNode;
-    while (parent) {
-      if (parent instanceof HTMLTableElement)
-        break;
-      parent = parent.parentNode;
-    }
-    if (parent)
-      tableEl = parent;
-  }
+  if (!tableEl)
+    tableEl = getTableOfCell(cellEl);
   if (!tableEl) {
     console.error("Cannot get table element of cell ", cellEl);
     return;
@@ -91,6 +83,18 @@ function getCellInfo(cellEl, plugin, tableEl, editorView) {
   const i = trEl.rowIndex;
   const j = cellEl.cellIndex;
   return { tableLine, i, j };
+}
+function getTableOfCell(cellEl) {
+  if (!cellEl)
+    return;
+  let parent = cellEl.parentNode;
+  while (parent) {
+    if (parent instanceof HTMLTableElement)
+      break;
+    parent = parent.parentNode;
+  }
+  if (parent)
+    return parent;
 }
 function getCellEl(tablePos, i, j, plugin) {
   var _a;
@@ -187,17 +191,17 @@ var setLineWithoutScroll = (editor, n, text) => {
   };
 };
 function withoutScrollAndFocus(editorView, callback) {
+  const contentDom = editorView.contentDOM;
   const scrollDom = editorView.scrollDOM;
   const x = scrollDom.scrollLeft;
   const y = scrollDom.scrollTop;
-  const resetScroll = () => {
+  scrollDom.addEventListener("scroll", (e) => {
+    e.stopImmediatePropagation();
+    e.preventDefault();
     scrollDom.scrollTo(x, y);
-  };
-  scrollDom.addEventListener("scroll", resetScroll, true);
-  editorView.contentDOM.blur();
+  }, { once: true, capture: true });
   callback();
-  editorView.contentDOM.blur();
-  scrollDom.removeEventListener("scroll", resetScroll, true);
+  contentDom.blur();
 }
 
 // src/tableEditor.ts
@@ -315,7 +319,8 @@ var TableEditor = class {
       console.error("Cannot get editor");
       return;
     }
-    table.formatLine.splice(colIndex + 1, 0, "---");
+    const textAlignment = this.plugin.settings.defaultAlignmentWhenInsertNewCol == "left" ? ":--" : this.plugin.settings.defaultAlignmentWhenInsertNewCol == "center" ? ":-:" : this.plugin.settings.defaultAlignmentWhenInsertNewCol == "right" ? "--:" : this.plugin.settings.defaultAlignmentWhenInsertNewCol == "follow" ? table.formatLine[colIndex] : null;
+    table.formatLine.splice(colIndex + 1, 0, textAlignment);
     table.cells.forEach((row, idx) => {
       const newCell = col ? col[idx] : "   ";
       row.splice(colIndex + 1, 0, newCell);
@@ -371,7 +376,7 @@ var TableEditor = class {
       console.error("Cannot get editor");
       return;
     }
-    table.formatLine[colIndex] = aligned == "left" ? ":----" : aligned == "right" ? "----:" : ":---:";
+    table.formatLine[colIndex] = aligned == "left" ? ":--" : aligned == "right" ? "--:" : aligned == "center" ? ":-:" : null;
     withoutScrollAndFocus(editorView, () => {
       editorView.dispatch(setLineWithoutScroll(editor, table.fromLine + 1, TableEditor.rowCells2rowString(table.formatLine)));
     });
@@ -511,8 +516,8 @@ var TableEditor = class {
     const cursor = editor.getCursor();
     const cursorLine = editor.getLine(cursor.line);
     const bodyString = "|" + "  |".repeat(j);
-    const formatString = "|" + ":-:|".repeat(j);
-    let tableArr = [
+    const formatString = this.plugin.settings.defaultAlignmentForTableGenerator == "left" ? "|" + ":--|".repeat(j) : this.plugin.settings.defaultAlignmentForTableGenerator == "center" ? "|" + ":-:|".repeat(j) : this.plugin.settings.defaultAlignmentForTableGenerator == "right" ? "|" + "--:|".repeat(j) : null;
+    const tableArr = [
       cursorLine,
       "\n",
       bodyString,
@@ -959,6 +964,18 @@ var addButtons = (menu, plugin, { tableLine, i, j }) => {
       }
       await plugin.tableEditor.deleteRow(table, i);
     }).then((button) => button.buttonEl.innerHTML = delRow);
+    new import_obsidian4.ButtonComponent(containerEl).setTooltip("Wider").setIcon("chevrons-left-right").setClass("clickable-icon").onClick(async (e) => {
+      await plugin.doneEdit();
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying sort table ");
+        return;
+      }
+      e.stopPropagation();
+      e.preventDefault();
+      const oldContent = table.cells[0][j];
+      await plugin.tableEditor.updateCell(table, 0, j, oldContent + "\u2007");
+    });
     new import_obsidian4.ButtonComponent(containerEl).setTooltip("Delete column").setClass("clickable-icon").onClick(async () => {
       await plugin.doneEdit();
       const table = plugin.tableEditor.getTable(tableLine);
@@ -1022,6 +1039,18 @@ var addButtons = (menu, plugin, { tableLine, i, j }) => {
       }
       await plugin.tableEditor.swapRows(table, i, i + 1);
     });
+    new import_obsidian4.ButtonComponent(containerEl).setTooltip("Narrower").setIcon("chevrons-right-left").setClass("clickable-icon").onClick(async (e) => {
+      await plugin.doneEdit();
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying sort table ");
+        return;
+      }
+      e.stopPropagation();
+      e.preventDefault();
+      const newContent = table.cells[0][j].replace(/ $/, "");
+      await plugin.tableEditor.updateCell(table, 0, j, newContent);
+    });
     const setColAlign = (aligned) => async () => {
       await plugin.doneEdit();
       const table = plugin.tableEditor.getTable(tableLine);
@@ -1051,6 +1080,18 @@ var addButtons = (menu, plugin, { tableLine, i, j }) => {
         return;
       }
       await plugin.tableEditor.sortByCol(table, j, "desc");
+    });
+    new import_obsidian4.ButtonComponent(containerEl).setTooltip("Reset Column Width").setIcon("undo-2").setClass("clickable-icon").onClick(async (e) => {
+      await plugin.doneEdit();
+      const table = plugin.tableEditor.getTable(tableLine);
+      if (!table) {
+        console.error("cannot locate table when trying sort table ");
+        return;
+      }
+      e.stopPropagation();
+      e.preventDefault();
+      const newContent = table.cells[0][j].trimRight();
+      await plugin.tableEditor.updateCell(table, 0, j, newContent);
     });
     const dividerEl = createDiv({ cls: "menu-separator" });
     menuDom.prepend(dividerEl);
@@ -1125,35 +1166,47 @@ var DEFAULT_SETTINGS = {
   enableButtonPanel: true,
   enableTableGenerator: true,
   enableFloatingToolbar: false,
-  adjustTableCellHeight: true
+  adjustTableCellHeight: true,
+  removeEditBlockButton: false,
+  defaultAlignmentForTableGenerator: "left",
+  defaultAlignmentWhenInsertNewCol: "follow",
+  enableColumnWidthAdjust: true
 };
 var TableEnhancer2SettingTab = class extends import_obsidian6.PluginSettingTab {
-  constructor(app, plugin) {
-    super(app, plugin);
+  constructor(app2, plugin) {
+    super(app2, plugin);
     this.plugin = plugin;
   }
   display() {
     this.containerEl.empty();
     this.containerEl.createEl("h2", { text: "Table Enhancer Settings" });
-    new import_obsidian6.Setting(this.containerEl).setName("Enable Button Panel").addToggle((c) => c.setValue(this.plugin.settings.enableButtonPanel).onChange(async (val) => {
+    new import_obsidian6.Setting(this.containerEl).setName("Enable button panel").addToggle((c) => c.setValue(this.plugin.settings.enableButtonPanel).onChange(async (val) => {
       this.plugin.settings.enableButtonPanel = val;
       await this.plugin.saveSettings();
     }));
-    new import_obsidian6.Setting(this.containerEl).setName("Enable Table Generator").addToggle((c) => c.setValue(this.plugin.settings.enableTableGenerator).onChange(async (val) => {
+    new import_obsidian6.Setting(this.containerEl).setName("Enable table generator").addToggle((c) => c.setValue(this.plugin.settings.enableTableGenerator).onChange(async (val) => {
       this.plugin.settings.enableTableGenerator = val;
       await this.plugin.saveSettings();
     }));
-    new import_obsidian6.Setting(this.containerEl).setName("Enable Floating Panel").addToggle((c) => c.setValue(this.plugin.settings.enableFloatingToolbar).onChange(async (val) => {
+    new import_obsidian6.Setting(this.containerEl).setName("Enable floating panel").addToggle((c) => c.setValue(this.plugin.settings.enableFloatingToolbar).onChange(async (val) => {
       this.plugin.settings.enableFloatingToolbar = val;
       await this.plugin.saveSettings();
     }));
-    new import_obsidian6.Setting(this.containerEl).setName("Adjust Height of Table Cells").setDesc("The default height of an empty cell is very short. Activate this to increase the cell height and make it easier to click.").addToggle((c) => c.setValue(this.plugin.settings.adjustTableCellHeight).onChange(async (val) => {
+    new import_obsidian6.Setting(this.containerEl).setName("Adjust height of cells").setDesc("The default height of an empty cell is very short. Activate this to increase the cell height and make it easier to click.").addToggle((c) => c.setValue(this.plugin.settings.adjustTableCellHeight).onChange(async (val) => {
       var _a, _b;
-      if (val == true)
+      if (val)
         (_a = activeDocument == null ? void 0 : activeDocument.body) == null ? void 0 : _a.addClass("table-height-adjust");
       else
         (_b = activeDocument == null ? void 0 : activeDocument.body) == null ? void 0 : _b.removeClass("table-height-adjust");
       this.plugin.settings.adjustTableCellHeight = val;
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian6.Setting(this.containerEl).setName("Default alignment for new created table").setDesc("Choose if you want to align the text in a cell to the right, left or in the middle.").addDropdown((d) => d.addOption("left", "left").addOption("center", "center").addOption("right", "right").setValue(this.plugin.settings.defaultAlignmentForTableGenerator).onChange(async (val) => {
+      this.plugin.settings.defaultAlignmentForTableGenerator = val;
+      await this.plugin.saveSettings();
+    }));
+    new import_obsidian6.Setting(this.containerEl).setName("Default alignment for new inserted column").setDesc("Choose if you want to align the text in a cell to the right, left, in the middle, or follow other columns.").addDropdown((d) => d.addOption("left", "left").addOption("center", "center").addOption("right", "right").addOption("follow", "follow").setValue(this.plugin.settings.defaultAlignmentWhenInsertNewCol).onChange(async (val) => {
+      this.plugin.settings.defaultAlignmentWhenInsertNewCol = val;
       await this.plugin.saveSettings();
     }));
   }
@@ -1162,9 +1215,20 @@ var TableEnhancer2SettingTab = class extends import_obsidian6.PluginSettingTab {
 // src/tableHoverPostProcessor.ts
 function getTableHoverPostProcessor(plugin) {
   return (el) => {
+    var _a;
     const tables = el.getElementsByTagName("table");
     for (let i = 0; i < tables.length; i++) {
       const table = tables[i];
+      const headers = table.rows[0].cells;
+      for (let i2 = 0; i2 < headers.length; i2++) {
+        const headerCell = headers[i2];
+        const oldHtml = headerCell.innerHTML;
+        const spaceCnt = (_a = oldHtml.match(/ +$/)) == null ? void 0 : _a[0].length;
+        if (spaceCnt) {
+          headerCell.innerHTML = oldHtml.slice(0, -spaceCnt);
+          headerCell.style.width = String(5 + spaceCnt * 2) + "%";
+        }
+      }
       for (let i2 = 0; i2 < table.rows.length; i2++) {
         const row = table.rows[i2];
         for (let j = 0; j < row.cells.length; j++) {
@@ -1183,24 +1247,40 @@ function getTableHoverPostProcessor(plugin) {
 
 // src/mousedownHandler.ts
 var import_obsidian7 = require("obsidian");
-function getMousedownHandler(plugin) {
+function isClickable(node) {
+  if (node instanceof HTMLElement) {
+    if (node.tagName == "A")
+      return true;
+  }
+  return false;
+}
+function getEditableNode(node) {
+  if (!(node instanceof HTMLElement))
+    return null;
+  if (node instanceof HTMLTableCellElement)
+    return node;
+  if (isClickable(node))
+    return null;
+  let parent = node.parentNode;
+  while (parent) {
+    if (parent instanceof HTMLTableCellElement)
+      break;
+    parent = parent.parentNode;
+  }
+  if (!parent)
+    return null;
+  return parent;
+}
+function getClickHandler(plugin) {
   return async (e) => {
     if (plugin.isInReadingView())
       return;
     const markdownView = plugin.app.workspace.getActiveViewOfType(import_obsidian7.MarkdownView);
     const editor = markdownView == null ? void 0 : markdownView.editor;
     const editorView = editor == null ? void 0 : editor.cm;
-    const cellEl = e.targetNode;
-    if (!(cellEl instanceof HTMLTableCellElement)) {
-      const editingCell2 = activeDocument.querySelector("." + editingCellClassName);
-      if (editingCell2 instanceof HTMLTableCellElement) {
-        await plugin.doneEdit(editingCell2);
-        editor == null ? void 0 : editor.focus();
-      }
+    const cellEl = getEditableNode(e.targetNode);
+    if (!cellEl)
       return;
-    }
-    e.stopImmediatePropagation();
-    e.preventDefault();
     let tableEl = cellEl.parentNode;
     while (tableEl) {
       if (tableEl instanceof HTMLTableElement)
@@ -1211,8 +1291,12 @@ function getMousedownHandler(plugin) {
       console.error("Cannot get table element of cell ", cellEl);
       return;
     }
-    if (tableEl.hasClass("dataview"))
+    if (!(editorView == null ? void 0 : editorView.contentDOM.contains(tableEl)))
       return;
+    if (tableEl.classList.length > 0)
+      return;
+    e.stopImmediatePropagation();
+    e.preventDefault();
     const { tableLine, i, j } = getCellInfo(cellEl, plugin, tableEl);
     if (cellEl.isContentEditable) {
       return;
@@ -1232,6 +1316,21 @@ function getMousedownHandler(plugin) {
     }, 50);
   };
 }
+function getMousedownHandler(plugin) {
+  return async (e) => {
+    const markdownView = plugin.app.workspace.getActiveViewOfType(import_obsidian7.MarkdownView);
+    const editor = markdownView == null ? void 0 : markdownView.editor;
+    const tableEl = getTableOfCell(e.targetNode);
+    if (!tableEl) {
+      const editingCell = activeDocument.querySelector("." + editingCellClassName);
+      if (editingCell instanceof HTMLTableCellElement) {
+        await plugin.doneEdit(editingCell);
+        editor == null ? void 0 : editor.focus();
+      }
+      return;
+    }
+  };
+}
 
 // src/keydownHandler.ts
 var import_obsidian8 = require("obsidian");
@@ -1243,7 +1342,6 @@ function getKeydownHandler(plugin) {
     const editor = markdownView.editor;
     const editorView = editor == null ? void 0 : editor.cm;
     if (!editor.hasFocus()) {
-      console.log(e);
       if (!e.repeat && e.ctrlKey && e.key == "z") {
         e.stopPropagation();
         e.preventDefault();
@@ -1290,7 +1388,7 @@ function getKeydownHandler(plugin) {
     if (e.key == "ArrowLeft") {
       const caretPos = getCaretPosition(cellEl);
       const { tableLine, i, j } = getCellInfo(cellEl, plugin, tableEl);
-      if (caretPos == 0) {
+      if (cellEl.innerText.length == 0 || caretPos == 0) {
         e.preventDefault();
         const tablePos = editorView.posAtDOM(tableEl);
         await plugin.doneEdit(cellEl);
@@ -1552,6 +1650,7 @@ var getCommands = (plugin) => {
       const succText = cellEl.innerText.slice(selectionEnd);
       cellEl.innerText = [prevText, "==", selectText, "==", succText].join("");
       setCaretPosition(cellEl, selectionEnd + 4);
+      return true;
     }),
     "editor:toggle-numbered-list": () => withEditingCell((cellEl) => {
       return null;
@@ -1573,6 +1672,7 @@ var getCommands = (plugin) => {
       const succText = cellEl.innerText.slice(selectionEnd);
       cellEl.innerText = [prevText, "~~", selectText, "~~", succText].join("");
       setCaretPosition(cellEl, selectionEnd + 4);
+      return true;
     })
   };
 };
@@ -1588,24 +1688,32 @@ var TableEnhancer2 = class extends import_obsidian9.Plugin {
     const tableHoverPostProcessor = getTableHoverPostProcessor(this);
     this.registerMarkdownPostProcessor(tableHoverPostProcessor);
     this.app.workspace.onLayoutReady(() => {
+      const markdownView = app.workspace.getActiveViewOfType(import_obsidian9.MarkdownView);
+      const editor = markdownView == null ? void 0 : markdownView.editor;
+      const editorView = editor == null ? void 0 : editor.cm;
       if (this.settings.adjustTableCellHeight)
         activeDocument.body.addClass("table-height-adjust");
-      const clickHandler = getMousedownHandler(this);
+      const mousedownHandler = getMousedownHandler(this);
+      this.registerDomEvent(window, "mousedown", mousedownHandler, true);
+      const clickHandler = getClickHandler(this);
       this.registerDomEvent(window, "click", clickHandler, true);
       const keydownHandler = getKeydownHandler(this);
       this.registerDomEvent(window, "keydown", keydownHandler, true);
-      const commands = getCommands(this);
-      this.register(around(this.app.commands, {
+      this.register(around(app.commands, {
         executeCommand(next) {
           return function(command) {
-            var _a;
-            if (!((_a = commands[command.id]) == null ? void 0 : _a.call()))
-              next.call(this, command);
+            const commands = getCommands(this);
+            const callback = commands[command.id];
+            if (callback == null ? void 0 : callback.call(this)) {
+              return;
+            }
+            return next.call(this, command);
           };
         }
       }));
     });
     this.registerEvent(this.app.workspace.on("editor-menu", (menu, editor) => {
+      menu.setUseNativeMenu(false);
       const hoveredCell = activeDocument.querySelector("." + hoveredCellClassName);
       if (!(hoveredCell instanceof HTMLTableCellElement)) {
         if (this.settings.enableTableGenerator)
@@ -1653,7 +1761,7 @@ var TableEnhancer2 = class extends import_obsidian9.Plugin {
       console.error("Cannot get table when trying to done edit");
       return;
     }
-    await this.tableEditor.updateCell(table, i, j, cellEl.innerText.trim());
+    await this.tableEditor.updateCell(table, i, j, cellEl.innerText);
   }
   isInReadingView() {
     const markdownView = this.app.workspace.getActiveViewOfType(import_obsidian9.MarkdownView);

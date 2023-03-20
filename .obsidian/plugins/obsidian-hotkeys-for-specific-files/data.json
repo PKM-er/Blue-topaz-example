@@ -8,5 +8,6 @@
     "88-Template/🎵Music.md",
     "88-Template/home.md"
   ],
-  "useExistingPane": false
+  "useExistingPane": false,
+  "useHoverEditor": false
 }

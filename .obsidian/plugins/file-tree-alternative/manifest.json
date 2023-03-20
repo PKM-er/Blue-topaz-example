@@ -1,10 +1,11 @@
 {
     "id": "file-tree-alternative",
     "name": "File Tree Alternative Plugin",
-    "version": "2.2.8",
+    "version": "2.3.3",
     "minAppVersion": "0.15.0",
     "description": "This plugin allows you to have an alternative file tree view.",
     "author": "Ozan Tellioglu",
     "authorUrl": "https://www.ozan.pl",
+    "fundingUrl": "https://ko-fi.com/ozante",
     "isDesktopOnly": false
 }

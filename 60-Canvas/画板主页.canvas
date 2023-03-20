@@ -1,0 +1,8 @@
+{
+	"nodes":[
+		{"type":"group","label":"home","background":"60-Canvas/Assets/1505323928_home_.png","id":"e8f8398ff9e5c727","x":-1760,"y":-1280,"width":4160,"height":2800},
+		{"type":"file","file":"60-Canvas/Home/button_canvas.md","subpath":"#daily","id":"9ba3374ba14b2447","x":-800,"y":-1040,"width":120,"height":120},
+		{"id":"515a781f6647ccc6","x":-680,"y":-560,"width":480,"height":240,"type":"file","file":"60-Canvas/Home/Statistics.md","subpath":"#days"}
+	],
+	"edges":[]
+}

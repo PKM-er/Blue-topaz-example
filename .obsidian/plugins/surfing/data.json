@@ -1,6 +1,10 @@
 {
   "defaultSearchEngine": "bing",
   "customSearchEngine": [],
+  "ignoreList": [
+    "notion",
+    "craft"
+  ],
   "alwaysShowCustomSearch": false,
   "showOtherSearchEngines": true,
   "showSearchBarInPage": false,
@@ -31,5 +35,6 @@
       "action"
     ],
     "defaultFilterType": "tree"
-  }
+  },
+  "treeData": []
 }

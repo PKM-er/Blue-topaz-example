@@ -1,5 +1,4 @@
-
-.group-edit-modal-plugin-list {
+.pg-settings-list {
 	overflow: scroll;
 	min-height: 1vh;
 	max-height: 40vh;
@@ -8,7 +7,6 @@
 }
 
 .add-group-btn {
-
 }
 
 .btn-disabled {
@@ -16,7 +14,8 @@
 	opacity: 0.3;
 }
 
-.group-edit-modal-footer {    position: sticky;
+.pg-edit-modal-footer {
+	position: sticky;
 	width: 100%;
 	left: 0;
 	bottom: -16px;
@@ -27,9 +26,6 @@
 	align-items: center;
 	padding-top: 30px;
 	padding-bottom: 20px;
-}
-
-.group-edit-modal-content {
 }
 
 .pg-tabs {
@@ -76,7 +72,7 @@
 .pg-tabbed-content {
 	display: none;
 	margin: 0 6px;
-	padding: 0 4px 8px;
+	padding: 1em 0;
 	border-top: 1px solid var(--color-base-30, silver);
 }
 
@@ -90,81 +86,78 @@
 }
 
 .pg-drp-btn {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	color: var(--text-normal, white);
-	font-size: var(--font-ui-small, small);
-	border-radius: var(--button-radius, 5px);
-	border: 0;
-	padding: 1px 1px;
-	height: var(--input-height, 30px);
-	font-weight: var(--input-font-weight);
-	cursor: var(--cursor);
-	font-family: inherit;
-	outline: none;
-	user-select: none;
-	white-space: nowrap;
 	position: relative;
+
+	padding: 1px 1px;
 	margin: 2px;
-	background-color: var(--interactive-normal, #363636);
-	box-shadow: var(--input-shadow);
 }
 
-
 .pg-drp-btn span {
-	display: inline-block;
 	padding: 6px;
+	padding-bottom: 8px;
 }
 
 .pg-drp-btn-main-label {
 	width: 75%;
 }
 
-.pg-drp-btn-list {
-	display: none;
-	position: absolute;
-	top: 100%;
-	left: 0;
-	right: 0;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	z-index: 1;
+.pg-has-dropdown-single:focus .pg-dropdown {
+	opacity: 1;
+	display: flex;
+	pointer-events: auto;
+}
 
+.pg-has-dropdown:focus-within .pg-dropdown {
+	opacity: 1;
+	display: flex;
+	pointer-events: auto;
+}
+
+.pg-dropdown {
+	opacity: 0;
+	pointer-events: none;
+
+	position: absolute;
+
+	display: none;
 	align-items: center;
 	justify-content: center;
+	flex-direction: column;
+
+	z-index: 1;
+	top: 2em;
+	padding: 0;
+	width: 100%;
+	transition: opacity 0.15s ease-out;
+
+	list-style: none;
+
+	box-shadow: var(--input-shadow, rgba(211, 211, 211, 0.5));
+
 	color: var(--text-normal, white);
-	font-size: var(--font-ui-small, small);
+	background-color: var(--interactive-normal, #363636);
+
 	border-radius: var(--button-radius, 5px);
 	border: 0;
-	font-weight: var(--input-font-weight, normal);
-	cursor: var(--cursor, default);
-	font-family: inherit;
-	outline: none;
-	user-select: none;
-	white-space: nowrap;
-	background-color: var(--interactive-normal, #363636);
-	box-shadow: var(--input-shadow, rgba(211, 211, 211, 0.5));
-}
-.pg-drp-btn-list.is-active {
-	display: inline-block;
 }
 
+.pg-dropdown-item {
+	padding: 10px;
+	white-space: normal;
+	width: 100%;
+	height: 100%;
+}
+
+.pg-dropdown-item:hover {
+	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px,
+		rgba(17, 17, 26, 0.05) 0px 8px 32px;
+	background-color: var(--interactive-hover, #363636);
+	border-radius: var(--button-radius, 5px);
+}
 
 .pg-drp-btn .pg-drp-btn-divider {
 	padding: 0;
 	margin: 4px 1px;
-}
-
-.pg-drp-btn-list li {
-	padding: 10px;
-	white-space: normal;
-}
-
-.pg-drp-btn-list li:hover {
-	box-shadow: rgba(17, 17, 26, 0.1) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
-	background-color: var(--interactive-hover, #363636);
 }
 
 .pg-chip {
@@ -206,8 +199,55 @@
 	padding-bottom: 0.6rem;
 }
 
-:root {
-	--pg-group-edit-modal-footer-height: 60px;
+.pg-settings-window {
+	height: 0;
+	opacity: 0;
+
+	transition: height 1s, opacity 250ms;
+
+	overflow: scroll;
+	position: fixed;
+	background-color: var(--modal-background);
 }
 
+.pg-statusbar-icon:focus-within > .pg-settings-window {
+	height: auto;
+	max-height: 500px;
+	min-height: 100px;
+	min-width: 350px;
+	opacity: 1;
 
+	transition: height 1s, opacity 250ms;
+
+	border-radius: var(--modal-radius);
+	border: var(--modal-border-width) solid var(--modal-border-color);
+	padding: 0 0 0 16px;
+}
+
+.pg-collapsible-content.is-active {
+	display: block;
+}
+
+.pg-collapsible-content {
+	display: none;
+}
+
+.pg-collapsible-header:hover {
+	background-color: var(--interactive-hover, #363636);
+	border-radius: var(--button-radius, 5px);
+}
+
+.pg-collapsible-header {
+	padding-bottom: 8px;
+	padding-top: 4px;
+}
+
+.pg-collapsible-icon {
+	position: relative;
+	top: 4px;
+	left: 16px;
+}
+
+:root {
+	--pg-edit-modal-footer-height: 60px;
+}

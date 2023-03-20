@@ -1,4 +1,3 @@
-
 .ob-table-enhancer-row-bar {
 	display: flex;
 	position: absolute;
@@ -43,7 +42,7 @@
 div.ob-table-enhancer.button-menu {
 	display: flex;
 	flex-wrap: wrap;
-	max-width: 150px;
+	max-width: 180px;
 }
 
 div.ob-table-enhancer.button-menu > button {
@@ -82,4 +81,8 @@ div.ob-table-enhancer.button-menu > button {
 .table-height-adjust th, .table-height-adjust tr {
 	/** 防止单元格太窄不方便点击 */
 	height: 1.5em !important;
+}
+
+body {
+	--layer-tooltip: 2000;
 }

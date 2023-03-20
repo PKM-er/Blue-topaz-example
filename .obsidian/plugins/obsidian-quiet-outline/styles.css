@@ -71,8 +71,15 @@
   background-color: var(--code-background);
   border-radius: var(--radius-s);
 }
-.quiet-outline .internal-link {
+.quiet-outline a.tag {
+  white-space: nowrap;
+  padding: 0.2em 0.6em;
+}
+.quiet-outline a:not(.tag) {
   color: var(--link-external-color);
+}
+.quiet-outline span.internal-link {
+  color: var(--link-color);
 }
 .quiet-outline mark {
   background-color: var(--text-highlight-bg);
@@ -126,25 +133,28 @@
 .quiet-outline .level-4 .n-tree-node-indent:first-child,
 .quiet-outline .level-5 .n-tree-node-indent:first-child,
 .quiet-outline .level-6 .n-tree-node-indent:first-child {
-  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor1);
+  border-right: var(--nav-indentation-guide-width) solid var(--8de97876-rainbowColor1);
 }
 .quiet-outline .level-3 .n-tree-node-indent,
 .quiet-outline .level-4 .n-tree-node-indent:nth-child(2),
 .quiet-outline .level-5 .n-tree-node-indent:nth-child(2),
 .quiet-outline .level-6 .n-tree-node-indent:nth-child(2) {
-  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor2);
+  border-right: var(--nav-indentation-guide-width) solid var(--8de97876-rainbowColor2);
 }
 .quiet-outline .level-4 .n-tree-node-indent,
 .quiet-outline .level-5 .n-tree-node-indent:nth-child(3),
 .quiet-outline .level-6 .n-tree-node-indent:nth-child(3) {
-  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor3);
+  border-right: var(--nav-indentation-guide-width) solid var(--8de97876-rainbowColor3);
 }
 .quiet-outline .level-5 .n-tree-node-indent,
 .quiet-outline .level-6 .n-tree-node-indent:nth-child(4) {
-  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor4);
+  border-right: var(--nav-indentation-guide-width) solid var(--8de97876-rainbowColor4);
 }
 .quiet-outline .level-6 .n-tree-node-indent {
-  border-right: var(--nav-indentation-guide-width) solid var(--762e1073-rainbowColor5);
+  border-right: var(--nav-indentation-guide-width) solid var(--8de97876-rainbowColor5);
+}
+.n-tree-node.located p {
+  color: var(--8de97876-locatedColor);
 }
 
 /* src/main.css */

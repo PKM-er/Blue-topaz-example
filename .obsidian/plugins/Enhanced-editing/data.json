@@ -1,9 +1,9 @@
 {
-  "isTab": false,
-  "isBT": false,
+  "isBT": true,
   "isShowNum": false,
+  "linkWords": "",
   "maxScroll": 50,
-  "version": "0.5.5",
+  "version": "0.6.0",
   "hColor": "",
   "bColor": "",
   "hColor1": "#F36208",

@@ -1,20 +1,15 @@
 {
   "pluginList": [
-    "Lisandra-dev/obsidian-canvas-css-class",
-    "Mocca101/obsidian-plugin-groups",
-    "tadashi-aikawa/obsidian-various-complements-plugin",
+    "Quorafind/Obsidian-Float-Search",
+    "JuckZ/awesome-brain-manager",
+    "felixchenier/obsidian-optimize-canvas-connections",
+    "LincZero/obsidian-any-block",
     "benhughes/obsidian-link-exploder",
     "Quorafind/Obsidian-Canvas-Block-Reference",
-    "Quorafind/Obsidian-Link-Nodes-In-Canvas",
-    "Quorafind/Obsidian-Canvas-Presentation",
-    "Quorafind/Obsidian-Canvas-MindMap",
-    "AdrianSimionov/obsidian-mindmap-nextgen",
     "Quorafind/Obsidian-Tab-Switcher",
-    "mvdkwast/obsidian-copy-as-html",
     "Quorafind/Obsidian-Virtual-Hotkey-Keyboard",
     "Stardusten/ob-table-enhancer",
-    "nothingislost/obsidian-query-control",
-    "scambier/obsidian-omnisearch"
+    "nothingislost/obsidian-query-control"
   ],
   "pluginSubListFrozenVersion": [],
   "themesList": [],

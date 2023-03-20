@@ -30,6 +30,7 @@ obsidianUIMode: "preview"
 	- [[真Kanban]]
 	- [[最近天气查询]]
 	- [[callout 便签效果]]
+	- [[Callout 样式分享--Pageview]]
 	- [[Callout环绕布局、缩进效果示例]]
 	- [[example database]]
 	- [[MD表格悬浮编辑测试]]

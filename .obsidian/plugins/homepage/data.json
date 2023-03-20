@@ -12,5 +12,6 @@
   "revertView": true,
   "refreshDataview": true,
   "autoCreate": false,
+  "autoScroll": false,
   "pin": false
 }

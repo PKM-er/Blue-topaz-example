@@ -17,5 +17,9 @@
 .settings-search-results .setting-item.active {
   background-color: var(--background-secondary);
 }
+.settings-search-results .set-externally .setting-item-name {
+  display: flex;
+  gap: 0.5rem;
+}
 
 /* src/styles.css */

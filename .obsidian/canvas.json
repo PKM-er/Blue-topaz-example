@@ -1,0 +1,6 @@
+{
+  "snapToObjects": true,
+  "snapToGrid": true,
+  "defaultModDragBehavior": "menu",
+  "cardLabelVisibility": "hover"
+}

@@ -96,7 +96,6 @@ jQuery(function()
         if (newColorScheme == "theme-dark")
         {
 			setThemeToggle(false);
-			console.log("dark");
         }
 
         if (newColorScheme == "theme-light")
@@ -174,7 +173,6 @@ jQuery(function()
 				if($(this).hasClass("is-collapsed") && $(this).has("h1, h2, h3, h4, h5, h6"))
 				{
 					let hSize = $(this).children().first().prop("tagName").toLowerCase().replace("h", "");
-					console.log(hSize + " <? " + lastHeaderSize);
 					if(hSize < lastHeaderSize)
 					{
 						setHeaderCollapse($(this), false);
@@ -203,39 +201,60 @@ jQuery(function()
 
 		if (target.startsWith("#"))
 		{
-			let header = $(target);
+			let header = $(document.getElementById(target.substring(1)));
 
 			setHeaderCollapse($(header).parent(), false);
 		}
 	});
 
-    // Make button with id="#save-to-pdf" save the current page to a PDF file
-    $("#save-pdf").on("click", function()
-    {
-        window.print();
-    });
-
-
     // MAKE OUTLINE COLLAPSIBLE
     // if "outline-header" is clicked, toggle the display of every div until the next heading of the same or lower level
     
-    var outline_width = 0;
+	function setOutlineCollapse(header, collapse)
+	{
+		if (collapse)
+		{
+			if (!$(header).hasClass("is-collapsed")) 
+				$(header).addClass("is-collapsed");
 
-    $(".outline-item-contents > .collapse-icon").on("click", function()
+			$(header).children(".outline-item-children").slideUp(120);
+		}
+		else
+		{
+			if ($(header).hasClass("is-collapsed"))
+				$(header).removeClass("is-collapsed");
+			
+			$(header).children(".outline-item-children").slideDown(120);
+		}
+	}
+
+	function toggleOutlineCollapse(header)
+	{
+		let isCollapsed = $(header).hasClass("is-collapsed");
+		setOutlineCollapse(header, !isCollapsed);
+	}
+
+    $(".outline-item-contents > .collapse-icon").on("click", function(e)
     {
-        var isCollapsed = $(this).parent().parent().hasClass("is-collapsed");
-        
-        $(this).parent().parent().toggleClass("is-collapsed");
+        toggleOutlineCollapse($(this).parent().parent());
 
-        if(isCollapsed)
-        {
-            $(this).parent().next().slideDown(120);
-        }
-        else
-        {
-            $(this).parent().next().slideUp(120);
-        }
+		// Prevent the collapse button from triggering the parent <a> tag navigation.
+		// fix implented by 'zombony' from GitHub
+		return false;
     });
+
+	$(".collapse-all").on("click", function()
+	{
+		let button = $(this);
+		$(".outline-container div.outline-item").each(function()
+		{
+			setOutlineCollapse($(this), !button.hasClass("is-collapsed"));
+		});
+
+		button.toggleClass("is-collapsed");
+
+		button.find("iconify-icon").attr("icon", button.hasClass("is-collapsed") ? "ph:arrows-out-line-horizontal-bold" : "ph:arrows-in-line-horizontal-bold");
+	});
 
     // hide the control button if the header has no children
     $(".outline-item-children:not(:has(*))").each(function()
@@ -251,9 +270,9 @@ jQuery(function()
 		$(this).parent().attr("data-task", $(this).parent().hasClass("is-checked") ? "x" : " ");
 	});
 
-	$(`input[type="checkbox"]`).each(function()
+	$(`.plugin-tasks-list-item input[type="checkbox"]`).each(function()
 	{
-		$(this).prop("checked", $(this).hasClass("is-checked"));
+		$(this).prop("checked", $(this).parent().hasClass("is-checked"));
 	});
 
 	$('.kanban-plugin__item.is-complete').each(function()
@@ -266,6 +285,12 @@ jQuery(function()
 	{
 		let code = $(this).parent().find("code").text();
 		navigator.clipboard.writeText(code);
+		$(this).text("Copied!");
+		// set a timeout to change the text back
+		setTimeout(function()
+		{
+			$(".copy-code-button").text("Copy");
+		}, 2000);
 	});
 
 	let focusedNode = null;
@@ -273,7 +298,6 @@ jQuery(function()
 	// make canvas nodes selectable
 	$(".canvas-node-content-blocker").on("click", function()
 	{
-		console.log("clicked");
 		$(this).parent().parent().toggleClass("is-focused");
 		$(this).hide();
 

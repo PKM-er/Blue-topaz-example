@@ -1,14 +1,14 @@
 {
 	"nodes":[
-		{"id":"a295c23ea6830773","x":-668,"y":-260,"width":250,"height":60,"type":"text","text":"Canvas 插件介绍"},
-		{"id":"544152479ac7ea1a","x":-218,"y":-470,"width":250,"height":60,"type":"text","text":"canvas-mindmap"},
-		{"id":"25d649be51b90186","x":-218,"y":-390,"width":250,"height":60,"type":"text","text":"canvas-presentation"},
-		{"id":"5bc65f0c52ca6829","x":-218,"y":-310,"width":250,"height":60,"type":"text","text":"canvas-block-reference"},
-		{"id":"70b8386211288142","x":-218,"y":-230,"width":250,"height":60,"type":"text","text":"link-nodes-in-canvas"},
-		{"id":"3a5e7f8bf667988d","x":-218,"y":-150,"width":250,"height":60,"type":"text","text":"canvas-css-class"},
-		{"id":"10fbb5375287d9f7","x":-218,"y":-70,"width":250,"height":60,"color":"1","type":"text","text":"obsidian-link-exploder"},
-		{"id":"c265cf6ceb663b5c","x":-784,"y":-657,"width":442,"height":297,"type":"link","url":"https://player.bilibili.com/player.html?aid=307220867&bvid=BV13A411D7Sn&cid=948967371&page=1"},
-		{"id":"adacaf345a2c1bca","x":-798,"y":-70,"width":456,"height":387,"type":"file","file":"99-Attachment/6X%6SQ(MQO9OWWRJRPQSO3B.png"}
+		{"type":"text","text":"Canvas 插件介绍","id":"a295c23ea6830773","x":-668,"y":-260,"width":250,"height":60},
+		{"type":"text","text":"canvas-mindmap","id":"544152479ac7ea1a","x":-218,"y":-470,"width":250,"height":60},
+		{"type":"text","text":"canvas-presentation","id":"25d649be51b90186","x":-218,"y":-390,"width":250,"height":60},
+		{"type":"text","text":"canvas-block-reference","id":"5bc65f0c52ca6829","x":-218,"y":-310,"width":250,"height":60},
+		{"type":"text","text":"link-nodes-in-canvas","id":"70b8386211288142","x":-218,"y":-230,"width":250,"height":60},
+		{"type":"text","text":"canvas-css-class","id":"3a5e7f8bf667988d","x":-218,"y":-150,"width":250,"height":60},
+		{"type":"text","text":"obsidian-link-exploder","id":"10fbb5375287d9f7","x":-218,"y":-70,"width":250,"height":60,"color":"1"},
+		{"type":"link","url":"https://player.bilibili.com/player.html?aid=307220867&bvid=BV13A411D7Sn&cid=948967371&page=1","id":"c265cf6ceb663b5c","x":-784,"y":-657,"width":442,"height":297},
+		{"type":"file","file":"99-Attachment/6X%6SQ(MQO9OWWRJRPQSO3B.png","id":"adacaf345a2c1bca","x":-798,"y":-70,"width":456,"height":387}
 	],
 	"edges":[
 		{"id":"262660bb8e95b2fd","fromNode":"a295c23ea6830773","fromSide":"right","toNode":"544152479ac7ea1a","toSide":"left"},

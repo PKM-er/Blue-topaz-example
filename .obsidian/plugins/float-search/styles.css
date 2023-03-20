@@ -1,0 +1,96 @@
+/*
+
+This CSS file will be included with your plugin, and
+available in the app when your plugin is enabled.
+
+If your plugin does not need CSS, delete this file.
+
+*/
+.float-search-modal {
+	width: 600px;
+
+	padding-bottom: 0;
+}
+
+.float-search-modal.float-search-width {
+	width: 1200px;
+}
+
+.float-search-modal-search-ctn, .float-search-modal-file-ctn {
+	height: 100%;
+	width: 100%;
+}
+
+.float-search-modal-file-ctn .view-header {
+	display: none;
+}
+
+.float-search-modal-content {
+	height: 800px;
+	display: flex;
+	align-items: center;
+    flex-direction: row;
+}
+
+.float-search-modal-file-ctn .view-content {
+    height: 100%;
+}
+
+.float-search-modal .modal-close-button {
+	z-index: 40;
+}
+
+.fs-content .workspace-split.mod-vertical {
+	height: 100%;
+}
+
+.fs-content {
+	height: 100%;
+}
+
+.fs-content .cm-scroller {
+    margin-top: 20px;
+}
+
+.fs-block {
+	height: 100% !important;
+}
+
+.fs-block .workspace-leaf-resize-handle {
+	display: none;
+}
+
+.modal-container.float-search-modal-container.mod-dim {
+	z-index: 30;
+}
+
+
+.float-search-modal-instructions {
+    border-top: 1px solid var(--background-secondary);
+    user-select: none;
+    font-size: var(--font-ui-smaller);
+    color: var(--text-muted);
+    padding: var(--size-4-2);
+    text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--size-4-3);
+}
+
+.float-search-modal-instructions .float-search-modal-instructions-key {
+	font-weight: var(--font-extrabold);
+    margin-right: var(--size-2-2);
+}
+
+.float-search-modal-content:has(.float-search-modal-file-ctn) .float-search-modal-search-ctn {
+    border-right: 1px solid var(--background-secondary);
+}
+
+.float-search-modal-file-ctn:has(.mod-active) {
+    border-bottom: 3px solid var(--color-accent);
+}
+
+.float-search-modal-file-ctn:has(.mod-active) .cm-scroller {
+	background-color: var(--background-primary);
+}

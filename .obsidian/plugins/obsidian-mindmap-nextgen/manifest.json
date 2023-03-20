@@ -1,8 +1,9 @@
 {
   "id": "obsidian-mindmap-nextgen",
-  "name": "Mind Map NextGen",
-  "version": "1.2.0",
-  "description": "A plugin to preview notes as Markmap mind maps",
+  "name": "Mindmap NextGen",
+  "version": "1.6.5",
+  "description": "View your Markdown as a mindmap",
   "isDesktopOnly": false,
-  "js": "main.js"
+  "js": "main.js",
+  "minAppVersion": "1.0.0"
 }

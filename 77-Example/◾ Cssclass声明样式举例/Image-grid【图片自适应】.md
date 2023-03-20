@@ -8,7 +8,6 @@ created: "2022-08-13 00:45"
 updated: "2022-10-26 16:56"
 ---
 
-位置：[html](https://blog.csdn.net/weixin_42528296/article/details/117990384)
 
 >  这是一个图片自适应示例，需要在yaml区域声明cssclass
 >  通过换行 决定每行显示几张图片

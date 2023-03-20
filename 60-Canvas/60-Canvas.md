@@ -7,6 +7,7 @@ obsidianUIMode: preview
 %% Begin Waypoint %%
 - **[[60-Canvas]]**
 	- [[代码块相关样式_middle.canvas]]
+	- [[画板主页.canvas]]
 	- [[示例库结构一览.canvas]]
 	- [[主页说明]]
 	- **Assets**

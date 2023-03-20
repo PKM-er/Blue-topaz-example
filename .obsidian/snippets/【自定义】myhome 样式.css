@@ -1112,49 +1112,37 @@ svg.markmap {
   color: white;
  }
  /**************home canvas************/
-.canvas-node:has(img[src*="board"]),
+/* .canvas-node:has(img[src*="board"]),
 .canvas-node:has(img[src*="home"])
 {
  z-index: 1 !important;
  
  pointer-events:none; 
  
-}
+} */
 
-body[data-canvas-path*="Home"]  .canvas-selection.mod-group-selection
+/* body[data-canvas-path*="Home"]  .canvas-selection.mod-group-selection
 {
   pointer-events:none; 
-}
+} */
 
-body[data-canvas-path*="Home"]   .canvas-node.is-themed:is(.mod-canvas-color-1,.mod-canvas-color-custom) .canvas-node-label
+/* body[data-canvas-path*="Home"]   .canvas-node.is-themed:is(.mod-canvas-color-1,.mod-canvas-color-custom) .canvas-node-label
 {
 display: none;
 }
+ */
+ body[data-canvas-path*="Home"]   .canvas-node .mod-header
+ {
+ display: none;
+ }
+ 
 
-body[data-canvas-path*="Home"]  .canvas-node.is-themed:is(.mod-canvas-color-1,.mod-canvas-color-2,.mod-canvas-color-custom) .canvas-node-resizer
-{
-  display: none;
-}
-
-body[data-canvas-path*="Home"]  .canvas-node.is-themed:is(.mod-canvas-color-2,.mod-canvas-color-custom)
+/* body[data-canvas-path*="Home"]  .canvas-node.is-themed:is(.mod-canvas-color-2,.mod-canvas-color-custom)
 {
   pointer-events:none; 
-}
-body[data-canvas-path*="Home"] .canvas-wrapper .canvas{
-/*  
-  transform: translate3d(45%, 50%, 0px) scale(1) translate3d(8550px, 8262.57px, 0px) !important;  */
-}
+} */
 
-body[data-canvas-path*="Home"] .canvas-node-content .markdown-embed > .markdown-embed-content > .markdown-preview-view,
-body[data-canvas-path*="Home"]  .canvas-node-content .markdown-embed > .markdown-embed-content > .markdown-preview-view .markdown-preview-sizer
-{
- 
-  padding: 0px;
-}
-body[data-canvas-path*="Home"]  .canvas-node-content  .markdown-preview-sizer:has([data-block-language="dataviewjs"])
-{
-  margin-top: -1em;
-}
+
  
 
 body[data-canvas-path*="Home"]  .canvas-node-content  .markdown-preview-sizer .callout
@@ -1183,15 +1171,12 @@ body[data-canvas-path*="_middle"] .canvas-node-container .canvas-node-content.ma
 {
 text-align: center;
 }
-
-body[data-canvas-path*="Home"]  .canvas-node .callout-title
-{
-  padding: 10px 0 10px 0;
-
-  
-}
 body[data-canvas-path*="Home"]  .canvas-node .callout:not(.admonition).drop-shadow {
   box-shadow: unset;
+}
+ 
+body[data-canvas-path*="Home"]  .canvas-node .canvas-node-content .markdown-preview-view {
+  overflow:hidden;
 }
 body[data-canvas-path*="Home"]  .canvas-node .callout {
 border: none;

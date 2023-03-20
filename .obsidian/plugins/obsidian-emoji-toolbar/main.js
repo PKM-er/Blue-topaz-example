@@ -59156,7 +59156,7 @@ var NimbleEmojiIndex = /*#__PURE__*/function () {
     value: function buildIndex() {
       var _this = this;
 
-      var _loop = function _loop(emoji) {
+      var _loop = function _loop() {
         var emojiData = _this.data.emojis[emoji],
             short_names = emojiData.short_names,
             emoticons = emojiData.emoticons,
@@ -59191,7 +59191,7 @@ var NimbleEmojiIndex = /*#__PURE__*/function () {
       };
 
       for (var emoji in this.data.emojis) {
-        _loop(emoji);
+        _loop();
       }
     }
   }, {
@@ -59285,53 +59285,55 @@ var NimbleEmojiIndex = /*#__PURE__*/function () {
               aIndex = _this4.index,
               length = 0;
 
-          for (var charIndex = 0; charIndex < value.length; charIndex++) {
+          var _loop2 = function _loop2() {
             var _char = value[charIndex];
             length++;
             aIndex[_char] || (aIndex[_char] = {});
             aIndex = aIndex[_char];
 
             if (!aIndex.results) {
-              (function () {
-                var scores = {};
-                aIndex.results = [];
-                aIndex.pool = {};
+              var scores = {};
+              aIndex.results = [];
+              aIndex.pool = {};
 
-                for (var id in aPool) {
-                  var emoji = aPool[id],
-                      search = emoji.search,
-                      sub = value.substr(0, length),
-                      subIndex = search.indexOf(sub);
+              for (var id in aPool) {
+                var emoji = aPool[id],
+                    search = emoji.search,
+                    sub = value.substr(0, length),
+                    subIndex = search.indexOf(sub);
 
-                  if (subIndex != -1) {
-                    var score = subIndex + 1;
-                    if (sub == id) score = 0;
+                if (subIndex != -1) {
+                  var score = subIndex + 1;
+                  if (sub == id) score = 0;
 
-                    if (_this4.emojis[id] && _this4.emojis[id][skinTone]) {
-                      aIndex.results.push(_this4.emojis[id][skinTone]);
-                    } else {
-                      aIndex.results.push(_this4.emojis[id]);
-                    }
-
-                    aIndex.pool[id] = emoji;
-                    scores[id] = score;
-                  }
-                }
-
-                aIndex.results.sort(function (a, b) {
-                  var aScore = scores[a.id],
-                      bScore = scores[b.id];
-
-                  if (aScore == bScore) {
-                    return a.id.localeCompare(b.id);
+                  if (_this4.emojis[id] && _this4.emojis[id][skinTone]) {
+                    aIndex.results.push(_this4.emojis[id][skinTone]);
                   } else {
-                    return aScore - bScore;
+                    aIndex.results.push(_this4.emojis[id]);
                   }
-                });
-              })();
+
+                  aIndex.pool[id] = emoji;
+                  scores[id] = score;
+                }
+              }
+
+              aIndex.results.sort(function (a, b) {
+                var aScore = scores[a.id],
+                    bScore = scores[b.id];
+
+                if (aScore == bScore) {
+                  return a.id.localeCompare(b.id);
+                } else {
+                  return aScore - bScore;
+                }
+              });
             }
 
             aPool = aIndex.pool;
+          };
+
+          for (var charIndex = 0; charIndex < value.length; charIndex++) {
+            _loop2();
           }
 
           return aIndex.results;
@@ -104175,10 +104177,14 @@ class EmojiToolbar extends react.Component {
     }
     render() {
         return (react.createElement("div", null,
-            react.createElement(dist.NimblePicker, { onSelect: this.props.onSelect, autoFocus: true, set: 'twitter', data: twitterData, theme: this.props.theme })));
+            react.createElement(dist.NimblePicker, { onSelect: this.props.onSelect, autoFocus: true, native: this.props.isNative, set: 'twitter', data: twitterData, theme: this.props.theme })));
     }
 }
 
+const DEF_DELAY = 1000;
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms || DEF_DELAY));
+}
 function insertext(editor,text) {
   if (text.length === 0 || text==null) return;
   const cursor = editor.getCursor('from');
@@ -104187,18 +104193,20 @@ function insertext(editor,text) {
    app.workspace.activeLeaf.view.editor.exec("goRight");
 }
 class EmojiModal extends obsidian.Modal {
-    constructor(app, theme,editor) {
+    constructor(app, theme, isNative,editor) {
         super(app);
         this.reactComponent = react.createElement(EmojiToolbar, {
-            "onSelect": (emoji) => {
+            "onSelect": async (emoji) => {
                 this.close();
-               // document.execCommand('insertText', false, emoji.native);
-               insertext(editor, emoji.native);
+                await sleep(10);
+             //   document.execCommand('insertText', false, emoji.native);
+              insertext(editor, emoji.native);
             },
             "onClose": () => {
                 this.close();
             },
             "theme": theme,
+            "isNative": isNative,
         });
     }
     async onOpen() {
@@ -104213,13 +104221,13 @@ class EmojiModal extends obsidian.Modal {
     }
 }
 const DEFAULT_SETTINGS = {
-    twemojiActive: true
+    twitterEmojiActive: false
 };
 class EmojiPickerPlugin extends obsidian.Plugin {
     async onload() {
         await this.loadSettings();
         this.addSettingTab(new SettingsTab(this.app, this));
-        if (this.settings.twemojiActive) {
+        if (this.settings.twitterEmojiActive) {
             obsidian.MarkdownPreviewRenderer.registerPostProcessor(EmojiPickerPlugin.postprocessor);
         }
         this.addCommand({
@@ -104232,10 +104240,11 @@ class EmojiPickerPlugin extends obsidian.Plugin {
                     if (!checking) {
                         try {
                             const theme = this.app.getTheme() === 'moonstone' ? 'light' : 'dark';
-                            let view = this.app.workspace.getActiveViewOfType(obsidian.MarkdownView);
+                          let view = this.app.workspace.getActiveViewOfType(obsidian.MarkdownView);
                             if (!view){return;};
                             const  cmEditor = view.editor;
-                            const myModal = new EmojiModal(this.app, theme,cmEditor);
+                            const isNative = !this.settings.twitterEmojiActive;
+                            const myModal = new EmojiModal(this.app, theme, isNative,cmEditor);
                             myModal.open();
                             document.getElementsByClassName("emoji-mart-search")[0].getElementsByTagName('input')[0].focus();
                             document.getElementsByClassName("emoji-mart-search")[0].getElementsByTagName('input')[0].select();
@@ -104272,12 +104281,12 @@ class SettingsTab extends obsidian.PluginSettingTab {
         containerEl.createEl('a', { text: 'Created by oliveryh', href: 'https://github.com/oliveryh/' });
         containerEl.createEl('h2', { text: 'Settings' });
         new obsidian.Setting(containerEl)
-            .setName('Twitter Emoji')
-            .setDesc('Improved emoji support. Note: this applies to emoji search and preview only.')
+            .setName('Twitter Emoji (v13)')
+            .setDesc('Improved emoji support, but may cause unexpected behavior.')
             .addToggle(toggle => toggle
-            .setValue(this.plugin.settings.twemojiActive)
+            .setValue(this.plugin.settings.twitterEmojiActive)
             .onChange(async (value) => {
-            this.plugin.settings.twemojiActive = value;
+            this.plugin.settings.twitterEmojiActive = value;
             await this.plugin.saveSettings();
             if (value) {
                 obsidian.MarkdownPreviewRenderer.registerPostProcessor(EmojiPickerPlugin.postprocessor);

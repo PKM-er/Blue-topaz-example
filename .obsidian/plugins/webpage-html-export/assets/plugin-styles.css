@@ -1,5 +1,38 @@
-/* hide page before it is loaded */
-/* html { visibility: hidden; background-color: black; } */
+/* Make code block copy button fade in and out */
+.markdown-rendered pre:not(:hover) > button.copy-code-button
+{
+	display: unset;
+	opacity: 0;
+}
+
+.markdown-rendered pre:hover > button.copy-code-button
+{
+	opacity: 1;
+}
+
+.markdown-rendered pre button.copy-code-button
+{
+	transition: opacity 0.2s ease-in-out, width 0.3s ease-in-out, background-color 0.2s ease-in-out;
+	text-overflow: clip;
+}
+
+.markdown-rendered pre > button.copy-code-button:hover
+{
+	background-color: var(--interactive-normal);
+}
+
+.markdown-rendered pre > button.copy-code-button:active
+{
+	background-color: var(--interactive-hover);
+	box-shadow: var(--input-shadow);
+	transition: none;
+}
+
+/* fix large inline math blocks overlapping */
+mjx-container > mjx-math.MJX-TEX
+{
+	display: inline-block;
+}
 
 /* remove canvas controls */
 .canvas-card-menu {
@@ -57,28 +90,31 @@ hr
 #sidebar {
     background-color: var(--background-secondary);
     flex: 1 0 fit-content;
+    display: flex;
+    flex-direction: column;
 }
 
 .sidebar-left
 {
     border-right: 1px dashed var(--divider-color);
 	z-index: 1000;
+	align-items: flex-end;
 }
 
 .sidebar-right
 {
     border-left: 1px dashed var(--divider-color);
 	z-index: 1000;
+	align-items: flex-start;
 }
 
-.flex-container
-{
+.flex-container {
     background-color: var(--background-primary);
     display: flex;
     flex-direction: row;
-    justify-content: center;
     height: 100%;
     width: 100%;
+    align-items: stretch;
 }
 
 .markdown-reading-view
@@ -115,6 +151,39 @@ hr
     {
         display: none !important;
     }
+}
+
+@media screen and (max-width: 350px) and (min-width: 0px)
+{
+	*
+	{
+		font-size: 0.75rem;
+	}
+}
+
+
+@media screen and (max-width: 400px) and (min-width: 350px)
+{
+	*
+	{
+		font-size: 0.8rem;
+	}
+}
+
+@media screen and (max-width: 500px) and (min-width: 400px)
+{
+	*
+	{
+		font-size: 0.85rem;
+	}
+}
+
+@media screen and (max-width: 600px) and (min-width: 500px)
+{
+	*
+	{
+		font-size: 0.9rem;
+	}
 }
 
 @media screen and (max-width: 900px)
@@ -200,7 +269,7 @@ span.outline-item-title:hover
 }
 
 .outline-item-children {
-    border-left: 1px solid var(--divider-color);
+    border-left: 1px solid var(--nav-indentation-guide-color);
     margin-left: 10px;
     width: 100%;
 }
@@ -292,10 +361,7 @@ th[sortable-style="sortable-desc"]::after {
 
     display: inline-block;
     cursor: pointer;
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    z-index: 1000;
+	margin: 10px;
 }
 
 .theme-toggle-inline {

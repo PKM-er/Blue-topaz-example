@@ -1,0 +1,50 @@
+/**https://github.com/zamsyt/obsidian-snippets***/
+
+/* Multicolumn Notes v0.3.0 */
+.markdown-preview-view.hr-column div:has(> hr) + * > hr,
+.markdown-source-view.hr-column :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + * {
+  break-after: column; }
+
+.mod-header,
+.frontmatter-container,
+.cm-line:has(.cm-hmd-frontmatter),
+.cm-line:has(.cm-hmd-frontmatter) + .cm-line:has(br:only-child) {
+  column-span: all; }
+
+/* Add vertical lines */
+.hr-column .cm-contentContainer > *,
+.hr-column .markdown-preview-sizer {
+  column-rule: solid var(--hr-thickness) var(--hr-color); }
+
+/* Hide double <hr>s */
+.hr-column .hr:has(+ .hr):not(:has(+ * + .cm-active)),
+.hr-column .hr + .hr:not(:has(+ .cm-active)),
+.hr-column .el-hr:has(+ .el-hr), .el-hr + .el-hr {
+ opacity:0;
+  --hr-color: transparent; }
+
+/* Disable Readable line length for multi-column notes */
+.markdown-source-view.hr-column:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)),
+.markdown-preview-view.hr-column:has(.el-hr + .el-hr + :not(.mod-footer)) {
+  --file-line-width: 100%; }
+
+/* Live preview */
+.hr-column .cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 2; }
+.hr-column .cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 3; }
+.hr-column .cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 4; }
+.hr-column .cm-contentContainer > *:has(:is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) ~ :is(.HyperMD-hr, .hr) + :is(.HyperMD-hr, .hr) + .cm-line:not(:last-child)) {
+  column-count: 5; }
+
+/* Reading view
+   Requires Contextual Typography */
+.markdown-preview-sizer:has(.el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 2; }
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 3; }
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 4; }
+.markdown-preview-sizer:has(.el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr ~ .el-hr + .el-hr + :not(.mod-footer)) {
+  column-count: 5; }

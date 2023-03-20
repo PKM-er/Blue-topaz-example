@@ -218,14 +218,15 @@
         "createInSameFolderAsActiveFile": false
       },
       "appendLink": false,
-      "incrementFileName": true,
       "openFileInNewTab": {
         "enabled": false,
         "direction": "vertical",
         "focus": true
       },
       "openFile": true,
-      "openFileInMode": "default"
+      "openFileInMode": "default",
+      "setFileExistsBehavior": true,
+      "fileExistsMode": "Increment the file name"
     },
     {
       "id": "deec549a-d2dd-4e1d-b87e-c5abdfdc2802",
@@ -274,6 +275,13 @@
       "type": "Macro",
       "command": true,
       "macroId": "67c18955-6f61-4704-b934-50f6464e4699"
+    },
+    {
+      "id": "03c41ff6-128f-48de-8625-8173839d3d52",
+      "name": "copychatgpt",
+      "type": "Macro",
+      "command": true,
+      "macroId": "e0714193-d2b5-41c5-b358-92e6f9914726"
     }
   ],
   "macros": [
@@ -468,14 +476,15 @@
               "createInSameFolderAsActiveFile": false
             },
             "appendLink": false,
-            "incrementFileName": true,
             "openFileInNewTab": {
               "enabled": false,
               "direction": "vertical",
               "focus": true
             },
             "openFile": false,
-            "openFileInMode": "default"
+            "openFileInMode": "default",
+            "setFileExistsBehavior": true,
+            "fileExistsMode": "Increment the file name"
           }
         }
       ],
@@ -515,14 +524,15 @@
               "createInSameFolderAsActiveFile": false
             },
             "appendLink": false,
-            "incrementFileName": true,
             "openFileInNewTab": {
               "enabled": false,
               "direction": "vertical",
               "focus": true
             },
             "openFile": false,
-            "openFileInMode": "default"
+            "openFileInMode": "default",
+            "setFileExistsBehavior": true,
+            "fileExistsMode": "Increment the file name"
           }
         }
       ],
@@ -568,14 +578,15 @@
               "createInSameFolderAsActiveFile": false
             },
             "appendLink": false,
-            "incrementFileName": false,
             "openFileInNewTab": {
               "enabled": false,
               "direction": "vertical",
               "focus": true
             },
             "openFile": false,
-            "openFileInMode": "default"
+            "openFileInMode": "default",
+            "setFileExistsBehavior": true,
+            "fileExistsMode": "Increment the file name"
           }
         }
       ],
@@ -694,14 +705,15 @@
               "createInSameFolderAsActiveFile": false
             },
             "appendLink": false,
-            "incrementFileName": false,
             "openFileInNewTab": {
               "enabled": false,
               "direction": "vertical",
               "focus": true
             },
             "openFile": false,
-            "openFileInMode": "preview"
+            "openFileInMode": "preview",
+            "setFileExistsBehavior": true,
+            "fileExistsMode": "Increment the file name"
           }
         }
       ],
@@ -961,8 +973,29 @@
         }
       ],
       "runOnStartup": false
+    },
+    {
+      "name": "getChatgpt",
+      "id": "e0714193-d2b5-41c5-b358-92e6f9914726",
+      "commands": [
+        {
+          "name": "copyChat",
+          "type": "UserScript",
+          "id": "7568715a-ba94-4759-bf52-3a80294f9d0e",
+          "path": "88-Template/script/copyChat.js",
+          "settings": {}
+        }
+      ],
+      "runOnStartup": false
     }
   ],
   "inputPrompt": "multi-line",
-  "devMode": false
+  "devMode": false,
+  "templateFolderPath": "88-Template/tp",
+  "migrations": {
+    "migrateToMacroIDFromEmbeddedMacro": true,
+    "useQuickAddTemplateFolder": true,
+    "incrementFileNameSettingMoveToDefaultBehavior": true,
+    "mutualExclusionInsertAfterAndWriteToBottomOfFile": true
+  }
 }

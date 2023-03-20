@@ -27,7 +27,7 @@ __export(canvasMindMap_exports, {
   default: () => CanvasMindMap
 });
 module.exports = __toCommonJS(canvasMindMap_exports);
-var import_obsidian = require("obsidian");
+var import_obsidian2 = require("obsidian");
 
 // node_modules/monkey-around/mjs/index.js
 function around(obj, factories) {
@@ -63,8 +63,76 @@ function around1(obj, method, createWrapper) {
   }
 }
 
+// utils.ts
+var import_obsidian = require("obsidian");
+var random = (e) => {
+  let t = [];
+  for (let n = 0; n < e; n++) {
+    t.push((16 * Math.random() | 0).toString(16));
+  }
+  return t.join("");
+};
+var createChildFileNode = (canvas, parentNode, file, path, y) => {
+  let tempChildNode;
+  if (!(0, import_obsidian.requireApiVersion)("1.1.10")) {
+    tempChildNode = canvas.createFileNode(file, path, {
+      x: parentNode.x + parentNode.width + 200,
+      y,
+      height: parentNode.height * 0.6,
+      width: parentNode.width
+    }, true);
+  } else {
+    tempChildNode = canvas.createFileNode({
+      file,
+      subpath: path,
+      pos: {
+        x: parentNode.x + parentNode.width + 200,
+        y,
+        width: parentNode.width,
+        height: parentNode.height * 0.6
+      },
+      size: {
+        x: parentNode.x + parentNode.width + 200,
+        y,
+        width: parentNode.width,
+        height: parentNode.height * 0.6
+      },
+      save: true,
+      focus: false
+    });
+  }
+  canvas.deselectAll();
+  canvas.addNode(tempChildNode);
+  addEdge(canvas, random(16), {
+    fromOrTo: "from",
+    side: "right",
+    node: parentNode
+  }, {
+    fromOrTo: "to",
+    side: "left",
+    node: tempChildNode
+  });
+  canvas.requestSave();
+  return tempChildNode;
+};
+var addEdge = (canvas, edgeID, fromEdge, toEdge) => {
+  if (!canvas)
+    return;
+  const data = canvas.getData();
+  if (!data)
+    return;
+  canvas.importData({
+    "edges": [
+      ...data.edges,
+      { "id": edgeID, "fromNode": fromEdge.node.id, "fromSide": fromEdge.side, "toNode": toEdge.node.id, "toSide": toEdge.side }
+    ],
+    "nodes": data.nodes
+  });
+  canvas.requestFrame();
+};
+
 // canvasMindMap.ts
-var CanvasMindMap = class extends import_obsidian.Plugin {
+var CanvasMindMap = class extends import_obsidian2.Plugin {
   async onload() {
     this.registerCommands();
     this.patchCanvas();
@@ -75,53 +143,12 @@ var CanvasMindMap = class extends import_obsidian.Plugin {
   }
   registerCommands() {
     this.addCommand({
-      id: "split-into-mindmap",
-      name: "Split into mindmap based on H1",
+      id: "split-heading-into-mindmap",
+      name: "Split Heading into mindmap based on H1",
       checkCallback: (checking) => {
         var _a;
-        const canvasView = app.workspace.getActiveViewOfType(import_obsidian.ItemView);
+        const canvasView = app.workspace.getActiveViewOfType(import_obsidian2.ItemView);
         if ((canvasView == null ? void 0 : canvasView.getViewType()) === "canvas") {
-          const random = (e) => {
-            let t = [];
-            for (let n = 0; n < e; n++) {
-              t.push((16 * Math.random() | 0).toString(16));
-            }
-            return t.join("");
-          };
-          const createChildFileNode = (canvas, parentNode, file, path, y) => {
-            var _a2;
-            const edge = canvas.edges.get((_a2 = canvas.getData().edges.first()) == null ? void 0 : _a2.id);
-            let tempChildNode;
-            if (!(0, import_obsidian.requireApiVersion)("1.1.10"))
-              tempChildNode = canvas.createFileNode(file, path, { x: parentNode.x + parentNode.width + 200, y, height: parentNode.height * 0.6, width: parentNode.width }, true);
-            else {
-              tempChildNode = canvas.createFileNode({
-                file,
-                subpath: path,
-                pos: {
-                  x: parentNode.x + parentNode.width + 200,
-                  y,
-                  width: parentNode.width,
-                  height: parentNode.height * 0.6
-                },
-                size: {
-                  x: parentNode.x + parentNode.width + 200,
-                  y,
-                  width: parentNode.width,
-                  height: parentNode.height * 0.6
-                },
-                save: true,
-                focus: false
-              });
-            }
-            canvas.deselectAll();
-            canvas.addNode(tempChildNode);
-            const tempEdge = new edge.constructor(canvas, random(16), { side: "right", node: parentNode }, { side: "left", node: tempChildNode });
-            canvas.addEdge(tempEdge);
-            tempEdge.render();
-            canvas.requestSave();
-            return tempChildNode;
-          };
           if (!checking) {
             const canvas = canvasView == null ? void 0 : canvasView.canvas;
             const currentSelection = canvas == null ? void 0 : canvas.selection;
@@ -153,46 +180,51 @@ var CanvasMindMap = class extends import_obsidian.Plugin {
     });
   }
   patchCanvas() {
-    const random = (e) => {
-      let t = [];
-      for (let n = 0; n < e; n++) {
-        t.push((16 * Math.random() | 0).toString(16));
-      }
-      return t.join("");
-    };
     const createEdge = async (node1, node2, canvas) => {
       var _a;
-      const edge = canvas.edges.get((_a = canvas.getData().edges.first()) == null ? void 0 : _a.id);
-      if (edge) {
-        const tempEdge = new edge.constructor(canvas, random(16), {
+      if ((0, import_obsidian2.requireApiVersion)("1.1.9")) {
+        addEdge(canvas, random(16), {
+          fromOrTo: "from",
           side: "right",
           node: node1
-        }, { side: "left", node: node2 });
-        canvas.addEdge(tempEdge);
-        tempEdge.render();
+        }, {
+          fromOrTo: "to",
+          side: "left",
+          node: node2
+        });
       } else {
-        setTimeout(async () => {
-          const canvasFile = await this.app.vault.cachedRead(canvas.view.file);
-          const canvasFileData = JSON.parse(canvasFile);
-          canvasFileData.edges.push({
-            id: random(16),
-            fromNode: node1.id,
-            fromSide: "right",
-            toNode: node2.id,
-            toSide: "left"
-          });
-          canvasFileData.nodes.push({
-            id: node2.id,
-            x: node2.x,
-            y: node2.y,
-            width: node2.width,
-            height: node2.height,
-            type: "text",
-            text: node2.text
-          });
-          canvas.setData(canvasFileData);
-          canvas.requestSave();
-        }, 500);
+        const edge = canvas.edges.get((_a = canvas.getData().edges.first()) == null ? void 0 : _a.id);
+        if (edge) {
+          const tempEdge = new edge.constructor(canvas, random(16), {
+            side: "right",
+            node: node1
+          }, { side: "left", node: node2 });
+          canvas.addEdge(tempEdge);
+          tempEdge.render();
+        } else {
+          setTimeout(async () => {
+            const canvasFile = await this.app.vault.cachedRead(canvas.view.file);
+            const canvasFileData = JSON.parse(canvasFile);
+            canvasFileData.edges.push({
+              id: random(16),
+              fromNode: node1.id,
+              fromSide: "right",
+              toNode: node2.id,
+              toSide: "left"
+            });
+            canvasFileData.nodes.push({
+              id: node2.id,
+              x: node2.x,
+              y: node2.y,
+              width: node2.width,
+              height: node2.height,
+              type: "text",
+              text: node2.text
+            });
+            canvas.setData(canvasFileData);
+            canvas.requestSave();
+          }, 500);
+        }
       }
     };
     const navigate = (canvas, direction) => {
@@ -247,7 +279,7 @@ var CanvasMindMap = class extends import_obsidian.Plugin {
       let node = selection.values().next().value;
       let x = direction === "left" ? node.x - node.width - 50 : direction === "right" ? node.x + node.width + 50 : node.x;
       let y = direction === "top" ? node.y - node.height - 100 : direction === "bottom" ? node.y + node.height + 100 : node.y;
-      if ((0, import_obsidian.requireApiVersion)("1.1.10")) {
+      if ((0, import_obsidian2.requireApiVersion)("1.1.10")) {
         const tempChildNode = canvas.createTextNode({
           pos: {
             x,
@@ -278,7 +310,7 @@ var CanvasMindMap = class extends import_obsidian.Plugin {
     };
     const createNode = async (canvas, parentNode, y) => {
       let tempChildNode;
-      if (!(0, import_obsidian.requireApiVersion)("1.1.10")) {
+      if (!(0, import_obsidian2.requireApiVersion)("1.1.10")) {
         tempChildNode = canvas.createTextNode({
           x: parentNode.x + parentNode.width + 200,
           y
@@ -373,12 +405,11 @@ var CanvasMindMap = class extends import_obsidian.Plugin {
       }
       return tempChildNode;
     };
-    const createSlibeNode = async (canvas) => {
+    const createSiblingNode = async (canvas) => {
       var _a;
       if (canvas.selection.size !== 1)
         return;
       const childNode = canvas.selection.entries().next().value[1];
-      console.log(childNode);
       if (childNode.isEditing)
         return;
       const edges = canvas.getEdgesForNode(childNode).filter((item) => {
@@ -459,7 +490,7 @@ var CanvasMindMap = class extends import_obsidian.Plugin {
             navigate(this.canvas, "right");
           });
           this.scope.register([], "Enter", async () => {
-            const node = await createSlibeNode(this.canvas);
+            const node = await createSiblingNode(this.canvas);
             console.log(node);
             if (!node)
               return;

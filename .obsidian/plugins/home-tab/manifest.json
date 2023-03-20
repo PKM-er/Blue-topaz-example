@@ -1,0 +1,10 @@
+{
+	"id": "home-tab",
+	"name": "Home tab",
+	"version": "1.1.1",
+	"minAppVersion": "0.16.0",
+	"description": "A browser-like search tab for your local files.",
+	"author": "Renso",
+	"authorUrl": "https://github.com/olrenso",
+	"isDesktopOnly": false
+}

@@ -1,10 +1,140 @@
-:root {
+/* @settings
+
+name: File Tree Alternative Plugin
+id: file-tree-alternative-plugin
+settings:
+
+# Folder Pane Styles
+
+    -
+        id: oz-fta-folder-pane-heading
+        title: Folder Pane Styles
+        description: Style settings dedicated for only folder pane
+        type: heading
+        level: 1
+        collapsed: true
+    - 
+        id: oz-fta-folder-font-size
+        title: Folder Pane | Folder Name Font Size
+        description: Set folder pane font size in px
+        type: variable-number
+        default: 13
+        format: px
+    -
+        id: oz-fta-folder-icon-color
+        title: Folder Pane | Collapse/Expand Icon Color
+        description: Set the color of folder icons
+        type: variable-color
+        format: hex
+        default: '#2d8ff7'
+    -
+        id: oz-fta-folder-indendation-guide-color
+        title: Folder Pane | Indendation Guide Color
+        description: Set the color of indendation guide lines
+        type: variable-color
+        format: hex
+        default: '#ededeb'
+    -
+        id: oz-fta-folder-pane-file-name-color
+        title: Folder Pane | Folder Name Color
+        description: Set the color of names
+        type: variable-color
+        format: hex
+        default: '#'
+
+# File Pane Styles
+
+    -
+        id: oz-fta-file-pane-heading
+        title: File Pane Styles
+        description: Style settings dedicated for only file pane
+        type: heading
+        level: 1
+        collapsed: true
+    -
+        id: oz-fta-file-font-size
+        title: File Pane | File Name Font Size
+        description: Set file pane font size in px
+        type: variable-number
+        default: 12
+        format: px
+    -
+        id: oz-fta-file-pane-file-name-color
+        title: File Pane | File Name Color
+        description: Set the color of names
+        type: variable-color
+        format: hex
+        default: '#'
+    -
+        id: oz-fta-file-pane-foldername-color
+        title: File Pane | Header Folder Name Color
+        description: Set the color of folder name in the file pane
+        type: variable-color
+        format: hex
+        default: '#'
+
+# All Panes Styles
+
+    -
+        id: oz-fta-all-panes-heading
+        title: All Panes
+        description: Common style settings for both folder and file panes
+        type: heading
+        level: 1
+        collapsed: true
+    -
+        id: oz-fta-header-background-color
+        title: All Panes | Header Background Color
+        description: Set the background color of headers in both file and folder panes
+        type: variable-color
+        format: hex
+        default: '#'
+    -
+        id: oz-fta-header-icon-colors
+        title: All Panes | Header Action Icons Color
+        description: Set the color of icons in file and folder panes
+        type: variable-color
+        format: hex
+        alt-format:
+        -
+            id: oz-fta-header-icon-colors-accent-rgb
+            format: rgb
+        default: '#'
+    - 
+        id: oz-fta-all-panes-active-text-color
+        title: All Panes | Active File/Folder Name Color
+        description: Set the color of active file and folder name
+        type: variable-color
+        format: hex
+        default: '#'
+    - 
+        id: oz-fta-file-pane-active-file-background-color
+        title: File Pane | Active File Background Color
+        description: Set the color of active file background color
+        type: variable-color
+        format: hex
+        default: '#'
+*/
+
+.theme-light,
+.theme-dark {
     --oz-fta-folder-font-size: 13px;
     --oz-fta-file-font-size: 12px;
+    --oz-fta-folder-icon-color: var(--interactive-accent);
+    --oz-fta-folder-indendation-guide-color: var(--text-muted);
+    --oz-fta-header-background-color: var(--background-secondary-alt);
+    --oz-fta-header-icon-colors: var(--text-muted);
+    --oz-fta-file-pane-foldername-color: var(--text-normal);
+    --oz-fta-folder-pane-file-name-color: var(--text-normal);
+    --oz-fta-header-icon-colors-accent-rgb: var(--interactive-accent-hover);
+    --oz-fta-all-panes-active-text-color: var(--text-normal);
+    --oz-fta-file-pane-active-file-background-color: var(--background-secondary-alt);
+    --oz-fta-file-pane-file-name-color: var(--text-muted);
 }
 
 .oz-file-tree-header {
-    color: var(--text-normal);
+    color: var(--oz-fta-file-pane-foldername-color);
+    background: var(--oz-fta-header-background-color);
     margin-top: 3px;
     font-size: 15px;
     font-weight: bold;
@@ -18,25 +148,21 @@
     min-width: fill-available;
     height: fit-content;
     padding: 5px 0px 5px;
-    background: var(--background-secondary-alt);
-    border-bottom: 1px solid var(--background-secondary-alt);
     border-radius: 8px;
-    box-shadow: var(--background-secondary-alt);
 }
 
 .oz-nav-action-button {
-    color: var(--text-normal);
+    color: var(--oz-fta-header-icon-colors);
     display: inline-block;
     padding: 0px 0px 0px 2px;
     margin-left: 5px;
     opacity: 0.5;
-    color: var(--text-muted);
     border-radius: 8px;
     opacity: 1;
 }
 
 .oz-nav-action-button:hover {
-    color: var(--interactive-accent-hover);
+    opacity: 0.6;
 }
 
 .oz-nav-action-button svg {
@@ -61,6 +187,8 @@
 }
 
 .oz-nav-file-title {
+    color: var(--oz-fta-file-pane-file-name-color);
+    font-size: var(--oz-fta-file-font-size);
     width: calc(100% - 30px);
     display: flex;
     white-space: nowrap;
@@ -68,11 +196,9 @@
     cursor: pointer;
     line-height: 19px;
     border-radius: 3px;
-    font-size: var(--oz-fta-file-font-size);
     padding: 1px 2px 0px 2px;
     min-width: 100%;
     border: 1px solid transparent;
-    color: var(--text-muted);
 }
 
 .oz-nav-file-title .oz-nav-file-title-content {
@@ -87,12 +213,18 @@
 div.oz-nav-file.is-active,
 div.oz-nav-file.is-active div.oz-nav-file-title,
 div.oz-nav-file.is-active div.oz-nav-file-title-content {
-    background-color: var(--background-secondary-alt);
-    color: var(--text-normal);
+    background-color: var(--oz-fta-file-pane-active-file-background-color);
+    color: var(--oz-fta-all-panes-active-text-color);
+    font-weight: bold;
+}
+
+.is-folder-active {
+    color: var(--oz-fta-all-panes-active-text-color);
     font-weight: bold;
 }
 
 .oz-nav-file-tag {
+    /* @Consider */
     color: var(--text-muted);
     background-color: var(--background-secondary-alt);
     border-radius: 3px;
@@ -126,9 +258,9 @@ div.workspace-leaf-content[data-type='file-tree-view'] > div.view-content {
 
 .oz-folders-action-items,
 .oz-flex-container {
+    background: var(--oz-fta-header-background-color);
+    border: 1px solid var(--oz-fta-header-background-color);
     margin-bottom: 3px;
-    background: var(--background-secondary-alt);
-    border: 1px solid var(--background-secondary-alt);
     border-radius: 8px;
     stroke-width: 2px;
     -webkit-backdrop-filter: blur(8px);
@@ -160,9 +292,8 @@ div.workspace-leaf-content[data-type='file-tree-view'] > div.view-content {
     will-change: transform, opacity, height;
     margin-left: 6;
     padding-left: 14px;
-    border-left: 2px solid var(--text-accent);
+    border-left: 2px solid var(--oz-fta-folder-indendation-guide-color);
     margin-left: 5px !important;
-    border-left-color: var(--text-muted);
 }
 
 .oz-folder-toggle {
@@ -191,14 +322,14 @@ div.workspace-leaf-content[data-type='file-tree-view'] > div.view-content {
 }
 
 .oz-folder-name {
+    color: var(--oz-fta-folder-pane-file-name-color);
+    font-size: var(--oz-fta-folder-font-size);
     vertical-align: middle;
     display: inline-block;
-    color: var(--text-muted);
-    font-size: var(--oz-fta-folder-font-size);
 }
 
 div.oz-folder-name.is-root-folder {
-    font-size: calc(var(--oz-fta-folder-font-size) + 2.5px);
+    font-size: calc(var(--oz-fta-folder-font-size) + 2px);
 }
 
 .oz-icon-div {
@@ -296,9 +427,44 @@ div#file-tree-divider.active-divider {
     background-color: var(--text-muted);
 }
 
-.is-folder-active {
-    color: var(--text-normal);
-    font-weight: bold;
+.file-tree-container-horizontal {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    max-width: 100%;
+}
+
+.oz-folder-pane-horizontal {
+    display: block;
+    width: 50%;
+    overflow-y: auto;
+    height: 100%;
+    resize: horizontal;
+}
+
+.oz-file-list-pane-horizontal {
+    display: block;
+    height: 100%;
+    overflow-y: auto;
+    flex: 1;
+}
+
+#file-tree-divider-horizontal {
+    margin-left: 5px;
+    width: 3.8px;
+    opacity: 0.3;
+    cursor: col-resize;
+    margin-right: 3px;
+    border-right: 3px solid var(--text-muted);
+}
+
+div#file-tree-divider-horizontal.active-divider {
+    background-color: var(--interactive-accent);
+    border-bottom: 0.5px solid var(--interactive-accent);
+}
+
+#file-tree-divider-horizontal:hover {
+    background-color: var(--text-muted);
 }
 
 .file-tree-header-fixed {
@@ -320,7 +486,7 @@ div#file-tree-divider.active-divider {
 }
 
 svg.oz-folder-toggle path {
-    fill: var(--interactive-accent);
+    fill: var(--oz-fta-folder-icon-color) !important;
 }
 
 /* Solution for React-Icon Center Issue */
