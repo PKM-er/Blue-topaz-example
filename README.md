@@ -18,7 +18,7 @@ updated: "2023-03-20 22:07"
 				</a>
 		</div>
 
-![image](https://github.com/PKM-er/Obsidian-Plug-and-Play/assets/241007/804a3f30-888b-4a1b-9480-b6f9f8db338a)
+![微信群](https://cdn.pkmer.cn/images/wechatqrcode.png!nomark)
 
 ![Home_middle3](https://user-images.githubusercontent.com/42957010/211135782-62cfc6e6-fe78-4a4c-9b71-41f2926aedab.png)
 
