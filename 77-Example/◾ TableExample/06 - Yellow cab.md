@@ -1,4 +1,5 @@
 ---
+cssclass: "yellowCab"
 ---
 | Planet  | Distance from the Sun | 1 Planetary day  | Moons |
 |----|----|----|----|
